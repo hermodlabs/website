@@ -1,0 +1,232 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Home Page</title>
+    <meta
+      name="description"
+      content="HermodLabs builds a co-timing engine that proves streams are on the same clock before you subtract, compare, threshold, or interpret. Portable cancellation + diagnostics + proof-shaped certificates."
+    />
+
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+
+<body>
+<site-page>
+  <section class="job" aria-labelledby="job-title">
+    <div class="job__inner">
+      <header class="job__header">
+        <p class="job__eyebrow">Careers</p>
+        <h1 class="job__title" id="job-title">Formal Verification &amp; Proof Systems Engineer (Rocq / TLA+)</h1>
+        <p class="job__subhead">
+          Focus: machine-checked math, executable specs, and model hardening for delay calculus + co-timing systems.
+        </p>
+      </header>
+
+      <section class="job__section" aria-labelledby="about-role-title">
+        <h2 class="job__heading" id="about-role-title">About the Role</h2>
+        <p class="job__text">
+          We’re building a platform whose core value is trustworthy inference under explicit contracts: delay algebra,
+          window validity, stability tests, and refuse-to-claim behavior when assumptions break. We already have strong
+          mathematical models—now we want to harden them: make key claims machine-checkable, make invariants executable,
+          and make pipeline/state behavior provably safe.
+        </p>
+        <p class="job__text">
+          This role lives at the intersection of proof engineering (Rocq/Coq), spec engineering (TLA+), and
+          proof-adjacent regression guardrails that run in CI. You turn “we believe this is true” into checked artifacts.
+        </p>
+      </section>
+
+      <section class="job__section" aria-labelledby="own-title">
+        <h2 class="job__heading" id="own-title">What You’ll Own</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            <strong>Rocq (Coq) formalization of the delay calculus core:</strong> definitions, operators, composition rules, equivalences, key lemmas.
+          </li>
+          <li class="job__list-item">
+            <strong>Certificates / proof-carrying checks:</strong> machine-checkable receipts that validate outputs against stated assumptions (where feasible).
+          </li>
+          <li class="job__list-item">
+            <strong>TLA+ system specifications:</strong> model the runtime pipeline and failure modes (ingest → windowing → co-timing → gating → outputs),
+            including concurrency/retries/ordering.
+          </li>
+          <li class="job__list-item">
+            <strong>Executable invariants:</strong> map contracts into tests/model checks/CI gates (property-based tests + formal checks).
+          </li>
+          <li class="job__list-item">
+            <strong>Math programming infrastructure:</strong> proof/code libraries and workflows so the team can extend foundations safely.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="do-title">
+        <h2 class="job__heading" id="do-title">What You’ll Do</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Pick high-leverage targets to formalize: the pieces that, if wrong, create false trust.
+          </li>
+          <li class="job__list-item">
+            Formalize core semantics: delay operators, window semantics, commutation assumptions, stability criteria in Rocq.
+          </li>
+          <li class="job__list-item">
+            Prove key properties (or create proof-backed kernels): rewrite correctness, “valid window ⇒ allowed cancellation,” abstain safety properties.
+          </li>
+          <li class="job__list-item">
+            Model pipeline behavior in TLA+ with temporal properties like: “no report unless gates pass,” “every output has a receipt,” “retries don’t reorder truth.”
+          </li>
+          <li class="job__list-item">
+            Integrate proofs/spec checks into CI with a workflow that protects correctness without stalling engineering.
+          </li>
+          <li class="job__list-item">
+            Support algorithm and systems teams: translate derivations into formal statements; review foundation-touching changes.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="deliverables-title">
+        <h2 class="job__heading" id="deliverables-title">Concrete Deliverables</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            A Rocq library for delay calculus primitives (operators, composition, rewrite rules, equivalence relations).
+          </li>
+          <li class="job__list-item">
+            A set of machine-checked lemmas corresponding to core contract claims used by the product.
+          </li>
+          <li class="job__list-item">
+            A TLA+ spec suite for the runtime pipeline with model-checkable properties covering failure modes and concurrency edges.
+          </li>
+          <li class="job__list-item">
+            A proof-to-tests mapping: each formal claim paired with executable tests or runtime assertions where appropriate.
+          </li>
+          <li class="job__list-item">
+            A developer workflow: templates, conventions, and docs so others can contribute without breaking proofs.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="req-title">
+        <h2 class="job__heading" id="req-title">Required Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Strong experience with Rocq/Coq proof engineering: definitions, lemmas, tactics, structuring projects, maintaining proofs over time.
+          </li>
+          <li class="job__list-item">
+            Experience with formal specification tools (TLA+ preferred; Alloy/Lean/Isabelle acceptable if you can ramp to TLA+).
+          </li>
+          <li class="job__list-item">
+            Comfort with mathematical modeling: algebraic structures, semantics, and reasoning about exact vs approximate statements.
+          </li>
+          <li class="job__list-item">
+            Ability to collaborate with engineers: translate informal requirements into formal statements and back into actionable constraints.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="pref-title">
+        <h2 class="job__heading" id="pref-title">Preferred Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">Background in signal processing/estimation/control or time-delay systems (helpful, not required).</li>
+          <li class="job__list-item">Experience with proof-adjacent production guardrails: certificates, verified kernels, formally specified APIs.</li>
+          <li class="job__list-item">CI hygiene for formal projects: build tooling, caching, proof performance.</li>
+          <li class="job__list-item">Experience writing specs for distributed systems (ordering, retries, idempotency, audit logs).</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="success-title">
+        <h2 class="job__heading" id="success-title">How You’ll Be Measured (First 60–90 Days)</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            You stand up a minimal but real proof/spec backbone that runs in CI.
+          </li>
+          <li class="job__list-item">
+            You formalize and prove at least one high-leverage property that protects against false confidence.
+          </li>
+          <li class="job__list-item">
+            You produce a TLA+ spec that catches at least one subtle pipeline bug or ambiguity early.
+          </li>
+          <li class="job__list-item">
+            The team moves faster because invariants are explicit and regression-proofed.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="style-title">
+        <h2 class="job__heading" id="style-title">Working Style</h2>
+        <ul class="job__list">
+          <li class="job__list-item">You’re pragmatic: formalize the pieces that reduce real risk, not “prove the universe.”</li>
+          <li class="job__list-item">You like small trusted kernels and clear semantics.</li>
+          <li class="job__list-item">You believe correctness is a product feature—and you build tools that keep it that way.</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="level-title">
+        <h2 class="job__heading" id="level-title">Title &amp; Level</h2>
+        <p class="job__text">
+          Formal Verification &amp; Proof Systems Engineer (Rocq / TLA+) (senior IC; can scale to Staff/Principal if owning the verification roadmap),
+          partnering with applied math/DSP, backend, and validation teams.
+        </p>
+      </section>
+
+      <section class="job__section job__section--apply" aria-labelledby="apply-title">
+        <h2 class="job__heading" id="apply-title">Apply</h2>
+        <p class="job__text">Send a short note and your resume.</p>
+
+        <form
+          class="job__form"
+          action="/careers/apply/formal-verification-proof-systems"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div class="job__field">
+            <label class="job__label" for="app-name">Name</label>
+            <input class="job__input" id="app-name" name="name" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-email">Email</label>
+            <input class="job__input" id="app-email" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-message">Message</label>
+            <textarea
+              class="job__textarea"
+              id="app-message"
+              name="message"
+              rows="7"
+              placeholder="A few sentences about your background and why this role fits."
+              required
+            ></textarea>
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-resume">Resume</label>
+            <input class="job__input" id="app-resume" name="resume" type="file" accept=".pdf,.doc,.docx" required />
+          </div>
+
+          <div class="job__actions">
+            <button class="button button--primary" type="submit">Submit</button>
+            <a class="button button--secondary" href="/careers">Back to roles</a>
+          </div>
+
+          <p class="job__fineprint">We only use this to respond to your application. No spam.</p>
+        </form>
+      </section>
+    </div>
+  </section>
+</site-page>
+
+
+  <script type="module" src="/components/site_page/site_page.js"></script>
+  <script type="module" src="/components/site_header/site_header.js"></script>
+  <script type="module" src="/components/site_footer/site_footer.js"></script>
+
+  <script type="module" src="/components/site_hero/site_hero.js"></script>
+  <script type="module" src="/components/social_proof/social_proof.js"></script>
+  <script type="module" src="/components/site_about/site_about.js"></script>
+  <script type="module" src="/components/event_invite/event_invite.js"></script>
+</body>
+</html>

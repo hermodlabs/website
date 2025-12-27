@@ -1,0 +1,235 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Home Page</title>
+    <meta
+      name="description"
+      content="HermodLabs builds a co-timing engine that proves streams are on the same clock before you subtract, compare, threshold, or interpret. Portable cancellation + diagnostics + proof-shaped certificates."
+    />
+
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+
+<body>
+<site-page>
+  <section class="job" aria-labelledby="job-title">
+    <div class="job__inner">
+      <header class="job__header">
+        <p class="job__eyebrow">Careers</p>
+        <h1 class="job__title" id="job-title">Rewriting Systems / Canonical Forms Engineer (Delay Calculus Normal Forms)</h1>
+        <p class="job__subhead">
+          Focus: deterministic normal forms for delay-brick expressions, rewrite correctness, equivalence checking, and regression-proof canonicalization.
+        </p>
+      </header>
+
+      <section class="job__section" aria-labelledby="about-role-title">
+        <h2 class="job__heading" id="about-role-title">About the Role</h2>
+        <p class="job__text">
+          Our platform relies on a custom delay calculus: we compose delay bricks into delay polynomials/operators,
+          evaluate them on windows, and use them to align/cancel shared components. In practice, the same mathematical
+          object can appear in many syntactic forms—different compositions, factorizations, or rewrite sequences.
+        </p>
+        <p class="job__text">
+          If we can’t canonicalize these expressions, we get duplicated work, exploding search spaces, inconsistent results
+          across implementations, brittle diagnostics, and proofs/specs that can’t pin down semantics cleanly.
+        </p>
+        <p class="job__text">
+          This role owns the rewrite engine and canonical forms that make the delay calculus stable, comparable, and testable.
+        </p>
+      </section>
+
+      <section class="job__section" aria-labelledby="own-title">
+        <h2 class="job__heading" id="own-title">What You’ll Own</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            <strong>A rewrite system for the delay calculus:</strong> implementable rewrite rules that preserve semantics (not just on paper).
+          </li>
+          <li class="job__list-item">
+            <strong>Canonical forms / normal forms:</strong> deterministic representations up to the equivalences we care about
+            (associativity/identities, commutation conditions, window-conditional rewrites).
+          </li>
+          <li class="job__list-item">
+            <strong>Practical confluence/termination strategy:</strong> what can be made confluent/terminating, what can’t, and bounded strategies with fallbacks.
+          </li>
+          <li class="job__list-item">
+            <strong>Equivalence checking:</strong> fast “are these two expressions the same (under our rules)?” with optional traces/certificates.
+          </li>
+          <li class="job__list-item">
+            <strong>Rewrite-aware QA tooling:</strong> property tests, counterexample generators, and CI gates that prevent simplifier drift.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="do-title">
+        <h2 class="job__heading" id="do-title">What You’ll Do</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Define expression syntax + semantics: ASTs for delay bricks/polynomials and the semantics they denote (time-domain and/or spectral).
+          </li>
+          <li class="job__list-item">
+            Design rewrite rules: identities, simplifications, factoring/expansion policies, and domain-specific rules tied to window assumptions
+            (with explicit “only valid if…” guards).
+          </li>
+          <li class="job__list-item">
+            Build a canonicalizer: deterministic normal-form pipeline (parse → normalize → order → simplify → canonical print/hash).
+          </li>
+          <li class="job__list-item">
+            Handle conditional rewrites safely: record when a rule was used under assumption A; allow abstain/annotation when A is not guaranteed.
+          </li>
+          <li class="job__list-item">
+            Prove or test correctness: where full proofs aren’t feasible, use semantic equivalence testing at scale (randomized windows, adversarial cases).
+          </li>
+          <li class="job__list-item">
+            Integrate with proof/spec and validation teams: align rules with Rocq/TLA+ targets and golden tests.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="deliverables-title">
+        <h2 class="job__heading" id="deliverables-title">Concrete Deliverables</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            A Delay Expression IR (AST + printer) with stable formatting and hashing.
+          </li>
+          <li class="job__list-item">
+            A rewrite rule library with metadata: rule name, preconditions, priority/cost, unconditional vs window-conditional.
+          </li>
+          <li class="job__list-item">
+            A canonical form definition (doc + implementation): “two expressions are equivalent iff their canonical forms match (under assumptions X).”
+          </li>
+          <li class="job__list-item">
+            An equivalence checker with optional rewrite traces for debugging/audits.
+          </li>
+          <li class="job__list-item">
+            A regression shield: property-based tests + a golden corpus ensuring canonicalization stability across releases.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="req-title">
+        <h2 class="job__heading" id="req-title">Required Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Strong experience with term rewriting systems, symbolic algebra, compiler-like transformations, or theorem-prover-adjacent engineering.
+          </li>
+          <li class="job__list-item">
+            Ability to reason about equivalence relations, normal forms, invariants, and practical limits of confluence/termination.
+          </li>
+          <li class="job__list-item">
+            Solid implementation skills in at least one systems-friendly language (Rust/C++/OCaml/Haskell) or Python with disciplined architecture.
+          </li>
+          <li class="job__list-item">
+            Comfort building deterministic tooling: stable ordering, reproducible outputs, careful semantic testing strategies.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="pref-title">
+        <h2 class="job__heading" id="pref-title">Preferred Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">Experience with Knuth–Bendix, critical pair analysis, or practical confluence tooling.</li>
+          <li class="job__list-item">Familiarity with e-graphs/egg, SMT rewriting, or CAS internals.</li>
+          <li class="job__list-item">Experience collaborating with formal methods teams (extracting rewrite lemmas, producing certificates).</li>
+          <li class="job__list-item">Signal processing context familiarity (delay operators, frequency-domain evaluation) helpful but not required.</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="success-title">
+        <h2 class="job__heading" id="success-title">How You’ll Be Measured (First 60–90 Days)</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            You ship a working canonicalizer for a meaningful subset of the delay calculus that is deterministic and adopted by the team.
+          </li>
+          <li class="job__list-item">
+            Deduplication improves measurably (fewer duplicates, smaller search spaces, more stable results).
+          </li>
+          <li class="job__list-item">
+            CI catches at least one real regression related to simplifier/canonicalization drift.
+          </li>
+          <li class="job__list-item">
+            The rule set and assumptions are documented clearly enough that engineers stop arguing about “which form is right.”
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="style-title">
+        <h2 class="job__heading" id="style-title">Working Style</h2>
+        <ul class="job__list">
+          <li class="job__list-item">You treat “simplify” as a specification problem, not a convenience function.</li>
+          <li class="job__list-item">You prefer deterministic, explainable transforms over clever but opaque heuristics.</li>
+          <li class="job__list-item">You build engines that can say: “I rewrote this under assumption A; if A fails, don’t trust this equivalence.”</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="level-title">
+        <h2 class="job__heading" id="level-title">Title &amp; Level</h2>
+        <p class="job__text">
+          Rewriting Systems / Canonical Forms Engineer (Delay Calculus Normal Forms) (senior IC; can scale to Staff/Principal if owning IR + equivalence infrastructure),
+          partnering with applied math/DSP, proof/spec, and validation teams.
+        </p>
+      </section>
+
+      <section class="job__section job__section--apply" aria-labelledby="apply-title">
+        <h2 class="job__heading" id="apply-title">Apply</h2>
+        <p class="job__text">Send a short note and your resume.</p>
+
+        <form
+          class="job__form"
+          action="/careers/apply/rewriting-systems-canonical-forms"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div class="job__field">
+            <label class="job__label" for="app-name">Name</label>
+            <input class="job__input" id="app-name" name="name" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-email">Email</label>
+            <input class="job__input" id="app-email" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-message">Message</label>
+            <textarea
+              class="job__textarea"
+              id="app-message"
+              name="message"
+              rows="7"
+              placeholder="A few sentences about your background and why this role fits."
+              required
+            ></textarea>
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-resume">Resume</label>
+            <input class="job__input" id="app-resume" name="resume" type="file" accept=".pdf,.doc,.docx" required />
+          </div>
+
+          <div class="job__actions">
+            <button class="button button--primary" type="submit">Submit</button>
+            <a class="button button--secondary" href="/careers">Back to roles</a>
+          </div>
+
+          <p class="job__fineprint">We only use this to respond to your application. No spam.</p>
+        </form>
+      </section>
+    </div>
+  </section>
+</site-page>
+
+
+  <script type="module" src="/components/site_page/site_page.js"></script>
+  <script type="module" src="/components/site_header/site_header.js"></script>
+  <script type="module" src="/components/site_footer/site_footer.js"></script>
+
+  <script type="module" src="/components/site_hero/site_hero.js"></script>
+  <script type="module" src="/components/social_proof/social_proof.js"></script>
+  <script type="module" src="/components/site_about/site_about.js"></script>
+  <script type="module" src="/components/event_invite/event_invite.js"></script>
+</body>
+</html>

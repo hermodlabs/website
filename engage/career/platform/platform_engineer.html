@@ -1,0 +1,218 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Home Page</title>
+    <meta
+      name="description"
+      content="HermodLabs builds a co-timing engine that proves streams are on the same clock before you subtract, compare, threshold, or interpret. Portable cancellation + diagnostics + proof-shaped certificates."
+    />
+
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+
+<body>
+<site-page>
+  <section class="job" aria-labelledby="job-title">
+    <div class="job__inner">
+      <header class="job__header">
+        <p class="job__eyebrow">Careers</p>
+        <h1 class="job__title" id="job-title">DevOps / Platform Engineer</h1>
+        <p class="job__subhead">
+          Focus: deployments, observability, secure updates, fleet management, and “receipts” that prove what ran where.
+        </p>
+      </header>
+
+      <section class="job__section" aria-labelledby="about-role-title">
+        <h2 class="job__heading" id="about-role-title">About the Role</h2>
+        <p class="job__text">
+          We run a measurement platform where correctness isn’t just “the service is up”—it’s also “the data is valid,
+          assumptions are enforced, and we can prove what ran where.” The DevOps / Platform Engineer owns the
+          infrastructure and operational systems that keep deployments reliable, observable, and secure across cloud
+          services and (where relevant) device fleets.
+        </p>
+        <p class="job__text">
+          This role is for someone who treats reliability, auditability, and secure updates as product features.
+        </p>
+      </section>
+
+      <section class="job__section" aria-labelledby="do-title">
+        <h2 class="job__heading" id="do-title">What You’ll Do</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            <strong>Deployments &amp; environments:</strong> build predictable deploy pipelines (dev/stage/prod), safe rollouts (canary/blue-green),
+            environment parity, and rollback paths that actually work.
+          </li>
+          <li class="job__list-item">
+            <strong>Observability by default:</strong> metrics/logs/traces/dashboards/alerts—not just for uptime, but for domain signals
+            (ingest lag, dropped samples, contract failure rates, calibration staleness, drift anomalies).
+          </li>
+          <li class="job__list-item">
+            <strong>Fleet management:</strong> provisioning, identity, config rollout, and lifecycle ops for devices/edge nodes (where applicable).
+          </li>
+          <li class="job__list-item">
+            <strong>Secure updates:</strong> OTA update mechanisms (firmware + edge software), version pinning, rollout controls, rollback, update attestations.
+          </li>
+          <li class="job__list-item">
+            <strong>Security &amp; compliance fundamentals:</strong> secrets management, least privilege IAM, network policies, vuln scanning,
+            dependency hygiene, incident response readiness.
+          </li>
+          <li class="job__list-item">
+            <strong>Data platform reliability:</strong> ensure storage/queues are resilient, backed up, recoverable; manage retention/cost without breaking reproducibility.
+          </li>
+          <li class="job__list-item">
+            <strong>CI/CD for scientific software:</strong> wire algorithm regression gates (golden datasets, “if notch does not dip…” diagnostics) into pipelines.
+          </li>
+          <li class="job__list-item">
+            <strong>Run receipts &amp; provenance plumbing:</strong> make sure every pipeline run captures build versions, configs, dataset hashes, execution context.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="deliverables-title">
+        <h2 class="job__heading" id="deliverables-title">Concrete Deliverables</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            A CI/CD pipeline with lint/unit tests + algorithm regression tests + artifact capture + gated releases.
+          </li>
+          <li class="job__list-item">
+            An observability stack: dashboards for service health and measurement integrity, alerts with actionable runbooks.
+          </li>
+          <li class="job__list-item">
+            A secure update pipeline for edge/device software: signed artifacts, staged rollout, rollback, audit trails.
+          </li>
+          <li class="job__list-item">
+            A fleet operations toolkit: device registry, config rollout, heartbeat/telemetry monitoring, “what version is running where?” queries.
+          </li>
+          <li class="job__list-item">
+            A disaster recovery plan: backups, restore tests, and clear RTO/RPO assumptions.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="req-title">
+        <h2 class="job__heading" id="req-title">Required Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Strong experience with cloud infrastructure and deployment automation (Terraform/Pulumi, Kubernetes or managed services, CI/CD systems).
+          </li>
+          <li class="job__list-item">
+            Practical observability experience: metrics/logs/traces, alert tuning, dashboarding, incident response.
+          </li>
+          <li class="job__list-item">
+            Security fundamentals: secrets management, IAM, network security, supply chain security (signing, SBOMs), vuln management.
+          </li>
+          <li class="job__list-item">
+            Ability to design operational systems that support both backend services and edge/device components.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="pref-title">
+        <h2 class="job__heading" id="pref-title">Preferred Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">Experience with IoT/edge fleets: provisioning, OTA updates, device identity, certificate rotation, offline connectivity.</li>
+          <li class="job__list-item">Experience operating data pipelines: streaming ingest, queues, object storage + metadata DB patterns, retention/cost controls.</li>
+          <li class="job__list-item">Familiarity with enterprise requirements (SSO, audit logs, change management) and platform guardrails.</li>
+          <li class="job__list-item">Experience building regression gates for scientific/numerical systems (goldens, metrics, tolerances).</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="success-title">
+        <h2 class="job__heading" id="success-title">How You’ll Be Measured (First 60–90 Days)</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Deployments become safer and more repeatable (clear promotion path, rollbacks that work).
+          </li>
+          <li class="job__list-item">
+            Observability improves: the team can detect and diagnose failures faster (including data validity failures, not just 500s).
+          </li>
+          <li class="job__list-item">
+            Secure update capability exists for edge/device software with audit trails and controlled rollout.
+          </li>
+          <li class="job__list-item">
+            Fleet visibility improves: you can answer “what’s running where?” and spot unhealthy devices quickly.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="style-title">
+        <h2 class="job__heading" id="style-title">Working Style</h2>
+        <ul class="job__list">
+          <li class="job__list-item">You assume things will fail and design for fast detection + fast recovery.</li>
+          <li class="job__list-item">You like immutable artifacts, signed builds, and audit logs that settle arguments.</li>
+          <li class="job__list-item">You prefer automation over heroics, and runbooks over tribal knowledge.</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="level-title">
+        <h2 class="job__heading" id="level-title">Title &amp; Level</h2>
+        <p class="job__text">
+          DevOps / Platform Engineer (mid-to-senior; can scale to Staff owning platform architecture),
+          partnering with backend, embedded, and validation teams.
+        </p>
+      </section>
+
+      <section class="job__section job__section--apply" aria-labelledby="apply-title">
+        <h2 class="job__heading" id="apply-title">Apply</h2>
+        <p class="job__text">Send a short note and your resume.</p>
+
+        <form
+          class="job__form"
+          action="/careers/apply/devops-platform-engineer"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div class="job__field">
+            <label class="job__label" for="app-name">Name</label>
+            <input class="job__input" id="app-name" name="name" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-email">Email</label>
+            <input class="job__input" id="app-email" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-message">Message</label>
+            <textarea
+              class="job__textarea"
+              id="app-message"
+              name="message"
+              rows="7"
+              placeholder="A few sentences about your background and why this role fits."
+              required
+            ></textarea>
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-resume">Resume</label>
+            <input class="job__input" id="app-resume" name="resume" type="file" accept=".pdf,.doc,.docx" required />
+          </div>
+
+          <div class="job__actions">
+            <button class="button button--primary" type="submit">Submit</button>
+            <a class="button button--secondary" href="/careers">Back to roles</a>
+          </div>
+
+          <p class="job__fineprint">We only use this to respond to your application. No spam.</p>
+        </form>
+      </section>
+    </div>
+  </section>
+</site-page>
+
+
+  <script type="module" src="/components/site_page/site_page.js"></script>
+  <script type="module" src="/components/site_header/site_header.js"></script>
+  <script type="module" src="/components/site_footer/site_footer.js"></script>
+
+  <script type="module" src="/components/site_hero/site_hero.js"></script>
+  <script type="module" src="/components/social_proof/social_proof.js"></script>
+  <script type="module" src="/components/site_about/site_about.js"></script>
+  <script type="module" src="/components/event_invite/event_invite.js"></script>
+</body>
+</html>

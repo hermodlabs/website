@@ -1,0 +1,350 @@
+/* ==========================================================================
+   Pilots page + pilot cards — typography-forward styles (compatible with your system)
+   Assumes .link, .link--primary, .button, .button--primary, .button--secondary already exist.
+   ========================================================================== */
+
+.pilots{
+  padding: 26px 0 34px;
+}
+
+.pilots__inner{
+  max-width: 96ch;
+}
+
+/* ---------- Header ---------- */
+.pilots__header{
+  border-top: 1px solid rgba(0,0,0,0.12);
+  padding-top: 16px;
+}
+
+.pilots__title{
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+  font-size: clamp(2.2rem, 4.2vw, 3.2rem);
+}
+
+.pilots__lede{
+  margin: 0.85rem 0 0;
+  font-size: 1.18rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  font-weight: 850;
+  opacity: 0.92;
+  max-width: 70ch;
+}
+
+.pilots__subhead{
+  margin: 0.65rem 0 0;
+  font-size: 1.06rem;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+  opacity: 0.86;
+  max-width: 78ch;
+}
+
+/* ---------- Sections ---------- */
+.pilots__section{
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(0,0,0,0.12);
+}
+
+.pilots__heading{
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.pilots__text{
+  margin: 0.85rem 0 0;
+  font-size: 1.04rem;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  opacity: 0.86;
+  max-width: 78ch;
+}
+
+.pilots__text strong{
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  opacity: 0.96;
+}
+
+/* ---------- “What a pilot includes” list ---------- */
+.pilots__list{
+  margin: 0.9rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  max-width: 84ch;
+}
+
+.pilots__list-item{
+  margin: 0;
+  font-size: 1.04rem;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  opacity: 0.86;
+  padding-left: 1.2em;
+  position: relative;
+}
+
+.pilots__list-item::before{
+  content: "—";
+  position: absolute;
+  left: 0;
+  opacity: 0.55;
+}
+
+/* ---------- Pilot cards (typography-only “cards”) ---------- */
+.pilot-card{
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(0,0,0,0.12);
+}
+
+/* a subtle editorial callout feel without backgrounds */
+.pilot-card:first-of-type{
+  margin-top: 12px;
+}
+
+.pilot-card__header{
+  max-width: 88ch;
+}
+
+.pilot-card__title{
+  margin: 0;
+  font-size: clamp(1.25rem, 2.1vw, 1.65rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 900;
+}
+
+.pilot-card__summary{
+  margin: 0.65rem 0 0;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  opacity: 0.86;
+  max-width: 82ch;
+}
+
+/* grid: stacks on mobile, 3 cols on desktop */
+.pilot-card__grid{
+  margin-top: 0.95rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+@media (min-width: 900px){
+  .pilot-card__grid{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    align-items: start;
+  }
+}
+
+/* block headings as kickers */
+.pilot-card__heading{
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+/* lists inside cards */
+.pilot-card__list{
+  margin: 0.7rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.pilot-card__item{
+  margin: 0;
+  font-size: 1.01rem;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  opacity: 0.86;
+  padding-left: 1.2em;
+  position: relative;
+}
+
+.pilot-card__item::before{
+  content: "—";
+  position: absolute;
+  left: 0;
+  opacity: 0.55;
+}
+
+/* ---------- Apply form ---------- */
+.pilots__form{
+  margin-top: 0.95rem;
+  display: grid;
+  gap: 12px;
+  max-width: 70ch;
+}
+
+.pilots__label{
+  display: block;
+  margin: 0 0 6px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.pilots__input,
+.pilots__select,
+.pilots__textarea{
+  width: 100%;
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.18);
+  background: transparent;
+  color: inherit;
+}
+
+.pilots__textarea::placeholder{
+  opacity: 0.55;
+}
+
+.pilots__input:focus-visible,
+.pilots__select:focus-visible,
+.pilots__textarea:focus-visible,
+.pilots__checkbox:focus-visible{
+  outline: 2px solid rgba(0,0,0,0.55);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.pilots__fieldset{
+  margin: 6px 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.pilots__legend{
+  margin: 0 0 6px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.pilots__checks{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+}
+
+.pilots__check{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  opacity: 0.86;
+}
+
+.pilots__checkbox{
+  width: 16px;
+  height: 16px;
+}
+
+.pilots__actions{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.pilots__actions .button--primary{
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.pilots__actions .button--secondary{
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.92em;
+}
+
+.pilots__fineprint{
+  margin: 0.15rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  opacity: 0.7;
+  padding-left: 12px;
+  border-left: 2px solid rgba(0,0,0,0.18);
+  max-width: 70ch;
+}
+
+/* ---------- “How to Start” steps ---------- */
+.pilots__steps{
+  margin: 0.95rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  max-width: 78ch;
+  counter-reset: pstep;
+}
+
+.pilots__step{
+  counter-increment: pstep;
+  margin: 0;
+  font-size: 1.04rem;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  opacity: 0.86;
+  padding-left: 2.4rem;
+  position: relative;
+}
+
+.pilots__step::before{
+  content: counter(pstep) ".";
+  position: absolute;
+  left: 0;
+  top: 0.05rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  opacity: 0.45;
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.pilots__step strong{
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  opacity: 0.96;
+}
+
+/* ---------- Desktop polish ---------- */
+@media (min-width: 900px){
+  .pilots__actions{
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}

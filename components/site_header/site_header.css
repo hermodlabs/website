@@ -1,0 +1,132 @@
+/* ---------- Header (mobile-first: stacked) ---------- */
+.site-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Logo */
+.site-header__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.site-header__logo-mark {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.site-header__logo-text {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+
+.site-header__logo-mark .hl-logo{
+  width: 36px;
+  height: 36px;
+  display: block;
+}
+
+/* Nav list (mobile: vertical) */
+.site-header__nav {
+  width: 100%;
+}
+
+.site-header__nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.site-header__nav-link {
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  display: inline-block;
+  padding: 6px 0;
+}
+
+.site-header__nav-link:hover,
+.site-header__nav-link:focus-visible {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* CTA (mobile: after links) */
+.site-header__cta {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Buttons */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 10px 14px;
+  line-height: 1;
+}
+
+.button--primary {
+  background: var(--text);
+  color: #ffffff;
+  border-color: var(--text);
+}
+
+.button--primary:hover,
+.button--primary:focus-visible {
+  filter: brightness(1.05);
+}
+
+/* ---------- Desktop layout: one row, links right, CTA far right ---------- */
+@media (min-width: 768px) {
+  .site-header {
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
+
+  /* nav sits between logo and CTA */
+  .site-header__nav {
+    flex: 1;                 /* takes the middle space */
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .site-header__nav-list {
+    flex-direction: row;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;         /* prevents overflow */
+  }
+
+  .site-header__cta {
+    width: auto;
+    justify-content: flex-end;
+    flex: 0 0 auto;
+  }
+}

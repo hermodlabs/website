@@ -1,0 +1,225 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Home Page</title>
+    <meta
+      name="description"
+      content="HermodLabs builds a co-timing engine that proves streams are on the same clock before you subtract, compare, threshold, or interpret. Portable cancellation + diagnostics + proof-shaped certificates."
+    />
+
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+
+<body>
+<site-page>
+  <section class="job" aria-labelledby="job-title">
+    <div class="job__inner">
+      <header class="job__header">
+        <p class="job__eyebrow">Careers</p>
+        <h1 class="job__title" id="job-title">Backend Engineer (Data + APIs)</h1>
+        <p class="job__subhead">
+          Focus: ingest, storage, device telemetry, audit logs, and keeping contracts alive at runtime.
+        </p>
+      </header>
+
+      <section class="job__section" aria-labelledby="about-role-title">
+        <h2 class="job__heading" id="about-role-title">About the Role</h2>
+        <p class="job__text">
+          We’re building measurement-driven systems where results are only trustworthy if the assumptions behind them are
+          continuously checked. That means the backend can’t just store data—it has to keep the contracts alive at
+          runtime: capture telemetry, record provenance, enforce validity gates, and make it easy to answer “what
+          happened, when, and why did we trust it?”
+        </p>
+        <p class="job__text">
+          This role owns the data plane and API surface that turns devices + algorithms into a dependable product:
+          ingestion, storage, audit logs, contract evaluation, and customer-facing APIs.
+        </p>
+      </section>
+
+      <section class="job__section" aria-labelledby="do-title">
+        <h2 class="job__heading" id="do-title">What You’ll Do</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            <strong>Data ingestion pipelines:</strong> design robust ingest paths for device streams (batch + streaming),
+            handle backpressure, retries, dedupe, ordering, and schema evolution.
+          </li>
+          <li class="job__list-item">
+            <strong>Telemetry as a first-class product:</strong> model and store timebase health, sampling health,
+            calibration state, and on-device diagnostics; make it queryable and alertable.
+          </li>
+          <li class="job__list-item">
+            <strong>Audit logs &amp; provenance (“receipts”):</strong> ensure every result is reproducible: dataset hash,
+            firmware version, calibration constants, config used, algorithm version, window validity scores, abstentions/failures.
+          </li>
+          <li class="job__list-item">
+            <strong>Contracts alive at runtime:</strong> implement evaluators/gates that record whether a window/run met required promises
+            (coherence thresholds, drift bounds, saturation flags) and prevent “bad truth” from being presented as truth.
+          </li>
+          <li class="job__list-item">
+            <strong>APIs for product + partners:</strong> build stable APIs for device registration, data upload, run retrieval,
+            diagnostics, reports, and integrations (BMS/ops tooling where relevant).
+          </li>
+          <li class="job__list-item">
+            <strong>Storage architecture:</strong> choose and implement storage for raw streams, derived artifacts (features, spectra, delay tracks),
+            and reports; manage retention, indexing, and cost.
+          </li>
+          <li class="job__list-item">
+            <strong>Multi-tenant security:</strong> authN/authZ, tenant isolation, secrets management, rate limiting, secure auditability.
+          </li>
+          <li class="job__list-item">
+            <strong>Operational excellence:</strong> monitoring, tracing, SLOs, incident response playbooks, safe migrations.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="deliverables-title">
+        <h2 class="job__heading" id="deliverables-title">Concrete Deliverables</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            An ingest + storage service that reliably accepts device data and produces a canonical internal representation.
+          </li>
+          <li class="job__list-item">
+            A telemetry schema that supports deep debugging (clock drift, dropouts, calibration staleness, coherence collapse) without ad hoc logs.
+          </li>
+          <li class="job__list-item">
+            A run receipt / audit log system: immutable records tying every computed output to inputs + versions + validity gates.
+          </li>
+          <li class="job__list-item">
+            A contract evaluation service that emits: pass/borderline/fail with reasons and is surfaced in APIs/UI.
+          </li>
+          <li class="job__list-item">
+            Customer-facing APIs (and internal SDKs) that make integration straightforward and stable.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="req-title">
+        <h2 class="job__heading" id="req-title">Required Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Strong backend engineering experience building data-heavy services (ingestion, APIs, storage, reliability).
+          </li>
+          <li class="job__list-item">
+            Experience with event/telemetry systems: time-series data modeling, streaming or batch processing, schema/version management.
+          </li>
+          <li class="job__list-item">
+            Proficiency in one or more backend stacks (Go/Java/TypeScript/Python/etc.) and API design (REST/gRPC).
+          </li>
+          <li class="job__list-item">
+            Comfort with cloud infrastructure (deployments, monitoring, queues, object storage, databases).
+          </li>
+          <li class="job__list-item">
+            Security fundamentals: auth, tenant isolation, audit logs, least privilege.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="pref-title">
+        <h2 class="job__heading" id="pref-title">Preferred Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">Experience with IoT/device fleets: provisioning, device identity, OTA metadata, unreliable networks.</li>
+          <li class="job__list-item">Familiarity with time-series databases and hybrid architectures (object store + metadata DB + feature store).</li>
+          <li class="job__list-item">Experience implementing reproducibility/provenance systems (lineage, manifests, immutable logs).</li>
+          <li class="job__list-item">DSP/measurement-adjacent intuition: you don’t need to design estimators, but you respect validity gating and traceability.</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="success-title">
+        <h2 class="job__heading" id="success-title">How You’ll Be Measured (First 60–90 Days)</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            You ship a reliable ingestion path with clear schemas, strong observability, and safe evolution.
+          </li>
+          <li class="job__list-item">
+            You implement a receipt/audit log that lets the team reproduce a run and explain trust decisions quickly.
+          </li>
+          <li class="job__list-item">
+            You bring contracts alive at runtime by persisting validity scores and gating decisions as first-class data.
+          </li>
+          <li class="job__list-item">
+            You reduce time-to-debug by making telemetry queryable and correlated with outputs.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="style-title">
+        <h2 class="job__heading" id="style-title">Working Style</h2>
+        <ul class="job__list">
+          <li class="job__list-item">You build systems that answer uncomfortable questions quickly: what changed, what version ran, was the data valid?</li>
+          <li class="job__list-item">You favor explicit schemas and immutable receipts over “best effort” logging.</li>
+          <li class="job__list-item">You treat reliability and observability as product features, not afterthoughts.</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="level-title">
+        <h2 class="job__heading" id="level-title">Title &amp; Level</h2>
+        <p class="job__text">
+          Backend Engineer (Data + APIs) (mid-to-senior; can scale to Staff if owning the data platform architecture),
+          partnering with embedded, systems, algorithms, and product/UI.
+        </p>
+      </section>
+
+      <section class="job__section job__section--apply" aria-labelledby="apply-title">
+        <h2 class="job__heading" id="apply-title">Apply</h2>
+        <p class="job__text">Send a short note and your resume.</p>
+
+        <form
+          class="job__form"
+          action="/careers/apply/backend-engineer-data-apis"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div class="job__field">
+            <label class="job__label" for="app-name">Name</label>
+            <input class="job__input" id="app-name" name="name" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-email">Email</label>
+            <input class="job__input" id="app-email" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-message">Message</label>
+            <textarea
+              class="job__textarea"
+              id="app-message"
+              name="message"
+              rows="7"
+              placeholder="A few sentences about your background and why this role fits."
+              required
+            ></textarea>
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-resume">Resume</label>
+            <input class="job__input" id="app-resume" name="resume" type="file" accept=".pdf,.doc,.docx" required />
+          </div>
+
+          <div class="job__actions">
+            <button class="button button--primary" type="submit">Submit</button>
+            <a class="button button--secondary" href="/careers">Back to roles</a>
+          </div>
+
+          <p class="job__fineprint">We only use this to respond to your application. No spam.</p>
+        </form>
+      </section>
+    </div>
+  </section>
+</site-page>
+
+
+  <script type="module" src="/components/site_page/site_page.js"></script>
+  <script type="module" src="/components/site_header/site_header.js"></script>
+  <script type="module" src="/components/site_footer/site_footer.js"></script>
+
+  <script type="module" src="/components/site_hero/site_hero.js"></script>
+  <script type="module" src="/components/social_proof/social_proof.js"></script>
+  <script type="module" src="/components/site_about/site_about.js"></script>
+  <script type="module" src="/components/event_invite/event_invite.js"></script>
+</body>
+</html>

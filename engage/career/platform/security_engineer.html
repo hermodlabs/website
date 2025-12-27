@@ -1,0 +1,226 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Home Page</title>
+    <meta
+      name="description"
+      content="HermodLabs builds a co-timing engine that proves streams are on the same clock before you subtract, compare, threshold, or interpret. Portable cancellation + diagnostics + proof-shaped certificates."
+    />
+
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+
+<body>
+<site-page>
+  <section class="job" aria-labelledby="job-title">
+    <div class="job__inner">
+      <header class="job__header">
+        <p class="job__eyebrow">Careers</p>
+        <h1 class="job__title" id="job-title">Security Engineer (or Fractional Consultant)</h1>
+        <p class="job__subhead">
+          Focus: device auth, data handling, enterprise requirements, and security as “contracts with receipts.”
+        </p>
+      </header>
+
+      <section class="job__section" aria-labelledby="about-role-title">
+        <h2 class="job__heading" id="about-role-title">About the Role</h2>
+        <p class="job__text">
+          We’re building a measurement platform where trust is the product. Security isn’t a checkbox—it’s part of the
+          same contracts philosophy: explicit guarantees, continuous verification, and auditability.
+        </p>
+        <p class="job__text">
+          This role owns (or jump-starts, if fractional) the security foundation across devices, cloud services, and
+          enterprise customer expectations. If you’re fractional early, the goal is to establish the architecture,
+          policies, and guardrails so the team can move fast without building an accidental liability.
+        </p>
+      </section>
+
+      <section class="job__section" aria-labelledby="do-title">
+        <h2 class="job__heading" id="do-title">What You’ll Do</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            <strong>Device identity &amp; authentication:</strong> secure onboarding and identity (keys/certs, mTLS),
+            rotation/revocation, and “what device sent this?” traceability.
+          </li>
+          <li class="job__list-item">
+            <strong>Secure data handling end-to-end:</strong> encryption in transit/at rest, secrets management, PII
+            minimization, retention/deletion, and audit coverage.
+          </li>
+          <li class="job__list-item">
+            <strong>Enterprise security requirements:</strong> SSO/SAML/OIDC, RBAC, tenant isolation, audit logs, and
+            security questionnaires.
+          </li>
+          <li class="job__list-item">
+            <strong>Threat modeling &amp; architecture:</strong> device → ingest → storage → API → UI; define mitigations
+            and residual risk.
+          </li>
+          <li class="job__list-item">
+            <strong>Secure update pipeline:</strong> signed builds, SBOMs/supply-chain controls, vulnerability scanning,
+            safe OTA/rollbacks for edge/device software.
+          </li>
+          <li class="job__list-item">
+            <strong>Access control &amp; least privilege:</strong> IAM design, service-to-service auth, segmentation,
+            policy-as-code guardrails.
+          </li>
+          <li class="job__list-item">
+            <strong>Logging, auditing, incident response:</strong> immutable, useful audit logs; IR playbooks; alerting
+            and forensic readiness.
+          </li>
+          <li class="job__list-item">
+            <strong>Security standards &amp; roadmap:</strong> right-sized policies now, with a path toward SOC 2 / ISO
+            expectations when needed.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="deliverables-title">
+        <h2 class="job__heading" id="deliverables-title">Concrete Deliverables</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            A device auth blueprint: provisioning flow, key storage strategy, rotation plan, revocation model, telemetry for auth failures.
+          </li>
+          <li class="job__list-item">
+            A data handling spec: classification, encryption requirements, retention policy, deletion workflows, audit coverage.
+          </li>
+          <li class="job__list-item">
+            A tenant isolation + RBAC model (and review of implementation).
+          </li>
+          <li class="job__list-item">
+            A security baseline: secrets management, dependency scanning, vuln management, logging/audit requirements, CI gates.
+          </li>
+          <li class="job__list-item">
+            A lightweight enterprise readiness pack: security overview, architecture diagram, FAQ answers, questionnaire response template.
+          </li>
+          <li class="job__list-item">
+            If fractional: a 30/60/90 plan with prioritized fixes and quick wins.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="req-title">
+        <h2 class="job__heading" id="req-title">Required Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Practical experience securing cloud systems and APIs: authN/authZ, IAM, secrets management, secure logging, encryption.
+          </li>
+          <li class="job__list-item">
+            Experience with device/IoT security or adjacent constraints (identity, provisioning, OTA security, intermittent connectivity).
+          </li>
+          <li class="job__list-item">
+            Ability to translate enterprise requirements into implementable controls without freezing development.
+          </li>
+          <li class="job__list-item">
+            Strong communication: can write clear policies and coach engineers without turning everything into compliance theater.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="pref-title">
+        <h2 class="job__heading" id="pref-title">Preferred Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">Experience guiding teams toward SOC 2 Type I/II, ISO 27001, or similar expectations.</li>
+          <li class="job__list-item">Familiarity with hardware root of trust, secure elements/TPM, and attestation (where feasible).</li>
+          <li class="job__list-item">Experience with multi-tenant SaaS security (tenant isolation, audit logs, SSO).</li>
+          <li class="job__list-item">Experience with supply-chain security: artifact signing, SBOM, SLSA concepts, dependency governance.</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="success-title">
+        <h2 class="job__heading" id="success-title">How You’ll Be Measured (First 60–90 Days)</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Device identity/auth is no longer ad hoc: provisioning, rotation, and revocation are defined and implemented (or clearly staged).
+          </li>
+          <li class="job__list-item">
+            Data handling is explicit and enforceable: encryption, retention, deletion, and audit logging are in place or on a tight plan.
+          </li>
+          <li class="job__list-item">
+            Enterprise blockers are removed: RBAC/SSO/audit story is credible and documented.
+          </li>
+          <li class="job__list-item">
+            Security posture improves without slowing shipping: clear guardrails, not bureaucracy.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="style-title">
+        <h2 class="job__heading" id="style-title">Working Style</h2>
+        <ul class="job__list">
+          <li class="job__list-item">You assume attackers are creative and customers are picky—and you build a system that can explain itself.</li>
+          <li class="job__list-item">You prefer secure-by-default primitives: strong identity, least privilege, immutable audit logs, signed artifacts.</li>
+          <li class="job__list-item">You optimize for startup reality: highest risk first, maximum leverage, minimal ceremony.</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="level-title">
+        <h2 class="job__heading" id="level-title">Title &amp; Engagement</h2>
+        <p class="job__text">
+          Security Engineer (full-time) or Fractional Security Consultant (early-stage engagement). If fractional, typical
+          shape is: architecture + baseline controls + first enterprise readiness pass, then periodic reviews.
+        </p>
+      </section>
+
+      <section class="job__section job__section--apply" aria-labelledby="apply-title">
+        <h2 class="job__heading" id="apply-title">Apply</h2>
+        <p class="job__text">Send a short note and your resume.</p>
+
+        <form
+          class="job__form"
+          action="/careers/apply/security-engineer"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div class="job__field">
+            <label class="job__label" for="app-name">Name</label>
+            <input class="job__input" id="app-name" name="name" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-email">Email</label>
+            <input class="job__input" id="app-email" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-message">Message</label>
+            <textarea
+              class="job__textarea"
+              id="app-message"
+              name="message"
+              rows="7"
+              placeholder="A few sentences about your background and whether you’re interested full-time or fractional."
+              required
+            ></textarea>
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-resume">Resume</label>
+            <input class="job__input" id="app-resume" name="resume" type="file" accept=".pdf,.doc,.docx" required />
+          </div>
+
+          <div class="job__actions">
+            <button class="button button--primary" type="submit">Submit</button>
+            <a class="button button--secondary" href="/careers">Back to roles</a>
+          </div>
+
+          <p class="job__fineprint">We only use this to respond to your application. No spam.</p>
+        </form>
+      </section>
+    </div>
+  </section>
+</site-page>
+
+
+  <script type="module" src="/components/site_page/site_page.js"></script>
+  <script type="module" src="/components/site_header/site_header.js"></script>
+  <script type="module" src="/components/site_footer/site_footer.js"></script>
+
+  <script type="module" src="/components/site_hero/site_hero.js"></script>
+  <script type="module" src="/components/social_proof/social_proof.js"></script>
+  <script type="module" src="/components/site_about/site_about.js"></script>
+  <script type="module" src="/components/event_invite/event_invite.js"></script>
+</body>
+</html>

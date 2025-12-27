@@ -1,0 +1,252 @@
+/* ==========================================================================
+   Investors page — typography-forward styles (compatible with your system)
+   Assumes .link, .link--primary, .button, .button--primary, .button--secondary already exist.
+   ========================================================================== */
+
+.investors{
+  padding: 26px 0 34px;
+}
+
+.investors__inner{
+  max-width: 88ch;
+}
+
+/* ---------- Header ---------- */
+.investors__header{
+  border-top: 1px solid rgba(0,0,0,0.12);
+  padding-top: 16px;
+}
+
+.investors__title{
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+  font-size: clamp(2.2rem, 4.2vw, 3.2rem);
+}
+
+.investors__lede{
+  margin: 0.9rem 0 0;
+  font-size: 1.18rem;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  font-weight: 650;
+  max-width: 74ch;
+  opacity: 0.92;
+}
+
+/* ---------- Sections ---------- */
+.investors__section{
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(0,0,0,0.12);
+}
+
+/* headings as uppercase kickers (consistent with Events/About pages) */
+.investors__heading{
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.investors__text{
+  margin: 0.85rem 0 0;
+  font-size: 1.04rem;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  max-width: 78ch;
+  opacity: 0.86;
+}
+
+.investors__text strong{
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  opacity: 0.96;
+}
+
+/* hint text inside a sentence */
+.investors__hint{
+  font-size: 0.95em;
+  opacity: 0.7;
+  letter-spacing: -0.005em;
+}
+
+/* ---------- List (typographic bullets) ---------- */
+.investors__list{
+  margin: 0.9rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  max-width: 78ch;
+}
+
+.investors__list-item{
+  margin: 0;
+  font-size: 1.04rem;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  opacity: 0.86;
+  padding-left: 1.2em;
+  position: relative;
+}
+
+/* em dash bullets (typography only) */
+.investors__list-item::before{
+  content: "—";
+  position: absolute;
+  left: 0;
+  opacity: 0.55;
+}
+
+/* ---------- Contact section: subtle clause treatment ---------- */
+.investors__section--contact .investors__text:first-of-type{
+  padding-left: 12px;
+  border-left: 2px solid rgba(0,0,0,0.18);
+}
+
+/* Divider (typographic rule) */
+.investors__divider{
+  margin: 14px 0 12px;
+  border-top: 1px solid rgba(0,0,0,0.12);
+}
+
+/* ---------- Form ---------- */
+.investors__form{
+  margin-top: 0.95rem;
+  display: grid;
+  gap: 12px;
+  max-width: 62ch;
+}
+
+.investors__field{
+  margin: 0;
+}
+
+/* labels as editorial kickers */
+.investors__label{
+  display: block;
+  margin: 0 0 6px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+/* inputs: calm, readable */
+.investors__input,
+.investors__textarea{
+  width: 100%;
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.18);
+  background: transparent;
+  color: inherit;
+}
+
+.investors__textarea::placeholder{
+  opacity: 0.55;
+}
+
+/* focus ring consistent with your system */
+.investors__input:focus-visible,
+.investors__textarea:focus-visible,
+.investors__checkbox:focus-visible{
+  outline: 2px solid rgba(0,0,0,0.55);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ---------- Fieldset / checks ---------- */
+.investors__fieldset{
+  margin: 6px 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.investors__legend{
+  margin: 0 0 6px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.investors__checks{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+}
+
+/* checkbox labels as type “chips” (no background needed) */
+.investors__check{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  opacity: 0.86;
+}
+
+/* keep native checkbox but make it visually tidy */
+.investors__checkbox{
+  width: 16px;
+  height: 16px;
+}
+
+/* ---------- Actions ---------- */
+.investors__actions{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+/* typography hierarchy consistent with other pages */
+.investors__actions .button--primary{
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.investors__actions .button--secondary{
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.92em;
+}
+
+/* Fineprint as a clause */
+.investors__fineprint{
+  margin: 0.15rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  opacity: 0.7;
+  padding-left: 12px;
+  border-left: 2px solid rgba(0,0,0,0.18);
+  max-width: 62ch;
+}
+
+/* ---------- Desktop tweaks ---------- */
+@media (min-width: 900px){
+  .investors__inner{
+    max-width: 96ch;
+  }
+
+  .investors__actions{
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}

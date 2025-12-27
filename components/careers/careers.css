@@ -1,0 +1,178 @@
+/* ==========================================================================
+   Careers page — typography-forward styles (compatible with your system)
+   Assumes .button, .button--primary, .button--secondary exist.
+   ========================================================================== */
+
+.careers{
+  padding: 26px 0 34px;
+}
+
+.careers__inner{
+  max-width: 96ch;
+}
+
+/* ---------- Header ---------- */
+.careers__header{
+  border-top: 1px solid rgba(0,0,0,0.12);
+  padding-top: 16px;
+}
+
+.careers__title{
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+  font-size: clamp(2.2rem, 4.2vw, 3.2rem);
+}
+
+.careers__subhead{
+  margin: 0.85rem 0 0;
+  max-width: 78ch;
+  font-size: 1.06rem;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+  opacity: 0.86;
+}
+
+/* ---------- Families list ---------- */
+.careers__families{
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(0,0,0,0.12);
+}
+
+/* outer list (remove default bullets) */
+.careers__family-list{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 16px;
+}
+
+/* Each family reads like an editorial block using only rules */
+.careers__family{
+  padding-left: 12px;
+  border-left: 2px solid rgba(0,0,0,0.18);
+}
+
+/* Family titles as kickers/headlines hybrid */
+.careers__family-title{
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 850;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+/* Role list: typographic bullets */
+.careers__role-list{
+  margin: 0.85rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  max-width: 92ch;
+}
+
+.careers__role{
+  margin: 0;
+  padding-left: 1.2em;
+  position: relative;
+  opacity: 0.9;
+}
+
+/* em dash bullet (typography only) */
+.careers__role::before{
+  content: "—";
+  position: absolute;
+  left: 0;
+  opacity: 0.55;
+}
+
+/* Link styling: calm, scannable, consistent */
+.careers__link{
+  text-decoration: none;
+  color: inherit;
+  font-size: 1.02rem;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+  font-weight: 650;
+  opacity: 0.86;
+}
+
+.careers__link:hover{
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  opacity: 1;
+}
+
+.careers__link:focus-visible{
+  outline: 2px solid rgba(0,0,0,0.55);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ---------- CTA section ---------- */
+.careers__cta{
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(0,0,0,0.12);
+}
+
+/* CTA heading as a slightly larger “question” */
+.careers__heading{
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+}
+
+.careers__text{
+  margin: 0.7rem 0 0;
+  max-width: 74ch;
+  font-size: 1.04rem;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  opacity: 0.86;
+  padding-left: 12px;
+  border-left: 2px solid rgba(0,0,0,0.18); /* clause feel */
+}
+
+/* Actions */
+.careers__actions{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 0.95rem;
+}
+
+/* typography hierarchy consistent with other pages */
+.careers__actions .button--primary{
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.careers__actions .button--secondary{
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.92em;
+}
+
+/* ---------- Desktop tweaks ---------- */
+@media (min-width: 900px){
+  .careers__family-list{
+    gap: 18px;
+  }
+
+  .careers__actions{
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}

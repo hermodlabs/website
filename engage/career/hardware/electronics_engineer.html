@@ -1,0 +1,222 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Home Page</title>
+    <meta
+      name="description"
+      content="HermodLabs builds a co-timing engine that proves streams are on the same clock before you subtract, compare, threshold, or interpret. Portable cancellation + diagnostics + proof-shaped certificates."
+    />
+
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+
+<body>
+<site-page>
+  <section class="job" aria-labelledby="job-title">
+    <div class="job__inner">
+      <header class="job__header">
+        <p class="job__eyebrow">Careers</p>
+        <h1 class="job__title" id="job-title">Electronics Engineer (Mixed Signal)</h1>
+        <p class="job__subhead">
+          Focus: ADC front-end, clocking/jitter budgets, EMC/grounding realities, and measurement integrity.
+        </p>
+      </header>
+
+      <section class="job__section" aria-labelledby="about-role-title">
+        <h2 class="job__heading" id="about-role-title">About the Role</h2>
+        <p class="job__text">
+          Our product lives or dies on measurement integrity. The algorithms can only be as honest as the analog front-end,
+          the clocking chain, and the EMI/grounding reality of the bench or deployment.
+        </p>
+        <p class="job__text">
+          The Mixed-Signal Electronics Engineer owns the physical layer that makes “deterministic sampling” and
+          “trustworthy spectra” possible: front-end design, ADC interfacing, clock distribution/discipline, and hardening
+          against the real world (EMC, ground loops, switching noise, cable nonsense).
+        </p>
+        <p class="job__text">
+          This role is for someone who has shipped mixed-signal systems and knows the difference between “the schematic is
+          correct” and “the measurement holds up in the field.”
+        </p>
+      </section>
+
+      <section class="job__section" aria-labelledby="do-title">
+        <h2 class="job__heading" id="do-title">What You’ll Do</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            <strong>ADC front-end design:</strong> anti-alias filtering, input protection, impedance matching, gain staging,
+            biasing, dynamic range planning; ensure linearity/low distortion across conditions.
+          </li>
+          <li class="job__list-item">
+            <strong>Clocking architecture:</strong> select oscillators and clock trees; manage jitter budgets; design clock
+            distribution/isolation to prevent clock contamination from digital noise.
+          </li>
+          <li class="job__list-item">
+            <strong>Discipline/synchronization (as needed):</strong> integrate word-clock, PPS, or PTP/IEEE-1588 strategies;
+            define holdover behavior and monitoring.
+          </li>
+          <li class="job__list-item">
+            <strong>Mixed-signal layout &amp; grounding:</strong> own partitioning, return paths, shielding/guarding strategy;
+            design to survive real cable/earth-ground environments.
+          </li>
+          <li class="job__list-item">
+            <strong>EMC/EMI resilience:</strong> identify coupling paths (radiated/conducted); apply filtering, chokes, shielding,
+            enclosure strategy; pre-compliance mindset.
+          </li>
+          <li class="job__list-item">
+            <strong>Noise + interference debugging:</strong> find sources of hum/spurs/elevated noise floors and propose design changes
+            that solve root causes.
+          </li>
+          <li class="job__list-item">
+            <strong>Hardware validation &amp; acceptance tests:</strong> define pass/fail procedures: SNR/THD+N, ENOB, jitter indicators,
+            crosstalk, channel skew, susceptibility testing.
+          </li>
+          <li class="job__list-item">
+            <strong>Collaborate with firmware/systems:</strong> ensure timing, buffering, and metadata expose the truth telemetry needed downstream.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="deliverables-title">
+        <h2 class="job__heading" id="deliverables-title">Concrete Deliverables</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            A front-end + ADC reference design with documented dynamic range, noise budget, anti-alias behavior, and expected spurious profile.
+          </li>
+          <li class="job__list-item">
+            A clocking/jitter budget with measured validation on prototypes (not just spreadsheet faith).
+          </li>
+          <li class="job__list-item">
+            A grounding/EMC playbook for bench and field setups (cables, power supplies, enclosures, “do not do this” rules).
+          </li>
+          <li class="job__list-item">
+            A hardware acceptance test suite (procedures + fixtures if needed) that turns “looks clean” into quantified pass/fail results.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="req-title">
+        <h2 class="job__heading" id="req-title">Required Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Proven mixed-signal design experience: analog front ends + ADC interfacing + clocking.
+          </li>
+          <li class="job__list-item">
+            Strong grasp of practical measurement issues: noise sources, distortion mechanisms, impedance/termination, aliasing, sampling realities.
+          </li>
+          <li class="job__list-item">
+            Experience with PCB layout for mixed-signal systems (or tight collaboration with layout engineers) and an eye for grounding/return paths.
+          </li>
+          <li class="job__list-item">
+            Ability to debug in the lab using real instruments (scope, spectrum analyzer, signal generator, LA).
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="pref-title">
+        <h2 class="job__heading" id="pref-title">Preferred Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">Experience with precision timing systems: low-jitter clock distribution, word clock, PLL/DPLL discipline, PTP hardware timestamping.</li>
+          <li class="job__list-item">Familiarity with audio/RF-grade metrics: THD+N, SFDR, IMD, phase noise, Allan deviation (as relevant).</li>
+          <li class="job__list-item">Experience taking products through EMC pre-compliance and resolving failures without heroic hacks.</li>
+          <li class="job__list-item">Comfort with environmental constraints (temperature drift, vibration, power quality) and designing monitoring/telemetry to detect them.</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="success-title">
+        <h2 class="job__heading" id="success-title">How You’ll Be Measured (First 60–90 Days)</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            You produce a clear front-end + clocking architecture with quantified budgets and realistic tradeoffs.
+          </li>
+          <li class="job__list-item">
+            Prototype measurements match expectations: noise floor, spurs, distortion, channel alignment, jitter indicators are within targets.
+          </li>
+          <li class="job__list-item">
+            You identify and eliminate at least one major real-world failure mode (ground loop hum, switching spur, crosstalk, clock contamination).
+          </li>
+          <li class="job__list-item">
+            You deliver acceptance tests that prevent regressions and make bench setups reproducible.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="style-title">
+        <h2 class="job__heading" id="style-title">Working Style</h2>
+        <ul class="job__list">
+          <li class="job__list-item">You assume the enclosure and cables are part of the circuit.</li>
+          <li class="job__list-item">You treat “that spur is fine” as debt, not a shrug.</li>
+          <li class="job__list-item">You like designs that are robust, measurable, and diagnosable—not fragile lab-only demos.</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="level-title">
+        <h2 class="job__heading" id="level-title">Title &amp; Level</h2>
+        <p class="job__text">
+          Electronics Engineer (Mixed Signal) (mid-to-senior; can scale to Staff), partnering closely with embedded, systems, and DSP teams.
+        </p>
+      </section>
+
+      <section class="job__section job__section--apply" aria-labelledby="apply-title">
+        <h2 class="job__heading" id="apply-title">Apply</h2>
+        <p class="job__text">Send a short note and your resume.</p>
+
+        <form
+          class="job__form"
+          action="/careers/apply/electronics-engineer-mixed-signal"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div class="job__field">
+            <label class="job__label" for="app-name">Name</label>
+            <input class="job__input" id="app-name" name="name" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-email">Email</label>
+            <input class="job__input" id="app-email" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-message">Message</label>
+            <textarea
+              class="job__textarea"
+              id="app-message"
+              name="message"
+              rows="7"
+              placeholder="A few sentences about your background and why this role fits."
+              required
+            ></textarea>
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-resume">Resume</label>
+            <input class="job__input" id="app-resume" name="resume" type="file" accept=".pdf,.doc,.docx" required />
+          </div>
+
+          <div class="job__actions">
+            <button class="button button--primary" type="submit">Submit</button>
+            <a class="button button--secondary" href="/careers">Back to roles</a>
+          </div>
+
+          <p class="job__fineprint">We only use this to respond to your application. No spam.</p>
+        </form>
+      </section>
+    </div>
+  </section>
+</site-page>
+
+
+  <script type="module" src="/components/site_page/site_page.js"></script>
+  <script type="module" src="/components/site_header/site_header.js"></script>
+  <script type="module" src="/components/site_footer/site_footer.js"></script>
+
+  <script type="module" src="/components/site_hero/site_hero.js"></script>
+  <script type="module" src="/components/social_proof/social_proof.js"></script>
+  <script type="module" src="/components/site_about/site_about.js"></script>
+  <script type="module" src="/components/event_invite/event_invite.js"></script>
+</body>
+</html>

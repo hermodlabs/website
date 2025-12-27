@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Home Page</title>
+    <meta
+      name="description"
+      content="HermodLabs builds a co-timing engine that proves streams are on the same clock before you subtract, compare, threshold, or interpret. Portable cancellation + diagnostics + proof-shaped certificates."
+    />
+
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+
+<body>
+<site-page>
+  <section class="pilots" aria-labelledby="pilots-title">
+    <div class="pilots__inner">
+      <header class="pilots__header">
+        <h1 class="pilots__title" id="pilots-title">Pilots</h1>
+        <p class="pilots__lede">Real sites. Real signals. Clear acceptance tests.</p>
+        <p class="pilots__subhead">
+          Each pilot is designed to answer one question: can we turn a drifting environment into a measurable field with
+          receipts—not just nice plots.
+        </p>
+      </header>
+
+      <section class="pilots__section" aria-labelledby="overview-title">
+        <h2 class="pilots__heading" id="overview-title">What a Pilot Includes</h2>
+        <ul class="pilots__list">
+          <li class="pilots__list-item">Commissioning &amp; acceptance tests (so results aren’t vibes)</li>
+          <li class="pilots__list-item">Validity / trust layer shown in the portal (when we believe the measurement, and why)</li>
+          <li class="pilots__list-item">Run receipts: device IDs, firmware/software versions, calibration state, configs</li>
+          <li class="pilots__list-item">A pilot readout: findings, failure modes, and recommended next steps</li>
+        </ul>
+      </section>
+
+      <section class="pilots__section" aria-labelledby="types-title">
+        <h2 class="pilots__heading" id="types-title">Pilot Types</h2>
+
+        <!-- Pilot 1 -->
+        <article class="pilot-card" aria-labelledby="pilot-1-title">
+          <header class="pilot-card__header">
+            <h3 class="pilot-card__title" id="pilot-1-title">Pilot 1 — Cigar Lounge: 3D Temperature + Humidity Modeler</h3>
+            <p class="pilot-card__summary">
+              A short deployment that maps 3D humidity + temperature gradients across a cigar lounge (or humidor room) and
+              turns them into a living model: where the room drifts, where pockets form, and what changes when doors open,
+              HVAC cycles, or humidifiers kick.
+            </p>
+          </header>
+
+          <div class="pilot-card__grid">
+            <div class="pilot-card__block">
+              <h4 class="pilot-card__heading">What you get</h4>
+              <ul class="pilot-card__list">
+                <li class="pilot-card__item">3D gradient map (zones + surfaces + “hot spots / dry spots”)</li>
+                <li class="pilot-card__item">Dew point risk view (where/when condensation risk increases)</li>
+                <li class="pilot-card__item">Timeline + event correlation (door opens, occupancy, humidifier cycles)</li>
+                <li class="pilot-card__item">Trust indicators per time window (confident vs abstains)</li>
+              </ul>
+            </div>
+
+            <div class="pilot-card__block">
+              <h4 class="pilot-card__heading">Typical questions</h4>
+              <ul class="pilot-card__list">
+                <li class="pilot-card__item">Is the lounge actually stable, or just “fine near the thermostat”?</li>
+                <li class="pilot-card__item">Do humidifiers overshoot locally and under-serve elsewhere?</li>
+                <li class="pilot-card__item">Are we drifting at night / during HVAC cycles?</li>
+                <li class="pilot-card__item">Where should sensors be placed so they reflect the true room?</li>
+              </ul>
+            </div>
+
+            <div class="pilot-card__block">
+              <h4 class="pilot-card__heading">Success criteria (examples)</h4>
+              <ul class="pilot-card__list">
+                <li class="pilot-card__item">Gradient model is stable and repeatable across comparable days</li>
+                <li class="pilot-card__item">System flags when sensors are biased by placement (vents, dead zones)</li>
+                <li class="pilot-card__item">Actionable recommendations: placement, humidifier tuning, airflow improvements</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Pilot 2 -->
+        <article class="pilot-card" aria-labelledby="pilot-2-title">
+          <header class="pilot-card__header">
+            <h3 class="pilot-card__title" id="pilot-2-title">Pilot 2 — Data Center: 3D Temperature + Humidity Modeler</h3>
+            <p class="pilot-card__summary">
+              A deployment that builds a spatiotemporal model of temperature and humidity across aisles/zones (and where
+              possible, rack-adjacent regions), emphasizing operational value: early warnings, commissioning validation,
+              and evidence you can bring to stakeholders.
+            </p>
+            <p class="pilot-card__summary">
+              This is not “more sensors.” It’s better interpretation: alignment, validity checks, and receipts that explain
+              why the model is trustworthy.
+            </p>
+          </header>
+
+          <div class="pilot-card__grid">
+            <div class="pilot-card__block">
+              <h4 class="pilot-card__heading">What you get</h4>
+              <ul class="pilot-card__list">
+                <li class="pilot-card__item">Zone-level gradient views (hot aisle/cold aisle behavior, return air patterns)</li>
+                <li class="pilot-card__item">Humidity drift tracking (slow trends + sudden events)</li>
+                <li class="pilot-card__item">Alarms with context (not just thresholds—why now, where, what changed)</li>
+                <li class="pilot-card__item">Commissioning workflow: install → validate → baseline → go-live gate</li>
+                <li class="pilot-card__item">Audit-ready receipts: versions, calibration state, validity uptime, change history</li>
+              </ul>
+            </div>
+
+            <div class="pilot-card__block">
+              <h4 class="pilot-card__heading">Typical questions</h4>
+              <ul class="pilot-card__list">
+                <li class="pilot-card__item">Are we seeing real environmental instability or sensor disagreement?</li>
+                <li class="pilot-card__item">Which zones drift first when load shifts or containment leaks?</li>
+                <li class="pilot-card__item">Can we detect risk earlier than existing BMS points?</li>
+                <li class="pilot-card__item">What’s our “valid measurement uptime”—and what breaks it?</li>
+              </ul>
+            </div>
+
+            <div class="pilot-card__block">
+              <h4 class="pilot-card__heading">Success criteria (examples)</h4>
+              <ul class="pilot-card__list">
+                <li class="pilot-card__item">Reduced false alarms via validity gating and context</li>
+                <li class="pilot-card__item">Faster root cause through timeline + spatial correlation</li>
+                <li class="pilot-card__item">Clear commissioning “sign-off” that the measurement is trustworthy</li>
+                <li class="pilot-card__item">Identified remediation targets (airflow tuning, placement fixes, containment issues)</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Pilot 3 -->
+        <article class="pilot-card" aria-labelledby="pilot-3-title">
+          <header class="pilot-card__header">
+            <h3 class="pilot-card__title" id="pilot-3-title">Pilot 3 — Noise-Canceling “Air Bubble”</h3>
+            <p class="pilot-card__summary">
+              A pilot that demonstrates localized cancellation of a persistent nuisance (typically tonal or narrowband) by
+              treating the environment as a timing problem: multiple pickups measure the nuisance, the system aligns them
+              (co-timing), then cancels what’s truly shared—creating a practical “quiet bubble” region.
+            </p>
+            <p class="pilot-card__summary">
+              Think of it as a real-world validation of the core engine: align → verify validity → cancel → report what remains.
+            </p>
+          </header>
+
+          <div class="pilot-card__grid">
+            <div class="pilot-card__block">
+              <h4 class="pilot-card__heading">What you get</h4>
+              <ul class="pilot-card__list">
+                <li class="pilot-card__item">A demonstrated notch / reduction at target frequency bands in a defined area</li>
+                <li class="pilot-card__item">Live diagnostics: coherence, drift, window validity (“safe to cancel” vs “do not trust”)</li>
+                <li class="pilot-card__item">A failure-mode story: what breaks cancellation and how we detect it</li>
+                <li class="pilot-card__item">A short engineering report: achieved reduction, stability over time, conditions required</li>
+              </ul>
+            </div>
+
+            <div class="pilot-card__block">
+              <h4 class="pilot-card__heading">Typical questions</h4>
+              <ul class="pilot-card__list">
+                <li class="pilot-card__item">Can you cancel this real nuisance, here, under real conditions?</li>
+                <li class="pilot-card__item">How stable is cancellation when people move / doors open?</li>
+                <li class="pilot-card__item">What sensor geometry and actuation placement is required?</li>
+                <li class="pilot-card__item">What are the hard limits (multi-path, multiple sources, low coherence)?</li>
+              </ul>
+            </div>
+
+            <div class="pilot-card__block">
+              <h4 class="pilot-card__heading">Success criteria (examples)</h4>
+              <ul class="pilot-card__list">
+                <li class="pilot-card__item">Measurable reduction at target bands within the defined zone</li>
+                <li class="pilot-card__item">System abstains (with reasons) when cancellation is unsafe/invalid</li>
+                <li class="pilot-card__item">Clear recipe for scaling (or a clear “no-go” boundary)</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- FORM -->
+      <section class="pilots__section pilots__section--apply" aria-labelledby="apply-title">
+        <h2 class="pilots__heading" id="apply-title">Apply for a Pilot</h2>
+        <p class="pilots__text">
+          Tell us which pilot you’re considering and what’s drifting. We’ll reply with next steps and a proposed
+          commissioning plan.
+        </p>
+
+        <form class="pilots__form" action="/pilots/apply" method="post">
+          <div class="pilots__field">
+            <label class="pilots__label" for="pilot-name">Name</label>
+            <input class="pilots__input" id="pilot-name" name="name" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="pilots__field">
+            <label class="pilots__label" for="pilot-company">Company (optional)</label>
+            <input class="pilots__input" id="pilot-company" name="company" type="text" autocomplete="organization" />
+          </div>
+
+          <div class="pilots__field">
+            <label class="pilots__label" for="pilot-email">Email</label>
+            <input class="pilots__input" id="pilot-email" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="pilots__field">
+            <label class="pilots__label" for="pilot-type">Pilot type</label>
+            <select class="pilots__select" id="pilot-type" name="pilot_type" required>
+              <option value="" selected disabled>Select one</option>
+              <option value="cigar-lounge">Cigar Lounge: 3D Temperature + Humidity Modeler</option>
+              <option value="data-center">Data Center: 3D Temperature + Humidity Modeler</option>
+              <option value="air-bubble">Noise-Canceling “Air Bubble”</option>
+            </select>
+          </div>
+
+          <div class="pilots__field">
+            <label class="pilots__label" for="pilot-site">Site / location (optional)</label>
+            <input class="pilots__input" id="pilot-site" name="site" type="text" placeholder="City, facility name, room, etc." />
+          </div>
+
+          <div class="pilots__field">
+            <label class="pilots__label" for="pilot-message">What should match, but doesn’t?</label>
+            <textarea
+              class="pilots__textarea"
+              id="pilot-message"
+              name="message"
+              rows="6"
+              placeholder="What are you measuring? What drifts? What decisions are hard today because you don’t trust the measurement?"
+              required
+            ></textarea>
+          </div>
+
+          <fieldset class="pilots__fieldset">
+            <legend class="pilots__legend">Primary interest (optional)</legend>
+            <div class="pilots__checks">
+              <label class="pilots__check">
+                <input class="pilots__checkbox" type="checkbox" name="interest" value="early-warning" />
+                Early warning
+              </label>
+              <label class="pilots__check">
+                <input class="pilots__checkbox" type="checkbox" name="interest" value="commissioning" />
+                Commissioning / sign-off
+              </label>
+              <label class="pilots__check">
+                <input class="pilots__checkbox" type="checkbox" name="interest" value="diagnostics" />
+                Diagnostics (why sensors disagree)
+              </label>
+              <label class="pilots__check">
+                <input class="pilots__checkbox" type="checkbox" name="interest" value="cancellation" />
+                Cancellation / reduction
+              </label>
+              <label class="pilots__check">
+                <input class="pilots__checkbox" type="checkbox" name="interest" value="mapping" />
+                Mapping / field model
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="pilots__actions">
+            <button class="button button--primary" type="submit">Request a Pilot</button>
+            <a class="button button--secondary" href="/contact">Contact</a>
+          </div>
+
+          <p class="pilots__fineprint">
+            We only use this to respond to your request. No spam.
+          </p>
+        </form>
+      </section>
+
+      <section class="pilots__section" aria-labelledby="start-title">
+        <h2 class="pilots__heading" id="start-title">How to Start</h2>
+        <ol class="pilots__steps">
+          <li class="pilots__step"><strong>Site call (30–45 min):</strong> goals, constraints, and where you want decisions to be easier.</li>
+          <li class="pilots__step"><strong>Pilot proposal:</strong> success criteria, deliverables, and acceptance tests.</li>
+          <li class="pilots__step"><strong>Install + commissioning:</strong> go-live only after acceptance tests pass.</li>
+        </ol>
+
+        <div class="pilots__actions">
+          <a class="button button--secondary" href="/events#rsvp">Prefer a walkthrough?</a>
+        </div>
+      </section>
+    </div>
+  </section>
+</site-page>
+
+
+
+  <script type="module" src="/components/site_page/site_page.js"></script>
+  <script type="module" src="/components/site_header/site_header.js"></script>
+  <script type="module" src="/components/site_footer/site_footer.js"></script>
+
+  <script type="module" src="/components/site_hero/site_hero.js"></script>
+  <script type="module" src="/components/social_proof/social_proof.js"></script>
+  <script type="module" src="/components/site_about/site_about.js"></script>
+  <script type="module" src="/components/event_invite/event_invite.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+/* =========================
+   ELEMENTS (unstyled tags)
+   Keep body canonical ONCE.
+   ========================= */
+@layer elements {
+  body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family: var(--font-sans);
+    color: var(--text);
+    background: var(--bg);
+
+    /* canonical page behavior for the full site */
+    display: block;
+    padding: 3rem 1.5rem 4rem;
+  }
+}

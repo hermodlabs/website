@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Home Page</title>
+    <meta
+      name="description"
+      content="HermodLabs builds a co-timing engine that proves streams are on the same clock before you subtract, compare, threshold, or interpret. Portable cancellation + diagnostics + proof-shaped certificates."
+    />
+
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+
+<body>
+<site-page>
+  <section class="job" aria-labelledby="job-title">
+    <div class="job__inner">
+      <header class="job__header">
+        <p class="job__eyebrow">Careers</p>
+        <h1 class="job__title" id="job-title">Algorithm Engineer (DSP / Estimation)</h1>
+        <p class="job__subhead">
+          Focus: phase-slope delay estimation, coherence, drift tracking, calibration, QA datasets.
+        </p>
+      </header>
+
+      <section class="job__section" aria-labelledby="about-role-title">
+        <h2 class="job__heading" id="about-role-title">About the Role</h2>
+        <p class="job__text">
+          We’re building a co-timing engine that aligns multiple measurement streams onto a common clock, cancels what is
+          truly shared, and exposes what remains as a measurable signal tied to geometry and medium effects.
+        </p>
+        <p class="job__text">
+          This role is for an algorithm engineer who can turn solid DSP/estimation ideas into reliable, testable code—
+          especially around delay estimation, coherence diagnostics, and drift tracking.
+        </p>
+      </section>
+
+      <section class="job__section" aria-labelledby="do-title">
+        <h2 class="job__heading" id="do-title">What You’ll Do</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            <strong>Phase-slope delay estimation:</strong> implement and harden delay estimators based on cross-spectrum
+            phase (unwrap, robust slope fits, outlier handling, confidence measures).
+          </li>
+          <li class="job__list-item">
+            <strong>Coherence + “window validity” checks:</strong> compute magnitude-squared coherence and related
+            metrics; detect when assumptions break (low coherence, nonstationarity, multi-path, band-limited ambiguity).
+          </li>
+          <li class="job__list-item">
+            <strong>Drift tracking over time:</strong> build delay-over-time models (piecewise linear, Kalman-style
+            trackers, smoothing) and decide when to re-estimate vs propagate.
+          </li>
+          <li class="job__list-item">
+            <strong>Calibration pipelines:</strong> design routines for gain/phase offsets, channel delays, sample-rate
+            mismatch, and sensor idiosyncrasies; produce calibration artifacts that are inspectable and reproducible.
+          </li>
+          <li class="job__list-item">
+            <strong>QA datasets + evaluation harness:</strong> create synthetic and bench-derived datasets with ground
+            truth (known delays/drifts), adversarial cases, and regression tests; maintain metrics dashboards (error
+            distributions, failure rates, confidence calibration).
+          </li>
+          <li class="job__list-item">
+            <strong>Algorithm-to-product integration:</strong> package estimators as clean modules with stable I/O
+            contracts, clear failure signals, and runtime diagnostics suitable for production.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="build-title">
+        <h2 class="job__heading" id="build-title">Concrete Deliverables</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            A phase-slope delay module with: phase unwrapping strategy, robust regression, confidence scoring, and clear
+            “refuse to estimate” criteria.
+          </li>
+          <li class="job__list-item">
+            A coherence-driven gate that labels windows as usable / borderline / invalid and explains why.
+          </li>
+          <li class="job__list-item">
+            A drift tracker that outputs delay(t) with uncertainty and handles dropouts gracefully.
+          </li>
+          <li class="job__list-item">
+            A QA suite: curated test corpus + synthetic generator + regression harness that prevents “it worked yesterday”
+            regressions.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="req-title">
+        <h2 class="job__heading" id="req-title">Required Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Strong foundation in DSP / statistical estimation: FFT/STFT/Welch, cross-spectrum, coherence,
+            windowing/leakage, noise sensitivity, bias/variance.
+          </li>
+          <li class="job__list-item">
+            Experience implementing estimators in Python (NumPy/SciPy) and/or C++/Rust with attention to numerical
+            stability and testability.
+          </li>
+          <li class="job__list-item">
+            Comfort with messy real-world signals: clipping, dropouts, nonstationarity, interference, clock mismatch.
+          </li>
+          <li class="job__list-item">
+            Ability to write tight, measurable specs: what success means, when to abstain, and how to know it’s broken.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="pref-title">
+        <h2 class="job__heading" id="pref-title">Preferred Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Prior work on time synchronization, sample-rate offset estimation, PLL concepts, sensor fusion, RF/audio
+            timing, or inertial systems.
+          </li>
+          <li class="job__list-item">
+            Familiarity with robust statistics (Huber/RANSAC/quantile methods), filtering/smoothing (Kalman, RTS), or
+            uncertainty quantification.
+          </li>
+          <li class="job__list-item">
+            Experience building data-centric QA pipelines: dataset versioning, metric tracking, automated regression triage.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="success-title">
+        <h2 class="job__heading" id="success-title">How You’ll Be Measured (First 60–90 Days)</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Delay estimation accuracy improves on benchmark datasets (lower MAE, fewer catastrophic outliers).
+          </li>
+          <li class="job__list-item">
+            Coherence/validity gating reduces false “good” windows and provides actionable failure labels.
+          </li>
+          <li class="job__list-item">
+            Drift tracking remains stable across long runs and degraded conditions (dropouts, SNR swings).
+          </li>
+          <li class="job__list-item">
+            QA dataset + harness becomes a dependable regression shield for the team.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="style-title">
+        <h2 class="job__heading" id="style-title">Working Style</h2>
+        <ul class="job__list">
+          <li class="job__list-item">You build estimators that come with a confidence score and a failure mode, not just a number.</li>
+          <li class="job__list-item">You like instrumented algorithms: plots, logs, and metrics that explain behavior under stress.</li>
+          <li class="job__list-item">You’re collaborative—able to translate between math, code, and product needs.</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="level-title">
+        <h2 class="job__heading" id="level-title">Title &amp; Level</h2>
+        <p class="job__text">
+          Algorithm Engineer (DSP / Estimation) (mid-to-senior, depending on experience), reporting into the signal
+          processing / applied math lead.
+        </p>
+      </section>
+
+      <section class="job__section job__section--apply" aria-labelledby="apply-title">
+        <h2 class="job__heading" id="apply-title">Apply</h2>
+        <p class="job__text">
+          Send a short note and your resume.
+        </p>
+
+        <form
+          class="job__form"
+          action="/careers/apply/algorithm-engineer-dsp-estimation"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div class="job__field">
+            <label class="job__label" for="app-name">Name</label>
+            <input class="job__input" id="app-name" name="name" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-email">Email</label>
+            <input class="job__input" id="app-email" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-message">Message</label>
+            <textarea
+              class="job__textarea"
+              id="app-message"
+              name="message"
+              rows="7"
+              placeholder="A few sentences about your background and why this role fits."
+              required
+            ></textarea>
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-resume">Resume</label>
+            <input class="job__input" id="app-resume" name="resume" type="file" accept=".pdf,.doc,.docx" required />
+          </div>
+
+          <div class="job__actions">
+            <button class="button button--primary" type="submit">Submit</button>
+            <a class="button button--secondary" href="/careers">Back to roles</a>
+          </div>
+
+          <p class="job__fineprint">
+            We only use this to respond to your application. No spam.
+          </p>
+        </form>
+      </section>
+    </div>
+  </section>
+</site-page>
+
+
+  <script type="module" src="/components/site_page/site_page.js"></script>
+  <script type="module" src="/components/site_header/site_header.js"></script>
+  <script type="module" src="/components/site_footer/site_footer.js"></script>
+
+  <script type="module" src="/components/site_hero/site_hero.js"></script>
+  <script type="module" src="/components/social_proof/social_proof.js"></script>
+  <script type="module" src="/components/site_about/site_about.js"></script>
+  <script type="module" src="/components/event_invite/event_invite.js"></script>
+</body>
+</html>

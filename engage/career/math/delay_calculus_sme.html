@@ -1,0 +1,242 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Home Page</title>
+    <meta
+      name="description"
+      content="HermodLabs builds a co-timing engine that proves streams are on the same clock before you subtract, compare, threshold, or interpret. Portable cancellation + diagnostics + proof-shaped certificates."
+    />
+
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+
+<body>
+<site-page>
+  <section class="job" aria-labelledby="job-title">
+    <div class="job__inner">
+      <header class="job__header">
+        <p class="job__eyebrow">Careers</p>
+        <h1 class="job__title" id="job-title">Mathematician / Theoretical Physicist (SME — Delay Calculus)</h1>
+        <p class="job__subhead">
+          Focus: time-delay algebra, window validity conditions, stability/identifiability boundaries, and turning theory into enforceable contracts.
+        </p>
+      </header>
+
+      <section class="job__section" aria-labelledby="about-role-title">
+        <h2 class="job__heading" id="about-role-title">About the Role</h2>
+        <p class="job__text">
+          We’re building a co-timing engine: a platform that treats multiple measurement paths as “the same process up to
+          delay (and sometimes gain),” aligns them onto a shared timebase, cancels what is truly shared, and turns what
+          survives into an observable tied to geometry and medium.
+        </p>
+        <p class="job__text">
+          At the heart of this is a custom delay calculus: an operator algebra over time delays (delay bricks, delay
+          polynomials, composition rules, window validity conditions, commutation failures, stability guarantees). We need
+          a domain expert who can own the mathematical core—keep it honest, extend it, and translate it into rigorous,
+          testable contracts engineering can implement.
+        </p>
+        <p class="job__text">
+          This is not a “write papers only” role. You are the SME who makes the math shippable.
+        </p>
+      </section>
+
+      <section class="job__section" aria-labelledby="own-title">
+        <h2 class="job__heading" id="own-title">What You’ll Own</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            <strong>The delay calculus core:</strong> formalize and extend the operator algebra (operators, compositions, equivalence, invariants).
+          </li>
+          <li class="job__list-item">
+            <strong>Conditions of validity (“when the math applies”):</strong> define window-based assumptions (slow drift, commutation bounds, stationarity/coherence)
+            and how violations should surface.
+          </li>
+          <li class="job__list-item">
+            <strong>Stability &amp; identifiability guarantees:</strong> characterize when estimation/cancellation is well-posed; define stability criteria and no-go boundaries.
+          </li>
+          <li class="job__list-item">
+            <strong>Receipts &amp; contracts:</strong> turn theoretical statements into measurable conditions, acceptance tests, and refuse-to-claim criteria.
+          </li>
+          <li class="job__list-item">
+            <strong>Bridge to implementations:</strong> ensure the math maps cleanly to estimators, diagnostics, and APIs (time-domain and spectral-domain).
+          </li>
+          <li class="job__list-item">
+            <strong>Research roadmap:</strong> identify high-leverage gaps (noncommuting delays, time-varying composition, multipath ambiguity) and propose tractable solutions.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="do-title">
+        <h2 class="job__heading" id="do-title">What You’ll Do</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Derive and validate operator identities and composition rules for delay polynomials.
+          </li>
+          <li class="job__list-item">
+            Provide clean if/then structure: if these window promises hold, then these cancellations/estimators are valid; else expect these residual signatures.
+          </li>
+          <li class="job__list-item">
+            Develop proofs, proof sketches, and sanity checks that survive finite windows, discretization, and noise.
+          </li>
+          <li class="job__list-item">
+            Co-design diagnostics with the team: commutator residuals, stability covers, validity scores, failure-mode labels.
+          </li>
+          <li class="job__list-item">
+            Create reference constructions and counterexamples that become QA datasets and regression tests.
+          </li>
+          <li class="job__list-item">
+            Review algorithm designs for mathematical correctness and boundary-case behavior.
+          </li>
+          <li class="job__list-item">
+            Write internal notes and external-facing explanations (when appropriate) that translate deep math into operational language.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="deliverables-title">
+        <h2 class="job__heading" id="deliverables-title">Concrete Deliverables</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            A Delay Calculus Spec: definitions, operator rules, composition identities, and conventions (units, normalization, window semantics).
+          </li>
+          <li class="job__list-item">
+            A Validity &amp; Failure Taxonomy: assumptions → tests → expected signatures → mitigation.
+          </li>
+          <li class="job__list-item">
+            A theorem-to-test mapping: each key claim paired with measurable metrics and automated acceptance tests.
+          </li>
+          <li class="job__list-item">
+            Reference constructions: toy benches/synthetic datasets illustrating success and failure modes.
+          </li>
+          <li class="job__list-item">
+            A math review gate for changes to the core calculus (so foundations don’t drift into folklore).
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="req-title">
+        <h2 class="job__heading" id="req-title">Required Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Advanced training in mathematics, theoretical physics, or a closely related field (PhD preferred; equivalent depth acceptable).
+          </li>
+          <li class="job__list-item">
+            Strong command of linear systems, operator methods, Fourier/spectral reasoning, and rigorous reasoning under approximation.
+          </li>
+          <li class="job__list-item">
+            Comfort translating between symbolic reasoning and numerical reality: finite windows, noise, discretization, identifiability limits.
+          </li>
+          <li class="job__list-item">
+            Ability to communicate clearly with engineers: definitions, assumptions, invariants, and “what breaks” explanations.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="pref-title">
+        <h2 class="job__heading" id="pref-title">Preferred Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">Prior exposure to time-delay interferometry (TDI), delay operators, or related synchronization/cancellation frameworks.</li>
+          <li class="job__list-item">Background in estimation theory, inverse problems, or applied harmonic analysis.</li>
+          <li class="job__list-item">Experience collaborating with software teams (writing specs, defining tests, reviewing implementations).</li>
+          <li class="job__list-item">Familiarity with proof-adjacent workflows (not required, but a plus).</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="success-title">
+        <h2 class="job__heading" id="success-title">How You’ll Be Measured (First 60–90 Days)</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            You can explain the delay calculus precisely and identify sharp assumptions and boundaries.
+          </li>
+          <li class="job__list-item">
+            You deliver at least one high-leverage contract (validity condition + diagnostic + acceptance test) that measurably reduces false confidence.
+          </li>
+          <li class="job__list-item">
+            You produce reference examples/counterexamples that become part of the QA suite.
+          </li>
+          <li class="job__list-item">
+            Engineering teams implement features faster because the math is explicit, stable, and testable.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="style-title">
+        <h2 class="job__heading" id="style-title">Working Style</h2>
+        <ul class="job__list">
+          <li class="job__list-item">You treat “it seems to work” as a hypothesis, not a conclusion.</li>
+          <li class="job__list-item">You like clean definitions and explicit assumptions, especially where systems can silently fail.</li>
+          <li class="job__list-item">You enjoy turning deep structure into practical guardrails: “valid” / “do not trust—here’s why.”</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="level-title">
+        <h2 class="job__heading" id="level-title">Title &amp; Level</h2>
+        <p class="job__text">
+          Mathematician / Theoretical Physicist (SME — Delay Calculus) (Senior/Principal-level technical authority),
+          partnering tightly with applied math/DSP, systems, and validation teams.
+        </p>
+      </section>
+
+      <section class="job__section job__section--apply" aria-labelledby="apply-title">
+        <h2 class="job__heading" id="apply-title">Apply</h2>
+        <p class="job__text">Send a short note and your resume.</p>
+
+        <form
+          class="job__form"
+          action="/careers/apply/mathematician-delay-calculus"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div class="job__field">
+            <label class="job__label" for="app-name">Name</label>
+            <input class="job__input" id="app-name" name="name" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-email">Email</label>
+            <input class="job__input" id="app-email" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-message">Message</label>
+            <textarea
+              class="job__textarea"
+              id="app-message"
+              name="message"
+              rows="7"
+              placeholder="A few sentences about your background and why this role fits."
+              required
+            ></textarea>
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-resume">Resume</label>
+            <input class="job__input" id="app-resume" name="resume" type="file" accept=".pdf,.doc,.docx" required />
+          </div>
+
+          <div class="job__actions">
+            <button class="button button--primary" type="submit">Submit</button>
+            <a class="button button--secondary" href="/careers">Back to roles</a>
+          </div>
+
+          <p class="job__fineprint">We only use this to respond to your application. No spam.</p>
+        </form>
+      </section>
+    </div>
+  </section>
+</site-page>
+
+
+  <script type="module" src="/components/site_page/site_page.js"></script>
+  <script type="module" src="/components/site_header/site_header.js"></script>
+  <script type="module" src="/components/site_footer/site_footer.js"></script>
+
+  <script type="module" src="/components/site_hero/site_hero.js"></script>
+  <script type="module" src="/components/social_proof/social_proof.js"></script>
+  <script type="module" src="/components/site_about/site_about.js"></script>
+  <script type="module" src="/components/event_invite/event_invite.js"></script>
+</body>
+</html>

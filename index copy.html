@@ -1,0 +1,223 @@
+<html>
+  <head>
+    <title>Hermod Labs: Home Page</title>
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/scratch.css" />
+  </head>
+
+  <body>
+    <div class="page">
+      <site-header></site-header>
+
+      <main>
+        <!-- Hero updated for cigar rooms + beta/WTP experiment -->
+        <section class="hero-section" id="overview">
+          <div class="hero-copy">
+            <p class="hero-copy__label">3D humidity gradient monitoring for cigar rooms</p>
+            <p class="hero-copy__title">See humidity drift paths before they ruin inventory.</p>
+            <p class="hero-copy__body">
+              Walk-in humidors are not uniform. Corners drift, shelves stratify, and door cycles
+              create local dry paths. HermodLabs models the <em>3D humidity field</em> so you can
+              spot problem zones early, track changes over time, and act before cigars dry out.
+            </p>
+          </div>
+
+          <div class="hero-video">
+            <div
+              class="hero-video__frame"
+              aria-label="HermodLabs demo video (placeholder)"
+            >
+              <button
+                class="hero-video__play"
+                type="button"
+                aria-label="Play demo video"
+              >
+                <span class="hero-video__play-icon"></span>
+              </button>
+              <div class="hero-video__meta">
+                <span class="hero-video__meta-title">Watch the 1:40 demo</span>
+                <span class="hero-video__meta-label">Video · Coming soon</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Why rooms drift (replaces data center risk patterns) -->
+        <section id="cigar-room-risk" aria-label="Why cigar rooms drift">
+          <div class="core-point">
+            <h2 class="core-point__action-title">
+              A single hygrometer can look “fine” while shelves drift out of spec.
+            </h2>
+
+            <div class="supporting-detail">
+              <h3 class="supporting-detail__title">
+                <a class="article-link" href="article/hidden_micro_zones/index.html">Hidden micro-zones</a>
+              </h3>
+              <div class="supporting-detail__author">Field pattern (common)</div>
+              <div class="supporting-detail__desc">
+                <p class="supporting-detail_desc--paragraph">
+                  Humidors develop local pockets: corners near doors, upper shelves,
+                  dead-air regions behind displays, and spots near vents or fans.
+                  The “average RH” can stay stable while those pockets drift.
+                </p>
+                <p class="supporting-detail_desc--paragraph">
+                  That’s how inventory gets quietly stressed: wrappers dry, burn changes,
+                  and you only notice after enough product has cycled through the bad zone.
+                </p>
+                <p class="supporting-detail_desc--paragraph">
+                  We model humidity as a <em>field</em>, not a single number — so you can see
+                  which zones are drifting, when they drift, and how fast.
+                </p>
+              </div>
+              <div class="supporting-detail__image">
+                <img height="300" width="400" src="img/01_humidty_blind_spot.png" />
+              </div>
+            </div>
+
+            <div class="supporting-detail">
+              <h3 class="supporting-detail__title">
+                <a class="article-link" href="article/door_cycles_airflow_paths/index.html">
+                  Door cycles &amp; airflow paths
+                </a>
+              </h3>
+              <div class="supporting-detail__author">Mechanism</div>
+              <div class="supporting-detail__desc">
+                <p class="supporting-detail__desc--paragraph">
+                  Every door opening creates a transient flow: drier air enters, humid air exits,
+                  and the room re-equilibrates unevenly depending on geometry and fan placement.
+                </p>
+                <p class="supporting-detail__desc--paragraph">
+                  The result is not “RH goes down a bit.” It’s a <em>drift path</em> that can repeatedly
+                  hit the same shelves or corners.
+                </p>
+                <p class="supporting-detail__desc--paragraph">
+                  Our system tracks changes over time so you can correlate drift with events and layout.
+                </p>
+              </div>
+              <div class="supporting-detail__image">
+                <img height="300" width="400" src="img/02_outage_cost_distribution.png" />
+              </div>
+            </div>
+
+            <div class="supporting-detail">
+              <h3 class="supporting-detail__title">
+                <a class="article-link" href="article/inventory_quality_consistency/index.html">
+                  Inventory quality &amp; consistency
+                </a>
+              </h3>
+              <div class="supporting-detail__author">Business impact</div>
+              <div class="supporting-detail__desc">
+                <p class="supporting-detail__desc--paragraph">
+                  Consistency matters. If the same product lives in different zones, customers can
+                  experience different draws and burns from the “same” cigar.
+                </p>
+                <p class="supporting-detail__desc--paragraph">
+                  A spatial map helps you manage placement, rotation, and conditioning routines based
+                  on what the room is actually doing.
+                </p>
+                <p class="supporting-detail__desc--paragraph">
+                  This is instrumentation for the room — not just a number on the wall.
+                </p>
+              </div>
+              <div class="supporting-detail__image">
+                <img src="img/03_cooling_and_humidty.png" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- How it works updated to match cigar-room gradient modeling -->
+        <section class="page-section" id="how-it-works">
+          <h2 class="page-section__title">How it works</h2>
+          <p class="page-section__body">
+            We use multiple humidity observations around the room to reconstruct a 3D humidity field.
+            The output is a map and time series: where the room drifts, how it drifts, and which zones
+            repeatedly go out of range.
+          </p>
+
+          <div class="page-section__grid">
+            <article class="page-section__card">
+              <h3 class="page-section__card-title">Map the field</h3>
+              <p class="page-section__card-body">
+                Turn scattered readings into a spatial model: gradients, pockets, and drift paths.
+              </p>
+            </article>
+            <article class="page-section__card">
+              <h3 class="page-section__card-title">Track changes over time</h3>
+              <p class="page-section__card-body">
+                See which zones fluctuate after door cycles, restocks, or conditioning changes.
+              </p>
+            </article>
+            <article class="page-section__card">
+              <h3 class="page-section__card-title">Actionable alerts</h3>
+              <p class="page-section__card-body">
+                Alerts based on zones, not averages: “upper-right shelf drifting dry” beats “RH is 68%.”
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <!-- Pricing research section (replaces Pilot) -->
+        <section class="page-section" id="pricing-research">
+          <h2 class="page-section__title">Early access + pricing research</h2>
+          <p class="page-section__body">
+            We already have pilot projects in progress. We’re forming a small early-access cohort for cigar rooms.
+            We’re collecting pricing ranges to understand what
+            shops would pay for this kind of visibility (and to decide how to package it).
+          </p>
+
+          <div class="page-section__grid">
+            <article class="page-section__card">
+              <h3 class="page-section__card-title">Honest constraints</h3>
+              <p class="page-section__card-body">
+                Functional early access, possible rough edges. Direct support and quick iteration.
+              </p>
+            </article>
+            <article class="page-section__card">
+              <h3 class="page-section__card-title">90-second form</h3>
+              <p class="page-section__card-body">
+                Room size, current monitoring, drift pain, beta tolerance, and pricing ranges.
+              </p>
+            </article>
+            <article class="page-section__card">
+              <h3 class="page-section__card-title">If you’re a fit</h3>
+              <p class="page-section__card-body">
+                We’ll follow up with details. If not, your answers still help us price responsibly.
+              </p>
+            </article>
+          </div>
+
+          <!-- Simple CTA block (no new CSS required, uses existing styles) -->
+          <p class="page-section__body" style="margin-top: 1.25rem;">
+            <a class="page-section__link" href="FORM_URL_HERE">
+              Open the pricing + fit form →
+            </a>
+          </p>
+        </section>
+
+        <!-- Contact updated -->
+        <section class="page-section" id="contact">
+          <h2 class="page-section__title">Contact</h2>
+          <p class="page-section__body">
+            If you own or manage a cigar room and want to talk directly, email:
+            <a class="page-section__link" href="mailto:hello@hermodlabs.example">
+              hello@hermodlabs.example
+            </a>
+          </p>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p class="site-footer__text">
+          © <span id="year"></span> HermodLabs. Early access may be limited.
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
+
+<script type="module" src="/components/site-header.js"></script>

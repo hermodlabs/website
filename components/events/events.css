@@ -1,0 +1,203 @@
+/* ==========================================================================
+   Events page — typography-forward styles (compatible with your existing system)
+   Assumes you already have .button, .button--primary, .button--secondary
+   ========================================================================== */
+
+.events{
+  padding: 26px 0 34px;
+}
+
+.events__inner{
+  /* keep it editorial + readable */
+  max-width: 78ch;
+}
+
+/* ---------- Header ---------- */
+.events__header{
+  border-top: 1px solid rgba(0,0,0,0.12);
+  padding-top: 16px;
+}
+
+.events__title{
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+  font-size: clamp(2.2rem, 4.2vw, 3.2rem);
+}
+
+.events__subhead{
+  margin: 0.85rem 0 0;
+  max-width: 68ch;
+  font-size: 1.06rem;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+  opacity: 0.86;
+}
+
+/* ---------- Sections ---------- */
+.events__section{
+  padding-top: 18px;
+  margin-top: 18px;
+  border-top: 1px solid rgba(0,0,0,0.12);
+}
+
+.events__heading{
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+/* body text */
+.events__text{
+  margin: 0.8rem 0 0;
+  font-size: 1.02rem;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+  opacity: 0.86;
+  max-width: 68ch;
+}
+
+/* "Empty" state reads like a quiet callout (typographic only) */
+.events__empty .events__text{
+  padding-left: 12px;
+  border-left: 2px solid rgba(0,0,0,0.18);
+  opacity: 0.82;
+}
+
+/* ---------- RSVP section ---------- */
+.events__section--rsvp .events__text{
+  max-width: 62ch;
+}
+
+/* Form layout spacing (still typography-first) */
+.events__form{
+  margin-top: 0.95rem;
+  display: grid;
+  gap: 12px;
+  max-width: 62ch;
+}
+
+/* Labels as editorial “kickers” */
+.events__label{
+  display: block;
+  margin: 0 0 6px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+/* Inputs: keep calm, readable */
+.events__input,
+.events__select,
+.events__textarea{
+  width: 100%;
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.18);
+  background: transparent;
+  color: inherit;
+}
+
+/* Placeholder as softer type */
+.events__textarea::placeholder{
+  opacity: 0.55;
+}
+
+/* Focus ring consistent with your other sections */
+.events__input:focus-visible,
+.events__select:focus-visible,
+.events__textarea:focus-visible{
+  outline: 2px solid rgba(0,0,0,0.55);
+  outline-offset: 3px;
+}
+
+/* Actions */
+.events__actions{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+/* Typography hierarchy on buttons (matches your hero/event-invite pattern) */
+.events__actions .button--primary{
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.events__actions .button--secondary{
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.92em;
+}
+
+/* Fineprint feels like a clause */
+.events__fineprint{
+  margin: 0.15rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  opacity: 0.7;
+  padding-left: 12px;
+  border-left: 2px solid rgba(0,0,0,0.18);
+}
+
+/* ---------- What to expect list ---------- */
+.events__list{
+  margin: 0.85rem 0 0;
+  padding: 0;
+  list-style: none; /* typography-only bullets below */
+  display: grid;
+  gap: 10px;
+  max-width: 70ch;
+}
+
+.events__list-item{
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+  opacity: 0.86;
+  padding-left: 1.2em;
+  position: relative;
+}
+
+/* em dash bullets (typography, not icons) */
+.events__list-item::before{
+  content: "—";
+  position: absolute;
+  left: 0;
+  opacity: 0.55;
+}
+
+/* Strong labels inside list items */
+.events__list-item strong{
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  opacity: 0.95;
+}
+
+/* ---------- Desktop tweaks ---------- */
+@media (min-width: 900px){
+  .events__inner{
+    max-width: 88ch;
+  }
+
+  .events__actions{
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}

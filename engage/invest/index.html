@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Home Page</title>
+    <meta
+      name="description"
+      content="HermodLabs builds a co-timing engine that proves streams are on the same clock before you subtract, compare, threshold, or interpret. Portable cancellation + diagnostics + proof-shaped certificates."
+    />
+
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+
+<body>
+<site-page>
+  <section class="investors" aria-labelledby="investors-title">
+    <div class="investors__inner">
+      <header class="investors__header">
+        <h1 class="investors__title" id="investors-title">Investors</h1>
+        <p class="investors__lede">
+          We’re building contract-driven sensing: co-timing + validity gates that turn drifting environments into
+          measurable fields—with receipts.
+        </p>
+      </header>
+
+      <section class="investors__section" aria-labelledby="context-title">
+        <h2 class="investors__heading" id="context-title">Context</h2>
+        <p class="investors__text">
+          HermodLabs develops a timing-first measurement platform that aligns sensor streams onto a shared clock,
+          cancels what is truly shared nuisance, and reports what remains as a defensible observable. We’re proving the
+          system through pilots in humidity/temperature field modeling and narrowband nuisance cancellation.
+        </p>
+      </section>
+
+      <section class="investors__section" aria-labelledby="status-title">
+        <h2 class="investors__heading" id="status-title">Current Status</h2>
+        <p class="investors__text">
+          We’re selectively speaking with investors about our next financing to expand pilots, productize the platform,
+          and grow partnerships in facilities and data-center ecosystems.
+        </p>
+      </section>
+
+      <section class="investors__section" aria-labelledby="materials-title">
+        <h2 class="investors__heading" id="materials-title">What We Share on Request</h2>
+        <ul class="investors__list">
+          <li class="investors__list-item">Pilot results and validation artifacts (with receipts)</li>
+          <li class="investors__list-item">Product roadmap and go-to-market plan</li>
+          <li class="investors__list-item">Customer pipeline and partnership targets</li>
+          <li class="investors__list-item">Technical overview of the co-timing engine</li>
+        </ul>
+      </section>
+
+      <section class="investors__section" aria-labelledby="fit-title">
+        <h2 class="investors__heading" id="fit-title">Who It’s a Fit For</h2>
+        <p class="investors__text">
+          Investors who like deep tech with a practical wedge: instrumentation, facilities/data-center operations, and
+          systems that can prove when outputs are trustworthy.
+        </p>
+      </section>
+
+      <section class="investors__section investors__section--contact" aria-labelledby="contact-title">
+        <h2 class="investors__heading" id="contact-title">Contact</h2>
+        <p class="investors__text">
+          If you’d like an overview or to discuss the round, reach out:
+          <a class="link link--primary" href="mailto:investors@yourdomain.com">investors@yourdomain.com</a>
+          <span class="investors__hint">(include your name, firm, and a sentence on interest)</span>.
+        </p>
+
+        <div class="investors__divider" aria-hidden="true"></div>
+
+        <p class="investors__text">
+          Or use the form below.
+        </p>
+
+        <form class="investors__form" action="/investors/contact" method="post">
+          <div class="investors__field">
+            <label class="investors__label" for="inv-name">Name</label>
+            <input class="investors__input" id="inv-name" name="name" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="investors__field">
+            <label class="investors__label" for="inv-firm">Firm (optional)</label>
+            <input class="investors__input" id="inv-firm" name="firm" type="text" autocomplete="organization" />
+          </div>
+
+          <div class="investors__field">
+            <label class="investors__label" for="inv-email">Email</label>
+            <input class="investors__input" id="inv-email" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <fieldset class="investors__fieldset">
+            <legend class="investors__legend">Interest (optional)</legend>
+
+            <div class="investors__checks">
+              <label class="investors__check">
+                <input class="investors__checkbox" type="checkbox" name="interest" value="facilities" />
+                Facilities
+              </label>
+
+              <label class="investors__check">
+                <input class="investors__checkbox" type="checkbox" name="interest" value="data-centers" />
+                Data centers
+              </label>
+
+              <label class="investors__check">
+                <input class="investors__checkbox" type="checkbox" name="interest" value="sensors" />
+                Sensors
+              </label>
+
+              <label class="investors__check">
+                <input class="investors__checkbox" type="checkbox" name="interest" value="applied-math" />
+                Applied math
+              </label>
+
+              <label class="investors__check">
+                <input class="investors__checkbox" type="checkbox" name="interest" value="other" />
+                Other
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="investors__field">
+            <label class="investors__label" for="inv-message">Message</label>
+            <textarea
+              class="investors__textarea"
+              id="inv-message"
+              name="message"
+              rows="5"
+              placeholder="A sentence on what you’re interested in (and where you’d like us to start)."
+            ></textarea>
+          </div>
+
+          <div class="investors__actions">
+            <button class="button button--primary" type="submit">Send</button>
+            <a class="button button--secondary" href="/whitepaper">Read the whitepaper</a>
+          </div>
+
+          <p class="investors__fineprint">
+            We only use this to respond to your request. No spam.
+          </p>
+        </form>
+      </section>
+    </div>
+  </section>
+</site-page>
+
+
+  <script type="module" src="/components/site_page/site_page.js"></script>
+  <script type="module" src="/components/site_header/site_header.js"></script>
+  <script type="module" src="/components/site_footer/site_footer.js"></script>
+
+  <script type="module" src="/components/site_hero/site_hero.js"></script>
+  <script type="module" src="/components/social_proof/social_proof.js"></script>
+  <script type="module" src="/components/site_about/site_about.js"></script>
+  <script type="module" src="/components/event_invite/event_invite.js"></script>
+</body>
+</html>

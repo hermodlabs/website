@@ -1,0 +1,215 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Home Page</title>
+    <meta
+      name="description"
+      content="HermodLabs builds a co-timing engine that proves streams are on the same clock before you subtract, compare, threshold, or interpret. Portable cancellation + diagnostics + proof-shaped certificates."
+    />
+
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+
+<body>
+<site-page>
+  <section class="job" aria-labelledby="job-title">
+    <div class="job__inner">
+      <header class="job__header">
+        <p class="job__eyebrow">Careers</p>
+        <h1 class="job__title" id="job-title">Frontend Engineer (Web Portal / B2B UI)</h1>
+        <p class="job__subhead">
+          Focus: customer-facing dashboards, alarms, timelines/spectral views, and explainability UI that makes “trust” legible.
+        </p>
+      </header>
+
+      <section class="job__section" aria-labelledby="about-role-title">
+        <h2 class="job__heading" id="about-role-title">About the Role</h2>
+        <p class="job__text">
+          We’re building a B2B web portal where customers don’t just see numbers—they see whether those numbers are
+          trustworthy right now. The UI needs to answer operational questions fast: “Are we drifting?”, “Is this sensor
+          lying?”, “Why did the system abstain?”, “What changed since yesterday?”
+        </p>
+        <p class="job__text">
+          This role owns the customer-facing experience: dashboards, alerts, timelines, spectral/diagnostic views, and
+          explainability panels that turn algorithm decisions into actions.
+        </p>
+      </section>
+
+      <section class="job__section" aria-labelledby="do-title">
+        <h2 class="job__heading" id="do-title">What You’ll Do</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            <strong>Dashboards operators actually use:</strong> overview pages (site/zone health, top risks, trends, anomalies, trust score).
+          </li>
+          <li class="job__list-item">
+            <strong>Alarms + workflows:</strong> alert lists, acknowledgement/snooze/escalation, and “what to check next” guidance tied to failure modes.
+          </li>
+          <li class="job__list-item">
+            <strong>Timeline views:</strong> interactive time-series for RH/T, drift, coherence, window validity score, residual energy, with zoom/compare and before/after.
+          </li>
+          <li class="job__list-item">
+            <strong>Spectral + diagnostic views:</strong> spectrum/coherence/phase-slope plots that stay fast and readable with annotations (bands, notch depth, confidence).
+          </li>
+          <li class="job__list-item">
+            <strong>Explainability UX:</strong> panels that answer: what was assumed, did it hold, what failed, and what receipt backs it up.
+          </li>
+          <li class="job__list-item">
+            <strong>Multi-tenant B2B UX:</strong> account switching, roles/permissions, audit trails, exportable reports.
+          </li>
+          <li class="job__list-item">
+            <strong>Performance &amp; reliability:</strong> large data rendering, caching, virtualization, graceful loading/error handling.
+          </li>
+          <li class="job__list-item">
+            <strong>Design systems:</strong> reusable components (status pills, severity badges, chart scaffolds, empty states) so the portal stays coherent as it grows.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="deliverables-title">
+        <h2 class="job__heading" id="deliverables-title">Concrete Deliverables</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            A customer home dashboard: fleet/room status, top risks, recent alarms, trust overview.
+          </li>
+          <li class="job__list-item">
+            An alarm triage flow: click alert → see context → likely causes → recommended checks → acknowledge/escalate.
+          </li>
+          <li class="job__list-item">
+            A timeline + spectral drilldown page: synchronized cursors, window selection, overlays for validity/coherence, downloadable receipt.
+          </li>
+          <li class="job__list-item">
+            An explainability panel: “why we trust/don’t trust this” with crisp reasons and links to raw diagnostics.
+          </li>
+          <li class="job__list-item">
+            A component library for portal primitives: charts, tables, filters, severity badges, audit log viewers.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="req-title">
+        <h2 class="job__heading" id="req-title">Required Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Strong frontend engineering experience with modern web stacks (typically React + TypeScript or equivalent).
+          </li>
+          <li class="job__list-item">
+            Experience building data-heavy B2B UIs: dashboards, tables, filters, drilldowns, charting, state management.
+          </li>
+          <li class="job__list-item">
+            Comfort with interactive visualization (Canvas/SVG/WebGL as needed) and performance techniques (memoization, virtualization, workers).
+          </li>
+          <li class="job__list-item">
+            Product sense: ability to turn ambiguous operator needs into clean workflows and UI primitives.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="pref-title">
+        <h2 class="job__heading" id="pref-title">Preferred Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">Experience with observability/monitoring products (alerts, incidents, timelines, single-pane-of-glass UX).</li>
+          <li class="job__list-item">Familiarity with time-series and signal visualization concepts (not a DSP expert, but comfortable rendering/annotating plots).</li>
+          <li class="job__list-item">Experience with accessibility and enterprise requirements (SSO, RBAC).</li>
+          <li class="job__list-item">Design system experience (tokens, component libraries, consistent interaction patterns).</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="success-title">
+        <h2 class="job__heading" id="success-title">How You’ll Be Measured (First 60–90 Days)</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            You ship a first portal slice customers can use: dashboard + alarms + drilldown.
+          </li>
+          <li class="job__list-item">
+            The UI makes trust legible: users can tell what’s valid vs invalid and why without asking an engineer.
+          </li>
+          <li class="job__list-item">
+            Performance is solid on real datasets (no UI lockups when loading timelines/spectra).
+          </li>
+          <li class="job__list-item">
+            Operator workflows improve: fewer clicks to understand an alert, faster time-to-action.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="style-title">
+        <h2 class="job__heading" id="style-title">Working Style</h2>
+        <ul class="job__list">
+          <li class="job__list-item">You don’t hide uncertainty—you render it. Validity, abstentions, and failure labels are first-class UI elements.</li>
+          <li class="job__list-item">You like reducing complex systems to clear mental models (overview → drilldown → evidence → action).</li>
+          <li class="job__list-item">You collaborate tightly with backend/algorithms to turn diagnostics into customer-readable explanations.</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="level-title">
+        <h2 class="job__heading" id="level-title">Title &amp; Level</h2>
+        <p class="job__text">
+          Frontend Engineer (Web Portal / B2B UI) (mid-to-senior; can scale to Staff with ownership of portal architecture),
+          partnering with product, backend, and systems.
+        </p>
+      </section>
+
+      <section class="job__section job__section--apply" aria-labelledby="apply-title">
+        <h2 class="job__heading" id="apply-title">Apply</h2>
+        <p class="job__text">Send a short note and your resume.</p>
+
+        <form
+          class="job__form"
+          action="/careers/apply/frontend-engineer-portal-b2b-ui"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div class="job__field">
+            <label class="job__label" for="app-name">Name</label>
+            <input class="job__input" id="app-name" name="name" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-email">Email</label>
+            <input class="job__input" id="app-email" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-message">Message</label>
+            <textarea
+              class="job__textarea"
+              id="app-message"
+              name="message"
+              rows="7"
+              placeholder="A few sentences about your background and why this role fits."
+              required
+            ></textarea>
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-resume">Resume</label>
+            <input class="job__input" id="app-resume" name="resume" type="file" accept=".pdf,.doc,.docx" required />
+          </div>
+
+          <div class="job__actions">
+            <button class="button button--primary" type="submit">Submit</button>
+            <a class="button button--secondary" href="/careers">Back to roles</a>
+          </div>
+
+          <p class="job__fineprint">We only use this to respond to your application. No spam.</p>
+        </form>
+      </section>
+    </div>
+  </section>
+</site-page>
+
+
+  <script type="module" src="/components/site_page/site_page.js"></script>
+  <script type="module" src="/components/site_header/site_header.js"></script>
+  <script type="module" src="/components/site_footer/site_footer.js"></script>
+
+  <script type="module" src="/components/site_hero/site_hero.js"></script>
+  <script type="module" src="/components/social_proof/social_proof.js"></script>
+  <script type="module" src="/components/site_about/site_about.js"></script>
+  <script type="module" src="/components/event_invite/event_invite.js"></script>
+</body>
+</html>

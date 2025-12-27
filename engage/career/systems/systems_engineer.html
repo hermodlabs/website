@@ -1,0 +1,221 @@
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Home Page</title>
+    <meta
+      name="description"
+      content="HermodLabs builds a co-timing engine that proves streams are on the same clock before you subtract, compare, threshold, or interpret. Portable cancellation + diagnostics + proof-shaped certificates."
+    />
+
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+
+<body>
+<site-page>
+  <section class="job" aria-labelledby="job-title">
+    <div class="job__inner">
+      <header class="job__header">
+        <p class="job__eyebrow">Careers</p>
+        <h1 class="job__title" id="job-title">Systems Engineer (Bench → Contract)</h1>
+        <p class="job__subhead">
+          Focus: define bench promises, instrument windows, failure modes, acceptance tests, and “no silent success” gates.
+        </p>
+      </header>
+
+      <section class="job__section" aria-labelledby="about-role-title">
+        <h2 class="job__heading" id="about-role-title">About the Role</h2>
+        <p class="job__text">
+          We build instruments and algorithms that only work when their assumptions are true on a given window of time.
+          The Systems Engineer (Bench → Contract) turns a physical bench (or field deployment) into a set of explicit,
+          testable promises: what the bench can guarantee, what the algorithm is allowed to assume, how we detect
+          violations, and what “pass/fail” means before we let anyone trust a plot.
+        </p>
+        <p class="job__text">
+          Think of this role as: take messy reality → produce contracts that software can enforce.
+        </p>
+      </section>
+
+      <section class="job__section" aria-labelledby="own-title">
+        <h2 class="job__heading" id="own-title">What You’ll Own</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            <strong>Define “E/Q promises” (Experiment / Quality promises):</strong> write down what a bench must guarantee
+            for algorithms to be valid (sampling, timing, clock behavior, placement, excitation conditions, constraints).
+          </li>
+          <li class="job__list-item">
+            <strong>Bench instrumentation for window truth:</strong> specify and implement the telemetry needed to score a
+            window (W): coherence, drift, saturation/clipping, noise floor, stationarity, multipath/interference flags.
+          </li>
+          <li class="job__list-item">
+            <strong>Failure mode taxonomy:</strong> enumerate how benches fail in practice (and how it looks in data),
+            then encode detection + labels that are actionable.
+          </li>
+          <li class="job__list-item">
+            <strong>Acceptance tests &amp; go/no-go gates:</strong> create objective criteria and automated tests that
+            decide whether a run is valid, calibration is stale, a window is usable, and results can be reported.
+          </li>
+          <li class="job__list-item">
+            <strong>Bench → pipeline integration:</strong> ensure metadata (geometry, sensor IDs, firmware/config versions,
+            calibration constants) flows into the processing pipeline and is recorded as a receipt.
+          </li>
+          <li class="job__list-item">
+            <strong>Debug playbooks:</strong> build repeatable procedures for diagnosing failures (what to check first,
+            what plots/metrics matter, how to reproduce).
+          </li>
+          <li class="job__list-item">
+            <strong>Cross-team translation:</strong> keep contracts realistic and enforced across hardware, algorithms, and product.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="deliverables-title">
+        <h2 class="job__heading" id="deliverables-title">Concrete Deliverables</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            A <strong>Bench Contract Spec</strong> per bench type: inputs (signals + metadata), required promises, allowed algorithm assumptions,
+            mandatory diagnostics, pass/fail acceptance criteria.
+          </li>
+          <li class="job__list-item">
+            A <strong>window scoring + labeling module</strong> that emits: usable / borderline / invalid + reasons.
+          </li>
+          <li class="job__list-item">
+            A <strong>failure-mode library</strong> with examples: “what it looks like,” “how to detect,” “what to do next.”
+          </li>
+          <li class="job__list-item">
+            An <strong>acceptance test suite</strong> that runs automatically on new data and blocks regressions.
+          </li>
+          <li class="job__list-item">
+            A <strong>run receipt format</strong> (manifest) that makes every result reproducible.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="req-title">
+        <h2 class="job__heading" id="req-title">Required Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Strong systems thinking: define interfaces and guarantees between messy physical systems and software.
+          </li>
+          <li class="job__list-item">
+            Experience with measurement systems: sensors, DAQ, timing/synchronization concepts, calibration workflows,
+            environmental effects.
+          </li>
+          <li class="job__list-item">
+            Comfort with data-driven debugging: interpreting spectra/coherence plots, diagnosing drift, spotting instrumentation artifacts.
+          </li>
+          <li class="job__list-item">
+            Ability to write clear specs and enforce them through automated checks.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="pref-title">
+        <h2 class="job__heading" id="pref-title">Preferred Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">Experience with audio/RF timing, distributed sensing, synchronization, or noisy instrumentation.</li>
+          <li class="job__list-item">Familiarity with DSP basics (FFT, coherence, windowing/leakage) sufficient to reason about algorithm assumptions.</li>
+          <li class="job__list-item">Experience designing QA / verification regimes: acceptance tests, regression datasets, reliability metrics.</li>
+          <li class="job__list-item">Hands-on bench experience: you’ve built or operated rigs and know what “works in theory” misses.</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="success-title">
+        <h2 class="job__heading" id="success-title">How You’ll Be Measured (First 60–90 Days)</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            You produce a first Bench Contract that the team actually uses to gate results.
+          </li>
+          <li class="job__list-item">
+            You implement (or drive implementation of) window validity instrumentation that catches common bench failures early.
+          </li>
+          <li class="job__list-item">
+            You deliver an acceptance test harness that converts “arguing over plots” into objective pass/fail outcomes.
+          </li>
+          <li class="job__list-item">
+            You reduce rework by making failures diagnosable and repeatable (“we can reproduce it and we know what broke”).
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="style-title">
+        <h2 class="job__heading" id="style-title">Working Style</h2>
+        <ul class="job__list">
+          <li class="job__list-item">You prefer explicit promises over vague optimism.</li>
+          <li class="job__list-item">You assume every bench will betray you eventually—and you design the system to detect and survive it.</li>
+          <li class="job__list-item">You’re happiest when the pipeline can say: “This result is invalid, and here’s exactly why.”</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="level-title">
+        <h2 class="job__heading" id="level-title">Title &amp; Level</h2>
+        <p class="job__text">
+          Systems Engineer (Bench → Contract) (mid-to-senior; can scale to Staff depending on ownership),
+          partnering closely with applied math/DSP and experimental operators.
+        </p>
+      </section>
+
+      <section class="job__section job__section--apply" aria-labelledby="apply-title">
+        <h2 class="job__heading" id="apply-title">Apply</h2>
+        <p class="job__text">Send a short note and your resume.</p>
+
+        <form
+          class="job__form"
+          action="/careers/apply/systems-engineer-bench-contract"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div class="job__field">
+            <label class="job__label" for="app-name">Name</label>
+            <input class="job__input" id="app-name" name="name" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-email">Email</label>
+            <input class="job__input" id="app-email" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-message">Message</label>
+            <textarea
+              class="job__textarea"
+              id="app-message"
+              name="message"
+              rows="7"
+              placeholder="A few sentences about your background and why this role fits."
+              required
+            ></textarea>
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-resume">Resume</label>
+            <input class="job__input" id="app-resume" name="resume" type="file" accept=".pdf,.doc,.docx" required />
+          </div>
+
+          <div class="job__actions">
+            <button class="button button--primary" type="submit">Submit</button>
+            <a class="button button--secondary" href="/careers">Back to roles</a>
+          </div>
+
+          <p class="job__fineprint">We only use this to respond to your application. No spam.</p>
+        </form>
+      </section>
+    </div>
+  </section>
+</site-page>
+
+
+  <script type="module" src="/components/site_page/site_page.js"></script>
+  <script type="module" src="/components/site_header/site_header.js"></script>
+  <script type="module" src="/components/site_footer/site_footer.js"></script>
+
+  <script type="module" src="/components/site_hero/site_hero.js"></script>
+  <script type="module" src="/components/social_proof/social_proof.js"></script>
+  <script type="module" src="/components/site_about/site_about.js"></script>
+  <script type="module" src="/components/event_invite/event_invite.js"></script>
+</body>
+</html>

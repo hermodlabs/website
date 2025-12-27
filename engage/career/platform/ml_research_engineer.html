@@ -1,0 +1,230 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Home Page</title>
+    <meta
+      name="description"
+      content="HermodLabs builds a co-timing engine that proves streams are on the same clock before you subtract, compare, threshold, or interpret. Portable cancellation + diagnostics + proof-shaped certificates."
+    />
+
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+
+<body>
+<site-page>
+  <section class="job" aria-labelledby="job-title">
+    <div class="job__inner">
+      <header class="job__header">
+        <p class="job__eyebrow">Careers</p>
+        <h1 class="job__title" id="job-title">ML Research Engineer (Optimization &amp; Training)</h1>
+        <p class="job__subhead">
+          Focus: hyperparameter search, training stability, ablation rigor, compute efficiency, and making structured dynamics models converge.
+        </p>
+      </header>
+
+      <section class="job__section" aria-labelledby="about-role-title">
+        <h2 class="job__heading" id="about-role-title">About the Role</h2>
+        <p class="job__text">
+          We’re building structured ML on top of a contract-driven signal stack: co-timing → validity gating → nuisance
+          cancellation → residual dynamics learning. This role lives in the middle: make the models train well.
+        </p>
+        <p class="job__text">
+          You own the optimization and training craft needed to turn promising dynamics models into stable, high-performing
+          systems: hyperparameter search, training diagnostics, ablations, compute efficiency, and evidence-based answers
+          to “why didn’t it converge?”
+        </p>
+        <p class="job__text">
+          This is not “try 1,000 random configs.” It’s disciplined experimentation with controlled comparisons and tight reporting.
+        </p>
+      </section>
+
+      <section class="job__section" aria-labelledby="own-title">
+        <h2 class="job__heading" id="own-title">What You’ll Own</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            <strong>Hyperparameter optimization:</strong> systematic searches (Bayes opt / bandits / PBT where appropriate) with reproducible configs.
+          </li>
+          <li class="job__list-item">
+            <strong>Training stability:</strong> diagnose divergence, pathological gradients, stiffness, numerical instability, and non-identifiability.
+          </li>
+          <li class="job__list-item">
+            <strong>Ablation discipline:</strong> prove which architectural/feature choices matter via controlled ablations.
+          </li>
+          <li class="job__list-item">
+            <strong>Compute efficiency:</strong> profiling, batching, mixed precision/compile modes; keep training and inference costs bounded.
+          </li>
+          <li class="job__list-item">
+            <strong>Model selection criteria:</strong> ship-ready criteria beyond loss curves: calibration, robustness across regimes, abstention behavior, failure modes.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="do-title">
+        <h2 class="job__heading" id="do-title">What You’ll Do</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Build stable training recipes for structured dynamics models (and strong baselines) on residual datasets.
+          </li>
+          <li class="job__list-item">
+            Develop training diagnostics: gradient norms, loss decomposition, sensitivity to window length/sampling rate/validity weighting.
+          </li>
+          <li class="job__list-item">
+            Run hyperparameter studies with receipts (seeds, dataset hashes, gate definitions, code versions) and interpret results.
+          </li>
+          <li class="job__list-item">
+            Stress-test generalization under regime shifts and across sites/zones; handle validity collapse scenarios where usable data shrinks.
+          </li>
+          <li class="job__list-item">
+            Collaborate with Scientific ML, Applied Statistics, and MLOps on targets, evaluation, and pipeline integration.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="deliverables-title">
+        <h2 class="job__heading" id="deliverables-title">Concrete Deliverables</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            A tuning and training framework (v1) integrated with receipts (configs, seeds, datasets, metrics).
+          </li>
+          <li class="job__list-item">
+            Stable training baselines for residual dynamics (AR/VAR/state-space) plus at least one structured model that converges reliably.
+          </li>
+          <li class="job__list-item">
+            An ablation report template and first ablation suite (which state features matter, which regularizers help, what’s brittle).
+          </li>
+          <li class="job__list-item">
+            A compute profile + optimization plan with bottlenecks identified and mitigations implemented.
+          </li>
+          <li class="job__list-item">
+            A model selection rubric tied to pilot value (lead time, false alarms, calibration, robustness thresholds).
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="req-title">
+        <h2 class="job__heading" id="req-title">Required Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Strong experience training ML models with nontrivial optimization challenges (time-series, dynamical systems, or physics-informed models).
+          </li>
+          <li class="job__list-item">
+            Demonstrated skill in hyperparameter optimization and experiment design (not just running sweeps—interpreting them).
+          </li>
+          <li class="job__list-item">
+            Strong Python + PyTorch/JAX (or equivalent) proficiency and ability to write clean, testable training code.
+          </li>
+          <li class="job__list-item">
+            Practical numerical instincts: stability, step sizes, stiffness, normalization, failure-mode debugging.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="pref-title">
+        <h2 class="job__heading" id="pref-title">Preferred Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">Experience with Neural ODEs / continuous-depth models, stiff solvers, adjoint methods, or related numerical methods.</li>
+          <li class="job__list-item">Familiarity with structured dynamics inductive biases (energy/Lagrangian/Hamiltonian styles) where practical.</li>
+          <li class="job__list-item">Experience operating tuning infrastructure at scale (distributed training, scheduling, spot instances).</li>
+          <li class="job__list-item">Experience with robustness evaluation and uncertainty calibration under nonstationarity.</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="success-title">
+        <h2 class="job__heading" id="success-title">How You’ll Be Measured (First 60–90 Days)</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            A structured model (or closest practical equivalent) trains reliably on at least one pilot dataset and beats baseline on a meaningful metric.
+          </li>
+          <li class="job__list-item">
+            Hyperparameter studies become reproducible and interpretable (not “we tried a bunch of stuff”).
+          </li>
+          <li class="job__list-item">
+            Training failures are diagnosable: you can explain why a run diverged and what fixes it.
+          </li>
+          <li class="job__list-item">
+            Compute costs come under control (clear profiles, faster iterations, fewer wasted sweeps).
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="style-title">
+        <h2 class="job__heading" id="style-title">Working Style</h2>
+        <ul class="job__list">
+          <li class="job__list-item">You prefer controlled experiments over “try everything.”</li>
+          <li class="job__list-item">You treat convergence as an engineering problem with instrumentation and receipts.</li>
+          <li class="job__list-item">You like turning training folklore into repeatable playbooks.</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="level-title">
+        <h2 class="job__heading" id="level-title">Title &amp; Level</h2>
+        <p class="job__text">
+          ML Research Engineer (Optimization &amp; Training) (senior IC; can scale to Staff if owning experimentation/tuning platform),
+          partnering with Scientific ML, Applied Statistics, and MLOps.
+        </p>
+      </section>
+
+      <section class="job__section job__section--apply" aria-labelledby="apply-title">
+        <h2 class="job__heading" id="apply-title">Apply</h2>
+        <p class="job__text">Send a short note and your resume.</p>
+
+        <form
+          class="job__form"
+          action="/careers/apply/ml-research-engineer-optimization-training"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div class="job__field">
+            <label class="job__label" for="app-name">Name</label>
+            <input class="job__input" id="app-name" name="name" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-email">Email</label>
+            <input class="job__input" id="app-email" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-message">Message</label>
+            <textarea
+              class="job__textarea"
+              id="app-message"
+              name="message"
+              rows="7"
+              placeholder="A few sentences about your background and why this role fits."
+              required
+            ></textarea>
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-resume">Resume</label>
+            <input class="job__input" id="app-resume" name="resume" type="file" accept=".pdf,.doc,.docx" required />
+          </div>
+
+          <div class="job__actions">
+            <button class="button button--primary" type="submit">Submit</button>
+            <a class="button button--secondary" href="/careers">Back to roles</a>
+          </div>
+
+          <p class="job__fineprint">We only use this to respond to your application. No spam.</p>
+        </form>
+      </section>
+    </div>
+  </section>
+</site-page>
+
+
+  <script type="module" src="/components/site_page/site_page.js"></script>
+  <script type="module" src="/components/site_header/site_header.js"></script>
+  <script type="module" src="/components/site_footer/site_footer.js"></script>
+
+  <script type="module" src="/components/site_hero/site_hero.js"></script>
+  <script type="module" src="/components/social_proof/social_proof.js"></script>
+  <script type="module" src="/components/site_about/site_about.js"></script>
+  <script type="module" src="/components/event_invite/event_invite.js"></script>
+</body>
+</html>

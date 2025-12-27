@@ -1,0 +1,228 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Home Page</title>
+    <meta
+      name="description"
+      content="HermodLabs builds a co-timing engine that proves streams are on the same clock before you subtract, compare, threshold, or interpret. Portable cancellation + diagnostics + proof-shaped certificates."
+    />
+
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+
+<body>
+<site-page>
+  <section class="job" aria-labelledby="job-title">
+    <div class="job__inner">
+      <header class="job__header">
+        <p class="job__eyebrow">Careers</p>
+        <h1 class="job__title" id="job-title">Data Engineer / Analytics Engineer (Residual Datasets + Lineage)</h1>
+        <p class="job__subhead">
+          Focus: build residual datasets (post co-timing + gating + cancellation), enforce lineage/receipts, and deliver clean feature tables.
+        </p>
+      </header>
+
+      <section class="job__section" aria-labelledby="about-role-title">
+        <h2 class="job__heading" id="about-role-title">About the Role</h2>
+        <p class="job__text">
+          Our platform’s core idea is: align first, then cancel, then interpret. The most valuable data we produce is not
+          raw telemetry—it’s the residual after co-timing, validity gating, and nuisance cancellation, plus the receipts
+          that explain exactly how that residual was produced.
+        </p>
+        <p class="job__text">
+          This role owns the data layer that makes that usable: dataset construction pipelines, feature views, schema
+          discipline, and lineage that lets anyone answer “which data went into this output, under what gates, with what
+          versions?”
+        </p>
+      </section>
+
+      <section class="job__section" aria-labelledby="own-title">
+        <h2 class="job__heading" id="own-title">What You’ll Own</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            <strong>Residual dataset pipelines:</strong> raw streams → co-timed streams → canceled residuals → windowed features, at scale and with clear contracts.
+          </li>
+          <li class="job__list-item">
+            <strong>Lineage + receipts in data form:</strong> every dataset row carries pointers to inputs, versions, configs, calibration state, and validity decisions.
+          </li>
+          <li class="job__list-item">
+            <strong>Feature tables / analytics views:</strong> stable feature sets for ML and product analytics (validity uptime, alarm quality, commissioning outcomes).
+          </li>
+          <li class="job__list-item">
+            <strong>Data quality &amp; validation:</strong> prevent silent corruption (missingness, skew, misaligned timestamps, schema drift) with tests and checks.
+          </li>
+          <li class="job__list-item">
+            <strong>Backfills &amp; schema evolution:</strong> reprocessing and versioned datasets when algorithms/configs change without breaking consumers.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="do-title">
+        <h2 class="job__heading" id="do-title">What You’ll Do</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Design canonical schemas for runs/windows, validity verdicts (valid/borderline/invalid + reasons), residual artifacts, and derived features.
+          </li>
+          <li class="job__list-item">
+            Build reproducible pipelines (batch + incremental) with deterministic windowing and feature computation.
+          </li>
+          <li class="job__list-item">
+            Implement dataset receipts: snapshot IDs/hashes, code + config versions, upstream algorithm versions, calibration state, gating rules used.
+          </li>
+          <li class="job__list-item">
+            Create queryable analytics: validity uptime by site/zone/device, abstain reason distributions, commissioning pass rates, pipeline health.
+          </li>
+          <li class="job__list-item">
+            Partner with ML + backend to support training-ready datasets, inference joins, and portal drilldowns (“show the evidence behind this alert”).
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="deliverables-title">
+        <h2 class="job__heading" id="deliverables-title">Concrete Deliverables</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            A Residual Dataset Spec: schemas, partitions, naming conventions, versioning strategy, lineage fields.
+          </li>
+          <li class="job__list-item">
+            A working pipeline that produces window-level feature tables suitable for ML training plus validity gate tables with reason codes.
+          </li>
+          <li class="job__list-item">
+            A data quality test suite (CI + scheduled): missingness, timestamp sanity, schema drift detection, outlier flags.
+          </li>
+          <li class="job__list-item">
+            A backfill &amp; migration playbook: recompute safely when co-timing/cancellation code changes while keeping old versions accessible.
+          </li>
+          <li class="job__list-item">
+            A simple analytics dashboard: validity uptime, abstain reasons, pipeline freshness.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="req-title">
+        <h2 class="job__heading" id="req-title">Required Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Strong experience with data engineering: reliable pipelines, data models, production-grade datasets.
+          </li>
+          <li class="job__list-item">
+            Proficiency with common stacks (choose what fits): SQL + warehouses (Postgres/BigQuery/Snowflake), object storage patterns, orchestration (Airflow/Dagster/Prefect), Python for transforms/validation.
+          </li>
+          <li class="job__list-item">
+            Ability to design schema evolution and versioning strategies that don’t break downstream consumers.
+          </li>
+          <li class="job__list-item">
+            Comfort with time-series data realities: ordering, late arrivals, missing segments, and clock weirdness.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="pref-title">
+        <h2 class="job__heading" id="pref-title">Preferred Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">Experience with lineage/provenance systems (manifests, immutable logs, dataset versioning).</li>
+          <li class="job__list-item">Familiarity with ML feature engineering workflows (feature tables, splits, leakage prevention).</li>
+          <li class="job__list-item">Experience with IoT/device telemetry ingestion and fleet-scale data quality issues.</li>
+          <li class="job__list-item">Basic DSP literacy (windowing, spectral summaries) helpful for feature correctness and sanity checks.</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="success-title">
+        <h2 class="job__heading" id="success-title">How You’ll Be Measured (First 60–90 Days)</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            You ship a training-ready residual dataset (and feature view) for at least one pilot type.
+          </li>
+          <li class="job__list-item">
+            Lineage is queryable: given a feature row or alert, the team can trace it back to raw inputs + versions.
+          </li>
+          <li class="job__list-item">
+            Pipeline quality improves: fewer mystery gaps, clearer freshness and missingness reporting.
+          </li>
+          <li class="job__list-item">
+            Backfills are safe and repeatable when co-timing/cancellation code changes.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="style-title">
+        <h2 class="job__heading" id="style-title">Working Style</h2>
+        <ul class="job__list">
+          <li class="job__list-item">You treat every dataset as a product: documented, versioned, tested, reproducible.</li>
+          <li class="job__list-item">You don’t tolerate silent schema drift or “unknown joins.”</li>
+          <li class="job__list-item">You design for audits: the system can always answer “how was this computed?”</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="level-title">
+        <h2 class="job__heading" id="level-title">Title &amp; Level</h2>
+        <p class="job__text">
+          Data Engineer / Analytics Engineer (Residual Datasets + Lineage) (mid-to-senior; can scale to Staff if owning the data model + lineage architecture),
+          partnering with backend/data, Scientific ML, validation, and product/UI.
+        </p>
+      </section>
+
+      <section class="job__section job__section--apply" aria-labelledby="apply-title">
+        <h2 class="job__heading" id="apply-title">Apply</h2>
+        <p class="job__text">Send a short note and your resume.</p>
+
+        <form
+          class="job__form"
+          action="/careers/apply/data-engineer-analytics-lineage"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div class="job__field">
+            <label class="job__label" for="app-name">Name</label>
+            <input class="job__input" id="app-name" name="name" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-email">Email</label>
+            <input class="job__input" id="app-email" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-message">Message</label>
+            <textarea
+              class="job__textarea"
+              id="app-message"
+              name="message"
+              rows="7"
+              placeholder="A few sentences about your background and why this role fits."
+              required
+            ></textarea>
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-resume">Resume</label>
+            <input class="job__input" id="app-resume" name="resume" type="file" accept=".pdf,.doc,.docx" required />
+          </div>
+
+          <div class="job__actions">
+            <button class="button button--primary" type="submit">Submit</button>
+            <a class="button button--secondary" href="/careers">Back to roles</a>
+          </div>
+
+          <p class="job__fineprint">We only use this to respond to your application. No spam.</p>
+        </form>
+      </section>
+    </div>
+  </section>
+</site-page>
+
+
+  <script type="module" src="/components/site_page/site_page.js"></script>
+  <script type="module" src="/components/site_header/site_header.js"></script>
+  <script type="module" src="/components/site_footer/site_footer.js"></script>
+
+  <script type="module" src="/components/site_hero/site_hero.js"></script>
+  <script type="module" src="/components/social_proof/social_proof.js"></script>
+  <script type="module" src="/components/site_about/site_about.js"></script>
+  <script type="module" src="/components/event_invite/event_invite.js"></script>
+</body>
+</html>

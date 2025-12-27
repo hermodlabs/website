@@ -1,0 +1,36 @@
+/* =========================
+   COMPONENTS (actual UI pieces)
+   ========================= */
+@layer components {
+  /* --- Swiss-style header / wordmark --- */
+  .site-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2.25rem;
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .site-header__eyebrow {
+    margin: 0 0 0.8rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--text-muted);
+  }
+
+  .site-header__wordmark {
+    margin: 0;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    line-height: 0.9;
+    font-size: clamp(2.4rem, 4.2vw, 4.4rem);
+  }
+
+  .site-header__wordmark span {
+    display: block;
+  }
+
+  .site-header__wordmark-em {
+    color: var(--accent);
+  }
+}

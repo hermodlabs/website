@@ -1,0 +1,187 @@
+/* ==========================================================================
+   About Page — typography-forward styles (compatible with your existing system)
+   Assumes .button, .button--primary, .button--secondary already exist.
+   ========================================================================== */
+
+.about-page{
+  padding: 26px 0 18px;
+}
+
+/* inner container should already be constrained by your page layout;
+   this adds an editorial max-width if needed */
+.about-page__inner{
+  max-width: 78ch;
+}
+
+/* ---------- Top block ---------- */
+.about-page__title{
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+  font-size: clamp(2.2rem, 4.2vw, 3.2rem);
+}
+
+.about-page__lede{
+  margin: 0.9rem 0 0;
+  font-size: 1.18rem;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  font-weight: 650;
+  max-width: 72ch;
+  opacity: 0.92;
+}
+
+/* Base paragraph style */
+.about-page__text{
+  margin: 0.85rem 0 0;
+  font-size: 1.04rem;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  max-width: 74ch;
+  opacity: 0.86;
+}
+
+.about-page__text strong{
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  opacity: 0.96;
+}
+
+/* ---------- Sections ---------- */
+.about-page__section{
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(0,0,0,0.12);
+}
+
+/* Section headings as “kickers” (matches your Events headings) */
+.about-page__heading{
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+/* ---------- Steps (ordered list) ---------- */
+.about-page__steps{
+  margin: 0.95rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  max-width: 74ch;
+  counter-reset: step;
+}
+
+/* Each step becomes a numbered “plate” using typography only */
+.about-page__step{
+  counter-increment: step;
+  padding-left: 2.4rem;
+  position: relative;
+}
+
+/* Typographic number mark */
+.about-page__step::before{
+  content: counter(step) ".";
+  position: absolute;
+  left: 0;
+  top: 0.05rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  opacity: 0.45;
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.about-page__subheading{
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  opacity: 0.95;
+}
+
+/* tighten spacing under subheadings */
+.about-page__step .about-page__text{
+  margin-top: 0.45rem;
+}
+
+/* ---------- Bullets ---------- */
+.about-page__bullets{
+  margin: 0.85rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  max-width: 74ch;
+}
+
+.about-page__bullet{
+  margin: 0;
+  font-size: 1.04rem;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  opacity: 0.86;
+  padding-left: 1.2em;
+  position: relative;
+}
+
+/* em dash bullets (typography, no icons) */
+.about-page__bullet::before{
+  content: "—";
+  position: absolute;
+  left: 0;
+  opacity: 0.55;
+}
+
+.about-page__bullet strong{
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  opacity: 0.96;
+}
+
+/* ---------- Contact section CTA row ---------- */
+.about-page__cta-row{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 0.95rem;
+}
+
+/* button typography hierarchy consistent with your other sections */
+.about-page__cta-row .button--primary{
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.about-page__cta-row .button--secondary{
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.92em;
+}
+
+/* Optional: make the contact section feel like a “closing clause” */
+.about-page__section--contact .about-page__text{
+  padding-left: 12px;
+  border-left: 2px solid rgba(0,0,0,0.18);
+  max-width: 70ch;
+}
+
+/* ---------- Desktop tweaks ---------- */
+@media (min-width: 900px){
+  .about-page__inner{
+    max-width: 88ch;
+  }
+
+  .about-page__cta-row{
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}

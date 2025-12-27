@@ -1,0 +1,178 @@
+.hero {
+  padding: 28px 0;
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1fr; /* mobile: single column */
+  gap: 14px;
+}
+
+/* small label */
+.hero__eyebrow {
+  margin: 0 0 2px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  opacity: 0.7;
+}
+
+/* Title: each span on its own line */
+.hero__title {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  font-size: clamp(2.1rem, 7vw, 3.2rem);
+  max-width: 22ch; /* keeps it from getting too wide on mobile */
+}
+
+.hero__title > span {
+  display: block;
+}
+
+/* --- Headline sequencing (typography-only hierarchy) --- */
+.hero__title span:nth-child(1){
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  opacity: 0.85;
+  font-size: 0.62em;
+  line-height: 1.15;
+}
+
+.hero__title span:nth-child(2){
+  font-weight: 900;
+  letter-spacing: -0.045em;
+  text-transform: uppercase; /* remove if you prefer normal casing */
+  font-size: 1.05em;
+  line-height: 0.95;
+}
+
+.hero__title span:nth-child(3){
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  opacity: 0.95;
+  font-size: 0.72em;
+  margin-top: 0.35em;
+}
+
+.hero__title span:nth-child(4){
+  font-weight: 850;
+  letter-spacing: -0.02em;
+  font-size: 0.78em;
+  margin-top: 0.15em;
+}
+
+/* Supporting copy */
+.hero__subhead,
+.hero__lead,
+.hero__note {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+  max-width: 55ch;
+  opacity: 0.85;
+}
+
+.hero__lead {
+  opacity: 0.95;
+}
+
+/* "Clause" styling for the note (typography-only) */
+.hero__note {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  padding-left: 12px;
+  border-left: 2px solid rgba(0,0,0,0.18);
+  line-height: 1.35;
+}
+
+.hero__note strong {
+  font-weight: 800;
+}
+
+/* CTA row */
+.hero__cta-row {
+  display: flex;
+  flex-direction: column; /* mobile: stack buttons */
+  gap: 10px;
+  margin-top: 6px;
+}
+
+/* secondary button (to match your existing .button baseline) */
+.button--secondary {
+  background: transparent;
+  color: inherit;
+}
+
+/* Typography-only button hierarchy */
+.hero__cta-row .button--primary{
+  font-weight: 750;
+  letter-spacing: -0.01em;
+}
+
+.hero__cta-row .button--secondary{
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.92em;
+}
+
+/* ---------- Desktop layout: 2 columns (title ~ half) ---------- */
+@media (min-width: 900px) {
+  .hero__inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); /* ~50/50 */
+    column-gap: 36px;
+    row-gap: 12px;
+    align-items: start;
+  }
+
+  /* Put title on the left column */
+  .hero__title {
+    grid-column: 1;
+    max-width: 24ch;
+    font-size: clamp(2.6rem, 3.6vw, 3.4rem);
+  }
+
+  /* Put the supporting content on the right column */
+  .hero__subhead,
+  .hero__lead,
+  .hero__note,
+  .hero__cta-row {
+    grid-column: 2;
+  }
+
+  /* Editorial rule (border) above the right column content */
+  .hero__subhead{
+    padding-top: 2px;
+    border-top: 1px solid rgba(0,0,0,0.14);
+    margin-top: 4px;
+  }
+
+  /* Slightly tighter measure on desktop reads more intentional */
+  .hero__subhead,
+  .hero__lead,
+  .hero__note{
+    max-width: 50ch;
+  }
+
+  .hero__cta-row {
+    flex-direction: row; /* desktop: buttons inline */
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  /* Keep supporting text notably smaller than title on desktop */
+  .hero__subhead,
+  .hero__lead {
+    font-size: 1rem;
+  }
+
+  .hero__note {
+    font-size: 0.95rem;
+  }
+}

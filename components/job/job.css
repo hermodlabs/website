@@ -1,0 +1,208 @@
+/* ==========================================================================
+   Job page — typography-forward styles (compatible with your system)
+   Assumes .button, .button--primary, .button--secondary exist.
+   ========================================================================== */
+
+.job{
+  padding: 26px 0 34px;
+}
+
+.job__inner{
+  max-width: 92ch;
+}
+
+/* ---------- Header ---------- */
+.job__header{
+  border-top: 1px solid rgba(0,0,0,0.12);
+  padding-top: 16px;
+}
+
+.job__eyebrow{
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.job__title{
+  margin: 0.45rem 0 0;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+  max-width: 34ch;
+}
+
+.job__subhead{
+  margin: 0.85rem 0 0;
+  max-width: 78ch;
+  font-size: 1.06rem;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+  opacity: 0.86;
+  padding-left: 12px;
+  border-left: 2px solid rgba(0,0,0,0.18); /* clause feel */
+}
+
+/* ---------- Sections ---------- */
+.job__section{
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(0,0,0,0.12);
+}
+
+.job__heading{
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.job__text{
+  margin: 0.85rem 0 0;
+  font-size: 1.04rem;
+  line-height: 1.6;
+  letter-spacing: -0.005em;
+  opacity: 0.86;
+  max-width: 80ch;
+}
+
+.job__text strong{
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  opacity: 0.96;
+}
+
+/* ---------- Lists (typographic bullets) ---------- */
+.job__list{
+  margin: 0.95rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  max-width: 86ch;
+}
+
+.job__list-item{
+  margin: 0;
+  font-size: 1.03rem;
+  line-height: 1.6;
+  letter-spacing: -0.005em;
+  opacity: 0.86;
+  padding-left: 1.2em;
+  position: relative;
+}
+
+/* em dash bullets (typography only) */
+.job__list-item::before{
+  content: "—";
+  position: absolute;
+  left: 0;
+  opacity: 0.55;
+}
+
+/* bold lead-in phrases inside list items */
+.job__list-item strong{
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  opacity: 0.96;
+}
+
+/* ---------- Apply section: make it feel like a “final block” ---------- */
+.job__section--apply .job__text{
+  max-width: 70ch;
+}
+
+/* ---------- Form ---------- */
+.job__form{
+  margin-top: 0.95rem;
+  display: grid;
+  gap: 12px;
+  max-width: 70ch;
+}
+
+.job__label{
+  display: block;
+  margin: 0 0 6px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.job__input,
+.job__textarea{
+  width: 100%;
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.18);
+  background: transparent;
+  color: inherit;
+}
+
+.job__textarea::placeholder{
+  opacity: 0.55;
+}
+
+.job__input:focus-visible,
+.job__textarea:focus-visible{
+  outline: 2px solid rgba(0,0,0,0.55);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Actions */
+.job__actions{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+/* typography hierarchy consistent with other pages */
+.job__actions .button--primary{
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.job__actions .button--secondary{
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.92em;
+}
+
+/* Fineprint as a clause */
+.job__fineprint{
+  margin: 0.15rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  opacity: 0.7;
+  padding-left: 12px;
+  border-left: 2px solid rgba(0,0,0,0.18);
+  max-width: 70ch;
+}
+
+/* ---------- Desktop tweaks ---------- */
+@media (min-width: 900px){
+  .job__inner{
+    max-width: 96ch;
+  }
+
+  .job__actions{
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}

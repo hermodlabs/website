@@ -1,0 +1,243 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Home Page</title>
+    <meta
+      name="description"
+      content="HermodLabs builds a co-timing engine that proves streams are on the same clock before you subtract, compare, threshold, or interpret. Portable cancellation + diagnostics + proof-shaped certificates."
+    />
+
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+
+<body>
+<site-page>
+  <section class="job" aria-labelledby="job-title">
+    <div class="job__inner">
+      <header class="job__header">
+        <p class="job__eyebrow">Careers</p>
+        <h1 class="job__title" id="job-title">Mathematical Data Modeling Engineer (Anchor Modeling / Pipeline Semantics)</h1>
+        <p class="job__subhead">
+          Focus: anchor-modeled schemas, lineage/receipts as first-class data, and compositional semantics for pipeline contracts.
+        </p>
+      </header>
+
+      <section class="job__section" aria-labelledby="about-role-title">
+        <h2 class="job__heading" id="about-role-title">About the Role</h2>
+        <p class="job__text">
+          We’re building a data platform where trust is encoded as contracts: provenance receipts, validity gates, window
+          semantics, and traceable transformations from raw telemetry to customer-facing outputs. We want our data model
+          to match that philosophy.
+        </p>
+        <p class="job__text">
+          Anchor modeling is attractive because it’s evolution-friendly and explicit about change over time. We also want
+          to push it further: make the model as mathematically disciplined as practical—using compositional thinking to
+          reason about transformations, lineage, and invariants.
+        </p>
+        <p class="job__text">
+          This is an enabling role: you create the modeling framework, schemas, and semantic guardrails that make the
+          pipelines auditable and evolvable.
+        </p>
+      </section>
+
+      <section class="job__section" aria-labelledby="own-title">
+        <h2 class="job__heading" id="own-title">What You’ll Own</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            <strong>Anchor-modeled schema design:</strong> anchors, attributes, ties, historization strategy, schema evolution patterns for devices, runs, windows, contracts, artifacts, receipts.
+          </li>
+          <li class="job__list-item">
+            <strong>Mathematical semantics for pipelines:</strong> a compositional view of transformations that clarifies meaning and invariants at each stage.
+          </li>
+          <li class="job__list-item">
+            <strong>Lineage + provenance modeling:</strong> ensure every derived artifact traces back to raw inputs, configs, versions, and validity decisions.
+          </li>
+          <li class="job__list-item">
+            <strong>Contracts at runtime in the data model:</strong> represent validity gates, abstentions, failure labels, and acceptance tests so the system can answer “why did we trust this?” programmatically.
+          </li>
+          <li class="job__list-item">
+            <strong>Modeling support for the data team:</strong> review decisions, naming conventions, documentation, schema-change processes.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="do-title">
+        <h2 class="job__heading" id="do-title">What You’ll Do</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Design and iterate an anchor modeling blueprint for core entities (Device, Site, Run, Window, ContractCheck, CalibrationState, Artifact, Alert, Report).
+          </li>
+          <li class="job__list-item">
+            Define how transformations compose: what the “object” is at each stage (raw stream, window, spectrum, delay track, validity verdict, report) and what each transform preserves.
+          </li>
+          <li class="job__list-item">
+            Model partial outcomes cleanly (abstain/invalid windows) without breaking downstream consumers.
+          </li>
+          <li class="job__list-item">
+            Establish schema evolution patterns (historization, bitemporality/as-of queries where needed) that don’t destroy auditability.
+          </li>
+          <li class="job__list-item">
+            Produce documentation and reference diagrams so engineers and analysts can use the model consistently.
+          </li>
+          <li class="job__list-item">
+            Pair with backend/data engineers on implementation details (DB choices, constraints, migrations) without owning all ETL.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="deliverables-title">
+        <h2 class="job__heading" id="deliverables-title">Concrete Deliverables</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            An Anchor Model Spec (v1) for core operational data: devices, telemetry, runs/windows, contract checks, artifacts, audit receipts.
+          </li>
+          <li class="job__list-item">
+            A transformation semantics doc: a compositional map of pipeline stages and invariants (readable, not decorative).
+          </li>
+          <li class="job__list-item">
+            Naming + modeling conventions (anchors/attributes/ties, historization rules, version modeling).
+          </li>
+          <li class="job__list-item">
+            A schema evolution playbook: how changes are introduced, backfilled, and validated.
+          </li>
+          <li class="job__list-item">
+            Optional: a lightweight consistency rule set (constraints + automated tests) that enforces key semantics.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="req-title">
+        <h2 class="job__heading" id="req-title">Required Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Strong experience in data modeling (conceptual + logical) and schema evolution for real systems.
+          </li>
+          <li class="job__list-item">
+            Familiarity with Anchor Modeling (or similar evolvable modeling approaches) and disciplined historization.
+          </li>
+          <li class="job__list-item">
+            Comfort with mathematical formalism: reasoning about composition and invariants, and communicating them clearly.
+          </li>
+          <li class="job__list-item">
+            Ability to collaborate as an enabling specialist: you build frameworks and conventions that make teams faster.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="pref-title">
+        <h2 class="job__heading" id="pref-title">Preferred Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Working knowledge of category-theory-inspired compositional thinking for software/data (or equivalent formal framing).
+          </li>
+          <li class="job__list-item">
+            Familiarity with lineage/provenance systems and data contracts (manifests, metadata graphs, reproducibility).
+          </li>
+          <li class="job__list-item">
+            Experience modeling event/time-series systems and audit logs.
+          </li>
+          <li class="job__list-item">
+            Ability to express semantics in both human docs and machine-enforceable constraints/tests.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="success-title">
+        <h2 class="job__heading" id="success-title">How You’ll Be Measured (First 60–90 Days)</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            The team adopts a coherent anchor-modeled schema for at least one end-to-end slice (device → run → windows → contract checks → artifacts → report).
+          </li>
+          <li class="job__list-item">
+            Receipts and lineage become queryable and consistent—fewer ad hoc joins and mystery fields.
+          </li>
+          <li class="job__list-item">
+            Schema changes become safer: clear conventions, migration patterns, and validation tests.
+          </li>
+          <li class="job__list-item">
+            The pipeline is easier to reason about because transformation meaning and invariants are explicit (and partly enforced).
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="style-title">
+        <h2 class="job__heading" id="style-title">Working Style</h2>
+        <ul class="job__list">
+          <li class="job__list-item">You like models that age well: explicit history, explicit meaning, minimal ambiguity.</li>
+          <li class="job__list-item">You use math as a clarity tool, not decoration.</li>
+          <li class="job__list-item">You build conventions that make everyone else faster.</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="level-title">
+        <h2 class="job__heading" id="level-title">Title &amp; Level</h2>
+        <p class="job__text">
+          Mathematical Data Modeling Engineer (Anchor Modeling / Pipeline Semantics) (senior enabling IC; can scale to Staff),
+          partnering closely with backend and data engineering.
+        </p>
+      </section>
+
+      <section class="job__section job__section--apply" aria-labelledby="apply-title">
+        <h2 class="job__heading" id="apply-title">Apply</h2>
+        <p class="job__text">Send a short note and your resume.</p>
+
+        <form
+          class="job__form"
+          action="/careers/apply/mathematical-data-modeling-anchor"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div class="job__field">
+            <label class="job__label" for="app-name">Name</label>
+            <input class="job__input" id="app-name" name="name" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-email">Email</label>
+            <input class="job__input" id="app-email" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-message">Message</label>
+            <textarea
+              class="job__textarea"
+              id="app-message"
+              name="message"
+              rows="7"
+              placeholder="A few sentences about your background and why this role fits."
+              required
+            ></textarea>
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-resume">Resume</label>
+            <input class="job__input" id="app-resume" name="resume" type="file" accept=".pdf,.doc,.docx" required />
+          </div>
+
+          <div class="job__actions">
+            <button class="button button--primary" type="submit">Submit</button>
+            <a class="button button--secondary" href="/careers">Back to roles</a>
+          </div>
+
+          <p class="job__fineprint">We only use this to respond to your application. No spam.</p>
+        </form>
+      </section>
+    </div>
+  </section>
+</site-page>
+
+
+  <script type="module" src="/components/site_page/site_page.js"></script>
+  <script type="module" src="/components/site_header/site_header.js"></script>
+  <script type="module" src="/components/site_footer/site_footer.js"></script>
+
+  <script type="module" src="/components/site_hero/site_hero.js"></script>
+  <script type="module" src="/components/social_proof/social_proof.js"></script>
+  <script type="module" src="/components/site_about/site_about.js"></script>
+  <script type="module" src="/components/event_invite/event_invite.js"></script>
+</body>
+</html>

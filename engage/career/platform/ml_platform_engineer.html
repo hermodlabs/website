@@ -1,0 +1,238 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Home Page</title>
+    <meta
+      name="description"
+      content="HermodLabs builds a co-timing engine that proves streams are on the same clock before you subtract, compare, threshold, or interpret. Portable cancellation + diagnostics + proof-shaped certificates."
+    />
+
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+
+<body>
+<site-page>
+  <section class="job" aria-labelledby="job-title">
+    <div class="job__inner">
+      <header class="job__header">
+        <p class="job__eyebrow">Careers</p>
+        <h1 class="job__title" id="job-title">ML Platform / MLOps Engineer (Receipts + Model Governance)</h1>
+        <p class="job__subhead">
+          Focus: reproducible ML pipelines, dataset/model lineage, staged releases, monitoring, and “receipts” for every prediction.
+        </p>
+      </header>
+
+      <section class="job__section" aria-labelledby="about-role-title">
+        <h2 class="job__heading" id="about-role-title">About the Role</h2>
+        <p class="job__text">
+          Our platform is built on a hard rule: don’t learn on lies. We co-time streams, gate windows for validity, cancel
+          nuisances, and only then let ML learn patterns in the residual. ML is not a standalone sandbox—it’s part of a
+          contract-driven system that must be auditable end-to-end.
+        </p>
+        <p class="job__text">
+          The ML Platform / MLOps Engineer makes this real by building the infrastructure that turns ML into a reliable
+          product: reproducible pipelines, strict lineage, model versioning, safe deployments, and monitoring that tells
+          us when a model should abstain, retrain, or be rolled back.
+        </p>
+      </section>
+
+      <section class="job__section" aria-labelledby="own-title">
+        <h2 class="job__heading" id="own-title">What You’ll Own</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            <strong>Reproducible ML pipelines:</strong> deterministic training + evaluation workflows that can be rerun from a receipt.
+          </li>
+          <li class="job__list-item">
+            <strong>Dataset lineage + artifacts:</strong> dataset versioning/hashing, feature snapshots, artifact storage tying models to exact inputs.
+          </li>
+          <li class="job__list-item">
+            <strong>Model registry + release process:</strong> versioning, promotion (dev → stage → prod), canary/rollback, “what model is serving where?”
+          </li>
+          <li class="job__list-item">
+            <strong>Inference plumbing:</strong> batch + near-real-time scoring, attaching receipts (model version, data version, validity gates) to predictions.
+          </li>
+          <li class="job__list-item">
+            <strong>ML observability:</strong> monitoring for data drift, model drift, performance decay, calibration degradation, validity-uptime regressions.
+          </li>
+          <li class="job__list-item">
+            <strong>Governance guardrails:</strong> enforce “train only on valid windows,” require evaluation receipts, block un-audited models from production.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="do-title">
+        <h2 class="job__heading" id="do-title">What You’ll Do</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Build a standard ML workflow: residual datasets → validity filters/weights → train + evaluate → package → register + deploy → monitor + retrain/rollback.
+          </li>
+          <li class="job__list-item">
+            Implement receipt generation for ML: dataset snapshot hashes, preprocessing code version, hyperparameters, seeds, gate definitions, eval suite version.
+          </li>
+          <li class="job__list-item">
+            Create CI/CD for ML: automated backtests, metric gates, reproducibility checks, scheduled retraining jobs (when appropriate).
+          </li>
+          <li class="job__list-item">
+            Build drift + health monitoring: feature drift per site/zone, validity uptime changes, calibration/alert-quality proxies, confidence calibration checks.
+          </li>
+          <li class="job__list-item">
+            Support portal integration: prediction APIs, model metadata endpoints (“why trust this?”), explanations + evidence artifacts.
+          </li>
+          <li class="job__list-item">
+            Work with scientific ML and backend/data teams to keep schemas evolution-safe and pipelines robust under change.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="deliverables-title">
+        <h2 class="job__heading" id="deliverables-title">Concrete Deliverables</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            A working ML pipeline skeleton: one workflow from dataset → model → evaluation report → registered artifact.
+          </li>
+          <li class="job__list-item">
+            A model registry + promotion flow with staged rollouts and rollback support.
+          </li>
+          <li class="job__list-item">
+            An inference scorer/service that writes predictions + receipts to the backend store.
+          </li>
+          <li class="job__list-item">
+            A monitoring dashboard: data drift, model drift, calibration health, retraining triggers, validity-uptime regressions.
+          </li>
+          <li class="job__list-item">
+            A policy gate that enforces: no training/inference without validity metadata, no deploy without evaluation receipt.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="req-title">
+        <h2 class="job__heading" id="req-title">Required Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Strong experience in MLOps / ML platform engineering: training pipelines, model packaging, deployment, monitoring.
+          </li>
+          <li class="job__list-item">
+            Experience with experiment tracking and artifact management (MLflow, W&amp;B, SageMaker/Vertex, or self-hosted equivalents).
+          </li>
+          <li class="job__list-item">
+            Solid backend/data engineering skills: APIs, queues, storage patterns, schema evolution, observability.
+          </li>
+          <li class="job__list-item">
+            Comfort with cloud infrastructure and CI/CD: containers, orchestration, secrets management, reliable automation.
+          </li>
+          <li class="job__list-item">
+            Ability to reason about reproducibility and leakage risks in time-series ML.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="pref-title">
+        <h2 class="job__heading" id="pref-title">Preferred Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">Experience with time-series ML in production (drift is the default state).</li>
+          <li class="job__list-item">Familiarity with governed ML: model cards, evaluation gates, audit trails, compliance-friendly logs.</li>
+          <li class="job__list-item">Experience with multi-tenant SaaS constraints and cost control (per-customer models vs global models).</li>
+          <li class="job__list-item">Comfort with probabilistic outputs and calibration monitoring.</li>
+          <li class="job__list-item">DSP/measurement intuition helpful for validity uptime and abstention semantics (not required).</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="success-title">
+        <h2 class="job__heading" id="success-title">How You’ll Be Measured (First 60–90 Days)</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            A training run is fully reproducible from a receipt (another engineer can rerun and get the same artifact).
+          </li>
+          <li class="job__list-item">
+            The first pilot ML feature can be deployed with versioned artifacts, attached prediction receipts, rollback capability, and monitoring.
+          </li>
+          <li class="job__list-item">
+            Drift/health dashboards exist and catch at least one meaningful issue (data shift, validity collapse, calibration drift).
+          </li>
+          <li class="job__list-item">
+            ML releases become safer and faster because pipeline gates prevent silent regressions.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="style-title">
+        <h2 class="job__heading" id="style-title">Working Style</h2>
+        <ul class="job__list">
+          <li class="job__list-item">You treat reproducibility as a product feature.</li>
+          <li class="job__list-item">You prefer boring, deterministic pipelines over clever notebooks.</li>
+          <li class="job__list-item">You build guardrails that let the team move fast without breaking trust.</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="level-title">
+        <h2 class="job__heading" id="level-title">Title &amp; Level</h2>
+        <p class="job__text">
+          ML Platform / MLOps Engineer (Receipts + Model Governance) (senior IC; can scale to Staff owning the ML platform architecture),
+          partnering with Scientific ML, backend/data, validation, and product/UI.
+        </p>
+      </section>
+
+      <section class="job__section job__section--apply" aria-labelledby="apply-title">
+        <h2 class="job__heading" id="apply-title">Apply</h2>
+        <p class="job__text">Send a short note and your resume.</p>
+
+        <form
+          class="job__form"
+          action="/careers/apply/ml-platform-mlops-receipts"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div class="job__field">
+            <label class="job__label" for="app-name">Name</label>
+            <input class="job__input" id="app-name" name="name" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-email">Email</label>
+            <input class="job__input" id="app-email" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-message">Message</label>
+            <textarea
+              class="job__textarea"
+              id="app-message"
+              name="message"
+              rows="7"
+              placeholder="A few sentences about your background and why this role fits."
+              required
+            ></textarea>
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-resume">Resume</label>
+            <input class="job__input" id="app-resume" name="resume" type="file" accept=".pdf,.doc,.docx" required />
+          </div>
+
+          <div class="job__actions">
+            <button class="button button--primary" type="submit">Submit</button>
+            <a class="button button--secondary" href="/careers">Back to roles</a>
+          </div>
+
+          <p class="job__fineprint">We only use this to respond to your application. No spam.</p>
+        </form>
+      </section>
+    </div>
+  </section>
+</site-page>
+
+
+  <script type="module" src="/components/site_page/site_page.js"></script>
+  <script type="module" src="/components/site_header/site_header.js"></script>
+  <script type="module" src="/components/site_footer/site_footer.js"></script>
+
+  <script type="module" src="/components/site_hero/site_hero.js"></script>
+  <script type="module" src="/components/social_proof/social_proof.js"></script>
+  <script type="module" src="/components/site_about/site_about.js"></script>
+  <script type="module" src="/components/event_invite/event_invite.js"></script>
+</body>
+</html>

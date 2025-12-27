@@ -1,0 +1,238 @@
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Home Page</title>
+    <meta
+      name="description"
+      content="HermodLabs builds a co-timing engine that proves streams are on the same clock before you subtract, compare, threshold, or interpret. Portable cancellation + diagnostics + proof-shaped certificates."
+    />
+
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+
+<body>
+<site-page>
+  <section class="job" aria-labelledby="job-title">
+    <div class="job__inner">
+      <header class="job__header">
+        <p class="job__eyebrow">Careers</p>
+        <h1 class="job__title" id="job-title">Sensor / Instrumentation Engineer</h1>
+        <p class="job__subhead">
+          Focus: humidity/temperature/airflow sensor placement, calibration routines, metrology, and field validation.
+        </p>
+      </header>
+
+      <section class="job__section" aria-labelledby="about-role-title">
+        <h2 class="job__heading" id="about-role-title">About the Role</h2>
+        <p class="job__text">
+          We’re building instruments that treat the air in a room (and across facilities like data halls) as a measurable
+          field. That only works if sensors are placed intelligently, calibrated rigorously, and tied to a metrology story
+          that survives real deployments: airflow, stratification, thermal gradients, condensation risk, duct effects, and
+          “the room is lying to you” edge cases.
+        </p>
+        <p class="job__text">
+          This role owns the bridge between physical reality and the data products: where sensors go, what they mean, how
+          they drift, and how we prove it.
+        </p>
+      </section>
+
+      <section class="job__section" aria-labelledby="do-title">
+        <h2 class="job__heading" id="do-title">What You’ll Do</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            <strong>Sensor placement &amp; field mapping design:</strong> define placement strategies to resolve gradients
+            (not just averages), including rack-level and hot/cold aisle contexts.
+          </li>
+          <li class="job__list-item">
+            <strong>Instrumentation plans for deployments:</strong> create practical install plans (mounting, shielding,
+            cable routing, cadence, service access) that keep measurements stable and repeatable.
+          </li>
+          <li class="job__list-item">
+            <strong>Calibration routines &amp; intervals:</strong> design factory + field calibration procedures, intervals,
+            acceptance criteria; handle drift, hysteresis, and aging.
+          </li>
+          <li class="job__list-item">
+            <strong>Metrology &amp; traceability:</strong> establish reference standards, uncertainty budgets, and traceable
+            methods; define what “accuracy” means for gradient sensing vs point sensing.
+          </li>
+          <li class="job__list-item">
+            <strong>Environmental edge cases:</strong> account for condensation, wet-bulb effects, turbulence, thermal lag,
+            sensor self-heating, enclosure and placement-induced bias.
+          </li>
+          <li class="job__list-item">
+            <strong>Validation experiments:</strong> run controlled studies (step changes, spatial scans, fan-speed sweeps)
+            to verify inferred gradients match reality.
+          </li>
+          <li class="job__list-item">
+            <strong>Data quality flags:</strong> define QC signals and rules (stuck sensors, response-time anomalies,
+            cross-sensor consistency checks, out-of-range behavior).
+          </li>
+          <li class="job__list-item">
+            <strong>Collaboration with systems/algorithms:</strong> provide constraints and calibration truth needed for
+            co-timing, cancellation, and window validity gating.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="deliverables-title">
+        <h2 class="job__heading" id="deliverables-title">Concrete Deliverables</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            A sensor placement playbook (by environment type): cigar room, small mechanical room, data hall, containment
+            edges, return-air paths—what to place where and why.
+          </li>
+          <li class="job__list-item">
+            A calibration protocol suite: field kit procedures, required references, step-by-step scripts, pass/fail
+            thresholds, and calibration receipts.
+          </li>
+          <li class="job__list-item">
+            An uncertainty budget for key measurements (RH, temperature, dew point, airflow proxies) and how uncertainty
+            propagates into gradient inference.
+          </li>
+          <li class="job__list-item">
+            A validation report framework: test plans + expected signatures + red flags that prove installations work.
+          </li>
+          <li class="job__list-item">
+            A QC/health rule set that the pipeline can enforce automatically.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="req-title">
+        <h2 class="job__heading" id="req-title">Required Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Hands-on experience with environmental sensing (humidity/temperature and ideally airflow), instrumentation,
+            and field deployments.
+          </li>
+          <li class="job__list-item">
+            Strong understanding of calibration and metrology: uncertainty, drift, traceability, reference standards, and
+            documentation.
+          </li>
+          <li class="job__list-item">
+            Ability to design experiments that separate sensor artifacts from real environmental variation.
+          </li>
+          <li class="job__list-item">
+            Comfort working with data (basic analysis, QC metrics) and communicating physical interpretations to software teams.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="pref-title">
+        <h2 class="job__heading" id="pref-title">Preferred Qualifications</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            Experience in data centers, HVAC instrumentation, building management systems (BMS), or industrial monitoring environments.
+          </li>
+          <li class="job__list-item">
+            Familiarity with psychrometrics (dew point, wet bulb, enthalpy) and how airflow patterns shape gradients.
+          </li>
+          <li class="job__list-item">
+            Experience with sensor technologies: capacitive RH, RTDs/thermistors, ultrasonic or thermal anemometry (or practical airflow proxies).
+          </li>
+          <li class="job__list-item">
+            Experience designing robust field hardware: enclosures, filters, fixtures, contamination mitigation.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="success-title">
+        <h2 class="job__heading" id="success-title">How You’ll Be Measured (First 60–90 Days)</h2>
+        <ul class="job__list">
+          <li class="job__list-item">
+            You produce a clear placement + calibration standard that operators can follow without improvising.
+          </li>
+          <li class="job__list-item">
+            You run at least one validation study showing gradient-sensing behavior is real, repeatable, and bounded by a quantified uncertainty story.
+          </li>
+          <li class="job__list-item">
+            You define QC rules that reduce bad deployments and catch drift early.
+          </li>
+          <li class="job__list-item">
+            You reduce ambiguity: fewer “is this real?” debates because the metrology is explicit.
+          </li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="style-title">
+        <h2 class="job__heading" id="style-title">Working Style</h2>
+        <ul class="job__list">
+          <li class="job__list-item">You don’t accept “RH = 52%” without asking: where, how mounted, how calibrated, and what the airflow was doing.</li>
+          <li class="job__list-item">You like procedures that are rigorous but not fragile—field-tech proof.</li>
+          <li class="job__list-item">You think in error bars, not just readings.</li>
+        </ul>
+      </section>
+
+      <section class="job__section" aria-labelledby="level-title">
+        <h2 class="job__heading" id="level-title">Title &amp; Level</h2>
+        <p class="job__text">
+          Sensor / Instrumentation Engineer (mid-to-senior; can scale to Staff with ownership of standards and validation),
+          partnering with systems, firmware, and algorithm teams.
+        </p>
+      </section>
+
+      <section class="job__section job__section--apply" aria-labelledby="apply-title">
+        <h2 class="job__heading" id="apply-title">Apply</h2>
+        <p class="job__text">Send a short note and your resume.</p>
+
+        <form
+          class="job__form"
+          action="/careers/apply/sensor-instrumentation-engineer"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div class="job__field">
+            <label class="job__label" for="app-name">Name</label>
+            <input class="job__input" id="app-name" name="name" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-email">Email</label>
+            <input class="job__input" id="app-email" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-message">Message</label>
+            <textarea
+              class="job__textarea"
+              id="app-message"
+              name="message"
+              rows="7"
+              placeholder="A few sentences about your background and why this role fits."
+              required
+            ></textarea>
+          </div>
+
+          <div class="job__field">
+            <label class="job__label" for="app-resume">Resume</label>
+            <input class="job__input" id="app-resume" name="resume" type="file" accept=".pdf,.doc,.docx" required />
+          </div>
+
+          <div class="job__actions">
+            <button class="button button--primary" type="submit">Submit</button>
+            <a class="button button--secondary" href="/careers">Back to roles</a>
+          </div>
+
+          <p class="job__fineprint">We only use this to respond to your application. No spam.</p>
+        </form>
+      </section>
+    </div>
+  </section>
+</site-page>
+
+
+  <script type="module" src="/components/site_page/site_page.js"></script>
+  <script type="module" src="/components/site_header/site_header.js"></script>
+  <script type="module" src="/components/site_footer/site_footer.js"></script>
+
+  <script type="module" src="/components/site_hero/site_hero.js"></script>
+  <script type="module" src="/components/social_proof/social_proof.js"></script>
+  <script type="module" src="/components/site_about/site_about.js"></script>
+  <script type="module" src="/components/event_invite/event_invite.js"></script>
+</body>
+</html>
