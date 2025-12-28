@@ -92,9 +92,11 @@ class SiteFooter extends HTMLElement {
       <a class="site-footer__contact-link" href="mailto:contact@hermodlabs.com">contact@hermodlabs.com</a>
     </div>
 
+    <!--
     <div class="site-footer__contact-item">
       <a class="site-footer__contact-link" href="tel:+13102275510">310.227.5510</a>
     </div>
+    -->
 
     <div class="site-footer__copyright">
       © <span class="site-footer__year"></span> HermodLabs
