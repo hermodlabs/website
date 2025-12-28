@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Pilot: The Cigar District</title>
+    <meta
+      name="description"
+      content="Pilot at The Cigar District: building a 3D humidity gradient modeler to reveal pockets, drift, and control feedback so storage and placement decisions stay optimal."
+    />
+
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+
+  <body>
+    <site-page>
+      <main class="blogpost">
+        <header class="blogpost__hero">
+          <p class="blogpost__eyebrow">Pilot</p>
+
+          <h1 class="blogpost__title">The Cigar District: 3D Humidity Gradient Modeler</h1>
+
+          <p class="blogpost__dek">
+            The room is not one number. We are mapping the humidity field so placement decisions stay stable as
+            conditions drift.
+          </p>
+
+          <div class="blogpost__meta">
+            <span>HermodLabs</span>
+            <span aria-hidden="true">•</span>
+            <time datetime="2025-12-27">December 27, 2025</time>
+          </div>
+
+          <div class="blogpost__actions">
+            <a class="btn ghost" href="/explore/blog">Back to Blog</a>
+          </div>
+        </header>
+
+        <article class="blogpost__content">
+          <section class="blogpost__section" aria-labelledby="s-1">
+            <h2 id="s-1">What was happening</h2>
+            <p>
+              When a room is truly uniform, adding sensors helps. But real cigar rooms are not uniform. They have
+              pockets, boundaries, airflow paths, and slow drift. That is how you get more charts without getting more
+              truth.
+            </p>
+
+            <ul class="blogpost__list">
+              <li>Two sensors disagree and nobody knows which one to trust.</li>
+              <li>The average looks fine while a local pocket quietly gets worse.</li>
+              <li>A fix improves one area and degrades another.</li>
+              <li>The dashboard stays calm until the room proves otherwise.</li>
+            </ul>
+          </section>
+
+          <section class="blogpost__section" aria-labelledby="s-2">
+            <h2 id="s-2">Why it is hard</h2>
+            <p>
+              Three realities collide in every serious room: it is spatial (pockets), temporal (drift), and interactive
+              (controls push back). A single summary number cannot represent all three at once.
+            </p>
+
+            <div class="blogpost__grid">
+              <div class="blogpost__card">
+                <h3 class="blogpost__card-title">Local pockets</h3>
+                <p class="blogpost__card-text">What matters is often the worst pocket, not the average.</p>
+              </div>
+              <div class="blogpost__card">
+                <h3 class="blogpost__card-title">Time drift</h3>
+                <p class="blogpost__card-text">Drift is smooth, so it becomes normal before it is noticed.</p>
+              </div>
+              <div class="blogpost__card">
+                <h3 class="blogpost__card-title">Control feedback</h3>
+                <p class="blogpost__card-text">Interventions reshape the field and can create oscillations.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="blogpost__section" aria-labelledby="s-3">
+            <h2 id="s-3">What we are building</h2>
+            <p>
+              We are building a 3D humidity gradient modeler for The Cigar District. Instead of treating the room as one
+              number, it produces a field map: where conditions are stable, where pockets form, and how the room changes
+              under normal cycles.
+            </p>
+          </section>
+
+          <section class="blogpost__section" aria-labelledby="s-4">
+            <h2 id="s-4">What it enables for the room</h2>
+
+            <div class="blogpost__grid">
+              <div class="blogpost__card">
+                <h3 class="blogpost__card-title">Placement that makes sense</h3>
+                <p class="blogpost__card-text">Store and rotate cigars by stable zones, not by a room average.</p>
+              </div>
+
+              <div class="blogpost__card">
+                <h3 class="blogpost__card-title">Earlier detection</h3>
+                <p class="blogpost__card-text">Spot pockets early, before they persist long enough to matter.</p>
+              </div>
+
+              <div class="blogpost__card">
+                <h3 class="blogpost__card-title">Fewer probe arguments</h3>
+                <p class="blogpost__card-text">
+                  Disagreement becomes explainable: different zones, not &quot;bad sensors.&quot;
+                </p>
+              </div>
+
+              <div class="blogpost__card">
+                <h3 class="blogpost__card-title">Targeted fixes</h3>
+                <p class="blogpost__card-text">Act on the zone that is drifting instead of swinging the whole room.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="blogpost__section" aria-labelledby="s-5">
+            <h2 id="s-5">How we know it is working</h2>
+            <p>
+              We judge success by operator-visible signals: a map that stays interpretable, disagreement that becomes
+              attributable, and changes that can be verified in the zones that mattered.
+            </p>
+
+            <div class="blogpost__table" role="table" aria-label="Pilot acceptance signals">
+              <div class="blogpost__row blogpost__row--head" role="row">
+                <div class="blogpost__cell" role="columnheader">Outcome</div>
+                <div class="blogpost__cell" role="columnheader">What you can observe</div>
+              </div>
+
+              <div class="blogpost__row" role="row">
+                <div class="blogpost__cell" role="cell">Stable vs. unstable zones</div>
+                <div class="blogpost__cell" role="cell">The map shows where the room is predictably stable.</div>
+              </div>
+
+              <div class="blogpost__row" role="row">
+                <div class="blogpost__cell" role="cell">Less disagreement drama</div>
+                <div class="blogpost__cell" role="cell">
+                  When sensors disagree, the cause is explainable (zones or transitions).
+                </div>
+              </div>
+
+              <div class="blogpost__row" role="row">
+                <div class="blogpost__cell" role="cell">Fewer over-corrections</div>
+                <div class="blogpost__cell" role="cell">Fixes target zones and stop moving the problem around.</div>
+              </div>
+
+              <div class="blogpost__row" role="row">
+                <div class="blogpost__cell" role="cell">Faster diagnosis</div>
+                <div class="blogpost__cell" role="cell">
+                  Issues are located as &quot;where/when&quot; instead of &quot;which probe.&quot;
+                </div>
+              </div>
+
+              <div class="blogpost__row" role="row">
+                <div class="blogpost__cell" role="cell">Verifiable actions</div>
+                <div class="blogpost__cell" role="cell">
+                  Interventions have a clear before/after effect in the right place.
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="blogpost__section blogpost__section--updates" aria-labelledby="s-6">
+            <h2 id="s-6">Updates</h2>
+            <p>
+              Stay tuned for more updates and results as we continue the pilot at The Cigar District. We will share what
+              we learn about stable zones, recurring pockets, and which changes reliably move the field.
+            </p>
+          </section>
+        </article>
+      </main>
+
+    </site-page>
+
+    <script type="module" src="/components/site_page/site_page.js"></script>
+    <script type="module" src="/components/site_header/site_header.js"></script>
+    <script type="module" src="/components/site_footer/site_footer.js"></script>
+
+    <script type="module" src="/components/site_hero/site_hero.js"></script>
+    <script type="module" src="/components/social_proof/social_proof.js"></script>
+    <script type="module" src="/components/site_about/site_about.js"></script>
+    <script type="module" src="/components/event_invite/event_invite.js"></script>
+  </body>
+</html>

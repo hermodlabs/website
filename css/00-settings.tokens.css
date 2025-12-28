@@ -31,4 +31,32 @@
     /* Single main font */
     --font-sans: Helvetica, Arial, sans-serif;
   }
+
+  .blogpost {
+    /* Fallback tokens (won't fight your existing system) */
+    --bp-ink: var(--ink, #0f172a);
+    --bp-muted: var(--muted, #475569);
+    --bp-soft: var(--muted-2, #64748b);
+    --bp-border: var(--border, rgba(15, 23, 42, 0.14));
+    --bp-surface: var(--surface, #ffffff);
+    --bp-surface-2: var(--surface-2, rgba(15, 23, 42, 0.03));
+    --bp-radius: var(--radius, 14px);
+
+    color: var(--bp-ink);
+    padding: clamp(1.25rem, 3vw, 2.5rem) 0;
+  }
+
+  .exclusion {
+    --ex-ink: var(--ink, #0f172a);
+    --ex-muted: var(--muted, #475569);
+    --ex-soft: var(--muted-2, #64748b);
+    --ex-border: var(--border, rgba(15, 23, 42, 0.14));
+    --ex-surface: var(--surface, #ffffff);
+    --ex-surface-2: var(--surface-2, rgba(15, 23, 42, 0.03));
+    --ex-radius: var(--radius, 16px);
+
+    color: var(--ex-ink);
+    padding: clamp(1.25rem, 3vw, 2.75rem) 0;
+  }
+  
 }

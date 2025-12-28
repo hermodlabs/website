@@ -19,7 +19,7 @@ class SocialProof extends HTMLElement {
             so cigar placement and storage decisions stay optimal as the room drifts.
           </p>
 
-          <a class="link link--primary social-proof__link" href="/blog/placeholder-pilot-cigar-district">
+          <a class="link link--primary social-proof__link" href="/explore/blog/content/2025_12_27_cigar_district">
             Read about the pilot
           </a>
         </div>
