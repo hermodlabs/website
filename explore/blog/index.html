@@ -14,45 +14,70 @@
     <script type="module" src="../../bootstrap.js"></script>
   </head>
 
-<body>
-
+  <body>
     <site-page>
-    <section class="blog" aria-labelledby="blog-title">
+      <section class="blog" aria-labelledby="blog-title">
         <div class="blog__inner">
-        <header class="blog__header">
+          <header class="blog__header">
             <h1 class="blog__title" id="blog-title">Blog</h1>
             <p class="blog__subhead">
-            Notes from the benches: what we're building, what we're measuring, and what drift teaches the hard way.
+              Notes from the benches: what we're building, what we're measuring, and what drift teaches the hard way.
             </p>
-        </header>
+          </header>
 
-        <div class="blog__list" role="list">
-            <article class="blog-card" role="listitem" aria-labelledby="cigar-district-title">
-            <div class="blog-card__meta">
-                <span class="blog-card__tag">Pilot</span>
-                <span class="blog-card__date">Coming soon</span>
-            </div>
+          <div class="blog__list" role="list">
+            <!-- Culture post -->
+            <article class="blog-card" role="listitem" aria-labelledby="culture-async-title">
+              <div class="blog-card__meta">
+                <span class="blog-card__tag">Culture</span>
+                <span class="blog-card__date">December 29, 2025</span>
+              </div>
 
-            <h2 class="blog-card__title" id="cigar-district-title">
-                <a class="blog-card__link" href="/explore/blog/content/2025_12_27_cigar_district">
-                Pilot: The Cigar District
+              <h2 class="blog-card__title" id="culture-async-title">
+                <a class="blog-card__link" href="/explore/blog/content/2025_12_29_async_by_default">
+                  HermodLabs Culture Note: We Optimize Communication Like a System
                 </a>
-            </h2>
+              </h2>
 
-            <p class="blog-card__excerpt">
+              <p class="blog-card__excerpt">
+                Async-first by default. Written receipts. Fewer interrupts. We treat communication like a system cost
+                and design our workflow to scale.
+              </p>
+
+              <div class="blog-card__actions">
+                <a class="link link--primary blog-card__read-more" href="/explore/blog/content/2025_12_29_async_by_default">
+                  Read the article
+                </a>
+              </div>
+            </article>
+
+            <!-- Pilot post -->
+            <article class="blog-card" role="listitem" aria-labelledby="cigar-district-title">
+              <div class="blog-card__meta">
+                <span class="blog-card__tag">Pilot</span>
+                <span class="blog-card__date">December 27, 2025</span>
+              </div>
+
+              <h2 class="blog-card__title" id="cigar-district-title">
+                <a class="blog-card__link" href="/explore/blog/content/2025_12_27_cigar_district">
+                  Pilot: The Cigar District
+                </a>
+              </h2>
+
+              <p class="blog-card__excerpt">
                 We’re building a 3D humidity gradient modeler to map microclimates in real time, so cigar placement and
                 storage decisions stay optimal as the room drifts.
-            </p>
+              </p>
 
-            <div class="blog-card__actions">
+              <div class="blog-card__actions">
                 <a class="link link--primary blog-card__read-more" href="/explore/blog/content/2025_12_27_cigar_district">
-                Read the article
+                  Read the article
                 </a>
-            </div>
+              </div>
             </article>
+          </div>
         </div>
-        </div>
-    </section>
+      </section>
     </site-page>
-</body>
+  </body>
 </html>

@@ -31,7 +31,7 @@ class SiteHero extends HTMLElement {
 
           <div class="hero__cta-row">
             <a class="button button--primary" href="/explore/exclusion">Apply for Industry Exclusion</a>
-            <a class="button button--secondary" href="/asset/file/operator_playbook_v_0_1.pdf">Read the Whitepaper</a>
+            <a class="button button--secondary" href="/asset/file/operator_playbook_v_1_0_0.pdf">Read the Whitepaper</a>
           </div>
         </div>
       </section>
