@@ -17,14 +17,14 @@ class EventInvite extends HTMLElement {
     <p class="event-invite__subhead">
       <span class="event-invite__line">Product walkthroughs, technical deep dives, and Q&amp;A.</span>
       <span class="event-invite__line"><span class="event-invite__em">Bring your messy real-world signals.</span></span>
-      <span class="event-invite__line">We’ll show how we verify alignment before anyone trusts the numbers.</span>
+      <span class="event-invite__line">We'll show how we verify alignment before anyone trusts the numbers.</span>
     </p>
 
     <div class="event-invite__actions">
-      <a class="button button--primary event-invite__button" href="/events">
+      <a class="button button--primary event-invite__button" href="/explore/events">
         View Upcoming Events
       </a>
-      <a class="button button--secondary event-invite__button" href="/events#rsvp">
+      <a class="button button--secondary event-invite__button" href="/explore/events#rsvp">
         RSVP / Get Notified
       </a>
     </div>
