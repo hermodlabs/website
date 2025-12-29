@@ -7,9 +7,9 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-V2474V50XP');
     </script>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
@@ -19,106 +19,185 @@
       content="HermodLabs builds a co-timing engine that proves streams are on the same clock before you subtract, compare, threshold, or interpret. Portable cancellation + diagnostics + proof-shaped certificates."
     />
 
-
     <link rel="stylesheet" href="" id="main-css" />
     <script type="module" src="../../bootstrap.js"></script>
   </head>
 
-<body>
-<site-page>
-  <section class="events" aria-labelledby="events-title">
-    <div class="events__inner">
-      <header class="events__header">
-        <h1 class="events__title" id="events-title">Events</h1>
-        <p class="events__subhead">
-          Product walkthroughs, technical deep dives, and Q&A. Bring your messy real-world signals—we’ll show how we
-          verify alignment before anyone trusts the numbers.
-        </p>
-      </header>
+  <body>
+    <site-page>
+      <section class="events" aria-labelledby="events-title">
+        <div class="events__inner">
+          <header class="events__header">
+            <h1 class="events__title" id="events-title">Events</h1>
+            <p class="events__subhead">
+              Product walkthroughs, technical deep dives, and Q&A. Bring your messy real-world signals—we’ll show how we
+              verify alignment before anyone trusts the numbers.
+            </p>
+          </header>
 
-      <section class="events__section" aria-labelledby="upcoming-title">
-        <h2 class="events__heading" id="upcoming-title">Upcoming Events</h2>
+          <section class="events__section" aria-labelledby="upcoming-title">
+            <h2 class="events__heading" id="upcoming-title">Upcoming Events</h2>
 
-        <div class="events__empty">
-          <p class="events__text">
-            No events are posted yet. If you want the next invite, RSVP below and we’ll email you when dates go live.
-          </p>
+            <div class="events__empty">
+              <p class="events__text">
+                No events are posted yet. If you want the next invite, RSVP below and we’ll email you when dates go live.
+              </p>
+            </div>
+          </section>
+
+          <section class="events__section events__section--rsvp" id="rsvp" aria-labelledby="rsvp-title">
+            <h2 class="events__heading" id="rsvp-title">RSVP / Get Notified</h2>
+
+            <p class="events__text">
+              We host small sessions. You’ll get a short email when the next one is scheduled.
+            </p>
+
+            <!-- CHANGED: add id; action can be blank since JS submits -->
+            <form class="events__form" id="events-rsvp-form" action="" method="post">
+              <!-- OPTIONAL (recommended): honeypot spam trap -->
+              <input type="hidden" name="_gotcha" id="rsvp-gotcha" style="display:none !important" />
+
+              <div class="events__field">
+                <label class="events__label" for="rsvp-name">Name</label>
+                <input class="events__input" id="rsvp-name" name="name" type="text" autocomplete="name" />
+              </div>
+
+              <div class="events__field">
+                <label class="events__label" for="rsvp-email">Email</label>
+                <input
+                  class="events__input"
+                  id="rsvp-email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+
+              <div class="events__field">
+                <label class="events__label" for="rsvp-interest">What do you want to see?</label>
+                <select class="events__select" id="rsvp-interest" name="interest">
+                  <option value="co-timing-engine">Co-Timing Engine (overview)</option>
+                  <option value="drift-diagnostics">Drift diagnostics (deep dive)</option>
+                  <option value="problem-clinic">Problem clinic (bring a signal)</option>
+                  <option value="humidity-microclimates">Humidity microclimates (medium-aware sensing)</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="events__field">
+                <label class="events__label" for="rsvp-notes">Notes (optional)</label>
+                <textarea
+                  class="events__textarea"
+                  id="rsvp-notes"
+                  name="notes"
+                  rows="4"
+                  placeholder="What are you measuring? What keeps drifting?"
+                ></textarea>
+              </div>
+
+              <div class="events__actions">
+                <button class="button button--primary" id="rsvp-submit" type="submit">Get Invites</button>
+                <a class="button button--secondary" href="/contact">Ask about a private demo</a>
+              </div>
+
+              <p class="events__fineprint">
+                We only use this to schedule events and respond to requests. No spam.
+              </p>
+
+              <!-- status area (optional) -->
+              <p class="events__fineprint" id="rsvp-status" aria-live="polite"></p>
+            </form>
+          </section>
+
+          <section class="events__section" aria-labelledby="format-title">
+            <h2 class="events__heading" id="format-title">What to Expect</h2>
+
+            <ul class="events__list">
+              <li class="events__list-item">
+                <strong>Product walkthrough:</strong> what “align, then cancel” looks like on real streams.
+              </li>
+              <li class="events__list-item">
+                <strong>Technical deep dive:</strong> windows, delay estimation, and why “good plots” can still lie.
+              </li>
+              <li class="events__list-item">
+                <strong>Q&amp;A:</strong> bring your scenario—audio, sensors, RF timing, automation.
+              </li>
+              <li class="events__list-item">
+                <strong>Problem clinic (optional):</strong> if you have sample data, we’ll talk through what’s measurable.
+              </li>
+            </ul>
+          </section>
         </div>
       </section>
+    </site-page>
 
-      <section class="events__section events__section--rsvp" id="rsvp" aria-labelledby="rsvp-title">
-        <h2 class="events__heading" id="rsvp-title">RSVP / Get Notified</h2>
+    <!-- CHANGED: Getform submit handler -->
+    <script>
+      (function () {
+        // TODO: replace with your real endpoint from Getform.
+        const GETFORM_ENDPOINT = "https://getform.io/f/amdjmopb";
 
-        <p class="events__text">
-          We host small sessions. You’ll get a short email when the next one is scheduled.
-        </p>
+        const form = document.getElementById("events-rsvp-form");
+        const statusEl = document.getElementById("rsvp-status");
+        const submitBtn = document.getElementById("rsvp-submit");
 
-        <form class="events__form" action="/rsvp" method="post">
-          <div class="events__field">
-            <label class="events__label" for="rsvp-name">Name</label>
-            <input class="events__input" id="rsvp-name" name="name" type="text" autocomplete="name" />
-          </div>
+        if (!form) return;
 
-          <div class="events__field">
-            <label class="events__label" for="rsvp-email">Email</label>
-            <input
-              class="events__input"
-              id="rsvp-email"
-              name="email"
-              type="email"
-              autocomplete="email"
-              required
-            />
-          </div>
+        function setStatus(msg) {
+          if (statusEl) statusEl.textContent = msg || "";
+        }
 
-          <div class="events__field">
-            <label class="events__label" for="rsvp-interest">What do you want to see?</label>
-            <select class="events__select" id="rsvp-interest" name="interest">
-              <option value="co-timing-engine">Co-Timing Engine (overview)</option>
-              <option value="drift-diagnostics">Drift diagnostics (deep dive)</option>
-              <option value="problem-clinic">Problem clinic (bring a signal)</option>
-              <option value="humidity-microclimates">Humidity microclimates (medium-aware sensing)</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
 
-          <div class="events__field">
-            <label class="events__label" for="rsvp-notes">Notes (optional)</label>
-            <textarea class="events__textarea" id="rsvp-notes" name="notes" rows="4" placeholder="What are you measuring? What keeps drifting?"></textarea>
-          </div>
+          // Honeypot: if a bot fills it, silently pretend success.
+          const gotcha = document.getElementById("rsvp-gotcha");
+          if (gotcha && gotcha.value) {
+            setStatus("Thanks — you’re on the list.");
+            form.reset();
+            return;
+          }
 
-          <div class="events__actions">
-            <button class="button button--primary" type="submit">Get Invites</button>
-            <a class="button button--secondary" href="/contact">Ask about a private demo</a>
-          </div>
+          setStatus("Sending…");
+          if (submitBtn) submitBtn.disabled = true;
 
-          <p class="events__fineprint">
-            We only use this to schedule events and respond to requests. No spam.
-          </p>
-        </form>
-      </section>
+          try {
+            const formData = new FormData(form);
 
-      <section class="events__section" aria-labelledby="format-title">
-        <h2 class="events__heading" id="format-title">What to Expect</h2>
+            // Optional: add metadata to help you filter in inbox/Getform
+            formData.append("form", "events_rsvp");
+            formData.append("page", window.location.pathname || "/events");
 
-        <ul class="events__list">
-          <li class="events__list-item">
-            <strong>Product walkthrough:</strong> what “align, then cancel” looks like on real streams.
-          </li>
-          <li class="events__list-item">
-            <strong>Technical deep dive:</strong> windows, delay estimation, and why “good plots” can still lie.
-          </li>
-          <li class="events__list-item">
-            <strong>Q&amp;A:</strong> bring your scenario—audio, sensors, RF timing, automation.
-          </li>
-          <li class="events__list-item">
-            <strong>Problem clinic (optional):</strong> if you have sample data, we’ll talk through what’s measurable.
-          </li>
-        </ul>
-      </section>
-    </div>
-  </section>
-</site-page>
+            const res = await fetch(GETFORM_ENDPOINT, {
+              method: "POST",
+              body: formData,
+              headers: { Accept: "application/json" },
+            });
 
-</body>
+            if (submitBtn) submitBtn.disabled = false;
+
+            if (res.ok) {
+              setStatus("You’re in. We’ll email you when dates go live.");
+              form.reset();
+
+              // Optional: redirect after success
+              // window.location.href = "/thank-you/";
+              return;
+            }
+
+            let details = "";
+            try { details = await res.text(); } catch (_) {}
+            console.log("Getform error:", res.status, details);
+
+            setStatus("Something went wrong. Please try again.");
+          } catch (err) {
+            if (submitBtn) submitBtn.disabled = false;
+            console.log("Submission error:", err);
+            setStatus("Network error. Please try again.");
+          }
+        });
+      })();
+    </script>
+  </body>
 </html>
