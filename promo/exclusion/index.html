@@ -120,7 +120,12 @@
               available.
             </p>
 
-            <form class="exclusion__form" action="/exclusion/apply" method="post">
+            <!-- CHANGED: add an id so JS can bind submit handler.
+                 action can be left blank since we preventDefault(). -->
+            <form class="exclusion__form" id="exclusion-apply-form" action="" method="post">
+              <!-- OPTIONAL (recommended): honeypot spam trap -->
+              <input type="hidden" name="_gotcha" id="excl-gotcha" style="display:none !important" />
+
               <div class="exclusion__field">
                 <label class="exclusion__label" for="excl-name">Name</label>
                 <input class="exclusion__input" id="excl-name" name="name" type="text" autocomplete="name" required />
@@ -174,17 +179,87 @@
               </div>
 
               <div class="exclusion__actions">
-                <button class="button button--primary" type="submit">Request Exclusion</button>
+                <button class="button button--primary" id="excl-submit" type="submit">Request Exclusion</button>
                 <a class="button button--secondary" href="/events#rsvp">Prefer a live walkthrough?</a>
               </div>
 
               <p class="exclusion__fineprint">
                 We&rsquo;ll only use this to respond to your request. No spam.
               </p>
+
+              <!-- status area (optional) -->
+              <p class="exclusion__fineprint" id="excl-status" aria-live="polite"></p>
             </form>
           </section>
         </div>
       </section>
     </site-page>
+
+    <!-- CHANGED: XHR submit handler -->
+    <script>
+      (function () {
+        // TODO: replace with your real endpoint from Getform.
+        const GETFORM_ENDPOINT = "https://getform.io/f/avrzylpa";
+
+        const form = document.getElementById("exclusion-apply-form");
+        const statusEl = document.getElementById("excl-status");
+        const submitBtn = document.getElementById("excl-submit");
+
+        if (!form) return;
+
+        function setStatus(msg) {
+          if (statusEl) statusEl.textContent = msg || "";
+        }
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Honeypot: if a bot fills it, silently pretend success.
+          const gotcha = document.getElementById("excl-gotcha");
+          if (gotcha && gotcha.value) {
+            setStatus("Thanks — we’ll be in touch.");
+            form.reset();
+            return;
+          }
+
+          setStatus("Sending…");
+          if (submitBtn) submitBtn.disabled = true;
+
+          const payload = {
+            name: document.getElementById("excl-name")?.value || "",
+            email: document.getElementById("excl-email")?.value || "",
+            company: document.getElementById("excl-company")?.value || "",
+            vertical: document.getElementById("excl-vertical")?.value || "",
+            problem: document.getElementById("excl-problem")?.value || ""
+          };
+
+          const xhr = new XMLHttpRequest();
+          xhr.open("POST", GETFORM_ENDPOINT);
+          xhr.setRequestHeader("Content-Type", "application/json");
+          xhr.setRequestHeader("Accept", "application/json");
+
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState !== 4) return;
+
+            if (submitBtn) submitBtn.disabled = false;
+
+            if (xhr.status >= 200 && xhr.status < 300) {
+              setStatus("Received. We'll reply with next steps.");
+              form.reset();
+
+              // Optional: redirect after success
+              // window.location.href = "/thank-you/";
+              return;
+            }
+
+            setStatus("Something went wrong. Please email us directly or try again.");
+            // If you want to debug:
+            // console.log("Getform error:", xhr.status, xhr.responseText);
+          };
+
+          xhr.send(JSON.stringify(payload));
+        });
+      })();
+    </script>
   </body>
 </html>

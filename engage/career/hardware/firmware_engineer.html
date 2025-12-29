@@ -171,51 +171,66 @@
         </p>
       </section>
 
-      <section class="job__section job__section--apply" aria-labelledby="apply-title">
-        <h2 class="job__heading" id="apply-title">Apply</h2>
-        <p class="job__text">Send a short note and your resume.</p>
+          <section class="job__section job__section--apply" aria-labelledby="apply-title">
+            <h2 class="job__heading" id="apply-title">Apply</h2>
+            <p class="job__text">Send a short note and your resume.</p>
 
-        <form
-          class="job__form"
-          action="/careers/apply/embedded-firmware-engineer"
-          method="post"
-          enctype="multipart/form-data"
-        >
-          <div class="job__field">
-            <label class="job__label" for="app-name">Name</label>
-            <input class="job__input" id="app-name" name="name" type="text" autocomplete="name" required />
-          </div>
+            <!-- CHANGED: give the form an id; action can remain blank since JS handles it -->
+            <form
+              class="job__form"
+              id="job-apply-form"
+              action=""
+              method="post"
+              enctype="multipart/form-data"
+            >
+              <!-- OPTIONAL (recommended): honeypot spam trap -->
+              <input type="hidden" name="_gotcha" id="app-gotcha" style="display:none !important" />
 
-          <div class="job__field">
-            <label class="job__label" for="app-email">Email</label>
-            <input class="job__input" id="app-email" name="email" type="email" autocomplete="email" required />
-          </div>
+              <div class="job__field">
+                <label class="job__label" for="app-name">Name</label>
+                <input class="job__input" id="app-name" name="name" type="text" autocomplete="name" required />
+              </div>
 
-          <div class="job__field">
-            <label class="job__label" for="app-message">Message</label>
-            <textarea
-              class="job__textarea"
-              id="app-message"
-              name="message"
-              rows="7"
-              placeholder="A few sentences about your background and why this role fits."
-              required
-            ></textarea>
-          </div>
+              <div class="job__field">
+                <label class="job__label" for="app-email">Email</label>
+                <input class="job__input" id="app-email" name="email" type="email" autocomplete="email" required />
+              </div>
 
-          <div class="job__field">
-            <label class="job__label" for="app-resume">Resume</label>
-            <input class="job__input" id="app-resume" name="resume" type="file" accept=".pdf,.doc,.docx" required />
-          </div>
+              <div class="job__field">
+                <label class="job__label" for="app-message">Message</label>
+                <textarea
+                  class="job__textarea"
+                  id="app-message"
+                  name="message"
+                  rows="7"
+                  placeholder="A few sentences about your background and why this role fits."
+                  required
+                ></textarea>
+              </div>
 
-          <div class="job__actions">
-            <button class="button button--primary" type="submit">Submit</button>
-            <a class="button button--secondary" href="/careers">Back to roles</a>
-          </div>
+              <div class="job__field">
+                <label class="job__label" for="app-resume">Resume</label>
+                <input
+                  class="job__input"
+                  id="app-resume"
+                  name="resume"
+                  type="file"
+                  accept=".pdf,.doc,.docx"
+                  required
+                />
+              </div>
 
-          <p class="job__fineprint">We only use this to respond to your application. No spam.</p>
-        </form>
-      </section>
+              <div class="job__actions">
+                <button class="button button--primary" id="app-submit" type="submit">Submit</button>
+                <a class="button button--secondary" href="/careers">Back to roles</a>
+              </div>
+
+              <p class="job__fineprint">We only use this to respond to your application. No spam.</p>
+
+              <!-- status area (optional) -->
+              <p class="job__fineprint" id="app-status" aria-live="polite"></p>
+            </form>
+          </section>
     </div>
   </section>
 </site-page>
@@ -229,5 +244,77 @@
   <script type="module" src="/components/social_proof/social_proof.js"></script>
   <script type="module" src="/components/site_about/site_about.js"></script>
   <script type="module" src="/components/event_invite/event_invite.js"></script>
+
+  <!-- CHANGED: FormData submit handler for file uploads -->
+    <script>
+      (function () {
+        // TODO: replace with your real endpoint from Getform.
+        const GETFORM_ENDPOINT = "https://getform.io/f/bejvlmpa";
+
+        const form = document.getElementById("job-apply-form");
+        const statusEl = document.getElementById("app-status");
+        const submitBtn = document.getElementById("app-submit");
+
+        if (!form) return;
+
+        function setStatus(msg) {
+          if (statusEl) statusEl.textContent = msg || "";
+        }
+
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          // Honeypot: if a bot fills it, silently pretend success.
+          const gotcha = document.getElementById("app-gotcha");
+          if (gotcha && gotcha.value) {
+            setStatus("Thanks — we’ll be in touch.");
+            form.reset();
+            return;
+          }
+
+          setStatus("Sending…");
+          if (submitBtn) submitBtn.disabled = true;
+
+          try {
+            // FormData will include text fields + the selected file.
+            const formData = new FormData(form);
+
+            // Optional: label the role in the submission for your inbox filtering
+            formData.append("role", "Algorithm Engineer (DSP / Estimation)");
+
+            const res = await fetch(GETFORM_ENDPOINT, {
+              method: "POST",
+              body: formData,
+              headers: {
+                // Do NOT set Content-Type here; the browser sets the multipart boundary.
+                Accept: "application/json",
+              },
+            });
+
+            if (submitBtn) submitBtn.disabled = false;
+
+            if (res.ok) {
+              setStatus("Received. We’ll reply by email.");
+              form.reset();
+
+              // Optional: redirect after success
+              // window.location.href = "/thank-you/";
+              return;
+            }
+
+            // Helpful error detail (doesn't expose much)
+            let details = "";
+            try { details = await res.text(); } catch (_) {}
+            console.log("Getform error:", res.status, details);
+
+            setStatus("Something went wrong. Please try again or email us directly.");
+          } catch (err) {
+            if (submitBtn) submitBtn.disabled = false;
+            console.log("Submission error:", err);
+            setStatus("Network error. Please try again.");
+          }
+        });
+      })();
+    </script>
 </body>
 </html>
