@@ -68,7 +68,7 @@ class SiteHeader extends HTMLElement {
   </nav>
 
   <div class="site-header__cta">
-    <a class="button button--primary" href="/explore/exclusion">Exclusion Contract</a>
+    <a class="button button--primary" href="/promo/exclusion">Exclusion Contract</a>
   </div>
 </header>
 
