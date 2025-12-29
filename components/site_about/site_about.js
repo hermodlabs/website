@@ -49,7 +49,7 @@ class SiteAbout extends HTMLElement {
           </p>
         </div>
 
-        <a class="link link--primary about__link" href="/co-timing-engine">
+        <a class="link link--primary about__link" href="/explore/about_us">
           Read about the co-timing engine
         </a>
       </div>
