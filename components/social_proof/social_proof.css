@@ -11,32 +11,42 @@
        .social-proof__link
    ========================================================================== */
 
-.social-proof {
-  padding: 24px 0;
+/* =========================
+   SOCIAL PROOF — integrated + tokenized (mobile-first)
+   Requires your spacing scale vars: --space-1..--space-6
+   ========================= */
+
+.social-proof{
+  /* was: 24px 0 */
+  padding: var(--space-5) 0; /* 1.5rem ~= 24px */
 }
 
-.social-proof__inner {
+.social-proof__inner{
   border-top: 1px solid rgba(0,0,0,0.12);
-  padding-top: 16px;
+  /* was: 16px */
+  padding-top: var(--space-4); /* 1rem ~= 16px */
 }
 
 /* Title stack: kicker + headline */
-.social-proof__title {
+.social-proof__title{
   margin: 0;
   line-height: 1.05;
 }
 
-.social-proof__kicker {
+/* Kicker */
+.social-proof__kicker{
   display: block;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   opacity: 0.7;
-  margin-bottom: 0.35rem;
+  /* was: 0.35rem */
+  margin-bottom: var(--space-2); /* 0.5rem (slightly cleaner on mobile) */
 }
 
-.social-proof__headline {
+/* Headline */
+.social-proof__headline{
   display: block;
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -44,8 +54,9 @@
 }
 
 /* Body copy: tighter, more editorial */
-.social-proof__text {
-  margin: 0.75rem 0 0;
+.social-proof__text{
+  /* was: 0.75rem 0 0 */
+  margin: var(--space-3) 0 0; /* 0.75rem */
   font-size: 1.02rem;
   line-height: 1.45;
   letter-spacing: -0.005em;
@@ -54,15 +65,16 @@
 }
 
 /* Emphasis: weight only (no color needed) */
-.social-proof__em {
+.social-proof__em{
   font-weight: 800;
   letter-spacing: -0.01em;
 }
 
 /* CTA link as a label */
-.social-proof__link {
+.social-proof__link{
   display: inline-block;
-  margin-top: 0.9rem;
+  /* was: 0.9rem */
+  margin-top: var(--space-4); /* 1rem (keeps it consistent with the scale) */
   font-weight: 700;
   font-size: 0.9rem;
   letter-spacing: 0.12em;
@@ -71,13 +83,36 @@
   opacity: 0.9;
 }
 
-.social-proof__link:hover {
+.social-proof__link:hover{
   text-decoration: underline;
   opacity: 1;
 }
 
-.social-proof__link:focus-visible {
+.social-proof__link:focus-visible{
   outline: 2px solid rgba(0,0,0,0.55);
   outline-offset: 3px;
   border-radius: 6px;
+}
+
+/* Desktop+: slightly more breathing room, but still same scale */
+@media (min-width: 900px){
+  .social-proof{
+    padding: var(--space-6) 0; /* 2.25rem */
+  }
+
+  .social-proof__inner{
+    padding-top: var(--space-5); /* 1.5rem */
+  }
+
+  .social-proof__kicker{
+    margin-bottom: var(--space-3); /* 0.75rem */
+  }
+
+  .social-proof__text{
+    margin-top: var(--space-4); /* 1rem */
+  }
+
+  .social-proof__link{
+    margin-top: var(--space-5); /* 1.5rem */
+  }
 }

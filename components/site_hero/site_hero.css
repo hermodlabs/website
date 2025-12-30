@@ -1,38 +1,30 @@
-.hero {
+.hero{
   padding: 28px 0;
 }
 
-.hero__inner {
+/* Grid rhythm: use a base row-gap, then do local spacing inside clusters */
+.hero__inner{
   display: grid;
-  grid-template-columns: 1fr; /* mobile: single column */
-  gap: 14px;
+  grid-template-columns: 1fr; /* mobile */
+  row-gap: var(--space-4);
+  column-gap: var(--space-6);
 }
 
-/* small label */
-.hero__eyebrow {
-  margin: 0 0 2px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-size: 0.78rem;
-  opacity: 0.7;
-}
-
-/* Title: each span on its own line */
-.hero__title {
+/* ---------- Title block ---------- */
+.hero__title{
   margin: 0;
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.05;
   font-size: clamp(2.1rem, 7vw, 3.2rem);
-  max-width: 22ch; /* keeps it from getting too wide on mobile */
+  max-width: 22ch;
+  /* Handoff spacing: title -> next cluster */
+  margin-bottom: var(--space-5);
 }
 
-.hero__title > span {
-  display: block;
-}
+.hero__title > span{ display: block; }
 
-/* --- Headline sequencing (typography-only hierarchy) --- */
+/* Headline sequencing */
 .hero__title span:nth-child(1){
   font-weight: 650;
   letter-spacing: -0.01em;
@@ -44,7 +36,7 @@
 .hero__title span:nth-child(2){
   font-weight: 900;
   letter-spacing: -0.045em;
-  text-transform: uppercase; /* remove if you prefer normal casing */
+  text-transform: uppercase;
   font-size: 1.05em;
   line-height: 0.95;
 }
@@ -64,10 +56,10 @@
   margin-top: 0.15em;
 }
 
-/* Supporting copy */
+/* ---------- Supporting copy defaults ---------- */
 .hero__subhead,
 .hero__lead,
-.hero__note {
+.hero__note{
   margin: 0;
   font-size: 1rem;
   line-height: 1.45;
@@ -76,33 +68,58 @@
   opacity: 0.85;
 }
 
-.hero__lead {
+.hero__lead{
   opacity: 0.95;
+  /* medium relationship: subheadBlock -> lead */
+  margin-top: var(--space-4);
 }
 
-/* "Clause" styling for the note (typography-only) */
-.hero__note {
+/* Note = “clause” styling + medium separation */
+.hero__note{
   font-size: 0.95rem;
   opacity: 0.85;
   padding-left: 12px;
   border-left: 2px solid rgba(0,0,0,0.18);
   line-height: 1.35;
+  margin-top: var(--space-3);
 }
 
-.hero__note strong {
-  font-weight: 800;
-}
+.hero__note strong{ font-weight: 800; }
 
-/* CTA row */
-.hero__cta-row {
+/* ---------- Subhead + bullets cluster (tight) ---------- */
+.hero__subheadBlock{
   display: flex;
-  flex-direction: column; /* mobile: stack buttons */
-  gap: 10px;
-  margin-top: 6px;
+  flex-direction: column;
+  gap: var(--space-2); /* strong relationship: subhead ↔ bullets */
 }
 
-/* secondary button (to match your existing .button baseline) */
-.button--secondary {
+.hero__subhead{ margin: 0; }
+
+/* Bullets: remove default “mystery air” and control rhythm */
+.hero__bullets{
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.hero__bullets li{
+  margin: 0;
+  padding: 0;
+}
+
+.hero__bullets li + li{
+  margin-top: var(--space-1); /* tight list rhythm */
+}
+
+/* ---------- CTAs (strong relationship to note) ---------- */
+.hero__cta-row{
+  display: flex;
+  flex-direction: column; /* mobile: stacked */
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+/* Secondary button style (keeps your baseline .button rules) */
+.button--secondary{
   background: transparent;
   color: inherit;
 }
@@ -120,80 +137,87 @@
   font-size: 0.92em;
 }
 
-/* ---------- Desktop layout: 2 columns (title ~ half) ---------- */
-@media (min-width: 900px) {
-  .hero__inner {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); /* ~50/50 */
+/* ---------- Desktop: 2-column layout ---------- */
+@media (min-width: 900px){
+  .hero__inner{
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     column-gap: 36px;
-    row-gap: 12px;
+    row-gap: var(--space-3);
     align-items: start;
   }
 
-  /* Put title on the left column */
-  .hero__title {
+  /* Title on left */
+  .hero__title{
     grid-column: 1;
     max-width: 24ch;
     font-size: clamp(2.6rem, 3.6vw, 3.4rem);
+    margin-bottom: 0; /* grid row-gap handles vertical spacing now */
   }
 
-  /* Put the supporting content on the right column */
-  .hero__subhead,
+  /* Supporting content on right */
+  .hero__subheadBlock,
   .hero__lead,
   .hero__note,
-  .hero__cta-row {
+  .hero__cta-row{
     grid-column: 2;
   }
 
-  /* Editorial rule (border) above the right column content */
-  .hero__subhead{
+  /* Editorial rule above right column (subhead cluster) */
+  .hero__subheadBlock{
     padding-top: 2px;
     border-top: 1px solid rgba(0,0,0,0.14);
     margin-top: 4px;
   }
 
-  /* Slightly tighter measure on desktop reads more intentional */
+  /* Slightly tighter measure on desktop */
   .hero__subhead,
   .hero__lead,
   .hero__note{
     max-width: 50ch;
   }
 
-  .hero__cta-row {
-    flex-direction: row; /* desktop: buttons inline */
+  .hero__cta-row{
+    flex-direction: row; /* desktop: inline buttons */
     align-items: center;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 10px;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
   }
 
-  /* Keep supporting text notably smaller than title on desktop */
   .hero__subhead,
-  .hero__lead {
-    font-size: 1rem;
-  }
+  .hero__lead{ font-size: 1rem; }
 
-  .hero__note {
-    font-size: 0.95rem;
-  }
+  .hero__note{ font-size: 0.95rem; }
 }
 
-.hero__subheadBlock {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem; /* controls the vertical spacing between subhead + list */
-}
 
-.hero__subhead {
+/* Mobile-first title spacing tied to your scale */
+.hero__title > span{
+  display: block;
   margin: 0;
 }
 
-.hero__bullets {
-  margin: 0;
-  padding-left: 1.2rem; /* keeps bullets nicely aligned */
+/* Strong relationship: (1 -> 2) tight */
+.hero__title > span:nth-child(2){
+  margin-top: var(--space-1);
 }
 
-.hero__bullets li {
-  margin: 0.25rem 0;
+/* Handoff: (2 -> 3) moderate */
+.hero__title > span:nth-child(3){
+  margin-top: var(--space-3);
 }
 
+/* NEW: give line 4 (“Early adopters…”) its own break from line 3 */
+.hero__title > span:nth-child(4){
+  margin-top: var(--space-3);
+}
 
+/* Desktop+: increase the breaks when there’s room */
+@media (min-width: 900px){
+  .hero__title > span:nth-child(3){
+    margin-top: var(--space-5);
+  }
+  .hero__title > span:nth-child(4){
+    margin-top: var(--space-4);
+  }
+}

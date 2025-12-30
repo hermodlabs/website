@@ -60,12 +60,36 @@ class SiteHeader extends HTMLElement {
 
   <nav class="site-header__nav" aria-label="Main navigation">
     <ul class="site-header__nav-list">
-      <li class="site-header__nav-item"><a class="site-header__nav-link" href="/">Home</a></li>
-      <li class="site-header__nav-item"><a class="site-header__nav-link" href="/explore/about_us">About Us</a></li>
-      <li class="site-header__nav-item"><a class="site-header__nav-link" href="/explore/events">Events</a></li>
-      <li class="site-header__nav-item"><a class="site-header__nav-link" href="/explore/blog">Blog</a></li>
+      <li class="site-header__nav-item">
+        <a class="site-header__nav-link" href="/">
+          <i class="fa-solid fa-house" aria-hidden="true"></i>
+          <span class="site-header__nav-text">Home</span>
+        </a>
+      </li>
+
+      <li class="site-header__nav-item">
+        <a class="site-header__nav-link" href="/explore/about_us">
+          <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+          <span class="site-header__nav-text">About Us</span>
+        </a>
+      </li>
+
+      <li class="site-header__nav-item">
+        <a class="site-header__nav-link" href="/explore/events">
+          <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+          <span class="site-header__nav-text">Events</span>
+        </a>
+      </li>
+
+      <li class="site-header__nav-item">
+        <a class="site-header__nav-link" href="/explore/blog">
+          <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+          <span class="site-header__nav-text">Blog</span>
+        </a>
+      </li>
     </ul>
   </nav>
+
 
   <div class="site-header__cta">
     <a class="button button--primary" href="/promo/exclusion">Priority Access</a>

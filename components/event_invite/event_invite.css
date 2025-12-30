@@ -1,14 +1,17 @@
-/* ==========================================================================
-   Event Invite (typography-only aesthetic)
-   ========================================================================== */
+/* =========================
+   EVENT INVITE — integrated + tokenized (mobile-first)
+   Requires your spacing scale vars: --space-1..--space-6
+   ========================= */
 
 .event-invite{
-  padding: 26px 0;
+  /* was: 26px 0 */
+  padding: var(--space-5) 0; /* on-scale */
 }
 
 .event-invite__inner{
   border-top: 1px solid rgba(0,0,0,0.12);
-  padding-top: 16px;
+  /* was: 16px */
+  padding-top: var(--space-4);
   max-width: 72ch; /* keeps it feeling editorial */
 }
 
@@ -19,17 +22,18 @@
 }
 
 .event-invite__kicker{
-  display:block;
+  display: block;
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   opacity: 0.7;
-  margin-bottom: 0.35rem;
+  /* was: 0.35rem */
+  margin-bottom: var(--space-2);
 }
 
 .event-invite__headline{
-  display:block;
+  display: block;
   font-weight: 850;
   letter-spacing: -0.02em;
   font-size: clamp(1.7rem, 3.2vw, 2.3rem);
@@ -37,7 +41,8 @@
 
 /* Subhead: stacked lines for scanability */
 .event-invite__subhead{
-  margin: 0.85rem 0 0;
+  /* was: 0.85rem 0 0 */
+  margin: var(--space-4) 0 0; /* 1rem (cleaner + on-scale) */
   font-size: 1.06rem;
   line-height: 1.45;
   letter-spacing: -0.005em;
@@ -46,11 +51,12 @@
 }
 
 .event-invite__line{
-  display:block;
+  display: block;
 }
 
 .event-invite__line + .event-invite__line{
-  margin-top: 0.35rem;
+  /* was: 0.35rem */
+  margin-top: var(--space-2);
 }
 
 .event-invite__em{
@@ -63,8 +69,10 @@
 .event-invite__actions{
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 0.95rem;
+  /* was: 10px */
+  gap: var(--space-2);
+  /* was: 0.95rem */
+  margin-top: var(--space-4);
 }
 
 .event-invite__actions .button--primary{
@@ -81,12 +89,13 @@
 
 /* Note: reads like a clause */
 .event-invite__note{
-  margin: 0.95rem 0 0;
+  /* was: 0.95rem 0 0 */
+  margin: var(--space-4) 0 0;
   font-size: 0.95rem;
   line-height: 1.35;
   letter-spacing: -0.005em;
   opacity: 0.8;
-  padding-left: 12px;
+  padding-left: 12px; /* optical; keep as-is */
   border-left: 2px solid rgba(0,0,0,0.18);
   max-width: 62ch;
 }
@@ -95,12 +104,33 @@
   font-weight: 800;
 }
 
-/* Desktop: inline CTAs */
+/* Desktop: inline CTAs + slightly more breathing room, still on-scale */
 @media (min-width: 900px){
+  .event-invite{
+    padding: var(--space-6) 0;
+  }
+
+  .event-invite__inner{
+    padding-top: var(--space-5);
+  }
+
+  .event-invite__kicker{
+    margin-bottom: var(--space-3);
+  }
+
+  .event-invite__subhead{
+    margin-top: var(--space-5);
+  }
+
   .event-invite__actions{
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+  }
+
+  .event-invite__note{
+    margin-top: var(--space-5);
   }
 }

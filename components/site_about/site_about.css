@@ -1,11 +1,18 @@
+/* =========================
+   ABOUT — integrated + tokenized (mobile-first)
+   Requires your spacing scale vars: --space-1..--space-6
+   ========================= */
+
 /* --- About: scannable two-column typography block --- */
 .about{
-  padding: 26px 0;
+  /* was: 26px 0 */
+  padding: var(--space-5) 0; /* 1.5rem ~= 24px (close + on-scale) */
 }
 
 .about__inner{
   border-top: 1px solid rgba(0,0,0,0.12);
-  padding-top: 16px;
+  /* was: 16px */
+  padding-top: var(--space-4); /* 1rem ~= 16px */
 }
 
 /* Title: kicker + headline */
@@ -15,17 +22,18 @@
 }
 
 .about__kicker{
-  display:block;
+  display: block;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   opacity: 0.7;
-  margin-bottom: 0.35rem;
+  /* was: 0.35rem */
+  margin-bottom: var(--space-2); /* 0.5rem (cleaner + consistent) */
 }
 
 .about__headline{
-  display:block;
+  display: block;
   font-weight: 850;
   letter-spacing: -0.02em;
   font-size: clamp(1.7rem, 3.2vw, 2.3rem);
@@ -35,15 +43,21 @@
 .about__grid{
   display: grid;
   grid-template-columns: 1fr;
-  gap: 18px;
-  margin-top: 14px;
+  /* was: 18px */
+  gap: var(--space-4); /* 1rem */
+  /* was: 14px */
+  margin-top: var(--space-3); /* 0.75rem */
 }
 
 @media (min-width: 900px){
   .about__grid{
     grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-    column-gap: 36px;
+    /* was: 36px */
+    column-gap: var(--space-6); /* 2.25rem */
+    row-gap: var(--space-4);
     align-items: start;
+    /* give desktop a touch more separation from the title */
+    margin-top: var(--space-4);
   }
 }
 
@@ -64,15 +78,19 @@
   letter-spacing: -0.03em;
 }
 
+/* Strong relationship inside the statement stack:
+   q -> a (medium), a -> s (medium) */
 .about__statement--a{
-  margin-top: 0.7rem;
+  /* was: 0.7rem */
+  margin-top: var(--space-3); /* 0.75rem */
   font-size: 1.08rem;
   line-height: 1.45;
   opacity: 0.78;
 }
 
 .about__statement--s{
-  margin-top: 0.7rem;
+  /* was: 0.7rem */
+  margin-top: var(--space-3); /* 0.75rem */
   font-size: 1.15rem;
   font-weight: 800;
   line-height: 1.35;
@@ -82,8 +100,9 @@
 
 /* Column 2: product label + bullets */
 .about__right{
-  border-top: 1px solid rgba(0,0,0,0.12); /* gives the right column a clear start */
-  padding-top: 12px;
+  border-top: 1px solid rgba(0,0,0,0.12); /* clear start on mobile */
+  /* was: 12px */
+  padding-top: var(--space-3); /* 0.75rem */
 }
 
 @media (min-width: 900px){
@@ -103,16 +122,23 @@
 }
 
 .about__bullets{
-  margin-top: 0.75rem;
+  /* was: 0.75rem */
+  margin-top: var(--space-3); /* 0.75rem */
   max-width: 50ch;
 }
 
+/* Bullets: keep consistent rhythm, avoid “mystery air” */
 .about__text{
-  margin: 0.5rem 0 0;
+  margin: 0;
   font-size: 1.02rem;
   line-height: 1.45;
   letter-spacing: -0.005em;
   opacity: 0.86;
+}
+
+/* was: margin-top via shorthand; make it predictable */
+.about__text + .about__text{
+  margin-top: var(--space-2); /* 0.5rem */
 }
 
 .about__bullet{
@@ -124,7 +150,8 @@
 /* CTA link styled like a label */
 .about__link{
   display: inline-block;
-  margin-top: 0.95rem;
+  /* was: 0.95rem */
+  margin-top: var(--space-4); /* 1rem */
   font-weight: 700;
   font-size: 0.9rem;
   letter-spacing: 0.12em;
@@ -142,4 +169,32 @@
   outline: 2px solid rgba(0,0,0,0.55);
   outline-offset: 3px;
   border-radius: 6px;
+}
+
+/* Desktop+: breathe a bit more while staying on-scale */
+@media (min-width: 900px){
+  .about{
+    padding: var(--space-6) 0; /* 2.25rem */
+  }
+
+  .about__inner{
+    padding-top: var(--space-5); /* 1.5rem */
+  }
+
+  .about__kicker{
+    margin-bottom: var(--space-3); /* 0.75rem */
+  }
+
+  .about__right{
+    /* subtle separation from left on desktop via spacing, not borders */
+    padding-top: 0;
+  }
+
+  .about__bullets{
+    margin-top: var(--space-4); /* 1rem */
+  }
+
+  .about__link{
+    margin-top: var(--space-5); /* 1.5rem */
+  }
 }

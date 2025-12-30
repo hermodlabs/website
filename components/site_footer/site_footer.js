@@ -64,39 +64,76 @@ class SiteFooter extends HTMLElement {
     </div>
   </div>
 
-  <nav class="site-footer__nav" aria-label="Footer navigation">
-    <h2 class="site-footer__heading">Explore</h2>
-    <ul class="site-footer__list">
-      <li class="site-footer__item"><a class="site-footer__link" href="/">Home</a></li>
-      <li class="site-footer__item"><a class="site-footer__link" href="/explore/about_us">About Us</a></li>
-      <li class="site-footer__item"><a class="site-footer__link" href="/explore/events">Events</a></li>
-      <li class="site-footer__item"><a class="site-footer__link" href="/explore/blog">Blog</a></li>
-    </ul>
-  </nav>
+<nav class="site-footer__nav" aria-label="Footer navigation">
+  <h2 class="site-footer__heading">Explore</h2>
+  <ul class="site-footer__list">
+    <li class="site-footer__item">
+      <a class="site-footer__link" href="/">
+        <i class="fa-solid fa-house" aria-hidden="true"></i>
+        <span class="site-footer__link-text">Home</span>
+      </a>
+    </li>
+    <li class="site-footer__item">
+      <a class="site-footer__link" href="/explore/about_us">
+        <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+        <span class="site-footer__link-text">About Us</span>
+      </a>
+    </li>
+    <li class="site-footer__item">
+      <a class="site-footer__link" href="/explore/events">
+        <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+        <span class="site-footer__link-text">Events</span>
+      </a>
+    </li>
+    <li class="site-footer__item">
+      <a class="site-footer__link" href="/explore/blog">
+        <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
+        <span class="site-footer__link-text">Blog</span>
+      </a>
+    </li>
+  </ul>
+</nav>
 
-  <div class="site-footer__actions">
-    <h2 class="site-footer__heading">Engage</h2>
-    <ul class="site-footer__list">
-      <li class="site-footer__item"><a class="site-footer__link" href="/engage/invest">Invest in Us</a></li>
-      <li class="site-footer__item"><a class="site-footer__link" href="/engage/pilot">Apply for a Pilot</a></li>
-      <li class="site-footer__item"><a class="site-footer__link" href="/engage/career">Work for Us</a></li>
-    </ul>
+<div class="site-footer__actions">
+  <h2 class="site-footer__heading">Engage</h2>
+  <ul class="site-footer__list">
+    <li class="site-footer__item">
+      <a class="site-footer__link" href="/engage/invest">
+        <i class="fa-solid fa-hand-holding-dollar" aria-hidden="true"></i>
+        <span class="site-footer__link-text">Invest in Us</span>
+      </a>
+    </li>
+    <li class="site-footer__item">
+      <a class="site-footer__link" href="/engage/pilot">
+        <i class="fa-solid fa-flask" aria-hidden="true"></i>
+        <span class="site-footer__link-text">Apply for a Pilot</span>
+      </a>
+    </li>
+    <li class="site-footer__item">
+      <a class="site-footer__link" href="/engage/career">
+        <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
+        <span class="site-footer__link-text">Work for Us</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div class="site-footer__contact">
+  <h2 class="site-footer__heading">Contact</h2>
+
+  <div class="site-footer__contact-item">
+    <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+    <span class="site-footer__contact-text">Bentonville, Arkansas</span>
   </div>
 
-  <div class="site-footer__contact">
-    <h2 class="site-footer__heading">Contact</h2>
+  <div class="site-footer__contact-item">
+    <a class="site-footer__contact-link" href="mailto:contact@hermodlabs.com">
+      <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+      <span class="site-footer__contact-text">contact@hermodlabs.com</span>
+    </a>
+  </div>
+</div>
 
-    <div class="site-footer__contact-item">Bentonville, Arkansas</div>
-
-    <div class="site-footer__contact-item">
-      <a class="site-footer__contact-link" href="mailto:contact@hermodlabs.com">contact@hermodlabs.com</a>
-    </div>
-
-    <!--
-    <div class="site-footer__contact-item">
-      <a class="site-footer__contact-link" href="tel:+13102275510">310.227.5510</a>
-    </div>
-    -->
 
     <div class="site-footer__copyright">
       © <span class="site-footer__year"></span> HermodLabs
