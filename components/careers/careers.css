@@ -1,10 +1,11 @@
 /* ==========================================================================
-   Careers page — typography-forward styles (compatible with your system)
+   Careers page — tokenized + aligned with header/footer Swiss system
+   Requires: --space-1..--space-6, --border, --bg, --text, --muted
    Assumes .button, .button--primary, .button--secondary exist.
    ========================================================================== */
 
 .careers{
-  padding: 26px 0 34px;
+  padding: var(--space-6) 0 calc(var(--space-6) + var(--space-2));
 }
 
 .careers__inner{
@@ -13,66 +14,65 @@
 
 /* ---------- Header ---------- */
 .careers__header{
-  border-top: 1px solid rgba(0,0,0,0.12);
-  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-4);
 }
 
 .careers__title{
   margin: 0;
   font-weight: 900;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
   line-height: 0.98;
-  font-size: clamp(2.2rem, 4.2vw, 3.2rem);
+  font-size: clamp(2.1rem, 4.4vw, 3.1rem);
 }
 
 .careers__subhead{
-  margin: 0.85rem 0 0;
+  margin: var(--space-4) 0 0;
   max-width: 78ch;
-  font-size: 1.06rem;
-  line-height: 1.45;
+  font-size: 1.02rem;
+  line-height: 1.55;
   letter-spacing: -0.005em;
   opacity: 0.86;
 }
 
 /* ---------- Families list ---------- */
 .careers__families{
-  margin-top: 18px;
-  padding-top: 18px;
-  border-top: 1px solid rgba(0,0,0,0.12);
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border);
 }
 
-/* outer list (remove default bullets) */
 .careers__family-list{
   margin: 0;
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 16px;
+  gap: var(--space-5);
 }
 
 /* Each family reads like an editorial block using only rules */
 .careers__family{
-  padding-left: 12px;
+  padding-left: 12px; /* optical */
   border-left: 2px solid rgba(0,0,0,0.18);
 }
 
-/* Family titles as kickers/headlines hybrid */
+/* Family titles as label kickers (unified system) */
 .careers__family-title{
   margin: 0;
-  font-size: 0.82rem;
-  font-weight: 850;
-  letter-spacing: 0.14em;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  opacity: 0.75;
+  opacity: 0.78;
 }
 
 /* Role list: typographic bullets */
 .careers__role-list{
-  margin: 0.85rem 0 0;
+  margin: var(--space-4) 0 0;
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 10px;
+  gap: var(--space-3);
   max-width: 92ch;
 }
 
@@ -83,7 +83,6 @@
   opacity: 0.9;
 }
 
-/* em dash bullet (typography only) */
 .careers__role::before{
   content: "—";
   position: absolute;
@@ -91,12 +90,12 @@
   opacity: 0.55;
 }
 
-/* Link styling: calm, scannable, consistent */
+/* Link styling: calm, consistent with the rest of the site */
 .careers__link{
   text-decoration: none;
   color: inherit;
   font-size: 1.02rem;
-  line-height: 1.45;
+  line-height: 1.55;
   letter-spacing: -0.005em;
   font-weight: 650;
   opacity: 0.86;
@@ -104,7 +103,7 @@
 
 .careers__link:hover{
   text-decoration: underline;
-  text-underline-offset: 4px;
+  text-underline-offset: 0.2em;
   text-decoration-thickness: 1px;
   opacity: 1;
 }
@@ -117,9 +116,9 @@
 
 /* ---------- CTA section ---------- */
 .careers__cta{
-  margin-top: 22px;
-  padding-top: 18px;
-  border-top: 1px solid rgba(0,0,0,0.12);
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border);
 }
 
 /* CTA heading as a slightly larger “question” */
@@ -132,25 +131,25 @@
 }
 
 .careers__text{
-  margin: 0.7rem 0 0;
+  margin: var(--space-3) 0 0;
   max-width: 74ch;
-  font-size: 1.04rem;
+  font-size: 1.02rem;
   line-height: 1.55;
   letter-spacing: -0.005em;
   opacity: 0.86;
-  padding-left: 12px;
-  border-left: 2px solid rgba(0,0,0,0.18); /* clause feel */
+
+  padding-left: 12px; /* optical */
+  border-left: 2px solid rgba(0,0,0,0.18);
 }
 
 /* Actions */
 .careers__actions{
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 0.95rem;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
 }
 
-/* typography hierarchy consistent with other pages */
 .careers__actions .button--primary{
   font-weight: 800;
   letter-spacing: -0.01em;
@@ -165,14 +164,33 @@
 
 /* ---------- Desktop tweaks ---------- */
 @media (min-width: 900px){
+  .careers{
+    padding: calc(var(--space-6) + var(--space-2)) 0 calc(var(--space-6) + var(--space-4));
+  }
+
+  .careers__header{
+    padding-top: var(--space-5);
+  }
+
+  .careers__families{
+    margin-top: calc(var(--space-6) + var(--space-2));
+    padding-top: var(--space-6);
+  }
+
   .careers__family-list{
-    gap: 18px;
+    gap: var(--space-6);
+  }
+
+  .careers__cta{
+    margin-top: calc(var(--space-6) + var(--space-2));
+    padding-top: var(--space-6);
   }
 
   .careers__actions{
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
   }
 }

@@ -1,243 +1,239 @@
-/* =========================================
-   Exclusion page — BEM: .exclusion
-   Typography-led, clean, grid-based, consistent with other pages.
-   (Uses your existing .button system for CTAs.)
-   ========================================= */
+/* ==========================================================================
+   Exclusion page — tokenized + aligned with header/footer Swiss system
+   Removes page-local ex-* palette; uses site vars + spacing scale.
+   Requires: --space-1..--space-6, --border, --bg, --text, --muted
+   Uses your existing .button system for CTAs.
+   ========================================================================== */
 
-.exclusion {
-  --ex-ink: var(--ink, #0f172a);
-  --ex-muted: var(--muted, #475569);
-  --ex-soft: var(--muted-2, #64748b);
-  --ex-border: var(--border, rgba(15, 23, 42, 0.14));
-  --ex-surface: var(--surface, #ffffff);
-  --ex-surface-2: var(--surface-2, rgba(15, 23, 42, 0.03));
-  --ex-radius: var(--radius, 16px);
-
-  color: var(--ex-ink);
-  padding: clamp(1.25rem, 3vw, 2.75rem) 0;
+.exclusion{
+  color: var(--text);
+  padding: var(--space-6) 0;
 }
 
-.exclusion__inner {
+.exclusion__inner{
   width: min(1100px, 92vw);
   margin-inline: auto;
 }
 
-/* Header */
-.exclusion__header {
-  padding: clamp(1.25rem, 3vw, 2.25rem) 0 clamp(1rem, 2.4vw, 1.6rem);
-  border-bottom: 1px solid var(--ex-border);
+/* ---------- Header ---------- */
+.exclusion__header{
+  padding: var(--space-6) 0 var(--space-5);
+  border-bottom: 1px solid var(--border);
 }
 
-.exclusion__title {
+.exclusion__title{
   margin: 0;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: -0.035em;
-  line-height: 1.05;
+  line-height: 1.02;
   text-wrap: balance;
-  font-size: clamp(2.05rem, 4.2vw, 3.1rem);
+  font-size: clamp(2.1rem, 4.4vw, 3.1rem);
 }
 
-.exclusion__subhead {
-  margin: 0.9rem 0 0;
+.exclusion__subhead{
+  margin: var(--space-4) 0 0;
   max-width: 70ch;
-  color: var(--ex-muted);
+  color: var(--muted);
   line-height: 1.6;
-  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  font-size: 1.02rem;
   text-wrap: pretty;
+  opacity: 0.9;
 }
 
-/* Layout rhythm */
-.exclusion__section {
-  padding: clamp(1.05rem, 2.2vw, 1.55rem) 0;
+/* ---------- Section rhythm ---------- */
+.exclusion__section{
+  padding: var(--space-6) 0;
 }
 
-.exclusion__section + .exclusion__section {
-  border-top: 1px solid var(--ex-border);
+.exclusion__section + .exclusion__section{
+  border-top: 1px solid var(--border);
 }
 
-/* Section headings */
-.exclusion__heading {
-  margin: 0 0 0.6rem;
-  font-weight: 760;
+/* Section headings (same “subhead” tier as other pages) */
+.exclusion__heading{
+  margin: 0 0 var(--space-3);
+  font-weight: 850;
   letter-spacing: -0.02em;
   line-height: 1.2;
   font-size: clamp(1.15rem, 1.8vw, 1.35rem);
 }
 
-.exclusion__text {
-  margin: 0.55rem 0 0;
-  color: var(--ex-muted);
+.exclusion__text{
+  margin: var(--space-2) 0 0;
+  color: var(--muted);
   line-height: 1.7;
   max-width: 78ch;
   text-wrap: pretty;
+  opacity: 0.9;
 }
 
-/* Lists */
-.exclusion__list {
-  margin: 0.85rem 0 0;
+/* ---------- Lists (match site’s typographic dash style) ---------- */
+.exclusion__list{
+  margin: var(--space-4) 0 0;
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 0.65rem;
+  gap: var(--space-3);
 }
 
-.exclusion__list-item {
+.exclusion__list-item{
   position: relative;
-  padding-left: 1.1rem;
-  color: var(--ex-muted);
+  padding-left: 1.2em;
+  color: var(--muted);
   line-height: 1.65;
+  opacity: 0.9;
 }
 
-.exclusion__list-item::before {
-  content: "";
+.exclusion__list-item::before{
+  content: "—";
   position: absolute;
   left: 0;
-  top: 0.7em;
-  width: 0.35rem;
-  height: 0.35rem;
-  border-radius: 999px;
-  background: var(--ex-ink);
-  opacity: 0.35;
+  opacity: 0.55;
 }
 
-/* Steps */
-.exclusion__steps {
-  margin: 0.85rem 0 0;
+/* ---------- Steps (ordered list stays; tighten + unify markers) ---------- */
+.exclusion__steps{
+  margin: var(--space-4) 0 0;
   padding-left: 1.1rem;
-  color: var(--ex-muted);
+  color: var(--muted);
   line-height: 1.7;
+  opacity: 0.9;
 }
 
-.exclusion__step + .exclusion__step {
-  margin-top: 0.45rem;
+.exclusion__step + .exclusion__step{
+  margin-top: var(--space-2);
 }
 
-.exclusion__step::marker {
-  color: var(--ex-soft);
+.exclusion__step::marker{
+  color: var(--muted);
+  opacity: 0.7;
   font-variant-numeric: tabular-nums;
 }
 
-/* Apply section: card treatment */
-.exclusion__section--apply {
-  margin-top: 0.25rem;
-  padding: clamp(1rem, 2.2vw, 1.35rem);
-  border: 1px solid var(--ex-border);
-  border-radius: var(--ex-radius);
-  background: var(--ex-surface);
-  box-shadow: var(--shadow-1, 0 1px 0 rgba(0, 0, 0, 0.04));
-}
-
-.exclusion__section--apply .exclusion__heading {
-  margin-bottom: 0.4rem;
-}
-
-.exclusion__form {
-  margin-top: 1rem;
-  display: grid;
-  gap: 0.9rem;
-}
-
-/* Fields: grid-friendly */
-.exclusion__field {
-  display: grid;
-  gap: 0.35rem;
-}
-
-.exclusion__label {
-  font-size: 0.92rem;
-  font-weight: 650;
-  letter-spacing: 0.01em;
-  color: var(--ex-ink);
-}
-
-.exclusion__input,
-.exclusion__textarea {
-  width: 100%;
-  border: 1px solid var(--ex-border);
+/* ---------- Apply section (card treatment aligned with site) ---------- */
+.exclusion__section--apply{
+  margin-top: var(--space-2);
+  padding: var(--space-5);
+  border: 1px solid var(--border);
   border-radius: 12px;
-  background: var(--ex-surface);
-  color: var(--ex-ink);
-  padding: 0.75rem 0.85rem;
+  background: var(--bg);
+  box-shadow: var(--shadow-1, 0 1px 0 rgba(0,0,0,0.04));
+}
+
+.exclusion__section--apply .exclusion__heading{
+  margin-bottom: var(--space-2);
+}
+
+/* ---------- Form ---------- */
+.exclusion__form{
+  margin-top: var(--space-4);
+  display: grid;
+  gap: var(--space-3);
+}
+
+.exclusion__field{
+  display: grid;
+  gap: var(--space-1);
+}
+
+/* Labels: match your uppercase kicker system */
+.exclusion__label{
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+  opacity: 0.72;
+}
+
+/* Inputs: match site border + radius */
+.exclusion__input,
+.exclusion__textarea{
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: transparent;
+  color: var(--text);
+
+  padding: var(--space-3);
   line-height: 1.35;
   font-size: 1rem;
-  transition: border-color 140ms ease, box-shadow 140ms ease, background 140ms ease;
 }
 
-.exclusion__textarea {
+.exclusion__textarea{
   resize: vertical;
   min-height: 7.5rem;
 }
 
 .exclusion__input::placeholder,
-.exclusion__textarea::placeholder {
-  color: var(--ex-soft);
+.exclusion__textarea::placeholder{
+  color: var(--muted);
+  opacity: 0.7;
 }
 
-/* Focus styles: consistent, typographic */
+/* Focus: same ring style you use elsewhere */
 .exclusion__input:focus-visible,
-.exclusion__textarea:focus-visible {
-  outline: none;
-  border-color: currentColor;
-  box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.08);
+.exclusion__textarea:focus-visible{
+  outline: 2px solid rgba(0,0,0,0.55);
+  outline-offset: 3px;
 }
 
-/* Actions: keep buttons aligned and breathable */
-.exclusion__actions {
+/* Actions: align with other pages */
+.exclusion__actions{
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: var(--space-2);
   align-items: center;
-  margin-top: 0.35rem;
+  margin-top: var(--space-2);
 }
 
-/* Fineprint */
-.exclusion__fineprint {
-  margin: 0.25rem 0 0;
-  color: var(--ex-soft);
+/* Fineprint: clause-ish but lighter */
+.exclusion__fineprint{
+  margin: var(--space-2) 0 0;
+  color: var(--muted);
   line-height: 1.5;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
+  opacity: 0.75;
+  padding-left: 12px;
+  border-left: 2px solid rgba(0,0,0,0.18);
+  max-width: 78ch;
 }
 
 /* Small typographic polish */
-.exclusion strong {
-  color: var(--ex-ink);
-  font-weight: 750;
+.exclusion strong{
+  color: var(--text);
+  font-weight: 800;
+  letter-spacing: -0.01em;
 }
 
+/* Focus for links/buttons inside exclusion */
 .exclusion a:focus-visible,
-.exclusion button:focus-visible {
-  outline: 2px solid currentColor;
+.exclusion button:focus-visible{
+  outline: 2px solid rgba(0,0,0,0.55);
   outline-offset: 3px;
-  border-radius: 12px;
+  border-radius: 10px;
 }
 
-/* Two-column feel on larger screens: text left, form/cta areas breathe */
-@media (min-width: 980px) {
-  .exclusion__inner {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  /* Optional: slightly denser list layout on desktop */
-  .exclusion__list {
+/* ---------- Desktop refinements ---------- */
+@media (min-width: 980px){
+  /* Optional: denser list layout on desktop */
+  .exclusion__list{
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.75rem 1.2rem;
+    gap: var(--space-3) var(--space-6);
   }
-
-  /* Keep shorter lists single-column if desired by adding a modifier later */
 }
 
-/* Mobile adjustments */
-@media (max-width: 720px) {
-  .exclusion__header {
-    padding-bottom: 1rem;
+/* ---------- Mobile adjustments ---------- */
+@media (max-width: 720px){
+  .exclusion__header{
+    padding-bottom: var(--space-5);
   }
 
-  .exclusion__list {
+  .exclusion__list{
     grid-template-columns: 1fr;
   }
 
-  .exclusion__section--apply {
-    padding: 1rem;
+  .exclusion__section--apply{
+    padding: var(--space-4);
   }
 }

@@ -1,10 +1,12 @@
 /* ==========================================================================
-   Blog page + blog card — typography-forward styles (compatible with your system)
+   Blog listing — tokenized + aligned with header/footer Swiss system
+   Requires: --space-1..--space-6, --border, --text, --muted
    Assumes .link and .link--primary already exist.
    ========================================================================== */
 
 .blog{
-  padding: 26px 0 34px;
+  /* was: 26px 0 34px */
+  padding: var(--space-6) 0 calc(var(--space-6) + var(--space-2));
 }
 
 .blog__inner{
@@ -13,40 +15,41 @@
 
 /* ---------- Header ---------- */
 .blog__header{
-  border-top: 1px solid rgba(0,0,0,0.12);
-  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-4);
 }
 
 .blog__title{
   margin: 0;
   font-weight: 900;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
   line-height: 0.98;
-  font-size: clamp(2.2rem, 4.2vw, 3.2rem);
+  font-size: clamp(2.1rem, 4.4vw, 3.1rem);
 }
 
 .blog__subhead{
-  margin: 0.85rem 0 0;
+  margin: var(--space-4) 0 0;
   max-width: 72ch;
-  font-size: 1.06rem;
-  line-height: 1.45;
+  font-size: 1.02rem;
+  line-height: 1.55;
   letter-spacing: -0.005em;
   opacity: 0.86;
 }
 
 /* ---------- List ---------- */
 .blog__list{
-  margin-top: 18px;
-  padding-top: 18px;
-  border-top: 1px solid rgba(0,0,0,0.12);
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border);
+
   display: grid;
-  gap: 14px;
+  gap: var(--space-4);
 }
 
 /* ---------- Card (typography-first, no imagery) ---------- */
 .blog-card{
-  /* “editorial callout” feel using only type + rules */
-  padding-left: 12px;
+  /* editorial callout using same clause style as other sections */
+  padding-left: 12px; /* optical */
   border-left: 2px solid rgba(0,0,0,0.18);
 }
 
@@ -54,14 +57,15 @@
 .blog-card__meta{
   display: flex;
   align-items: baseline;
-  gap: 10px;
+  gap: var(--space-2);
   flex-wrap: wrap;
 }
 
+/* Tag = label system (match header/footer) */
 .blog-card__tag{
   font-size: 0.78rem;
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   opacity: 0.72;
 }
@@ -74,7 +78,7 @@
 
 /* Title */
 .blog-card__title{
-  margin: 0.45rem 0 0;
+  margin: var(--space-2) 0 0;
   font-size: clamp(1.35rem, 2.2vw, 1.75rem);
   line-height: 1.15;
   letter-spacing: -0.02em;
@@ -88,13 +92,13 @@
 
 .blog-card__link:hover{
   text-decoration: underline;
-  text-underline-offset: 4px;
+  text-underline-offset: 0.2em;
   text-decoration-thickness: 1px;
 }
 
 /* Excerpt */
 .blog-card__excerpt{
-  margin: 0.6rem 0 0;
+  margin: var(--space-3) 0 0;
   max-width: 72ch;
   font-size: 1.02rem;
   line-height: 1.55;
@@ -104,7 +108,7 @@
 
 /* Actions */
 .blog-card__actions{
-  margin-top: 0.8rem;
+  margin-top: var(--space-4);
 }
 
 .blog-card__read-more{
@@ -131,13 +135,25 @@
 
 /* ---------- Desktop polish ---------- */
 @media (min-width: 900px){
-  .blog__inner{ max-width: 96ch; }
+  .blog__inner{
+    max-width: 96ch;
+  }
+
+  .blog{
+    padding: calc(var(--space-6) + var(--space-2)) 0 calc(var(--space-6) + var(--space-4));
+  }
+
+  .blog__header{
+    padding-top: var(--space-5);
+  }
 
   .blog__list{
-    gap: 16px;
+    margin-top: var(--space-6);
+    padding-top: var(--space-6);
+    gap: var(--space-5);
   }
 
   .blog-card{
-    padding-left: 14px;
+    padding-left: 14px; /* tiny optical bump */
   }
 }
