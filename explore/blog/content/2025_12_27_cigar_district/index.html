@@ -7,21 +7,22 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-V2474V50XP');
     </script>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Pilot: The Cigar District</title>
+    <meta
+      name="description"
+      content="Pilot at The Cigar District: building a 3D humidity gradient modeler to reveal pockets, drift, and control feedback so storage and placement decisions stay optimal."
+    />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
       referrerpolicy="no-referrer"
-    />
-
-    <title>HermodLabs — Culture: Optimize Communication Like a System</title>
-    <meta
-      name="description"
-      content="HermodLabs Culture Note: We optimize communication like a system. Async by default, fewer meetings, deeper work, and written receipts."
     />
 
     <link rel="stylesheet" href="" id="main-css" />
@@ -32,19 +33,19 @@
     <site-page>
       <main class="blogpost">
         <header class="blogpost__hero">
-          <p class="blogpost__eyebrow">Culture</p>
+          <p class="blogpost__eyebrow">Pilot</p>
 
-          <h1 class="blogpost__title">HermodLabs Culture Note: We Optimize Communication Like a System</h1>
+          <h1 class="blogpost__title">The Cigar District: 3D Humidity Gradient Modeler</h1>
 
           <p class="blogpost__dek">
-            Async-first. Written receipts. Fewer interrupts. We treat coordination like overhead and design our workflow
-            to scale.
+            The room is not one number. We are mapping the humidity field so placement decisions stay stable as
+            conditions drift.
           </p>
 
           <div class="blogpost__meta">
-            <span>Jonathan Nacionales (Founder/CEO)</span>
+            <span>HermodLabs</span>
             <span aria-hidden="true">•</span>
-            <time datetime="2025-12-29">December 29, 2025</time>
+            <time datetime="2025-12-27">December 27, 2025</time>
           </div>
 
           <div class="blogpost__actions">
@@ -54,195 +55,137 @@
 
         <article class="blogpost__content">
           <section class="blogpost__section" aria-labelledby="s-1">
-            <h2 id="s-1">If you’re considering working with us</h2>
+            <h2 id="s-1">What was happening</h2>
             <p>
-              If you’re considering working with us, you deserve something better than glossy “culture” slogans.
+              When a room is truly uniform, adding sensors helps. But real cigar rooms are not uniform. They have
+              pockets, boundaries, airflow paths, and slow drift. That is how you get more charts without getting more
+              truth.
             </p>
-            <p>
-              This post is us putting our philosophy on the table—plain language, full transparency—because we want
-              social proof that we mean what we say. We don’t want you to “trust the vibe.” We want you to understand
-              the operating system.
-            </p>
+
+            <ul class="blogpost__list">
+              <li>Two sensors disagree and nobody knows which one to trust.</li>
+              <li>The average looks fine while a local pocket quietly gets worse.</li>
+              <li>A fix improves one area and degrades another.</li>
+              <li>The dashboard stays calm until the room proves otherwise.</li>
+            </ul>
           </section>
 
           <section class="blogpost__section" aria-labelledby="s-2">
-            <h2 id="s-2">Our north star: Asynchronous beats synchronous</h2>
-
-            <p>Our biggest value is simple:</p>
-
-            <p><strong>Asynchronous communication beats synchronous communication.</strong></p>
-
+            <h2 id="s-2">Why it is hard</h2>
             <p>
-              We didn’t learn that from a leadership retreat. We learned it the boring way: computer science,
-              distributed systems, parallel systems, and systems theory.
+              Three realities collide in every serious room: it is spatial (pockets), temporal (drift), and interactive
+              (controls push back). A single summary number cannot represent all three at once.
             </p>
 
-            <p>
-              When you design a distributed system, you don’t default to “everyone stop and join a call.” You assume:
-            </p>
-
-            <ul class="blogpost__list">
-              <li>coordination is expensive,</li>
-              <li>latency exists,</li>
-              <li>people (and nodes) are doing real work,</li>
-              <li>and interrupt-driven architectures collapse under load.</li>
-            </ul>
-
-            <p>So we apply the same principle to human work.</p>
-
-            <p><strong>Synchronous communication is sometimes necessary. It is not the default.</strong></p>
+            <div class="blogpost__grid">
+              <div class="blogpost__card">
+                <h3 class="blogpost__card-title">Local pockets</h3>
+                <p class="blogpost__card-text">What matters is often the worst pocket, not the average.</p>
+              </div>
+              <div class="blogpost__card">
+                <h3 class="blogpost__card-title">Time drift</h3>
+                <p class="blogpost__card-text">Drift is smooth, so it becomes normal before it is noticed.</p>
+              </div>
+              <div class="blogpost__card">
+                <h3 class="blogpost__card-title">Control feedback</h3>
+                <p class="blogpost__card-text">Interventions reshape the field and can create oscillations.</p>
+              </div>
+            </div>
           </section>
 
           <section class="blogpost__section" aria-labelledby="s-3">
-            <h2 id="s-3">Communication is not an asset. It’s a cost.</h2>
-
-            <p>This is where we depart from a lot of modern corporate culture.</p>
-
+            <h2 id="s-3">What we are building</h2>
             <p>
-              We don’t treat communication like an unlimited good. We treat it like compute and bandwidth.
+              We are building a 3D humidity gradient modeler for The Cigar District. Instead of treating the room as one
+              number, it produces a field map: where conditions are stable, where pockets form, and how the room changes
+              under normal cycles.
             </p>
-
-            <p><strong>Communication is a cost.</strong></p>
-
-            <p>
-              And like any serious system, we actively reduce costs that don’t produce proportional value.
-            </p>
-
-            <p>Because we’ve seen the failure mode—both in systems and in organizations:</p>
-
-            <ul class="blogpost__list">
-              <li>too many meetings,</li>
-              <li>too many check-ins,</li>
-              <li>too many status updates that exist because nobody trusts the underlying process,</li>
-              <li>too much “alignment” that is really just anxiety management,</li>
-              <li>too many people blocked because the only way forward is to get time on someone’s calendar.</li>
-            </ul>
-
-            <p>
-              Communication overhead is a major reason systems fail. That’s not a hot take. That’s the textbook.
-            </p>
-
-            <p>So our cultural commitment is not “we communicate a lot.”</p>
-
-            <p><strong>It’s we communicate intentionally.</strong></p>
           </section>
 
           <section class="blogpost__section" aria-labelledby="s-4">
-            <h2 id="s-4">What this looks like day-to-day</h2>
+            <h2 id="s-4">What it enables for the room</h2>
 
-            <p>Here’s what you should expect if you work here:</p>
-
-            <div class="blogpost__table" role="table" aria-label="Day-to-day expectations">
-              <div class="blogpost__row blogpost__row--head" role="row">
-                <div class="blogpost__cell" role="columnheader">Default</div>
-                <div class="blogpost__cell" role="columnheader">What it means</div>
+            <div class="blogpost__grid">
+              <div class="blogpost__card">
+                <h3 class="blogpost__card-title">Placement that makes sense</h3>
+                <p class="blogpost__card-text">Store and rotate cigars by stable zones, not by a room average.</p>
               </div>
 
-              <div class="blogpost__row" role="row">
-                <div class="blogpost__cell" role="cell">1) Writing over meetings</div>
-                <div class="blogpost__cell" role="cell">
-                  We prefer a doc, a thread, a decision log, or a recorded walkthrough over a live meeting.
-                </div>
+              <div class="blogpost__card">
+                <h3 class="blogpost__card-title">Earlier detection</h3>
+                <p class="blogpost__card-text">Spot pockets early, before they persist long enough to matter.</p>
               </div>
 
-              <div class="blogpost__row" role="row">
-                <div class="blogpost__cell" role="cell">2) Default to clarity and receipts</div>
-                <div class="blogpost__cell" role="cell">
-                  If something matters, it gets written down. Decisions have context. Changes have reasons. You can
-                  catch up without asking someone to repeat themselves.
-                </div>
+              <div class="blogpost__card">
+                <h3 class="blogpost__card-title">Fewer probe arguments</h3>
+                <p class="blogpost__card-text">
+                  Disagreement becomes explainable: different zones, not &quot;bad sensors.&quot;
+                </p>
               </div>
 
-              <div class="blogpost__row" role="row">
-                <div class="blogpost__cell" role="cell">3) Fewer interrupts, deeper work</div>
-                <div class="blogpost__cell" role="cell">
-                  We protect long blocks of focus. We don’t worship responsiveness. We worship progress.
-                </div>
-              </div>
-
-              <div class="blogpost__row" role="row">
-                <div class="blogpost__cell" role="cell">4) Meetings are tools, not habits</div>
-                <div class="blogpost__cell" role="cell">
-                  If we meet live, it’s because: we need a fast decision, we’re unblocking something urgent, we’re doing
-                  a high-bandwidth technical jam, or we’re handling something sensitive that shouldn’t live in text.
-                  Otherwise, we keep it async.
-                </div>
-              </div>
-
-              <div class="blogpost__row" role="row">
-                <div class="blogpost__cell" role="cell">5) Trust the system, not the theater</div>
-                <div class="blogpost__cell" role="cell">
-                  You shouldn’t need performative visibility to prove you’re working. We build processes where the work
-                  speaks.
-                </div>
+              <div class="blogpost__card">
+                <h3 class="blogpost__card-title">Targeted fixes</h3>
+                <p class="blogpost__card-text">Act on the zone that is drifting instead of swinging the whole room.</p>
               </div>
             </div>
           </section>
 
           <section class="blogpost__section" aria-labelledby="s-5">
-            <h2 id="s-5">Engineering-first, not MBA-first</h2>
+            <h2 id="s-5">How we know it is working</h2>
+            <p>
+              We judge success by operator-visible signals: a map that stays interpretable, disagreement that becomes
+              attributable, and changes that can be verified in the zones that mattered.
+            </p>
 
-            <p><strong>We are an engineering-first company.</strong></p>
+            <div class="blogpost__table" role="table" aria-label="Pilot acceptance signals">
+              <div class="blogpost__row blogpost__row--head" role="row">
+                <div class="blogpost__cell" role="columnheader">Outcome</div>
+                <div class="blogpost__cell" role="columnheader">What you can observe</div>
+              </div>
 
-            <p>That means:</p>
+              <div class="blogpost__row" role="row">
+                <div class="blogpost__cell" role="cell">Stable vs. unstable zones</div>
+                <div class="blogpost__cell" role="cell">The map shows where the room is predictably stable.</div>
+              </div>
 
-            <ul class="blogpost__list">
-              <li>we care about correctness and reality,</li>
-              <li>we like constraints and acceptance tests,</li>
-              <li>we respect time, focus, and craft,</li>
-              <li>we don’t confuse activity for progress.</li>
-            </ul>
+              <div class="blogpost__row" role="row">
+                <div class="blogpost__cell" role="cell">Less disagreement drama</div>
+                <div class="blogpost__cell" role="cell">
+                  When sensors disagree, the cause is explainable (zones or transitions).
+                </div>
+              </div>
 
-            <p>We are not MBAs.</p>
+              <div class="blogpost__row" role="row">
+                <div class="blogpost__cell" role="cell">Fewer over-corrections</div>
+                <div class="blogpost__cell" role="cell">Fixes target zones and stop moving the problem around.</div>
+              </div>
 
-            <p><em>(Except our COO—but we’ll forgive him for that.)</em></p>
+              <div class="blogpost__row" role="row">
+                <div class="blogpost__cell" role="cell">Faster diagnosis</div>
+                <div class="blogpost__cell" role="cell">
+                  Issues are located as &quot;where/when&quot; instead of &quot;which probe.&quot;
+                </div>
+              </div>
+
+              <div class="blogpost__row" role="row">
+                <div class="blogpost__cell" role="cell">Verifiable actions</div>
+                <div class="blogpost__cell" role="cell">
+                  Interventions have a clear before/after effect in the right place.
+                </div>
+              </div>
+            </div>
           </section>
 
-          <section class="blogpost__section" aria-labelledby="s-6">
-            <h2 id="s-6">Who thrives here</h2>
-
-            <p>You’ll probably love it here if you:</p>
-
-            <ul class="blogpost__list">
-              <li>like writing and clear thinking,</li>
-              <li>prefer autonomy over constant coordination,</li>
-              <li>want fewer meetings and more real build time,</li>
-              <li>enjoy designing systems that scale (including the human ones),</li>
-              <li>want a culture that treats your attention as valuable.</li>
-            </ul>
-
-            <p>You might not love it here if you:</p>
-
-            <ul class="blogpost__list">
-              <li>need high-frequency verbal alignment to feel safe,</li>
-              <li>prefer decisions to happen in meetings instead of documents,</li>
-              <li>want constant social energy throughout the workday.</li>
-            </ul>
-
+          <section class="blogpost__section blogpost__section--updates" aria-labelledby="s-6">
+            <h2 id="s-6">Updates</h2>
             <p>
-              Neither is “better.” But we’re not going to pretend we’re everything for everyone.
+              Stay tuned for more updates and results as we continue the pilot at The Cigar District. We will share what
+              we learn about stable zones, recurring pockets, and which changes reliably move the field.
             </p>
-          </section>
 
-          <section class="blogpost__section blogpost__section--updates" aria-labelledby="s-7">
-            <h2 id="s-7">Why we’re publishing this</h2>
-
-            <p>Because we don’t want culture to be marketing.</p>
-
-            <p>We want you to be able to evaluate us like an engineer would:</p>
-
-            <ul class="blogpost__list">
-              <li>What do you optimize for?</li>
-              <li>What are your defaults?</li>
-              <li>What are your failure modes?</li>
-              <li>What tradeoffs are you willing to make?</li>
-            </ul>
-
-            <p>This is ours.</p>
-
-            <p>
-              If this sounds like the environment where you’d do the best work of your career, we’d love to talk.
-            </p>
+            <div class="blogpost__actions">
+              <a class="btn ghost" href="/explore/blog">Back to Blog</a>
+            </div>
           </section>
         </article>
       </main>
