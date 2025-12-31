@@ -1,111 +1,172 @@
-/* ---------- Footer (mobile-first) ---------- */
+/* ==========================================================================
+   FOOTER — aligned with the new header (Swiss-ish, tokenized, consistent)
+   Requires: --border, --bg, --text, --muted, --space-1..--space-6
+   ========================================================================== */
 
-.site-footer {
-  padding: 28px 0;
+.site-footer{
+  padding: var(--space-6) 0;
   border-top: 1px solid var(--border);
   background: var(--bg);
+
   display: grid;
   grid-template-columns: 1fr; /* mobile: stacked */
-  gap: 18px;
+  gap: var(--space-5);
 }
 
 /* Column blocks */
 .site-footer__company,
 .site-footer__nav,
 .site-footer__actions,
-.site-footer__contact {
+.site-footer__contact{
   min-width: 0;
 }
 
-.site-footer__logo {
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  margin-bottom: 6px;
-}
-
+/* Brand (match header proportions + weight) */
 .site-footer__brand{
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-3);
   text-decoration: none;
+  color: inherit;
+}
+
+.site-footer__logo-mark{
+  width: 48px;                  /* match header mobile */
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  flex: 0 0 auto;
 }
 
 .site-footer__logo-mark .hl-logo{
-  width: 28px;
-  height: 28px;
+  width: 34px;
+  height: 34px;
   display: block;
 }
 
+/* Wordmark (match header) */
+.site-footer__logo{
+  margin: 0;
+  font-weight: 850;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  font-size: clamp(1.2rem, 3.8vw, 1.6rem);
+}
 
-.site-footer__description {
-  opacity: 0.8;
+/* Description (same editorial tone) */
+.site-footer__description{
+  margin: var(--space-2) 0 0;
+  opacity: 0.82;
   line-height: 1.5;
   max-width: 45ch;
 }
 
-/* Headings */
-.site-footer__heading {
-  margin: 0 0 10px 0;
-  font-size: 0.9rem;
+/* Headings (same label system as header desktop nav) */
+.site-footer__heading{
+  margin: 0 0 var(--space-2) 0;
+  font-size: 0.85rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
   text-transform: uppercase;
-  opacity: 0.8;
+  letter-spacing: 0.12em;
+  opacity: 0.78;
 }
 
 /* Lists */
-.site-footer__list {
+.site-footer__list{
   list-style: none;
   margin: 0;
   padding: 0;
+
   display: grid;
-  gap: 8px;
+  gap: var(--space-2);
 }
 
+/* Links: same underline behavior as header */
 .site-footer__link,
-.site-footer__contact-link {
+.site-footer__contact-link{
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+
   color: var(--muted);
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 650;
   letter-spacing: -0.01em;
+  line-height: 1.1;
+
+  padding: var(--space-1) 0; /* optical */
+}
+
+.site-footer__link i,
+.site-footer__contact-item i{
+  font-size: 0.95em;
+  opacity: 0.75;
 }
 
 .site-footer__link:hover,
 .site-footer__link:focus-visible,
 .site-footer__contact-link:hover,
-.site-footer__contact-link:focus-visible {
+.site-footer__contact-link:focus-visible{
   color: var(--text);
   text-decoration: underline;
-  text-underline-offset: 4px;
+  text-underline-offset: 0.2em;
 }
 
-.site-footer__contact-item {
+.site-footer__link:focus-visible,
+.site-footer__contact-link:focus-visible{
+  outline: 2px solid rgba(0,0,0,0.55);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Contact text */
+.site-footer__contact-item{
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+
   opacity: 0.85;
   line-height: 1.55;
-  margin-bottom: 8px;
+  margin-bottom: var(--space-2);
 }
 
-.site-footer__copyright {
-  margin-top: 10px;
+/* Copyright */
+.site-footer__copyright{
+  margin-top: var(--space-3);
   font-size: 0.9rem;
   opacity: 0.75;
 }
 
-/* ---------- Desktop: 4 columns ---------- */
-@media (min-width: 900px) {
-  .site-footer {
-    grid-template-columns: 1.4fr 1fr 1fr 1.2fr; /* company | explore | engage | contact */
-    gap: 32px;
+/* ---------- Desktop: 4 columns + scale brand up like header ---------- */
+@media (min-width: 900px){
+  .site-footer{
+    grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+    gap: var(--space-6);
     align-items: start;
+    padding: calc(var(--space-6) + var(--space-2)) 0; /* a touch more breathing room */
   }
 
-  /* optional: keep company description narrower */
-  .site-footer__description {
+  .site-footer__logo-mark{
+    width: 56px;     /* match header desktop */
+    height: 56px;
+    border-radius: 14px;
+  }
+
+  .site-footer__logo-mark .hl-logo{
+    width: 40px;
+    height: 40px;
+  }
+
+  .site-footer__logo{
+    font-size: 1.55rem;
+    letter-spacing: -0.035em;
+  }
+
+  .site-footer__description{
     max-width: 38ch;
   }
-}
-
-.site-footer__link i,
-.site-footer__contact-item i {
-  margin-right: 0.5rem;
 }

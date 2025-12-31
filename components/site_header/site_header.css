@@ -1,85 +1,111 @@
+/* ==========================================================================
+   SITE HEADER — Swiss-ish, bigger brand, single coherent system (mobile-first)
+   Assumes: --border, --text, --muted, and --space-1..--space-6 already exist
+   ========================================================================== */
+
 /* ---------- Header (mobile-first: stacked) ---------- */
-.site-header {
+.site-header{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 12px;
+  gap: var(--space-3);
 
-  padding: 16px 0;
+  padding: var(--space-4) 0;
   border-bottom: 1px solid var(--border);
 }
 
-/* Logo */
-.site-header__logo {
+/* ---------- Logo (bigger + cleaner) ---------- */
+.site-header__logo{
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-3);
   text-decoration: none;
   color: inherit;
 }
 
-.site-header__logo-mark {
-  width: 28px;
-  height: 28px;
+/* Mark: make the container match the svg (no 28px box with 36px svg) */
+.site-header__logo-mark{
+  width: 48px;                  /* bigger on mobile */
+  height: 48px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 12px;          /* slightly more Swiss than 10px */
+  flex: 0 0 auto;
 }
-
-.site-header__logo-text {
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-
 
 .site-header__logo-mark .hl-logo{
-  width: 36px;
-  height: 36px;
+  width: 34px;                  /* optical: leave breathing room inside border */
+  height: 34px;
   display: block;
 }
 
-/* Nav list (mobile: vertical) */
-.site-header__nav {
+.site-header__logo-text{
+  font-weight: 850;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  font-size: clamp(1.35rem, 4.5vw, 1.9rem);
+}
+
+/* ---------- Nav (mobile: vertical) ---------- */
+.site-header__nav{
   width: 100%;
 }
 
-.site-header__nav-list {
+.site-header__nav-list{
   list-style: none;
   margin: 0;
   padding: 0;
 
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-2);
 }
 
-.site-header__nav-link {
+/* Links: keep icon + text aligned, Swiss label vibe */
+.site-header__nav-link{
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+
   text-decoration: none;
   color: var(--muted);
-  font-weight: 600;
+  font-weight: 650;
   letter-spacing: -0.01em;
-  display: inline-block;
-  padding: 6px 0;
+  line-height: 1.1;
+
+  padding: var(--space-1) 0;
+}
+
+.site-header__nav-link i{
+  font-size: 0.95em;
+  opacity: 0.75;
 }
 
 .site-header__nav-link:hover,
-.site-header__nav-link:focus-visible {
+.site-header__nav-link:focus-visible{
   color: var(--text);
   text-decoration: underline;
-  text-underline-offset: 4px;
+  text-underline-offset: 0.2em;
 }
 
-/* CTA (mobile: after links) */
-.site-header__cta {
+.site-header__nav-link:focus-visible{
+  outline: 2px solid rgba(0,0,0,0.55);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ---------- CTA (mobile: after links) ---------- */
+.site-header__cta{
   width: 100%;
   display: flex;
   justify-content: flex-start;
 }
 
-/* Buttons */
-.button {
+/* Buttons (keep your baseline, just tokenize spacing) */
+.button{
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -87,50 +113,69 @@
   font-weight: 700;
   border-radius: 12px;
   border: 1px solid var(--border);
-  padding: 10px 14px;
+  padding: calc(var(--space-2) + 2px) var(--space-4);
   line-height: 1;
 }
 
-.button--primary {
+.button--primary{
   background: var(--text);
   color: #ffffff;
   border-color: var(--text);
 }
 
 .button--primary:hover,
-.button--primary:focus-visible {
+.button--primary:focus-visible{
   filter: brightness(1.05);
 }
 
-/* ---------- Desktop layout: one row, links right, CTA far right ---------- */
-@media (min-width: 768px) {
-  .site-header {
+/* ---------- Desktop: one row, nav between brand + CTA ---------- */
+@media (min-width: 768px){
+  .site-header{
     flex-direction: row;
     align-items: center;
-    gap: 20px;
+    gap: var(--space-5);
+    padding: var(--space-5) 0;
   }
 
-  /* nav sits between logo and CTA */
-  .site-header__nav {
-    flex: 1;                 /* takes the middle space */
+  /* Bigger brand on desktop */
+  .site-header__logo-mark{
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+  }
+
+  .site-header__logo-mark .hl-logo{
+    width: 40px;
+    height: 40px;
+  }
+
+  .site-header__logo-text{
+    font-size: clamp(1.7rem, 1.7vw, 2.15rem);
+    letter-spacing: -0.035em;
+  }
+
+  /* Nav sits between logo and CTA */
+  .site-header__nav{
+    flex: 1;
     display: flex;
     justify-content: flex-end;
+
+    /* Swiss label treatment on desktop */
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.85rem;
   }
 
-  .site-header__nav-list {
+  .site-header__nav-list{
     flex-direction: row;
     align-items: center;
-    gap: 18px;
-    flex-wrap: wrap;         /* prevents overflow */
+    gap: var(--space-5);
+    flex-wrap: wrap;
   }
 
-  .site-header__cta {
+  .site-header__cta{
     width: auto;
     justify-content: flex-end;
     flex: 0 0 auto;
   }
-}
-
-.site-header__nav-link i {
-  margin-right: 0.5rem;
 }
