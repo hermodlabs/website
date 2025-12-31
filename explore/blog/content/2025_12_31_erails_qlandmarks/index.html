@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-V2474V50XP");
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs - The Day “Electricity Doesn’t Work That Way” Became a Design Requirement</title>
+    <meta
+      name="description"
+      content="A personal story about how pushback from hardware reality led to E-rails and Q-landmarks: contracts (types) for hardware that make integration less negotiable."
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="" id="main-css" />
+    <script type="module" src="../../../../bootstrap.js"></script>
+  </head>
+
+  <body>
+    <site-page>
+      <main class="blogpost">
+        <header class="blogpost__hero">
+          <p class="blogpost__eyebrow">Story</p>
+
+          <h1 class="blogpost__title">The Day “Electricity Doesn’t Work That Way” Became a Design Requirement</h1>
+
+          <p class="blogpost__dek">
+            I tried to ship beautiful math as software. Hardware pushback forced a different question: what would it take
+            to make reality stop arguing back? That was the seed of E-rails and Q-landmarks.
+          </p>
+
+          <div class="blogpost__meta">
+            <span>Jonathan Nacionales (Founder/CEO)</span>
+            <span aria-hidden="true">•</span>
+            <time datetime="2025-12-30">December 30, 2025</time>
+          </div>
+
+          <div class="blogpost__actions">
+            <a class="btn ghost" href="/explore/blog">Back to Blog</a>
+          </div>
+        </header>
+
+        <article class="blogpost__content">
+          <section class="blogpost__section" aria-labelledby="s-1">
+            <h2 id="s-1">A confession: I wrote the kind of code you want to believe in</h2>
+
+            <p>
+              I once wrote a codebase that was, in my own biased opinion, offensively clean. It was built on
+              beautiful mathematics. The kind of math that feels like a moral argument:
+              if the structure is correct, the outcome should be correct.
+            </p>
+
+            <p>
+              Software engineers live inside that promise. Types, invariants, interfaces, substitution, proofs.
+              If you do the work up front, you buy yourself a future where entire categories of failure
+              simply do not compile.
+            </p>
+
+            <p>
+              And then I tried to plug it into hardware.
+            </p>
+          </section>
+
+          <section class="blogpost__section" aria-labelledby="s-2">
+            <h2 id="s-2">The phrase that ruined my week (repeatedly)</h2>
+
+            <p>
+              The hardware engineers had one line that they delivered with quiet satisfaction:
+            </p>
+
+            <p><strong>"Your software might work that way, but electricity doesn't work that way."</strong></p>
+
+            <p>
+              The worst part was not the tone. The worst part was the accuracy.
+              They were always right.
+            </p>
+
+            <ul class="blogpost__list">
+              <li>timing drift would smear our assumptions,</li>
+              <li>clock domains would disagree in ways nobody asked permission for,</li>
+              <li>analog behavior would leak into the digital story,</li>
+              <li>and the "clean abstraction" would become a crime scene with good documentation.</li>
+            </ul>
+
+            <p>
+              We hated them. Not because they were wrong, but because they kept dragging us out of our cathedral
+              and back into the weather.
+            </p>
+          </section>
+
+          <section class="blogpost__section" aria-labelledby="s-3">
+            <h2 id="s-3">Reality provides no guarantees (and that is the bug)</h2>
+
+            <p>
+              Software developers have taken something for granted for decades:
+              <strong>types are a guarantee mechanism.</strong>
+            </p>
+
+            <p>
+              Types do not prevent all failure, but they prevent a specific kind of failure:
+              the silent kind where you used the thing wrong and only discover it after you shipped it.
+            </p>
+
+            <p>
+              Hardware, by default, does not offer that luxury. Reality does not throw a compile error.
+              Reality just smiles and gives you a plausible plot that is quietly lying.
+            </p>
+
+            <p>
+              The pushback forced a new question:
+              what would it take to give "real engineers" the same kind of guarantees that software people treat as normal?
+            </p>
+          </section>
+
+          <section class="blogpost__section" aria-labelledby="s-4">
+            <h2 id="s-4">The rebellious thought: constrain the hardware until “no” becomes expensive</h2>
+
+            <p>
+              This is where the story turns a little dark.
+              I stopped asking how to make my code more persuasive.
+              I started asking how to make the integration space smaller.
+            </p>
+
+            <p>
+              In other words: how do you constrain the hardware so the hardware engineers
+              cannot keep vetoing the model with "electricity doesn't work that way"?
+            </p>
+
+            <p>
+              Not by winning arguments. By changing the rules of what counts as acceptable.
+            </p>
+
+            <p><strong>That is where contracts were born.</strong></p>
+          </section>
+
+          <section class="blogpost__section" aria-labelledby="s-5">
+            <h2 id="s-5">Contracts are types for hardware</h2>
+
+            <p>
+              A contract is a promise that can be checked. Not a vibe. Not a meeting outcome.
+              A checkable condition that says: "If you want to plug into this system, you must satisfy these constraints."
+            </p>
+
+            <p>
+              This is the software idea, smuggled into physical reality:
+              treat hardware interfaces like types, and treat guarantees like acceptance tests.
+            </p>
+
+            <p>
+              The inspiration was painfully familiar:
+              the Liskov Substitution Principle, dragged all the way down to the bench and back.
+              If a component claims it can stand in for another, then the system should remain correct when it does.
+            </p>
+
+            <p>
+              In software, violating that principle is a bug.
+              In hardware, violating it is "just how it is" unless you force it to be illegal.
+            </p>
+          </section>
+
+          <section class="blogpost__section" aria-labelledby="s-6">
+            <h2 id="s-6">E-rails and Q-landmarks: the two pieces that made this real</h2>
+
+            <p>
+              E-rails and Q-landmarks were my attempt to give hardware a type system without calling it a type system
+              (because the words alone can start a small war).
+            </p>
+
+            <div class="blogpost__table" role="table" aria-label="E-rails and Q-landmarks overview">
+              <div class="blogpost__row blogpost__row--head" role="row">
+                <div class="blogpost__cell" role="columnheader">Piece</div>
+                <div class="blogpost__cell" role="columnheader">What it does</div>
+              </div>
+
+              <div class="blogpost__row" role="row">
+                <div class="blogpost__cell" role="cell">
+                  <i class="fa-solid fa-grip-lines-vertical" aria-hidden="true"></i>
+                  &nbsp;E-rails
+                </div>
+                <div class="blogpost__cell" role="cell">
+                  The constraints that define what a hardware path is allowed to be (electrical, timing, and interface
+                  boundaries). Rails are not suggestions; they are admissible lanes.
+                </div>
+              </div>
+
+              <div class="blogpost__row" role="row">
+                <div class="blogpost__cell" role="cell">
+                  <i class="fa-solid fa-location-crosshairs" aria-hidden="true"></i>
+                  &nbsp;Q-landmarks
+                </div>
+                <div class="blogpost__cell" role="cell">
+                  The checkable reference points that let you verify you are still inside the rails: calibration points,
+                  invariants, and measurable signatures that catch drift before it becomes a narrative.
+                </div>
+              </div>
+            </div>
+
+            <p>
+              You can think of it like this:
+              E-rails define the <em>type</em>. Q-landmarks are the <em>runtime checks</em> that keep the type honest.
+            </p>
+          </section>
+
+          <section class="blogpost__section" aria-labelledby="s-7">
+            <h2 id="s-7">The uncomfortable truth: I was still helping “my engineers”</h2>
+
+            <p>
+              I want to say this was a noble crusade to give hardware engineers better tooling.
+              That would be a nicer story.
+            </p>
+
+            <p>
+              The real story is simpler:
+              the hardware engineers were pushing back too hard.
+              They kept winning. And I was still trying to protect the people I understood:
+              software engineers shipping systems that collapse when the physical world changes its mind.
+            </p>
+
+            <p>
+              So E-rails and Q-landmarks were a compromise with reality:
+              not "ignore the hardware" and not "become an EE overnight,"
+              but "build contracts that make integration less negotiable."
+            </p>
+
+            <p><strong>Desperation is the mother of invention.</strong></p>
+          </section>
+
+          <section class="blogpost__section" aria-labelledby="s-8">
+            <h2 id="s-8">What changed after that insight</h2>
+
+            <p>
+              Once you treat hardware constraints like types, a bunch of things become possible:
+            </p>
+
+            <ul class="blogpost__list">
+              <li>you can reject invalid configurations early (before the “why is this plot haunted” stage),</li>
+              <li>you can make integration repeatable across benches (not just “it worked once”),</li>
+              <li>you can attach receipts to decisions (what was assumed, what was checked, what was admissible),</li>
+              <li>you can reason about substitution (swap components without re-learning physics from scratch).</li>
+            </ul>
+
+            <p>
+              Most importantly:
+              you stop arguing about whose worldview is correct,
+              and you start arguing about whether the contract is satisfied.
+            </p>
+          </section>
+
+          <section class="blogpost__section blogpost__section--updates" aria-labelledby="s-9">
+            <h2 id="s-9">Why we are sharing this</h2>
+
+            <p>
+              Because this is one of our real origins. Not a pitch deck origin. An engineering origin.
+            </p>
+
+            <p>
+              If you've ever built something where the math was right and the system was wrong, you already know the
+              feeling: the abstraction is clean, and reality is disrespectful.
+            </p>
+
+            <p>
+              E-rails and Q-landmarks are our answer to that disrespect:
+              types for hardware, contracts that shrink the argument space, and checks that keep drift from quietly
+              rewriting the story.
+            </p>
+
+            <p>
+              If that sounds like the kind of problem you enjoy solving (or the kind of failure mode you are tired of),
+              we'd love to talk.
+            </p>
+
+            <div class="blogpost__actions">
+              <a class="btn ghost" href="/explore/blog">Back to Blog</a>
+            </div>
+          </section>
+        </article>
+      </main>
+    </site-page>
+  </body>
+</html>
