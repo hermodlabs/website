@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-V2474V50XP');
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Priority Access</title>
+    <meta
+      name="description"
+      content="Get priority access to HermodLabs: early partner pricing, pilot priority, and vertical reservation options."
+    />
+
+    <link rel="stylesheet" href="" id="main-css" />
+    <script type="module" src="../../bootstrap.js"></script>
+  </head>
+
+  <body>
+    <site-page>
+      <section class="priority-access" aria-labelledby="priority-access-title">
+        <div class="priority-access__inner">
+          <header class="priority-access__header">
+            <h1 class="priority-access__title" id="priority-access-title">Get Priority Access</h1>
+            <p class="priority-access__subhead">
+              Early partners lock in pricing, get first access to pilots, and can reserve a vertical before competitors do.
+            </p>
+          </header>
+
+          <section class="priority-access__section" aria-labelledby="pa-what-title">
+            <h2 class="priority-access__heading" id="pa-what-title">What Priority Access Means</h2>
+            <ul class="priority-access__list">
+              <li class="priority-access__list-item">
+                <strong>Early partner pricing.</strong> Preferred terms while we’re onboarding the first cohorts.
+              </li>
+              <li class="priority-access__list-item">
+                <strong>Pilot priority.</strong> Earlier scheduling and faster iteration on your bench/site.
+              </li>
+              <li class="priority-access__list-item">
+                <strong>Vertical reservation option.</strong> If it’s a fit, reserve your lane so competitors can’t.
+              </li>
+            </ul>
+          </section>
+
+          <section class="priority-access__section" aria-labelledby="pa-fit-title">
+            <h2 class="priority-access__heading" id="pa-fit-title">Good Fit If</h2>
+            <ul class="priority-access__list">
+              <li class="priority-access__list-item">You have sensors/streams that should agree but don’t.</li>
+              <li class="priority-access__list-item">You’re losing time to “tune-and-hope” cycles and late surprises.</li>
+              <li class="priority-access__list-item">You need outputs that survive audits and handoffs.</li>
+              <li class="priority-access__list-item">Drift becomes cost: downtime, scrap, SLA risk, or safety exposure.</li>
+            </ul>
+          </section>
+
+          <section class="priority-access__section priority-access__section--apply" aria-labelledby="pa-apply-title">
+            <h2 class="priority-access__heading" id="pa-apply-title">Request Priority Access</h2>
+            <p class="priority-access__text">
+              Tell us your vertical and what’s drifting. We’ll reply with next steps, pilot availability, and whether a
+              vertical reservation is open.
+            </p>
+
+            <form class="priority-access__form" id="priority-access-form" action="" method="post">
+              <input type="hidden" name="_gotcha" id="pa-gotcha" style="display:none !important" />
+
+              <div class="priority-access__field">
+                <label class="priority-access__label" for="pa-name">Name</label>
+                <input class="priority-access__input" id="pa-name" name="name" type="text" autocomplete="name" required />
+              </div>
+
+              <div class="priority-access__field">
+                <label class="priority-access__label" for="pa-email">Email</label>
+                <input
+                  class="priority-access__input"
+                  id="pa-email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+
+              <div class="priority-access__field">
+                <label class="priority-access__label" for="pa-company">Company</label>
+                <input
+                  class="priority-access__input"
+                  id="pa-company"
+                  name="company"
+                  type="text"
+                  autocomplete="organization"
+                />
+              </div>
+
+              <div class="priority-access__field">
+                <label class="priority-access__label" for="pa-vertical">Industry vertical</label>
+                <input
+                  class="priority-access__input"
+                  id="pa-vertical"
+                  name="vertical"
+                  type="text"
+                  placeholder="e.g., data centers, cold-chain logistics, aerospace test, …"
+                  required
+                />
+              </div>
+
+              <div class="priority-access__field">
+                <label class="priority-access__label" for="pa-problem">What’s drifting?</label>
+                <textarea
+                  class="priority-access__textarea"
+                  id="pa-problem"
+                  name="problem"
+                  rows="5"
+                  placeholder="What signals should match? What breaks when they don’t? What have you tried?"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="priority-access__actions">
+                <button class="button button--primary" id="pa-submit" type="submit">Request Priority Access</button>
+                <a class="button button--secondary" href="/explore/events#rsvp">Prefer a live walkthrough?</a>
+              </div>
+
+              <p class="priority-access__fineprint">
+                We’ll only use this to respond to your request. No spam.
+              </p>
+
+              <p class="priority-access__fineprint" id="pa-status" aria-live="polite"></p>
+            </form>
+          </section>
+        </div>
+      </section>
+    </site-page>
+
+    <script>
+      (function () {
+        // TODO: replace with your real endpoint from Getform.
+        const GETFORM_ENDPOINT = "https://getform.io/f/avrzylpa";
+
+        const form = document.getElementById("priority-access-form");
+        const statusEl = document.getElementById("pa-status");
+        const submitBtn = document.getElementById("pa-submit");
+
+        if (!form) return;
+
+        function setStatus(msg) {
+          if (statusEl) statusEl.textContent = msg || "";
+        }
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Honeypot: if a bot fills it, silently pretend success.
+          const gotcha = document.getElementById("pa-gotcha");
+          if (gotcha && gotcha.value) {
+            setStatus("Thanks — we’ll be in touch.");
+            form.reset();
+            return;
+          }
+
+          setStatus("Sending…");
+          if (submitBtn) submitBtn.disabled = true;
+
+          const payload = {
+            name: document.getElementById("pa-name")?.value || "",
+            email: document.getElementById("pa-email")?.value || "",
+            company: document.getElementById("pa-company")?.value || "",
+            vertical: document.getElementById("pa-vertical")?.value || "",
+            problem: document.getElementById("pa-problem")?.value || ""
+          };
+
+          const xhr = new XMLHttpRequest();
+          xhr.open("POST", GETFORM_ENDPOINT);
+          xhr.setRequestHeader("Content-Type", "application/json");
+          xhr.setRequestHeader("Accept", "application/json");
+
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState !== 4) return;
+
+            if (submitBtn) submitBtn.disabled = false;
+
+            if (xhr.status >= 200 && xhr.status < 300) {
+              setStatus("Received. We’ll reply with next steps.");
+              form.reset();
+              // window.location.href = "/thank-you/";
+              return;
+            }
+
+            setStatus("Something went wrong. Please email us directly or try again.");
+          };
+
+          xhr.send(JSON.stringify(payload));
+        });
+      })();
+    </script>
+  </body>
+</html>

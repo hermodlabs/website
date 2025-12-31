@@ -1,0 +1,268 @@
+/* ---------- Header (mobile-first: stacked) ---------- */
+.site-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Logo */
+.site-header__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.site-header__logo-mark {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.site-header__logo-text {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+
+.site-header__logo-mark .hl-logo{
+  width: 36px;
+  height: 36px;
+  display: block;
+}
+
+/* Nav list (mobile: vertical) */
+.site-header__nav {
+  width: 100%;
+}
+
+.site-header__nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.site-header__nav-link {
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  display: inline-block;
+  padding: 6px 0;
+}
+
+.site-header__nav-link:hover,
+.site-header__nav-link:focus-visible {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* CTA (mobile: after links) */
+.site-header__cta {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Buttons */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 10px 14px;
+  line-height: 1;
+}
+
+.button--primary {
+  background: var(--text);
+  color: #ffffff;
+  border-color: var(--text);
+}
+
+.button--primary:hover,
+.button--primary:focus-visible {
+  filter: brightness(1.05);
+}
+
+/* ---------- Desktop layout: one row, links right, CTA far right ---------- */
+@media (min-width: 768px) {
+  .site-header {
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
+
+  /* nav sits between logo and CTA */
+  .site-header__nav {
+    flex: 1;                 /* takes the middle space */
+    display: flex;
+    justify-content: flex-end;
+    text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.85rem;
+  }
+
+  .site-header__nav-list {
+    flex-direction: row;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;         /* prevents overflow */
+  }
+
+  .site-header__cta {
+    width: auto;
+    justify-content: flex-end;
+    flex: 0 0 auto;
+  }
+}
+
+.site-header__nav-link i {
+  margin-right: 0.5rem;
+}
+
+
+/* =========================
+   SITE HEADER — Swiss-inspired wordmark scale + grid
+   ========================= */
+
+/* Header container */
+.site-header{
+  display: grid;
+  grid-template-columns: 1fr;      /* mobile: stack */
+  row-gap: var(--space-3);
+  align-items: center;
+  padding: var(--space-4) 0;
+}
+
+/* Brand block: make it dominant */
+.site-header__logo{
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Bigger mark (SVG container) */
+.site-header__logo-mark{
+  display: inline-flex;
+  width: 48px;   /* mobile big */
+  height: 48px;
+  flex: 0 0 auto;
+}
+
+/* Ensure the SVG fills the box */
+.site-header__logo-mark .hl-logo{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Bigger wordmark — Swiss: heavy, tight tracking, clean */
+.site-header__logo-text{
+  font-weight: 850;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  font-size: clamp(1.35rem, 4.5vw, 1.85rem); /* scales on mobile */
+  text-transform: none;
+}
+
+/* Nav list */
+.site-header__nav-list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+}
+
+/* Links: Swiss = minimal, “label-like”, precise spacing */
+.site-header__nav-link{
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  text-decoration: none;
+  color: inherit;
+  opacity: 0.86;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  padding: var(--space-1) 0; /* optical */
+}
+
+.site-header__nav-link:hover{
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.site-header__nav-link:focus-visible{
+  outline: 2px solid rgba(0,0,0,0.55);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Icon sizing: keep it quieter than the text */
+.site-header__nav-link i{
+  font-size: 0.95em;
+  opacity: 0.75;
+}
+
+/* CTA: keep it clean and aligned */
+.site-header__cta{
+  justify-self: start;
+}
+
+/* =========================
+   Desktop: 3-column Swiss grid
+   Brand | Nav | CTA
+   ========================= */
+@media (min-width: 900px){
+  .site-header{
+    grid-template-columns: auto 1fr auto;
+    column-gap: var(--space-6);
+    row-gap: 0;
+    padding: var(--space-5) 0;
+  }
+
+  /* Make brand noticeably larger on desktop */
+  .site-header__logo-mark{
+    width: 56px;
+    height: 56px;
+  }
+
+  .site-header__logo-text{
+    font-size: clamp(1.7rem, 1.7vw, 2.15rem);
+    letter-spacing: -0.035em;
+  }
+
+  /* Nav sits in the center column, aligned like a label row */
+  .site-header__nav{
+    justify-self: start;
+  }
+
+  .site-header__nav-list{
+    gap: var(--space-3) var(--space-5);
+  }
+
+  .site-header__cta{
+    justify-self: end;
+  }
+}

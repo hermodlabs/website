@@ -1,0 +1,213 @@
+/* ==========================================================================
+   Priority Access promo page — tokenized + consistent with your site system
+   Requires: --space-1..--space-6, --border, --bg, --text, --muted
+   ========================================================================== */
+
+.priority-access{
+  color: var(--text);
+  padding: var(--space-6) 0;
+}
+
+.priority-access__inner{
+  width: min(1100px, 92vw);
+  margin-inline: auto;
+}
+
+/* Header */
+.priority-access__header{
+  padding: var(--space-6) 0 var(--space-5);
+  border-bottom: 1px solid var(--border);
+}
+
+.priority-access__title{
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  text-wrap: balance;
+  font-size: clamp(2.1rem, 4.4vw, 3.1rem);
+}
+
+.priority-access__subhead{
+  margin: var(--space-4) 0 0;
+  max-width: 70ch;
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 1.02rem;
+  text-wrap: pretty;
+  opacity: 0.9;
+}
+
+/* Section rhythm */
+.priority-access__section{
+  padding: var(--space-6) 0;
+}
+
+.priority-access__section + .priority-access__section{
+  border-top: 1px solid var(--border);
+}
+
+/* Headings */
+.priority-access__heading{
+  margin: 0 0 var(--space-3);
+  font-weight: 850;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+}
+
+.priority-access__text{
+  margin: var(--space-2) 0 0;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 78ch;
+  text-wrap: pretty;
+  opacity: 0.9;
+}
+
+/* Lists (typographic dash bullets) */
+.priority-access__list{
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: var(--space-3);
+}
+
+.priority-access__list-item{
+  position: relative;
+  padding-left: 1.2em;
+  color: var(--muted);
+  line-height: 1.65;
+  opacity: 0.9;
+}
+
+.priority-access__list-item::before{
+  content: "—";
+  position: absolute;
+  left: 0;
+  opacity: 0.55;
+}
+
+/* Apply section as a card */
+.priority-access__section--apply{
+  margin-top: var(--space-2);
+  padding: var(--space-5);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+  box-shadow: var(--shadow-1, 0 1px 0 rgba(0,0,0,0.04));
+}
+
+.priority-access__section--apply .priority-access__heading{
+  margin-bottom: var(--space-2);
+}
+
+/* Form */
+.priority-access__form{
+  margin-top: var(--space-4);
+  display: grid;
+  gap: var(--space-3);
+  max-width: 70ch;
+}
+
+.priority-access__field{
+  display: grid;
+  gap: var(--space-1);
+}
+
+.priority-access__label{
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+  opacity: 0.72;
+}
+
+.priority-access__input,
+.priority-access__textarea{
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: transparent;
+  color: var(--text);
+
+  padding: var(--space-3);
+  line-height: 1.35;
+  font-size: 1rem;
+}
+
+.priority-access__textarea{
+  resize: vertical;
+  min-height: 7.5rem;
+}
+
+.priority-access__input::placeholder,
+.priority-access__textarea::placeholder{
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+.priority-access__input:focus-visible,
+.priority-access__textarea:focus-visible{
+  outline: 2px solid rgba(0,0,0,0.55);
+  outline-offset: 3px;
+}
+
+/* Actions */
+.priority-access__actions{
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+  margin-top: var(--space-2);
+}
+
+/* Fineprint */
+.priority-access__fineprint{
+  margin: var(--space-2) 0 0;
+  color: var(--muted);
+  line-height: 1.5;
+  font-size: 0.92rem;
+  opacity: 0.75;
+  padding-left: 12px;
+  border-left: 2px solid rgba(0,0,0,0.18);
+  max-width: 78ch;
+}
+
+.priority-access strong{
+  color: var(--text);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.priority-access a:focus-visible,
+.priority-access button:focus-visible{
+  outline: 2px solid rgba(0,0,0,0.55);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+/* Desktop: denser list layout */
+@media (min-width: 980px){
+  .priority-access__list{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3) var(--space-6);
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 720px){
+  .priority-access__header{
+    padding-bottom: var(--space-5);
+  }
+
+  .priority-access__list{
+    grid-template-columns: 1fr;
+  }
+
+  .priority-access__section--apply{
+    padding: var(--space-4);
+  }
+}

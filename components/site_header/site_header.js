@@ -92,7 +92,7 @@ class SiteHeader extends HTMLElement {
 
 
   <div class="site-header__cta">
-    <a class="button button--primary" href="/promo/exclusion">Priority Access</a>
+    <a class="button button--primary" href="/promo/priority_access">Priority Access</a>
   </div>
 </header>
 

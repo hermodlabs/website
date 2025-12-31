@@ -1,0 +1,111 @@
+/* ---------- Footer (mobile-first) ---------- */
+
+.site-footer {
+  padding: 28px 0;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+  display: grid;
+  grid-template-columns: 1fr; /* mobile: stacked */
+  gap: 18px;
+}
+
+/* Column blocks */
+.site-footer__company,
+.site-footer__nav,
+.site-footer__actions,
+.site-footer__contact {
+  min-width: 0;
+}
+
+.site-footer__logo {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.site-footer__brand{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.site-footer__logo-mark .hl-logo{
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+
+.site-footer__description {
+  opacity: 0.8;
+  line-height: 1.5;
+  max-width: 45ch;
+}
+
+/* Headings */
+.site-footer__heading {
+  margin: 0 0 10px 0;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+/* Lists */
+.site-footer__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.site-footer__link,
+.site-footer__contact-link {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.site-footer__link:hover,
+.site-footer__link:focus-visible,
+.site-footer__contact-link:hover,
+.site-footer__contact-link:focus-visible {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.site-footer__contact-item {
+  opacity: 0.85;
+  line-height: 1.55;
+  margin-bottom: 8px;
+}
+
+.site-footer__copyright {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
+
+/* ---------- Desktop: 4 columns ---------- */
+@media (min-width: 900px) {
+  .site-footer {
+    grid-template-columns: 1.4fr 1fr 1fr 1.2fr; /* company | explore | engage | contact */
+    gap: 32px;
+    align-items: start;
+  }
+
+  /* optional: keep company description narrower */
+  .site-footer__description {
+    max-width: 38ch;
+  }
+}
+
+.site-footer__link i,
+.site-footer__contact-item i {
+  margin-right: 0.5rem;
+}

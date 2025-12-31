@@ -38,7 +38,7 @@ class SiteHero extends HTMLElement {
     </p>
 
     <div class="hero__cta-row">
-      <a class="button button--primary" href="/promo/exclusion">Get Priority Access</a>
+      <a class="button button--primary" href="/promo/priority_access">Get Priority Access</a>
       <a class="button button--secondary" href="/asset/file/operator_playbook_v_1_0_0.pdf">Read the Whitepaper</a>
     </div>
   </div>
