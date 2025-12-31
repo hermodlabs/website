@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-V2474V50XP");
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs - Sometimes You Have to Not Do Things (Documenting from the Customer Backward)</title>
+    <meta
+      name="description"
+      content="A culture note on how we document software: start from the customer experience and work backwards. Why we use Jobs to be Done, and how it shapes our Cigar District pilot."
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="" id="main-css" />
+    <script type="module" src="../../../../bootstrap.js"></script>
+  </head>
+
+  <body>
+    <site-page>
+      <main class="blogpost">
+        <header class="blogpost__hero">
+          <p class="blogpost__eyebrow">Culture</p>
+
+          <h1 class="blogpost__title">Sometimes You Have to Not Do Things</h1>
+
+          <p class="blogpost__dek">
+            Why we document from the customer backward (and how “Jobs to be Done” shapes our software)
+          </p>
+
+          <div class="blogpost__meta">
+            <span>Jonathan Nacionales (Founder/CEO)</span>
+            <span aria-hidden="true">•</span>
+            <time datetime="2026-01-03">January 3, 2026</time>
+          </div>
+
+          <div class="blogpost__actions">
+            <a class="btn ghost" href="/explore/blog">Back to Blog</a>
+          </div>
+        </header>
+
+        <article class="blogpost__content">
+          <section class="blogpost__section" aria-labelledby="s-1">
+            <h2 id="s-1">A public product philosophy moment</h2>
+
+            <p>
+              If you’ve ever watched that famous Steve Jobs Q&amp;A clip—the one where someone stands up, irritated, and
+              basically berates him about OpenDoc—you’ve seen a rare moment of public product philosophy under pressure.
+            </p>
+
+            <p>
+              The person isn’t asking a gentle question. It’s more like: <em>Why aren’t you supporting the thing? Why
+              aren’t you doing the obvious “industry standard” move? Why are you ignoring this?</em>
+            </p>
+
+            <p>
+              And Jobs, very politely, does something that’s almost offensive if you’re used to corporate reassurance:
+              he refuses to pretend that doing everything is a virtue.
+            </p>
+
+            <p>
+              He says (paraphrasing): sometimes you have to make tough decisions to just not do things.
+            </p>
+
+            <p>
+              Then he gives the line that matters, the one that’s essentially a compression algorithm for product judgment:
+            </p>
+
+            <p><strong>You start with the customer experience and you work backwards.</strong></p>
+
+            <p>
+              That’s not a slogan. It’s a design constraint.
+            </p>
+          </section>
+
+          <section class="blogpost__section" aria-labelledby="s-2">
+            <h2 id="s-2">Documentation is not a diary. It’s a decision system.</h2>
+
+            <p>
+              A lot of teams treat documentation as a museum: write down everything we did so future archaeologists can
+              reconstruct the ruins.
+            </p>
+
+            <p>We don’t.</p>
+
+            <p>
+              We treat documentation as a <strong>decision system</strong>—a way to make the work reproducible and the
+              scope defensible.
+            </p>
+
+            <p>
+              Because the real failure mode in building software isn’t “we forgot to write down the API.” The real
+              failure mode is subtler:
+            </p>
+
+            <ul class="blogpost__list">
+              <li>the project becomes a landfill of “good ideas,”</li>
+              <li>the roadmap turns into a list of vibes,</li>
+              <li>and the product becomes an attempt to satisfy every possible interpretation of what the customer “might” want.</li>
+            </ul>
+
+            <p>
+              That’s how you end up building a beautiful machine for misunderstanding.
+            </p>
+
+            <p>
+              So our documentation starts where Jobs says it should start: <strong>the customer experience</strong>,
+              written in a way that forces clarity.
+            </p>
+          </section>
+
+          <section class="blogpost__section" aria-labelledby="s-3">
+            <h2 id="s-3">Our north star: start from the job, not the feature</h2>
+
+            <p>
+              The practical version of “start from the customer and work backwards” is:
+              <strong>Jobs to be Done (JTBD).</strong>
+            </p>
+
+            <p>It’s not just a marketing framework. It’s a discipline:</p>
+
+            <p><strong>People don’t buy products. They “hire” products to get a job done.</strong></p>
+
+            <p>
+              If you’re serious, you can write the job as a sentence you can test:
+            </p>
+
+            <p>
+              <strong>When ___, I want to ___, so I can ___.</strong>
+            </p>
+
+            <p>
+              And then everything you build either directly supports that job—or it’s a distraction you should have the
+              courage to not do.
+            </p>
+
+            <p>
+              This is also why documentation matters: it’s where the job is written down, preserved, and used as a
+              constraint when someone proposes a shiny detour.
+            </p>
+          </section>
+
+          <section class="blogpost__section" aria-labelledby="s-4">
+            <h2 id="s-4">The Cigar District example: the job is inventory positioning</h2>
+
+            <p>
+              In our pilot with The Cigar District, the job is not “humidity monitoring.”
+            </p>
+
+            <p>That’s the trap.</p>
+
+            <p>The job is something more concrete and more operational:</p>
+
+            <p>
+              <strong>
+                Help Bobby (the owner) position inventory so cigars age well and stay consistent—without guesswork.
+              </strong>
+            </p>
+
+            <p>
+              Cigars need to be placed in ideal locations depending on what matters in that room. Not one abstract
+              metric. A cluster of practical realities:
+            </p>
+
+            <ul class="blogpost__list">
+              <li>stable zones vs unstable zones,</li>
+              <li>pockets and gradients,</li>
+              <li>drift over time,</li>
+              <li>and the fact that “room average” can be fine while a specific shelf is quietly becoming a problem.</li>
+            </ul>
+
+            <p>So we work backwards from Bobby’s job:</p>
+
+            <ul class="blogpost__list">
+              <li>He needs to know where the stable zones are.</li>
+              <li>He needs to know where the pockets form.</li>
+              <li>He needs to know when a change is real vs when it’s sensor disagreement.</li>
+              <li>He needs guidance that’s actionable: “move inventory here,” not “here’s a chart.”</li>
+            </ul>
+
+            <p>
+              That’s the job. Everything else is subordinate.
+            </p>
+          </section>
+
+          <section class="blogpost__section" aria-labelledby="s-5">
+            <h2 id="s-5">What we document (and what we intentionally do not)</h2>
+
+            <p>
+              Starting from the job changes what documentation looks like.
+            </p>
+
+            <p>
+              We don’t lead with architecture diagrams and pretend they’re the point. We lead with the job and force
+              ourselves to answer:
+            </p>
+
+            <ul class="blogpost__list">
+              <li><strong>What is the customer trying to do?</strong></li>
+              <li><strong>What does “success” look like in their language?</strong></li>
+              <li><strong>What must our system produce to enable that success repeatedly?</strong></li>
+              <li><strong>What do we refuse to build right now because it doesn’t move the job?</strong></li>
+            </ul>
+
+            <p>
+              This is where “not doing things” becomes a feature.
+            </p>
+
+            <p>
+              Because any system worth building will be attacked by feature gravity. You’ll be asked for dashboards,
+              integrations, alerts, exports, historical views, “AI insights,” and a dozen other things that sound
+              reasonable when you say them quickly.
+            </p>
+
+            <p>
+              And many of those will be good ideas—eventually.
+            </p>
+
+            <p>
+              But product maturity is partly the ability to say:
+            </p>
+
+            <p><strong>Not yet. Not here. Not for this job.</strong></p>
+          </section>
+
+          <section class="blogpost__section" aria-labelledby="s-6">
+            <h2 id="s-6">Our doc stack (how we keep ourselves honest)</h2>
+
+            <p>
+              So our documentation is built as a stack that flows from the job backwards into implementation:
+            </p>
+
+            <ul class="blogpost__list">
+              <li><strong>Job Statement</strong> (JTBD, written in operator language)</li>
+              <li><strong>Acceptance Signals</strong> (what Bobby can observe that proves the job is being done)</li>
+              <li><strong>Workflow</strong> (the steps he will actually take, including “what do I do when the system says I can’t decide?”)</li>
+              <li><strong>Artifacts</strong> (maps, zone labels, diagnostics, “receipts”)</li>
+              <li><strong>System Constraints</strong> (what must be true for the artifacts to be trustworthy)</li>
+              <li><strong>Implementation Notes</strong> (only after everything above is pinned down)</li>
+            </ul>
+
+            <p>
+              This prevents a common disease: documenting a system that is technically impressive but operationally
+              irrelevant.
+            </p>
+          </section>
+
+          <section class="blogpost__section" aria-labelledby="s-7">
+            <h2 id="s-7">What this means in practice for The Cigar District</h2>
+
+            <p>
+              In the Cigar District pilot, “documentation-first” doesn’t mean writing long docs.
+            </p>
+
+            <p>It means writing the <em>right</em> docs:</p>
+
+            <ul class="blogpost__list">
+              <li>a zone map definition that Bobby can use,</li>
+              <li>a catalog of recurring pockets and what triggers them,</li>
+              <li>a commissioning workflow he can repeat,</li>
+              <li>and clear “action recommendations with verification hooks” (before/after signals).</li>
+            </ul>
+
+            <p>
+              Because the job is inventory positioning. If our system can’t produce guidance that makes positioning
+              better, it doesn’t matter how clean the math is.
+            </p>
+
+            <p>
+              The customer experience is the audit.
+            </p>
+          </section>
+
+          <section class="blogpost__section blogpost__section--updates" aria-labelledby="s-8">
+            <h2 id="s-8">The takeaway</h2>
+
+            <p>
+              We agree with Jobs here, and it’s one of the few places where a simple sentence actually deserves reverence:
+            </p>
+
+            <p><strong>Start from the customer experience and work backwards.</strong></p>
+
+            <p>
+              That’s why we document from the job backwards. That’s why we use Jobs to be Done. And that’s why our pilot
+              work starts with Bobby’s inventory positioning problem—not with our favorite features.
+            </p>
+
+            <p>
+              Because the hardest part of building software isn’t building. It’s choosing what you refuse to build so
+              the thing stays coherent.
+            </p>
+
+            <p><strong>And yes: sometimes you have to not do things.</strong></p>
+
+            <div class="blogpost__actions">
+              <a class="btn ghost" href="/explore/blog">Back to Blog</a>
+              <a class="btn ghost" href="/promo/exclusion">Get Priority Access</a>
+            </div>
+          </section>
+        </article>
+      </main>
+    </site-page>
+  </body>
+</html>
