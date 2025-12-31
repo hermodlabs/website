@@ -1,0 +1,161 @@
+/* ==========================================================================
+   Meet Our Team — tokenized + aligned with header/footer Swiss system
+   Requires: --space-1..--space-6, --border, --bg, --text, --muted
+   ========================================================================== */
+
+.team{
+  padding: var(--space-6) 0 calc(var(--space-6) + var(--space-2));
+}
+
+.team__inner{
+  width: min(1100px, 92vw);
+  margin-inline: auto;
+}
+
+/* Header */
+.team__header{
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-4);
+}
+
+.team__title{
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+  font-size: clamp(2.1rem, 4.4vw, 3.1rem);
+}
+
+.team__subhead{
+  margin: var(--space-4) 0 0;
+  max-width: 78ch;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  opacity: 0.86;
+}
+
+/* Grid */
+.team__grid{
+  margin-top: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--border);
+
+  display: grid;
+  gap: var(--space-6);
+}
+
+/* Card */
+.team-card{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+}
+
+/* Media */
+.team-card__photo{
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(0,0,0,0.03);
+}
+
+/* Meta */
+.team-card__meta{
+  display: grid;
+  gap: var(--space-1);
+}
+
+.team-card__name{
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  font-size: clamp(1.45rem, 2.2vw, 1.8rem);
+}
+
+.team-card__role{
+  margin: 0;
+  color: var(--muted);
+  font-weight: 650;
+  letter-spacing: -0.005em;
+  opacity: 0.9;
+}
+
+/* Bio */
+.team-card__bio{
+  margin-top: var(--space-3);
+  max-width: 78ch;
+}
+
+.team-card__text{
+  margin: var(--space-4) 0 0;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  letter-spacing: -0.005em;
+  opacity: 0.88;
+}
+
+.team-card__text:first-child{
+  margin-top: 0;
+}
+
+/* Values */
+.team-card__kicker{
+  margin: var(--space-6) 0 var(--space-2);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.78;
+}
+
+.team-card__values{
+  padding-left: 12px; /* clause-like */
+  border-left: 2px solid rgba(0,0,0,0.18);
+}
+
+.team-card__value-title{
+  margin: var(--space-4) 0 0;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  opacity: 0.95;
+}
+
+.team-card__value-title:first-child{
+  margin-top: 0;
+}
+
+/* Optional links row */
+.team-card__links{
+  margin-top: var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* Desktop: 2-column card layout (image left, text right) */
+@media (min-width: 900px){
+  .team{
+    padding: calc(var(--space-6) + var(--space-2)) 0 calc(var(--space-6) + var(--space-4));
+  }
+
+  .team__header{
+    padding-top: var(--space-5);
+  }
+
+  .team__grid{
+    gap: calc(var(--space-6) + var(--space-2));
+  }
+
+  .team-card{
+    grid-template-columns: 0.42fr 0.58fr;
+    column-gap: var(--space-6);
+    align-items: start;
+  }
+
+  .team-card__photo{
+    aspect-ratio: 1 / 1; /* portrait feel on desktop */
+  }
+}
