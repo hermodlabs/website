@@ -98,3 +98,4 @@ await loadModule("components/site_hero/site_hero.js");
 await loadModule("components/social_proof/social_proof.js");
 await loadModule("components/site_about/site_about.js");
 await loadModule("components/event_invite/event_invite.js");
+await loadModule("components/bloglist/bloglist.js");
