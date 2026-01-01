@@ -11,7 +11,7 @@ class SocialProof extends HTMLElement {
         <div class="social-proof__inner">
           <h2 class="social-proof__title" id="social-proof-title">
             <span class="social-proof__kicker">Pilot</span>
-            <span class="social-proof__headline">The Cigar District</span>
+            <span class="social-proof__headline">Real-Time Humidity Recon</span>
           </h2>
 
           <p class="social-proof__text">
