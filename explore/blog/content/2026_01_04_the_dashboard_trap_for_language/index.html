@@ -133,10 +133,52 @@
 
             <p>And most of the time, none of that is true.</p>
 
-            <p>We’re doing private language again.</p>
-            <p>We’re making diary marks out of sentences.</p>
-            <p>We’re calling vibes “meaning.”</p>
-            <p>We’re calling plausible completion “knowledge.”</p>
+            <p>We're doing private language again.</p>
+            <p>We're treating a public language like a private diary.</p>
+            <p>We're calling our private feelings “meaning.”</p>
+            <p>We're calling plausible output “truth.”</p>
+
+<table class="blogpost__table" role="table" aria-label="Private language failure modes">
+  <thead>
+    <tr>
+      <th scope="col">Source</th>
+      <th scope="col">Private test</th>
+      <th scope="col">Missing public check</th>
+      <th scope="col">Resulting authority</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td data-label="Source">Private diary</td>
+      <td data-label="Private test">
+        &ldquo;It seems correct to me, so it is correct.&rdquo;
+      </td>
+      <td data-label="Missing public check">No external standard</td>
+      <td data-label="Resulting authority">Self-certified</td>
+    </tr>
+
+    <tr>
+      <td data-label="Source">Private feelings</td>
+      <td data-label="Private test">
+        &ldquo;It feels meaningful to me, so it is meaningful.&rdquo;
+      </td>
+      <td data-label="Missing public check">No shared criteria</td>
+      <td data-label="Resulting authority">Self-interpreted</td>
+    </tr>
+
+    <tr>
+      <td data-label="Source">Plausible output</td>
+      <td data-label="Private test">
+        &ldquo;It sounds true to me, so it is true.&rdquo;
+      </td>
+      <td data-label="Missing public check">No verification</td>
+      <td data-label="Resulting authority">Self-justified</td>
+    </tr>
+  </tbody>
+</table>
+
+
           </section>
 
           <section class="blogpost__section" aria-labelledby="s-3">
@@ -176,6 +218,56 @@
               If the underlying instrument is still asking the human to supply meaning, then the “AI layer” is just hallucinating on top of hallucination —
               not because it’s malicious, but because the inputs never contained a public definition of “what counts as true” in the first place.
             </p>
+
+            <table class="blogpost__table" role="table" aria-label="The dashboard trap">
+  <thead>
+    <tr>
+      <th scope="col">Source</th>
+      <th scope="col">Operator move</th>
+      <th scope="col">Missing public check</th>
+      <th scope="col">What fills the gap</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td data-label="Source">Dashboard status</td>
+      <td data-label="Operator move">
+        &ldquo;Humidity looks good, so it <em>is</em> good.&rdquo;
+      </td>
+      <td data-label="Missing public check">No defined acceptance criteria</td>
+      <td data-label="What fills the gap">Self-certified comfort</td>
+    </tr>
+
+    <tr>
+      <td data-label="Source">Conflicting sensors</td>
+      <td data-label="Operator move">
+        &ldquo;That sensor always reads high.&rdquo;
+      </td>
+      <td data-label="Missing public check">No calibration / dispute protocol</td>
+      <td data-label="What fills the gap">Folklore-based normalization</td>
+    </tr>
+
+    <tr>
+      <td data-label="Source">Drift in the room</td>
+      <td data-label="Operator move">
+        &ldquo;Ignore it unless it stays weird for three days.&rdquo;
+      </td>
+      <td data-label="Missing public check">No decision thresholds over time</td>
+      <td data-label="What fills the gap">Vibe-based policy</td>
+    </tr>
+
+    <tr>
+      <td data-label="Source">AI “insight” layer</td>
+      <td data-label="Operator move">
+        &ldquo;It sounds plausible, so we treat it as guidance.&rdquo;
+      </td>
+      <td data-label="Missing public check">No verification path / ground truth loop</td>
+      <td data-label="What fills the gap">Self-justified action</td>
+    </tr>
+  </tbody>
+</table>
+
           </section>
 
           <section class="blogpost__section" aria-labelledby="s-4">
@@ -218,12 +310,15 @@
             <p>
               People don't realize that they're not actually asking questions. 
               They're performing rituals. 
-              They're praying to the gods for “insight.”
-              They're asking for the feeling of certainty. 
-              They're asking for a story that matches the shape of their anxiety.
-              They're asking for an oracle that will certify their worldview without requiring 
-              the embarrassment of defining terms.
             </p>
+
+            <ul class="blogpost__list">
+              <li>They're praying to the AI gods for “insight.”</li>
+              <li>They're asking for the feeling of certainty. </li>
+              <li>They're asking for a story that matches the shape of their anxiety.</li>
+              <li>They're asking for an oracle that will certify their worldview without requiring 
+                the embarrassment of defining terms.</li>
+            </ul>
 
             <p>
               Then the model replies with something that <em>sounds</em> like an answer &mdash; 
@@ -269,7 +364,9 @@
             </p>
 
             <p>LLMs don&rsquo;t do that automatically.</p>
+
             <p>Dashboards don&rsquo;t do that automatically.</p>
+
             <p>And neither do humans.</p>
           </section>
 
@@ -301,10 +398,63 @@
             </p>
 
             <ul class="blogpost__list">
-              <li>Interpretation without contracts.</li>
-              <li>Meaning without receipts.</li>
-              <li>Decision-making without public checks.</li>
+              <li>Interpretation without (auditable) accountability.</li>
+              <li>Meaning without (common) purpose.</li>
+              <li>Decision-making without (independent) oversight.</li>
             </ul>
+
+<table class="blogpost__table blogpost__table--mirror" role="table" aria-label="Public language for correctness (the mirror)">
+  <thead>
+    <tr>
+      <th scope="col">Principle</th>
+      <th scope="col">Public criterion</th>
+      <th scope="col">How it&rsquo;s checked</th>
+      <th scope="col">What happens when it fails</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td data-label="Principle">(Auditable) accountability</td>
+      <td data-label="Public criterion">
+        &ldquo;Correct&rdquo; is defined by versioned thresholds + documented assumptions (what counts, on what window, under what conditions).
+      </td>
+      <td data-label="How it&rsquo;s checked">
+        Evidence receipts: calibration status, sensor disagreement bounds, drift detection, and a traceable decision log for each claim.
+      </td>
+      <td data-label="What happens when it fails">
+        The system downgrades the claim (e.g., &ldquo;uncertain&rdquo;), blocks automation, and asks for the missing evidence instead of inventing a story.
+      </td>
+    </tr>
+
+    <tr>
+      <td data-label="Principle">(Common) purpose</td>
+      <td data-label="Public criterion">
+        Everyone shares the objective function: what outcome we&rsquo;re optimizing and what tradeoffs are allowed (stability vs. sensitivity, false alarms vs. misses).
+      </td>
+      <td data-label="How it&rsquo;s checked">
+        A declared target + acceptance tests tied to the operator&rsquo;s job: alarms map to actions, and actions map to measurable outcomes.
+      </td>
+      <td data-label="What happens when it fails">
+        Disagreements become explicit (about goals, not vibes), and the system refuses to present a single &ldquo;answer&rdquo; without stating the chosen tradeoff.
+      </td>
+    </tr>
+
+    <tr>
+      <td data-label="Principle">(Independent) oversight</td>
+      <td data-label="Public criterion">
+        There is a defined path to falsify claims: second-party checks, periodic audits, and appeal procedures when the model and the room disagree.
+      </td>
+      <td data-label="How it&rsquo;s checked">
+        Spot checks, drift audits, cross-instrument comparisons, and review queues for flagged anomalies (with reasons attached).
+      </td>
+      <td data-label="What happens when it fails">
+        The system escalates rather than smooths: it surfaces uncertainty, requests review, and updates the rules only through a recorded change process.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
           </section>
 
           <section class="blogpost__section blogpost__section--updates" aria-labelledby="s-8">
@@ -312,9 +462,12 @@
 
             <p>So the uncomfortable conclusion is boring and operational:</p>
 
-            <p>If you want to use LLMs seriously, you need contracts.</p>
-            <p>You need shared criteria.</p>
-            <p>You need public checks.</p>
+            <p>If you want to use LLMs seriously:</p>
+            <ul class="blogpost__list">
+              <li>You need contracts.</li>
+              <li>You need shared criteria.</li>
+              <li>You need public checks.</li>
+            </ul>
 
             <p>
               You need to state what would count as correct &mdash; and what would count as wrong &mdash; 

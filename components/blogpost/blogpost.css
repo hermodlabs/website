@@ -267,3 +267,146 @@
     gap: var(--space-5);
   }
 }
+
+
+
+/* ---------- Table (semantic <table>) ----------
+   Compatible with existing token system:
+   --space-1..--space-6, --border, --bg, --text, --muted
+------------------------------------------------ */
+
+.blogpost__table{
+  width: 100%;
+  margin-top: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;            /* keeps rounded corners on header row */
+  border-collapse: separate;   /* required for radius + inner borders */
+  border-spacing: 0;
+  background: var(--bg);
+  box-shadow: var(--shadow-1, 0 1px 0 rgba(0,0,0,0.04));
+}
+
+/* Header */
+.blogpost__table thead th{
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  color: var(--text);
+  font-weight: 800;
+  letter-spacing: 0.12em;      /* match label system */
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  background: rgba(0,0,0,0.03);
+  opacity: 0.85;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Cells */
+.blogpost__table tbody td{
+  padding: var(--space-4);
+  color: var(--muted);
+  line-height: 1.55;
+  opacity: 0.9;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Remove last row bottom border */
+.blogpost__table tbody tr:last-child td{
+  border-bottom: none;
+}
+
+/* Vertical dividers (subtle) */
+.blogpost__table thead th + th,
+.blogpost__table tbody td + td{
+  border-left: 1px solid var(--border);
+}
+
+/* Row hover (quiet, non-distracting) */
+.blogpost__table tbody tr:hover td{
+  background: rgba(0,0,0,0.02);
+}
+
+/* Make the “Resulting authority” column feel like a tag */
+.blogpost__table tbody td:last-child{
+  color: var(--text);
+  font-weight: 750;
+  letter-spacing: -0.01em;
+  opacity: 0.92;
+  white-space: nowrap;
+}
+
+/* Quotes look nicer, and the “Private test” reads like a block */
+.blogpost__table tbody td:nth-child(2){
+  font-style: italic;
+}
+
+/* Source column a bit stronger */
+.blogpost__table tbody td:first-child{
+  color: var(--text);
+  font-weight: 800;
+  opacity: 0.95;
+}
+
+/* ---------- Responsive: stack rows on small screens ---------- */
+@media (max-width: 720px){
+  .blogpost__table{
+    display: block;
+    overflow: hidden;
+  }
+
+  .blogpost__table thead{
+    display: none;
+  }
+
+  .blogpost__table tbody,
+  .blogpost__table tr,
+  .blogpost__table td{
+    display: block;
+    width: 100%;
+  }
+
+  .blogpost__table tbody tr{
+    border-top: 1px solid var(--border);
+  }
+
+  .blogpost__table tbody tr:first-child{
+    border-top: none;
+  }
+
+  .blogpost__table tbody td{
+    border: none;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .blogpost__table tbody td:first-child{
+    border-top: none;
+    padding-bottom: var(--space-1);
+  }
+
+  .blogpost__table tbody td:last-child{
+    white-space: normal;
+  }
+
+  /* Add labels via data-label attributes (optional).
+     If you don't add data-label in HTML, these won't show. */
+  .blogpost__table td[data-label]::before{
+    content: attr(data-label);
+    display: block;
+    margin-bottom: var(--space-1);
+    color: var(--muted);
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+}
+
+/* Allow wrapping in the last column for the mirror table */
+.blogpost__table--mirror tbody td:last-child{
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
