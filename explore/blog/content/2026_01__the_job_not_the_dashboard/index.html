@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-V2474V50XP");
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs - The Job, Not the Dashboard</title>
+    <meta
+      name="description"
+      content="How we turn “humidity monitoring” into inventory positioning you can defend: start from the job, define tasks, and ship receipts—not vibes."
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="" id="main-css" />
+    <script type="module" src="../../../../bootstrap.js"></script>
+  </head>
+
+  <body>
+    <site-page>
+      <main class="blogpost">
+        <header class="blogpost__hero">
+          <p class="blogpost__eyebrow">Culture</p>
+
+          <h1 class="blogpost__title">The Job, Not the Dashboard</h1>
+
+          <p class="blogpost__dek">
+            How we turn “humidity monitoring” into inventory positioning you can defend: start from the job, define the tasks, and
+            ship receipts—not vibes.
+          </p>
+
+          <div class="blogpost__meta">
+            <span>Jonathan Nacionales (Founder/CEO)</span>
+            <span aria-hidden="true">•</span>
+            <time datetime="2026-01-05">January __, 2026</time>
+          </div>
+
+          <div class="blogpost__actions">
+            <a class="btn ghost" href="/explore/blog">Back to Blog</a>
+            <a class="btn ghost" href="/explore/blog/content/2026_01_03_not_do_things_customer_backward">
+              Read the previous post
+            </a>
+          </div>
+        </header>
+
+        <article class="blogpost__content">
+          <section class="blogpost__section" aria-labelledby="s-1">
+            <h2 id="s-1">A public product philosophy moment (but in a cigar shop)</h2>
+
+            <p>
+              A lot of software pitches start with features. Dashboards. Alerts. Integrations. “AI insights.” A parade of shiny nouns.
+            </p>
+
+            <p>
+              But in our pilot with The Cigar District, that approach fails immediately—because Bobby doesn’t run a museum of charts.
+              He runs a room full of product that has to age consistently, sell consistently, and not surprise him two weeks later.
+            </p>
+
+            <p>So we’re forcing ourselves to do the annoying thing first:</p>
+            <p><strong>Start with the customer’s job. Work backwards.</strong></p>
+          </section>
+
+          <section class="blogpost__section" aria-labelledby="s-2">
+            <h2 id="s-2">The job statement (in Bobby-language)</h2>
+
+            <p>If we’re being honest, the job is not “monitor humidity.”</p>
+            <p><strong>That’s the trap.</strong></p>
+            <p>The job is:</p>
+            <p><strong>Help Bobby position inventory so cigars age well and stay consistent—without guesswork.</strong></p>
+
+            <p>
+              When you write it that way, a bunch of “obvious” features suddenly look optional. And a bunch of “boring” things become
+              non-negotiable.
+            </p>
+          </section>
+
+          <section class="blogpost__section" aria-labelledby="s-3">
+            <h2 id="s-3">The tasks Bobby actually needs done</h2>
+
+            <p>
+              If the job is inventory positioning, here’s what Bobby needs—operationally—whether software exists or not:
+            </p>
+
+            <ul class="blogpost__list">
+              <li>
+                <strong>Map the room into zones</strong><br />
+                Stable zones vs unstable zones. Where the room behaves, and where it improvises.
+              </li>
+              <li>
+                <strong>Detect pockets and gradients</strong><br />
+                The shelf that’s quietly different. The corner that drifts. The “room average” lie.
+              </li>
+              <li>
+                <strong>Place inventory deliberately</strong><br />
+                Long-age goes here. Quick-turn goes there. Fragile wrappers don’t get sacrificed to the vent gods.
+              </li>
+              <li>
+                <strong>Tell real change from sensor drama</strong><br />
+                Is this a real shift, or are two sensors arguing like interns?
+              </li>
+              <li>
+                <strong>Take a corrective action that isn’t random</strong><br />
+                Move humidifier. Stage airflow. Relocate a shelf’s worth of boxes. Small, reversible actions first.
+              </li>
+              <li>
+                <strong>Verify the fix worked</strong><br />
+                Not “it feels better.” A before/after receipt Bobby can understand.
+              </li>
+              <li>
+                <strong>Re-commission after changes</strong><br />
+                Season changes. Layout changes. HVAC changes. The map must be refreshable, not a one-time art project.
+              </li>
+              <li>
+                <strong>Communicate rules to staff</strong><br />
+                So the room doesn’t drift back into chaos because someone stocked “where there was space.”
+              </li>
+            </ul>
+
+            <p>Those are the tasks. Notice what’s missing: a dashboard as the center of the universe.</p>
+          </section>
+
+          <section class="blogpost__section" aria-labelledby="s-4">
+            <h2 id="s-4">The workflow in one line</h2>
+
+            <p>If you want the whole product in one sentence, it’s basically this:</p>
+
+            <div class="blogpost__callout" role="note" aria-label="Workflow summary">
+              <p><strong>Map → Place → Monitor → Diagnose → Intervene → Verify → Update rules</strong></p>
+            </div>
+
+            <p>
+              That’s the spine. Everything we build either supports this loop—or it’s feature gravity trying to add mass to the roadmap.
+            </p>
+          </section>
+
+          <section class="blogpost__section" aria-labelledby="s-5">
+            <h2 id="s-5">Receipts, not vibes: what “success” looks like</h2>
+
+            <p>We translate each task into acceptance signals Bobby can observe.</p>
+            <p>Not KPIs that only make engineers happy. Receipts that an operator can audit.</p>
+
+            <p><strong>Examples:</strong></p>
+            <ul class="blogpost__list">
+              <li>Stable zones actually behave (lower variance than unstable zones over the same period).</li>
+              <li>Pockets are repeatable (same shelf tends to misbehave, not random whack-a-mole).</li>
+              <li>Recommendations change outcomes (after an intervention, the zone stabilizes or the pocket shrinks).</li>
+              <li>
+                Staff can follow the placement rules (without needing a 45-minute “training session,” which is just a meeting wearing a fake mustache).
+              </li>
+            </ul>
+
+            <p>If we can’t produce receipts, we’re not done. We’re just generating pretty telemetry.</p>
+          </section>
+
+          <section class="blogpost__section" aria-labelledby="s-6">
+            <h2 id="s-6">The most important feature: “what do I do when you can’t decide?”</h2>
+
+            <p>Real systems have uncertainty. The honest moment is when the system says:</p>
+            <p><strong>“I don’t know.”</strong></p>
+
+            <p>That’s not a failure. The failure is if “I don’t know” produces operational paralysis.</p>
+            <p>So we treat “can’t decide” as a first-class workflow branch:</p>
+
+            <ul class="blogpost__list">
+              <li>Temporarily avoid stocking long-aging inventory in that zone</li>
+              <li>Run a short disturbance test and re-check</li>
+              <li>Collect another window of data</li>
+              <li>Add a temporary sensor for 48 hours</li>
+              <li>Re-commission the map</li>
+            </ul>
+
+            <p>If we can’t tell Bobby what to do next, we don’t have a product—we have a research project.</p>
+          </section>
+
+          <section class="blogpost__section" aria-labelledby="s-7">
+            <h2 id="s-7">What we intentionally do not build (yet)</h2>
+
+            <p>This is the part that looks rude in a feature request meeting:</p>
+
+            <ul class="blogpost__list">
+              <li>Not yet: integrations, exports, historical view mania</li>
+              <li>Not yet: “AI insights” that can’t produce receipts</li>
+              <li>Not yet: alerts for everything (alerts are where systems go to die)</li>
+            </ul>
+
+            <p>
+              We’ll build those later if they support the job loop. But we refuse to let the roadmap become a landfill of “good ideas.”
+            </p>
+          </section>
+
+          <section class="blogpost__section blogpost__section--updates" aria-labelledby="s-8">
+            <h2 id="s-8">The takeaway</h2>
+
+            <p>The hard part of building software isn’t building.</p>
+            <p>It’s deciding what you refuse to build so the product stays coherent.</p>
+
+            <p>If the job is inventory positioning, our output isn’t “humidity monitoring.” Our output is:</p>
+
+            <ul class="blogpost__list">
+              <li>a zone map Bobby can use,</li>
+              <li>a pocket catalog he recognizes,</li>
+              <li>action recommendations that are doable,</li>
+              <li>and receipts that prove it worked.</li>
+            </ul>
+
+            <p>Everything else is subordinate.</p>
+            <p><strong>And yes: sometimes you have to not do things.</strong></p>
+
+            <div class="blogpost__actions">
+              <a class="btn ghost" href="/explore/blog">Back to Blog</a>
+              <a class="btn ghost" href="/promo/exclusion">Get Priority Access</a>
+            </div>
+          </section>
+        </article>
+      </main>
+    </site-page>
+  </body>
+</html>
