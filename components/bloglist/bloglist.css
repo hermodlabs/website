@@ -1,0 +1,128 @@
+/* =========================================================
+   Blog pager (for <blog-list> component)
+   - Light DOM: inherits your site fonts/colors
+   - Uses CSS vars when available; falls back gracefully
+   ========================================================= */
+
+.blog-pager {
+  margin-top: 1.25rem;
+}
+
+.blog-pager__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--border, rgba(0, 0, 0, 0.12));
+  border-radius: 12px;
+  background: var(--surface, rgba(255, 255, 255, 0.6));
+}
+
+/* Buttons */
+.blog-pager__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  padding: 0.55rem 0.8rem;
+  border-radius: 10px;
+  border: 1px solid var(--border, rgba(0, 0, 0, 0.12));
+  background: var(--button-bg, rgba(255, 255, 255, 0.9));
+  color: var(--text, inherit);
+
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease,
+    border-color 120ms ease, opacity 120ms ease;
+}
+
+.blog-pager__btn i {
+  font-size: 0.9em;
+}
+
+.blog-pager__btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  border-color: var(--border-strong, rgba(0, 0, 0, 0.18));
+}
+
+.blog-pager__btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+}
+
+.blog-pager__btn:focus-visible {
+  outline: 2px solid var(--focus, rgba(220, 38, 38, 0.55));
+  outline-offset: 2px;
+}
+
+/* Disabled */
+.blog-pager__btn[disabled],
+.blog-pager__btn[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Status */
+.blog-pager__status {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+
+  color: var(--muted, rgba(0, 0, 0, 0.65));
+  font-size: 0.95rem;
+  line-height: 1.15;
+}
+
+.blog-pager__page {
+  display: inline-block;
+  font-weight: 600;
+  color: var(--text, inherit);
+}
+
+.blog-pager__range {
+  display: inline-block;
+  margin-left: 0.4rem;
+  font-weight: 400;
+}
+
+/* Label text inside buttons */
+.blog-pager__label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Responsive: stack buttons & status nicely on small screens */
+@media (max-width: 520px) {
+  .blog-pager__inner {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .blog-pager__status {
+    order: 3;
+    width: 100%;
+    text-align: center;
+  }
+
+  .blog-pager__btn {
+    flex: 1;
+    justify-content: center;
+    min-width: 9.5rem;
+  }
+}
+
+/* Optional: subtle divider feel if your page is very minimal */
+@media (prefers-reduced-motion: reduce) {
+  .blog-pager__btn {
+    transition: none;
+  }
+}
