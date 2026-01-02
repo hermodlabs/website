@@ -282,6 +282,56 @@
             <p>Same with charts.</p>
             <p>Same with dashboards.</p>
             <p>Same with trust.</p>
+
+<table class="blogpost__table blogpost__table--wrap-last" role="table" aria-label="Language is a toolchain (not a pipe)">
+
+  <thead>
+    <tr>
+      <th scope="col">Hidden stage</th>
+      <th scope="col">Language version</th>
+      <th scope="col">Dashboard version</th>
+      <th scope="col">Failure when unspoken</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td data-label="Hidden stage">Intent</td>
+      <td data-label="Language version">&ldquo;What are you actually trying to do with this answer?&rdquo;</td>
+      <td data-label="Dashboard version">&ldquo;What job is this chart supposed to support?&rdquo;</td>
+      <td data-label="Failure when unspoken">You get correct-looking output for the wrong task.</td>
+    </tr>
+
+    <tr>
+      <td data-label="Hidden stage">Definitions</td>
+      <td data-label="Language version">&ldquo;What does &lsquo;good&rsquo; / &lsquo;safe&rsquo; / &lsquo;true&rsquo; mean here?&rdquo;</td>
+      <td data-label="Dashboard version">&ldquo;What thresholds, windows, and tolerances define &lsquo;healthy&rsquo;?&rdquo;</td>
+      <td data-label="Failure when unspoken">Correctness collapses into vibes: &ldquo;seems right.&rdquo;</td>
+    </tr>
+
+    <tr>
+      <td data-label="Hidden stage">World-model</td>
+      <td data-label="Language version">&ldquo;Which facts, domain assumptions, and constraints are in play?&rdquo;</td>
+      <td data-label="Dashboard version">&ldquo;Which sensors are trusted, calibrated, and comparable?&rdquo;</td>
+      <td data-label="Failure when unspoken">People fill gaps with folklore and post-hoc stories.</td>
+    </tr>
+
+    <tr>
+      <td data-label="Hidden stage">Verification</td>
+      <td data-label="Language version">&ldquo;How would we falsify this claim? What evidence would change our mind?&rdquo;</td>
+      <td data-label="Dashboard version">&ldquo;What cross-check, audit, or ground truth loop confirms this reading?&rdquo;</td>
+      <td data-label="Failure when unspoken">Fluency becomes authority; plots become prophecy.</td>
+    </tr>
+
+    <tr>
+      <td data-label="Hidden stage">Decision rule</td>
+      <td data-label="Language version">&ldquo;What do we do when uncertainty is high or sources disagree?&rdquo;</td>
+      <td data-label="Dashboard version">&ldquo;What happens when sensors conflict or drift is detected?&rdquo;</td>
+      <td data-label="Failure when unspoken">Operators improvise policy under pressure.</td>
+    </tr>
+  </tbody>
+</table>
+
           </section>
 
           <section class="blogpost__section" aria-labelledby="s-5">
@@ -342,6 +392,55 @@
             </p>
 
             <p>the output justifies the assumptions required to interpret the output.</p>
+
+            <table class="blogpost__table blogpost__table--wrap-last" role="table" aria-label="Ritual questions vs. public language for correctness">
+  <thead>
+    <tr>
+      <th scope="col">Ritual request</th>
+      <th scope="col">What it really asks for</th>
+      <th scope="col">Missing public specification</th>
+      <th scope="col">What &ldquo;correct&rdquo; would require</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td data-label="Ritual request">&ldquo;Give me insight.&rdquo;</td>
+      <td data-label="What it really asks for">A framing that reduces uncertainty.</td>
+      <td data-label="Missing public specification">The decision context and goal.</td>
+      <td data-label="What &ldquo;correct&rdquo; would require">A declared objective (job-to-be-done) and a success metric.</td>
+    </tr>
+
+    <tr>
+      <td data-label="Ritual request">&ldquo;Make me certain.&rdquo;</td>
+      <td data-label="What it really asks for">A confidence feeling.</td>
+      <td data-label="Missing public specification">What level of evidence is required.</td>
+      <td data-label="What &ldquo;correct&rdquo; would require">A burden-of-proof rule (sources, tests, thresholds) and an uncertainty label.</td>
+    </tr>
+
+    <tr>
+      <td data-label="Ritual request">&ldquo;Tell me a story that fits this anxiety.&rdquo;</td>
+      <td data-label="What it really asks for">Narrative coherence.</td>
+      <td data-label="Missing public specification">Which claims are being made (and separated from speculation).</td>
+      <td data-label="What &ldquo;correct&rdquo; would require">Claim extraction: premises vs. conclusions, and what would falsify each.</td>
+    </tr>
+
+    <tr>
+      <td data-label="Ritual request">&ldquo;Be my oracle.&rdquo;</td>
+      <td data-label="What it really asks for">Authority without responsibility.</td>
+      <td data-label="Missing public specification">Who is accountable and how disputes are resolved.</td>
+      <td data-label="What &ldquo;correct&rdquo; would require">An auditable decision record + an appeal path (independent review).</td>
+    </tr>
+
+    <tr>
+      <td data-label="Ritual request">&ldquo;Just answer the question.&rdquo;</td>
+      <td data-label="What it really asks for">A completion that feels like an answer.</td>
+      <td data-label="Missing public specification">Definitions, world assumptions, constraints, allowed moves.</td>
+      <td data-label="What &ldquo;correct&rdquo; would require">A contract: terms, scope, constraints, verification plan.</td>
+    </tr>
+  </tbody>
+</table>
+
           </section>
 
           <section class="blogpost__section" aria-labelledby="s-6">
@@ -368,6 +467,55 @@
             <p>Dashboards don&rsquo;t do that automatically.</p>
 
             <p>And neither do humans.</p>
+
+            <table class="blogpost__table blogpost__table--wrap-last" role="table" aria-label="Sentence vs. certificate">
+  <thead>
+    <tr>
+      <th scope="col">Looks like</th>
+      <th scope="col">What people treat it as</th>
+      <th scope="col">What a certificate actually includes</th>
+      <th scope="col">What this prevents</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td data-label="Looks like">A sentence</td>
+      <td data-label="What people treat it as">&ldquo;A fact.&rdquo;</td>
+      <td data-label="What a certificate actually includes">Conditions: scope, definitions, assumptions, and what domain it applies to.</td>
+      <td data-label="What this prevents">Meaning drift: the claim silently changing while the words stay the same.</td>
+    </tr>
+
+    <tr>
+      <td data-label="Looks like">A plausible explanation</td>
+      <td data-label="What people treat it as">&ldquo;An account.&rdquo;</td>
+      <td data-label="What a certificate actually includes">Procedures: how the conclusion was reached, what steps were run, what data was used.</td>
+      <td data-label="What this prevents">Story-as-proof: retrofitted narratives that can&rsquo;t be audited.</td>
+    </tr>
+
+    <tr>
+      <td data-label="Looks like">A confident answer</td>
+      <td data-label="What people treat it as">&ldquo;Knowledge.&rdquo;</td>
+      <td data-label="What a certificate actually includes">Verification: tests, cross-checks, thresholds, and explicit uncertainty labels.</td>
+      <td data-label="What this prevents">Fluency-as-authority: &ldquo;sounds right&rdquo; becoming &ldquo;is right.&rdquo;</td>
+    </tr>
+
+    <tr>
+      <td data-label="Looks like">A dashboard reading</td>
+      <td data-label="What people treat it as">&ldquo;Reality.&rdquo;</td>
+      <td data-label="What a certificate actually includes">Failure modes: how it breaks, what warnings look like, and when the output should be ignored.</td>
+      <td data-label="What this prevents">Operator folklore: private rules filling the vacuum.</td>
+    </tr>
+
+    <tr>
+      <td data-label="Looks like">A model output</td>
+      <td data-label="What people treat it as">&ldquo;Authority.&rdquo;</td>
+      <td data-label="What a certificate actually includes">Adversarial survivability: a claim that stays valid under hostile reading and disagreement.</td>
+      <td data-label="What this prevents">Self-authorizing loops: the output justifying the assumptions required to trust it.</td>
+    </tr>
+  </tbody>
+</table>
+
           </section>
 
           <section class="blogpost__section" aria-labelledby="s-7">
