@@ -34,6 +34,20 @@
   .research-detail__viz-note{ display: none; }
 }
 
+/* Compact variant (optional) */
+.research-detail__table--compact td,
+.research-detail__table--compact th{
+  padding: var(--space-3) var(--space-4);
+}
+
+/* If you want: hide viz on mobile, keep table */
+@media (max-width: 520px){
+  .research-detail__vizwrap{
+    display: none;
+  }
+}
+
+
 
 
 
