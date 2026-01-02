@@ -410,3 +410,33 @@
   overflow-wrap: anywhere;
   word-break: break-word;
 }
+
+/* ---------- Responsive image pair (2-up -> 1-up) ---------- */
+.blogpost__image-grid{
+  margin-top: var(--space-4);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+@media (min-width: 720px){
+  .blogpost__image-grid{
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+}
+
+.blogpost__figure{
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg);
+  box-shadow: var(--shadow-1, 0 1px 0 rgba(0,0,0,0.04));
+}
+
+.blogpost__figure img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
