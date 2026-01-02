@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-V2474V50XP');
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Research: Data Centers</title>
+    <meta
+      name="description"
+      content="Data Centers market deep dive: why environmental uncertainty becomes an operational liability; demand drivers; TAM/SAM/SOM logic; buying dynamics; and structural gaps in current monitoring."
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <script type="importmap">
+    {
+      "imports": { "lit": "https://esm.run/lit" }
+    }
+    </script>
+
+    <script type="importmap">
+    {
+    "imports": {
+        "lit": "https://esm.run/lit",
+        "@observablehq/plot": "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm",
+        "d3": "https://cdn.jsdelivr.net/npm/d3@7/+esm"
+    }
+    }
+    </script>
+
+    <link rel="stylesheet" href="" id="main-css" />
+    <!-- depth: /engage/invest/research/data-centers/ -->
+    <script type="module" src="../../../../bootstrap.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="../research-detail.css"
+    />
+
+    <script type="module" src="./research-viz.js"></script>
+
+  </head>
+
+  <body>
+    <site-page>
+      <section class="research-detail" aria-labelledby="rd-title">
+        <div class="research-detail__inner">
+          <header class="research-detail__header">
+            <a class="link link--muted research-detail__back" href="/engage/invest/research/">
+              <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+              Back to Market Research
+            </a>
+
+            <h1 class="research-detail__title" id="rd-title">
+              Data Centers
+              <span class="research-detail__subtitle">Market Deep Dive</span>
+            </h1>
+
+            <p class="research-detail__lede">
+              Environmental uncertainty is becoming a <strong>first-order operational risk</strong> in high-density
+              facilities. This page summarizes our analysis: who is accountable, what triggers buying, and where current
+              monitoring architectures fail under scrutiny.
+            </p>
+
+            <div class="research-detail__meta">
+              <span class="badge badge--success">Published</span>
+              <span class="research-detail__meta-item">
+                <i class="fa-solid fa-tags" aria-hidden="true"></i>
+                High-tolerance facilities • Monitoring • BMS • Auditability
+              </span>
+            </div>
+
+            <div class="research-detail__cta-row">
+              <a class="button button--primary" href="#request">
+                <i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i>
+                Request additional research
+              </a>
+              <a class="button button--secondary" href="/engage/invest/">
+                <i class="fa-solid fa-handshake" aria-hidden="true"></i>
+                Invest
+              </a>
+            </div>
+          </header>
+
+          <section class="research-detail__section" id="context" aria-labelledby="s-context">
+            <h2 class="research-detail__heading" id="s-context">Context</h2>
+
+            <div class="research-detail__grid">
+              <div class="research-detail__card">
+                <h3 class="research-detail__card-title">
+                  Facilities teams are accountable for failures they can’t explain
+                </h3>
+                <p class="research-detail__text">
+                  In high-tolerance facilities, environmental conditions are assumed stable despite complex airflow, density,
+                  and thermal behavior. When failures occur, accountability sits with facilities, operations, and reliability
+                  teams—not an abstract “system.”
+                </p>
+              </div>
+
+              <div class="research-detail__card">
+                <h3 class="research-detail__card-title">Point measurements aren’t explanations</h3>
+                <p class="research-detail__text">
+                  Existing building management systems provide point measurements that detect threshold violations after damage occurs
+                  and do not explain why conditions drift or where instability originates.
+                </p>
+              </div>
+
+              <div class="research-detail__card">
+                <h3 class="research-detail__card-title">Scale narrows tolerance</h3>
+                <p class="research-detail__text">
+                  As facilities increase in scale, density, and utilization: environmental complexity increases while acceptable tolerance narrows.
+                  Blind spots translate into regulatory exposure, asset loss, or downtime.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section class="research-detail__section" id="drivers" aria-labelledby="s-drivers">
+            <h2 class="research-detail__heading" id="s-drivers">Core Demand Drivers</h2>
+
+            <ul class="research-detail__bullets">
+              <li><strong>Uptime + risk asymmetry:</strong> the downside of environmental failure vastly outweighs monitoring cost.</li>
+              <li><strong>Asset density:</strong> high-density environments magnify the cost of small deviations.</li>
+              <li><strong>Regulatory / reporting pressure:</strong> auditability, logging, and defensible narratives.</li>
+              <li><strong>Energy constraints:</strong> HVAC optimization under cost/decarbonization constraints.</li>
+              <li><strong>Operational scrutiny:</strong> “explain what happened” moments drive real buying.</li>
+            </ul>
+
+            <div class="research-detail__viz" id="viz-drivers" role="img" aria-label="Core demand drivers visualization"></div>
+
+            <p class="research-detail__viz-note" id="viz-drivers-note">
+  <strong>Labels:</strong> Uptime + risk = Uptime + risk asymmetry · Regulatory pressure = Regulatory / reporting pressure · Ops scrutiny = Operational scrutiny
+</p>
+
+
+          </section>
+
+<section class="research-detail__section" id="inflection" aria-labelledby="s-inflection">
+  <h2 class="research-detail__heading" id="s-inflection">Technology & market inflection</h2>
+
+  <p class="research-detail__text">
+    Three layers matured at once. The graphic shows <strong>Then → Now → Enables</strong> per track (hover for detail).
+  </p>
+
+  <div class="research-detail__viz" id="viz-inflection" role="img" aria-label="Inflection map visualization"></div>
+
+  <table class="research-detail__table" aria-label="Inflection track summaries">
+    <thead>
+      <tr>
+        <th>Track</th>
+        <th>Then</th>
+        <th>Now</th>
+        <th>Enables</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Sensors &amp; connectivity</strong></td>
+        <td>Low density, costly installs</td>
+        <td>Cheap, reliable, deployable at scale</td>
+        <td>Dense instrumentation becomes practical</td>
+      </tr>
+      <tr>
+        <td><strong>Cloud-connected BMS</strong></td>
+        <td>Siloed on-prem dashboards</td>
+        <td>Continuous ingestion + integration</td>
+        <td>Central monitoring + continuous analysis</td>
+      </tr>
+      <tr>
+        <td><strong>Analytics / digital twin</strong></td>
+        <td>Mostly alarms + thresholds</td>
+        <td>Modeling + optimization mainstream</td>
+        <td>Explain drift, not just detect it</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+
+
+
+<section class="research-detail__section" id="segments" aria-labelledby="s-segments">
+  <h2 class="research-detail__heading" id="s-segments">TAM / SAM / SOM Logic</h2>
+
+  <p class="research-detail__text">
+    <strong>At-a-glance:</strong> TAM <strong>$70B</strong> → SAM <strong>$24B</strong> → SOM <strong>$3B</strong>.
+    These are conservative, filtered to high-tolerance environments and exclude low-spec commercial buildings.
+  </p>
+
+  <div class="research-detail__viz" id="viz-segments" role="img" aria-label="TAM SAM SOM funnel visualization"></div>
+
+  <div class="research-detail__panel">
+    <h3 class="research-detail__panel-title">Addressable segment definition</h3>
+    <ul class="research-detail__bullets">
+      <li><strong>Tight tolerances:</strong> small deviations cause outsized harm.</li>
+      <li><strong>Continuous monitoring:</strong> persistent sensing + logging, not periodic checks.</li>
+      <li><strong>High consequence of failure:</strong> downtime, regulatory exposure, yield loss, asset damage.</li>
+      <li><strong>Operational sophistication:</strong> centralized BMS / specialized control infrastructure already exists.</li>
+    </ul>
+  </div>
+
+  <div class="research-detail__panel">
+    <h3 class="research-detail__panel-title">Minimum viable market segment (MVMS)</h3>
+    <p class="research-detail__text">
+      A subset of operators is already forced to justify environmental stability continuously.
+      Buying is triggered by audits, expansion/retrofit, or prior failures/near-misses.
+    </p>
+  </div>
+
+  <div class="research-detail__panel">
+    <h3 class="research-detail__panel-title">SOM as an outcome</h3>
+    <p class="research-detail__text">
+      The obtainable segment is intentionally constrained to facilities where scrutiny and risk converge—where adoption is
+      inevitable rather than aspirational.
+    </p>
+  </div>
+</section>
+
+
+<section class="research-detail__section" id="buying" aria-labelledby="s-buying">
+  <h2 class="research-detail__heading" id="s-buying">Adoption & Buying Dynamics</h2>
+
+  <div class="research-detail__panel">
+    <p class="research-detail__text">
+      Purchasing decisions are rarely exploratory. They’re initiated by audits/compliance, expansions/retrofits,
+      commissioning deadlines, or prior deviation events.
+    </p>
+    <ul class="research-detail__bullets">
+      <li><strong>Evaluation:</strong> reliability + auditability + integration with reporting workflows</li>
+      <li><strong>Preference:</strong> explain behavior, not just detect violations</li>
+      <li><strong>Timelines:</strong> driven by inspections and operational deadlines</li>
+    </ul>
+  </div>
+
+  <p class="research-detail__text">
+    The map below summarizes buying dynamics. Each bubble is a <strong>trigger → buyer role</strong> pairing; the number
+    is a <strong>1–5 qualitative pressure score</strong> (5 = forced/urgent buying, 1 = weak signal).
+  </p>
+
+  <div class="research-detail__viz" id="viz-buying" role="img" aria-label="Buying dynamics visualization"></div>
+
+<p class="research-detail__viz-note">
+  <strong>Labels:</strong> Audit = Audit / compliance · Expansion = Expansion / retrofit · Incident = Near-miss / incident
+</p>
+
+
+
+</section>
+
+
+          <section class="research-detail__section" id="gaps" aria-labelledby="s-gaps">
+            <h2 class="research-detail__heading" id="s-gaps">Market Gaps & Structural Opportunity</h2>
+
+            <p class="research-detail__text">
+              Existing systems detect deviations but fail to explain environmental behavior. They’re optimized for threshold detection,
+              local control loops, and compliance logging — not spatial variability, propagation, or causal origin.
+            </p>
+
+            <ul class="research-detail__bullets">
+              <li>Blind spots increase faster than sensor density as facilities scale</li>
+              <li>Point readings don’t survive “why was it stable?” scrutiny</li>
+              <li>Operators are accountable even when tools can’t justify the story</li>
+            </ul>
+
+            <div class="research-detail__viz" id="viz-gaps" role="img" aria-label="Market gaps and coverage visualization"></div>
+
+            <p class="research-detail__viz-note" id="viz-gaps-note">
+            <strong>Labels:</strong> BMS = Typical BMS · Sensors = More sensors · Analytics = Analytics layer · Validity = Validity + co-timing
+            </p>
+
+          </section>
+
+          <section class="research-detail__section" id="conclusion" aria-labelledby="s-conclusion">
+            <h2 class="research-detail__heading" id="s-conclusion">Conclusion</h2>
+
+            <div class="research-detail__panel">
+              <p class="research-detail__text">
+                Environmental uncertainty is now an operational risk that cannot be deferred. Existing monitoring detects deviations but does not
+                resolve uncertainty around cause, propagation, or spatial impact. A minimum viable segment exists where explanation is required and
+                delaying action increases exposure.
+              </p>
+            </div>
+
+          </section>
+
+          <section class="research-detail__section research-detail__section--contact" id="request" aria-labelledby="rq-title">
+            <h2 class="research-detail__heading" id="rq-title">Request Additional Research</h2>
+
+            <p class="research-detail__text">
+              We can share additional research on request: deeper sizing by geography, buyer maps, integration assumptions,
+              or a “what would force action here?” analysis for your facility type.
+            </p>
+
+            <p class="research-detail__text">
+              Email:
+              <a class="link link--primary" href="mailto:contact@hermodlabs.com">contact@hermodlabs.com</a>
+              <span class="research-detail__hint">(include your vertical + what decision you’re making)</span>
+            </p>
+
+            <div class="research-detail__divider" aria-hidden="true"></div>
+
+            <form class="research-detail__form" action="/engage/invest/research/request" method="post">
+              <div class="research-detail__field">
+                <label class="research-detail__label" for="rq-name">Name</label>
+                <input class="research-detail__input" id="rq-name" name="name" type="text" autocomplete="name" required />
+              </div>
+
+              <div class="research-detail__field">
+                <label class="research-detail__label" for="rq-org">Firm / Org (optional)</label>
+                <input class="research-detail__input" id="rq-org" name="org" type="text" autocomplete="organization" />
+              </div>
+
+              <div class="research-detail__field">
+                <label class="research-detail__label" for="rq-email">Email</label>
+                <input class="research-detail__input" id="rq-email" name="email" type="email" autocomplete="email" required />
+              </div>
+
+              <div class="research-detail__field">
+                <label class="research-detail__label" for="rq-ask">What do you want us to add?</label>
+                <textarea
+                  class="research-detail__textarea"
+                  id="rq-ask"
+                  name="message"
+                  rows="6"
+                  placeholder="Examples: ‘North America sizing’, ‘buyer roles + triggers’, ‘audit workflows’, ‘integration with BMS vendors’, ‘SOM constraints for my segment’…"
+                ></textarea>
+              </div>
+
+              <div class="research-detail__actions">
+                <button class="button button--primary" type="submit">Send request</button>
+                <a class="button button--secondary" href="/engage/invest/research/">Back to Research</a>
+              </div>
+
+              <p class="research-detail__fineprint">We only use this to respond to your request. No spam.</p>
+            </form>
+          </section>
+        </div>
+      </section>
+    </site-page>
+  </body>
+</html>

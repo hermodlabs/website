@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-V2474V50XP');
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Market Research</title>
+    <meta
+      name="description"
+      content="Vertical deep dives into high-tolerance facilities: context, demand drivers, TAM/SAM/SOM logic, and buying dynamics. Additional research available on request."
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <script type="importmap">
+    {
+      "imports": { "lit": "https://esm.run/lit" }
+    }
+    </script>
+
+    <link rel="stylesheet" href="" id="main-css" />
+    <!-- depth: /engage/invest/research/ -->
+    <script type="module" src="../../../bootstrap.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="./research.css"
+    />
+  </head>
+
+  <body>
+    <site-page>
+      <section class="research" aria-labelledby="research-title">
+        <div class="research__inner">
+          <header class="research__header">
+            <h1 class="research__title" id="research-title">Market Research</h1>
+            <p class="research__lede">
+              We publish <strong>dedicated research pages</strong> as we complete each vertical deep dive. If you need
+              a specific angle, dataset, or buyer map, we can provide <strong>additional research on request</strong>.
+            </p>
+
+            <div class="research__cta-row">
+              <a class="button button--primary" href="/engage/invest/research/data-centers/">
+                <i class="fa-solid fa-server" aria-hidden="true"></i>
+                Read: Data Centers
+              </a>
+              <a class="button button--secondary" href="#request">
+                <i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i>
+                Request research
+              </a>
+            </div>
+
+            <p class="research__note">
+              Focus: high-tolerance facilities where environmental drift turns into audits, downtime, asset loss,
+              yield degradation, or regulatory exposure — and where “point sensors + alarms” aren’t a defensible explanation.
+            </p>
+          </header>
+
+          <section class="research__section" aria-labelledby="catalog-title">
+            <h2 class="research__heading" id="catalog-title">Vertical Deep Dives</h2>
+
+            <div class="research__catalog" role="list">
+              <article class="research__item research__item--featured" role="listitem" aria-labelledby="v-dc">
+                <div class="research__item-top">
+                  <h3 class="research__item-title" id="v-dc">
+                    <i class="fa-solid fa-server" aria-hidden="true"></i>
+                    Data Centers
+                  </h3>
+                  <span class="badge badge--success" aria-label="Published">Published</span>
+                </div>
+                <p class="research__text">
+                  Why environmental uncertainty becomes an operational liability: demand drivers, buying triggers,
+                  and how we constrain TAM → SAM → SOM without wishful thinking.
+                </p>
+                <div class="research__item-actions">
+                  <a class="button button--primary" href="/engage/invest/research/data-centers/">Read online</a>
+                  <a class="button button--secondary" href="#request">Request additions</a>
+                </div>
+              </article>
+
+              <article class="research__item" role="listitem" aria-labelledby="v-cleanrooms">
+                <div class="research__item-top">
+                  <h3 class="research__item-title" id="v-cleanrooms">
+                    <i class="fa-solid fa-microchip" aria-hidden="true"></i>
+                    Semiconductor Fabs & Cleanrooms
+                  </h3>
+                  <span class="badge badge--warn" aria-label="In progress">In progress</span>
+                </div>
+                <p class="research__text">
+                  Yield sensitivity, commissioning discipline, and compliance-driven instrumentation upgrades.
+                </p>
+              </article>
+
+              <article class="research__item" role="listitem" aria-labelledby="v-pharma">
+                <div class="research__item-top">
+                  <h3 class="research__item-title" id="v-pharma">
+                    <i class="fa-solid fa-flask" aria-hidden="true"></i>
+                    Pharmaceutical & Biotech Labs
+                  </h3>
+                  <span class="badge badge--warn" aria-label="In progress">In progress</span>
+                </div>
+                <p class="research__text">
+                  Continuous monitoring, logging/auditability, and the real buying committee (facilities + QA).
+                </p>
+              </article>
+
+              <article class="research__item" role="listitem" aria-labelledby="v-museums">
+                <div class="research__item-top">
+                  <h3 class="research__item-title" id="v-museums">
+                    <i class="fa-solid fa-landmark" aria-hidden="true"></i>
+                    Museums, Archives & Specialty Storage
+                  </h3>
+                  <span class="badge" aria-label="Planned">Planned</span>
+                </div>
+                <p class="research__text">
+                  Narrow bands, irreversible damage, and proof obligations when standards and insurers get involved.
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <section class="research__section research__section--contact" id="request" aria-labelledby="rq-title">
+            <h2 class="research__heading" id="rq-title">Request Additional Research</h2>
+
+            <p class="research__text">
+              Need a specific vertical, buyer map, pricing assumptions, or tighter sizing by geography? Reach out —
+              we provide additional research materials on request.
+            </p>
+
+            <p class="research__text">
+              Email:
+              <a class="link link--primary" href="mailto:contact@hermodlabs.com">contact@hermodlabs.com</a>
+              <span class="research__hint">(include your vertical, facility type, and what decision you’re supporting)</span>
+            </p>
+
+            <div class="research__divider" aria-hidden="true"></div>
+
+            <form class="research__form" action="/engage/invest/research/request" method="post">
+              <div class="research__field">
+                <label class="research__label" for="rq-name">Name</label>
+                <input class="research__input" id="rq-name" name="name" type="text" autocomplete="name" required />
+              </div>
+
+              <div class="research__field">
+                <label class="research__label" for="rq-org">Firm / Org (optional)</label>
+                <input class="research__input" id="rq-org" name="org" type="text" autocomplete="organization" />
+              </div>
+
+              <div class="research__field">
+                <label class="research__label" for="rq-email">Email</label>
+                <input class="research__input" id="rq-email" name="email" type="email" autocomplete="email" required />
+              </div>
+
+              <div class="research__field">
+                <label class="research__label" for="rq-vertical">Vertical</label>
+                <input class="research__input" id="rq-vertical" name="vertical" type="text" placeholder="e.g., data centers, cleanrooms, pharma…" />
+              </div>
+
+              <div class="research__field">
+                <label class="research__label" for="rq-message">What do you need?</label>
+                <textarea
+                  class="research__textarea"
+                  id="rq-message"
+                  name="message"
+                  rows="6"
+                  placeholder="What decision are you making? What geography? What facility type? What proof do you need?"
+                ></textarea>
+              </div>
+
+              <div class="research__actions">
+                <button class="button button--primary" type="submit">Send request</button>
+                <a class="button button--secondary" href="/engage/invest/">Invest</a>
+              </div>
+
+              <p class="research__fineprint">We only use this to respond to your request. No spam.</p>
+            </form>
+          </section>
+        </div>
+      </section>
+    </site-page>
+  </body>
+</html>

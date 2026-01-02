@@ -1,0 +1,500 @@
+/* ==========================================================================
+   Investors Page — aligned with About Page (same token language + rhythm)
+   Goal: feel like the About page (kicker headings, 78–88ch inner, section rules),
+   but with investors-specific blocks: featured hero, research cards, vertical catalog, form.
+   Requires: --space-1..--space-6, --border, --text, --muted (same as site)
+   Optional: --bg, --shadow-1
+   ========================================================================== */
+
+.investors{
+  padding: var(--space-6) 0 var(--space-5);
+}
+
+/* Match about-page: a calm editorial measure, not a “centered card UI” vibe */
+.investors__inner{
+  max-width: 78ch;
+}
+
+/* ---------- Top block ---------- */
+.investors__title{
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+  font-size: clamp(2.1rem, 4.4vw, 3.1rem);
+}
+
+.investors__lede{
+  margin: var(--space-4) 0 0;
+  font-size: 1.12rem;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  font-weight: 650;
+  max-width: 72ch;
+  opacity: 0.9;
+}
+
+/* Base paragraph style */
+.investors__text{
+  margin: var(--space-4) 0 0;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  max-width: 74ch;
+  opacity: 0.86;
+}
+
+.investors__text strong{
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  opacity: 0.96;
+}
+
+/* Optional: closing clause (same rule as about contact) */
+.investors__note{
+  margin: var(--space-4) 0 0;
+  padding-left: 12px;
+  border-left: 2px solid rgba(0,0,0,0.18);
+  max-width: 70ch;
+  opacity: 0.86;
+}
+
+/* ---------- Featured hero (Data Centers) ----------
+   Styled like an About “section with content”, not a glossy hero.
+--------------------------------------------------- */
+.investors__hero{
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border);
+}
+
+.investors__eyebrow{
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.78;
+}
+
+.investors__hero-title{
+  margin: var(--space-3) 0 0;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  font-size: clamp(1.55rem, 3.2vw, 2.15rem);
+  max-width: 46ch;
+  text-wrap: balance;
+}
+
+.investors__hero-dek{
+  margin: var(--space-3) 0 0;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  max-width: 74ch;
+  opacity: 0.86;
+}
+
+.investors__hero-bullets{
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: var(--space-3);
+  max-width: 74ch;
+}
+
+.investors__hero-bullets li{
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  opacity: 0.86;
+  padding-left: 1.2em;
+  position: relative;
+}
+
+.investors__hero-bullets li::before{
+  content: "—";
+  position: absolute;
+  left: 0;
+  opacity: 0.55;
+}
+
+.investors__hero-bullets strong{
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  opacity: 0.96;
+}
+
+.investors__hero-actions{
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.investors__hero-actions .button--primary{
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.investors__hero-actions .button--secondary{
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.92em;
+}
+
+.investors__hero-note{
+  margin: var(--space-4) 0 0;
+  padding-left: 12px;
+  border-left: 2px solid rgba(0,0,0,0.18);
+  max-width: 70ch;
+  opacity: 0.86;
+}
+
+/* ---------- Sections (match About page) ---------- */
+.investors__section{
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border);
+}
+
+/* Section headings as “kickers” */
+.investors__heading{
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.78;
+}
+
+/* Within a section, add a strong subheading style if needed */
+.investors__subheading{
+  margin: var(--space-5) 0 0;
+  font-size: 1.02rem;
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  opacity: 0.95;
+}
+
+/* ---------- Actions row (non-hero) ---------- */
+.investors__actions{
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.investors__actions .button--primary{
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.investors__actions .button--secondary{
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.92em;
+}
+
+/* ---------- Research “3-up” cards, but editorial ----------
+   Use a simple grid without heavy card chrome.
+----------------------------------------------------------- */
+.investors__grid{
+  margin-top: var(--space-5);
+  display: grid;
+  gap: var(--space-3);
+  max-width: 74ch;
+}
+
+.investors__card{
+  padding-left: 12px;
+  border-left: 2px solid rgba(0,0,0,0.14);
+}
+
+.investors__card-title{
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  opacity: 0.95;
+}
+
+.investors__card-text{
+  margin: var(--space-2) 0 0;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  opacity: 0.86;
+}
+
+/* ---------- Panel (clause / note treatment) ---------- */
+.investors__panel{
+  margin-top: var(--space-5);
+  padding: var(--space-4);
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  background: rgba(0,0,0,0.03);
+  max-width: 74ch;
+}
+
+.investors__panel-title{
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  opacity: 0.95;
+}
+
+.investors__panel .investors__text{
+  margin-top: var(--space-2);
+}
+
+/* ---------- Lists (About-style dashes) ---------- */
+.investors__list{
+  margin: var(--space-5) 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: var(--space-3);
+  max-width: 74ch;
+}
+
+.investors__list-item{
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  opacity: 0.86;
+  padding-left: 1.2em;
+  position: relative;
+}
+
+.investors__list-item::before{
+  content: "—";
+  position: absolute;
+  left: 0;
+  opacity: 0.55;
+}
+
+.investors__list-item strong{
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  opacity: 0.96;
+}
+
+/* ---------- Verticals catalog ----------
+   Same editorial feel: a list of items with a title row + actions.
+--------------------------------------------------------------- */
+.investors__catalog{
+  margin-top: var(--space-5);
+  display: grid;
+  gap: var(--space-4);
+  max-width: 74ch;
+}
+
+.investors__item{
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border);
+}
+
+.investors__item--featured{
+  padding-top: 0;
+  border-top: none;
+}
+
+.investors__item-top{
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.investors__item-title{
+  margin: 0;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 1.02rem;
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  opacity: 0.95;
+}
+
+.investors__item-title i{
+  opacity: 0.7;
+}
+
+.investors__item-actions{
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.investors__item-actions .button--secondary{
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.92em;
+}
+
+/* ---------- Badges (kicker-like) ---------- */
+.badge{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(0,0,0,0.03);
+  color: var(--text);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  opacity: 0.78;
+  white-space: nowrap;
+}
+
+.badge--success{ background: rgba(0,0,0,0.03); }
+.badge--warn{ background: rgba(0,0,0,0.03); }
+
+.investors__hint{
+  font-size: 0.95rem;
+  opacity: 0.8;
+  margin-left: 6px;
+}
+
+/* ---------- Contact divider ---------- */
+.investors__divider{
+  margin: var(--space-5) 0;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ---------- Form (match About page tone) ---------- */
+.investors__form{
+  margin-top: var(--space-5);
+  display: grid;
+  gap: var(--space-3);
+  max-width: 74ch;
+}
+
+.investors__field{
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.investors__label{
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.78;
+}
+
+.investors__input,
+.investors__textarea{
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: var(--space-3) var(--space-4);
+  font-size: 1.02rem;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+  background: var(--bg);
+  color: var(--text);
+  opacity: 0.95;
+  box-shadow: var(--shadow-1, 0 1px 0 rgba(0,0,0,0.04));
+}
+
+.investors__textarea{
+  resize: vertical;
+  min-height: 130px;
+  line-height: 1.55;
+}
+
+.investors__fieldset{
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: var(--space-4);
+  background: rgba(0,0,0,0.03);
+}
+
+.investors__legend{
+  padding: 0 var(--space-2);
+  margin-left: calc(var(--space-2) * -1);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.78;
+}
+
+.investors__checks{
+  margin-top: var(--space-3);
+  display: grid;
+  gap: var(--space-2);
+}
+
+.investors__check{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.9;
+}
+
+.investors__checkbox{
+  width: 16px;
+  height: 16px;
+}
+
+.investors__fineprint{
+  margin: var(--space-4) 0 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  opacity: 0.8;
+}
+
+/* ---------- Focus (site pattern) ---------- */
+.investors a:focus-visible,
+.investors button:focus-visible,
+.investors input:focus-visible,
+.investors textarea:focus-visible{
+  outline: 2px solid rgba(0,0,0,0.55);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+/* ---------- Desktop tweaks (mirror About page) ---------- */
+@media (min-width: 900px){
+  .investors__inner{
+    max-width: 88ch;
+  }
+
+  .investors__hero-actions,
+  .investors__actions,
+  .investors__item-actions{
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+  }
+
+  .investors__checks{
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -6,18 +6,19 @@
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-V2474V50XP');
+      gtag("js", new Date());
+      gtag("config", "G-V2474V50XP");
     </script>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-    <title>HermodLabs — Home Page</title>
+    <title>HermodLabs — Investors</title>
     <meta
       name="description"
-      content="HermodLabs builds a co-timing engine that proves streams are on the same clock before you subtract, compare, threshold, or interpret. Portable cancellation + diagnostics + proof-shaped certificates."
+      content="HermodLabs is building contract-driven sensing: co-timing + validity gates that turn drifting environments into measurable fields—with receipts. Market research by vertical, with additional research on request."
     />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -26,147 +27,265 @@
 
     <script type="importmap">
     {
-      "imports": {
-        "lit": "https://esm.run/lit"
-      }
+      "imports": { "lit": "https://esm.run/lit" }
     }
     </script>
 
     <link rel="stylesheet" href="" id="main-css" />
+    <!-- depth: /engage/invest/ -->
     <script type="module" src="../../bootstrap.js"></script>
+
+    <!-- page css -->
+    <link rel="stylesheet" href="./investors.css" />
   </head>
 
-<body>
-<site-page>
-  <section class="investors" aria-labelledby="investors-title">
-    <div class="investors__inner">
-      <header class="investors__header">
-        <h1 class="investors__title" id="investors-title">Investors</h1>
-        <p class="investors__lede">
-          We’re building contract-driven sensing: co-timing + validity gates that turn drifting environments into
-          measurable fields—with receipts.
-        </p>
-      </header>
+  <body>
+    <site-page>
 
-      <section class="investors__section" aria-labelledby="context-title">
-        <h2 class="investors__heading" id="context-title">Context</h2>
-        <p class="investors__text">
-          HermodLabs develops a timing-first measurement platform that aligns sensor streams onto a shared clock,
-          cancels what is truly shared nuisance, and reports what remains as a defensible observable. We’re proving the
-          system through pilots in humidity/temperature field modeling and narrowband nuisance cancellation.
-        </p>
-      </section>
 
-      <section class="investors__section" aria-labelledby="status-title">
-        <h2 class="investors__heading" id="status-title">Current Status</h2>
-        <p class="investors__text">
-          We’re selectively speaking with investors about our next financing to expand pilots, productize the platform,
-          and grow partnerships in facilities and data-center ecosystems.
-        </p>
-      </section>
+      <section class="investors" aria-labelledby="investors-title">
+        <div class="investors__inner">
+          <!-- =========================================================
+               HEADER + FEATURED HERO (Data Centers first)
+               Buttons removed per request
+               ========================================================= -->
+          <header class="investors__header">
+            <h1 class="investors__title" id="investors-title">Investors</h1>
+            <p class="investors__lede">
+              We’re building contract-driven sensing: co-timing + validity gates that turn drifting environments into measurable fields—with receipts.
+            </p>
 
-      <section class="investors__section" aria-labelledby="materials-title">
-        <h2 class="investors__heading" id="materials-title">What We Share on Request</h2>
-        <ul class="investors__list">
-          <li class="investors__list-item">Pilot results and validation artifacts (with receipts)</li>
-          <li class="investors__list-item">Product roadmap and go-to-market plan</li>
-          <li class="investors__list-item">Customer pipeline and partnership targets</li>
-          <li class="investors__list-item">Technical overview of the co-timing engine</li>
-        </ul>
-      </section>
+            <!-- Hero-like featured research -->
+            <section class="investors__hero" aria-labelledby="dc-hero-title">
+              <p class="investors__eyebrow">Featured research</p>
 
-      <section class="investors__section" aria-labelledby="fit-title">
-        <h2 class="investors__heading" id="fit-title">Who It’s a Fit For</h2>
-        <p class="investors__text">
-          Investors who like deep tech with a practical wedge: instrumentation, facilities/data-center operations, and
-          systems that can prove when outputs are trustworthy.
-        </p>
-      </section>
+              <h2 class="investors__hero-title" id="dc-hero-title">
+                Data Centers: Environmental uncertainty is becoming a first-order operational risk
+              </h2>
 
-      <section class="investors__section investors__section--contact" aria-labelledby="contact-title">
-        <h2 class="investors__heading" id="contact-title">Contact</h2>
-        <p class="investors__text">
-          If you'd like an overview or to discuss the round, reach out:
-          <a class="link link--primary" href="mailto:contact@hermodlabs.com">contact@hermodlabs.com</a>
-          <span class="investors__hint">(include your name, firm, and a sentence on interest)</span>.
-        </p>
+              <p class="investors__hero-dek">
+                A market deep dive into high-tolerance facility monitoring: 
+              </p>
 
-        <div class="investors__divider" aria-hidden="true"></div>
+              <ul class="investors__hero-bullets">
+                <li>What forces buying?</li>
+                <li>Where do BMS alarms fail under scrutiny?</li>
+                <li>How do we constrain TAM → SAM → SOM without wishful thinking?</li>
+              </ul>
 
-        <p class="investors__text">
-          Or use the form below.
-        </p>
+              <div class="investors__hero-actions">
+                <a class="button button--primary" href="/engage/invest/research/data-centers/">
+                  <i class="fa-solid fa-server" aria-hidden="true"></i>
+                  Read the Data Centers deep dive
+                </a>
+                <a class="button button--secondary" href="#verticals">
+                  <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+                  Browse all research verticals
+                </a>
+              </div>
+          </header>
 
-        <form class="investors__form" action="/investors/contact" method="post">
-          <div class="investors__field">
-            <label class="investors__label" for="inv-name">Name</label>
-            <input class="investors__input" id="inv-name" name="name" type="text" autocomplete="name" required />
-          </div>
 
-          <div class="investors__field">
-            <label class="investors__label" for="inv-firm">Firm (optional)</label>
-            <input class="investors__input" id="inv-firm" name="firm" type="text" autocomplete="organization" />
-          </div>
+          <!-- =========================================================
+               MARKET RESEARCH (INCORPORATED SUMMARY)
+               ========================================================= -->
+          <section class="investors__section" id="research" aria-labelledby="research-title">
+            <h2 class="investors__heading" id="research-title">Market Research</h2>
 
-          <div class="investors__field">
-            <label class="investors__label" for="inv-email">Email</label>
-            <input class="investors__input" id="inv-email" name="email" type="email" autocomplete="email" required />
-          </div>
+            <p class="investors__text">
+              Environmental uncertainty is becoming a <strong>first-order operational risk</strong> in high-tolerance facilities.
+              As facilities increase in density and complexity, tolerances narrow while “explainability” becomes mandatory under audit,
+              commissioning, and operational scrutiny.
+            </p>
 
-          <fieldset class="investors__fieldset">
-            <legend class="investors__legend">Interest (optional)</legend>
+            <div class="investors__grid">
+              <div class="investors__card">
+                <h3 class="investors__card-title">Accountability mismatch</h3>
+                <p class="investors__text">
+                  We keep this concrete: who is forced to care, what forces buying, where current tools fail under scrutiny, and the evidence behind our observables.
+                </p>
+              </div>
 
-            <div class="investors__checks">
-              <label class="investors__check">
-                <input class="investors__checkbox" type="checkbox" name="interest" value="facilities" />
-                Facilities
-              </label>
+              <div class="investors__card">
+                <h3 class="investors__card-title">Demand drivers are structural</h3>
+                <p class="investors__card-text">
+                  Regulation, density, and uptime are tightening together—and the cost of failure dwarfs the cost of monitoring.
+                </p>
+              </div>
 
-              <label class="investors__check">
-                <input class="investors__checkbox" type="checkbox" name="interest" value="data-centers" />
-                Data centers
-              </label>
-
-              <label class="investors__check">
-                <input class="investors__checkbox" type="checkbox" name="interest" value="sensors" />
-                Sensors
-              </label>
-
-              <label class="investors__check">
-                <input class="investors__checkbox" type="checkbox" name="interest" value="applied-math" />
-                Applied math
-              </label>
-
-              <label class="investors__check">
-                <input class="investors__checkbox" type="checkbox" name="interest" value="other" />
-                Other
-              </label>
+              <div class="investors__card">
+                <h3 class="investors__card-title">Tech inflection makes it practical</h3>
+                <p class="investors__card-text">
+                  Sensors scale cheaply, systems are cloud-connected, and analytics are mainstream—so high-fidelity monitoring is now deployable.
+                </p>
+              </div>
             </div>
-          </fieldset>
 
-          <div class="investors__field">
-            <label class="investors__label" for="inv-message">Message</label>
-            <textarea
-              class="investors__textarea"
-              id="inv-message"
-              name="message"
-              rows="5"
-              placeholder="A sentence on what you’re interested in (and where you’d like us to start)."
-            ></textarea>
-          </div>
+            <div class="investors__panel">
+              <h3 class="investors__panel-title">How we size the opportunity</h3>
+              <p class="investors__text">
+                We treat monitoring spend as <strong>budget gravity</strong>: adoption is driven by upgrades inside existing smart building and facilities
+                budgets, rather than inventing a new spending category. We filter broad markets down to environments with:
+              </p>
 
-          <div class="investors__actions">
-            <button class="button button--primary" type="submit">Send</button>
-            <a class="button button--secondary" href="/whitepaper">Read the whitepaper</a>
-          </div>
+              <ul class="investors__list">
+                <li class="investors__list-item"><strong>Tight tolerances</strong> where small deviations cause outsized harm</li>
+                <li class="investors__list-item"><strong>Continuous monitoring</strong> requirements (logging + auditability)</li>
+                <li class="investors__list-item"><strong>High consequence of failure</strong> (downtime, compliance exposure, yield loss, asset damage)</li>
+                <li class="investors__list-item"><strong>Operational sophistication</strong> (centralized BMS / specialized control infrastructure)</li>
+              </ul>
 
-          <p class="investors__fineprint">
-            We only use this to respond to your request. No spam.
-          </p>
-        </form>
+              <p class="investors__text">
+                This produces a minimum viable segment where adoption is driven by accountability and risk, not experimentation.
+              </p>
+            </div>
+          </section>
+
+
+          <!-- =========================================================
+               WHAT WE SHARE
+               ========================================================= -->
+          <section class="investors__section" aria-labelledby="materials-title">
+            <h2 class="investors__heading" id="materials-title">What We Share</h2>
+<p class="investors__text">
+  We try to make this concrete and falsifiable. The short version: we share the research that explains
+  <strong>who is forced to care</strong>, <strong>what forces buying</strong>, and <strong>why current tooling fails under scrutiny</strong>—plus
+  the evidence that our approach produces defensible observables (not just prettier dashboards).
+</p>
+<ul class="investors__list">
+  <li class="investors__list-item">
+    <strong>Research deep dives (web pages by vertical):</strong>
+    market context, demand drivers, buying triggers, and where existing monitoring architectures fail under scrutiny.
+  </li>
+
+  <li class="investors__list-item">
+    <strong>Vertical sizing logic:</strong>
+    how we constrain TAM → SAM → SOM (and what we intentionally exclude) so the opportunity is defensible, not inflated.
+  </li>
+
+  <li class="investors__list-item">
+    <strong>Operator accountability & workflows:</strong>
+    who owns environmental outcomes, what “explainability” means in practice, and what forces action (audits, commissioning, expansion, near-misses).
+  </li>
+
+  <li class="investors__list-item">
+    <strong>Go-to-market wedge:</strong>
+    initial segments where adoption is inevitable (risk + scrutiny) and how we expand across adjacent high-tolerance verticals.
+  </li>
+
+  <li class="investors__list-item">
+    <strong>Pilot evidence (on request):</strong>
+    validation artifacts and “receipts” that show what was aligned, what was cancelled, and what remained as the observable.
+  </li>
+
+  <li class="investors__list-item">
+    <strong>Platform overview (technical):</strong>
+    the co-timing engine, validity gates, and how we prove streams are comparable before we interpret differences.
+  </li>
+  </ul>
+
+            <div class="investors__actions">
+              <a class="button button--secondary" href="/engage/invest/research/">
+                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                Go to research hub
+              </a>
+            </div>
+          </section>
+
+
+          <!-- =========================================================
+               CONTACT
+               ========================================================= -->
+          <section class="investors__section investors__section--contact" id="contact" aria-labelledby="contact-title">
+            <h2 class="investors__heading" id="contact-title">Contact</h2>
+
+            <p class="investors__text">
+              If you'd like an overview or to discuss the round, reach out:
+              <a class="link link--primary" href="mailto:contact@hermodlabs.com">contact@hermodlabs.com</a>
+              <span class="investors__hint">(include your name, firm, and a sentence on interest)</span>.
+            </p>
+
+            <div class="investors__divider" aria-hidden="true"></div>
+
+            <p class="investors__text">Or use the form below.</p>
+
+            <form class="investors__form" action="/investors/contact" method="post">
+              <div class="investors__field">
+                <label class="investors__label" for="inv-name">Name</label>
+                <input class="investors__input" id="inv-name" name="name" type="text" autocomplete="name" required />
+              </div>
+
+              <div class="investors__field">
+                <label class="investors__label" for="inv-firm">Firm (optional)</label>
+                <input class="investors__input" id="inv-firm" name="firm" type="text" autocomplete="organization" />
+              </div>
+
+              <div class="investors__field">
+                <label class="investors__label" for="inv-email">Email</label>
+                <input class="investors__input" id="inv-email" name="email" type="email" autocomplete="email" required />
+              </div>
+
+              <fieldset class="investors__fieldset">
+                <legend class="investors__legend">Interest (optional)</legend>
+
+                <div class="investors__checks">
+                  <label class="investors__check">
+                    <input class="investors__checkbox" type="checkbox" name="interest" value="facilities" />
+                    Facilities
+                  </label>
+
+                  <label class="investors__check">
+                    <input class="investors__checkbox" type="checkbox" name="interest" value="data-centers" />
+                    Data centers
+                  </label>
+
+                  <label class="investors__check">
+                    <input class="investors__checkbox" type="checkbox" name="interest" value="sensors" />
+                    Sensors
+                  </label>
+
+                  <label class="investors__check">
+                    <input class="investors__checkbox" type="checkbox" name="interest" value="applied-math" />
+                    Applied math
+                  </label>
+
+                  <label class="investors__check">
+                    <input class="investors__checkbox" type="checkbox" name="interest" value="other" />
+                    Other
+                  </label>
+                </div>
+              </fieldset>
+
+              <div class="investors__field">
+                <label class="investors__label" for="inv-message">Message</label>
+                <textarea
+                  class="investors__textarea"
+                  id="inv-message"
+                  name="message"
+                  rows="5"
+                  placeholder="A sentence on what you’re interested in (and where you’d like us to start)."
+                ></textarea>
+              </div>
+
+              <div class="investors__actions">
+                <button class="button button--primary" type="submit">
+                  <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+                  Send
+                </button>
+
+                <a class="button button--secondary" href="/engage/invest/research/">
+                  <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+                  Research hub
+                </a>
+              </div>
+
+              <p class="investors__fineprint">
+                We only use this to respond to your request. No spam.
+              </p>
+            </form>
+          </section>
+        </div>
       </section>
-    </div>
-  </section>
-</site-page>
-</body>
+    </site-page>
+  </body>
 </html>

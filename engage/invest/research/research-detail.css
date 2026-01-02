@@ -1,0 +1,540 @@
+/* ==========================================================================
+   Research Detail — aligned with About/Investors editorial system (Swiss)
+   Goal: match About page feel:
+   - inner max-width 78–88ch
+   - headings as kickers (uppercase label) for sections
+   - editorial body rhythm (1.12 lede, 1.02 body)
+   - replace “pills TOC” + heavy cards with quieter, editorial structures
+   Requires: --space-1..--space-6, --border, --text, --muted
+   Optional: --bg, --shadow-1
+   ========================================================================== */
+
+.research-detail{
+  padding: var(--space-6) 0 var(--space-5);
+}
+
+/* Ensure Plot uses normal text color for marks (it uses currentColor) */
+.research-detail__viz{
+  color: var(--text);
+}
+.research-detail__viz { overflow: visible; }
+
+/* Buying heatmap looks better with a clean rail */
+#viz-buying svg { display: block; width: 100%; height: auto; }
+
+.research-detail__viz-note{
+  margin: var(--space-3) 0 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  opacity: 0.82;
+  max-width: 74ch;
+}
+
+@media (min-width: 520px){
+  .research-detail__viz-note{ display: none; }
+}
+
+
+
+
+.research-detail__inner{
+  max-width: 78ch;
+}
+
+/* ---------- Header ---------- */
+.research-detail__header{
+  padding: 0;
+}
+
+.research-detail__back{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 var(--space-4) 0;
+  color: var(--muted);
+  font-weight: 650;
+  font-size: 0.92rem;
+  opacity: 0.9;
+}
+
+.research-detail__title{
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+  font-size: clamp(2.1rem, 4.4vw, 3.1rem);
+}
+
+.research-detail__subtitle{
+  display: block;
+  margin-top: var(--space-3);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.78;
+}
+
+.research-detail__lede{
+  margin: var(--space-4) 0 0;
+  font-size: 1.12rem;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  font-weight: 650;
+  max-width: 72ch;
+  opacity: 0.9;
+}
+
+.research-detail__lede strong{
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  opacity: 0.96;
+}
+
+.research-detail__meta{
+  margin-top: var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.35;
+  opacity: 0.85;
+}
+
+.research-detail__meta-item{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.research-detail__cta-row{
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.research-detail__cta-row .button--primary{
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.research-detail__cta-row .button--secondary{
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.92em;
+}
+
+.research-detail__cta-row .button{
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* ---------- Badge (kicker-like) ---------- */
+.badge{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(0,0,0,0.03);
+  color: var(--text);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  opacity: 0.78;
+  white-space: nowrap;
+}
+
+.badge--success{ background: rgba(0,0,0,0.03); }
+
+/* ---------- TOC (quiet, editorial list) ----------
+   Instead of “pill chips”, treat as a compact contents list with a rule.
+-------------------------------------------------- */
+.research-detail__toc{
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border);
+}
+
+.research-detail__toc-list{
+  list-style: none;
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-2);
+  max-width: 74ch;
+}
+
+.research-detail__toc-list li{
+  margin: 0;
+}
+
+/* Use your normal .link styling; just set rhythm */
+.research-detail__toc .link{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-weight: 650;
+  font-size: 1.02rem;
+  line-height: 1.35;
+  opacity: 0.9;
+}
+
+.research-detail__toc .link:hover{
+  color: var(--text);
+}
+
+/* ---------- Sections (About-style) ---------- */
+.research-detail__section{
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border);
+}
+
+/* Section headings as kickers */
+.research-detail__heading{
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.78;
+}
+
+/* Base paragraph style */
+.research-detail__text{
+  margin: var(--space-4) 0 0;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  max-width: 74ch;
+  opacity: 0.86;
+}
+
+.research-detail__text strong{
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  opacity: 0.96;
+}
+
+/* ---------- Bullets (About-style dash bullets) ---------- */
+.research-detail__bullets{
+  margin: var(--space-5) 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: var(--space-3);
+  max-width: 74ch;
+}
+
+.research-detail__bullets li{
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  opacity: 0.86;
+  padding-left: 1.2em;
+  position: relative;
+}
+
+.research-detail__bullets li::before{
+  content: "—";
+  position: absolute;
+  left: 0;
+  opacity: 0.55;
+}
+
+.research-detail__bullets strong{
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  opacity: 0.96;
+}
+
+/* ---------- Cards -> editorial callouts ----------
+   Replace 3-up “cards” with stacked callouts (left rule),
+   similar to the Research hub / Investors summary style.
+-------------------------------------------------- */
+.research-detail__grid{
+  margin-top: var(--space-5);
+  display: grid;
+  gap: var(--space-3);
+  max-width: 74ch;
+}
+
+.research-detail__card{
+  padding-left: 12px;
+  border-left: 2px solid rgba(0,0,0,0.14);
+}
+
+.research-detail__card-title{
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  opacity: 0.95;
+}
+
+/* If the card contains .research-detail__text, tighten it */
+.research-detail__card .research-detail__text{
+  margin-top: var(--space-2);
+}
+
+/* ---------- Panels (clause / note treatment) ---------- */
+.research-detail__panel{
+  margin-top: var(--space-5);
+  padding: var(--space-4);
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  background: rgba(0,0,0,0.03);
+  max-width: 74ch;
+}
+
+.research-detail__panel-title{
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  opacity: 0.95;
+}
+
+.research-detail__panel .research-detail__text{
+  margin-top: var(--space-2);
+}
+
+.research-detail__panel .research-detail__bullets{
+  margin-top: var(--space-4);
+}
+
+/* ---------- Contact hint + divider ---------- */
+.research-detail__hint{
+  font-size: 0.95rem;
+  opacity: 0.8;
+  margin-left: 6px;
+}
+
+.research-detail__divider{
+  margin: var(--space-5) 0;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ---------- Form (About-tone) ---------- */
+.research-detail__form{
+  margin-top: var(--space-5);
+  display: grid;
+  gap: var(--space-3);
+  max-width: 74ch;
+}
+
+.research-detail__field{
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.research-detail__label{
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.78;
+}
+
+.research-detail__input,
+.research-detail__textarea{
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: var(--space-3) var(--space-4);
+  font-size: 1.02rem;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+  background: var(--bg);
+  color: var(--text);
+  opacity: 0.95;
+  box-shadow: var(--shadow-1, 0 1px 0 rgba(0,0,0,0.04));
+}
+
+.research-detail__textarea{
+  resize: vertical;
+  min-height: 130px;
+  line-height: 1.55;
+}
+
+.research-detail__actions{
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.research-detail__actions .button--primary{
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.research-detail__actions .button--secondary{
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.92em;
+}
+
+.research-detail__fineprint{
+  margin: var(--space-4) 0 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  opacity: 0.8;
+}
+
+/* ---------- Focus (site pattern) ---------- */
+.research-detail a:focus-visible,
+.research-detail button:focus-visible,
+.research-detail input:focus-visible,
+.research-detail textarea:focus-visible{
+  outline: 2px solid rgba(0,0,0,0.55);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+/* ---------- Desktop tweaks (mirror About page) ---------- */
+@media (min-width: 900px){
+  .research-detail__inner{
+    max-width: 88ch;
+  }
+
+  .research-detail__cta-row,
+  .research-detail__actions{
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+  }
+}
+
+/* Visualization block (editorial, quiet) */
+.research-detail__viz{
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border);
+  max-width: 74ch; /* match editorial rail */
+}
+
+/* Observable Plot output is an SVG inside a figure */
+.research-detail__viz figure{
+  margin: 0;
+}
+
+.research-detail__viz svg{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Tooltip style (Plot uses a <div> tooltip) */
+.plot-tooltip{
+  font: inherit;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  box-shadow: var(--shadow-1, 0 1px 0 rgba(0,0,0,0.04));
+}
+
+/* ---------- Research detail table (editorial) ---------- */
+.research-detail__table{
+  width: 100%;
+  margin-top: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--bg);
+  box-shadow: var(--shadow-1, 0 1px 0 rgba(0,0,0,0.04));
+  max-width: 74ch;
+}
+
+.research-detail__table thead th{
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  opacity: 0.78;
+  background: rgba(0,0,0,0.03);
+  border-bottom: 1px solid var(--border);
+}
+
+.research-detail__table tbody td{
+  padding: var(--space-4);
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  opacity: 0.86;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+}
+
+.research-detail__table tbody tr:last-child td{
+  border-bottom: none;
+}
+
+.research-detail__table thead th + th,
+.research-detail__table tbody td + td{
+  border-left: 1px solid var(--border);
+}
+
+.research-detail__table tbody td strong{
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  opacity: 0.96;
+}
+
+/* Responsive: stack the table rows on small screens */
+@media (max-width: 720px){
+  .research-detail__table thead{
+    display: none;
+  }
+
+  .research-detail__table,
+  .research-detail__table tbody,
+  .research-detail__table tr,
+  .research-detail__table td{
+    display: block;
+    width: 100%;
+  }
+
+  .research-detail__table tr{
+    border-top: 1px solid var(--border);
+  }
+
+  .research-detail__table tr:first-child{
+    border-top: none;
+  }
+
+  .research-detail__table td{
+    border: none;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .research-detail__table td:first-child{
+    border-top: none;
+    padding-bottom: var(--space-1);
+    opacity: 0.95;
+  }
+}
