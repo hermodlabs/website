@@ -6,17 +6,17 @@
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-V2474V50XP');
+      gtag("js", new Date());
+      gtag("config", "G-V2474V50XP");
     </script>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-    <title>HermodLabs — Research: Data Centers</title>
+    <title>HermodLabs — Research: Building Management Systems</title>
     <meta
       name="description"
-      content="Data Centers market deep dive: why environmental uncertainty becomes an operational liability; demand drivers; TAM/SAM/SOM logic; buying dynamics; and structural gaps in current monitoring."
+      content="Building Management Systems (BMS) market deep dive: why environmental uncertainty becomes an operational liability; demand drivers; TAM/SAM/SOM logic; buying dynamics; and structural gaps in current monitoring."
     />
 
     <link
@@ -25,33 +25,25 @@
       referrerpolicy="no-referrer"
     />
 
+    <!-- Single importmap (lit + Observable Plot + d3) -->
     <script type="importmap">
     {
-      "imports": { "lit": "https://esm.run/lit" }
-    }
-    </script>
-
-    <script type="importmap">
-    {
-    "imports": {
+      "imports": {
         "lit": "https://esm.run/lit",
         "@observablehq/plot": "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm",
         "d3": "https://cdn.jsdelivr.net/npm/d3@7/+esm"
-    }
+      }
     }
     </script>
 
     <link rel="stylesheet" href="" id="main-css" />
-    <!-- depth: /engage/invest/research/data-centers/ -->
+    <!-- depth: /engage/invest/research/.../ -->
     <script type="module" src="../../../../bootstrap.js"></script>
 
-    <link
-      rel="stylesheet"
-      href="../research-detail.css"
-    />
+    <link rel="stylesheet" href="../research-detail.css" />
 
+    <!-- Visualizations (Observable Plot) -->
     <script type="module" src="./research-viz.js"></script>
-
   </head>
 
   <body>
@@ -65,21 +57,21 @@
             </a>
 
             <h1 class="research-detail__title" id="rd-title">
-              Data Centers
+              Building Management Systems (BMS)
               <span class="research-detail__subtitle">Market Deep Dive</span>
             </h1>
 
             <p class="research-detail__lede">
-              Environmental uncertainty is becoming a <strong>first-order operational risk</strong> in high-density
-              facilities. This page summarizes our analysis: who is accountable, what triggers buying, and where current
-              monitoring architectures fail under scrutiny.
+              Building Management Systems increasingly sit in the blast radius of environmental accountability.
+              In high-tolerance facilities, point sensing and alarms are not enough—operators need explanations and
+              audit-ready narratives when conditions drift.
             </p>
 
             <div class="research-detail__meta">
               <span class="badge badge--success">Published</span>
               <span class="research-detail__meta-item">
                 <i class="fa-solid fa-tags" aria-hidden="true"></i>
-                High-tolerance facilities • Monitoring • BMS • Auditability
+                Facilities • Building management systems • Environmental monitoring • Auditability
               </span>
             </div>
 
@@ -95,354 +87,336 @@
             </div>
           </header>
 
-<section class="research-detail__section" id="drivers" aria-labelledby="s-drivers">
-  <h2 class="research-detail__heading" id="s-drivers">Core Demand Drivers</h2>
-
-  <p class="research-detail__text">
-    Demand is structural:
-  </p>
-
-  <ul class="research-detail__bullets">
-    <li><strong>Risk is asymmetric:</strong> failure costs dwarf monitoring costs.</li>
-    <li><strong>Accountability is personal:</strong> teams must justify stability under scrutiny.</li>
-    <li><strong>Tolerances are tightening:</strong> density and utilization shrink acceptable variance.</li>
-    <li><strong>Scrutiny is rising:</strong> audits and commissioning deadlines force action.</li>
-    <li><strong>Alarms aren’t enough:</strong> operators need explanations that survive review.</li>
-  </ul>
-
-  <!-- Fallback that stands on its own even if the chart never loads -->
-<table class="research-detail__table research-detail__table--compact" aria-label="Core demand drivers summary">
-  <thead>
-    <tr>
-      <th>Driver</th>
-      <th>Pressure</th>
-      <th>What it forces</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Uptime + risk asymmetry</strong></td>
-      <td><strong>5/5</strong></td>
-      <td>Monitoring becomes a risk-control budget line, not a “nice to have.”</td>
-    </tr>
-    <tr>
-      <td><strong>Asset density</strong></td>
-      <td><strong>4/5</strong></td>
-      <td>Small environmental variance produces outsized operational impact.</td>
-    </tr>
-    <tr>
-      <td><strong>Regulatory / reporting pressure</strong></td>
-      <td><strong>4/5</strong></td>
-      <td>Audit-ready logging and defensible narratives are required.</td>
-    </tr>
-    <tr>
-      <td><strong>Energy constraints</strong></td>
-      <td><strong>3/5</strong></td>
-      <td>Optimization pressure increases demand for better observability.</td>
-    </tr>
-    <tr>
-      <td><strong>Operational scrutiny</strong></td>
-      <td><strong>3/5</strong></td>
-      <td>Teams must explain drift, not just acknowledge alarms.</td>
-    </tr>
-  </tbody>
-</table>
-
-
-  <!-- Optional viz block: if it renders, great; if not, page still works. -->
-  <div class="research-detail__vizwrap" aria-hidden="true">
-    <div class="research-detail__viz" id="viz-drivers" role="img" aria-label="Core demand drivers visualization"></div>
-    <p class="research-detail__viz-note" id="viz-drivers-note">
-      <strong>Labels:</strong> Uptime + risk = Uptime + risk asymmetry · Regulatory pressure = Regulatory / reporting pressure · Ops scrutiny = Operational scrutiny
-    </p>
-  </div>
-
-  <noscript>
-    <p class="research-detail__text">
-      (Interactive visualization requires JavaScript. The summary table above contains the same content.)
-    </p>
-  </noscript>
-</section>
-
-
+          <!-- =========================================================
+               DRIVERS
+               ========================================================= -->
           <section class="research-detail__section" id="drivers" aria-labelledby="s-drivers">
             <h2 class="research-detail__heading" id="s-drivers">Core Demand Drivers</h2>
 
+            <p class="research-detail__text">Demand is structural:</p>
+
             <ul class="research-detail__bullets">
-              <li><strong>Uptime + risk asymmetry:</strong> the downside of environmental failure vastly outweighs monitoring cost.</li>
-              <li><strong>Asset density:</strong> high-density environments magnify the cost of small deviations.</li>
-              <li><strong>Regulatory / reporting pressure:</strong> auditability, logging, and defensible narratives.</li>
-              <li><strong>Energy constraints:</strong> HVAC optimization under cost/decarbonization constraints.</li>
-              <li><strong>Operational scrutiny:</strong> “explain what happened” moments drive real buying.</li>
+              <li><strong>Risk is asymmetric:</strong> failure costs dwarf monitoring costs.</li>
+              <li><strong>Accountability is personal:</strong> teams must justify stability under scrutiny.</li>
+              <li><strong>Tolerances are tightening:</strong> utilization and complexity shrink acceptable variance.</li>
+              <li><strong>Scrutiny is rising:</strong> audits and commissioning deadlines force action.</li>
+              <li><strong>Alarms aren’t enough:</strong> operators need explanations that survive review.</li>
             </ul>
 
-            <div class="research-detail__viz" id="viz-drivers" role="img" aria-label="Core demand drivers visualization"></div>
+            <!-- Fallback: still works if the chart is hidden or JS is off -->
+            <table class="research-detail__table research-detail__table--compact" aria-label="Core demand drivers summary">
+              <thead>
+                <tr>
+                  <th>Driver</th>
+                  <th>Pressure</th>
+                  <th>What it forces (BMS context)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Uptime + risk asymmetry</strong></td>
+                  <td><strong>5/5</strong></td>
+                  <td>BMS upgrades become risk-control spend, not a “nice to have.”</td>
+                </tr>
+                <tr>
+                  <td><strong>Asset density</strong></td>
+                  <td><strong>4/5</strong></td>
+                  <td>Small environmental variance produces outsized operational impact.</td>
+                </tr>
+                <tr>
+                  <td><strong>Regulatory / reporting pressure</strong></td>
+                  <td><strong>4/5</strong></td>
+                  <td>Audit-ready logging and defensible narratives are required.</td>
+                </tr>
+                <tr>
+                  <td><strong>Energy constraints</strong></td>
+                  <td><strong>3/5</strong></td>
+                  <td>Optimization pressure increases demand for better observability.</td>
+                </tr>
+                <tr>
+                  <td><strong>Operational scrutiny</strong></td>
+                  <td><strong>3/5</strong></td>
+                  <td>Teams must explain drift, not just acknowledge alarms.</td>
+                </tr>
+              </tbody>
+            </table>
 
-            <p class="research-detail__viz-note" id="viz-drivers-note">
-  <strong>Labels:</strong> Uptime + risk = Uptime + risk asymmetry · Regulatory pressure = Regulatory / reporting pressure · Ops scrutiny = Operational scrutiny
-</p>
+            <!-- Optional viz block -->
+            <div class="research-detail__vizwrap" aria-hidden="true">
+              <div class="research-detail__viz" id="viz-drivers" role="img" aria-label="Core demand drivers visualization"></div>
+              <p class="research-detail__viz-note" id="viz-drivers-note">
+                <strong>Labels:</strong> Uptime + risk = Uptime + risk asymmetry · Regulatory pressure = Regulatory / reporting pressure · Ops scrutiny = Operational scrutiny
+              </p>
+            </div>
 
-
+            <noscript>
+              <p class="research-detail__text">
+                (Interactive visualization requires JavaScript. The summary table above contains the same content.)
+              </p>
+            </noscript>
           </section>
 
+          <!-- =========================================================
+               SEGMENTS
+               ========================================================= -->
+          <section class="research-detail__section" id="segments" aria-labelledby="s-segments">
+            <h2 class="research-detail__heading" id="s-segments">TAM / SAM / SOM Logic</h2>
 
+            <p class="research-detail__text">
+              <strong>At-a-glance:</strong> TAM <strong>$70B</strong> → SAM <strong>$24B</strong> → SOM <strong>$3B</strong>.
+              Conservative: high-tolerance environments only (generic low-spec buildings excluded).
+            </p>
 
+            <!-- Fallback: still makes sense if the visualization is hidden or JS is off -->
+            <table class="research-detail__table research-detail__table--compact" aria-label="TAM SAM SOM summary">
+              <thead>
+                <tr>
+                  <th>Stage</th>
+                  <th>Size (USD)</th>
+                  <th>How it’s defined (BMS context)</th>
+                  <th>What gets excluded</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>TAM</strong></td>
+                  <td><strong>$70B</strong></td>
+                  <td>Global high-tolerance BMS + environmental monitoring opportunity.</td>
+                  <td>Generic HVAC spend and low-tolerance commercial buildings.</td>
+                </tr>
+                <tr>
+                  <td><strong>SAM</strong></td>
+                  <td><strong>$24B</strong></td>
+                  <td>Serviceable segment based on practical geography + reachable facility types.</td>
+                  <td>Regions/segments without strong buying pressure or access paths.</td>
+                </tr>
+                <tr>
+                  <td><strong>SOM</strong></td>
+                  <td><strong>$3B</strong></td>
+                  <td>Obtainable wedge: audited, high-scrutiny operators forced to act.</td>
+                  <td>“Nice-to-have” buyers and environments where delaying action has low consequence.</td>
+                </tr>
+              </tbody>
+            </table>
 
-<section class="research-detail__section" id="segments" aria-labelledby="s-segments">
-  <h2 class="research-detail__heading" id="s-segments">TAM / SAM / SOM Logic</h2>
+            <!-- Optional viz block -->
+            <div class="research-detail__vizwrap" aria-hidden="true">
+              <div class="research-detail__viz" id="viz-segments" role="img" aria-label="TAM SAM SOM visualization"></div>
+              <p class="research-detail__viz-note" id="viz-segments-note">
+                <strong>How to read:</strong> the chart shows relative scale (bars) and the same values shown above.
+              </p>
+            </div>
 
-  <p class="research-detail__text">
-    <strong>At-a-glance:</strong> TAM <strong>$70B</strong> → SAM <strong>$24B</strong> → SOM <strong>$3B</strong>.
-    Conservative: high-tolerance environments only (low-spec commercial buildings excluded).
-  </p>
+            <noscript>
+              <p class="research-detail__text">
+                (Interactive visualization requires JavaScript. The summary table above contains the same content.)
+              </p>
+            </noscript>
 
-  <!-- Fallback: still makes sense if the visualization is hidden or JS is off -->
-  <table class="research-detail__table research-detail__table--compact" aria-label="TAM SAM SOM summary">
-    <thead>
-      <tr>
-        <th>Stage</th>
-        <th>Size (USD)</th>
-        <th>How it’s defined</th>
-        <th>What gets excluded</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>TAM</strong></td>
-        <td><strong>$70B</strong></td>
-        <td>Global high-tolerance environmental monitoring opportunity.</td>
-        <td>Generic HVAC spend and low-tolerance commercial buildings.</td>
-      </tr>
-      <tr>
-        <td><strong>SAM</strong></td>
-        <td><strong>$24B</strong></td>
-        <td>Serviceable segment based on practical geography + reachable facilities.</td>
-        <td>Regions/segments without strong buying pressure or access paths.</td>
-      </tr>
-      <tr>
-        <td><strong>SOM</strong></td>
-        <td><strong>$3B</strong></td>
-        <td>Obtainable wedge: continuously-audited, high-scrutiny operators forced to act.</td>
-        <td>“Nice-to-have” buyers and environments where delaying action has low consequence.</td>
-      </tr>
-    </tbody>
-  </table>
+            <div class="research-detail__panel">
+              <h3 class="research-detail__panel-title">Addressable segment definition</h3>
+              <ul class="research-detail__bullets">
+                <li><strong>Tight tolerances:</strong> small deviations cause outsized harm.</li>
+                <li><strong>Continuous monitoring:</strong> persistent sensing + logging, not periodic checks.</li>
+                <li><strong>High consequence of failure:</strong> downtime, regulatory exposure, yield loss, asset damage.</li>
+                <li><strong>Operational sophistication:</strong> BMS/control infrastructure already exists and must be defensible.</li>
+              </ul>
+            </div>
 
-  <!-- Optional viz block: if it renders, great; if not, the table above carries the meaning. -->
-  <div class="research-detail__vizwrap" aria-hidden="true">
-    <div class="research-detail__viz" id="viz-segments" role="img" aria-label="TAM SAM SOM funnel visualization"></div>
+            <div class="research-detail__panel">
+              <h3 class="research-detail__panel-title">Minimum viable market segment (MVMS)</h3>
+              <p class="research-detail__text">
+                A subset of operators is already forced to justify environmental stability continuously.
+                Buying is triggered by audits, expansion/retrofit, or prior failures/near-misses.
+              </p>
+            </div>
 
-    <p class="research-detail__viz-note" id="viz-segments-note">
-      <strong>How to read:</strong> the chart shows relative scale (bars) and the same values shown above.
-    </p>
-  </div>
+            <div class="research-detail__panel">
+              <h3 class="research-detail__panel-title">SOM as an outcome</h3>
+              <p class="research-detail__text">
+                The obtainable segment is intentionally constrained to facilities where scrutiny and risk converge—where adoption is
+                inevitable rather than aspirational.
+              </p>
+            </div>
+          </section>
 
-  <noscript>
-    <p class="research-detail__text">
-      (Interactive visualization requires JavaScript. The summary table above contains the same content.)
-    </p>
-  </noscript>
+          <!-- =========================================================
+               BUYING
+               ========================================================= -->
+          <section class="research-detail__section" id="buying" aria-labelledby="s-buying">
+            <h2 class="research-detail__heading" id="s-buying">Adoption & Buying Dynamics</h2>
 
-  <div class="research-detail__panel">
-    <h3 class="research-detail__panel-title">Addressable segment definition</h3>
-    <ul class="research-detail__bullets">
-      <li><strong>Tight tolerances:</strong> small deviations cause outsized harm.</li>
-      <li><strong>Continuous monitoring:</strong> persistent sensing + logging, not periodic checks.</li>
-      <li><strong>High consequence of failure:</strong> downtime, regulatory exposure, yield loss, asset damage.</li>
-      <li><strong>Operational sophistication:</strong> centralized BMS / specialized control infrastructure already exists.</li>
-    </ul>
-  </div>
+            <div class="research-detail__panel">
+              <p class="research-detail__text">
+                Purchasing decisions are rarely exploratory. They’re initiated by audits/compliance, expansions/retrofits,
+                commissioning deadlines, or prior deviation events.
+              </p>
+              <ul class="research-detail__bullets">
+                <li><strong>Evaluation:</strong> reliability + auditability + integration with reporting workflows</li>
+                <li><strong>Preference:</strong> explain behavior, not just detect violations</li>
+                <li><strong>Timelines:</strong> driven by inspections and operational deadlines</li>
+              </ul>
+            </div>
 
-  <div class="research-detail__panel">
-    <h3 class="research-detail__panel-title">Minimum viable market segment (MVMS)</h3>
-    <p class="research-detail__text">
-      A subset of operators is already forced to justify environmental stability continuously.
-      Buying is triggered by audits, expansion/retrofit, or prior failures/near-misses.
-    </p>
-  </div>
+            <p class="research-detail__text">
+              Each cell is a <strong>trigger → buyer role</strong> pairing. The label is a <strong>1–5 qualitative pressure score</strong>
+              (here the range is <strong>3–5</strong>).
+            </p>
 
-  <div class="research-detail__panel">
-    <h3 class="research-detail__panel-title">SOM as an outcome</h3>
-    <p class="research-detail__text">
-      The obtainable segment is intentionally constrained to facilities where scrutiny and risk converge—where adoption is
-      inevitable rather than aspirational.
-    </p>
-  </div>
-</section>
+            <!-- Fallback table -->
+            <table class="research-detail__table research-detail__table--compact" aria-label="Buying dynamics summary">
+              <thead>
+                <tr>
+                  <th>Trigger</th>
+                  <th>Primary buyers</th>
+                  <th>Pressure</th>
+                  <th>What they need to prove (BMS context)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Audit / compliance</strong></td>
+                  <td>Facilities; QA / Compliance</td>
+                  <td><strong>4–5/5</strong></td>
+                  <td>Audit-ready logging, defensible narratives, reliability.</td>
+                </tr>
+                <tr>
+                  <td><strong>Expansion / retrofit</strong></td>
+                  <td>Facilities; Operations</td>
+                  <td><strong>3–5/5</strong></td>
+                  <td>Commissioning support, integration with reporting workflows, continuity.</td>
+                </tr>
+                <tr>
+                  <td><strong>Near-miss / incident</strong></td>
+                  <td>Reliability; Operations</td>
+                  <td><strong>4–5/5</strong></td>
+                  <td>Explain drift, identify origin/propagation, prevent recurrence.</td>
+                </tr>
+              </tbody>
+            </table>
 
+            <!-- Optional viz block -->
+            <div class="research-detail__vizwrap" aria-hidden="true">
+              <div class="research-detail__viz" id="viz-buying" role="img" aria-label="Buying dynamics visualization"></div>
+              <p class="research-detail__viz-note">
+                <strong>Labels:</strong> Audit = Audit / compliance · Expansion = Expansion / retrofit · Incident = Near-miss / incident
+              </p>
+            </div>
 
+            <noscript>
+              <p class="research-detail__text">
+                (Interactive visualization requires JavaScript. The summary table above contains the same content.)
+              </p>
+            </noscript>
+          </section>
 
-<section class="research-detail__section" id="buying" aria-labelledby="s-buying">
-  <h2 class="research-detail__heading" id="s-buying">Adoption & Buying Dynamics</h2>
+          <!-- =========================================================
+               GAPS
+               ========================================================= -->
+          <section class="research-detail__section" id="gaps" aria-labelledby="s-gaps">
+            <h2 class="research-detail__heading" id="s-gaps">Market Gaps & Structural Opportunity</h2>
 
-  <div class="research-detail__panel">
-    <p class="research-detail__text">
-      Purchasing decisions are rarely exploratory. They’re initiated by audits/compliance, expansions/retrofits,
-      commissioning deadlines, or prior deviation events.
-    </p>
-    <ul class="research-detail__bullets">
-      <li><strong>Evaluation:</strong> reliability + auditability + integration with reporting workflows</li>
-      <li><strong>Preference:</strong> explain behavior, not just detect violations</li>
-      <li><strong>Timelines:</strong> driven by inspections and operational deadlines</li>
-    </ul>
-  </div>
+            <p class="research-detail__text">
+              Typical BMS stacks detect deviations but don’t explain environmental behavior. They’re built for alarms, local loops,
+              and compliance logs—not spatial variability, propagation, or defensible causality.
+            </p>
 
-  <p class="research-detail__text">
-    Each cell is a <strong>trigger → buyer role</strong> pairing. The label is a <strong>1–5 qualitative pressure score</strong>
-    (here the range is <strong>3–5</strong>).
-  </p>
+            <ul class="research-detail__bullets">
+              <li>Blind spots grow faster than sensor density as facilities scale</li>
+              <li>Point readings don’t survive “why was it stable?” scrutiny</li>
+              <li>Operators stay accountable even when tooling can’t justify the story</li>
+            </ul>
 
-  <!-- Fallback: still makes sense if the visualization is hidden or JS is off -->
-  <table class="research-detail__table research-detail__table--compact" aria-label="Buying dynamics summary">
-    <thead>
-      <tr>
-        <th>Trigger</th>
-        <th>Primary buyers</th>
-        <th>Pressure</th>
-        <th>What they need to prove</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Audit / compliance</strong></td>
-        <td>Facilities; QA / Compliance</td>
-        <td><strong>4–5/5</strong></td>
-        <td>Audit-ready logging, defensible narratives, reliability.</td>
-      </tr>
-      <tr>
-        <td><strong>Expansion / retrofit</strong></td>
-        <td>Facilities; Operations</td>
-        <td><strong>3–5/5</strong></td>
-        <td>Commissioning support, integration with reporting workflows, continuity.</td>
-      </tr>
-      <tr>
-        <td><strong>Near-miss / incident</strong></td>
-        <td>Reliability; Operations</td>
-        <td><strong>4–5/5</strong></td>
-        <td>Explain drift, identify origin/propagation, prevent recurrence.</td>
-      </tr>
-    </tbody>
-  </table>
+            <!-- Fallback table -->
+            <table class="research-detail__table research-detail__table--compact" aria-label="Market gaps summary">
+              <thead>
+                <tr>
+                  <th>Operator question</th>
+                  <th>Typical BMS</th>
+                  <th>More sensors</th>
+                  <th>Analytics layer</th>
+                  <th>Validity + co-timing</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Did we violate thresholds?</strong></td>
+                  <td><strong>Strong</strong></td>
+                  <td><strong>Strong</strong></td>
+                  <td><strong>Strong</strong></td>
+                  <td><strong>Strong</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Can we audit/log conditions?</strong></td>
+                  <td><strong>Strong</strong></td>
+                  <td><strong>Strong</strong></td>
+                  <td><strong>Strong</strong></td>
+                  <td><strong>Strong</strong> (with receipts)</td>
+                </tr>
+                <tr>
+                  <td><strong>Why did it drift?</strong></td>
+                  <td>Weak</td>
+                  <td>Weak → partial</td>
+                  <td>Partial</td>
+                  <td><strong>Strong</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Where is it unstable?</strong></td>
+                  <td>Weak</td>
+                  <td>Partial</td>
+                  <td>Partial → strong</td>
+                  <td><strong>Strong</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>How did it propagate / what’s the origin?</strong></td>
+                  <td>Weak</td>
+                  <td>Weak</td>
+                  <td>Partial</td>
+                  <td><strong>Strong</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Will this survive an audit-style “prove it” review?</strong></td>
+                  <td>Weak</td>
+                  <td>Weak</td>
+                  <td>Partial</td>
+                  <td><strong>Strong</strong></td>
+                </tr>
+              </tbody>
+            </table>
 
-  <!-- Optional viz block: if it renders, great; if not, the table above carries the meaning. -->
-  <div class="research-detail__vizwrap" aria-hidden="true">
-    <div class="research-detail__viz" id="viz-buying" role="img" aria-label="Buying dynamics visualization"></div>
+            <!-- Optional viz block -->
+            <div class="research-detail__vizwrap" aria-hidden="true">
+              <div class="research-detail__viz" id="viz-gaps" role="img" aria-label="Market gaps and coverage visualization"></div>
+              <p class="research-detail__viz-note" id="viz-gaps-note">
+                <strong>Labels:</strong> BMS = Typical BMS · Sensors = More sensors · Analytics = Analytics layer · Validity = Validity + co-timing
+              </p>
+            </div>
 
-    <p class="research-detail__viz-note">
-      <strong>Labels:</strong> Audit = Audit / compliance · Expansion = Expansion / retrofit · Incident = Near-miss / incident
-    </p>
-  </div>
+            <noscript>
+              <p class="research-detail__text">
+                (Interactive visualization requires JavaScript. The summary table above contains the same content.)
+              </p>
+            </noscript>
+          </section>
 
-  <noscript>
-    <p class="research-detail__text">
-      (Interactive visualization requires JavaScript. The summary table above contains the same content.)
-    </p>
-  </noscript>
-</section>
-
-
-
-<section class="research-detail__section" id="gaps" aria-labelledby="s-gaps">
-  <h2 class="research-detail__heading" id="s-gaps">Market Gaps & Structural Opportunity</h2>
-
-  <p class="research-detail__text">
-    Existing systems detect deviations but don’t explain environmental behavior. They’re built for alarms, local loops,
-    and compliance logs—not spatial variability, propagation, or defensible causality.
-  </p>
-
-  <ul class="research-detail__bullets">
-    <li>Blind spots grow faster than sensor density as facilities scale</li>
-    <li>Point readings don’t survive “why was it stable?” scrutiny</li>
-    <li>Operators stay accountable even when tooling can’t justify the story</li>
-  </ul>
-
-  <!-- Fallback: still makes sense if the visualization is hidden or JS is off -->
-  <table class="research-detail__table research-detail__table--compact" aria-label="Market gaps summary">
-    <thead>
-      <tr>
-        <th>Operator question</th>
-        <th>Typical BMS</th>
-        <th>More sensors</th>
-        <th>Analytics layer</th>
-        <th>Validity + co-timing</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Did we violate thresholds?</strong></td>
-        <td><strong>Strong</strong></td>
-        <td><strong>Strong</strong></td>
-        <td><strong>Strong</strong></td>
-        <td><strong>Strong</strong></td>
-      </tr>
-      <tr>
-        <td><strong>Can we audit/log conditions?</strong></td>
-        <td><strong>Strong</strong></td>
-        <td><strong>Strong</strong></td>
-        <td><strong>Strong</strong></td>
-        <td><strong>Strong</strong> (with receipts)</td>
-      </tr>
-      <tr>
-        <td><strong>Why did it drift?</strong></td>
-        <td>Weak</td>
-        <td>Weak → partial</td>
-        <td>Partial</td>
-        <td><strong>Strong</strong></td>
-      </tr>
-      <tr>
-        <td><strong>Where is it unstable?</strong></td>
-        <td>Weak</td>
-        <td>Partial</td>
-        <td>Partial → strong</td>
-        <td><strong>Strong</strong></td>
-      </tr>
-      <tr>
-        <td><strong>How did it propagate / what’s the origin?</strong></td>
-        <td>Weak</td>
-        <td>Weak</td>
-        <td>Partial</td>
-        <td><strong>Strong</strong></td>
-      </tr>
-      <tr>
-        <td><strong>Will this survive an audit-style “prove it” review?</strong></td>
-        <td>Weak</td>
-        <td>Weak</td>
-        <td>Partial</td>
-        <td><strong>Strong</strong></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <!-- Optional viz block: if it renders, great; if not, the table above carries the meaning. -->
-  <div class="research-detail__vizwrap" aria-hidden="true">
-    <div class="research-detail__viz" id="viz-gaps" role="img" aria-label="Market gaps and coverage visualization"></div>
-
-    <p class="research-detail__viz-note" id="viz-gaps-note">
-      <strong>Labels:</strong> BMS = Typical BMS · Sensors = More sensors · Analytics = Analytics layer · Validity = Validity + co-timing
-    </p>
-  </div>
-
-  <noscript>
-    <p class="research-detail__text">
-      (Interactive visualization requires JavaScript. The summary table above contains the same content.)
-    </p>
-  </noscript>
-</section>
-
-
+          <!-- =========================================================
+               CONCLUSION
+               ========================================================= -->
           <section class="research-detail__section" id="conclusion" aria-labelledby="s-conclusion">
             <h2 class="research-detail__heading" id="s-conclusion">Conclusion</h2>
 
             <div class="research-detail__panel">
               <p class="research-detail__text">
-                Environmental uncertainty is now an operational risk that cannot be deferred. Existing monitoring detects deviations but does not
-                resolve uncertainty around cause, propagation, or spatial impact. A minimum viable segment exists where explanation is required and
-                delaying action increases exposure.
+                Environmental uncertainty is now an operational risk that cannot be deferred. Typical BMS monitoring detects deviations
+                but does not resolve uncertainty around cause, propagation, or spatial impact. A minimum viable segment exists where
+                explanation is required and delaying action increases exposure.
               </p>
             </div>
-
           </section>
 
+          <!-- =========================================================
+               REQUEST
+               ========================================================= -->
           <section class="research-detail__section research-detail__section--contact" id="request" aria-labelledby="rq-title">
             <h2 class="research-detail__heading" id="rq-title">Request Additional Research</h2>
 
