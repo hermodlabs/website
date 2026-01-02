@@ -440,3 +440,21 @@
   width: 100%;
   height: auto;
 }
+
+.blogpost__embed {
+  width: 100%;
+  max-width: 960px;
+  margin: 1rem 0 1.5rem;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* Responsive 16:9 wrapper without extra markup */
+.blogpost__embed iframe {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  display: block;
+  border: 0;
+}
+
