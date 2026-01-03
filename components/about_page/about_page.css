@@ -185,3 +185,57 @@
     margin-top: var(--space-5);
   }
 }
+
+
+
+
+
+
+/* ---------- Step media (1563 × 663 ratio) ---------- */
+.about-page__step-media{
+  margin: var(--space-3) 0 0;
+  max-width: 74ch; /* keeps consistent with text width */
+}
+
+.about-page__media-box{
+  /* exact aspect ratio: 1563 / 663 ≈ 2.357 */
+  aspect-ratio: 1563 / 663;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  background: rgba(0,0,0,0.02);
+}
+
+/* Placeholder “image” surface */
+.about-page__media-placeholder{
+  position: absolute;
+  inset: 0;
+  /* subtle grid + gradient so it reads as a diagram slot */
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.02)),
+    repeating-linear-gradient(
+      to right,
+      rgba(0,0,0,0.06) 0px,
+      rgba(0,0,0,0.06) 1px,
+      transparent 1px,
+      transparent 28px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.06) 0px,
+      rgba(0,0,0,0.06) 1px,
+      transparent 1px,
+      transparent 28px
+    );
+  opacity: 0.9;
+}
+
+/* If you later swap placeholder → img */
+.about-page__media-img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover; /* or contain, depending on your diagrams */
+}
