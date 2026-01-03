@@ -239,3 +239,23 @@
   display: block;
   object-fit: cover; /* or contain, depending on your diagrams */
 }
+
+/* ---------- Two-wide illustration row (responsive) ---------- */
+.about-page__media-grid{
+  margin-top: var(--space-5);
+  display: grid;
+  gap: var(--space-3);
+  max-width: 74ch;
+}
+
+.about-page__media-item{
+  margin: 0;
+}
+
+/* two-up when there’s room */
+@media (min-width: 820px){
+  .about-page__media-grid{
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+  }
+}

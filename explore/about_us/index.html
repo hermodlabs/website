@@ -49,15 +49,51 @@
       </p>
 
       <p class="about-page__text">
-        Modern systems are full of signals that are “the same… almost.” Two microphones hearing the same hum. Two sensors
-        sampling the same air. Two receivers watching the same oscillator. The plots look convincing until they don’t—
-        deep notches one day, stubborn residuals the next.
+        Modern systems are full of signals that are “the same... almost.”    
+      </p>
+      <p class="about-page__text">
+        The plots look convincing until they don't.
       </p>
 
       <p class="about-page__text">
-        We focus on the failure you can't see in a screenshot: time. If two streams aren’t on the same clock, subtraction
+        We focus on the failure you can't see in a screenshot: time. 
+      </p>
+
+      <p class="about-page__text">
+        If two streams aren't on the same clock, subtraction
         is not cancellation. It's a gamble.
       </p>
+
+      <div class="about-page__media-grid" role="list" aria-label="About HermodLabs illustrations">
+  <figure class="about-page__media-item" role="listitem">
+    <div class="about-page__media-box">
+      <img
+        class="about-page__media-img"
+        src="/asset/img/v1_drift_1.png"
+        alt="Illustration: signals that look the same… almost."
+        width="1563"
+        height="663"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  </figure>
+
+  <figure class="about-page__media-item" role="listitem">
+    <div class="about-page__media-box">
+      <img
+        class="about-page__media-img"
+        src="/asset/img/v1_drift_2.png"
+        alt="Illustration: timing mismatch turns subtraction into a gamble."
+        width="1563"
+        height="663"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  </figure>
+</div>
+
     </div>
   </section>
 
@@ -66,8 +102,19 @@
     <h2 class="about-page__heading" id="what-title">What the Co-Timing Engine Does</h2>
 
     <p class="about-page__text">
-      The co-timing engine is a repeatable recipe. We describe it as <strong>align, then cancel</strong>. The order
-      matters. The honesty matters.
+      The co-timing engine is a repeatable recipe. 
+    </p>
+
+    <p class="about-page__text">
+      We describe it as <strong>align, then cancel</strong>. 
+    </p>
+
+    <p class="about-page__text">
+      The order matters. 
+    </p>
+
+    <p class="about-page__text">
+      The honesty matters.
     </p>
 
     <ol class="about-page__steps">
@@ -89,10 +136,12 @@
         </figure>
 
 
+        <!--
         <p class="about-page__text">
           We don’t assume the world is calm; we test for it. The engine works on windows where delay behaves like an
           honest step.
         </p>
+        -->
       </li>
 
       <li class="about-page__step">
@@ -112,9 +161,11 @@
           </div>
         </figure>
 
+        <!--
         <p class="about-page__text">
           Once streams share time, comparisons mean what you think they mean.
         </p>
+        -->
       </li>
 
       <li class="about-page__step">
@@ -134,10 +185,12 @@
           </div>
         </figure>
 
+        <!--
         <p class="about-page__text">
           If the nuisance is genuinely “the same up to delay,” it collapses. If it doesn’t, the residue is a diagnosis,
           not a mystery.
         </p>
+        -->
       </li>
 
       <li class="about-page__step">
@@ -165,40 +218,72 @@
         </figure>
         -->
 
+        <!--
         <p class="about-page__text">
           After cancellation, what remains can be tied back to geometry and medium—where the interesting physics lives.
         </p>
+        -->
       </li>
     </ol>
   </div>
 </section>
 
 
-  <section class="about-page__section" aria-labelledby="platform-title">
-    <div class="about-page__inner">
-      <h2 class="about-page__heading" id="platform-title">A Platform, Not a One-Off Trick</h2>
+<section class="about-page__section" aria-labelledby="platform-title">
+  <div class="about-page__inner">
+    <h2 class="about-page__heading" id="platform-title">A Platform, Not a One-Off Trick</h2>
 
-      <p class="about-page__text">
-        We’re not shipping a single filter. We’re building an engine that can run on many benches.
-      </p>
+    <p class="about-page__text">
+      We're building an engine you can reuse.
+    </p>
 
-      <p class="about-page__text">
-        The middle stays stable: delay bricks, windowed evaluation, diagnostics, and certificates that say when the
-        assumptions hold. The benches change: audio rigs, humidity fields, RF timing networks, inertial sensors—anything
-        that can present itself as:
-      </p>
+    <p class="about-page__text">
+      Different benches.
+      Same discipline.
+    </p>
 
-      <ul class="about-page__bullets">
-        <li class="about-page__bullet"><strong>shared-up-to-delay</strong> (on the window you claim), and</li>
-        <li class="about-page__bullet"><strong>delay operators that behave predictably</strong> (enough to compose and test)</li>
-      </ul>
+    <p class="about-page__text">
+      The setup changes.
+      The core doesn't.
+    </p>
 
-      <p class="about-page__text">
-        When a bench can make those promises, the same timing logic runs without being rewritten. When it can’t, the
-        engine tells you which promise slipped.
-      </p>
-    </div>
-  </section>
+    <p class="about-page__text">
+      To run the engine, a bench makes two promises:
+    </p>
+
+    <ul class="about-page__bullets">
+      <li class="about-page__bullet">
+        <strong>Shared-up-to-delay</strong>
+      </li>
+      <li class="about-page__bullet">
+        <strong>Delays that behave</strong>
+      </li>
+    </ul>
+
+    <p class="about-page__text">
+      When those promises hold, the engine drops in.
+    </p>
+
+    <p class="about-page__text">
+      When they don't, it tells you what slipped.
+    </p>
+
+    <figure class="about-page__step-media">
+      <div class="about-page__media-box">
+        <img
+          class="about-page__media-img"
+          src="/asset/img/v1_flowchart.png"
+          alt="Flowchart showing the reusable co-timing engine core and the checks used to validate whether a bench is compatible."
+          width="1563"
+          height="663"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </figure>
+  </div>
+</section>
+
 
 
 
@@ -207,8 +292,8 @@
     <h2 class="about-page__heading" id="docs-title">How We Document the System</h2>
 
     <p class="about-page__text">
-      We treat documentation as part of the product. The whitepaper is the backbone, but the day-to-day design decisions
-      live in short posts: failure modes we’ve seen, contracts we enforce, and why certain “obvious” plots aren’t evidence.
+      We treat documentation as part of the product. Day-to-day design decisions
+      live in short posts.
     </p>
 
     <p class="about-page__text">
@@ -309,27 +394,6 @@
   </div>
 </section>
 
-  <section class="about-page__section" aria-labelledby="headed-title">
-    <div class="about-page__inner">
-      <h2 class="about-page__heading" id="headed-title">Where We’re Headed</h2>
-
-      <p class="about-page__text">
-        Our first wedge is medium-aware sensing: humidity and airflow conditions that quietly drift until they break a
-        process, a product, or an SLA. The same timing structure that makes hum cancel (or fail) shows up in the harder
-        problem: measuring an invisible field in 3D with enough trust to act on it.
-      </p>
-
-      <p class="about-page__text">
-        We're building toward systems that can:
-      </p>
-
-      <ul class="about-page__bullets">
-        <li class="about-page__bullet">detect drift early,</li>
-        <li class="about-page__bullet">isolate whether it's sensor behavior, timing, or the medium itself, and</li>
-        <li class="about-page__bullet">turn “we think the air changed” into a measurement that can be audited.</li>
-      </ul>
-    </div>
-  </section>
 
 
   <section class="about-page__section about-page__section--contact" aria-labelledby="contact-title">
