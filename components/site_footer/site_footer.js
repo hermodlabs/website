@@ -121,12 +121,14 @@ class SiteFooter extends LitElement {
                 <span class="site-footer__link-text">Apply for a Pilot</span>
               </a>
             </li>
+            <!--
             <li class="site-footer__item">
               <a class="site-footer__link" href="/engage/career">
                 <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
                 <span class="site-footer__link-text">Work for Us</span>
               </a>
             </li>
+            -->
             <li class="site-footer__item">
               <a class="site-footer__link" href="/engage/team">
                 <i class="fa-solid fa-users" aria-hidden="true"></i>
