@@ -257,19 +257,85 @@
       When they don't, it tells you what slipped.
     </p>
 
-    <figure class="about-page__step-media">
-      <div class="about-page__media-box">
-        <img
-          class="about-page__media-img"
-          src="/asset/img/v1_flowchart.png"
-          alt="Flowchart showing the reusable co-timing engine core and the checks used to validate whether a bench is compatible."
-          width="1563"
-          height="663"
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
-    </figure>
+    <div style="max-width: 78ch;">
+      <!-- Save as: v1_app_engine_bench.svg  (or paste inline directly into your HTML) -->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 700 320"
+  role="img"
+  aria-label="Application → Co-timing engine → Bench / instrument, with a return loop labeled results."
+>
+  <defs>
+    <!-- Arrowhead -->
+    <marker
+      id="arrow"
+      viewBox="0 0 10 10"
+      refX="9"
+      refY="5"
+      markerWidth="8"
+      markerHeight="8"
+      orient="auto-start-reverse"
+    >
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(0,0,0,0.60)" />
+    </marker>
+
+    <style>
+      .box {
+        fill: none;
+        stroke: rgba(0,0,0,0.45);
+        stroke-width: 0.6px;
+      }
+      .arr {
+        fill: none;
+        stroke: rgba(0,0,0,0.60);
+        stroke-width: 0.6px;
+        marker-end: url(#arrow);
+      }
+      .txt {
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans",
+          sans-serif;
+        font-size: 16px;
+        fill: rgba(0, 0, 0, 0.92);
+      }
+      .lab {
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans",
+          sans-serif;
+        font-size: 12px;
+        fill: rgba(0, 0, 0, 0.70);
+      }
+    </style>
+  </defs>
+
+  <!-- Layout constants -->
+  <!-- Boxes: x=140, w=420, h=60, rx=6 -->
+  <!-- app y=40, eng y=130, ben y=220 -->
+
+  <!-- Boxes -->
+  <rect class="box" x="140" y="40" width="420" height="60" rx="6" ry="6" />
+  <rect class="box" x="140" y="130" width="420" height="60" rx="6" ry="6" />
+  <rect class="box" x="140" y="220" width="420" height="60" rx="6" ry="6" />
+
+  <!-- Box text (centered) -->
+  <text class="txt" x="350" y="70" text-anchor="middle" dominant-baseline="middle">Application</text>
+  <text class="txt" x="350" y="160" text-anchor="middle" dominant-baseline="middle">Co-timing engine</text>
+  <text class="txt" x="350" y="250" text-anchor="middle" dominant-baseline="middle">Bench / instrument</text>
+
+  <!-- Down arrows -->
+  <path class="arr" d="M 350 100 L 350 130" />
+  <text class="lab" x="368" y="118" text-anchor="start" dominant-baseline="middle">intent</text>
+
+  <path class="arr" d="M 350 190 L 350 220" />
+  <text class="lab" x="368" y="208" text-anchor="start" dominant-baseline="middle">procedure</text>
+
+  <!-- Return loop: from ben.east → right → up → app.east -->
+  <!-- ben.east = (560, 250); app.east = (560, 70) -->
+  <path class="arr" d="M 560 250 L 660 250 L 660 70 L 560 70" />
+
+  <!-- results label near the loop (roughly like your TikZ placement) -->
+  <text class="lab" x="600" y="160" text-anchor="start" dominant-baseline="middle">results</text>
+</svg>
+    </div>
+
   </div>
 </section>
 
@@ -281,7 +347,10 @@
     <h2 class="about-page__heading" id="docs-title">How We Document the System</h2>
 
     <p class="about-page__text">
-      We treat documentation as part of the product. Day-to-day design decisions
+      We treat documentation as part of the product. 
+    </p>
+    <p class="about-page__text">
+      Day-to-day design decisions
       live in short posts.
     </p>
 
