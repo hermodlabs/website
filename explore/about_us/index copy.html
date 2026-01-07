@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-V2474V50XP');
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <title>HermodLabs — Home Page</title>
+    <meta
+      name="description"
+      content="HermodLabs builds a co-timing engine that proves streams are on the same clock before you subtract, compare, threshold, or interpret. Portable cancellation + diagnostics + proof-shaped certificates."
+    />
+
+    <script type="importmap">
+    {
+      "imports": {
+        "lit": "https://esm.run/lit"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="" id="main-css" />
+    <script type="module" src="../../bootstrap.js"></script>
+
+  </head>
+
+<body>
+<site-page>
+  <section class="about-page" aria-labelledby="about-page-title">
+    <div class="about-page__inner">
+      <h1 class="about-page__title" id="about-page-title">About HermodLabs</h1>
+
+      <p class="about-page__lede">
+        HermodLabs builds a co-timing engine: a platform for turning messy, drifting sensor streams into measurements you
+        can trust.
+      </p>
+
+      <p class="about-page__text">
+        If two streams aren't on the same clock, subtraction
+        is not cancellation. It's a gamble.
+      </p>
+
+      <p class="about-page__text">
+        The plots look convincing until they don't.
+      </p>
+
+      <p class="about-page__text">
+        We focus on the failure you can't see in a screenshot: time. 
+      </p>
+
+
+      <div class="about-page__media-grid" role="list" aria-label="About HermodLabs illustrations">
+  <figure class="about-page__media-item" role="listitem">
+    <div class="about-page__media-box">
+      <img
+        class="about-page__media-img"
+        src="/asset/img/v1_drift_1.png"
+        alt="Illustration: signals that look the same… almost."
+        width="1563"
+        height="663"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  </figure>
+
+  <figure class="about-page__media-item" role="listitem">
+    <div class="about-page__media-box">
+      <img
+        class="about-page__media-img"
+        src="/asset/img/v1_drift_2.png"
+        alt="Illustration: timing mismatch turns subtraction into a gamble."
+        width="1563"
+        height="663"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  </figure>
+</div>
+
+    </div>
+  </section>
+
+<section class="about-page__section" aria-labelledby="what-title">
+  <div class="about-page__inner">
+    <h2 class="about-page__heading" id="what-title">What the Co-Timing Engine Does</h2>
+
+    <p class="about-page__text">
+      The co-timing engine is a repeatable recipe. 
+    </p>
+
+    <p class="about-page__text">
+      We describe it as <strong>align, then cancel</strong>. 
+    </p>
+
+    <p class="about-page__text">
+      The order matters. 
+    </p>
+
+    <p class="about-page__text">
+      The honesty matters.
+    </p>
+
+    <ol class="about-page__steps">
+      <li class="about-page__step">
+        <h3 class="about-page__subheading">Estimate relative delay on a trusted window</h3>
+
+        <figure class="about-page__step-media">
+          <div class="about-page__media-box">
+            <img
+              class="about-page__media-img"
+              src="/asset/img/v1_relative_delay_on_trusted_window.png"
+              alt="Warp streams onto a common timebase (illustration)."
+              width="1563"
+              height="663"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </figure>
+
+
+        <!--
+        <p class="about-page__text">
+          We don’t assume the world is calm; we test for it. The engine works on windows where delay behaves like an
+          honest step.
+        </p>
+        -->
+      </li>
+
+      <li class="about-page__step">
+        <h3 class="about-page__subheading">Warp streams onto a common timebase</h3>
+
+        <figure class="about-page__step-media">
+          <div class="about-page__media-box">
+            <img
+              class="about-page__media-img"
+              src="/asset/img/v1_warp_streams.png"
+              alt="Warp streams onto a common timebase (illustration)."
+              width="1563"
+              height="663"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </figure>
+
+        <!--
+        <p class="about-page__text">
+          Once streams share time, comparisons mean what you think they mean.
+        </p>
+        -->
+      </li>
+
+      <li class="about-page__step">
+        <h3 class="about-page__subheading">Cancel what is truly shared</h3>
+
+        <figure class="about-page__step-media">
+          <div class="about-page__media-box">
+            <img
+              class="about-page__media-img"
+              src="/asset/img/v1_cancel_whats_shared.png"
+              alt="Warp streams onto a common timebase (illustration)."
+              width="1563"
+              height="663"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </figure>
+
+        <!--
+        <p class="about-page__text">
+          If the nuisance is genuinely “the same up to delay,” it collapses. If it doesn’t, the residue is a diagnosis,
+          not a mystery.
+        </p>
+        -->
+      </li>
+
+      <li class="about-page__step">
+        <h3 class="about-page__subheading">Read what survives as an observable</h3>
+
+        <figure class="about-page__step-media">
+          <div class="about-page__media-box">
+            <img
+              class="about-page__media-img"
+              src="/asset/img/v4_read_what_survives.png"
+              alt="Warp streams onto a common timebase (illustration)."
+              width="1563"
+              height="663"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </figure>
+
+        <!--
+        <figure class="about-page__step-media" aria-hidden="true">
+          <div class="about-page__media-box">
+            <div class="about-page__media-placeholder"></div>
+          </div>
+        </figure>
+        -->
+
+        <!--
+        <p class="about-page__text">
+          After cancellation, what remains can be tied back to geometry and medium—where the interesting physics lives.
+        </p>
+        -->
+      </li>
+    </ol>
+  </div>
+</section>
+
+
+<section class="about-page__section" aria-labelledby="platform-title">
+  <div class="about-page__inner">
+    <h2 class="about-page__heading" id="platform-title">A Platform, Not a One-Off Trick</h2>
+
+    <p class="about-page__text">
+      We're building an engine you can reuse.
+    </p>
+
+    <p class="about-page__text">
+      Different benches.
+      Same discipline.
+    </p>
+
+    <p class="about-page__text">
+      The setup changes.
+      The core doesn't.
+    </p>
+
+    <p class="about-page__text">
+      To run the engine, a bench makes promises to an application.
+    </p>
+
+    <p class="about-page__text">
+      When those promises hold, the engine drops in.
+    </p>
+
+    <p class="about-page__text">
+      When they don't, it tells you what slipped.
+    </p>
+
+    <div style="max-width: 78ch;">
+      <!-- Save as: v1_app_engine_bench.svg  (or paste inline directly into your HTML) -->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 700 320"
+  role="img"
+  aria-label="Application → Co-timing engine → Bench / instrument, with a return loop labeled results."
+>
+  <defs>
+    <!-- Arrowhead -->
+    <marker
+      id="arrow"
+      viewBox="0 0 10 10"
+      refX="9"
+      refY="5"
+      markerWidth="8"
+      markerHeight="8"
+      orient="auto-start-reverse"
+    >
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(0,0,0,0.60)" />
+    </marker>
+
+    <style>
+      .box {
+        fill: none;
+        stroke: rgba(0,0,0,0.45);
+        stroke-width: 0.6px;
+      }
+      .arr {
+        fill: none;
+        stroke: rgba(0,0,0,0.60);
+        stroke-width: 0.6px;
+        marker-end: url(#arrow);
+      }
+      .txt {
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans",
+          sans-serif;
+        font-size: 16px;
+        fill: rgba(0, 0, 0, 0.92);
+      }
+      .lab {
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans",
+          sans-serif;
+        font-size: 12px;
+        fill: rgba(0, 0, 0, 0.70);
+      }
+    </style>
+  </defs>
+
+  <!-- Layout constants -->
+  <!-- Boxes: x=140, w=420, h=60, rx=6 -->
+  <!-- app y=40, eng y=130, ben y=220 -->
+
+  <!-- Boxes -->
+  <rect class="box" x="140" y="40" width="420" height="60" rx="6" ry="6" />
+  <rect class="box" x="140" y="130" width="420" height="60" rx="6" ry="6" />
+  <rect class="box" x="140" y="220" width="420" height="60" rx="6" ry="6" />
+
+  <!-- Box text (centered) -->
+  <text class="txt" x="350" y="70" text-anchor="middle" dominant-baseline="middle">Application</text>
+  <text class="txt" x="350" y="160" text-anchor="middle" dominant-baseline="middle">Co-timing engine</text>
+  <text class="txt" x="350" y="250" text-anchor="middle" dominant-baseline="middle">Bench / instrument</text>
+
+  <!-- Down arrows -->
+  <path class="arr" d="M 350 100 L 350 130" />
+  <text class="lab" x="368" y="118" text-anchor="start" dominant-baseline="middle">intent</text>
+
+  <path class="arr" d="M 350 190 L 350 220" />
+  <text class="lab" x="368" y="208" text-anchor="start" dominant-baseline="middle">procedure</text>
+
+  <!-- Return loop: from ben.east → right → up → app.east -->
+  <!-- ben.east = (560, 250); app.east = (560, 70) -->
+  <path class="arr" d="M 560 250 L 660 250 L 660 70 L 560 70" />
+
+  <!-- results label near the loop (roughly like your TikZ placement) -->
+  <text class="lab" x="600" y="160" text-anchor="start" dominant-baseline="middle">results</text>
+</svg>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+  <section class="about-page__section" aria-labelledby="docs-title">
+  <div class="about-page__inner">
+    <h2 class="about-page__heading" id="docs-title">How We Document the System</h2>
+
+    <p class="about-page__text">
+      We treat documentation as part of the product. 
+    </p>
+    <p class="about-page__text">
+      Day-to-day design decisions
+      live in short posts.
+    </p>
+
+    <p class="about-page__text">
+      If you want the reasoning trail (and the receipts), start here:
+    </p>
+
+    <ul class="about-page__posts" role="list" aria-label="Selected documentation posts">
+
+      <li class="about-page__post" role="listitem">
+        <article class="blog-card" aria-labelledby="erails-qlandmarks-title">
+          <div class="blog-card__meta">
+            <span class="blog-card__tag">Story</span>
+            <span class="blog-card__date">December 28, 2025</span>
+          </div>
+
+          <h3 class="blog-card__title" id="erails-qlandmarks-title">
+            <a class="blog-card__link" href="/explore/blog/content/2025_12_28_erails_qlandmarks">
+              The Day "Electronics Don't Work That Way" Became a Design Requirement
+            </a>
+          </h3>
+
+          <p class="blog-card__excerpt">
+            I tried to ship beautiful math as software. Hardware pushback forced a different question: what would it take
+            to make reality stop arguing back? That was the seed of E-rails and Q-landmarks.
+          </p>
+        </article>
+      </li>
+
+
+      <li class="about-page__post" role="listitem">
+        <article class="blog-card" aria-labelledby="religion-honest-title">
+          <div class="blog-card__meta">
+            <span class="blog-card__tag">Philosophy</span>
+            <span class="blog-card__date">December 29, 2025</span>
+          </div>
+
+          <h3 class="blog-card__title" id="religion-honest-title">
+            <a class="blog-card__link" href="/explore/blog/content/2025_12_29_religion_honest_about_the_problem">
+              Religion Was Honest About the Problem (and Sensor Pipelines Aren’t)
+            </a>
+          </h3>
+
+          <p class="blog-card__excerpt">
+            If your pipeline can’t state—and test—the assumptions that make a plot interpretable, you’re not measuring
+            the world. You’re measuring your story.
+          </p>
+        </article>
+      </li>
+
+      <li class="about-page__post" role="listitem">
+        <article class="blog-card" aria-labelledby="plots-contracts-title">
+          <div class="blog-card__meta">
+            <span class="blog-card__tag">Philosophy</span>
+            <span class="blog-card__date">January 1, 2026</span>
+          </div>
+
+          <h3 class="blog-card__title" id="plots-contracts-title">
+            <a class="blog-card__link" href="/explore/blog/content/2025_12_30_plots_into_contracts">
+              Why We Turn Plots Into Contracts (Heidegger, Gadamer, Ricoeur, Derrida)
+            </a>
+          </h3>
+
+          <p class="blog-card__excerpt">
+            A follow-up to “Religion Was Honest About the Problem”: four interpretive ideas that explain how belief gets
+            manufactured by pipelines — and how we try to prevent it.
+          </p>
+        </article>
+      </li>
+
+      <li class="about-page__post" role="listitem">
+        <article class="blog-card" aria-labelledby="public-check-title">
+          <div class="blog-card__meta">
+            <span class="blog-card__tag">Philosophy</span>
+            <span class="blog-card__date">December 31, 2025</span>
+          </div>
+
+          <h3 class="blog-card__title" id="public-check-title">
+            <a class="blog-card__link" href="/explore/blog/content/2025_12_31_public_check_private_language">
+              From Logical Atomism to Private Language (Why “Correct” Needs a Public Check)
+            </a>
+          </h3>
+
+          <p class="blog-card__excerpt">
+            A follow-up to “Why We Turn Plots Into Contracts”: logical positivism, Gödel, private language, and why shared
+            use drives our E-rails + Q-landmarks design.
+          </p>
+        </article>
+      </li>
+
+
+
+    </ul>
+
+    <div class="about-page__cta-row">
+      <a class="button button--secondary" href="/explore/blog">Browse all posts</a>
+      <a class="button button--primary" href="/whitepaper">Read the whitepaper</a>
+    </div>
+  </div>
+</section>
+
+
+
+  <section class="about-page__section about-page__section--contact" aria-labelledby="contact-title">
+    <div class="about-page__inner">
+      <h2 class="about-page__heading" id="contact-title">Contact</h2>
+
+      <p class="about-page__text">
+        If you have a sensing problem where signals should match but don't
+        —
+        especially when time and drift are the hidden
+        enemy
+        —
+        we'd like to talk.
+      </p>
+
+      <div class="about-page__cta-row">
+        <a class="button button--primary" href="/contact">Contact us</a>
+        <a class="button button--secondary" href="/whitepaper">Read the whitepaper</a>
+      </div>
+    </div>
+  </section>
+</site-page>
+</body>
+</html>

@@ -259,3 +259,402 @@
     gap: var(--space-3);
   }
 }
+
+
+
+/* ==========================================================================
+   Engine Hero — toned down, token-compatible with About Page Swiss system
+   Requires: --space-1..--space-6, --border, --text, --muted (site tokens)
+   ========================================================================== */
+
+.engine-hero{
+  margin-top: var(--space-6);
+  padding: var(--space-5) 0;
+  border-top: 1px solid var(--border);
+}
+
+.engine-hero__container{
+  max-width: 88ch; /* align with about-page desktop max */
+  margin-inline: auto;
+  padding-inline: 0; /* let page container handle gutters if you have one */
+}
+
+/* If you want this to sit inside .about-page__inner, you can omit max-width here. */
+.about-page__inner .engine-hero__container{
+  max-width: none;
+}
+
+/* ---------- Header ---------- */
+.engine-hero__header{
+  margin: 0;
+}
+
+.engine-hero__eyebrow{
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.engine-hero__badge{
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  padding-inline: 0.7rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: var(--text);
+  background: rgba(0,0,0,0.03);
+  border: 1px solid var(--border);
+}
+
+.engine-hero__eyebrow-text{
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0.9;
+}
+
+.engine-hero__title{
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+  font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+  color: var(--text);
+}
+
+.engine-hero__lede{
+  margin: var(--space-4) 0 0;
+  font-size: 1.08rem;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  font-weight: 650;
+  max-width: 72ch;
+  color: var(--text);
+  opacity: 0.86;
+}
+
+.engine-hero__cta{
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+/* Let your global button styles win; only add minimal alignment tweaks */
+.engine-hero__cta .button{
+  text-decoration: none;
+}
+
+/* ---------- Feature grid ---------- */
+.engine-hero__grid{
+  list-style: none;
+  padding: 0;
+  margin: var(--space-5) 0 0;
+
+  display: grid;
+  gap: var(--space-3);
+}
+
+@media (min-width: 820px){
+  .engine-hero__grid{
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+  }
+}
+
+/* ---------- Cards (light, editorial, tokenized) ---------- */
+.engine-feature{
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(0,0,0,0.02);
+  transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
+}
+
+.engine-feature--wide{
+  grid-column: 1 / -1;
+}
+
+.engine-feature__link{
+  display: block;
+  padding: var(--space-4);
+  border-radius: 14px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.engine-feature__top{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.engine-feature__title{
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  color: var(--text);
+  opacity: 0.96;
+}
+
+.engine-feature__pill{
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding-inline: 0.6rem;
+  border-radius: 999px;
+
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: var(--muted);
+  background: rgba(0,0,0,0.02);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+  opacity: 0.95;
+}
+
+.engine-feature__text{
+  margin: var(--space-2) 0 0;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  max-width: 74ch;
+  color: var(--text);
+  opacity: 0.86;
+}
+
+.engine-feature__action{
+  display: inline-block;
+  margin-top: var(--space-3);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  opacity: 0.75;
+}
+
+/* Hover / focus: calm, not “SaaS neon” */
+.engine-feature:hover{
+  transform: translateY(-1px);
+  background: rgba(0,0,0,0.03);
+  border-color: rgba(0,0,0,0.18); /* still mild even without tokens */
+}
+
+.engine-feature__link:focus-visible{
+  outline: 2px solid rgba(0,0,0,0.35);
+  outline-offset: 3px;
+}
+
+/* ---------- Note ---------- */
+.engine-hero__note{
+  margin: var(--space-4) 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--muted);
+  opacity: 0.9;
+}
+
+/* ---------- Optional: compact header + grid alignment ---------- */
+@media (min-width: 900px){
+  .engine-hero__container{
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: var(--space-5);
+    align-items: start;
+  }
+
+  .engine-hero__grid{
+    margin-top: 0; /* align grid to header top */
+  }
+}
+
+
+
+
+
+
+/* ---------- Diagram figure (tokenized, Swiss calm) ---------- */
+.about-figure{
+  margin: var(--space-5) 0 0;
+  max-width: 74ch; /* align with your text rhythm */
+}
+
+.about-figure__frame{
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.03), rgba(0,0,0,0.015));
+  padding: var(--space-3);
+  overflow: hidden;
+}
+
+/* Make the SVG inherit the page text color (currentColor) */
+.about-figure__svg{
+  display: block;
+  width: 100%;
+  height: auto;
+  color: var(--text);
+}
+
+/* Optional: faint “diagram grid” without making it noisy */
+.about-figure__frame{
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.03), rgba(0,0,0,0.015)),
+    repeating-linear-gradient(
+      to right,
+      rgba(0,0,0,0.04) 0px,
+      rgba(0,0,0,0.04) 1px,
+      transparent 1px,
+      transparent 34px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.04) 0px,
+      rgba(0,0,0,0.04) 1px,
+      transparent 1px,
+      transparent 34px
+    );
+  background-blend-mode: normal;
+}
+
+.about-figure__caption{
+  margin: var(--space-2) 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  color: var(--muted);
+  opacity: 0.95;
+}
+
+/* Calm hover/focus polish if the SVG becomes interactive later */
+.about-figure__frame:has(a:focus-visible){
+  outline: 2px solid rgba(0,0,0,0.30);
+  outline-offset: 3px;
+}
+
+
+/* ==========================================================================
+   Co-timing section polish (token-safe)
+   Relies on your existing tokens: --space-1..--space-6, --border, --text, --muted
+   ========================================================================== */
+
+/* Header composition: copy + calm aside */
+.about-feature-head{
+  margin-top: var(--space-4);
+  display: grid;
+  gap: var(--space-4);
+  align-items: start;
+}
+
+@media (min-width: 900px){
+  .about-feature-head{
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: var(--space-5);
+  }
+}
+
+/* Make the lede sit a touch tighter under the section kicker */
+.about-feature-head .about-page__lede{
+  margin-top: var(--space-3);
+}
+
+/* Inline “recipe pill” that feels Swiss, not SaaS */
+.about-phrase{
+  display: inline-block;
+  padding: 0.18em 0.62em;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.03);
+  font-weight: 850;
+  letter-spacing: -0.01em;
+  opacity: 0.95;
+  transform: translateY(-0.02em); /* tiny optical lift */
+}
+
+/* Aside panel (quiet, consistent with your media boxes) */
+.about-feature-head__aside{
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(0,0,0,0.02);
+  padding: var(--space-4);
+}
+
+.about-feature-head__kicker{
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0.9;
+}
+
+.about-feature-head__aside-text{
+  margin: var(--space-2) 0 0;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  color: var(--text);
+  opacity: 0.86;
+}
+
+/* Steps as calm “cards” while keeping your counter number outside */
+.about-steps--cards .about-step-card{
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(0,0,0,0.02);
+  padding: var(--space-4);
+}
+
+/* Reduce top margin inside the card since the card already creates separation */
+.about-steps--cards .about-page__step-media{
+  margin-top: var(--space-3);
+  max-width: none; /* card owns the width; media box keeps consistency */
+}
+
+/* Viz containers: reuse your media box ratio + make D3 fill it */
+.about-page__media-box--viz{
+  background: rgba(0,0,0,0.015);
+}
+
+.about-page__viz{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Optional caption style if you decide to enable them */
+.about-step-card__caption{
+  margin: var(--space-2) 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  color: var(--muted);
+  opacity: 0.92;
+}
+
+/* Micro-interaction: very subtle, matches the rest of the page */
+.about-steps--cards .about-step-card{
+  transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
+}
+
+@media (hover: hover){
+  .about-steps--cards .about-step-card:hover{
+    transform: translateY(-1px);
+    background: rgba(0,0,0,0.025);
+    border-color: rgba(0,0,0,0.18);
+  }
+}

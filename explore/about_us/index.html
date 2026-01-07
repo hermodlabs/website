@@ -183,7 +183,7 @@
             .attr("y", railTop + 14)
             .attr("fill", T.text)
             .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-            .text("W");
+            //.text("W");
 
           const line = d3.line()
             .x(d => x(d[0]))
@@ -207,13 +207,13 @@
             .attr("x", 8).attr("y", 18)
             .attr("fill", T.text)
             .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-            .text("A");
+//            .text("A");
 
           g.append("text")
             .attr("x", 8).attr("y", 34)
             .attr("fill", T.text)
             .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-            .text("B");
+//            .text("B");
 
           const dY = railBot - 16;
           const dX1 = x(4.3), dX2 = x(5.1);
@@ -231,7 +231,7 @@
             .attr("y", dY + 4)
             .attr("fill", T.text)
             .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-            .text("Δ");
+//            .text("Δ");
 
           const xX = x(8.9);
           const yX = y(yDomain[1] - 0.15);
@@ -291,304 +291,274 @@
 </section>
 
 
-<section class="about-page__section" aria-labelledby="what-title">
+<!-- Hero / Feature Section -->
+<section class="engine-hero" aria-labelledby="engine-hero-title">
+  <div class="engine-hero__container">
+    <header class="engine-hero__header">
+
+      <h2 class="engine-hero__title" id="engine-hero-title">
+        An engine that earns the right to act.
+      </h2>
+
+      <p class="engine-hero__lede">
+        Five patent-pending mechanisms make interpretation explicit, publicly checkable, and safe to deploy —
+        so your system doesn’t mistake a pipeline’s story for reality.
+      </p>
+
+      <div class="engine-hero__cta">
+        <a class="button button--primary" href="/explore/engine">Learn More</a>
+      </div>
+    </header>
+
+    <ul class="engine-hero__grid" role="list" aria-label="Patent-pending engine features">
+      <li class="engine-feature">
+        <a class="engine-feature__link" href="/explore/engine/features/co_timing_validity">
+          <div class="engine-feature__top">
+            <h3 class="engine-feature__title">Co-Timing Validity</h3>
+            <span class="engine-feature__pill">Feature</span>
+          </div>
+          <p class="engine-feature__text">
+            Validates the timing relationships across sensors, transforms, and assumptions —
+            so decisions aren’t built from mismatched moments.
+          </p>
+          <span class="engine-feature__action" aria-hidden="true">Learn more →</span>
+        </a>
+      </li>
+
+      <li class="engine-feature">
+        <a class="engine-feature__link" href="/explore/engine/features/interpretive_entitlement">
+          <div class="engine-feature__top">
+            <h3 class="engine-feature__title">Interpretive Entitlement</h3>
+            <span class="engine-feature__pill">Feature</span>
+          </div>
+          <p class="engine-feature__text">
+            Formalizes when an interpretation may be asserted and used by requiring explicit warrants —
+            what assumptions were invoked and what would falsify them.
+          </p>
+          <span class="engine-feature__action" aria-hidden="true">Learn more →</span>
+        </a>
+      </li>
+
+      <li class="engine-feature">
+        <a class="engine-feature__link" href="/explore/engine/features/public_criteria_correctness">
+          <div class="engine-feature__top">
+            <h3 class="engine-feature__title">Public Criteria Correctness</h3>
+            <span class="engine-feature__pill">Feature</span>
+          </div>
+          <p class="engine-feature__text">
+            Defines “correct” using shared, inspectable criteria — not private pipeline conventions —
+            so correctness can be checked, reproduced, and debated.
+          </p>
+          <span class="engine-feature__action" aria-hidden="true">Learn more →</span>
+        </a>
+      </li>
+
+      <li class="engine-feature">
+        <a class="engine-feature__link" href="/explore/engine/features/construction_selection">
+          <div class="engine-feature__top">
+            <h3 class="engine-feature__title">Construction Selection</h3>
+            <span class="engine-feature__pill">Feature</span>
+          </div>
+          <p class="engine-feature__text">
+            Makes the chosen frame/model explicit — selecting the operative construction from a controlled set,
+            with traceability for why that construction was selected.
+          </p>
+          <span class="engine-feature__action" aria-hidden="true">Learn more →</span>
+        </a>
+      </li>
+
+      <li class="engine-feature engine-feature--wide">
+        <a class="engine-feature__link" href="/explore/engine/features/multi_layer_permission_to_act_stack">
+          <div class="engine-feature__top">
+            <h3 class="engine-feature__title">Multi-Layer Permission-to-Act Stack</h3>
+            <span class="engine-feature__pill">Feature</span>
+          </div>
+          <p class="engine-feature__text">
+            Separates “can we infer?” from “may we act?” by stacking gates across validity, entitlement,
+            policy, risk, and execution — actions only proceed when every required layer clears.
+          </p>
+          <span class="engine-feature__action" aria-hidden="true">Learn more →</span>
+        </a>
+      </li>
+    </ul>
+
+    <p class="engine-hero__note">
+      Patent pending. Feature names reflect product behavior; underlying implementations may evolve.
+    </p>
+  </div>
+</section>
+
+
+<section class="about-page__section about-page__section--cotiming" aria-labelledby="what-title">
   <div class="about-page__inner">
-    <h2 class="about-page__heading" id="what-title">What the Co-Timing Engine Does</h2>
+    <header class="about-feature-head">
+      <div class="about-feature-head__copy">
+        <h2 class="about-page__heading" id="what-title">What the Co-Timing Engine Does</h2>
 
-    <p class="about-page__text">
-      The co-timing engine is a repeatable recipe. 
-    </p>
+        <p class="about-page__lede">
+          The co-timing engine is a repeatable recipe:
+          <span class="about-phrase" aria-label="align then cancel">align, then cancel</span>.
+        </p>
 
-    <p class="about-page__text">
-      We describe it as <strong>align, then cancel</strong>. 
-    </p>
+        <p class="about-page__text">
+          The order matters. The honesty matters.
+        </p>
+      </div>
 
-    <p class="about-page__text">
-      The order matters. 
-    </p>
+      <aside class="about-feature-head__aside" aria-label="Summary">
+        <p class="about-feature-head__kicker">In practice</p>
+        <p class="about-feature-head__aside-text">
+          First, put streams onto a shared clock. Then remove what is truly shared. What survives is what you can treat as
+          an observable.
+        </p>
+      </aside>
+    </header>
 
-    <p class="about-page__text">
-      The honesty matters.
-    </p>
+    <ol class="about-page__steps about-steps--cards" aria-label="Co-timing engine steps">
+      <li class="about-page__step">
+        <div class="about-step-card">
+          <h3 class="about-page__subheading">Estimate relative delay on a trusted window</h3>
 
-    <ol class="about-page__steps">
-<li class="about-page__step">
-  <h3 class="about-page__subheading">Estimate relative delay on a trusted window</h3>
+          <figure class="about-page__step-media about-step-card__media">
+            <div class="about-page__media-box about-page__media-box--viz">
+              <div id="viz-delay-window" class="about-page__viz" aria-hidden="true"></div>
+            </div>
 
-  <figure class="about-page__step-media">
-    <div id="viz-delay-window" style="max-width: 78ch;"></div>
-  </figure>
+            <!-- Optional caption (keeps the “designed” feel without adding noise) -->
+            <!-- <figcaption class="about-step-card__caption">
+              Estimate delay only where the signal is stable enough to trust.
+            </figcaption> -->
+          </figure>
+        </div>
+      </li>
 
-  <!-- (optional) keep your paragraph commented out -->
-</li>
+      <li class="about-page__step">
+        <div class="about-step-card">
+          <h3 class="about-page__subheading">Warp streams onto a common timebase</h3>
 
+          <figure class="about-page__step-media about-step-card__media">
+            <div class="about-page__media-box about-page__media-box--viz">
+              <div id="viz-warp-streams" class="about-page__viz" aria-hidden="true"></div>
+            </div>
+            <!-- <figcaption class="about-step-card__caption">
+              After warping, “same time” means the same moment in the world.
+            </figcaption> -->
+          </figure>
+        </div>
+      </li>
 
+      <li class="about-page__step">
+        <div class="about-step-card">
+          <h3 class="about-page__subheading">Cancel what is truly shared</h3>
 
+          <figure class="about-page__step-media about-step-card__media">
+            <div class="about-page__media-box about-page__media-box--viz">
+              <div id="viz-cancel-shared" class="about-page__viz" aria-hidden="true"></div>
+            </div>
+            <!-- <figcaption class="about-step-card__caption">
+              Remove the common-mode component — not the story you wish were common.
+            </figcaption> -->
+          </figure>
+        </div>
+      </li>
 
+      <li class="about-page__step">
+        <div class="about-step-card">
+          <h3 class="about-page__subheading">Read what survives as an observable</h3>
 
-<!-- Replace the PNG step image with a responsive D3 viz (warp onto common timebase) -->
-<li class="about-page__step">
-  <h3 class="about-page__subheading">Warp streams onto a common timebase</h3>
-
-  <figure class="about-page__step-media">
-    <div id="viz-warp-streams" style="max-width: 78ch;"></div>
-  </figure>
-</li>
-
-
-
-
-
-
-
-<!-- Replace the PNG step image with a responsive D3 viz (cancel what is truly shared) -->
-<li class="about-page__step">
-  <h3 class="about-page__subheading">Cancel what is truly shared</h3>
-
-  <figure class="about-page__step-media">
-    <div id="viz-cancel-shared" style="max-width: 78ch;"></div>
-  </figure>
-</li>
-
-
-
-
-
-<li class="about-page__step">
-  <h3 class="about-page__subheading">Read what survives as an observable</h3>
-
-  <figure class="about-page__step-media">
-    <div id="viz-read-survives" style="max-width: 78ch;"></div>
-  </figure>
-</li>
+          <figure class="about-page__step-media about-step-card__media">
+            <div class="about-page__media-box about-page__media-box--viz">
+              <div id="viz-read-survives" class="about-page__viz" aria-hidden="true"></div>
+            </div>
+            <!-- <figcaption class="about-step-card__caption">
+              The residual is what the environment contributed (given your declared assumptions).
+            </figcaption> -->
+          </figure>
+        </div>
+      </li>
     </ol>
   </div>
 </section>
+
 
 
 <section class="about-page__section" aria-labelledby="platform-title">
   <div class="about-page__inner">
     <h2 class="about-page__heading" id="platform-title">A Platform, Not a One-Off Trick</h2>
 
-    <p class="about-page__text">
-      We're building an engine you can reuse.
-    </p>
+    <p class="about-page__text">We're building an engine you can reuse.</p>
+    <p class="about-page__text">Different benches. Same discipline.</p>
+    <p class="about-page__text">The setup changes. The core doesn't.</p>
+    <p class="about-page__text">To run the engine, a bench makes promises to an application.</p>
+    <p class="about-page__text">When those promises hold, the engine drops in.</p>
+    <p class="about-page__text">When they don't, it tells you what slipped.</p>
 
-    <p class="about-page__text">
-      Different benches.
-      Same discipline.
-    </p>
+    <figure class="about-figure" aria-label="Application → Co-timing engine → Bench / instrument with return loop">
+      <div class="about-figure__frame">
+        <svg
+          class="about-figure__svg"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 700 320"
+          role="img"
+          aria-label="Application to Co-timing engine to Bench / instrument, with a return loop labeled results."
+        >
+          <defs>
+            <marker
+              id="arrow"
+              viewBox="0 0 10 10"
+              refX="9"
+              refY="5"
+              markerWidth="8"
+              markerHeight="8"
+              orient="auto-start-reverse"
+            >
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" opacity="0.55" />
+            </marker>
+          </defs>
 
-    <p class="about-page__text">
-      The setup changes.
-      The core doesn't.
-    </p>
+          <!-- Boxes -->
+          <rect class="box" x="140" y="40"  width="420" height="60" rx="10" ry="10" />
+          <rect class="box" x="140" y="130" width="420" height="60" rx="10" ry="10" />
+          <rect class="box" x="140" y="220" width="420" height="60" rx="10" ry="10" />
 
-    <p class="about-page__text">
-      To run the engine, a bench makes promises to an application.
-    </p>
+          <!-- Titles -->
+          <text class="txt" x="350" y="70"  text-anchor="middle" dominant-baseline="middle">Application</text>
+          <text class="txt" x="350" y="160" text-anchor="middle" dominant-baseline="middle">Co-timing engine</text>
+          <text class="txt" x="350" y="250" text-anchor="middle" dominant-baseline="middle">Bench / instrument</text>
 
-    <p class="about-page__text">
-      When those promises hold, the engine drops in.
-    </p>
+          <!-- Down arrows -->
+          <path class="arr" d="M 350 100 L 350 130" />
+          <text class="lab" x="368" y="116" text-anchor="start" dominant-baseline="middle">intent</text>
 
-    <p class="about-page__text">
-      When they don't, it tells you what slipped.
-    </p>
+          <path class="arr" d="M 350 190 L 350 220" />
+          <text class="lab" x="368" y="206" text-anchor="start" dominant-baseline="middle">procedure</text>
 
-    <div style="max-width: 78ch;">
-      <!-- Save as: v1_app_engine_bench.svg  (or paste inline directly into your HTML) -->
-<svg
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 700 320"
-  role="img"
-  aria-label="Application → Co-timing engine → Bench / instrument, with a return loop labeled results."
->
-  <defs>
-    <!-- Arrowhead -->
-    <marker
-      id="arrow"
-      viewBox="0 0 10 10"
-      refX="9"
-      refY="5"
-      markerWidth="8"
-      markerHeight="8"
-      orient="auto-start-reverse"
-    >
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(0,0,0,0.60)" />
-    </marker>
+          <!-- Return loop -->
+          <path class="arr" d="M 560 250 L 650 250 L 650 70 L 560 70" />
+          <text class="lab" x="590" y="160" text-anchor="start" dominant-baseline="middle">results</text>
 
-    <style>
-      .box {
-        fill: none;
-        stroke: rgba(0,0,0,0.45);
-        stroke-width: 0.6px;
-      }
-      .arr {
-        fill: none;
-        stroke: rgba(0,0,0,0.60);
-        stroke-width: 0.6px;
-        marker-end: url(#arrow);
-      }
-      .txt {
-        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans",
-          sans-serif;
-        font-size: 16px;
-        fill: rgba(0, 0, 0, 0.92);
-      }
-      .lab {
-        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans",
-          sans-serif;
-        font-size: 12px;
-        fill: rgba(0, 0, 0, 0.70);
-      }
-    </style>
-  </defs>
+          <!-- Light inline styles via classes (controlled by CSS below) -->
+          <style>
+            .box { fill: rgba(0,0,0,0.015); stroke: currentColor; stroke-opacity: 0.20; stroke-width: 1; }
+            .arr { fill: none; stroke: currentColor; stroke-opacity: 0.34; stroke-width: 1.1; marker-end: url(#arrow); }
+            .txt { font: 700 16px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; fill: currentColor; fill-opacity: 0.92; }
+            .lab { font: 800 12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; letter-spacing: 0.08em; text-transform: uppercase; fill: currentColor; fill-opacity: 0.62; }
+          </style>
+        </svg>
+      </div>
 
-  <!-- Layout constants -->
-  <!-- Boxes: x=140, w=420, h=60, rx=6 -->
-  <!-- app y=40, eng y=130, ben y=220 -->
-
-  <!-- Boxes -->
-  <rect class="box" x="140" y="40" width="420" height="60" rx="6" ry="6" />
-  <rect class="box" x="140" y="130" width="420" height="60" rx="6" ry="6" />
-  <rect class="box" x="140" y="220" width="420" height="60" rx="6" ry="6" />
-
-  <!-- Box text (centered) -->
-  <text class="txt" x="350" y="70" text-anchor="middle" dominant-baseline="middle">Application</text>
-  <text class="txt" x="350" y="160" text-anchor="middle" dominant-baseline="middle">Co-timing engine</text>
-  <text class="txt" x="350" y="250" text-anchor="middle" dominant-baseline="middle">Bench / instrument</text>
-
-  <!-- Down arrows -->
-  <path class="arr" d="M 350 100 L 350 130" />
-  <text class="lab" x="368" y="118" text-anchor="start" dominant-baseline="middle">intent</text>
-
-  <path class="arr" d="M 350 190 L 350 220" />
-  <text class="lab" x="368" y="208" text-anchor="start" dominant-baseline="middle">procedure</text>
-
-  <!-- Return loop: from ben.east → right → up → app.east -->
-  <!-- ben.east = (560, 250); app.east = (560, 70) -->
-  <path class="arr" d="M 560 250 L 660 250 L 660 70 L 560 70" />
-
-  <!-- results label near the loop (roughly like your TikZ placement) -->
-  <text class="lab" x="600" y="160" text-anchor="start" dominant-baseline="middle">results</text>
-</svg>
-    </div>
-
+      <figcaption class="about-figure__caption">
+        The bench promises timing + geometry constraints; when they hold, the engine applies. When they don’t, you get a specific diagnosis of what slipped.
+      </figcaption>
+    </figure>
   </div>
 </section>
 
 
 
 
-  <section class="about-page__section" aria-labelledby="docs-title">
-  <div class="about-page__inner">
-    <h2 class="about-page__heading" id="docs-title">How We Document the System</h2>
-
-    <p class="about-page__text">
-      We treat documentation as part of the product. 
-    </p>
-    <p class="about-page__text">
-      Day-to-day design decisions
-      live in short posts.
-    </p>
-
-    <p class="about-page__text">
-      If you want the reasoning trail (and the receipts), start here:
-    </p>
-
-    <ul class="about-page__posts" role="list" aria-label="Selected documentation posts">
-
-      <li class="about-page__post" role="listitem">
-        <article class="blog-card" aria-labelledby="erails-qlandmarks-title">
-          <div class="blog-card__meta">
-            <span class="blog-card__tag">Story</span>
-            <span class="blog-card__date">December 28, 2025</span>
-          </div>
-
-          <h3 class="blog-card__title" id="erails-qlandmarks-title">
-            <a class="blog-card__link" href="/explore/blog/content/2025_12_28_erails_qlandmarks">
-              The Day "Electronics Don't Work That Way" Became a Design Requirement
-            </a>
-          </h3>
-
-          <p class="blog-card__excerpt">
-            I tried to ship beautiful math as software. Hardware pushback forced a different question: what would it take
-            to make reality stop arguing back? That was the seed of E-rails and Q-landmarks.
-          </p>
-        </article>
-      </li>
 
 
-      <li class="about-page__post" role="listitem">
-        <article class="blog-card" aria-labelledby="religion-honest-title">
-          <div class="blog-card__meta">
-            <span class="blog-card__tag">Philosophy</span>
-            <span class="blog-card__date">December 29, 2025</span>
-          </div>
-
-          <h3 class="blog-card__title" id="religion-honest-title">
-            <a class="blog-card__link" href="/explore/blog/content/2025_12_29_religion_honest_about_the_problem">
-              Religion Was Honest About the Problem (and Sensor Pipelines Aren’t)
-            </a>
-          </h3>
-
-          <p class="blog-card__excerpt">
-            If your pipeline can’t state—and test—the assumptions that make a plot interpretable, you’re not measuring
-            the world. You’re measuring your story.
-          </p>
-        </article>
-      </li>
-
-      <li class="about-page__post" role="listitem">
-        <article class="blog-card" aria-labelledby="plots-contracts-title">
-          <div class="blog-card__meta">
-            <span class="blog-card__tag">Philosophy</span>
-            <span class="blog-card__date">January 1, 2026</span>
-          </div>
-
-          <h3 class="blog-card__title" id="plots-contracts-title">
-            <a class="blog-card__link" href="/explore/blog/content/2025_12_30_plots_into_contracts">
-              Why We Turn Plots Into Contracts (Heidegger, Gadamer, Ricoeur, Derrida)
-            </a>
-          </h3>
-
-          <p class="blog-card__excerpt">
-            A follow-up to “Religion Was Honest About the Problem”: four interpretive ideas that explain how belief gets
-            manufactured by pipelines — and how we try to prevent it.
-          </p>
-        </article>
-      </li>
-
-      <li class="about-page__post" role="listitem">
-        <article class="blog-card" aria-labelledby="public-check-title">
-          <div class="blog-card__meta">
-            <span class="blog-card__tag">Philosophy</span>
-            <span class="blog-card__date">December 31, 2025</span>
-          </div>
-
-          <h3 class="blog-card__title" id="public-check-title">
-            <a class="blog-card__link" href="/explore/blog/content/2025_12_31_public_check_private_language">
-              From Logical Atomism to Private Language (Why “Correct” Needs a Public Check)
-            </a>
-          </h3>
-
-          <p class="blog-card__excerpt">
-            A follow-up to “Why We Turn Plots Into Contracts”: logical positivism, Gödel, private language, and why shared
-            use drives our E-rails + Q-landmarks design.
-          </p>
-        </article>
-      </li>
-
-
-
-    </ul>
-
-    <div class="about-page__cta-row">
-      <a class="button button--secondary" href="/explore/blog">Browse all posts</a>
-    </div>
-  </div>
-</section>
 
 
 </site-page>
@@ -678,10 +648,10 @@
       .attr("viewBox", `0 0 ${width} ${height}`)
       .attr("preserveAspectRatio", "xMidYMid meet")
       .attr("role", "img")
-      .attr(
-        "aria-label",
-        "Top: two streams A (solid) and B (dashed) with a trusted window W where the estimated delay is stable. Bottom: delay estimate Δ-hat(t) is approximately constant inside W."
-      )
+//      .attr(
+//        "aria-label",
+//        "Top: two streams A (solid) and B (dashed) with a trusted window W where the estimated delay is stable. Bottom: delay estimate Δ-hat(t) is approximately constant inside W."
+//      )
       .style("display", "block")
       .style("width", "100%")
       .style("height", "auto");
@@ -734,7 +704,7 @@
       .attr("y", 14)
       .attr("fill", T.text)
       .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-      .text("W");
+//      .text("W");
 
     const lineA = d3.line()
       .x(d => x(d.t))
@@ -763,13 +733,13 @@
       .attr("x", 8).attr("y", 18)
       .attr("fill", T.text)
       .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-      .text("A (solid)");
+//      .text("A (solid)");
 
     gTop.append("text")
       .attr("x", 8).attr("y", 34)
       .attr("fill", T.text)
       .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-      .text("B (dashed)");
+//      .text("B (dashed)");
 
     const cueY = panelH - 14;
     gTop.append("line")
@@ -786,7 +756,7 @@
       .attr("y", cueY + 4)
       .attr("fill", T.text)
       .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-      .text("Δ̂");
+//      .text("Δ̂");
 
     // ---------- BOTTOM PANEL ----------
     const gBot = g.append("g").attr("transform", `translate(0, ${panelH + gap})`);
@@ -839,14 +809,14 @@
       .attr("x", 8).attr("y", 18)
       .attr("fill", T.text)
       .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-      .text("Δ̂(t)");
+//      .text("Δ̂(t)");
 
     gBot.append("text")
       .attr("x", x(cfg.wR) - 64)
       .attr("y", panelH - 12)
       .attr("fill", T.text)
       .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-      .text("≈ const");
+//      .text("≈ const");
 
     return svg.node();
   }
@@ -941,10 +911,10 @@
       .attr("viewBox", `0 0 ${width} ${height}`)
       .attr("preserveAspectRatio", "xMidYMid meet")
       .attr("role", "img")
-      .attr(
-        "aria-label",
-        "Top: A (solid) and delayed B (dashed) inside window W with misalignment Δ. Middle: warp operator. Bottom: A and warped B aligned on a common timebase."
-      )
+//      .attr(
+//        "aria-label",
+//        "Top: A (solid) and delayed B (dashed) inside window W with misalignment Δ. Middle: warp operator. Bottom: A and warped B aligned on a common timebase."
+//      )
       .style("display", "block")
       .style("width", "100%")
       .style("height", "auto");
@@ -1030,14 +1000,14 @@
         .attr("y", 14)
         .attr("fill", T.text)
         .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-        .text("W");
+//        .text("W");
 
       // A label
       gP.append("text")
         .attr("x", 8).attr("y", 18)
         .attr("fill", T.text)
         .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-        .text("A");
+//        .text("A");
 
       if (mode === "before") {
         // B label + dashed
@@ -1045,7 +1015,7 @@
           .attr("x", 8).attr("y", 34)
           .attr("fill", T.text)
           .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-          .text("B");
+//          .text("B");
 
         // draw
         gP.append("path")
@@ -1079,14 +1049,14 @@
           .attr("y", yCue + 4)
           .attr("fill", T.text)
           .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-          .text("Δ");
+//          .text("Δ");
       } else {
         // bottom: show "B (warped)" label and draw it solid (shared timebase cue)
         gP.append("text")
           .attr("x", 8).attr("y", 34)
           .attr("fill", T.text)
           .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-          .text("B (warped)");
+//          .text("B (warped)");
 
         gP.append("path")
           .attr("d", lineBotA(botData))
@@ -1106,7 +1076,7 @@
           .attr("y", panelH - 12)
           .attr("fill", T.text)
           .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-          .text("≈");
+//          .text("≈");
       }
     }
 
@@ -1124,7 +1094,7 @@
       .attr("text-anchor", "middle")
       .attr("fill", T.text)
       .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-      .text("warp  B(t) → B(t + Δ̂)");
+//      .text("warp  B(t) → B(t + Δ̂)");
 
     // bottom panel group
     const yBotTop = yMidTop + midH + gap;
@@ -1217,10 +1187,10 @@
       .attr("viewBox", `0 0 ${width} ${height}`)
       .attr("preserveAspectRatio", "xMidYMid meet")
       .attr("role", "img")
-      .attr(
-        "aria-label",
-        "Top: A (solid) and B (dashed) share most of their shape, but A contains an extra bump. Middle: cancel operator A minus B. Bottom: residual shows only the bump, labeled diagnosis."
-      )
+//      .attr(
+//        "aria-label",
+//        "Top: A (solid) and B (dashed) share most of their shape, but A contains an extra bump. Middle: cancel operator A minus B. Bottom: residual shows only the bump, labeled diagnosis."
+//      )
       .style("display", "block")
       .style("width", "100%")
       .style("height", "auto");
@@ -1268,7 +1238,7 @@
         .attr("y", 14)
         .attr("fill", T.text)
         .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-        .text("W");
+//        .text("W");
     }
 
     // ----- TOP PANEL -----
@@ -1292,20 +1262,20 @@
       .attr("x", 8).attr("y", 18)
       .attr("fill", T.text)
       .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-      .text("A");
+//      .text("A");
 
     gTop.append("text")
       .attr("x", 8).attr("y", 34)
       .attr("fill", T.text)
       .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-      .text("B");
+//      .text("B");
 
     gTop.append("text")
       .attr("x", x(8.9))
       .attr("y", panelH - 12)
       .attr("fill", T.text)
       .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-      .text("shared");
+//      .text("shared");
 
     // ----- MIDDLE LABEL -----
     const yMidTop = panelH + gap;
@@ -1317,7 +1287,7 @@
       .attr("text-anchor", "middle")
       .attr("fill", T.text)
       .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-      .text("cancel   A − B");
+//      .text("cancel   A − B");
 
     // ----- BOTTOM PANEL -----
     const yBotTop = yMidTop + midH + gap;
@@ -1334,14 +1304,14 @@
       .attr("x", 8).attr("y", 18)
       .attr("fill", T.text)
       .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-      .text("residual");
+//      .text("residual");
 
     gBot.append("text")
       .attr("x", x(7.9))
       .attr("y", yBot(0.55) - 6)
       .attr("fill", T.text)
       .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-      .text("diagnosis");
+//      .text("diagnosis");
 
     host.appendChild(svg.node());
   }
@@ -1454,7 +1424,7 @@
         .attr("y", 14)
         .attr("fill", strong ? T.text : "rgba(0,0,0,0.35)")
         .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-        .text("W");
+//        .text("W");
     }
 
     // ---------- TOP PANEL ----------
@@ -1477,7 +1447,7 @@
       .attr("y", 18)
       .attr("fill", T.text)
       .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-      .text("after cancel");
+//      .text("after cancel");
 
     // ---------- BOTTOM PANEL (faint + empty) ----------
     const gBot = g.append("g").attr("transform", `translate(0, ${panelH + gap})`);
@@ -1490,7 +1460,7 @@
       .attr("text-anchor", "middle")
       .attr("fill", "rgba(0,0,0,0.0)")
       .style("font", "12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial")
-      .text(" ");
+//      .text(" ");
 
     host.appendChild(svg.node());
   }
