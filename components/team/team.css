@@ -159,3 +159,18 @@
     aspect-ratio: 1 / 1; /* portrait feel on desktop */
   }
 }
+
+
+.team-card__media{
+  width: 100%;
+  max-width: 360px;            /* tweak per layout */
+}
+
+.team-card__photo{
+  display: block;
+  width: 100%;
+  height: auto;                /* preserves aspect ratio */
+  aspect-ratio: 726 / 723;     /* keeps the box stable while loading */
+  object-fit: cover;           /* crop nicely if the container isn't square */
+  border-radius: 12px;         /* optional */
+}
