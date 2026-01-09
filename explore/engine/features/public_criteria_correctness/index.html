@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -8,25 +7,25 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-V2474V50XP');
     </script>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-    <title>HermodLabs — Home Page</title>
+    <title>HermodLabs — Public Criteria Correctness</title>
     <meta
       name="description"
-      content="HermodLabs builds a co-timing engine that proves streams are on the same clock before you subtract, compare, threshold, or interpret. Portable cancellation + diagnostics + proof-shaped certificates."
+      content="Public Criteria Correctness defines “correct” using shared, inspectable criteria—so results can be checked, reproduced, and debated instead of trusted as private operator judgment."
     />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
       referrerpolicy="no-referrer"
     />
-
     <link rel="stylesheet" href="" id="main-css" />
+    <link rel="stylesheet" href="./style.css" />
 
     <script type="importmap">
     {
@@ -38,8 +37,343 @@
     <script type="module" src="../../../../bootstrap.js"></script>
   </head>
 
-<body>
-  <site-page>
-  </site-page>
-</body>
+  <body>
+    <site-page>
+      <main class="feature-page" id="main" tabindex="-1">
+
+        <!-- Hero -->
+        <header class="feature-hero" aria-labelledby="feature-title">
+          <div class="feature-page__inner feature-hero__inner">
+            <p class="feature-hero__kicker">Feature</p>
+
+            <h1 class="feature-hero__title" id="feature-title">Public Criteria Correctness</h1>
+
+            <p class="feature-hero__lede">
+              “Correct” is not a private feeling. It’s a public property.
+              Public Criteria Correctness defines correctness using shared, inspectable criteria—so any qualified
+              operator can reproduce the same pass/fail (or graded) decision on the same window <code>W</code>.
+            </p>
+
+            <!-- Attention grabber "comic bubble" quotes (web-friendly) -->
+            <section class="feature-hero__bubbles" aria-label="Attention quotes">
+              <div class="bubble bubble--left">
+                <p class="bubble__speaker">Operator</p>
+                <p class="bubble__text">“It says ‘validated.’ Validated how?”</p>
+              </div>
+
+              <div class="bubble bubble--right">
+                <p class="bubble__speaker">Vendor</p>
+                <p class="bubble__text">“Here are the criteria. Run them yourself. Same window, same result.”</p>
+              </div>
+            </section>
+
+            <!-- Quick bullets -->
+            <ul class="feature-hero__bullets" aria-label="Key outcomes">
+              <li><strong>Reproducible pass/fail:</strong> two operators can reach the same decision on the same data.</li>
+              <li><strong>Receipts over authority:</strong> correctness travels with criteria + IDs, not “trust me.”</li>
+              <li><strong>Debate becomes productive:</strong> argue about criteria, not personalities.</li>
+            </ul>
+          </div>
+        </header>
+
+        <!-- Core sections -->
+        <section class="feature-section" aria-labelledby="what-title">
+          <div class="feature-page__inner">
+            <h2 class="feature-section__title" id="what-title">What it does</h2>
+
+            <p class="feature-section__text">
+              Public Criteria Correctness turns “correctness” from an internal convention into a public, checkable claim.
+              The system emits a <strong>criteria bundle</strong> and <strong>receipts</strong> sufficient for a second operator
+              (or a second node) to reproduce the same decision on the same window <code>W</code>.
+            </p>
+
+            <div class="feature-cards" role="list">
+              <article class="feature-card" role="listitem" aria-labelledby="criteria-title">
+                <h3 class="feature-card__title" id="criteria-title">
+                  <i class="fa-solid fa-list-check" aria-hidden="true"></i>
+                  Criteria
+                </h3>
+                <p class="feature-card__text">
+                  The declared checks that define “correct” (thresholds, invariants, tolerances, coverage rules,
+                  and test obligations).
+                </p>
+              </article>
+
+              <article class="feature-card" role="listitem" aria-labelledby="receipts-title">
+                <h3 class="feature-card__title" id="receipts-title">
+                  <i class="fa-solid fa-receipt" aria-hidden="true"></i>
+                  Receipts
+                </h3>
+                <p class="feature-card__text">
+                  The evidence required to reproduce the criteria evaluation (window IDs, config IDs, inputs,
+                  intermediate summaries, and pass/fail outputs).
+                </p>
+              </article>
+
+              <article class="feature-card" role="listitem" aria-labelledby="replay-title">
+                <h3 class="feature-card__title" id="replay-title">
+                  <i class="fa-solid fa-rotate" aria-hidden="true"></i>
+                  Replay
+                </h3>
+                <p class="feature-card__text">
+                  Any qualified party can re-run the criteria on the same data segment and confirm the same decision—
+                  without trusting a private workflow.
+                </p>
+              </article>
+            </div>
+
+            <p class="feature-section__text">
+              If someone can’t reproduce the criteria decision, the system treats the result as <strong>not publicly correct</strong>
+              (even if it “looks right” on the dashboard).
+            </p>
+          </div>
+        </section>
+
+        <section class="feature-section" aria-labelledby="why-title">
+          <div class="feature-page__inner">
+            <h2 class="feature-section__title" id="why-title">Why this matters</h2>
+
+            <p class="feature-section__text">
+              Most organizations don’t fail because they have no data. They fail because “correct” is defined privately:
+              inside a dashboard, inside a script, inside one person’s mental model.
+              That’s how calm outputs become unquestionable—and how mistakes get institutionalized.
+            </p>
+
+            <div class="feature-callout" role="note" aria-label="Callout">
+              <p class="feature-callout__title">
+                <i class="fa-solid fa-quote-left" aria-hidden="true"></i>
+                If correctness can’t be checked, it’s not correctness. It’s authority.
+              </p>
+              <p class="feature-callout__text">
+                Public Criteria Correctness replaces “trust the operator” with “run the criteria.”
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="feature-section" aria-labelledby="practice-title">
+          <div class="feature-page__inner">
+            <h2 class="feature-section__title" id="practice-title">How it shows up in practice</h2>
+
+            <p class="feature-section__text">
+              When a pipeline publishes a result, the platform emits:
+            </p>
+
+            <ol class="feature-steps">
+              <li class="feature-steps__item">
+                <strong>Criteria declaration</strong> (what checks define “correct” for this claim)
+              </li>
+              <li class="feature-steps__item">
+                <strong>Window + config identifiers</strong> (what exactly was evaluated)
+              </li>
+              <li class="feature-steps__item">
+                <strong>Receipts</strong> (inputs + intermediate summaries needed to reproduce)
+              </li>
+              <li class="feature-steps__item">
+                <strong>Decision</strong> (pass/fail or graded output + reasons)
+              </li>
+            </ol>
+
+            <div class="feature-compare" aria-label="Before and after framing">
+              <div class="feature-compare__col">
+                <p class="feature-compare__label">Instead of</p>
+                <p class="feature-compare__quote">“Trust our dashboard.”</p>
+              </div>
+              <div class="feature-compare__arrow" aria-hidden="true">
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
+              <div class="feature-compare__col">
+                <p class="feature-compare__label">You get</p>
+                <p class="feature-compare__quote">“Here are the criteria. Here are the receipts. Reproduce it.”</p>
+              </div>
+            </div>
+
+            <!-- Tiny “receipt” example (illustrative) -->
+            <section class="feature-receipt" aria-labelledby="receipt-title">
+              <h3 class="feature-receipt__title" id="receipt-title">
+                Example criteria bundle (illustrative)
+              </h3>
+              <pre class="feature-receipt__code" aria-label="Example receipt">
+Claim: "Zone map is publishable for W"
+Scope: window=W(2026-01-08T14:00..14:10), config=cfg_5C10
+
+Public criteria:
+- Coverage: ≥ 90% sensors present on W
+- Drift: max pairwise drift ≤ 0.15 (units)
+- Stability: regime flag = stable on W
+- Repeatability: zone partition Jaccard ≥ 0.80 vs prior W*
+- Audit: receipts complete (inputs + summaries + decision)
+
+Decision:
+- Publicly correct = PASS
+- Notes: repeatability satisfied; receipts complete</pre>
+              <p class="feature-receipt__hint">
+                The point: a second operator can replay the criteria and get the same PASS/FAIL without trusting your UI.
+              </p>
+            </section>
+          </div>
+        </section>
+
+        <section class="feature-section" aria-labelledby="benefit-title">
+          <div class="feature-page__inner">
+            <h2 class="feature-section__title" id="benefit-title">The operator benefit</h2>
+
+            <div class="feature-cards feature-cards--wide" role="list">
+              <article class="feature-card" role="listitem">
+                <h3 class="feature-card__title">
+                  <i class="fa-solid fa-user-check" aria-hidden="true"></i>
+                  Fewer “trust me” bottlenecks
+                </h3>
+                <p class="feature-card__text">
+                  Correctness doesn’t depend on who ran the pipeline or what they “meant.”
+                </p>
+              </article>
+
+              <article class="feature-card" role="listitem">
+                <h3 class="feature-card__title">
+                  <i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>
+                  Cleaner audits and disputes
+                </h3>
+                <p class="feature-card__text">
+                  If someone disagrees, they can challenge the criteria—without arguing about personalities.
+                </p>
+              </article>
+
+              <article class="feature-card" role="listitem">
+                <h3 class="feature-card__title">
+                  <i class="fa-solid fa-shield" aria-hidden="true"></i>
+                  Safer automation
+                </h3>
+                <p class="feature-card__text">
+                  Actions can be gated on publicly checkable correctness, not private dashboards.
+                </p>
+              </article>
+
+              <article class="feature-card" role="listitem">
+                <h3 class="feature-card__title">
+                  <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+                  Better handoffs
+                </h3>
+                <p class="feature-card__text">
+                  Downstream teams can replay what you did and reproduce the same decision on the same window.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="feature-section feature-section--tight" aria-labelledby="core-title">
+          <div class="feature-page__inner">
+            <h2 class="feature-section__title" id="core-title">The core idea</h2>
+
+            <div class="feature-core">
+              <p class="feature-core__headline">
+                Correctness isn’t private.
+                <strong>It’s public criteria + reproducible receipts.</strong>
+              </p>
+              <p class="feature-core__text">
+                Public Criteria Correctness is how you make results checkable, debatable, and safe to use—without trusting a black box.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- CASE STUDY (ADDED)                                        -->
+        <!-- ========================================================= -->
+        <section class="feature-section" aria-labelledby="case-study-title">
+          <div class="feature-page__inner">
+            <h2 class="feature-section__title" id="case-study-title">
+              Fictitious case study (that certainly couldn’t happen in your company)
+            </h2>
+
+            <p class="feature-section__text">
+              <strong>Scenario:</strong> “We validated it” becomes the official source of truth.
+              A team publishes a weekly report: “Room is stable. Risk is low.” It’s clean. It’s formatted.
+              It has a tasteful chart. Everyone relaxes.
+            </p>
+
+            <div class="feature-callout" role="note" aria-label="Case setup">
+              <p class="feature-callout__title">
+                The plan is simple:
+              </p>
+              <ul class="feature-list">
+                <li>generate a single KPI,</li>
+                <li>publish it in a report,</li>
+                <li>treat the report as truth,</li>
+                <li>act when the KPI crosses a line.</li>
+              </ul>
+            </div>
+
+            <p class="feature-section__text">
+              Someone asks the annoying question:
+              <span class="feature-quote-inline">“What does ‘validated’ mean here?”</span>
+              The answer is even more annoying:
+              <span class="feature-quote-inline">“It means the team that runs the dashboard says it’s fine.”</span>
+            </p>
+
+            <h3 class="feature-subtitle">What quietly happened (a.k.a. correctness became private)</h3>
+            <p class="feature-section__text">
+              The report was produced by a pipeline with private criteria:
+              undocumented thresholds, ad-hoc smoothing, “known bad sensors” excluded, a window picked for calm,
+              and a few manual overrides nobody wanted to write down.
+              The output looked objective, but “correct” was defined by internal convention.
+            </p>
+
+            <ol class="feature-steps feature-steps--compact">
+              <li class="feature-steps__item">
+                <strong>Criteria lived in someone’s head.</strong>
+                “Correct” meant “what we usually do,” not what was declared.
+              </li>
+              <li class="feature-steps__item">
+                <strong>Receipts were missing.</strong>
+                Nobody outside the team could replay the decision on the same window <code>W</code>.
+              </li>
+              <li class="feature-steps__item">
+                <strong>The formatting did the persuasion.</strong>
+                Clean charts substituted for checkable criteria.
+              </li>
+            </ol>
+
+            <h3 class="feature-subtitle">Then the dispute happened</h3>
+            <p class="feature-section__text">
+              A second team looks at raw readings and says “this isn’t stable.”
+              The first team says “our KPI says it is.” Meetings follow.
+              The dispute isn’t about the environment anymore—it’s about whose dashboard is the official reality.
+            </p>
+
+            <h3 class="feature-subtitle">Same story, with Public Criteria Correctness</h3>
+            <p class="feature-section__text">
+              With Public Criteria Correctness, the report can’t ship without a declared criteria bundle and receipts.
+              The second team doesn’t have to “trust” anything—they can replay the checks on the same window:
+            </p>
+
+            <pre class="feature-receipt__code" aria-label="Public correctness replay example">
+Replay:
+- window=W(2026-01-08T14:00..14:10)
+- config=cfg_5C10
+- criteria bundle=crit_219A
+
+Result:
+- Publicly correct = FAIL
+- Reason: coverage below threshold; drift exceeded tolerance; receipts incomplete</pre>
+
+            <p class="feature-section__text">
+              The dispute becomes productive:
+              <strong>“Which criterion failed—and do we accept that criterion?”</strong>
+              Not: “Which team is more persuasive?”
+            </p>
+
+            <h3 class="feature-subtitle">Takeaway</h3>
+            <p class="feature-section__text">
+              If “correct” can’t be reproduced by another operator, it’s not operational truth—it’s organizational authority.
+              Public Criteria Correctness is how you stop reports from becoming reality by formatting, and start making correctness
+              a public property that can be checked, reproduced, and debated.
+            </p>
+
+          </div>
+        </section>
+      </main>
+    </site-page>
+  </body>
 </html>

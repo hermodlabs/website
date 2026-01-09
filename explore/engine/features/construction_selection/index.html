@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -8,25 +7,25 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-V2474V50XP');
     </script>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-    <title>HermodLabs — Home Page</title>
+    <title>HermodLabs — Construction Selection</title>
     <meta
       name="description"
-      content="HermodLabs builds a co-timing engine that proves streams are on the same clock before you subtract, compare, threshold, or interpret. Portable cancellation + diagnostics + proof-shaped certificates."
+      content="Construction Selection makes the chosen frame/model explicit—selecting the operative construction from a controlled set, with traceability for why that construction was selected."
     />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
       referrerpolicy="no-referrer"
     />
-
     <link rel="stylesheet" href="" id="main-css" />
+    <link rel="stylesheet" href="./style.css" />
 
     <script type="importmap">
     {
@@ -38,8 +37,340 @@
     <script type="module" src="../../../../bootstrap.js"></script>
   </head>
 
-<body>
-  <site-page>
-  </site-page>
-</body>
+  <body>
+    <site-page>
+      <main class="feature-page" id="main" tabindex="-1">
+
+        <!-- Hero -->
+        <header class="feature-hero" aria-labelledby="feature-title">
+          <div class="feature-page__inner feature-hero__inner">
+            <p class="feature-hero__kicker">Feature</p>
+
+            <h1 class="feature-hero__title" id="feature-title">Construction Selection</h1>
+
+            <p class="feature-hero__lede">
+              Interpretation depends on a construction: a frame, model family, transform, aggregation rule, or coordinate choice.
+              Construction Selection makes that choice explicit—selecting the operative construction from a controlled candidate set,
+              with traceability for why it was selected.
+            </p>
+
+            <!-- Attention grabber "comic bubble" quotes (web-friendly) -->
+            <section class="feature-hero__bubbles" aria-label="Attention quotes">
+              <div class="bubble bubble--left">
+                <p class="bubble__speaker">Operator</p>
+                <p class="bubble__text">“Why does this conclusion look different than last week?”</p>
+              </div>
+
+              <div class="bubble bubble--right">
+                <p class="bubble__speaker">Vendor</p>
+                <p class="bubble__text">“Because you switched constructions. We make that choice explicit—before you act.”</p>
+              </div>
+            </section>
+
+            <!-- Quick bullets -->
+            <ul class="feature-hero__bullets" aria-label="Key outcomes">
+              <li><strong>No frame-switching after the fact:</strong> you can’t pick the model that flatters the result.</li>
+              <li><strong>Controlled candidate set:</strong> selection happens inside a declared set <code>𝓜</code>.</li>
+              <li><strong>Traceable selection:</strong> inputs, rule, and scores are recorded as receipts.</li>
+            </ul>
+          </div>
+        </header>
+
+        <!-- Core sections -->
+        <section class="feature-section" aria-labelledby="what-title">
+          <div class="feature-page__inner">
+            <h2 class="feature-section__title" id="what-title">What it does</h2>
+
+            <p class="feature-section__text">
+              Construction Selection answers the question dashboards usually hide:
+              <strong>“Which construction did you use—and why that one?”</strong>
+              The system evaluates a controlled set of candidates and selects using a declared rule, leaving receipts.
+            </p>
+
+            <div class="feature-cards" role="list">
+              <article class="feature-card" role="listitem" aria-labelledby="candidates-title">
+                <h3 class="feature-card__title" id="candidates-title">
+                  <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+                  Candidate set
+                </h3>
+                <p class="feature-card__text">
+                  A declared, controlled set of allowed constructions <code>𝓜</code> (models, frames, transforms, aggregations).
+                  No silent “try everything until it looks good.”
+                </p>
+              </article>
+
+              <article class="feature-card" role="listitem" aria-labelledby="rule-title">
+                <h3 class="feature-card__title" id="rule-title">
+                  <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+                  Selection rule
+                </h3>
+                <p class="feature-card__text">
+                  A declared rule <code>R</code> (thresholds, constraints, multi-objective tradeoffs)
+                  that determines what “best” means before results exist.
+                </p>
+              </article>
+
+              <article class="feature-card" role="listitem" aria-labelledby="receipts-title">
+                <h3 class="feature-card__title" id="receipts-title">
+                  <i class="fa-solid fa-receipt" aria-hidden="true"></i>
+                  Receipts
+                </h3>
+                <p class="feature-card__text">
+                  Candidate scores + rule inputs + the chosen construction are recorded so a second operator can reproduce the choice.
+                </p>
+              </article>
+            </div>
+
+            <p class="feature-section__text">
+              If candidates tie, diverge, or selection is unstable, the system can withhold selection or downgrade the claim
+              instead of quietly picking the most flattering frame.
+            </p>
+          </div>
+        </section>
+
+        <section class="feature-section" aria-labelledby="why-title">
+          <div class="feature-page__inner">
+            <h2 class="feature-section__title" id="why-title">Why this matters</h2>
+
+            <p class="feature-section__text">
+              In real systems, different constructions can produce different “truths” from the same data:
+              different transforms, different coordinate frames, different filters, different model families.
+              If selection is not explicit, the pipeline can become self-authorizing by silently choosing the construction that makes the story look best.
+            </p>
+
+            <div class="feature-callout" role="note" aria-label="Callout">
+              <p class="feature-callout__title">
+                <i class="fa-solid fa-quote-left" aria-hidden="true"></i>
+                If you can change the frame, you can change the conclusion.
+              </p>
+              <p class="feature-callout__text">
+                Construction Selection forces the choice to be declared, scored, and reproducible.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="feature-section" aria-labelledby="practice-title">
+          <div class="feature-page__inner">
+            <h2 class="feature-section__title" id="practice-title">How it shows up in practice</h2>
+
+            <p class="feature-section__text">
+              When a pipeline reaches an interpretation step that depends on a construction, the platform emits:
+            </p>
+
+            <ol class="feature-steps">
+              <li class="feature-steps__item">
+                <strong>Candidate receipts</strong> (scores + summaries per candidate)
+              </li>
+              <li class="feature-steps__item">
+                <strong>Selection rule</strong> (thresholds, constraints, tradeoffs)
+              </li>
+              <li class="feature-steps__item">
+                <strong>Decision</strong> (selected construction + authorization token / ID)
+              </li>
+              <li class="feature-steps__item">
+                <strong>Scope</strong> (the window <code>W</code> + configuration the selection applies to)
+              </li>
+            </ol>
+
+            <div class="feature-compare" aria-label="Before and after framing">
+              <div class="feature-compare__col">
+                <p class="feature-compare__label">Instead of</p>
+                <p class="feature-compare__quote">“We used the standard model.”</p>
+              </div>
+              <div class="feature-compare__arrow" aria-hidden="true">
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
+              <div class="feature-compare__col">
+                <p class="feature-compare__label">You get</p>
+                <p class="feature-compare__quote">“Here are the candidates, the rule, the scores, and the selected one.”</p>
+              </div>
+            </div>
+
+            <!-- Tiny “receipt” example (illustrative) -->
+            <section class="feature-receipt" aria-labelledby="receipt-title">
+              <h3 class="feature-receipt__title" id="receipt-title">
+                Example selection receipt (illustrative)
+              </h3>
+              <pre class="feature-receipt__code" aria-label="Example receipt">
+Scope: window=W(2026-01-08T14:00..14:10), config=cfg_2F9C
+Candidate set: 𝓜 = {M1, M2, M3, M4}
+
+Rule R:
+- minimize residual ε(W)
+- subject to stability ≥ 0.80
+- reject if selection unstable across adjacent windows
+
+Candidate receipts:
+- M1: ε=0.21, stability=0.92
+- M2: ε=0.09, stability=0.41  → rejected (unstable)
+- M3: ε=0.14, stability=0.88
+- M4: ε=0.12, stability=0.90
+
+Decision:
+- Selected = M4
+- Authorized token = authorized_k:K_8831</pre>
+              <p class="feature-receipt__hint">
+                The point: selection is reproducible and constrained—no silent frame-switching.
+              </p>
+            </section>
+          </div>
+        </section>
+
+        <section class="feature-section" aria-labelledby="benefit-title">
+          <div class="feature-page__inner">
+            <h2 class="feature-section__title" id="benefit-title">The operator benefit</h2>
+
+            <div class="feature-cards feature-cards--wide" role="list">
+              <article class="feature-card" role="listitem">
+                <h3 class="feature-card__title">
+                  <i class="fa-solid fa-ban" aria-hidden="true"></i>
+                  No after-the-fact framing
+                </h3>
+                <p class="feature-card__text">
+                  Prevent “pick the model that makes it look good” behavior.
+                </p>
+              </article>
+
+              <article class="feature-card" role="listitem">
+                <h3 class="feature-card__title">
+                  <i class="fa-solid fa-route" aria-hidden="true"></i>
+                  Traceable decisions
+                </h3>
+                <p class="feature-card__text">
+                  See which construction was selected, by what rule, using which scores.
+                </p>
+              </article>
+
+              <article class="feature-card" role="listitem">
+                <h3 class="feature-card__title">
+                  <i class="fa-solid fa-shield" aria-hidden="true"></i>
+                  Safer automation
+                </h3>
+                <p class="feature-card__text">
+                  Actions depend on an authorized construction selection, not a silent “best-looking” frame.
+                </p>
+              </article>
+
+              <article class="feature-card" role="listitem">
+                <h3 class="feature-card__title">
+                  <i class="fa-solid fa-repeat" aria-hidden="true"></i>
+                  Repeatability across teams
+                </h3>
+                <p class="feature-card__text">
+                  A second operator can reproduce the selection and verify the same winner on the same window.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="feature-section feature-section--tight" aria-labelledby="core-title">
+          <div class="feature-page__inner">
+            <h2 class="feature-section__title" id="core-title">The core idea</h2>
+
+            <div class="feature-core">
+              <p class="feature-core__headline">
+                You can’t stop frame-switching by asking nicely.
+                <strong>You stop it by constraining and recording selection.</strong>
+              </p>
+              <p class="feature-core__text">
+                Construction Selection is how you make model/frame choice explicit, reproducible, and safe to operationalize.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- CASE STUDY (ADDED)                                        -->
+        <!-- ========================================================= -->
+        <section class="feature-section" aria-labelledby="case-study-title">
+          <div class="feature-page__inner">
+            <h2 class="feature-section__title" id="case-study-title">
+              Fictitious case study (that certainly couldn’t happen in your company)
+            </h2>
+
+            <p class="feature-section__text">
+              <strong>Scenario:</strong> “We used the best model” becomes a moving target.
+              A team runs the same facility data through three different pipelines and gets three different conclusions.
+              In the meeting, the conclusion that survives is the one that looks calmest.
+            </p>
+
+            <div class="feature-callout" role="note" aria-label="Case setup">
+              <p class="feature-callout__title">
+                The plan is simple:
+              </p>
+              <ul class="feature-list">
+                <li>try a few models,</li>
+                <li>pick the one with the cleanest story,</li>
+                <li>ship it as “the data,”</li>
+                <li>act like the choice was inevitable.</li>
+              </ul>
+            </div>
+
+            <p class="feature-section__text">
+              When someone asks “why this model?”, the answer is:
+              <span class="feature-quote-inline">“It performed best.”</span>
+              Best according to what? That part is… surprisingly hard to find.
+            </p>
+
+            <h3 class="feature-subtitle">What quietly happened (a.k.a. frame-switching after the fact)</h3>
+            <p class="feature-section__text">
+              The team did not select a construction using a declared rule.
+              They explored options until the output felt safe, then back-filled the rationale.
+              The “best” model was whichever one made the KPI green and reduced uncomfortable questions.
+            </p>
+
+            <ol class="feature-steps feature-steps--compact">
+              <li class="feature-steps__item">
+                <strong>The candidate set was undefined.</strong>
+                New constructions appeared midstream (“just trying something”).
+              </li>
+              <li class="feature-steps__item">
+                <strong>The rule was implicit.</strong>
+                “Best” meant “easiest to defend in a meeting.”
+              </li>
+              <li class="feature-steps__item">
+                <strong>Selection was unstable.</strong>
+                Next week, a different model “wins” because the window changed.
+              </li>
+            </ol>
+
+            <h3 class="feature-subtitle">Then the organization normalized it</h3>
+            <p class="feature-section__text">
+              Different teams kept different constructions.
+              Dashboards disagreed.
+              Postmortems became fights about which frame was “the real one.”
+              Eventually, leadership chose the calmest chart as the official reality.
+            </p>
+
+            <h3 class="feature-subtitle">Same story, with Construction Selection</h3>
+            <p class="feature-section__text">
+              With Construction Selection, the candidate set <code>𝓜</code> is declared and frozen,
+              the rule <code>R</code> is explicit, and each candidate produces receipts.
+              If the winner is unstable or violates constraints, the system downgrades the claim instead of silently swapping frames:
+            </p>
+
+            <pre class="feature-receipt__code" aria-label="Selection gate example">
+Decision:
+- Selected = NONE
+- Reason: selection instability across adjacent windows; ties within tolerance
+- Guidance: narrow candidate set 𝓜 or strengthen rule R before action</pre>
+
+            <p class="feature-section__text">
+              The conversation stops being “which model do we like” and becomes:
+              <strong>“What rule do we accept—and what does instability imply about the environment?”</strong>
+            </p>
+
+            <h3 class="feature-subtitle">Takeaway</h3>
+            <p class="feature-section__text">
+              If selection is not controlled and reproducible, “best model” is just a social process.
+              Construction Selection is how you prevent after-the-fact framing and keep interpretation tethered to declared rules and receipts.
+            </p>
+
+          </div>
+        </section>
+      </main>
+    </site-page>
+  </body>
 </html>

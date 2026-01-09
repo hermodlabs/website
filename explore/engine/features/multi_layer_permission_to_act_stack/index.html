@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -8,25 +7,25 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-V2474V50XP');
     </script>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-    <title>HermodLabs — Home Page</title>
+    <title>HermodLabs — Multi-Layer Permission-to-Act Stack</title>
     <meta
       name="description"
-      content="HermodLabs builds a co-timing engine that proves streams are on the same clock before you subtract, compare, threshold, or interpret. Portable cancellation + diagnostics + proof-shaped certificates."
+      content="Multi-Layer Permission-to-Act separates “can we infer?” from “may we act?” by stacking gates across validity, entitlement, policy, risk, and execution—actions only proceed when every required layer clears."
     />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
       referrerpolicy="no-referrer"
     />
-
     <link rel="stylesheet" href="" id="main-css" />
+    <link rel="stylesheet" href="./style.css" />
 
     <script type="importmap">
     {
@@ -38,8 +37,380 @@
     <script type="module" src="../../../../bootstrap.js"></script>
   </head>
 
-<body>
-  <site-page>
-  </site-page>
-</body>
+  <body>
+    <site-page>
+      <main class="feature-page" id="main" tabindex="-1">
+
+        <!-- Hero -->
+        <header class="feature-hero" aria-labelledby="feature-title">
+          <div class="feature-page__inner feature-hero__inner">
+            <p class="feature-hero__kicker">Feature</p>
+
+            <h1 class="feature-hero__title" id="feature-title">Multi-Layer Permission-to-Act Stack</h1>
+
+            <p class="feature-hero__lede">
+              Separate “can we infer?” from “may we act?”
+              The Multi-Layer Permission-to-Act Stack gates actions across validity, entitlement, public correctness,
+              construction selection, policy, risk, and execution. No layer clears? No action.
+            </p>
+
+            <!-- Attention grabber "comic bubble" quotes (web-friendly) -->
+            <section class="feature-hero__bubbles" aria-label="Attention quotes">
+              <div class="bubble bubble--left">
+                <p class="bubble__speaker">Operator</p>
+                <p class="bubble__text">“The KPI crossed the line. Do we push the button?”</p>
+              </div>
+
+              <div class="bubble bubble--right">
+                <p class="bubble__speaker">Vendor</p>
+                <p class="bubble__text">“Only if the stack clears. Otherwise you’re automating a guess.”</p>
+              </div>
+            </section>
+
+            <!-- Quick bullets -->
+            <ul class="feature-hero__bullets" aria-label="Key outcomes">
+              <li><strong>Stops single-metric automation:</strong> no more “one number = action.”</li>
+              <li><strong>Layered safety:</strong> validity → entitlement → correctness → policy → risk → execution.</li>
+              <li><strong>Receipts for every gate:</strong> you can audit why an action was allowed or blocked.</li>
+            </ul>
+          </div>
+        </header>
+
+        <!-- Core sections -->
+        <section class="feature-section" aria-labelledby="what-title">
+          <div class="feature-page__inner">
+            <h2 class="feature-section__title" id="what-title">What it does</h2>
+
+            <p class="feature-section__text">
+              The Permission-to-Act Stack turns action into a permissioned outcome, not a reflex.
+              Each layer answers a different question, and the system only acts when the required layers clear.
+            </p>
+
+            <div class="feature-cards" role="list">
+              <article class="feature-card" role="listitem" aria-labelledby="validity-title">
+                <h3 class="feature-card__title" id="validity-title">
+                  <i class="fa-solid fa-clock" aria-hidden="true"></i>
+                  Co-Timing Validity
+                </h3>
+                <p class="feature-card__text">
+                  Are streams comparable on window <code>W</code>? If not, don’t subtract, fuse, or threshold.
+                </p>
+              </article>
+
+              <article class="feature-card" role="listitem" aria-labelledby="entitlement-title">
+                <h3 class="feature-card__title" id="entitlement-title">
+                  <i class="fa-solid fa-file-signature" aria-hidden="true"></i>
+                  Interpretive Entitlement
+                </h3>
+                <p class="feature-card__text">
+                  Are the warrants satisfied, and do falsifiers remain untriggered? If not, the claim is out of scope.
+                </p>
+              </article>
+
+              <article class="feature-card" role="listitem" aria-labelledby="public-title">
+                <h3 class="feature-card__title" id="public-title">
+                  <i class="fa-solid fa-list-check" aria-hidden="true"></i>
+                  Public Criteria Correctness
+                </h3>
+                <p class="feature-card__text">
+                  Can a second operator reproduce the same pass/fail decision using declared criteria and receipts?
+                </p>
+              </article>
+
+              <article class="feature-card" role="listitem" aria-labelledby="select-title">
+                <h3 class="feature-card__title" id="select-title">
+                  <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+                  Construction Selection
+                </h3>
+                <p class="feature-card__text">
+                  Which model/frame/transform was selected from a controlled set <code>𝓜</code> using rule <code>R</code>?
+                </p>
+              </article>
+
+              <article class="feature-card" role="listitem" aria-labelledby="policy-title">
+                <h3 class="feature-card__title" id="policy-title">
+                  <i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>
+                  Policy &amp; constraints
+                </h3>
+                <p class="feature-card__text">
+                  Is action allowed under site policy, compliance rules, and operational constraints?
+                </p>
+              </article>
+
+              <article class="feature-card" role="listitem" aria-labelledby="risk-title">
+                <h3 class="feature-card__title" id="risk-title">
+                  <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+                  Risk &amp; guardrails
+                </h3>
+                <p class="feature-card__text">
+                  Is the downside bounded? Are we within safe operating envelopes for the actuator?
+                </p>
+              </article>
+
+              <article class="feature-card" role="listitem" aria-labelledby="exec-title">
+                <h3 class="feature-card__title" id="exec-title">
+                  <i class="fa-solid fa-play" aria-hidden="true"></i>
+                  Execution &amp; verification
+                </h3>
+                <p class="feature-card__text">
+                  Can we execute safely and verify the effect with a before/after expectation?
+                </p>
+              </article>
+            </div>
+
+            <p class="feature-section__text">
+              The point is not “more bureaucracy.” The point is fewer automated mistakes:
+              action only happens when <strong>every required layer</strong> says “yes.”
+            </p>
+          </div>
+        </section>
+
+        <section class="feature-section" aria-labelledby="why-title">
+          <div class="feature-page__inner">
+            <h2 class="feature-section__title" id="why-title">Why this matters</h2>
+
+            <p class="feature-section__text">
+              Most automation failures are not “AI failures.” They’re permission failures:
+              a system acts because a number crossed a line, even when the underlying evidence is not comparable,
+              not entitled, not publicly checkable, or out of policy scope.
+            </p>
+
+            <div class="feature-callout" role="note" aria-label="Callout">
+              <p class="feature-callout__title">
+                <i class="fa-solid fa-quote-left" aria-hidden="true"></i>
+                A threshold is not permission.
+              </p>
+              <p class="feature-callout__text">
+                The stack converts “we can compute” into “we may act,” with receipts for each gate.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="feature-section" aria-labelledby="practice-title">
+          <div class="feature-page__inner">
+            <h2 class="feature-section__title" id="practice-title">How it shows up in practice</h2>
+
+            <p class="feature-section__text">
+              When an action is proposed, the platform produces a gate-by-gate decision:
+            </p>
+
+            <ol class="feature-steps">
+              <li class="feature-steps__item">
+                <strong>Evidence scope</strong> (window <code>W</code>, data segment, configuration IDs)
+              </li>
+              <li class="feature-steps__item">
+                <strong>Gate checks</strong> (validity, entitlement, public criteria, selection, policy, risk)
+              </li>
+              <li class="feature-steps__item">
+                <strong>Decision</strong> (allow / block / require human sign-off)
+              </li>
+              <li class="feature-steps__item">
+                <strong>Verification hook</strong> (what should change if the action is correct)
+              </li>
+            </ol>
+
+            <div class="feature-compare" aria-label="Before and after framing">
+              <div class="feature-compare__col">
+                <p class="feature-compare__label">Instead of</p>
+                <p class="feature-compare__quote">“KPI crossed threshold → act.”</p>
+              </div>
+              <div class="feature-compare__arrow" aria-hidden="true">
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
+              <div class="feature-compare__col">
+                <p class="feature-compare__label">You get</p>
+                <p class="feature-compare__quote">“Stack cleared → act with verification.”</p>
+              </div>
+            </div>
+
+            <!-- Tiny “receipt” example (illustrative) -->
+            <section class="feature-receipt" aria-labelledby="receipt-title">
+              <h3 class="feature-receipt__title" id="receipt-title">
+                Example permission receipt (illustrative)
+              </h3>
+              <pre class="feature-receipt__code" aria-label="Example receipt">
+Proposed action: "Increase fan staging in Zone 2 by +5%"
+Scope: window=W(2026-01-08T14:00..14:10), cfg=cfg_77D1
+
+Gates:
+- Co-timing validity: PASS
+- Interpretive entitlement: PASS
+- Public criteria correctness: PASS
+- Construction selection: PASS (Selected=M4)
+- Policy: PASS (allowed in mode=Normal)
+- Risk: PASS (within envelope; rate-limit ok)
+- Execution: READY (actuator reachable)
+
+Decision:
+- Permission-to-act = YES
+Verification hook:
+- Expect Zone 2 pocket intensity ↓ within 10–20 min; adjacent Zone 3 must not worsen</pre>
+              <p class="feature-receipt__hint">
+                The point: every “yes” has a reason, and every “no” is actionable.
+              </p>
+            </section>
+          </div>
+        </section>
+
+        <section class="feature-section" aria-labelledby="benefit-title">
+          <div class="feature-page__inner">
+            <h2 class="feature-section__title" id="benefit-title">The operator benefit</h2>
+
+            <div class="feature-cards feature-cards--wide" role="list">
+              <article class="feature-card" role="listitem">
+                <h3 class="feature-card__title">
+                  <i class="fa-solid fa-shield" aria-hidden="true"></i>
+                  Fewer automated mistakes
+                </h3>
+                <p class="feature-card__text">
+                  The system blocks actions when evidence is out-of-scope or not checkable.
+                </p>
+              </article>
+
+              <article class="feature-card" role="listitem">
+                <h3 class="feature-card__title">
+                  <i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>
+                  Auditability
+                </h3>
+                <p class="feature-card__text">
+                  Every gate produces receipts: why the action was allowed or blocked.
+                </p>
+              </article>
+
+              <article class="feature-card" role="listitem">
+                <h3 class="feature-card__title">
+                  <i class="fa-solid fa-bug-slash" aria-hidden="true"></i>
+                  Faster diagnosis
+                </h3>
+                <p class="feature-card__text">
+                  When something fails, you learn which gate failed—not “the system is weird.”
+                </p>
+              </article>
+
+              <article class="feature-card" role="listitem">
+                <h3 class="feature-card__title">
+                  <i class="fa-solid fa-repeat" aria-hidden="true"></i>
+                  Repeatable operations
+                </h3>
+                <p class="feature-card__text">
+                  The playbook becomes: clear gates → act locally → verify → record.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="feature-section feature-section--tight" aria-labelledby="core-title">
+          <div class="feature-page__inner">
+            <h2 class="feature-section__title" id="core-title">The core idea</h2>
+
+            <div class="feature-core">
+              <p class="feature-core__headline">
+                Automation isn’t the enemy.
+                <strong>Unpermissioned automation is.</strong>
+              </p>
+              <p class="feature-core__text">
+                The Multi-Layer Permission-to-Act Stack is how you gate actions on checkable evidence, policy, and risk—
+                not on a single persuasive metric.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- CASE STUDY (ADDED)                                        -->
+        <!-- ========================================================= -->
+        <section class="feature-section" aria-labelledby="case-study-title">
+          <div class="feature-page__inner">
+            <h2 class="feature-section__title" id="case-study-title">
+              Fictitious case study (that certainly couldn’t happen in your company)
+            </h2>
+
+            <p class="feature-section__text">
+              <strong>Scenario:</strong> “One green KPI” automates a bad intervention.
+              A facility runs a control loop driven by a single summarized metric. It crosses a line and triggers an automatic correction.
+              The dashboard looks calm. The action is logged as “successful.” Reality disagrees later.
+            </p>
+
+            <div class="feature-callout" role="note" aria-label="Case setup">
+              <p class="feature-callout__title">
+                The plan is simple:
+              </p>
+              <ul class="feature-list">
+                <li>compute a room-level KPI,</li>
+                <li>trigger an actuator when it crosses a threshold,</li>
+                <li>declare success when the KPI returns to green,</li>
+                <li>repeat until the incident report shows up.</li>
+              </ul>
+            </div>
+
+            <h3 class="feature-subtitle">What quietly happened (a.k.a. action without permission)</h3>
+            <p class="feature-section__text">
+              The system acted on a number without checking whether it was entitled, publicly correct, or safe.
+              The KPI improved where the favored sensors lived, but the underlying pocket worsened elsewhere.
+              The action “worked” according to the dashboard and failed according to the field.
+            </p>
+
+            <ol class="feature-steps feature-steps--compact">
+              <li class="feature-steps__item">
+                <strong>Co-timing wasn’t verified.</strong>
+                Streams weren’t comparable on the window where the action triggered.
+              </li>
+              <li class="feature-steps__item">
+                <strong>Entitlement wasn’t checked.</strong>
+                The interpretation was out of scope due to a regime shift.
+              </li>
+              <li class="feature-steps__item">
+                <strong>Policy and risk were bypassed.</strong>
+                The actuator moved faster than the site’s safe envelope for that mode.
+              </li>
+              <li class="feature-steps__item">
+                <strong>Verification was missing.</strong>
+                No before/after expectation was recorded—only a KPI returning to green.
+              </li>
+            </ol>
+
+            <h3 class="feature-subtitle">Then the system got “optimized”</h3>
+            <p class="feature-section__text">
+              Thresholds were widened to reduce nuisance triggers. More smoothing was added. The loop became calmer.
+              The facility became harder to see. The next pocket survived longer. The next intervention arrived later.
+            </p>
+
+            <h3 class="feature-subtitle">Same story, with the Permission-to-Act Stack</h3>
+            <p class="feature-section__text">
+              With the stack, the proposed action is evaluated gate-by-gate.
+              If any required gate fails, the system blocks action and tells you why—so you can fix the right layer instead of tuning the dashboard.
+            </p>
+
+            <pre class="feature-receipt__code" aria-label="Stack block example">
+Proposed action: "Increase dehumidification by +10%"
+Scope: window=W(2026-01-08T14:00..14:10), cfg=cfg_77D1
+
+Gates:
+- Co-timing validity: FAIL (not comparable on W)
+- Interpretive entitlement: FAIL (regime shift detected)
+- Policy: PASS
+- Risk: PASS
+
+Decision:
+- Permission-to-act = NO
+- Guidance: pause automation; re-scope window; map zones; re-check validity/entitlement</pre>
+
+            <p class="feature-section__text">
+              The conversation stops being “why did automation fail?” and becomes:
+              <strong>“Which gate failed—and what restores permission?”</strong>
+            </p>
+
+            <h3 class="feature-subtitle">Takeaway</h3>
+            <p class="feature-section__text">
+              When the world is spatial, temporal, and interactive, a single metric is never enough to justify action.
+              The Multi-Layer Permission-to-Act Stack is how you prevent dashboards from pulling actuators—and ensure actions happen only when evidence, policy, and risk all clear.
+            </p>
+
+          </div>
+        </section>
+      </main>
+    </site-page>
+  </body>
 </html>

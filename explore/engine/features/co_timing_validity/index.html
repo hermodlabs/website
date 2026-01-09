@@ -7,25 +7,25 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-V2474V50XP');
     </script>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-    <title>HermodLabs — Home Page</title>
+    <title>HermodLabs — Co-Timing Validity</title>
     <meta
       name="description"
-      content="HermodLabs builds a co-timing engine that proves streams are on the same clock before you subtract, compare, threshold, or interpret. Portable cancellation + diagnostics + proof-shaped certificates."
+      content="Co-Timing Validity proves streams are on the same clock before you subtract, compare, threshold, or interpret—so decisions aren’t built from mismatched moments."
     />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
       referrerpolicy="no-referrer"
     />
-
     <link rel="stylesheet" href="" id="main-css" />
+    <link rel="stylesheet" href="./style.css" />
 
     <script type="importmap">
     {
@@ -37,8 +37,334 @@
     <script type="module" src="../../../../bootstrap.js"></script>
   </head>
 
-<body>
-  <site-page>
-  </site-page>
-</body>
+  <body>
+    <site-page>
+      <main class="feature-page" id="main" tabindex="-1">
+
+        <!-- Hero -->
+        <header class="feature-hero" aria-labelledby="feature-title">
+          <div class="feature-page__inner feature-hero__inner">
+            <p class="feature-hero__kicker">Feature</p>
+
+            <h1 class="feature-hero__title" id="feature-title">Co-Timing Validity</h1>
+
+            <p class="feature-hero__lede">
+              Before you subtract, compare, threshold, or interpret: prove the streams are on the same clock.
+              Co-Timing Validity validates the timing relationships across sensors, transforms, and assumptions
+              so decisions aren’t built from mismatched moments.
+            </p>
+
+            <!-- Attention grabber "comic bubble" quotes (web-friendly) -->
+            <section class="feature-hero__bubbles" aria-label="Attention quotes">
+              <div class="bubble bubble--left">
+                <p class="bubble__speaker">Operator</p>
+                <p class="bubble__text">“The numbers disagree. Are we seeing reality… or misalignment?”</p>
+              </div>
+
+              <div class="bubble bubble--right">
+                <p class="bubble__speaker">Vendor</p>
+                <p class="bubble__text">“Before we argue about truth, we prove we’re comparing the same time.”</p>
+              </div>
+            </section>
+
+            <!-- Quick bullets -->
+            <ul class="feature-hero__bullets" aria-label="Key outcomes">
+              <li><strong>Prevents timing illusions:</strong> no more subtracting different moments and calling it signal.</li>
+              <li><strong>Makes comparability checkable:</strong> validate alignment on window <code>W</code> before interpretation.</li>
+              <li><strong>Enables safe cancellation:</strong> align, then cancel—only when validity clears.</li>
+            </ul>
+          </div>
+        </header>
+
+        <!-- Core sections -->
+        <section class="feature-section" aria-labelledby="what-title">
+          <div class="feature-page__inner">
+            <h2 class="feature-section__title" id="what-title">What it does</h2>
+
+            <p class="feature-section__text">
+              Co-Timing Validity answers one question first:
+              <strong>Are these streams actually comparable on this window?</strong>
+              It produces a checkable validity decision before downstream math can manufacture confidence.
+            </p>
+
+            <div class="feature-cards" role="list">
+              <article class="feature-card" role="listitem" aria-labelledby="align-title">
+                <h3 class="feature-card__title" id="align-title">
+                  <i class="fa-solid fa-clock" aria-hidden="true"></i>
+                  Align
+                </h3>
+                <p class="feature-card__text">
+                  Estimate and apply relative delays / phase rulers on a selected window <code>W</code>
+                  so streams are referenced to the same time basis.
+                </p>
+              </article>
+
+              <article class="feature-card" role="listitem" aria-labelledby="check-title">
+                <h3 class="feature-card__title" id="check-title">
+                  <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+                  Validate
+                </h3>
+                <p class="feature-card__text">
+                  Run validity checks (closure / residual / consistency tests) that detect non-commuting delays,
+                  regime changes, and misalignment masquerading as “signal.”
+                </p>
+              </article>
+
+              <article class="feature-card" role="listitem" aria-labelledby="gate-title">
+                <h3 class="feature-card__title" id="gate-title">
+                  <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                  Gate
+                </h3>
+                <p class="feature-card__text">
+                  If validity fails, downstream interpretation is gated:
+                  pause cancellation, avoid thresholds, and map the field before acting.
+                </p>
+              </article>
+            </div>
+
+            <p class="feature-section__text">
+              If co-timing doesn’t hold on <code>W</code>, the system doesn’t pretend the subtraction means anything.
+              It marks the window as <strong>not comparable</strong> and blocks action until alignment is restored or scope changes.
+            </p>
+          </div>
+        </section>
+
+        <section class="feature-section" aria-labelledby="why-title">
+          <div class="feature-page__inner">
+            <h2 class="feature-section__title" id="why-title">Why this matters</h2>
+
+            <p class="feature-section__text">
+              Most “disagreement” debates are actually timing debates in disguise.
+              If streams are not co-timed, simple operations (difference, correlation, thresholding, fusion)
+              can generate confident artifacts that are purely temporal mismatch.
+            </p>
+
+            <div class="feature-callout" role="note" aria-label="Callout">
+              <p class="feature-callout__title">
+                <i class="fa-solid fa-quote-left" aria-hidden="true"></i>
+                You can’t subtract two different moments and call it truth.
+              </p>
+              <p class="feature-callout__text">
+                Co-Timing Validity draws the boundary between “comparable” and “meaningless math.”
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="feature-section" aria-labelledby="practice-title">
+          <div class="feature-page__inner">
+            <h2 class="feature-section__title" id="practice-title">How it shows up in practice</h2>
+
+            <p class="feature-section__text">
+              When the pipeline reaches a step that assumes comparability, the platform emits:
+            </p>
+
+            <ol class="feature-steps">
+              <li class="feature-steps__item">
+                <strong>Window selection</strong> (the window <code>W</code> being claimed)
+              </li>
+              <li class="feature-steps__item">
+                <strong>Alignment estimate</strong> (the delay/phase mapping used)
+              </li>
+              <li class="feature-steps__item">
+                <strong>Validity checks</strong> (closure/residual tests + thresholds)
+              </li>
+              <li class="feature-steps__item">
+                <strong>Receipt</strong> (IDs + checks to reproduce the same validity decision)
+              </li>
+            </ol>
+
+            <div class="feature-compare" aria-label="Before and after framing">
+              <div class="feature-compare__col">
+                <p class="feature-compare__label">Instead of arguing</p>
+                <p class="feature-compare__quote">“Which sensor is right?”</p>
+              </div>
+              <div class="feature-compare__arrow" aria-hidden="true">
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
+              <div class="feature-compare__col">
+                <p class="feature-compare__label">You can ask</p>
+                <p class="feature-compare__quote">“Are we on the same clock on <code>W</code>?”</p>
+              </div>
+            </div>
+
+            <!-- Tiny “receipt” example (illustrative) -->
+            <section class="feature-receipt" aria-labelledby="receipt-title">
+              <h3 class="feature-receipt__title" id="receipt-title">
+                Example receipt (illustrative)
+              </h3>
+              <pre class="feature-receipt__code" aria-label="Example receipt">
+Window: W(2026-01-08T14:00..14:10), config=cfg_19A4
+
+Alignment:
+- tau_hat(A→B) = 12.4 ms
+- method = phasor estimate (ω0 band)
+
+Validity checks:
+- closure residual = 0.31 (tol=0.10)  → FAIL
+- non-commuting signature detected     → FAIL
+
+Decision:
+- Co-timed = NO
+- Guidance: pause cancellation; treat as regime shift / medium variability</pre>
+              <p class="feature-receipt__hint">
+                The point: validity is reproducible—another operator can reach the same “co-timed / not co-timed” decision.
+              </p>
+            </section>
+          </div>
+        </section>
+
+        <section class="feature-section" aria-labelledby="benefit-title">
+          <div class="feature-page__inner">
+            <h2 class="feature-section__title" id="benefit-title">The operator benefit</h2>
+
+            <div class="feature-cards feature-cards--wide" role="list">
+              <article class="feature-card" role="listitem">
+                <h3 class="feature-card__title">
+                  <i class="fa-solid fa-filter-circle-xmark" aria-hidden="true"></i>
+                  Fewer false disagreements
+                </h3>
+                <p class="feature-card__text">
+                  Stop diagnosing “conflict” that is really just misalignment.
+                </p>
+              </article>
+
+              <article class="feature-card" role="listitem">
+                <h3 class="feature-card__title">
+                  <i class="fa-solid fa-wrench" aria-hidden="true"></i>
+                  Better interventions
+                </h3>
+                <p class="feature-card__text">
+                  Act on the right cause: alignment/clock issues vs spatial structure vs real drift.
+                </p>
+              </article>
+
+              <article class="feature-card" role="listitem">
+                <h3 class="feature-card__title">
+                  <i class="fa-solid fa-shield" aria-hidden="true"></i>
+                  Safer automation
+                </h3>
+                <p class="feature-card__text">
+                  If co-timing fails, the system blocks naive subtraction and threshold-driven control moves.
+                </p>
+              </article>
+
+              <article class="feature-card" role="listitem">
+                <h3 class="feature-card__title">
+                  <i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i>
+                  Faster diagnosis
+                </h3>
+                <p class="feature-card__text">
+                  The platform tells you the window is not comparable—before you burn hours chasing ghosts.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="feature-section feature-section--tight" aria-labelledby="core-title">
+          <div class="feature-page__inner">
+            <h2 class="feature-section__title" id="core-title">The core idea</h2>
+
+            <div class="feature-core">
+              <p class="feature-core__headline">
+                Comparability isn’t assumed.
+                <strong>It’s proven on a window before interpretation.</strong>
+              </p>
+              <p class="feature-core__text">
+                Co-Timing Validity is the front door to safe subtraction, safe fusion, and safe control.
+                Align first. Then cancel—only when validity clears.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- CASE STUDY (ADDED)                                        -->
+        <!-- ========================================================= -->
+        <section class="feature-section" aria-labelledby="case-study-title">
+          <div class="feature-page__inner">
+            <h2 class="feature-section__title" id="case-study-title">
+              Fictitious case study (that certainly couldn’t happen in your company)
+            </h2>
+
+            <p class="feature-section__text">
+              <strong>Scenario:</strong> “Perfect data” from two sensors produces the wrong subtraction.
+              The team has two streams, both stable, both calibrated, both “clean.” They difference them to find anomalies.
+              The difference screams. Panic begins.
+            </p>
+
+            <div class="feature-callout" role="note" aria-label="Case setup">
+              <p class="feature-callout__title">
+                The plan is simple:
+              </p>
+              <ul class="feature-list">
+                <li>collect two streams,</li>
+                <li>subtract to cancel the common component,</li>
+                <li>threshold the residual,</li>
+                <li>automate a response.</li>
+              </ul>
+            </div>
+
+            <p class="feature-section__text">
+              The dashboard shows high confidence. The residual looks “real.” The team escalates.
+              They are about to tune the whole system… based on a subtraction of two different moments.
+            </p>
+
+            <h3 class="feature-subtitle">What quietly happened (a.k.a. you subtracted time)</h3>
+            <p class="feature-section__text">
+              One stream was delayed by a small, drifting offset: a buffer, a wireless hop, a clock skew, a queue.
+              It wasn’t large enough to trip any “sensor health” checks, but it was enough to break comparability.
+              The difference operation converted timing mismatch into a fake anomaly.
+            </p>
+
+            <ol class="feature-steps feature-steps--compact">
+              <li class="feature-steps__item">
+                <strong>They assumed comparability.</strong>
+                “Same sensor type, same room, same timestamp format” became “same time.”
+              </li>
+              <li class="feature-steps__item">
+                <strong>They subtracted without validating co-timing.</strong>
+                Cancellation was attempted before alignment was proven on window <code>W</code>.
+              </li>
+              <li class="feature-steps__item">
+                <strong>The residual looked meaningful.</strong>
+                It was stable, structured, and perfectly wrong.
+              </li>
+            </ol>
+
+            <h3 class="feature-subtitle">Then the team did the usual thing</h3>
+            <p class="feature-section__text">
+              Meetings. Recalibrations. Threshold widening. “Maybe Sensor B is noisy.”
+              Eventually: “We need more sensors.” The system gets busier without getting truer.
+            </p>
+
+            <h3 class="feature-subtitle">Same story, with Co-Timing Validity</h3>
+            <p class="feature-section__text">
+              Co-Timing Validity runs first. It estimates the relative delay on <code>W</code> and checks closure/residual.
+              The moment it detects non-commuting behavior or drift beyond tolerance, it refuses to certify comparability:
+            </p>
+
+            <pre class="feature-receipt__code" aria-label="Validity gate example">
+Decision:
+- Co-timed = NO
+- Reason: closure residual above tolerance; drift signature detected
+- Guidance: pause subtraction; re-align streams or change scope</pre>
+
+            <p class="feature-section__text">
+              The operator conversation changes from blame to structure:
+              <strong>“Is this disagreement physics… or timing?”</strong>
+            </p>
+
+            <h3 class="feature-subtitle">Takeaway</h3>
+            <p class="feature-section__text">
+              If you can’t prove co-timing on a window, you can’t trust subtraction, correlation, or thresholds.
+              Co-Timing Validity is how you stop timing mismatch from becoming confident anomalies—and start acting only on comparable evidence.
+            </p>
+
+          </div>
+        </section>
+      </main>
+    </site-page>
+  </body>
 </html>
