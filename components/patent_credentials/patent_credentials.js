@@ -412,7 +412,86 @@
                 </header>
 
                 <div class="pc__features" role="list" aria-label="Patent highlights" part="features">
-                  ${featuresHtml}
+                    <div class="" role="listitem" aria-label="">
+                        <a class="pc-feature__link" href="">
+                            <div class="pc-feature__top">
+                            <h3 class="pc-feature__title">
+                                Co-Timing Validity
+                            </h3>
+                            <span class="pc-feature__pill">
+                                Feature
+                            </span>
+                            </div>
+                            <p class="pc-feature__text">
+                                Validates timing relationships across sensors, transforms, and assumptions.
+                            </p>
+                        </a>
+                    </div>
+
+                    <div class="" role="listitem" aria-label="">
+                        <a class="pc-feature__link" href="">
+                            <div class="pc-feature__top">
+                            <h3 class="pc-feature__title">
+                                Interpretive Entitlement
+                            </h3>
+                            <span class="pc-feature__pill">
+                                Feature
+                            </span>
+                            </div>
+                            <p class="pc-feature__text">
+                                Formalizes when an interpretation may be asserted and used by requiring explicit warrants.
+                            </p>
+                        </a>
+                    </div>
+
+                    <div class="" role="listitem" aria-label="">
+                        <a class="pc-feature__link" href="">
+                            <div class="pc-feature__top">
+                            <h3 class="pc-feature__title">
+                                Public Criteria Correctness
+                            </h3>
+                            <span class="pc-feature__pill">
+                                Feature
+                            </span>
+                            </div>
+                            <p class="pc-feature__text">
+                                Defines “correct” using shared, inspectable criteria.
+                            </p>
+                        </a>
+                    </div>
+
+                    <div class="" role="listitem" aria-label="">
+                        <a class="pc-feature__link" href="">
+                            <div class="pc-feature__top">
+                            <h3 class="pc-feature__title">
+                                Construction Selection
+                            </h3>
+                            <span class="pc-feature__pill">
+                                Feature
+                            </span>
+                            </div>
+                            <p class="pc-feature__text">
+                                Makes the chosen frame/model explicit.
+                            </p>
+                        </a>
+                    </div>
+
+                    <div class="pc-feature pc-feature--wide" role="listitem" aria-label="">
+                        <a class="pc-feature__link" href="">
+                            <div class="pc-feature__top">
+                            <h3 class="pc-feature__title">
+                                Multi-Layer Permission-to-Act Stack
+                            </h3>
+                            <span class="pc-feature__pill">
+                                Feature
+                            </span>
+                            </div>
+                            <p class="pc-feature__text">
+                                Separates “can we infer?” from “may we act?”
+                            </p>
+                        </a>
+                    </div>
+
                 </div>
               </div>
 
