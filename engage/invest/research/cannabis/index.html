@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "G-V2474V50XP");
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Research: Cannabis Microclimate Environmental Sensing</title>
+    <meta
+      name="description"
+      content="Cannabis microclimate environmental sensing market deep dive (2025–2035): demand drivers (energy, quality, compliance), market envelope sizing, TAM/SAM/SOM logic, buying triggers, and structural gaps in sparse point sensing."
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Single importmap (lit + Observable Plot + d3) -->
+    <script type="importmap">
+    {
+      "imports": {
+        "lit": "https://esm.run/lit",
+        "@observablehq/plot": "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm",
+        "d3": "https://cdn.jsdelivr.net/npm/d3@7/+esm"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="" id="main-css" />
+    <!-- depth: /engage/invest/research/.../ -->
+    <script type="module" src="../../../../bootstrap.js"></script>
+
+    <link rel="stylesheet" href="../research-detail.css" />
+
+    <!-- Visualizations (Observable Plot) -->
+    <script type="module" src="./research-viz.js"></script>
+
+    <!-- Tiny in-page reference styling (optional; remove if you prefer to keep CSS centralized) -->
+    <style>
+      .ref {
+        font-size: 0.9em;
+        vertical-align: super;
+        text-decoration: none;
+      }
+      .ref:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+      .research-detail__fineprint code { font-size: 0.95em; }
+    </style>
+  </head>
+
+  <body>
+    <site-page>
+      <section class="research-detail" aria-labelledby="rd-title">
+        <div class="research-detail__inner">
+          <header class="research-detail__header">
+            <a class="link link--muted research-detail__back" href="/engage/invest/research/">
+              <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+              Back to Market Research
+            </a>
+
+            <h1 class="research-detail__title" id="rd-title">
+              Cannabis Microclimate Environmental Sensing
+              <span class="research-detail__subtitle">Market Analysis (2025–2035)</span>
+            </h1>
+
+            <p class="research-detail__lede">
+              Commercial cannabis is being forced into industrial discipline: tighter tolerances, higher scrutiny,
+              and cost pressure that makes “environmental truth” monetizable. Dense microclimate sensing sits on top of
+              a budget gravity well (energy + quality + compliance) and compounds once it becomes part of SOPs and logs.
+            </p>
+
+            <div class="research-detail__meta">
+              <span class="badge badge--success">Published</span>
+              <span class="research-detail__meta-item">
+                <i class="fa-solid fa-tags" aria-hidden="true"></i>
+                Cannabis • Cultivation • Post-harvest • Microclimate • Environmental monitoring • Auditability
+              </span>
+            </div>
+
+            <div class="research-detail__cta-row">
+              <a class="button button--primary" href="#request">
+                <i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i>
+                Request additional research
+              </a>
+              <a class="button button--secondary" href="/engage/invest/">
+                <i class="fa-solid fa-handshake" aria-hidden="true"></i>
+                Invest
+              </a>
+            </div>
+          </header>
+
+          <!-- =========================================================
+               CONTEXT
+               ========================================================= -->
+          <section class="research-detail__section" id="context" aria-labelledby="s-context">
+            <h2 class="research-detail__heading" id="s-context">Market Context & Scope</h2>
+
+            <div class="research-detail__panel">
+              <p class="research-detail__text">
+                Commercial cannabis production increasingly operates under industrial constraints: regulatory expectations (especially
+                medical and EU-GMP pathways), rising energy costs, and intensified competition / price compression are pushing operators
+                toward tighter environmental control and defensible monitoring.<a class="ref" href="#ref-3" aria-label="Reference 3">[3]</a>
+              </p>
+
+              <ul class="research-detail__bullets">
+                <li>
+                  <strong>Included:</strong> environmental sensing + monitoring + analytics for cultivation and post-harvest microclimates
+                  (dense multi-point / spatial sensing, dashboards, alerting, and integrations to control systems).
+                </li>
+                <li>
+                  <strong>Where it shows up:</strong> indoor, greenhouse, and hybrid cultivation facilities; drying/curing rooms; storage
+                  and packaging environments where moisture stability impacts quality.<a class="ref" href="#ref-5" aria-label="Reference 5">[5]</a>
+                </li>
+                <li>
+                  <strong>Excluded:</strong> seed-to-sale, POS/retail, payments, and generic compliance software unless bundled directly into
+                  environmental monitoring value.
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- =========================================================
+               DRIVERS
+               ========================================================= -->
+          <section class="research-detail__section" id="drivers" aria-labelledby="s-drivers">
+            <h2 class="research-detail__heading" id="s-drivers">Core Demand Drivers</h2>
+
+            <!-- Fallback: still works if the chart is hidden or JS is off -->
+            <table class="research-detail__table research-detail__table--compact" aria-label="Core demand drivers summary">
+              <thead>
+                <tr>
+                  <th>Driver</th>
+                  <th>Pressure</th>
+                  <th>What it forces</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Energy + opex pressure</strong></td>
+                  <td><strong>5/5</strong></td>
+                  <td>
+                    Microclimate stability becomes a margin lever: reducing variance reduces overcorrection and waste.<a class="ref" href="#ref-3">[3]</a><a class="ref" href="#ref-4">[4]</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Quality outcomes are microclimate outcomes</strong></td>
+                  <td><strong>4/5</strong></td>
+                  <td>
+                    Post-harvest humidity stability can materially affect retention outcomes (reported ~15% deltas under humidity control).<a class="ref" href="#ref-5">[5]</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Compliance + traceability pull “upstream”</strong></td>
+                  <td><strong>4/5</strong></td>
+                  <td>
+                    Monitoring logs and continuity become audit-critical in higher-standard production and medical/EU contexts.<a class="ref" href="#ref-8">[8]</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>IoT + automation adoption</strong></td>
+                  <td><strong>3/5</strong></td>
+                  <td>
+                    Operators normalize sensor→actuation loops and remote/cloud operations; monitoring becomes sticky when tied to SOPs.<a class="ref" href="#ref-1">[1]</a><a class="ref" href="#ref-6">[6]</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Price compression raises operational scrutiny</strong></td>
+                  <td><strong>3/5</strong></td>
+                  <td>
+                    Teams need defensible narratives for drift and losses: “why did this batch fail?” becomes a daily question.<a class="ref" href="#ref-3">[3]</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- Optional viz block -->
+            <!--
+            <div class="research-detail__vizwrap" aria-hidden="true">
+              <div class="research-detail__viz" id="viz-drivers" role="img" aria-label="Core demand drivers visualization"></div>
+              <p class="research-detail__viz-note" id="viz-drivers-note">
+                <strong>Labels:</strong> Energy = Energy + opex · Quality = Quality outcomes · Compliance = Compliance + traceability · IoT = IoT + automation · Scrutiny = Price compression / scrutiny
+              </p>
+            </div>
+
+            <noscript>
+              <p class="research-detail__text">
+                (Interactive visualization requires JavaScript. The summary table above contains the same content.)
+              </p>
+            </noscript>
+            -->
+          </section>
+
+          <!-- =========================================================
+               INFLECTION
+               ========================================================= -->
+          <section class="research-detail__section" id="inflection" aria-labelledby="s-inflection">
+            <h2 class="research-detail__heading" id="s-inflection">Technology & Category Inflection</h2>
+
+            <div class="research-detail__panel">
+              <p class="research-detail__text">
+                The cannabis technology category is increasingly framed around automation, analytics, and IoT integration in grow operations,
+                including environmental monitoring/control and remote/cloud-based workflows.<a class="ref" href="#ref-1">[1]</a>
+              </p>
+
+              <ul class="research-detail__bullets">
+                <li>
+                  <strong>“Basic sensors” isn’t the end-state:</strong> sparse point measurement misses gradients and encourages blind control loops.
+                </li>
+                <li>
+                  <strong>Microclimate sensing wedge:</strong> move from “a few points” to spatially meaningful detection that can
+                  (a) detect gradients, (b) reduce overcorrection, and (c) produce audit-friendly logs.
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- =========================================================
+               BUDGET GRAVITY
+               ========================================================= -->
+          <section class="research-detail__section" id="gravity" aria-labelledby="s-gravity">
+            <h2 class="research-detail__heading" id="s-gravity">Budget Gravity</h2>
+
+            <p class="research-detail__text">
+              Environmental performance sits next to one of the biggest recurring cost lines in indoor cultivation: electricity and climate control.
+              Reported breakdowns include climate-control-heavy shares of usage (e.g., cooling/venting/dehumidification) and cultivation economics where
+              electricity can be 25%+ of production cost in some markets.<a class="ref" href="#ref-3">[3]</a><a class="ref" href="#ref-4">[4]</a>
+            </p>
+
+            <table class="research-detail__table research-detail__table--compact" aria-label="Budget gravity facts">
+              <thead>
+                <tr>
+                  <th>Claim</th>
+                  <th>Why it matters</th>
+                  <th>Source</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Climate control is a dominant power load</strong></td>
+                  <td>Variance reduction has direct margin impact (less overcorrection, fewer losses)</td>
+                  <td><a class="link link--muted" href="#ref-4">[4]</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Electricity can be 25%+ of production cost</strong></td>
+                  <td>Monitoring + stabilization budgets persist in down cycles because the cost is existential</td>
+                  <td><a class="link link--muted" href="#ref-3">[3]</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Post-harvest moisture stability can affect retention outcomes</strong></td>
+                  <td>Post-harvest sensing can justify spend even if cultivation capex freezes</td>
+                  <td><a class="link link--muted" href="#ref-5">[5]</a></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p class="research-detail__text">
+              Takeaway: dense microclimate sensing that reduces “blind control” is adjacent to spend that is already large and recurring.
+            </p>
+          </section>
+
+          <!-- =========================================================
+               SEGMENTS (TAM / SAM / SOM)
+               ========================================================= -->
+          <section class="research-detail__section" id="segments" aria-labelledby="s-segments">
+            <h2 class="research-detail__heading" id="s-segments">TAM / SAM / SOM (10-year horizon)</h2>
+
+            <div class="research-detail__panel">
+              <h3 class="research-detail__panel-title">Addressable Product Category (APC)</h3>
+              <p class="research-detail__text">
+                Environmental sensing + monitoring + analytics for cannabis cultivation & post-harvest microclimates (hardware + software),
+                including dense architectures intended to detect spatial gradients.
+              </p>
+              <p class="research-detail__fineprint">
+                Note: the “environmental slice” below is an explicit modeling assumption (8% / 12% / 18%) applied to a cannabis-tech
+                spend envelope.<a class="ref" href="#ref-2">[2]</a>
+              </p>
+            </div>
+
+            <!-- Fallback sizing tables -->
+            <table class="research-detail__table research-detail__table--compact" aria-label="Top-down envelope anchors">
+              <thead>
+                <tr>
+                  <th>Envelope anchor</th>
+                  <th>Value</th>
+                  <th>Meaning</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Global cannabis tech market (2024)</strong></td>
+                  <td><strong>$6.2B</strong></td>
+                  <td>Top-down “tech spend” envelope used for carve-out modeling<a class="ref" href="#ref-2">[2]</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Global cannabis tech market (2030)</strong></td>
+                  <td><strong>$23.7B</strong></td>
+                  <td>Projected envelope; basis for 2030 TAM run-rate modeling<a class="ref" href="#ref-2">[2]</a></td>
+                </tr>
+                <tr>
+                  <td><strong>U.S. cannabis tech market (2024)</strong></td>
+                  <td><strong>~$1.6B</strong></td>
+                  <td>North America anchor for serviceable share assumptions<a class="ref" href="#ref-2">[2]</a></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <table class="research-detail__table research-detail__table--compact" aria-label="TAM SAM SOM summary">
+              <thead>
+                <tr>
+                  <th>Stage</th>
+                  <th>2030 (run-rate)</th>
+                  <th>2035 (run-rate)</th>
+                  <th>How it’s defined</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Global TAM (Low, 8%)</strong></td>
+                  <td><strong>$1.90B</strong></td>
+                  <td><strong>$3.34B</strong></td>
+                  <td>Environmental slice = 8% of cannabis-tech envelope</td>
+                </tr>
+                <tr>
+                  <td><strong>Global TAM (Base, 12%)</strong></td>
+                  <td><strong>$2.84B</strong></td>
+                  <td><strong>$5.01B</strong></td>
+                  <td>Environmental slice = 12% of cannabis-tech envelope</td>
+                </tr>
+                <tr>
+                  <td><strong>Global TAM (High, 18%)</strong></td>
+                  <td><strong>$4.27B</strong></td>
+                  <td><strong>$7.52B</strong></td>
+                  <td>Environmental slice = 18% of cannabis-tech envelope</td>
+                </tr>
+                <tr>
+                  <td><strong>North America SAM (Base)</strong></td>
+                  <td><strong>$0.85B</strong></td>
+                  <td><strong>$1.50B</strong></td>
+                  <td>NA share modeled at 30% of global envelope (conservative)</td>
+                </tr>
+                <tr>
+                  <td><strong>North America SOM (Base targets)</strong></td>
+                  <td><strong>$8.5M</strong></td>
+                  <td><strong>$45M</strong></td>
+                  <td>Execution-based share of NA SAM: 1% by 2030, 3% by 2035</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p class="research-detail__text">
+              The 2035 global envelope used above (<strong>~$41.8B</strong>) is a conservative post-2030 deceleration assumption (explicitly modeled, not sourced).
+            </p>
+
+            <!-- Optional viz block -->
+            <!--
+            <div class="research-detail__vizwrap" aria-hidden="true">
+              <div class="research-detail__viz" id="viz-segments" role="img" aria-label="TAM SAM SOM visualization"></div>
+              <p class="research-detail__viz-note" id="viz-segments-note">
+                <strong>How to read:</strong> relative scale + the same values shown in the table (low/base/high cases).
+              </p>
+            </div>
+            -->
+          </section>
+
+          <!-- =========================================================
+               BUYING
+               ========================================================= -->
+          <section class="research-detail__section" id="buying" aria-labelledby="s-buying">
+            <h2 class="research-detail__heading" id="s-buying">Adoption & Buying Dynamics</h2>
+
+            <div class="research-detail__panel">
+              <h3 class="research-detail__panel-title">Why adoption compounds</h3>
+              <ul class="research-detail__bullets">
+                <li>
+                  <strong>IoT + automation are already the directional trend</strong> (environment monitoring/control in grow ops).<a class="ref" href="#ref-1">[1]</a>
+                </li>
+                <li>
+                  <strong>Monitoring becomes sticky</strong> once tied to SOPs, QA, and compliance logs (especially higher-standard production contexts).<a class="ref" href="#ref-8">[8]</a>
+                </li>
+                <li>
+                  <strong>Operators already think in loops:</strong> sensor → actuation (irrigation, lighting, greenhouse automation).<a class="ref" href="#ref-6">[6]</a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Fallback table -->
+            <table class="research-detail__table research-detail__table--compact" aria-label="Buying dynamics summary">
+              <thead>
+                <tr>
+                  <th>Trigger</th>
+                  <th>Primary buyers</th>
+                  <th>Pressure</th>
+                  <th>What they need to prove</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Energy cost spikes</strong></td>
+                  <td>Operations; Facilities</td>
+                  <td><strong>4–5/5</strong></td>
+                  <td>Stabilization, reduced overcorrection, measurable opex impact.<a class="ref" href="#ref-3">[3]</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Mold incident / failed batch</strong></td>
+                  <td>QA; Operations</td>
+                  <td><strong>4–5/5</strong></td>
+                  <td>Explain drift, identify origin/propagation, prevent recurrence.<a class="ref" href="#ref-8">[8]</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Expansion / new build</strong></td>
+                  <td>Facilities; Engineering</td>
+                  <td><strong>3–5/5</strong></td>
+                  <td>Commissioning support, integration with controls, continuity of logging.</td>
+                </tr>
+                <tr>
+                  <td><strong>Compliance readiness</strong></td>
+                  <td>QA / Compliance</td>
+                  <td><strong>4–5/5</strong></td>
+                  <td>Audit-grade monitoring continuity (parameters + logs + traceability).<a class="ref" href="#ref-8">[8]</a></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- Optional viz block -->
+            <div class="research-detail__vizwrap" aria-hidden="true">
+              <div class="research-detail__viz" id="viz-buying" role="img" aria-label="Buying dynamics visualization"></div>
+              <p class="research-detail__viz-note">
+                <strong>Labels:</strong> Energy = Energy cost spike · Mold = Mold / failed batch · Build = Expansion / new build · Compliance = Compliance readiness
+              </p>
+            </div>
+
+            <noscript>
+              <p class="research-detail__text">
+                (Interactive visualization requires JavaScript. The summary table above contains the same content.)
+              </p>
+            </noscript>
+          </section>
+
+          <p class="research-detail__text">
+            Each cell is a <strong>trigger → buyer role</strong> pairing. Pressure is a <strong>1–5 qualitative score</strong> (here typically <strong>3–5</strong>).
+          </p>
+
+          <!-- =========================================================
+               GAPS
+               ========================================================= -->
+          <section class="research-detail__section" id="gaps" aria-labelledby="s-gaps">
+            <h2 class="research-detail__heading" id="s-gaps">Market Gaps & Structural Opportunity</h2>
+
+            <p class="research-detail__text">
+              Operators can spend heavily on HVAC/dehumidification and still run blind if sensing is sparse or not spatially representative—leading to
+              overcorrection, localized mold risk, and inconsistent outcomes. The cost structure (HVAC dominance + high electricity share of COGS)
+              makes “better environmental truth” monetizable.<a class="ref" href="#ref-3">[3]</a><a class="ref" href="#ref-4">[4]</a>
+            </p>
+
+            <ul class="research-detail__bullets">
+              <li>Blind spots grow faster than sensor density as rooms scale and airflow patterns shift</li>
+              <li>Point readings don’t survive “why did this batch drift?” scrutiny</li>
+              <li>Teams stay accountable even when tooling can’t justify the story</li>
+            </ul>
+
+            <table class="research-detail__table research-detail__table--compact" aria-label="Market gaps summary">
+              <thead>
+                <tr>
+                  <th>Operator question</th>
+                  <th>Typical point sensing</th>
+                  <th>More sensors</th>
+                  <th>Analytics layer</th>
+                  <th>Dense microclimate sensing</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Did we violate thresholds?</strong></td>
+                  <td><strong>Strong</strong></td>
+                  <td><strong>Strong</strong></td>
+                  <td><strong>Strong</strong></td>
+                  <td><strong>Strong</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Can we log conditions for audits?</strong></td>
+                  <td><strong>Strong</strong></td>
+                  <td><strong>Strong</strong></td>
+                  <td><strong>Strong</strong></td>
+                  <td><strong>Strong</strong> (with spatial receipts)</td>
+                </tr>
+                <tr>
+                  <td><strong>Why did it drift?</strong></td>
+                  <td>Weak</td>
+                  <td>Weak → partial</td>
+                  <td>Partial</td>
+                  <td><strong>Strong</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Where is it unstable?</strong></td>
+                  <td>Weak</td>
+                  <td>Partial</td>
+                  <td>Partial → strong</td>
+                  <td><strong>Strong</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>How did it propagate / what’s the origin?</strong></td>
+                  <td>Weak</td>
+                  <td>Weak</td>
+                  <td>Partial</td>
+                  <td><strong>Strong</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Will this survive a “prove it” review?</strong></td>
+                  <td>Weak</td>
+                  <td>Weak</td>
+                  <td>Partial</td>
+                  <td><strong>Strong</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <!-- =========================================================
+               MVMS + SOM
+               ========================================================= -->
+          <section class="research-detail__section" id="mvms" aria-labelledby="s-mvms">
+            <h2 class="research-detail__heading" id="s-mvms">Minimum Viable Market Segment (MVMS)</h2>
+
+            <div class="research-detail__panel">
+              <h3 class="research-detail__panel-title">MVMS (North America, high pain / high willingness)</h3>
+              <ul class="research-detail__bullets">
+                <li>
+                  <strong>Large indoor cultivators</strong> in high-electricity-rate regions where electricity is routinely 25%+ of production cost.<a class="ref" href="#ref-3">[3]</a>
+                </li>
+                <li>
+                  <strong>Operators with post-harvest sensitivity + logging exposure</strong> (curing/drying, medical-grade programs, EU-GMP-oriented processes).<a class="ref" href="#ref-8">[8]</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="research-detail__panel">
+              <h3 class="research-detail__panel-title">SOM is an outcome, not an assumption</h3>
+              <p class="research-detail__text">
+                SOM becomes plausible when you can demonstrate at least one of:
+              </p>
+              <ul class="research-detail__bullets">
+                <li>measurable energy reduction / stabilization against HVAC/dehu loads<a class="ref" href="#ref-3">[3]</a></li>
+                <li>measurable reduction in mold events / batch losses (quality stability)<a class="ref" href="#ref-8">[8]</a></li>
+                <li>audit-grade monitoring continuity aligned to higher-standard production expectations<a class="ref" href="#ref-8">[8]</a></li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- =========================================================
+               CONCLUSION
+               ========================================================= -->
+          <section class="research-detail__section" id="conclusion" aria-labelledby="s-conclusion">
+            <h2 class="research-detail__heading" id="s-conclusion">Conclusion</h2>
+
+            <div class="research-detail__panel">
+              <p class="research-detail__text">
+                Dense microclimate sensing is a durable wedge because it attaches to recurring, high-gravity budgets: energy, quality,
+                and compliance. The broader cannabis tech market is large and fast-growing ($6.2B → $23.7B by 2030), cultivation economics
+                are dominated by electricity and climate-control loads, and post-harvest moisture stability can materially change outcomes.<a class="ref" href="#ref-2">[2]</a><a class="ref" href="#ref-3">[3]</a><a class="ref" href="#ref-5">[5]</a>
+              </p>
+              <p class="research-detail__text">
+                Therefore: spatially meaningful environmental sensing (not just sparse point measurement) sits on top of a budget gravity well
+                that persists even through price compression—making it a compelling early market to validate “explainable monitoring” and
+                audit-ready narratives.
+              </p>
+            </div>
+          </section>
+
+          <!-- =========================================================
+               SOURCES
+               ========================================================= -->
+          <section class="research-detail__section" id="sources" aria-labelledby="s-sources">
+            <h2 class="research-detail__heading" id="s-sources">Sources</h2>
+
+            <p class="research-detail__text">
+              Numbering is intended for report-style reuse. Some values are top-down envelope anchors; explicit modeling assumptions are labeled as such.
+            </p>
+
+            <ol class="research-detail__bullets" style="list-style: decimal; padding-left: 1.2em;">
+              <li id="ref-1">
+                <strong>Research and Markets listing:</strong> “Cannabis Technology – Global Strategic Business Report” (Jan 2026 listing; includes $6.2B 2024 → $23.7B 2030 and related category framing).
+              </li>
+              <li id="ref-2">
+                <strong>GlobeNewswire press release (Research and Markets):</strong> “Cannabis Technology… Market to Reach $23.7B by 2030 from $6.2B in 2024” (includes U.S. cannabis technology ~$1.6B in 2024).
+              </li>
+              <li id="ref-3">
+                <strong>MJBizDaily (Oct 24, 2025):</strong> energy cost breakdowns and cultivation electricity economics (lighting and climate/control shares; electricity often 25%+ of production cost; $300–$500/lb in some markets).
+              </li>
+              <li id="ref-4">
+                <strong>Southwest Energy Efficiency Project (SWEEP):</strong> climate-control share of indoor grow electricity (cooling/venting/dehumidification ~51%).
+              </li>
+              <li id="ref-5">
+                <strong>Boveda:</strong> humidity control and cited third-party test claim (~15% higher terpene/cannabinoid levels under humidity control).
+              </li>
+              <li id="ref-6">
+                <strong>Klone Colorado:</strong> IoT usage in cannabis cultivation (sensors + automation framing).
+              </li>
+              <li id="ref-7">
+                <strong>Pullman &amp; Comley:</strong> renewable energy framing for cannabis grows (power intensity; solar/mitigation discussion).
+              </li>
+              <li id="ref-8">
+                <strong>Transparent EU-GMP Services (LinkedIn):</strong> environmental monitoring parameters and EU-GMP-aligned monitoring framing; examples emphasizing monitoring log gaps as serious.
+              </li>
+              <li id="ref-9">
+                <strong>InternationalCBC (ICBC):</strong> Research-and-Markets-sourced figures repeated for legal cannabis market context ($33.8B 2024 → $110.1B 2030).
+              </li>
+              <li id="ref-10">
+                <strong>Business Wire:</strong> Research-and-Markets-sourced figures repeated for legal cannabis market context ($33.8B 2024 → $110.1B 2030).
+              </li>
+            </ol>
+
+            <p class="research-detail__fineprint">
+              Modeling notes:
+              <br />
+              • Environmental slice assumptions: 8% / 12% / 18% of cannabis-tech spend (explicit assumptions; sources support relevance, not the exact %).
+              <br />
+              • North America share assumption: 30% of global cannabis-tech spend (explicit assumption; anchored directionally by U.S. share in 2024).
+              <br />
+              • 2035 envelope: modeled conservative post-2030 growth deceleration (explicit assumption; not sourced).
+            </p>
+          </section>
+
+          <!-- =========================================================
+               REQUEST
+               ========================================================= -->
+          <section class="research-detail__section research-detail__section--contact" id="request" aria-labelledby="rq-title">
+            <h2 class="research-detail__heading" id="rq-title">Request Additional Research</h2>
+
+            <p class="research-detail__text">
+              We can share additional research on request: deeper sizing by geography, buyer maps, integration assumptions,
+              or a “what would force action here?” analysis for your facility type.
+            </p>
+
+            <p class="research-detail__text">
+              Email:
+              <a class="link link--primary" href="mailto:contact@hermodlabs.com">contact@hermodlabs.com</a>
+              <span class="research-detail__hint">(include your vertical + what decision you’re making)</span>
+            </p>
+
+            <div class="research-detail__divider" aria-hidden="true"></div>
+
+            <form class="research-detail__form" action="/engage/invest/research/request" method="post">
+              <div class="research-detail__field">
+                <label class="research-detail__label" for="rq-name">Name</label>
+                <input class="research-detail__input" id="rq-name" name="name" type="text" autocomplete="name" required />
+              </div>
+
+              <div class="research-detail__field">
+                <label class="research-detail__label" for="rq-org">Firm / Org (optional)</label>
+                <input class="research-detail__input" id="rq-org" name="org" type="text" autocomplete="organization" />
+              </div>
+
+              <div class="research-detail__field">
+                <label class="research-detail__label" for="rq-email">Email</label>
+                <input class="research-detail__input" id="rq-email" name="email" type="email" autocomplete="email" required />
+              </div>
+
+              <div class="research-detail__field">
+                <label class="research-detail__label" for="rq-ask">What do you want us to add?</label>
+                <textarea
+                  class="research-detail__textarea"
+                  id="rq-ask"
+                  name="message"
+                  rows="6"
+                  placeholder="Examples: ‘North America sizing’, ‘buyer roles + triggers’, ‘post-harvest monitoring workflows’, ‘integration with climate control’, ‘SOM constraints for my segment’…"
+                ></textarea>
+              </div>
+
+              <div class="research-detail__actions">
+                <button class="button button--primary" type="submit">Send request</button>
+                <a class="button button--secondary" href="/engage/invest/research/">Back to Research</a>
+              </div>
+
+              <p class="research-detail__fineprint">We only use this to respond to your request. No spam.</p>
+            </form>
+          </section>
+        </div>
+      </section>
+    </site-page>
+  </body>
+</html>
