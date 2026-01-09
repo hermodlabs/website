@@ -221,3 +221,105 @@
     margin-top: var(--space-5);
   }
 }
+
+
+/* Drop this into your global stylesheet (since we’re in light DOM). */
+
+/* Layout: 2 columns on desktop, 1 column stacked on mobile */
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(16px, 3vw, 32px);
+  align-items: start;
+}
+
+@media (max-width: 920px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hero__viz {
+  justify-self: end;   /* top-right */
+  align-self: start;
+  width: min(520px, 100%);
+}
+
+.hero__vizCard {
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: 18px;
+  padding: 14px 14px 12px;
+  background: rgba(255,255,255,0.86);
+  backdrop-filter: blur(8px);
+}
+
+.hero__vizKicker {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.hero__vizSub {
+  margin-top: 2px;
+  font-size: 13px;
+  opacity: 0.75;
+}
+
+.hero__vizMount {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.hero__vizCaption {
+  margin-top: 8px;
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+/* --- D3/SVG styling --- */
+.heroField {
+  display: block;
+}
+
+.heroField__bg {
+  fill: rgba(0,0,0,0.02);
+}
+
+.heroField__cell {
+  stroke: rgba(0,0,0,0.22);
+  stroke-width: 0.03;
+  shape-rendering: crispEdges;
+}
+
+.heroField__room {
+  fill: none;
+  stroke: rgba(0,0,0,0.55);
+  stroke-width: 0.08;
+}
+
+.heroField__arrow {
+  color: rgba(0,0,0,0.75);
+  stroke: currentColor;
+  stroke-width: 0.10;
+}
+
+.heroField__label {
+  fill: rgba(0,0,0,0.80);
+  font-size: 0.55px; /* scaled by viewBox */
+  font-weight: 700;
+}
+
+.heroField__pulse {
+  fill: none;
+  stroke: rgba(0,0,0,0.85);
+  stroke-width: 0.12;
+  animation: heroPulse 1.25s ease-in-out infinite;
+}
+
+@keyframes heroPulse {
+  0%   { opacity: 0.25; transform-origin: center; }
+  50%  { opacity: 0.95; }
+  100% { opacity: 0.25; }
+}
