@@ -310,86 +310,6 @@
     }
 
     render() {
-      const kicker = this.getAttribute("kicker") || "Patents";
-      const title = this.getAttribute("title") || "Patent filings behind co-timing";
-      const lede =
-        this.getAttribute("lede") ||
-        "We protect the core mechanisms so teams can rely on clearer boundaries when subtracting, comparing, thresholding, or interpreting streams.";
-      const href = this.getAttribute("href") || "/ip";
-      const linkText = this.getAttribute("link-text") || "IP overview";
-
-      const issued = normalize(this.getAttribute("issued"));
-      const pending = normalize(this.getAttribute("pending"));
-
-      const jurisdictions = normalize(this.getAttribute("jurisdictions"));
-      const scope = this.getAttribute("scope") || "Co-timing + cancellation + diagnostics";
-
-      const status = this.getAttribute("status") || "Patent pending";
-      const filings = this.getAttribute("filings") || "Applications filed";
-
-      const wideTitle = this.getAttribute("wide-title") || "Built for verifiable deployment";
-      const widePill = this.getAttribute("wide-pill") || "Proof-shaped";
-      const wideText =
-        this.getAttribute("wide-text") ||
-        "Filings track the same philosophy as the engine: make assumptions explicit, timing relationships checkable, and failure modes diagnosable.";
-      const wideLinkText = this.getAttribute("wide-link-text") || "Learn more";
-
-      // Top row: counts if provided, otherwise status/filings
-      const topLeftTitle = (issued || pending) ? "Issued" : "Status";
-      const topLeftPill = (issued || pending) ? (issued || "—") : status;
-      const topLeftText = (issued || pending)
-        ? "Granted coverage for core mechanisms."
-        : "Current IP posture for the engine.";
-
-      const topRightTitle = (issued || pending) ? "Pending" : "Filings";
-      const topRightPill = (issued || pending) ? (pending || "—") : filings;
-      const topRightText = (issued || pending)
-        ? "Applications in review / prosecution."
-        : "Applications supporting key claims.";
-
-      const row2LeftTitle = "Jurisdictions";
-      const row2LeftPill = jurisdictions || "Varies";
-      const row2LeftText = jurisdictions
-        ? "Coverage pursued across listed regions."
-        : "Coverage varies by region and embodiment.";
-
-      const row2RightTitle = "Scope";
-      const row2RightPill = scope;
-      const row2RightText = "Claims focus on timing validity and what follows from it.";
-
-      const features = [
-        { wide: false, title: topLeftTitle,  pill: topLeftPill,  text: topLeftText,  action: "" },
-        { wide: false, title: topRightTitle, pill: topRightPill, text: topRightText, action: "" },
-        { wide: false, title: row2LeftTitle, pill: row2LeftPill, text: row2LeftText, action: "" },
-        { wide: false, title: row2RightTitle,pill: row2RightPill,text: row2RightText,action: "" },
-        { wide: true,  title: wideTitle,     pill: widePill,     text: wideText,     action: wideLinkText },
-      ];
-
-      const featuresHtml = features
-        .map((f, idx) => {
-          const wideClass = f.wide ? "pc-feature pc-feature--wide" : "pc-feature";
-          const aria = f.wide ? "Patent highlight (spans both columns)" : `Patent highlight ${idx + 1}`;
-          const showAction = Boolean(f.action);
-
-          return `
-            <div class="${wideClass}" role="listitem" aria-label="${esc(aria)}">
-              <a class="pc-feature__link" href="${esc(href)}">
-                <div class="pc-feature__top">
-                  <h3 class="pc-feature__title">${esc(f.title)}</h3>
-                  <span class="pc-feature__pill">${esc(f.pill)}</span>
-                </div>
-                <p class="pc-feature__text">${esc(f.text)}</p>
-                ${
-                  showAction
-                    ? `<span class="pc-feature__action">${esc(f.action)} <span aria-hidden="true">→</span></span>`
-                    : ``
-                }
-              </a>
-            </div>
-          `;
-        })
-        .join("");
-
       this.shadowRoot.innerHTML = `
         <style>${css}</style>
 
@@ -398,14 +318,16 @@
             <div class="pc__panel" part="panel">
               <div class="pc__inner">
                 <header>
-                  <p class="pc__kicker"><span class="pc__dot" aria-hidden="true"></span>${esc(kicker)}</p>
-                  <h2 class="pc__title" id="pc-title" part="title">${esc(title)}</h2>
-                  <p class="pc__lede" part="lede">${esc(lede)}</p>
+                  <p class="pc__kicker"><span class="pc__dot" aria-hidden="true"></span>Features</p>
+                  <h2 class="pc__title" id="pc-title" part="title">An engine that earns the right to act.</h2>
+                  <p class="pc__lede" part="lede">
+                    Five mechanisms make interpretation explicit, publicly checkable, and safer to deploy.
+                  </p>
 
                   <div class="pc__cta">
                     <slot name="cta">
-                      <a class="pc__link" href="${esc(href)}" part="link">
-                        ${esc(linkText)} <span aria-hidden="true">→</span>
+                      <a class="pc__link" href="/explore/engine" part="link">
+                        Learn More<span aria-hidden="true">→</span>
                       </a>
                     </slot>
                   </div>
@@ -413,7 +335,7 @@
 
                 <div class="pc__features" role="list" aria-label="Patent highlights" part="features">
                     <div class="" role="listitem" aria-label="">
-                        <a class="pc-feature__link" href="">
+                        <a class="pc-feature__link" href="/explore/engine/features/co_timing_validity">
                             <div class="pc-feature__top">
                             <h3 class="pc-feature__title">
                                 Co-Timing Validity
@@ -429,7 +351,7 @@
                     </div>
 
                     <div class="" role="listitem" aria-label="">
-                        <a class="pc-feature__link" href="">
+                        <a class="pc-feature__link" href="/explore/engine/features/interpretive_entitlement">
                             <div class="pc-feature__top">
                             <h3 class="pc-feature__title">
                                 Interpretive Entitlement
@@ -445,7 +367,7 @@
                     </div>
 
                     <div class="" role="listitem" aria-label="">
-                        <a class="pc-feature__link" href="">
+                        <a class="pc-feature__link" href="/explore/engine/features/public_criteria_correctness">
                             <div class="pc-feature__top">
                             <h3 class="pc-feature__title">
                                 Public Criteria Correctness
@@ -461,7 +383,7 @@
                     </div>
 
                     <div class="" role="listitem" aria-label="">
-                        <a class="pc-feature__link" href="">
+                        <a class="pc-feature__link" href="/explore/engine/features/construction_selection">
                             <div class="pc-feature__top">
                             <h3 class="pc-feature__title">
                                 Construction Selection
@@ -477,7 +399,7 @@
                     </div>
 
                     <div class="pc-feature pc-feature--wide" role="listitem" aria-label="">
-                        <a class="pc-feature__link" href="">
+                        <a class="pc-feature__link" href="/explore/engine/features/multi_layer_permission_to_act_stack">
                             <div class="pc-feature__top">
                             <h3 class="pc-feature__title">
                                 Multi-Layer Permission-to-Act Stack
