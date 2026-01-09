@@ -188,9 +188,14 @@ export class SiteHero extends LitElement {
           <!-- Left column: copy -->
           <div class="hero__copy">
             <div class="hero__subheadBlock">
+            <h1 class="hero__title" id="hero-title">
+                <span>Our 3D humidity-gradient modeling turns “room average” into actionable zones.</span>
+            </h1>
+            <!--
               <p class="hero__subhead">
                 Our 3D humidity-gradient modeling turns “room average” into actionable zones.
               </p>
+            -->
 
               <ul class="hero__bullets">
                 <li>Find hotspots and airflow dead zones</li>
