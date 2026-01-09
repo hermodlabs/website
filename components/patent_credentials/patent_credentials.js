@@ -324,13 +324,6 @@
                     Five mechanisms make interpretation explicit, publicly checkable, and safer to deploy.
                   </p>
 
-                  <div class="pc__cta">
-                    <slot name="cta">
-                      <a class="pc__link" href="/explore/engine" part="link">
-                        Learn More<span aria-hidden="true">→</span>
-                      </a>
-                    </slot>
-                  </div>
                 </header>
 
                 <div class="pc__features" role="list" aria-label="Patent highlights" part="features">
