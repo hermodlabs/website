@@ -1,6 +1,8 @@
 // bootstrap.js
 
 import "./components/patent_credentials/patent_credentials.js";
+import "./components/cannabis_market_proof/cannabis_market_proof.js";
+
 
 
 function getDeployBase() {
