@@ -1,5 +1,8 @@
 // bootstrap.js
 
+import "./components/patent_credentials/patent_credentials.js";
+
+
 function getDeployBase() {
   // Optional manual override:
   // <meta name="app-base" content="/my-repo/" />

@@ -43,6 +43,24 @@
 <body>
   <site-page>
     <site-hero></site-hero>
+    <patent-credentials
+    kicker="Patents"
+    title="Patent filings behind co‑timing"
+    lede="Our core mechanisms are covered by patent filings—so teams can deploy with clearer boundaries and fewer surprises."
+    href="/ip"
+    link-text="Learn about our IP"
+    status="Patent pending"
+    filings="Applications filed"
+    scope="Co‑timing + cancellation + diagnostics"
+  >
+    <!-- OPTIONAL: slot your existing button style so it matches the site perfectly -->
+    <a slot="cta" class="button button--primary" href="/ip">IP Overview</a>
+
+    <!-- OPTIONAL: customize the footer note -->
+    <span slot="note">
+      Patent coverage varies by jurisdiction and embodiment. Details available on request.
+    </span>
+  </patent-credentials>
     <social-proof></social-proof>
     <site-about></site-about>
     <event-invite></event-invite>
