@@ -712,6 +712,48 @@ event-invite:focus-within {
 }
 
 
+/* Why-care strapline */
+.hl-why{
+  margin: var(--space-3) 0 var(--space-2);
+  color: var(--text-muted);
+  line-height: 1.5;
+  max-width: 72ch;
+}
+
+.hl-why strong{
+  color: var(--text-main);
+  font-weight: 800;
+}
+
+/* Tiny operational loop callout */
+.hl-loop{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  background: rgba(15,23,42,0.02);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-3);
+}
+
+.hl-loop__step{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  white-space: nowrap;
+}
+
+.hl-loop__step i{
+  opacity: 0.6;
+}
+
+.hl-loop__arrow{
+  opacity: 0.35;
+}
+
     </style>
   </head>
 
@@ -749,8 +791,35 @@ event-invite:focus-within {
               </span>
 
               <a slot="cta" class="button button--primary" href="/ip">IP Overview</a>
-              <span slot="note">Patent coverage varies by jurisdiction and embodiment. Details available on request.</span>
+              <span slot="note">
+                Patent coverage varies by jurisdiction and embodiment. Details available on request.
+              </span>
             </patent-credentials>
+          </div>
+
+          <!-- WHY THE OPERATOR SHOULD CARE (patents framing) -->
+          <p class="hl-why" aria-label="Why patents matter to operators">
+            Our patent filings mean the <strong>core method is defined</strong>; so, the workflow stays
+            <strong>stable</strong>, failures stay <strong>diagnosable</strong>, and you get fewer
+            <strong>surprises during runs</strong>.
+          </p>
+
+          <!-- Tiny operational loop -->
+          <div class="hl-loop" role="note" aria-label="Operational loop">
+            <span class="hl-loop__step">
+              <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>
+              Map
+            </span>
+            <span class="hl-loop__arrow" aria-hidden="true">→</span>
+            <span class="hl-loop__step">
+              <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
+              Fix
+            </span>
+            <span class="hl-loop__arrow" aria-hidden="true">→</span>
+            <span class="hl-loop__step">
+              <i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>
+              Verify
+            </span>
           </div>
 
           <!-- Operator-meaning meta row -->
@@ -771,9 +840,9 @@ event-invite:focus-within {
 
           <!-- Operator-meaning chips -->
           <div class="hl-chips hl-chips--ip" aria-label="What this enables">
-            <span class="hl-chip">Pocket map</span>
-            <span class="hl-chip">Intervention proof</span>
-            <span class="hl-chip">Fewer late surprises</span>
+            <span class="hl-chip">Defined method</span>
+            <span class="hl-chip">Diagnosable failures</span>
+            <span class="hl-chip">Stable workflow</span>
           </div>
         </div>
 
@@ -781,6 +850,7 @@ event-invite:focus-within {
     </div>
   </div>
 </section>
+
 
 
 
