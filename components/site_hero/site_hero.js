@@ -240,7 +240,7 @@ render() {
             <div class="hero__vizSub">Zones + pockets (2D analog)</div>
             <div id="hero-field" class="hero__vizMount"></div>
             <div class="hero__vizCaption">
-              Still trusting the room average? That’s how pockets survive.
+              Room averages hide the pocket that's forming right now.
             </div>
           </div>
         </div>
