@@ -195,6 +195,160 @@ event-invite:focus-within {
   }
 }
 
+/* =========================
+   4) CARDS WITH MEANING
+   Chips + metric cards + assumptions callout
+   ========================= */
+
+.hl-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.hl-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5ch;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  background: var(--chip);
+  border: 1px solid var(--border-soft);
+  color: var(--text-main);
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Metric grid */
+.hl-metrics {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: var(--space-3) 0 var(--space-4);
+}
+
+@media (min-width: 760px) {
+  .hl-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.hl-metric {
+  background: var(--panel);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  box-shadow: none;
+}
+
+.hl-metric__label {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--space-2);
+}
+
+.hl-metric__value {
+  color: var(--text-main);
+  font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+/* Assumptions footnote (lighter inset) */
+.hl-footnote {
+  background: var(--panel-softer, rgba(15, 23, 42, 0.03));
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+}
+
+.hl-footnote__label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.hl-footnote__text {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  max-width: 72ch;
+}
+
+.hl-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+  align-items: center;
+}
+
+/* =========================
+   8) D3 "MARKET WEDGE" STRIP
+   Compact, emblematic, not a dashboard
+   ========================= */
+
+.hl-wedge {
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.hl-wedge__label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.hl-wedge__viz {
+  background: var(--panel);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+}
+
+/* Tooltip */
+.hl-tip {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  background: var(--panel);
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+  padding: 0.6rem 0.7rem;
+  max-width: 320px;
+  color: var(--text-main);
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+.hl-tip__k {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.hl-tip__muted {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+
     </style>
   </head>
 
@@ -237,36 +391,84 @@ event-invite:focus-within {
     </div>
   </section>
 
-  <section class="hl-section" id="market">
-    <div class="hl-container">
-      <div class="hl-grid">
-        <div class="hl-story">
-          <cannabis-market-proof
-            kicker="Market Research"
-            title="Cannabis Microclimate Sensing — Market Wedge"
-            lede="We’re entering cannabis through a cost-and-compliance wedge: dense microclimate sensing that turns energy, quality, and audit pressure into measurable stability."
-            href="/engage/invest/research/cannabis/"
-            hrefText="Read the deep dive"
-            secondaryHref="/engage/invest/research/#request"
-            secondaryText="Request additions"
-            status="Published"
-            horizon="2025–2035"
-            tam2030="$2.84B"
-            tam2035="$5.01B"
-            naSam2030="$0.85B"
-            naSam2035="$1.50B"
-            som2030="$8.5M"
-            som2035="$45M"
-            assumptions="Base case: 12% environmental slice of cannabis-tech spend; North America = 30% of global; SOM targets 1% by 2030 and 3% by 2035."
-          ></cannabis-market-proof>
+<section class="hl-section" id="market">
+  <div class="hl-container">
+    <div class="hl-grid hl-grid--single">
+      <div class="hl-story">
+
+        <!-- Branded header stack (optional but recommended) -->
+        <div class="hl-header">
+          <div class="hl-kicker">Market Research</div>
+          <h2 class="hl-title">Cannabis Microclimate Sensing — Market Wedge</h2>
+          <p class="hl-lede">
+            We’re entering cannabis through a cost-and-compliance wedge: dense microclimate sensing that turns energy, quality, and audit pressure into measurable stability.
+          </p>
         </div>
 
-        <aside class="hl-proof">
-          <!-- Optional: place a D3 “timeline strip” or a compact wedge graphic here later -->
-        </aside>
+        <!-- STATUS CHIPS -->
+        <div class="hl-chips" aria-label="Status">
+          <span class="hl-chip">Published</span>
+          <span class="hl-chip">Horizon: 2025–2035</span>
+        </div>
+
+        <!-- METRIC CARDS -->
+        <div class="hl-metrics" aria-label="Market sizing">
+          <div class="hl-metric">
+            <div class="hl-metric__label">TAM (2030)</div>
+            <div class="hl-metric__value">$2.84B</div>
+          </div>
+          <div class="hl-metric">
+            <div class="hl-metric__label">TAM (2035)</div>
+            <div class="hl-metric__value">$5.01B</div>
+          </div>
+          <div class="hl-metric">
+            <div class="hl-metric__label">NA SAM (2030)</div>
+            <div class="hl-metric__value">$0.85B</div>
+          </div>
+          <div class="hl-metric">
+            <div class="hl-metric__label">NA SAM (2035)</div>
+            <div class="hl-metric__value">$1.50B</div>
+          </div>
+          <div class="hl-metric">
+            <div class="hl-metric__label">SOM target (2030)</div>
+            <div class="hl-metric__value">$8.5M</div>
+          </div>
+          <div class="hl-metric">
+            <div class="hl-metric__label">SOM target (2035)</div>
+            <div class="hl-metric__value">$45M</div>
+          </div>
+        </div>
+
+<!-- 8) Tiny D3 signature visual (timeline strip) -->
+<!-- Drop this right under your chips (or under the lede) in the Market section -->
+<div class="hl-wedge">
+  <div class="hl-wedge__label">Market wedge (2025 → 2035)</div>
+  <div id="market-wedge" class="hl-wedge__viz" aria-label="Market wedge timeline"></div>
+</div>
+
+
+        <!-- ASSUMPTIONS CALLOUT -->
+        <div class="hl-footnote" role="note">
+          <div class="hl-footnote__label">Assumptions</div>
+          <div class="hl-footnote__text">
+            Base case: 12% environmental slice of cannabis-tech spend; North America = 30% of global; SOM targets 1% by 2030 and 3% by 2035.
+          </div>
+        </div>
+
+<div class="hl-cta-row">
+  <a class="button button--primary" href="/engage/invest/research/cannabis/">
+    Read the deep dive
+  </a>
+  <a class="button button--secondary" href="/engage/invest/research/#request">
+    Request additions
+  </a>
+</div>
+
+
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <section class="hl-section" id="event">
     <div class="hl-container">
@@ -282,3 +484,187 @@ event-invite:focus-within {
 
 </body>
 </html>
+
+
+<script>
+/* =========================
+   D3: tiny market wedge strip
+   - 2025 → 2035 axis
+   - TAM/SAM/SOM as bands
+   - assumptions tooltip on hover
+   ========================= */
+(function () {
+  if (!window.d3) return;
+
+  const mount = document.getElementById("market-wedge");
+  if (!mount) return;
+
+  // --- Data (use your real numbers; keep it simple) ---
+  const years = { start: 2025, end: 2035 };
+
+  // Bands are normalized for display; labels carry the actual numbers.
+  // You can tune "height" values if you want the wedge proportions to feel different.
+  const bands = [
+    { key: "TAM",  y: 10, h: 18, label: "TAM",  range: "$2.84B → $5.01B" },
+    { key: "SAM",  y: 34, h: 14, label: "NA SAM", range: "$0.85B → $1.50B" },
+    { key: "SOM",  y: 54, h: 10, label: "SOM",  range: "$8.5M → $45M" }
+  ];
+
+  const assumptionsText =
+    "Base case: 12% environmental slice of cannabis-tech spend; North America = 30% of global; SOM targets 1% by 2030 and 3% by 2035.";
+
+  // --- Layout ---
+  const W = Math.min(860, mount.clientWidth || 860);
+  const H = 92;
+  const M = { top: 14, right: 14, bottom: 18, left: 44 };
+
+  mount.innerHTML = ""; // reset (safe on hot reload)
+
+  const svg = d3.select(mount)
+    .append("svg")
+    .attr("width", "100%")
+    .attr("viewBox", `0 0 ${W} ${H}`)
+    .attr("role", "img");
+
+  const x = d3.scaleLinear()
+    .domain([years.start, years.end])
+    .range([M.left, W - M.right]);
+
+  // --- Tooltip (one per page) ---
+  let tip = document.querySelector(".hl-tip");
+  if (!tip) {
+    tip = document.createElement("div");
+    tip.className = "hl-tip";
+    tip.style.display = "none";
+    document.body.appendChild(tip);
+  }
+
+  function showTip(evt, title, body) {
+    tip.innerHTML = `
+      <div class="hl-tip__k">${title}</div>
+      <div>${body}</div>
+      <div class="hl-tip__muted" style="margin-top:.4rem">Hover the info dot for assumptions.</div>
+    `;
+    tip.style.display = "block";
+    moveTip(evt);
+  }
+
+  function moveTip(evt) {
+    const pad = 12;
+    const xPos = evt.clientX + pad;
+    const yPos = evt.clientY + pad;
+    tip.style.left = `${xPos}px`;
+    tip.style.top = `${yPos}px`;
+  }
+
+  function hideTip() {
+    tip.style.display = "none";
+  }
+
+  // --- Axis line ---
+  svg.append("line")
+    .attr("x1", x(years.start))
+    .attr("x2", x(years.end))
+    .attr("y1", H - M.bottom)
+    .attr("y2", H - M.bottom)
+    .attr("stroke", "currentColor")
+    .attr("opacity", 0.25)
+    .attr("stroke-width", 1);
+
+  // Ticks (start/end only, minimal)
+  const ticks = [years.start, years.end];
+  svg.selectAll(".tick")
+    .data(ticks)
+    .enter()
+    .append("text")
+    .attr("x", d => x(d))
+    .attr("y", H - 4)
+    .attr("text-anchor", d => (d === years.start ? "start" : "end"))
+    .attr("font-size", 11)
+    .attr("opacity", 0.75)
+    .text(d => d);
+
+  // --- Bands (wedge feel: slightly expanding to the right) ---
+  // We draw each band as a quadrilateral: thinner at 2025, thicker at 2035.
+  bands.forEach(b => {
+    const leftH = Math.max(6, b.h * 0.55);
+    const rightH = b.h;
+
+    const yMid = b.y;
+    const x1 = x(years.start);
+    const x2 = x(years.end);
+
+    const points = [
+      [x1, yMid - leftH / 2],
+      [x2, yMid - rightH / 2],
+      [x2, yMid + rightH / 2],
+      [x1, yMid + leftH / 2]
+    ];
+
+    svg.append("path")
+      .attr("d", d3.line()(points.concat([points[0]])))
+      .attr("fill", "currentColor")
+      .attr("opacity", 0.08);
+
+    // Label on left
+    svg.append("text")
+      .attr("x", M.left - 10)
+      .attr("y", yMid + 4)
+      .attr("text-anchor", "end")
+      .attr("font-size", 11)
+      .attr("opacity", 0.8)
+      .text(b.label);
+
+    // Range label near right (subtle)
+    svg.append("text")
+      .attr("x", x2)
+      .attr("y", yMid + 4)
+      .attr("text-anchor", "end")
+      .attr("font-size", 11)
+      .attr("opacity", 0.6)
+      .text(b.range);
+  });
+
+  // --- Assumptions info dot (hover tooltip) ---
+  const dotX = x(2030.5);
+  const dotY = H - M.bottom - 10;
+
+  svg.append("circle")
+    .attr("cx", dotX)
+    .attr("cy", dotY)
+    .attr("r", 6)
+    .attr("fill", "currentColor")
+    .attr("opacity", 0.14);
+
+  svg.append("circle")
+    .attr("cx", dotX)
+    .attr("cy", dotY)
+    .attr("r", 2.25)
+    .attr("fill", "currentColor")
+    .attr("opacity", 0.65);
+
+  svg.append("text")
+    .attr("x", dotX + 10)
+    .attr("y", dotY + 4)
+    .attr("font-size", 11)
+    .attr("opacity", 0.75)
+    .text("Assumptions");
+
+  // Invisible hover target for easier interaction
+  svg.append("rect")
+    .attr("x", dotX - 18)
+    .attr("y", dotY - 14)
+    .attr("width", 140)
+    .attr("height", 28)
+    .attr("fill", "transparent")
+    .style("cursor", "help")
+    .on("mouseenter", function (evt) {
+      showTip(evt, "Base case assumptions", assumptionsText);
+    })
+    .on("mousemove", function (evt) { moveTip(evt); })
+    .on("mouseleave", function () { hideTip(); });
+
+  // Hide tooltip on scroll (nice UX)
+  window.addEventListener("scroll", hideTip, { passive: true });
+})();
+</script>

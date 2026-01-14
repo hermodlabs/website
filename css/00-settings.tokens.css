@@ -44,6 +44,11 @@
     --space-4: 1rem;     /* L */
     --space-5: 2rem;   /* XL */
     --space-6: 4rem;  /* 2XL */
+
+
+    --measure-title: 62ch; /* titles a bit tighter */
+    --measure-lede: 70ch;  /* ledes slightly wider */
+    --measure-body: 72ch;  /* optional: general text blocks */
   }
 
 
@@ -73,5 +78,39 @@
     color: var(--ex-ink);
     padding: clamp(1.25rem, 3vw, 2.75rem) 0;
   }
+
+  /* If you adopted the .hl-header pattern from step (3) */
+.hl-title { max-width: var(--measure-title); }
+.hl-lede  { max-width: var(--measure-lede); }
+
+/* If you want to enforce a measure for any generic text content inside sections */
+.hl-story {
+  /* This controls the reading column itself (good default) */
+  max-width: var(--measure-body);
+}
+
+/* IMPORTANT:
+   If you’re using a two-column layout sometimes, constrain only in those cases.
+   If you’re single-column everywhere, keep it always on. */
+
+/* A) Single-column everywhere: keep it always constrained (remove if you don’t want) */
+/*
+.hl-story { max-width: var(--measure-body); }
+*/
+
+/* B) Only constrain when you opt into two-column layout */
+@media (min-width: 960px) {
+  .hl-grid--two .hl-story {
+    max-width: var(--measure-body);
+  }
+}
+
+/* Optional: if your ledes live inside your custom elements but are in light DOM
+   (not shadow DOM), these selectors might catch them. Use only if applicable. */
+patent-credentials .lede,
+cannabis-market-proof .lede,
+event-invite .lede {
+  max-width: var(--measure-lede);
+}
   
 }
