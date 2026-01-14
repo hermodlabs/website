@@ -38,53 +38,247 @@
     <script type="module">
       import "./bootstrap.js";
     </script>
+    <style type="text/css">
+/* =========================
+   Apply surfaces to page + modules
+   (safe defaults; won’t fight your system)
+   ========================= */
+
+body {
+  background: var(--bg);
+  color: var(--text-main);
+}
+
+/* If your <site-page> is your main wrapper, give it breathing room */
+site-page {
+  display: block;
+  background: var(--bg);
+}
+
+/* Give each major homepage module a section surface.
+   This assumes your custom elements render as block-level. */
+site-hero,
+patent-credentials,
+cannabis-market-proof,
+event-invite {
+  display: block;
+
+  /* Section “module” surface */
+  background: var(--panel-soft);
+
+  /* Separation without heavy borders */
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+
+  /* Vertical rhythm / whitespace (tune as desired) */
+  padding: clamp(1.25rem, 3vw, 2rem);
+  margin: clamp(0.75rem, 2vw, 1.25rem) auto;
+
+  /* Keep it feeling “sheeted” not “boxed” */
+  box-shadow: none;
+}
+
+/* Optional: make just the inner “card” areas pure white if your components contain
+   nested panels. Add this class inside components if you control their templates. */
+.surface-card {
+  background: var(--panel);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+/* Optional callout surface for assumptions / footnotes */
+.surface-callout {
+  background: var(--panel-softer);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+}
+
+/* If borders start to feel too “wireframe”, keep the border only on hover/focus */
+@media (hover: hover) {
+  site-hero:hover,
+  patent-credentials:hover,
+  cannabis-market-proof:hover,
+  event-invite:hover {
+    box-shadow: var(--shadow-soft);
+  }
+}
+
+/* Accessibility: focus ring when a module contains focused content */
+site-hero:focus-within,
+patent-credentials:focus-within,
+cannabis-market-proof:focus-within,
+event-invite:focus-within {
+  outline: 2px solid rgba(15, 23, 42, 0.25);
+  outline-offset: 2px;
+}
+
+/* =========================
+   2) VERTICAL RHYTHM + GRID
+   Drop this into your CSS (after tokens).
+   ========================= */
+
+/* A consistent page container */
+.hl-container {
+  width: min(1120px, calc(100% - 2 * var(--space-4)));
+  margin-inline: auto;
+}
+
+/* Section wrapper = consistent vertical rhythm */
+.hl-section {
+  padding-block: var(--space-6); /* consistent top/bottom spacing */
+}
+
+/* Optional: alternate section tone if you want subtle cadence */
+.hl-section:nth-of-type(even) {
+  /* If you implemented --panel-soft in step (1), this creates a gentle cadence */
+  background: transparent; /* keep page clean; wrapper can be tinted if you prefer */
+}
+
+/* Grid: single column by default, two-column at desktop */
+.hl-grid {
+  display: grid;
+  gap: var(--space-5);
+  align-items: start;
+}
+
+/* Default: one column (mobile/tablet) */
+.hl-grid {
+  display: grid;
+  gap: var(--space-5);
+  align-items: start;
+  grid-template-columns: 1fr; /* default: always single */
+}
+
+/* Desktop: two columns, story left, proof right */
+@media (min-width: 960px) {
+  .hl-grid--two {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  }
+}
+
+/* Force single-column when you want (e.g., a simpler module) */
+.hl-grid--single {
+  grid-template-columns: 1fr !important;
+}
+
+/* Default (single-column): let content use full container width */
+.hl-story {
+  max-width: none;
+}
+
+/* Proof column: “cards/metrics live here” */
+.hl-proof {
+  display: grid;
+  gap: var(--space-4);
+}
+
+/* If your custom elements should stretch cleanly within the layout */
+.hl-story > * ,
+.hl-proof > * {
+  width: 100%;
+}
+
+/* Only constrain reading measure in the two-column layout */
+@media (min-width: 960px) {
+  .hl-grid--two .hl-story {
+    max-width: 72ch;
+  }
+}
+
+/* Optional: add a subtle divider between story and proof on desktop */
+@media (min-width: 960px) {
+  .hl-proof {
+    padding-left: var(--space-5);
+    border-left: 1px solid var(--border-soft);
+  }
+}
+
+    </style>
   </head>
 
 <body>
-  <site-page>
-    <site-hero></site-hero>
-    <patent-credentials
-    kicker="Patents"
-    title="Patent filings behind co‑timing"
-    lede="Our core mechanisms are covered by patent filings—so teams can deploy with clearer boundaries and fewer surprises."
-    href="/ip"
-    link-text="Learn about our IP"
-    status="Patent pending"
-    filings="Applications filed"
-    scope="Co‑timing + cancellation + diagnostics"
-  >
-    <!-- OPTIONAL: slot your existing button style so it matches the site perfectly -->
-    <a slot="cta" class="button button--primary" href="/ip">IP Overview</a>
+<!-- =========================
+     2) SECTION WRAPPER + GRID
+     Goal: consistent vertical rhythm + optional 2-col desktop layout
+     ========================= -->
 
-    <!-- OPTIONAL: customize the footer note -->
-    <span slot="note">
-      Patent coverage varies by jurisdiction and embodiment. Details available on request.
-    </span>
-  </patent-credentials>
-<!-- below patent-credentials -->
-<cannabis-market-proof
-  kicker="Market Research"
-  title="Cannabis Microclimate Sensing — Market Wedge"
-  lede="We’re entering cannabis through a cost-and-compliance wedge: dense microclimate sensing that turns energy, quality, and audit pressure into measurable stability."
-  href="/engage/invest/research/cannabis/"
-  hrefText="Read the deep dive"
-  secondaryHref="/engage/invest/research/#request"
-  secondaryText="Request additions"
-  status="Published"
-  horizon="2025–2035"
-  tam2030="$2.84B"
-  tam2035="$5.01B"
-  naSam2030="$0.85B"
-  naSam2035="$1.50B"
-  som2030="$8.5M"
-  som2035="$45M"
-  assumptions="Base case: 12% environmental slice of cannabis-tech spend; North America = 30% of global; SOM targets 1% by 2030 and 3% by 2035."
-></cannabis-market-proof>
-<!--
-    <social-proof></social-proof>
-    <site-about></site-about>
--->
-    <event-invite></event-invite>
-  </site-page>
+<site-page>
+  <site-hero></site-hero>
+
+  <!-- Wrap each module in a consistent section wrapper -->
+  <section class="hl-section" id="ip">
+    <div class="hl-container">
+      <div class="hl-grid">
+        <!-- Left: story -->
+        <div class="hl-story">
+          <patent-credentials
+            kicker="Patents"
+            title="Patent filings behind co-timing"
+            lede="Our core mechanisms are covered by patent filings—so teams can deploy with clearer boundaries and fewer surprises."
+            href="/ip"
+            link-text="Learn about our IP"
+            status="Patent pending"
+            filings="Applications filed"
+            scope="Co-timing + cancellation + diagnostics"
+          >
+            <a slot="cta" class="button button--primary" href="/ip">IP Overview</a>
+            <span slot="note">Patent coverage varies by jurisdiction and embodiment. Details available on request.</span>
+          </patent-credentials>
+        </div>
+
+        <!-- Right: proof (metrics/cards) -->
+        <aside class="hl-proof">
+          <!-- Optional: put summary cards, chips, or a small visual here
+               If your component already renders the metrics, you can omit this. -->
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="hl-section" id="market">
+    <div class="hl-container">
+      <div class="hl-grid">
+        <div class="hl-story">
+          <cannabis-market-proof
+            kicker="Market Research"
+            title="Cannabis Microclimate Sensing — Market Wedge"
+            lede="We’re entering cannabis through a cost-and-compliance wedge: dense microclimate sensing that turns energy, quality, and audit pressure into measurable stability."
+            href="/engage/invest/research/cannabis/"
+            hrefText="Read the deep dive"
+            secondaryHref="/engage/invest/research/#request"
+            secondaryText="Request additions"
+            status="Published"
+            horizon="2025–2035"
+            tam2030="$2.84B"
+            tam2035="$5.01B"
+            naSam2030="$0.85B"
+            naSam2035="$1.50B"
+            som2030="$8.5M"
+            som2035="$45M"
+            assumptions="Base case: 12% environmental slice of cannabis-tech spend; North America = 30% of global; SOM targets 1% by 2030 and 3% by 2035."
+          ></cannabis-market-proof>
+        </div>
+
+        <aside class="hl-proof">
+          <!-- Optional: place a D3 “timeline strip” or a compact wedge graphic here later -->
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="hl-section" id="event">
+    <div class="hl-container">
+      <div class="hl-grid hl-grid--single">
+        <!-- If event-invite is simple, you can keep it single-column -->
+        <div class="hl-story">
+          <event-invite></event-invite>
+        </div>
+      </div>
+    </div>
+  </section>
+</site-page>
+
 </body>
 </html>

@@ -6,11 +6,17 @@
     /* Light theme */
     --bg: #ffffff;
 
-    /* Panels/borders */
-    --panel: #ffffff;
-    --panel-soft: #ffffff;
-    --border-soft: rgba(15, 23, 42, 0.12);
+
+    --panel: #ffffff;                 /* "card" surface */
+    --panel-soft: #f8fafc;            /* section surface (very light slate) */
+    --panel-softer: #f1f5f9;          /* optional: callouts/footnotes */
+
+    /* Lighten borders slightly (let spacing + surface do more work) */
+    --border-soft: rgba(15, 23, 42, 0.10);
     --border: rgba(15, 23, 42, 0.12);
+
+    /* Optional: a softer shadow that matches the new surfaces */
+    --shadow-soft: 0 16px 40px rgba(15, 23, 42, 0.07);
 
     /* Accent */
     --accent: #0f172a;
