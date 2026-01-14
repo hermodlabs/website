@@ -188,36 +188,37 @@ render() {
         <!-- Left column: copy -->
         <div class="hero__copy">
 
-          <!-- Topological header stack -->
-          <div class="hero__subheadBlock topo">
-            <div class="topo__kicker">Topology of the room</div>
+<div class="hero__subheadBlock topo">
+  <div class="topo__kicker">Grow-room geometry</div>
 
-            <h1 class="hero__title topo__title" id="hero-title">
-              Our 3D humidity-gradient modeling turns
-              <span class="topo__quote">“room average”</span>
-              into <span class="topo__em">actionable zones</span>.
-            </h1>
+  <h1 class="hero__title topo__title" id="hero-title">
+    Turn your grow from
+    <span class="topo__quote">“one number”</span>
+    into <span class="topo__em">zones you can actually run</span>.
+  </h1>
 
-            <p class="topo__lede">
-              We map boundaries, pockets, and stable regions so interventions have coordinates.
-            </p>
+  <p class="topo__lede">
+Canopy climate isn’t uniform.
+Averages hide pockets.
+We map 3D canopy zones for targeted, provable fixes.
+  </p>
 
-            <!-- “Topological” bullets -->
-            <ul class="hero__bullets topo__features">
-              <li class="topo__feature">
-                <span class="topo__glyph" aria-hidden="true"></span>
-                <span class="topo__text"><strong>Detect pockets:</strong> hotspots and airflow dead zones</span>
-              </li>
-              <li class="topo__feature">
-                <span class="topo__glyph" aria-hidden="true"></span>
-                <span class="topo__text"><strong>Stabilize runs:</strong> outcomes stay consistent across cycles</span>
-              </li>
-              <li class="topo__feature">
-                <span class="topo__glyph" aria-hidden="true"></span>
-                <span class="topo__text"><strong>Reduce surprises:</strong> fewer late-stage failures</span>
-              </li>
-            </ul>
-          </div>
+  <ul class="hero__bullets topo__features">
+    <li class="topo__feature">
+      <span class="topo__glyph" aria-hidden="true"></span>
+      <span class="topo__text"><strong>Zone the canopy:</strong> stable lanes vs pocket-prone regions</span>
+    </li>
+    <li class="topo__feature">
+      <span class="topo__glyph" aria-hidden="true"></span>
+      <span class="topo__text"><strong>Catch cycle-driven drift:</strong> repeatable pockets tied to lights / irrigation</span>
+    </li>
+    <li class="topo__feature">
+      <span class="topo__glyph" aria-hidden="true"></span>
+      <span class="topo__text"><strong>Fewer resets:</strong> less chasing setpoints, fewer “that corner” surprises</span>
+    </li>
+  </ul>
+</div>
+
 
           <!-- “Receipt-style” callout -->
           <div class="topo__callout" role="note" aria-label="Priority access">
