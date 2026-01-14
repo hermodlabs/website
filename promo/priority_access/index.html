@@ -34,6 +34,67 @@
 
     <link rel="stylesheet" href="" id="main-css" />
     <script type="module" src="../../bootstrap.js"></script>
+
+    <!-- Page-local styles (safe, scoped) -->
+    <style>
+      .pa-visuals {
+        margin: 1.25rem 0 1.75rem;
+      }
+
+      .pa-visuals__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        align-items: stretch;
+      }
+
+      .pa-card {
+        border: 1px solid rgba(0,0,0,0.10);
+        border-radius: 16px;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+      }
+
+      .pa-card__media {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        background: linear-gradient(180deg, rgba(0,0,0,0.03), rgba(0,0,0,0.01));
+      }
+
+      .pa-card__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .pa-card__body {
+        padding: 0.9rem 1rem 1rem;
+      }
+
+      .pa-card__title {
+        margin: 0 0 0.35rem;
+        font-size: 0.95rem;
+        line-height: 1.25rem;
+        letter-spacing: -0.01em;
+      }
+
+      .pa-card__text {
+        margin: 0;
+        font-size: 0.9rem;
+        line-height: 1.35rem;
+        color: rgba(0,0,0,0.72);
+      }
+
+      /* Mobile: one column */
+      @media (max-width: 820px) {
+        .pa-visuals__grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -46,6 +107,67 @@
               Early partners lock in pricing, get first access to pilots, and can reserve a vertical before competitors do.
             </p>
           </header>
+
+          <!-- NEW: Concept art + operator copy (2-col desktop, 1-col mobile) -->
+          <section class="pa-visuals" aria-label="Pilot concept visuals">
+            <div class="pa-visuals__grid">
+              <!-- 1 -->
+              <article class="pa-card">
+                <div class="pa-card__media">
+                  <!-- TODO: swap src to your real asset -->
+                  <img class="pa-card__img" src="/asset/img/concept_art_1.png" alt="CAD-style grow canopy schematic with speakers and microphones." loading="lazy" />
+                </div>
+                <div class="pa-card__body">
+                  <h3 class="pa-card__title">Canopy-level humidity, mapped in 3D.</h3>
+                  <p class="pa-card__text">See stable zones and pockets so your fixes have coordinates.</p>
+                </div>
+              </article>
+
+              <!-- 2 -->
+              <article class="pa-card">
+                <div class="pa-card__media">
+                  <img class="pa-card__img" src="/asset/img/concept_art_2.png" alt="Exploded CAD diagram of ceiling speakers and layered microphone rings." loading="lazy" />
+                </div>
+                <div class="pa-card__body">
+                  <h3 class="pa-card__title">Fast install. Clean geometry.</h3>
+                  <p class="pa-card__text">Deploy once, capture the canopy volume, stop guessing corners.</p>
+                </div>
+              </article>
+
+              <!-- 3 -->
+              <article class="pa-card">
+                <div class="pa-card__media">
+                  <img class="pa-card__img" src="/asset/img/concept_art_3.png" alt="Split infographic: average dashboard vs highlighted humidity pocket in a canopy volume." loading="lazy" />
+                </div>
+                <div class="pa-card__body">
+                  <h3 class="pa-card__title">Averages say “good.” Pockets say “mold.”</h3>
+                  <p class="pa-card__text">Expose hidden wet zones before late-flower problems.</p>
+                </div>
+              </article>
+
+              <!-- 4 -->
+              <article class="pa-card">
+                <div class="pa-card__media">
+                  <img class="pa-card__img" src="/asset/img/concept_art_4.png" alt="Isometric canopy volume with voxel grid and highlighted clusters." loading="lazy" />
+                </div>
+                <div class="pa-card__body">
+                  <h3 class="pa-card__title">The result is a zone map.</h3>
+                  <p class="pa-card__text">Target air + dehu changes and verify the outcome.</p>
+                </div>
+              </article>
+
+              <!-- 5 -->
+              <article class="pa-card">
+                <div class="pa-card__media">
+                  <img class="pa-card__img" src="/asset/img/concept_art_5.png" alt="CAD schematic with numbered callouts for speakers and microphones." loading="lazy" />
+                </div>
+                <div class="pa-card__body">
+                  <h3 class="pa-card__title">Coverage you can trust.</h3>
+                  <p class="pa-card__text">Multi-path volume coverage, not one sensor and hope.</p>
+                </div>
+              </article>
+            </div>
+          </section>
 
           <section class="priority-access__section" aria-labelledby="pa-what-title">
             <h2 class="priority-access__heading" id="pa-what-title">What Priority Access Means</h2>
