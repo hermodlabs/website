@@ -546,10 +546,12 @@ event-invite:focus-within {
 
 <script>
 /* =========================
-   D3: tiny market wedge strip
-   - 2025 → 2035 axis
-   - TAM/SAM/SOM as bands
-   - assumptions tooltip on hover
+   D3: responsive colored "waffle-as-bars" (rectangles expand to fill width)
+   - 3 rows: TAM / NA SAM / SOM
+   - 10 segments per row
+   - ALWAYS shows value text (on wide screens: right side; on small screens: below the bar)
+   - Uses CSS vars: --tam-color, --sam-color, --som-color
+   - Re-renders on resize using ResizeObserver.
    ========================= */
 (function () {
   if (!window.d3) return;
@@ -557,38 +559,39 @@ event-invite:focus-within {
   const mount = document.getElementById("market-wedge");
   if (!mount) return;
 
-  // --- Data (use your real numbers; keep it simple) ---
-  const years = { start: 2025, end: 2035 };
+  // --- Helper: parse money strings like "$2.84B", "$8.5M" ---
+  function parseMoney(s) {
+    if (!s) return NaN;
+    const str = String(s).trim().replace(/[\$,]/g, "").toUpperCase();
+    const m = str.match(/^([0-9]*\.?[0-9]+)\s*([KMBT])?$/);
+    if (!m) return NaN;
+    const n = parseFloat(m[1]);
+    const unit = m[2] || "";
+    const mult =
+      unit === "K" ? 1e3 :
+      unit === "M" ? 1e6 :
+      unit === "B" ? 1e9 :
+      unit === "T" ? 1e12 : 1;
+    return n * mult;
+  }
 
-  // Bands are normalized for display; labels carry the actual numbers.
-  // You can tune "height" values if you want the wedge proportions to feel different.
-  const bands = [
-    { key: "TAM",  y: 10, h: 18, label: "TAM",  range: "$2.84B → $5.01B" },
-    { key: "SAM",  y: 34, h: 14, label: "NA SAM", range: "$0.85B → $1.50B" },
-    { key: "SOM",  y: 54, h: 10, label: "SOM",  range: "$8.5M → $45M" }
-  ];
+  // --- Data (edit values as needed) ---
+  const raw = [
+    { key: "TAM", label: "TAM",    v2030: "$2.84B", v2035: "$5.01B" },
+    { key: "SAM", label: "NA SAM", v2030: "$0.85B", v2035: "$1.50B" },
+    { key: "SOM", label: "SOM",    v2030: "$8.5M",  v2035: "$45M"   }
+  ].map(d => ({ ...d, n2030: parseMoney(d.v2030), n2035: parseMoney(d.v2035) }));
 
-  const assumptionsText =
-    "Base case: 12% environmental slice of cannabis-tech spend; North America = 30% of global; SOM targets 1% by 2030 and 3% by 2035.";
+  if (raw.some(d => !isFinite(d.n2030) || !isFinite(d.n2035) || d.n2030 <= 0)) return;
 
-  // --- Layout ---
-  const W = Math.min(860, mount.clientWidth || 860);
-  const H = 92;
-  const M = { top: 14, right: 14, bottom: 18, left: 44 };
+  // --- Color mapping (CSS vars) ---
+  const colorFor = (key) => ({
+    TAM: "var(--tam-color, #2563EB)",
+    SAM: "var(--sam-color, #10B981)",
+    SOM: "var(--som-color, #F59E0B)"
+  }[key] || "currentColor");
 
-  mount.innerHTML = ""; // reset (safe on hot reload)
-
-  const svg = d3.select(mount)
-    .append("svg")
-    .attr("width", "100%")
-    .attr("viewBox", `0 0 ${W} ${H}`)
-    .attr("role", "img");
-
-  const x = d3.scaleLinear()
-    .domain([years.start, years.end])
-    .range([M.left, W - M.right]);
-
-  // --- Tooltip (one per page) ---
+  // --- Tooltip (reuses your .hl-tip styles) ---
   let tip = document.querySelector(".hl-tip");
   if (!tip) {
     tip = document.createElement("div");
@@ -597,11 +600,10 @@ event-invite:focus-within {
     document.body.appendChild(tip);
   }
 
-  function showTip(evt, title, body) {
+  function showTip(evt, title, bodyHtml) {
     tip.innerHTML = `
       <div class="hl-tip__k">${title}</div>
-      <div>${body}</div>
-      <div class="hl-tip__muted" style="margin-top:.4rem">Hover the info dot for assumptions.</div>
+      <div>${bodyHtml}</div>
     `;
     tip.style.display = "block";
     moveTip(evt);
@@ -609,120 +611,198 @@ event-invite:focus-within {
 
   function moveTip(evt) {
     const pad = 12;
-    const xPos = evt.clientX + pad;
-    const yPos = evt.clientY + pad;
-    tip.style.left = `${xPos}px`;
-    tip.style.top = `${yPos}px`;
+    tip.style.left = `${evt.clientX + pad}px`;
+    tip.style.top = `${evt.clientY + pad}px`;
   }
 
   function hideTip() {
     tip.style.display = "none";
   }
 
-  // --- Axis line ---
-  svg.append("line")
-    .attr("x1", x(years.start))
-    .attr("x2", x(years.end))
-    .attr("y1", H - M.bottom)
-    .attr("y2", H - M.bottom)
-    .attr("stroke", "currentColor")
-    .attr("opacity", 0.25)
-    .attr("stroke-width", 1);
-
-  // Ticks (start/end only, minimal)
-  const ticks = [years.start, years.end];
-  svg.selectAll(".tick")
-    .data(ticks)
-    .enter()
-    .append("text")
-    .attr("x", d => x(d))
-    .attr("y", H - 4)
-    .attr("text-anchor", d => (d === years.start ? "start" : "end"))
-    .attr("font-size", 11)
-    .attr("opacity", 0.75)
-    .text(d => d);
-
-  // --- Bands (wedge feel: slightly expanding to the right) ---
-  // We draw each band as a quadrilateral: thinner at 2025, thicker at 2035.
-  bands.forEach(b => {
-    const leftH = Math.max(6, b.h * 0.55);
-    const rightH = b.h;
-
-    const yMid = b.y;
-    const x1 = x(years.start);
-    const x2 = x(years.end);
-
-    const points = [
-      [x1, yMid - leftH / 2],
-      [x2, yMid - rightH / 2],
-      [x2, yMid + rightH / 2],
-      [x1, yMid + leftH / 2]
-    ];
-
-    svg.append("path")
-      .attr("d", d3.line()(points.concat([points[0]])))
-      .attr("fill", "currentColor")
-      .attr("opacity", 0.08);
-
-    // Label on left
-    svg.append("text")
-      .attr("x", M.left - 10)
-      .attr("y", yMid + 4)
-      .attr("text-anchor", "end")
-      .attr("font-size", 11)
-      .attr("opacity", 0.8)
-      .text(b.label);
-
-    // Range label near right (subtle)
-    svg.append("text")
-      .attr("x", x2)
-      .attr("y", yMid + 4)
-      .attr("text-anchor", "end")
-      .attr("font-size", 11)
-      .attr("opacity", 0.6)
-      .text(b.range);
-  });
-
-  // --- Assumptions info dot (hover tooltip) ---
-  const dotX = x(2030.5);
-  const dotY = H - M.bottom - 10;
-
-  svg.append("circle")
-    .attr("cx", dotX)
-    .attr("cy", dotY)
-    .attr("r", 6)
-    .attr("fill", "currentColor")
-    .attr("opacity", 0.14);
-
-  svg.append("circle")
-    .attr("cx", dotX)
-    .attr("cy", dotY)
-    .attr("r", 2.25)
-    .attr("fill", "currentColor")
-    .attr("opacity", 0.65);
-
-  svg.append("text")
-    .attr("x", dotX + 10)
-    .attr("y", dotY + 4)
-    .attr("font-size", 11)
-    .attr("opacity", 0.75)
-    .text("Assumptions");
-
-  // Invisible hover target for easier interaction
-  svg.append("rect")
-    .attr("x", dotX - 18)
-    .attr("y", dotY - 14)
-    .attr("width", 140)
-    .attr("height", 28)
-    .attr("fill", "transparent")
-    .style("cursor", "help")
-    .on("mouseenter", function (evt) {
-      showTip(evt, "Base case assumptions", assumptionsText);
-    })
-    .on("mousemove", function (evt) { moveTip(evt); })
-    .on("mouseleave", function () { hideTip(); });
-
-  // Hide tooltip on scroll (nice UX)
   window.addEventListener("scroll", hideTip, { passive: true });
+
+  // --- Compute filled segments based on normalized growth across rows ---
+  function computeRows() {
+    const ratios = raw.map(d => d.n2035 / d.n2030);
+    const rMin = Math.min(...ratios);
+    const rMax = Math.max(...ratios);
+
+    const toFilled = (r) => {
+      const denom = Math.max(1e-9, (rMax - rMin));
+      const t = (r - rMin) / denom;         // 0..1
+      const seg = Math.round(1 + t * 9);    // 1..10
+      return Math.max(1, Math.min(10, seg));
+    };
+
+    return raw.map(d => {
+      const ratio = d.n2035 / d.n2030;
+      return { ...d, ratio, filled: toFilled(ratio) };
+    });
+  }
+
+  function render() {
+    const rows = computeRows();
+
+    const W = Math.max(280, Math.floor(mount.getBoundingClientRect().width || 0));
+    mount.innerHTML = "";
+
+    // Layout
+    const segments = 10;       // 10 blocks
+    const padX = 12;
+    const topPad = 10;
+    const bottomPad = 14;
+
+    const leftLabelW = 62;     // label gutter
+    const rightLabelW = 160;   // value gutter (only used on wider screens)
+
+    // Always show values:
+    // - wide screens: right side
+    // - small screens: below the bar (so it never disappears)
+    const showRight = W >= 520;
+    const showBelow = !showRight;
+
+    const rightGutter = showRight ? rightLabelW : 12;
+
+    // Bar geometry
+    const barX = padX + leftLabelW;
+    const barW = Math.max(140, W - barX - rightGutter - padX);
+
+    // Segment sizing
+    const gap = Math.max(2, Math.min(8, Math.round(barW * 0.01))); // ~1% of width
+    const segW = (barW - (segments - 1) * gap) / segments;
+    const segH = Math.max(12, Math.min(18, Math.round(segW * 0.7)));
+
+    // Row spacing
+    const valueLineH = showBelow ? 14 : 0;               // extra line under bar on small screens
+    const rowGap = Math.max(8, Math.round(segH * 0.6));  // gap to next row
+    const rowH = segH + valueLineH + rowGap;
+
+    const H = topPad + rows.length * rowH + bottomPad;
+
+    const svg = d3.select(mount)
+      .append("svg")
+      .attr("width", "100%")
+      .attr("height", H)
+      .attr("viewBox", `0 0 ${W} ${H}`)
+      .attr("preserveAspectRatio", "xMinYMin meet")
+      .attr("role", "img");
+
+    rows.forEach((r, i) => {
+      const y = topPad + i * rowH;
+      const rowColor = colorFor(r.key);
+
+      // Left label
+      svg.append("text")
+        .attr("x", barX - 10)
+        .attr("y", y + segH - 2)
+        .attr("text-anchor", "end")
+        .attr("font-size", 11)
+        .attr("opacity", 0.86)
+        .text(r.label);
+
+      // Values: right side on wide screens
+      if (showRight) {
+        svg.append("text")
+          .attr("x", W - padX)
+          .attr("y", y + segH - 2)
+          .attr("text-anchor", "end")
+          .attr("font-size", 11)
+          .attr("opacity", 0.7)
+          .text(`${r.v2030} → ${r.v2035}`);
+      }
+
+      // Values: below bar on small screens (ALWAYS shown when narrow)
+      if (showBelow) {
+        // place under the bar, left-aligned at barX
+        svg.append("text")
+          .attr("x", barX)
+          .attr("y", y + segH + 12) // below the bar
+          .attr("text-anchor", "start")
+          .attr("font-size", 10)
+          .attr("opacity", 0.7)
+          .text(`${r.v2030} → ${r.v2035}`);
+      }
+
+      // Segment group
+      const g = svg.append("g").attr("transform", `translate(${barX}, ${y})`);
+
+      // Background segments
+      for (let s = 0; s < segments; s++) {
+        g.append("rect")
+          .attr("x", s * (segW + gap))
+          .attr("y", 0)
+          .attr("width", segW)
+          .attr("height", segH)
+          .attr("rx", Math.min(6, segH / 2))
+          .attr("ry", Math.min(6, segH / 2))
+          .attr("fill", rowColor)
+          .attr("opacity", 0.08)
+          .attr("stroke", rowColor)
+          .attr("stroke-opacity", 0.16)
+          .attr("stroke-width", 0.7);
+      }
+
+      // Filled segments
+      for (let s = 0; s < r.filled; s++) {
+        g.append("rect")
+          .attr("x", s * (segW + gap))
+          .attr("y", 0)
+          .attr("width", segW)
+          .attr("height", segH)
+          .attr("rx", Math.min(6, segH / 2))
+          .attr("ry", Math.min(6, segH / 2))
+          .attr("fill", rowColor)
+          .attr("opacity", 0.28)
+          .attr("stroke", rowColor)
+          .attr("stroke-opacity", 0.22)
+          .attr("stroke-width", 0.7);
+      }
+
+      // Hover target for the whole row (covers label + bar + below-text if present)
+      const hoverH = segH + (showBelow ? valueLineH : 0) + 8;
+
+      svg.append("rect")
+        .attr("x", 0)
+        .attr("y", y - 3)
+        .attr("width", W)
+        .attr("height", hoverH)
+        .attr("fill", "transparent")
+        .style("cursor", "default")
+        .on("mouseenter", function (evt) {
+          const pct = (r.ratio - 1) * 100;
+          const body = `
+            2030: <strong>${r.v2030}</strong><br/>
+            2035: <strong>${r.v2035}</strong><br/>
+            Growth: <strong>${pct.toFixed(0)}%</strong>
+            <div class="hl-tip__muted" style="margin-top:.35rem">
+              Segments indicate relative growth (normalized across TAM/SAM/SOM).
+            </div>
+          `;
+          showTip(evt, r.label, body);
+        })
+        .on("mousemove", function (evt) { moveTip(evt); })
+        .on("mouseleave", hideTip);
+    });
+
+    // Footer note (only when there's room)
+    if (W >= 520) {
+      svg.append("text")
+        .attr("x", padX + leftLabelW)
+        .attr("y", H - 4)
+        .attr("font-size", 10)
+        .attr("opacity", 0.55)
+        .text("Segments fill the full width; filled portion indicates relative growth (2035 vs 2030).");
+    }
+  }
+
+  // ResizeObserver: rerender when container changes size
+  let raf = 0;
+  const ro = new ResizeObserver(() => {
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(render);
+  });
+  ro.observe(mount);
+
+  render();
 })();
 </script>
