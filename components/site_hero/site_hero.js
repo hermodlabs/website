@@ -181,54 +181,74 @@ export class SiteHero extends LitElement {
     //  .text("Worst pocket");
   }
 
-  render() {
-    return html`
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero__inner hero__grid">
-          <!-- Left column: copy -->
-          <div class="hero__copy">
-            <div class="hero__subheadBlock">
-            <h1 class="hero__title" id="hero-title">
-                <span>Our 3D humidity-gradient modeling turns “room average” into actionable zones.</span>
+render() {
+  return html`
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__inner hero__grid">
+        <!-- Left column: copy -->
+        <div class="hero__copy">
+
+          <!-- Topological header stack -->
+          <div class="hero__subheadBlock topo">
+            <div class="topo__kicker">Topology of the room</div>
+
+            <h1 class="hero__title topo__title" id="hero-title">
+              Our 3D humidity-gradient modeling turns
+              <span class="topo__quote">“room average”</span>
+              into <span class="topo__em">actionable zones</span>.
             </h1>
-            <!--
-              <p class="hero__subhead">
-                Our 3D humidity-gradient modeling turns “room average” into actionable zones.
-              </p>
-            -->
 
-              <ul class="hero__bullets">
-                <li>Find hotspots and airflow dead zones</li>
-                <li>Stabilize outcomes across runs</li>
-                <li>Reduce late-stage surprises</li>
-              </ul>
-            </div>
-
-            <p class="hero__note">
-              <strong>Early partners lock in pricing.</strong><br />
-              Secure your vertical early to keep your options open.
+            <p class="topo__lede">
+              We map boundaries, pockets, and stable regions so interventions have coordinates.
             </p>
 
-            <div class="hero__cta-row">
-              <a class="button button--primary" href="/promo/priority_access">Get Priority Access</a>
+            <!-- “Topological” bullets -->
+            <ul class="hero__bullets topo__features">
+              <li class="topo__feature">
+                <span class="topo__glyph" aria-hidden="true"></span>
+                <span class="topo__text"><strong>Detect pockets:</strong> hotspots and airflow dead zones</span>
+              </li>
+              <li class="topo__feature">
+                <span class="topo__glyph" aria-hidden="true"></span>
+                <span class="topo__text"><strong>Stabilize runs:</strong> outcomes stay consistent across cycles</span>
+              </li>
+              <li class="topo__feature">
+                <span class="topo__glyph" aria-hidden="true"></span>
+                <span class="topo__text"><strong>Reduce surprises:</strong> fewer late-stage failures</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- “Receipt-style” callout -->
+          <div class="topo__callout" role="note" aria-label="Priority access">
+            <div class="topo__stamp">PRIORITY</div>
+            <div class="topo__calloutText">
+              <strong>Early partners lock in pricing.</strong>
+              <span>Secure your vertical early to keep your options open.</span>
             </div>
           </div>
 
-          <!-- Right column: viz (top-right) -->
-          <div class="hero__viz" aria-hidden="false">
-            <div class="hero__vizCard">
-              <div class="hero__vizKicker">3D humidity-gradient modeler</div>
-              <div class="hero__vizSub">Zones + pockets (2D analog)</div>
-              <div id="hero-field" class="hero__vizMount"></div>
-              <div class="hero__vizCaption">
-                Still trusting the room average? That’s how pockets survive.
-              </div>
+          <div class="hero__cta-row">
+            <a class="button button--primary" href="/promo/priority_access">Get Priority Access</a>
+          </div>
+        </div>
+
+        <!-- Right column: viz -->
+        <div class="hero__viz" aria-hidden="false">
+          <div class="hero__vizCard">
+            <div class="hero__vizKicker">3D humidity-gradient modeler</div>
+            <div class="hero__vizSub">Zones + pockets (2D analog)</div>
+            <div id="hero-field" class="hero__vizMount"></div>
+            <div class="hero__vizCaption">
+              Still trusting the room average? That’s how pockets survive.
             </div>
           </div>
         </div>
-      </section>
-    `;
-  }
+      </div>
+    </section>
+  `;
+}
+
 }
 
 customElements.define("site-hero", SiteHero);

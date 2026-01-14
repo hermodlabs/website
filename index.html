@@ -394,6 +394,323 @@ event-invite:focus-within {
 }
 
 
+/* =========================
+   HERO VISUAL LANGUAGE (subtle motif)
+   - thin grid
+   - timing ticks
+   - receipt perforation edge
+   - watermark stamp
+   ========================= */
+
+.hl-hero-wrap{
+  position: relative;
+  overflow: hidden;                 /* keeps motifs clipped to the hero card */
+  border-radius: var(--radius-lg);  /* match your module radius */
+}
+
+/* Ensure the hero sits above the motifs */
+.hl-hero-wrap > site-hero{
+  position: relative;
+  z-index: 2;
+}
+
+/* ---- 1) Thin grid background ---- */
+.hl-hero-wrap::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  /* Two-direction grid using linear-gradients */
+  background-image:
+    linear-gradient(to right, rgba(15,23,42,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15,23,42,0.05) 1px, transparent 1px);
+  background-size: 28px 28px;  /* grid spacing */
+  background-position: center;
+
+  /* Keep it very soft */
+  opacity: 0.55;
+}
+
+/* ---- 2) Timing ticks (like a ruler) on the top edge ---- */
+.hl-hero-wrap::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 18px;
+  z-index: 1;
+  pointer-events: none;
+
+  /* repeating tick marks */
+  background-image:
+    repeating-linear-gradient(
+      to right,
+      rgba(15,23,42,0.22) 0px,
+      rgba(15,23,42,0.22) 1px,
+      transparent 1px,
+      transparent 18px
+    );
+  opacity: 0.35;
+}
+
+/* ---- 3) Receipt perforation edge (right side) ---- */
+.hl-hero-wrap .hl-perf{
+  display: none; /* created via ::perf pseudo on wrap below; keep class option */
+}
+
+/* Use a pseudo-element for perforation so you don't need extra HTML */
+.hl-hero-wrap{
+  /* perforation via mask: circles cut along the right edge */
+  -webkit-mask-image:
+    radial-gradient(circle 5px at calc(100% - 1px) 10px, transparent 98%, #000 100%);
+  -webkit-mask-size: 100% 20px;
+  -webkit-mask-repeat: repeat-y;
+  mask-image:
+    radial-gradient(circle 5px at calc(100% - 1px) 10px, transparent 98%, #000 100%);
+  mask-size: 100% 20px;
+  mask-repeat: repeat-y;
+}
+
+/* ---- 4) Watermark-style stamp behind the hero content ---- */
+.hl-hero-wrap .hl-stamp{
+  display: none; /* we do it with a pseudo element to avoid HTML changes */
+}
+
+.hl-hero-wrap .hl-stamp-text{ display:none; }
+
+.hl-hero-wrap .hl-hero-stamp{
+  display:none;
+}
+
+/* Stamp pseudo-element */
+.hl-hero-wrap .hl-stamp-anchor{ display:none; }
+
+.hl-hero-wrap{
+  /* nothing here; stamp is in a pseudo to avoid extra DOM */
+}
+
+.hl-hero-wrap .hl-stamp-ghost{ display:none; }
+
+.hl-hero-wrap{
+  /* add a second layered background stamp via an inner pseudo element */
+}
+
+/* We need a separate pseudo element for stamp; use an inner overlay layer */
+.hl-hero-wrap .hl-hero-overlay{ display:none; }
+
+/* Create stamp with a positioned pseudo using a child selector technique */
+.hl-hero-wrap:has(site-hero)::marker{ content:""; } /* noop; safe */
+
+.hl-hero-wrap .hl-ignore{ display:none; }
+
+/* Stamp using an additional pseudo on site-hero itself to avoid extra wrapper pseudos conflict */
+.hl-hero-wrap > site-hero::before{
+  content: "CERTIFIED";
+  position: absolute;
+  right: 18px;
+  bottom: 16px;
+  z-index: 1;             /* still behind hero content because hero is z=2 */
+
+  font-family: var(--font-sans);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+
+  color: rgba(15,23,42,0.10);
+  transform: rotate(-10deg);
+
+  border: 2px solid rgba(15,23,42,0.10);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+
+  pointer-events: none;
+}
+
+/* Slightly soften stamp + grid on very small screens */
+@media (max-width: 520px){
+  .hl-hero-wrap::before{ opacity: 0.40; background-size: 24px 24px; }
+  .hl-hero-wrap::after{ opacity: 0.25; }
+  .hl-hero-wrap > site-hero::before{ font-size: 1.25rem; opacity: 0.85; }
+}
+
+/* Respect reduced-motion (no motion here, but keep future-safe) */
+@media (prefers-reduced-motion: reduce){
+  .hl-hero-wrap::before,
+  .hl-hero-wrap::after,
+  .hl-hero-wrap > site-hero::before{
+    transition: none;
+  }
+}
+
+/* Ensure the grid aligns to the top (not visually centered) */
+.hl-grid {
+  align-items: start;
+}
+
+/* Tighten the section rhythm slightly so it doesn’t float */
+#market.hl-section {
+  padding-top: var(--space-5);
+  padding-bottom: var(--space-6);
+}
+
+/* Metrics: slightly more card-like */
+.hl-metric {
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+@media (hover:hover) {
+  .hl-metric:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+  }
+}
+
+/* Give the value a little more hierarchy */
+.hl-metric__value {
+  letter-spacing: -0.01em;
+}
+
+/* Make the D3 viz feel intentionally placed */
+.hl-wedge__viz {
+  position: relative;
+}
+
+.hl-wedge__viz::after {
+  content: "Model + Assumptions";
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(15,23,42,0.55);
+  background: rgba(15,23,42,0.04);
+  border: 1px solid rgba(15,23,42,0.10);
+  border-radius: 999px;
+  padding: 0.12rem 0.5rem;
+  pointer-events: none;
+}
+
+
+
+/* =========================
+   IP section: subtle “designed module” polish
+   ========================= */
+
+/* Pull content visually up a bit so it doesn't feel centered */
+#ip.hl-section{
+  padding-top: var(--space-5);
+  padding-bottom: var(--space-6);
+}
+
+/* Wrapper gives a gentle structure */
+.hl-ipCard{
+  position: relative;
+}
+
+/* Thin anchor rule at the top (like a document header) */
+.hl-ipCard::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:-1px;
+  height:2px;
+  background: currentColor;
+  opacity: 0.10;
+  border-radius: 999px;
+}
+
+/* Header lift: soft gradient “sheet” behind the main component */
+.hl-ipHeaderLift{
+  position: relative;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  background:
+    radial-gradient(80% 60% at 18% 0%, rgba(15,23,42,0.06), transparent 60%),
+    var(--panel-soft);
+  padding: var(--space-4);
+}
+
+/* Make sure the inner custom element doesn't add extra margin conflicts */
+.hl-ipHeaderLift patent-credentials{
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* IP meta strip variant: slightly more “filing memo” */
+.hl-metaRow--ip{
+  margin-top: var(--space-3);
+  border: 1px dashed rgba(15,23,42,0.18);
+  background: rgba(15,23,42,0.02);
+}
+
+/* Slightly tighter chip row for IP tags */
+.hl-chips--ip{
+  margin-top: var(--space-2);
+  margin-bottom: 0;
+}
+
+/* Optional: give IP chips a different feel (more label-like) */
+.hl-chips--ip .hl-chip{
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.92;
+}
+
+/* =========================
+   Top-left section header block
+   ========================= */
+
+.hl-sectionHead{
+  margin-bottom: var(--space-4);
+  max-width: 72ch;
+}
+
+/* “Features” kicker */
+.hl-sectionHead__kicker{
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-2);
+}
+
+/* Title */
+.hl-sectionHead__title{
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text-main);
+  margin: 0 0 var(--space-2);
+}
+
+/* Lede */
+.hl-sectionHead__lede{
+  color: var(--text-muted);
+  line-height: 1.55;
+  font-size: 1rem;
+  margin: 0;
+  max-width: 70ch;
+}
+
+/* Optional: a subtle left rule to make it feel “anchored” */
+.hl-sectionHead{
+  padding-left: var(--space-3);
+  border-left: 2px solid rgba(15,23,42,0.12);
+}
+
 
     </style>
   </head>
@@ -405,42 +722,74 @@ event-invite:focus-within {
      ========================= -->
 
 <site-page>
-  <site-hero></site-hero>
+  <div class="hl-hero-wrap">
+    <site-hero></site-hero>
+  </div>
 
-  <!-- Wrap each module in a consistent section wrapper -->
-  <section class="hl-section" id="ip">
-    <div class="hl-container">
-      <div class="hl-grid">
-        <!-- Left: story -->
-        <div class="hl-story">
-          <patent-credentials
-            kicker="Patents"
-            title="Patent filings behind co-timing"
-            lede="Our core mechanisms are covered by patent filings—so teams can deploy with clearer boundaries and fewer surprises."
-            href="/ip"
-            link-text="Learn about our IP"
-            status="Patent pending"
-            filings="Applications filed"
-            scope="Co-timing + cancellation + diagnostics"
-          >
-            <a slot="cta" class="button button--primary" href="/ip">IP Overview</a>
-            <span slot="note">Patent coverage varies by jurisdiction and embodiment. Details available on request.</span>
-          </patent-credentials>
+<section class="hl-section" id="ip">
+  <div class="hl-container">
+    <div class="hl-grid hl-grid--single">
+      <div class="hl-story">
+
+        <div class="hl-ipCard">
+          <!-- Header lift (subtle) -->
+          <div class="hl-ipHeaderLift">
+            <patent-credentials
+              href="/ip"
+              link-text="Learn about our IP"
+              status="Patent pending"
+              filings="Applications filed"
+              scope="Co-timing + cancellation + diagnostics"
+            >
+              <!-- Slots for top-left text -->
+              <span slot="kicker">Features</span>
+              <span slot="title">An engine that earns the right to act.</span>
+              <span slot="lede">
+                Five mechanisms make interpretation explicit, publicly checkable, and safer to deploy.
+              </span>
+
+              <a slot="cta" class="button button--primary" href="/ip">IP Overview</a>
+              <span slot="note">Patent coverage varies by jurisdiction and embodiment. Details available on request.</span>
+            </patent-credentials>
+          </div>
+
+          <!-- Operator-meaning meta row -->
+          <div class="hl-metaRow hl-metaRow--ip" aria-label="Operational outcomes">
+            <span class="hl-meta">
+              <i class="fa-solid fa-location-crosshairs" aria-hidden="true"></i>
+              Find pockets by zone
+            </span>
+            <span class="hl-meta">
+              <i class="fa-solid fa-repeat" aria-hidden="true"></i>
+              Stabilize across runs
+            </span>
+            <span class="hl-meta">
+              <i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>
+              Verify fixes worked
+            </span>
+          </div>
+
+          <!-- Operator-meaning chips -->
+          <div class="hl-chips hl-chips--ip" aria-label="What this enables">
+            <span class="hl-chip">Pocket map</span>
+            <span class="hl-chip">Intervention proof</span>
+            <span class="hl-chip">Fewer late surprises</span>
+          </div>
         </div>
 
-        <!-- Right: proof (metrics/cards) -->
-        <aside class="hl-proof">
-          <!-- Optional: put summary cards, chips, or a small visual here
-               If your component already renders the metrics, you can omit this. -->
-        </aside>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+
+
 
 <section class="hl-section" id="market">
   <div class="hl-container">
     <div class="hl-grid hl-grid--single">
       <div class="hl-story">
+        <div class="hl-marketCard">
 
         <!-- Branded header stack (optional but recommended) -->
         <div class="hl-header">
@@ -523,9 +872,16 @@ event-invite:focus-within {
 </div>
 
 
+
+        <!-- .hl-market-card -->
+        </div>
+      <!-- .hl-story -->
       </div>
+    <!-- .hl-grid -->
     </div>
+  <!-- .hl-container  -->
   </div>
+<!-- .hl-section -->
 </section>
 
   <section class="hl-section" id="event">

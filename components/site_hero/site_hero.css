@@ -323,3 +323,201 @@
   50%  { opacity: 0.95; }
   100% { opacity: 0.25; }
 }
+
+
+/* =========================
+   Topological copy styling (Hero)
+   ========================= */
+
+.topo{
+  position: relative;
+}
+
+/* Small kicker label */
+.topo__kicker{
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-2);
+}
+
+/* Title refinements */
+.topo__title{
+  margin: 0;
+  line-height: 1.12;
+}
+
+.topo__quote{
+  display: inline-block;
+  padding: 0.05em 0.35em;
+  border-radius: 999px;
+  background: var(--chip);
+  border: 1px solid var(--border-soft);
+}
+
+.topo__em{
+  position: relative;
+  display: inline-block;
+}
+
+/* “topological underline” = boundary line */
+.topo__em::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-0.12em;
+  height:2px;
+  background: currentColor;
+  opacity: 0.22;
+  border-radius: 999px;
+}
+
+/* Lede */
+.topo__lede{
+  margin: var(--space-3) 0 0;
+  color: var(--text-muted);
+  max-width: 70ch;
+  line-height: 1.55;
+}
+
+/* Subtle field/grid behind the header block */
+.hero__subheadBlock.topo{
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  background:
+    linear-gradient(to right, rgba(15,23,42,0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15,23,42,0.045) 1px, transparent 1px),
+    var(--panel);
+  background-size: 28px 28px;
+}
+
+/* Features list becomes “topology legend” */
+.topo__features{
+  list-style: none;
+  padding: 0;
+  margin: var(--space-4) 0 0;
+  display: grid;
+  gap: var(--space-3);
+}
+
+.topo__feature{
+  display: grid;
+  grid-template-columns: 1.1rem 1fr;
+  gap: var(--space-2);
+  align-items: start;
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--border-soft);
+}
+
+.topo__feature:first-child{
+  border-top: none;
+  padding-top: 0;
+}
+
+/* “Topological glyph”: little boundary loop + node */
+.topo__glyph{
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(15,23,42,0.25);
+  position: relative;
+  opacity: 0.9;
+}
+
+/* dot = “pocket” */
+.topo__glyph::after{
+  content:"";
+  position:absolute;
+  width: 0.32rem;
+  height: 0.32rem;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.35;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+/* small “boundary cut” mark */
+.topo__glyph::before{
+  content:"";
+  position:absolute;
+  left: 50%;
+  top: -2px;
+  width: 0;
+  height: calc(100% + 4px);
+  border-left: 1px dashed rgba(15,23,42,0.18);
+  transform: translateX(-50%);
+}
+
+.topo__text{
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.topo__text strong{
+  color: var(--text-main);
+}
+
+/* Receipt-ish callout */
+.topo__callout{
+  position: relative;
+  margin-top: var(--space-4);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  background: var(--panel-softer, rgba(15,23,42,0.03));
+  overflow: hidden;
+}
+
+/* Perforation edge (left side) */
+.topo__callout::before{
+  content:"";
+  position:absolute;
+  left: -6px;
+  top: 0;
+  bottom: 0;
+  width: 12px;
+  background:
+    radial-gradient(circle 5px at 6px 10px, transparent 98%, rgba(15,23,42,0.12) 100%);
+  background-size: 12px 20px;
+  background-repeat: repeat-y;
+  opacity: 0.65;
+}
+
+/* Watermark stamp */
+.topo__stamp{
+  position: absolute;
+  right: 14px;
+  top: 12px;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  border: 2px solid rgba(15,23,42,0.14);
+  color: rgba(15,23,42,0.18);
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transform: rotate(-8deg);
+  pointer-events: none;
+}
+
+.topo__calloutText{
+  display: grid;
+  gap: 0.35rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.topo__calloutText strong{
+  color: var(--text-main);
+}
+
+/* Small-screen tidy */
+@media (max-width: 520px){
+  .hero__subheadBlock.topo{ background-size: 22px 22px; }
+  .topo__stamp{ opacity: 0.8; }
+}

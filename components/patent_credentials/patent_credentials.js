@@ -1,7 +1,7 @@
 // patent-credentials.js
 // Self-contained web component (no dependencies).
-// Right column uses a 2-column feature grid (when wide enough) + a wide card spanning both columns,
-// styled to match your engine-hero card vibe, with overlap-safe grid rules.
+// Updated: supports kicker/title/lede via attributes + optional slots.
+// Also gives each instance a unique aria-labelledby target.
 
 (() => {
   const css = `
@@ -66,7 +66,7 @@
       .pc__inner{
         grid-template-columns: 1.1fr 1fr;
         gap: 1.5rem;
-        align-items: center;
+        align-items: start; /* keep header top-left */
       }
     }
 
@@ -88,6 +88,7 @@
       border-radius: 999px;
       background: color-mix(in srgb, var(--pc-accent) 28%, transparent);
       box-shadow: 0 0 0 6px color-mix(in srgb, var(--pc-accent) 12%, transparent);
+      flex: 0 0 auto;
     }
 
     .pc__title{
@@ -104,31 +105,11 @@
       max-width: 52ch;
     }
 
-    .pc__cta{
-      margin-top: .85rem;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: .75rem;
-    }
-
-    /* Default link style (if you don't slot your own button) */
-    .pc__link{
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      color: var(--pc-text);
-      text-decoration: none;
-      font-weight: 600;
-      padding: .55rem .75rem;
-      border-radius: 999px;
-      border: 1px solid var(--pc-border);
-      background: color-mix(in srgb, var(--pc-surface) 85%, transparent);
-    }
-    .pc__link:hover{ border-color: color-mix(in srgb, var(--pc-accent) 35%, var(--pc-border)); }
-    .pc__link:focus-visible{
-      outline: 2px solid color-mix(in srgb, var(--pc-accent) 55%, transparent);
-      outline-offset: 3px;
+    /* Slot wrappers should not introduce weird spacing */
+    ::slotted([slot="kicker"]),
+    ::slotted([slot="title"]),
+    ::slotted([slot="lede"]) {
+      display: contents;
     }
 
     /* RIGHT COLUMN: overlap-safe feature grid */
@@ -236,17 +217,6 @@
       max-width: 60ch;
     }
 
-    .pc-feature__action{
-      display: inline-flex;
-      align-items: center;
-      gap: .4rem;
-
-      margin-top: .65rem;
-      font-weight: 650;
-      font-size: .9rem;
-      color: color-mix(in srgb, var(--pc-accent) 72%, var(--pc-text));
-    }
-
     .pc-feature--wide .pc-feature__link{
       padding: 1.05rem 1.05rem;
     }
@@ -299,6 +269,7 @@
     constructor() {
       super();
       this.attachShadow({ mode: "open" });
+      this._uid = Math.random().toString(36).slice(2, 9);
     }
 
     connectedCallback() {
@@ -310,103 +281,100 @@
     }
 
     render() {
+      // ✅ Use attributes (with your desired defaults)
+      const kicker = normalize(this.getAttribute("kicker")) || "Features";
+      const title = normalize(this.getAttribute("title")) || "An engine that earns the right to act.";
+      const lede =
+        normalize(this.getAttribute("lede")) ||
+        "Five mechanisms make interpretation explicit, publicly checkable, and safer to deploy.";
+
+      const titleId = `pc-title-${this._uid}`;
+
       this.shadowRoot.innerHTML = `
         <style>${css}</style>
 
-        <section class="pc" aria-labelledby="pc-title">
+        <section class="pc" aria-labelledby="${titleId}">
           <div class="pc__container">
             <div class="pc__panel" part="panel">
               <div class="pc__inner">
                 <header>
-                  <p class="pc__kicker"><span class="pc__dot" aria-hidden="true"></span>Features</p>
-                  <h2 class="pc__title" id="pc-title" part="title">An engine that earns the right to act.</h2>
-                  <p class="pc__lede" part="lede">
-                    Five mechanisms make interpretation explicit, publicly checkable, and safer to deploy.
+                  <!-- ✅ Kicker text is now slot/attribute-driven -->
+                  <p class="pc__kicker">
+                    <span class="pc__dot" aria-hidden="true"></span>
+                    <slot name="kicker">${esc(kicker)}</slot>
                   </p>
 
+                  <!-- ✅ Title text is now slot/attribute-driven -->
+                  <h2 class="pc__title" id="${titleId}" part="title">
+                    <slot name="title">${esc(title)}</slot>
+                  </h2>
+
+                  <!-- ✅ Lede text is now slot/attribute-driven -->
+                  <p class="pc__lede" part="lede">
+                    <slot name="lede">${esc(lede)}</slot>
+                  </p>
                 </header>
 
                 <div class="pc__features" role="list" aria-label="Patent highlights" part="features">
-                    <div class="" role="listitem" aria-label="">
-                        <a class="pc-feature__link" href="/explore/engine/features/co_timing_validity">
-                            <div class="pc-feature__top">
-                            <h3 class="pc-feature__title">
-                                Co-Timing Validity
-                            </h3>
-                            <span class="pc-feature__pill">
-                                Feature
-                            </span>
-                            </div>
-                            <p class="pc-feature__text">
-                                Validates timing relationships across sensors, transforms, and assumptions.
-                            </p>
-                        </a>
-                    </div>
+                  <div role="listitem">
+                    <a class="pc-feature__link" href="/explore/engine/features/co_timing_validity">
+                      <div class="pc-feature__top">
+                        <h3 class="pc-feature__title">Co-Timing Validity</h3>
+                        <span class="pc-feature__pill">Feature</span>
+                      </div>
+                      <p class="pc-feature__text">
+                        Validates timing relationships across sensors, transforms, and assumptions.
+                      </p>
+                    </a>
+                  </div>
 
-                    <div class="" role="listitem" aria-label="">
-                        <a class="pc-feature__link" href="/explore/engine/features/interpretive_entitlement">
-                            <div class="pc-feature__top">
-                            <h3 class="pc-feature__title">
-                                Interpretive Entitlement
-                            </h3>
-                            <span class="pc-feature__pill">
-                                Feature
-                            </span>
-                            </div>
-                            <p class="pc-feature__text">
-                                Formalizes when an interpretation may be asserted and used by requiring explicit warrants.
-                            </p>
-                        </a>
-                    </div>
+                  <div role="listitem">
+                    <a class="pc-feature__link" href="/explore/engine/features/interpretive_entitlement">
+                      <div class="pc-feature__top">
+                        <h3 class="pc-feature__title">Interpretive Entitlement</h3>
+                        <span class="pc-feature__pill">Feature</span>
+                      </div>
+                      <p class="pc-feature__text">
+                        Formalizes when an interpretation may be asserted and used by requiring explicit warrants.
+                      </p>
+                    </a>
+                  </div>
 
-                    <div class="" role="listitem" aria-label="">
-                        <a class="pc-feature__link" href="/explore/engine/features/public_criteria_correctness">
-                            <div class="pc-feature__top">
-                            <h3 class="pc-feature__title">
-                                Public Criteria Correctness
-                            </h3>
-                            <span class="pc-feature__pill">
-                                Feature
-                            </span>
-                            </div>
-                            <p class="pc-feature__text">
-                                Defines “correct” using shared, inspectable criteria.
-                            </p>
-                        </a>
-                    </div>
+                  <div role="listitem">
+                    <a class="pc-feature__link" href="/explore/engine/features/public_criteria_correctness">
+                      <div class="pc-feature__top">
+                        <h3 class="pc-feature__title">Public Criteria Correctness</h3>
+                        <span class="pc-feature__pill">Feature</span>
+                      </div>
+                      <p class="pc-feature__text">
+                        Defines “correct” using shared, inspectable criteria.
+                      </p>
+                    </a>
+                  </div>
 
-                    <div class="" role="listitem" aria-label="">
-                        <a class="pc-feature__link" href="/explore/engine/features/construction_selection">
-                            <div class="pc-feature__top">
-                            <h3 class="pc-feature__title">
-                                Construction Selection
-                            </h3>
-                            <span class="pc-feature__pill">
-                                Feature
-                            </span>
-                            </div>
-                            <p class="pc-feature__text">
-                                Makes the chosen frame/model explicit.
-                            </p>
-                        </a>
-                    </div>
+                  <div role="listitem">
+                    <a class="pc-feature__link" href="/explore/engine/features/construction_selection">
+                      <div class="pc-feature__top">
+                        <h3 class="pc-feature__title">Construction Selection</h3>
+                        <span class="pc-feature__pill">Feature</span>
+                      </div>
+                      <p class="pc-feature__text">
+                        Makes the chosen frame/model explicit.
+                      </p>
+                    </a>
+                  </div>
 
-                    <div class="pc-feature pc-feature--wide" role="listitem" aria-label="">
-                        <a class="pc-feature__link" href="/explore/engine/features/multi_layer_permission_to_act_stack">
-                            <div class="pc-feature__top">
-                            <h3 class="pc-feature__title">
-                                Multi-Layer Permission-to-Act Stack
-                            </h3>
-                            <span class="pc-feature__pill">
-                                Feature
-                            </span>
-                            </div>
-                            <p class="pc-feature__text">
-                                Separates “can we infer?” from “may we act?”
-                            </p>
-                        </a>
-                    </div>
-
+                  <div class="pc-feature pc-feature--wide" role="listitem">
+                    <a class="pc-feature__link" href="/explore/engine/features/multi_layer_permission_to_act_stack">
+                      <div class="pc-feature__top">
+                        <h3 class="pc-feature__title">Multi-Layer Permission-to-Act Stack</h3>
+                        <span class="pc-feature__pill">Feature</span>
+                      </div>
+                      <p class="pc-feature__text">
+                        Separates “can we infer?” from “may we act?”
+                      </p>
+                    </a>
+                  </div>
                 </div>
               </div>
 
