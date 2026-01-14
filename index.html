@@ -348,6 +348,52 @@ event-invite:focus-within {
   font-size: 0.88rem;
 }
 
+/* =========================
+   Assumptions list with Font Awesome icons
+   "bullet pointy" + subtle icon presence
+   ========================= */
+
+.hl-assumptions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--space-2);
+}
+
+.hl-assumption {
+  display: grid;
+  grid-template-columns: 1.25rem 1fr;
+  gap: var(--space-2);
+  align-items: start;
+
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.hl-assumption strong {
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+/* Icon sits "behind" the text subtly */
+.hl-assumption__icon {
+  margin-top: 0.15rem;
+  font-size: 1rem;
+
+  color: var(--text-main);
+  opacity: 0.22;              /* key: behind-feel */
+  filter: grayscale(100%);    /* keep it monochrome-ish */
+}
+
+/* Optional: add a faint row divider without getting wireframe-y */
+.hl-assumption + .hl-assumption {
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--border-soft);
+}
+
+
 
     </style>
   </head>
@@ -447,13 +493,25 @@ event-invite:focus-within {
 </div>
 
 
-        <!-- ASSUMPTIONS CALLOUT -->
-        <div class="hl-footnote" role="note">
-          <div class="hl-footnote__label">Assumptions</div>
-          <div class="hl-footnote__text">
-            Base case: 12% environmental slice of cannabis-tech spend; North America = 30% of global; SOM targets 1% by 2030 and 3% by 2035.
-          </div>
-        </div>
+<!-- Replace your current assumptions block with this -->
+<div class="hl-footnote" role="note" aria-label="Assumptions">
+  <div class="hl-footnote__label">Assumptions</div>
+
+  <ul class="hl-assumptions">
+    <li class="hl-assumption">
+      <i class="fa-solid fa-layer-group hl-assumption__icon" aria-hidden="true"></i>
+      <span><strong>Environmental slice:</strong> 12% of cannabis-tech spend.</span>
+    </li>
+    <li class="hl-assumption">
+      <i class="fa-solid fa-globe hl-assumption__icon" aria-hidden="true"></i>
+      <span><strong>Region split:</strong> North America = 30% of global.</span>
+    </li>
+    <li class="hl-assumption">
+      <i class="fa-solid fa-bullseye hl-assumption__icon" aria-hidden="true"></i>
+      <span><strong>Adoption targets:</strong> SOM = 1% by 2030, 3% by 2035.</span>
+    </li>
+  </ul>
+</div>
 
 <div class="hl-cta-row">
   <a class="button button--primary" href="/engage/invest/research/cannabis/">
