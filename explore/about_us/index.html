@@ -35,125 +35,193 @@
     <link rel="stylesheet" href="" id="main-css" />
     <script type="module" src="../../bootstrap.js"></script>
 
+<style>
+  /* Light, scoped styling (optional) */
+  .about { padding: 3rem 0; }
+  .about__grid { gap: 2rem; align-items: start; }
+
+  .about__kicker {
+    font-size: 0.85rem;
+    opacity: 0.75;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .about__title { margin: 0 0 0.75rem; letter-spacing: -0.02em; }
+  .about__lede { margin: 0 0 1rem; font-size: 1.1rem; }
+  .about__para { margin: 0 0 0.9rem; }
+
+  .about__ruleBlock {
+    margin: 1.1rem 0 1.1rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 16px;
+    background: rgba(0,0,0,0.02);
+  }
+  .about__ruleTitle { margin: 0 0 0.2rem; }
+  .about__ruleText { margin: 0 0 0.75rem; opacity: 0.85; }
+  .about__ruleText:last-child { margin-bottom: 0; }
+
+  .about__bullets { margin: 1.25rem 0 1.5rem; padding-left: 1.1rem; }
+  .about__bullets li { margin: 0.4rem 0; }
+  .about__ctaRow { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+  .about__figure {
+    margin: 0;
+    border: 1px solid rgba(0,0,0,0.10);
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+  }
+  .about__figure--spaced { margin-top: 1rem; }
+  .about__comic { width: 100%; height: auto; display: block; }
+  .about__caption { padding: 0.75rem 1rem 1rem; font-size: 0.9rem; opacity: 0.75; }
+
+  .about__note {
+    margin-top: 0.9rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 16px;
+    background: rgba(0,0,0,0.02);
+    font-size: 0.95rem;
+  }
+
+  /* Mobile: one column */
+  @media (max-width: 820px) {
+    .about__ctaRow { justify-content: flex-start; }
+  }
+</style>
+
   </head>
 
 <body>
 <site-page>
-<section class="about-page" aria-labelledby="about-page-title">
-  <div class="about-page__inner">
-    <h1 class="about-page__title" id="about-page-title">About HermodLabs</h1>
+<section class="about" id="about" aria-labelledby="about-title">
+  <div class="hl-container">
+    <div class="hl-grid hl-grid--two about__grid">
+      <!-- Copy -->
+      <div class="about__copy">
+        <div class="about__kicker">About HermodLabs</div>
 
-    <p class="about-page__lede">
-      HermodLabs builds a co-timing engine: a platform for turning messy, drifting sensor streams into measurements you
-      can trust.
-    </p>
+        <h2 class="about__title" id="about-title">
+          When sensor data gets weird, the problem is rarely the data.
+        </h2>
 
-    <p class="about-page__text">
-      If two streams aren't on the same clock, subtraction is not cancellation.
-      It's a gamble.
-    </p>
+        <p class="about__lede">It’s the interpretation.</p>
 
-    <p class="about-page__text">
-      The plots look convincing until they don't.
-    </p>
+        <p class="about__para">
+          We built HermodLabs after spending enough time inside Corporate America to recognize the pattern:
+          when streams don’t agree, the first response is almost never “our assumptions broke.”
+          It’s “the sensor is flaky,” “the room changed,” “the model needs tuning,” or “ops did something different.”
+        </p>
 
-    <p class="about-page__text">
-      We focus on the failure you can't see in a screenshot: time.
-    </p>
-  </div>
-</section>
+        <p class="about__para">
+          The dashboard stays calm while the explanation gets rebuilt.
+          The pipeline starts supplying its own justification.
+          A plot becomes evidence for the assumptions required to interpret the plot.
+        </p>
+
+        <p class="about__para">
+          That’s when the consultants arrive.
+          Not to fix the measurement problem.
+          To fix the story problem.
+        </p>
+
+        <div class="about__ruleBlock" role="note" aria-label="Consulting rules">
+          <p class="about__ruleTitle"><strong>Consulting Rule #1</strong></p>
+          <p class="about__ruleText">
+            If the data won’t authorize the story, make the story authorize the data.
+          </p>
+
+          <p class="about__ruleTitle"><strong>Consulting Rule #2</strong></p>
+          <p class="about__ruleText">
+            If the results won’t validate your promises, reinterpret the results.
+          </p>
+        </div>
+
+<p class="about__para">
+  <strong>Hypothetical use case that certainly couldn’t happen in your company #1:</strong>
+  <em>Baine &amp; Cope</em> shows up with a fresh deck and a 78-page “Alignment Memo.”
+  Page 3 has your exact phrasing in quotes.
+  Page 41 has a new definition of “stable.”
+  The chart is unchanged.
+  The conclusion is bold.
+</p>
 
 
-<!-- Hero / Feature Section -->
-<section class="engine-hero" aria-labelledby="engine-hero-title">
-  <div class="engine-hero__container">
-    <header class="engine-hero__header">
+<p class="about__para">
+  <strong>Hypothetical use case that certainly couldn’t happen in your company #2:</strong>
+  <em>McQuincey &amp; Associates</em> runs the post-mortem with the KPI slide already formatted.
+  The red line gets a new baseline.
+  The pass threshold gets a new footnote.
+  The scope quietly shrinks to “Phase 1.”
+  The metrics are green again.
+</p>
 
-      <h2 class="engine-hero__title" id="engine-hero-title">
-        An engine that earns the right to act.
-      </h2>
 
-      <p class="engine-hero__lede">
-        Five mechanisms make interpretation explicit, publicly checkable, and safer to deploy.
-      </p>
 
-      <div class="engine-hero__cta">
-        <a class="button button--primary" href="/explore/engine">Learn More</a>
+        <p class="about__para">
+          HermodLabs exists to break that loop.
+          We make interpretation earned.
+          We turn the fine print into an explicit contract stack—so claims attach to checks that can fail,
+          with receipts that survive a different operator, a different day, and a different bench.
+        </p>
+
+        <ul class="about__bullets">
+          <li><strong>No self-authorizing plots.</strong> Interpretation is allowed only when the contract stack passes.</li>
+          <li><strong>Receipts, not vibes.</strong> Runs produce artifacts you can audit later, not just screenshots.</li>
+          <li><strong>Failure is diagnosable.</strong> When it breaks, the pipeline tells you what broke—first.</li>
+        </ul>
+
+        <div class="about__ctaRow">
+          <a class="button button--primary" href="/priority-access">Request Priority Access</a>
+          <a class="button button--secondary" href="/ip">See what’s patented</a>
+        </div>
       </div>
-    </header>
 
-    <ul class="engine-hero__grid" role="list" aria-label="Engine features">
-      <li class="engine-feature">
-        <a class="engine-feature__link" href="/explore/engine/features/co_timing_validity">
-          <div class="engine-feature__top">
-            <h3 class="engine-feature__title">Co-Timing Validity</h3>
-            <span class="engine-feature__pill">Feature</span>
-          </div>
-          <p class="engine-feature__text">
-            Validates timing relationships across sensors, transforms, and assumptions.
-          </p>
-          <span class="engine-feature__action" aria-hidden="true">Learn more →</span>
-        </a>
-      </li>
+      <!-- Visual: two comics -->
+      <div class="about__visual">
+        <figure class="about__figure">
+          <img
+            class="about__comic"
+            src="/asset/img/consulting_rule_1.png"
+            alt="Comic: Consultant says, 'The numbers don't matter. I’ll wrap them in a whitepaper that reads like your own reflection.'"
+            loading="lazy"
+          />
+          <!--
+          <figcaption class="about__caption">
+            <strong>Consulting Rule #1:</strong> If the data won’t authorize the story, make the story authorize the data.
+          </figcaption>
+          -->
+        </figure>
 
-      <li class="engine-feature">
-        <a class="engine-feature__link" href="/explore/engine/features/interpretive_entitlement">
-          <div class="engine-feature__top">
-            <h3 class="engine-feature__title">Interpretive Entitlement</h3>
-            <span class="engine-feature__pill">Feature</span>
-          </div>
-          <p class="engine-feature__text">
-            Formalizes when an interpretation may be asserted and used by requiring explicit warrants.
-          </p>
-          <span class="engine-feature__action" aria-hidden="true">Learn more →</span>
-        </a>
-      </li>
+        <figure class="about__figure about__figure--spaced">
+          <img
+            class="about__comic"
+            src="/asset/img/consulting_rule_2.png"
+            alt="Comic: 'Our metrics say we were right. Unless we weren't. Then your requirements were wrong.'"
+            loading="lazy"
+          />
+          <!--
+          <figcaption class="about__caption">
+            <strong>Consulting Rule #2:</strong> If the results won't validate your promises then reinterpret the results.
+          </figcaption>
+          -->
+        </figure>
 
-      <li class="engine-feature">
-        <a class="engine-feature__link" href="/explore/engine/features/public_criteria_correctness">
-          <div class="engine-feature__top">
-            <h3 class="engine-feature__title">Public Criteria Correctness</h3>
-            <span class="engine-feature__pill">Feature</span>
-          </div>
-          <p class="engine-feature__text">
-            Defines “correct” using shared, inspectable criteria.
-          </p>
-          <span class="engine-feature__action" aria-hidden="true">Learn more →</span>
-        </a>
-      </li>
-
-      <li class="engine-feature">
-        <a class="engine-feature__link" href="/explore/engine/features/construction_selection">
-          <div class="engine-feature__top">
-            <h3 class="engine-feature__title">Construction Selection</h3>
-            <span class="engine-feature__pill">Feature</span>
-          </div>
-          <p class="engine-feature__text">
-            Makes the chosen frame/model explicit.
-          </p>
-          <span class="engine-feature__action" aria-hidden="true">Learn more →</span>
-        </a>
-      </li>
-
-      <li class="engine-feature engine-feature--wide">
-        <a class="engine-feature__link" href="/explore/engine/features/multi_layer_permission_to_act_stack">
-          <div class="engine-feature__top">
-            <h3 class="engine-feature__title">Multi-Layer Permission-to-Act Stack</h3>
-            <span class="engine-feature__pill">Feature</span>
-          </div>
-          <p class="engine-feature__text">
-            Separates “can we infer?” from “may we act?”
-          </p>
-          <span class="engine-feature__action" aria-hidden="true">Learn more →</span>
-        </a>
-      </li>
-    </ul>
-
-    <p class="engine-hero__note">
-      Patent pending. Feature names reflect product behavior; underlying implementations may evolve. Coverage may vary by embodiment.
-    </p>
+        <div class="about__note">
+          Our platform is built to survive hostile reading.
+          The easiest way to “pass” should be to actually earn the interpretation.
+        </div>
+      </div>
+    </div>
   </div>
 </section>
+
+
+
 
 
 
