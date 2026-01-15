@@ -92,6 +92,120 @@
   @media (max-width: 820px) {
     .about__ctaRow { justify-content: flex-start; }
   }
+
+/* === Stylized “manifesto” paragraphs === */
+.about__para--manifesto{
+  margin: 1.25rem 0 1.75rem;
+  padding: 1.1rem 1.15rem;
+  border-left: 4px solid currentColor;
+  background: rgba(0,0,0,0.035);
+  border-radius: 12px;
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+}
+
+.about__para--manifesto strong{
+  display: inline-block;
+  margin-bottom: 0.65rem;
+  font-size: 0.98rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  opacity: 0.92;
+}
+
+.about__para--manifesto em{
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* “beat” lines that should hit harder */
+.about__beat{
+  display: inline-block;
+  margin-top: 0.15rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* final punchline */
+.about__beat--final{
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/* optional: subtle emphasis without screaming */
+.about__para--manifesto br{
+  line-height: 1.75;
+}
+
+/* nicer in dark mode if you have it */
+@media (prefers-color-scheme: dark){
+  .about__para--manifesto{
+    background: rgba(255,255,255,0.06);
+  }
+}
+
+/* === Mobile tuning for the manifesto blocks === */
+@media (max-width: 640px){
+  .about__para--manifesto{
+    margin: 1rem 0 1.25rem;
+    padding: 0.95rem 0.9rem;
+    border-left-width: 3px;
+    border-radius: 10px;
+    line-height: 1.7;
+  }
+
+  .about__para--manifesto strong{
+    font-size: 0.92rem;
+    line-height: 1.25;
+    margin-bottom: 0.55rem;
+  }
+
+  /* keep the company name + first sentence feeling “headline-ish” */
+  .about__para--manifesto em{
+    display: inline-block;
+    margin-bottom: 0.25rem;
+  }
+
+  /* make the punch lines land with spacing */
+  .about__beat{
+    margin-top: 0.25rem;
+  }
+
+  .about__beat--final{
+    display: inline-block;
+    margin-top: 0.4rem;
+  }
+
+  /* avoid awkward single-word wrap on punch lines */
+  .about__beat,
+  .about__beat--final{
+    word-break: keep-all;
+    hyphens: none;
+  }
+}
+
+/* super small screens */
+@media (max-width: 380px){
+  .about__para--manifesto{
+    padding: 0.85rem 0.8rem;
+  }
+
+  .about__para--manifesto strong{
+    font-size: 0.9rem;
+  }
+}
+
+.about__blank{
+  display: inline-block;
+  padding: 0 0.25rem;
+  border-bottom: 2px solid currentColor;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+
 </style>
 
   </head>
@@ -123,42 +237,54 @@
           A plot becomes evidence for the assumptions required to interpret the plot.
         </p>
 
-        <p class="about__para">
-          That’s when the consultants arrive.
-          Not to fix the measurement problem.
-          To fix the story problem.
-        </p>
-
-        <div class="about__ruleBlock" role="note" aria-label="Consulting rules">
-          <p class="about__ruleTitle"><strong>Consulting Rule #1</strong></p>
-          <p class="about__ruleText">
-            If the data won’t authorize the story, make the story authorize the data.
-          </p>
-
-          <p class="about__ruleTitle"><strong>Consulting Rule #2</strong></p>
-          <p class="about__ruleText">
-            If the results won’t validate your promises, reinterpret the results.
-          </p>
-        </div>
-
-<p class="about__para">
-  <strong>Hypothetical use case that certainly couldn’t happen in your company #1:</strong>
-  <em>Baine &amp; Cope</em> shows up with a fresh deck and a 78-page “Alignment Memo.”
-  Page 3 has your exact phrasing in quotes.
-  Page 41 has a new definition of “stable.”
-  The chart is unchanged.
-  The conclusion is bold.
+<p class="about__para about__para--manifesto">
+  That’s when the deck <em>lands</em>.<br />
+  Or the memo <em>circulates</em>.<br />
+  Or the baseline <em>moves</em>.<br />
+  Or the footnotes <em>multiply</em>.<br />
+  Or the two-by-two <em>simplifies</em>.<br />
+  Or the “shared language” <em>rebrands</em>.<br />
+  Or the steering committee <em>buffers</em>.<br />
+  Or the gradient <em>glows</em>.<br />
+  Or the immaculate timeline <em>edits</em>.<br />
+  Or the KPI slide <em>turns green</em>… already formatted.<br />
+  Or the <span class="about__blank">[fill in the blank]</span> <em>does its job</em>.<br />
+  <span class="about__beat">Different props.</span><br />
+  <span class="about__beat">Same trick.</span><br />
+  <span class="about__beat about__beat--final">The story gets fixed. The measurement doesn’t.</span>
 </p>
 
 
-<p class="about__para">
-  <strong>Hypothetical use case that certainly couldn’t happen in your company #2:</strong>
-  <em>McQuincey &amp; Associates</em> runs the post-mortem with the KPI slide already formatted.
-  The red line gets a new baseline.
-  The pass threshold gets a new footnote.
-  The scope quietly shrinks to “Phase 1.”
-  The metrics are green again.
+
+
+
+<p class="about__para about__para--manifesto">
+  <strong>Hypothetical case study that certainly couldn’t happen in your company #1:</strong><br />
+  <em>Baine &amp; Associates</em> shows up with a fresh deck and a 78-page “Alignment Memo.”<br />
+  Page 3 has your exact phrasing in quotes (the kind with curly punctuation that implies legal review).<br />
+  Page 7 introduces a “shared language framework,” which is just your language with a watermark.<br />
+  Page 12 contains an “executive narrative” that reads like a hostage note written by a thesaurus.<br />
+  <span class="about__beat">The chart is unchanged.</span><br />
+  <span class="about__beat">The conclusion is bold.</span><br />
+  <span class="about__beat about__beat--final">The fee is not.</span>
 </p>
+
+<p class="about__para about__para--manifesto">
+  <strong>Hypothetical use case that certainly couldn’t happen in your company #2:</strong><br />
+  <em>The McQuincey Corporation</em> runs the post-mortem with the KPI slide already formatted.<br />
+  There’s a “Lessons Learned” header before the incident has finished happening.<br />
+  The timeline is immaculate (somehow the inconvenient minutes are missing).<br />
+  <span class="about__beat">The scope quietly shrinks to “Phase 1.”</span><br />
+  “Phase 1” becomes “Phase 1A.”<br />
+  “Phase 1A” becomes “Discovery.”<br />
+  “Discovery” becomes “Enablement.”<br />
+  “Enablement” becomes “We’re aligned.”<br />
+  The dashboard refreshes.<br />
+  <span class="about__beat">The metrics are green again.</span><br />
+  <span class="about__beat about__beat--final">Everyone agrees this is progress, because the color says so.</span>
+</p>
+
+
 
 
 
