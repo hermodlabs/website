@@ -1,0 +1,149 @@
+<!-- /pilots/flower-room-zone-map/index.html -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-V2474V50XP');
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>Pilot B — Flower Room Zone Map | HermodLabs</title>
+    <meta
+      name="description"
+      content="Month-scale flower room pilot: map zones across triggers (lights/irrigation/dehu cycles), run 2–3 intervention tests, and verify the fix with receipts + pass/fail evidence."
+    />
+
+    <script type="importmap">
+    { "imports": { "lit": "https://esm.run/lit" } }
+    </script>
+
+    <link rel="stylesheet" href="" id="main-css" />
+    <script type="module" src="../../../bootstrap.js"></script>
+  </head>
+
+  <body>
+    <site-page>
+      <section class="pilots pilots--detail" aria-labelledby="pilot-title">
+        <div class="pilots__inner">
+          <header class="pilots__header">
+            <p class="pilots__kicker"><a href="/pilots">← Back to pilots</a></p>
+            <h1 class="pilots__title" id="pilot-title">Pilot B — Flower Room Zone Map</h1>
+            <p class="pilots__lede">Find pockets, run fixes, and prove they hold across triggers.</p>
+            <p class="pilots__subhead">
+              A month-scale pilot built around the operational reality of flower: cycle-trigger events, night swings,
+              irrigation transitions, and dehu/HVAC limits. We don’t just map—we verify.
+            </p>
+
+            <div class="pilots__actions">
+              <a class="button button--primary" href="/pilots#apply">Request this pilot</a>
+              <a class="button button--secondary" href="/pilots">See full pilot menu</a>
+            </div>
+          </header>
+
+          <section class="pilots__section" aria-labelledby="why-title">
+            <h2 class="pilots__heading" id="why-title">Why this matters in flower</h2>
+            <ul class="pilots__list">
+              <li class="pilots__list-item">
+                PM and botrytis risk is tightly coupled to humidity dynamics and airflow—exactly what diverges inside dense canopies.
+              </li>
+              <li class="pilots__list-item">
+                Peer-reviewed cannabis literature reports rapid Botrytis damage under high RH (e.g., &gt;70%) at moderate temperatures,
+                which canopy microclimates can reach even when room averages look “safe.”
+              </li>
+            </ul>
+          </section>
+
+          <section class="pilots__section" aria-labelledby="deliverables-title">
+            <h2 class="pilots__heading" id="deliverables-title">Deliverables</h2>
+            <ul class="pilots__list">
+              <li class="pilots__list-item"><strong>Pocket catalog:</strong> ranked pockets by persistence + severity + timing</li>
+              <li class="pilots__list-item"><strong>Repeatability scoring:</strong> do pockets recur under the same triggers?</li>
+              <li class="pilots__list-item"><strong>2–3 intervention tests:</strong> before/after evidence with pass/fail criteria</li>
+              <li class="pilots__list-item"><strong>Zone strategy:</strong> recommended airflow/dehu adjustments targeted to zones</li>
+              <li class="pilots__list-item"><strong>Receipts + validity:</strong> run receipts + “safe to interpret” windows</li>
+            </ul>
+          </section>
+
+          <section class="pilots__section" aria-labelledby="timeline-title">
+            <h2 class="pilots__heading" id="timeline-title">Typical timeline (30 days)</h2>
+            <ol class="pilots__steps">
+              <li class="pilots__step"><strong>Week 1:</strong> install + commissioning + baseline capture (multiple daily windows)</li>
+              <li class="pilots__step"><strong>Weeks 2–3:</strong> trigger captures + 2–3 targeted interventions (A/B)</li>
+              <li class="pilots__step"><strong>Week 4:</strong> repeatability verification + readout + zone strategy</li>
+            </ol>
+          </section>
+
+          <section class="pilots__section" aria-labelledby="acceptance-title">
+            <h2 class="pilots__heading" id="acceptance-title">Acceptance tests (examples)</h2>
+            <ul class="pilots__list">
+              <li class="pilots__list-item"><strong>Trigger coverage:</strong> capture across lights, irrigation, night control, and dehu cycles.</li>
+              <li class="pilots__list-item"><strong>Intervention efficacy:</strong> at least one targeted fix shows measurable improvement in the mapped pocket zones.</li>
+              <li class="pilots__list-item"><strong>Repeatability:</strong> improvements persist across comparable cycles (not one lucky day).</li>
+              <li class="pilots__list-item"><strong>Validity gating:</strong> system abstains when measurement conditions are not trustworthy.</li>
+            </ul>
+          </section>
+
+          <section class="pilots__section" aria-labelledby="faq-title">
+            <h2 class="pilots__heading" id="faq-title">FAQ</h2>
+            <div class="pilots__grid pilots__grid--two">
+              <div class="pilot-card">
+                <div class="pilot-card__header">
+                  <h3 class="pilot-card__title">Is this “more sensors”?</h3>
+                  <p class="pilot-card__summary">
+                    No. The point is better interpretation: alignment/validity checks and verification evidence that explain
+                    when to trust the reading and whether a change actually worked.
+                  </p>
+                </div>
+              </div>
+              <div class="pilot-card">
+                <div class="pilot-card__header">
+                  <h3 class="pilot-card__title">What changes do you test?</h3>
+                  <p class="pilot-card__summary">
+                    Typical tests include airflow adjustments, dehu strategy changes, and sensor placement corrections—chosen
+                    jointly with the operator and constrained by what’s realistic in production.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="pilots__section pilots__section--sources" aria-labelledby="sources-title">
+            <h2 class="pilots__heading" id="sources-title">Sources</h2>
+            <ol class="pilots__sources">
+              <li class="pilots__source">
+                e-GRO — “Powdery Mildew of Hemp (E714)”
+                (<a href="https://www.e-gro.org/pdf/E714.pdf" rel="noopener">www.e-gro.org/pdf/E714.pdf</a>)
+              </li>
+              <li class="pilots__source">
+                Canadian Science Publishing (Botany) — “Understanding bud rot development, caused by Botrytis… on cannabis”
+                (<a href="https://cdnsciencepub.com/doi/10.1139/cjb-2022-0139" rel="noopener">cdnsciencepub.com/doi/10.1139/cjb-2022-0139</a>)
+              </li>
+              <li class="pilots__source">
+                Colorado State University Extension — “Powdery Mildews”
+                (<a href="https://extension.colostate.edu/resource/powdery-mildews/" rel="noopener">extension.colostate.edu/resource/powdery-mildews</a>)
+              </li>
+            </ol>
+          </section>
+
+          <section class="pilots__section" aria-labelledby="cta-title">
+            <h2 class="pilots__heading" id="cta-title">Stop re-learning the same room</h2>
+            <p class="pilots__text">
+              Pilot B is for teams who are done with “tune it until it feels right.” We verify.
+            </p>
+            <div class="pilots__actions">
+              <a class="button button--primary" href="/pilots#apply">Request Pilot B</a>
+              <a class="button button--secondary" href="/contact">Contact</a>
+            </div>
+          </section>
+        </div>
+      </section>
+    </site-page>
+  </body>
+</html>

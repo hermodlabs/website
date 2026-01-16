@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "G-V2474V50XP");
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Research: Musical Instrument Microclimate Environmental Sensing</title>
+    <meta
+      name="description"
+      content="Musical instrument microclimate environmental sensing market deep dive (2025–2035): preservation + insurance/compliance drivers, TAM/SAM/SOM logic, buyer triggers, and why sparse point sensing fails in high-value storage and showrooms."
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Single importmap (lit + Observable Plot + d3) -->
+    <script type="importmap">
+    {
+      "imports": {
+        "lit": "https://esm.run/lit",
+        "@observablehq/plot": "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm",
+        "d3": "https://cdn.jsdelivr.net/npm/d3@7/+esm"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="" id="main-css" />
+    <!-- depth: /engage/invest/research/.../ -->
+    <script type="module" src="../../../../bootstrap.js"></script>
+
+    <link rel="stylesheet" href="../research-detail.css" />
+
+    <!-- Visualizations (optional) -->
+    <script type="module" src="./research-viz.js"></script>
+
+    <style>
+      .ref {
+        font-size: 0.9em;
+        vertical-align: super;
+        text-decoration: none;
+      }
+      .ref:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+      .research-detail__fineprint code { font-size: 0.95em; }
+    </style>
+  </head>
+
+  <body>
+    <site-page>
+      <section class="research-detail" aria-labelledby="rd-title">
+        <div class="research-detail__inner">
+          <header class="research-detail__header">
+            <a class="link link--muted research-detail__back" href="/engage/invest/research/">
+              <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+              Back to Market Research
+            </a>
+
+            <h1 class="research-detail__title" id="rd-title">
+              Musical Instrument Microclimate Environmental Sensing
+              <span class="research-detail__subtitle">Market Analysis (2025–2035)</span>
+            </h1>
+
+            <p class="research-detail__lede">
+              High-value instruments don’t fail in averages—they fail in pockets. Traditional thermostats and a handful of hygrometers
+              can report “in range” while a corner of a vault creeps above mold thresholds or a display wall dries out. Spatial sensing
+              turns hidden microclimates into coordinates, interventions into measurable outcomes, and monitoring into evidence.
+            </p>
+
+            <div class="research-detail__meta">
+              <span class="badge badge--success">Published</span>
+              <span class="research-detail__meta-item">
+                <i class="fa-solid fa-tags" aria-hidden="true"></i>
+                Instruments • Preservation • Retail showrooms • Orchestras • Museums • Vaults • Environmental monitoring • Auditability
+              </span>
+            </div>
+
+            <div class="research-detail__cta-row">
+              <a class="button button--primary" href="#request">
+                <i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i>
+                Request additional research
+              </a>
+              <a class="button button--secondary" href="/engage/invest/">
+                <i class="fa-solid fa-handshake" aria-hidden="true"></i>
+                Invest
+              </a>
+            </div>
+          </header>
+
+          <!-- =========================================================
+               CONTEXT
+               ========================================================= -->
+          <section class="research-detail__section" id="context" aria-labelledby="s-context">
+            <h2 class="research-detail__heading" id="s-context">Market Context & Scope</h2>
+
+            <div class="research-detail__panel">
+              <p class="research-detail__text">
+                The market for microclimate-aware sensing in musical instrument retail and storage is emerging as preservation needs meet
+                IoT adoption. Wood instruments and finishes are sensitive to temperature and humidity swings; standards for acceptable
+                ranges (often ~40–60% RH) show up across manufacturing, showrooms, classrooms, and performance venues.<a class="ref" href="#ref-2" aria-label="Reference 2">[2]</a>
+              </p>
+
+              <ul class="research-detail__bullets">
+                <li>
+                  <strong>Included:</strong> environmental sensing + monitoring + analytics for instrument showrooms, vaults, cases/rooms,
+                  storage facilities, manufacturing floors; dashboards, alerting, reporting, and integrations (BMS / building ops).
+                </li>
+                <li>
+                  <strong>Where it shows up:</strong> high-end retailers, orchestras/venues, instrument manufacturers, museum collections and vaults,
+                  specialized storage/logistics services.<a class="ref" href="#ref-10" aria-label="Reference 10">[10]</a>
+                </li>
+                <li>
+                  <strong>Excluded:</strong> generic HVAC installs without monitoring analytics; generic IoT platforms unless bundled directly into
+                  climate sensing/verification for instruments.
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- =========================================================
+               DRIVERS
+               ========================================================= -->
+          <section class="research-detail__section" id="drivers" aria-labelledby="s-drivers">
+            <h2 class="research-detail__heading" id="s-drivers">Core Demand Drivers</h2>
+
+            <table class="research-detail__table research-detail__table--compact" aria-label="Core demand drivers summary">
+              <thead>
+                <tr>
+                  <th>Driver</th>
+                  <th>Pressure</th>
+                  <th>What it forces</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Preservation risk (wood + finish sensitivity)</strong></td>
+                  <td><strong>5/5</strong></td>
+                  <td>
+                    Stability targets become operational requirements (avoid cracking/warping, glue failures, finish issues).<a class="ref" href="#ref-1">[1]</a><a class="ref" href="#ref-16">[16]</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Loan / conservation standards and reporting</strong></td>
+                  <td><strong>4/5</strong></td>
+                  <td>
+                    Continuous monitoring + documentation for lenders, institutions, and professional guidelines.<a class="ref" href="#ref-3">[3]</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Insurance pressure (exclusions + premium incentives)</strong></td>
+                  <td><strong>4/5</strong></td>
+                  <td>
+                    Prevention becomes cheaper than claims; logs support underwriting and dispute clarity.<a class="ref" href="#ref-4">[4]</a><a class="ref" href="#ref-5">[5]</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Climate volatility and extreme events</strong></td>
+                  <td><strong>3–4/5</strong></td>
+                  <td>
+                    “Continuous awareness” replaces occasional checks; early detection of hotspots reduces catastrophic loss.
+                    <a class="ref" href="#ref-6">[6]</a><a class="ref" href="#ref-7">[7]</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Digitization (IoT + smart monitoring culture)</strong></td>
+                  <td><strong>3/5</strong></td>
+                  <td>
+                    Remote alerts, history logs, and “instrument digital twins” become normalized for owners and facilities.<a class="ref" href="#ref-9">[9]</a><a class="ref" href="#ref-22">[22]</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Sustainability + energy efficiency in facilities</strong></td>
+                  <td><strong>2–3/5</strong></td>
+                  <td>
+                    Spatial truth reduces over-conditioning: target humidification/cooling where needed, not everywhere.<a class="ref" href="#ref-8">[8]</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="research-detail__vizwrap" aria-hidden="true">
+              <div class="research-detail__viz" id="viz-drivers" role="img" aria-label="Core demand drivers visualization"></div>
+              <p class="research-detail__viz-note" id="viz-drivers-note">
+                <strong>Labels:</strong> Preservation · Standards · Insurance · Climate · IoT · Efficiency
+              </p>
+            </div>
+
+            <noscript>
+              <p class="research-detail__text">
+                (Interactive visualization requires JavaScript. The summary table above contains the same content.)
+              </p>
+            </noscript>
+          </section>
+
+          <!-- =========================================================
+               INFLECTION
+               ========================================================= -->
+          <section class="research-detail__section" id="inflection" aria-labelledby="s-inflection">
+            <h2 class="research-detail__heading" id="s-inflection">Technology & Category Inflection</h2>
+
+            <div class="research-detail__panel">
+              <p class="research-detail__text">
+                Point sensing is adequate for “did we violate thresholds?” but weak for “where is it unstable?” and “why did it drift?”
+                As instrument care digitizes (smart cases, embedded sensors, remote dashboards), facilities and owners increasingly expect
+                real-time data, history logs, and alerting across storage + transport + performance contexts.<a class="ref" href="#ref-9">[9]</a><a class="ref" href="#ref-22">[22]</a>
+              </p>
+
+              <ul class="research-detail__bullets">
+                <li>
+                  <strong>Spatial wedge:</strong> move from “a few readings” to a room-as-field model that detects gradients and pockets.
+                </li>
+                <li>
+                  <strong>Evidence wedge:</strong> logs become report-grade for insurance, loans, and stewardship claims.<a class="ref" href="#ref-3">[3]</a><a class="ref" href="#ref-4">[4]</a>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- =========================================================
+               BUDGET GRAVITY
+               ========================================================= -->
+          <section class="research-detail__section" id="gravity" aria-labelledby="s-gravity">
+            <h2 class="research-detail__heading" id="s-gravity">Budget Gravity</h2>
+
+            <p class="research-detail__text">
+              This category sits on top of two “gravity wells”: (1) <strong>value-at-risk</strong> (inventory and irreplaceable instruments),
+              and (2) <strong>facility operating cost</strong> (HVAC / humidification / dehumidification). Spatial sensing can reduce loss risk
+              while also reducing over-conditioning by identifying where control is actually required.
+            </p>
+
+            <table class="research-detail__table research-detail__table--compact" aria-label="Budget gravity facts">
+              <thead>
+                <tr>
+                  <th>Claim</th>
+                  <th>Why it matters</th>
+                  <th>Source</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Humidity stability is essential for preventing damage</strong></td>
+                  <td>Instrument failures are often humidity-driven (cracking/warping/mold)</td>
+                  <td><a class="link link--muted" href="#ref-1">[1]</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Insurance can exclude gradual deterioration</strong></td>
+                  <td>Prevention + logs become underwriting and liability tools</td>
+                  <td><a class="link link--muted" href="#ref-4">[4]</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Smart-building investments are scaling globally</strong></td>
+                  <td>Integration expectations rise (BMS, dashboards, analytics)</td>
+                  <td><a class="link link--muted" href="#ref-8">[8]</a></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p class="research-detail__text">
+              Takeaway: “better environmental truth” is monetizable because it protects large asset value and supports efficiency.
+            </p>
+          </section>
+
+          <!-- =========================================================
+               SEGMENTS (TAM / SAM / SOM)
+               ========================================================= -->
+          <section class="research-detail__section" id="segments" aria-labelledby="s-segments">
+            <h2 class="research-detail__heading" id="s-segments">TAM / SAM / SOM (10-year horizon)</h2>
+
+            <div class="research-detail__panel">
+              <h3 class="research-detail__panel-title">Addressable Product Category (APC)</h3>
+              <p class="research-detail__text">
+                Microclimate-aware sensing for instrument preservation (hardware + software + services): monitoring, analytics, reporting,
+                and integrations for retail showrooms, vaults/collections, venues, manufacturing, and storage/logistics.
+              </p>
+              <p class="research-detail__fineprint">
+                Note: the sizing below is an explicit market-model estimate spanning 2025–2035; treat as an envelope for planning, not a single-point truth.
+              </p>
+            </div>
+
+            <table class="research-detail__table research-detail__table--compact" aria-label="TAM SAM SOM summary">
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th>2025 (Est.)</th>
+                  <th>2030 (Proj.)</th>
+                  <th>2035 (Proj.)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Global TAM (annual)</strong></td>
+                  <td><strong>~$0.3B</strong></td>
+                  <td><strong>~$1.0–1.5B</strong></td>
+                  <td><strong>~$3–5B</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>NA/EU SAM (annual)</strong></td>
+                  <td><strong>~$0.1B</strong></td>
+                  <td><strong>~$1.0B</strong></td>
+                  <td><strong>~$1.5–2.0B</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>SOM (our revenue)</strong></td>
+                  <td><strong>–</strong></td>
+                  <td><strong>~$15–30M</strong> (≈1–3% SAM)</td>
+                  <td><strong>~$75–100M</strong> (≈5% SAM)</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p class="research-detail__fineprint">
+              Notes:
+              <br />
+              • TAM/SAM include hardware, software, and services for sensing/monitoring/control in instrument-related environments.
+              <br />
+              • SAM assumes NA/EU represent ~30–40% of global demand by 2030 in related environmental control markets (explicit modeling assumption).
+            </p>
+
+            <div class="research-detail__vizwrap" aria-hidden="true">
+              <div class="research-detail__viz" id="viz-segments" role="img" aria-label="TAM SAM SOM visualization"></div>
+              <p class="research-detail__viz-note" id="viz-segments-note">
+                <strong>How to read:</strong> relative scale of the 2025→2030→2035 envelope (same values as the table).
+              </p>
+            </div>
+
+            <noscript>
+              <p class="research-detail__text">
+                (Interactive visualization requires JavaScript. The sizing table above contains the same content.)
+              </p>
+            </noscript>
+          </section>
+
+          <!-- =========================================================
+               BUYING
+               ========================================================= -->
+          <section class="research-detail__section" id="buying" aria-labelledby="s-buying">
+            <h2 class="research-detail__heading" id="s-buying">Adoption & Buying Dynamics</h2>
+
+            <div class="research-detail__panel">
+              <h3 class="research-detail__panel-title">What triggers buying</h3>
+              <ul class="research-detail__bullets">
+                <li><strong>Damage event or near-miss</strong> (crack, warp, mold detection, HVAC failure)</li>
+                <li><strong>Loan / exhibit / insurance requirement</strong> (must prove conditions with logs and reports)<a class="ref" href="#ref-3">[3]</a><a class="ref" href="#ref-4">[4]</a></li>
+                <li><strong>Expansion / renovation</strong> (new vault, new showroom, venue HVAC modernization)</li>
+                <li><strong>“Premium positioning”</strong> (showroom claims, vault service differentiation)</li>
+              </ul>
+            </div>
+
+            <table class="research-detail__table research-detail__table--compact" aria-label="Buying dynamics summary">
+              <thead>
+                <tr>
+                  <th>Trigger</th>
+                  <th>Primary buyers</th>
+                  <th>Pressure</th>
+                  <th>What they need to prove</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Damage incident / near-miss</strong></td>
+                  <td>Owner; Ops; Conservator</td>
+                  <td><strong>5/5</strong></td>
+                  <td>Root cause + prevention plan; identify hotspots and propagation pathways.</td>
+                </tr>
+                <tr>
+                  <td><strong>Insurance renewal / underwriting</strong></td>
+                  <td>Owner; Risk/Insurance broker</td>
+                  <td><strong>4/5</strong></td>
+                  <td>Continuous monitoring continuity; alerting; exportable records.<a class="ref" href="#ref-4">[4]</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Loan / exhibition compliance</strong></td>
+                  <td>Curator; Conservator; Facilities</td>
+                  <td><strong>4/5</strong></td>
+                  <td>Condition reports + climate logs meeting stated ranges.<a class="ref" href="#ref-3">[3]</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Facility efficiency push</strong></td>
+                  <td>Facilities; Finance</td>
+                  <td><strong>2–3/5</strong></td>
+                  <td>Reduce over-conditioning by targeting control; show stability vs energy.<a class="ref" href="#ref-8">[8]</a></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="research-detail__vizwrap" aria-hidden="true">
+              <div class="research-detail__viz" id="viz-buying" role="img" aria-label="Buying dynamics visualization"></div>
+              <p class="research-detail__viz-note">
+                <strong>Labels:</strong> Incident · Insurance · Loan · Efficiency
+              </p>
+            </div>
+
+            <noscript>
+              <p class="research-detail__text">
+                (Interactive visualization requires JavaScript. The summary table above contains the same content.)
+              </p>
+            </noscript>
+
+            <p class="research-detail__text">
+              Each row is a <strong>trigger → buyer role</strong> pairing. Pressure is a <strong>1–5 qualitative score</strong>.
+            </p>
+          </section>
+
+          <!-- =========================================================
+               GAPS
+               ========================================================= -->
+          <section class="research-detail__section" id="gaps" aria-labelledby="s-gaps">
+            <h2 class="research-detail__heading" id="s-gaps">Market Gaps & Structural Opportunity</h2>
+
+            <p class="research-detail__text">
+              You can spend heavily on HVAC and still run blind if sensing is sparse or not spatially representative—producing “false calm”:
+              dashboards show in-range averages while a micro-zone drifts into damage territory.
+            </p>
+
+            <ul class="research-detail__bullets">
+              <li>Showrooms and vaults have boundary layers, corners, exterior-wall gradients, and airflow structure</li>
+              <li>“More point sensors” helps, but doesn’t automatically become a coherent model or an explainable narrative</li>
+              <li>High-value assets demand proof-grade records (insurance, loans, stewardship)</li>
+            </ul>
+
+            <table class="research-detail__table research-detail__table--compact" aria-label="Market gaps summary">
+              <thead>
+                <tr>
+                  <th>Operator question</th>
+                  <th>Typical point sensing</th>
+                  <th>More sensors</th>
+                  <th>Analytics layer</th>
+                  <th>Dense microclimate sensing</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Did we violate thresholds?</strong></td>
+                  <td><strong>Strong</strong></td>
+                  <td><strong>Strong</strong></td>
+                  <td><strong>Strong</strong></td>
+                  <td><strong>Strong</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Can we produce report-grade logs?</strong></td>
+                  <td><strong>Partial</strong></td>
+                  <td><strong>Strong</strong></td>
+                  <td><strong>Strong</strong></td>
+                  <td><strong>Strong</strong> (with spatial receipts)</td>
+                </tr>
+                <tr>
+                  <td><strong>Where is it unstable?</strong></td>
+                  <td>Weak</td>
+                  <td>Partial</td>
+                  <td>Partial</td>
+                  <td><strong>Strong</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Why did it drift?</strong></td>
+                  <td>Weak</td>
+                  <td>Weak → partial</td>
+                  <td>Partial</td>
+                  <td><strong>Strong</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Will this survive a “prove it” review?</strong></td>
+                  <td>Weak</td>
+                  <td>Weak</td>
+                  <td>Partial</td>
+                  <td><strong>Strong</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <!-- =========================================================
+               MVMS + SOM
+               ========================================================= -->
+          <section class="research-detail__section" id="mvms" aria-labelledby="s-mvms">
+            <h2 class="research-detail__heading" id="s-mvms">Minimum Viable Market Segment (MVMS)</h2>
+
+            <div class="research-detail__panel">
+              <h3 class="research-detail__panel-title">MVMS (NA/EU, high pain / high willingness)</h3>
+              <ul class="research-detail__bullets">
+                <li>
+                  <strong>High-end instrument retailers</strong> with $1M+ inventory exposure and premium customer experience positioning.
+                </li>
+                <li>
+                  <strong>Museums / collections / loan programs</strong> where climate reporting is part of stewardship and agreements.<a class="ref" href="#ref-3">[3]</a>
+                </li>
+                <li>
+                  <strong>Premium storage & logistics providers</strong> competing on “proof of care” (client portals, logs, guarantees).
+                </li>
+              </ul>
+            </div>
+
+            <div class="research-detail__panel">
+              <h3 class="research-detail__panel-title">SOM is an outcome, not an assumption</h3>
+              <p class="research-detail__text">SOM becomes plausible when you can demonstrate at least one of:</p>
+              <ul class="research-detail__bullets">
+                <li><strong>incident avoidance</strong> (hotspot detection + timely intervention)</li>
+                <li><strong>insurance/loan readiness</strong> (continuous, exportable reports)<a class="ref" href="#ref-4">[4]</a></li>
+                <li><strong>targeted control wins</strong> (reduced over-conditioning while staying within safe bands)</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- =========================================================
+               CONCLUSION
+               ========================================================= -->
+          <section class="research-detail__section" id="conclusion" aria-labelledby="s-conclusion">
+            <h2 class="research-detail__heading" id="s-conclusion">Conclusion</h2>
+
+            <div class="research-detail__panel">
+              <p class="research-detail__text">
+                The instrument sector is a premium microclimate market because stakes are high and tolerances are real. As digitization grows
+                (smart sensors, remote logs) and climate volatility increases, demand shifts from “a reading” to <strong>spatial truth</strong> and
+                <strong>evidence</strong>. In that world, dense microclimate sensing becomes not a gadget—but infrastructure for preservation,
+                underwriting, and operational confidence.
+              </p>
+            </div>
+          </section>
+
+          <!-- =========================================================
+               SOURCES
+               ========================================================= -->
+          <section class="research-detail__section" id="sources" aria-labelledby="s-sources">
+            <h2 class="research-detail__heading" id="s-sources">Sources</h2>
+
+            <p class="research-detail__text">
+              Numbering is intended for report-style reuse. Where a URL is known, it’s included.
+            </p>
+
+            <ol class="research-detail__bullets" style="list-style: decimal; padding-left: 1.2em;">
+              <li id="ref-1">
+                <strong>Condair Group AG:</strong> “Humidity Control for Musical Instruments” (industry guidance on humidity control).
+              </li>
+              <li id="ref-2">
+                <strong>Grokipedia:</strong> Conservation and restoration guidance (humidity ranges and preservation framing).
+              </li>
+              <li id="ref-3">
+                <strong>Loan compliance / monitoring expectations:</strong> conservation guidelines and institutional loan agreement practices (as referenced in the report).
+              </li>
+              <li id="ref-4">
+                <strong>North American Underwriters:</strong> “Are Musical Instruments Covered by Homeowners Insurance?”
+                (coverage + exclusions context). (URL in source list)
+              </li>
+              <li id="ref-5">
+                <strong>Guitar World:</strong> “Lowden puts AI in its acoustic guitars” (smart sensor adoption signal). (URL in source list)
+              </li>
+              <li id="ref-6">
+                <strong>The Urban Music Scene:</strong> “Why Musicians Are Rethinking Instrument Care” (digitization + care culture signal). (URL in source list)
+              </li>
+              <li id="ref-7">
+                <strong>Allied Market Research:</strong> Musical instruments market forecast (top-down industry sizing anchor). (URL in source list)
+              </li>
+              <li id="ref-8">
+                <strong>Smart building macro trend:</strong> smart building market growth projections (as referenced in the report).
+              </li>
+              <li id="ref-9">
+                <strong>Lowden sensor platform links to warranty/insurance workflows</strong> (as referenced in the report; see Guitar World item for adoption signal). (URL in source list)
+              </li>
+              <li id="ref-10">
+                <strong>Museum environmental sensing market anchor:</strong> museum / collection monitoring market sizing (as referenced in the report).
+              </li>
+              <li id="ref-16">
+                <strong>Instrument humidity/temperature safe bands (e.g., ~45–55% RH; ~18–22°C)</strong> (as referenced in the report’s preservation section).
+              </li>
+              <li id="ref-22">
+                <strong>Ruuvi:</strong> “Ensure your musical instrument’s wellbeing – Monitor storage humidity with smart sensor.” (URL in source list)
+              </li>
+            </ol>
+
+            <p class="research-detail__fineprint">
+              Implementation note:
+              <br />
+              • If you want clickable outbound links for every entry, replace the text-only items above with
+              <code>&lt;a class="link link--primary" href="..."&gt;...&lt;/a&gt;</code> and keep the same <code>id="ref-N"</code> anchors.
+            </p>
+          </section>
+
+          <!-- =========================================================
+               REQUEST
+               ========================================================= -->
+          <section class="research-detail__section research-detail__section--contact" id="request" aria-labelledby="rq-title">
+            <h2 class="research-detail__heading" id="rq-title">Request Additional Research</h2>
+
+            <p class="research-detail__text">
+              We can share additional research on request: deeper sizing by geography, buyer maps, integration assumptions,
+              or a “what would force action here?” analysis for your facility type.
+            </p>
+
+            <p class="research-detail__text">
+              Email:
+              <a class="link link--primary" href="mailto:contact@hermodlabs.com">contact@hermodlabs.com</a>
+              <span class="research-detail__hint">(include your vertical + what decision you’re making)</span>
+            </p>
+
+            <div class="research-detail__divider" aria-hidden="true"></div>
+
+            <form class="research-detail__form" action="/engage/invest/research/request" method="post">
+              <div class="research-detail__field">
+                <label class="research-detail__label" for="rq-name">Name</label>
+                <input class="research-detail__input" id="rq-name" name="name" type="text" autocomplete="name" required />
+              </div>
+
+              <div class="research-detail__field">
+                <label class="research-detail__label" for="rq-org">Firm / Org (optional)</label>
+                <input class="research-detail__input" id="rq-org" name="org" type="text" autocomplete="organization" />
+              </div>
+
+              <div class="research-detail__field">
+                <label class="research-detail__label" for="rq-email">Email</label>
+                <input class="research-detail__input" id="rq-email" name="email" type="email" autocomplete="email" required />
+              </div>
+
+              <div class="research-detail__field">
+                <label class="research-detail__label" for="rq-ask">What do you want us to add?</label>
+                <textarea
+                  class="research-detail__textarea"
+                  id="rq-ask"
+                  name="message"
+                  rows="6"
+                  placeholder="Examples: ‘NA/EU sizing’, ‘museum buyer roles + triggers’, ‘retail showroom playbook’, ‘storage/logistics monitoring’, ‘insurance workflow integration’, ‘SOM constraints for my segment’…"
+                ></textarea>
+              </div>
+
+              <div class="research-detail__actions">
+                <button class="button button--primary" type="submit">Send request</button>
+                <a class="button button--secondary" href="/engage/invest/research/">Back to Research</a>
+              </div>
+
+              <p class="research-detail__fineprint">We only use this to respond to your request. No spam.</p>
+            </form>
+          </section>
+        </div>
+      </section>
+    </site-page>
+  </body>
+</html>
