@@ -1,0 +1,241 @@
+<!-- =========================================
+  /research/operator-feature-priorities/index.html
+  ========================================= -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Operator Feature Priorities</title>
+    <meta
+      name="description"
+      content="A ranked operator-first feature list based on Jobs To Be Done: job coverage, time-to-value, pilot dependency (short vs long), and why it matters on the floor."
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <script type="importmap">
+    {
+      "imports": {
+        "lit": "https://esm.run/lit"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="" id="main-css" />
+    <script type="module" src="../../../../bootstrap.js"></script>
+  </head>
+
+  <body>
+    <site-page>
+      <section class="team" aria-labelledby="prio-title">
+        <div class="team__inner">
+          <header class="team__header">
+            <h1 class="team__title" id="prio-title">Operator Feature Priorities</h1>
+            <p class="team__subhead">
+              Ranked by operator jobs. If it doesn’t reduce arguing, guessing, or surprise loss… it doesn’t ship.
+            </p>
+          </header>
+
+          <div class="team__grid" role="list">
+            <article class="team-card" role="listitem" aria-labelledby="prio-card-title">
+              <div class="team-card__media" aria-hidden="true">
+                <div class="team-card__photo" style="display:grid;place-items:center;">
+                  <i class="fa-solid fa-list-check" style="font-size:44px;"></i>
+                </div>
+              </div>
+
+              <div class="team-card__body">
+                <div class="team-card__meta">
+                  <h2 class="team-card__name" id="prio-card-title">What we build first (and why)</h2>
+                  <p class="team-card__role">JTBD coverage • time-to-value • pilot dependency.</p>
+                </div>
+
+                <div class="team-card__bio">
+                  <p class="team-card__text">
+                    This is the roadmap logic in plain language. Operators hire the system for outcomes,
+                    not for instrumentation. So each item below is phrased as:
+                    <strong>job → feature → proof artifact</strong>.
+                  </p>
+
+                  <div style="margin-top:12px;">
+                    <a class="team-card__text" href="/research/operator-jtbd-interviews" style="text-decoration:underline;">
+                      Read interview patterns <span aria-hidden="true">→</span>
+                    </a>
+                  </div>
+
+                  <hr style="border:none;border-top:1px solid rgba(0,0,0,0.12);margin:18px 0;" />
+
+                  <!-- Quick legend -->
+                  <p class="team-card__text" style="opacity:0.9;">
+                    <strong>Time-to-value</strong> = how fast an operator gets an actionable win.<br />
+                    <strong>Pilot dependency</strong> = whether the feature needs short or long duration to work honestly.
+                  </p>
+
+                  <!-- Table (single-column page; table scrolls on small screens) -->
+                  <div style="overflow-x:auto;margin-top:12px;">
+                    <table class="team-card__text" style="width:100%;border-collapse:collapse;min-width:820px;">
+                      <thead>
+                        <tr>
+                          <th style="text-align:left;padding:10px;border-bottom:1px solid rgba(0,0,0,0.12);">Rank</th>
+                          <th style="text-align:left;padding:10px;border-bottom:1px solid rgba(0,0,0,0.12);">Feature</th>
+                          <th style="text-align:left;padding:10px;border-bottom:1px solid rgba(0,0,0,0.12);">Operator job it completes</th>
+                          <th style="text-align:left;padding:10px;border-bottom:1px solid rgba(0,0,0,0.12);">Time-to-value</th>
+                          <th style="text-align:left;padding:10px;border-bottom:1px solid rgba(0,0,0,0.12);">Pilot dependency</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);"><strong>1</strong></td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            <strong>Pocket map + “worst zones” ranking</strong><br />
+                            <span style="opacity:0.85;">Location first. Make the invisible visible.</span>
+                          </td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            Find where the room lies.
+                          </td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">Fast (same week)</td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">Short pilot works</td>
+                        </tr>
+
+                        <tr>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);"><strong>2</strong></td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            <strong>Cycle capture: night + lights-off emphasis</strong><br />
+                            <span style="opacity:0.85;">Stop missing the trigger window.</span>
+                          </td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            Catch the trigger window.
+                          </td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">Fast (days)</td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">Needs cycles (short → ok)</td>
+                        </tr>
+
+                        <tr>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);"><strong>3</strong></td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            <strong>Trigger tagging</strong><br />
+                            <span style="opacity:0.85;">Lights-off, dehu pinned, HVAC stage, irrigation window.</span>
+                          </td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            Catch the trigger window → make it explainable.
+                          </td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">Fast (same week)</td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">Short pilot works</td>
+                        </tr>
+
+                        <tr>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);"><strong>4</strong></td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            <strong>Recurrence scoring</strong><br />
+                            <span style="opacity:0.85;">Repeat vs one-off. Predictable vs weird day.</span>
+                          </td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            Prove it repeats.
+                          </td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">Medium (2–4 weeks)</td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">Long pilot required</td>
+                        </tr>
+
+                        <tr>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);"><strong>5</strong></td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            <strong>Before/after verification “receipt”</strong><br />
+                            <span style="opacity:0.85;">Did the fix work? Don’t guess.</span>
+                          </td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            Verify the fix.
+                          </td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">Medium</td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">Short → OK, long → best</td>
+                        </tr>
+
+                        <tr>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);"><strong>6</strong></td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            <strong>Operator-readable report (one-page narrative)</strong><br />
+                            <span style="opacity:0.85;">Where / when / how often / how bad / what changed.</span>
+                          </td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            Make it defensible.
+                          </td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">Fast</td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">Any pilot</td>
+                        </tr>
+
+                        <tr>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);"><strong>7</strong></td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            <strong>Evidence bundle export</strong><br />
+                            <span style="opacity:0.85;">QA/leadership-friendly artifact pack.</span>
+                          </td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            Make it defensible → reduce arguing time.
+                          </td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">Fast</td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">Any pilot</td>
+                        </tr>
+
+                        <tr>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);"><strong>8</strong></td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            <strong>Intervention playbook links</strong><br />
+                            <span style="opacity:0.85;">Tie pockets to actions: airflow/dehu/SOP timing.</span>
+                          </td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            Verify the fix → shorten iteration cycles.
+                          </td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">Medium</td>
+                          <td style="padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">Long pilot helps</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <hr style="border:none;border-top:1px solid rgba(0,0,0,0.12);margin:18px 0;" />
+
+                  <!-- Narrative explanation (gritty) -->
+                  <h3 class="team-card__role" style="margin-top:0;">Why this order is operator-correct</h3>
+
+                  <p class="team-card__text">
+                    Operators don’t start by asking for recurrence scores. They start by asking for relief.
+                    Relief begins with <strong>location</strong> and <strong>timing</strong>.
+                    “Where is it failing?” and “When does it happen?”
+                  </p>
+
+                  <p class="team-card__text">
+                    Once you can point at a zone and a trigger window, you can do real work:
+                    change airflow paths, adjust dehu strategy, tweak staging, fix SOP timing.
+                    <strong>Then</strong> recurrence and verification matter — because you’re trying to prove the room changed,
+                    not just the dashboard.
+                  </p>
+
+                  <p class="team-card__text">
+                    This is also why duration matters:
+                    <strong>short pilots find</strong>, <strong>long pilots prove</strong>.
+                    If you can’t show repeatability, people call it luck.
+                    If you can’t show before/after, people call it vibes.
+                  </p>
+
+                  <div style="margin-top:14px;">
+                    <a class="team-card__text" href="/research/why-duration-matters" style="text-decoration:underline;">
+                      Read: Why duration matters <span aria-hidden="true">→</span>
+                    </a>
+                  </div>
+
+                  <p class="team-card__text" style="opacity:0.85;margin-top:14px;">
+                    Note: This page describes product discovery and roadmap logic (JTBD). It is not cultivation, medical, or legal advice.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </site-page>
+  </body>
+</html>

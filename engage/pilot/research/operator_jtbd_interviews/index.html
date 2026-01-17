@@ -1,0 +1,254 @@
+<!-- =========================================
+  /research/operator-jtbd-interviews/index.html
+  ========================================= -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Operator JTBD Interviews</title>
+    <meta
+      name="description"
+      content="Anonymized operator interviews structured as Jobs To Be Done: context, struggle, desired outcomes, constraints, quotes, and product implications."
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <script type="importmap">
+    {
+      "imports": {
+        "lit": "https://esm.run/lit"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="" id="main-css" />
+    <script type="module" src="../../../../bootstrap.js"></script>
+  </head>
+
+  <body>
+    <site-page>
+      <section class="team" aria-labelledby="int-title">
+        <div class="team__inner">
+          <header class="team__header">
+            <h1 class="team__title" id="int-title">Operator JTBD Interviews</h1>
+            <p class="team__subhead">
+              Anonymized notes. Operator language. Built to translate “pain” into build decisions.
+            </p>
+          </header>
+
+          <div class="team__grid" role="list">
+            <article class="team-card" role="listitem" aria-labelledby="int-card-title">
+              <div class="team-card__media" aria-hidden="true">
+                <div class="team-card__photo" style="display:grid;place-items:center;">
+                  <i class="fa-solid fa-microphone-lines" style="font-size:44px;"></i>
+                </div>
+              </div>
+
+              <div class="team-card__body">
+                <div class="team-card__meta">
+                  <h2 class="team-card__name" id="int-card-title">What we heard from operators</h2>
+                  <p class="team-card__role">Context → Struggle → Outcomes → Constraints → Quotes → Implications.</p>
+                </div>
+
+                <div class="team-card__bio">
+                  <p class="team-card__text">
+                    These are anonymized “pattern notes,” not a whitepaper. We don’t publish names, facilities, or
+                    sensitive details. The point is the job logic: what operators are trying to get done, what blocks them,
+                    and what counts as proof when things get tense.
+                  </p>
+
+                  <div style="margin-top:12px;">
+                    <a class="team-card__text" href="/research/operator-jobs-to-be-done" style="text-decoration:underline;">
+                      Back to JTBD overview <span aria-hidden="true">→</span>
+                    </a>
+                  </div>
+
+                  <hr style="border:none;border-top:1px solid rgba(0,0,0,0.12);margin:18px 0;" />
+
+                  <!-- =========================
+                       INTERVIEW 01
+                       ========================= -->
+                  <h3 class="team-card__role" style="margin-top:0;">
+                    Interview Pattern #1 — “The room looks fine until it doesn’t.”
+                  </h3>
+
+                  <p class="team-card__text"><strong>Context</strong></p>
+                  <ul class="team-card__text" role="list">
+                    <li>Multi-room facility. Mixed canopy density by room. Night control is “mostly stable.”</li>
+                    <li>Standard wall sensors and a BMS. A few handheld spot checks. Lots of experience.</li>
+                  </ul>
+
+                  <p class="team-card__text"><strong>Struggle</strong></p>
+                  <ul class="team-card__text" role="list">
+                    <li>Recurring PM pressure that doesn’t match the dashboard story.</li>
+                    <li>A corner/zone “always feels different,” but nobody can prove it without camping in the room.</li>
+                    <li>Leadership sees averages and asks why the team “can’t just hold setpoints.”</li>
+                  </ul>
+
+                  <p class="team-card__text"><strong>Desired outcomes</strong></p>
+                  <ul class="team-card__text" role="list">
+                    <li>Find the pocket zones fast and stop treating the room as one number.</li>
+                    <li>Catch the trigger windows (lights-off, night rise, dehu pinned).</li>
+                    <li>Produce something leadership can read without an argument.</li>
+                  </ul>
+
+                  <p class="team-card__text"><strong>Constraints</strong></p>
+                  <ul class="team-card__text" role="list">
+                    <li>Limited time for “science projects.” Must fit between turns and normal work.</li>
+                    <li>Can’t disrupt SOPs too much; changes have cost and risk.</li>
+                    <li>“We don’t need a fancy dashboard. We need clarity.”</li>
+                  </ul>
+
+                  <p class="team-card__text"><strong>Quotes (anonymized)</strong></p>
+                  <ul class="team-card__text" role="list">
+                    <li>“If it’s not defensible, it doesn’t exist.”</li>
+                    <li>“The numbers look fine. The canopy disagrees.”</li>
+                    <li>“I don’t need ten charts. I need one answer: where is it failing?”</li>
+                  </ul>
+
+                  <p class="team-card__text"><strong>Implications for product</strong></p>
+                  <ul class="team-card__text" role="list">
+                    <li><strong>Zone map first</strong>: “bad zones” ranked with simple location anchors.</li>
+                    <li><strong>Trigger windows</strong>: lights-off / night / dehu pinned tagging.</li>
+                    <li><strong>Operator-proof output</strong>: a narrative report (“where/when/how often/how bad”).</li>
+                  </ul>
+
+                  <hr style="border:none;border-top:1px solid rgba(0,0,0,0.12);margin:18px 0;" />
+
+                  <!-- =========================
+                       INTERVIEW 02
+                       ========================= -->
+                  <h3 class="team-card__role">
+                    Interview Pattern #2 — “Compliance isn’t a vibe. It’s a bill.”
+                  </h3>
+
+                  <p class="team-card__text"><strong>Context</strong></p>
+                  <ul class="team-card__text" role="list">
+                    <li>Operator supports production + QA. Testing requirements vary across SKUs/markets.</li>
+                    <li>When a lot fails, the entire schedule bends around it.</li>
+                  </ul>
+
+                  <p class="team-card__text"><strong>Struggle</strong></p>
+                  <ul class="team-card__text" role="list">
+                    <li>Failures feel “random” because measurement is coarse and cycle windows are missed.</li>
+                    <li>Remediation + retesting burns labor and morale. Everyone becomes allergic to experimentation.</li>
+                    <li>Hard to prove that changes reduced risk vs simply “got lucky this time.”</li>
+                  </ul>
+
+                  <p class="team-card__text"><strong>Desired outcomes</strong></p>
+                  <ul class="team-card__text" role="list">
+                    <li>Reduce surprise failures by catching pockets before they compound.</li>
+                    <li>Make interventions auditable: “we changed X, pocket behavior changed Y.”</li>
+                    <li>Standardize a repeatable proof artifact for QA/leadership.</li>
+                  </ul>
+
+                  <p class="team-card__text"><strong>Constraints</strong></p>
+                  <ul class="team-card__text" role="list">
+                    <li>Must not add heavy operational overhead.</li>
+                    <li>Any new method must be simple enough for non-engineers to execute consistently.</li>
+                    <li>Needs to survive the “prove it” conversation.</li>
+                  </ul>
+
+                  <p class="team-card__text"><strong>Quotes (anonymized)</strong></p>
+                  <ul class="team-card__text" role="list">
+                    <li>“I’m not trying to be right. I’m trying to avoid a retest week.”</li>
+                    <li>“If you can’t show repeatability, people call it luck.”</li>
+                    <li>“Everything costs twice: once in product, once in schedule.”</li>
+                  </ul>
+
+                  <p class="team-card__text"><strong>Implications for product</strong></p>
+                  <ul class="team-card__text" role="list">
+                    <li><strong>Recurrence scoring</strong>: repeat vs one-off classification.</li>
+                    <li><strong>Before/after verification</strong>: intervention receipts + cycle-based comparisons.</li>
+                    <li><strong>Exportable evidence bundle</strong>: short narrative + key figures + timestamps.</li>
+                  </ul>
+
+                  <hr style="border:none;border-top:1px solid rgba(0,0,0,0.12);margin:18px 0;" />
+
+                  <!-- =========================
+                       INTERVIEW 03
+                       ========================= -->
+                  <h3 class="team-card__role">
+                    Interview Pattern #3 — “Nights are where rooms tell the truth.”
+                  </h3>
+
+                  <p class="team-card__text"><strong>Context</strong></p>
+                  <ul class="team-card__text" role="list">
+                    <li>Late flower is the danger zone: dense canopy, blocked air paths, small issues compound fast.</li>
+                    <li>Operators have a strong intuition that nights matter, but weak proof in the current instrumentation.</li>
+                  </ul>
+
+                  <p class="team-card__text"><strong>Struggle</strong></p>
+                  <ul class="team-card__text" role="list">
+                    <li>Day readings look stable. Night windows are under-measured. Problems appear “out of nowhere.”</li>
+                    <li>Dehu/HVAC staging can hide the moments when pockets spike.</li>
+                    <li>Hard to justify cost/changes without a clear trigger story.</li>
+                  </ul>
+
+                  <p class="team-card__text"><strong>Desired outcomes</strong></p>
+                  <ul class="team-card__text" role="list">
+                    <li>Capture the trigger windows automatically, not by camping in a room.</li>
+                    <li>Make “late flower + nights” a measurable risk profile, not superstition.</li>
+                    <li>Turn night behavior into actionable interventions: airflow paths, dehu strategy, staging, SOP timing.</li>
+                  </ul>
+
+                  <p class="team-card__text"><strong>Constraints</strong></p>
+                  <ul class="team-card__text" role="list">
+                    <li>Night shifts are limited; observation capacity is low.</li>
+                    <li>Any method must run unattended and summarize clearly.</li>
+                  </ul>
+
+                  <p class="team-card__text"><strong>Quotes (anonymized)</strong></p>
+                  <ul class="team-card__text" role="list">
+                    <li>“If you want the truth, look at the night.”</li>
+                    <li>“The room behaves when nobody’s watching.”</li>
+                    <li>“I don’t need more sensors. I need the cycles.”</li>
+                  </ul>
+
+                  <p class="team-card__text"><strong>Implications for product</strong></p>
+                  <ul class="team-card__text" role="list">
+                    <li><strong>Cycle capture</strong>: lights on/off windows as first-class.</li>
+                    <li><strong>Event tagging</strong>: dehu pinned, HVAC stage shifts, irrigation windows.</li>
+                    <li><strong>Night summary</strong>: “worst zones at night” + duration-in-condition.</li>
+                  </ul>
+
+                  <hr style="border:none;border-top:1px solid rgba(0,0,0,0.12);margin:18px 0;" />
+
+                  <!-- =========================
+                       SYNTHESIS
+                       ========================= -->
+                  <h3 class="team-card__role" style="margin-top:0;">Synthesis: the three repeated demands</h3>
+                  <ul class="team-card__text" role="list">
+                    <li><strong>Location</strong>: “Where is it failing?”</li>
+                    <li><strong>Timing</strong>: “When does it trigger?”</li>
+                    <li><strong>Proof</strong>: “Does it repeat, and did the fix work?”</li>
+                  </ul>
+
+                  <p class="team-card__text">
+                    Anything that doesn’t answer those questions feels like “another dashboard.”
+                    Anything that does becomes operational leverage.
+                  </p>
+
+                  <div style="margin-top:14px;">
+                    <a class="team-card__text" href="/research/operator-feature-priorities" style="text-decoration:underline;">
+                      Next: Operator feature priorities <span aria-hidden="true">→</span>
+                    </a>
+                  </div>
+
+                  <p class="team-card__text" style="opacity:0.85;margin-top:14px;">
+                    Note: This page summarizes workflows and product discovery patterns. It is not cultivation, medical, or legal advice.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </site-page>
+  </body>
+</html>

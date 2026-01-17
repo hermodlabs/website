@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-V2474V50XP');
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Pricing Philosophy</title>
+    <meta
+      name="description"
+      content="How HermodLabs prices pilots: scope, cycles observed, verification burden, deliverables, and risk/QA accountability artifacts."
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <script type="importmap">
+    {
+      "imports": { "lit": "https://esm.run/lit" }
+    }
+    </script>
+
+    <link rel="stylesheet" href="" id="main-css" />
+    <script type="module" src="../../../bootstrap.js"></script>
+
+    <style>
+/* =========================
+   Pricing Philosophy page
+   + ROI sandbox form
+   ========================= */
+
+.pricing { padding: var(--space-6) 0; }
+
+.pricing__kicker{
+  font-size: 0.85rem;
+  opacity: 0.75;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0 0 var(--space-2);
+}
+.pricing__title{
+  margin: 0 0 var(--space-3);
+  letter-spacing: -0.02em;
+}
+.pricing__lede{
+  margin: 0 0 var(--space-5);
+  font-size: 1.1rem;
+  max-width: 72ch;
+}
+
+.hl-grid.hl-grid--two.pricing__grid{
+  display: grid !important;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr) !important;
+  gap: var(--space-6) !important;
+  align-items: start;
+}
+
+.pricing__main, .pricing__rail{ min-width: 0; }
+
+.pricing__section{ margin: 0 0 var(--space-6); }
+.pricing__h2{ margin: 0 0 var(--space-3); letter-spacing: -0.01em; }
+.pricing__para{ margin: 0 0 var(--space-4); max-width: 78ch; }
+
+.pricing__list{ margin: 0 0 var(--space-4); padding-left: 1.1rem; }
+.pricing__list li{ margin: var(--space-2) 0; }
+
+.pricing__panel{
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+  padding: var(--space-4);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+}
+.pricing__panel + .pricing__panel{ margin-top: var(--space-5); }
+
+.pricing__panelTitle{ margin: 0 0 var(--space-3); letter-spacing: -0.01em; }
+.pricing__rule{ height: 1px; background: var(--border-soft); margin: var(--space-3) 0 var(--space-4); }
+
+.pricing__table{
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.pricing__table th,
+.pricing__table td{
+  border-top: 1px solid var(--border-soft);
+  padding: var(--space-3) 0;
+  vertical-align: top;
+}
+.pricing__table th{
+  text-align: left;
+  opacity: 0.8;
+  font-weight: 700;
+  padding-right: var(--space-4);
+  width: 42%;
+}
+.pricing__table td{ opacity: 0.9; }
+
+.pricing__callout{
+  margin: var(--space-5) 0 0;
+  padding: var(--space-4);
+  border: 1px solid var(--border-soft);
+  border-left-width: 4px;
+  border-radius: var(--radius-lg);
+  background: var(--panel-soft);
+}
+
+.pricing__ctaRow{
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-top: var(--space-5);
+}
+
+/* ROI sandbox form */
+.sim__grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+.sim__field{ display: grid; gap: var(--space-2); }
+.sim__label{ font-weight: 700; }
+.sim__hint{ font-size: 0.9rem; opacity: 0.75; margin: 0; }
+.sim__input, .sim__select{
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  background: var(--panel);
+  color: inherit;
+}
+.sim__input:focus, .sim__select:focus{
+  outline: none;
+  border-color: var(--border);
+}
+
+.sim__results{
+  margin-top: var(--space-4);
+  padding: var(--space-4);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  background: var(--panel-soft);
+}
+
+.sim__kpiRow{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-top: var(--space-3);
+}
+.sim__kpi{
+  padding: var(--space-3);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  background: var(--panel);
+}
+.sim__kpiTitle{ margin: 0 0 var(--space-1); opacity: 0.75; font-size: 0.9rem; }
+.sim__kpiValue{ margin: 0; font-size: 1.2rem; font-weight: 800; letter-spacing: -0.01em; }
+
+.sim__verdict{
+  margin-top: var(--space-4);
+  padding: var(--space-4);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+}
+.sim__verdictTitle{ margin: 0 0 var(--space-2); font-weight: 800; letter-spacing: -0.01em; }
+.sim__verdictText{ margin: 0; opacity: 0.9; }
+
+.sim__actions{
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-top: var(--space-4);
+}
+
+/* Mobile */
+@media (max-width: 820px){
+  .hl-grid.hl-grid--two.pricing__grid{ grid-template-columns: 1fr !important; }
+  .pricing__rail{ margin-top: var(--space-6); }
+  .sim__grid{ grid-template-columns: 1fr; }
+  .sim__kpiRow{ grid-template-columns: 1fr; }
+}
+
+/* Add to your page <style> */
+
+.pricing__para--lead{
+  font-size: 1.02rem;
+  max-width: 78ch;
+}
+
+.pricing__drivers{
+  list-style: none;
+  padding: 0;
+  margin: var(--space-4) 0 var(--space-5);
+  display: grid;
+  gap: var(--space-3);
+}
+
+.pricing__driver{
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+  padding: var(--space-4);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+}
+
+.pricing__driverHead{
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-2);
+}
+
+.pricing__driverNum{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  background: var(--panel-soft);
+  font-weight: 800;
+  font-size: 0.92rem;
+  letter-spacing: -0.01em;
+}
+
+.pricing__driverTitle{
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.pricing__driverTag{
+  font-size: 0.85rem;
+  opacity: 0.75;
+  border: 1px solid var(--border-soft);
+  background: var(--chip);
+  padding: 0.12rem 0.5rem;
+  border-radius: 999px;
+}
+
+.pricing__driverText{
+  margin: 0;
+  opacity: 0.9;
+  max-width: 80ch;
+}
+
+/* Add to your page <style> */
+
+.pricing__pillList{
+  list-style: none;
+  padding: 0;
+  margin: var(--space-3) 0 var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  max-width: 78ch;
+}
+
+.pricing__pill{
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  background: var(--chip);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+
+.pricing__pill strong{
+  font-weight: 800;
+}
+
+/* Add to your page <style> */
+
+.pricing__tiers{
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.pricing__tier{
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+  padding: var(--space-4);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+}
+
+.pricing__tierHead{
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: var(--space-3);
+  align-items: center;
+  margin-bottom: var(--space-3);
+}
+
+.pricing__tierBadge{
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  background: var(--panel-soft);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.pricing__tierTitleWrap{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.pricing__tierTitle{
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.pricing__tierPrice{
+  margin: 0;
+  opacity: 0.8;
+  font-weight: 800;
+}
+
+.pricing__tierBullets{
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.pricing__tierBullets li{
+  margin: var(--space-2) 0;
+  opacity: 0.92;
+}
+
+/* Optional: two-column tier grid on wider screens */
+@media (min-width: 980px){
+  .pricing__tiers{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+
+    </style>
+  </head>
+
+  <body>
+    <site-page>
+      <section class="pricing" aria-labelledby="pricing-title">
+        <div class="hl-container">
+          <div class="pricing__kicker">Pricing</div>
+          <h1 class="pricing__title" id="pricing-title">Pricing Philosophy</h1>
+          <p class="pricing__lede">
+            We price pilots by <strong>scope</strong>, <strong>cycles observed</strong>, and <strong>verification burden</strong>.
+            A one-time map is cheap. Proving a fix holds across triggers is the work.
+          </p>
+
+          <div class="hl-grid hl-grid--two pricing__grid">
+            <!-- LEFT -->
+            <main class="pricing__main">
+<section class="pricing__section" aria-labelledby="drivers">
+  <h2 class="pricing__h2" id="drivers">The five drivers behind pricing</h2>
+
+<p class="pricing__para pricing__para--lead">
+  We price pilots like ops work. The price scales with:
+</p>
+
+<ul class="pricing__pillList" role="list">
+  <li class="pricing__pill"><strong>Scope</strong></li>
+  <li class="pricing__pill"><strong>Time-on-site</strong></li>
+  <li class="pricing__pill"><strong>Verification</strong></li>
+  <li class="pricing__pill"><strong>Stakeholders</strong></li>
+  <li class="pricing__pill"><strong>Risk / QA burden</strong></li>
+</ul>
+
+<p class="pricing__para">
+  Each step up buys <strong>more touches</strong>, <strong>more cycles</strong>, and <strong>more accountability artifacts</strong>.
+</p>
+
+
+  <ul class="pricing__drivers" role="list">
+    <li class="pricing__driver">
+      <div class="pricing__driverHead">
+        <span class="pricing__driverNum">1</span>
+        <strong class="pricing__driverTitle">Scope of measurement geometry</strong>
+      </div>
+      <p class="pricing__driverText">
+        One room vs multiple rooms. More rooms multiplies capture, analysis, and reporting.
+      </p>
+    </li>
+
+    <li class="pricing__driver">
+      <div class="pricing__driverHead">
+        <span class="pricing__driverNum">2</span>
+        <strong class="pricing__driverTitle">Verification is the expensive part</strong>
+      </div>
+      <p class="pricing__driverText">
+        Before/after runs, pass/fail checks, “what moved,” and A/B tests — this is where labor stacks.
+      </p>
+    </li>
+
+    <li class="pricing__driver">
+      <div class="pricing__driverHead">
+        <span class="pricing__driverNum">3</span>
+        <strong class="pricing__driverTitle">Time horizon</strong>
+        <span class="pricing__driverTag">cycles observed</span>
+      </div>
+      <p class="pricing__driverText">
+        Pockets are cycle-driven. You need enough triggers + recurrence to trust the conclusion.
+      </p>
+    </li>
+
+    <li class="pricing__driver">
+      <div class="pricing__driverHead">
+        <span class="pricing__driverNum">4</span>
+        <strong class="pricing__driverTitle">Deliverable sophistication</strong>
+      </div>
+      <p class="pricing__driverText">
+        Ops vs QA vs executive artifacts change how defensible the output is.
+      </p>
+    </li>
+
+    <li class="pricing__driver">
+      <div class="pricing__driverHead">
+        <span class="pricing__driverNum">5</span>
+        <strong class="pricing__driverTitle">Capacity, access, and support</strong>
+        <span class="pricing__driverTag">logins</span>
+      </div>
+      <p class="pricing__driverText">
+        More stakeholders means training, handoffs, and support load.
+      </p>
+    </li>
+  </ul>
+
+  <div class="pricing__callout" role="note" aria-label="Plain-English summary">
+    <p class="pricing__para" style="margin:0;">
+      <strong>Plain English:</strong> a one-time map is cheap. <em>Proving the fix holds across triggers</em> is the work.
+    </p>
+  </div>
+</section>
+
+
+<section class="pricing__section" aria-labelledby="jumps">
+  <h2 class="pricing__h2" id="jumps">Why the price jumps make sense</h2>
+
+  <div class="pricing__tiers" role="list">
+    <article class="pricing__tier" role="listitem" aria-label="Plan A">
+      <header class="pricing__tierHead">
+        <span class="pricing__tierBadge">A</span>
+        <div class="pricing__tierTitleWrap">
+          <h3 class="pricing__tierTitle">Plan A — Pocket Scan</h3>
+          <p class="pricing__tierPrice">$7.5k–$15k</p>
+        </div>
+      </header>
+      <ul class="pricing__tierBullets">
+        <li>One deployment + scan</li>
+        <li>One verification pass</li>
+        <li><strong>Goal:</strong> “Prove it.”</li>
+      </ul>
+    </article>
+
+    <article class="pricing__tier" role="listitem" aria-label="Plan B">
+      <header class="pricing__tierHead">
+        <span class="pricing__tierBadge">B</span>
+        <div class="pricing__tierTitleWrap">
+          <h3 class="pricing__tierTitle">Plan B — Flower Room Zone Map</h3>
+          <p class="pricing__tierPrice">$20k–$45k</p>
+        </div>
+      </header>
+      <ul class="pricing__tierBullets">
+        <li>Repeat scans across triggers (lights / irrigation / dehu)</li>
+        <li>2–3 intervention tests (before/after)</li>
+        <li>Repeatability scoring by zone</li>
+      </ul>
+    </article>
+
+    <article class="pricing__tier" role="listitem" aria-label="Plan C">
+      <header class="pricing__tierHead">
+        <span class="pricing__tierBadge">C</span>
+        <div class="pricing__tierTitleWrap">
+          <h3 class="pricing__tierTitle">Plan C — Facility Baseline</h3>
+          <p class="pricing__tierPrice">$55k–$120k</p>
+        </div>
+      </header>
+      <ul class="pricing__tierBullets">
+        <li>2–4 rooms (multi-space baseline)</li>
+        <li>Cross-room comparisons</li>
+        <li>Rollout playbook you can replicate</li>
+      </ul>
+    </article>
+
+    <article class="pricing__tier" role="listitem" aria-label="Plan D">
+      <header class="pricing__tierHead">
+        <span class="pricing__tierBadge">D</span>
+        <div class="pricing__tierTitleWrap">
+          <h3 class="pricing__tierTitle">Plan D — PM / Botrytis Defense</h3>
+          <p class="pricing__tierPrice">$85k–$180k</p>
+        </div>
+      </header>
+      <ul class="pricing__tierBullets">
+        <li><strong>Risk / QA-grade</strong> evidence packages</li>
+        <li>Recurrence tracking + alerts</li>
+        <li>A/B cycles + “did the fix hold?” proofs</li>
+      </ul>
+    </article>
+
+    <article class="pricing__tier" role="listitem" aria-label="Plan E">
+      <header class="pricing__tierHead">
+        <span class="pricing__tierBadge">E</span>
+        <div class="pricing__tierTitleWrap">
+          <h3 class="pricing__tierTitle">Plan E — Founder Cohort</h3>
+          <p class="pricing__tierPrice">$9k–$22k / month</p>
+        </div>
+      </header>
+      <ul class="pricing__tierBullets">
+        <li>Drift control across seasons + staff changes</li>
+        <li>Recurring verification + change tracking</li>
+        <li>SOP / training artifacts + priority support</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+
+              <section class="pricing__section" aria-labelledby="roi">
+                <h2 class="pricing__h2" id="roi">When each tier is rational</h2>
+
+                <p class="pricing__para">
+                  Rule of thumb: if your avoidable annual pain is roughly <strong>2× the pilot price</strong>, the tier is usually rational.
+                  Use the simulator on the right to sanity-check your own numbers.
+                </p>
+
+              </section>
+            </main>
+
+            <!-- RIGHT -->
+            <aside class="pricing__rail" aria-label="Pricing model and simulator">
+              <div class="pricing__panel">
+                <h2 class="pricing__panelTitle">Pricing model (Fermi)</h2>
+                <div class="pricing__rule" aria-hidden="true"></div>
+
+                <p class="pricing__para">
+                  We sanity-check tier bands with a delivery-cost model (touches, scan windows, and verifications)
+                  plus multipliers for QA burden and stakeholder load.
+                </p>
+
+                <table class="pricing__table" aria-label="Assumed unit costs">
+                  <tbody>
+                    <tr><th>On-site deployment touch (Cd)</th><td>$4k</td></tr>
+                    <tr><th>Scan window (Cm)</th><td>$3k</td></tr>
+                    <tr><th>Verification per intervention (Cv)</th><td>$5k</td></tr>
+                    <tr><th>Per-space overhead (Cs)</th><td>$2k</td></tr>
+                    <tr><th>Cross-room analysis (Cx)</th><td>$8k</td></tr>
+                    <tr><th>QA/risk docs (Cqa)</th><td>$25k</td></tr>
+                    <tr><th>Stakeholder multiplier (kusers)</th><td>1 + 0.03 × logins</td></tr>
+                    <tr><th>QA multiplier (kqa)</th><td>1.0 (A/B/C), 1.4 (D), 1.2 (E)</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- ROI SIMULATOR -->
+              <div class="pricing__panel" id="sim">
+                <h2 class="pricing__panelTitle">ROI quick simulator</h2>
+                <div class="pricing__rule" aria-hidden="true"></div>
+
+                <p class="pricing__para">
+                  Plug in rough numbers. We compute annual “avoidable pain” and compare it to a simple buy rule:
+                  <strong>annual avoidable pain ≥ 2× plan price</strong>.
+                </p>
+
+                <form class="sim" id="roi-sim" novalidate>
+                  <div class="sim__grid">
+                    <div class="sim__field">
+                      <label class="sim__label" for="plan">Plan</label>
+                      <select class="sim__select" id="plan" name="plan">
+                        <option value="A">Plan A — $12k (mid)</option>
+                        <option value="B">Plan B — $32k (mid)</option>
+                        <option value="C">Plan C — $75k (mid)</option>
+                        <option value="D">Plan D — $140k (mid)</option>
+                        <option value="E">Plan E — $12.5k/mo ($150k/yr)</option>
+                      </select>
+                      <p class="sim__hint">These are midpoints; adjust below if you want.</p>
+                    </div>
+
+                    <div class="sim__field">
+                      <label class="sim__label" for="price">Plan price ($)</label>
+                      <input class="sim__input" id="price" name="price" type="number" min="0" step="100" value="12000" />
+                      <p class="sim__hint">Override the default if needed.</p>
+                    </div>
+
+                    <div class="sim__field">
+                      <label class="sim__label" for="valuePerRun">Value per run / harvest ($)</label>
+                      <input class="sim__input" id="valuePerRun" name="valuePerRun" type="number" min="0" step="1000" value="250000" />
+                      <p class="sim__hint">Revenue or gross value impacted by the room/run.</p>
+                    </div>
+
+                    <div class="sim__field">
+                      <label class="sim__label" for="runsPerYear">Runs per year</label>
+                      <input class="sim__input" id="runsPerYear" name="runsPerYear" type="number" min="0" step="1" value="6" />
+                      <p class="sim__hint">Total cycles per year for this room/facility.</p>
+                    </div>
+
+                    <div class="sim__field">
+                      <label class="sim__label" for="eventProb">Probability of a pocket-driven event per run (p)</label>
+                      <input class="sim__input" id="eventProb" name="eventProb" type="number" min="0" max="1" step="0.01" value="0.10" />
+                      <p class="sim__hint">0.10 = 10% chance per run.</p>
+                    </div>
+
+                    <div class="sim__field">
+                      <label class="sim__label" for="severity">Severity if event occurs (s)</label>
+                      <input class="sim__input" id="severity" name="severity" type="number" min="0" max="1" step="0.01" value="0.08" />
+                      <p class="sim__hint">0.08 = 8% loss (downgrade, remediation, yield hit).</p>
+                    </div>
+
+                    <div class="sim__field">
+                      <label class="sim__label" for="tuningTax">Annual tuning / energy / labor tax (L)</label>
+                      <input class="sim__input" id="tuningTax" name="tuningTax" type="number" min="0" step="500" value="25000" />
+                      <p class="sim__hint">Time spent chasing setpoints, re-tuning, extra dehu, etc.</p>
+                    </div>
+
+                    <div class="sim__field">
+                      <label class="sim__label" for="fraction">Avoidable fraction (f)</label>
+                      <input class="sim__input" id="fraction" name="fraction" type="number" min="0" max="1" step="0.01" value="0.30" />
+                      <p class="sim__hint">Plan effect: higher tiers tend to have higher f.</p>
+                    </div>
+                  </div>
+
+                  <div class="sim__actions">
+                    <button class="button button--primary" type="submit">Run simulation</button>
+                    <button class="button button--secondary" type="button" id="reset">Reset</button>
+                  </div>
+
+                  <div class="sim__results" id="results" aria-live="polite">
+                    <div class="sim__kpiRow">
+                      <div class="sim__kpi">
+                        <div class="sim__kpiTitle">Annual event cost</div>
+                        <p class="sim__kpiValue" id="kpiEvent">$0</p>
+                      </div>
+                      <div class="sim__kpi">
+                        <div class="sim__kpiTitle">Annual pain (event + tuning)</div>
+                        <p class="sim__kpiValue" id="kpiPain">$0</p>
+                      </div>
+                    </div>
+
+                    <div class="sim__kpiRow">
+                      <div class="sim__kpi">
+                        <div class="sim__kpiTitle">Avoidable pain (A = f × pain)</div>
+                        <p class="sim__kpiValue" id="kpiAvoidable">$0</p>
+                      </div>
+                      <div class="sim__kpi">
+                        <div class="sim__kpiTitle">Buy threshold (2 × price)</div>
+                        <p class="sim__kpiValue" id="kpiThreshold">$0</p>
+                      </div>
+                    </div>
+
+                    <div class="sim__verdict" id="verdict">
+                      <div class="sim__verdictTitle" id="verdictTitle">Verdict</div>
+                      <p class="sim__verdictText" id="verdictText">Enter your assumptions and run the simulation.</p>
+                    </div>
+                  </div>
+
+                  <p class="sim__hint" style="margin-top: var(--space-4);">
+                    This is intentionally conservative and rough—use it to sanity-check tier fit, not to predict exact outcomes.
+                  </p>
+                </form>
+
+                <script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+
+  const form = $("roi-sim");
+  const plan = $("plan");
+  const price = $("price");
+  const valuePerRun = $("valuePerRun");
+  const runsPerYear = $("runsPerYear");
+  const eventProb = $("eventProb");
+  const severity = $("severity");
+  const tuningTax = $("tuningTax");
+  const fraction = $("fraction");
+
+  const kpiEvent = $("kpiEvent");
+  const kpiPain = $("kpiPain");
+  const kpiAvoidable = $("kpiAvoidable");
+  const kpiThreshold = $("kpiThreshold");
+
+  const verdictTitle = $("verdictTitle");
+  const verdictText = $("verdictText");
+  const resetBtn = $("reset");
+
+  // Midpoint defaults (can be overridden)
+  const planDefaults = {
+    A: { price: 12000, f: 0.15 },
+    B: { price: 32000, f: 0.30 },
+    C: { price: 75000, f: 0.25 },
+    D: { price: 140000, f: 0.40 },
+    E: { price: 150000, f: 0.35 } // annualized
+  };
+
+  function clamp01(x) {
+    if (!Number.isFinite(x)) return 0;
+    return Math.max(0, Math.min(1, x));
+  }
+
+  function money(n) {
+    const v = Number(n);
+    if (!Number.isFinite(v)) return "$0";
+    return v.toLocaleString(undefined, { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+  }
+
+  function number(n) {
+    const v = Number(n);
+    if (!Number.isFinite(v)) return 0;
+    return v;
+  }
+
+  function recalc() {
+    const P = number(price.value);
+    const V = number(valuePerRun.value);
+    const R = number(runsPerYear.value);
+    const p = clamp01(number(eventProb.value));
+    const s = clamp01(number(severity.value));
+    const L = number(tuningTax.value);
+    const f = clamp01(number(fraction.value));
+
+    // Event cost per year: V * R * p * s
+    const eventCost = V * R * p * s;
+
+    // Total pain: event + tuning tax
+    const pain = eventCost + L;
+
+    // Avoidable-ish: f * pain
+    const A = f * pain;
+
+    // Threshold: 2P
+    const threshold = 2 * P;
+
+    kpiEvent.textContent = money(eventCost);
+    kpiPain.textContent = money(pain);
+    kpiAvoidable.textContent = money(A);
+    kpiThreshold.textContent = money(threshold);
+
+    // Verdict
+    if (P <= 0) {
+      verdictTitle.textContent = "Verdict";
+      verdictText.textContent = "Set a plan price to compare against (or choose a plan default).";
+      return;
+    }
+
+    if (A >= threshold) {
+      verdictTitle.textContent = "Looks rational (by the 2× rule)";
+      verdictText.textContent =
+        "Your avoidable annual pain clears the buy threshold. This tier is plausibly worth it—now sanity-check logistics (rooms, cycles, verification).";
+    } else if (A >= P) {
+      verdictTitle.textContent = "Borderline";
+      verdictText.textContent =
+        "You may still buy if the value is risk reduction, QA defensibility, or standardization. Consider lowering scope (Plan A/B) or increasing cycles only where needed.";
+    } else {
+      verdictTitle.textContent = "Probably not (yet)";
+      verdictText.textContent =
+        "With these inputs, the economics don’t clear the threshold. Either your pain is underestimated (tuning tax, probability, severity) or you’re better served by a smaller tier first.";
+    }
+  }
+
+  function applyPlanDefaults() {
+    const key = plan.value;
+    const d = planDefaults[key];
+    if (!d) return;
+
+    // Only update price/f if user hasn't manually edited too much? Keep it simple: overwrite.
+    price.value = d.price;
+    fraction.value = d.f;
+    recalc();
+  }
+
+  plan.addEventListener("change", applyPlanDefaults);
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    recalc();
+  });
+
+  resetBtn.addEventListener("click", () => {
+    plan.value = "A";
+    price.value = 12000;
+    valuePerRun.value = 250000;
+    runsPerYear.value = 6;
+    eventProb.value = 0.10;
+    severity.value = 0.08;
+    tuningTax.value = 25000;
+    fraction.value = 0.15;
+    recalc();
+  });
+
+  // Initial
+  applyPlanDefaults();
+})();
+                </script>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </site-page>
+  </body>
+</html>

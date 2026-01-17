@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Operator Jobs To Be Done</title>
+    <meta
+      name="description"
+      content="Operator Jobs To Be Done: the real outcomes growers hire a canopy microclimate system for, the triggers that create urgency, and the features we build from those jobs."
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <script type="importmap">
+    {
+      "imports": {
+        "lit": "https://esm.run/lit"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="" id="main-css" />
+    <script type="module" src="../../../../bootstrap.js"></script>
+  </head>
+
+  <body>
+    <site-page>
+      <!-- Single-column template reuse -->
+      <section class="team" aria-labelledby="jtbd-title">
+        <div class="team__inner">
+          <header class="team__header">
+            <h1 class="team__title" id="jtbd-title">Operator Jobs To Be Done</h1>
+            <p class="team__subhead">
+              We don’t build features from opinions. We build them from operator jobs: the outcomes you’re judged on,
+              the failure modes you’re trying to avoid, and the proof you need when things get tense.
+            </p>
+          </header>
+
+          <div class="team__grid" role="list">
+            <article class="team-card" role="listitem" aria-labelledby="jtbd-card-title">
+              <div class="team-card__media" aria-hidden="true">
+                <div class="team-card__photo" style="display:grid;place-items:center;">
+                  <i class="fa-solid fa-clipboard-check" style="font-size:44px;"></i>
+                </div>
+              </div>
+
+              <div class="team-card__body">
+                <div class="team-card__meta">
+                  <h2 class="team-card__name" id="jtbd-card-title">What operators actually hire this system to do</h2>
+                  <p class="team-card__role">Jobs → outcomes → features (no fluff).</p>
+                </div>
+
+                <div class="team-card__bio">
+                  <!-- Narrative framing -->
+                  <p class="team-card__text">
+                    “Jobs To Be Done” is just a clean way to say something operators already know:
+                    you’re not buying sensors because you love data. You’re buying control.
+                    You want fewer surprises, fewer recurring problems, and fewer meetings that start with
+                    “how did this happen if we held setpoints?”
+                  </p>
+
+                  <p class="team-card__text">
+                    When we plan pilots and decide what to ship, we start here:
+                    <strong>what job is the operator hiring this for?</strong>
+                    Then we build the smallest set of features that reliably completes that job in real rooms.
+                  </p>
+
+                  <!-- NEW: nav links to supporting pages -->
+                  <div style="margin-top:12px;">
+                    <p class="team-card__text" style="margin:0;opacity:0.9;">
+                      Want the evidence and build logic behind this?
+                    </p>
+                    <ul class="team-card__text" role="list" style="margin-top:8px;">
+                      <li>
+                        <a class="team-card__text" href="/research/operator-jtbd-interviews" style="text-decoration:underline;">
+                          Read anonymized interview patterns <span aria-hidden="true">→</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="team-card__text" href="/research/operator-feature-priorities" style="text-decoration:underline;">
+                          See the operator feature priority list <span aria-hidden="true">→</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="team-card__text" href="/research/why-duration-matters" style="text-decoration:underline;">
+                          Read why duration matters (cycle-driven pockets) <span aria-hidden="true">→</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <hr style="border:none;border-top:1px solid rgba(0,0,0,0.12);margin:18px 0;" />
+
+                  <!-- Primary job -->
+                  <h3 class="team-card__role" style="margin-top:0;">Primary Job</h3>
+                  <p class="team-card__text">
+                    <strong>
+                      “Help me run rooms I can trust — across the cycles that actually cause failures —
+                      so I’m not gambling a harvest on a calm-looking dashboard.”
+                    </strong>
+                  </p>
+
+                  <!-- When they hire / fire -->
+                  <h3 class="team-card__role">When operators “hire” a system like this</h3>
+                  <ul class="team-card__text" role="list">
+                    <li><strong>Recurring PM/Botrytis pressure</strong> that doesn’t match the dashboard story.</li>
+                    <li><strong>A “mystery room”</strong> where the same SOP gives different outcomes.</li>
+                    <li><strong>Late-flower anxiety</strong> (nights feel risky, RH behavior feels unpredictable).</li>
+                    <li><strong>Compliance pain</strong> (failed lots, hold/retest cycles, remediation burn).</li>
+                    <li><strong>Expansion</strong> (new rooms, new facility) and they want repeatability, not folklore.</li>
+                  </ul>
+
+                  <h3 class="team-card__role">When they “fire” a system</h3>
+                  <ul class="team-card__text" role="list">
+                    <li>It produces <strong>more dashboards</strong> but not more confidence.</li>
+                    <li>It can’t explain <strong>where</strong> the problem is, <strong>when</strong> it triggers, or <strong>whether</strong> it repeats.</li>
+                    <li>It can’t prove a change worked — it just says “numbers changed.”</li>
+                    <li>It creates operational overhead without reducing failure risk.</li>
+                  </ul>
+
+                  <hr style="border:none;border-top:1px solid rgba(0,0,0,0.12);margin:18px 0;" />
+
+                  <!-- Top jobs -->
+                  <h3 class="team-card__role" style="margin-top:0;">Top Operator Jobs (the ones that create budget)</h3>
+
+                  <p class="team-card__text">
+                    These are written in operator language on purpose. They’re the real reasons someone signs off.
+                  </p>
+
+                  <ol class="team-card__text" role="list" style="padding-left:18px;">
+                    <li>
+                      <strong>Find where the room lies.</strong>
+                      <div style="opacity:0.9;">
+                        “Show me the pockets my wall sensor can’t see — corners, under-canopy, behind racks, wall-adjacent lanes.”
+                      </div>
+                    </li>
+                    <li>
+                      <strong>Catch the trigger window.</strong>
+                      <div style="opacity:0.9;">
+                        “Tell me when it happens — lights-off, night RH rise, dehu pinned, post-irrigation, HVAC staging.”
+                      </div>
+                    </li>
+                    <li>
+                      <strong>Prove it repeats.</strong>
+                      <div style="opacity:0.9;">
+                        “Separate ‘weird day’ from ‘this is how the room behaves’ so I can stop arguing and start fixing.”
+                      </div>
+                    </li>
+                    <li>
+                      <strong>Verify the fix.</strong>
+                      <div style="opacity:0.9;">
+                        “After changes, prove the pocket shrank/moved/died. Don’t make me guess and hope.”
+                      </div>
+                    </li>
+                    <li>
+                      <strong>Make it defensible.</strong>
+                      <div style="opacity:0.9;">
+                        “Give me proof I can show to leadership/QA without it turning into a faith argument.”
+                      </div>
+                    </li>
+                  </ol>
+
+                  <hr style="border:none;border-top:1px solid rgba(0,0,0,0.12);margin:18px 0;" />
+
+                  <!-- Outcomes and anxieties -->
+                  <h3 class="team-card__role" style="margin-top:0;">Desired outcomes (what “success” feels like)</h3>
+                  <ul class="team-card__text" role="list">
+                    <li><strong>Fewer surprises</strong> in late flower: nights feel controlled, not suspenseful.</li>
+                    <li><strong>Less rework</strong>: fewer emergency defoliation scrambles, fewer reactive remediation cycles.</li>
+                    <li><strong>Higher repeatability</strong>: rooms behave similarly under the same playbook.</li>
+                    <li><strong>Clear priorities</strong>: you know where to aim airflow/dehu effort first.</li>
+                    <li><strong>Proof of change</strong>: “we fixed it” becomes a measurable statement.</li>
+                  </ul>
+
+                  <h3 class="team-card__role">Anxieties (what operators are trying to avoid)</h3>
+                  <ul class="team-card__text" role="list">
+                    <li><strong>The calm dashboard</strong> followed by the ugly canopy reality.</li>
+                    <li><strong>The slow bleed</strong>: yield loss and quality drift that never gets pinned to a cause.</li>
+                    <li><strong>The compliance ambush</strong>: failed lots, holds, retests, reputational hits.</li>
+                    <li><strong>The leadership meeting</strong>: “how did this happen if we were in spec?”</li>
+                    <li><strong>The endless tuning loop</strong>: chasing setpoints that aren’t the real problem.</li>
+                  </ul>
+
+                  <hr style="border:none;border-top:1px solid rgba(0,0,0,0.12);margin:18px 0;" />
+
+                  <!-- Feature mapping table -->
+                  <h3 class="team-card__role" style="margin-top:0;">Feature mapping</h3>
+                  <p class="team-card__text">
+                    This is how jobs become shipped product. If a feature doesn’t complete a job, it doesn’t survive roadmap review.
+                  </p>
+
+                  <div style="overflow-x:auto;">
+                    <table
+                      class="team-card__text"
+                      style="width:100%;border-collapse:collapse;min-width:720px;"
+                      aria-label="Jobs to be Done feature mapping"
+                    >
+                      <thead>
+                        <tr>
+                          <th style="text-align:left;padding:10px;border-bottom:1px solid rgba(0,0,0,0.12);">Operator job</th>
+                          <th style="text-align:left;padding:10px;border-bottom:1px solid rgba(0,0,0,0.12);">What the operator needs</th>
+                          <th style="text-align:left;padding:10px;border-bottom:1px solid rgba(0,0,0,0.12);">Features we build</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="vertical-align:top;padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            <strong>Find where the room lies</strong>
+                          </td>
+                          <td style="vertical-align:top;padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            A zone-level view (not one number). Clear “bad zones” with location context.
+                          </td>
+                          <td style="vertical-align:top;padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            Zone map output; pocket detection; “worst zones” ranking; room overlays / simple geometry anchors.
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td style="vertical-align:top;padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            <strong>Catch the trigger window</strong>
+                          </td>
+                          <td style="vertical-align:top;padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            Timing: when it happens (lights-off, night, post-irrigation, dehu pinned, HVAC staging).
+                          </td>
+                          <td style="vertical-align:top;padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            Cycle capture; event tagging; “trigger window” summaries; night-cycle emphasis views.
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td style="vertical-align:top;padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            <strong>Prove it repeats</strong>
+                          </td>
+                          <td style="vertical-align:top;padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            Recurrence: same pocket shows up again under same conditions.
+                          </td>
+                          <td style="vertical-align:top;padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            Recurrence scoring; “repeat vs one-off” classification; week-over-week pocket tracking.
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td style="vertical-align:top;padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            <strong>Verify the fix</strong>
+                          </td>
+                          <td style="vertical-align:top;padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            Before/after proof: pocket shrank/moved/died after intervention.
+                          </td>
+                          <td style="vertical-align:top;padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            A/B runs; intervention receipts; “did it work?” deltas; repeatable verification windows.
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td style="vertical-align:top;padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            <strong>Make it defensible</strong>
+                          </td>
+                          <td style="vertical-align:top;padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            A narrative artifact: where/when/how often/how bad/what changed — suitable for leadership + QA.
+                          </td>
+                          <td style="vertical-align:top;padding:10px;border-bottom:1px solid rgba(0,0,0,0.08);">
+                            Operator-readable reports; evidence bundle export; plain-language summaries; consistent terminology.
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <hr style="border:none;border-top:1px solid rgba(0,0,0,0.12);margin:18px 0;" />
+
+                  <!-- Practical tie-back -->
+                  <h3 class="team-card__role" style="margin-top:0;">How this connects to pilot duration</h3>
+                  <p class="team-card__text">
+                    Duration isn’t a billing preference. It’s required to complete the jobs above:
+                    short pilots can <strong>find + locate</strong>, but long pilots prove <strong>recurrence + triggers</strong>,
+                    and verification requires <strong>before/after cycles</strong>.
+                    If the system can’t see cycles, it can’t do the job operators hire it for.
+                  </p>
+
+                  <div style="margin-top:16px;">
+                    <a class="team-card__text" href="/engage/pilot/research/why_duration_matters" style="text-decoration:underline;">
+                      Read: Why duration matters <span aria-hidden="true">→</span>
+                    </a>
+                  </div>
+
+                  <!-- NEW: footer links to the two new pages -->
+                  <div style="margin-top:14px;">
+                    <p class="team-card__text" style="margin:0;opacity:0.9;">
+                      Related:
+                    </p>
+                    <ul class="team-card__text" role="list" style="margin-top:8px;">
+                      <li>
+                        <a class="team-card__text" href="/engage/pilot/research/operator_jtbd_interviews" style="text-decoration:underline;">
+                          Operator JTBD interviews (anonymized patterns) <span aria-hidden="true">→</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="team-card__text" href="/engage/pilot/research/operator_feature_priorities" style="text-decoration:underline;">
+                          Operator feature priorities (ranked) <span aria-hidden="true">→</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <p class="team-card__text" style="opacity:0.85;margin-top:14px;">
+                    Note: This page describes product discovery and operator workflows (JTBD). It is not cultivation, medical,
+                    or legal advice.
+                  </p>
+
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </site-page>
+  </body>
+</html>
