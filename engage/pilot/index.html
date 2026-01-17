@@ -35,463 +35,388 @@
 
     <link rel="stylesheet" href="" id="main-css" />
     <script type="module" src="../../bootstrap.js"></script>
+
+    <style>
+/* =========================
+   Pilots: aligned + symmetric
+   - Header + grid share SAME container
+   - Right column: Pilot Menu + Request Form
+   - Left column: content + sources
+   - Collapses to 1-col <= 820px
+   ========================= */
+
+.pilots { padding: var(--space-6) 0; }
+
+/* Force layout regardless of hl-grid defaults */
+.hl-grid.hl-grid--two.pilots__grid{
+  display: grid !important;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr) !important;
+  gap: var(--space-6) !important;
+  align-items: start;
+}
+
+.pilots__main,
+.pilots__rail{ min-width: 0; }
+
+/* Right column panels */
+.pilots__panel{
+  width: 100%;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+  padding: var(--space-4);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+}
+
+.pilots__panel + .pilots__panel{ margin-top: var(--space-5); }
+
+.pilots__panelKicker{
+  font-size: 0.85rem;
+  opacity: 0.75;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0 0 var(--space-2);
+}
+.pilots__panelTitle{
+  margin: 0 0 var(--space-3);
+  letter-spacing: -0.01em;
+}
+.pilots__panelRule{
+  height: 1px;
+  background: var(--border-soft);
+  margin: var(--space-3) 0 var(--space-4);
+}
+
+/* tighten inner spacing inside panels */
+.pilots__panel .pilots__section{ padding-top: 0; }
+.pilots__panel .pilots__heading{ margin-top: 0; }
+
+.pilot-card{ min-width: 0; }
+.pilot-card + .pilot-card{ margin-top: var(--space-4); }
+
+/* Mobile: one column */
+@media (max-width: 820px){
+  .hl-grid.hl-grid--two.pilots__grid{
+    grid-template-columns: 1fr !important;
+  }
+  .pilots__rail{ margin-top: var(--space-6); }
+}
+    </style>
   </head>
 
   <body>
     <site-page>
       <section class="pilots" aria-labelledby="pilots-title">
-        <div class="pilots__inner">
+        <div class="hl-container">
           <!-- HERO -->
           <header class="pilots__header">
             <h1 class="pilots__title" id="pilots-title">Cannabis Grow Pilots</h1>
             <p class="pilots__lede">3D canopy-zone mapping. Verification. Receipts you can operate on.</p>
             <p class="pilots__subhead">
               These pilots are built for one outcome: turn “we swear we held setpoints” into a measurable field
-              with acceptance tests—so you can prove where pockets form, what triggers them, and whether a fix
-              actually works.
+              with acceptance tests.
             </p>
-
-            <div class="pilots__actions">
-              <a class="button button--primary" href="#pilot-list">View pilot menu</a>
-              <a class="button button--secondary" href="#apply">Request a pilot</a>
-            </div>
           </header>
 
-          <!-- WHY THIS IS WORTH IT (CITED) -->
-          <section class="pilots__section" aria-labelledby="why-title">
-            <h2 class="pilots__heading" id="why-title">Why These Pilots Are Worth Doing</h2>
+          <!-- TWO COLUMN GRID -->
+          <div class="hl-grid hl-grid--two pilots__grid">
+            <!-- LEFT COLUMN: content -->
+            <div class="pilots__main">
+              <section class="pilots__section" aria-labelledby="one-time-map">
+                <h2 class="pilots__heading" id="one-time-map">A One-Time Map is Cheaper</h2>
+                <ul class="pilots__list">
+                  <li class="pilots__item">One scan = baseline pocket map.</li>
+                  <li class="pilots__item">Cost scales with repeat scans (lights, irrigation, dehu).</li>
+                  <li class="pilots__item">Verification is the work: before/after proof.</li>
+                  <li class="pilots__item">Pass/fail receipts make it defensible.</li>
+                </ul>
+              </section>
 
-            <div class="pilots__callout">
-              <p class="pilots__text">
-                In commercial cannabis, “dashboard averages pass; pockets fail harvests” is not a slogan—it’s a default
-                failure mode when dense canopies meet imperfect airflow and cycling dehumidification/HVAC.
-              </p>
+              <section class="pilots__section" aria-labelledby="cycles">
+                <h2 class="pilots__heading" id="cycles">Canopy pockets are cycle-driven</h2>
+                <ul class="pilots__list">
+                  <li class="pilots__item">Pockets show on triggers, not averages.</li>
+                  <li class="pilots__item">Short pilots: find + locate.</li>
+                  <li class="pilots__item">Long pilots: repeatability + recurrence.</li>
+                  <li class="pilots__item">Late-flower + night cycles matter most.</li>
+                </ul>
+              </section>
+
+              <!-- WHY THIS IS WORTH IT (CITED) -->
+              <section class="pilots__section" aria-labelledby="why-title">
+                <h2 class="pilots__heading" id="why-title">Why These Pilots Are Worth Doing</h2>
+                <ul class="pilots__list">
+                  <li class="pilots__list-item"><strong>Pockets inside the canopy are common.</strong></li>
+                  <li class="pilots__list-item"><strong>Powdery mildew pressure is an industry staple.</strong></li>
+                  <li class="pilots__list-item"><strong>Botrytis (“bud rot”) can move fast under high RH.</strong></li>
+                  <li class="pilots__list-item"><strong>Compliance failures (yeast/mold) and recalls are real.</strong></li>
+                  <li class="pilots__list-item"><strong>Testing requirements vary by state (and can include Aspergillus targets).</strong></li>
+                </ul>
+              </section>
+
+              <!-- WHAT A PILOT INCLUDES -->
+              <section class="pilots__section" aria-labelledby="overview-title">
+                <h2 class="pilots__heading" id="overview-title">What Every Pilot Includes</h2>
+                <ul class="pilots__list">
+                  <li class="pilots__list-item">Commissioning &amp; acceptance tests</li>
+                  <li class="pilots__list-item">Validity / trust layer in the portal</li>
+                  <li class="pilots__list-item">Run receipts</li>
+                  <li class="pilots__list-item">Pilot readout</li>
+                </ul>
+              </section>
+
+              <!-- HOW WE SCOPE -->
+              <section class="pilots__section" aria-labelledby="scope-title">
+                <h2 class="pilots__heading" id="scope-title">Pricing Scales with</h2>
+                <ul class="pilots__list">
+                  <li class="pilots__list-item">Scope of measurement geometry</li>
+                  <li class="pilots__list-item">Time horizon (cycles observed)</li>
+                  <li class="pilots__list-item">Verification burden (proving a fix works)</li>
+                  <li class="pilots__list-item">Deliverable sophistication (ops vs QA vs exec)</li>
+                  <li class="pilots__list-item">Stakeholder/support expectations (logins, handoffs, training)</li>
+                </ul>
+              </section>
+
+              <!-- HOW TO START -->
+              <section class="pilots__section" aria-labelledby="start-title">
+                <h2 class="pilots__heading" id="start-title">How to Start</h2>
+                <ol class="pilots__steps">
+                  <li class="pilots__step">
+                    <strong>Site call (30–45 min):</strong> goals, constraints, room count, and where you want decisions to be easier.
+                  </li>
+                  <li class="pilots__step">
+                    <strong>Pilot proposal:</strong> success criteria, deliverables, acceptance tests, and timeline across cycles.
+                  </li>
+                  <li class="pilots__step">
+                    <strong>Install + commissioning:</strong> go-live only after acceptance tests pass and validity is demonstrated.
+                  </li>
+                </ol>
+
+                <div class="pilots__actions">
+                  <a class="button button--secondary" href="/events#rsvp">Prefer a walkthrough?</a>
+                </div>
+              </section>
+
+              <!-- SOURCES -->
+              <section class="pilots__section pilots__section--sources" aria-labelledby="sources-title">
+                <h2 class="pilots__heading" id="sources-title">Sources</h2>
+                <ol class="pilots__sources">
+                  <li class="pilots__source">
+                    Colorado State University Extension — “Powdery Mildews”
+                    (<a href="https://extension.colostate.edu/resource/powdery-mildews/" rel="noopener">extension.colostate.edu/resource/powdery-mildews</a>)
+                  </li>
+                  <li class="pilots__source">
+                    e-GRO (Cornell Cooperative Extension / e-GRO alerts) — “Powdery Mildew of Hemp (E714)”
+                    (<a href="https://www.e-gro.org/pdf/E714.pdf" rel="noopener">www.e-gro.org/pdf/E714.pdf</a>)
+                  </li>
+                  <li class="pilots__source">
+                    Canadian Science Publishing (Botany) — “Understanding bud rot development, caused by <em>Botrytis cinerea</em>, on cannabis…”
+                    (<a href="https://cdnsciencepub.com/doi/10.1139/cjb-2022-0139" rel="noopener">cdnsciencepub.com/doi/10.1139/cjb-2022-0139</a>)
+                  </li>
+                  <li class="pilots__source">
+                    Colorado Public Radio — “Huge cannabis recall drives questions about market safety…” (mold/yeast exceedances)
+                    (<a href="https://www.cpr.org/2025/09/29/cannabis-recall/" rel="noopener">cpr.org/2025/09/29/cannabis-recall</a>)
+                  </li>
+                  <li class="pilots__source">
+                    The Wall Street Journal — “Legal Marijuana Contains Dangerous Mold. States Approve It Anyway.”
+                    (<a href="https://www.wsj.com/health/healthcare/marijuana-mold-contaminants-safety-a172c230" rel="noopener">wsj.com/.../marijuana-mold-contaminants-safety-a172c230</a>)
+                  </li>
+                  <li class="pilots__source">
+                    Medicinal Genomics — “Cannabis Microbial Testing Regulations by State” (includes Aspergillus examples)
+                    (<a href="https://medicinalgenomics.com/resource/cannabis-microbial-testing-regulations-by-state/" rel="noopener">medicinalgenomics.com/.../cannabis-microbial-testing-regulations-by-state</a>)
+                  </li>
+                </ol>
+              </section>
             </div>
 
-            <ul class="pilots__list">
-              <li class="pilots__list-item">
-                <strong>Pockets inside the canopy are common.</strong> Crowding + poor air circulation is repeatedly cited as
-                increasing local humidity and infection pressure—exactly the conditions that create “wet corners” even when
-                the wall sensor looks fine.
-                <span class="pilots__cite">
-                  (See CSU Extension on powdery mildew being common in crowded plantings with poor air circulation and rising RH.)
-                </span>
-              </li>
+            <!-- RIGHT COLUMN: Pilot Menu + Form -->
+            <aside class="pilots__rail" aria-label="Pilot menu and request form">
+              <!-- PANEL 1: PILOT MENU -->
+              <div class="pilots__panel">
+                <div class="pilots__panelKicker">Choose a pilot</div>
+                <h2 class="pilots__panelTitle" id="types-title">Pilot Menu</h2>
+                <div class="pilots__panelRule" aria-hidden="true"></div>
 
-              <li class="pilots__list-item">
-                <strong>Powdery mildew pressure is an industry staple.</strong> Guidance for hemp/cannabis-adjacent environments
-                emphasizes humidity dynamics and airflow as key drivers for development and spread.
-                <span class="pilots__cite">(e-GRO powdery mildew of hemp.)</span>
-              </li>
+                <section class="pilots__section" aria-labelledby="types-title" id="pilot-list">
+                  <!-- Pilot A -->
+                  <article class="pilot-card" aria-labelledby="pilot-a-title">
+                    <header class="pilot-card__header">
+                      <h3 class="pilot-card__title" id="pilot-a-title">Pilot A — Pocket Scan</h3>
+                      <p class="pilot-card__summary">
+                        Fast deployment to locate pockets; one verification pass.
+                      </p>
+                    </header>
+                    <div class="pilot-card__block">
+                      <p class="pilot-card__text">
+                        <a class="button button--secondary" href="/engage/pilot/pocket_scan">View details</a>
+                      </p>
+                    </div>
+                  </article>
 
-              <li class="pilots__list-item">
-                <strong>Botrytis (“bud rot”) can move fast under high RH.</strong> Peer-reviewed cannabis work reports rapid
-                destruction of inflorescences under &gt;70% RH with moderate temperatures—microclimates in flower can hit those
-                conditions even if the room average doesn’t.
-                <span class="pilots__cite">(Botany / Canadian Science Publishing article on Botrytis on cannabis.)</span>
-              </li>
+                  <!-- Pilot B -->
+                  <article class="pilot-card" aria-labelledby="pilot-b-title">
+                    <header class="pilot-card__header">
+                      <h3 class="pilot-card__title" id="pilot-b-title">Pilot B — Flower Room Zone Map</h3>
+                      <p class="pilot-card__summary">
+                        Month-scale mapping + interventions + repeatability scoring.
+                      </p>
+                    </header>
+                    <div class="pilot-card__block">
+                      <p class="pilot-card__text">
+                        <a class="button button--secondary" href="/engage/pilot/flower_room_zone_map">View details</a>
+                      </p>
+                    </div>
+                  </article>
 
-              <li class="pilots__list-item">
-                <strong>Compliance failures (yeast/mold) and recalls are real.</strong> Reporting on major recalls cites batches
-                exceeding mold and yeast limits; broader investigations describe recurring mold risk and inconsistent testing/oversight.
-                <span class="pilots__cite">(CPR recall reporting; WSJ investigation.)</span>
-              </li>
+                  <!-- Pilot C -->
+                  <article class="pilot-card" aria-labelledby="pilot-c-title">
+                    <header class="pilot-card__header">
+                      <h3 class="pilot-card__title" id="pilot-c-title">Pilot C — Facility Baseline</h3>
+                      <p class="pilot-card__summary">
+                        Multi-room baseline + cross-room comparisons + rollout playbook.
+                      </p>
+                    </header>
+                    <div class="pilot-card__block">
+                      <p class="pilot-card__text">
+                        <a class="button button--secondary" href="/engage/pilot/facility_baseline">View details</a>
+                      </p>
+                    </div>
+                  </article>
 
-              <li class="pilots__list-item">
-                <strong>Testing requirements vary by state (and can include Aspergillus targets).</strong> State microbial rules
-                commonly require third-party lab testing; some jurisdictions explicitly require specific Aspergillus species.
-                <span class="pilots__cite">(Medicinal Genomics state-by-state microbial testing overview.)</span>
-              </li>
-            </ul>
-          </section>
+                  <!-- Pilot D -->
+                  <article class="pilot-card" aria-labelledby="pilot-d-title">
+                    <header class="pilot-card__header">
+                      <h3 class="pilot-card__title" id="pilot-d-title">Pilot D — PM / Botrytis Defense</h3>
+                      <p class="pilot-card__summary">
+                        Recurrence tracking + A/B cycles + QA-grade evidence packages.
+                      </p>
+                    </header>
+                    <div class="pilot-card__block">
+                      <p class="pilot-card__text">
+                        <a class="button button--secondary" href="/engage/pilot/pm_botrytis_defense">View details</a>
+                      </p>
+                    </div>
+                  </article>
 
-          <!-- WHAT A PILOT INCLUDES -->
-          <section class="pilots__section" aria-labelledby="overview-title">
-            <h2 class="pilots__heading" id="overview-title">What Every Pilot Includes</h2>
-            <ul class="pilots__list">
-              <li class="pilots__list-item">Commissioning &amp; acceptance tests (so results aren’t vibes)</li>
-              <li class="pilots__list-item">Validity / trust layer in the portal (when we believe the measurement, and why)</li>
-              <li class="pilots__list-item">Run receipts: device IDs, firmware/software versions, calibration state, configs</li>
-              <li class="pilots__list-item">Pilot readout: findings, failure modes, and recommended next steps</li>
-            </ul>
-          </section>
-
-          <!-- HOW WE SCOPE (FERMI-BASED) -->
-          <section class="pilots__section" aria-labelledby="scope-title">
-            <h2 class="pilots__heading" id="scope-title">How We Scope Pilots (Why Tiers Exist)</h2>
-
-            <p class="pilots__text">
-              Pricing scales with (1) scope of measurement geometry, (2) time horizon (cycles observed),
-              (3) verification burden (proving a fix works), (4) deliverable sophistication (ops vs QA vs exec),
-              and (5) stakeholder/support expectations (logins, handoffs, training).
-            </p>
-
-            <div class="pilots__grid pilots__grid--two">
-              <div class="pilot-card pilot-card--mini" aria-label="Scope driver: verification">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">The expensive part is verification</h3>
-                  <p class="pilot-card__summary">
-                    A one-time map is cheaper. Repeating scans across triggers (lights / irrigation / dehu cycles),
-                    running before/after intervention tests, and producing pass/fail evidence is where cost and value scale.
-                  </p>
-                </div>
+                  <!-- Pilot E -->
+                  <article class="pilot-card" aria-labelledby="pilot-e-title">
+                    <header class="pilot-card__header">
+                      <h3 class="pilot-card__title" id="pilot-e-title">Pilot E — Founder Cohort</h3>
+                      <p class="pilot-card__summary">
+                        12-month verification + drift control + SOP/training artifacts.
+                      </p>
+                    </header>
+                    <div class="pilot-card__block">
+                      <p class="pilot-card__text">
+                        <a class="button button--secondary" href="/engage/pilot/founder_cohort">View details</a>
+                      </p>
+                    </div>
+                  </article>
+                </section>
               </div>
 
-              <div class="pilot-card pilot-card--mini" aria-label="Scope driver: time horizon">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Canopy pockets are cycle-driven</h3>
-                  <p class="pilot-card__summary">
-                    Short pilots prove existence + location. Longer pilots capture repeatability, recurrence, and prevention
-                    performance—especially late flower and night control.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
+              <!-- PANEL 2: REQUEST FORM -->
+              <div class="pilots__panel">
+                <div class="pilots__panelKicker">Request</div>
+                <h2 class="pilots__panelTitle" id="apply-title">Request a Cannabis Pilot</h2>
+                <div class="pilots__panelRule" aria-hidden="true"></div>
 
-          <!-- PILOT MENU (LINKS OUT TO DETAIL PAGES) -->
-          <section class="pilots__section" aria-labelledby="types-title" id="pilot-list">
-            <h2 class="pilots__heading" id="types-title">Pilot Menu (Each Links to Full Details)</h2>
-
-            <!-- Pilot A -->
-            <article class="pilot-card" aria-labelledby="pilot-a-title">
-              <header class="pilot-card__header">
-                <h3 class="pilot-card__title" id="pilot-a-title">Pilot A — Pocket Scan (Prove pockets exist)</h3>
-                <p class="pilot-card__summary">
-                  Fast deployment to locate humidity/temperature/VPD pockets and show why your “average RH” is hiding risk.
-                  Includes one verification pass to confirm repeatability on a comparable cycle.
+                <p class="pilots__text">
+                  Tell us what should match, but doesn’t. We’ll reply with a proposed commissioning plan and success criteria.
                 </p>
-              </header>
 
-              <div class="pilot-card__grid">
-                <div class="pilot-card__block">
-                  <h4 class="pilot-card__heading">Best for</h4>
-                  <ul class="pilot-card__list">
-                    <li class="pilot-card__item">Mystery corners / under-canopy wet strips</li>
-                    <li class="pilot-card__item">“We hold setpoints but still see pressure”</li>
-                    <li class="pilot-card__item">Quick proof before spending bigger money</li>
-                  </ul>
-                </div>
+                <form class="pilots__form" action="/pilots/apply" method="post">
+                  <div class="pilots__field">
+                    <label class="pilots__label" for="pilot-name">Name</label>
+                    <input class="pilots__input" id="pilot-name" name="name" type="text" autocomplete="name" required />
+                  </div>
 
-                <div class="pilot-card__block">
-                  <h4 class="pilot-card__heading">Deliverables</h4>
-                  <ul class="pilot-card__list">
-                    <li class="pilot-card__item">Zone map (pockets + gradients)</li>
-                    <li class="pilot-card__item">Trigger notes (what coincides with spikes)</li>
-                    <li class="pilot-card__item">Receipts + acceptance test results</li>
-                  </ul>
-                </div>
+                  <div class="pilots__field">
+                    <label class="pilots__label" for="pilot-company">Company</label>
+                    <input class="pilots__input" id="pilot-company" name="company" type="text" autocomplete="organization" required />
+                  </div>
 
-                <div class="pilot-card__block">
-                  <h4 class="pilot-card__heading">Link</h4>
-                  <p class="pilot-card__text">
-                    <a class="button button--secondary" href="/engage/pilot/pocket_scan">View Pilot A details</a>
-                  </p>
-                </div>
+                  <div class="pilots__field">
+                    <label class="pilots__label" for="pilot-email">Email</label>
+                    <input class="pilots__input" id="pilot-email" name="email" type="email" autocomplete="email" required />
+                  </div>
+
+                  <div class="pilots__field">
+                    <label class="pilots__label" for="pilot-site">Site / location</label>
+                    <input
+                      class="pilots__input"
+                      id="pilot-site"
+                      name="site"
+                      type="text"
+                      placeholder="City, facility name, room count, etc."
+                      required
+                    />
+                  </div>
+
+                  <div class="pilots__field">
+                    <label class="pilots__label" for="pilot-type">Pilot type</label>
+                    <select class="pilots__select" id="pilot-type" name="pilot_type" required>
+                      <option value="" selected disabled>Select one</option>
+                      <option value="pocket-scan">Pilot A — Pocket Scan</option>
+                      <option value="flower-room-zone-map">Pilot B — Flower Room Zone Map</option>
+                      <option value="facility-baseline">Pilot C — Facility Baseline</option>
+                      <option value="pm-botrytis-defense">Pilot D — PM / Botrytis Defense</option>
+                      <option value="founder-cohort">Pilot E — Founder Cohort</option>
+                    </select>
+                  </div>
+
+                  <div class="pilots__field">
+                    <label class="pilots__label" for="pilot-message">What should match, but doesn’t?</label>
+                    <textarea
+                      class="pilots__textarea"
+                      id="pilot-message"
+                      name="message"
+                      rows="7"
+                      placeholder="What are you measuring (RH/temp/VPD)? What drifts? When (night, lights, irrigation, dehu cycles)? Where (corners, under canopy, near walls, behind racks)? What decisions are hard today because you don’t trust the measurement?"
+                      required
+                    ></textarea>
+                  </div>
+
+                  <fieldset class="pilots__fieldset">
+                    <legend class="pilots__legend">Primary interest (optional)</legend>
+                    <div class="pilots__checks">
+                      <label class="pilots__check">
+                        <input class="pilots__checkbox" type="checkbox" name="interest" value="pockets" />
+                        Find pockets / dead zones
+                      </label>
+                      <label class="pilots__check">
+                        <input class="pilots__checkbox" type="checkbox" name="interest" value="pm-risk" />
+                        Reduce PM pressure
+                      </label>
+                      <label class="pilots__check">
+                        <input class="pilots__checkbox" type="checkbox" name="interest" value="botrytis-risk" />
+                        Reduce botrytis risk
+                      </label>
+                      <label class="pilots__check">
+                        <input class="pilots__checkbox" type="checkbox" name="interest" value="energy-tuning" />
+                        Reduce tuning/energy tax
+                      </label>
+                      <label class="pilots__check">
+                        <input class="pilots__checkbox" type="checkbox" name="interest" value="compliance" />
+                        Compliance / microbial risk
+                      </label>
+                      <label class="pilots__check">
+                        <input class="pilots__checkbox" type="checkbox" name="interest" value="expansion" />
+                        Expansion / standardization
+                      </label>
+                    </div>
+                  </fieldset>
+
+                  <div class="pilots__actions">
+                    <button class="button button--primary" type="submit">Request a Pilot</button>
+                    <a class="button button--secondary" href="/contact">Contact</a>
+                  </div>
+
+                  <p class="pilots__fineprint">We only use this to respond to your request. No spam.</p>
+                </form>
               </div>
-            </article>
-
-            <!-- Pilot B -->
-            <article class="pilot-card" aria-labelledby="pilot-b-title">
-              <header class="pilot-card__header">
-                <h3 class="pilot-card__title" id="pilot-b-title">Pilot B — Flower Room Zone Map (Fix + verify)</h3>
-                <p class="pilot-card__summary">
-                  A month-scale pilot that maps zones across key triggers (lights, irrigation, dehu cycles), runs multiple
-                  interventions, and scores repeatability so you can stop re-tuning the same room every run.
-                </p>
-              </header>
-
-              <div class="pilot-card__grid">
-                <div class="pilot-card__block">
-                  <h4 class="pilot-card__heading">Best for</h4>
-                  <ul class="pilot-card__list">
-                    <li class="pilot-card__item">Recurring late-flower spikes / night swings</li>
-                    <li class="pilot-card__item">Airflow changes that “feel right” but aren’t provable</li>
-                    <li class="pilot-card__item">Reducing reset/tuning days</li>
-                  </ul>
-                </div>
-
-                <div class="pilot-card__block">
-                  <h4 class="pilot-card__heading">Deliverables</h4>
-                  <ul class="pilot-card__list">
-                    <li class="pilot-card__item">Pocket catalog + repeatability scoring</li>
-                    <li class="pilot-card__item">Before/after evidence for 2–3 interventions</li>
-                    <li class="pilot-card__item">Operator checklist + recommended setpoint/air strategy</li>
-                  </ul>
-                </div>
-
-                <div class="pilot-card__block">
-                  <h4 class="pilot-card__heading">Link</h4>
-                  <p class="pilot-card__text">
-                    <a class="button button--secondary" href="/engage/pilot/flower_room_zone_map">View Pilot B details</a>
-                  </p>
-                </div>
-              </div>
-            </article>
-
-            <!-- Pilot C -->
-            <article class="pilot-card" aria-labelledby="pilot-c-title">
-              <header class="pilot-card__header">
-                <h3 class="pilot-card__title" id="pilot-c-title">Pilot C — Facility Baseline (Standardize across rooms)</h3>
-                <p class="pilot-card__summary">
-                  Multi-room baseline for 2–4 spaces with cross-room comparisons. Built to stop “one good sensor hiding a bad
-                  corner” and to produce a rollout playbook you can replicate across shifts and rooms.
-                </p>
-              </header>
-
-              <div class="pilot-card__grid">
-                <div class="pilot-card__block">
-                  <h4 class="pilot-card__heading">Best for</h4>
-                  <ul class="pilot-card__list">
-                    <li class="pilot-card__item">Multiple rooms that behave differently</li>
-                    <li class="pilot-card__item">Shift-to-shift inconsistency</li>
-                    <li class="pilot-card__item">Scaling SOPs and placement templates</li>
-                  </ul>
-                </div>
-
-                <div class="pilot-card__block">
-                  <h4 class="pilot-card__heading">Deliverables</h4>
-                  <ul class="pilot-card__list">
-                    <li class="pilot-card__item">Room-to-room variance report</li>
-                    <li class="pilot-card__item">Standardization templates (placement + acceptance tests)</li>
-                    <li class="pilot-card__item">Rollout playbook</li>
-                  </ul>
-                </div>
-
-                <div class="pilot-card__block">
-                  <h4 class="pilot-card__heading">Link</h4>
-                  <p class="pilot-card__text">
-                    <a class="button button--secondary" href="/engage/pilot/facility_baseline">View Pilot C details</a>
-                  </p>
-                </div>
-              </div>
-            </article>
-
-            <!-- Pilot D -->
-            <article class="pilot-card" aria-labelledby="pilot-d-title">
-              <header class="pilot-card__header">
-                <h3 class="pilot-card__title" id="pilot-d-title">Pilot D — PM / Botrytis Defense (Risk + QA-grade evidence)</h3>
-                <p class="pilot-card__summary">
-                  Recurrence tracking + A/B cycles + evidence packages. Designed for operations where prevention must be
-                  provable: “we can show pockets, show triggers, and show the fix holds.”
-                </p>
-              </header>
-
-              <div class="pilot-card__grid">
-                <div class="pilot-card__block">
-                  <h4 class="pilot-card__heading">Best for</h4>
-                  <ul class="pilot-card__list">
-                    <li class="pilot-card__item">Persistent PM pressure / late-flower botrytis risk</li>
-                    <li class="pilot-card__item">Remediation events that are financially brutal</li>
-                    <li class="pilot-card__item">Compliance exposure (microbial failures)</li>
-                  </ul>
-                </div>
-
-                <div class="pilot-card__block">
-                  <h4 class="pilot-card__heading">Deliverables</h4>
-                  <ul class="pilot-card__list">
-                    <li class="pilot-card__item">Recurrence report (what repeats, where, under what cycles)</li>
-                    <li class="pilot-card__item">A/B efficacy report (did the intervention actually hold?)</li>
-                    <li class="pilot-card__item">QA-ready documentation + validity uptime</li>
-                  </ul>
-                </div>
-
-                <div class="pilot-card__block">
-                  <h4 class="pilot-card__heading">Link</h4>
-                  <p class="pilot-card__text">
-                    <a class="button button--secondary" href="/engage/pilot/pm_botrytis_defense">View Pilot D details</a>
-                  </p>
-                </div>
-              </div>
-            </article>
-
-            <!-- Pilot E -->
-            <article class="pilot-card" aria-labelledby="pilot-e-title">
-              <header class="pilot-card__header">
-                <h3 class="pilot-card__title" id="pilot-e-title">Pilot E — Founder Cohort (12-month drift control)</h3>
-                <p class="pilot-card__summary">
-                  Ongoing verification + change tracking + training/SOP artifacts. Built for teams expanding rooms/sites who
-                  can’t afford drift, regressions, and tribal-memory failures.
-                </p>
-              </header>
-
-              <div class="pilot-card__grid">
-                <div class="pilot-card__block">
-                  <h4 class="pilot-card__heading">Best for</h4>
-                  <ul class="pilot-card__list">
-                    <li class="pilot-card__item">Expansion (more rooms / more sites)</li>
-                    <li class="pilot-card__item">New equipment or SOP rollouts</li>
-                    <li class="pilot-card__item">Institutionalizing “proof of control” over time</li>
-                  </ul>
-                </div>
-
-                <div class="pilot-card__block">
-                  <h4 class="pilot-card__heading">Deliverables</h4>
-                  <ul class="pilot-card__list">
-                    <li class="pilot-card__item">Recurring verification windows + drift reporting</li>
-                    <li class="pilot-card__item">Quarterly exec readouts (amortized into cadence)</li>
-                    <li class="pilot-card__item">Audit trail: configs, validity, change history</li>
-                  </ul>
-                </div>
-
-                <div class="pilot-card__block">
-                  <h4 class="pilot-card__heading">Link</h4>
-                  <p class="pilot-card__text">
-                    <a class="button button--secondary" href="/engage/pilot/founder_cohort">View Pilot E details</a>
-                  </p>
-                </div>
-              </div>
-            </article>
-          </section>
-
-          <!-- FORM -->
-          <section class="pilots__section pilots__section--apply" aria-labelledby="apply-title" id="apply">
-            <h2 class="pilots__heading" id="apply-title">Request a Cannabis Pilot</h2>
-            <p class="pilots__text">
-              Tell us what should match, but doesn’t. We’ll reply with a proposed commissioning plan and success criteria.
-            </p>
-
-            <form class="pilots__form" action="/pilots/apply" method="post">
-              <div class="pilots__field">
-                <label class="pilots__label" for="pilot-name">Name</label>
-                <input class="pilots__input" id="pilot-name" name="name" type="text" autocomplete="name" required />
-              </div>
-
-              <div class="pilots__field">
-                <label class="pilots__label" for="pilot-company">Company</label>
-                <input class="pilots__input" id="pilot-company" name="company" type="text" autocomplete="organization" required />
-              </div>
-
-              <div class="pilots__field">
-                <label class="pilots__label" for="pilot-email">Email</label>
-                <input class="pilots__input" id="pilot-email" name="email" type="email" autocomplete="email" required />
-              </div>
-
-              <div class="pilots__field">
-                <label class="pilots__label" for="pilot-site">Site / location</label>
-                <input
-                  class="pilots__input"
-                  id="pilot-site"
-                  name="site"
-                  type="text"
-                  placeholder="City, facility name, room count, etc."
-                  required
-                />
-              </div>
-
-              <div class="pilots__field">
-                <label class="pilots__label" for="pilot-type">Pilot type</label>
-                <select class="pilots__select" id="pilot-type" name="pilot_type" required>
-                  <option value="" selected disabled>Select one</option>
-                  <option value="pocket-scan">Pilot A — Pocket Scan</option>
-                  <option value="flower-room-zone-map">Pilot B — Flower Room Zone Map</option>
-                  <option value="facility-baseline">Pilot C — Facility Baseline</option>
-                  <option value="pm-botrytis-defense">Pilot D — PM / Botrytis Defense</option>
-                  <option value="founder-cohort">Pilot E — Founder Cohort</option>
-                </select>
-              </div>
-
-              <div class="pilots__field">
-                <label class="pilots__label" for="pilot-message">What should match, but doesn’t?</label>
-                <textarea
-                  class="pilots__textarea"
-                  id="pilot-message"
-                  name="message"
-                  rows="7"
-                  placeholder="What are you measuring (RH/temp/VPD)? What drifts? When (night, lights, irrigation, dehu cycles)? Where (corners, under canopy, near walls, behind racks)? What decisions are hard today because you don’t trust the measurement?"
-                  required
-                ></textarea>
-              </div>
-
-              <fieldset class="pilots__fieldset">
-                <legend class="pilots__legend">Primary interest (optional)</legend>
-                <div class="pilots__checks">
-                  <label class="pilots__check">
-                    <input class="pilots__checkbox" type="checkbox" name="interest" value="pockets" />
-                    Find pockets / dead zones
-                  </label>
-                  <label class="pilots__check">
-                    <input class="pilots__checkbox" type="checkbox" name="interest" value="pm-risk" />
-                    Reduce PM pressure
-                  </label>
-                  <label class="pilots__check">
-                    <input class="pilots__checkbox" type="checkbox" name="interest" value="botrytis-risk" />
-                    Reduce botrytis risk
-                  </label>
-                  <label class="pilots__check">
-                    <input class="pilots__checkbox" type="checkbox" name="interest" value="energy-tuning" />
-                    Reduce tuning/energy tax
-                  </label>
-                  <label class="pilots__check">
-                    <input class="pilots__checkbox" type="checkbox" name="interest" value="compliance" />
-                    Compliance / microbial risk
-                  </label>
-                  <label class="pilots__check">
-                    <input class="pilots__checkbox" type="checkbox" name="interest" value="expansion" />
-                    Expansion / standardization
-                  </label>
-                </div>
-              </fieldset>
-
-              <div class="pilots__actions">
-                <button class="button button--primary" type="submit">Request a Pilot</button>
-                <a class="button button--secondary" href="/contact">Contact</a>
-              </div>
-
-              <p class="pilots__fineprint">We only use this to respond to your request. No spam.</p>
-            </form>
-          </section>
-
-          <!-- HOW TO START -->
-          <section class="pilots__section" aria-labelledby="start-title">
-            <h2 class="pilots__heading" id="start-title">How to Start</h2>
-            <ol class="pilots__steps">
-              <li class="pilots__step">
-                <strong>Site call (30–45 min):</strong> goals, constraints, room count, and where you want decisions to be easier.
-              </li>
-              <li class="pilots__step">
-                <strong>Pilot proposal:</strong> success criteria, deliverables, acceptance tests, and timeline across cycles.
-              </li>
-              <li class="pilots__step">
-                <strong>Install + commissioning:</strong> go-live only after acceptance tests pass and validity is demonstrated.
-              </li>
-            </ol>
-
-            <div class="pilots__actions">
-              <a class="button button--secondary" href="/events#rsvp">Prefer a walkthrough?</a>
-            </div>
-          </section>
-
-          <!-- SOURCES (PROPER REFERENCES) -->
-          <section class="pilots__section pilots__section--sources" aria-labelledby="sources-title">
-            <h2 class="pilots__heading" id="sources-title">Sources</h2>
-            <ol class="pilots__sources">
-              <li class="pilots__source">
-                Colorado State University Extension — “Powdery Mildews”
-                (<a href="https://extension.colostate.edu/resource/powdery-mildews/" rel="noopener">extension.colostate.edu/resource/powdery-mildews</a>)
-              </li>
-              <li class="pilots__source">
-                e-GRO (Cornell Cooperative Extension / e-GRO alerts) — “Powdery Mildew of Hemp (E714)”
-                (<a href="https://www.e-gro.org/pdf/E714.pdf" rel="noopener">www.e-gro.org/pdf/E714.pdf</a>)
-              </li>
-              <li class="pilots__source">
-                Canadian Science Publishing (Botany) — “Understanding bud rot development, caused by <em>Botrytis cinerea</em>, on cannabis…”
-                (<a href="https://cdnsciencepub.com/doi/10.1139/cjb-2022-0139" rel="noopener">cdnsciencepub.com/doi/10.1139/cjb-2022-0139</a>)
-              </li>
-              <li class="pilots__source">
-                Colorado Public Radio — “Huge cannabis recall drives questions about market safety…” (mold/yeast exceedances)
-                (<a href="https://www.cpr.org/2025/09/29/cannabis-recall/" rel="noopener">cpr.org/2025/09/29/cannabis-recall</a>)
-              </li>
-              <li class="pilots__source">
-                The Wall Street Journal — “Legal Marijuana Contains Dangerous Mold. States Approve It Anyway.”
-                (<a href="https://www.wsj.com/health/healthcare/marijuana-mold-contaminants-safety-a172c230" rel="noopener">wsj.com/.../marijuana-mold-contaminants-safety-a172c230</a>)
-              </li>
-              <li class="pilots__source">
-                Medicinal Genomics — “Cannabis Microbial Testing Regulations by State” (includes Aspergillus examples)
-                (<a href="https://medicinalgenomics.com/resource/cannabis-microbial-testing-regulations-by-state/" rel="noopener">medicinalgenomics.com/.../cannabis-microbial-testing-regulations-by-state</a>)
-              </li>
-            </ol>
-          </section>
+            </aside>
+          </div>
         </div>
       </section>
     </site-page>

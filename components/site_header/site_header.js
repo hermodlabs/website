@@ -90,9 +90,9 @@ class SiteHeader extends LitElement {
             </li>
 
             <li class="site-header__nav-item">
-              <a class="site-header__nav-link" href="/explore/blog">
-                <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
-                <span class="site-header__nav-text">Blog</span>
+              <a class="site-header__nav-link" href="/explore/team">
+                <i class="fa-solid fa-users" aria-hidden="true"></i>
+                <span class="site-header__nav-text">Our Team</span>
               </a>
             </li>
           </ul>

@@ -98,9 +98,9 @@ class SiteFooter extends LitElement {
               </a>
             </li>
             <li class="site-footer__item">
-              <a class="site-footer__link" href="/explore/blog">
-                <i class="fa-solid fa-pen-nib" aria-hidden="true"></i>
-                <span class="site-footer__link-text">Blog</span>
+              <a class="site-footer__link" href="/explore/team">
+                <i class="fa-solid fa-users" aria-hidden="true"></i>
+                <span class="site-footer__link-text">Our Team</span>
               </a>
             </li>
           </ul>
@@ -129,12 +129,6 @@ class SiteFooter extends LitElement {
               </a>
             </li>
             -->
-            <li class="site-footer__item">
-              <a class="site-footer__link" href="/engage/team">
-                <i class="fa-solid fa-users" aria-hidden="true"></i>
-                <span class="site-footer__link-text">Meet the Team</span>
-              </a>
-            </li>
           </ul>
         </div>
 
