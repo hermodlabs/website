@@ -670,111 +670,117 @@
   </section>
 
   <!-- PANEL 2: REQUEST FORM -->
-  <section class="pilots__railCard" aria-labelledby="apply-title">
-    <header class="pilots__railHead">
-      <div class="pilots__railKicker">Request</div>
-      <h2 class="pilots__railTitle" id="apply-title">Request a Cannabis Pilot</h2>
-      <p class="pilots__railSub">
-        Tell us what should match, but doesn’t. We’ll reply with a proposed commissioning plan and success criteria.
-      </p>
-    </header>
+<section class="pilots__railCard" aria-labelledby="apply-title">
+  <header class="pilots__railHead">
+    <div class="pilots__railKicker">Request</div>
+    <h2 class="pilots__railTitle" id="apply-title">Request a Cannabis Pilot</h2>
+    <p class="pilots__railSub">
+      Tell us what should match, but doesn’t. We’ll reply with a proposed commissioning plan and success criteria.
+    </p>
+  </header>
 
-    <form class="pilots__form pilots__form--rail" action="/pilots/apply" method="post">
-      <div class="pilots__field">
-        <label class="pilots__label" for="pilot-name">Name</label>
-        <input class="pilots__input" id="pilot-name" name="name" type="text" autocomplete="name" required />
+  <!-- CHANGED: add id; action can be blank since JS submits -->
+  <form class="pilots__form pilots__form--rail" id="pilots-apply-form" action="" method="post">
+    <!-- OPTIONAL (recommended): honeypot spam trap -->
+    <input type="hidden" name="_gotcha" id="pilots-gotcha" style="display:none !important" />
+
+    <div class="pilots__field">
+      <label class="pilots__label" for="pilot-name">Name</label>
+      <input class="pilots__input" id="pilot-name" name="name" type="text" autocomplete="name" required />
+    </div>
+
+    <div class="pilots__field">
+      <label class="pilots__label" for="pilot-company">Company</label>
+      <input class="pilots__input" id="pilot-company" name="company" type="text" autocomplete="organization" required />
+    </div>
+
+    <div class="pilots__field">
+      <label class="pilots__label" for="pilot-email">Email</label>
+      <input class="pilots__input" id="pilot-email" name="email" type="email" autocomplete="email" required />
+    </div>
+
+    <div class="pilots__field">
+      <label class="pilots__label" for="pilot-site">Site / location</label>
+      <input
+        class="pilots__input"
+        id="pilot-site"
+        name="site"
+        type="text"
+        placeholder="City, facility name, room count, etc."
+        required
+      />
+    </div>
+
+    <div class="pilots__field">
+      <label class="pilots__label" for="pilot-type">Pilot type</label>
+      <select class="pilots__select" id="pilot-type" name="pilot_type" required>
+        <option value="" selected disabled>Select one</option>
+        <option value="pocket-scan">Pilot A — Pocket Scan</option>
+        <option value="flower-room-zone-map">Pilot B — Flower Room Zone Map</option>
+        <option value="facility-baseline">Pilot C — Facility Baseline</option>
+        <option value="pm-botrytis-defense">Pilot D — PM / Botrytis Defense</option>
+        <option value="founder-cohort">Pilot E — Founder Cohort</option>
+      </select>
+    </div>
+
+    <div class="pilots__field">
+      <label class="pilots__label" for="pilot-message">What should match, but doesn’t?</label>
+      <textarea
+        class="pilots__textarea"
+        id="pilot-message"
+        name="message"
+        rows="7"
+        placeholder="What are you measuring (RH/temp/VPD)? What drifts? When (night, lights, irrigation, dehu cycles)? Where (corners, under canopy, near walls, behind racks)? What decisions are hard today because you don’t trust the measurement?"
+        required
+      ></textarea>
+    </div>
+
+    <fieldset class="pilots__fieldset">
+      <legend class="pilots__legend">Primary interest (optional)</legend>
+      <div class="pilots__checks">
+        <label class="pilots__check">
+          <input class="pilots__checkbox" type="checkbox" name="interest" value="pockets" />
+          Find pockets / dead zones
+        </label>
+        <label class="pilots__check">
+          <input class="pilots__checkbox" type="checkbox" name="interest" value="pm-risk" />
+          Reduce PM pressure
+        </label>
+        <label class="pilots__check">
+          <input class="pilots__checkbox" type="checkbox" name="interest" value="botrytis-risk" />
+          Reduce botrytis risk
+        </label>
+        <label class="pilots__check">
+          <input class="pilots__checkbox" type="checkbox" name="interest" value="energy-tuning" />
+          Reduce tuning/energy tax
+        </label>
+        <label class="pilots__check">
+          <input class="pilots__checkbox" type="checkbox" name="interest" value="compliance" />
+          Compliance / microbial risk
+        </label>
+        <label class="pilots__check">
+          <input class="pilots__checkbox" type="checkbox" name="interest" value="expansion" />
+          Expansion / standardization
+        </label>
       </div>
+    </fieldset>
 
-      <div class="pilots__field">
-        <label class="pilots__label" for="pilot-company">Company</label>
-        <input class="pilots__input" id="pilot-company" name="company" type="text" autocomplete="organization" required />
-      </div>
+    <div class="pilots__actions">
+      <button class="button button--primary" id="pilots-submit" type="submit">Request a Pilot</button>
+    </div>
 
-      <div class="pilots__field">
-        <label class="pilots__label" for="pilot-email">Email</label>
-        <input class="pilots__input" id="pilot-email" name="email" type="email" autocomplete="email" required />
-      </div>
+    <p class="pilots__fineprint">We only use this to respond to your request. No spam.</p>
 
-      <div class="pilots__field">
-        <label class="pilots__label" for="pilot-site">Site / location</label>
-        <input
-          class="pilots__input"
-          id="pilot-site"
-          name="site"
-          type="text"
-          placeholder="City, facility name, room count, etc."
-          required
-        />
-      </div>
+    <!-- ADDED: status line (optional) -->
+    <p class="pilots__fineprint" id="pilots-status" aria-live="polite"></p>
 
-      <div class="pilots__field">
-        <label class="pilots__label" for="pilot-type">Pilot type</label>
-        <select class="pilots__select" id="pilot-type" name="pilot_type" required>
-          <option value="" selected disabled>Select one</option>
-          <option value="pocket-scan">Pilot A — Pocket Scan</option>
-          <option value="flower-room-zone-map">Pilot B — Flower Room Zone Map</option>
-          <option value="facility-baseline">Pilot C — Facility Baseline</option>
-          <option value="pm-botrytis-defense">Pilot D — PM / Botrytis Defense</option>
-          <option value="founder-cohort">Pilot E — Founder Cohort</option>
-        </select>
-      </div>
-
-      <div class="pilots__field">
-        <label class="pilots__label" for="pilot-message">What should match, but doesn’t?</label>
-        <textarea
-          class="pilots__textarea"
-          id="pilot-message"
-          name="message"
-          rows="7"
-          placeholder="What are you measuring (RH/temp/VPD)? What drifts? When (night, lights, irrigation, dehu cycles)? Where (corners, under canopy, near walls, behind racks)? What decisions are hard today because you don’t trust the measurement?"
-          required
-        ></textarea>
-      </div>
-
-      <fieldset class="pilots__fieldset">
-        <legend class="pilots__legend">Primary interest (optional)</legend>
-        <div class="pilots__checks">
-          <label class="pilots__check">
-            <input class="pilots__checkbox" type="checkbox" name="interest" value="pockets" />
-            Find pockets / dead zones
-          </label>
-          <label class="pilots__check">
-            <input class="pilots__checkbox" type="checkbox" name="interest" value="pm-risk" />
-            Reduce PM pressure
-          </label>
-          <label class="pilots__check">
-            <input class="pilots__checkbox" type="checkbox" name="interest" value="botrytis-risk" />
-            Reduce botrytis risk
-          </label>
-          <label class="pilots__check">
-            <input class="pilots__checkbox" type="checkbox" name="interest" value="energy-tuning" />
-            Reduce tuning/energy tax
-          </label>
-          <label class="pilots__check">
-            <input class="pilots__checkbox" type="checkbox" name="interest" value="compliance" />
-            Compliance / microbial risk
-          </label>
-          <label class="pilots__check">
-            <input class="pilots__checkbox" type="checkbox" name="interest" value="expansion" />
-            Expansion / standardization
-          </label>
-        </div>
-      </fieldset>
-
-      <div class="pilots__actions">
-        <button class="button button--primary" type="submit">Request a Pilot</button>
-        <a class="button button--secondary" href="/contact">Contact</a>
-      </div>
-
-      <p class="pilots__fineprint">We only use this to respond to your request. No spam.</p>
-
-      <div class="pilots__railFoot">
-        <a class="pilots__railLink" href="/engage/pilot-expectations">
-          Roles &amp; responsibilities <span aria-hidden="true">→</span>
-        </a>
-      </div>
-    </form>
-  </section>
+    <div class="pilots__railFoot">
+      <a class="pilots__railLink" href="/engage/pilot-expectations">
+        Roles &amp; responsibilities <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </form>
+</section>
 </aside>
 
           </div>
@@ -783,3 +789,72 @@
     </site-page>
   </body>
 </html>
+
+
+<!-- CHANGED: Getform submit handler (drop this once per page, after the form exists) -->
+<script>
+  (function () {
+    // TODO: replace with your real endpoint from Getform.
+    const GETFORM_ENDPOINT = "https://getform.io/f/bejvlmpa";
+
+    const form = document.getElementById("pilots-apply-form");
+    const statusEl = document.getElementById("pilots-status");
+    const submitBtn = document.getElementById("pilots-submit");
+
+    if (!form) return;
+
+    function setStatus(msg) {
+      if (statusEl) statusEl.textContent = msg || "";
+    }
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      // Honeypot: if a bot fills it, silently pretend success.
+      const gotcha = document.getElementById("pilots-gotcha");
+      if (gotcha && gotcha.value) {
+        setStatus("Thanks — we’ll be in touch.");
+        form.reset();
+        return;
+      }
+
+      setStatus("Sending…");
+      if (submitBtn) submitBtn.disabled = true;
+
+      try {
+        const formData = new FormData(form);
+
+        // Optional: metadata for filtering in Getform
+        formData.append("form", "pilots_apply");
+        formData.append("page", window.location.pathname || "/engage/pilots");
+
+        const res = await fetch(GETFORM_ENDPOINT, {
+          method: "POST",
+          body: formData,
+          headers: { Accept: "application/json" },
+        });
+
+        if (submitBtn) submitBtn.disabled = false;
+
+        if (res.ok) {
+          setStatus("Request received. We’ll reply with a proposed commissioning plan and success criteria.");
+          form.reset();
+
+          // Optional: redirect after success
+          // window.location.href = "/thank-you/";
+          return;
+        }
+
+        let details = "";
+        try { details = await res.text(); } catch (_) {}
+        console.log("Getform error:", res.status, details);
+
+        setStatus("Something went wrong. Please try again.");
+      } catch (err) {
+        if (submitBtn) submitBtn.disabled = false;
+        console.log("Submission error:", err);
+        setStatus("Network error. Please try again.");
+      }
+    });
+  })();
+</script>
