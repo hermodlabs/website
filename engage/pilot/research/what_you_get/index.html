@@ -1,0 +1,224 @@
+<!-- =========================================
+  /research/what-you-get/index.html
+  ========================================= -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — What You Get</title>
+    <meta
+      name="description"
+      content="Every pilot ships with the same core pattern: commissioning, validity checks, run receipts, and a pilot readout your team can act on."
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <script type="importmap">
+    {
+      "imports": {
+        "lit": "https://esm.run/lit"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="" id="main-css" />
+    <script type="module" src="../../../../bootstrap.js"></script>
+  </head>
+
+  <body>
+    <site-page>
+      <section class="team" aria-labelledby="wyg-title">
+        <div class="team__inner">
+          <header class="team__header">
+            <h1 class="team__title" id="wyg-title">What you get</h1>
+            <p class="team__subhead">
+              What every pilot includes: commission, prove validity, capture receipts, and deliver a readout your team can act on.
+            </p>
+          </header>
+
+          <div class="team__grid" role="list">
+            <article class="team-card" role="listitem" aria-labelledby="wyg-card-title">
+              <div class="team-card__media" aria-hidden="true">
+                <div class="team-card__photo" style="display:grid;place-items:center;">
+                  <i class="fa-solid fa-box-open" style="font-size:44px;"></i>
+                </div>
+              </div>
+
+              <div class="team-card__body">
+                <div class="team-card__meta">
+                  <h2 class="team-card__name" id="wyg-card-title">What every pilot includes</h2>
+                  <p class="team-card__role">
+                    Same core pattern every time — so outcomes are comparable, defensible, and repeatable.
+                  </p>
+                </div>
+
+                <div class="team-card__bio">
+                  <p class="team-card__text">
+                    Pilots fail when they’re “interesting” but not <em>operational</em>.
+                    So every HermodLabs pilot ships with the same core sequence:
+                    <strong>commission → validity → receipts → readout</strong>.
+                    The goal is simple: you can point to what happened, why you trust it, and what to do next.
+                  </p>
+
+                  <div style="margin-top:12px;">
+                    <a class="team-card__text" href="/engage/pilots" style="text-decoration:underline;">
+                      Back to pilots <span aria-hidden="true">→</span>
+                    </a>
+                  </div>
+
+                  <hr style="border:none;border-top:1px solid rgba(0,0,0,0.12);margin:18px 0;" />
+
+                  <!-- =========================
+                       OVERVIEW: THE FOUR DELIVERABLES
+                       ========================= -->
+                  <h3 class="team-card__role" style="margin-top:0;">The four things you receive</h3>
+
+                  <ul class="team-card__text" role="list">
+                    <li><strong>Commissioning & acceptance tests</strong> — go-live only after checks pass.</li>
+                    <li><strong>Validity / trust layer in the portal</strong> — what’s comparable, when, and why.</li>
+                    <li><strong>Run receipts</strong> — timestamps, routes, windows, pass/fail evidence.</li>
+                    <li><strong>Pilot readout</strong> — findings, triggers, fixes, next actions.</li>
+                  </ul>
+
+                  <p class="team-card__text">
+                    These aren’t “nice-to-haves.” They’re the difference between a demo and a decision.
+                  </p>
+
+                  <hr style="border:none;border-top:1px solid rgba(0,0,0,0.12);margin:18px 0;" />
+
+                  <!-- =========================
+                       1) COMMISSIONING
+                       ========================= -->
+                  <h3 class="team-card__role">
+                    1) Commissioning & acceptance tests <span style="opacity:0.7;">(go-live only after checks pass)</span>
+                  </h3>
+
+                  <p class="team-card__text">
+                    Commissioning is where we make sure the system is actually measuring what you think it’s measuring.
+                    No “ship it and pray.” We run checks, and we only call it live when those checks pass.
+                  </p>
+
+                  <p class="team-card__text"><strong>Typical commissioning checks</strong></p>
+                  <ul class="team-card__text" role="list">
+                    <li><strong>Coverage sanity</strong>: are we observing the volume/area we agreed to observe?</li>
+                    <li><strong>Signal health</strong>: are channels clean enough to use (not saturated, clipped, or dead)?</li>
+                    <li><strong>Clock / timing checks</strong>: are streams aligned well enough to compare across sensors/routes?</li>
+                    <li><strong>Environmental baseline capture</strong>: do we have a stable “before” reference to compare against?</li>
+                  </ul>
+
+                  <p class="team-card__text">
+                    Output: a short acceptance summary — <strong>pass/fail</strong> + what was fixed before go-live.
+                  </p>
+
+                  <hr style="border:none;border-top:1px solid rgba(0,0,0,0.12);margin:18px 0;" />
+
+                  <!-- =========================
+                       2) VALIDITY / TRUST LAYER
+                       ========================= -->
+                  <h3 class="team-card__role">
+                    2) Validity / trust layer in the portal <span style="opacity:0.7;">(what’s comparable, when, and why)</span>
+                  </h3>
+
+                  <p class="team-card__text">
+                    This is the part most systems skip: <strong>how do you know you’re allowed to compare</strong> one run to another?
+                    The portal makes that explicit — so teams don’t argue over “is this real?” every time a result is inconvenient.
+                  </p>
+
+                  <p class="team-card__text"><strong>What the trust layer answers</strong></p>
+                  <ul class="team-card__text" role="list">
+                    <li><strong>Comparable?</strong> Can these two runs be compared, or did conditions change too much?</li>
+                    <li><strong>When?</strong> What time windows are valid (and which are noisy / off-cycle / partial)?</li>
+                    <li><strong>Why?</strong> The reason a comparison is permitted or blocked (simple operator-readable rules).</li>
+                  </ul>
+
+                  <p class="team-card__text">
+                    Output: a “trust status” per run and per comparison, so your team isn’t guessing.
+                  </p>
+
+                  <hr style="border:none;border-top:1px solid rgba(0,0,0,0.12);margin:18px 0;" />
+
+                  <!-- =========================
+                       3) RUN RECEIPTS
+                       ========================= -->
+                  <h3 class="team-card__role">
+                    3) Run receipts <span style="opacity:0.7;">(timestamps, routes, windows, pass/fail evidence)</span>
+                  </h3>
+
+                  <p class="team-card__text">
+                    Receipts are the “audit trail” of the pilot. They turn claims into artifacts:
+                    what ran, when it ran, what it covered, what windows were used, and what passed or failed.
+                  </p>
+
+                  <p class="team-card__text"><strong>What a receipt typically contains</strong></p>
+                  <ul class="team-card__text" role="list">
+                    <li><strong>Timestamps</strong>: start/end, plus the cycle windows involved (lights, irrigation, staging).</li>
+                    <li><strong>Routes / geometry</strong>: where the run traversed or what volume was covered.</li>
+                    <li><strong>Window selection</strong>: which intervals were included/excluded and why.</li>
+                    <li><strong>Evidence</strong>: the minimal figures/tables that justify the pass/fail call.</li>
+                  </ul>
+
+                  <p class="team-card__text">
+                    Output: a bundle you can hand to leadership/QA without a live lecture.
+                  </p>
+
+                  <hr style="border:none;border-top:1px solid rgba(0,0,0,0.12);margin:18px 0;" />
+
+                  <!-- =========================
+                       4) PILOT READOUT
+                       ========================= -->
+                  <h3 class="team-card__role">
+                    4) Pilot readout <span style="opacity:0.7;">(findings, triggers, fixes, next actions)</span>
+                  </h3>
+
+                  <p class="team-card__text">
+                    The readout is the operator-facing deliverable: what we found, what triggers it, what fixes are worth trying,
+                    and what to do next. It’s written to be acted on — not admired.
+                  </p>
+
+                  <p class="team-card__text"><strong>Readout structure</strong></p>
+                  <ul class="team-card__text" role="list">
+                    <li><strong>Findings</strong>: worst zones/pockets and how they rank.</li>
+                    <li><strong>Trigger windows</strong>: when risk concentrates (lights-off, irrigation, dehu pinned, staging shifts).</li>
+                    <li><strong>Fix candidates</strong>: targeted interventions (airflow, dehu strategy, placement, SOP timing).</li>
+                    <li><strong>Next actions</strong>: what to test next and what “success” will look like in verification.</li>
+                  </ul>
+
+                  <p class="team-card__text">
+                    Output: a short, readable plan that creates momentum instead of debate.
+                  </p>
+
+                  <hr style="border:none;border-top:1px solid rgba(0,0,0,0.12);margin:18px 0;" />
+
+                  <!-- =========================
+                       ROLES & RESPONSIBILITIES CTA
+                       ========================= -->
+                  <h3 class="team-card__role" style="margin-top:0;">Read roles &amp; responsibilities</h3>
+
+                  <p class="team-card__text">
+                    The fastest pilots have a clear handshake: who provides access, who approves changes, who owns the readout,
+                    and what “done” means.
+                  </p>
+
+                  <div style="margin-top:12px;">
+                    <a class="team-card__text" href="/engage/roles-and-responsibilities" style="text-decoration:underline;">
+                      Roles &amp; responsibilities <span aria-hidden="true">→</span>
+                    </a>
+                  </div>
+
+                  <p class="team-card__text" style="opacity:0.85;margin-top:14px;">
+                    Note: This page describes measurement and verification workflows. It is not cultivation, medical, or legal advice.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </site-page>
+  </body>
+</html>
