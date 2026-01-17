@@ -101,6 +101,223 @@
   }
   .pilots__rail{ margin-top: var(--space-6); }
 }
+
+
+/* Add to your pilots page <style> (scoped styles) */
+
+.pilots__section--callout { padding-top: 0; }
+
+.pilots__callout{
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+  padding: var(--space-4);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+}
+
+.pilots__calloutHead{
+  margin-bottom: var(--space-3);
+}
+
+.pilots__calloutKicker{
+  font-size: 0.85rem;
+  opacity: 0.75;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+
+.pilots__calloutTitle{
+  margin: 0 0 var(--space-2);
+  letter-spacing: -0.01em;
+}
+
+.pilots__calloutLede{
+  margin: 0;
+  opacity: 0.9;
+  max-width: 70ch;
+}
+
+.pilots__bullets{
+  list-style: none;
+  padding: 0;
+  margin: var(--space-4) 0 var(--space-4);
+  display: grid;
+  gap: var(--space-2);
+}
+
+.pilots__bullet{
+  display: grid;
+  grid-template-columns: 12px 1fr;
+  gap: var(--space-3);
+  align-items: start;
+}
+
+.pilots__dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  margin-top: 0.45rem;
+  background: currentColor;
+  opacity: 0.28;
+}
+
+.pilots__bulletText{
+  opacity: 0.92;
+}
+
+.pilots__calloutFooter{
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border-soft);
+}
+
+.pilots__calloutLink{
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.pilots__calloutLink:hover{
+  text-decoration: underline;
+}
+
+/* Uses the same CSS from your previous callout.
+   Nothing new required. If you want a subtle variant per callout, add this: */
+
+#cycles.pilots__calloutTitle { /* optional: leave empty or add small tweaks */ }
+
+
+/* Add to your pilots page <style> */
+
+/* stack spacing */
+.pilots__rail--stack{
+  display: grid;
+  gap: var(--space-5);
+}
+
+/* card chrome */
+.pilots__railCard{
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+  padding: var(--space-4);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+}
+
+.pilots__railHead{
+  margin-bottom: var(--space-3);
+}
+
+.pilots__railKicker{
+  font-size: 0.85rem;
+  opacity: 0.75;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0 0 var(--space-2);
+}
+
+.pilots__railTitle{
+  margin: 0 0 var(--space-2);
+  letter-spacing: -0.01em;
+}
+
+.pilots__railSub{
+  margin: 0;
+  opacity: 0.85;
+  max-width: 70ch;
+}
+
+.pilots__railFoot{
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border-soft);
+}
+
+.pilots__railLink{
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 800;
+  text-decoration: none;
+}
+.pilots__railLink:hover{ text-decoration: underline; }
+
+/* menu */
+.pilots__menu{
+  margin-top: var(--space-4);
+  display: grid;
+  gap: var(--space-2);
+}
+
+.pilots__menuItem{
+  display: grid;
+  grid-template-columns: 34px 1fr 16px;
+  gap: var(--space-3);
+  align-items: center;
+  padding: var(--space-3);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  background: var(--panel);
+  text-decoration: none;
+  color: inherit;
+}
+
+.pilots__menuItem:hover{
+  background: var(--panel-soft);
+}
+
+.pilots__menuBadge{
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-soft);
+  background: var(--panel-soft);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  opacity: 0.95;
+}
+
+.pilots__menuBadge--risk{
+  font-weight: 900;
+}
+
+.pilots__menuBody{
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.pilots__menuTitle{
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pilots__menuMeta{
+  font-size: 0.92rem;
+  opacity: 0.75;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pilots__menuArrow{
+  opacity: 0.6;
+  font-weight: 900;
+}
+
+/* form in rail: slightly tighter */
+.pilots__form--rail .pilots__field{
+  margin-bottom: var(--space-3);
+}
+
     </style>
   </head>
 
@@ -122,60 +339,217 @@
           <div class="hl-grid hl-grid--two pilots__grid">
             <!-- LEFT COLUMN: content -->
             <div class="pilots__main">
-              <section class="pilots__section" aria-labelledby="one-time-map">
-                <h2 class="pilots__heading" id="one-time-map">A One-Time Map is Cheaper</h2>
-                <ul class="pilots__list">
-                  <li class="pilots__item">One scan = baseline pocket map.</li>
-                  <li class="pilots__item">Cost scales with repeat scans (lights, irrigation, dehu).</li>
-                  <li class="pilots__item">Verification is the work: before/after proof.</li>
-                  <li class="pilots__item">Pass/fail receipts make it defensible.</li>
-                </ul>
-              </section>
 
-              <section class="pilots__section" aria-labelledby="cycles">
-                <h2 class="pilots__heading" id="cycles">Canopy pockets are cycle-driven</h2>
-                <ul class="pilots__list">
-                  <li class="pilots__item">Pockets show on triggers, not averages.</li>
-                  <li class="pilots__item">Short pilots: find + locate.</li>
-                  <li class="pilots__item">Long pilots: repeatability + recurrence.</li>
-                  <li class="pilots__item">Late-flower + night cycles matter most.</li>
-                </ul>
-              </section>
+<section class="pilots__section pilots__section--callout" aria-labelledby="one-time-map">
+  <div class="pilots__callout">
+    <header class="pilots__calloutHead">
+      <div class="pilots__calloutKicker">Cost driver</div>
+      <h2 class="pilots__heading pilots__calloutTitle" id="one-time-map">A One-Time Map is Cheaper</h2>
+      <p class="pilots__calloutLede">
+        Mapping is the baseline. <strong>Verification</strong> is where time (and value) scales.
+      </p>
+    </header>
+
+    <ul class="pilots__bullets" role="list">
+      <li class="pilots__bullet">
+        <span class="pilots__dot" aria-hidden="true"></span>
+        <span class="pilots__bulletText"><strong>One scan</strong> → baseline pocket map.</span>
+      </li>
+      <li class="pilots__bullet">
+        <span class="pilots__dot" aria-hidden="true"></span>
+        <span class="pilots__bulletText"><strong>Cost scales</strong> with repeat scans (lights, irrigation, dehu).</span>
+      </li>
+      <li class="pilots__bullet">
+        <span class="pilots__dot" aria-hidden="true"></span>
+        <span class="pilots__bulletText"><strong>Verification is the work</strong>: before/after proof.</span>
+      </li>
+      <li class="pilots__bullet">
+        <span class="pilots__dot" aria-hidden="true"></span>
+        <span class="pilots__bulletText"><strong>Pass/fail receipts</strong> make it defensible.</span>
+      </li>
+    </ul>
+
+    <div class="pilots__calloutFooter">
+      <a class="pilots__calloutLink" href="/method/verification-and-receipts">
+        See verification &amp; receipts methodology <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="pilots__section pilots__section--callout" aria-labelledby="cycles">
+  <div class="pilots__callout">
+    <header class="pilots__calloutHead">
+      <div class="pilots__calloutKicker">Why duration matters</div>
+      <h2 class="pilots__heading pilots__calloutTitle" id="cycles">Canopy pockets are cycle-driven</h2>
+      <p class="pilots__calloutLede">
+        If you don’t catch the <strong>trigger window</strong>, the average looks “fine.”
+        Cycles are where pockets show up, repeat, and prove they’re real.
+      </p>
+    </header>
+
+    <ul class="pilots__bullets" role="list">
+      <li class="pilots__bullet">
+        <span class="pilots__dot" aria-hidden="true"></span>
+        <span class="pilots__bulletText"><strong>Triggers</strong> reveal pockets — averages hide them.</span>
+      </li>
+      <li class="pilots__bullet">
+        <span class="pilots__dot" aria-hidden="true"></span>
+        <span class="pilots__bulletText"><strong>Short pilots</strong> = find + locate.</span>
+      </li>
+      <li class="pilots__bullet">
+        <span class="pilots__dot" aria-hidden="true"></span>
+        <span class="pilots__bulletText"><strong>Long pilots</strong> = repeatability + recurrence.</span>
+      </li>
+      <li class="pilots__bullet">
+        <span class="pilots__dot" aria-hidden="true"></span>
+        <span class="pilots__bulletText"><strong>Best signal</strong> is late-flower + night cycles.</span>
+      </li>
+    </ul>
+
+    <div class="pilots__calloutFooter">
+      <a class="pilots__calloutLink" href="/research/operator-jtbd">
+        See operator jobs-to-be-done research <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
 
               <!-- WHY THIS IS WORTH IT (CITED) -->
-              <section class="pilots__section" aria-labelledby="why-title">
-                <h2 class="pilots__heading" id="why-title">Why These Pilots Are Worth Doing</h2>
-                <ul class="pilots__list">
-                  <li class="pilots__list-item"><strong>Pockets inside the canopy are common.</strong></li>
-                  <li class="pilots__list-item"><strong>Powdery mildew pressure is an industry staple.</strong></li>
-                  <li class="pilots__list-item"><strong>Botrytis (“bud rot”) can move fast under high RH.</strong></li>
-                  <li class="pilots__list-item"><strong>Compliance failures (yeast/mold) and recalls are real.</strong></li>
-                  <li class="pilots__list-item"><strong>Testing requirements vary by state (and can include Aspergillus targets).</strong></li>
-                </ul>
-              </section>
+<section class="pilots__section pilots__section--callout" aria-labelledby="why-title">
+  <div class="pilots__callout">
+    <header class="pilots__calloutHead">
+      <div class="pilots__calloutKicker">Why this matters</div>
+      <h2 class="pilots__heading pilots__calloutTitle" id="why-title">Why These Pilots Are Worth Doing</h2>
+      <p class="pilots__calloutLede">
+        These pilots exist because the failure modes are <strong>common</strong>, <strong>fast</strong>, and
+        <strong>expensive</strong>—and “average RH” rarely catches them in time.
+      </p>
+    </header>
+
+    <ul class="pilots__bullets" role="list">
+      <li class="pilots__bullet">
+        <span class="pilots__dot" aria-hidden="true"></span>
+        <span class="pilots__bulletText"><strong>Canopy pockets</strong> are common.</span>
+      </li>
+      <li class="pilots__bullet">
+        <span class="pilots__dot" aria-hidden="true"></span>
+        <span class="pilots__bulletText"><strong>Powdery mildew</strong> pressure is an industry staple.</span>
+      </li>
+      <li class="pilots__bullet">
+        <span class="pilots__dot" aria-hidden="true"></span>
+        <span class="pilots__bulletText"><strong>Botrytis</strong> (“bud rot”) can move fast under high RH.</span>
+      </li>
+      <li class="pilots__bullet">
+        <span class="pilots__dot" aria-hidden="true"></span>
+        <span class="pilots__bulletText"><strong>Compliance failures</strong> (yeast/mold) and recalls are real.</span>
+      </li>
+      <li class="pilots__bullet">
+        <span class="pilots__dot" aria-hidden="true"></span>
+        <span class="pilots__bulletText">
+          <strong>Rules vary by state</strong> (including Aspergillus targets in some regimes).
+        </span>
+      </li>
+    </ul>
+
+    <div class="pilots__calloutFooter">
+      <a class="pilots__calloutLink" href="/research/due-diligence">
+        Read our due diligence research <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
 
               <!-- WHAT A PILOT INCLUDES -->
-              <section class="pilots__section" aria-labelledby="overview-title">
-                <h2 class="pilots__heading" id="overview-title">What Every Pilot Includes</h2>
-                <ul class="pilots__list">
-                  <li class="pilots__list-item">Commissioning &amp; acceptance tests</li>
-                  <li class="pilots__list-item">Validity / trust layer in the portal</li>
-                  <li class="pilots__list-item">Run receipts</li>
-                  <li class="pilots__list-item">Pilot readout</li>
-                </ul>
-              </section>
+<section class="pilots__section pilots__section--callout" aria-labelledby="overview-title">
+  <div class="pilots__callout">
+    <header class="pilots__calloutHead">
+      <div class="pilots__calloutKicker">What you get</div>
+      <h2 class="pilots__heading pilots__calloutTitle" id="overview-title">What Every Pilot Includes</h2>
+      <p class="pilots__calloutLede">
+        Every pilot ships with the same core pattern: <strong>commission</strong>, <strong>prove validity</strong>,
+        <strong>capture receipts</strong>, and <strong>deliver a readout your team can act on</strong>.
+      </p>
+    </header>
 
-              <!-- HOW WE SCOPE -->
-              <section class="pilots__section" aria-labelledby="scope-title">
-                <h2 class="pilots__heading" id="scope-title">Pricing Scales with</h2>
-                <ul class="pilots__list">
-                  <li class="pilots__list-item">Scope of measurement geometry</li>
-                  <li class="pilots__list-item">Time horizon (cycles observed)</li>
-                  <li class="pilots__list-item">Verification burden (proving a fix works)</li>
-                  <li class="pilots__list-item">Deliverable sophistication (ops vs QA vs exec)</li>
-                  <li class="pilots__list-item">Stakeholder/support expectations (logins, handoffs, training)</li>
-                </ul>
-              </section>
+    <ul class="pilots__bullets" role="list">
+      <li class="pilots__bullet">
+        <span class="pilots__dot" aria-hidden="true"></span>
+        <span class="pilots__bulletText"><strong>Commissioning &amp; acceptance tests</strong> (go-live only after checks pass)</span>
+      </li>
+      <li class="pilots__bullet">
+        <span class="pilots__dot" aria-hidden="true"></span>
+        <span class="pilots__bulletText"><strong>Validity / trust layer</strong> in the portal (what’s comparable, when, and why)</span>
+      </li>
+      <li class="pilots__bullet">
+        <span class="pilots__dot" aria-hidden="true"></span>
+        <span class="pilots__bulletText"><strong>Run receipts</strong> (timestamps, routes, windows, pass/fail evidence)</span>
+      </li>
+      <li class="pilots__bullet">
+        <span class="pilots__dot" aria-hidden="true"></span>
+        <span class="pilots__bulletText"><strong>Pilot readout</strong> (findings, triggers, fixes, next actions)</span>
+      </li>
+    </ul>
+
+    <div class="pilots__calloutFooter">
+      <a class="pilots__calloutLink" href="/engage/pilot-expectations">
+        Read roles &amp; responsibilities <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="pilots__section pilots__section--callout" aria-labelledby="scope-title">
+  <div class="pilots__callout">
+    <header class="pilots__calloutHead">
+      <div class="pilots__calloutKicker">How pricing works</div>
+      <h2 class="pilots__heading pilots__calloutTitle" id="scope-title">Pricing Scales with</h2>
+      <p class="pilots__calloutLede">
+        We don’t price “maps.” We price <strong>scope</strong>, <strong>cycles observed</strong>, and
+        <strong>verification burden</strong>—because that’s what determines effort and defensibility.
+      </p>
+    </header>
+
+    <ul class="pilots__bullets" role="list">
+      <li class="pilots__bullet">
+        <span class="pilots__dot" aria-hidden="true"></span>
+        <span class="pilots__bulletText"><strong>Scope</strong> of measurement geometry</span>
+      </li>
+      <li class="pilots__bullet">
+        <span class="pilots__dot" aria-hidden="true"></span>
+        <span class="pilots__bulletText"><strong>Time horizon</strong> (cycles observed)</span>
+      </li>
+      <li class="pilots__bullet">
+        <span class="pilots__dot" aria-hidden="true"></span>
+        <span class="pilots__bulletText"><strong>Verification burden</strong> (proving a fix works)</span>
+      </li>
+      <li class="pilots__bullet">
+        <span class="pilots__dot" aria-hidden="true"></span>
+        <span class="pilots__bulletText"><strong>Deliverable sophistication</strong> (ops vs QA vs exec)</span>
+      </li>
+      <li class="pilots__bullet">
+        <span class="pilots__dot" aria-hidden="true"></span>
+        <span class="pilots__bulletText"><strong>Stakeholders &amp; support</strong> (logins, handoffs, training)</span>
+      </li>
+    </ul>
+
+    <div class="pilots__calloutFooter">
+      <a class="pilots__calloutLink" href="/pricing-philosophy">
+        Read the pricing philosophy <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
 
               <!-- HOW TO START -->
               <section class="pilots__section" aria-labelledby="start-title">
@@ -230,192 +604,179 @@
             </div>
 
             <!-- RIGHT COLUMN: Pilot Menu + Form -->
-            <aside class="pilots__rail" aria-label="Pilot menu and request form">
-              <!-- PANEL 1: PILOT MENU -->
-              <div class="pilots__panel">
-                <div class="pilots__panelKicker">Choose a pilot</div>
-                <h2 class="pilots__panelTitle" id="types-title">Pilot Menu</h2>
-                <div class="pilots__panelRule" aria-hidden="true"></div>
+             <aside class="pilots__rail pilots__rail--stack" aria-label="Pilot menu and request form">
+  <!-- PANEL 1: PILOT MENU -->
+  <section class="pilots__railCard" aria-labelledby="types-title">
+    <header class="pilots__railHead">
+      <div class="pilots__railKicker">Choose a pilot</div>
+      <h2 class="pilots__railTitle" id="types-title">Pilot Menu</h2>
+      <p class="pilots__railSub">
+        Pick a starting point. Each one links to full scope, deliverables, and success criteria.
+      </p>
+    </header>
 
-                <section class="pilots__section" aria-labelledby="types-title" id="pilot-list">
-                  <!-- Pilot A -->
-                  <article class="pilot-card" aria-labelledby="pilot-a-title">
-                    <header class="pilot-card__header">
-                      <h3 class="pilot-card__title" id="pilot-a-title">Pilot A — Pocket Scan</h3>
-                      <p class="pilot-card__summary">
-                        Fast deployment to locate pockets; one verification pass.
-                      </p>
-                    </header>
-                    <div class="pilot-card__block">
-                      <p class="pilot-card__text">
-                        <a class="button button--secondary" href="/engage/pilot/pocket_scan">View details</a>
-                      </p>
-                    </div>
-                  </article>
+    <nav class="pilots__menu" aria-label="Pilot menu">
+      <a class="pilots__menuItem" href="/engage/pilot/pocket_scan" aria-labelledby="m-a-title">
+        <span class="pilots__menuBadge" aria-hidden="true">A</span>
+        <span class="pilots__menuBody">
+          <span class="pilots__menuTitle" id="m-a-title">Pocket Scan</span>
+          <span class="pilots__menuMeta">Fast proof + one verify pass</span>
+        </span>
+        <span class="pilots__menuArrow" aria-hidden="true">→</span>
+      </a>
 
-                  <!-- Pilot B -->
-                  <article class="pilot-card" aria-labelledby="pilot-b-title">
-                    <header class="pilot-card__header">
-                      <h3 class="pilot-card__title" id="pilot-b-title">Pilot B — Flower Room Zone Map</h3>
-                      <p class="pilot-card__summary">
-                        Month-scale mapping + interventions + repeatability scoring.
-                      </p>
-                    </header>
-                    <div class="pilot-card__block">
-                      <p class="pilot-card__text">
-                        <a class="button button--secondary" href="/engage/pilot/flower_room_zone_map">View details</a>
-                      </p>
-                    </div>
-                  </article>
+      <a class="pilots__menuItem" href="/engage/pilot/flower_room_zone_map" aria-labelledby="m-b-title">
+        <span class="pilots__menuBadge" aria-hidden="true">B</span>
+        <span class="pilots__menuBody">
+          <span class="pilots__menuTitle" id="m-b-title">Flower Room Zone Map</span>
+          <span class="pilots__menuMeta">Triggers + interventions + repeatability</span>
+        </span>
+        <span class="pilots__menuArrow" aria-hidden="true">→</span>
+      </a>
 
-                  <!-- Pilot C -->
-                  <article class="pilot-card" aria-labelledby="pilot-c-title">
-                    <header class="pilot-card__header">
-                      <h3 class="pilot-card__title" id="pilot-c-title">Pilot C — Facility Baseline</h3>
-                      <p class="pilot-card__summary">
-                        Multi-room baseline + cross-room comparisons + rollout playbook.
-                      </p>
-                    </header>
-                    <div class="pilot-card__block">
-                      <p class="pilot-card__text">
-                        <a class="button button--secondary" href="/engage/pilot/facility_baseline">View details</a>
-                      </p>
-                    </div>
-                  </article>
+      <a class="pilots__menuItem" href="/engage/pilot/facility_baseline" aria-labelledby="m-c-title">
+        <span class="pilots__menuBadge" aria-hidden="true">C</span>
+        <span class="pilots__menuBody">
+          <span class="pilots__menuTitle" id="m-c-title">Facility Baseline</span>
+          <span class="pilots__menuMeta">Multi-room baseline + rollout playbook</span>
+        </span>
+        <span class="pilots__menuArrow" aria-hidden="true">→</span>
+      </a>
 
-                  <!-- Pilot D -->
-                  <article class="pilot-card" aria-labelledby="pilot-d-title">
-                    <header class="pilot-card__header">
-                      <h3 class="pilot-card__title" id="pilot-d-title">Pilot D — PM / Botrytis Defense</h3>
-                      <p class="pilot-card__summary">
-                        Recurrence tracking + A/B cycles + QA-grade evidence packages.
-                      </p>
-                    </header>
-                    <div class="pilot-card__block">
-                      <p class="pilot-card__text">
-                        <a class="button button--secondary" href="/engage/pilot/pm_botrytis_defense">View details</a>
-                      </p>
-                    </div>
-                  </article>
+      <a class="pilots__menuItem" href="/engage/pilot/pm_botrytis_defense" aria-labelledby="m-d-title">
+        <span class="pilots__menuBadge pilots__menuBadge--risk" aria-hidden="true">D</span>
+        <span class="pilots__menuBody">
+          <span class="pilots__menuTitle" id="m-d-title">PM / Botrytis Defense</span>
+          <span class="pilots__menuMeta">Recurrence + A/B + QA-grade evidence</span>
+        </span>
+        <span class="pilots__menuArrow" aria-hidden="true">→</span>
+      </a>
 
-                  <!-- Pilot E -->
-                  <article class="pilot-card" aria-labelledby="pilot-e-title">
-                    <header class="pilot-card__header">
-                      <h3 class="pilot-card__title" id="pilot-e-title">Pilot E — Founder Cohort</h3>
-                      <p class="pilot-card__summary">
-                        12-month verification + drift control + SOP/training artifacts.
-                      </p>
-                    </header>
-                    <div class="pilot-card__block">
-                      <p class="pilot-card__text">
-                        <a class="button button--secondary" href="/engage/pilot/founder_cohort">View details</a>
-                      </p>
-                    </div>
-                  </article>
-                </section>
-              </div>
+      <a class="pilots__menuItem" href="/engage/pilot/founder_cohort" aria-labelledby="m-e-title">
+        <span class="pilots__menuBadge" aria-hidden="true">E</span>
+        <span class="pilots__menuBody">
+          <span class="pilots__menuTitle" id="m-e-title">Founder Cohort</span>
+          <span class="pilots__menuMeta">Drift control + SOPs + support</span>
+        </span>
+        <span class="pilots__menuArrow" aria-hidden="true">→</span>
+      </a>
+    </nav>
 
-              <!-- PANEL 2: REQUEST FORM -->
-              <div class="pilots__panel">
-                <div class="pilots__panelKicker">Request</div>
-                <h2 class="pilots__panelTitle" id="apply-title">Request a Cannabis Pilot</h2>
-                <div class="pilots__panelRule" aria-hidden="true"></div>
+    <footer class="pilots__railFoot">
+      <a class="pilots__railLink" href="/pricing-philosophy">
+        Pricing philosophy <span aria-hidden="true">→</span>
+      </a>
+    </footer>
+  </section>
 
-                <p class="pilots__text">
-                  Tell us what should match, but doesn’t. We’ll reply with a proposed commissioning plan and success criteria.
-                </p>
+  <!-- PANEL 2: REQUEST FORM -->
+  <section class="pilots__railCard" aria-labelledby="apply-title">
+    <header class="pilots__railHead">
+      <div class="pilots__railKicker">Request</div>
+      <h2 class="pilots__railTitle" id="apply-title">Request a Cannabis Pilot</h2>
+      <p class="pilots__railSub">
+        Tell us what should match, but doesn’t. We’ll reply with a proposed commissioning plan and success criteria.
+      </p>
+    </header>
 
-                <form class="pilots__form" action="/pilots/apply" method="post">
-                  <div class="pilots__field">
-                    <label class="pilots__label" for="pilot-name">Name</label>
-                    <input class="pilots__input" id="pilot-name" name="name" type="text" autocomplete="name" required />
-                  </div>
+    <form class="pilots__form pilots__form--rail" action="/pilots/apply" method="post">
+      <div class="pilots__field">
+        <label class="pilots__label" for="pilot-name">Name</label>
+        <input class="pilots__input" id="pilot-name" name="name" type="text" autocomplete="name" required />
+      </div>
 
-                  <div class="pilots__field">
-                    <label class="pilots__label" for="pilot-company">Company</label>
-                    <input class="pilots__input" id="pilot-company" name="company" type="text" autocomplete="organization" required />
-                  </div>
+      <div class="pilots__field">
+        <label class="pilots__label" for="pilot-company">Company</label>
+        <input class="pilots__input" id="pilot-company" name="company" type="text" autocomplete="organization" required />
+      </div>
 
-                  <div class="pilots__field">
-                    <label class="pilots__label" for="pilot-email">Email</label>
-                    <input class="pilots__input" id="pilot-email" name="email" type="email" autocomplete="email" required />
-                  </div>
+      <div class="pilots__field">
+        <label class="pilots__label" for="pilot-email">Email</label>
+        <input class="pilots__input" id="pilot-email" name="email" type="email" autocomplete="email" required />
+      </div>
 
-                  <div class="pilots__field">
-                    <label class="pilots__label" for="pilot-site">Site / location</label>
-                    <input
-                      class="pilots__input"
-                      id="pilot-site"
-                      name="site"
-                      type="text"
-                      placeholder="City, facility name, room count, etc."
-                      required
-                    />
-                  </div>
+      <div class="pilots__field">
+        <label class="pilots__label" for="pilot-site">Site / location</label>
+        <input
+          class="pilots__input"
+          id="pilot-site"
+          name="site"
+          type="text"
+          placeholder="City, facility name, room count, etc."
+          required
+        />
+      </div>
 
-                  <div class="pilots__field">
-                    <label class="pilots__label" for="pilot-type">Pilot type</label>
-                    <select class="pilots__select" id="pilot-type" name="pilot_type" required>
-                      <option value="" selected disabled>Select one</option>
-                      <option value="pocket-scan">Pilot A — Pocket Scan</option>
-                      <option value="flower-room-zone-map">Pilot B — Flower Room Zone Map</option>
-                      <option value="facility-baseline">Pilot C — Facility Baseline</option>
-                      <option value="pm-botrytis-defense">Pilot D — PM / Botrytis Defense</option>
-                      <option value="founder-cohort">Pilot E — Founder Cohort</option>
-                    </select>
-                  </div>
+      <div class="pilots__field">
+        <label class="pilots__label" for="pilot-type">Pilot type</label>
+        <select class="pilots__select" id="pilot-type" name="pilot_type" required>
+          <option value="" selected disabled>Select one</option>
+          <option value="pocket-scan">Pilot A — Pocket Scan</option>
+          <option value="flower-room-zone-map">Pilot B — Flower Room Zone Map</option>
+          <option value="facility-baseline">Pilot C — Facility Baseline</option>
+          <option value="pm-botrytis-defense">Pilot D — PM / Botrytis Defense</option>
+          <option value="founder-cohort">Pilot E — Founder Cohort</option>
+        </select>
+      </div>
 
-                  <div class="pilots__field">
-                    <label class="pilots__label" for="pilot-message">What should match, but doesn’t?</label>
-                    <textarea
-                      class="pilots__textarea"
-                      id="pilot-message"
-                      name="message"
-                      rows="7"
-                      placeholder="What are you measuring (RH/temp/VPD)? What drifts? When (night, lights, irrigation, dehu cycles)? Where (corners, under canopy, near walls, behind racks)? What decisions are hard today because you don’t trust the measurement?"
-                      required
-                    ></textarea>
-                  </div>
+      <div class="pilots__field">
+        <label class="pilots__label" for="pilot-message">What should match, but doesn’t?</label>
+        <textarea
+          class="pilots__textarea"
+          id="pilot-message"
+          name="message"
+          rows="7"
+          placeholder="What are you measuring (RH/temp/VPD)? What drifts? When (night, lights, irrigation, dehu cycles)? Where (corners, under canopy, near walls, behind racks)? What decisions are hard today because you don’t trust the measurement?"
+          required
+        ></textarea>
+      </div>
 
-                  <fieldset class="pilots__fieldset">
-                    <legend class="pilots__legend">Primary interest (optional)</legend>
-                    <div class="pilots__checks">
-                      <label class="pilots__check">
-                        <input class="pilots__checkbox" type="checkbox" name="interest" value="pockets" />
-                        Find pockets / dead zones
-                      </label>
-                      <label class="pilots__check">
-                        <input class="pilots__checkbox" type="checkbox" name="interest" value="pm-risk" />
-                        Reduce PM pressure
-                      </label>
-                      <label class="pilots__check">
-                        <input class="pilots__checkbox" type="checkbox" name="interest" value="botrytis-risk" />
-                        Reduce botrytis risk
-                      </label>
-                      <label class="pilots__check">
-                        <input class="pilots__checkbox" type="checkbox" name="interest" value="energy-tuning" />
-                        Reduce tuning/energy tax
-                      </label>
-                      <label class="pilots__check">
-                        <input class="pilots__checkbox" type="checkbox" name="interest" value="compliance" />
-                        Compliance / microbial risk
-                      </label>
-                      <label class="pilots__check">
-                        <input class="pilots__checkbox" type="checkbox" name="interest" value="expansion" />
-                        Expansion / standardization
-                      </label>
-                    </div>
-                  </fieldset>
+      <fieldset class="pilots__fieldset">
+        <legend class="pilots__legend">Primary interest (optional)</legend>
+        <div class="pilots__checks">
+          <label class="pilots__check">
+            <input class="pilots__checkbox" type="checkbox" name="interest" value="pockets" />
+            Find pockets / dead zones
+          </label>
+          <label class="pilots__check">
+            <input class="pilots__checkbox" type="checkbox" name="interest" value="pm-risk" />
+            Reduce PM pressure
+          </label>
+          <label class="pilots__check">
+            <input class="pilots__checkbox" type="checkbox" name="interest" value="botrytis-risk" />
+            Reduce botrytis risk
+          </label>
+          <label class="pilots__check">
+            <input class="pilots__checkbox" type="checkbox" name="interest" value="energy-tuning" />
+            Reduce tuning/energy tax
+          </label>
+          <label class="pilots__check">
+            <input class="pilots__checkbox" type="checkbox" name="interest" value="compliance" />
+            Compliance / microbial risk
+          </label>
+          <label class="pilots__check">
+            <input class="pilots__checkbox" type="checkbox" name="interest" value="expansion" />
+            Expansion / standardization
+          </label>
+        </div>
+      </fieldset>
 
-                  <div class="pilots__actions">
-                    <button class="button button--primary" type="submit">Request a Pilot</button>
-                    <a class="button button--secondary" href="/contact">Contact</a>
-                  </div>
+      <div class="pilots__actions">
+        <button class="button button--primary" type="submit">Request a Pilot</button>
+        <a class="button button--secondary" href="/contact">Contact</a>
+      </div>
 
-                  <p class="pilots__fineprint">We only use this to respond to your request. No spam.</p>
-                </form>
-              </div>
-            </aside>
+      <p class="pilots__fineprint">We only use this to respond to your request. No spam.</p>
+
+      <div class="pilots__railFoot">
+        <a class="pilots__railLink" href="/engage/pilot-expectations">
+          Roles &amp; responsibilities <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </form>
+  </section>
+</aside>
+
           </div>
         </div>
       </section>
