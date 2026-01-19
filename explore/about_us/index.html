@@ -7,11 +7,12 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-V2474V50XP');
     </script>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -35,498 +36,470 @@
     <link rel="stylesheet" href="" id="main-css" />
     <script type="module" src="../../bootstrap.js"></script>
 
-<style>
-/* Light, scoped styling (tokenized) */
-.about { padding: var(--space-6) 0; }
-.about__grid { gap: var(--space-5); align-items: start; }
+    <style>
+      /* =========================
+         About: Swiss / ITS variant
+         - 12-col grid discipline
+         - Rules instead of cards
+         - Square corners, no shadows
+         - Typography-led hierarchy
+         ========================= */
 
-.about__kicker {
-  font-size: 0.85rem;
-  opacity: 0.75;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  margin-bottom: var(--space-2);
-}
+      .about { padding: var(--space-7, 64px) 0; }
 
-.about__title { margin: 0 0 var(--space-3); letter-spacing: -0.02em; }
-.about__lede  { margin: 0 0 var(--space-4); font-size: 1.1rem; }
-.about__para  { margin: 0 0 var(--space-4); }
+      /* 12-column grid regardless of hl-grid defaults */
+      .hl-grid.hl-grid--two.about__grid{
+        display: grid !important;
+        grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+        gap: var(--space-6) !important;
+        align-items: start;
+      }
 
-.about__ruleBlock {
-  margin: var(--space-4) 0 var(--space-4);
-  padding: var(--space-4) var(--space-4);
-  border: 1px solid var(--border-soft);
-  border-radius: var(--radius-lg);
-  background: var(--panel-soft);
-}
-.about__ruleTitle { margin: 0 0 var(--space-1); }
-.about__ruleText { margin: 0 0 var(--space-3); opacity: 0.85; }
-.about__ruleText:last-child { margin-bottom: 0; }
+      /* Column assignment: copy 1–8, visuals (if any) 9–12 */
+      .about__copy{ grid-column: 1 / span 8; min-width: 0; }
+      .about__side{ grid-column: 9 / -1; min-width: 0; }
 
-.about__bullets { margin: var(--space-5) 0 var(--space-5); padding-left: 1.1rem; }
-.about__bullets li { margin: var(--space-2) 0; }
-.about__ctaRow { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+      @media (max-width: 900px){
+        .about__copy, .about__side{ grid-column: 1 / -1; }
+      }
 
-.about__figure {
-  margin: 0;
-  border: 1px solid var(--border-soft);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  background: var(--panel);
-  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
-}
-.about__figure--spaced { margin-top: var(--space-4); }
-.about__comic { width: 100%; height: auto; display: block; }
-.about__caption {
-  padding: var(--space-3) var(--space-4) var(--space-4);
-  font-size: 0.9rem;
-  opacity: 0.75;
-}
+      /* Kicker: Swiss tracking + no opacity haze */
+      .about__kicker{
+        font-size: 0.8rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin: 0 0 var(--space-3);
+      }
 
-.about__note {
-  margin-top: var(--space-4);
-  padding: var(--space-4) var(--space-4);
-  border: 1px solid var(--border-soft);
-  border-radius: var(--radius-lg);
-  background: var(--panel-soft);
-  font-size: 0.95rem;
-}
+      /* Headline + lede */
+      .about__title{
+        margin: 0 0 var(--space-3);
+        letter-spacing: -0.03em;
+        line-height: 1.08;
+        max-width: 24ch;
+      }
 
-/* Mobile: one column */
-@media (max-width: 820px) {
-  .about__ctaRow { justify-content: flex-start; }
-}
+      .about__lede{
+        margin: 0 0 var(--space-5);
+        font-size: 1.05rem;
+        line-height: 1.5;
+        max-width: 70ch;
+      }
 
-/* === Stylized “manifesto” paragraphs === */
-.about__para--manifesto{
-  margin: var(--space-5) 0 var(--space-5);
-  padding: var(--space-4) var(--space-4);
-  border-left: 4px solid currentColor;
-  background: var(--chip);
-  border-radius: var(--radius-md);
-  line-height: 1.55;
-  letter-spacing: 0.01em;
-}
+      .about__para{
+        margin: 0 0 var(--space-4);
+        line-height: 1.65;
+        max-width: 72ch;
+      }
 
-.about__para--manifesto strong{
-  display: inline-block;
-  margin-bottom: var(--space-3);
-  font-size: 0.98rem;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  opacity: 0.92;
-}
+      /* Swiss: section separators as rules */
+      .about__rule{
+        height: 1px;
+        background: var(--border-soft);
+        margin: var(--space-6) 0;
+      }
 
-.about__para--manifesto em{
-  font-style: italic;
-  font-weight: 600;
-}
+      /* Lists: editorial */
+      .about__bullets{
+        margin: var(--space-5) 0 var(--space-6);
+        padding: 0;
+        list-style: none;
+        max-width: 78ch;
+      }
+      .about__bullets li{
+        display: grid;
+        grid-template-columns: 18px 1fr;
+        gap: var(--space-3);
+        padding: var(--space-2) 0;
+        border-top: 1px solid var(--border-soft);
+      }
+      .about__bullets li:last-child{
+        border-bottom: 1px solid var(--border-soft);
+      }
+      .about__bullets li::before{
+        content: "—";
+        transform: translateY(0.1em);
+        opacity: 0.9;
+      }
 
-/* “beat” lines that should hit harder */
-.about__beat{
-  display: inline-block;
-  margin-top: var(--space-1);
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
+      /* “Manifesto” blocks: remove cards, keep typographic punch */
+      .about__para--manifesto{
+        margin: var(--space-6) 0;
+        padding: var(--space-5) 0;
+        border-top: 1px solid var(--border-soft);
+        border-bottom: 1px solid var(--border-soft);
+        background: transparent;
+        border-left: 0;
+        border-radius: 0;
+        letter-spacing: 0;
+        line-height: 1.75;
+        max-width: 78ch;
+      }
 
-/* final punchline */
-.about__beat--final{
-  font-weight: 800;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-}
+      .about__para--manifesto strong{
+        display: block;
+        font-size: 0.8rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin: 0 0 var(--space-3);
+      }
 
-/* optional: subtle emphasis without screaming */
-.about__para--manifesto br{
-  line-height: 1.75;
-}
+      .about__para--manifesto em{
+        font-style: italic;
+        font-weight: 600;
+      }
 
-/* nicer in dark mode if you have it */
-@media (prefers-color-scheme: dark){
-  .about__para--manifesto{
-    background: rgba(255,255,255,0.06); /* keep as-is unless you add dark tokens */
-  }
-}
+      .about__beat{
+        display: inline-block;
+        margin-top: var(--space-2);
+        font-weight: 650;
+        letter-spacing: 0.01em;
+      }
 
-/* === Mobile tuning for the manifesto blocks === */
-@media (max-width: 640px){
-  .about__para--manifesto{
-    margin: var(--space-4) 0 var(--space-5);
-    padding: var(--space-4) var(--space-3);
-    border-left-width: 3px;
-    border-radius: var(--radius-md);
-    line-height: 1.7;
-  }
+      .about__beat--final{
+        display: inline-block;
+        margin-top: var(--space-2);
+        font-weight: 750;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
 
-  .about__para--manifesto strong{
-    font-size: 0.92rem;
-    line-height: 1.25;
-    margin-bottom: var(--space-2);
-  }
+      .about__blank{
+        display: inline-block;
+        padding: 0 0.25rem;
+        border-bottom: 1px solid currentColor;
+        font-weight: 650;
+        letter-spacing: 0.02em;
+      }
 
-  /* keep the company name + first sentence feeling “headline-ish” */
-  .about__para--manifesto em{
-    display: inline-block;
-    margin-bottom: var(--space-1);
-  }
+      /* Figures: rule + caption, no card chrome */
+      .about__figure{
+        margin: var(--space-6) 0 0;
+        border-top: 1px solid var(--border-soft);
+        padding-top: var(--space-4);
+        background: transparent;
+        border-radius: 0;
+        overflow: visible;
+        box-shadow: none;
+      }
+      .about__comic{
+        width: 100%;
+        height: auto;
+        display: block;
+        border: 1px solid var(--border-soft);
+        border-radius: 0;
+      }
+      .about__caption{
+        margin-top: var(--space-3);
+        font-size: 0.9rem;
+        line-height: 1.55;
+        opacity: 0.85;
+        max-width: 78ch;
+      }
 
-  /* make the punch lines land with spacing */
-  .about__beat{
-    margin-top: var(--space-2);
-  }
+      /* Callout: one boxed module is OK, but keep it square and quiet */
+      .about__callout{
+        margin: var(--space-7) 0;
+        padding: var(--space-5);
+        border: 1px solid var(--border-soft);
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+        max-width: 82ch;
+      }
+      .about__para--callout{ margin-top: 0; }
 
-  .about__beat--final{
-    display: inline-block;
-    margin-top: var(--space-2);
-  }
+      .about__bullets--callout li{
+        border-top: 1px solid var(--border-soft);
+      }
 
-  /* avoid awkward single-word wrap on punch lines */
-  .about__beat,
-  .about__beat--final{
-    word-break: keep-all;
-    hyphens: none;
-  }
-}
-
-/* super small screens */
-@media (max-width: 380px){
-  .about__para--manifesto{
-    padding: var(--space-3) var(--space-3);
-  }
-
-  .about__para--manifesto strong{
-    font-size: 0.9rem;
-  }
-}
-
-.about__blank{
-  display: inline-block;
-  padding: 0 var(--space-1);
-  border-bottom: 2px solid currentColor;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  opacity: 0.95;
-}
-
-.about__callout{
-  margin: var(--space-5) 0;
-  padding: var(--space-4) var(--space-4);
-  border: 1px solid var(--border-soft);
-  border-left-width: 4px;
-  border-radius: var(--radius-lg);
-  background: var(--panel-soft);
-  box-shadow: var(--shadow-soft);
-}
-.about__para--callout{ margin-top: 0; }
-.about__bullets--callout{ margin-bottom: 0; }
-
-
-
-</style>
-
+      /* Small screens: keep rhythm, avoid tightness */
+      @media (max-width: 640px){
+        .about{ padding: var(--space-6) 0; }
+        .about__title{ max-width: 28ch; }
+        .about__para--manifesto{ line-height: 1.8; }
+      }
+    </style>
   </head>
 
-<body>
-<site-page>
-<section class="about" id="about" aria-labelledby="about-title">
-  <div class="hl-container">
-    <div class="hl-grid hl-grid--two about__grid">
-      <!-- Copy -->
-      <div class="about__copy">
-        <div class="about__kicker">About HermodLabs</div>
+  <body>
+    <site-page>
+      <section class="about" id="about" aria-labelledby="about-title">
+        <div class="hl-container">
+          <div class="hl-grid hl-grid--two about__grid">
 
-        <h2 class="about__title" id="about-title">
-          When sensor data gets weird, the problem is rarely the data.
-        </h2>
+            <!-- COPY (1–8) -->
+            <div class="about__copy">
+              <div class="about__kicker">About HermodLabs</div>
 
-        <p class="about__lede">It’s the interpretation.</p>
+              <h2 class="about__title" id="about-title">
+                When sensor data gets weird, the problem is rarely the data.
+              </h2>
 
-        <p class="about__para">
-          We built HermodLabs after spending enough time inside Corporate America to recognize the pattern:
-          when streams don’t agree, the first response is almost never “our assumptions broke.”
-          It’s “the sensor is flaky,” “the room changed,” “the model needs tuning,” or “ops did something different.”
-        </p>
+              <p class="about__lede">It’s the interpretation.</p>
 
-        <p class="about__para">
-          The dashboard stays calm while the explanation gets rebuilt.
-          The pipeline starts supplying its own justification.
-          A plot becomes evidence for the assumptions required to interpret the plot.
-        </p>
+              <p class="about__para">
+                We built HermodLabs after spending enough time inside Corporate America to recognize the pattern:
+                when streams don’t agree, the first response is almost never “our assumptions broke.”
+                It’s “the sensor is flaky,” “the room changed,” “the model needs tuning,” or “ops did something different.”
+              </p>
 
-<p class="about__para about__para--manifesto">
-  That’s when the deck <em>lands</em>.<br />
-  Or the memo <em>circulates</em>.<br />
-  Or the baseline <em>moves</em>.<br />
-  Or the footnotes <em>multiply</em>.<br />
-  Or the two-by-two <em>simplifies</em>.<br />
-  Or the “shared language” <em>rebrands</em>.<br />
-  Or the steering committee <em>buffers</em>.<br />
-  Or the gradient <em>glows</em>.<br />
-  Or the immaculate timeline <em>edits</em>.<br />
-  Or the KPI slide <em>turns green</em>… already formatted.<br />
-  Or the <span class="about__blank">[fill in the blank]</span> <em>does its job</em>.<br />
-  <span class="about__beat">Different props.</span><br />
-  <span class="about__beat">Same trick.</span><br />
-  <span class="about__beat about__beat--final">The story gets fixed. The measurement doesn’t.</span>
-</p>
+              <p class="about__para">
+                The dashboard stays calm while the explanation gets rebuilt.
+                The pipeline starts supplying its own justification.
+                A plot becomes evidence for the assumptions required to interpret the plot.
+              </p>
 
+              <p class="about__para about__para--manifesto">
+                That’s when the deck <em>lands</em>.<br />
+                Or the memo <em>circulates</em>.<br />
+                Or the baseline <em>moves</em>.<br />
+                Or the footnotes <em>multiply</em>.<br />
+                Or the two-by-two <em>simplifies</em>.<br />
+                Or the “shared language” <em>rebrands</em>.<br />
+                Or the steering committee <em>buffers</em>.<br />
+                Or the gradient <em>glows</em>.<br />
+                Or the immaculate timeline <em>edits</em>.<br />
+                Or the KPI slide <em>turns green</em>… already formatted.<br />
+                Or the <span class="about__blank">[fill in the blank]</span> <em>does its job</em>.<br />
+                <span class="about__beat">Different props.</span><br />
+                <span class="about__beat">Same trick.</span><br />
+                <span class="about__beat about__beat--final">The story gets fixed. The measurement doesn’t.</span>
+              </p>
 
+              <p class="about__para about__para--manifesto">
+                <strong>Hypothetical case study that certainly couldn’t happen in your company #1:</strong>
+                <em>Baine &amp; Associates</em> shows up with a fresh deck and a 78-page “Alignment Memo.”<br />
+                Page 3 has your exact phrasing in quotes (the kind with curly punctuation that implies legal review).<br />
+                Page 7 introduces a “shared language framework,” which is just your language with a watermark.<br />
+                Page 12 contains an “executive narrative” that reads like a hostage note written by a thesaurus.<br />
+                <span class="about__beat">The chart is unchanged.</span><br />
+                <span class="about__beat">The conclusion is bold.</span><br />
+                <span class="about__beat about__beat--final">The fee is not.</span>
+              </p>
 
+              <p class="about__para">
+                That’s the move: <em>replace verification with production value</em>.<br />
+                A deck becomes a shield. A memo becomes a verdict.<br />
+                The “shared language” isn’t alignment — it’s a way to make disagreement look like miscommunication.<br />
+                And once the story is polished, the unchanged chart stops being a problem and starts being “support.”
+              </p>
 
+              <p class="about__para">
+                Here’s what that pattern looks like when you strip out the branding:
+              </p>
 
-<p class="about__para about__para--manifesto">
-  <strong>Hypothetical case study that certainly couldn’t happen in your company #1:</strong><br />
-  <em>Baine &amp; Associates</em> shows up with a fresh deck and a 78-page “Alignment Memo.”<br />
-  Page 3 has your exact phrasing in quotes (the kind with curly punctuation that implies legal review).<br />
-  Page 7 introduces a “shared language framework,” which is just your language with a watermark.<br />
-  Page 12 contains an “executive narrative” that reads like a hostage note written by a thesaurus.<br />
-  <span class="about__beat">The chart is unchanged.</span><br />
-  <span class="about__beat">The conclusion is bold.</span><br />
-  <span class="about__beat about__beat--final">The fee is not.</span>
-</p>
+              <ul class="about__bullets">
+                <li>
+                  <span>
+                    <strong>No measurement-based accountability.</strong>
+                    “Aligned” gets declared because the slide looks clean — not because anything got verified.
+                    If the chart didn’t move, the conclusion still ships. The format becomes the proof.
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <strong>Story-first documentation.</strong>
+                    You don’t get something you can rerun or challenge later.
+                    You get a memo that quotes you back, a “framework” that’s your language with a watermark,
+                    and a narrative designed to feel inevitable — not checkable.
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <strong>When it breaks, it hides it.</strong>
+                    The first thing to change isn’t the pipeline — it’s the explanation.
+                    The story gets patched, assumptions get repackaged,
+                    and the same unchanged chart becomes “evidence” that the new narrative is correct.
+                  </span>
+                </li>
+              </ul>
 
-<p class="about__para">
-  That’s the move: <em>replace verification with production value</em>.<br />
-  A deck becomes a shield. A memo becomes a verdict.<br />
-  The “shared language” isn’t alignment — it’s a way to make disagreement look like miscommunication.<br />
-  And once the story is polished, the unchanged chart stops being a problem and starts being “support.”
-</p>
+              <figure class="about__figure">
+                <img
+                  class="about__comic"
+                  src="/asset/img/consulting_rule_1.png"
+                  alt="Comic: Consultant says, 'The numbers don't matter. I’ll wrap them in a whitepaper that reads like your own reflection.'"
+                  loading="lazy"
+                />
+                <figcaption class="about__caption">
+                  <strong>Executive Alignment Rule #1:</strong>
+                  If the data won’t authorize the story, make the story authorize the data.
+                </figcaption>
+              </figure>
 
-<p class="about__para">
-  Here’s what that pattern looks like when you strip out the branding:
-</p>
+              <p class="about__para about__para--manifesto">
+                <strong>Hypothetical use case that certainly couldn’t happen in your company #2:</strong>
+                <em>The McQuincey Corporation</em> runs the post-mortem with the KPI slide already formatted.<br />
+                There’s a “Lessons Learned” header before the incident has finished happening.<br />
+                The timeline is immaculate (somehow the inconvenient minutes are missing).<br />
+                <span class="about__beat">The scope quietly shrinks to “Phase 1.”</span><br />
+                “Phase 1” becomes “Phase 1A.”<br />
+                “Phase 1A” becomes “Discovery.”<br />
+                “Discovery” becomes “Enablement.”<br />
+                “Enablement” becomes “We’re aligned.”<br />
+                The dashboard refreshes.<br />
+                <span class="about__beat">The metrics are green again.</span><br />
+                <span class="about__beat about__beat--final">Everyone agrees this is progress, because the color says so.</span>
+              </p>
 
+              <p class="about__para">
+                That’s the other move: <em>turn failure into a workflow stage</em>.<br />
+                Name the mess “Discovery,” rename the retreat “Enablement,” and call the exit “Alignment.”<br />
+                If the timeline is missing the ugly minutes, the story can’t be contradicted.<br />
+                And if the KPI is green, the meeting ends — regardless of what actually happened.
+              </p>
 
-<ul class="about__bullets">
-  <li>
-    <strong>No measurement-based accountability.</strong>
-    “Aligned” gets declared because the slide looks clean — not because anything got verified.
-    If the chart didn’t move, the conclusion still ships.
-    The format becomes the proof.
-  </li>
+              <p class="about__para">
+                Here’s what that pattern looks like when you strip out the ceremony:
+              </p>
 
-  <li>
-    <strong>Story-first documentation.</strong>
-    You don’t get something you can rerun or challenge later.
-    You get a memo that quotes you back (curly punctuation and all),
-    a “framework” that’s just your language with a watermark,
-    and a narrative designed to feel inevitable — not checkable.
-  </li>
+              <ul class="about__bullets">
+                <li>
+                  <span>
+                    <strong>Green beats true.</strong>
+                    “We’re fine” gets declared because the KPI tile is green — not because the incident conditions stopped.
+                    The color becomes the verdict.
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <strong>Scope shrink as strategy.</strong>
+                    The work doesn’t get finished — it gets renamed.
+                    “Phase 1” becomes “1A,” becomes “Discovery,” becomes “Enablement,”
+                    until the original claim is too far away to measure.
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <strong>Timeline laundering.</strong>
+                    The post-mortem isn’t a record; it’s an edit.
+                    The inconvenient minutes disappear, the narrative becomes clean,
+                    and what can’t be shown can’t be blamed — so the same failure can return, unchanged.
+                  </span>
+                </li>
+              </ul>
 
-  <li>
-    <strong>When it breaks, it hides it.</strong>
-    The first thing to change isn’t the pipeline — it’s the explanation.
-    The story gets patched, the assumptions get repackaged,
-    and the same unchanged chart becomes “evidence” that the new narrative is correct.
-  </li>
-</ul>
+              <figure class="about__figure">
+                <img
+                  class="about__comic"
+                  src="/asset/img/consulting_rule_2.png"
+                  alt="Comic: 'Our metrics say we were right. Unless we weren't. Then your requirements were wrong.'"
+                  loading="lazy"
+                />
+                <figcaption class="about__caption">
+                  <strong>Executive Alignment Rule #2:</strong>
+                  If the results won’t validate your promises, reinterpret the results.
+                </figcaption>
+              </figure>
 
+              <div class="about__callout" role="note" aria-label="HermodLabs mission">
+                <p class="about__para about__para--callout">
+                  HermodLabs exists to break that loop.<br />
+                  We make claims earn their keep.<br />
+                  We turn “trust me” into “show me.”<br />
+                  Every conclusion comes with the checks it had to pass — and paperwork that can survive a different shift,
+                  a different day, and a different person holding the clipboard.
+                </p>
 
-<p class="about__para about__para--manifesto">
-  <strong>Hypothetical use case that certainly couldn’t happen in your company #2:</strong><br />
-  <em>The McQuincey Corporation</em> runs the post-mortem with the KPI slide already formatted.<br />
-  There’s a “Lessons Learned” header before the incident has finished happening.<br />
-  The timeline is immaculate (somehow the inconvenient minutes are missing).<br />
-  <span class="about__beat">The scope quietly shrinks to “Phase 1.”</span><br />
-  “Phase 1” becomes “Phase 1A.”<br />
-  “Phase 1A” becomes “Discovery.”<br />
-  “Discovery” becomes “Enablement.”<br />
-  “Enablement” becomes “We’re aligned.”<br />
-  The dashboard refreshes.<br />
-  <span class="about__beat">The metrics are green again.</span><br />
-  <span class="about__beat about__beat--final">Everyone agrees this is progress, because the color says so.</span>
-</p>
+                <ul class="about__bullets about__bullets--callout">
+                  <li><span><strong>No story-based dashboards.</strong> If the checks don’t pass, the conclusion doesn’t ship.</span></li>
+                  <li><span><strong>Receipts, not spin.</strong> You get an audit trail you can pull later — not just a screenshot and a smile.</span></li>
+                  <li><span><strong>When it breaks, it tells you.</strong> The system points to what failed first, so you fix the cause, not the story.</span></li>
+                </ul>
+              </div>
 
-<p class="about__para">
-  That’s the other move: <em>turn failure into a workflow stage</em>.<br />
-  Name the mess “Discovery,” rename the retreat “Enablement,” and call the exit “Alignment.”<br />
-  If the timeline is missing the ugly minutes, the story can’t be contradicted.<br />
-  And if the KPI is green, the meeting ends — regardless of what actually happened.
-</p>
+              <p class="about__para about__para--manifesto">
+                <strong>Hypothetical case study that could be your company #1:</strong>
+                It’s week 5 of flower.<br />
+                The dashboard says 52% RH. Green. “Stable.”<br />
+                But the night crew keeps saying, “that back-left bay feels wet.”<br />
+                You run the checks: canopy-height passes, lights-on and lights-off, same routes, same time windows.<br />
+                The result is annoying and specific: a pocket near the return path hits 62–68% RH for ~90 minutes, every night.<br />
+                The average stays green the entire time.<br />
+                You keep the receipts: pass/fail logs, maps, timestamps, and before/after comparisons you can pull a month later.<br />
+                You make one change: a small airflow tweak + a duct adjustment.<br />
+                Next night, same checks, same window: the pocket collapses. The average barely moves.<br />
+                <span class="about__beat">No story-based dashboards.</span><br />
+                <span class="about__beat">Receipts, not spin.</span><br />
+                <span class="about__beat about__beat--final">When it breaks, it tells you.</span>
+              </p>
 
-<p class="about__para">
-  Here’s what that pattern looks like when you strip out the ceremony:
-</p>
+              <ul class="about__bullets">
+                <li>
+                  <span>
+                    <strong>No story-based dashboards.</strong>
+                    “Stable” means the canopy-height passes (lights-on and lights-off) don’t show a repeating wet pocket.
+                    If that pocket shows up again in the same bay, the label is not allowed.
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <strong>Receipts, not spin.</strong>
+                    You walk away with a dated pocket map, the time window it appears,
+                    the before/after comparison, and the verification pass that proves the change collapsed the pocket.
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <strong>When it breaks, it tells you.</strong>
+                    If the pocket returns, the system tells you where, when, and what changed upstream
+                    so you fix the airflow cause — not the reporting language.
+                  </span>
+                </li>
+              </ul>
 
-<ul class="about__bullets">
-  <li>
-    <strong>Green beats true.</strong>
-    “We’re fine” gets declared because the KPI tile is green — not because the incident conditions stopped.
-    If the problem is still present in the system, the “resolved” label still ships.
-    The color becomes the verdict.
-  </li>
+              <p class="about__para about__para--manifesto">
+                <strong>Hypothetical use case that could be your company #2:</strong>
+                It’s week 6 of flower.<br />
+                You lose a section to powdery mildew and everyone has a theory by lunch.<br />
+                The post-mortem starts with a blank slide — not a KPI victory lap.<br />
+                The first header is: “What do we know for sure?”<br />
+                You pull the receipts: canopy passes, timestamps, pocket maps, and the before/after from the last airflow tweak.<br />
+                The timeline includes the ugly minutes — lights-off ramp, irrigation, door opens, fan cycling.<br />
+                The baseline doesn’t move; the goalposts don’t either: “no repeating wet pocket in the same bay.”<br />
+                The action items aren’t “improve airflow.” They’re checks: “run the same lights-off pass nightly,”
+                “verify the return-path pocket,” “log fan/duct state,” “confirm the pocket collapses after the change.”<br />
+                <span class="about__beat">The averages might still be green.</span><br />
+                <span class="about__beat">The pocket might still be red.</span><br />
+                <span class="about__beat about__beat--final">Progress isn’t a color — it’s a pocket that stops coming back.</span>
+              </p>
 
-  <li>
-    <strong>Scope shrink as strategy.</strong>
-    The work doesn’t get finished — it gets renamed.
-    “Phase 1” becomes “1A,” becomes “Discovery,” becomes “Enablement,”
-    until the original claim is too far away to measure.
-  </li>
+              <ul class="about__bullets">
+                <li>
+                  <span>
+                    <strong>No story-based dashboards.</strong>
+                    “We’re fine” isn’t allowed because the average is green.
+                    If the repeating wet pocket still shows up during lights-off, the “fixed” label is not allowed.
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <strong>Receipts, not spin.</strong>
+                    The fix is a dated before/after pocket map and verification passes across multiple nights.
+                    Not “we changed something.”
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <strong>When it breaks, it tells you.</strong>
+                    The conclusion is specific: which bay, which window, which upstream behavior.
+                    That points to airflow/duct/fan cause — not a new definition of success.
+                  </span>
+                </li>
+              </ul>
+            </div>
 
-  <li>
-    <strong>Timeline laundering.</strong>
-    The post-mortem isn’t a record; it’s an edit.
-    The inconvenient minutes disappear, the narrative becomes clean,
-    and what can’t be shown can’t be blamed — so the same failure can return, unchanged.
-  </li>
-</ul>
+            <!-- OPTIONAL SIDE COLUMN (9–12)
+                 Keep empty or add a small nav / links list later without cards.
+            -->
+            <aside class="about__side" aria-label="About sidebar"></aside>
 
-
-
-
-<div class="about__callout" role="note" aria-label="HermodLabs mission">
-  <p class="about__para about__para--callout">
-    HermodLabs exists to break that loop.<br />
-    We make claims earn their keep.<br />
-    We turn “trust me” into “show me.”<br />
-    Every conclusion comes with the checks it had to pass — and paperwork that can survive a different shift,
-    a different day, and a different person holding the clipboard.
-  </p>
-
-  <ul class="about__bullets about__bullets--callout">
-    <li><strong>No story-based dashboards.</strong> If the checks don’t pass, the conclusion doesn’t ship.</li>
-    <li><strong>Receipts, not spin.</strong> You get an audit trail you can pull later — not just a screenshot and a smile.</li>
-    <li><strong>When it breaks, it tells you.</strong> The system points to what failed first, so you fix the cause, not the story.</li>
-  </ul>
-</div>
-
-
-<p class="about__para about__para--manifesto">
-  <strong>Hypothetical case study that could be your company #1:</strong><br />
-  It’s week 5 of flower.<br />
-  The dashboard says 52% RH. Green. “Stable.”<br />
-  But the night crew keeps saying, “that back-left bay feels wet.”<br />
-  So you treat the dashboard like a rumor — not a verdict.<br />
-  You run the checks: canopy-height passes, lights-on and lights-off, same routes, same time windows.<br />
-  The result is annoying and specific: a pocket near the return path hits 62–68% RH for ~90 minutes, every night.<br />
-  The average stays green the entire time.<br />
-  You don’t ship the conclusion “stable” because the checks don’t pass.<br />
-  You keep the receipts: pass/fail logs, maps, timestamps, and before/after comparisons you can pull a month later.<br />
-  Then you make one change: a small airflow tweak + a duct adjustment.<br />
-  Next night, same checks, same window.<br />
-  The pocket collapses.<br />
-  The average barely moves.<br />
-  <span class="about__beat">No story-based dashboards.</span><br />
-  <span class="about__beat">Receipts, not spin.</span><br />
-  <span class="about__beat about__beat--final">When it breaks, it tells you.</span>
-</p>
-
-<ul class="about__bullets">
-  <li>
-    <strong>No story-based dashboards.</strong>
-    In this room, “stable” doesn’t mean the average is green.
-    It means the canopy-height passes (lights-on and lights-off) don’t show a repeating wet pocket.
-    If that pocket shows up again in the same bay, the “stable” label is not allowed.
-  </li>
-
-  <li>
-    <strong>Receipts, not spin.</strong>
-    You don’t walk away with a screenshot of 52% RH and a thumbs-up.
-    You walk away with a dated pocket map, the exact time window it appears, the before/after comparison,
-    and the verification pass that proves the airflow tweak actually collapsed the pocket.
-    Something the next shift (or the next grow) can reproduce.
-  </li>
-
-  <li>
-    <strong>When it breaks, it tells you.</strong>
-    If the pocket returns, the system doesn’t just flash “red.”
-    It tells you <em>where</em> it returned (back-left bay), <em>when</em> (lights-off window),
-    and what changed upstream (return path / duct / fan behavior) so you fix the airflow cause,
-    not the reporting language.
-  </li>
-</ul>
-
-
-
-<p class="about__para about__para--manifesto">
-  <strong>Hypothetical use case that could be your company #2:</strong><br />
-  It’s week 6 of flower.<br />
-  You lose a section to powdery mildew and everyone has a theory by lunch.<br />
-  The post-mortem starts with a blank slide — not a KPI victory lap.<br />
-  The first header is: “What do we know for sure?”<br />
-  You pull the receipts from the last two weeks: canopy passes, timestamps, pocket maps, and the before/after from the last airflow tweak.<br />
-  The timeline includes the ugly minutes — lights-off ramp, irrigation, door opens, fan cycling — especially the ugly minutes.<br />
-  The baseline doesn’t move; the goalposts don’t either: the pass condition is still “no repeating wet pocket in the same bay.”<br />
-  “Phase 1” doesn’t shrink — it gets named honestly: “What we can prove today, with the checks we trust.”<br />
-  The action items aren’t “improve airflow” (hope). They’re checks: “run the same lights-off pass nightly,” “verify the return-path pocket,” “log fan/duct state,” “confirm the pocket collapses after the change.”<br />
-  The dashboard refreshes.<br />
-  <span class="about__beat">The averages might still be green.</span><br />
-  <span class="about__beat">The pocket might still be red.</span><br />
-  <span class="about__beat about__beat--final">Progress isn’t a color — it’s a pocket that stops coming back.</span>
-</p>
-
-<ul class="about__bullets">
-  <li>
-    <strong>No story-based dashboards.</strong>
-    In this post-mortem, “we’re fine” isn’t allowed because the average is green.
-    If the repeating wet pocket still shows up in the same bay during lights-off, the “fixed” label is not allowed.
-  </li>
-
-  <li>
-    <strong>Receipts, not spin.</strong>
-    The fix isn’t “we changed something.”
-    The fix is a dated before/after pocket map, the exact time window it used to appear,
-    and the verification pass that shows it didn’t come back after the change — across multiple nights.
-  </li>
-
-  <li>
-    <strong>When it breaks, it tells you.</strong>
-    The conclusion isn’t “PM happened.”
-    It’s: “the back-left bay pocket reappears during lights-off when the return path cycles,”
-    which points you to the airflow/duct/fan cause — not a new definition of success.
-  </li>
-</ul>
-
-
-
-
-      </div>
-
-      <!-- Visual: two comics -->
-      <div class="about__visual">
-        <figure class="about__figure">
-          <img
-            class="about__comic"
-            src="/asset/img/consulting_rule_1.png"
-            alt="Comic: Consultant says, 'The numbers don't matter. I’ll wrap them in a whitepaper that reads like your own reflection.'"
-            loading="lazy"
-          />
-          <figcaption class="about__caption">
-            <strong>Executive Alignment Rule #1:</strong> If the data won’t authorize the story, make the story authorize the data.
-          </figcaption>
-        </figure>
-
-        <figure class="about__figure about__figure--spaced">
-          <img
-            class="about__comic"
-            src="/asset/img/consulting_rule_2.png"
-            alt="Comic: 'Our metrics say we were right. Unless we weren't. Then your requirements were wrong.'"
-            loading="lazy"
-          />
-
-          <figcaption class="about__caption">
-            <strong>Executive Alignment Rule #2:</strong> If the results won't validate your promises then reinterpret the results.
-          </figcaption>
-        </figure>
-
-        <div class="about__note">
-          Our platform is built to survive hostile reading.
-          The easiest way to “pass” should be to actually earn the interpretation.
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-
-
-
-
-
-
-</site-page>
-</body>
+      </section>
+    </site-page>
+  </body>
 </html>
