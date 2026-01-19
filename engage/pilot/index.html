@@ -479,6 +479,55 @@
   padding: var(--space-4);
 }
 
+.pilots__metrics{
+  margin: var(--space-4) 0 0;
+  padding: var(--space-4) 0 0;
+  border-top: 1px solid var(--border-soft);
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+@media (max-width: 820px){
+  .pilots__metrics{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.pilots__metricK{
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+.pilots__metricV{
+  margin-top: var(--space-1);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.pilots__tableWrap{
+  overflow:auto;
+  border-top: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+  padding: var(--space-3) 0;
+}
+.pilots__table{
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+.pilots__table th,
+.pilots__table td{
+  text-align: left;
+  padding: var(--space-3) var(--space-3);
+  vertical-align: top;
+  border-bottom: 1px solid var(--border-soft);
+}
+.pilots__table thead th{
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border-soft);
+}
+
 
     </style>
   </head>
@@ -490,11 +539,34 @@
           <!-- HERO -->
           <header class="pilots__header">
             <h1 class="pilots__title" id="pilots-title">Cannabis Grow Pilots</h1>
-            <p class="pilots__lede">3D canopy-zone mapping. Verification. Receipts you can operate on.</p>
+            <p class="pilots__lede">
+              3D canopy-zone mapping. 
+              No averages. No ‘we swear’ dashboards. 
+              Acceptance tests + receipts your team can operate on.
+            </p>
             <p class="pilots__subhead">
               These pilots are built for one outcome: turn “we swear we held setpoints” into a measurable field
               with acceptance tests.
             </p>
+<ul class="pilots__metrics" role="list" aria-label="Pilot outcomes at a glance">
+  <li class="pilots__metric">
+    <div class="pilots__metricK">Output</div>
+    <div class="pilots__metricV">3D pocket/zone map</div>
+  </li>
+  <li class="pilots__metric">
+    <div class="pilots__metricK">Proof</div>
+    <div class="pilots__metricV">Before/after verification</div>
+  </li>
+  <li class="pilots__metric">
+    <div class="pilots__metricK">Decision</div>
+    <div class="pilots__metricV">Pass/fail acceptance tests</div>
+  </li>
+  <li class="pilots__metric">
+    <div class="pilots__metricK">Deliverable</div>
+    <div class="pilots__metricV">Operator-ready readout</div>
+  </li>
+</ul>
+
           </header>
 
           <!-- TWO COLUMN GRID -->
@@ -711,6 +783,66 @@
   </div>
 </section>
 
+<section class="pilots__section" aria-labelledby="compare-title">
+  <h2 class="pilots__heading" id="compare-title">Pilot Comparison</h2>
+
+  <div class="pilots__tableWrap" role="region" aria-label="Pilot comparison table" tabindex="0">
+    <table class="pilots__table">
+      <thead>
+        <tr>
+          <th scope="col">Pilot</th>
+          <th scope="col">Best for</th>
+          <th scope="col">Time horizon</th>
+          <th scope="col">Verification burden</th>
+          <th scope="col">Primary deliverable</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">A — Pocket Scan</th>
+          <td>Fast proof + locate pockets</td>
+          <td>Short</td>
+          <td>One verify pass</td>
+          <td>Baseline pocket map + top interventions</td>
+        </tr>
+        <tr>
+          <th scope="row">B — Flower Room Zone Map</th>
+          <td>Trigger windows + repeatability</td>
+          <td>Mid</td>
+          <td>2–3 intervention verifies</td>
+          <td>Zone map + pocket catalog + recurrence notes</td>
+        </tr>
+        <tr>
+          <th scope="row">C — Facility Baseline</th>
+          <td>Multi-room rollout planning</td>
+          <td>Mid</td>
+          <td>Room-to-room comparability</td>
+          <td>Baseline + rollout playbook</td>
+        </tr>
+        <tr>
+          <th scope="row">D — PM/Botrytis Defense</th>
+          <td>QA-grade recurrence evidence</td>
+          <td>Long</td>
+          <td>A/B + multiple cycles</td>
+          <td>Defense readout + evidence chain</td>
+        </tr>
+        <tr>
+          <th scope="row">E — Founder Cohort</th>
+          <td>Standardization + drift control</td>
+          <td>Long</td>
+          <td>Ongoing checks + SOPs</td>
+          <td>SOP package + monitoring/verification cadence</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="pilots__fineprint">
+    Actual effort depends on room geometry, cycle triggers observed, and how many fixes you want verified.
+  </p>
+</section>
+
+
 
 
               <!-- HOW TO START -->
@@ -732,6 +864,7 @@
                   <a class="button button--secondary" href="/events#rsvp">Prefer a walkthrough?</a>
                 </div>
               </section>
+
 
               <!-- SOURCES -->
               <section class="pilots__section pilots__section--sources" aria-labelledby="sources-title">
