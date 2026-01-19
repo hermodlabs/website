@@ -318,12 +318,174 @@
   margin-bottom: var(--space-3);
 }
 
+/* =========================
+   Swiss mode overrides
+   Attach by adding: .pilots--swiss
+   ========================= */
+
+.pilots--swiss{
+  /* kill "card" feel */
+  --radius-lg: 0px;
+  /* if your design system has other radius vars, you can also override them here:
+     --radius-md: 0px;
+     --radius-sm: 0px;
+  */
+
+  /* make panels feel like typography on paper */
+  --panel: transparent;
+  --panel-soft: transparent;
+}
+
+/* --- 12-col grid (Swiss classic) --- */
+.pilots--swiss .hl-grid.hl-grid--two.pilots__grid{
+  grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+  gap: var(--space-6) !important;
+}
+
+.pilots--swiss .pilots__main{ grid-column: 1 / span 8; }
+.pilots--swiss .pilots__rail{ grid-column: 9 / -1; }
+
+@media (max-width: 820px){
+  .pilots--swiss .hl-grid.hl-grid--two.pilots__grid{
+    grid-template-columns: 1fr !important;
+  }
+  .pilots--swiss .pilots__main,
+  .pilots--swiss .pilots__rail{
+    grid-column: 1 / -1;
+  }
+}
+
+/* --- Align HERO with the left column (so it doesn't span full width) --- */
+.pilots--swiss .pilots__header{
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--space-6);
+  row-gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.pilots--swiss .pilots__header > *{
+  grid-column: 1 / span 8;
+}
+
+@media (max-width: 820px){
+  .pilots--swiss .pilots__header > *{
+    grid-column: 1 / -1;
+  }
+}
+
+/* --- Remove card chrome: squares, no shadows, no fills --- */
+.pilots--swiss .pilots__callout,
+.pilots--swiss .pilots__railCard,
+.pilots--swiss .pilots__panel,
+.pilots--swiss .pilots__menuItem{
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+/* --- Turn callouts into "editorial sections" with rules --- */
+.pilots--swiss .pilots__callout{
+  border: 0;
+  border-top: 1px solid var(--border-soft);
+  padding: var(--space-5) 0;
+}
+
+.pilots--swiss .pilots__calloutFooter{
+  border-top: 0;
+  padding-top: var(--space-3);
+}
+
+/* --- Kicker styling: more Swiss (tracking + less “soft opacity”) --- */
+.pilots--swiss .pilots__calloutKicker,
+.pilots--swiss .pilots__railKicker{
+  opacity: 1;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+}
+
+/* Titles: slightly tighter tracking, less “extra-bold UI” feeling */
+.pilots--swiss .pilots__calloutTitle,
+.pilots--swiss .pilots__railTitle{
+  letter-spacing: -0.02em;
+}
+
+/* --- Bullets: replace dot decoration with an em dash --- */
+.pilots--swiss .pilots__bullet{
+  grid-template-columns: 18px 1fr;
+  gap: var(--space-3);
+}
+
+.pilots--swiss .pilots__dot{
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: none;
+  opacity: 1;
+  margin-top: 0;
+}
+
+.pilots--swiss .pilots__dot::before{
+  content: "—";
+  display: block;
+  transform: translateY(0.05em);
+}
+
+/* --- Menu becomes a ruled list (less “card list”) --- */
+.pilots--swiss .pilots__menu{
+  margin-top: var(--space-4);
+  border-top: 1px solid var(--border-soft);
+  gap: 0;
+}
+
+.pilots--swiss .pilots__menuItem{
+  border: 0;
+  border-bottom: 1px solid var(--border-soft);
+  padding: var(--space-3) 0;
+  grid-template-columns: 20px 1fr auto;
+}
+
+.pilots--swiss .pilots__menuBadge{
+  width: auto;
+  height: auto;
+  border: 0;
+  background: none;
+  border-radius: 0;
+  font-weight: 700;
+}
+
+.pilots--swiss .pilots__menuArrow{
+  opacity: 1;
+  font-weight: 700;
+}
+
+/* Hover: underline, not background fill */
+.pilots--swiss .pilots__menuItem:hover{
+  background: transparent;
+  text-decoration: underline;
+}
+
+/* --- Form fields: square corners + no shadow for Swiss feel --- */
+.pilots--swiss .pilots__input,
+.pilots--swiss .pilots__select,
+.pilots--swiss .pilots__textarea{
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Optional: make the rail cards feel like "boxed modules" while callouts are rules */
+.pilots--swiss .pilots__railCard{
+  border: 1px solid var(--border-soft);
+  padding: var(--space-4);
+}
+
+
     </style>
   </head>
 
   <body>
     <site-page>
-      <section class="pilots" aria-labelledby="pilots-title">
+      <section class="pilots pilots--swiss" aria-labelledby="pilots-title">
         <div class="hl-container">
           <!-- HERO -->
           <header class="pilots__header">
