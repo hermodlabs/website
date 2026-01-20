@@ -351,6 +351,149 @@
   letter-spacing: -0.01em;
 }
 
+/* =========================================
+   Card modules (typography-first)
+   ========================================= */
+
+.pilots__section--card{ padding-top: 0; }
+
+/* The card itself */
+.pilots__card{
+  border: var(--rule);
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  padding: var(--space-5);
+}
+
+/* Card header rhythm */
+.pilots__cardHead{
+  margin-bottom: var(--space-4);
+}
+
+.pilots__cardKicker{
+  font-size: 0.76rem;
+  letter-spacing: var(--kicker-track);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0 0 var(--space-2);
+}
+
+.pilots__cardTitle{
+  margin: 0 0 var(--space-2);
+}
+
+.pilots__cardLede{
+  margin: 0;
+  max-width: var(--type-measure-wide);
+  opacity: 0.92;
+  line-height: var(--body-leading);
+}
+
+/* List becomes “typeset bullets” without the callout dash column */
+.pilots__cardList{
+  list-style: none;
+  padding: 0;
+  margin: var(--space-4) 0 0;
+  display: grid;
+  gap: var(--space-3);
+  max-width: var(--type-measure-wide);
+}
+
+/* Each item gets a small typographic marker */
+.pilots__cardItem{
+  position: relative;
+  padding-left: 1.1rem;
+  opacity: 0.93;
+  line-height: var(--body-leading);
+}
+
+.pilots__cardItem::before{
+  content: "·";
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateY(-0.02em);
+  font-weight: 900;
+}
+
+/* Card footer */
+.pilots__cardFoot{
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: var(--rule);
+}
+
+.pilots__cardLink{
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+/* Optional: slightly stronger hover without “button” feel */
+.pilots__cardLink:hover{
+  text-decoration-thickness: 2px;
+}
+
+.pilots__miniCardGrid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+  max-width: var(--type-measure-wide);
+}
+
+@media (max-width: 820px){
+  .pilots__miniCardGrid{ grid-template-columns: 1fr; }
+}
+
+.pilots__miniCard{
+  border: var(--rule);
+  padding: var(--space-4);
+  background: transparent;
+  border-radius: 0;
+}
+
+.pilots__miniK{
+  font-size: 0.72rem;
+  letter-spacing: var(--kicker-track);
+  text-transform: uppercase;
+  font-weight: 800;
+  margin-bottom: var(--space-2);
+  opacity: 0.95;
+}
+
+.pilots__miniV{
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  opacity: 0.93;
+}
+
+.pilots__miniLink{
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+}
+
+.pilots__miniLink:hover{
+  text-decoration-thickness: 2px;
+}
+
+@media (min-width: 821px){
+  #proof_kit .pilots__miniCardGrid > :last-child{
+    grid-column: 1 / -1;
+  }
+}
+
+
+
+
     </style>
   </head>
 
@@ -454,80 +597,85 @@
   </p>
 </section>
 
-<section id="proof_kit" class="pilots__section pilots__section--callout" aria-labelledby="proof-kit-title">
-  <div class="pilots__callout">
-    <header class="pilots__calloutHead">
-      <div class="pilots__calloutKicker">Proof kit</div>
-      <h2 class="pilots__heading pilots__calloutTitle" id="proof-kit-title">Proof Kit (Downloadables)</h2>
-      <p class="pilots__calloutLede">
+<section id="proof_kit" class="pilots__section pilots__section--card" aria-labelledby="proof-kit-title">
+  <article class="pilots__card">
+    <header class="pilots__cardHead">
+      <div class="pilots__cardKicker">Proof kit</div>
+      <h2 class="pilots__heading pilots__cardTitle" id="proof-kit-title">Proof Kit (Downloadables)</h2>
+      <p class="pilots__cardLede">
         These are the artifacts you can forward internally: what we measure, how we verify, and what “pass/fail” means.
         <strong>Receipts, not vibes.</strong>
       </p>
     </header>
 
-    <ul class="pilots__bullets" role="list" aria-label="Proof kit downloads">
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText">
-          <strong>Pilot Readout (Sample)</strong> — example findings, triggers, and recommended actions.
-          <a class="pilots__calloutLink" href="/asset/file/v_1_0_0_pilot_readout.pdf" download>
+    <div class="pilots__miniCardGrid" role="list" aria-label="Proof kit downloads">
+      <article class="pilots__miniCard" role="listitem">
+        <div class="pilots__miniK">Sample readout</div>
+        <div class="pilots__miniV">
+          <strong>Pilot Readout (Sample)</strong><br />
+          Example findings, triggers, and recommended actions.
+          <a class="pilots__miniLink" href="/asset/file/v_1_0_0_pilot_readout.pdf" download>
             Download <span aria-hidden="true">→</span>
           </a>
-        </span>
-      </li>
+        </div>
+      </article>
 
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText">
-          <strong>Acceptance Tests Checklist</strong> — commissioning gates + pass/fail criteria before go-live.
-          <a class="pilots__calloutLink" href="/asset/file/v_1_0_0_acceptance_test_checklist.pdf" download>
+      <article class="pilots__miniCard" role="listitem">
+        <div class="pilots__miniK">Commissioning gates</div>
+        <div class="pilots__miniV">
+          <strong>Acceptance Tests Checklist</strong><br />
+          Pass/fail criteria before go-live.
+          <a class="pilots__miniLink" href="/asset/file/v_1_0_0_acceptance_test_checklist.pdf" download>
             Download <span aria-hidden="true">→</span>
           </a>
-        </span>
-      </li>
+        </div>
+      </article>
 
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText">
-          <strong>Verification &amp; Receipts Method</strong> — before/after evidence pattern and what counts as “fixed.”
-          <a class="pilots__calloutLink" href="/asset/file/v_1_0_0_verification_and_receipts.pdf" download>
+      <article class="pilots__miniCard" role="listitem">
+        <div class="pilots__miniK">Evidence method</div>
+        <div class="pilots__miniV">
+          <strong>Verification &amp; Receipts Method</strong><br />
+          Before/after pattern + what counts as “fixed.”
+          <a class="pilots__miniLink" href="/asset/file/v_1_0_0_verification_and_receipts.pdf" download>
             Download <span aria-hidden="true">→</span>
           </a>
-        </span>
-      </li>
+        </div>
+      </article>
 
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText">
-          <strong>Example Pocket Map</strong> — what “pockets” look like in a real canopy geometry.
-          <a class="pilots__calloutLink" href="/asset/file/v_1_0_0_example_pocket_map.pdf" download>
+      <article class="pilots__miniCard" role="listitem">
+        <div class="pilots__miniK">Example artifact</div>
+        <div class="pilots__miniV">
+          <strong>Example Pocket Map</strong><br />
+          What “pockets” look like in real canopy geometry.
+          <a class="pilots__miniLink" href="/asset/file/v_1_0_0_example_pocket_map.pdf" download>
             Download <span aria-hidden="true">→</span>
           </a>
-        </span>
-      </li>
+        </div>
+      </article>
 
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText">
-          <strong>Assumptions &amp; Variability</strong> — what affects outcomes (geometry, cycles observed, intervention count).
-          <a class="pilots__calloutLink" href="/asset/file/v_1_0_0_assumptions_and_variability.pdf" download>
+      <article class="pilots__miniCard" role="listitem">
+        <div class="pilots__miniK">Assumptions</div>
+        <div class="pilots__miniV">
+          <strong>Assumptions &amp; Variability</strong><br />
+          What affects outcomes (geometry, cycles, intervention count).
+          <a class="pilots__miniLink" href="/asset/file/v_1_0_0_assumptions_and_variability.pdf" download>
             Download <span aria-hidden="true">→</span>
           </a>
-        </span>
-      </li>
-    </ul>
+        </div>
+      </article>
+    </div>
 
-    <div class="pilots__calloutFooter">
-      <a class="pilots__calloutLink" href="/engage/pilot/research/what_you_get/">
+    <footer class="pilots__cardFoot">
+      <a class="pilots__cardLink" href="/engage/pilot/research/what_you_get/">
         What’s included in every pilot <span aria-hidden="true">→</span>
       </a>
-      <span aria-hidden="true" style="display:inline-block; width: var(--space-4);"></span>
-      <a class="pilots__calloutLink" href="/engage/pilot/research/cost_driver_verification/">
+      <a class="pilots__cardLink" href="/engage/pilot/research/cost_driver_verification/">
         Verification &amp; receipts methodology <span aria-hidden="true">→</span>
       </a>
-    </div>
-  </div>
+    </footer>
+  </article>
 </section>
+
 
 
 <section id="application" class="pilots__railCard" aria-labelledby="apply-title">
@@ -652,214 +800,243 @@
             <!-- RIGHT COLUMN: Pilot Menu + Form -->
              <aside class="pilots__rail pilots__rail--stack" aria-label="Pilot menu">
 
-<section id="one_time_map" class="pilots__section pilots__section--callout" aria-labelledby="one-time-map">
-  <div class="pilots__callout">
-    <header class="pilots__calloutHead">
-      <div class="pilots__calloutKicker">Cost driver</div>
-      <h2 class="pilots__heading pilots__calloutTitle" id="one-time-map">A One-Time Map is Cheaper</h2>
-      <p class="pilots__calloutLede">
+<section id="one_time_map" class="pilots__section pilots__section--card" aria-labelledby="one-time-map">
+  <article class="pilots__card">
+    <header class="pilots__cardHead">
+      <div class="pilots__cardKicker">Cost driver</div>
+      <h2 class="pilots__heading pilots__cardTitle" id="one-time-map">A One-Time Map is Cheaper</h2>
+      <p class="pilots__cardLede">
         Mapping is the baseline. <strong>Verification</strong> is where time (and value) scales.
       </p>
     </header>
 
-    <ul class="pilots__bullets" role="list">
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText"><strong>One scan</strong> → baseline pocket map.</span>
-      </li>
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText"><strong>Cost scales</strong> with repeat scans (lights, irrigation, dehu).</span>
-      </li>
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText"><strong>Verification is the work</strong>: before/after proof.</span>
-      </li>
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText"><strong>Pass/fail receipts</strong> make it defensible.</span>
-      </li>
-    </ul>
+<div class="pilots__miniCardGrid" role="list" aria-label="Cost driver highlights">
+  <article class="pilots__miniCard" role="listitem">
+    <div class="pilots__miniK">Baseline</div>
+    <div class="pilots__miniV">One scan → baseline pocket map.</div>
+  </article>
 
-    <div class="pilots__calloutFooter">
-      <a class="pilots__calloutLink" href="/engage/pilot/research/cost_driver_verification/">
+  <article class="pilots__miniCard" role="listitem">
+    <div class="pilots__miniK">Scaling</div>
+    <div class="pilots__miniV">Cost scales with repeat scans (lights, irrigation, dehu).</div>
+  </article>
+
+  <article class="pilots__miniCard" role="listitem">
+    <div class="pilots__miniK">Work</div>
+    <div class="pilots__miniV">Verification is the work: before/after proof.</div>
+  </article>
+
+  <article class="pilots__miniCard" role="listitem">
+    <div class="pilots__miniK">Defensible</div>
+    <div class="pilots__miniV">Pass/fail receipts make it defensible.</div>
+  </article>
+</div>
+
+
+    <footer class="pilots__cardFoot">
+      <a class="pilots__cardLink" href="/engage/pilot/research/cost_driver_verification/">
         See verification &amp; receipts methodology <span aria-hidden="true">→</span>
       </a>
-    </div>
-  </div>
+    </footer>
+  </article>
 </section>
 
 
 
-<section id="cycles" class="pilots__section pilots__section--callout" aria-labelledby="cycles">
-  <div class="pilots__callout">
-    <header class="pilots__calloutHead">
-      <div class="pilots__calloutKicker">Why duration matters</div>
-      <h2 class="pilots__heading pilots__calloutTitle" id="cycles">Canopy pockets are cycle-driven</h2>
-      <p class="pilots__calloutLede">
+
+<section id="cycles" class="pilots__section pilots__section--card" aria-labelledby="cycles-title">
+  <article class="pilots__card">
+    <header class="pilots__cardHead">
+      <div class="pilots__cardKicker">Why duration matters</div>
+      <h2 class="pilots__heading pilots__cardTitle" id="cycles-title">Canopy pockets are cycle-driven</h2>
+      <p class="pilots__cardLede">
         If you don’t catch the <strong>trigger window</strong>, the average looks “fine.”
         Cycles are where pockets show up, repeat, and prove they’re real.
       </p>
     </header>
 
-    <ul class="pilots__bullets" role="list">
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText"><strong>Triggers</strong> reveal pockets — averages hide them.</span>
-      </li>
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText"><strong>Short pilots</strong> = find + locate.</span>
-      </li>
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText"><strong>Long pilots</strong> = repeatability + recurrence.</span>
-      </li>
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText"><strong>Best signal</strong> is late-flower + night cycles.</span>
-      </li>
-    </ul>
+    <div class="pilots__miniCardGrid" role="list" aria-label="Cycle-driven reasons">
+      <article class="pilots__miniCard" role="listitem">
+        <div class="pilots__miniK">Triggers</div>
+        <div class="pilots__miniV">Reveal pockets — averages hide them.</div>
+      </article>
 
-    <div class="pilots__calloutFooter">
-      <a class="pilots__calloutLink" href="/engage/pilot/research/operator_jtbd">
+      <article class="pilots__miniCard" role="listitem">
+        <div class="pilots__miniK">Short pilots</div>
+        <div class="pilots__miniV">Find + locate, fast.</div>
+      </article>
+
+      <article class="pilots__miniCard" role="listitem">
+        <div class="pilots__miniK">Long pilots</div>
+        <div class="pilots__miniV">Repeatability + recurrence evidence.</div>
+      </article>
+
+      <article class="pilots__miniCard" role="listitem">
+        <div class="pilots__miniK">Best signal</div>
+        <div class="pilots__miniV">Late-flower + night cycles.</div>
+      </article>
+    </div>
+
+    <footer class="pilots__cardFoot">
+      <a class="pilots__cardLink" href="/engage/pilot/research/operator_jtbd">
         See operator jobs-to-be-done research <span aria-hidden="true">→</span>
       </a>
-    </div>
-  </div>
+    </footer>
+  </article>
 </section>
 
 
 
+
+
               <!-- WHY THIS IS WORTH IT (CITED) -->
-<section id="why" class="pilots__section pilots__section--callout" aria-labelledby="why-title">
-  <div class="pilots__callout">
-    <header class="pilots__calloutHead">
-      <div class="pilots__calloutKicker">Why this matters</div>
-      <h2 class="pilots__heading pilots__calloutTitle" id="why-title">Why These Pilots Are Worth Doing</h2>
-      <p class="pilots__calloutLede">
+<section id="why" class="pilots__section pilots__section--card" aria-labelledby="why-title">
+  <article class="pilots__card">
+    <header class="pilots__cardHead">
+      <div class="pilots__cardKicker">Why this matters</div>
+      <h2 class="pilots__heading pilots__cardTitle" id="why-title">Why These Pilots Are Worth Doing</h2>
+      <p class="pilots__cardLede">
         These pilots exist because the failure modes are <strong>common</strong>, <strong>fast</strong>, and
         <strong>expensive</strong>—and “average RH” rarely catches them in time.
       </p>
     </header>
 
-    <ul class="pilots__bullets" role="list">
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText"><strong>Canopy pockets</strong> are common.</span>
-      </li>
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText"><strong>Powdery mildew</strong> pressure is an industry staple.</span>
-      </li>
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText"><strong>Botrytis</strong> (“bud rot”) can move fast under high RH.</span>
-      </li>
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText"><strong>Compliance failures</strong> (yeast/mold) and recalls are real.</span>
-      </li>
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText">
-          <strong>Rules vary by state</strong> (including Aspergillus targets in some regimes).
-        </span>
-      </li>
-    </ul>
+    <div class="pilots__miniCardGrid" role="list" aria-label="Why these pilots matter">
+      <article class="pilots__miniCard" role="listitem">
+        <div class="pilots__miniK">Common</div>
+        <div class="pilots__miniV">Canopy pockets happen in real rooms.</div>
+      </article>
 
-    <div class="pilots__calloutFooter">
-      <a class="pilots__calloutLink" href="/engage/pilot/research/due_diligence">
+      <article class="pilots__miniCard" role="listitem">
+        <div class="pilots__miniK">PM pressure</div>
+        <div class="pilots__miniV">An industry staple — cycles create risk windows.</div>
+      </article>
+
+      <article class="pilots__miniCard" role="listitem">
+        <div class="pilots__miniK">Botrytis</div>
+        <div class="pilots__miniV">Can move fast under high RH.</div>
+      </article>
+
+      <article class="pilots__miniCard" role="listitem">
+        <div class="pilots__miniK">Compliance</div>
+        <div class="pilots__miniV">Yeast/mold failures + recalls are real.</div>
+      </article>
+
+      <article class="pilots__miniCard" role="listitem">
+        <div class="pilots__miniK">By state</div>
+        <div class="pilots__miniV">Rules vary (incl. Aspergillus targets in some regimes).</div>
+      </article>
+    </div>
+
+    <footer class="pilots__cardFoot">
+      <a class="pilots__cardLink" href="/engage/pilot/research/due_diligence">
         Read our due diligence research <span aria-hidden="true">→</span>
       </a>
-    </div>
-  </div>
+    </footer>
+  </article>
 </section>
 
 
 
+
               <!-- WHAT A PILOT INCLUDES -->
-<section id="overview" class="pilots__section pilots__section--callout" aria-labelledby="overview-title">
-  <div class="pilots__callout">
-    <header class="pilots__calloutHead">
-      <div class="pilots__calloutKicker">What you get</div>
-      <h2 class="pilots__heading pilots__calloutTitle" id="overview-title">What Every Pilot Includes</h2>
-      <p class="pilots__calloutLede">
+<section id="overview" class="pilots__section pilots__section--card" aria-labelledby="overview-title">
+  <article class="pilots__card">
+    <header class="pilots__cardHead">
+      <div class="pilots__cardKicker">What you get</div>
+      <h2 class="pilots__heading pilots__cardTitle" id="overview-title">What Every Pilot Includes</h2>
+      <p class="pilots__cardLede">
         Every pilot ships with the same core pattern: <strong>commission</strong>, <strong>prove validity</strong>,
         <strong>capture receipts</strong>, and <strong>deliver a readout your team can act on</strong>.
       </p>
     </header>
 
-    <ul class="pilots__bullets" role="list">
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText"><strong>Commissioning &amp; acceptance tests</strong> (go-live only after checks pass)</span>
-      </li>
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText"><strong>Validity / trust layer</strong> in the portal (what’s comparable, when, and why)</span>
-      </li>
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText"><strong>Run receipts</strong> (timestamps, routes, windows, pass/fail evidence)</span>
-      </li>
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText"><strong>Pilot readout</strong> (findings, triggers, fixes, next actions)</span>
-      </li>
-    </ul>
+    <div class="pilots__miniCardGrid" role="list" aria-label="What every pilot includes">
+      <article class="pilots__miniCard" role="listitem">
+        <div class="pilots__miniK">Commissioning</div>
+        <div class="pilots__miniV">Acceptance tests before go-live.</div>
+      </article>
 
-    <div class="pilots__calloutFooter">
-      <a class="pilots__calloutLink" href="/engage/pilot/research/what_you_get/">
+      <article class="pilots__miniCard" role="listitem">
+        <div class="pilots__miniK">Validity layer</div>
+        <div class="pilots__miniV">What’s comparable, when, and why.</div>
+      </article>
+
+      <article class="pilots__miniCard" role="listitem">
+        <div class="pilots__miniK">Run receipts</div>
+        <div class="pilots__miniV">Timestamps, routes, windows, pass/fail evidence.</div>
+      </article>
+
+      <article class="pilots__miniCard" role="listitem">
+        <div class="pilots__miniK">Readout</div>
+        <div class="pilots__miniV">Findings, triggers, fixes, next actions.</div>
+      </article>
+    </div>
+
+    <footer class="pilots__cardFoot">
+      <a class="pilots__cardLink" href="/engage/pilot/research/what_you_get/">
         Read roles &amp; responsibilities <span aria-hidden="true">→</span>
       </a>
-    </div>
-  </div>
+    </footer>
+  </article>
 </section>
 
 
 
-<section id="scope" class="pilots__section pilots__section--callout" aria-labelledby="scope-title">
-  <div class="pilots__callout">
-    <header class="pilots__calloutHead">
-      <div class="pilots__calloutKicker">How pricing works</div>
-      <h2 class="pilots__heading pilots__calloutTitle" id="scope-title">Pricing Scales with</h2>
-      <p class="pilots__calloutLede">
+
+<section id="scope" class="pilots__section pilots__section--card" aria-labelledby="scope-title">
+  <article class="pilots__card">
+    <header class="pilots__cardHead">
+      <div class="pilots__cardKicker">How pricing works</div>
+      <h2 class="pilots__heading pilots__cardTitle" id="scope-title">Pricing Scales with</h2>
+      <p class="pilots__cardLede">
         We don’t price “maps.” We price <strong>scope</strong>, <strong>cycles observed</strong>, and
         <strong>verification burden</strong>—because that’s what determines effort and defensibility.
       </p>
     </header>
 
-    <ul class="pilots__bullets" role="list">
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText"><strong>Scope</strong> of measurement geometry</span>
-      </li>
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText"><strong>Time horizon</strong> (cycles observed)</span>
-      </li>
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText"><strong>Verification burden</strong> (proving a fix works)</span>
-      </li>
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText"><strong>Deliverable sophistication</strong> (ops vs QA vs exec)</span>
-      </li>
-      <li class="pilots__bullet">
-        <span class="pilots__dot" aria-hidden="true"></span>
-        <span class="pilots__bulletText"><strong>Stakeholders &amp; support</strong> (logins, handoffs, training)</span>
-      </li>
-    </ul>
+    <div class="pilots__miniCardGrid" role="list" aria-label="Pricing drivers">
+      <article class="pilots__miniCard" role="listitem">
+        <div class="pilots__miniK">Scope</div>
+        <div class="pilots__miniV">Measurement geometry + room complexity.</div>
+      </article>
 
-    <div class="pilots__calloutFooter">
-      <a class="pilots__calloutLink" href="/engage/pilot/pricing_philosophy">
+      <article class="pilots__miniCard" role="listitem">
+        <div class="pilots__miniK">Time horizon</div>
+        <div class="pilots__miniV">Cycles observed (lights/irrigation/dehu/night).</div>
+      </article>
+
+      <article class="pilots__miniCard" role="listitem">
+        <div class="pilots__miniK">Verification</div>
+        <div class="pilots__miniV">How many fixes you want proven.</div>
+      </article>
+
+      <article class="pilots__miniCard" role="listitem">
+        <div class="pilots__miniK">Deliverables</div>
+        <div class="pilots__miniV">Ops vs QA vs exec sophistication.</div>
+      </article>
+
+      <article class="pilots__miniCard" role="listitem">
+        <div class="pilots__miniK">Stakeholders</div>
+        <div class="pilots__miniV">Logins, handoffs, training, support.</div>
+      </article>
+    </div>
+
+    <footer class="pilots__cardFoot">
+      <a class="pilots__cardLink" href="/engage/pilot/pricing_philosophy">
         Read the pricing philosophy <span aria-hidden="true">→</span>
       </a>
-    </div>
-  </div>
+    </footer>
+  </article>
 </section>
+
+
+
+
+
+
+
+
             </aside>
 
           </div>
