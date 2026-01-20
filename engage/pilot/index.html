@@ -491,6 +491,94 @@
   }
 }
 
+/* Panel: “cardlike” but not the card system */
+.pilots__section--panel{ padding-top: 0; }
+
+.pilots__panel{
+  border: var(--rule);
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  padding: var(--space-5);
+}
+
+.pilots__panelHead{
+  padding-bottom: var(--space-4);
+  border-bottom: var(--rule);
+  margin-bottom: var(--space-4);
+}
+
+.pilots__panelKicker{
+  font-size: 0.72rem;
+  letter-spacing: var(--kicker-track);
+  text-transform: uppercase;
+  font-weight: 800;
+  margin: 0 0 var(--space-2);
+  opacity: 0.95;
+}
+
+.pilots__panelTitle{
+  margin: 0 0 var(--space-2);
+}
+
+.pilots__panelLede{
+  margin: 0;
+  max-width: var(--type-measure-wide);
+  opacity: 0.9;
+  line-height: var(--body-leading);
+}
+
+/* Make the table feel integrated with the panel */
+.pilots__tableWrap--panel{
+  border-top: 0;
+  border-bottom: 0;
+  padding: 0;
+}
+
+.pilots__table--panel thead th{
+  border-bottom: var(--rule);
+}
+
+.pilots__table--panel th,
+.pilots__table--panel td{
+  border-bottom: var(--rule);
+}
+
+.pilots__panelFoot{
+  padding-top: var(--space-4);
+  border-top: var(--rule);
+  margin-top: var(--space-4);
+}
+/* Pilot column right-aligned (header + cells) */
+.pilots__table th[scope="col"]:first-child,
+.pilots__table th[scope="row"]{
+  text-align: right;
+}
+
+/* Optional: a little breathing room before the next column */
+.pilots__table th[scope="row"]{
+  padding-right: calc(var(--space-3) + 0.25rem);
+  white-space: nowrap;
+}
+
+
+/* Clickable table rows */
+.pilots__rowLink{
+  cursor: pointer;
+}
+
+.pilots__rowLink:hover td,
+.pilots__rowLink:hover th[scope="row"]{
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 2px;
+}
+
+.pilots__rowLink:focus{
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
 
 
 
@@ -538,64 +626,80 @@
             <!-- LEFT COLUMN: content -->
             <div class="pilots__main">
 
-<section id="pilot_comparison" class="pilots__section" aria-labelledby="compare-title">
-  <h2 class="pilots__heading" id="compare-title">Pilot Comparison</h2>
+<section id="pilot_comparison" class="pilots__section pilots__section--panel" aria-labelledby="compare-title">
+  <div class="pilots__panel">
+    <header class="pilots__panelHead">
+      <div class="pilots__panelKicker">At a glance</div>
+      <h2 class="pilots__heading pilots__panelTitle" id="compare-title">Pilot Comparison</h2>
+      <p class="pilots__panelLede">
+        Choose a starting point. Each pilot is a different trade between time horizon and verification burden.
+      </p>
+    </header>
 
-  <div class="pilots__tableWrap" role="region" aria-label="Pilot comparison table" tabindex="0">
-    <table class="pilots__table">
-      <thead>
-        <tr>
-          <th scope="col">Pilot</th>
-          <th scope="col">Best for</th>
-          <th scope="col">Time horizon</th>
-          <th scope="col">Verification burden</th>
-          <th scope="col">Primary deliverable</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">A — Pocket Scan</th>
-          <td>Fast proof + locate pockets</td>
-          <td>Short</td>
-          <td>One verify pass</td>
-          <td>Baseline pocket map + top interventions</td>
-        </tr>
-        <tr>
-          <th scope="row">B — Flower Room Zone Map</th>
-          <td>Trigger windows + repeatability</td>
-          <td>Mid</td>
-          <td>2–3 intervention verifies</td>
-          <td>Zone map + pocket catalog + recurrence notes</td>
-        </tr>
-        <tr>
-          <th scope="row">C — Facility Baseline</th>
-          <td>Multi-room rollout planning</td>
-          <td>Mid</td>
-          <td>Room-to-room comparability</td>
-          <td>Baseline + rollout playbook</td>
-        </tr>
-        <tr>
-          <th scope="row">D — PM/Botrytis Defense</th>
-          <td>QA-grade recurrence evidence</td>
-          <td>Long</td>
-          <td>A/B + multiple cycles</td>
-          <td>Defense readout + evidence chain</td>
-        </tr>
-        <tr>
-          <th scope="row">E — Founder Cohort</th>
-          <td>Standardization + drift control</td>
-          <td>Long</td>
-          <td>Ongoing checks + SOPs</td>
-          <td>SOP package + monitoring/verification cadence</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="pilots__tableWrap pilots__tableWrap--panel" role="region" aria-label="Pilot comparison table" tabindex="0">
+      <table class="pilots__table pilots__table--panel">
+        <thead>
+          <tr>
+            <th scope="col">Pilot</th>
+            <th scope="col">Best for</th>
+            <th scope="col">Time horizon</th>
+            <th scope="col">Verification burden</th>
+            <th scope="col">Primary deliverable</th>
+          </tr>
+        </thead>
+<tbody>
+  <tr class="pilots__rowLink" data-href="/engage/pilot/pocket_scan" role="link" tabindex="0" aria-label="Open Pilot A — Pocket Scan">
+    <th scope="row">A — Pocket Scan</th>
+    <td>Fast proof + locate pockets</td>
+    <td>Short</td>
+    <td>One verify pass</td>
+    <td>Baseline pocket map + top interventions</td>
+  </tr>
+
+  <tr class="pilots__rowLink" data-href="/engage/pilot/flower_room_zone_map" role="link" tabindex="0" aria-label="Open Pilot B — Flower Room Zone Map">
+    <th scope="row">B — Flower Room Zone Map</th>
+    <td>Trigger windows + repeatability</td>
+    <td>Mid</td>
+    <td>2–3 intervention verifies</td>
+    <td>Zone map + pocket catalog + recurrence notes</td>
+  </tr>
+
+  <tr class="pilots__rowLink" data-href="/engage/pilot/facility_baseline" role="link" tabindex="0" aria-label="Open Pilot C — Facility Baseline">
+    <th scope="row">C — Facility Baseline</th>
+    <td>Multi-room rollout planning</td>
+    <td>Mid</td>
+    <td>Room-to-room comparability</td>
+    <td>Baseline + rollout playbook</td>
+  </tr>
+
+  <tr class="pilots__rowLink" data-href="/engage/pilot/pm_botrytis_defense" role="link" tabindex="0" aria-label="Open Pilot D — PM/Botrytis Defense">
+    <th scope="row">D — PM/Botrytis Defense</th>
+    <td>QA-grade recurrence evidence</td>
+    <td>Long</td>
+    <td>A/B + multiple cycles</td>
+    <td>Defense readout + evidence chain</td>
+  </tr>
+
+  <tr class="pilots__rowLink" data-href="/engage/pilot/founder_cohort" role="link" tabindex="0" aria-label="Open Pilot E — Founder Cohort">
+    <th scope="row">E — Founder Cohort</th>
+    <td>Standardization + drift control</td>
+    <td>Long</td>
+    <td>Ongoing checks + SOPs</td>
+    <td>SOP package + monitoring/verification cadence</td>
+  </tr>
+</tbody>
+
+      </table>
+    </div>
+
+    <footer class="pilots__panelFoot">
+      <p class="pilots__fineprint" style="margin:0;">
+        Actual effort depends on room geometry, cycle triggers observed, and how many fixes you want verified.
+      </p>
+    </footer>
   </div>
-
-  <p class="pilots__fineprint">
-    Actual effort depends on room geometry, cycle triggers observed, and how many fixes you want verified.
-  </p>
 </section>
+
 
 <section id="proof_kit" class="pilots__section pilots__section--card" aria-labelledby="proof-kit-title">
   <article class="pilots__card">
@@ -1044,6 +1148,31 @@
       </section>
     </site-page>
   </body>
+
+<script>
+  (function () {
+    const rows = document.querySelectorAll("tr.pilots__rowLink[data-href]");
+    rows.forEach((row) => {
+      const href = row.getAttribute("data-href");
+      if (!href) return;
+
+      row.addEventListener("click", (e) => {
+        // Ignore clicks on actual links inside the row (if you add any later)
+        const a = e.target.closest("a");
+        if (a) return;
+        window.location.href = href;
+      });
+
+      row.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          window.location.href = href;
+        }
+      });
+    });
+  })();
+</script>
+
 
 
 <!-- CHANGED: Getform submit handler (drop this once per page, after the form exists) -->
