@@ -1,0 +1,316 @@
+<!-- /engage/invest/business-model/index.html -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "G-V2474V50XP");
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Business Model</title>
+    <meta
+      name="description"
+      content="How HermodLabs grows: paid proof pilots that convert into recurring monitoring, then expand across rooms and sites with audit-grade receipts and a maintained operating standard."
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <script type="importmap">
+    {
+      "imports": { "lit": "https://esm.run/lit" }
+    }
+    </script>
+
+    <link rel="stylesheet" href="" id="main-css" />
+    <!-- depth: /engage/invest/business-model/ -->
+    <script type="module" src="../../../bootstrap.js"></script>
+
+    <!-- Reuse the invest/research layout styles for consistency (but this page is NOT a research report) -->
+    <link rel="stylesheet" href="/engage/invest/research/research-detail.css" />
+
+    <style>
+      /* Small, lightweight layout helpers (kept minimal so you don’t need new CSS files) */
+      .bm-kicker { margin-top: 0.25rem; color: var(--muted, #6b7280); }
+      .bm-callout {
+        position: relative;
+        padding-left: 1.1rem;
+      }
+      .bm-callout::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.2rem;
+        bottom: 0.2rem;
+        width: 4px;
+        border-radius: 999px;
+        background: #0b6ef3;
+      }
+      .bm-grid-3 {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      @media (max-width: 900px) {
+        .bm-grid-3 { grid-template-columns: 1fr; }
+      }
+      .bm-card {
+        border: 1px solid #e6eaf0;
+        border-radius: 14px;
+        padding: 1rem;
+        background: #fff;
+      }
+      .bm-card__title {
+        margin: 0 0 0.35rem 0;
+        font-weight: 700;
+      }
+      .bm-mini {
+        font-size: 0.95rem;
+        color: #3b4654;
+        margin: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <site-page>
+      <section class="research-detail" aria-labelledby="bm-title">
+        <div class="research-detail__inner">
+          <header class="research-detail__header">
+            <a class="link link--muted research-detail__back" href="/engage/invest/research/">
+              <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+              Back to Market Research
+            </a>
+
+            <h1 class="research-detail__title" id="bm-title">
+              Business Model
+              <span class="research-detail__subtitle">Land with proof. Expand with standards.</span>
+            </h1>
+
+            <p class="research-detail__lede">
+              HermodLabs sells <strong>measurable environmental truth</strong> in places where “the room average” hides the real risk.
+              We start with <strong>paid proof pilots</strong>, convert wins into <strong>recurring monitoring</strong>, then expand across rooms and sites
+              by turning what works into a maintained operating standard.
+            </p>
+
+            <p class="bm-kicker">
+              This page is a quick model overview (not a report). If you want the deeper market logic, start in Market Research.
+            </p>
+
+            <!-- One-screen summary cards -->
+            <div class="research-detail__panel bm-callout" role="note" aria-label="Business model one-screen summary">
+              <div class="bm-grid-3" role="list">
+                <div class="bm-card" role="listitem">
+                  <h2 class="bm-card__title">The problem</h2>
+                  <p class="bm-mini">
+                    Energy cost, quality loss, and compliance risk are driven by <strong>microclimates</strong>—but most sensing is sparse and averages away
+                    worst-case pockets.
+                  </p>
+                </div>
+                <div class="bm-card" role="listitem">
+                  <h2 class="bm-card__title">What we sell</h2>
+                  <p class="bm-mini">
+                    <strong>Proof-shaped outputs:</strong> verification, drift detection, and audit-ready receipts that operators and QA can defend
+                    without “trust me.”
+                  </p>
+                </div>
+                <div class="bm-card" role="listitem">
+                  <h2 class="bm-card__title">How we grow</h2>
+                  <p class="bm-mini">
+                    <strong>Pilot → subscription → expansion</strong>. Each step increases stickiness because it becomes part of SOPs, logs, and change control.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <!-- =========================================================
+               WHAT WE CHARGE FOR
+               ========================================================= -->
+          <section class="research-detail__section" id="revenue" aria-labelledby="s-revenue">
+            <h2 class="research-detail__heading" id="s-revenue">How we make money</h2>
+
+            <div class="research-detail__panel">
+              <p class="research-detail__text">
+                Our pricing aligns to what operators already pay for in practice: diagnosing problems fast, proving fixes, and maintaining control over time.
+              </p>
+
+              <table class="research-detail__table research-detail__table--compact" aria-label="Revenue streams">
+                <thead>
+                  <tr>
+                    <th>Revenue stream</th>
+                    <th>What the buyer gets</th>
+                    <th>Why it converts / sticks</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Paid pilots (fixed-scope)</strong></td>
+                    <td>Time-bounded proof project with acceptance criteria and evidence packages</td>
+                    <td>Fast decision support; low-regret entry vs “platform procurement”</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Monitoring subscription</strong></td>
+                    <td>Ongoing verification, drift/change history, validity uptime, receipts</td>
+                    <td>Becomes SOP infrastructure; reduces “regression tax”</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Expansion (rooms / sites)</strong></td>
+                    <td>Rollout based on templates + repeatable commissioning + shared standards</td>
+                    <td>Once standards exist, expansion is the rational next purchase</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Operator enablement (optional)</strong></td>
+                    <td>SOP updates, training artifacts, maintained operating standard</td>
+                    <td>Institutional memory survives turnover; reduces re-learning</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p class="research-detail__fineprint">
+                Outcomes depend on facility conditions and execution. We structure work around pass/fail acceptance criteria to keep conclusions defensible.
+              </p>
+            </div>
+          </section>
+
+          <!-- =========================================================
+               WHY NOW
+               ========================================================= -->
+          <section class="research-detail__section" id="why-now" aria-labelledby="s-why-now">
+            <h2 class="research-detail__heading" id="s-why-now">Why now</h2>
+
+            <div class="research-detail__panel">
+              <ul class="research-detail__bullets">
+                <li><strong>Energy + opex pressure:</strong> “blind control loops” are expensive when climate control is a dominant load.</li>
+                <li><strong>Quality + microbial risk:</strong> worst-case pockets drive outcomes more than averages.</li>
+                <li><strong>Auditability pull:</strong> higher-standard pathways reward continuity, logs, and defensible narratives.</li>
+                <li><strong>Scaling reality:</strong> staff changes, equipment swaps, and seasons create drift unless you actively verify.</li>
+              </ul>
+
+              <p class="research-detail__text">
+                When the pain is persistent and expensive, buyers don’t want more charts — they want <strong>proof</strong> and a <strong>standard that holds</strong>.
+              </p>
+            </div>
+          </section>
+
+          <!-- =========================================================
+               SALES MOTION
+               ========================================================= -->
+          <section class="research-detail__section" id="motion" aria-labelledby="s-motion">
+            <h2 class="research-detail__heading" id="s-motion">The sales motion</h2>
+
+            <div class="research-detail__panel">
+              <p class="research-detail__text">
+                We don’t ask a facility to “believe” a platform. We earn adoption with a sequence that matches how decisions are made on the ground.
+              </p>
+
+              <ol class="research-detail__bullets" style="list-style: decimal; padding-left: 1.2em;">
+                <li><strong>Start with a trigger:</strong> energy pain, mold incident, compliance readiness, or expansion commissioning.</li>
+                <li><strong>Run a pilot with acceptance criteria:</strong> prove what’s real, where it is, what drives it, and whether a fix holds.</li>
+                <li><strong>Convert to monitoring:</strong> make verification recurring; track drift and change history; keep receipts.</li>
+                <li><strong>Expand:</strong> apply templates across rooms/sites; standardize commissioning and reporting.</li>
+              </ol>
+            </div>
+          </section>
+
+          <!-- =========================================================
+               WHY THIS SCALES
+               ========================================================= -->
+          <section class="research-detail__section" id="scale" aria-labelledby="s-scale">
+            <h2 class="research-detail__heading" id="s-scale">Why this scales (and becomes hard to replace)</h2>
+
+            <div class="research-detail__panel">
+              <div class="bm-grid-3" role="list" aria-label="Defensibility factors">
+                <div class="bm-card" role="listitem">
+                  <h3 class="bm-card__title">Workflow lock-in</h3>
+                  <p class="bm-mini">
+                    Once validity gating, receipts, and verification cadence become part of SOPs and QA reviews, churn becomes operationally painful.
+                  </p>
+                </div>
+
+                <div class="bm-card" role="listitem">
+                  <h3 class="bm-card__title">Proof-shaped artifacts</h3>
+                  <p class="bm-mini">
+                    Evidence packs, change history, and “safe-to-interpret” windows reduce internal arguments and survive skeptical review.
+                  </p>
+                </div>
+
+                <div class="bm-card" role="listitem">
+                  <h3 class="bm-card__title">Expansion is natural</h3>
+                  <p class="bm-mini">
+                    When pockets are spatial and room-specific, multi-room and multi-site rollout is the next rational step after proof.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- =========================================================
+               MILESTONES (INVESTOR FRIENDLY)
+               ========================================================= -->
+          <section class="research-detail__section" id="milestones" aria-labelledby="s-milestones">
+            <h2 class="research-detail__heading" id="s-milestones">What we track</h2>
+
+            <div class="research-detail__panel">
+              <p class="research-detail__text">
+                We track milestones that map to repeatability, conversion, and expansion — not vanity metrics.
+              </p>
+
+              <div class="research-detail__panel">
+                <h3 class="research-detail__panel-title">Near-term</h3>
+                <ul class="research-detail__bullets">
+                  <li>Repeatable pilot playbook (install → verify → evidence pack)</li>
+                  <li>Measured conversion: pilot → monitoring subscription</li>
+                  <li>First multi-room expansions inside a single facility</li>
+                  <li>Standardized receipts + validity reporting template</li>
+                </ul>
+
+                <h3 class="research-detail__panel-title">Next</h3>
+                <ul class="research-detail__bullets">
+                  <li>Systemized prevention-grade pilot workflows (recurrence + fix verification across triggers/time)</li>
+                  <li>Multi-site rollout template (commissioning + standardization)</li>
+                  <li>Operational change-history and drift detection as default behavior</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- =========================================================
+               FAQ (SHORT)
+               ========================================================= -->
+          <section class="research-detail__section" id="faq" aria-labelledby="s-faq">
+            <h2 class="research-detail__heading" id="s-faq">FAQ (quick)</h2>
+
+            <div class="research-detail__panel">
+              <h3 class="research-detail__panel-title">Is this just “more sensors”?</h3>
+              <p class="research-detail__text">
+                No. The differentiation is <strong>interpretation + defensibility</strong>: validity gating, repeatable verification, change history, and receipts that survive scrutiny.
+              </p>
+
+              <h3 class="research-detail__panel-title">Why start with pilots?</h3>
+              <p class="research-detail__text">
+                Because facilities buy <strong>decisions</strong> under pressure. A pilot is time-bounded, decision-friendly, and produces proof that makes ongoing monitoring rational.
+              </p>
+
+              <h3 class="research-detail__panel-title">What’s the long-term product?</h3>
+              <p class="research-detail__text">
+                A maintained monitoring layer that survives seasons, turnover, and scale — with a standard that travels across rooms and sites.
+              </p>
+            </div>
+          </section>
+
+        </div>
+      </section>
+    </site-page>
+  </body>
+</html>
