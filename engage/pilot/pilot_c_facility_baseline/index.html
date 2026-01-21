@@ -40,17 +40,47 @@
               variance, identify repeat failure geometries, and define a facility standard you can replicate.
             </p>
 
+            <div class="pilots__note" role="note" aria-label="Platform status and scope note">
+              <p class="pilots__fineprint">
+                <strong>Platform status / scope note:</strong> This pilot page reflects the current Pilot C operating approach and report format.
+                Outputs, UI screens, terminology, and acceptance tests may evolve; any engagement is governed by the statement of work and
+                acceptance criteria agreed for your site.
+              </p>
+            </div>
+
             <div class="pilots__actions">
               <a class="button button--primary" href="/pilots#apply">Request this pilot</a>
             </div>
           </header>
 
+          <section class="pilots__section" aria-labelledby="why-title">
+            <h2 class="pilots__heading" id="why-title">Why facilities buy this</h2>
+            <ul class="pilots__list">
+              <li class="pilots__list-item">
+                The same airflow and humidity dynamics that drive PM/botrytis risk can vary room-to-room—even under the “same SOP.”
+              </li>
+              <li class="pilots__list-item">
+                Standardization reduces regressions when staff change, SOPs drift, equipment is swapped, or rooms get rebalanced.
+              </li>
+              <li class="pilots__list-item">
+                The facility problem in one sentence: you don’t have “a grow”—you have <strong>multiple microclimate systems</strong>.
+                Pilot C stops the cycle of re-learning every room, every time.
+              </li>
+            </ul>
+          </section>
+
           <section class="pilots__section" aria-labelledby="outcome-title">
             <h2 class="pilots__heading" id="outcome-title">Primary outcome</h2>
             <ul class="pilots__list">
-              <li class="pilots__list-item"><strong>Variance report:</strong> why Room 2 behaves like a different planet</li>
-              <li class="pilots__list-item"><strong>Templates:</strong> placement + acceptance tests that travel room-to-room</li>
-              <li class="pilots__list-item"><strong>Rollout playbook:</strong> how to baseline new rooms without guessing</li>
+              <li class="pilots__list-item">
+                <strong>Variance report:</strong> why Room 2 behaves like a different planet (where/when it diverges, and plausible drivers)
+              </li>
+              <li class="pilots__list-item">
+                <strong>Templates:</strong> placement + acceptance tests that travel room-to-room (so “baseline” is repeatable, not artisanal)
+              </li>
+              <li class="pilots__list-item">
+                <strong>Rollout playbook:</strong> how to baseline new rooms without guessing (stepwise, auditable, scalable)
+              </li>
             </ul>
           </section>
 
@@ -61,7 +91,232 @@
               <li class="pilots__list-item"><strong>Cross-room comparisons:</strong> common pocket archetypes and outliers</li>
               <li class="pilots__list-item"><strong>Facility baseline package:</strong> configs, receipts, validity uptime, change history</li>
               <li class="pilots__list-item"><strong>Operator-ready standard:</strong> what “good” looks like and how to verify it</li>
+              <li class="pilots__list-item"><strong>Templates that travel:</strong> placement + acceptance tests that transfer</li>
+              <li class="pilots__list-item"><strong>Rollout playbook:</strong> baseline new rooms without guessing</li>
             </ul>
+          </section>
+
+          <!-- NEW: Uses your real images: asset/img/pilot_c/* -->
+          <section class="pilots__section" aria-labelledby="read-title">
+            <h2 class="pilots__heading" id="read-title">How to read the deliverables</h2>
+
+            <div class="pilots__grid pilots__grid--two">
+              <div class="pilot-card">
+                <div class="pilot-card__header">
+                  <h3 class="pilot-card__title">Per-room zone maps (2–4 rooms)</h3>
+                </div>
+                <p class="pilots__text">
+                  Use this to answer: <strong>What does each room actually do across the cycle?</strong> Each room gets a zone map with pockets,
+                  gradients, and cycle timing cues so hotspots can be aligned to triggers (lights/irrigation/night/dehu).
+                </p>
+
+                <figure class="pilots__figure">
+                  <img
+                    class="pilots__img"
+                    src="/asset/img/pilot_c/01_per_room_zone_maps_pockets_gradients_cycle_timing.png"
+                    alt="Per-room zone maps showing pockets and gradients for multiple rooms, with cycle timing strips to align hotspots to triggers."
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption class="pilots__fineprint">
+                    <strong>Per-room zone maps:</strong> Side-by-side room views with pockets, gradients, sensor markers, and cycle timing cues.
+                  </figcaption>
+                </figure>
+
+                <p class="pilots__text">
+                  Practical use: this is how you stop arguing about “that room feels weird” and start pointing to repeatable zones by location and timing.
+                </p>
+              </div>
+
+              <div class="pilot-card">
+                <div class="pilot-card__header">
+                  <h3 class="pilot-card__title">Cross-room comparisons (archetypes + outliers)</h3>
+                </div>
+                <p class="pilots__text">
+                  Use this to answer: <strong>Which failure geometries repeat across rooms—and which room is the outlier?</strong>
+                  This turns “SOP drift” into pattern recognition: common pocket archetypes vs rooms behaving differently.
+                </p>
+
+                <figure class="pilots__figure">
+                  <img
+                    class="pilots__img"
+                    src="/asset/img/pilot_c/02_cross_room_comparisons_common_pocket_archetypes_outliers.png"
+                    alt="Cross-room comparison matrix highlighting common pocket archetypes across rooms and flagging outliers with different hotspot geometry."
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption class="pilots__fineprint">
+                    <strong>Cross-room comparisons:</strong> Matrix view that highlights repeats and flags outliers.
+                  </figcaption>
+                </figure>
+
+                <p class="pilots__text">
+                  Operator payoff: once you know what repeats, you can standardize fixes; once you know the outlier, you can isolate why it deviates.
+                </p>
+              </div>
+
+              <div class="pilot-card">
+                <div class="pilot-card__header">
+                  <h3 class="pilot-card__title">Variance report (why one room behaves differently)</h3>
+                </div>
+                <p class="pilots__text">
+                  Use this to answer: <strong>What’s the measurable delta between rooms—and what factors plausibly drive it?</strong>
+                  The goal is diagnostic and evidence-based (not blame-based): where/when the room diverges and what constraints likely matter.
+                </p>
+
+                <figure class="pilots__figure">
+                  <img
+                    class="pilots__img"
+                    src="/asset/img/pilot_c/03_variance_report_why_one_room_behaves_differently.png"
+                    alt="Variance report comparing rooms with delta overlays showing where and when the rooms diverge, alongside potential driver indicators."
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption class="pilots__fineprint">
+                    <strong>Variance report:</strong> Delta overlays show where/when rooms diverge and highlight likely drivers.
+                  </figcaption>
+                </figure>
+
+                <p class="pilots__text">
+                  Practical use: this is what you hand to facilities/engineering to justify changes, instead of “we think Room 2 is cursed.”
+                </p>
+              </div>
+
+              <div class="pilot-card">
+                <div class="pilot-card__header">
+                  <h3 class="pilot-card__title">Facility baseline package (what “good” was)</h3>
+                </div>
+                <p class="pilots__text">
+                  Use this to answer: <strong>What exactly was the “good state” configuration, and can we reproduce it?</strong>
+                  The baseline package captures configs, receipts, validity uptime, and change history so “good” can travel across time and rooms.
+                </p>
+
+                <figure class="pilots__figure">
+                  <img
+                    class="pilots__img"
+                    src="/asset/img/pilot_c/04_facility_baseline_package_configs_receipts_validity_uptime_change_history.png"
+                    alt="Facility baseline package showing configuration templates, receipts, validity uptime, and change history for portability across rooms."
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption class="pilots__fineprint">
+                    <strong>Facility baseline package:</strong> Configs + receipts + validity uptime + change history (portable, auditable).
+                  </figcaption>
+                </figure>
+
+                <p class="pilots__text">
+                  Operator meaning: when someone says “nothing changed,” the package is the record of what actually changed—and what stayed the same.
+                </p>
+              </div>
+
+              <div class="pilot-card">
+                <div class="pilot-card__header">
+                  <h3 class="pilot-card__title">Operator-ready standard (define “good”)</h3>
+                </div>
+                <p class="pilots__text">
+                  Use this to answer: <strong>What does “good” look like here, measurably—and how do we verify it?</strong>
+                  This replaces tribal knowledge with a facility-specific definition that can be checked on demand.
+                </p>
+
+                <figure class="pilots__figure">
+                  <img
+                    class="pilots__img"
+                    src="/asset/img/pilot_c/05_operator_ready_standard_what_good_looks_like_how_to_verify.png"
+                    alt="Operator-ready standard defining the measurable good-state boundary and how to verify it with checks and acceptance criteria."
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption class="pilots__fineprint">
+                    <strong>Operator-ready standard:</strong> Good-state boundary + verification elements (checks, criteria, receipts).
+                  </figcaption>
+                </figure>
+
+                <p class="pilots__text">
+                  Practical payoff: staff changes stop causing regressions because “good” is defined and verifiable—not remembered.
+                </p>
+              </div>
+
+              <div class="pilot-card">
+                <div class="pilot-card__header">
+                  <h3 class="pilot-card__title">Templates that travel (placement + acceptance tests)</h3>
+                </div>
+                <p class="pilots__text">
+                  Use this to answer: <strong>Can we apply the same placement and acceptance tests to a new room?</strong>
+                  Templates act like stencils: repeatable placement logic plus commissioning checks that transfer room-to-room.
+                </p>
+
+                <figure class="pilots__figure">
+                  <img
+                    class="pilots__img"
+                    src="/asset/img/pilot_c/06_templates_that_travel_placement_acceptance_tests_that_transfer.png"
+                    alt="Templates that travel showing transferable placement overlays and acceptance test cards that can be applied across rooms."
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption class="pilots__fineprint">
+                    <strong>Templates that travel:</strong> Placement stencils + acceptance-test cards for repeatable commissioning.
+                  </figcaption>
+                </figure>
+
+                <p class="pilots__text">
+                  Operator meaning: you don’t redesign measurement every time a room changes—you apply the template and verify the same criteria.
+                </p>
+              </div>
+
+              <div class="pilot-card">
+                <div class="pilot-card__header">
+                  <h3 class="pilot-card__title">Rollout playbook (baseline new rooms without guessing)</h3>
+                </div>
+                <p class="pilots__text">
+                  Use this to answer: <strong>What are the steps to baseline additional rooms reliably?</strong>
+                  The playbook makes expansion repeatable: plan → commission → capture triggers → compare → standardize.
+                </p>
+
+                <figure class="pilots__figure">
+                  <img
+                    class="pilots__img"
+                    src="/asset/img/pilot_c/07_rollout_playbook_baseline_new_rooms_without_guessing.png"
+                    alt="Rollout playbook showing a stepwise process to baseline new rooms reliably and converge them toward a consistent facility standard."
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption class="pilots__fineprint">
+                    <strong>Rollout playbook:</strong> Stepwise baseline flow that scales from 2 rooms to facility-wide standardization.
+                  </figcaption>
+                </figure>
+
+                <p class="pilots__text">
+                  Practical payoff: you can add rooms (or reset rooms) without re-learning the whole facility from scratch.
+                </p>
+              </div>
+
+              <div class="pilot-card">
+                <div class="pilot-card__header">
+                  <h3 class="pilot-card__title">Acceptance tests (facility-level)</h3>
+                </div>
+                <p class="pilots__text">
+                  Use this to answer: <strong>When is cross-room comparison valid—and when do we abstain?</strong>
+                  We only compare rooms when validity criteria are met; otherwise the system abstains (so you don’t standardize on bad evidence).
+                </p>
+
+                <figure class="pilots__figure">
+                  <img
+                    class="pilots__img"
+                    src="/asset/img/pilot_c/08_acceptance_tests_consistency_comparability_transferability_abstain_gating.png"
+                    alt="Facility acceptance tests showing consistency, comparability, transferability, and validity gating with safe versus abstain segments."
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption class="pilots__fineprint">
+                    <strong>Facility acceptance tests:</strong> Consistency + comparability + transferability, with validity gating (safe vs abstain).
+                  </figcaption>
+                </figure>
+
+                <p class="pilots__text">
+                  Operator meaning: “compare only when comparable” becomes enforced behavior, not a guideline people forget under pressure.
+                </p>
+              </div>
+            </div>
           </section>
 
           <section class="pilots__section" aria-labelledby="timeline-title">
@@ -77,17 +332,15 @@
           <section class="pilots__section" aria-labelledby="acceptance-title">
             <h2 class="pilots__heading" id="acceptance-title">Acceptance tests (examples)</h2>
             <ul class="pilots__list">
-              <li class="pilots__list-item"><strong>Consistency:</strong> facility “good state” is measurable, not tribal knowledge.</li>
-              <li class="pilots__list-item"><strong>Comparability:</strong> cross-room comparisons only when validity is met (otherwise abstain).</li>
-              <li class="pilots__list-item"><strong>Transferability:</strong> placement and acceptance tests can be applied to a new room.</li>
-            </ul>
-          </section>
-
-          <section class="pilots__section" aria-labelledby="why-title">
-            <h2 class="pilots__heading" id="why-title">Why facilities buy this</h2>
-            <ul class="pilots__list">
-              <li class="pilots__list-item">The same airflow and humidity dynamics that drive PM/botrytis risk can vary room-to-room.</li>
-              <li class="pilots__list-item">Standardization reduces regressions when staff change, SOPs drift, or equipment is swapped.</li>
+              <li class="pilots__list-item">
+                <strong>Consistency:</strong> facility “good state” is measurable, not tribal knowledge—defined by a standard you can verify.
+              </li>
+              <li class="pilots__list-item">
+                <strong>Comparability:</strong> cross-room comparisons only when validity is met (otherwise abstain)—so you don’t standardize on noise.
+              </li>
+              <li class="pilots__list-item">
+                <strong>Transferability:</strong> placement and acceptance tests can be applied to a new room—so expansion doesn’t restart learning.
+              </li>
             </ul>
           </section>
 

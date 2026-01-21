@@ -40,6 +40,14 @@
               irrigation transitions, and dehu/HVAC limits. We don’t just map—we verify.
             </p>
 
+            <div class="pilots__note" role="note" aria-label="Platform status and scope note">
+              <p class="pilots__fineprint">
+                <strong>Platform status / scope note:</strong> This pilot page reflects the current Pilot B operating approach and report format.
+                Outputs, UI screens, terminology, and acceptance tests may evolve; any engagement is governed by the statement of work and
+                acceptance criteria agreed for your site.
+              </p>
+            </div>
+
             <div class="pilots__actions">
               <a class="button button--primary" href="/pilots#apply">Request this pilot</a>
             </div>
@@ -55,6 +63,10 @@
                 Peer-reviewed cannabis literature reports rapid Botrytis damage under high RH (e.g., &gt;70%) at moderate temperatures,
                 which canopy microclimates can reach even when room averages look “safe.”
               </li>
+              <li class="pilots__list-item">
+                Flower runs on triggers: lights, irrigation, night control, dehu cycles, and HVAC limits. Pilot B is designed to measure the room
+                <strong>across those triggers</strong> and prove whether fixes hold beyond one lucky day.
+              </li>
             </ul>
           </section>
 
@@ -69,6 +81,149 @@
             </ul>
           </section>
 
+          <!-- NEW: Uses your real images: asset/img/pilot_b/* -->
+          <section class="pilots__section" aria-labelledby="read-title">
+            <h2 class="pilots__heading" id="read-title">How to read the deliverables</h2>
+
+            <div class="pilots__grid pilots__grid--two">
+              <div class="pilot-card">
+                <div class="pilot-card__header">
+                  <h3 class="pilot-card__title">Pocket catalog (ranked)</h3>
+                </div>
+                <p class="pilots__text">
+                  Use this to answer: <strong>Which pockets matter most operationally?</strong> Ranking is built from how often it appears (persistence),
+                  how bad it gets (severity), and when it hits (timing vs your cycle).
+                </p>
+
+                <figure class="pilots__figure">
+                  <img
+                    class="pilots__img"
+                    src="/asset/img/pilot_b/01_pocket_catalog_ranked_pockets_by_persistence_severity%20_timing.png"
+                    alt="Pocket catalog ranked by persistence, severity, and timing across typical flower triggers."
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption class="pilots__fineprint">
+                    <strong>Pocket catalog:</strong> Ranked pockets with persistence, severity, and timing cues for triage.
+                  </figcaption>
+                </figure>
+
+                <p class="pilots__text">
+                  Operator pattern: start with the top 1–2 pockets by persistence + severity, align timing to triggers (lights/irrigation/night/dehu),
+                  then choose interventions that are realistic in production.
+                </p>
+              </div>
+
+              <div class="pilot-card">
+                <div class="pilot-card__header">
+                  <h3 class="pilot-card__title">Repeatability scoring</h3>
+                </div>
+                <p class="pilots__text">
+                  Use this to answer: <strong>Do hotspots recur in the same places under comparable triggers?</strong> Repeatability separates structural
+                  problems (air paths, constraints) from noise, and prevents “we fixed it” based on one lucky day.
+                </p>
+
+                <figure class="pilots__figure">
+                  <img
+                    class="pilots__img"
+                    src="/asset/img/pilot_b/02_repeatability_scoring_pockets_recur_under_the_same_triggers.png"
+                    alt="Repeatability scoring showing whether pocket hotspots recur under the same triggers across comparable cycles."
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption class="pilots__fineprint">
+                    <strong>Repeatability scoring:</strong> Overlays + trigger strips show whether pockets recur under comparable conditions.
+                  </figcaption>
+                </figure>
+
+                <p class="pilots__text">
+                  Decision rule: we only call a pocket “repeatable” when location + rank are broadly stable across comparable cycles and coverage.
+                </p>
+              </div>
+
+              <div class="pilot-card">
+                <div class="pilot-card__header">
+                  <h3 class="pilot-card__title">Intervention tests (before/after + pass/fail)</h3>
+                </div>
+                <p class="pilots__text">
+                  Use this to answer: <strong>Did the change measurably improve the pocket zones?</strong> Each test is reported as before/after evidence
+                  with pass/fail criteria, and we only claim wins in “safe to interpret” windows.
+                </p>
+
+                <figure class="pilots__figure">
+                  <img
+                    class="pilots__img"
+                    src="/asset/img/pilot_b/03_intervention_tests_before_after_pass_fail_criteria.png"
+                    alt="Intervention test results showing before and after comparisons with explicit pass/fail criteria for pocket zones."
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption class="pilots__fineprint">
+                    <strong>Intervention tests:</strong> Before/after mapping plus pass/fail cards for each targeted change.
+                  </figcaption>
+                </figure>
+
+                <p class="pilots__text">
+                  Practical use: if a test fails, we don’t “reinterpret” it—we change the intervention and re-verify against the same criteria.
+                </p>
+              </div>
+
+              <div class="pilot-card">
+                <div class="pilot-card__header">
+                  <h3 class="pilot-card__title">Zone strategy (what to do next)</h3>
+                </div>
+                <p class="pilots__text">
+                  Use this to answer: <strong>Where should we adjust airflow and dehu strategy—specifically?</strong> The strategy ties recommended actions
+                  to the zones that actually drive risk, based on what repeated and what responded to interventions.
+                </p>
+
+                <figure class="pilots__figure">
+                  <img
+                    class="pilots__img"
+                    src="/asset/img/pilot_b/04_zone_strategy_targeted_airflow_dehu_adjustments_by_zone.png"
+                    alt="Zone strategy map showing targeted airflow and dehumidification adjustments by zone across the flower room."
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption class="pilots__fineprint">
+                    <strong>Zone strategy:</strong> Zone-specific airflow/dehu actions derived from repeated pockets and verified tests.
+                  </figcaption>
+                </figure>
+
+                <p class="pilots__text">
+                  Operator meaning: this is the handoff artifact—clear enough to execute, specific enough to avoid “turn everything down 2% and pray.”
+                </p>
+              </div>
+
+              <div class="pilot-card">
+                <div class="pilot-card__header">
+                  <h3 class="pilot-card__title">Receipts + validity (trust-first evidence)</h3>
+                </div>
+                <p class="pilots__text">
+                  Use this to answer: <strong>Can I trust this comparison? What ran, when, and under what conditions?</strong>
+                  Receipts record what executed (IDs/versions/config), and validity gating marks when interpretation is earned vs when we abstain.
+                </p>
+
+                <figure class="pilots__figure">
+                  <img
+                    class="pilots__img"
+                    src="/asset/img/pilot_b/05_receipts_validity_run_receipts_safe_to_interpret_windows.png"
+                    alt="Receipts and validity view showing run receipts and safe-to-interpret windows with abstain segments when conditions are not trustworthy."
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption class="pilots__fineprint">
+                    <strong>Receipts + validity:</strong> Evidence stack + safe-to-interpret windows, with abstain segments when criteria aren’t met.
+                  </figcaption>
+                </figure>
+
+                <p class="pilots__text">
+                  Practical takeaway: if something changed (layout, coverage, calibration, cycle mismatch), the system flags it—so you don’t over-claim wins.
+                </p>
+              </div>
+            </div>
+          </section>
+
           <section class="pilots__section" aria-labelledby="timeline-title">
             <h2 class="pilots__heading" id="timeline-title">Typical timeline (30 days)</h2>
             <ol class="pilots__steps">
@@ -81,10 +236,22 @@
           <section class="pilots__section" aria-labelledby="acceptance-title">
             <h2 class="pilots__heading" id="acceptance-title">Acceptance tests (examples)</h2>
             <ul class="pilots__list">
-              <li class="pilots__list-item"><strong>Trigger coverage:</strong> capture across lights, irrigation, night control, and dehu cycles.</li>
-              <li class="pilots__list-item"><strong>Intervention efficacy:</strong> at least one targeted fix shows measurable improvement in the mapped pocket zones.</li>
-              <li class="pilots__list-item"><strong>Repeatability:</strong> improvements persist across comparable cycles (not one lucky day).</li>
-              <li class="pilots__list-item"><strong>Validity gating:</strong> system abstains when measurement conditions are not trustworthy.</li>
+              <li class="pilots__list-item">
+                <strong>Trigger coverage:</strong> capture across lights, irrigation, night control, and dehu cycles —
+                enough to distinguish structural pockets from one-off noise.
+              </li>
+              <li class="pilots__list-item">
+                <strong>Intervention efficacy:</strong> at least one targeted fix shows measurable improvement in the mapped pocket zones —
+                using pass/fail criteria rather than “looks better.”
+              </li>
+              <li class="pilots__list-item">
+                <strong>Repeatability:</strong> improvements persist across comparable cycles (not one lucky day) —
+                so operators can trust the change in production.
+              </li>
+              <li class="pilots__list-item">
+                <strong>Validity gating:</strong> system abstains when measurement conditions are not trustworthy —
+                preventing over-claiming under coverage gaps, mismatched cycles, or stale calibration.
+              </li>
             </ul>
           </section>
 

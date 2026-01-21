@@ -40,6 +40,14 @@
               you’re not buying a map—you’re buying proof that the fix holds across triggers and time.
             </p>
 
+            <div class="pilots__note" role="note" aria-label="Platform status and scope note">
+              <p class="pilots__fineprint">
+                <strong>Platform status / scope note:</strong> This pilot page reflects the current Pilot D operating approach and report format.
+                Outputs, UI screens, terminology, and acceptance tests may evolve; any engagement is governed by the statement of work and
+                acceptance criteria agreed for your site.
+              </p>
+            </div>
+
             <!--
             <div class="pilots__actions">
               <a class="button button--primary" href="/pilots#apply">Request this pilot</a>
@@ -59,6 +67,10 @@
               <li class="pilots__list-item">
                 Compliance failures tied to mold/yeast limits and large recalls have been reported; broader investigations describe ongoing mold risk in legal markets.
               </li>
+              <li class="pilots__list-item">
+                The difference vs a mapping pilot: Pilot D is structured for <strong>recurrence and proof</strong>—repeated capture across time, multiple A/B cycles,
+                and explicit “safe to interpret” gating so conclusions remain defensible.
+              </li>
             </ul>
           </section>
 
@@ -73,8 +85,171 @@
             </ul>
           </section>
 
+          <!-- NEW: Uses your real images: asset/img/pilot_d/* -->
+          <section class="pilots__section" aria-labelledby="read-title">
+            <h2 class="pilots__heading" id="read-title">How to read the deliverables</h2>
+
+            <div class="pilots__grid pilots__grid--two">
+              <div class="pilot-card">
+                <div class="pilot-card__header">
+                  <h3 class="pilot-card__title">Recurrence report</h3>
+                </div>
+                <p class="pilots__text">
+                  Use this to answer: <strong>Is it truly recurring—and what triggers it?</strong> Repeatable hotspot geometry under comparable triggers
+                  is the basis for prevention-grade claims (not “it happened once”).
+                </p>
+
+                <figure class="pilots__figure">
+                  <img
+                    class="pilots__img"
+                    src="/asset/img/pilot_d/01_recurrence_report_what_repeats_where_under_which_triggers.png"
+                    alt="Recurrence report showing hotspots repeating in the same zones across comparable cycles, aligned to trigger events."
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption class="pilots__fineprint">
+                    <strong>Recurrence report:</strong> What repeats, where it repeats, and which triggers correlate with recurrence.
+                  </figcaption>
+                </figure>
+
+                <p class="pilots__text">
+                  Practical use: if recurrence only appears under a specific window (night control, irrigation transitions, dehu saturation),
+                  that window becomes the intervention test target.
+                </p>
+              </div>
+
+              <div class="pilot-card">
+                <div class="pilot-card__header">
+                  <h3 class="pilot-card__title">Risk-zone dashboard</h3>
+                </div>
+                <p class="pilots__text">
+                  Use this to answer: <strong>What is the current risk state—and how has it changed over time?</strong> This is the operator + QA view:
+                  pockets, persistence, timing cues, and change history in one place.
+                </p>
+
+                <figure class="pilots__figure">
+                  <img
+                    class="pilots__img"
+                    src="/asset/img/pilot_d/02_risk_zone_dashboard_pockets_persistence_change_history.png"
+                    alt="Risk-zone dashboard showing zone risk, persistence indicators, and change history over time."
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption class="pilots__fineprint">
+                    <strong>Risk-zone dashboard:</strong> Pockets + persistence + change history for ongoing prevention tracking.
+                  </figcaption>
+                </figure>
+
+                <p class="pilots__text">
+                  Decision pattern: focus on pockets that are both persistent and severe; treat “one-off spikes” differently than “always-wet zones.”
+                </p>
+              </div>
+
+              <div class="pilot-card">
+                <div class="pilot-card__header">
+                  <h3 class="pilot-card__title">A/B efficacy package (pass/fail)</h3>
+                </div>
+                <p class="pilots__text">
+                  Use this to answer: <strong>Did the intervention measurably reduce severity and/or persistence—with margin?</strong>
+                  The package is structured for a go/no-go decision, not a vibes-based “looks improved.”
+                </p>
+
+                <figure class="pilots__figure">
+                  <img
+                    class="pilots__img"
+                    src="/asset/img/pilot_d/03_a_b_efficacy_package_before_after_evidence_pass_fail_criteria.png"
+                    alt="A/B efficacy package showing before and after evidence with explicit pass/fail criteria for pocket zones."
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption class="pilots__fineprint">
+                    <strong>A/B efficacy package:</strong> Before/after evidence with pass/fail boundaries and measurable margin.
+                  </figcaption>
+                </figure>
+
+                <p class="pilots__text">
+                  QA framing: a “win” is measurable reduction in pocket severity/persistence in windows that are safe to interpret—and it survives re-checks.
+                </p>
+              </div>
+
+              <div class="pilot-card">
+                <div class="pilot-card__header">
+                  <h3 class="pilot-card__title">Validity + abstains (safe-to-interpret)</h3>
+                </div>
+                <p class="pilots__text">
+                  Use this to answer: <strong>When are conclusions safe—and when should we abstain/cancel interpretation?</strong>
+                  Abstain is not failure; it’s the boundary that keeps evidence defensible under real-world drift.
+                </p>
+
+                <figure class="pilots__figure">
+                  <img
+                    class="pilots__img"
+                    src="/asset/img/pilot_d/04_validity_abstains_safe_to_interpret_cancel_windows_reasons.png"
+                    alt="Validity and abstains view showing safe-to-interpret windows and abstain segments with reasons."
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption class="pilots__fineprint">
+                    <strong>Validity + abstains:</strong> Safe-to-interpret windows with explicit reasons when not safe.
+                  </figcaption>
+                </figure>
+
+                <p class="pilots__text">
+                  Operator meaning: when measurement conditions aren’t trustworthy (coverage gaps, cycle mismatch, calibration stale),
+                  we don’t claim efficacy—even if the plot looks nicer.
+                </p>
+              </div>
+
+              <div class="pilot-card">
+                <div class="pilot-card__header">
+                  <h3 class="pilot-card__title">Audit-ready receipts (provenance)</h3>
+                </div>
+                <p class="pilots__text">
+                  Use this to answer: <strong>What exactly ran, with what versions/config, and how much of the run was valid?</strong>
+                  This is what makes partner review, QA sign-off, and post-mortems possible without argument.
+                </p>
+
+                <figure class="pilots__figure">
+                  <img
+                    class="pilots__img"
+                    src="/asset/img/pilot_d/05_audit_ready_receipts_versions_calibration_config_validity_uptime.png"
+                    alt="Audit-ready receipts showing versions, calibration state, configuration, and validity uptime coverage."
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption class="pilots__fineprint">
+                    <strong>Audit-ready receipts:</strong> Versions + calibration + configuration + validity uptime (evidence stack).
+                  </figcaption>
+                </figure>
+
+                <p class="pilots__text">
+                  Practical use: if someone disputes results (“not the same setup”), receipts prove what changed and what did not.
+                </p>
+              </div>
+            </div>
+          </section>
+
           <section class="pilots__section" aria-labelledby="timeline-title">
             <h2 class="pilots__heading" id="timeline-title">Typical timeline (60–90 days)</h2>
+
+            <p class="pilots__text">
+              Use this to answer: <strong>What happens when—and why does it take longer than a mapping pilot?</strong>
+              Pilot D is designed to capture recurrence pressure and verify fixes across triggers and time (not one short window).
+            </p>
+
+            <figure class="pilots__figure">
+              <img
+                class="pilots__img"
+                src="/asset/img/pilot_d/06_60-90_day_timeline_baseline_recurrence_A_B_cycles_evidence.png"
+                alt="Timeline showing baseline, recurrence tracking, multiple A/B cycles, and QA-grade evidence production over 60 to 90 days."
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption class="pilots__fineprint">
+                <strong>60–90 day timeline:</strong> Baseline → recurrence capture → A/B cycles → QA-grade evidence outputs.
+              </figcaption>
+            </figure>
+
             <ol class="pilots__steps">
               <li class="pilots__step"><strong>Baseline:</strong> commissioning + initial zone map + pocket catalog</li>
               <li class="pilots__step"><strong>Recurrence:</strong> repeated capture across cycles (especially night control and late flower)</li>
@@ -85,20 +260,53 @@
 
           <section class="pilots__section" aria-labelledby="acceptance-title">
             <h2 class="pilots__heading" id="acceptance-title">Acceptance tests (examples)</h2>
+
+            <p class="pilots__text">
+              Use this to answer: <strong>What does “proof” mean here?</strong> These tests define the minimum bar for defensible prevention claims:
+              recurrence, measurable efficacy, persistence across time, and abstain logic when conditions are unsafe.
+            </p>
+
+            <figure class="pilots__figure">
+              <img
+                class="pilots__img"
+                src="/asset/img/pilot_d/07_acceptance_tests_visual_recurrence_confirmed_fix_works_fix_holds_abstain_logic.png"
+                alt="Four-panel acceptance tests visual: recurrence confirmed, fix efficacy, fix holds across time, and abstain logic."
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption class="pilots__fineprint">
+                <strong>Acceptance tests (visual):</strong> Recurrence confirmed, fix works, fix holds, and abstain gating.
+              </figcaption>
+            </figure>
+
             <ul class="pilots__list">
-              <li class="pilots__list-item"><strong>Recurrence confirmed:</strong> pockets recur predictably under defined triggers.</li>
-              <li class="pilots__list-item"><strong>Fix efficacy:</strong> intervention reduces pocket severity and/or persistence with measurable margin.</li>
-              <li class="pilots__list-item"><strong>Fix holds:</strong> efficacy persists across comparable cycles and time windows.</li>
-              <li class="pilots__list-item"><strong>Abstain logic:</strong> system explicitly flags when measurement conditions make conclusions unsafe.</li>
+              <li class="pilots__list-item">
+                <strong>Recurrence confirmed:</strong> pockets recur predictably under defined triggers—so you’re solving a real pattern, not noise.
+              </li>
+              <li class="pilots__list-item">
+                <strong>Fix efficacy:</strong> intervention reduces pocket severity and/or persistence with measurable margin—pass/fail, not “seems better.”
+              </li>
+              <li class="pilots__list-item">
+                <strong>Fix holds:</strong> efficacy persists across comparable cycles and time windows—so the fix survives real operations.
+              </li>
+              <li class="pilots__list-item">
+                <strong>Abstain logic:</strong> system explicitly flags when measurement conditions make conclusions unsafe—preventing over-claiming.
+              </li>
             </ul>
           </section>
 
           <section class="pilots__section" aria-labelledby="fit-title">
             <h2 class="pilots__heading" id="fit-title">Best fit</h2>
             <ul class="pilots__list">
-              <li class="pilots__list-item">You have recurring PM pressure or late-flower botrytis risk.</li>
-              <li class="pilots__list-item">A single remediation/downgrade event is financially brutal.</li>
-              <li class="pilots__list-item">You need defensible proof (QA, leadership, partners, or post-mortems).</li>
+              <li class="pilots__list-item">
+                You have recurring PM pressure or late-flower botrytis risk—and “we adjusted setpoints” hasn’t made it go away.
+              </li>
+              <li class="pilots__list-item">
+                A single remediation/downgrade event is financially brutal—prevention needs to be provable, not hoped for.
+              </li>
+              <li class="pilots__list-item">
+                You need defensible proof (QA, leadership, partners, or post-mortems)—with receipts and validity gating.
+              </li>
             </ul>
           </section>
 
