@@ -366,3 +366,83 @@
     margin-top: var(--space-3);
   }
 }
+
+
+/* =========================================================
+   Pilot deliverables — card grid variant
+   (Use: .pilots__grid--cards + .pilot-card--deliverable)
+   ========================================================= */
+
+.pilots__grid--cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  align-items: stretch;
+}
+
+@media (max-width: 900px) {
+  .pilots__grid--cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pilots__grid--cards .pilot-card--deliverable {
+  border: 1px solid #e6eaf0;
+  border-radius: 16px;
+  background: #fff;
+  overflow: hidden;
+
+  /* Makes cards feel like consistent “components” */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04);
+}
+
+.pilots__grid--cards .pilot-card--deliverable .pilot-card__body {
+  padding: 16px 16px 0;
+}
+
+.pilots__grid--cards .pilot-card--deliverable .pilot-card__body--bottom {
+  padding: 0 16px 16px;
+}
+
+.pilots__grid--cards .pilot-card--deliverable .pilot-card__header {
+  margin: 0;
+}
+
+.pilots__grid--cards .pilot-card--deliverable .pilot-card__title {
+  margin: 0;
+}
+
+/* Make the image/figure feel like a “media block” inside the card */
+.pilots__grid--cards .pilot-card--deliverable .pilot-card__media {
+  margin: 12px 0 0;
+}
+
+.pilots__grid--cards .pilot-card--deliverable .pilots__img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Caption becomes card-like, not floaty */
+.pilots__grid--cards .pilot-card--deliverable .pilots__fineprint {
+  margin: 0;
+  padding: 10px 16px 0;
+}
+
+/* Tighten paragraph spacing inside card bodies */
+.pilots__grid--cards .pilot-card--deliverable .pilots__text {
+  margin: 10px 0 0;
+}
+
+/* Optional: subtle hover affordance (desktop) */
+@media (hover: hover) {
+  .pilots__grid--cards .pilot-card--deliverable:hover {
+    box-shadow:
+      0 1px 0 rgba(17, 24, 39, 0.04),
+      0 10px 24px rgba(17, 24, 39, 0.08);
+    transform: translateY(-1px);
+    transition: box-shadow 160ms ease, transform 160ms ease;
+  }
+}

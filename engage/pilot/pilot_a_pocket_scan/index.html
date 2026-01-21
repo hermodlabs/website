@@ -20,6 +20,13 @@
       content="Validate hidden humidity pockets in your grow canopy in ~1 week (schedule-dependent) — actionable spatial maps + one verification pass + validity gating + receipts."
     />
 
+    <!-- Icons (matches invest/business-model page vibe) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
     <script type="importmap">
     {
       "imports": { "lit": "https://esm.run/lit" }
@@ -28,6 +35,386 @@
 
     <link rel="stylesheet" href="" id="main-css" />
     <script type="module" src="../../../bootstrap.js"></script>
+
+    <!-- Pilot A “invest-style” skin + card grids -->
+    <style>
+      /* =========================================================
+         Pilot A — “Invest-style” skin
+         ========================================================= */
+
+      .pilots__back {
+        display: inline-flex;
+        gap: 0.5rem;
+        align-items: center;
+        margin-bottom: 0.75rem;
+      }
+
+      .pilots__kicker {
+        margin-top: 0.5rem;
+        color: #6b7280;
+        font-size: 0.95rem;
+      }
+
+      .pilots__meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: center;
+        margin: 0.75rem 0 0.75rem;
+      }
+      .pilots__meta-item {
+        display: inline-flex;
+        gap: 0.5rem;
+        align-items: center;
+        color: #3b4654;
+        font-size: 0.95rem;
+      }
+
+      .pilots__header { padding-bottom: 0.25rem; }
+      .pilots__lede { font-size: 1.05rem; line-height: 1.45; }
+      .pilots__subhead { color: #3b4654; max-width: 72ch; }
+      .pilots__heading { letter-spacing: -0.01em; }
+
+      .pilots__section { padding-top: 0.25rem; }
+      .pilots__section > .pilots__text,
+      .pilots__section > .pilots__list,
+      .pilots__section > .pilots__steps {
+        max-width: 80ch;
+      }
+
+      .pilots__note {
+        position: relative;
+        border: 1px solid #e6eaf0;
+        border-radius: 14px;
+        background: #fff;
+        padding: 12px 14px 12px 18px;
+        margin-top: 12px;
+      }
+      .pilots__note::before {
+        content: "";
+        position: absolute;
+        left: 10px;
+        top: 12px;
+        bottom: 12px;
+        width: 4px;
+        border-radius: 999px;
+        background: #0b6ef3;
+        opacity: 0.95;
+      }
+      .pilots__note[aria-label*="scope"]::before,
+      .pilots__note[aria-label*="Scope"]::before {
+        background: #14b8a6;
+      }
+
+      .pilot-card {
+        border: 1px solid #e6eaf0;
+        border-radius: 14px;
+        background: #fff;
+      }
+
+      .pilots__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 0.9rem;
+        margin-bottom: 0.35rem;
+      }
+      .pilots__actions .button i { margin-right: 0.5rem; }
+
+      /* =========================================================
+         Deliverables / image grids as “cards with media”
+         ========================================================= */
+      .pilots__grid--cards {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        align-items: stretch;
+      }
+      @media (max-width: 900px) {
+        .pilots__grid--cards { grid-template-columns: 1fr; }
+      }
+
+      .pilots__grid--cards .pilot-card--deliverable {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04);
+      }
+
+      .pilots__grid--cards .pilot-card--deliverable .pilot-card__body {
+        padding: 16px 16px 0;
+      }
+      .pilots__grid--cards .pilot-card--deliverable .pilot-card__body--bottom {
+        padding: 0 16px 16px;
+      }
+      .pilots__grid--cards .pilot-card--deliverable .pilot-card__media {
+        margin: 12px 0 0;
+      }
+      .pilots__grid--cards .pilot-card--deliverable .pilots__img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .pilots__grid--cards .pilot-card--deliverable .pilots__fineprint {
+        margin: 0;
+        padding: 10px 16px 0;
+      }
+      .pilots__grid--cards .pilot-card--deliverable .pilots__text {
+        margin: 10px 0 0;
+      }
+
+      /* =========================================================
+         Invest-style cards (for PSI + What you’ll know)
+         ========================================================= */
+      .pilots__cards {
+        display: grid;
+        gap: 14px;
+        margin-top: 12px;
+      }
+      .pilots__cards--three {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .pilots__cards--two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      @media (max-width: 900px) {
+        .pilots__cards--three { grid-template-columns: 1fr; }
+        .pilots__cards--two { grid-template-columns: 1fr; }
+      }
+
+      .pilots__card {
+        border: 1px solid #e6eaf0;
+        border-radius: 14px;
+        background: #fff;
+        padding: 14px 14px 12px;
+        box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04);
+      }
+
+      .pilots__card-title {
+        margin: 0 0 6px 0;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+      }
+
+      .pilots__card-text {
+        margin: 0;
+        color: #3b4654;
+      }
+
+      .pilots__card-kicker {
+        display: inline-flex;
+        gap: 0.5rem;
+        align-items: center;
+        color: #6b7280;
+        font-size: 0.9rem;
+        margin: 0 0 8px 0;
+      }
+
+      @media (hover: hover) {
+        .pilots__card:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04), 0 10px 24px rgba(17, 24, 39, 0.08);
+          transition: box-shadow 160ms ease, transform 160ms ease;
+        }
+      }
+
+      .pilots__card .pilot-card__list {
+  margin: 0;
+  padding-left: 1.2em;
+}
+.pilots__card .pilot-card__list li {
+  margin-top: 6px;
+}
+.pilots__card .pilot-card__list li:first-child {
+  margin-top: 0;
+}
+
+/* Mini-cards inside a card */
+.pilots__mini-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.pilots__mini-card {
+  border: 1px solid #e6eaf0;
+  border-radius: 12px;
+  background: #fff;
+  padding: 10px 10px 9px;
+}
+
+.pilots__mini-text {
+  margin: 0;
+  color: #3b4654;
+  line-height: 1.35;
+  font-size: 0.98rem;
+}
+
+/* Optional: slightly denser on wide screens */
+@media (min-width: 900px) {
+  .pilots__mini-grid--two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* =========================================================
+   FAQ accordion cards (no JS)
+   ========================================================= */
+
+.pilots__faq {
+  margin-top: 12px;
+}
+
+.pilots__faq-item {
+  border: 1px solid #e6eaf0;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04);
+  overflow: hidden;
+}
+
+.pilots__faq-list {
+  display: grid;
+  gap: 14px;
+}
+
+/* Summary row */
+.pilots__faq-item > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 14px 12px;
+}
+
+.pilots__faq-item > summary::-webkit-details-marker { display: none; }
+
+.pilots__faq-q {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.pilots__faq-icon {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid #e6eaf0;
+  display: grid;
+  place-items: center;
+  color: #3b4654;
+  background: #fff;
+}
+
+.pilots__faq-caret {
+  flex: 0 0 auto;
+  color: #6b7280;
+  transition: transform 160ms ease;
+}
+
+/* Open state */
+.pilots__faq-item[open] .pilots__faq-caret {
+  transform: rotate(180deg);
+}
+
+/* Answer panel */
+.pilots__faq-a {
+  padding: 0 14px 14px;
+  color: #3b4654;
+}
+
+.pilots__faq-a p {
+  margin: 10px 0 0;
+}
+
+.pilots__faq-a p:first-child {
+  margin-top: 0;
+}
+
+/* Subtle focus ring */
+.pilots__faq-item > summary:focus-visible {
+  outline: 2px solid rgba(11, 110, 243, 0.6);
+  outline-offset: 3px;
+  border-radius: 14px;
+}
+
+
+/* =========================================================
+   Deliverables tiles grid
+   ========================================================= */
+.pilots__tiles {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
+  .pilots__tiles { grid-template-columns: 1fr; }
+}
+
+/* Slightly denser on large screens */
+@media (min-width: 1100px) {
+  .pilots__tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.pilots__tile {
+  border: 1px solid #e6eaf0;
+  border-radius: 14px;
+  background: #fff;
+  padding: 12px 12px 11px;
+  box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.pilots__tile-icon {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid #e6eaf0;
+  display: grid;
+  place-items: center;
+  color: #3b4654;
+  background: #fff;
+  margin-top: 1px;
+}
+
+.pilots__tile-title {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.pilots__tile-text {
+  margin: 4px 0 0;
+  color: #3b4654;
+  line-height: 1.35;
+  font-size: 0.95rem;
+}
+
+@media (hover: hover) {
+  .pilots__tile:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04), 0 10px 24px rgba(17, 24, 39, 0.08);
+    transition: box-shadow 160ms ease, transform 160ms ease;
+  }
+}
+
+/* Optional: make Why tiles slightly punchier */
+.pilots__tile--why .pilots__tile-title {
+  font-size: 1rem;
+}
+
+
+    </style>
   </head>
 
   <body>
@@ -35,39 +422,77 @@
       <section class="pilots pilots--detail" aria-labelledby="pilot-title">
         <div class="pilots__inner">
           <header class="pilots__header">
+            <a class="link link--muted pilots__back" href="/pilots/">
+              <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+              Back to Pilots
+            </a>
+
             <h1 class="pilots__title" id="pilot-title">Pilot A — Pocket Scan</h1>
 
-            <!-- Simple, direct business value proposition up front -->
             <p class="pilots__lede">
               Validate hidden humidity pockets in your grow canopy in ~1 week (schedule-dependent) — reduce disease risk and improve environmental control.
             </p>
 
-            <!-- Strong CTA up front -->
-            <div class="pilots__actions" aria-label="Pilot A primary actions">
-              <a class="button button--primary" href="/pilots#apply">Request Pilot A</a>
-              <a class="button button--secondary" href="/contact">Contact</a>
-              <a class="button button--secondary" href="#deliverables-title">See deliverables</a>
+            <div class="pilots__meta" aria-label="Pilot A metadata">
+              <span class="badge badge--success">Active</span>
+              <span class="pilots__meta-item">
+                <i class="fa-solid fa-tags" aria-hidden="true"></i>
+                Cannabis • Cultivation • Microclimate • Verification • Receipts
+              </span>
             </div>
+
+            <div class="pilots__actions" aria-label="Pilot A primary actions">
+              <a class="button button--primary" href="/pilots#apply">
+                <i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>
+                Request Pilot A
+              </a>
+            </div>
+
+            <p class="pilots__kicker">
+              Quick pilot overview for operators and decision-makers. Evidence-first, not vibes.
+            </p>
 
             <p class="pilots__subhead">
               This is the fastest path to turning “the room average is fine” into a spatial truth: where RH/temp/VPD pockets
               live inside the canopy, when they appear, and whether they repeat on comparable cycles.
             </p>
 
-            <!-- Problem / Solution / Impact breakpoints (business-first) -->
-            <ul class="pilots__list" aria-label="Pilot A quick overview">
-              <li class="pilots__list-item">
-                <strong>Problem:</strong> Wall sensors and averages hide worst-case canopy zones—exactly where disease risk concentrates.
-              </li>
-              <li class="pilots__list-item">
-                <strong>Solution:</strong> Pocket Scan delivers actionable spatial maps + trigger notes + one verification pass on a comparable cycle.
-              </li>
-              <li class="pilots__list-item">
-                <strong>Impact:</strong> Target fixes to the worst zones (airflow/dehu/canopy), catch repeatable patterns early, and avoid wasted cycles chasing averages.
-              </li>
-            </ul>
+            <!-- Problem / Solution / Impact as cards -->
+            <div class="pilots__cards pilots__cards--three" aria-label="Pilot A quick overview cards">
+              <div class="pilots__card">
+                <p class="pilots__card-kicker">
+                  <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+                  Problem
+                </p>
+                <h3 class="pilots__card-title">Averages hide worst-case zones</h3>
+                <p class="pilots__card-text">
+                  Wall sensors and averages can look “fine” while canopy pockets stay wet long enough to create disease pressure.
+                </p>
+              </div>
 
-            <!-- Validation signals (credibility up front) -->
+              <div class="pilots__card">
+                <p class="pilots__card-kicker">
+                  <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                  Solution
+                </p>
+                <h3 class="pilots__card-title">Actionable spatial proof</h3>
+                <p class="pilots__card-text">
+                  Pocket Scan delivers spatial maps + trigger notes + one verification pass on a comparable cycle—so it’s proof, not a vibe.
+                </p>
+              </div>
+
+              <div class="pilots__card">
+                <p class="pilots__card-kicker">
+                  <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+                  Impact
+                </p>
+                <h3 class="pilots__card-title">Faster fixes, less waste</h3>
+                <p class="pilots__card-text">
+                  Target the worst zones first (airflow/dehu/canopy), catch repeatable patterns early, and avoid wasted cycles chasing room averages.
+                </p>
+              </div>
+            </div>
+
             <div class="pilots__note" role="note" aria-label="Pilot A validation signals">
               <p class="pilots__fineprint">
                 <strong>Validation signals:</strong> includes <strong>validity gating</strong> (CONFIDENT vs ABSTAIN), a <strong>repeatability overlay</strong>
@@ -84,488 +509,651 @@
             </div>
           </header>
 
-          <!-- New: “What you’ll know quickly” section (fast business clarity) -->
+          <!-- What you’ll know (fast) as 2x2 cards -->
           <section class="pilots__section" aria-labelledby="know-title">
             <h2 class="pilots__heading" id="know-title">What you’ll know (fast)</h2>
-            <ul class="pilots__list">
-              <li class="pilots__list-item"><strong>Do pockets exist?</strong> Not “maybe”—measured, mapped, and ranked.</li>
-              <li class="pilots__list-item"><strong>Where are the worst zones?</strong> Walk-to-this-spot location clarity (corners, strips, behind racks).</li>
-              <li class="pilots__list-item"><strong>What triggers them?</strong> Lights/irrigation/dehu/HVAC cycle alignment for targeted interventions.</li>
-              <li class="pilots__list-item"><strong>Do they repeat?</strong> One verification pass on a comparable cycle to confirm repeatability once.</li>
-            </ul>
-          </section>
 
-          <section class="pilots__section" aria-labelledby="why-title">
-            <h2 class="pilots__heading" id="why-title">Why this matters</h2>
-            <ul class="pilots__list">
-              <li class="pilots__list-item">
-                Dense canopies + imperfect airflow create local humidity pockets that sensors on walls can’t represent.
-                Crowding and poor air circulation are repeatedly cited as contributors to disease-favorable microclimates.
-              </li>
-              <li class="pilots__list-item">
-                PM and botrytis are strongly influenced by humidity dynamics and airflow; pockets are a common root cause,
-                not a rare edge case.
-              </li>
-              <li class="pilots__list-item">
-                Pockets are <strong>spatial</strong> and <strong>cyclical</strong>. Averages can look “fine” while worst-case zones stay wet long enough
-                to create risk.
-              </li>
-            </ul>
-          </section>
-
-          <section class="pilots__section" aria-labelledby="fit-title">
-            <h2 class="pilots__heading" id="fit-title">Best fit</h2>
-            <div class="pilots__grid pilots__grid--two">
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">You’re seeing</h3>
-                </div>
-                <ul class="pilot-card__list">
-                  <li class="pilot-card__item">“Mystery corners” / under-canopy wet strips</li>
-                  <li class="pilot-card__item">Night spikes / dehu cycling weirdness</li>
-                  <li class="pilot-card__item">Pressure that doesn’t match the dashboard</li>
-                  <li class="pilot-card__item">PM/botrytis risk that feels inconsistent with averages</li>
-                </ul>
+            <div class="pilots__cards pilots__cards--two" aria-label="What you’ll know fast cards">
+              <div class="pilots__card">
+                <h3 class="pilots__card-title">Do pockets exist?</h3>
+                <p class="pilots__card-text">Not “maybe”—measured, mapped, and ranked.</p>
               </div>
 
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">You want</h3>
-                </div>
-                <ul class="pilot-card__list">
-                  <li class="pilot-card__item">Proof pockets exist before bigger spend</li>
-                  <li class="pilot-card__item">A map you can act on (not just plots)</li>
-                  <li class="pilot-card__item">One verification pass on a comparable cycle</li>
-                </ul>
+              <div class="pilots__card">
+                <h3 class="pilots__card-title">Where are the worst zones?</h3>
+                <p class="pilots__card-text">Walk-to-this-spot clarity (corners, strips, behind racks).</p>
+              </div>
+
+              <div class="pilots__card">
+                <h3 class="pilots__card-title">What triggers them?</h3>
+                <p class="pilots__card-text">Lights/irrigation/dehu/HVAC alignment for targeted interventions.</p>
+              </div>
+
+              <div class="pilots__card">
+                <h3 class="pilots__card-title">Do they repeat?</h3>
+                <p class="pilots__card-text">One verification pass on a comparable cycle to confirm repeatability once.</p>
               </div>
             </div>
           </section>
 
-          <section class="pilots__section" aria-labelledby="deliverables-title">
-            <h2 class="pilots__heading" id="deliverables-title">Deliverables</h2>
-            <ul class="pilots__list">
-              <li class="pilots__list-item"><strong>Zone map:</strong> pockets + gradients + “risk surfaces” (where it stays wet)</li>
-              <li class="pilots__list-item"><strong>3-slice stack:</strong> top / mid / under-canopy slices (layer effects vs room-wide effects)</li>
-              <li class="pilots__list-item"><strong>Trigger notes:</strong> what coincides with pockets (lights/irrigation/dehu/HVAC cycles)</li>
-              <li class="pilots__list-item"><strong>Repeatability overlay:</strong> two comparable days aligned to the same 24-hour axis</li>
-              <li class="pilots__list-item"><strong>Validity windows:</strong> confident vs abstains (and why)</li>
-              <li class="pilots__list-item"><strong>Receipts:</strong> device IDs, firmware/software versions, calibration/config state</li>
-              <li class="pilots__list-item"><strong>Readout:</strong> top findings + likely failure modes + recommended next steps</li>
-            </ul>
-          </section>
+<section class="pilots__section" aria-labelledby="why-title">
+  <h2 class="pilots__heading" id="why-title">Why this matters</h2>
 
-          <!-- NEW: Case study placeholder section (for future proof points) -->
-          <section class="pilots__section" aria-labelledby="case-title">
-            <h2 class="pilots__heading" id="case-title">Case study (coming soon)</h2>
-            <p class="pilots__text">
-              When datasets are ready and customer-approved, we’ll publish short case studies with measurable before/after outcomes
-              (e.g., pocket persistence reduction, fewer remediation events, improved consistency across cycles).
-            </p>
+  <div class="pilots__tiles" aria-label="Why this matters tiles">
+    <div class="pilots__tile pilots__tile--why">
+      <div class="pilots__tile-icon" aria-hidden="true">
+        <i class="fa-solid fa-wind"></i>
+      </div>
+      <div>
+        <h3 class="pilots__tile-title">Canopy microclimates form inside airflow limits</h3>
+        <p class="pilots__tile-text">
+          Dense canopies + imperfect airflow create local humidity pockets that wall sensors can’t represent.
+          Crowding and poor circulation are repeatedly cited as contributors to disease-favorable microclimates.
+        </p>
+      </div>
+    </div>
 
-            <div class="pilots__grid pilots__grid--two">
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Example format</h3>
-                </div>
-                <ul class="pilot-card__list">
-                  <li class="pilot-card__item"><strong>Site:</strong> [operation / cultivar / room type]</li>
-                  <li class="pilot-card__item"><strong>Problem:</strong> [night RH spikes in under-canopy strip]</li>
-                  <li class="pilot-card__item"><strong>Intervention:</strong> [airflow path + dehu placement]</li>
-                  <li class="pilot-card__item"><strong>Result:</strong> [pocket persistence ↓ X%] (measured in valid windows)</li>
-                </ul>
-              </div>
+    <div class="pilots__tile pilots__tile--why">
+      <div class="pilots__tile-icon" aria-hidden="true">
+        <i class="fa-solid fa-biohazard"></i>
+      </div>
+      <div>
+        <h3 class="pilots__tile-title">PM / botrytis follow humidity dynamics</h3>
+        <p class="pilots__tile-text">
+          PM and botrytis are strongly influenced by humidity and airflow.
+          Pockets are a common root cause, not a rare edge case.
+        </p>
+      </div>
+    </div>
 
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Decision-maker takeaway</h3>
-                </div>
-                <ul class="pilot-card__list">
-                  <li class="pilot-card__item">What changed (and why it was rational)</li>
-                  <li class="pilot-card__item">How it was verified (validity + repeatability)</li>
-                  <li class="pilot-card__item">What it saved (time/cycles/risk), with receipts</li>
-                </ul>
-              </div>
-            </div>
-          </section>
+    <div class="pilots__tile pilots__tile--why">
+      <div class="pilots__tile-icon" aria-hidden="true">
+        <i class="fa-solid fa-arrows-rotate"></i>
+      </div>
+      <div>
+        <h3 class="pilots__tile-title">Pockets are spatial and cyclical</h3>
+        <p class="pilots__tile-text">
+          Averages can look “fine” while worst-case zones stay wet long enough to create risk.
+          The pattern repeats on comparable cycles.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="pilots__section" aria-labelledby="fit-title">
+  <h2 class="pilots__heading" id="fit-title">Best fit</h2>
+
+  <div class="pilots__cards pilots__cards--two" aria-label="Best fit cards">
+    <!-- You’re seeing -->
+    <div class="pilots__card">
+      <p class="pilots__card-kicker">
+        <i class="fa-solid fa-eye" aria-hidden="true"></i>
+        You’re seeing
+      </p>
+      <h3 class="pilots__card-title">Signals the room is lying</h3>
+
+      <!-- Mini-cards -->
+      <div class="pilots__mini-grid pilots__mini-grid--two" aria-label="Seeing signals">
+        <div class="pilots__mini-card">
+          <p class="pilots__mini-text">“Mystery corners” / under-canopy wet strips</p>
+        </div>
+        <div class="pilots__mini-card">
+          <p class="pilots__mini-text">Night spikes / dehu cycling weirdness</p>
+        </div>
+        <div class="pilots__mini-card">
+          <p class="pilots__mini-text">Pressure that doesn’t match the dashboard</p>
+        </div>
+        <div class="pilots__mini-card">
+          <p class="pilots__mini-text">PM/botrytis risk that feels inconsistent with averages</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- You want -->
+    <div class="pilots__card">
+      <p class="pilots__card-kicker">
+        <i class="fa-solid fa-bullseye" aria-hidden="true"></i>
+        You want
+      </p>
+      <h3 class="pilots__card-title">Proof you can act on</h3>
+
+      <!-- Mini-cards -->
+      <div class="pilots__mini-grid" aria-label="Desired outcomes">
+        <div class="pilots__mini-card">
+          <p class="pilots__mini-text">Proof pockets exist before bigger spend</p>
+        </div>
+        <div class="pilots__mini-card">
+          <p class="pilots__mini-text">A map you can act on (not just plots)</p>
+        </div>
+        <div class="pilots__mini-card">
+          <p class="pilots__mini-text">One verification pass on a comparable cycle</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="pilots__section" aria-labelledby="deliverables-title">
+  <h2 class="pilots__heading" id="deliverables-title">Deliverables</h2>
+
+  <div class="pilots__tiles" aria-label="Pilot A deliverables tiles">
+    <div class="pilots__tile">
+      <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-map"></i></div>
+      <div>
+        <h3 class="pilots__tile-title">Zone map</h3>
+        <p class="pilots__tile-text">Pockets + gradients + “risk surfaces” (where it stays wet).</p>
+      </div>
+    </div>
+
+    <div class="pilots__tile">
+      <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-layer-group"></i></div>
+      <div>
+        <h3 class="pilots__tile-title">3-slice stack</h3>
+        <p class="pilots__tile-text">Top / mid / under-canopy slices (layer vs room-wide effects).</p>
+      </div>
+    </div>
+
+    <div class="pilots__tile">
+      <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-timeline"></i></div>
+      <div>
+        <h3 class="pilots__tile-title">Trigger notes</h3>
+        <p class="pilots__tile-text">What coincides with pockets (lights/irrigation/dehu/HVAC cycles).</p>
+      </div>
+    </div>
+
+    <div class="pilots__tile">
+      <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-repeat"></i></div>
+      <div>
+        <h3 class="pilots__tile-title">Repeatability overlay</h3>
+        <p class="pilots__tile-text">Two comparable days aligned to the same 24-hour axis.</p>
+      </div>
+    </div>
+
+    <div class="pilots__tile">
+      <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
+      <div>
+        <h3 class="pilots__tile-title">Validity windows</h3>
+        <p class="pilots__tile-text">Confident vs abstain windows (and why).</p>
+      </div>
+    </div>
+
+    <div class="pilots__tile">
+      <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-receipt"></i></div>
+      <div>
+        <h3 class="pilots__tile-title">Receipts</h3>
+        <p class="pilots__tile-text">Device IDs, firmware/software versions, calibration/config state.</p>
+      </div>
+    </div>
+
+    <div class="pilots__tile">
+      <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-file-lines"></i></div>
+      <div>
+        <h3 class="pilots__tile-title">Readout</h3>
+        <p class="pilots__tile-text">Top findings + likely failure modes + recommended next steps.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="pilots__section" aria-labelledby="case-title">
+  <h2 class="pilots__heading" id="case-title">Case study (coming soon)</h2>
+
+  <p class="pilots__text">
+    When datasets are ready and customer-approved, we’ll publish short case studies with measurable before/after outcomes
+    (e.g., pocket persistence reduction, fewer remediation events, improved consistency across cycles).
+  </p>
+
+  <div class="pilots__cards pilots__cards--two" aria-label="Case study preview cards">
+    <!-- Example format -->
+    <div class="pilots__card">
+      <p class="pilots__card-kicker">
+        <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+        Example format
+      </p>
+      <h3 class="pilots__card-title">A proof-shaped one-pager</h3>
+
+      <div class="pilots__mini-grid" aria-label="Example case study fields">
+        <div class="pilots__mini-card">
+          <p class="pilots__mini-text"><strong>Site:</strong> [operation / cultivar / room type]</p>
+        </div>
+        <div class="pilots__mini-card">
+          <p class="pilots__mini-text"><strong>Problem:</strong> [night RH spikes in under-canopy strip]</p>
+        </div>
+        <div class="pilots__mini-card">
+          <p class="pilots__mini-text"><strong>Intervention:</strong> [airflow path + dehu placement]</p>
+        </div>
+        <div class="pilots__mini-card">
+          <p class="pilots__mini-text"><strong>Result:</strong> [pocket persistence ↓ X%] <span style="color:#6b7280;">(measured in valid windows)</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Decision-maker takeaway -->
+    <div class="pilots__card">
+      <p class="pilots__card-kicker">
+        <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
+        Decision-maker takeaway
+      </p>
+      <h3 class="pilots__card-title">What a yes/no decision needs</h3>
+
+      <div class="pilots__mini-grid" aria-label="Decision maker takeaways">
+        <div class="pilots__mini-card">
+          <p class="pilots__mini-text">What changed (and why it was rational)</p>
+        </div>
+        <div class="pilots__mini-card">
+          <p class="pilots__mini-text">How it was verified (validity + repeatability)</p>
+        </div>
+        <div class="pilots__mini-card">
+          <p class="pilots__mini-text">What it saved (time/cycles/risk), with receipts</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
           <section class="pilots__section" aria-labelledby="read-title">
             <h2 class="pilots__heading" id="read-title">How to read the deliverables</h2>
 
-            <div class="pilots__grid pilots__grid--two">
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Zone map: pockets + gradients + risk surface</h3>
+            <div class="pilots__grid pilots__grid--cards" aria-label="Pilot A deliverable cards">
+              <article class="pilot-card pilot-card--deliverable">
+                <div class="pilot-card__body">
+                  <div class="pilot-card__header">
+                    <h3 class="pilot-card__title">Zone map: pockets + gradients + risk surface</h3>
+                  </div>
+                  <p class="pilots__text">
+                    Use this to answer: <strong>Where is it consistently worse?</strong> The risk surface shows gradients; pocket markers
+                    name specific zones you can walk to (corners, under-canopy strips, behind racks).
+                  </p>
                 </div>
-                <p class="pilots__text">
-                  Use this to answer: <strong>Where is it consistently worse?</strong> The risk surface shows gradients; pocket markers
-                  name specific zones you can walk to (corners, under-canopy strips, behind racks).
-                </p>
 
-                <figure class="pilots__figure">
-                  <img
-                    class="pilots__img"
-                    src="/asset/img/pilot_a/01_zone_map_pockets_gradients_risk_surfaces.png"
-                    alt="Zone map showing pockets, gradients, and a risk surface overlay across the room floorplan and canopy footprint."
-                    loading="lazy"
-                    decoding="async"
-                  />
+                <figure class="pilots__figure pilot-card__media">
+                  <img class="pilots__img" src="/asset/img/pilot_a/01_zone_map_pockets_gradients_risk_surfaces.png"
+                       alt="Zone map showing pockets, gradients, and a risk surface overlay across the room floorplan and canopy footprint."
+                       loading="lazy" decoding="async" />
                   <figcaption class="pilots__fineprint">
                     <strong>Zone map:</strong> Top-down floorplan + canopy footprint. Contours and callouts locate repeatable pockets.
                   </figcaption>
                 </figure>
 
-                <p class="pilots__text">
-                  Action pattern: start with the top 1–2 pockets by severity, confirm the physical cause (air path, obstructions, dehu throw),
-                  then apply one targeted change at a time.
-                </p>
-              </div>
-
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">3-slice stack (top / mid / under-canopy)</h3>
+                <div class="pilot-card__body pilot-card__body--bottom">
+                  <p class="pilots__text">
+                    Action pattern: start with the top 1–2 pockets by severity, confirm the physical cause (air path, obstructions, dehu throw),
+                    then apply one targeted change at a time.
+                  </p>
                 </div>
-                <p class="pilots__text">
-                  Use this to answer: <strong>Is it a canopy-layer effect or a room-wide effect?</strong> If under-canopy is consistently worse than
-                  top canopy, airflow and canopy density are usually implicated.
-                </p>
+              </article>
 
-                <figure class="pilots__figure">
-                  <img
-                    class="pilots__img"
-                    src="/asset/img/pilot_a/02_zone_map_3_slice_stack.png"
-                    alt="Three-slice stack of the room: top canopy, mid canopy, and under-canopy views for comparing layer-dependent pockets."
-                    loading="lazy"
-                    decoding="async"
-                  />
+              <article class="pilot-card pilot-card--deliverable">
+                <div class="pilot-card__body">
+                  <div class="pilot-card__header">
+                    <h3 class="pilot-card__title">3-slice stack (top / mid / under-canopy)</h3>
+                  </div>
+                  <p class="pilots__text">
+                    Use this to answer: <strong>Is it a canopy-layer effect or a room-wide effect?</strong> If under-canopy is consistently worse than
+                    top canopy, airflow and canopy density are usually implicated.
+                  </p>
+                </div>
+
+                <figure class="pilots__figure pilot-card__media">
+                  <img class="pilots__img" src="/asset/img/pilot_a/02_zone_map_3_slice_stack.png"
+                       alt="Three-slice stack of the room: top canopy, mid canopy, and under-canopy views for comparing layer-dependent pockets."
+                       loading="lazy" decoding="async" />
                   <figcaption class="pilots__fineprint">
                     <strong>3-slice stack:</strong> Same room shown as Top/Mid/Under-canopy slices.
                   </figcaption>
                 </figure>
 
-                <p class="pilots__text">
-                  Interpretation cue: layer separation helps you choose the right intervention class (airflow path vs setpoints vs canopy structure).
-                </p>
-              </div>
-
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Trigger notes: event timeline + pocket severity</h3>
+                <div class="pilot-card__body pilot-card__body--bottom">
+                  <p class="pilots__text">
+                    Interpretation cue: layer separation helps you choose the right intervention class (airflow path vs setpoints vs canopy structure).
+                  </p>
                 </div>
-                <p class="pilots__text">
-                  Use this to answer: <strong>What cycles correlate with pocket severity?</strong> Severity peaks are aligned with lights/irrigation/dehu/HVAC
-                  bands, alongside a validity ribbon that marks where interpretation is earned.
-                </p>
+              </article>
 
-                <figure class="pilots__figure">
-                  <img
-                    class="pilots__img"
-                    src="/asset/img/pilot_a/03_trigger_notes_event_timeline_pocket_severity.png"
-                    alt="Trigger notes chart showing an event timeline (lights, irrigation, dehumidification, HVAC) alongside pocket severity and a validity ribbon."
-                    loading="lazy"
-                    decoding="async"
-                  />
+              <article class="pilot-card pilot-card--deliverable">
+                <div class="pilot-card__body">
+                  <div class="pilot-card__header">
+                    <h3 class="pilot-card__title">Trigger notes: event timeline + pocket severity</h3>
+                  </div>
+                  <p class="pilots__text">
+                    Use this to answer: <strong>What cycles correlate with pocket severity?</strong> Severity peaks are aligned with lights/irrigation/dehu/HVAC
+                    bands, alongside a validity ribbon that marks where interpretation is earned.
+                  </p>
+                </div>
+
+                <figure class="pilots__figure pilot-card__media">
+                  <img class="pilots__img" src="/asset/img/pilot_a/03_trigger_notes_event_timeline_pocket_severity.png"
+                       alt="Trigger notes chart showing an event timeline (lights, irrigation, dehumidification, HVAC) alongside pocket severity and a validity ribbon."
+                       loading="lazy" decoding="async" />
                   <figcaption class="pilots__fineprint">
                     <strong>Trigger notes:</strong> Cycle events + pocket severity + validity ribbon.
                   </figcaption>
                 </figure>
 
-                <p class="pilots__text">
-                  Practical use: focus interventions on the event windows that consistently precede severity spikes (not on averages across the entire day).
-                </p>
-              </div>
-
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Repeatability overlay: two comparable days</h3>
+                <div class="pilot-card__body pilot-card__body--bottom">
+                  <p class="pilots__text">
+                    Practical use: focus interventions on the event windows that consistently precede severity spikes (not on averages across the entire day).
+                  </p>
                 </div>
-                <p class="pilots__text">
-                  Use this to answer: <strong>Does the pocket repeat on comparable cycles?</strong> Two days are aligned to the same 24-hour axis.
-                  Similar timing and rank strengthens confidence; divergence is flagged.
-                </p>
+              </article>
 
-                <figure class="pilots__figure">
-                  <img
-                    class="pilots__img"
-                    src="/asset/img/pilot_a/04_trigger_notes_cycle_overlay_two_comparable_days.png"
-                    alt="Cycle overlay chart comparing two comparable days aligned to the same 24-hour axis to assess pocket repeatability."
-                    loading="lazy"
-                    decoding="async"
-                  />
+              <article class="pilot-card pilot-card--deliverable">
+                <div class="pilot-card__body">
+                  <div class="pilot-card__header">
+                    <h3 class="pilot-card__title">Repeatability overlay: two comparable days</h3>
+                  </div>
+                  <p class="pilots__text">
+                    Use this to answer: <strong>Does the pocket repeat on comparable cycles?</strong> Two days are aligned to the same 24-hour axis.
+                    Similar timing and rank strengthens confidence; divergence is flagged.
+                  </p>
+                </div>
+
+                <figure class="pilots__figure pilot-card__media">
+                  <img class="pilots__img" src="/asset/img/pilot_a/04_trigger_notes_cycle_overlay_two_comparable_days.png"
+                       alt="Cycle overlay chart comparing two comparable days aligned to the same 24-hour axis to assess pocket repeatability."
+                       loading="lazy" decoding="async" />
                   <figcaption class="pilots__fineprint">
                     <strong>Repeatability overlay:</strong> Cycle-aligned time-series for comparability.
                   </figcaption>
                 </figure>
 
-                <p class="pilots__text">
-                  Decision rule: “repeatable once” means pocket location and severity ordering stay broadly stable when cycles are truly comparable.
-                </p>
-              </div>
+                <div class="pilot-card__body pilot-card__body--bottom">
+                  <p class="pilots__text">
+                    Decision rule: “repeatable once” means pocket location and severity ordering stay broadly stable when cycles are truly comparable.
+                  </p>
+                </div>
+              </article>
             </div>
           </section>
 
-          <section class="pilots__section" aria-labelledby="validity-title">
-            <h2 class="pilots__heading" id="validity-title">Validity windows: confident vs abstain</h2>
-            <p class="pilots__text">
-              Operators shouldn’t have to guess when comparisons are valid. We explicitly label when the system is <strong>CONFIDENT</strong>
-              and when it <strong>ABSTAINS</strong> (and why).
-            </p>
+<section class="pilots__section" aria-labelledby="timeline-title">
+  <h2 class="pilots__heading" id="timeline-title">Typical timeline</h2>
 
-            <div class="pilots__grid pilots__grid--two">
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Validity ribbon (with reasons)</h3>
-                </div>
-                <p class="pilots__text">
-                  Use this to answer: <strong>When should I trust the comparison? Why not?</strong> ABSTAIN segments are annotated with concrete reasons
-                  so you know what to fix (cycle mismatch, coverage gap, calibration stale, etc.).
-                </p>
+  <div class="pilots__tiles" aria-label="Typical timeline tiles">
+    <div class="pilots__tile">
+      <div class="pilots__tile-icon" aria-hidden="true">
+        <span style="font-weight:800;">1</span>
+      </div>
+      <div>
+        <h3 class="pilots__tile-title">Site call (30–45 min)</h3>
+        <p class="pilots__tile-text">Room geometry, canopy stage, constraints, cycles.</p>
+      </div>
+    </div>
 
-                <figure class="pilots__figure">
-                  <img
-                    class="pilots__img"
-                    src="/asset/img/pilot_a/05_validity_windows_confidence_ribbon_with_reasons.png"
-                    alt="Validity ribbon indicating confident versus abstain segments, annotated with reasons for abstaining."
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <figcaption class="pilots__fineprint">
-                    <strong>Validity windows:</strong> Confidence ribbon with reasons.
-                  </figcaption>
-                </figure>
+    <div class="pilots__tile">
+      <div class="pilots__tile-icon" aria-hidden="true">
+        <span style="font-weight:800;">2</span>
+      </div>
+      <div>
+        <h3 class="pilots__tile-title">Install + commissioning</h3>
+        <p class="pilots__tile-text">Acceptance tests → baseline capture.</p>
+      </div>
+    </div>
 
-                <p class="pilots__text">
-                  Operator meaning: ABSTAIN doesn’t mean “nothing happened” — it means “don’t interpret this as verified improvement (or cause) until criteria are met.”
-                </p>
-              </div>
+    <div class="pilots__tile">
+      <div class="pilots__tile-icon" aria-hidden="true">
+        <span style="font-weight:800;">3</span>
+      </div>
+      <div>
+        <h3 class="pilots__tile-title">Verification pass</h3>
+        <p class="pilots__tile-text">Repeat on a comparable day/cycle (prove repeatability).</p>
+      </div>
+    </div>
 
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Public criteria (why we abstain)</h3>
-                </div>
-                <p class="pilots__text">
-                  Interpretation is earned: clock sync, calibration status, coverage, and cycle comparability determine whether a comparison is valid.
-                </p>
+    <div class="pilots__tile">
+      <div class="pilots__tile-icon" aria-hidden="true">
+        <span style="font-weight:800;">4</span>
+      </div>
+      <div>
+        <h3 class="pilots__tile-title">Readout</h3>
+        <p class="pilots__tile-text">Zone map + pocket list + action recommendations + receipts.</p>
+      </div>
+    </div>
+  </div>
 
-                <figure class="pilots__figure">
-                  <img
-                    class="pilots__img"
-                    src="/asset/img/pilot_a/06_validity_rules_flow_diagram_confident_vs_abstain.png"
-                    alt="Flow diagram showing the rules and criteria that determine confident versus abstain states."
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <figcaption class="pilots__fineprint">
-                    <strong>Validity rules:</strong> Criteria that gate CONFIDENT vs ABSTAIN.
-                  </figcaption>
-                </figure>
+  <p class="pilots__fineprint" style="margin-top: 10px;">
+    Timing depends on room schedule and access to a comparable verification cycle.
+  </p>
+</section>
 
-                <p class="pilots__text">
-                  Practical takeaway: when criteria aren’t met, we still report observations — but we do not over-claim causality or efficacy.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section class="pilots__section" aria-labelledby="receipts-title">
-            <h2 class="pilots__heading" id="receipts-title">Receipts: provenance you can hand to anyone</h2>
-            <p class="pilots__text">
-              When changes cost money (labor, downtime, equipment), you need receipts: what ran, on which devices, with which firmware/config,
-              and whether acceptance tests passed.
-            </p>
-
-            <div class="pilots__grid pilots__grid--two">
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Run manifest (“receipt”)</h3>
-                </div>
-                <p class="pilots__text">
-                  Use this to answer: <strong>What exactly was measured, with what versions, and under what configuration?</strong>
-                  This is the audit-style record you can hand to facilities, ownership, vendors, or compliance.
-                </p>
-
-                <figure class="pilots__figure">
-                  <img
-                    class="pilots__img"
-                    src="/asset/img/pilot_a/07_receipts_run_manifest_audit_log_receipt.png"
-                    alt="Run manifest receipt showing device identifiers, firmware/software versions, calibration state, and acceptance test results."
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <figcaption class="pilots__fineprint">
-                    <strong>Run receipt:</strong> IDs, firmware, calibration date, config state, acceptance tests.
-                  </figcaption>
-                </figure>
-
-                <p class="pilots__text">
-                  Why it matters: if a result is disputed (“that wasn’t the same setup”), the manifest is the proof of the run state and the criteria it passed.
-                </p>
-              </div>
-
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Rig topology snapshot</h3>
-                </div>
-                <p class="pilots__text">
-                  Use this to answer: <strong>How was the rig laid out, and which nodes produced the data?</strong>
-                  A topology snapshot captures the measurement graph at run start: node IDs, versions, and captured config state.
-                </p>
-
-                <figure class="pilots__figure">
-                  <img
-                    class="pilots__img"
-                    src="/asset/img/pilot_a/08_receipts_system_topology_snapshot_ids_versions.png"
-                    alt="Topology snapshot of the measurement rig showing nodes, connections, IDs, and firmware versions."
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <figcaption class="pilots__fineprint">
-                    <strong>Rig topology + provenance:</strong> Nodes, IDs, firmware versions, captured config state.
-                  </figcaption>
-                </figure>
-
-                <p class="pilots__text">
-                  Practical use: if a zone looks suspicious, topology helps trace whether it’s a real spatial effect or a coverage/layout artifact.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section class="pilots__section" aria-labelledby="timeline-title">
-            <h2 class="pilots__heading" id="timeline-title">Typical timeline</h2>
-            <ol class="pilots__steps">
-              <li class="pilots__step"><strong>Site call (30–45 min):</strong> room geometry, canopy stage, constraints, cycles.</li>
-              <li class="pilots__step"><strong>Install + commissioning:</strong> acceptance tests → baseline capture.</li>
-              <li class="pilots__step"><strong>Verification pass:</strong> repeat on a comparable day/cycle (prove repeatability).</li>
-              <li class="pilots__step"><strong>Readout:</strong> zone map + pocket list + action recommendations + receipts.</li>
-            </ol>
-            <p class="pilots__fineprint">
-              Timing depends on room schedule and access to a comparable verification cycle.
-            </p>
-          </section>
 
           <section class="pilots__section" aria-labelledby="readout-title">
             <h2 class="pilots__heading" id="readout-title">Readout (operator-ready)</h2>
-            <div class="pilots__grid pilots__grid--two">
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Top findings one-pager</h3>
-                </div>
-                <p class="pilots__text">
-                  Use this to answer: <strong>What should we do next?</strong> A single page that condenses the pilot into findings, likely failure modes,
-                  and recommended next steps (with one key result you can repeat in a meeting).
-                </p>
 
-                <figure class="pilots__figure">
-                  <img
-                    class="pilots__img"
-                    src="/asset/img/pilot_a/09_readout_executive_summary_one_pager_mock.png"
-                    alt="One-page pilot readout mock summarizing findings, likely failure modes, and recommended next steps, including a key result box."
-                    loading="lazy"
-                    decoding="async"
-                  />
+            <div class="pilots__grid pilots__grid--cards" aria-label="Pilot A readout cards">
+              <article class="pilot-card pilot-card--deliverable">
+                <div class="pilot-card__body">
+                  <div class="pilot-card__header">
+                    <h3 class="pilot-card__title">Top findings one-pager</h3>
+                  </div>
+                  <p class="pilots__text">
+                    Use this to answer: <strong>What should we do next?</strong> A single page that condenses the pilot into findings, likely failure modes,
+                    and recommended next steps (with one key result you can repeat in a meeting).
+                  </p>
+                </div>
+
+                <figure class="pilots__figure pilot-card__media">
+                  <img class="pilots__img" src="/asset/img/pilot_a/09_readout_executive_summary_one_pager_mock.png"
+                       alt="One-page pilot readout mock summarizing findings, likely failure modes, and recommended next steps, including a key result box."
+                       loading="lazy" decoding="async" />
                   <figcaption class="pilots__fineprint">
                     <strong>Pilot readout:</strong> Single-page summary for rapid review and handoff.
                   </figcaption>
                 </figure>
 
-                <p class="pilots__text">
-                  Practical use: send this to stakeholders who don’t want the full data pack, then attach receipts for credibility.
-                </p>
-              </div>
-
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Ranked pocket cards</h3>
+                <div class="pilot-card__body pilot-card__body--bottom">
+                  <p class="pilots__text">
+                    Practical use: send this to stakeholders who don’t want the full data pack, then attach receipts for credibility.
+                  </p>
                 </div>
-                <p class="pilots__text">
-                  Use this to answer: <strong>Where do we walk first, and what do we change?</strong> Pocket cards translate the map into operator actions:
-                  location, severity, trigger association, and recommended intervention class.
-                </p>
+              </article>
 
-                <figure class="pilots__figure">
-                  <img
-                    class="pilots__img"
-                    src="/asset/img/pilot_a/10_readout_ranked_pocket_cards_operator_ready.png"
-                    alt="Grid of ranked pocket cards (P-01 to P-04) listing location, severity, trigger association, and recommended action."
-                    loading="lazy"
-                    decoding="async"
-                  />
+              <article class="pilot-card pilot-card--deliverable">
+                <div class="pilot-card__body">
+                  <div class="pilot-card__header">
+                    <h3 class="pilot-card__title">Ranked pocket cards</h3>
+                  </div>
+                  <p class="pilots__text">
+                    Use this to answer: <strong>Where do we walk first, and what do we change?</strong> Pocket cards translate the map into operator actions:
+                    location, severity, trigger association, and recommended intervention class.
+                  </p>
+                </div>
+
+                <figure class="pilots__figure pilot-card__media">
+                  <img class="pilots__img" src="/asset/img/pilot_a/10_readout_ranked_pocket_cards_operator_ready.png"
+                       alt="Grid of ranked pocket cards (P-01 to P-04) listing location, severity, trigger association, and recommended action."
+                       loading="lazy" decoding="async" />
                   <figcaption class="pilots__fineprint">
                     <strong>Pocket cards:</strong> “Walk-to-this-spot” actions with severity and trigger associations.
                   </figcaption>
                 </figure>
 
-                <p class="pilots__text">
-                  Decision pattern: fix the top pocket, re-run the verification pass, and only then move to the next pocket.
-                </p>
-              </div>
+                <div class="pilot-card__body pilot-card__body--bottom">
+                  <p class="pilots__text">
+                    Decision pattern: fix the top pocket, re-run the verification pass, and only then move to the next pocket.
+                  </p>
+                </div>
+              </article>
             </div>
           </section>
 
-          <section class="pilots__section" aria-labelledby="acceptance-title">
-            <h2 class="pilots__heading" id="acceptance-title">Acceptance tests (examples)</h2>
-            <ul class="pilots__list">
-              <li class="pilots__list-item"><strong>Validity uptime:</strong> system reports when measurement is trustworthy vs not.</li>
-              <li class="pilots__list-item"><strong>Repeatability:</strong> pocket location and ranking remain stable on comparable cycles.</li>
-              <li class="pilots__list-item"><strong>Actionability:</strong> map points to specific zones (corners, under-canopy strips, behind racks).</li>
-            </ul>
-          </section>
+<section class="pilots__section" aria-labelledby="acceptance-title">
+  <h2 class="pilots__heading" id="acceptance-title">Acceptance tests (examples)</h2>
 
-          <section class="pilots__section" aria-labelledby="install-title">
-            <h2 class="pilots__heading" id="install-title">What we install (high level)</h2>
-            <ul class="pilots__list">
-              <li class="pilots__list-item">Portable measurement rig (non-permanent)</li>
-              <li class="pilots__list-item">Commissioning checklist + labeling + run configuration</li>
-              <li class="pilots__list-item">Portal access to validity + receipts + maps</li>
-            </ul>
-            <p class="pilots__fineprint">
-              Exact hardware layout depends on room size, canopy density, and airflow paths.
-            </p>
-          </section>
+  <div class="pilots__tiles" aria-label="Acceptance tests tiles">
+    <div class="pilots__tile">
+      <div class="pilots__tile-icon" aria-hidden="true">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+      <div>
+        <h3 class="pilots__tile-title">Validity uptime</h3>
+        <p class="pilots__tile-text">
+          System reports when measurement is trustworthy vs not.
+        </p>
+      </div>
+    </div>
 
-          <section class="pilots__section" aria-labelledby="faq-title">
-            <h2 class="pilots__heading" id="faq-title">Operator FAQ (practical)</h2>
+    <div class="pilots__tile">
+      <div class="pilots__tile-icon" aria-hidden="true">
+        <i class="fa-solid fa-repeat"></i>
+      </div>
+      <div>
+        <h3 class="pilots__tile-title">Repeatability</h3>
+        <p class="pilots__tile-text">
+          Pocket location and ranking remain stable on comparable cycles.
+        </p>
+      </div>
+    </div>
 
-            <div class="pilots__grid pilots__grid--two">
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">What if the dashboard average looks fine?</h3>
-                </div>
-                <p class="pilots__text">
-                  That’s the point. Pockets are <strong>spatial</strong> and <strong>cyclical</strong>. Averages can hide worst-case zones.
-                </p>
-              </div>
+    <div class="pilots__tile">
+      <div class="pilots__tile-icon" aria-hidden="true">
+        <i class="fa-solid fa-location-crosshairs"></i>
+      </div>
+      <div>
+        <h3 class="pilots__tile-title">Actionability</h3>
+        <p class="pilots__tile-text">
+          Map points to specific zones (corners, under-canopy strips, behind racks).
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">What does “ABSTAIN” mean for me?</h3>
-                </div>
-                <p class="pilots__text">
-                  It means we won’t claim an improvement (or causal explanation) for that segment. You still get observations,
-                  but the system is telling you: <strong>do not interpret this as verified</strong>.
-                </p>
-              </div>
 
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">What changes do you usually recommend?</h3>
-                </div>
-                <p class="pilots__text">
-                  Targeted, zone-specific interventions: airflow path corrections, dehu placement/strategy adjustments, canopy density/defoliation
-                  considerations, and rack/obstruction changes. The readout ties recommendations directly to pocket zones and triggers.
-                </p>
-              </div>
+<section class="pilots__section" aria-labelledby="install-title">
+  <h2 class="pilots__heading" id="install-title">What we install (high level)</h2>
 
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">How do I use this with my team?</h3>
-                </div>
-                <p class="pilots__text">
-                  Use the pocket cards / zone map for “walk-to-this-spot” actions, and use receipts for handoff to facilities/engineering or vendors.
-                </p>
-              </div>
-            </div>
-          </section>
+  <div class="pilots__tiles" aria-label="What we install tiles">
+    <div class="pilots__tile">
+      <div class="pilots__tile-icon" aria-hidden="true">
+        <i class="fa-solid fa-toolbox"></i>
+      </div>
+      <div>
+        <h3 class="pilots__tile-title">Portable measurement rig</h3>
+        <p class="pilots__tile-text">Non-permanent deployment for fast, high-signal capture.</p>
+      </div>
+    </div>
+
+    <div class="pilots__tile">
+      <div class="pilots__tile-icon" aria-hidden="true">
+        <i class="fa-solid fa-list-check"></i>
+      </div>
+      <div>
+        <h3 class="pilots__tile-title">Commissioning package</h3>
+        <p class="pilots__tile-text">Checklist + labeling + run configuration to make results defensible.</p>
+      </div>
+    </div>
+
+    <div class="pilots__tile">
+      <div class="pilots__tile-icon" aria-hidden="true">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+      <div>
+        <h3 class="pilots__tile-title">Portal access</h3>
+        <p class="pilots__tile-text">Validity + receipts + maps for handoff to ops/QA/facilities.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="pilots__fineprint" style="margin-top: 10px;">
+    Exact hardware layout depends on room size, canopy density, and airflow paths.
+  </p>
+</section>
+
+
+<section class="pilots__section" aria-labelledby="faq-title">
+  <h2 class="pilots__heading" id="faq-title">Operator FAQ (practical)</h2>
+
+  <div class="pilots__faq pilots__faq-list" aria-label="Operator FAQ accordion">
+    <details class="pilots__faq-item">
+      <summary>
+        <span style="display:flex; gap:12px; align-items:center;">
+          <span class="pilots__faq-icon" aria-hidden="true">
+            <i class="fa-solid fa-wave-square"></i>
+          </span>
+          <span class="pilots__faq-q">What if the dashboard average looks fine?</span>
+        </span>
+        <span class="pilots__faq-caret" aria-hidden="true">
+          <i class="fa-solid fa-chevron-down"></i>
+        </span>
+      </summary>
+      <div class="pilots__faq-a">
+        <p>
+          That’s the point. Pockets are <strong>spatial</strong> and <strong>cyclical</strong>. Averages can hide worst-case zones.
+        </p>
+      </div>
+    </details>
+
+    <details class="pilots__faq-item">
+      <summary>
+        <span style="display:flex; gap:12px; align-items:center;">
+          <span class="pilots__faq-icon" aria-hidden="true">
+            <i class="fa-solid fa-shield-halved"></i>
+          </span>
+          <span class="pilots__faq-q">What does “ABSTAIN” mean for me?</span>
+        </span>
+        <span class="pilots__faq-caret" aria-hidden="true">
+          <i class="fa-solid fa-chevron-down"></i>
+        </span>
+      </summary>
+      <div class="pilots__faq-a">
+        <p>
+          It means we won’t claim an improvement (or causal explanation) for that segment. You still get observations,
+          but the system is telling you: <strong>do not interpret this as verified</strong>.
+        </p>
+      </div>
+    </details>
+
+    <details class="pilots__faq-item">
+      <summary>
+        <span style="display:flex; gap:12px; align-items:center;">
+          <span class="pilots__faq-icon" aria-hidden="true">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+          </span>
+          <span class="pilots__faq-q">What changes do you usually recommend?</span>
+        </span>
+        <span class="pilots__faq-caret" aria-hidden="true">
+          <i class="fa-solid fa-chevron-down"></i>
+        </span>
+      </summary>
+      <div class="pilots__faq-a">
+        <p>
+          Targeted, zone-specific interventions: airflow path corrections, dehu placement/strategy adjustments,
+          canopy density/defoliation considerations, and rack/obstruction changes.
+        </p>
+        <p>
+          The readout ties recommendations directly to pocket zones and triggers.
+        </p>
+      </div>
+    </details>
+
+    <details class="pilots__faq-item">
+      <summary>
+        <span style="display:flex; gap:12px; align-items:center;">
+          <span class="pilots__faq-icon" aria-hidden="true">
+            <i class="fa-solid fa-users"></i>
+          </span>
+          <span class="pilots__faq-q">How do I use this with my team?</span>
+        </span>
+        <span class="pilots__faq-caret" aria-hidden="true">
+          <i class="fa-solid fa-chevron-down"></i>
+        </span>
+      </summary>
+      <div class="pilots__faq-a">
+        <p>
+          Use the pocket cards / zone map for “walk-to-this-spot” actions, and use receipts for handoff to
+          facilities/engineering or vendors.
+        </p>
+      </div>
+    </details>
+  </div>
+</section>
+
 
           <section class="pilots__section pilots__section--sources" aria-labelledby="sources-title">
             <h2 class="pilots__heading" id="sources-title">Sources</h2>
@@ -585,15 +1173,20 @@
             </ol>
           </section>
 
-          <!-- Keep CTA at bottom too (now you have CTA both top + bottom) -->
           <section class="pilots__section" aria-labelledby="cta-title">
             <h2 class="pilots__heading" id="cta-title">Ready to prove it?</h2>
             <p class="pilots__text">
               If your dashboard says “fine” but your rooms say otherwise, start here.
             </p>
             <div class="pilots__actions">
-              <a class="button button--primary" href="/pilots#apply">Request Pilot A</a>
-              <a class="button button--secondary" href="/contact">Contact</a>
+              <a class="button button--primary" href="/pilots#apply">
+                <i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>
+                Request Pilot A
+              </a>
+              <a class="button button--secondary" href="/contact">
+                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                Contact
+              </a>
             </div>
           </section>
         </div>
