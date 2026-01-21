@@ -17,7 +17,7 @@
     <title>Pilot B — Flower Room Zone Map | HermodLabs</title>
     <meta
       name="description"
-      content="Month-scale flower room pilot: map zones across triggers (lights/irrigation/dehu cycles), run 2–3 intervention tests, and verify the fix with receipts + pass/fail evidence."
+      content="In ~30 days, map flower-room microclimate zones across triggers, run 2–3 targeted intervention tests, and prove the fix with pass/fail evidence + validity gating + receipts."
     />
 
     <script type="importmap">
@@ -34,11 +34,45 @@
         <div class="pilots__inner">
           <header class="pilots__header">
             <h1 class="pilots__title" id="pilot-title">Pilot B — Flower Room Zone Map</h1>
-            <p class="pilots__lede">Find pockets, run fixes, and prove they hold across triggers.</p>
+
+            <!-- Simple, direct value proposition up front -->
+            <p class="pilots__lede">
+              In ~30 days, find the worst flower-room pockets, test fixes, and prove the improvement holds across real triggers (night, irrigation, dehu/HVAC).
+            </p>
+
+            <!-- Strong CTA up front -->
+            <div class="pilots__actions" aria-label="Pilot B primary actions">
+              <a class="button button--primary" href="/pilots#apply">Request Pilot B</a>
+              <a class="button button--secondary" href="/contact">Contact</a>
+              <a class="button button--secondary" href="#deliverables-title">See deliverables</a>
+            </div>
+
             <p class="pilots__subhead">
               A month-scale pilot built around the operational reality of flower: cycle-trigger events, night swings,
               irrigation transitions, and dehu/HVAC limits. We don’t just map—we verify.
             </p>
+
+            <!-- Problem / Solution / Impact breakpoints (business-first) -->
+            <ul class="pilots__list" aria-label="Pilot B quick overview">
+              <li class="pilots__list-item">
+                <strong>Problem:</strong> Flower risk concentrates in canopy microclimates that room averages can hide—especially across trigger windows.
+              </li>
+              <li class="pilots__list-item">
+                <strong>Solution:</strong> Zone maps + repeatability scoring + 2–3 intervention tests with pass/fail criteria (only in safe-to-interpret windows).
+              </li>
+              <li class="pilots__list-item">
+                <strong>Impact:</strong> Faster root-cause isolation, fewer “one lucky day” conclusions, and targeted interventions that your team can execute in production.
+              </li>
+            </ul>
+
+            <!-- Validation signals (credibility up front) -->
+            <div class="pilots__note" role="note" aria-label="Pilot B validation signals">
+              <p class="pilots__fineprint">
+                <strong>Validation signals:</strong> includes <strong>trigger coverage</strong> (lights/irrigation/night/dehu/HVAC),
+                <strong>repeatability scoring</strong>, <strong>pass/fail evidence packages</strong>, <strong>validity gating</strong> (CONFIDENT vs ABSTAIN),
+                and <strong>receipts</strong> (IDs/versions/config/calibration state) for defensible handoff.
+              </p>
+            </div>
 
             <div class="pilots__note" role="note" aria-label="Platform status and scope note">
               <p class="pilots__fineprint">
@@ -47,11 +81,18 @@
                 acceptance criteria agreed for your site.
               </p>
             </div>
-
-            <div class="pilots__actions">
-              <a class="button button--primary" href="/pilots#apply">Request this pilot</a>
-            </div>
           </header>
+
+          <!-- New: fast business clarity -->
+          <section class="pilots__section" aria-labelledby="know-title">
+            <h2 class="pilots__heading" id="know-title">What you’ll know (fast)</h2>
+            <ul class="pilots__list">
+              <li class="pilots__list-item"><strong>Where the worst zones are:</strong> ranked pockets by persistence + severity + timing.</li>
+              <li class="pilots__list-item"><strong>Whether it’s structural:</strong> repeatability under comparable triggers (not noise).</li>
+              <li class="pilots__list-item"><strong>Which fix actually works:</strong> 2–3 intervention tests with pass/fail criteria.</li>
+              <li class="pilots__list-item"><strong>Whether it holds in real ops:</strong> verification across trigger windows with validity gating.</li>
+            </ul>
+          </section>
 
           <section class="pilots__section" aria-labelledby="why-title">
             <h2 class="pilots__heading" id="why-title">Why this matters in flower</h2>
@@ -81,7 +122,41 @@
             </ul>
           </section>
 
-          <!-- NEW: Uses your real images: asset/img/pilot_b/* -->
+          <!-- NEW: Case study placeholder section (for future proof points) -->
+          <section class="pilots__section" aria-labelledby="case-title">
+            <h2 class="pilots__heading" id="case-title">Case study (coming soon)</h2>
+            <p class="pilots__text">
+              When datasets are ready and customer-approved, we’ll publish short case studies with measurable before/after outcomes
+              (e.g., pocket persistence reduction, fewer remediation events, more stable late-flower control across triggers).
+            </p>
+
+            <div class="pilots__grid pilots__grid--two">
+              <div class="pilot-card">
+                <div class="pilot-card__header">
+                  <h3 class="pilot-card__title">Example format</h3>
+                </div>
+                <ul class="pilot-card__list">
+                  <li class="pilot-card__item"><strong>Site:</strong> [operation / room size / canopy style]</li>
+                  <li class="pilot-card__item"><strong>Problem:</strong> [repeatable night pocket + post-irrigation spike]</li>
+                  <li class="pilot-card__item"><strong>Tests:</strong> [air path + dehu strategy + placement change]</li>
+                  <li class="pilot-card__item"><strong>Result:</strong> [pocket persistence ↓ X%] (measured in valid windows)</li>
+                </ul>
+              </div>
+
+              <div class="pilot-card">
+                <div class="pilot-card__header">
+                  <h3 class="pilot-card__title">Decision-maker takeaway</h3>
+                </div>
+                <ul class="pilot-card__list">
+                  <li class="pilot-card__item">What changed (and why it was rational)</li>
+                  <li class="pilot-card__item">How it was verified (repeatability + pass/fail + validity)</li>
+                  <li class="pilot-card__item">How to reproduce it (zone strategy + receipts)</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- Uses your real images: asset/img/pilot_b/* -->
           <section class="pilots__section" aria-labelledby="read-title">
             <h2 class="pilots__heading" id="read-title">How to read the deliverables</h2>
 
@@ -231,6 +306,9 @@
               <li class="pilots__step"><strong>Weeks 2–3:</strong> trigger captures + 2–3 targeted interventions (A/B)</li>
               <li class="pilots__step"><strong>Week 4:</strong> repeatability verification + readout + zone strategy</li>
             </ol>
+            <p class="pilots__fineprint">
+              Timeline depends on room access and the ability to run comparable trigger windows for verification.
+            </p>
           </section>
 
           <section class="pilots__section" aria-labelledby="acceptance-title">
@@ -297,6 +375,7 @@
             </ol>
           </section>
 
+          <!-- Keep CTA at bottom too (now you have CTA both top + bottom) -->
           <section class="pilots__section" aria-labelledby="cta-title">
             <h2 class="pilots__heading" id="cta-title">Stop re-learning the same room</h2>
             <p class="pilots__text">

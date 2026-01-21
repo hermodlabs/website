@@ -17,7 +17,7 @@
     <title>Pilot A — Pocket Scan (Cannabis) | HermodLabs</title>
     <meta
       name="description"
-      content="Validate hidden humidity pockets in your grow canopy in ~1 week (schedule-dependent) — actionable spatial maps + one verification pass + validity gating + receipts."
+      content="Fast proof that canopy microclimate pockets exist (and where). Zone map + one verification pass + commissioning/acceptance tests + receipts."
     />
 
     <script type="importmap">
@@ -36,44 +36,11 @@
         <div class="pilots__inner">
           <header class="pilots__header">
             <h1 class="pilots__title" id="pilot-title">Pilot A — Pocket Scan</h1>
-
-            <!-- Simple, direct business value proposition up front -->
-            <p class="pilots__lede">
-              Validate hidden humidity pockets in your grow canopy in ~1 week (schedule-dependent) — reduce disease risk and improve environmental control.
-            </p>
-
-            <!-- Strong CTA up front -->
-            <div class="pilots__actions" aria-label="Pilot A primary actions">
-              <a class="button button--primary" href="/pilots#apply">Request Pilot A</a>
-              <a class="button button--secondary" href="/contact">Contact</a>
-              <a class="button button--secondary" href="#deliverables-title">See deliverables</a>
-            </div>
-
+            <p class="pilots__lede">Prove pockets exist. Locate them. Verify repeatability once.</p>
             <p class="pilots__subhead">
               This is the fastest path to turning “the room average is fine” into a spatial truth: where RH/temp/VPD pockets
               live inside the canopy, when they appear, and whether they repeat on comparable cycles.
             </p>
-
-            <!-- Problem / Solution / Impact breakpoints (business-first) -->
-            <ul class="pilots__list" aria-label="Pilot A quick overview">
-              <li class="pilots__list-item">
-                <strong>Problem:</strong> Wall sensors and averages hide worst-case canopy zones—exactly where disease risk concentrates.
-              </li>
-              <li class="pilots__list-item">
-                <strong>Solution:</strong> Pocket Scan delivers actionable spatial maps + trigger notes + one verification pass on a comparable cycle.
-              </li>
-              <li class="pilots__list-item">
-                <strong>Impact:</strong> Target fixes to the worst zones (airflow/dehu/canopy), catch repeatable patterns early, and avoid wasted cycles chasing averages.
-              </li>
-            </ul>
-
-            <!-- Validation signals (credibility up front) -->
-            <div class="pilots__note" role="note" aria-label="Pilot A validation signals">
-              <p class="pilots__fineprint">
-                <strong>Validation signals:</strong> includes <strong>validity gating</strong> (CONFIDENT vs ABSTAIN), a <strong>repeatability overlay</strong>
-                on comparable days, and <strong>receipts</strong> (device IDs, versions, calibration/config state) for defensible handoff.
-              </p>
-            </div>
 
             <div class="pilots__note" role="note" aria-label="Platform status and scope note">
               <p class="pilots__fineprint">
@@ -83,17 +50,6 @@
               </p>
             </div>
           </header>
-
-          <!-- New: “What you’ll know quickly” section (fast business clarity) -->
-          <section class="pilots__section" aria-labelledby="know-title">
-            <h2 class="pilots__heading" id="know-title">What you’ll know (fast)</h2>
-            <ul class="pilots__list">
-              <li class="pilots__list-item"><strong>Do pockets exist?</strong> Not “maybe”—measured, mapped, and ranked.</li>
-              <li class="pilots__list-item"><strong>Where are the worst zones?</strong> Walk-to-this-spot location clarity (corners, strips, behind racks).</li>
-              <li class="pilots__list-item"><strong>What triggers them?</strong> Lights/irrigation/dehu/HVAC cycle alignment for targeted interventions.</li>
-              <li class="pilots__list-item"><strong>Do they repeat?</strong> One verification pass on a comparable cycle to confirm repeatability once.</li>
-            </ul>
-          </section>
 
           <section class="pilots__section" aria-labelledby="why-title">
             <h2 class="pilots__heading" id="why-title">Why this matters</h2>
@@ -152,40 +108,6 @@
               <li class="pilots__list-item"><strong>Receipts:</strong> device IDs, firmware/software versions, calibration/config state</li>
               <li class="pilots__list-item"><strong>Readout:</strong> top findings + likely failure modes + recommended next steps</li>
             </ul>
-          </section>
-
-          <!-- NEW: Case study placeholder section (for future proof points) -->
-          <section class="pilots__section" aria-labelledby="case-title">
-            <h2 class="pilots__heading" id="case-title">Case study (coming soon)</h2>
-            <p class="pilots__text">
-              When datasets are ready and customer-approved, we’ll publish short case studies with measurable before/after outcomes
-              (e.g., pocket persistence reduction, fewer remediation events, improved consistency across cycles).
-            </p>
-
-            <div class="pilots__grid pilots__grid--two">
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Example format</h3>
-                </div>
-                <ul class="pilot-card__list">
-                  <li class="pilot-card__item"><strong>Site:</strong> [operation / cultivar / room type]</li>
-                  <li class="pilot-card__item"><strong>Problem:</strong> [night RH spikes in under-canopy strip]</li>
-                  <li class="pilot-card__item"><strong>Intervention:</strong> [airflow path + dehu placement]</li>
-                  <li class="pilot-card__item"><strong>Result:</strong> [pocket persistence ↓ X%] (measured in valid windows)</li>
-                </ul>
-              </div>
-
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Decision-maker takeaway</h3>
-                </div>
-                <ul class="pilot-card__list">
-                  <li class="pilot-card__item">What changed (and why it was rational)</li>
-                  <li class="pilot-card__item">How it was verified (validity + repeatability)</li>
-                  <li class="pilot-card__item">What it saved (time/cycles/risk), with receipts</li>
-                </ul>
-              </div>
-            </div>
           </section>
 
           <section class="pilots__section" aria-labelledby="read-title">
@@ -438,9 +360,6 @@
               <li class="pilots__step"><strong>Verification pass:</strong> repeat on a comparable day/cycle (prove repeatability).</li>
               <li class="pilots__step"><strong>Readout:</strong> zone map + pocket list + action recommendations + receipts.</li>
             </ol>
-            <p class="pilots__fineprint">
-              Timing depends on room schedule and access to a comparable verification cycle.
-            </p>
           </section>
 
           <section class="pilots__section" aria-labelledby="readout-title">
@@ -585,7 +504,6 @@
             </ol>
           </section>
 
-          <!-- Keep CTA at bottom too (now you have CTA both top + bottom) -->
           <section class="pilots__section" aria-labelledby="cta-title">
             <h2 class="pilots__heading" id="cta-title">Ready to prove it?</h2>
             <p class="pilots__text">
