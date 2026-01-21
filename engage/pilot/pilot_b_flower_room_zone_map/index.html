@@ -20,12 +20,346 @@
       content="In ~30 days, map flower-room microclimate zones across triggers, run 2–3 targeted intervention tests, and prove the fix with pass/fail evidence + validity gating + receipts."
     />
 
+    <!-- Icons (match invest/business-model vibe) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
     <script type="importmap">
     { "imports": { "lit": "https://esm.run/lit" } }
     </script>
 
     <link rel="stylesheet" href="" id="main-css" />
     <script type="module" src="../../../bootstrap.js"></script>
+
+    <!-- Pilot B “invest-style” skin + card systems (mirrors Pilot A feel) -->
+    <style>
+      /* =========================================================
+         Header helpers
+         ========================================================= */
+      .pilots__back {
+        display: inline-flex;
+        gap: 0.5rem;
+        align-items: center;
+        margin-bottom: 0.75rem;
+      }
+
+      .pilots__kicker {
+        margin-top: 0.5rem;
+        color: #6b7280;
+        font-size: 0.95rem;
+      }
+
+      .pilots__meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: center;
+        margin: 0.75rem 0 0.75rem;
+      }
+      .pilots__meta-item {
+        display: inline-flex;
+        gap: 0.5rem;
+        align-items: center;
+        color: #3b4654;
+        font-size: 0.95rem;
+      }
+
+      .pilots__header { padding-bottom: 0.25rem; }
+      .pilots__lede { font-size: 1.05rem; line-height: 1.45; }
+      .pilots__subhead { color: #3b4654; max-width: 72ch; }
+      .pilots__heading { letter-spacing: -0.01em; }
+
+      .pilots__section { padding-top: 0.25rem; }
+      .pilots__section > .pilots__text,
+      .pilots__section > .pilots__list,
+      .pilots__section > .pilots__steps {
+        max-width: 80ch;
+      }
+
+      /* Notes as accent panels */
+      .pilots__note {
+        position: relative;
+        border: 1px solid #e6eaf0;
+        border-radius: 14px;
+        background: #fff;
+        padding: 12px 14px 12px 18px;
+        margin-top: 12px;
+      }
+      .pilots__note::before {
+        content: "";
+        position: absolute;
+        left: 10px;
+        top: 12px;
+        bottom: 12px;
+        width: 4px;
+        border-radius: 999px;
+        background: #0b6ef3;
+        opacity: 0.95;
+      }
+      .pilots__note[aria-label*="scope"]::before,
+      .pilots__note[aria-label*="Scope"]::before {
+        background: #14b8a6;
+      }
+
+      /* CTA row like invest pages */
+      .pilots__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 0.9rem;
+        margin-bottom: 0.35rem;
+      }
+      .pilots__actions .button i { margin-right: 0.5rem; }
+
+      /* =========================================================
+         PSI / “What you’ll know” cards
+         ========================================================= */
+      .pilots__cards {
+        display: grid;
+        gap: 14px;
+        margin-top: 12px;
+      }
+      .pilots__cards--three {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .pilots__cards--two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      @media (max-width: 900px) {
+        .pilots__cards--three { grid-template-columns: 1fr; }
+        .pilots__cards--two { grid-template-columns: 1fr; }
+      }
+
+      .pilots__card {
+        border: 1px solid #e6eaf0;
+        border-radius: 14px;
+        background: #fff;
+        padding: 14px 14px 12px;
+        box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04);
+      }
+
+      .pilots__card-title {
+        margin: 0 0 6px 0;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+      }
+      .pilots__card-text {
+        margin: 0;
+        color: #3b4654;
+      }
+      .pilots__card-kicker {
+        display: inline-flex;
+        gap: 0.5rem;
+        align-items: center;
+        color: #6b7280;
+        font-size: 0.9rem;
+        margin: 0 0 8px 0;
+      }
+
+      @media (hover: hover) {
+        .pilots__card:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04), 0 10px 24px rgba(17, 24, 39, 0.08);
+          transition: box-shadow 160ms ease, transform 160ms ease;
+        }
+      }
+
+      /* =========================================================
+         Mini-cards (used in case study section)
+         ========================================================= */
+      .pilots__mini-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .pilots__mini-card {
+        border: 1px solid #e6eaf0;
+        border-radius: 12px;
+        background: #fff;
+        padding: 10px 10px 9px;
+      }
+      .pilots__mini-text {
+        margin: 0;
+        color: #3b4654;
+        line-height: 1.35;
+        font-size: 0.98rem;
+      }
+      @media (min-width: 900px) {
+        .pilots__mini-grid--two {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      /* =========================================================
+         Tiles (used for Why / Deliverables / Timeline / Acceptance)
+         ========================================================= */
+      .pilots__tiles {
+        display: grid;
+        gap: 12px;
+        margin-top: 12px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      @media (max-width: 900px) {
+        .pilots__tiles { grid-template-columns: 1fr; }
+      }
+      @media (min-width: 1100px) {
+        .pilots__tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      }
+
+      .pilots__tile {
+        border: 1px solid #e6eaf0;
+        border-radius: 14px;
+        background: #fff;
+        padding: 12px 12px 11px;
+        box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04);
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+      }
+      .pilots__tile-icon {
+        flex: 0 0 auto;
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        border: 1px solid #e6eaf0;
+        display: grid;
+        place-items: center;
+        color: #3b4654;
+        background: #fff;
+        margin-top: 1px;
+      }
+      .pilots__tile-title {
+        margin: 0;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+        line-height: 1.2;
+      }
+      .pilots__tile-text {
+        margin: 4px 0 0;
+        color: #3b4654;
+        line-height: 1.35;
+        font-size: 0.95rem;
+      }
+      @media (hover: hover) {
+        .pilots__tile:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04), 0 10px 24px rgba(17, 24, 39, 0.08);
+          transition: box-shadow 160ms ease, transform 160ms ease;
+        }
+      }
+      .pilots__tile--why .pilots__tile-title { font-size: 1rem; }
+
+      /* =========================================================
+         Image cards (“cards with media”) for deliverable walkthrough
+         ========================================================= */
+      .pilots__grid--cards {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        align-items: stretch;
+      }
+      @media (max-width: 900px) {
+        .pilots__grid--cards { grid-template-columns: 1fr; }
+      }
+
+      .pilot-card {
+        border: 1px solid #e6eaf0;
+        border-radius: 14px;
+        background: #fff;
+      }
+
+      .pilots__grid--cards .pilot-card--deliverable {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04);
+      }
+      .pilots__grid--cards .pilot-card--deliverable .pilot-card__body {
+        padding: 16px 16px 0;
+      }
+      .pilots__grid--cards .pilot-card--deliverable .pilot-card__body--bottom {
+        padding: 0 16px 16px;
+      }
+      .pilots__grid--cards .pilot-card--deliverable .pilot-card__media {
+        margin: 12px 0 0;
+      }
+      .pilots__grid--cards .pilot-card--deliverable .pilots__img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .pilots__grid--cards .pilot-card--deliverable .pilots__fineprint {
+        margin: 0;
+        padding: 10px 16px 0;
+      }
+      .pilots__grid--cards .pilot-card--deliverable .pilots__text {
+        margin: 10px 0 0;
+      }
+
+      /* =========================================================
+         FAQ accordion cards (no JS)
+         ========================================================= */
+      .pilots__faq { margin-top: 12px; }
+      .pilots__faq-list { display: grid; gap: 14px; }
+
+      .pilots__faq-item {
+        border: 1px solid #e6eaf0;
+        border-radius: 14px;
+        background: #fff;
+        box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04);
+        overflow: hidden;
+      }
+      .pilots__faq-item > summary {
+        list-style: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px 14px 12px;
+      }
+      .pilots__faq-item > summary::-webkit-details-marker { display: none; }
+
+      .pilots__faq-q {
+        margin: 0;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+      }
+      .pilots__faq-icon {
+        flex: 0 0 auto;
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        border: 1px solid #e6eaf0;
+        display: grid;
+        place-items: center;
+        color: #3b4654;
+        background: #fff;
+      }
+      .pilots__faq-caret {
+        flex: 0 0 auto;
+        color: #6b7280;
+        transition: transform 160ms ease;
+      }
+      .pilots__faq-item[open] .pilots__faq-caret { transform: rotate(180deg); }
+
+      .pilots__faq-a {
+        padding: 0 14px 14px;
+        color: #3b4654;
+      }
+      .pilots__faq-a p { margin: 10px 0 0; }
+      .pilots__faq-a p:first-child { margin-top: 0; }
+
+      .pilots__faq-item > summary:focus-visible {
+        outline: 2px solid rgba(11, 110, 243, 0.6);
+        outline-offset: 3px;
+        border-radius: 14px;
+      }
+    </style>
   </head>
 
   <body>
@@ -33,39 +367,85 @@
       <section class="pilots pilots--detail" aria-labelledby="pilot-title">
         <div class="pilots__inner">
           <header class="pilots__header">
+            <a class="link link--muted pilots__back" href="/pilots/">
+              <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+              Back to Pilots
+            </a>
+
             <h1 class="pilots__title" id="pilot-title">Pilot B — Flower Room Zone Map</h1>
 
-            <!-- Simple, direct value proposition up front -->
             <p class="pilots__lede">
               In ~30 days, find the worst flower-room pockets, test fixes, and prove the improvement holds across real triggers (night, irrigation, dehu/HVAC).
             </p>
 
-            <!-- Strong CTA up front -->
-            <div class="pilots__actions" aria-label="Pilot B primary actions">
-              <a class="button button--primary" href="/pilots#apply">Request Pilot B</a>
-              <a class="button button--secondary" href="/contact">Contact</a>
-              <a class="button button--secondary" href="#deliverables-title">See deliverables</a>
+            <div class="pilots__meta" aria-label="Pilot B metadata">
+              <span class="badge badge--success">Active</span>
+              <span class="pilots__meta-item">
+                <i class="fa-solid fa-tags" aria-hidden="true"></i>
+                Cannabis • Flower • Triggers • A/B tests • Verification • Receipts
+              </span>
             </div>
+
+            <div class="pilots__actions" aria-label="Pilot B primary actions">
+              <a class="button button--primary" href="/pilots#apply">
+                <i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>
+                Request Pilot B
+              </a>
+              <a class="button button--secondary" href="/contact">
+                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                Contact
+              </a>
+              <a class="button button--secondary" href="#deliverables-title">
+                <i class="fa-solid fa-list-check" aria-hidden="true"></i>
+                See deliverables
+              </a>
+            </div>
+
+            <p class="pilots__kicker">
+              Month-scale proof for flower: triggers, repeatability, and pass/fail evidence—not one lucky day.
+            </p>
 
             <p class="pilots__subhead">
               A month-scale pilot built around the operational reality of flower: cycle-trigger events, night swings,
               irrigation transitions, and dehu/HVAC limits. We don’t just map—we verify.
             </p>
 
-            <!-- Problem / Solution / Impact breakpoints (business-first) -->
-            <ul class="pilots__list" aria-label="Pilot B quick overview">
-              <li class="pilots__list-item">
-                <strong>Problem:</strong> Flower risk concentrates in canopy microclimates that room averages can hide—especially across trigger windows.
-              </li>
-              <li class="pilots__list-item">
-                <strong>Solution:</strong> Zone maps + repeatability scoring + 2–3 intervention tests with pass/fail criteria (only in safe-to-interpret windows).
-              </li>
-              <li class="pilots__list-item">
-                <strong>Impact:</strong> Faster root-cause isolation, fewer “one lucky day” conclusions, and targeted interventions that your team can execute in production.
-              </li>
-            </ul>
+            <!-- Problem / Solution / Impact as cards -->
+            <div class="pilots__cards pilots__cards--three" aria-label="Pilot B quick overview cards">
+              <div class="pilots__card">
+                <p class="pilots__card-kicker">
+                  <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+                  Problem
+                </p>
+                <h3 class="pilots__card-title">Flower risk hides in microclimates</h3>
+                <p class="pilots__card-text">
+                  Canopy zones diverge from averages—especially across trigger windows—so teams chase setpoints instead of root causes.
+                </p>
+              </div>
 
-            <!-- Validation signals (credibility up front) -->
+              <div class="pilots__card">
+                <p class="pilots__card-kicker">
+                  <i class="fa-solid fa-flask" aria-hidden="true"></i>
+                  Solution
+                </p>
+                <h3 class="pilots__card-title">Maps + repeatability + tests</h3>
+                <p class="pilots__card-text">
+                  Zone maps + repeatability scoring + 2–3 intervention tests with pass/fail criteria (only in safe-to-interpret windows).
+                </p>
+              </div>
+
+              <div class="pilots__card">
+                <p class="pilots__card-kicker">
+                  <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+                  Impact
+                </p>
+                <h3 class="pilots__card-title">Fewer “lucky day” conclusions</h3>
+                <p class="pilots__card-text">
+                  Faster root-cause isolation and targeted fixes your team can execute—verified across time and triggers.
+                </p>
+              </div>
+            </div>
+
             <div class="pilots__note" role="note" aria-label="Pilot B validation signals">
               <p class="pilots__fineprint">
                 <strong>Validation signals:</strong> includes <strong>trigger coverage</strong> (lights/irrigation/night/dehu/HVAC),
@@ -83,46 +463,118 @@
             </div>
           </header>
 
-          <!-- New: fast business clarity -->
+          <!-- What you’ll know (fast) as 2x2 cards -->
           <section class="pilots__section" aria-labelledby="know-title">
             <h2 class="pilots__heading" id="know-title">What you’ll know (fast)</h2>
-            <ul class="pilots__list">
-              <li class="pilots__list-item"><strong>Where the worst zones are:</strong> ranked pockets by persistence + severity + timing.</li>
-              <li class="pilots__list-item"><strong>Whether it’s structural:</strong> repeatability under comparable triggers (not noise).</li>
-              <li class="pilots__list-item"><strong>Which fix actually works:</strong> 2–3 intervention tests with pass/fail criteria.</li>
-              <li class="pilots__list-item"><strong>Whether it holds in real ops:</strong> verification across trigger windows with validity gating.</li>
-            </ul>
+
+            <div class="pilots__cards pilots__cards--two" aria-label="What you’ll know fast cards">
+              <div class="pilots__card">
+                <h3 class="pilots__card-title">Where the worst zones are</h3>
+                <p class="pilots__card-text">Ranked pockets by persistence + severity + timing.</p>
+              </div>
+
+              <div class="pilots__card">
+                <h3 class="pilots__card-title">Whether it’s structural</h3>
+                <p class="pilots__card-text">Repeatability under comparable triggers (not noise).</p>
+              </div>
+
+              <div class="pilots__card">
+                <h3 class="pilots__card-title">Which fix actually works</h3>
+                <p class="pilots__card-text">2–3 intervention tests with pass/fail criteria.</p>
+              </div>
+
+              <div class="pilots__card">
+                <h3 class="pilots__card-title">Whether it holds in real ops</h3>
+                <p class="pilots__card-text">Verified across trigger windows with validity gating.</p>
+              </div>
+            </div>
           </section>
 
+          <!-- Why this matters in flower as tiles -->
           <section class="pilots__section" aria-labelledby="why-title">
             <h2 class="pilots__heading" id="why-title">Why this matters in flower</h2>
-            <ul class="pilots__list">
-              <li class="pilots__list-item">
-                PM and botrytis risk is tightly coupled to humidity dynamics and airflow—exactly what diverges inside dense canopies.
-              </li>
-              <li class="pilots__list-item">
-                Peer-reviewed cannabis literature reports rapid Botrytis damage under high RH (e.g., &gt;70%) at moderate temperatures,
-                which canopy microclimates can reach even when room averages look “safe.”
-              </li>
-              <li class="pilots__list-item">
-                Flower runs on triggers: lights, irrigation, night control, dehu cycles, and HVAC limits. Pilot B is designed to measure the room
-                <strong>across those triggers</strong> and prove whether fixes hold beyond one lucky day.
-              </li>
-            </ul>
+
+            <div class="pilots__tiles" aria-label="Why this matters tiles">
+              <div class="pilots__tile pilots__tile--why">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-wind"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">Flower pockets diverge from averages</h3>
+                  <p class="pilots__tile-text">
+                    PM and botrytis risk is tightly coupled to humidity dynamics and airflow—exactly what diverges inside dense canopies.
+                  </p>
+                </div>
+              </div>
+
+              <div class="pilots__tile pilots__tile--why">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-biohazard"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">High-RH windows can happen inside canopy</h3>
+                  <p class="pilots__tile-text">
+                    Literature reports rapid botrytis damage under high RH at moderate temperatures—microclimates can hit those windows even when averages look “safe.”
+                  </p>
+                </div>
+              </div>
+
+              <div class="pilots__tile pilots__tile--why">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-timeline"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">Flower runs on triggers</h3>
+                  <p class="pilots__tile-text">
+                    Lights, irrigation, night control, dehu cycles, HVAC limits—Pilot B measures across those triggers and verifies beyond one lucky day.
+                  </p>
+                </div>
+              </div>
+            </div>
           </section>
 
+          <!-- Deliverables as tiles -->
           <section class="pilots__section" aria-labelledby="deliverables-title">
             <h2 class="pilots__heading" id="deliverables-title">Deliverables</h2>
-            <ul class="pilots__list">
-              <li class="pilots__list-item"><strong>Pocket catalog:</strong> ranked pockets by persistence + severity + timing</li>
-              <li class="pilots__list-item"><strong>Repeatability scoring:</strong> do pockets recur under the same triggers?</li>
-              <li class="pilots__list-item"><strong>2–3 intervention tests:</strong> before/after evidence with pass/fail criteria</li>
-              <li class="pilots__list-item"><strong>Zone strategy:</strong> recommended airflow/dehu adjustments targeted to zones</li>
-              <li class="pilots__list-item"><strong>Receipts + validity:</strong> run receipts + “safe to interpret” windows</li>
-            </ul>
+
+            <div class="pilots__tiles" aria-label="Pilot B deliverables tiles">
+              <div class="pilots__tile">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-list-ol"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">Pocket catalog</h3>
+                  <p class="pilots__tile-text">Ranked pockets by persistence + severity + timing.</p>
+                </div>
+              </div>
+
+              <div class="pilots__tile">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-repeat"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">Repeatability scoring</h3>
+                  <p class="pilots__tile-text">Do pockets recur under the same triggers?</p>
+                </div>
+              </div>
+
+              <div class="pilots__tile">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-flask"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">2–3 intervention tests</h3>
+                  <p class="pilots__tile-text">Before/after evidence with pass/fail criteria.</p>
+                </div>
+              </div>
+
+              <div class="pilots__tile">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-crosshairs"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">Zone strategy</h3>
+                  <p class="pilots__tile-text">Airflow/dehu adjustments targeted to zones.</p>
+                </div>
+              </div>
+
+              <div class="pilots__tile">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-receipt"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">Receipts + validity</h3>
+                  <p class="pilots__tile-text">Run receipts + safe-to-interpret windows.</p>
+                </div>
+              </div>
+            </div>
           </section>
 
-          <!-- NEW: Case study placeholder section (for future proof points) -->
+          <!-- Case study (coming soon) as cards + mini-cards -->
           <section class="pilots__section" aria-labelledby="case-title">
             <h2 class="pilots__heading" id="case-title">Case study (coming soon)</h2>
             <p class="pilots__text">
@@ -130,47 +582,69 @@
               (e.g., pocket persistence reduction, fewer remediation events, more stable late-flower control across triggers).
             </p>
 
-            <div class="pilots__grid pilots__grid--two">
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Example format</h3>
+            <div class="pilots__cards pilots__cards--two" aria-label="Case study preview cards">
+              <div class="pilots__card">
+                <p class="pilots__card-kicker">
+                  <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+                  Example format
+                </p>
+                <h3 class="pilots__card-title">A proof-shaped one-pager</h3>
+
+                <div class="pilots__mini-grid" aria-label="Example case study fields">
+                  <div class="pilots__mini-card">
+                    <p class="pilots__mini-text"><strong>Site:</strong> [operation / room size / canopy style]</p>
+                  </div>
+                  <div class="pilots__mini-card">
+                    <p class="pilots__mini-text"><strong>Problem:</strong> [repeatable night pocket + post-irrigation spike]</p>
+                  </div>
+                  <div class="pilots__mini-card">
+                    <p class="pilots__mini-text"><strong>Tests:</strong> [air path + dehu strategy + placement change]</p>
+                  </div>
+                  <div class="pilots__mini-card">
+                    <p class="pilots__mini-text"><strong>Result:</strong> [pocket persistence ↓ X%] <span style="color:#6b7280;">(measured in valid windows)</span></p>
+                  </div>
                 </div>
-                <ul class="pilot-card__list">
-                  <li class="pilot-card__item"><strong>Site:</strong> [operation / room size / canopy style]</li>
-                  <li class="pilot-card__item"><strong>Problem:</strong> [repeatable night pocket + post-irrigation spike]</li>
-                  <li class="pilot-card__item"><strong>Tests:</strong> [air path + dehu strategy + placement change]</li>
-                  <li class="pilot-card__item"><strong>Result:</strong> [pocket persistence ↓ X%] (measured in valid windows)</li>
-                </ul>
               </div>
 
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Decision-maker takeaway</h3>
+              <div class="pilots__card">
+                <p class="pilots__card-kicker">
+                  <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
+                  Decision-maker takeaway
+                </p>
+                <h3 class="pilots__card-title">What a yes/no decision needs</h3>
+
+                <div class="pilots__mini-grid" aria-label="Decision maker takeaways">
+                  <div class="pilots__mini-card">
+                    <p class="pilots__mini-text">What changed (and why it was rational)</p>
+                  </div>
+                  <div class="pilots__mini-card">
+                    <p class="pilots__mini-text">How it was verified (repeatability + pass/fail + validity)</p>
+                  </div>
+                  <div class="pilots__mini-card">
+                    <p class="pilots__mini-text">How to reproduce it (zone strategy + receipts)</p>
+                  </div>
                 </div>
-                <ul class="pilot-card__list">
-                  <li class="pilot-card__item">What changed (and why it was rational)</li>
-                  <li class="pilot-card__item">How it was verified (repeatability + pass/fail + validity)</li>
-                  <li class="pilot-card__item">How to reproduce it (zone strategy + receipts)</li>
-                </ul>
               </div>
             </div>
           </section>
 
-          <!-- Uses your real images: asset/img/pilot_b/* -->
+          <!-- How to read the deliverables (image cards with media) -->
           <section class="pilots__section" aria-labelledby="read-title">
             <h2 class="pilots__heading" id="read-title">How to read the deliverables</h2>
 
-            <div class="pilots__grid pilots__grid--two">
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Pocket catalog (ranked)</h3>
+            <div class="pilots__grid pilots__grid--cards" aria-label="Pilot B deliverable cards">
+              <!-- 1 -->
+              <article class="pilot-card pilot-card--deliverable">
+                <div class="pilot-card__body">
+                  <div class="pilot-card__header">
+                    <h3 class="pilot-card__title">Pocket catalog (ranked)</h3>
+                  </div>
+                  <p class="pilots__text">
+                    Use this to answer: <strong>Which pockets matter most operationally?</strong> Ranking is built from persistence, severity, and timing vs your cycle.
+                  </p>
                 </div>
-                <p class="pilots__text">
-                  Use this to answer: <strong>Which pockets matter most operationally?</strong> Ranking is built from how often it appears (persistence),
-                  how bad it gets (severity), and when it hits (timing vs your cycle).
-                </p>
 
-                <figure class="pilots__figure">
+                <figure class="pilots__figure pilot-card__media">
                   <img
                     class="pilots__img"
                     src="/asset/img/pilot_b/01_pocket_catalog_ranked_pockets_by_persistence_severity%20_timing.png"
@@ -183,22 +657,25 @@
                   </figcaption>
                 </figure>
 
-                <p class="pilots__text">
-                  Operator pattern: start with the top 1–2 pockets by persistence + severity, align timing to triggers (lights/irrigation/night/dehu),
-                  then choose interventions that are realistic in production.
-                </p>
-              </div>
-
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Repeatability scoring</h3>
+                <div class="pilot-card__body pilot-card__body--bottom">
+                  <p class="pilots__text">
+                    Operator pattern: start with the top 1–2 pockets by persistence + severity, align timing to triggers, then choose production-realistic interventions.
+                  </p>
                 </div>
-                <p class="pilots__text">
-                  Use this to answer: <strong>Do hotspots recur in the same places under comparable triggers?</strong> Repeatability separates structural
-                  problems (air paths, constraints) from noise, and prevents “we fixed it” based on one lucky day.
-                </p>
+              </article>
 
-                <figure class="pilots__figure">
+              <!-- 2 -->
+              <article class="pilot-card pilot-card--deliverable">
+                <div class="pilot-card__body">
+                  <div class="pilot-card__header">
+                    <h3 class="pilot-card__title">Repeatability scoring</h3>
+                  </div>
+                  <p class="pilots__text">
+                    Use this to answer: <strong>Do hotspots recur under comparable triggers?</strong> Repeatability separates structural problems from noise.
+                  </p>
+                </div>
+
+                <figure class="pilots__figure pilot-card__media">
                   <img
                     class="pilots__img"
                     src="/asset/img/pilot_b/02_repeatability_scoring_pockets_recur_under_the_same_triggers.png"
@@ -211,21 +688,25 @@
                   </figcaption>
                 </figure>
 
-                <p class="pilots__text">
-                  Decision rule: we only call a pocket “repeatable” when location + rank are broadly stable across comparable cycles and coverage.
-                </p>
-              </div>
-
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Intervention tests (before/after + pass/fail)</h3>
+                <div class="pilot-card__body pilot-card__body--bottom">
+                  <p class="pilots__text">
+                    Decision rule: we only call a pocket “repeatable” when location + rank are broadly stable across comparable cycles and coverage.
+                  </p>
                 </div>
-                <p class="pilots__text">
-                  Use this to answer: <strong>Did the change measurably improve the pocket zones?</strong> Each test is reported as before/after evidence
-                  with pass/fail criteria, and we only claim wins in “safe to interpret” windows.
-                </p>
+              </article>
 
-                <figure class="pilots__figure">
+              <!-- 3 -->
+              <article class="pilot-card pilot-card--deliverable">
+                <div class="pilot-card__body">
+                  <div class="pilot-card__header">
+                    <h3 class="pilot-card__title">Intervention tests (before/after + pass/fail)</h3>
+                  </div>
+                  <p class="pilots__text">
+                    Use this to answer: <strong>Did the change measurably improve the pocket zones?</strong> Reported with pass/fail criteria in safe-to-interpret windows.
+                  </p>
+                </div>
+
+                <figure class="pilots__figure pilot-card__media">
                   <img
                     class="pilots__img"
                     src="/asset/img/pilot_b/03_intervention_tests_before_after_pass_fail_criteria.png"
@@ -238,21 +719,25 @@
                   </figcaption>
                 </figure>
 
-                <p class="pilots__text">
-                  Practical use: if a test fails, we don’t “reinterpret” it—we change the intervention and re-verify against the same criteria.
-                </p>
-              </div>
-
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Zone strategy (what to do next)</h3>
+                <div class="pilot-card__body pilot-card__body--bottom">
+                  <p class="pilots__text">
+                    Practical use: if a test fails, we don’t reinterpret it—we change the intervention and re-verify against the same criteria.
+                  </p>
                 </div>
-                <p class="pilots__text">
-                  Use this to answer: <strong>Where should we adjust airflow and dehu strategy—specifically?</strong> The strategy ties recommended actions
-                  to the zones that actually drive risk, based on what repeated and what responded to interventions.
-                </p>
+              </article>
 
-                <figure class="pilots__figure">
+              <!-- 4 -->
+              <article class="pilot-card pilot-card--deliverable">
+                <div class="pilot-card__body">
+                  <div class="pilot-card__header">
+                    <h3 class="pilot-card__title">Zone strategy (what to do next)</h3>
+                  </div>
+                  <p class="pilots__text">
+                    Use this to answer: <strong>Where should we adjust airflow and dehu strategy?</strong> Actions are tied to zones that repeat and respond to tests.
+                  </p>
+                </div>
+
+                <figure class="pilots__figure pilot-card__media">
                   <img
                     class="pilots__img"
                     src="/asset/img/pilot_b/04_zone_strategy_targeted_airflow_dehu_adjustments_by_zone.png"
@@ -265,21 +750,25 @@
                   </figcaption>
                 </figure>
 
-                <p class="pilots__text">
-                  Operator meaning: this is the handoff artifact—clear enough to execute, specific enough to avoid “turn everything down 2% and pray.”
-                </p>
-              </div>
-
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Receipts + validity (trust-first evidence)</h3>
+                <div class="pilot-card__body pilot-card__body--bottom">
+                  <p class="pilots__text">
+                    Operator meaning: this is the handoff artifact—clear enough to execute, specific enough to avoid “turn everything down 2% and pray.”
+                  </p>
                 </div>
-                <p class="pilots__text">
-                  Use this to answer: <strong>Can I trust this comparison? What ran, when, and under what conditions?</strong>
-                  Receipts record what executed (IDs/versions/config), and validity gating marks when interpretation is earned vs when we abstain.
-                </p>
+              </article>
 
-                <figure class="pilots__figure">
+              <!-- 5 -->
+              <article class="pilot-card pilot-card--deliverable">
+                <div class="pilot-card__body">
+                  <div class="pilot-card__header">
+                    <h3 class="pilot-card__title">Receipts + validity (trust-first evidence)</h3>
+                  </div>
+                  <p class="pilots__text">
+                    Use this to answer: <strong>Can I trust this comparison?</strong> Receipts record what ran; validity gating marks safe vs abstain windows.
+                  </p>
+                </div>
+
+                <figure class="pilots__figure pilot-card__media">
                   <img
                     class="pilots__img"
                     src="/asset/img/pilot_b/05_receipts_validity_run_receipts_safe_to_interpret_windows.png"
@@ -292,68 +781,133 @@
                   </figcaption>
                 </figure>
 
-                <p class="pilots__text">
-                  Practical takeaway: if something changed (layout, coverage, calibration, cycle mismatch), the system flags it—so you don’t over-claim wins.
-                </p>
-              </div>
+                <div class="pilot-card__body pilot-card__body--bottom">
+                  <p class="pilots__text">
+                    Practical takeaway: if something changed (layout/coverage/calibration/cycle mismatch), the system flags it—so you don’t over-claim wins.
+                  </p>
+                </div>
+              </article>
             </div>
           </section>
 
+          <!-- Typical timeline as tiles -->
           <section class="pilots__section" aria-labelledby="timeline-title">
             <h2 class="pilots__heading" id="timeline-title">Typical timeline (30 days)</h2>
-            <ol class="pilots__steps">
-              <li class="pilots__step"><strong>Week 1:</strong> install + commissioning + baseline capture (multiple daily windows)</li>
-              <li class="pilots__step"><strong>Weeks 2–3:</strong> trigger captures + 2–3 targeted interventions (A/B)</li>
-              <li class="pilots__step"><strong>Week 4:</strong> repeatability verification + readout + zone strategy</li>
-            </ol>
-            <p class="pilots__fineprint">
+
+            <div class="pilots__tiles" aria-label="30 day timeline tiles">
+              <div class="pilots__tile">
+                <div class="pilots__tile-icon" aria-hidden="true"><span style="font-weight:800;">1</span></div>
+                <div>
+                  <h3 class="pilots__tile-title">Week 1</h3>
+                  <p class="pilots__tile-text">Install + commissioning + baseline capture (multiple daily windows).</p>
+                </div>
+              </div>
+
+              <div class="pilots__tile">
+                <div class="pilots__tile-icon" aria-hidden="true"><span style="font-weight:800;">2</span></div>
+                <div>
+                  <h3 class="pilots__tile-title">Weeks 2–3</h3>
+                  <p class="pilots__tile-text">Trigger captures + 2–3 targeted interventions (A/B).</p>
+                </div>
+              </div>
+
+              <div class="pilots__tile">
+                <div class="pilots__tile-icon" aria-hidden="true"><span style="font-weight:800;">3</span></div>
+                <div>
+                  <h3 class="pilots__tile-title">Week 4</h3>
+                  <p class="pilots__tile-text">Repeatability verification + readout + zone strategy.</p>
+                </div>
+              </div>
+            </div>
+
+            <p class="pilots__fineprint" style="margin-top: 10px;">
               Timeline depends on room access and the ability to run comparable trigger windows for verification.
             </p>
           </section>
 
+          <!-- Acceptance tests as tiles -->
           <section class="pilots__section" aria-labelledby="acceptance-title">
             <h2 class="pilots__heading" id="acceptance-title">Acceptance tests (examples)</h2>
-            <ul class="pilots__list">
-              <li class="pilots__list-item">
-                <strong>Trigger coverage:</strong> capture across lights, irrigation, night control, and dehu cycles —
-                enough to distinguish structural pockets from one-off noise.
-              </li>
-              <li class="pilots__list-item">
-                <strong>Intervention efficacy:</strong> at least one targeted fix shows measurable improvement in the mapped pocket zones —
-                using pass/fail criteria rather than “looks better.”
-              </li>
-              <li class="pilots__list-item">
-                <strong>Repeatability:</strong> improvements persist across comparable cycles (not one lucky day) —
-                so operators can trust the change in production.
-              </li>
-              <li class="pilots__list-item">
-                <strong>Validity gating:</strong> system abstains when measurement conditions are not trustworthy —
-                preventing over-claiming under coverage gaps, mismatched cycles, or stale calibration.
-              </li>
-            </ul>
+
+            <div class="pilots__tiles" aria-label="Acceptance tests tiles">
+              <div class="pilots__tile">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-timeline"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">Trigger coverage</h3>
+                  <p class="pilots__tile-text">Capture across lights, irrigation, night control, and dehu cycles—enough to separate structure from noise.</p>
+                </div>
+              </div>
+
+              <div class="pilots__tile">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-flask"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">Intervention efficacy</h3>
+                  <p class="pilots__tile-text">At least one targeted fix shows measurable improvement using pass/fail criteria (not “looks better”).</p>
+                </div>
+              </div>
+
+              <div class="pilots__tile">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-repeat"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">Repeatability holds</h3>
+                  <p class="pilots__tile-text">Improvements persist across comparable cycles (not one lucky day).</p>
+                </div>
+              </div>
+
+              <div class="pilots__tile">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">Validity gating</h3>
+                  <p class="pilots__tile-text">System abstains when measurement conditions aren’t trustworthy—preventing over-claiming.</p>
+                </div>
+              </div>
+            </div>
           </section>
 
+          <!-- FAQ as accordion cards -->
           <section class="pilots__section" aria-labelledby="faq-title">
             <h2 class="pilots__heading" id="faq-title">FAQ</h2>
-            <div class="pilots__grid pilots__grid--two">
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Is this “more sensors”?</h3>
-                  <p class="pilot-card__summary">
+
+            <div class="pilots__faq pilots__faq-list" aria-label="Pilot B FAQ accordion">
+              <details class="pilots__faq-item">
+                <summary>
+                  <span style="display:flex; gap:12px; align-items:center;">
+                    <span class="pilots__faq-icon" aria-hidden="true">
+                      <i class="fa-solid fa-microchip"></i>
+                    </span>
+                    <span class="pilots__faq-q">Is this “more sensors”?</span>
+                  </span>
+                  <span class="pilots__faq-caret" aria-hidden="true">
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </span>
+                </summary>
+                <div class="pilots__faq-a">
+                  <p>
                     No. The point is better interpretation: alignment/validity checks and verification evidence that explain
                     when to trust the reading and whether a change actually worked.
                   </p>
                 </div>
-              </div>
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">What changes do you test?</h3>
-                  <p class="pilot-card__summary">
-                    Typical tests include airflow adjustments, dehu strategy changes, and sensor placement corrections—chosen
-                    jointly with the operator and constrained by what’s realistic in production.
+              </details>
+
+              <details class="pilots__faq-item">
+                <summary>
+                  <span style="display:flex; gap:12px; align-items:center;">
+                    <span class="pilots__faq-icon" aria-hidden="true">
+                      <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </span>
+                    <span class="pilots__faq-q">What changes do you test?</span>
+                  </span>
+                  <span class="pilots__faq-caret" aria-hidden="true">
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </span>
+                </summary>
+                <div class="pilots__faq-a">
+                  <p>
+                    Typical tests include airflow adjustments, dehu strategy changes, and placement corrections—chosen jointly with the operator and
+                    constrained by what’s realistic in production.
                   </p>
                 </div>
-              </div>
+              </details>
             </div>
           </section>
 
@@ -375,15 +929,20 @@
             </ol>
           </section>
 
-          <!-- Keep CTA at bottom too (now you have CTA both top + bottom) -->
           <section class="pilots__section" aria-labelledby="cta-title">
             <h2 class="pilots__heading" id="cta-title">Stop re-learning the same room</h2>
             <p class="pilots__text">
               Pilot B is for teams who are done with “tune it until it feels right.” We verify.
             </p>
             <div class="pilots__actions">
-              <a class="button button--primary" href="/pilots#apply">Request Pilot B</a>
-              <a class="button button--secondary" href="/contact">Contact</a>
+              <a class="button button--primary" href="/pilots#apply">
+                <i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>
+                Request Pilot B
+              </a>
+              <a class="button button--secondary" href="/contact">
+                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                Contact
+              </a>
             </div>
           </section>
         </div>
