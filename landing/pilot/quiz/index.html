@@ -1,0 +1,981 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "G-V2474V50XP");
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <title>Canopy Microclimate Readiness Quiz | HermodLabs</title>
+    <meta
+      name="description"
+      content="Answer 15 questions to score your canopy microclimate readiness, get 3 insights, and receive next steps tailored to your situation."
+    />
+
+    <script type="importmap">
+    {
+      "imports": {
+        "lit": "https://esm.run/lit"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="" id="main-css" />
+    <script type="module" src="../../../bootstrap.js"></script>
+
+    <style>
+      /* Page-local styles (safe, scoped) */
+
+      .quiz-wrap { margin-top: 0.5rem; }
+
+      .quiz-header__kicker {
+        font-size: 0.8rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: rgba(0,0,0,0.55);
+        margin: 0 0 0.35rem;
+      }
+
+      .quiz-header__title {
+        margin: 0 0 0.5rem;
+        font-size: 1.6rem;
+        line-height: 2.0rem;
+        letter-spacing: -0.03em;
+      }
+
+      .quiz-header__sub {
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1.55rem;
+        color: rgba(0,0,0,0.72);
+      }
+
+      .quiz-progress {
+        display: flex;
+        gap: 0.6rem;
+        align-items: center;
+        margin: 1rem 0 0.25rem;
+        flex-wrap: wrap;
+      }
+
+      .quiz-progress__step {
+        display: inline-flex;
+        gap: 0.5rem;
+        align-items: center;
+        padding: 0.35rem 0.55rem;
+        border: 1px solid rgba(0,0,0,0.10);
+        border-radius: 999px;
+        background: #fff;
+        color: rgba(0,0,0,0.72);
+        font-size: 0.9rem;
+        line-height: 1.1rem;
+      }
+
+      .quiz-progress__dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: rgba(0,0,0,0.20);
+      }
+
+      .quiz-progress__step.is-active {
+        border-color: rgba(0,0,0,0.22);
+        color: rgba(0,0,0,0.9);
+      }
+      .quiz-progress__step.is-active .quiz-progress__dot { background: rgba(0,0,0,0.75); }
+
+      .quiz-card {
+        border: 1px solid rgba(0,0,0,0.10);
+        border-radius: 16px;
+        background: #fff;
+        box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+        padding: 1rem;
+      }
+
+      .quiz-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .quiz-grid--two {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .quiz-section__title {
+        margin: 0 0 0.35rem;
+        font-size: 1.05rem;
+        line-height: 1.4rem;
+        letter-spacing: -0.01em;
+      }
+
+      .quiz-section__text {
+        margin: 0;
+        font-size: 0.92rem;
+        line-height: 1.45rem;
+        color: rgba(0,0,0,0.72);
+      }
+
+      .quiz-field { display: grid; gap: 0.35rem; margin-top: 0.85rem; }
+      .quiz-label {
+        font-size: 0.9rem;
+        line-height: 1.2rem;
+        color: rgba(0,0,0,0.82);
+      }
+
+      .quiz-input,
+      .quiz-select,
+      .quiz-textarea {
+        width: 100%;
+        border: 1px solid rgba(0,0,0,0.14);
+        border-radius: 12px;
+        padding: 0.7rem 0.75rem;
+        font-size: 0.95rem;
+        line-height: 1.3rem;
+        background: #fff;
+        color: rgba(0,0,0,0.92);
+        outline: none;
+      }
+
+      .quiz-textarea { resize: vertical; min-height: 110px; }
+
+      .quiz-fineprint {
+        margin: 0.75rem 0 0;
+        font-size: 0.85rem;
+        line-height: 1.25rem;
+        color: rgba(0,0,0,0.60);
+      }
+
+      .quiz-step { display: none; }
+      .quiz-step.is-active { display: block; }
+
+      .quiz-q {
+        border: 1px solid rgba(0,0,0,0.10);
+        border-radius: 16px;
+        background: #fff;
+        padding: 0.9rem 0.95rem;
+        box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+      }
+
+      .quiz-q legend {
+        font-size: 0.95rem;
+        line-height: 1.35rem;
+        letter-spacing: -0.01em;
+        color: rgba(0,0,0,0.92);
+        margin-bottom: 0.55rem;
+        padding: 0;
+      }
+
+      .quiz-q__choices {
+        display: flex;
+        gap: 0.75rem;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .quiz-choice {
+        display: inline-flex;
+        gap: 0.5rem;
+        align-items: center;
+        padding: 0.45rem 0.65rem;
+        border: 1px solid rgba(0,0,0,0.10);
+        border-radius: 999px;
+        background: #fff;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .quiz-choice input { margin: 0; }
+
+      .quiz-actions {
+        display: flex;
+        gap: 0.6rem;
+        align-items: center;
+        margin-top: 1rem;
+        flex-wrap: wrap;
+      }
+
+      /* Results */
+      .results-grid {
+        display: grid;
+        grid-template-columns: 1fr 0.95fr;
+        gap: 1rem;
+        align-items: start;
+        margin-top: 1rem;
+      }
+
+      .gauge {
+        --p: 0; /* 0..100 */
+        width: 260px;
+        height: 130px;
+        border-radius: 260px 260px 0 0;
+        background:
+          conic-gradient(
+            from 180deg,
+            rgba(0,0,0,0.75) 0deg calc(var(--p) * 1.8deg),
+            rgba(0,0,0,0.12) 0deg 180deg,
+            transparent 0deg
+          );
+        position: relative;
+        overflow: hidden;
+        margin: 0.25rem 0 0.75rem;
+      }
+
+      .gauge::after {
+        content: "";
+        position: absolute;
+        inset: 14px;
+        border-radius: 999px 999px 0 0;
+        background: #fff;
+      }
+
+      .gauge__center {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 8px;
+        text-align: center;
+        z-index: 2;
+      }
+
+      .gauge__percent {
+        font-size: 1.6rem;
+        letter-spacing: -0.03em;
+        margin: 0;
+        color: rgba(0,0,0,0.92);
+      }
+
+      .gauge__label {
+        margin: 0.1rem 0 0;
+        font-size: 0.9rem;
+        color: rgba(0,0,0,0.65);
+      }
+
+      .results-badge {
+        display: inline-flex;
+        gap: 0.5rem;
+        align-items: center;
+        padding: 0.35rem 0.6rem;
+        border-radius: 999px;
+        border: 1px solid rgba(0,0,0,0.12);
+        background: #fff;
+        font-size: 0.9rem;
+        color: rgba(0,0,0,0.78);
+      }
+
+      .results-badge__dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: rgba(0,0,0,0.30);
+      }
+
+      .results-list {
+        margin: 0.5rem 0 0;
+        padding-left: 1.05rem;
+        color: rgba(0,0,0,0.72);
+        font-size: 0.92rem;
+        line-height: 1.45rem;
+      }
+
+      .results-next {
+        display: grid;
+        gap: 0.75rem;
+        margin-top: 0.9rem;
+      }
+
+      .results-cta {
+        border: 1px solid rgba(0,0,0,0.10);
+        border-radius: 16px;
+        background: #fff;
+        box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+        padding: 0.95rem 1rem;
+      }
+
+      .results-cta__title {
+        margin: 0 0 0.25rem;
+        font-size: 1rem;
+        letter-spacing: -0.01em;
+      }
+
+      .results-cta__text {
+        margin: 0;
+        font-size: 0.92rem;
+        line-height: 1.45rem;
+        color: rgba(0,0,0,0.72);
+      }
+
+      .results-footer {
+        margin-top: 1rem;
+        border-top: 1px solid rgba(0,0,0,0.10);
+        padding-top: 0.9rem;
+        font-size: 0.9rem;
+        color: rgba(0,0,0,0.70);
+      }
+
+      .status-line {
+        margin: 0.75rem 0 0;
+        font-size: 0.9rem;
+        color: rgba(0,0,0,0.70);
+      }
+
+      /* Mobile */
+      @media (max-width: 980px) {
+        .quiz-grid--two { grid-template-columns: 1fr; }
+        .results-grid { grid-template-columns: 1fr; }
+        .gauge { width: 240px; height: 120px; border-radius: 240px 240px 0 0; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <site-page>
+      <section class="priority-access" aria-labelledby="quiz-title">
+        <div class="priority-access__inner quiz-wrap">
+
+          <header class="priority-access__header quiz-header">
+            <p class="quiz-header__kicker">Canopy Microclimate Readiness</p>
+            <h1 class="quiz-header__title" id="quiz-title">15-Question Assessment</h1>
+            <p class="quiz-header__sub">
+              Part 1: contact info • Part 2: best practices + qualification • Part 3: dynamic results with next steps.
+            </p>
+
+            <div class="quiz-progress" aria-label="Assessment progress">
+              <div class="quiz-progress__step is-active" data-step-indicator="1">
+                <span class="quiz-progress__dot" aria-hidden="true"></span>
+                <span>Part 1: Contact</span>
+              </div>
+              <div class="quiz-progress__step" data-step-indicator="2">
+                <span class="quiz-progress__dot" aria-hidden="true"></span>
+                <span>Part 2: Questions</span>
+              </div>
+              <div class="quiz-progress__step" data-step-indicator="3">
+                <span class="quiz-progress__dot" aria-hidden="true"></span>
+                <span>Part 3: Results</span>
+              </div>
+            </div>
+          </header>
+
+          <form id="canopy-assessment-form" novalidate>
+            <!-- simple spam trap -->
+            <input type="hidden" name="_gotcha" id="form-gotcha" value="" />
+
+            <!-- STEP 1: Lead info -->
+            <section class="quiz-step is-active" data-step="1" aria-label="Part 1: Contact information">
+              <div class="quiz-grid">
+                <div class="quiz-card">
+                  <h2 class="quiz-section__title">Part 1 — Tell us where to send your results</h2>
+                  <p class="quiz-section__text">
+                    Name and email are required. Phone is optional (helpful if you want a fast follow-up).
+                  </p>
+
+                  <div class="quiz-grid quiz-grid--two">
+                    <div class="quiz-field">
+                      <label class="quiz-label" for="name">Name <span aria-hidden="true">*</span></label>
+                      <input class="quiz-input" id="name" name="name" type="text" autocomplete="name" required />
+                    </div>
+
+                    <div class="quiz-field">
+                      <label class="quiz-label" for="email">Email <span aria-hidden="true">*</span></label>
+                      <input class="quiz-input" id="email" name="email" type="email" autocomplete="email" required />
+                    </div>
+
+                    <div class="quiz-field">
+                      <label class="quiz-label" for="phone">Phone (optional)</label>
+                      <input class="quiz-input" id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+1 (555) 555-5555" />
+                    </div>
+                  </div>
+
+                  <p class="quiz-fineprint">
+                    We’ll only use this to send your results and follow up if you request it. No spam.
+                  </p>
+
+                  <div class="quiz-actions">
+                    <button class="button button--primary" type="button" id="btn-to-step-2">
+                      Continue to questions
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- STEP 2: Questions -->
+            <section class="quiz-step" data-step="2" aria-label="Part 2: Questions">
+              <div class="quiz-grid">
+                <div class="quiz-card">
+                  <h2 class="quiz-section__title">Part 2 — Best Practices (10 questions)</h2>
+                  <p class="quiz-section__text">
+                    Answer Yes/No. Your score is based on how many best practices you’re currently doing.
+                  </p>
+
+                  <div class="quiz-grid" style="margin-top: 0.9rem;">
+                    <!-- Best Practices (10) -->
+                    <fieldset class="quiz-q">
+                      <legend>1) Do you measure temperature and RH at canopy height (not only wall sensors)?</legend>
+                      <div class="quiz-q__choices">
+                        <label class="quiz-choice"><input type="radio" name="bp1" value="yes" required /> Yes</label>
+                        <label class="quiz-choice"><input type="radio" name="bp1" value="no" required /> No</label>
+                      </div>
+                    </fieldset>
+
+                    <fieldset class="quiz-q">
+                      <legend>2) Do you actively manage VPD targets by growth stage (and account for lights-off behavior)?</legend>
+                      <div class="quiz-q__choices">
+                        <label class="quiz-choice"><input type="radio" name="bp2" value="yes" required /> Yes</label>
+                        <label class="quiz-choice"><input type="radio" name="bp2" value="no" required /> No</label>
+                      </div>
+                    </fieldset>
+
+                    <fieldset class="quiz-q">
+                      <legend>3) Do you log environmental data at high frequency (e.g., minute-level) and review it weekly?</legend>
+                      <div class="quiz-q__choices">
+                        <label class="quiz-choice"><input type="radio" name="bp3" value="yes" required /> Yes</label>
+                        <label class="quiz-choice"><input type="radio" name="bp3" value="no" required /> No</label>
+                      </div>
+                    </fieldset>
+
+                    <fieldset class="quiz-q">
+                      <legend>4) Have you verified airflow through the canopy (no persistent dead-air corners) with a repeatable method?</legend>
+                      <div class="quiz-q__choices">
+                        <label class="quiz-choice"><input type="radio" name="bp4" value="yes" required /> Yes</label>
+                        <label class="quiz-choice"><input type="radio" name="bp4" value="no" required /> No</label>
+                      </div>
+                    </fieldset>
+
+                    <fieldset class="quiz-q">
+                      <legend>5) Is your dehumidification capacity sized for peak transpiration (including lights-off / transitions)?</legend>
+                      <div class="quiz-q__choices">
+                        <label class="quiz-choice"><input type="radio" name="bp5" value="yes" required /> Yes</label>
+                        <label class="quiz-choice"><input type="radio" name="bp5" value="no" required /> No</label>
+                      </div>
+                    </fieldset>
+
+                    <fieldset class="quiz-q">
+                      <legend>6) Do you avoid large RH spikes after irrigation (timing, drybacks, and setpoint coordination)?</legend>
+                      <div class="quiz-q__choices">
+                        <label class="quiz-choice"><input type="radio" name="bp6" value="yes" required /> Yes</label>
+                        <label class="quiz-choice"><input type="radio" name="bp6" value="no" required /> No</label>
+                      </div>
+                    </fieldset>
+
+                    <fieldset class="quiz-q">
+                      <legend>7) Do you use a consistent canopy management approach (defol/trellis/SOP) to maintain airflow and reduce microclimates?</legend>
+                      <div class="quiz-q__choices">
+                        <label class="quiz-choice"><input type="radio" name="bp7" value="yes" required /> Yes</label>
+                        <label class="quiz-choice"><input type="radio" name="bp7" value="no" required /> No</label>
+                      </div>
+                    </fieldset>
+
+                    <fieldset class="quiz-q">
+                      <legend>8) Do you regularly validate sensors (calibration checks / drift control) so “in spec” is actually true?</legend>
+                      <div class="quiz-q__choices">
+                        <label class="quiz-choice"><input type="radio" name="bp8" value="yes" required /> Yes</label>
+                        <label class="quiz-choice"><input type="radio" name="bp8" value="no" required /> No</label>
+                      </div>
+                    </fieldset>
+
+                    <fieldset class="quiz-q">
+                      <legend>9) Do you have a clear SOP for early PM/Botrytis signals (scouting, isolation, sanitation, response timing)?</legend>
+                      <div class="quiz-q__choices">
+                        <label class="quiz-choice"><input type="radio" name="bp9" value="yes" required /> Yes</label>
+                        <label class="quiz-choice"><input type="radio" name="bp9" value="no" required /> No</label>
+                      </div>
+                    </fieldset>
+
+                    <fieldset class="quiz-q">
+                      <legend>10) After making airflow/HVAC changes, do you run a verification step (measure again to confirm pockets moved)?</legend>
+                      <div class="quiz-q__choices">
+                        <label class="quiz-choice"><input type="radio" name="bp10" value="yes" required /> Yes</label>
+                        <label class="quiz-choice"><input type="radio" name="bp10" value="no" required /> No</label>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+
+                <div class="quiz-card">
+                  <h2 class="quiz-section__title">Qualification (5 questions)</h2>
+                  <p class="quiz-section__text">
+                    These help us tailor your results and recommend the best next step.
+                  </p>
+
+                  <div class="quiz-field">
+                    <label class="quiz-label" for="role">11) What best describes your current situation? <span aria-hidden="true">*</span></label>
+                    <select class="quiz-select" id="role" name="role" required>
+                      <option value="" selected disabled>Select one…</option>
+                      <option value="owner_operator">Owner / Operator</option>
+                      <option value="head_grower">Head Grower / Cultivation Lead</option>
+                      <option value="facilities_hvac">Facilities / HVAC / Engineering</option>
+                      <option value="ops_gm">Operations / GM</option>
+                      <option value="consultant_integrator">Consultant / Integrator</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+
+                  <div class="quiz-field">
+                    <label class="quiz-label" for="outcome">12) What outcome matters most in the next 90 days? <span aria-hidden="true">*</span></label>
+                    <select class="quiz-select" id="outcome" name="outcome" required>
+                      <option value="" selected disabled>Select one…</option>
+                      <option value="reduce_pm_botrytis">Reduce PM/Botrytis incidents</option>
+                      <option value="increase_consistency">Increase yield consistency</option>
+                      <option value="stabilize_late_flower">Stabilize late-flower performance</option>
+                      <option value="optimize_energy">Lower energy costs while staying clean</option>
+                      <option value="prove_roi">Prove ROI for HVAC/dehu changes</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+
+                  <div class="quiz-field">
+                    <label class="quiz-label" for="obstacle">13) What’s the biggest obstacle (or what have you tried that hasn’t worked)? <span aria-hidden="true">*</span></label>
+                    <select class="quiz-select" id="obstacle" name="obstacle" required>
+                      <option value="" selected disabled>Select one…</option>
+                      <option value="averages_hide_pockets">We chase averages; pockets are invisible</option>
+                      <option value="airflow_changes_dont_hold">Airflow changes don’t stick / inconsistent</option>
+                      <option value="dehu_cant_keep_up">Dehu can’t keep up (especially at peak)</option>
+                      <option value="irrigation_spikes">Irrigation timing causes RH spikes</option>
+                      <option value="data_untrusted">We don’t trust the data / sensors</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+
+                  <div class="quiz-field">
+                    <label class="quiz-label" for="solution">14) Which solution would suit you best? <span aria-hidden="true">*</span></label>
+                    <select class="quiz-select" id="solution" name="solution" required>
+                      <option value="" selected disabled>Select one…</option>
+                      <option value="education_training">Education + training (SOPs)</option>
+                      <option value="software_only">Software + dashboards</option>
+                      <option value="pilot_zone_map">Pilot measurement + zone map</option>
+                      <option value="one_on_one">One-on-one consulting</option>
+                      <option value="done_for_you">Done-for-you install + ongoing monitoring</option>
+                    </select>
+                  </div>
+
+                  <div class="quiz-field">
+                    <label class="quiz-label" for="notes">15) Anything else we should know? (optional)</label>
+                    <textarea
+                      class="quiz-textarea"
+                      id="notes"
+                      name="notes"
+                      placeholder="Room count, strains, what keeps repeating, constraints, timeline, etc."
+                    ></textarea>
+                  </div>
+
+                  <div class="quiz-actions">
+                    <button class="button button--secondary" type="button" id="btn-back-to-step-1">
+                      Back
+                    </button>
+                    <button class="button button--primary" type="button" id="btn-submit">
+                      See my results
+                    </button>
+                  </div>
+
+                  <p class="status-line" id="save-status" aria-live="polite"></p>
+                </div>
+              </div>
+            </section>
+
+            <!-- STEP 3: Results -->
+            <section class="quiz-step" data-step="3" aria-label="Part 3: Results">
+              <div class="quiz-grid">
+                <div class="quiz-card">
+                  <h2 class="quiz-section__title">Part 3 — Your Dynamic Results</h2>
+                  <p class="quiz-section__text">
+                    This is tailored to your answers. Your “readiness score” is based on the 10 best-practice questions.
+                  </p>
+
+                  <div class="results-grid">
+                    <!-- Big reveal -->
+                    <div class="quiz-card" style="padding: 1rem;">
+                      <div class="results-badge" id="results-badge" aria-label="Overall readiness level">
+                        <span class="results-badge__dot" aria-hidden="true"></span>
+                        <span id="results-level">—</span>
+                      </div>
+
+                      <div class="gauge" id="gauge" style="--p: 0;">
+                        <div class="gauge__center">
+                          <p class="gauge__percent" id="results-percent">0%</p>
+                          <p class="gauge__label" id="results-headline">—</p>
+                        </div>
+                      </div>
+
+                      <p class="quiz-section__text" id="results-summary" style="margin-top: 0.25rem;">
+                        —
+                      </p>
+                    </div>
+
+                    <!-- Insights + next steps -->
+                    <div class="quiz-card" style="padding: 1rem;">
+                      <h3 class="quiz-section__title" style="font-size: 1rem;">3 insights</h3>
+                      <ol class="results-list" id="insights-list">
+                        <li>—</li>
+                      </ol>
+
+                      <div class="results-next" id="next-steps">
+                        <!-- JS fills this -->
+                      </div>
+
+                      <div class="results-footer">
+                        <strong>Contact</strong><br />
+                        Email: <span style="opacity:0.9;">hello@hermodlabs.com</span> <span style="opacity:0.65;">(replace if different)</span><br />
+                        Or: <a href="/engage/pilot">Explore pilots</a> • <a href="/explore/events#rsvp">Live walkthrough</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="quiz-actions">
+                    <button class="button button--secondary" type="button" id="btn-edit">
+                      Edit my answers
+                    </button>
+                    <a class="button button--primary" href="/engage/pilot">
+                      Explore pilots
+                    </a>
+                  </div>
+
+                  <p class="status-line" id="results-save-status" aria-live="polite"></p>
+                </div>
+              </div>
+            </section>
+          </form>
+        </div>
+      </section>
+    </site-page>
+
+    <script>
+      (function () {
+        // Update this if you use a different endpoint for the quiz:
+        const GETFORM_ENDPOINT = "https://getform.io/f/avrzylpa";
+
+        const form = document.getElementById("canopy-assessment-form");
+
+        const btnToStep2 = document.getElementById("btn-to-step-2");
+        const btnBackToStep1 = document.getElementById("btn-back-to-step-1");
+        const btnSubmit = document.getElementById("btn-submit");
+        const btnEdit = document.getElementById("btn-edit");
+
+        const saveStatus = document.getElementById("save-status");
+        const resultsSaveStatus = document.getElementById("results-save-status");
+
+        const stepEls = Array.from(document.querySelectorAll(".quiz-step"));
+        const stepIndicators = Array.from(document.querySelectorAll("[data-step-indicator]"));
+
+        // Results elements
+        const gaugeEl = document.getElementById("gauge");
+        const resultsPercentEl = document.getElementById("results-percent");
+        const resultsLevelEl = document.getElementById("results-level");
+        const resultsHeadlineEl = document.getElementById("results-headline");
+        const resultsSummaryEl = document.getElementById("results-summary");
+        const insightsListEl = document.getElementById("insights-list");
+        const nextStepsEl = document.getElementById("next-steps");
+
+        // Helpers
+        function setStep(stepNum) {
+          stepEls.forEach(el => el.classList.toggle("is-active", el.getAttribute("data-step") === String(stepNum)));
+          stepIndicators.forEach(ind => ind.classList.toggle("is-active", ind.getAttribute("data-step-indicator") === String(stepNum)));
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        function setText(el, text) {
+          if (!el) return;
+          el.textContent = text;
+        }
+
+        function firstInvalidIn(container) {
+          const invalid = container.querySelector(":invalid");
+          return invalid || null;
+        }
+
+        function validateStep(stepNum) {
+          const stepEl = stepEls.find(el => el.getAttribute("data-step") === String(stepNum));
+          if (!stepEl) return true;
+
+          // Trigger browser validation UI
+          const invalid = firstInvalidIn(stepEl);
+          if (invalid) {
+            invalid.focus({ preventScroll: true });
+            invalid.reportValidity();
+            return false;
+          }
+          return true;
+        }
+
+        function readFormValue(name) {
+          const field = form.querySelector(`[name="${name}"]`);
+          if (!field) return "";
+          if (field.type === "radio") {
+            const checked = form.querySelector(`[name="${name}"]:checked`);
+            return checked ? checked.value : "";
+          }
+          return field.value || "";
+        }
+
+        function computeScore() {
+          let yesCount = 0;
+          const bp = {};
+          for (let i = 1; i <= 10; i++) {
+            const key = "bp" + i;
+            const v = readFormValue(key);
+            bp[key] = v;
+            if (v === "yes") yesCount += 1;
+          }
+          const percent = Math.round((yesCount / 10) * 100);
+
+          let level = "Warm";
+          if (percent >= 80) level = "Hot";
+          else if (percent < 50) level = "Cold";
+
+          return { yesCount, percent, level, bp };
+        }
+
+        const bpRecommendations = {
+          bp1: "Add canopy-level sensing (multiple points). Wall sensors can’t see canopy pockets.",
+          bp2: "Tighten stage-based VPD targets and explicitly plan lights-off behavior.",
+          bp3: "Move to higher-frequency logging and a weekly trend review (spikes matter).",
+          bp4: "Verify airflow with a repeatable method—don’t rely on “it feels fine.”",
+          bp5: "Recheck peak dehu capacity and transitions—shortfalls show up late flower.",
+          bp6: "Coordinate irrigation timing + drybacks to avoid post-irrigation humidity spikes.",
+          bp7: "Standardize canopy management so airflow stays consistent across runs.",
+          bp8: "Validate sensors regularly—drift turns “in spec” into a false signal.",
+          bp9: "Formalize early-response SOPs for PM/Botrytis (timing + sanitation).",
+          bp10:"After changes, run a verification pass (measure again to confirm pockets moved)."
+        };
+
+        function buildInsights({ percent, level, bp }, qualifiers) {
+          const insights = [];
+
+          // Insight 1: big-picture based on score
+          if (level === "Hot") {
+            insights.push("Strong foundations: you’re doing many of the right things. The next jump usually comes from finding and eliminating hidden canopy pockets.");
+          } else if (level === "Warm") {
+            insights.push("You’ve got a base to work from, but gaps likely allow microclimates to persist long enough to create risk—especially during transitions.");
+          } else {
+            insights.push("Your room is likely at elevated risk: fundamentals may be unmeasured or uncontrolled, which makes repeat problems hard to diagnose.");
+          }
+
+          // Insight 2: top missed best practices (up to 2)
+          const missed = [];
+          for (let i = 1; i <= 10; i++) {
+            const key = "bp" + i;
+            if (bp[key] === "no") missed.push(key);
+          }
+          if (missed.length > 0) {
+            const topTwo = missed.slice(0, 2).map(k => bpRecommendations[k]).filter(Boolean);
+            if (topTwo.length) {
+              insights.push("Highest-impact improvements: " + topTwo.join(" "));
+            }
+          } else {
+            insights.push("You checked “Yes” to every best practice. If issues still repeat, the problem is usually spatial (pockets) or timing (transitions) rather than averages.");
+          }
+
+          // Insight 3: based on obstacle/outcome
+          if (qualifiers.obstacle === "averages_hide_pockets") {
+            insights.push("You called out the core issue: averages pass, pockets fail. A zone-level view is usually the fastest way to stop chasing symptoms.");
+          } else if (qualifiers.obstacle === "dehu_cant_keep_up") {
+            insights.push("If dehu can’t keep up at peak, your “in-spec” periods can be misleading—risk often comes from shorter high-RH windows you don’t see on averages.");
+          } else if (qualifiers.obstacle === "irrigation_spikes") {
+            insights.push("If irrigation creates RH spikes, align irrigation timing + drybacks + dehu strategy so canopy moisture doesn’t accumulate after events.");
+          } else if (qualifiers.obstacle === "airflow_changes_dont_hold") {
+            insights.push("If airflow changes don’t stick, you likely need a repeatable map-and-verify loop: change → measure → confirm → standardize.");
+          } else if (qualifiers.obstacle === "data_untrusted") {
+            insights.push("If you don’t trust the data, every decision becomes guesswork. A short validation pass can restore confidence quickly.");
+          } else {
+            insights.push("Your answers suggest the biggest win comes from converting what’s “felt” into something measurable and repeatable.");
+          }
+
+          return insights.slice(0, 3);
+        }
+
+        function buildNextSteps({ percent, level }, qualifiers) {
+          // Simple lead qualification heuristic:
+          const solution = qualifiers.solution;
+          const role = qualifiers.role;
+
+          const wantsHighTouch = (solution === "done_for_you" || solution === "pilot_zone_map" || solution === "one_on_one");
+          const isDecisionAdjacent = (role === "owner_operator" || role === "ops_gm" || role === "head_grower" || role === "facilities_hvac");
+
+          // Three tiers: hot/warm/cold + solution preference
+          let title = "Next steps";
+          let text = "";
+          let primary = { label: "Explore pilots", href: "/engage/pilot" };
+          let secondary = { label: "Live walkthrough", href: "/explore/events#rsvp" };
+
+          if (level === "Hot" && wantsHighTouch && isDecisionAdjacent) {
+            title = "Recommended: 1:1 strategy call";
+            text = "You look like a strong fit for a targeted pilot. The fastest path is a short call to confirm room type, constraints, and what a first “verification pass” should prove.";
+            primary = { label: "Book a pilot conversation", href: "/engage/pilot" };
+            secondary = { label: "See a walkthrough first", href: "/explore/events#rsvp" };
+          } else if (level === "Warm" && wantsHighTouch) {
+            title = "Recommended: guided walkthrough + pilot option";
+            text = "You’ve got good foundations. A walkthrough helps you see how pockets form and what “verify the fix” looks like before committing to a pilot.";
+            primary = { label: "Join a live walkthrough", href: "/explore/events#rsvp" };
+            secondary = { label: "Explore pilots", href: "/engage/pilot" };
+          } else if (level === "Cold") {
+            title = "Recommended: get the fundamentals tight first";
+            text = "Start by tightening measurement and repeatability. If you want, we can point you to the highest-impact changes based on your answers—then you can re-take the assessment.";
+            primary = { label: "Explore pilots (when ready)", href: "/engage/pilot" };
+            secondary = { label: "See a walkthrough", href: "/explore/events#rsvp" };
+          } else {
+            title = "Recommended: choose the simplest next step";
+            text = "Pick a next step that matches your style (education, software, or pilot). The key is a loop you can repeat: measure → change → verify.";
+            primary = { label: "Explore pilots", href: "/engage/pilot" };
+            secondary = { label: "Live walkthrough", href: "/explore/events#rsvp" };
+          }
+
+          // Return as HTML blocks (keeps page consistent with your existing buttons)
+          return `
+            <div class="results-cta">
+              <h4 class="results-cta__title">${title}</h4>
+              <p class="results-cta__text">${text}</p>
+              <div class="quiz-actions" style="margin-top:0.75rem;">
+                <a class="button button--primary" href="${primary.href}">${primary.label}</a>
+                <a class="button button--secondary" href="${secondary.href}">${secondary.label}</a>
+              </div>
+            </div>
+          `;
+        }
+
+        async function sendToGetform(payload) {
+          // Honeypot: if filled, treat as success (bot)
+          const gotcha = document.getElementById("form-gotcha");
+          if (gotcha && gotcha.value) return { ok: true, skipped: true };
+
+          try {
+            const res = await fetch(GETFORM_ENDPOINT, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+              },
+              body: JSON.stringify(payload)
+            });
+
+            return { ok: res.ok, status: res.status };
+          } catch (e) {
+            return { ok: false, error: String(e) };
+          }
+        }
+
+        function renderResults(score, qualifiers) {
+          // Gauge + labels
+          gaugeEl.style.setProperty("--p", String(score.percent));
+          setText(resultsPercentEl, `${score.percent}%`);
+
+          // Level display
+          setText(resultsLevelEl, `${score.level} readiness`);
+          if (score.level === "Hot") {
+            setText(resultsHeadlineEl, "Strong foundations");
+            setText(resultsSummaryEl, "You’re doing many best practices. If issues still repeat, focus on finding hidden canopy pockets and verifying fixes.");
+          } else if (score.level === "Warm") {
+            setText(resultsHeadlineEl, "Good base, room to improve");
+            setText(resultsSummaryEl, "You have some fundamentals in place, but gaps likely allow microclimates to persist—especially during transitions.");
+          } else {
+            setText(resultsHeadlineEl, "High risk");
+            setText(resultsSummaryEl, "Several best practices are missing. Tighten measurement, repeatability, and verification before expecting consistent late-flower outcomes.");
+          }
+
+          // Insights (3)
+          const insights = buildInsights(score, qualifiers);
+          insightsListEl.innerHTML = insights.map(s => `<li>${s}</li>`).join("");
+
+          // Next steps
+          nextStepsEl.innerHTML = buildNextSteps(score, qualifiers);
+        }
+
+        function collectPayload(score) {
+          const payload = {
+            assessment: "Canopy Microclimate Readiness (15Q)",
+            name: readFormValue("name"),
+            email: readFormValue("email"),
+            phone: readFormValue("phone"),
+            // Best practices
+            best_practices: score.bp,
+            best_practices_yes_count: score.yesCount,
+            readiness_percent: score.percent,
+            readiness_level: score.level,
+            // Qualifiers
+            role: readFormValue("role"),
+            outcome_90d: readFormValue("outcome"),
+            obstacle: readFormValue("obstacle"),
+            preferred_solution: readFormValue("solution"),
+            notes: readFormValue("notes"),
+            // Metadata
+            submitted_at: new Date().toISOString(),
+            user_agent: navigator.userAgent
+          };
+          return payload;
+        }
+
+        function readQualifiers() {
+          return {
+            role: readFormValue("role"),
+            outcome: readFormValue("outcome"),
+            obstacle: readFormValue("obstacle"),
+            solution: readFormValue("solution"),
+            notes: readFormValue("notes")
+          };
+        }
+
+        // Button handlers
+        btnToStep2.addEventListener("click", function () {
+          const ok = validateStep(1);
+          if (!ok) return;
+
+          try { gtag("event", "assessment_step_complete", { step: 1 }); } catch (e) {}
+          setStep(2);
+        });
+
+        btnBackToStep1.addEventListener("click", function () {
+          setStep(1);
+        });
+
+        btnSubmit.addEventListener("click", async function () {
+          // Validate step 2 fields (including required questions)
+          const ok = validateStep(2);
+          if (!ok) return;
+
+          // Compute + render results immediately (so the user gets the “dynamic results” right away)
+          const score = computeScore();
+          const qualifiers = readQualifiers();
+
+          renderResults(score, qualifiers);
+          setStep(3);
+
+          try { gtag("event", "assessment_submitted", { score: score.percent, level: score.level }); } catch (e) {}
+
+          // Send lead + answers to Getform (in background)
+          const payload = collectPayload(score);
+
+          setText(saveStatus, "Saving your answers…");
+          setText(resultsSaveStatus, "Saving your answers…");
+
+          const res = await sendToGetform(payload);
+
+          if (res.ok) {
+            setText(saveStatus, "Saved. Thank you — we’ll follow up with next steps if requested.");
+            setText(resultsSaveStatus, "Saved. Thank you — we’ll follow up with next steps if requested.");
+          } else {
+            setText(saveStatus, "Couldn’t save automatically. Please try again or contact us directly.");
+            setText(resultsSaveStatus, "Couldn’t save automatically. Please try again or contact us directly.");
+          }
+        });
+
+        btnEdit.addEventListener("click", function () {
+          setStep(2);
+        });
+      })();
+    </script>
+  </body>
+</html>
