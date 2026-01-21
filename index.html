@@ -754,6 +754,150 @@ event-invite:focus-within {
   opacity: 0.35;
 }
 
+
+/* Screen-reader-only utility (if you don't already have one) */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* --- Carousel controls layout --- */
+.pa-carousel {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  gap: 12px;
+
+  /* spacing from the card content above */
+  margin-top: 12px;
+
+  /* gives breathing room so buttons don't hug the edges */
+  padding: 2px 2px 0;
+}
+
+/* Center the dots “track” exactly between the buttons */
+.pa-carousel__dots {
+  justify-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 8px 12px;
+  border-radius: 999px;
+
+  /* fallback first */
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  /* nicer on modern browsers */
+  background: color-mix(in oklab, currentColor 6%, transparent);
+  border-color: color-mix(in oklab, currentColor 12%, transparent);
+
+  /* keeps it from blowing out the layout in narrow widths */
+  max-width: 100%;
+}
+
+/* Dots become a “pill” when selected */
+.pa-carousel__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 0;
+  padding: 0;
+
+  cursor: pointer;
+
+  /* fallback */
+  background: rgba(255, 255, 255, 0.35);
+  opacity: 0.6;
+
+  /* modern */
+  background: color-mix(in oklab, currentColor 30%, transparent);
+
+  transition: width 160ms ease, opacity 160ms ease, transform 160ms ease, background 160ms ease;
+}
+
+.pa-carousel__dot[aria-selected="true"] {
+  width: 22px;
+  opacity: 1;
+  background: currentColor;
+}
+
+/* Nav buttons: circular, subtle, consistent */
+.pa-carousel__nav {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+
+  display: inline-grid;
+  place-items: center;
+
+  cursor: pointer;
+  user-select: none;
+
+  /* fallback */
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  /* modern */
+  background: color-mix(in oklab, currentColor 6%, transparent);
+  border-color: color-mix(in oklab, currentColor 14%, transparent);
+
+  color: inherit;
+
+  transition: transform 150ms ease, background 150ms ease, border-color 150ms ease;
+}
+
+.pa-carousel__nav:hover {
+  /* fallback */
+  background: rgba(255, 255, 255, 0.10);
+
+  /* modern */
+  background: color-mix(in oklab, currentColor 10%, transparent);
+
+  transform: translateY(-1px);
+}
+
+.pa-carousel__nav:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.pa-carousel__icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Focus styles for accessibility */
+.pa-carousel__nav:focus-visible,
+.pa-carousel__dot:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 0 3px color-mix(in oklab, currentColor 25%, transparent);
+  opacity: 1;
+}
+
+/* Small screens: tighten spacing a touch */
+@media (max-width: 420px) {
+  .pa-carousel {
+    grid-template-columns: 40px 1fr 40px;
+    gap: 10px;
+  }
+  .pa-carousel__nav {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+
     </style>
   </head>
 

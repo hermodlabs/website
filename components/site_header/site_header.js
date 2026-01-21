@@ -99,7 +99,7 @@ class SiteHeader extends LitElement {
         </nav>
 
         <div class="site-header__cta">
-          <a class="button button--primary" href="/promo/priority_access">Priority Access</a>
+          <a class="button button--primary" href="/landing/pilot">Priority Access</a>
         </div>
       </header>
     `;
