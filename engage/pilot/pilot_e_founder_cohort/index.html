@@ -20,12 +20,286 @@
       content="Year-long drift control subscription: recurring verification windows, drift + change tracking, continuous validity uptime + receipts, quarterly exec readouts, SOP/training updates, and roadmap influence—so standards survive scale."
     />
 
+    <!-- Icons (match Pilot A/B/C/D + invest vibe) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
     <script type="importmap">
     { "imports": { "lit": "https://esm.run/lit" } }
     </script>
 
     <link rel="stylesheet" href="" id="main-css" />
     <script type="module" src="../../../bootstrap.js"></script>
+
+    <!-- Pilot E “invest-style” skin + card systems (mirrors Pilot A/B/C/D feel) -->
+    <style>
+      /* =========================================================
+         Header helpers
+         ========================================================= */
+      .pilots__back {
+        display: inline-flex;
+        gap: 0.5rem;
+        align-items: center;
+        margin-bottom: 0.75rem;
+      }
+
+      .pilots__kicker {
+        margin-top: 0.5rem;
+        color: #6b7280;
+        font-size: 0.95rem;
+      }
+
+      .pilots__meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: center;
+        margin: 0.75rem 0 0.75rem;
+      }
+      .pilots__meta-item {
+        display: inline-flex;
+        gap: 0.5rem;
+        align-items: center;
+        color: #3b4654;
+        font-size: 0.95rem;
+      }
+
+      .pilots__header { padding-bottom: 0.25rem; }
+      .pilots__lede { font-size: 1.05rem; line-height: 1.45; }
+      .pilots__subhead { color: #3b4654; max-width: 72ch; }
+      .pilots__heading { letter-spacing: -0.01em; }
+
+      .pilots__section { padding-top: 0.25rem; }
+      .pilots__section > .pilots__text,
+      .pilots__section > .pilots__list,
+      .pilots__section > .pilots__steps {
+        max-width: 80ch;
+      }
+
+      /* Notes as accent panels */
+      .pilots__note {
+        position: relative;
+        border: 1px solid #e6eaf0;
+        border-radius: 14px;
+        background: #fff;
+        padding: 12px 14px 12px 18px;
+        margin-top: 12px;
+      }
+      .pilots__note::before {
+        content: "";
+        position: absolute;
+        left: 10px;
+        top: 12px;
+        bottom: 12px;
+        width: 4px;
+        border-radius: 999px;
+        background: #0b6ef3;
+        opacity: 0.95;
+      }
+      .pilots__note[aria-label*="scope"]::before,
+      .pilots__note[aria-label*="Scope"]::before {
+        background: #14b8a6;
+      }
+
+      /* CTA row like invest pages */
+      .pilots__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 0.9rem;
+        margin-bottom: 0.35rem;
+      }
+      .pilots__actions .button i { margin-right: 0.5rem; }
+
+      /* =========================================================
+         PSI / “What you’ll know” cards
+         ========================================================= */
+      .pilots__cards {
+        display: grid;
+        gap: 14px;
+        margin-top: 12px;
+      }
+      .pilots__cards--three {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .pilots__cards--two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      @media (max-width: 900px) {
+        .pilots__cards--three { grid-template-columns: 1fr; }
+        .pilots__cards--two { grid-template-columns: 1fr; }
+      }
+
+      .pilots__card {
+        border: 1px solid #e6eaf0;
+        border-radius: 14px;
+        background: #fff;
+        padding: 14px 14px 12px;
+        box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04);
+      }
+
+      .pilots__card-title {
+        margin: 0 0 6px 0;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+      }
+      .pilots__card-text {
+        margin: 0;
+        color: #3b4654;
+      }
+      .pilots__card-kicker {
+        display: inline-flex;
+        gap: 0.5rem;
+        align-items: center;
+        color: #6b7280;
+        font-size: 0.9rem;
+        margin: 0 0 8px 0;
+      }
+
+      @media (hover: hover) {
+        .pilots__card:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04), 0 10px 24px rgba(17, 24, 39, 0.08);
+          transition: box-shadow 160ms ease, transform 160ms ease;
+        }
+      }
+
+      /* =========================================================
+         Mini-cards (used in case study + best fit)
+         ========================================================= */
+      .pilots__mini-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .pilots__mini-card {
+        border: 1px solid #e6eaf0;
+        border-radius: 12px;
+        background: #fff;
+        padding: 10px 10px 9px;
+      }
+      .pilots__mini-text {
+        margin: 0;
+        color: #3b4654;
+        line-height: 1.35;
+        font-size: 0.98rem;
+      }
+      @media (min-width: 900px) {
+        .pilots__mini-grid--two {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      /* =========================================================
+         Tiles (Why / What you get / Acceptances / etc.)
+         ========================================================= */
+      .pilots__tiles {
+        display: grid;
+        gap: 12px;
+        margin-top: 12px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      @media (max-width: 900px) {
+        .pilots__tiles { grid-template-columns: 1fr; }
+      }
+      @media (min-width: 1100px) {
+        .pilots__tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      }
+
+      .pilots__tile {
+        border: 1px solid #e6eaf0;
+        border-radius: 14px;
+        background: #fff;
+        padding: 12px 12px 11px;
+        box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04);
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+      }
+      .pilots__tile-icon {
+        flex: 0 0 auto;
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        border: 1px solid #e6eaf0;
+        display: grid;
+        place-items: center;
+        color: #3b4654;
+        background: #fff;
+        margin-top: 1px;
+      }
+      .pilots__tile-title {
+        margin: 0;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+        line-height: 1.2;
+      }
+      .pilots__tile-text {
+        margin: 4px 0 0;
+        color: #3b4654;
+        line-height: 1.35;
+        font-size: 0.95rem;
+      }
+      @media (hover: hover) {
+        .pilots__tile:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04), 0 10px 24px rgba(17, 24, 39, 0.08);
+          transition: box-shadow 160ms ease, transform 160ms ease;
+        }
+      }
+      .pilots__tile--why .pilots__tile-title { font-size: 1rem; }
+
+      /* =========================================================
+         Image cards (“cards with media”) for deliverable walkthrough
+         ========================================================= */
+      .pilots__grid--cards {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        align-items: stretch;
+      }
+      @media (max-width: 900px) {
+        .pilots__grid--cards { grid-template-columns: 1fr; }
+      }
+
+      .pilot-card {
+        border: 1px solid #e6eaf0;
+        border-radius: 14px;
+        background: #fff;
+      }
+
+      .pilots__grid--cards .pilot-card--deliverable {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04);
+      }
+      .pilots__grid--cards .pilot-card--deliverable .pilot-card__body {
+        padding: 16px 16px 0;
+      }
+      .pilots__grid--cards .pilot-card--deliverable .pilot-card__body--bottom {
+        padding: 0 16px 16px;
+      }
+      .pilots__grid--cards .pilot-card--deliverable .pilot-card__media {
+        margin: 12px 0 0;
+      }
+      .pilots__grid--cards .pilot-card--deliverable .pilots__img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .pilots__grid--cards .pilot-card--deliverable .pilots__fineprint {
+        margin: 0;
+        padding: 10px 16px 0;
+      }
+      .pilots__grid--cards .pilot-card--deliverable .pilots__text {
+        margin: 10px 0 0;
+      }
+    </style>
   </head>
 
   <body>
@@ -33,19 +307,43 @@
       <section class="pilots pilots--detail" aria-labelledby="pilot-title">
         <div class="pilots__inner">
           <header class="pilots__header">
+            <a class="link link--muted pilots__back" href="/pilots/">
+              <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+              Back to Pilots
+            </a>
+
             <h1 class="pilots__title" id="pilot-title">Pilot E — Founder Cohort</h1>
 
-            <!-- Simple, direct value proposition up front -->
             <p class="pilots__lede">
               Keep your facility “good” for a full year — recurring verification + drift detection + receipts + maintained SOPs that survive turnover and scale.
             </p>
 
-            <!-- Strong CTA up front -->
-            <div class="pilots__actions" aria-label="Pilot E primary actions">
-              <a class="button button--primary" href="/pilots#apply">Request Pilot E</a>
-              <a class="button button--secondary" href="/contact">Contact</a>
-              <a class="button button--secondary" href="#what-title">See what you get</a>
+            <div class="pilots__meta" aria-label="Pilot E metadata">
+              <span class="badge badge--success">Active</span>
+              <span class="pilots__meta-item">
+                <i class="fa-solid fa-tags" aria-hidden="true"></i>
+                Cannabis • Year-long control • Drift tracking • Institutional memory • Receipts
+              </span>
             </div>
+
+            <div class="pilots__actions" aria-label="Pilot E primary actions">
+              <a class="button button--primary" href="/pilots#apply">
+                <i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>
+                Request Pilot E
+              </a>
+              <a class="button button--secondary" href="/contact">
+                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                Contact
+              </a>
+              <a class="button button--secondary" href="#what-title">
+                <i class="fa-solid fa-list-check" aria-hidden="true"></i>
+                See what you get
+              </a>
+            </div>
+
+            <p class="pilots__kicker">
+              The “don’t regress” layer: verify on cadence, capture drift with context, keep receipts, and maintain a standard through scale.
+            </p>
 
             <p class="pilots__subhead">
               Pilot E is subscription-style because the value is not a baseline map. It’s sustained control:
@@ -53,20 +351,33 @@
               staff, and seasons change.
             </p>
 
-            <!-- Problem / Solution / Impact breakpoints (business-first) -->
-            <ul class="pilots__list" aria-label="Pilot E quick overview">
-              <li class="pilots__list-item">
-                <strong>Problem:</strong> “Fixes” regress as reality changes—seasonal drift, staff turnover, equipment swaps, and expansion across rooms/sites/shifts.
-              </li>
-              <li class="pilots__list-item">
-                <strong>Solution:</strong> A year-long cadence of verification windows + drift/change tracking + validity/receipts + SOP/training updates.
-              </li>
-              <li class="pilots__list-item">
-                <strong>Impact:</strong> Catch regressions early (with context), preserve institutional memory, and maintain a standard that stays stable as you scale.
-              </li>
-            </ul>
+            <!-- Problem / Solution / Impact as cards -->
+            <div class="pilots__cards pilots__cards--three" aria-label="Pilot E quick overview cards">
+              <div class="pilots__card">
+                <p class="pilots__card-kicker"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>Problem</p>
+                <h3 class="pilots__card-title">Fixes regress as reality changes</h3>
+                <p class="pilots__card-text">
+                  Seasonal drift, staff turnover, equipment swaps, and expansion across rooms/sites/shifts reintroduce pockets unless you re-verify.
+                </p>
+              </div>
 
-            <!-- Validation signals (credibility up front) -->
+              <div class="pilots__card">
+                <p class="pilots__card-kicker"><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i>Solution</p>
+                <h3 class="pilots__card-title">Cadence + drift tracking + receipts</h3>
+                <p class="pilots__card-text">
+                  A year-long verification cadence with drift/change history, validity uptime, and SOP/training updates that keep “good” reproducible.
+                </p>
+              </div>
+
+              <div class="pilots__card">
+                <p class="pilots__card-kicker"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i>Impact</p>
+                <h3 class="pilots__card-title">Continuity that survives scale</h3>
+                <p class="pilots__card-text">
+                  Catch regressions early (with context), preserve institutional memory, and maintain a standard that stays stable as you scale.
+                </p>
+              </div>
+            </div>
+
             <div class="pilots__note" role="note" aria-label="Pilot E validation signals">
               <p class="pilots__fineprint">
                 <strong>Validation signals:</strong> includes <strong>recurring verification cadence</strong>, <strong>drift + change history</strong>,
@@ -84,63 +395,167 @@
             </div>
           </header>
 
-          <!-- New: fast business clarity -->
+          <!-- What you’ll get (fast) as cards -->
           <section class="pilots__section" aria-labelledby="know-title">
             <h2 class="pilots__heading" id="know-title">What you’ll get (the “don’t regress” layer)</h2>
-            <ul class="pilots__list">
-              <li class="pilots__list-item"><strong>Early drift detection:</strong> catch regressions before late-flower surprises.</li>
-              <li class="pilots__list-item"><strong>Context for why it drifted:</strong> equipment swap vs staffing shift vs seasonal change.</li>
-              <li class="pilots__list-item"><strong>Receipts that survive scrutiny:</strong> versions/configs/calibration + validity uptime over time.</li>
-              <li class="pilots__list-item"><strong>Institutional memory:</strong> SOPs/templates/training that keep “good” reproducible.</li>
-            </ul>
+
+            <div class="pilots__cards pilots__cards--two" aria-label="What you get fast cards">
+              <div class="pilots__card">
+                <h3 class="pilots__card-title">Early drift detection</h3>
+                <p class="pilots__card-text">Catch regressions before late-flower surprises.</p>
+              </div>
+
+              <div class="pilots__card">
+                <h3 class="pilots__card-title">Context for why it drifted</h3>
+                <p class="pilots__card-text">Equipment swap vs staffing shift vs seasonal change.</p>
+              </div>
+
+              <div class="pilots__card">
+                <h3 class="pilots__card-title">Receipts that survive scrutiny</h3>
+                <p class="pilots__card-text">Versions/configs/calibration + validity uptime over time.</p>
+              </div>
+
+              <div class="pilots__card">
+                <h3 class="pilots__card-title">Institutional memory</h3>
+                <p class="pilots__card-text">SOPs/templates/training that keep “good” reproducible.</p>
+              </div>
+            </div>
           </section>
 
+          <!-- Why this is rational as tiles -->
           <section class="pilots__section" aria-labelledby="why-title">
             <h2 class="pilots__heading" id="why-title">Why this is rational (operator version)</h2>
-            <ul class="pilots__list">
-              <li class="pilots__list-item">
-                Microclimate-driven disease and compliance risk is persistent; the goal is not one win, but preventing drift and recurring pockets over time.
-              </li>
-              <li class="pilots__list-item">
-                When you scale, the cost is regressions + re-learning—seasonal drift, staff changes, equipment swaps, and room-to-room variation.
-              </li>
-              <li class="pilots__list-item">
-                Pilot E buys continuity: repeatable verification, early drift detection with context, and a maintained operating standard.
-              </li>
-              <li class="pilots__list-item">
-                The difference vs a mapping pilot: Pilot E is built for <strong>sustained control</strong>—recurring verification windows, change tracking, and receipts that survive turnover.
-              </li>
-            </ul>
+
+            <div class="pilots__tiles" aria-label="Why this is rational tiles">
+              <div class="pilots__tile pilots__tile--why">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-biohazard"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">Risk is persistent</h3>
+                  <p class="pilots__tile-text">
+                    The goal isn’t one win—it’s preventing drift and recurring pockets over time.
+                  </p>
+                </div>
+              </div>
+
+              <div class="pilots__tile pilots__tile--why">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-arrows-rotate"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">Scale creates regressions</h3>
+                  <p class="pilots__tile-text">
+                    Seasons, staff changes, swaps, and room-to-room variation reintroduce failure unless you keep verifying.
+                  </p>
+                </div>
+              </div>
+
+              <div class="pilots__tile pilots__tile--why">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">Continuity is the product</h3>
+                  <p class="pilots__tile-text">
+                    Repeatable verification + receipts + a maintained standard beats “fix once and forget.”
+                  </p>
+                </div>
+              </div>
+
+              <div class="pilots__tile pilots__tile--why">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-clipboard-check"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">Not a mapping pilot</h3>
+                  <p class="pilots__tile-text">
+                    Built for sustained control—verification windows, change tracking, and receipts that survive turnover.
+                  </p>
+                </div>
+              </div>
+            </div>
           </section>
 
+          <!-- Best fit as tiles -->
           <section class="pilots__section" aria-labelledby="fit-title">
             <h2 class="pilots__heading" id="fit-title">Best fit</h2>
-            <ul class="pilots__list">
-              <li class="pilots__list-item">
-                You’re expanding (more rooms, more sites, more shifts).
-              </li>
-              <li class="pilots__list-item">
-                You keep regressing after “fixes” because reality changes (seasonal drift, staff changes, equipment swaps).
-              </li>
-              <li class="pilots__list-item">
-                You want an operating standard that survives turnover and scale.
-              </li>
-            </ul>
+
+            <div class="pilots__tiles" aria-label="Pilot E best fit tiles">
+              <div class="pilots__tile">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-building"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">You’re expanding</h3>
+                  <p class="pilots__tile-text">More rooms, more sites, more shifts.</p>
+                </div>
+              </div>
+
+              <div class="pilots__tile">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-rotate"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">You keep regressing after fixes</h3>
+                  <p class="pilots__tile-text">Reality changes: seasonal drift, staffing changes, equipment swaps.</p>
+                </div>
+              </div>
+
+              <div class="pilots__tile">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-book"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">You want a durable standard</h3>
+                  <p class="pilots__tile-text">Operating standard that survives turnover and scale.</p>
+                </div>
+              </div>
+            </div>
           </section>
 
+          <!-- What you get as tiles -->
           <section class="pilots__section" aria-labelledby="what-title">
             <h2 class="pilots__heading" id="what-title">What you get (cadence-based)</h2>
-            <ul class="pilots__list">
-              <li class="pilots__list-item"><strong>Monthly:</strong> recurring verification window(s)</li>
-              <li class="pilots__list-item"><strong>Continuous:</strong> drift + change tracking (what moved, where, when)</li>
-              <li class="pilots__list-item"><strong>Continuous:</strong> validity uptime + receipts</li>
-              <li class="pilots__list-item"><strong>Quarterly:</strong> exec readout (what improved, what regressed, what’s next)</li>
-              <li class="pilots__list-item"><strong>As needed:</strong> SOP and training artifacts updates</li>
-              <li class="pilots__list-item"><strong>Ongoing:</strong> roadmap influence (what to build next based on your facility reality)</li>
-            </ul>
+
+            <div class="pilots__tiles" aria-label="Cadence-based deliverables tiles">
+              <div class="pilots__tile">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-calendar-days"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">Monthly</h3>
+                  <p class="pilots__tile-text">Recurring verification window(s).</p>
+                </div>
+              </div>
+
+              <div class="pilots__tile">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-route"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">Continuous</h3>
+                  <p class="pilots__tile-text">Drift + change tracking (what moved, where, when).</p>
+                </div>
+              </div>
+
+              <div class="pilots__tile">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-receipt"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">Continuous</h3>
+                  <p class="pilots__tile-text">Validity uptime + receipts.</p>
+                </div>
+              </div>
+
+              <div class="pilots__tile">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-chart-line"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">Quarterly</h3>
+                  <p class="pilots__tile-text">Exec readout (improved vs regressed vs next).</p>
+                </div>
+              </div>
+
+              <div class="pilots__tile">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-graduation-cap"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">As needed</h3>
+                  <p class="pilots__tile-text">SOP + training artifacts updates.</p>
+                </div>
+              </div>
+
+              <div class="pilots__tile">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-diagram-project"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">Ongoing</h3>
+                  <p class="pilots__tile-text">Roadmap influence (build-next based on facility reality).</p>
+                </div>
+              </div>
+            </div>
           </section>
 
-          <!-- NEW: Case study placeholder section (for future proof points) -->
+          <!-- Case study as cards + mini-cards -->
           <section class="pilots__section" aria-labelledby="case-title">
             <h2 class="pilots__heading" id="case-title">Case study (coming soon)</h2>
             <p class="pilots__text">
@@ -148,250 +563,267 @@
               (e.g., fewer regressions after equipment swaps, reduced pocket persistence across seasons, and faster onboarding of new staff).
             </p>
 
-            <div class="pilots__grid pilots__grid--two">
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Example format</h3>
+            <div class="pilots__cards pilots__cards--two" aria-label="Case study preview cards">
+              <div class="pilots__card">
+                <p class="pilots__card-kicker"><i class="fa-solid fa-file-lines" aria-hidden="true"></i>Example format</p>
+                <h3 class="pilots__card-title">A proof-shaped one-pager</h3>
+
+                <div class="pilots__mini-grid" aria-label="Example case study fields">
+                  <div class="pilots__mini-card">
+                    <p class="pilots__mini-text"><strong>Facility:</strong> [rooms/sites/shifts]</p>
+                  </div>
+                  <div class="pilots__mini-card">
+                    <p class="pilots__mini-text"><strong>Drift driver:</strong> [seasonal swing / swap / staffing shift]</p>
+                  </div>
+                  <div class="pilots__mini-card">
+                    <p class="pilots__mini-text"><strong>Detection:</strong> [verification window flagged regression early]</p>
+                  </div>
+                  <div class="pilots__mini-card">
+                    <p class="pilots__mini-text"><strong>Result:</strong> [regressions caught earlier by X days/weeks] <span style="color:#6b7280;">(with receipts)</span></p>
+                  </div>
                 </div>
-                <ul class="pilot-card__list">
-                  <li class="pilot-card__item"><strong>Facility:</strong> [rooms/sites/shifts]</li>
-                  <li class="pilot-card__item"><strong>Drift driver:</strong> [seasonal swing / swap / staffing shift]</li>
-                  <li class="pilot-card__item"><strong>Detection:</strong> [verification window flagged regression early]</li>
-                  <li class="pilot-card__item"><strong>Result:</strong> [regressions caught earlier by X days/weeks] (with receipts)</li>
-                </ul>
               </div>
 
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Decision-maker takeaway</h3>
+              <div class="pilots__card">
+                <p class="pilots__card-kicker"><i class="fa-solid fa-briefcase" aria-hidden="true"></i>Decision-maker takeaway</p>
+                <h3 class="pilots__card-title">What a yes/no decision needs</h3>
+
+                <div class="pilots__mini-grid" aria-label="Decision maker takeaways">
+                  <div class="pilots__mini-card">
+                    <p class="pilots__mini-text">What improved vs what regressed (quarterly clarity)</p>
+                  </div>
+                  <div class="pilots__mini-card">
+                    <p class="pilots__mini-text">Why it changed (context from change tracking)</p>
+                  </div>
+                  <div class="pilots__mini-card">
+                    <p class="pilots__mini-text">How it stayed reproducible (SOP/training artifacts)</p>
+                  </div>
                 </div>
-                <ul class="pilot-card__list">
-                  <li class="pilot-card__item">What improved vs what regressed (quarterly clarity)</li>
-                  <li class="pilot-card__item">Why it changed (context from change tracking)</li>
-                  <li class="pilot-card__item">How it stayed reproducible (SOP/training artifacts)</li>
-                </ul>
               </div>
             </div>
           </section>
 
-          <!-- Uses your real images: asset/img/pilot_e/* -->
+          <!-- How to read deliverables: convert to media card grid -->
           <section class="pilots__section" aria-labelledby="read-title">
             <h2 class="pilots__heading" id="read-title">How to read the deliverables</h2>
 
-            <div class="pilots__grid pilots__grid--two">
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Recurring verification windows (monthly cadence)</h3>
+            <div class="pilots__grid pilots__grid--cards" aria-label="Pilot E deliverable cards">
+              <!-- 1 -->
+              <article class="pilot-card pilot-card--deliverable">
+                <div class="pilot-card__body">
+                  <div class="pilot-card__header">
+                    <h3 class="pilot-card__title">Recurring verification windows (monthly cadence)</h3>
+                  </div>
+                  <p class="pilots__text">
+                    Use this to answer: <strong>Are we re-checking under comparable conditions, on purpose?</strong> Verification windows turn “we think it’s fixed” into repeatable proof across months.
+                  </p>
                 </div>
 
-                <p class="pilots__text">
-                  Use this to answer: <strong>Are we re-checking under comparable conditions, on purpose?</strong>
-                  Verification windows turn “we think it’s fixed” into repeatable proof across months.
-                </p>
-
-                <figure class="pilots__figure">
-                  <img
-                    class="pilots__img"
-                    src="/asset/img/pilot_e/01_recurring_verification_windows_monthly_cadence.png"
-                    alt="Recurring verification windows shown as repeating segments across a year, linked to repeated room-map checks."
-                    loading="lazy"
-                    decoding="async"
-                  />
+                <figure class="pilots__figure pilot-card__media">
+                  <img class="pilots__img"
+                       src="/asset/img/pilot_e/01_recurring_verification_windows_monthly_cadence.png"
+                       alt="Recurring verification windows shown as repeating segments across a year, linked to repeated room-map checks."
+                       loading="lazy" decoding="async" />
                   <figcaption class="pilots__fineprint">
-                    <strong>Recurring verification windows:</strong> Monthly cadence windows connected to repeated room-map verification checks.
+                    <strong>Recurring verification windows:</strong> Monthly cadence windows linked to repeated room-map verification checks.
                   </figcaption>
                 </figure>
 
-                <p class="pilots__text">
-                  Practical meaning: if conditions drift, the cadence catches it—before the room teaches you the lesson again.
-                </p>
-              </div>
+                <div class="pilot-card__body pilot-card__body--bottom">
+                  <p class="pilots__text">
+                    Practical meaning: the cadence catches drift before the room teaches you the lesson again.
+                  </p>
+                </div>
+              </article>
 
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Drift + change tracking (what moved, where, when)</h3>
+              <!-- 2 -->
+              <article class="pilot-card pilot-card--deliverable">
+                <div class="pilot-card__body">
+                  <div class="pilot-card__header">
+                    <h3 class="pilot-card__title">Drift + change tracking (what moved, where, when)</h3>
+                  </div>
+                  <p class="pilots__text">
+                    Use this to answer: <strong>What changed—and did that change move the pockets?</strong> Make regressions early and contextual (not late-flower surprises).
+                  </p>
                 </div>
 
-                <p class="pilots__text">
-                  Use this to answer: <strong>What changed—and did that change move the pockets?</strong>
-                  This makes regressions early and contextual (not surprise late-flower events).
-                </p>
-
-                <figure class="pilots__figure">
-                  <img
-                    class="pilots__img"
-                    src="/asset/img/pilot_e/02_drift_change_tracking_what_moved_where_when.png"
-                    alt="Drift and change tracking showing baseline vs shifted pocket zones with movement vectors, plus an abstract change log and contextual event icons."
-                    loading="lazy"
-                    decoding="async"
-                  />
+                <figure class="pilots__figure pilot-card__media">
+                  <img class="pilots__img"
+                       src="/asset/img/pilot_e/02_drift_change_tracking_what_moved_where_when.png"
+                       alt="Drift and change tracking showing baseline vs shifted pocket zones with movement vectors, plus an abstract change log and contextual event icons."
+                       loading="lazy" decoding="async" />
                   <figcaption class="pilots__fineprint">
-                    <strong>Drift + change tracking:</strong> What moved, where it moved, and which contextual changes occurred nearby.
+                    <strong>Drift + change tracking:</strong> What moved, where it moved, and contextual changes nearby.
                   </figcaption>
                 </figure>
 
-                <p class="pilots__text">
-                  Decision pattern: treat “new drift after an equipment swap” differently than “slow seasonal drift.”
-                </p>
-              </div>
+                <div class="pilot-card__body pilot-card__body--bottom">
+                  <p class="pilots__text">
+                    Decision pattern: treat “new drift after a swap” differently than “slow seasonal drift.”
+                  </p>
+                </div>
+              </article>
 
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Validity uptime + receipts (continuous audit trail)</h3>
+              <!-- 3 -->
+              <article class="pilot-card pilot-card--deliverable">
+                <div class="pilot-card__body">
+                  <div class="pilot-card__header">
+                    <h3 class="pilot-card__title">Validity uptime + receipts (continuous audit trail)</h3>
+                  </div>
+                  <p class="pilots__text">
+                    Use this to answer: <strong>How much of the run was valid—and what exactly was true during those windows?</strong> Receipts make history defensible.
+                  </p>
                 </div>
 
-                <p class="pilots__text">
-                  Use this to answer: <strong>How much of the run was valid—and what exactly was true during those windows?</strong>
-                  Receipts make the history defensible: versions, calibration state, configuration, and validity uptime.
-                </p>
-
-                <figure class="pilots__figure">
-                  <img
-                    class="pilots__img"
-                    src="/asset/img/pilot_e/03_validity_uptime_receipts_continuous_audit_trail.png"
-                    alt="Validity uptime and receipts showing receipt strips and configuration cards with a segmented uptime bar and audit symbols."
-                    loading="lazy"
-                    decoding="async"
-                  />
+                <figure class="pilots__figure pilot-card__media">
+                  <img class="pilots__img"
+                       src="/asset/img/pilot_e/03_validity_uptime_receipts_continuous_audit_trail.png"
+                       alt="Validity uptime and receipts showing receipt strips and configuration cards with a segmented uptime bar and audit symbols."
+                       loading="lazy" decoding="async" />
                   <figcaption class="pilots__fineprint">
-                    <strong>Validity uptime + receipts:</strong> Continuous provenance + coverage that supports audit, QA sign-off, and post-mortems.
+                    <strong>Validity uptime + receipts:</strong> Continuous provenance + coverage for audit, QA sign-off, and post-mortems.
                   </figcaption>
                 </figure>
 
-                <p class="pilots__text">
-                  Operator meaning: we don’t “claim success” outside of safe-to-interpret windows—so evidence survives scrutiny.
-                </p>
-              </div>
+                <div class="pilot-card__body pilot-card__body--bottom">
+                  <p class="pilots__text">
+                    Operator meaning: we don’t claim success outside safe-to-interpret windows—so evidence survives scrutiny.
+                  </p>
+                </div>
+              </article>
 
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Quarterly exec readout (improved vs regressed vs next)</h3>
+              <!-- 4 -->
+              <article class="pilot-card pilot-card--deliverable">
+                <div class="pilot-card__body">
+                  <div class="pilot-card__header">
+                    <h3 class="pilot-card__title">Quarterly exec readout (improved vs regressed vs next)</h3>
+                  </div>
+                  <p class="pilots__text">
+                    Use this to answer: <strong>What got better, what got worse, and what’s next?</strong> Drive decisions across rooms/sites.
+                  </p>
                 </div>
 
-                <p class="pilots__text">
-                  Use this to answer: <strong>What got better, what got worse, and what do we do next?</strong>
-                  The readout is structured to drive decisions: protect improvements, address regressions, and prioritize next actions.
-                </p>
-
-                <figure class="pilots__figure">
-                  <img
-                    class="pilots__img"
-                    src="/asset/img/pilot_e/04_quarterly_exec_readout_improved_vs_regressed_vs_next.png"
-                    alt="Quarterly exec readout showing improvements, regressions, and a next-step roadmap card across rooms/sites."
-                    loading="lazy"
-                    decoding="async"
-                  />
+                <figure class="pilots__figure pilot-card__media">
+                  <img class="pilots__img"
+                       src="/asset/img/pilot_e/04_quarterly_exec_readout_improved_vs_regressed_vs_next.png"
+                       alt="Quarterly exec readout showing improvements, regressions, and a next-step roadmap card across rooms/sites."
+                       loading="lazy" decoding="async" />
                   <figcaption class="pilots__fineprint">
-                    <strong>Quarterly exec readout:</strong> Improvements, regressions, and prioritized next actions—across rooms/sites.
+                    <strong>Quarterly exec readout:</strong> Improvements, regressions, and next actions across rooms/sites.
                   </figcaption>
                 </figure>
 
-                <p class="pilots__text">
-                  Practical use: leadership sees progress and regressions in one place—without turning it into an argument about anecdotes.
-                </p>
-              </div>
+                <div class="pilot-card__body pilot-card__body--bottom">
+                  <p class="pilots__text">
+                    Practical use: leadership sees progress and regressions in one place—without anecdote fights.
+                  </p>
+                </div>
+              </article>
 
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">SOP + training artifacts updates (institutional memory)</h3>
+              <!-- 5 -->
+              <article class="pilot-card pilot-card--deliverable">
+                <div class="pilot-card__body">
+                  <div class="pilot-card__header">
+                    <h3 class="pilot-card__title">SOP + training artifacts updates (institutional memory)</h3>
+                  </div>
+                  <p class="pilots__text">
+                    Use this to answer: <strong>Can new people and new rooms reproduce the method?</strong> Updates keep “good” stable through turnover.
+                  </p>
                 </div>
 
-                <p class="pilots__text">
-                  Use this to answer: <strong>Can new people and new rooms reproduce the method?</strong>
-                  This is the institutional memory layer: updated SOPs, templates, and training artifacts that keep the standard stable.
-                </p>
-
-                <figure class="pilots__figure">
-                  <img
-                    class="pilots__img"
-                    src="/asset/img/pilot_e/05_sop_training_artifacts_updates_operating_standard_survives_turnover.png"
-                    alt="SOP and training artifacts showing binder and training cards with versioning, plus handoff of checklist/template onto a new room map."
-                    loading="lazy"
-                    decoding="async"
-                  />
+                <figure class="pilots__figure pilot-card__media">
+                  <img class="pilots__img"
+                       src="/asset/img/pilot_e/05_sop_training_artifacts_updates_operating_standard_survives_turnover.png"
+                       alt="SOP and training artifacts showing binder and training cards with versioning, plus handoff of checklist/template onto a new room map."
+                       loading="lazy" decoding="async" />
                   <figcaption class="pilots__fineprint">
                     <strong>SOP + training updates:</strong> The operating standard survives turnover via artifacts, templates, and refreshes.
                   </figcaption>
                 </figure>
 
-                <p class="pilots__text">
-                  Institutionalization: the method becomes reproducible—not dependent on one person’s memory.
-                </p>
-              </div>
+                <div class="pilot-card__body pilot-card__body--bottom">
+                  <p class="pilots__text">
+                    Institutionalization: the method becomes reproducible—not dependent on one person’s memory.
+                  </p>
+                </div>
+              </article>
 
-              <div class="pilot-card">
-                <div class="pilot-card__header">
-                  <h3 class="pilot-card__title">Roadmap influence (build-next based on facility reality)</h3>
+              <!-- 6 -->
+              <article class="pilot-card pilot-card--deliverable">
+                <div class="pilot-card__body">
+                  <div class="pilot-card__header">
+                    <h3 class="pilot-card__title">Roadmap influence (build-next based on facility reality)</h3>
+                  </div>
+                  <p class="pilots__text">
+                    Use this to answer: <strong>What should we build next—based on real facility signals?</strong> Feedback loop from on-site reality into priorities.
+                  </p>
                 </div>
 
-                <p class="pilots__text">
-                  Use this to answer: <strong>What should we build next—based on real facility signals?</strong>
-                  Pilot E provides a feedback loop from on-site reality into roadmap priorities.
-                </p>
-
-                <figure class="pilots__figure">
-                  <img
-                    class="pilots__img"
-                    src="/asset/img/pilot_e/06_roadmap_influence_build_next_based_on_facility_reality.png"
-                    alt="Roadmap influence showing facility signal panels feeding into a product roadmap with milestones and feedback arrows."
-                    loading="lazy"
-                    decoding="async"
-                  />
+                <figure class="pilots__figure pilot-card__media">
+                  <img class="pilots__img"
+                       src="/asset/img/pilot_e/06_roadmap_influence_build_next_based_on_facility_reality.png"
+                       alt="Roadmap influence showing facility signal panels feeding into a product roadmap with milestones and feedback arrows."
+                       loading="lazy" decoding="async" />
                   <figcaption class="pilots__fineprint">
-                    <strong>Roadmap influence:</strong> Reality-driven iteration—what to build next, because the facility kept receipts.
+                    <strong>Roadmap influence:</strong> Reality-driven iteration from facility signals into roadmap milestones.
                   </figcaption>
                 </figure>
 
-                <p class="pilots__text">
-                  The point: fewer hypothetical features—more targeted fixes driven by measured facility reality.
-                </p>
+                <div class="pilot-card__body pilot-card__body--bottom">
+                  <p class="pilots__text">
+                    The point: fewer hypothetical features—more targeted fixes driven by measured facility reality.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- Acceptance tests as tiles (instead of giant image + bullets) -->
+          <section class="pilots__section" aria-labelledby="acceptance-title">
+            <h2 class="pilots__heading" id="acceptance-title">Acceptance tests (examples)</h2>
+
+            <div class="pilots__tiles" aria-label="Pilot E acceptance tests tiles">
+              <div class="pilots__tile">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-people-group"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">Institutionalization</h3>
+                  <p class="pilots__tile-text">New rooms and new staff can reproduce the method.</p>
+                </div>
+              </div>
+
+              <div class="pilots__tile">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-bell"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">Drift control</h3>
+                  <p class="pilots__tile-text">Regressions are detected early with context (not surprise late-flower events).</p>
+                </div>
+              </div>
+
+              <div class="pilots__tile">
+                <div class="pilots__tile-icon" aria-hidden="true"><i class="fa-solid fa-receipt"></i></div>
+                <div>
+                  <h3 class="pilots__tile-title">Audit trail</h3>
+                  <p class="pilots__tile-text">Receipts and change history exist over time (versions, configs, validity).</p>
+                </div>
               </div>
             </div>
           </section>
 
-          <section class="pilots__section" aria-labelledby="acceptance-title">
-            <h2 class="pilots__heading" id="acceptance-title">Acceptance tests (examples)</h2>
-
-            <p class="pilots__text">
-              Use this to answer: <strong>What does “it holds” mean here?</strong>
-              Pilot E defines the minimum bar for institutionalization, early drift control, and an audit trail that persists over time.
-            </p>
-
-            <figure class="pilots__figure">
-              <img
-                class="pilots__img"
-                src="/asset/img/pilot_e/07_acceptance_tests_institutionalization_drift_control_audit_trail.png"
-                alt="Pilot E acceptance tests shown as three panels: institutionalization, early drift control before late-flower, and audit trail with receipts and uptime."
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption class="pilots__fineprint">
-                <strong>Acceptance tests (visual):</strong> Institutionalization, drift control, and audit trail over time.
-              </figcaption>
-            </figure>
-
-            <ul class="pilots__list">
-              <li class="pilots__list-item">
-                <strong>Institutionalization:</strong> new rooms and new staff can reproduce the method.
-              </li>
-              <li class="pilots__list-item">
-                <strong>Drift control:</strong> regressions are detected early with context (not surprise late-flower events).
-              </li>
-              <li class="pilots__list-item">
-                <strong>Audit trail:</strong> receipts and change history exist over time (versions, configs, validity).
-              </li>
-            </ul>
-          </section>
-
-          <!-- Keep CTA at bottom too (now you have CTA both top + bottom) -->
+          <!-- Keep CTA + sources like your existing page -->
           <section class="pilots__section" aria-labelledby="cta-title">
             <h2 class="pilots__heading" id="cta-title">Continuity that survives scale</h2>
             <p class="pilots__text">
               Pilot E is for operators who are done paying the regression tax. If you want sustained control—with receipts—this is the year-long layer.
             </p>
             <div class="pilots__actions">
-              <a class="button button--primary" href="/pilots#apply">Request Pilot E</a>
-              <a class="button button--secondary" href="/contact">Contact</a>
+              <a class="button button--primary" href="/pilots#apply">
+                <i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>
+                Request Pilot E
+              </a>
+              <a class="button button--secondary" href="/contact">
+                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                Contact
+              </a>
             </div>
           </section>
 
