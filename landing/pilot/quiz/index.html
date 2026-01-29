@@ -352,7 +352,7 @@
             <p class="quiz-header__kicker">Canopy Microclimate Readiness</p>
             <h1 class="quiz-header__title" id="quiz-title">15-Question Assessment</h1>
             <p class="quiz-header__sub">
-              Part 1: contact info • Part 2: best practices + qualification • Part 3: dynamic results with next steps.
+              Part 1: contact info • Part 2: how you diagnose + verify • Part 3: dynamic results with next steps.
             </p>
 
             <div class="quiz-progress" aria-label="Assessment progress">
@@ -418,90 +418,89 @@
             <section class="quiz-step" data-step="2" aria-label="Part 2: Questions">
               <div class="quiz-grid">
                 <div class="quiz-card">
-                  <h2 class="quiz-section__title">Part 2 — Best Practices (10 questions)</h2>
+                  <h2 class="quiz-section__title">Part 2 — How easy is it to prove what’s happening? (10 questions)</h2>
                   <p class="quiz-section__text">
-                    Answer Yes/No. Your score is based on how many best practices you’re currently doing.
+                    Answer Yes/No. This checks whether you can pinpoint problem pockets and confirm fixes without relying on guesses.
                   </p>
 
                   <div class="quiz-grid" style="margin-top: 0.9rem;">
-                    <!-- Best Practices (10) -->
                     <fieldset class="quiz-q">
-                      <legend>1) Do you measure temperature and RH at canopy height (not only wall sensors)?</legend>
+                      <legend>1) When there’s a problem, can you describe it precisely (where, when, how long, what growth stage) instead of “the room feels off”?</legend>
                       <div class="quiz-q__choices">
-                        <label class="quiz-choice"><input type="radio" name="bp1" value="yes" required /> Yes</label>
-                        <label class="quiz-choice"><input type="radio" name="bp1" value="no" required /> No</label>
+                        <label class="quiz-choice"><input type="radio" name="dsm1" value="yes" required /> Yes</label>
+                        <label class="quiz-choice"><input type="radio" name="dsm1" value="no" required /> No</label>
                       </div>
                     </fieldset>
 
                     <fieldset class="quiz-q">
-                      <legend>2) Do you actively manage VPD targets by growth stage (and account for lights-off behavior)?</legend>
+                      <legend>2) Do you measure conditions where the plants are (canopy level / multiple spots), not just on a wall sensor?</legend>
                       <div class="quiz-q__choices">
-                        <label class="quiz-choice"><input type="radio" name="bp2" value="yes" required /> Yes</label>
-                        <label class="quiz-choice"><input type="radio" name="bp2" value="no" required /> No</label>
+                        <label class="quiz-choice"><input type="radio" name="dsm2" value="yes" required /> Yes</label>
+                        <label class="quiz-choice"><input type="radio" name="dsm2" value="no" required /> No</label>
                       </div>
                     </fieldset>
 
                     <fieldset class="quiz-q">
-                      <legend>3) Do you log environmental data at high frequency (e.g., minute-level) and review it weekly?</legend>
+                      <legend>3) Can you line up data to the same moment each day (like “time since lights off” or “after irrigation”) so comparisons are fair?</legend>
                       <div class="quiz-q__choices">
-                        <label class="quiz-choice"><input type="radio" name="bp3" value="yes" required /> Yes</label>
-                        <label class="quiz-choice"><input type="radio" name="bp3" value="no" required /> No</label>
+                        <label class="quiz-choice"><input type="radio" name="dsm3" value="yes" required /> Yes</label>
+                        <label class="quiz-choice"><input type="radio" name="dsm3" value="no" required /> No</label>
                       </div>
                     </fieldset>
 
                     <fieldset class="quiz-q">
-                      <legend>4) Have you verified airflow through the canopy (no persistent dead-air corners) with a repeatable method?</legend>
+                      <legend>4) Before comparing “before vs after,” do you check you’re comparing similar conditions (same stage, similar weather load, similar irrigation pattern)?</legend>
                       <div class="quiz-q__choices">
-                        <label class="quiz-choice"><input type="radio" name="bp4" value="yes" required /> Yes</label>
-                        <label class="quiz-choice"><input type="radio" name="bp4" value="no" required /> No</label>
+                        <label class="quiz-choice"><input type="radio" name="dsm4" value="yes" required /> Yes</label>
+                        <label class="quiz-choice"><input type="radio" name="dsm4" value="no" required /> No</label>
                       </div>
                     </fieldset>
 
                     <fieldset class="quiz-q">
-                      <legend>5) Is your dehumidification capacity sized for peak transpiration (including lights-off / transitions)?</legend>
+                      <legend>5) Do you track repeat issues by specific area (corner/rack/zone), so you can say what keeps coming back—and where?</legend>
                       <div class="quiz-q__choices">
-                        <label class="quiz-choice"><input type="radio" name="bp5" value="yes" required /> Yes</label>
-                        <label class="quiz-choice"><input type="radio" name="bp5" value="no" required /> No</label>
+                        <label class="quiz-choice"><input type="radio" name="dsm5" value="yes" required /> Yes</label>
+                        <label class="quiz-choice"><input type="radio" name="dsm5" value="no" required /> No</label>
                       </div>
                     </fieldset>
 
                     <fieldset class="quiz-q">
-                      <legend>6) Do you avoid large RH spikes after irrigation (timing, drybacks, and setpoint coordination)?</legend>
+                      <legend>6) If a sensor might be wrong, do you handle it with a quick check (or backup measurement) instead of getting stuck in arguments?</legend>
                       <div class="quiz-q__choices">
-                        <label class="quiz-choice"><input type="radio" name="bp6" value="yes" required /> Yes</label>
-                        <label class="quiz-choice"><input type="radio" name="bp6" value="no" required /> No</label>
+                        <label class="quiz-choice"><input type="radio" name="dsm6" value="yes" required /> Yes</label>
+                        <label class="quiz-choice"><input type="radio" name="dsm6" value="no" required /> No</label>
                       </div>
                     </fieldset>
 
                     <fieldset class="quiz-q">
-                      <legend>7) Do you use a consistent canopy management approach (defol/trellis/SOP) to maintain airflow and reduce microclimates?</legend>
+                      <legend>7) When you make changes, do you write down what you changed and what result you expect (so you can tell what actually worked)?</legend>
                       <div class="quiz-q__choices">
-                        <label class="quiz-choice"><input type="radio" name="bp7" value="yes" required /> Yes</label>
-                        <label class="quiz-choice"><input type="radio" name="bp7" value="no" required /> No</label>
+                        <label class="quiz-choice"><input type="radio" name="dsm7" value="yes" required /> Yes</label>
+                        <label class="quiz-choice"><input type="radio" name="dsm7" value="no" required /> No</label>
                       </div>
                     </fieldset>
 
                     <fieldset class="quiz-q">
-                      <legend>8) Do you regularly validate sensors (calibration checks / drift control) so “in spec” is actually true?</legend>
+                      <legend>8) After changes, do you measure again to confirm the problem moved/cleared (instead of assuming it worked)?</legend>
                       <div class="quiz-q__choices">
-                        <label class="quiz-choice"><input type="radio" name="bp8" value="yes" required /> Yes</label>
-                        <label class="quiz-choice"><input type="radio" name="bp8" value="no" required /> No</label>
+                        <label class="quiz-choice"><input type="radio" name="dsm8" value="yes" required /> Yes</label>
+                        <label class="quiz-choice"><input type="radio" name="dsm8" value="no" required /> No</label>
                       </div>
                     </fieldset>
 
                     <fieldset class="quiz-q">
-                      <legend>9) Do you have a clear SOP for early PM/Botrytis signals (scouting, isolation, sanitation, response timing)?</legend>
+                      <legend>9) Could you show someone your evidence two weeks later (notes + data + before/after) and have it still make sense?</legend>
                       <div class="quiz-q__choices">
-                        <label class="quiz-choice"><input type="radio" name="bp9" value="yes" required /> Yes</label>
-                        <label class="quiz-choice"><input type="radio" name="bp9" value="no" required /> No</label>
+                        <label class="quiz-choice"><input type="radio" name="dsm9" value="yes" required /> Yes</label>
+                        <label class="quiz-choice"><input type="radio" name="dsm9" value="no" required /> No</label>
                       </div>
                     </fieldset>
 
                     <fieldset class="quiz-q">
-                      <legend>10) After making airflow/HVAC changes, do you run a verification step (measure again to confirm pockets moved)?</legend>
+                      <legend>10) If you don’t have enough evidence yet, is it acceptable to say “not sure yet” and take a clear next measurement step?</legend>
                       <div class="quiz-q__choices">
-                        <label class="quiz-choice"><input type="radio" name="bp10" value="yes" required /> Yes</label>
-                        <label class="quiz-choice"><input type="radio" name="bp10" value="no" required /> No</label>
+                        <label class="quiz-choice"><input type="radio" name="dsm10" value="yes" required /> Yes</label>
+                        <label class="quiz-choice"><input type="radio" name="dsm10" value="no" required /> No</label>
                       </div>
                     </fieldset>
                   </div>
@@ -510,11 +509,11 @@
                 <div class="quiz-card">
                   <h2 class="quiz-section__title">Qualification (5 questions)</h2>
                   <p class="quiz-section__text">
-                    These help us tailor your results and recommend the best next step.
+                    These help tailor your results and recommend the best next step.
                   </p>
 
                   <div class="quiz-field">
-                    <label class="quiz-label" for="role">11) What best describes your current situation? <span aria-hidden="true">*</span></label>
+                    <label class="quiz-label" for="role">11) What best describes your role? <span aria-hidden="true">*</span></label>
                     <select class="quiz-select" id="role" name="role" required>
                       <option value="" selected disabled>Select one…</option>
                       <option value="owner_operator">Owner / Operator</option>
@@ -530,37 +529,37 @@
                     <label class="quiz-label" for="outcome">12) What outcome matters most in the next 90 days? <span aria-hidden="true">*</span></label>
                     <select class="quiz-select" id="outcome" name="outcome" required>
                       <option value="" selected disabled>Select one…</option>
-                      <option value="reduce_pm_botrytis">Reduce PM/Botrytis incidents</option>
-                      <option value="increase_consistency">Increase yield consistency</option>
-                      <option value="stabilize_late_flower">Stabilize late-flower performance</option>
-                      <option value="optimize_energy">Lower energy costs while staying clean</option>
-                      <option value="prove_roi">Prove ROI for HVAC/dehu changes</option>
+                      <option value="stop_repeat_problem">Stop a repeat pocket / recurring corner problem</option>
+                      <option value="prove_fix_holds">Prove a fix holds (defensible before/after)</option>
+                      <option value="handoff_confidence">Cross-shift / cross-team handoff confidence</option>
+                      <option value="reduce_theater">Reduce meeting arguments (“dashboard says green”)</option>
+                      <option value="audit_ready">Be audit/QA ready (traceable notes + evidence)</option>
                       <option value="other">Other</option>
                     </select>
                   </div>
 
                   <div class="quiz-field">
-                    <label class="quiz-label" for="obstacle">13) What’s the biggest obstacle (or what have you tried that hasn’t worked)? <span aria-hidden="true">*</span></label>
+                    <label class="quiz-label" for="obstacle">13) What’s the biggest friction today? <span aria-hidden="true">*</span></label>
                     <select class="quiz-select" id="obstacle" name="obstacle" required>
                       <option value="" selected disabled>Select one…</option>
-                      <option value="averages_hide_pockets">We chase averages; pockets are invisible</option>
-                      <option value="airflow_changes_dont_hold">Airflow changes don’t stick / inconsistent</option>
-                      <option value="dehu_cant_keep_up">Dehu can’t keep up (especially at peak)</option>
-                      <option value="irrigation_spikes">Irrigation timing causes RH spikes</option>
-                      <option value="data_untrusted">We don’t trust the data / sensors</option>
+                      <option value="avg_wash">Averages hide pockets (can’t “prove where”)</option>
+                      <option value="no_compare">Hard to compare runs honestly (stage/season drift)</option>
+                      <option value="sensor_dispute">Sensor distrust causes decision paralysis</option>
+                      <option value="changes_cluster">We change too many things at once (no learning)</option>
+                      <option value="no_verify">We don’t re-check after changes</option>
                       <option value="other">Other</option>
                     </select>
                   </div>
 
                   <div class="quiz-field">
-                    <label class="quiz-label" for="solution">14) Which solution would suit you best? <span aria-hidden="true">*</span></label>
+                    <label class="quiz-label" for="solution">14) Which next step fits you best? <span aria-hidden="true">*</span></label>
                     <select class="quiz-select" id="solution" name="solution" required>
                       <option value="" selected disabled>Select one…</option>
-                      <option value="education_training">Education + training (SOPs)</option>
-                      <option value="software_only">Software + dashboards</option>
-                      <option value="pilot_zone_map">Pilot measurement + zone map</option>
-                      <option value="one_on_one">One-on-one consulting</option>
-                      <option value="done_for_you">Done-for-you install + ongoing monitoring</option>
+                      <option value="pilot_pocket_scan">Quick pocket check (fast diagnosis)</option>
+                      <option value="pilot_zone_map">Full room “zone map” (spatial proof)</option>
+                      <option value="pilot_baseline_verify">Before/after proof loop (baseline + re-check)</option>
+                      <option value="pilot_drift_control">Ongoing drift watch (keep it fixed)</option>
+                      <option value="training_only">Training / SOPs only</option>
                     </select>
                   </div>
 
@@ -570,7 +569,7 @@
                       class="quiz-textarea"
                       id="notes"
                       name="notes"
-                      placeholder="Room count, strains, what keeps repeating, constraints, timeline, etc."
+                      placeholder="Rooms, repeat corner, trigger (lights-off/irrigation), constraints, timeline, who has to sign off, etc."
                     ></textarea>
                   </div>
 
@@ -594,7 +593,7 @@
                 <div class="quiz-card">
                   <h2 class="quiz-section__title">Part 3 — Your Dynamic Results</h2>
                   <p class="quiz-section__text">
-                    This is tailored to your answers. Your “readiness score” is based on the 10 best-practice questions.
+                    This is tailored to your answers. Your score is based on the 10 “prove it / verify it” questions.
                   </p>
 
                   <div class="results-grid">
@@ -624,13 +623,11 @@
                         <li>—</li>
                       </ol>
 
-                      <div class="results-next" id="next-steps">
-                        <!-- JS fills this -->
-                      </div>
+                      <div class="results-next" id="next-steps"></div>
 
                       <div class="results-footer">
                         <strong>Contact</strong><br />
-                        Email: <span style="opacity:0.9;">hello@hermodlabs.com</span> <span style="opacity:0.65;">(replace if different)</span><br />
+                        Email: <span style="opacity:0.9;">hello@hermodlabs.com</span><br />
                         Or: <a href="/engage/pilot">Explore pilots</a> • <a href="/explore/events#rsvp">Live walkthrough</a>
                       </div>
                     </div>
@@ -702,7 +699,6 @@
           const stepEl = stepEls.find(el => el.getAttribute("data-step") === String(stepNum));
           if (!stepEl) return true;
 
-          // Trigger browser validation UI
           const invalid = firstInvalidIn(stepEl);
           if (invalid) {
             invalid.focus({ preventScroll: true });
@@ -724,117 +720,139 @@
 
         function computeScore() {
           let yesCount = 0;
-          const bp = {};
+          const dsm = {};
           for (let i = 1; i <= 10; i++) {
-            const key = "bp" + i;
+            const key = "dsm" + i;
             const v = readFormValue(key);
-            bp[key] = v;
+            dsm[key] = v;
             if (v === "yes") yesCount += 1;
           }
           const percent = Math.round((yesCount / 10) * 100);
 
-          let level = "Warm";
-          if (percent >= 80) level = "Hot";
-          else if (percent < 50) level = "Cold";
+          let level = "Some structure";
+          if (percent >= 80) level = "Evidence-ready";
+          else if (percent < 50) level = "Hard to prove";
 
-          return { yesCount, percent, level, bp };
+          return { yesCount, percent, level, dsm };
         }
 
-        const bpRecommendations = {
-          bp1: "Add canopy-level sensing (multiple points). Wall sensors can’t see canopy pockets.",
-          bp2: "Tighten stage-based VPD targets and explicitly plan lights-off behavior.",
-          bp3: "Move to higher-frequency logging and a weekly trend review (spikes matter).",
-          bp4: "Verify airflow with a repeatable method—don’t rely on “it feels fine.”",
-          bp5: "Recheck peak dehu capacity and transitions—shortfalls show up late flower.",
-          bp6: "Coordinate irrigation timing + drybacks to avoid post-irrigation humidity spikes.",
-          bp7: "Standardize canopy management so airflow stays consistent across runs.",
-          bp8: "Validate sensors regularly—drift turns “in spec” into a false signal.",
-          bp9: "Formalize early-response SOPs for PM/Botrytis (timing + sanitation).",
-          bp10:"After changes, run a verification pass (measure again to confirm pockets moved)."
+        const dsmRecommendations = {
+          dsm1: "Use a simple problem statement: where, when, how long, and what growth stage. It prevents the issue from turning vague.",
+          dsm2: "Measure where the plants are (multiple spots). Wall averages won’t catch pockets.",
+          dsm3: "Line up data to the same moment (like time since lights-off). Otherwise “before/after” gets misleading.",
+          dsm4: "Use a quick “are these comparable?” check (stage, irrigation pattern, outside load).",
+          dsm5: "Track repeats by area so you can target the real source, not the room average.",
+          dsm6: "Have a fast way to handle sensor doubt (spot check / backup reading) so you don’t stall decisions.",
+          dsm7: "Write down the change + expected effect so you can learn what actually worked.",
+          dsm8: "Always re-measure after changes. If you don’t re-check, you don’t know.",
+          dsm9: "Keep a simple record: what happened, what you measured, what changed, and what improved.",
+          dsm10:"Allow “not enough proof yet” and take the next measurement step instead of forcing a confident answer."
         };
 
-        function buildInsights({ percent, level, bp }, qualifiers) {
+        function readQualifiers() {
+          return {
+            role: readFormValue("role"),
+            outcome: readFormValue("outcome"),
+            obstacle: readFormValue("obstacle"),
+            solution: readFormValue("solution"),
+            notes: readFormValue("notes")
+          };
+        }
+
+        function buildInsights(score, qualifiers) {
+          const { level, dsm } = score;
           const insights = [];
 
-          // Insight 1: big-picture based on score
-          if (level === "Hot") {
-            insights.push("Strong foundations: you’re doing many of the right things. The next jump usually comes from finding and eliminating hidden canopy pockets.");
-          } else if (level === "Warm") {
-            insights.push("You’ve got a base to work from, but gaps likely allow microclimates to persist long enough to create risk—especially during transitions.");
+          if (level === "Evidence-ready") {
+            insights.push("You’re set up to pinpoint problems and confirm fixes. That means fewer debates and faster learning.");
+          } else if (level === "Some structure") {
+            insights.push("You have a good base, but a few missing steps can let pockets survive transitions and meetings.");
           } else {
-            insights.push("Your room is likely at elevated risk: fundamentals may be unmeasured or uncontrolled, which makes repeat problems hard to diagnose.");
+            insights.push("Right now it’s easy to get stuck in debate: without clear definitions and re-checks, problems tend to repeat.");
           }
 
-          // Insight 2: top missed best practices (up to 2)
           const missed = [];
           for (let i = 1; i <= 10; i++) {
-            const key = "bp" + i;
-            if (bp[key] === "no") missed.push(key);
+            const key = "dsm" + i;
+            if (dsm[key] === "no") missed.push(key);
           }
           if (missed.length > 0) {
-            const topTwo = missed.slice(0, 2).map(k => bpRecommendations[k]).filter(Boolean);
-            if (topTwo.length) {
-              insights.push("Highest-impact improvements: " + topTwo.join(" "));
-            }
+            const topTwo = missed.slice(0, 2).map(k => dsmRecommendations[k]).filter(Boolean);
+            if (topTwo.length) insights.push("Highest-impact improvements: " + topTwo.join(" "));
           } else {
-            insights.push("You checked “Yes” to every best practice. If issues still repeat, the problem is usually spatial (pockets) or timing (transitions) rather than averages.");
+            insights.push("You answered “Yes” to everything. If issues still repeat, the cause is usually hidden pockets or shifting conditions you haven’t mapped yet.");
           }
 
-          // Insight 3: based on obstacle/outcome
-          if (qualifiers.obstacle === "averages_hide_pockets") {
-            insights.push("You called out the core issue: averages pass, pockets fail. A zone-level view is usually the fastest way to stop chasing symptoms.");
-          } else if (qualifiers.obstacle === "dehu_cant_keep_up") {
-            insights.push("If dehu can’t keep up at peak, your “in-spec” periods can be misleading—risk often comes from shorter high-RH windows you don’t see on averages.");
-          } else if (qualifiers.obstacle === "irrigation_spikes") {
-            insights.push("If irrigation creates RH spikes, align irrigation timing + drybacks + dehu strategy so canopy moisture doesn’t accumulate after events.");
-          } else if (qualifiers.obstacle === "airflow_changes_dont_hold") {
-            insights.push("If airflow changes don’t stick, you likely need a repeatable map-and-verify loop: change → measure → confirm → standardize.");
-          } else if (qualifiers.obstacle === "data_untrusted") {
-            insights.push("If you don’t trust the data, every decision becomes guesswork. A short validation pass can restore confidence quickly.");
+          if (qualifiers.obstacle === "avg_wash") {
+            insights.push("You called it: averages hide pockets. A zone-level view is usually the fastest way to make the issue undeniable and fixable.");
+          } else if (qualifiers.obstacle === "no_compare") {
+            insights.push("If runs aren’t comparable, “before/after” claims get shaky. Align to events (lights-off/irrigation) and use a quick comparability check.");
+          } else if (qualifiers.obstacle === "sensor_dispute") {
+            insights.push("If sensors are a constant argument, use quick checks and backup readings so one device can’t stall action.");
+          } else if (qualifiers.obstacle === "changes_cluster") {
+            insights.push("If you change lots of things at once, you lose learning. Make one targeted change and re-measure.");
+          } else if (qualifiers.obstacle === "no_verify") {
+            insights.push("If you don’t re-check after changes, you can’t know it worked. A simple verification pass eliminates false closure.");
           } else {
-            insights.push("Your answers suggest the biggest win comes from converting what’s “felt” into something measurable and repeatable.");
+            insights.push("Your answers suggest the biggest win is turning “felt” problems into measurable, repeatable evidence.");
           }
 
           return insights.slice(0, 3);
         }
 
-        function buildNextSteps({ percent, level }, qualifiers) {
-          // Simple lead qualification heuristic:
+        function buildNextSteps(score, qualifiers) {
+          const { level } = score;
           const solution = qualifiers.solution;
-          const role = qualifiers.role;
+          const obstacle = qualifiers.obstacle;
+          const outcome = qualifiers.outcome;
 
-          const wantsHighTouch = (solution === "done_for_you" || solution === "pilot_zone_map" || solution === "one_on_one");
-          const isDecisionAdjacent = (role === "owner_operator" || role === "ops_gm" || role === "head_grower" || role === "facilities_hvac");
-
-          // Three tiers: hot/warm/cold + solution preference
-          let title = "Next steps";
+          let title = "Recommended next step";
           let text = "";
           let primary = { label: "Explore pilots", href: "/engage/pilot" };
           let secondary = { label: "Live walkthrough", href: "/explore/events#rsvp" };
 
-          if (level === "Hot" && wantsHighTouch && isDecisionAdjacent) {
-            title = "Recommended: 1:1 strategy call";
-            text = "You look like a strong fit for a targeted pilot. The fastest path is a short call to confirm room type, constraints, and what a first “verification pass” should prove.";
-            primary = { label: "Book a pilot conversation", href: "/engage/pilot" };
-            secondary = { label: "See a walkthrough first", href: "/explore/events#rsvp" };
-          } else if (level === "Warm" && wantsHighTouch) {
-            title = "Recommended: guided walkthrough + pilot option";
-            text = "You’ve got good foundations. A walkthrough helps you see how pockets form and what “verify the fix” looks like before committing to a pilot.";
-            primary = { label: "Join a live walkthrough", href: "/explore/events#rsvp" };
+          if (solution === "pilot_pocket_scan") {
+            title = "Quick pocket check (fast diagnosis)";
+            text = "Best when you suspect a problem corner but can’t prove it yet. We help you pin it down with real measurements and a clear plan.";
+            primary = { label: "Explore this option", href: "/engage/pilot" };
+          } else if (solution === "pilot_zone_map") {
+            title = "Full room zone map (spatial proof)";
+            text = "Best when averages look fine but pockets keep biting you. A zone map makes problem areas visible and testable.";
+            primary = { label: "Explore this option", href: "/engage/pilot" };
+          } else if (solution === "pilot_baseline_verify") {
+            title = "Before/after proof loop (baseline + re-check)";
+            text = "Best when you need defensible proof that a change worked. Measure → change → measure again, under comparable conditions.";
+            primary = { label: "Explore this option", href: "/engage/pilot" };
+          } else if (solution === "pilot_drift_control") {
+            title = "Ongoing drift watch (keep it fixed)";
+            text = "Best when you’ve solved problems once and want to keep them solved. Regular check-ins and drift detection prevent backsliding.";
+            primary = { label: "Explore this option", href: "/engage/pilot" };
+          } else if (solution === "training_only") {
+            title = "Training / SOPs only";
+            text = "Best if your bottleneck is consistency across people and shifts. We help your team adopt a repeatable diagnose-and-verify routine.";
+            primary = { label: "See a walkthrough", href: "/explore/events#rsvp" };
             secondary = { label: "Explore pilots", href: "/engage/pilot" };
-          } else if (level === "Cold") {
-            title = "Recommended: get the fundamentals tight first";
-            text = "Start by tightening measurement and repeatability. If you want, we can point you to the highest-impact changes based on your answers—then you can re-take the assessment.";
-            primary = { label: "Explore pilots (when ready)", href: "/engage/pilot" };
-            secondary = { label: "See a walkthrough", href: "/explore/events#rsvp" };
           } else {
-            title = "Recommended: choose the simplest next step";
-            text = "Pick a next step that matches your style (education, software, or pilot). The key is a loop you can repeat: measure → change → verify.";
-            primary = { label: "Explore pilots", href: "/engage/pilot" };
-            secondary = { label: "Live walkthrough", href: "/explore/events#rsvp" };
+            if (level === "Hard to prove") {
+              title = "Start with a quick pocket check";
+              text = "The biggest jump comes from measuring where the plants are and re-checking after changes. That turns arguments into learning.";
+              primary = { label: "Explore options", href: "/engage/pilot" };
+            } else if (obstacle === "avg_wash") {
+              title = "Consider a full zone map";
+              text = "If averages are beating you in meetings, spatial proof is the fastest way to win time back and target fixes.";
+              primary = { label: "Explore options", href: "/engage/pilot" };
+            } else if (outcome === "prove_fix_holds" || obstacle === "no_verify" || obstacle === "changes_cluster") {
+              title = "Do a before/after proof loop";
+              text = "If you need proof a fix holds, the simplest path is: baseline measurement → targeted change → re-measure under similar conditions.";
+              primary = { label: "Explore options", href: "/engage/pilot" };
+            } else {
+              title = "Choose the simplest repeatable next step";
+              text = "Pick a next step you can repeat: pinpoint a problem area, line up to the same moment, make one change, and re-check.";
+              primary = { label: "Explore pilots", href: "/engage/pilot" };
+              secondary = { label: "Live walkthrough", href: "/explore/events#rsvp" };
+            }
           }
 
-          // Return as HTML blocks (keeps page consistent with your existing buttons)
           return `
             <div class="results-cta">
               <h4 class="results-cta__title">${title}</h4>
@@ -848,7 +866,6 @@
         }
 
         async function sendToGetform(payload) {
-          // Honeypot: if filled, treat as success (bot)
           const gotcha = document.getElementById("form-gotcha");
           if (gotcha && gotcha.value) return { ok: true, skipped: true };
 
@@ -869,62 +886,49 @@
         }
 
         function renderResults(score, qualifiers) {
-          // Gauge + labels
           gaugeEl.style.setProperty("--p", String(score.percent));
           setText(resultsPercentEl, `${score.percent}%`);
 
-          // Level display
-          setText(resultsLevelEl, `${score.level} readiness`);
-          if (score.level === "Hot") {
-            setText(resultsHeadlineEl, "Strong foundations");
-            setText(resultsSummaryEl, "You’re doing many best practices. If issues still repeat, focus on finding hidden canopy pockets and verifying fixes.");
-          } else if (score.level === "Warm") {
-            setText(resultsHeadlineEl, "Good base, room to improve");
-            setText(resultsSummaryEl, "You have some fundamentals in place, but gaps likely allow microclimates to persist—especially during transitions.");
+          setText(resultsLevelEl, `${score.level}`);
+          if (score.level === "Evidence-ready") {
+            setText(resultsHeadlineEl, "You can prove what’s happening");
+            setText(resultsSummaryEl, "You’re set up to pinpoint problems, compare fairly, and confirm fixes. Remaining risk is usually hidden pockets or shifting conditions.");
+          } else if (score.level === "Some structure") {
+            setText(resultsHeadlineEl, "Good base, a few missing steps");
+            setText(resultsSummaryEl, "You have parts of a repeatable process, but gaps can let problems survive transitions and meetings.");
           } else {
-            setText(resultsHeadlineEl, "High risk");
-            setText(resultsSummaryEl, "Several best practices are missing. Tighten measurement, repeatability, and verification before expecting consistent late-flower outcomes.");
+            setText(resultsHeadlineEl, "Easy to get stuck in debate");
+            setText(resultsSummaryEl, "Without clear definitions, fair comparisons, and re-checks after changes, problems tend to repeat and decisions default to averages or opinions.");
           }
 
-          // Insights (3)
           const insights = buildInsights(score, qualifiers);
           insightsListEl.innerHTML = insights.map(s => `<li>${s}</li>`).join("");
 
-          // Next steps
           nextStepsEl.innerHTML = buildNextSteps(score, qualifiers);
         }
 
         function collectPayload(score) {
-          const payload = {
-            assessment: "Canopy Microclimate Readiness (15Q)",
+          return {
+            assessment: "Canopy Microclimate Readiness (prove + verify)",
             name: readFormValue("name"),
             email: readFormValue("email"),
             phone: readFormValue("phone"),
-            // Best practices
-            best_practices: score.bp,
-            best_practices_yes_count: score.yesCount,
+
+            // “Prove it / verify it” questions
+            prove_verify: score.dsm,
+            prove_verify_yes_count: score.yesCount,
             readiness_percent: score.percent,
             readiness_level: score.level,
+
             // Qualifiers
             role: readFormValue("role"),
             outcome_90d: readFormValue("outcome"),
             obstacle: readFormValue("obstacle"),
             preferred_solution: readFormValue("solution"),
             notes: readFormValue("notes"),
-            // Metadata
+
             submitted_at: new Date().toISOString(),
             user_agent: navigator.userAgent
-          };
-          return payload;
-        }
-
-        function readQualifiers() {
-          return {
-            role: readFormValue("role"),
-            outcome: readFormValue("outcome"),
-            obstacle: readFormValue("obstacle"),
-            solution: readFormValue("solution"),
-            notes: readFormValue("notes")
           };
         }
 
@@ -942,11 +946,9 @@
         });
 
         btnSubmit.addEventListener("click", async function () {
-          // Validate step 2 fields (including required questions)
           const ok = validateStep(2);
           if (!ok) return;
 
-          // Compute + render results immediately (so the user gets the “dynamic results” right away)
           const score = computeScore();
           const qualifiers = readQualifiers();
 
@@ -955,7 +957,6 @@
 
           try { gtag("event", "assessment_submitted", { score: score.percent, level: score.level }); } catch (e) {}
 
-          // Send lead + answers to Getform (in background)
           const payload = collectPayload(score);
 
           setText(saveStatus, "Saving your answers…");
