@@ -340,6 +340,17 @@
         .results-grid { grid-template-columns: 1fr; }
         .gauge { width: 240px; height: 120px; border-radius: 240px 240px 0 0; }
       }
+.quiz-q__example{
+  margin: 0.5rem 0 0;
+  font-size: 0.86rem;
+  line-height: 1.3rem;
+  color: rgba(0,0,0,0.62);
+}
+.quiz-q__example strong{
+  color: rgba(0,0,0,0.75);
+  font-weight: 600;
+}
+
     </style>
   </head>
 
@@ -423,167 +434,200 @@
                     Answer Yes/No. This checks whether you can pinpoint problem pockets and confirm fixes without relying on guesses.
                   </p>
 
-                  <div class="quiz-grid" style="margin-top: 0.9rem;">
-                    <fieldset class="quiz-q">
-                      <legend>1) When there’s a problem, can you describe it precisely (where, when, how long, what growth stage) instead of “the room feels off”?</legend>
-                      <div class="quiz-q__choices">
-                        <label class="quiz-choice"><input type="radio" name="dsm1" value="yes" required /> Yes</label>
-                        <label class="quiz-choice"><input type="radio" name="dsm1" value="no" required /> No</label>
-                      </div>
-                    </fieldset>
+<div class="quiz-grid" style="margin-top: 0.9rem;">
+  <fieldset class="quiz-q">
+    <legend>1) When there’s a problem, can you describe it precisely (where, when, how long, what growth stage) instead of “the room feels off”?</legend>
+    <div class="quiz-q__choices">
+      <label class="quiz-choice"><input type="radio" name="dsm1" value="yes" required /> Yes</label>
+      <label class="quiz-choice"><input type="radio" name="dsm1" value="no" required /> No</label>
+    </div>
+    <p class="quiz-q__example"><strong>Example:</strong> “Back-right behind Rack 3, first 90 minutes after lights-off, week 6 flower” (not “humidity is weird lately”).</p>
+  </fieldset>
 
-                    <fieldset class="quiz-q">
-                      <legend>2) Do you measure conditions where the plants are (canopy level / multiple spots), not just on a wall sensor?</legend>
-                      <div class="quiz-q__choices">
-                        <label class="quiz-choice"><input type="radio" name="dsm2" value="yes" required /> Yes</label>
-                        <label class="quiz-choice"><input type="radio" name="dsm2" value="no" required /> No</label>
-                      </div>
-                    </fieldset>
+  <fieldset class="quiz-q">
+    <legend>2) Do you measure conditions where the plants are (canopy level / multiple spots), not just on a wall sensor?</legend>
+    <div class="quiz-q__choices">
+      <label class="quiz-choice"><input type="radio" name="dsm2" value="yes" required /> Yes</label>
+      <label class="quiz-choice"><input type="radio" name="dsm2" value="no" required /> No</label>
+    </div>
+    <p class="quiz-q__example"><strong>Example:</strong> Wall sensor reads 56% RH, but inside the canopy at the problem corner reads 70%+ RH right after lights-off.</p>
+  </fieldset>
 
-                    <fieldset class="quiz-q">
-                      <legend>3) Can you line up data to the same moment each day (like “time since lights off” or “after irrigation”) so comparisons are fair?</legend>
-                      <div class="quiz-q__choices">
-                        <label class="quiz-choice"><input type="radio" name="dsm3" value="yes" required /> Yes</label>
-                        <label class="quiz-choice"><input type="radio" name="dsm3" value="no" required /> No</label>
-                      </div>
-                    </fieldset>
+  <fieldset class="quiz-q">
+    <legend>3) Can you line up data to the same moment each day (like “time since lights off” or “after irrigation”) so comparisons are fair?</legend>
+    <div class="quiz-q__choices">
+      <label class="quiz-choice"><input type="radio" name="dsm3" value="yes" required /> Yes</label>
+      <label class="quiz-choice"><input type="radio" name="dsm3" value="no" required /> No</label>
+    </div>
+    <p class="quiz-q__example"><strong>Example:</strong> You compare “30 minutes after lights-off” across days, instead of comparing 9:10pm one day to 10:45pm the next.</p>
+  </fieldset>
 
-                    <fieldset class="quiz-q">
-                      <legend>4) Before comparing “before vs after,” do you check you’re comparing similar conditions (same stage, similar weather load, similar irrigation pattern)?</legend>
-                      <div class="quiz-q__choices">
-                        <label class="quiz-choice"><input type="radio" name="dsm4" value="yes" required /> Yes</label>
-                        <label class="quiz-choice"><input type="radio" name="dsm4" value="no" required /> No</label>
-                      </div>
-                    </fieldset>
+  <fieldset class="quiz-q">
+    <legend>4) Before comparing “before vs after,” do you check you’re comparing similar conditions (same stage, similar weather load, similar irrigation pattern)?</legend>
+    <div class="quiz-q__choices">
+      <label class="quiz-choice"><input type="radio" name="dsm4" value="yes" required /> Yes</label>
+      <label class="quiz-choice"><input type="radio" name="dsm4" value="no" required /> No</label>
+    </div>
+    <p class="quiz-q__example"><strong>Example:</strong> You don’t claim a “fix” if the before-run was a rainy front + heavy irrigation day and the after-run was mild + dry.</p>
+  </fieldset>
 
-                    <fieldset class="quiz-q">
-                      <legend>5) Do you track repeat issues by specific area (corner/rack/zone), so you can say what keeps coming back—and where?</legend>
-                      <div class="quiz-q__choices">
-                        <label class="quiz-choice"><input type="radio" name="dsm5" value="yes" required /> Yes</label>
-                        <label class="quiz-choice"><input type="radio" name="dsm5" value="no" required /> No</label>
-                      </div>
-                    </fieldset>
+  <fieldset class="quiz-q">
+    <legend>5) Do you track repeat issues by specific area (corner/rack/zone), so you can say what keeps coming back—and where?</legend>
+    <div class="quiz-q__choices">
+      <label class="quiz-choice"><input type="radio" name="dsm5" value="yes" required /> Yes</label>
+      <label class="quiz-choice"><input type="radio" name="dsm5" value="no" required /> No</label>
+    </div>
+    <p class="quiz-q__example"><strong>Example:</strong> “Rack 2 east end repeats PM every cycle” instead of “PM pops up sometimes.”</p>
+  </fieldset>
 
-                    <fieldset class="quiz-q">
-                      <legend>6) If a sensor might be wrong, do you handle it with a quick check (or backup measurement) instead of getting stuck in arguments?</legend>
-                      <div class="quiz-q__choices">
-                        <label class="quiz-choice"><input type="radio" name="dsm6" value="yes" required /> Yes</label>
-                        <label class="quiz-choice"><input type="radio" name="dsm6" value="no" required /> No</label>
-                      </div>
-                    </fieldset>
+  <fieldset class="quiz-q">
+    <legend>6) If a sensor might be wrong, do you handle it with a quick check (or backup measurement) instead of getting stuck in arguments?</legend>
+    <div class="quiz-q__choices">
+      <label class="quiz-choice"><input type="radio" name="dsm6" value="yes" required /> Yes</label>
+      <label class="quiz-choice"><input type="radio" name="dsm6" value="no" required /> No</label>
+    </div>
+    <p class="quiz-q__example"><strong>Example:</strong> Someone says “that sensor is lying,” so you do a 2-minute spot check (handheld / backup probe) and move on with a decision.</p>
+  </fieldset>
 
-                    <fieldset class="quiz-q">
-                      <legend>7) When you make changes, do you write down what you changed and what result you expect (so you can tell what actually worked)?</legend>
-                      <div class="quiz-q__choices">
-                        <label class="quiz-choice"><input type="radio" name="dsm7" value="yes" required /> Yes</label>
-                        <label class="quiz-choice"><input type="radio" name="dsm7" value="no" required /> No</label>
-                      </div>
-                    </fieldset>
+  <fieldset class="quiz-q">
+    <legend>7) When you make changes, do you write down what you changed and what result you expect (so you can tell what actually worked)?</legend>
+    <div class="quiz-q__choices">
+      <label class="quiz-choice"><input type="radio" name="dsm7" value="yes" required /> Yes</label>
+      <label class="quiz-choice"><input type="radio" name="dsm7" value="no" required /> No</label>
+    </div>
+    <p class="quiz-q__example"><strong>Example:</strong> “Added fan at Rack 3, expect canopy RH peak after lights-off to drop by ~8–12% in that corner.”</p>
+  </fieldset>
 
-                    <fieldset class="quiz-q">
-                      <legend>8) After changes, do you measure again to confirm the problem moved/cleared (instead of assuming it worked)?</legend>
-                      <div class="quiz-q__choices">
-                        <label class="quiz-choice"><input type="radio" name="dsm8" value="yes" required /> Yes</label>
-                        <label class="quiz-choice"><input type="radio" name="dsm8" value="no" required /> No</label>
-                      </div>
-                    </fieldset>
+  <fieldset class="quiz-q">
+    <legend>8) After changes, do you measure again to confirm the problem moved/cleared (instead of assuming it worked)?</legend>
+    <div class="quiz-q__choices">
+      <label class="quiz-choice"><input type="radio" name="dsm8" value="yes" required /> Yes</label>
+      <label class="quiz-choice"><input type="radio" name="dsm8" value="no" required /> No</label>
+    </div>
+    <p class="quiz-q__example"><strong>Example:</strong> You re-check the same corner at the same time window the next day, rather than trusting that “it should be better now.”</p>
+  </fieldset>
 
-                    <fieldset class="quiz-q">
-                      <legend>9) Could you show someone your evidence two weeks later (notes + data + before/after) and have it still make sense?</legend>
-                      <div class="quiz-q__choices">
-                        <label class="quiz-choice"><input type="radio" name="dsm9" value="yes" required /> Yes</label>
-                        <label class="quiz-choice"><input type="radio" name="dsm9" value="no" required /> No</label>
-                      </div>
-                    </fieldset>
+  <fieldset class="quiz-q">
+    <legend>9) Could you show someone your evidence two weeks later (notes + data + before/after) and have it still make sense?</legend>
+    <div class="quiz-q__choices">
+      <label class="quiz-choice"><input type="radio" name="dsm9" value="yes" required /> Yes</label>
+      <label class="quiz-choice"><input type="radio" name="dsm9" value="no" required /> No</label>
+    </div>
+    <p class="quiz-q__example"><strong>Example:</strong> A new shift lead can open the record and understand what happened, what changed, and what improved—without needing the original storyteller.</p>
+  </fieldset>
 
-                    <fieldset class="quiz-q">
-                      <legend>10) If you don’t have enough evidence yet, is it acceptable to say “not sure yet” and take a clear next measurement step?</legend>
-                      <div class="quiz-q__choices">
-                        <label class="quiz-choice"><input type="radio" name="dsm10" value="yes" required /> Yes</label>
-                        <label class="quiz-choice"><input type="radio" name="dsm10" value="no" required /> No</label>
-                      </div>
-                    </fieldset>
-                  </div>
+  <fieldset class="quiz-q">
+    <legend>10) If you don’t have enough evidence yet, is it acceptable to say “not sure yet” and take a clear next measurement step?</legend>
+    <div class="quiz-q__choices">
+      <label class="quiz-choice"><input type="radio" name="dsm10" value="yes" required /> Yes</label>
+      <label class="quiz-choice"><input type="radio" name="dsm10" value="no" required /> No</label>
+    </div>
+    <p class="quiz-q__example"><strong>Example:</strong> “We don’t know yet — tomorrow we’ll measure 0–120 min after lights-off in Zones A/B/C and decide based on that.”</p>
+  </fieldset>
+</div>
+
                 </div>
 
-                <div class="quiz-card">
-                  <h2 class="quiz-section__title">Qualification (5 questions)</h2>
-                  <p class="quiz-section__text">
-                    These help tailor your results and recommend the best next step.
-                  </p>
+<div class="quiz-card">
+  <h2 class="quiz-section__title">Qualification (5 questions)</h2>
+  <p class="quiz-section__text">
+    These help tailor your results and recommend the best next step.
+  </p>
 
-                  <div class="quiz-field">
-                    <label class="quiz-label" for="role">11) What best describes your role? <span aria-hidden="true">*</span></label>
-                    <select class="quiz-select" id="role" name="role" required>
-                      <option value="" selected disabled>Select one…</option>
-                      <option value="owner_operator">Owner / Operator</option>
-                      <option value="head_grower">Head Grower / Cultivation Lead</option>
-                      <option value="facilities_hvac">Facilities / HVAC / Engineering</option>
-                      <option value="ops_gm">Operations / GM</option>
-                      <option value="consultant_integrator">Consultant / Integrator</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
+  <div class="quiz-field">
+    <label class="quiz-label" for="role">11) What best describes your role? <span aria-hidden="true">*</span></label>
+    <select class="quiz-select" id="role" name="role" required>
+      <option value="" selected disabled>Select one…</option>
+      <option value="owner_operator">Owner / Operator</option>
+      <option value="head_grower">Head Grower / Cultivation Lead</option>
+      <option value="facilities_hvac">Facilities / HVAC / Engineering</option>
+      <option value="ops_gm">Operations / GM</option>
+      <option value="consultant_integrator">Consultant / Integrator</option>
+      <option value="other">Other</option>
+    </select>
+    <p class="quiz-q__example">
+      <strong>Example:</strong> If you’re the person who decides budget + priorities, pick <em>Owner/Operator</em>.
+      If you run the rooms day-to-day and own yield/quality outcomes, pick <em>Head Grower</em>.
+    </p>
+  </div>
 
-                  <div class="quiz-field">
-                    <label class="quiz-label" for="outcome">12) What outcome matters most in the next 90 days? <span aria-hidden="true">*</span></label>
-                    <select class="quiz-select" id="outcome" name="outcome" required>
-                      <option value="" selected disabled>Select one…</option>
-                      <option value="stop_repeat_problem">Stop a repeat pocket / recurring corner problem</option>
-                      <option value="prove_fix_holds">Prove a fix holds (defensible before/after)</option>
-                      <option value="handoff_confidence">Cross-shift / cross-team handoff confidence</option>
-                      <option value="reduce_theater">Reduce meeting arguments (“dashboard says green”)</option>
-                      <option value="audit_ready">Be audit/QA ready (traceable notes + evidence)</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
+  <div class="quiz-field">
+    <label class="quiz-label" for="outcome">12) What outcome matters most in the next 90 days? <span aria-hidden="true">*</span></label>
+    <select class="quiz-select" id="outcome" name="outcome" required>
+      <option value="" selected disabled>Select one…</option>
+      <option value="stop_repeat_problem">Stop a repeat pocket / recurring corner problem</option>
+      <option value="prove_fix_holds">Prove a fix holds (defensible before/after)</option>
+      <option value="handoff_confidence">Cross-shift / cross-team handoff confidence</option>
+      <option value="reduce_theater">Reduce meeting arguments (“dashboard says green”)</option>
+      <option value="audit_ready">Be audit/QA ready (traceable notes + evidence)</option>
+      <option value="other">Other</option>
+    </select>
+    <p class="quiz-q__example">
+      <strong>Example:</strong> If PM/Botrytis keeps reappearing in the same corner, choose <em>Stop a repeat pocket</em>.
+      If you’re about to spend money on changes and need proof it worked, choose <em>Prove a fix holds</em>.
+    </p>
+  </div>
 
-                  <div class="quiz-field">
-                    <label class="quiz-label" for="obstacle">13) What’s the biggest friction today? <span aria-hidden="true">*</span></label>
-                    <select class="quiz-select" id="obstacle" name="obstacle" required>
-                      <option value="" selected disabled>Select one…</option>
-                      <option value="avg_wash">Averages hide pockets (can’t “prove where”)</option>
-                      <option value="no_compare">Hard to compare runs honestly (stage/season drift)</option>
-                      <option value="sensor_dispute">Sensor distrust causes decision paralysis</option>
-                      <option value="changes_cluster">We change too many things at once (no learning)</option>
-                      <option value="no_verify">We don’t re-check after changes</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
+  <div class="quiz-field">
+    <label class="quiz-label" for="obstacle">13) What’s the biggest friction today? <span aria-hidden="true">*</span></label>
+    <select class="quiz-select" id="obstacle" name="obstacle" required>
+      <option value="" selected disabled>Select one…</option>
+      <option value="avg_wash">Averages hide pockets (can’t “prove where”)</option>
+      <option value="no_compare">Hard to compare runs honestly (stage/season drift)</option>
+      <option value="sensor_dispute">Sensor distrust causes decision paralysis</option>
+      <option value="changes_cluster">We change too many things at once (no learning)</option>
+      <option value="no_verify">We don’t re-check after changes</option>
+      <option value="other">Other</option>
+    </select>
+    <p class="quiz-q__example">
+      <strong>Example:</strong> If the wall sensor reads “green” but your canopy corner feels like a wet basement, that’s <em>Averages hide pockets</em>.
+      If everyone argues “the sensor is wrong” and nothing gets decided, that’s <em>Sensor distrust</em>.
+    </p>
+  </div>
 
-                  <div class="quiz-field">
-                    <label class="quiz-label" for="solution">14) Which next step fits you best? <span aria-hidden="true">*</span></label>
-                    <select class="quiz-select" id="solution" name="solution" required>
-                      <option value="" selected disabled>Select one…</option>
-                      <option value="pilot_pocket_scan">Quick pocket check (fast diagnosis)</option>
-                      <option value="pilot_zone_map">Full room “zone map” (spatial proof)</option>
-                      <option value="pilot_baseline_verify">Before/after proof loop (baseline + re-check)</option>
-                      <option value="pilot_drift_control">Ongoing drift watch (keep it fixed)</option>
-                      <option value="training_only">Training / SOPs only</option>
-                    </select>
-                  </div>
+  <div class="quiz-field">
+    <label class="quiz-label" for="solution">14) Which next step fits you best? <span aria-hidden="true">*</span></label>
+    <select class="quiz-select" id="solution" name="solution" required>
+      <option value="" selected disabled>Select one…</option>
+      <option value="pilot_pocket_scan">Quick pocket check (fast diagnosis)</option>
+      <option value="pilot_zone_map">Full room “zone map” (spatial proof)</option>
+      <option value="pilot_baseline_verify">Before/after proof loop (baseline + re-check)</option>
+      <option value="pilot_drift_control">Ongoing drift watch (keep it fixed)</option>
+      <option value="training_only">Training / SOPs only</option>
+    </select>
+    <p class="quiz-q__example">
+      <strong>Example:</strong> If you already suspect one problem corner and want fast confirmation, pick <em>Quick pocket check</em>.
+      If the room is “fine on average” but issues pop up in different spots, pick <em>Full zone map</em>.
+      If you’re about to change airflow/dehu and need proof, pick <em>Before/after proof loop</em>.
+    </p>
+  </div>
 
-                  <div class="quiz-field">
-                    <label class="quiz-label" for="notes">15) Anything else we should know? (optional)</label>
-                    <textarea
-                      class="quiz-textarea"
-                      id="notes"
-                      name="notes"
-                      placeholder="Rooms, repeat corner, trigger (lights-off/irrigation), constraints, timeline, who has to sign off, etc."
-                    ></textarea>
-                  </div>
+  <div class="quiz-field">
+    <label class="quiz-label" for="notes">15) Anything else we should know? (optional)</label>
+    <textarea
+      class="quiz-textarea"
+      id="notes"
+      name="notes"
+      placeholder="Rooms, repeat corner, trigger (lights-off/irrigation), constraints, timeline, who has to sign off, etc."
+    ></textarea>
+    <p class="quiz-q__example">
+      <strong>Example:</strong> “Room 3, back-right behind Rack 3 repeats after lights-off; late flower; can’t move racks;
+      HVAC vendor says airflow is fine; need something defensible for the owner by next harvest.”
+    </p>
+  </div>
 
-                  <div class="quiz-actions">
-                    <button class="button button--secondary" type="button" id="btn-back-to-step-1">
-                      Back
-                    </button>
-                    <button class="button button--primary" type="button" id="btn-submit">
-                      See my results
-                    </button>
-                  </div>
+  <div class="quiz-actions">
+    <button class="button button--secondary" type="button" id="btn-back-to-step-1">
+      Back
+    </button>
+    <button class="button button--primary" type="button" id="btn-submit">
+      See my results
+    </button>
+  </div>
 
-                  <p class="status-line" id="save-status" aria-live="polite"></p>
-                </div>
+  <p class="status-line" id="save-status" aria-live="polite"></p>
+</div>
+
               </div>
             </section>
 

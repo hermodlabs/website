@@ -17,7 +17,7 @@
     <title>HermodLabs — Business Model</title>
     <meta
       name="description"
-      content="How HermodLabs grows: paid proof pilots that convert into recurring monitoring, then expand across rooms and sites with audit-grade receipts and a maintained operating standard."
+      content="How HermodLabs grows: paid proof engagements that convert into recurring monitoring, then expand across rooms and sites with audit-grade receipts and a maintained operating standard."
     />
 
     <link
@@ -36,248 +36,599 @@
     <!-- depth: /engage/invest/business-model/ -->
     <script type="module" src="../../../bootstrap.js"></script>
 
-    <!-- Reuse the invest/research layout styles for consistency (but this page is NOT a research report) -->
-    <link rel="stylesheet" href="/engage/invest/research/research-detail.css" />
-
     <style>
-      /* Small, lightweight layout helpers (kept minimal so you don’t need new CSS files) */
-      .bm-kicker { margin-top: 0.25rem; color: var(--muted, #6b7280); }
-      .bm-callout {
-        position: relative;
-        padding-left: 1.1rem;
+      /* =========================================================
+         Business Model — semantic layout + duplicated site rhythm
+         No reuse of pilots__* or research-detail__*
+         ========================================================= */
+
+      /* ---------- Layout rhythm (duplicated from site feel) ---------- */
+      .bm-page {
+        /* keep minimal: rely on site-page global background/body */
       }
-      .bm-callout::before {
+
+      .bm-page__inner {
+        max-width: 1120px;          /* matches typical “detail page” inner width */
+        margin: 0 auto;
+        padding: 36px 20px 56px;    /* consistent vertical rhythm */
+      }
+
+      @media (max-width: 700px) {
+        .bm-page__inner {
+          padding: 28px 16px 48px;
+        }
+      }
+
+      .bm-header {
+        padding-bottom: 10px;
+      }
+
+      .bm-section {
+        padding-top: 22px;          /* section spacing rhythm */
+      }
+
+      .bm-section + .bm-section {
+        padding-top: 26px;
+      }
+
+      /* ---------- Typography rhythm ---------- */
+      .bm-title {
+        margin: 0;
+        font-size: 2.15rem;
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+      }
+
+      .bm-subtitle {
+        display: block;
+        margin-top: 6px;
+        font-size: 1.05rem;
+        line-height: 1.35;
+        color: #6b7280;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+
+      .bm-lede {
+        margin: 12px 0 0;
+        font-size: 1.05rem;
+        line-height: 1.45;
+        max-width: 80ch;
+        color: #111827;
+      }
+
+      .bm-kicker {
+        margin: 10px 0 0;
+        color: #6b7280;
+        font-size: 0.95rem;
+        max-width: 90ch;
+      }
+
+      .bm-text {
+        margin: 10px 0 0;
+        color: #3b4654;
+        line-height: 1.55;
+        max-width: 80ch;
+      }
+
+      .bm-heading {
+        margin: 0;
+        font-size: 1.35rem;
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+      }
+
+      .bm-heading + .bm-text {
+        margin-top: 10px;
+      }
+
+      /* ---------- Back link ---------- */
+      .bm-back {
+        display: inline-flex;
+        gap: 0.5rem;
+        align-items: center;
+        margin-bottom: 12px;
+        text-decoration: none;
+        color: #6b7280;
+      }
+      .bm-back:hover { color: #111827; }
+
+      /* ---------- Notes / callouts ---------- */
+      .bm-note {
+        position: relative;
+        border: 1px solid #e6eaf0;
+        border-radius: 14px;
+        background: #fff;
+        padding: 12px 14px 12px 18px;
+        margin-top: 12px;
+        box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04);
+      }
+      .bm-note::before {
         content: "";
         position: absolute;
-        left: 0;
-        top: 0.2rem;
-        bottom: 0.2rem;
+        left: 10px;
+        top: 12px;
+        bottom: 12px;
         width: 4px;
         border-radius: 999px;
         background: #0b6ef3;
+        opacity: 0.95;
       }
-      .bm-grid-3 {
+      .bm-note--teal::before { background: #14b8a6; }
+
+      .bm-fineprint {
+        margin: 0;
+        color: #6b7280;
+        font-size: 0.92rem;
+        line-height: 1.45;
+      }
+
+      /* ---------- Card grids ---------- */
+      .bm-card-grid {
         display: grid;
-        gap: 1rem;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 12px;
       }
+      .bm-card-grid--three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .bm-card-grid--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
       @media (max-width: 900px) {
-        .bm-grid-3 { grid-template-columns: 1fr; }
+        .bm-card-grid--three,
+        .bm-card-grid--two { grid-template-columns: 1fr; }
       }
+
       .bm-card {
         border: 1px solid #e6eaf0;
         border-radius: 14px;
-        padding: 1rem;
+        background: #fff;
+        padding: 14px 14px 12px;
+        box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04);
+      }
+
+      .bm-card__kicker {
+        display: inline-flex;
+        gap: 0.5rem;
+        align-items: center;
+        color: #6b7280;
+        font-size: 0.9rem;
+        margin: 0 0 8px 0;
+      }
+
+      .bm-card__title {
+        margin: 0 0 6px 0;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+        line-height: 1.2;
+      }
+
+      .bm-card__text {
+        margin: 0;
+        color: #3b4654;
+        line-height: 1.45;
+      }
+
+      @media (hover: hover) {
+        .bm-card:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04), 0 10px 24px rgba(17, 24, 39, 0.08);
+          transition: box-shadow 160ms ease, transform 160ms ease;
+        }
+      }
+
+      /* ---------- Tiles ---------- */
+      .bm-tile-grid {
+        display: grid;
+        gap: 12px;
+        margin-top: 12px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      @media (max-width: 900px) { .bm-tile-grid { grid-template-columns: 1fr; } }
+      @media (min-width: 1100px) { .bm-tile-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+      .bm-tile {
+        border: 1px solid #e6eaf0;
+        border-radius: 14px;
+        background: #fff;
+        padding: 12px 12px 11px;
+        box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04);
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+      }
+
+      .bm-tile__icon {
+        flex: 0 0 auto;
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        border: 1px solid #e6eaf0;
+        display: grid;
+        place-items: center;
+        color: #3b4654;
+        background: #fff;
+        margin-top: 1px;
+      }
+
+      .bm-tile__title {
+        margin: 0;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+        line-height: 1.2;
+      }
+
+      .bm-tile__text {
+        margin: 4px 0 0;
+        color: #3b4654;
+        line-height: 1.35;
+        font-size: 0.95rem;
+      }
+
+      @media (hover: hover) {
+        .bm-tile:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04), 0 10px 24px rgba(17, 24, 39, 0.08);
+          transition: box-shadow 160ms ease, transform 160ms ease;
+        }
+      }
+
+      /* ---------- Lists ---------- */
+      .bm-list {
+        margin: 10px 0 0;
+        padding-left: 1.2em;
+        color: #3b4654;
+        line-height: 1.55;
+      }
+      .bm-list li { margin-top: 6px; }
+      .bm-list li:first-child { margin-top: 0; }
+
+      /* ---------- FAQ accordion ---------- */
+      .bm-faq {
+        margin-top: 12px;
+      }
+      .bm-faq__list {
+        display: grid;
+        gap: 14px;
+        margin-top: 12px;
+      }
+
+      .bm-faq__item {
+        border: 1px solid #e6eaf0;
+        border-radius: 14px;
+        background: #fff;
+        box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04);
+        overflow: hidden;
+      }
+
+      .bm-faq__item > summary {
+        list-style: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px 14px 12px;
+      }
+      .bm-faq__item > summary::-webkit-details-marker { display: none; }
+
+      .bm-faq__q {
+        margin: 0;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+      }
+
+      .bm-faq__badge {
+        flex: 0 0 auto;
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        border: 1px solid #e6eaf0;
+        display: grid;
+        place-items: center;
+        color: #3b4654;
         background: #fff;
       }
-      .bm-card__title {
-        margin: 0 0 0.35rem 0;
-        font-weight: 700;
+
+      .bm-faq__caret {
+        flex: 0 0 auto;
+        color: #6b7280;
+        transition: transform 160ms ease;
       }
-      .bm-mini {
-        font-size: 0.95rem;
+      .bm-faq__item[open] .bm-faq__caret { transform: rotate(180deg); }
+
+      .bm-faq__answer {
+        padding: 0 14px 14px;
         color: #3b4654;
-        margin: 0;
+      }
+      .bm-faq__answer p { margin: 10px 0 0; }
+      .bm-faq__answer p:first-child { margin-top: 0; }
+
+      .bm-faq__item > summary:focus-visible {
+        outline: 2px solid rgba(11, 110, 243, 0.6);
+        outline-offset: 3px;
+        border-radius: 14px;
       }
     </style>
   </head>
 
   <body>
     <site-page>
-      <section class="research-detail" aria-labelledby="bm-title">
-        <div class="research-detail__inner">
-          <header class="research-detail__header">
-            <a class="link link--muted research-detail__back" href="/engage/invest/research/">
-              <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-              Back to Market Research
-            </a>
+      <section class="bm-page" aria-labelledby="bm-title">
+        <div class="bm-page__inner">
+          <header class="bm-header">
 
-            <h1 class="research-detail__title" id="bm-title">
+            <h1 class="bm-title" id="bm-title">
               Business Model
-              <span class="research-detail__subtitle">Land with proof. Expand with standards.</span>
+              <span class="bm-subtitle">Land with proof. Expand with standards.</span>
             </h1>
 
-            <p class="research-detail__lede">
+            <p class="bm-lede">
               HermodLabs sells <strong>measurable environmental truth</strong> in places where “the room average” hides the real risk.
-              We start with <strong>paid proof pilots</strong>, convert wins into <strong>recurring monitoring</strong>, then expand across rooms and sites
+              We start with <strong>paid proof engagements</strong>, convert wins into <strong>recurring monitoring</strong>, then expand across rooms and sites
               by turning what works into a maintained operating standard.
             </p>
 
             <p class="bm-kicker">
-              This page is a quick model overview (not a report). If you want the deeper market logic, start in Market Research.
+              Quick model overview (not a report). For deeper market logic, start in Market Research.
             </p>
 
-            <!-- One-screen summary cards -->
-            <div class="research-detail__panel bm-callout" role="note" aria-label="Business model one-screen summary">
-              <div class="bm-grid-3" role="list">
-                <div class="bm-card" role="listitem">
-                  <h2 class="bm-card__title">The problem</h2>
-                  <p class="bm-mini">
-                    Energy cost, quality loss, and compliance risk are driven by <strong>microclimates</strong>—but most sensing is sparse and averages away
-                    worst-case pockets.
-                  </p>
-                </div>
-                <div class="bm-card" role="listitem">
-                  <h2 class="bm-card__title">What we sell</h2>
-                  <p class="bm-mini">
-                    <strong>Proof-shaped outputs:</strong> verification, drift detection, and audit-ready receipts that operators and QA can defend
-                    without “trust me.”
-                  </p>
-                </div>
-                <div class="bm-card" role="listitem">
-                  <h2 class="bm-card__title">How we grow</h2>
-                  <p class="bm-mini">
-                    <strong>Pilot → subscription → expansion</strong>. Each step increases stickiness because it becomes part of SOPs, logs, and change control.
-                  </p>
-                </div>
+            <div class="bm-card-grid bm-card-grid--three" aria-label="Business model quick overview cards">
+              <div class="bm-card">
+                <p class="bm-card__kicker">
+                  <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+                  The problem
+                </p>
+                <h3 class="bm-card__title">Averages hide worst-case pockets</h3>
+                <p class="bm-card__text">
+                  Energy cost, quality loss, and compliance risk are driven by <strong>microclimates</strong>—but most sensing is sparse and averages away
+                  worst-case zones.
+                </p>
               </div>
+
+              <div class="bm-card">
+                <p class="bm-card__kicker">
+                  <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                  What we sell
+                </p>
+                <h3 class="bm-card__title">Proof-shaped outputs</h3>
+                <p class="bm-card__text">
+                  Verification, drift detection, and audit-ready receipts that operators and QA can defend
+                  without “trust me.”
+                </p>
+              </div>
+
+              <div class="bm-card">
+                <p class="bm-card__kicker">
+                  <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+                  How we grow
+                </p>
+                <h3 class="bm-card__title">Engagement → subscription → expansion</h3>
+                <p class="bm-card__text">
+                  Each step increases stickiness because it becomes part of SOPs, logs, and change control.
+                </p>
+              </div>
+            </div>
+
+            <div class="bm-note" role="note" aria-label="Business model framing note">
+              <p class="bm-fineprint">
+                The core idea: we don’t sell “more charts.” We sell <strong>defensible conclusions</strong> and the
+                <strong>operating standard</strong> that keeps them true as rooms drift, seasons change, and teams turn over.
+              </p>
             </div>
           </header>
 
-          <!-- =========================================================
-               WHAT WE CHARGE FOR
-               ========================================================= -->
-          <section class="research-detail__section" id="revenue" aria-labelledby="s-revenue">
-            <h2 class="research-detail__heading" id="s-revenue">How we make money</h2>
+          <section class="bm-section" id="revenue" aria-labelledby="revenue-title">
+            <h2 class="bm-heading" id="revenue-title">How we make money</h2>
 
-            <div class="research-detail__panel">
-              <p class="research-detail__text">
-                Our pricing aligns to what operators already pay for in practice: diagnosing problems fast, proving fixes, and maintaining control over time.
-              </p>
+            <p class="bm-text">
+              Our pricing aligns to what operators already pay for in practice: diagnosing problems fast, proving fixes, and maintaining control over time.
+            </p>
 
-              <table class="research-detail__table research-detail__table--compact" aria-label="Revenue streams">
-                <thead>
-                  <tr>
-                    <th>Revenue stream</th>
-                    <th>What the buyer gets</th>
-                    <th>Why it converts / sticks</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><strong>Paid pilots (fixed-scope)</strong></td>
-                    <td>Time-bounded proof project with acceptance criteria and evidence packages</td>
-                    <td>Fast decision support; low-regret entry vs “platform procurement”</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Monitoring subscription</strong></td>
-                    <td>Ongoing verification, drift/change history, validity uptime, receipts</td>
-                    <td>Becomes SOP infrastructure; reduces “regression tax”</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Expansion (rooms / sites)</strong></td>
-                    <td>Rollout based on templates + repeatable commissioning + shared standards</td>
-                    <td>Once standards exist, expansion is the rational next purchase</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Operator enablement (optional)</strong></td>
-                    <td>SOP updates, training artifacts, maintained operating standard</td>
-                    <td>Institutional memory survives turnover; reduces re-learning</td>
-                  </tr>
-                </tbody>
-              </table>
-
-              <p class="research-detail__fineprint">
-                Outcomes depend on facility conditions and execution. We structure work around pass/fail acceptance criteria to keep conclusions defensible.
-              </p>
-            </div>
-          </section>
-
-          <!-- =========================================================
-               WHY NOW
-               ========================================================= -->
-          <section class="research-detail__section" id="why-now" aria-labelledby="s-why-now">
-            <h2 class="research-detail__heading" id="s-why-now">Why now</h2>
-
-            <div class="research-detail__panel">
-              <ul class="research-detail__bullets">
-                <li><strong>Energy + opex pressure:</strong> “blind control loops” are expensive when climate control is a dominant load.</li>
-                <li><strong>Quality + microbial risk:</strong> worst-case pockets drive outcomes more than averages.</li>
-                <li><strong>Auditability pull:</strong> higher-standard pathways reward continuity, logs, and defensible narratives.</li>
-                <li><strong>Scaling reality:</strong> staff changes, equipment swaps, and seasons create drift unless you actively verify.</li>
-              </ul>
-
-              <p class="research-detail__text">
-                When the pain is persistent and expensive, buyers don’t want more charts — they want <strong>proof</strong> and a <strong>standard that holds</strong>.
-              </p>
-            </div>
-          </section>
-
-          <!-- =========================================================
-               SALES MOTION
-               ========================================================= -->
-          <section class="research-detail__section" id="motion" aria-labelledby="s-motion">
-            <h2 class="research-detail__heading" id="s-motion">The sales motion</h2>
-
-            <div class="research-detail__panel">
-              <p class="research-detail__text">
-                We don’t ask a facility to “believe” a platform. We earn adoption with a sequence that matches how decisions are made on the ground.
-              </p>
-
-              <ol class="research-detail__bullets" style="list-style: decimal; padding-left: 1.2em;">
-                <li><strong>Start with a trigger:</strong> energy pain, mold incident, compliance readiness, or expansion commissioning.</li>
-                <li><strong>Run a pilot with acceptance criteria:</strong> prove what’s real, where it is, what drives it, and whether a fix holds.</li>
-                <li><strong>Convert to monitoring:</strong> make verification recurring; track drift and change history; keep receipts.</li>
-                <li><strong>Expand:</strong> apply templates across rooms/sites; standardize commissioning and reporting.</li>
-              </ol>
-            </div>
-          </section>
-
-          <!-- =========================================================
-               WHY THIS SCALES
-               ========================================================= -->
-          <section class="research-detail__section" id="scale" aria-labelledby="s-scale">
-            <h2 class="research-detail__heading" id="s-scale">Why this scales (and becomes hard to replace)</h2>
-
-            <div class="research-detail__panel">
-              <div class="bm-grid-3" role="list" aria-label="Defensibility factors">
-                <div class="bm-card" role="listitem">
-                  <h3 class="bm-card__title">Workflow lock-in</h3>
-                  <p class="bm-mini">
-                    Once validity gating, receipts, and verification cadence become part of SOPs and QA reviews, churn becomes operationally painful.
+            <div class="bm-tile-grid" aria-label="Revenue streams tiles">
+              <div class="bm-tile">
+                <div class="bm-tile__icon" aria-hidden="true"><i class="fa-solid fa-clipboard-check"></i></div>
+                <div>
+                  <h3 class="bm-tile__title">Paid proof engagements (fixed-scope)</h3>
+                  <p class="bm-tile__text">
+                    Time-bounded proof work with acceptance criteria and an evidence package.
+                    <span style="color:#6b7280;">Decision-friendly entry vs “platform procurement.”</span>
                   </p>
                 </div>
+              </div>
 
-                <div class="bm-card" role="listitem">
-                  <h3 class="bm-card__title">Proof-shaped artifacts</h3>
-                  <p class="bm-mini">
-                    Evidence packs, change history, and “safe-to-interpret” windows reduce internal arguments and survive skeptical review.
+              <div class="bm-tile">
+                <div class="bm-tile__icon" aria-hidden="true"><i class="fa-solid fa-rotate"></i></div>
+                <div>
+                  <h3 class="bm-tile__title">Monitoring subscription</h3>
+                  <p class="bm-tile__text">
+                    Ongoing verification, drift/change history, validity uptime, and receipts.
+                    <span style="color:#6b7280;">Becomes SOP infrastructure; reduces “regression tax.”</span>
                   </p>
                 </div>
+              </div>
 
-                <div class="bm-card" role="listitem">
-                  <h3 class="bm-card__title">Expansion is natural</h3>
-                  <p class="bm-mini">
-                    When pockets are spatial and room-specific, multi-room and multi-site rollout is the next rational step after proof.
+              <div class="bm-tile">
+                <div class="bm-tile__icon" aria-hidden="true"><i class="fa-solid fa-layer-group"></i></div>
+                <div>
+                  <h3 class="bm-tile__title">Expansion (rooms / sites)</h3>
+                  <p class="bm-tile__text">
+                    Rollout based on templates + repeatable commissioning + shared standards.
+                    <span style="color:#6b7280;">Once standards exist, expansion is the rational next purchase.</span>
                   </p>
+                </div>
+              </div>
+
+              <div class="bm-tile">
+                <div class="bm-tile__icon" aria-hidden="true"><i class="fa-solid fa-users-gear"></i></div>
+                <div>
+                  <h3 class="bm-tile__title">Operator enablement (optional)</h3>
+                  <p class="bm-tile__text">
+                    SOP updates, training artifacts, and a maintained operating standard.
+                    <span style="color:#6b7280;">Institutional memory survives turnover; reduces re-learning.</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bm-note bm-note--teal" role="note" aria-label="Outcomes and acceptance criteria note">
+              <p class="bm-fineprint">
+                Outcomes depend on facility conditions and execution. We structure work around pass/fail acceptance criteria so conclusions stay defensible.
+              </p>
+            </div>
+          </section>
+
+          <section class="bm-section" id="why-now" aria-labelledby="why-now-title">
+            <h2 class="bm-heading" id="why-now-title">Why now</h2>
+
+            <div class="bm-tile-grid" aria-label="Why now tiles">
+              <div class="bm-tile">
+                <div class="bm-tile__icon" aria-hidden="true"><i class="fa-solid fa-bolt"></i></div>
+                <div>
+                  <h3 class="bm-tile__title">Energy + opex pressure</h3>
+                  <p class="bm-tile__text">“Blind control loops” are expensive when climate control is a dominant load.</p>
+                </div>
+              </div>
+
+              <div class="bm-tile">
+                <div class="bm-tile__icon" aria-hidden="true"><i class="fa-solid fa-biohazard"></i></div>
+                <div>
+                  <h3 class="bm-tile__title">Quality + microbial risk</h3>
+                  <p class="bm-tile__text">Worst-case pockets drive outcomes more than averages.</p>
+                </div>
+              </div>
+
+              <div class="bm-tile">
+                <div class="bm-tile__icon" aria-hidden="true"><i class="fa-solid fa-file-shield"></i></div>
+                <div>
+                  <h3 class="bm-tile__title">Auditability pull</h3>
+                  <p class="bm-tile__text">Higher-standard pathways reward continuity, logs, and defensible narratives.</p>
+                </div>
+              </div>
+
+              <div class="bm-tile">
+                <div class="bm-tile__icon" aria-hidden="true"><i class="fa-solid fa-arrows-rotate"></i></div>
+                <div>
+                  <h3 class="bm-tile__title">Scaling reality</h3>
+                  <p class="bm-tile__text">Staff changes, equipment swaps, and seasons create drift unless you actively verify.</p>
+                </div>
+              </div>
+            </div>
+
+            <p class="bm-text" style="margin-top: 10px;">
+              When the pain is persistent and expensive, buyers don’t want more charts — they want <strong>proof</strong> and a <strong>standard that holds</strong>.
+            </p>
+          </section>
+
+          <section class="bm-section" id="motion" aria-labelledby="motion-title">
+            <h2 class="bm-heading" id="motion-title">The sales motion</h2>
+
+            <p class="bm-text">
+              We don’t ask a facility to “believe” a platform. We earn adoption with a sequence that matches how decisions are made on the ground.
+            </p>
+
+            <div class="bm-tile-grid" aria-label="Sales motion tiles">
+              <div class="bm-tile">
+                <div class="bm-tile__icon" aria-hidden="true"><span style="font-weight:800;">1</span></div>
+                <div>
+                  <h3 class="bm-tile__title">Start with a trigger</h3>
+                  <p class="bm-tile__text">Energy pain, mold incident, compliance readiness, or expansion commissioning.</p>
+                </div>
+              </div>
+
+              <div class="bm-tile">
+                <div class="bm-tile__icon" aria-hidden="true"><span style="font-weight:800;">2</span></div>
+                <div>
+                  <h3 class="bm-tile__title">Run a proof engagement</h3>
+                  <p class="bm-tile__text">Prove what’s real, where it is, what drives it, and whether a fix holds.</p>
+                </div>
+              </div>
+
+              <div class="bm-tile">
+                <div class="bm-tile__icon" aria-hidden="true"><span style="font-weight:800;">3</span></div>
+                <div>
+                  <h3 class="bm-tile__title">Convert to monitoring</h3>
+                  <p class="bm-tile__text">Make verification recurring; track drift and change history; keep receipts.</p>
+                </div>
+              </div>
+
+              <div class="bm-tile">
+                <div class="bm-tile__icon" aria-hidden="true"><span style="font-weight:800;">4</span></div>
+                <div>
+                  <h3 class="bm-tile__title">Expand</h3>
+                  <p class="bm-tile__text">Apply templates across rooms/sites; standardize commissioning and reporting.</p>
                 </div>
               </div>
             </div>
           </section>
 
-          <!-- =========================================================
-               MILESTONES (INVESTOR FRIENDLY)
-               ========================================================= -->
-          <section class="research-detail__section" id="milestones" aria-labelledby="s-milestones">
-            <h2 class="research-detail__heading" id="s-milestones">What we track</h2>
+          <section class="bm-section" id="scale" aria-labelledby="scale-title">
+            <h2 class="bm-heading" id="scale-title">Why this scales (and becomes hard to replace)</h2>
 
-            <div class="research-detail__panel">
-              <p class="research-detail__text">
-                We track milestones that map to repeatability, conversion, and expansion — not vanity metrics.
-              </p>
+            <div class="bm-card-grid bm-card-grid--three" aria-label="Defensibility factors cards">
+              <div class="bm-card">
+                <p class="bm-card__kicker">
+                  <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+                  Lock-in
+                </p>
+                <h3 class="bm-card__title">Workflow lock-in</h3>
+                <p class="bm-card__text">
+                  Once validity gating, receipts, and verification cadence become part of SOPs and QA reviews, churn becomes operationally painful.
+                </p>
+              </div>
 
-              <div class="research-detail__panel">
-                <h3 class="research-detail__panel-title">Near-term</h3>
-                <ul class="research-detail__bullets">
-                  <li>Repeatable pilot playbook (install → verify → evidence pack)</li>
-                  <li>Measured conversion: pilot → monitoring subscription</li>
+              <div class="bm-card">
+                <p class="bm-card__kicker">
+                  <i class="fa-solid fa-receipt" aria-hidden="true"></i>
+                  Artifacts
+                </p>
+                <h3 class="bm-card__title">Proof-shaped outputs</h3>
+                <p class="bm-card__text">
+                  Evidence packs, change history, and “safe-to-interpret” windows reduce internal arguments and survive skeptical review.
+                </p>
+              </div>
+
+              <div class="bm-card">
+                <p class="bm-card__kicker">
+                  <i class="fa-solid fa-expand" aria-hidden="true"></i>
+                  Expansion
+                </p>
+                <h3 class="bm-card__title">Expansion is natural</h3>
+                <p class="bm-card__text">
+                  When pockets are spatial and room-specific, multi-room and multi-site rollout is the next rational step after proof.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section class="bm-section" id="milestones" aria-labelledby="milestones-title">
+            <h2 class="bm-heading" id="milestones-title">What we track</h2>
+
+            <p class="bm-text">
+              We track milestones that map to repeatability, conversion, and expansion — not vanity metrics.
+            </p>
+
+            <div class="bm-card-grid bm-card-grid--two" aria-label="Milestones cards">
+              <div class="bm-card">
+                <p class="bm-card__kicker">
+                  <i class="fa-solid fa-flag-checkered" aria-hidden="true"></i>
+                  Near-term
+                </p>
+                <h3 class="bm-card__title">Repeatability + conversion</h3>
+                <ul class="bm-list">
+                  <li>Repeatable proof engagement playbook (install → verify → evidence pack)</li>
+                  <li>Measured conversion: engagement → monitoring subscription</li>
                   <li>First multi-room expansions inside a single facility</li>
                   <li>Standardized receipts + validity reporting template</li>
                 </ul>
+              </div>
 
-                <h3 class="research-detail__panel-title">Next</h3>
-                <ul class="research-detail__bullets">
-                  <li>Systemized prevention-grade pilot workflows (recurrence + fix verification across triggers/time)</li>
+              <div class="bm-card">
+                <p class="bm-card__kicker">
+                  <i class="fa-solid fa-sitemap" aria-hidden="true"></i>
+                  Next
+                </p>
+                <h3 class="bm-card__title">Systemized rollout</h3>
+                <ul class="bm-list">
+                  <li>Prevention-grade workflows (recurrence + fix verification across triggers/time)</li>
                   <li>Multi-site rollout template (commissioning + standardization)</li>
                   <li>Operational change-history and drift detection as default behavior</li>
                 </ul>
@@ -285,30 +636,76 @@
             </div>
           </section>
 
-          <!-- =========================================================
-               FAQ (SHORT)
-               ========================================================= -->
-          <section class="research-detail__section" id="faq" aria-labelledby="s-faq">
-            <h2 class="research-detail__heading" id="s-faq">FAQ (quick)</h2>
+          <section class="bm-section" id="faq" aria-labelledby="faq-title">
+            <h2 class="bm-heading" id="faq-title">FAQ (quick)</h2>
 
-            <div class="research-detail__panel">
-              <h3 class="research-detail__panel-title">Is this just “more sensors”?</h3>
-              <p class="research-detail__text">
-                No. The differentiation is <strong>interpretation + defensibility</strong>: validity gating, repeatable verification, change history, and receipts that survive scrutiny.
-              </p>
+            <div class="bm-faq bm-faq__list" aria-label="Business model FAQ accordion">
+              <details class="bm-faq__item">
+                <summary>
+                  <span style="display:flex; gap:12px; align-items:center;">
+                    <span class="bm-faq__badge" aria-hidden="true">
+                      <i class="fa-solid fa-microchip"></i>
+                    </span>
+                    <span class="bm-faq__q">Is this just “more sensors”?</span>
+                  </span>
+                  <span class="bm-faq__caret" aria-hidden="true">
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </span>
+                </summary>
+                <div class="bm-faq__answer">
+                  <p>
+                    No. The differentiation is <strong>interpretation + defensibility</strong>: validity gating, repeatable verification,
+                    change history, and receipts that survive scrutiny.
+                  </p>
+                </div>
+              </details>
 
-              <h3 class="research-detail__panel-title">Why start with pilots?</h3>
-              <p class="research-detail__text">
-                Because facilities buy <strong>decisions</strong> under pressure. A pilot is time-bounded, decision-friendly, and produces proof that makes ongoing monitoring rational.
-              </p>
+              <details class="bm-faq__item">
+                <summary>
+                  <span style="display:flex; gap:12px; align-items:center;">
+                    <span class="bm-faq__badge" aria-hidden="true">
+                      <i class="fa-solid fa-stopwatch"></i>
+                    </span>
+                    <span class="bm-faq__q">Why start with fixed-scope engagements?</span>
+                  </span>
+                  <span class="bm-faq__caret" aria-hidden="true">
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </span>
+                </summary>
+                <div class="bm-faq__answer">
+                  <p>
+                    Because facilities buy <strong>decisions</strong> under pressure. Fixed-scope proof work is time-bounded, decision-friendly, and produces
+                    evidence that makes ongoing monitoring rational.
+                  </p>
+                </div>
+              </details>
 
-              <h3 class="research-detail__panel-title">What’s the long-term product?</h3>
-              <p class="research-detail__text">
-                A maintained monitoring layer that survives seasons, turnover, and scale — with a standard that travels across rooms and sites.
+              <details class="bm-faq__item">
+                <summary>
+                  <span style="display:flex; gap:12px; align-items:center;">
+                    <span class="bm-faq__badge" aria-hidden="true">
+                      <i class="fa-solid fa-shield-halved"></i>
+                    </span>
+                    <span class="bm-faq__q">What’s the long-term product?</span>
+                  </span>
+                  <span class="bm-faq__caret" aria-hidden="true">
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </span>
+                </summary>
+                <div class="bm-faq__answer">
+                  <p>
+                    A maintained monitoring layer that survives seasons, turnover, and scale — with a standard that travels across rooms and sites.
+                  </p>
+                </div>
+              </details>
+            </div>
+
+            <div class="bm-note" role="note" aria-label="Scope and clarity note">
+              <p class="bm-fineprint">
+                This page describes the business model and motion. Specific engagements are governed by the statement of work and acceptance criteria agreed for a site.
               </p>
             </div>
           </section>
-
         </div>
       </section>
     </site-page>
