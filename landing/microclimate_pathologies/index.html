@@ -251,6 +251,188 @@
   }
 }
 
+/* --- Table wrapping + overflow protection (research detail) --- */
+.research-detail__table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;          /* key: makes columns respect widths + wrap */
+}
+
+.research-detail__table th,
+.research-detail__table td {
+  vertical-align: top;
+  white-space: normal;          /* allow wrapping */
+  overflow-wrap: anywhere;      /* wrap long strings */
+  word-break: break-word;       /* fallback */
+  hyphens: auto;                /* nicer wrapping when supported */
+}
+
+/* Optional: keep header labels tidy */
+.research-detail__table th {
+  line-height: 1.2;
+}
+
+/* Optional: slight breathing room so wrapped lines look good */
+.research-detail__table td {
+  line-height: 1.35;
+}
+
+/* Optional: if you have long “code-ish” tokens in cells */
+.research-detail__table td code,
+.research-detail__table th code {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* Mobile fallback: allow horizontal scroll instead of crushing columns */
+@media (max-width: 720px) {
+  .research-detail__table {
+    table-layout: auto;         /* let browser size columns naturally */
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Force wrapping in table cells (and especially col 1) */
+.research-detail__table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.research-detail__table th,
+.research-detail__table td {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+/* If your CSS makes <strong> nowrap, override it */
+.research-detail__table td strong,
+.research-detail__table th strong {
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Extra: specifically target first column cells */
+.research-detail__table td:first-child,
+.research-detail__table th:first-child {
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+
+/* ============================================================
+   TABLES: keep them as real tables on mobile + allow swipe
+   Drop this AFTER your existing table CSS to override it.
+   ============================================================ */
+
+/* Default table styling (desktop + mobile) */
+.research-detail__table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;          /* consistent column widths + wrapping */
+  margin: 0.75rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+.research-detail__table th,
+.research-detail__table td {
+  padding: 0.75rem 0.9rem;
+  vertical-align: top;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+
+  /* wrap safely */
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.research-detail__table thead th {
+  font-weight: 650;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* Never let <strong> force nowrap */
+.research-detail__table strong {
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Remove the nowrap that was making column 1 not wrap */
+.research-detail__table td:first-child,
+.research-detail__table th:first-child {
+  white-space: normal !important;
+}
+
+/* Optional: hover highlight (desktop) */
+.research-detail__table tbody tr:hover td {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* ------------------------------------------------------------
+   Mobile: horizontal swipe (no card-stacking)
+   Wrap table in a scroll container automatically using display:block
+   so it can overflow horizontally and remain a real table.
+   ------------------------------------------------------------ */
+@media (max-width: 720px) {
+  /* Ensure we DO NOT convert table elements into blocks */
+  .research-detail__table,
+  .research-detail__table thead,
+  .research-detail__table tbody,
+  .research-detail__table tr,
+  .research-detail__table th,
+  .research-detail__table td {
+    display: table;
+  }
+  .research-detail__table thead { display: table-header-group; }
+  .research-detail__table tbody { display: table-row-group; }
+  .research-detail__table tr { display: table-row; }
+  .research-detail__table th,
+  .research-detail__table td { display: table-cell; }
+
+  /* Put the scroll behavior on the table itself */
+  .research-detail__table {
+    display: block;                 /* block wrapper so overflow works */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;            /* keep columns intact for swipe */
+    table-layout: auto;             /* better sizing when scrolling */
+    border: 1px solid rgba(0,0,0,0.10);
+    border-radius: 12px;
+  }
+
+  /* Inside the scrolling table, keep text readable + allow wrapping per cell */
+  .research-detail__table th,
+  .research-detail__table td {
+    white-space: normal;            /* allow cell wrapping */
+    min-width: 180px;               /* forces horizontal scroll if needed */
+  }
+
+  /* Slightly tighter padding on small screens */
+  .research-detail__table th,
+  .research-detail__table td {
+    padding: 0.65rem 0.75rem;
+  }
+}
+
+/* Optional: ensure list-in-cells wraps nicely */
+.research-detail__table .research-detail__table-list {
+  margin: 0.25rem 0 0;
+  padding-left: 1.15rem;
+}
+
+
+
     </style>
   </head>
 
@@ -259,20 +441,11 @@
       <section class="research-detail" aria-labelledby="rd-title">
         <div class="research-detail__inner">
           <header class="research-detail__header">
-            <a class="link link--muted research-detail__back" href="/engage/invest/research/">
-              <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-              Back to Research
-            </a>
 
             <div class="rd-title-lockup">
               <h1 class="research-detail__title" id="rd-title">
                 Gravity-wave-like oscillations → DSM-MP → Proof UI
-              </h1>
-            </div>
-
-          <!-- =========================================================
-               WHEN THE AIR RINGS
-               ========================================================= -->
+                </h1>
           <section class="research-detail__section" id="rings" aria-labelledby="s-rings">
             <h2 class="research-detail__heading" id="s-rings">When the Air “Rings”</h2>
 
@@ -329,30 +502,45 @@
                WHY IT MATTERS
                ========================================================= -->
           <section class="research-detail__section" id="why-matters" aria-labelledby="s-why">
-            <h2 class="research-detail__heading" id="s-why">Why it matters (tiny, simple version)</h2>
+            <h2 class="research-detail__heading" id="s-why">Why it matters</h2>
 
-            <div class="research-detail__panel">
-              <p class="research-detail__text">
-                When the air “wiggles” up and down, it can make certain spots become:
-              </p>
 
-              <ul class="research-detail__bullets">
-                <li>wetter</li>
-                <li>drier</li>
-                <li>windier</li>
-                <li>more still</li>
-              </ul>
-
-              <p class="research-detail__text">
-                …even when the main room reading looks fine.
-                So, in plain terms: the air can keep doing a slow, traveling bounce after it gets pushed.
-              </p>
-
-              <div class="rd-figure" role="group" aria-label="Illustration placeholder: hot/cool layers with traveling wave">
-                <div class="rd-figure__label">IMAGE (hot/cool layers + a traveling wave through the room)</div>
-                <div class="rd-figure__box">Illustration placeholder</div>
-              </div>
-            </div>
+<table class="research-detail__table research-detail__table--compact" aria-label="How pockets can feel even when the average looks fine">
+  <thead>
+    <tr>
+      <th>What you notice</th>
+      <th>What it looks like in practice</th>
+      <th>Where it tends to show up</th>
+      <th>Why the room average can still look “fine”</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Wetter</strong></td>
+      <td>Surfaces stay tacky; localized condensation risk; “damp corner” that repeats after a trigger</td>
+      <td>Behind racks, near cold walls/ducts, inside canopy depth</td>
+      <td>It’s a thin layer or pocket, not a room-wide shift</td>
+    </tr>
+    <tr>
+      <td><strong>Drier</strong></td>
+      <td>Leaf edges dry faster; “crispy lane”; localized over-drying or uneven transpiration</td>
+      <td>Under supply jets, near returns, in high-velocity corridors</td>
+      <td>Averages hide extremes when one zone is over-ventilated</td>
+    </tr>
+    <tr>
+      <td><strong>Windier</strong></td>
+      <td>Noticeable leaf flutter; directional blast; one aisle feels like a vent “cannon”</td>
+      <td>Supply jet paths, corridor channels formed by racks/curtains</td>
+      <td>Velocity is highly localized; sensors usually measure temperature/RH, not flow</td>
+    </tr>
+    <tr>
+      <td><strong>More still</strong></td>
+      <td>Stagnant “dead pocket”; musty smell; slow recovery after lights-off or irrigation</td>
+      <td>Shadow zones behind obstacles, corners, under benches, dense canopy regions</td>
+      <td>Mixing elsewhere keeps the average stable while the pocket stalls</td>
+    </tr>
+  </tbody>
+</table>
           </section>
 
           <!-- =========================================================
@@ -436,10 +624,15 @@
                 That sloshing is the “gravity-wave–like oscillation.”
               </p>
 
-              <div class="rd-figure" role="group" aria-label="Illustration placeholder: room cross-section with obstacles and wave motion">
-                <div class="rd-figure__label">IMAGE (room cross-section: obstacles + wave motion)</div>
-                <div class="rd-figure__box">Illustration placeholder</div>
-              </div>
+<div class="rd-figure" role="group" aria-label="">
+  <img
+    class="rd-figure__img"
+    src="/asset/img/microclimate_pathologies/12_gravity_wave.png"
+    alt=""
+    loading="lazy"
+    decoding="async"
+  />
+</div>
             </div>
           </section>
 
@@ -470,15 +663,52 @@
 </div>
 
               <p class="rd-inline-title">2) Airflow forcing is the “push” that starts the motion</p>
-              <p class="research-detail__text">
-                Fans, HVAC supply, exhaust, dehumidifiers, and door openings force air to move—but that forcing is rarely steady:
-              </p>
-              <ul class="research-detail__bullets">
-                <li>HVAC cycles on/off</li>
-                <li>dehumidifiers ramp up/down</li>
-                <li>fans change speed or get partially blocked</li>
-                <li>doors open in bursts</li>
-              </ul>
+<p class="research-detail__text">
+  Fans, HVAC supply, exhaust, dehumidifiers, and door openings force air to move, but that forcing is rarely steady:
+</p>
+
+<table class="research-detail__table research-detail__table--compact" aria-label="Common sources of unsteady forcing in a room">
+  <thead>
+    <tr>
+      <th>Unsteady forcing</th>
+      <th>What it feels/looks like</th>
+      <th>Typical timing / cadence</th>
+      <th>What it tends to create</th>
+      <th>Easy thing to log</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>HVAC cycles on/off</strong></td>
+      <td>Room “breathes” in waves; conditions drift then snap back; layers appear/disappear</td>
+      <td>Regular duty cycles (minutes-scale), often predictable by schedule or controller behavior</td>
+      <td>Stratification pockets; repeatable pockets aligned to cycle edges</td>
+      <td>Start/stop timestamps (or compressor/fan state)</td>
+    </tr>
+    <tr>
+      <td><strong>Dehumidifiers ramp up/down</strong></td>
+      <td>Localized drying near the unit; RH drops in one zone first; “dry lane” next to the machine</td>
+      <td>Controller-driven ramps; load-dependent surges after lights-off / irrigation</td>
+      <td>Moisture gradients; over-dry corridors + wet shadow pockets elsewhere</td>
+      <td>Duty %, setpoint changes, on/off state</td>
+    </tr>
+    <tr>
+      <td><strong>Fans change speed / get blocked</strong></td>
+      <td>One aisle suddenly feels calmer; leaf motion changes; pockets “move” without anyone noticing</td>
+      <td>Manual tweaks, automation profiles, or gradual blockage (filters, canopy growth)</td>
+      <td>Dead zones behind racks; jet path shifts; new shadow regions</td>
+      <td>Fan speed setting + any physical changes (angle, blockage note)</td>
+    </tr>
+    <tr>
+      <td><strong>Doors open in bursts</strong></td>
+      <td>Quick pressure pulse; “corridor plume” enters; a narrow band goes off-spec then stalls</td>
+      <td>Human-driven bursts (seconds–minutes), clustered around work routines</td>
+      <td>Door-corridor plumes; aisle-specific anomalies</td>
+      <td>Door open/close events (even approximate)</td>
+    </tr>
+  </tbody>
+</table>
+
               <p class="research-detail__text">Each cycle is a repeating “kick,” like pushing a swing.</p>
 
 <div class="rd-figure" role="group" aria-label="">
@@ -532,14 +762,45 @@
 </div>
 
               <p class="rd-inline-title">4) Timing makes it wave-like instead of random</p>
-              <p class="research-detail__text">
-                It becomes “wave-like” when the forcing lines up with the room’s natural response time (its tendency to ring after a disturbance):
-              </p>
-              <ul class="research-detail__bullets">
-                <li>lights-off shifts leaf temperature and evap/condensation dynamics fast</li>
-                <li>HVAC cycles at a regular cadence</li>
-                <li>irrigation / CO₂ events shift heat + humidity loads</li>
-              </ul>
+<p class="research-detail__text">
+  It becomes “wave-like” when the forcing lines up with the room’s natural response time (its tendency to ring after a disturbance):
+</p>
+
+<table class="research-detail__table research-detail__table--compact" aria-label="Repeat triggers that can make the room ring">
+  <thead>
+    <tr>
+      <th>Repeating trigger</th>
+      <th>What changes quickly</th>
+      <th>Typical signature</th>
+      <th>Where it tends to show up</th>
+      <th>What to log</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Lights-off</strong></td>
+      <td>Leaf temperature shifts; evap/condensation dynamics change rapidly</td>
+      <td>A repeatable post–lights-off window where RH spikes or dew-point margin collapses</td>
+      <td>Canopy-depth layers, cold boundaries, behind racks / under benches</td>
+      <td>Exact lights-off time + a fixed “after” window (e.g., +30–45 min)</td>
+    </tr>
+    <tr>
+      <td><strong>HVAC cycling</strong></td>
+      <td>Supply/return flow state changes; mixing strength and stratification shift by phase</td>
+      <td>Pockets that appear at the same cycle edge (start/stop/ramp) and repeat nightly</td>
+      <td>Under jets, between jet paths, upper vs lower canopy layers</td>
+      <td>Cycle start/stop times (or controller state) + phase labels (ramp/steady/off)</td>
+    </tr>
+    <tr>
+      <td><strong>Irrigation / CO₂ events</strong></td>
+      <td>Heat + humidity loads shift; transpiration and latent load can rebound afterward</td>
+      <td>A delayed “rebound” pocket: localized wetness or stillness that follows the event</td>
+      <td>Near dense canopy, shadow zones, zones with weaker exchange</td>
+      <td>Event timestamps (irrigation start/stop, CO₂ on/off) + any schedule details</td>
+    </tr>
+  </tbody>
+</table>
+
               <p class="research-detail__text">
                 When the cycles repeat, you can get standing patterns: the same areas repeatedly go stagnant or wetter at the same point in the cycle.
               </p>
@@ -785,11 +1046,15 @@
 </table>
 
 
-              <div class="rd-figure" role="group" aria-label="Illustration placeholder: DSM-MP card flow">
-                <div class="rd-figure__label">IMAGE (DSM-MP card: Symptom → Pattern name → Trigger → First test)</div>
-                <div class="rd-figure__box">Illustration placeholder</div>
-              </div>
-            </div>
+<div class="rd-figure" role="group" aria-label="">
+  <img
+    class="rd-figure__img"
+    src="/asset/img/microclimate_pathologies/22_dsm_mp.png"
+    alt=""
+    loading="lazy"
+    decoding="async"
+  />
+</div>
           </section>
 
           <!-- =========================================================
@@ -864,11 +1129,6 @@
 
 
 
-              <div class="rd-figure" role="group" aria-label="Illustration placeholder: 4-axis compass">
-                <div class="rd-figure__label">IMAGE (4-axis compass / quadrant-style graphic: O, M, A, P)</div>
-                <div class="rd-figure__box">Illustration placeholder</div>
-              </div>
-
               <p class="rd-inline-title">The 16 classifications (type codes)</p>
               <p class="research-detail__text">
                 Each axis can be either:
@@ -903,10 +1163,15 @@
 </table>
 
 
-              <div class="rd-figure" role="group" aria-label="Illustration placeholder: 16-cell type grid">
-                <div class="rd-figure__label">IMAGE (16-cell grid of types; each cell is one O/M/A/P combination)</div>
-                <div class="rd-figure__box">Illustration placeholder</div>
-              </div>
+<div class="rd-figure" role="group" aria-label="">
+  <img
+    class="rd-figure__img"
+    src="/asset/img/microclimate_pathologies/23_map.png"
+    alt=""
+    loading="lazy"
+    decoding="async"
+  />
+</div>
 
               <p class="rd-inline-title">A simple way to read the grid</p>
               <p class="research-detail__text">Here’s the legend that makes the grid intuitive:</p>
@@ -970,10 +1235,6 @@
 </table>
 
 
-              <div class="rd-figure" role="group" aria-label="Illustration placeholder: weakest axis constrains claims callout">
-                <div class="rd-figure__label">IMAGE (rule-of-thumb callout: weakest axis constrains claims)</div>
-                <div class="rd-figure__box">Illustration placeholder</div>
-              </div>
 
               <p class="rd-inline-title">How it connects back to the pathologies</p>
               <p class="research-detail__text">
@@ -1075,10 +1336,15 @@
 </table>
 
 
-              <div class="rd-figure" role="group" aria-label="Illustration placeholder: fog bank layer after lights-off">
-                <div class="rd-figure__label">IMAGE (layer forming after lights-off; canopy cross-section)</div>
-                <div class="rd-figure__box">Illustration placeholder</div>
-              </div>
+<div class="rd-figure" role="group" aria-label="">
+  <img
+    class="rd-figure__img"
+    src="/asset/img/microclimate_pathologies/08_lights_off_fog_bank.png"
+    alt=""
+    loading="lazy"
+    decoding="async"
+  />
+</div>
 
               <p class="rd-inline-title">2) Door-Corridor Plume</p>
               <p class="research-detail__text">
@@ -1125,10 +1391,15 @@
 </table>
 
 
-              <div class="rd-figure" role="group" aria-label="Illustration placeholder: door corridor plume band through racks">
-                <div class="rd-figure__label">IMAGE (door plume entering; corridor band through racks)</div>
-                <div class="rd-figure__box">Illustration placeholder</div>
-              </div>
+<div class="rd-figure" role="group" aria-label="">
+  <img
+    class="rd-figure__img"
+    src="/asset/img/microclimate_pathologies/09_door_coridoor_plum.png"
+    alt=""
+    loading="lazy"
+    decoding="async"
+  />
+</div>
 
               <p class="rd-inline-title">3) HVAC Stratification Pocket</p>
               <p class="research-detail__text">
@@ -1175,10 +1446,15 @@
 </table>
 
 
-              <div class="rd-figure" role="group" aria-label="Illustration placeholder: stratified layers under supply and return">
-                <div class="rd-figure__label">IMAGE (layer cake: stratified bands; supply/return arrows)</div>
-                <div class="rd-figure__box">Illustration placeholder</div>
-              </div>
+<div class="rd-figure" role="group" aria-label="">
+  <img
+    class="rd-figure__img"
+    src="/asset/img/microclimate_pathologies/10_hvac_stratification.png"
+    alt=""
+    loading="lazy"
+    decoding="async"
+  />
+</div>
 
               <p class="rd-inline-title">The point of naming them</p>
               <p class="research-detail__text">
@@ -1259,11 +1535,6 @@
 </ul>
 
 
-              <div class="rd-figure" role="group" aria-label="Illustration placeholder: pattern cards">
-                <div class="rd-figure__label">IMAGE (pattern cards: name → trigger → typical locations → first test)</div>
-                <div class="rd-figure__box">Illustration placeholder</div>
-              </div>
-            </div>
           </section>
 
           <!-- =========================================================
@@ -1343,10 +1614,6 @@
     <li>verifiable.</li>
 </ul>
 
-              <div class="rd-figure" role="group" aria-label="Illustration placeholder: UI overview flow">
-                <div class="rd-figure__label">IMAGE (UI overview: Case → Run → Timeline → Pocket → Compare → Verdict)</div>
-                <div class="rd-figure__box">Illustration placeholder</div>
-              </div>
 
               <p class="rd-inline-title">1) “Freeze the claim” so it can’t morph into a meeting</p>
               <p class="research-detail__text">
@@ -1386,6 +1653,7 @@
               <p class="research-detail__text">
                 Not because we love paperwork — because this is how you stop the classic failure mode:
                 </p>
+
 <table class="research-detail__table">
   <thead>
     <tr>
@@ -1429,10 +1697,28 @@
                 That sentence becomes the anchor for everything that follows.
               </p>
 
-              <div class="rd-figure" role="group" aria-label="Illustration placeholder: case definition with slice sentence">
-                <div class="rd-figure__label">IMAGE (Case definition card with a “slice sentence” highlighted)</div>
-                <div class="rd-figure__box">Illustration placeholder</div>
-              </div>
+
+<div class="rd-figure" role="group" aria-label="">
+  <img
+    class="rd-figure__img"
+    src="/asset/img/microclimate_pathologies/13_step1.png"
+    alt=""
+    loading="lazy"
+    decoding="async"
+  />
+</div>
+
+<div class="rd-figure" role="group" aria-label="">
+  <img
+    class="rd-figure__img"
+    src="/asset/img/microclimate_pathologies/14_step_1.png"
+    alt=""
+    loading="lazy"
+    decoding="async"
+  />
+</div>
+
+
 
               <p class="rd-inline-title">2) Baseline first: capture the room as-is (the “crime scene”)</p>
               <p class="research-detail__text">
@@ -1481,10 +1767,15 @@
                 Baseline is your ruler.
               </p>
 
-              <div class="rd-figure" role="group" aria-label="Illustration placeholder: baseline run provenance snapshot">
-                <div class="rd-figure__label">IMAGE (Baseline run summary with provenance + setup snapshot)</div>
-                <div class="rd-figure__box">Illustration placeholder</div>
-              </div>
+<div class="rd-figure" role="group" aria-label="">
+  <img
+    class="rd-figure__img"
+    src="/asset/img/microclimate_pathologies/15_step_2.png"
+    alt=""
+    loading="lazy"
+    decoding="async"
+  />
+</div>
 
               <p class="rd-inline-title">3) Time becomes legible: events turn into rulers</p>
               <p class="research-detail__text">
@@ -1533,10 +1824,15 @@
                 That’s the difference between “noise over time” and “a repeating pattern.”
               </p>
 
-              <div class="rd-figure" role="group" aria-label="Illustration placeholder: timeline with event markers aligned to chart">
-                <div class="rd-figure__label">IMAGE (timeline with event markers; charts aligned to a trigger)</div>
-                <div class="rd-figure__box">Illustration placeholder</div>
-              </div>
+<div class="rd-figure" role="group" aria-label="">
+  <img
+    class="rd-figure__img"
+    src="/asset/img/microclimate_pathologies/16_step_3.png"
+    alt=""
+    loading="lazy"
+    decoding="async"
+  />
+</div>
 
               <p class="rd-inline-title">4) Pockets become objects you can point to (not feelings)</p>
               <p class="research-detail__text">
@@ -1584,10 +1880,15 @@
                 This is DSM-MP in practice: a named pathology becomes a trackable entity.
               </p>
 
-              <div class="rd-figure" role="group" aria-label="Illustration placeholder: pocket list and map pins ranked by severity">
-                <div class="rd-figure__label">IMAGE (pocket list + map pins + ranked severity)</div>
-                <div class="rd-figure__box">Illustration placeholder</div>
-              </div>
+<div class="rd-figure" role="group" aria-label="">
+  <img
+    class="rd-figure__img"
+    src="/asset/img/microclimate_pathologies/17_step_4.png"
+    alt=""
+    loading="lazy"
+    decoding="async"
+  />
+</div>
 
               <p class="rd-inline-title">5) Gates prevent the system from “pretending green”</p>
               <p class="research-detail__text">
@@ -1667,10 +1968,15 @@
                 That’s not pessimism — it’s integrity. It prevents false confidence.
               </p>
 
-              <div class="rd-figure" role="group" aria-label="Illustration placeholder: validity gates UNKNOWN / PASS / FAIL">
-                <div class="rd-figure__label">IMAGE (validity gates with UNKNOWN / PASS / FAIL states)</div>
-                <div class="rd-figure__box">Illustration placeholder</div>
-              </div>
+<div class="rd-figure" role="group" aria-label="">
+  <img
+    class="rd-figure__img"
+    src="/asset/img/microclimate_pathologies/18_step_5.png"
+    alt=""
+    loading="lazy"
+    decoding="async"
+  />
+</div>
 
               <p class="rd-inline-title">6) One knob at a time: fixes become experiments</p>
               <p class="research-detail__text">
@@ -1717,17 +2023,32 @@
 </table>
 
 
-              <div class="rd-figure" role="group" aria-label="Illustration placeholder: compare view baseline vs verification">
-                <div class="rd-figure__label">IMAGE (compare view: baseline vs verification; pocket metrics reduced)</div>
-                <div class="rd-figure__box">Illustration placeholder</div>
-              </div>
+<div class="rd-figure" role="group" aria-label="">
+  <img
+    class="rd-figure__img"
+    src="/asset/img/microclimate_pathologies/19_step_6.png"
+    alt=""
+    loading="lazy"
+    decoding="async"
+  />
+</div>
+
+<div class="rd-figure" role="group" aria-label="">
+  <img
+    class="rd-figure__img"
+    src="/asset/img/microclimate_pathologies/20_step_6.png"
+    alt=""
+    loading="lazy"
+    decoding="async"
+  />
+</div>
 
               <p class="rd-inline-title">7) The verdict is the product</p>
               <p class="research-detail__text">
                 The final output is not “a dashboard.”
                 It’s a decision you can stand behind:
                 </p>
-<table class="research-detail__table">
+<table class="research-detail__table research-detail__table--compact">
   <thead>
     <tr>
       <th>Decision question</th>
@@ -1760,10 +2081,15 @@
                 we don’t know yet — run it again, properly.
               </p>
 
-              <div class="rd-figure" role="group" aria-label="Illustration placeholder: verdict panel PROVED / NOT PROVED / ABSTAIN">
-                <div class="rd-figure__label">IMAGE (verdict panel: PROVED / NOT PROVED / ABSTAIN + receipts link)</div>
-                <div class="rd-figure__box">Illustration placeholder</div>
-              </div>
+<div class="rd-figure" role="group" aria-label="">
+  <img
+    class="rd-figure__img"
+    src="/asset/img/microclimate_pathologies/21_step_7.png"
+    alt=""
+    loading="lazy"
+    decoding="async"
+  />
+</div>
             </div>
           </section>
 
