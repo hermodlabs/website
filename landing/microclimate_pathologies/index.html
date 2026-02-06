@@ -469,6 +469,8 @@
               <p class="research-detail__text">
                 It doesn’t just return and stop, though. It tends to overshoot, then correct, then overshoot again:
                 <strong>up → down → up → down</strong>
+            </p>
+              <p class="research-detail__text">
                 Like bouncing on a trampoline—you don’t land perfectly still on the first contact.
                 Those repeating “bounces,” moving through the air, are what we mean by <strong>gravity-wave–like oscillations</strong>.
               </p>
@@ -484,7 +486,8 @@
 </div>
 
               <p class="research-detail__text">
-                Another way to picture it: flick a Slinky and you see a wiggle travel down its length. Air can do something similar—a vertical wiggle that propagates through the room.
+                Another way to picture it: flick a Slinky and you see a wiggle travel down its length. 
+                Air can do something similar: a vertical wiggle that propagates through the room.
               </p>
 
 <div class="rd-figure" role="group" aria-label="">
@@ -517,30 +520,83 @@
   <tbody>
     <tr>
       <td><strong>Wetter</strong></td>
-      <td>Surfaces stay tacky; localized condensation risk; “damp corner” that repeats after a trigger</td>
-      <td>Behind racks, near cold walls/ducts, inside canopy depth</td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Surfaces stay tacky</li>
+          <li>Localized condensation risk</li>
+          <li>“Damp corner” that repeats after a trigger</li>
+        </ul>
+      </td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Behind racks</li>
+          <li>Near cold walls / ducts</li>
+          <li>Inside canopy depth</li>
+        </ul>
+      </td>
       <td>It’s a thin layer or pocket, not a room-wide shift</td>
     </tr>
+
     <tr>
       <td><strong>Drier</strong></td>
-      <td>Leaf edges dry faster; “crispy lane”; localized over-drying or uneven transpiration</td>
-      <td>Under supply jets, near returns, in high-velocity corridors</td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Leaf edges dry faster</li>
+          <li>“Crispy lane”</li>
+          <li>Localized over-drying or uneven transpiration</li>
+        </ul>
+      </td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Under supply jets</li>
+          <li>Near returns</li>
+          <li>In high-velocity corridors</li>
+        </ul>
+      </td>
       <td>Averages hide extremes when one zone is over-ventilated</td>
     </tr>
+
     <tr>
       <td><strong>Windier</strong></td>
-      <td>Noticeable leaf flutter; directional blast; one aisle feels like a vent “cannon”</td>
-      <td>Supply jet paths, corridor channels formed by racks/curtains</td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Noticeable leaf flutter</li>
+          <li>Directional blast</li>
+          <li>One aisle feels like a vent “cannon”</li>
+        </ul>
+      </td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Supply jet paths</li>
+          <li>Corridor channels formed by racks / curtains</li>
+          <li>Near jet impact points</li>
+        </ul>
+      </td>
       <td>Velocity is highly localized; sensors usually measure temperature/RH, not flow</td>
     </tr>
+
     <tr>
       <td><strong>More still</strong></td>
-      <td>Stagnant “dead pocket”; musty smell; slow recovery after lights-off or irrigation</td>
-      <td>Shadow zones behind obstacles, corners, under benches, dense canopy regions</td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Stagnant “dead pocket”</li>
+          <li>Musty smell</li>
+          <li>Slow recovery after lights-off or irrigation</li>
+        </ul>
+      </td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Shadow zones behind obstacles</li>
+          <li>Corners and under benches</li>
+          <li>Dense canopy regions</li>
+        </ul>
+      </td>
       <td>Mixing elsewhere keeps the average stable while the pocket stalls</td>
     </tr>
   </tbody>
 </table>
+
+
           </section>
 
           <!-- =========================================================
@@ -680,34 +736,110 @@
   <tbody>
     <tr>
       <td><strong>HVAC cycles on/off</strong></td>
-      <td>Room “breathes” in waves; conditions drift then snap back; layers appear/disappear</td>
-      <td>Regular duty cycles (minutes-scale), often predictable by schedule or controller behavior</td>
-      <td>Stratification pockets; repeatable pockets aligned to cycle edges</td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Room “breathes” in waves</li>
+          <li>Conditions drift, then snap back</li>
+          <li>Layers appear / disappear by phase</li>
+        </ul>
+      </td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Regular duty cycles (minutes-scale)</li>
+          <li>Often predictable by schedule/controller</li>
+          <li>Cycle edges (start/stop) are the “kick”</li>
+        </ul>
+      </td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Stratification pockets</li>
+          <li>Repeatable pockets aligned to cycle edges</li>
+          <li>Standing-pattern hotspots</li>
+        </ul>
+      </td>
       <td>Start/stop timestamps (or compressor/fan state)</td>
     </tr>
+
     <tr>
       <td><strong>Dehumidifiers ramp up/down</strong></td>
-      <td>Localized drying near the unit; RH drops in one zone first; “dry lane” next to the machine</td>
-      <td>Controller-driven ramps; load-dependent surges after lights-off / irrigation</td>
-      <td>Moisture gradients; over-dry corridors + wet shadow pockets elsewhere</td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Localized drying near the unit</li>
+          <li>RH drops in one zone first</li>
+          <li>“Dry lane” next to the machine</li>
+        </ul>
+      </td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Controller-driven ramps</li>
+          <li>Load-dependent surges after lights-off / irrigation</li>
+          <li>Short bursts followed by recovery</li>
+        </ul>
+      </td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Moisture gradients</li>
+          <li>Over-dry corridors + wet shadow pockets elsewhere</li>
+          <li>Uneven dry-down after triggers</li>
+        </ul>
+      </td>
       <td>Duty %, setpoint changes, on/off state</td>
     </tr>
+
     <tr>
       <td><strong>Fans change speed / get blocked</strong></td>
-      <td>One aisle suddenly feels calmer; leaf motion changes; pockets “move” without anyone noticing</td>
-      <td>Manual tweaks, automation profiles, or gradual blockage (filters, canopy growth)</td>
-      <td>Dead zones behind racks; jet path shifts; new shadow regions</td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>One aisle suddenly feels calmer</li>
+          <li>Leaf motion changes</li>
+          <li>Pockets “move” without anyone noticing</li>
+        </ul>
+      </td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Manual tweaks or automation profiles</li>
+          <li>Gradual blockage (filters, canopy growth)</li>
+          <li>Step-changes that look “random” later</li>
+        </ul>
+      </td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Dead zones behind racks</li>
+          <li>Jet path shifts</li>
+          <li>New shadow regions / wake pockets</li>
+        </ul>
+      </td>
       <td>Fan speed setting + any physical changes (angle, blockage note)</td>
     </tr>
+
     <tr>
       <td><strong>Doors open in bursts</strong></td>
-      <td>Quick pressure pulse; “corridor plume” enters; a narrow band goes off-spec then stalls</td>
-      <td>Human-driven bursts (seconds–minutes), clustered around work routines</td>
-      <td>Door-corridor plumes; aisle-specific anomalies</td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Quick pressure pulse</li>
+          <li>“Corridor plume” enters</li>
+          <li>Narrow band goes off-spec then stalls</li>
+        </ul>
+      </td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Human-driven bursts (seconds–minutes)</li>
+          <li>Clustered around work routines</li>
+          <li>Often repeats at similar times each day</li>
+        </ul>
+      </td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Door-corridor plumes</li>
+          <li>Aisle-specific anomalies</li>
+          <li>First-obstruction “hit point” pockets</li>
+        </ul>
+      </td>
       <td>Door open/close events (even approximate)</td>
     </tr>
   </tbody>
 </table>
+
 
               <p class="research-detail__text">Each cycle is a repeating “kick,” like pushing a swing.</p>
 
@@ -779,27 +911,84 @@
   <tbody>
     <tr>
       <td><strong>Lights-off</strong></td>
-      <td>Leaf temperature shifts; evap/condensation dynamics change rapidly</td>
-      <td>A repeatable post–lights-off window where RH spikes or dew-point margin collapses</td>
-      <td>Canopy-depth layers, cold boundaries, behind racks / under benches</td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Leaf temperature shifts</li>
+          <li>Evap/condensation dynamics change rapidly</li>
+          <li>Dew-point margin can collapse in pockets</li>
+        </ul>
+      </td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Repeatable post–lights-off window</li>
+          <li>RH spikes or dew-point margin collapses</li>
+          <li>Same zones light up cycle after cycle</li>
+        </ul>
+      </td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Canopy-depth layers</li>
+          <li>Cold boundaries</li>
+          <li>Behind racks / under benches</li>
+        </ul>
+      </td>
       <td>Exact lights-off time + a fixed “after” window (e.g., +30–45 min)</td>
     </tr>
+
     <tr>
       <td><strong>HVAC cycling</strong></td>
-      <td>Supply/return flow state changes; mixing strength and stratification shift by phase</td>
-      <td>Pockets that appear at the same cycle edge (start/stop/ramp) and repeat nightly</td>
-      <td>Under jets, between jet paths, upper vs lower canopy layers</td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Supply/return flow state changes</li>
+          <li>Mixing strength shifts by phase</li>
+          <li>Stratification reconfigures at cycle edges</li>
+        </ul>
+      </td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Pockets appear at the same cycle edge (start/stop/ramp)</li>
+          <li>Layering comes and goes on a cadence</li>
+          <li>Repeat nightly under similar loads</li>
+        </ul>
+      </td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Under jets</li>
+          <li>Between jet paths</li>
+          <li>Upper vs lower canopy layers</li>
+        </ul>
+      </td>
       <td>Cycle start/stop times (or controller state) + phase labels (ramp/steady/off)</td>
     </tr>
+
     <tr>
       <td><strong>Irrigation / CO₂ events</strong></td>
-      <td>Heat + humidity loads shift; transpiration and latent load can rebound afterward</td>
-      <td>A delayed “rebound” pocket: localized wetness or stillness that follows the event</td>
-      <td>Near dense canopy, shadow zones, zones with weaker exchange</td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Heat + humidity loads shift</li>
+          <li>Transpiration changes</li>
+          <li>Latent load can rebound afterward</li>
+        </ul>
+      </td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Delayed “rebound” pocket after the event</li>
+          <li>Localized wetness or stillness shows up on a lag</li>
+          <li>Slow clearing in the same weak-exchange zones</li>
+        </ul>
+      </td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Near dense canopy</li>
+          <li>Shadow zones</li>
+          <li>Zones with weaker exchange</li>
+        </ul>
+      </td>
       <td>Event timestamps (irrigation start/stop, CO₂ on/off) + any schedule details</td>
     </tr>
   </tbody>
 </table>
+
 
               <p class="research-detail__text">
                 When the cycles repeat, you can get standing patterns: the same areas repeatedly go stagnant or wetter at the same point in the cycle.
@@ -830,26 +1019,47 @@
   <tbody>
     <tr>
       <td><strong>Behind racks</strong></td>
-      <td>Stagnant “shadow” zone; slow clearing after events</td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Stagnant “shadow” zone</li>
+          <li>Slow clearing after events</li>
+        </ul>
+      </td>
       <td>Obstructions create a wake where momentum collapses and mixing drops</td>
     </tr>
     <tr>
       <td><strong>Near corners</strong></td>
-      <td>Dead air pocket; higher RH/condensation risk vs the aisle</td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Dead air pocket</li>
+          <li>Higher RH / condensation risk vs the aisle</li>
+        </ul>
+      </td>
       <td>Recirculation + weak exchange makes corners act like sinks for moisture</td>
     </tr>
     <tr>
       <td><strong>Under/over supply jets</strong></td>
-      <td>Striping: one band over-dried/over-cooled, adjacent band stays wet</td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Striping: one band over-dried / over-cooled</li>
+          <li>Adjacent band stays wet</li>
+        </ul>
+      </td>
       <td>Jet paths “skip” regions; shear layers separate well-mixed flow from protected zones</td>
     </tr>
     <tr>
       <td><strong>In canopy-depth layers</strong></td>
-      <td>Vertical layering; underside stays wetter while top looks fine</td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Vertical layering</li>
+          <li>Underside stays wetter while top looks fine</li>
+        </ul>
+      </td>
       <td>Dense canopy damps airflow and buoyancy/temperature gradients hold layers in place</td>
     </tr>
   </tbody>
 </table>
+
 
               <p class="research-detail__text">
                 Meanwhile a wall sensor can read “fine” because it’s sitting in a well-mixed zone—not inside the pocket that keeps re-forming.
