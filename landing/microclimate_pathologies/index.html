@@ -1,0 +1,1694 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "G-V2474V50XP");
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>HermodLabs — Research: When the Air “Rings” (DSM-MP)</title>
+    <meta
+      name="description"
+      content="Gravity-wave-like oscillations, repeatable microclimate pockets, DSM-MP (O/M/A/P) diagnostic axes, 16 type codes, recognizable mold patterns, and the UI proof loop countermeasure."
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Single importmap (lit + Observable Plot + d3) -->
+    <script type="importmap">
+    {
+      "imports": {
+        "lit": "https://esm.run/lit",
+        "@observablehq/plot": "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm",
+        "d3": "https://cdn.jsdelivr.net/npm/d3@7/+esm"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="" id="main-css" />
+    <!-- depth: /engage/invest/research/.../ -->
+    <script type="module" src="../../../bootstrap.js"></script>
+
+    <link rel="stylesheet" href="../research-detail.css" />
+
+    <!-- Optional: viz script placeholder (remove if unused) -->
+    <!-- <script type="module" src="./research-viz.js"></script> -->
+
+    <!-- Tiny in-page reference styling (optional; remove if you prefer to keep CSS centralized) -->
+    <style>
+      .ref {
+        font-size: 0.9em;
+        vertical-align: super;
+        text-decoration: none;
+      }
+      .ref:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+      .research-detail__fineprint code { font-size: 0.95em; }
+
+      /* Optional: lightweight placeholder figure styling */
+      .rd-figure {
+        border: 1px solid rgba(0,0,0,0.12);
+        border-radius: 14px;
+        padding: 14px;
+        margin: 14px 0 18px;
+        background: rgba(0,0,0,0.02);
+      }
+      .rd-figure__label {
+        font-size: 0.95em;
+        opacity: 0.8;
+      }
+      .rd-figure__box {
+        height: 180px;
+        border-radius: 12px;
+        margin-top: 10px;
+        border: 1px dashed rgba(0,0,0,0.2);
+        background: rgba(0,0,0,0.02);
+        display: grid;
+        place-items: center;
+        font-size: 0.95em;
+        opacity: 0.7;
+      }
+      .rd-kicker {
+        font-weight: 650;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        font-size: 0.86em;
+        opacity: 0.75;
+        margin: 0 0 6px;
+      }
+      .rd-inline-title {
+        font-size: 1.05em;
+        font-weight: 700;
+        margin: 16px 0 8px;
+      }
+      .rd-callout {
+        border-left: 4px solid rgba(0,0,0,0.35);
+        padding: 10px 12px;
+        border-radius: 10px;
+        background: rgba(0,0,0,0.03);
+        margin: 14px 0 16px;
+      }
+      .rd-compact-list {
+        margin: 8px 0 0;
+      }
+      .rd-compact-list li { margin: 4px 0; }
+      .rd-subhead {
+        margin-top: 10px;
+        font-weight: 700;
+      }
+      .rd-image-note {
+        margin: 8px 0 0;
+        opacity: 0.75;
+        font-size: 0.95em;
+      }
+      .rd-toc {
+        margin: 14px 0 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .rd-toc a {
+        text-decoration: none;
+        padding: 6px 10px;
+        border: 1px solid rgba(0,0,0,0.14);
+        border-radius: 999px;
+        font-size: 0.95em;
+      }
+      .rd-toc a:hover { border-color: rgba(0,0,0,0.28); }
+      .rd-title-lockup h1 { margin-bottom: 6px; }
+      .rd-title-lockup .research-detail__subtitle { display: inline-block; margin-left: 8px; }
+
+      /* Table styling to match a clean “research detail” look */
+.research-detail__table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin: 0.75rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+.research-detail__table th,
+.research-detail__table td {
+  padding: 0.75rem 0.9rem;
+  vertical-align: top;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+}
+
+.research-detail__table thead th {
+  font-weight: 650;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.research-detail__table tbody tr:hover td {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* Make the first column slightly more “label-like” */
+.research-detail__table td:first-child {
+  width: 20%;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+/* Middle column */
+.research-detail__table td:nth-child(2) {
+  width: 28%;
+}
+
+/* Examples column */
+.research-detail__table td:nth-child(3) {
+  width: 52%;
+}
+
+/* Responsive: stack into “cards” on small screens */
+@media (max-width: 720px) {
+  .research-detail__table,
+  .research-detail__table thead,
+  .research-detail__table tbody,
+  .research-detail__table th,
+  .research-detail__table td,
+  .research-detail__table tr {
+    display: block;
+  }
+
+  .research-detail__table thead {
+    display: none;
+  }
+
+  .research-detail__table tbody tr {
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    border-radius: 10px;
+    padding: 0.6rem 0.75rem;
+    margin: 0 0 0.75rem;
+    background: rgba(0, 0, 0, 0.02);
+  }
+
+  .research-detail__table tbody td {
+    border: 0;
+    padding: 0.35rem 0;
+    width: auto !important;
+    white-space: normal;
+  }
+
+  .research-detail__table tbody td:first-child {
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  /* Add labels before each value for mobile readability */
+  .research-detail__table tbody td:nth-child(2)::before {
+    content: "Meaning: ";
+    font-weight: 650;
+    opacity: 0.8;
+  }
+
+  .research-detail__table tbody td:nth-child(3)::before {
+    content: "Examples: ";
+    font-weight: 650;
+    opacity: 0.8;
+  }
+}
+
+/* Figure container */
+.rd-figure {
+  margin: 0.9rem 0 1.1rem;
+  padding: 0;
+}
+
+/* Image itself */
+.rd-figure__img {
+  display: block;
+  width: 100%;
+  height: auto;
+
+  /* “figure card” feel */
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.02);
+
+  /* Avoid inline image gaps / keep it crisp */
+  overflow: hidden;
+}
+
+/* Optional: constrain max width on wide layouts */
+@media (min-width: 900px) {
+  .rd-figure__img {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+}
+
+    </style>
+  </head>
+
+  <body>
+    <site-page>
+      <section class="research-detail" aria-labelledby="rd-title">
+        <div class="research-detail__inner">
+          <header class="research-detail__header">
+            <a class="link link--muted research-detail__back" href="/engage/invest/research/">
+              <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+              Back to Research
+            </a>
+
+            <div class="rd-title-lockup">
+              <h1 class="research-detail__title" id="rd-title">
+                Gravity-wave-like oscillations → DSM-MP → Proof UI
+              </h1>
+            </div>
+
+          <!-- =========================================================
+               WHEN THE AIR RINGS
+               ========================================================= -->
+          <section class="research-detail__section" id="rings" aria-labelledby="s-rings">
+            <h2 class="research-detail__heading" id="s-rings">When the Air “Rings”</h2>
+
+            <div class="research-detail__panel">
+              <p class="research-detail__text">
+                Imagine the air in a room as a big, invisible blanket.
+                When something pushes that blanket upward—wind over a hill, a supply jet hitting a rack, a warm plume rising off canopy—the blanket lifts… then gravity (and buoyancy) pulls it back toward “level.”
+              </p>
+
+<div class="rd-figure" role="group" aria-label="Illustration: air pushed up over an obstacle">
+  <img
+    class="rd-figure__img"
+    src="/asset/img/microclimate_pathologies/01_air_gets_pushed.png"
+    alt="Illustration showing airflow being pushed upward over an obstacle, then rolling and settling into layers downstream."
+    loading="lazy"
+    decoding="async"
+  />
+</div>
+
+
+              <p class="research-detail__text">
+                It doesn’t just return and stop, though. It tends to overshoot, then correct, then overshoot again:
+                <strong>up → down → up → down</strong>
+                Like bouncing on a trampoline—you don’t land perfectly still on the first contact.
+                Those repeating “bounces,” moving through the air, are what we mean by <strong>gravity-wave–like oscillations</strong>.
+              </p>
+
+<div class="rd-figure" role="group" aria-label="">
+  <img
+    class="rd-figure__img"
+    src="/asset/img/microclimate_pathologies/02_trampoline_bounce.png"
+    alt=""
+    loading="lazy"
+    decoding="async"
+  />
+</div>
+
+              <p class="research-detail__text">
+                Another way to picture it: flick a Slinky and you see a wiggle travel down its length. Air can do something similar—a vertical wiggle that propagates through the room.
+              </p>
+
+<div class="rd-figure" role="group" aria-label="">
+  <img
+    class="rd-figure__img"
+    src="/asset/img/microclimate_pathologies/03_slinky.png"
+    alt=""
+    loading="lazy"
+    decoding="async"
+  />
+</div>
+          </section>
+
+          <!-- =========================================================
+               WHY IT MATTERS
+               ========================================================= -->
+          <section class="research-detail__section" id="why-matters" aria-labelledby="s-why">
+            <h2 class="research-detail__heading" id="s-why">Why it matters (tiny, simple version)</h2>
+
+            <div class="research-detail__panel">
+              <p class="research-detail__text">
+                When the air “wiggles” up and down, it can make certain spots become:
+              </p>
+
+              <ul class="research-detail__bullets">
+                <li>wetter</li>
+                <li>drier</li>
+                <li>windier</li>
+                <li>more still</li>
+              </ul>
+
+              <p class="research-detail__text">
+                …even when the main room reading looks fine.
+                So, in plain terms: the air can keep doing a slow, traveling bounce after it gets pushed.
+              </p>
+
+              <div class="rd-figure" role="group" aria-label="Illustration placeholder: hot/cool layers with traveling wave">
+                <div class="rd-figure__label">IMAGE (hot/cool layers + a traveling wave through the room)</div>
+                <div class="rd-figure__box">Illustration placeholder</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- =========================================================
+               SLIGHTLY MORE REAL
+               ========================================================= -->
+          <section class="research-detail__section" id="real-explanation" aria-labelledby="s-real">
+            <h2 class="research-detail__heading" id="s-real">The slightly more real explanation</h2>
+
+            <div class="research-detail__panel">
+              <p class="research-detail__text">
+                Gravity-wave–like oscillations are waves in a fluid (air or water) that happen when the fluid gets pushed vertically and then tries to return to equilibrium.
+                In a grow room, four ingredients make this show up:
+              </p>
+
+<table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Plain-language meaning</th>
+      <th>Examples</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Geometry</strong></td>
+      <td>The shape stuff</td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>racks</li>
+          <li>walls</li>
+          <li>curtains</li>
+          <li>benches</li>
+          <li>canopy mass</li>
+          <li>duct placement</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Airflow forcing</strong></td>
+      <td>The “push”</td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>fans</li>
+          <li>HVAC supply/exhaust</li>
+          <li>dehumidifiers</li>
+          <li>door openings</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Buoyancy</strong></td>
+      <td>The “hot air balloon” rule</td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>warm air rises</li>
+          <li>cool air sinks</li>
+          <li>moisture plays too</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Timing</strong></td>
+      <td>Repeating cycles</td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>HVAC on/off</li>
+          <li>lights-off</li>
+          <li>irrigation</li>
+          <li>CO₂ events</li>
+          <li>door bursts</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+              <p class="research-detail__text">
+                When you have obstacles + a vertical push + air that wants to stratify + repeating cycles, the room can start to sloshing back and forth—not randomly, but in patterns.
+                That sloshing is the “gravity-wave–like oscillation.”
+              </p>
+
+              <div class="rd-figure" role="group" aria-label="Illustration placeholder: room cross-section with obstacles and wave motion">
+                <div class="rd-figure__label">IMAGE (room cross-section: obstacles + wave motion)</div>
+                <div class="rd-figure__box">Illustration placeholder</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- =========================================================
+               POCKETS
+               ========================================================= -->
+          <section class="research-detail__section" id="pockets" aria-labelledby="s-pockets">
+            <h2 class="research-detail__heading" id="s-pockets">What actually creates the pockets</h2>
+
+            <div class="research-detail__panel">
+              <p class="research-detail__text">
+                Think of the room as a 3D box where air is constantly being pushed around and constantly trying to “sort itself” by temperature and moisture.
+              </p>
+
+              <p class="rd-inline-title">1) Geometry creates channels and traps</p>
+              <p class="research-detail__text">
+                Racks, walls, curtains, benches, canopy density, and duct placement form corridors, dead zones, and shadow regions. So even if a fan moves air “in general,” the flow can separate, curl, and stall behind obstacles—like water swirling behind a rock in a stream.
+              </p>
+
+<div class="rd-figure" role="group" aria-label="">
+  <img
+    class="rd-figure__img"
+    src="/asset/img/microclimate_pathologies/04_dead_zones.png"
+    alt=""
+    loading="lazy"
+    decoding="async"
+  />
+</div>
+
+              <p class="rd-inline-title">2) Airflow forcing is the “push” that starts the motion</p>
+              <p class="research-detail__text">
+                Fans, HVAC supply, exhaust, dehumidifiers, and door openings force air to move—but that forcing is rarely steady:
+              </p>
+              <ul class="research-detail__bullets">
+                <li>HVAC cycles on/off</li>
+                <li>dehumidifiers ramp up/down</li>
+                <li>fans change speed or get partially blocked</li>
+                <li>doors open in bursts</li>
+              </ul>
+              <p class="research-detail__text">Each cycle is a repeating “kick,” like pushing a swing.</p>
+
+<div class="rd-figure" role="group" aria-label="">
+  <img
+    class="rd-figure__img"
+    src="/asset/img/microclimate_pathologies/05_swing_periodic_motion.png"
+    alt=""
+    loading="lazy"
+    decoding="async"
+  />
+</div>
+
+              <p class="rd-inline-title">3) Buoyancy is the restoring force (the thing that pulls it back)</p>
+              <p class="research-detail__text">
+                Buoyancy comes from density differences:
+                </p>
+                <table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>Condition</th>
+      <th>Buoyancy outcome</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Warm air is less dense</td>
+      <td>Rises</td>
+    </tr>
+    <tr>
+      <td>Cool air is denser</td>
+      <td>Sinks</td>
+    </tr>
+  </tbody>
+</table>
+
+              <p class="research-detail__text">
+
+                Moisture complicates this further, especially near leaf surfaces and cold boundaries where condensation risk is higher.
+                So when airflow lifts air up over an obstacle or into a corner, buoyancy (plus gravity) pulls it back—but it often overshoots. That overshoot is what turns “return to normal” into oscillation.
+
+              </p>
+
+<div class="rd-figure" role="group" aria-label="">
+  <img
+    class="rd-figure__img"
+    src="/asset/img/microclimate_pathologies/06_boyancy.png"
+    alt=""
+    loading="lazy"
+    decoding="async"
+  />
+</div>
+
+              <p class="rd-inline-title">4) Timing makes it wave-like instead of random</p>
+              <p class="research-detail__text">
+                It becomes “wave-like” when the forcing lines up with the room’s natural response time (its tendency to ring after a disturbance):
+              </p>
+              <ul class="research-detail__bullets">
+                <li>lights-off shifts leaf temperature and evap/condensation dynamics fast</li>
+                <li>HVAC cycles at a regular cadence</li>
+                <li>irrigation / CO₂ events shift heat + humidity loads</li>
+              </ul>
+              <p class="research-detail__text">
+                When the cycles repeat, you can get standing patterns: the same areas repeatedly go stagnant or wetter at the same point in the cycle.
+              </p>
+
+<div class="rd-figure" role="group" aria-label="">
+  <img
+    class="rd-figure__img"
+    src="/asset/img/microclimate_pathologies/07_timing.png"
+    alt=""
+    loading="lazy"
+    decoding="async"
+  />
+</div>
+
+              <p class="rd-inline-title">What it looks like in real life</p>
+              <p class="research-detail__text">
+                The “crest” of the wave is where moisture accumulates or conditions stall—often:
+              </p>
+<table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>Where the “crest” shows up</th>
+      <th>What it looks like</th>
+      <th>Why it happens</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Behind racks</strong></td>
+      <td>Stagnant “shadow” zone; slow clearing after events</td>
+      <td>Obstructions create a wake where momentum collapses and mixing drops</td>
+    </tr>
+    <tr>
+      <td><strong>Near corners</strong></td>
+      <td>Dead air pocket; higher RH/condensation risk vs the aisle</td>
+      <td>Recirculation + weak exchange makes corners act like sinks for moisture</td>
+    </tr>
+    <tr>
+      <td><strong>Under/over supply jets</strong></td>
+      <td>Striping: one band over-dried/over-cooled, adjacent band stays wet</td>
+      <td>Jet paths “skip” regions; shear layers separate well-mixed flow from protected zones</td>
+    </tr>
+    <tr>
+      <td><strong>In canopy-depth layers</strong></td>
+      <td>Vertical layering; underside stays wetter while top looks fine</td>
+      <td>Dense canopy damps airflow and buoyancy/temperature gradients hold layers in place</td>
+    </tr>
+  </tbody>
+</table>
+
+              <p class="research-detail__text">
+                Meanwhile a wall sensor can read “fine” because it’s sitting in a well-mixed zone—not inside the pocket that keeps re-forming.
+                So “gravity-wave–like oscillations” is a fancy way of saying:
+                Room layout + cycling airflow + buoyancy can create repeating, predictable pockets of bad conditions—even when the average looks good.
+              </p>
+            </div>
+          </section>
+
+          <!-- =========================================================
+               DSM-MP
+               ========================================================= -->
+          <section class="research-detail__section" id="dsm-mp" aria-labelledby="s-dsm">
+            <h2 class="research-detail__heading" id="s-dsm">So what do you do with that? You diagnose it.</h2>
+
+            <div class="research-detail__panel">
+              <p class="research-detail__text">
+                If gravity-wave–like oscillations create repeating pockets, then the room has something like microclimate symptoms: 
+              </p>
+<table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>Repeating symptom</th>
+      <th>What repeats</th>
+      <th>When it repeats</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Wet corner</strong></td>
+      <td>The same corner gets wet</td>
+      <td>At the same time every night</td>
+    </tr>
+    <tr>
+      <td><strong>Still rack bay</strong></td>
+      <td>The same rack bay goes still</td>
+      <td>After HVAC cycles</td>
+    </tr>
+    <tr>
+      <td><strong>Condensing canopy layer</strong></td>
+      <td>The same canopy layer condenses</td>
+      <td>Right after lights-off</td>
+    </tr>
+  </tbody>
+</table>
+
+
+              <p class="research-detail__text">The hard part is that those symptoms are easy to argue about. They show up as:</p>
+<table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>How it shows up</th>
+      <th>Examples</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>A complaint</strong></td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>“it feels muggy back there”</li>
+          <li>“the air feels dead in that corner”</li>
+          <li>“it’s clammy under the benches”</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>A consequence</strong></td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>“we keep seeing mold in this lane”</li>
+          <li>“the same zone keeps failing QA”</li>
+          <li>“botrytis shows up in the same pocket every cycle”</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>A misleading average</strong></td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>“the room is 55% RH, we’re fine”</li>
+          <li>“VPD looks on target, so it can’t be humidity”</li>
+          <li>“average temp is stable—nothing’s wrong”</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+              <p class="research-detail__text">
+                So we built DSM-MP — the Diagnostic &amp; Statistical Manual for Microclimate Pathologies — as a way to turn “I think something is wrong” into a shared, testable claim.
+                DSM-MP is not a vibe taxonomy. It’s a practical field guide built around one idea:
+              </p>
+<table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>Principle</th>
+      <th>Implication</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>If it repeats</strong></td>
+      <td>
+          It has structure.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>If it has structure</strong></td>
+      <td>
+          You can name it.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>If you can name it</strong></td>
+      <td>
+          You can test it.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+              <p class="research-detail__text">
+                In practice, DSM-MP forces three clarifications before anyone touches a fan:
+              </p>
+<table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>Diagnostic prompt</th>
+      <th>How to think about it</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>What is repeating?</strong></td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Fog layer after lights-off</li>
+          <li>Corridor plume after door events</li>
+          <li>Two-layer stratification pocket during HVAC cycles</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>What’s the likely driver?</strong></td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Geometry trap</li>
+          <li>Cycling forcing</li>
+          <li>Buoyancy layer</li>
+          <li>Timing resonance</li>
+          <li>Or a combination stable enough to predict</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>What would count as “fixed”?</strong></td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Not “the room feels better.”</li>
+          <li>This pocket no longer forms in the defined window after the trigger.</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+              <p class="research-detail__text">That’s what DSM-MP turns “weird room vibes” into:</p>
+<table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>Output</th>
+      <th>What it means</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Diagnosis</strong></td>
+      <td>What pattern is repeating.</td>
+    </tr>
+    <tr>
+      <td><strong>Mechanism hypothesis</strong></td>
+      <td>Why it repeats.</td>
+    </tr>
+    <tr>
+      <td><strong>Testable fix</strong></td>
+      <td>One knob, comparable cycles, receipts.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+              <div class="rd-figure" role="group" aria-label="Illustration placeholder: DSM-MP card flow">
+                <div class="rd-figure__label">IMAGE (DSM-MP card: Symptom → Pattern name → Trigger → First test)</div>
+                <div class="rd-figure__box">Illustration placeholder</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- =========================================================
+               AXES + TYPES
+               ========================================================= -->
+          <section class="research-detail__section" id="axes" aria-labelledby="s-axes">
+            <h2 class="research-detail__heading" id="s-axes">DSM-MP has 4 axes (and 16 types)</h2>
+
+            <div class="research-detail__panel">
+              <p class="research-detail__text">
+                Once you can name a repeating pathology, the next question is: why is it still allowed to exist?
+                In practice, rooms don’t fail for one reason. They fail because one or more core capabilities are missing.
+                DSM-MP organizes that into four axes:
+              </p>
+
+<table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>Axis</th>
+      <th>Name</th>
+      <th>Plain-language test</th>
+      <th>What it’s <em>not</em></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>O</strong></td>
+      <td><strong>Observability</strong></td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Can you see the truth at the canopy—where the argument actually lives?</li>
+          <li>Not “a wall sensor,” but placement, cadence, and enough context to trust what you’re seeing.</li>
+        </ul>
+      </td>
+      <td>“We have a wall sensor.”</td>
+    </tr>
+    <tr>
+      <td><strong>M</strong></td>
+      <td><strong>Moisture control</strong></td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Can you reliably clear moisture debt after triggers (lights-off, irrigation, load spikes)?</li>
+          <li>Not just “dehu runs,” but does the risk actually go away in the pocket?</li>
+        </ul>
+      </td>
+      <td>“The dehu runs.”</td>
+    </tr>
+    <tr>
+      <td><strong>A</strong></td>
+      <td><strong>Air movement</strong></td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Does air exchange through canopy depth—or does it stall into repeatable dead zones?</li>
+          <li>Not “fans exist,” but mixing where it matters.</li>
+        </ul>
+      </td>
+      <td>“We have fans.”</td>
+    </tr>
+    <tr>
+      <td><strong>P</strong></td>
+      <td><strong>Proof loop</strong></td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Can you run changes like tests: one knob, comparable cycles, and receipts?</li>
+          <li>Not “we tried stuff,” but we can prove or abstain.</li>
+        </ul>
+      </td>
+      <td>“We tried stuff.”</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+              <div class="rd-figure" role="group" aria-label="Illustration placeholder: 4-axis compass">
+                <div class="rd-figure__label">IMAGE (4-axis compass / quadrant-style graphic: O, M, A, P)</div>
+                <div class="rd-figure__box">Illustration placeholder</div>
+              </div>
+
+              <p class="rd-inline-title">The 16 classifications (type codes)</p>
+              <p class="research-detail__text">
+                Each axis can be either:
+                <ul>
+                    <li>present (solid enough to rely on), or</li>
+                    <li>missing (too weak to support decisions)</li>
+                </ul>
+                That creates 16 DSM-MP type codes—a compact way to describe what a room can and can’t do yet.
+                Think of it like diagnostic shorthand:
+              </p>
+              <table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>Room profile</th>
+      <th>What happens</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A room with <strong>strong O</strong> + <strong>weak P</strong></td>
+      <td>Can see problems but can’t verify fixes (endless tweaks).</td>
+    </tr>
+    <tr>
+      <td>A room with <strong>weak O</strong> + <strong>weak A</strong></td>
+      <td>May be fine on averages but produces “mystery mold” pockets.</td>
+    </tr>
+    <tr>
+      <td>A room with <strong>strong P</strong></td>
+      <td>Can improve fast—because it can run honest experiments.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+              <div class="rd-figure" role="group" aria-label="Illustration placeholder: 16-cell type grid">
+                <div class="rd-figure__label">IMAGE (16-cell grid of types; each cell is one O/M/A/P combination)</div>
+                <div class="rd-figure__box">Illustration placeholder</div>
+              </div>
+
+              <p class="rd-inline-title">A simple way to read the grid</p>
+              <p class="research-detail__text">Here’s the legend that makes the grid intuitive:</p>
+<table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>Axis</th>
+      <th>What it answers</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>O</strong></td>
+      <td>Do we actually know what’s happening?</td>
+    </tr>
+    <tr>
+      <td><strong>M</strong></td>
+      <td>Can we clear moisture risk on schedule?</td>
+    </tr>
+    <tr>
+      <td><strong>A</strong></td>
+      <td>Can we move air through the canopy where pockets form?</td>
+    </tr>
+    <tr>
+      <td><strong>P</strong></td>
+      <td>Can we prove a change worked (or abstain honestly)?</td>
+    </tr>
+  </tbody>
+</table>
+
+
+              <p class="research-detail__text">
+                DSM-MP isn’t a score to brag about. It’s a way to choose the first move without wasting a month.
+                Rule of thumb: the weakest axis limits what you’re allowed to claim.
+              </p>
+<table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>If this axis is weak…</th>
+      <th>Then…</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>P</strong> is weak</td>
+      <td>You can’t declare “fixed.”</td>
+    </tr>
+    <tr>
+      <td><strong>O</strong> is weak</td>
+      <td>You can’t even declare “found.”</td>
+    </tr>
+    <tr>
+      <td><strong>A</strong> is weak</td>
+      <td>Pockets will keep re-forming no matter what the average says.</td>
+    </tr>
+    <tr>
+      <td><strong>M</strong> is weak</td>
+      <td>The room can look stable until a trigger pushes it over the edge.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+              <div class="rd-figure" role="group" aria-label="Illustration placeholder: weakest axis constrains claims callout">
+                <div class="rd-figure__label">IMAGE (rule-of-thumb callout: weakest axis constrains claims)</div>
+                <div class="rd-figure__box">Illustration placeholder</div>
+              </div>
+
+              <p class="rd-inline-title">How it connects back to the pathologies</p>
+              <p class="research-detail__text">
+                The mold patterns you see—lights-off fog bank, door corridor plume, HVAC stratification pocket—are the symptoms.
+                DSM-MP type codes tell you what kind of facility you’re working with and what to do next:
+                </p>
+              <table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>Missing axis</th>
+      <th>What you need first</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>O</strong> is missing</td>
+      <td>You need better placement/cadence before you “debate the room.”</td>
+    </tr>
+    <tr>
+      <td><strong>A</strong> is missing</td>
+      <td>You need mixing/jet control where the pocket forms.</td>
+    </tr>
+    <tr>
+      <td><strong>M</strong> is missing</td>
+      <td>You need moisture-debt control tied to triggers.</td>
+    </tr>
+    <tr>
+      <td><strong>P</strong> is missing</td>
+      <td>You need the proof loop so fixes don’t become folklore.</td>
+    </tr>
+  </tbody>
+</table>
+
+              <p class="research-detail__text">
+                That’s how DSM-MP turns recurring mold into a concrete plan:
+              </p>
+              <ul>
+                <li>diagnose</li>
+                <li>classify</li>
+                <li>choose the next test.</li>
+              </ul>
+
+            </div>
+          </section>
+
+          <!-- =========================================================
+               PATTERNS
+               ========================================================= -->
+          <section class="research-detail__section" id="patterns" aria-labelledby="s-patterns">
+            <h2 class="research-detail__heading" id="s-patterns">A few DSM-MP patterns you can spot quickly</h2>
+
+            <div class="research-detail__panel">
+              <p class="research-detail__text">
+                Once you’ve got the DSM-MP lens—pockets + triggers + repeatability—the next step is to start naming what you’re seeing. Below are three common “day one” pathologies: they recur, they have a signature, and they point to a first test.
+              </p>
+
+              <p class="rd-inline-title">1) Lights-Off Fog Bank</p>
+              <p class="research-detail__text">
+                Lights-off is a fast regime change: leaf temperature shifts, evap/condensation dynamics move, and air that was “fine” can suddenly cross a dew-point threshold.
+              </p>
+
+<table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>Section</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Signature</strong></td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>a thin humidity/condensation layer that shows up reliably after lights-off</li>
+          <li>wetness that appears in the same zones without an obvious “spill” event</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Where it hides</strong></td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>inside canopy depth</li>
+          <li>under benches / behind racks</li>
+          <li>near cold boundaries (walls, coils, supply ducts)</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Why the wall sensor stays calm</strong></td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>it sits in a well-mixed zone</li>
+          <li>the failure is a layer, not a room-wide average</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+              <div class="rd-figure" role="group" aria-label="Illustration placeholder: fog bank layer after lights-off">
+                <div class="rd-figure__label">IMAGE (layer forming after lights-off; canopy cross-section)</div>
+                <div class="rd-figure__box">Illustration placeholder</div>
+              </div>
+
+              <p class="rd-inline-title">2) Door-Corridor Plume</p>
+              <p class="research-detail__text">
+                A door opening is a pressure and exchange event. It can inject a narrow plume of different temperature/moisture that travels down an aisle, then curls and stalls when it hits geometry.
+              </p>
+
+<table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>Section</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Signature</strong></td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>a corridor-shaped “lane” of off-spec air that repeats with door traffic</li>
+          <li>localized problems that track an aisle more than a whole room</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Where it hides</strong></td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>along a single corridor or rack lane</li>
+          <li>in the wake behind racks and curtains</li>
+          <li>where the plume hits its first major obstruction</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Why averages look fine</strong></td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>it’s intense but narrow</li>
+          <li>the room stays “normal” while one lane gets hammered</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+              <div class="rd-figure" role="group" aria-label="Illustration placeholder: door corridor plume band through racks">
+                <div class="rd-figure__label">IMAGE (door plume entering; corridor band through racks)</div>
+                <div class="rd-figure__box">Illustration placeholder</div>
+              </div>
+
+              <p class="rd-inline-title">3) HVAC Stratification Pocket</p>
+              <p class="research-detail__text">
+                HVAC can accidentally create a two-story room: supply jets and returns establish layers, and mixing may be weaker than it feels at the wall.
+              </p>
+
+<table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>Section</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Signature</strong></td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>stacked conditions: one layer warmer/drier, another cooler/wetter</li>
+          <li>pockets that show up at the same phase of the HVAC cycle</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Where it hides</strong></td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>upper vs lower canopy layers</li>
+          <li>under supply jets or between jet paths</li>
+          <li>behind dense canopy where mixing collapses</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Why the dashboard misses it</strong></td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>sensors can sit in the “good layer”</li>
+          <li>the failure is vertical structure, not a single number</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+              <div class="rd-figure" role="group" aria-label="Illustration placeholder: stratified layers under supply and return">
+                <div class="rd-figure__label">IMAGE (layer cake: stratified bands; supply/return arrows)</div>
+                <div class="rd-figure__box">Illustration placeholder</div>
+              </div>
+
+              <p class="rd-inline-title">The point of naming them</p>
+              <p class="research-detail__text">
+                When a pattern has a name, it stops being a debate and becomes a test:
+                </p>
+<table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>Trigger</th>
+      <th>What to look for</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Lights-off</strong></td>
+      <td>Look for a repeatable fog layer in a defined window.</td>
+    </tr>
+    <tr>
+      <td><strong>Door events</strong></td>
+      <td>Look for a corridor plume and its stall point.</td>
+    </tr>
+    <tr>
+      <td><strong>HVAC cycling</strong></td>
+      <td>Look for persistent stratification and pocket layers.</td>
+    </tr>
+  </tbody>
+</table>
+
+              <p class="research-detail__text">
+                DSM-MP is how you go from “we keep seeing mold here” to: 
+              </p>
+<table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>DSM-MP takes you to…</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Which pattern it is</strong></td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Identify the repeating microclimate signature (the specific failure mode)</li>
+          <li>Not just “mold happened here”</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>What sustains it</strong></td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Pin down the driver(s) keeping it alive</li>
+          <li>Geometry trap, forcing/cycling, buoyancy layer, timing/resonance</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>What single change to try first</strong></td>
+      <td>
+        <ul class="research-detail__table-list">
+          <li>Pick one knob to turn that should break the repeatability</li>
+          <li>Test it on comparable cycles with receipts</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p class="research-detail__text">
+  DSM-MP turns repeat failures into a workflow you can execute:
+</p>
+<ul>
+  <li>pattern ID</li>
+  <li>mechanism hypothesis</li>
+  <li>controlled trial with receipts.</li>
+</ul>
+
+
+              <div class="rd-figure" role="group" aria-label="Illustration placeholder: pattern cards">
+                <div class="rd-figure__label">IMAGE (pattern cards: name → trigger → typical locations → first test)</div>
+                <div class="rd-figure__box">Illustration placeholder</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- =========================================================
+               UI COUNTERMEASURE
+               ========================================================= -->
+          <section class="research-detail__section" id="ui" aria-labelledby="s-ui">
+            <h2 class="research-detail__heading" id="s-ui">The UI is the countermeasure</h2>
+
+            <div class="research-detail__panel">
+            <p class="research-detail__text">
+                A big reason microclimate problems survive is that it’s a process:
+            </p>
+<table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>Step</th>
+      <th>What happens</th>
+      <th>What it looks like on the floor</th>
+      <th>Why it doesn’t resolve the root cause</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1</strong></td>
+      <td>People notice a wet corner.</td>
+      <td>“That spot is clammy again” / recurring sheen, condensation, or leaf wetness in the same zone</td>
+      <td>It’s an observation without a named pattern window (when it forms, where it peaks, what triggers it)</td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td>
+      <td>Someone adjusts a fan.</td>
+      <td>A quick tweak: angle change, speed bump, relocation—done to “hit the spot”</td>
+      <td>Multiple knobs move at once; no controlled comparison, so you can’t tell if the pocket actually stopped forming</td>
+    </tr>
+    <tr>
+      <td><strong>3</strong></td>
+      <td>The wall sensor looks fine.</td>
+      <td>Dashboard reads “in spec,” so urgency drops and the team moves on</td>
+      <td>Wall sensors often sit in well-mixed air; localized layers/pockets can fail while the room average stays green</td>
+    </tr>
+  </tbody>
+</table>
+
+            
+              <p class="research-detail__text">
+                A big reason microclimate problems survive is that it’s process:
+                A week later the mold comes back… and the team argues about what changed.
+                So we built the UI as a countermeasure to the two things that kill real fixes:
+            </p>
+<table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>Failure mode</th>
+      <th>What it means</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Drift</strong></td>
+      <td>The claim quietly changes over time.</td>
+    </tr>
+    <tr>
+      <td><strong>False green</strong></td>
+      <td>The dashboard looks fine while the pocket is still failing.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+              <p class="research-detail__text">
+      DSM-MP gives you names for the pathologies and
+                the UI makes those names operational: 
+              </p>
+<ul>
+    <li>measurable, </li>
+    <li>repeatable, and </li>
+    <li>verifiable.</li>
+</ul>
+
+              <div class="rd-figure" role="group" aria-label="Illustration placeholder: UI overview flow">
+                <div class="rd-figure__label">IMAGE (UI overview: Case → Run → Timeline → Pocket → Compare → Verdict)</div>
+                <div class="rd-figure__box">Illustration placeholder</div>
+              </div>
+
+              <p class="rd-inline-title">1) “Freeze the claim” so it can’t morph into a meeting</p>
+              <p class="research-detail__text">
+                Every investigation starts by locking a slice of reality into a clear handle:
+            </p>
+<table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>Handle</th>
+      <th>What you lock down</th>
+      <th>Why it matters (qualitative)</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Where</strong> (zone)</td>
+      <td>The exact location of the pocket / symptom</td>
+      <td>Turns “somewhere back there” into a map-able target you can revisit and compare</td>
+      <td>“Rack B, Bay 3, lower canopy, aisle-side corner”</td>
+    </tr>
+    <tr>
+      <td><strong>When</strong> (trigger + window)</td>
+      <td>The event that initiates it and the time window to watch</td>
+      <td>Prevents arguments by making the claim falsifiable: it either forms in the window or it doesn’t</td>
+      <td>“Lights-off + 0–45 min” or “Door burst + 0–10 min”</td>
+    </tr>
+    <tr>
+      <td><strong>What context</strong> (stage / setup)</td>
+      <td>The operating conditions that make the observation comparable</td>
+      <td>Stops “it depends” drift—if the stage/setup changes, you’re not testing the same system</td>
+      <td>“Week 5 flower; curtains deployed; dehu setpoint 50%; fans at 60%”</td>
+    </tr>
+  </tbody>
+</table>
+
+              <p class="research-detail__text">
+                Not because we love paperwork — because this is how you stop the classic failure mode:
+                </p>
+<table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>Classic failure mode</th>
+      <th>What it signals (qualitative)</th>
+      <th>What DSM-MP forces you to specify</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>“We fixed humidity.”</td>
+      <td>A broad claim with no named pocket or measurement context</td>
+      <td>Which metric, where measured, and what “in-spec” means in the failing zone</td>
+    </tr>
+    <tr>
+      <td>“No, we fixed airflow.”</td>
+      <td>Competing narratives because multiple knobs changed (and no controlled test)</td>
+      <td>The single change made, plus what you expected it to change in the pocket</td>
+    </tr>
+    <tr>
+      <td>“Wait, which room?”</td>
+      <td>Scope confusion—people are talking about different systems</td>
+      <td>Site / room identifier and any relevant geometry or equipment differences</td>
+    </tr>
+    <tr>
+      <td>“Which night?”</td>
+      <td>Timing drift—different conditions, different cycle, different outcome</td>
+      <td>The trigger and the observation window (and which cycle you’re comparing to)</td>
+    </tr>
+    <tr>
+      <td>“Which rack?”</td>
+      <td>Spatial drift—localized pockets get averaged away when location is vague</td>
+      <td>Exact zone: rack/bay/height (and whether it’s aisle-side, wall-side, etc.)</td>
+    </tr>
+  </tbody>
+</table>
+
+              <p class="research-detail__text">
+                The UI forces a single sentence you can’t wiggle out of:
+                “We are talking about this zone, in this window, after this trigger, in this stage.”
+                That sentence becomes the anchor for everything that follows.
+              </p>
+
+              <div class="rd-figure" role="group" aria-label="Illustration placeholder: case definition with slice sentence">
+                <div class="rd-figure__label">IMAGE (Case definition card with a “slice sentence” highlighted)</div>
+                <div class="rd-figure__box">Illustration placeholder</div>
+              </div>
+
+              <p class="rd-inline-title">2) Baseline first: capture the room as-is (the “crime scene”)</p>
+              <p class="research-detail__text">
+                Before you change anything, the UI treats the current state as evidence.
+                Not “data logging,” but baseline capture:
+</p>
+<table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>Baseline capture item</th>
+      <th>What you record</th>
+      <th>Why it matters (qualitative)</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>What the room was doing</strong></td>
+      <td>The observed behavior + any obvious pocket signatures</td>
+      <td>Creates a “before” that future comparisons can actually anchor to</td>
+      <td>“Wet corner forms after lights-off; clears by +60 min; only in Rack B lower canopy”</td>
+    </tr>
+    <tr>
+      <td><strong>What cycles were active</strong></td>
+      <td>The repeating programs running during the observation</td>
+      <td>Lets you line up comparable cycles instead of comparing different operating modes</td>
+      <td>“HVAC 10/10 min; dehu setpoint 50%; lights 12/12; CO₂ pulse hourly”</td>
+    </tr>
+    <tr>
+      <td><strong>What sensors were where</strong> (even roughly)</td>
+      <td>Sensor placement map / rough coordinates and height</td>
+      <td>Prevents false-green arguments by showing which readings were in well-mixed zones vs pockets</td>
+      <td>“Wall sensor at 5 ft near door; probe in canopy at Rack B Bay 3 lower; one sensor near supply jet”</td>
+    </tr>
+    <tr>
+      <td><strong>What you think the trigger is</strong></td>
+      <td>The suspected initiating event + expected window</td>
+      <td>Makes the claim testable: if the trigger fires, the pocket should appear (or not)</td>
+      <td>“Lights-off → 0–45 min window” or “Door burst → 0–10 min window”</td>
+    </tr>
+  </tbody>
+</table>
+
+              <p class="research-detail__text">
+                This matters because most teams skip it and later try to reconstruct reality from memory.
+                Baseline is your ruler.
+              </p>
+
+              <div class="rd-figure" role="group" aria-label="Illustration placeholder: baseline run provenance snapshot">
+                <div class="rd-figure__label">IMAGE (Baseline run summary with provenance + setup snapshot)</div>
+                <div class="rd-figure__box">Illustration placeholder</div>
+              </div>
+
+              <p class="rd-inline-title">3) Time becomes legible: events turn into rulers</p>
+              <p class="research-detail__text">
+                Rooms don’t fail “at 2:13am.”
+                They fail relative to triggers:
+                </p>
+<table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>Trigger-relative failure</th>
+      <th>What the trigger changes</th>
+      <th>What to watch for</th>
+      <th>Typical window (qualitative)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>After lights-off</strong></td>
+      <td>Heat input drops; leaf/surface temps shift; RH rises toward saturation in pockets</td>
+      <td>Fog/condensation layer, leaf wetness, sudden RH/VPD divergence between zones</td>
+      <td>Minutes to ~1 hour after event (repeatable if it’s real)</td>
+    </tr>
+    <tr>
+      <td><strong>After HVAC ramps</strong></td>
+      <td>Airflow pattern changes; jets turn on/off; mixing and stratification reconfigure</td>
+      <td>Layering (warm/dry vs cool/wet), “still” bays, pocket formation at same cycle phase</td>
+      <td>Within a few minutes of ramp; can persist through the cycle</td>
+    </tr>
+    <tr>
+      <td><strong>After a door burst</strong></td>
+      <td>Exchange pulse + wake/vortex transport; corridor air injected along a lane</td>
+      <td>Corridor plume, aisle-shaped off-spec “lane,” first-obstruction hit point</td>
+      <td>Immediate to ~10–15 minutes (depends on traffic and ventilation)</td>
+    </tr>
+    <tr>
+      <td><strong>After irrigation rebound</strong></td>
+      <td>Moisture load increases; evap/transpiration shifts; latent load rises</td>
+      <td>Localized RH spikes, slow dry-down, recurring wet zones where debt doesn’t clear</td>
+      <td>Tens of minutes to hours (until moisture debt is cleared)</td>
+    </tr>
+  </tbody>
+</table>
+
+              <p class="research-detail__text">
+                The UI makes those triggers first-class objects, so you can look at conditions aligned to events, not just a wandering line chart.
+                That’s the difference between “noise over time” and “a repeating pattern.”
+              </p>
+
+              <div class="rd-figure" role="group" aria-label="Illustration placeholder: timeline with event markers aligned to chart">
+                <div class="rd-figure__label">IMAGE (timeline with event markers; charts aligned to a trigger)</div>
+                <div class="rd-figure__box">Illustration placeholder</div>
+              </div>
+
+              <p class="rd-inline-title">4) Pockets become objects you can point to (not feelings)</p>
+              <p class="research-detail__text">
+                Instead of “it’s wet back there,” the UI creates an evidence object:
+                </p>
+<table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>Evidence object field</th>
+      <th>What you capture</th>
+      <th>Why it matters (qualitative)</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Location</strong> (rack/height)</td>
+      <td>The exact zone where the pocket forms (and its vertical position)</td>
+      <td>Prevents “somewhere back there” drift; makes the claim revisit-able and mappable</td>
+      <td>“Rack B, Bay 3, lower canopy (18–24 in), wall-side”</td>
+    </tr>
+    <tr>
+      <td><strong>Trigger association</strong> (what sets it off)</td>
+      <td>The initiating event and the observation window</td>
+      <td>Makes the symptom testable: trigger happens → pocket should appear (or not)</td>
+      <td>“Lights-off → forms within 0–45 min”</td>
+    </tr>
+    <tr>
+      <td><strong>Persistence</strong> (how long it lasts)</td>
+      <td>How long the pocket remains off-spec before clearing</td>
+      <td>Separates brief transients from sustained risk (and tells you what “fixed” means)</td>
+      <td>“Persists ~70 minutes; clears by +90 min”</td>
+    </tr>
+    <tr>
+      <td><strong>Severity</strong> (how bad it gets)</td>
+      <td>Peak deviation from target (or threshold crossings)</td>
+      <td>Prioritizes what to fix first and gives a measurable target for improvement</td>
+      <td>“Peaks at 92% RH / dew point within 1°C of leaf; leaf wetness visible”</td>
+    </tr>
+  </tbody>
+</table>
+
+              <p class="research-detail__text">
+                Now you can rank, walk, and re-check the exact same thing.
+                This is DSM-MP in practice: a named pathology becomes a trackable entity.
+              </p>
+
+              <div class="rd-figure" role="group" aria-label="Illustration placeholder: pocket list and map pins ranked by severity">
+                <div class="rd-figure__label">IMAGE (pocket list + map pins + ranked severity)</div>
+                <div class="rd-figure__box">Illustration placeholder</div>
+              </div>
+
+              <p class="rd-inline-title">5) Gates prevent the system from “pretending green”</p>
+              <p class="research-detail__text">
+                Real facilities are messy:
+                </p>
+<table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>Real-world mess</th>
+      <th>What it causes</th>
+      <th>How DSM-MP/UI compensates (qualitative)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Sensors get bumped</strong></td>
+      <td>Readings become hard to compare across days; “same sensor” isn’t the same context</td>
+      <td>Record a rough placement + height each time and treat moves as a version change in the evidence</td>
+    </tr>
+    <tr>
+      <td><strong>Placement is uncertain</strong></td>
+      <td>False-green risk: sensors may sit in well-mixed air while pockets fail elsewhere</td>
+      <td>Use zone labels (rack/bay/height) and confidence notes (“approx”) instead of pretending it’s exact</td>
+    </tr>
+    <tr>
+      <td><strong>Events aren’t logged</strong></td>
+      <td>You can’t align cycles; people argue about what “caused” the pocket</td>
+      <td>Anchor observations to trigger-relative windows (“after lights-off + 0–45 min”), even when timestamps are imperfect</td>
+    </tr>
+    <tr>
+      <td><strong>A fan was changed “a little”</strong></td>
+      <td>Multiple knobs shift silently; outcomes look random and fixes become folklore</td>
+      <td>Force “one-knob” change notes (what moved, how much, where) and require comparable cycles before declaring improvement</td>
+    </tr>
+  </tbody>
+</table>
+
+              <p class="research-detail__text">
+                Most software silently averages through that mess.
+                Our UI does the opposite: it gives you explicit gates like:
+                <ul>
+                    <li>known vs unknown</li>
+                    <li>comparable vs not comparable</li>
+                    <li>trusted vs uncertain</li>
+                </ul>
+                If something is unknowable, the correct output is not a pretty chart.
+                It’s ABSTAIN.
+                That’s not pessimism — it’s integrity. It prevents false confidence.
+              </p>
+
+              <div class="rd-figure" role="group" aria-label="Illustration placeholder: validity gates UNKNOWN / PASS / FAIL">
+                <div class="rd-figure__label">IMAGE (validity gates with UNKNOWN / PASS / FAIL states)</div>
+                <div class="rd-figure__box">Illustration placeholder</div>
+              </div>
+
+              <p class="rd-inline-title">6) One knob at a time: fixes become experiments</p>
+              <p class="research-detail__text">
+                The UI nudges you toward a simple discipline:
+                Make one change. Re-run. Compare. Verdict.
+                Because if you change five things, you didn’t fix anything — you just changed the story.
+                So the workflow is designed around:
+                <ul>
+                    <li>baseline (ruler)</li>
+                    <li>intervention (one knob)</li>
+                    <li>verification run (same ruler)</li>
+                    <li>comparison (did the pocket actually die?)</li>
+                </ul>
+              </p>
+
+              <div class="rd-figure" role="group" aria-label="Illustration placeholder: compare view baseline vs verification">
+                <div class="rd-figure__label">IMAGE (compare view: baseline vs verification; pocket metrics reduced)</div>
+                <div class="rd-figure__box">Illustration placeholder</div>
+              </div>
+
+              <p class="rd-inline-title">7) The verdict is the product</p>
+              <p class="research-detail__text">
+                The final output is not “a dashboard.”
+                It’s a decision you can stand behind:
+                <ul>
+                    <li>Did the lights-off fog bank disappear in the defined window?</li>
+                    <li>Did the door corridor plume stop reaching canopy depth?</li>
+                    <li>Did the stratification pocket collapse into a mixed layer?</li>
+                </ul>
+                And if comparability fails, the UI doesn’t let you declare victory just because the line “looks better.”
+                It forces the honest answer:
+                we don’t know yet — run it again, properly.
+              </p>
+
+              <div class="rd-figure" role="group" aria-label="Illustration placeholder: verdict panel PROVED / NOT PROVED / ABSTAIN">
+                <div class="rd-figure__label">IMAGE (verdict panel: PROVED / NOT PROVED / ABSTAIN + receipts link)</div>
+                <div class="rd-figure__box">Illustration placeholder</div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </section>
+    </site-page>
+
+    <!-- NOTE:
+         You likely have a global footer/nav injected by <site-page>.
+         If not, add your footer component here. -->
+  </body>
+</html>
