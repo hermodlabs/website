@@ -1357,7 +1357,7 @@
     <tr>
       <th>Handle</th>
       <th>What you lock down</th>
-      <th>Why it matters (qualitative)</th>
+      <th>Why it matters</th>
       <th>Example</th>
     </tr>
   </thead>
@@ -1390,7 +1390,7 @@
   <thead>
     <tr>
       <th>Classic failure mode</th>
-      <th>What it signals (qualitative)</th>
+      <th>What it signals</th>
       <th>What DSM-MP forces you to specify</th>
     </tr>
   </thead>
@@ -1444,7 +1444,7 @@
     <tr>
       <th>Baseline capture item</th>
       <th>What you record</th>
-      <th>Why it matters (qualitative)</th>
+      <th>Why it matters</th>
       <th>Example</th>
     </tr>
   </thead>
@@ -1497,7 +1497,7 @@
       <th>Trigger-relative failure</th>
       <th>What the trigger changes</th>
       <th>What to watch for</th>
-      <th>Typical window (qualitative)</th>
+      <th>Typical window</th>
     </tr>
   </thead>
   <tbody>
@@ -1547,7 +1547,7 @@
     <tr>
       <th>Evidence object field</th>
       <th>What you capture</th>
-      <th>Why it matters (qualitative)</th>
+      <th>Why it matters</th>
       <th>Example</th>
     </tr>
   </thead>
@@ -1598,7 +1598,7 @@
     <tr>
       <th>Real-world mess</th>
       <th>What it causes</th>
-      <th>How DSM-MP/UI compensates (qualitative)</th>
+      <th>How DSM-MP/UI compensates</th>
     </tr>
   </thead>
   <tbody>
@@ -1627,12 +1627,41 @@
 
               <p class="research-detail__text">
                 Most software silently averages through that mess.
-                Our UI does the opposite: it gives you explicit gates like:
-                <ul>
-                    <li>known vs unknown</li>
-                    <li>comparable vs not comparable</li>
-                    <li>trusted vs uncertain</li>
-                </ul>
+                Our UI does the opposite. it gives you explicit gates like:
+                </p>
+<table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>UI gate</th>
+      <th>What it asks you to decide</th>
+      <th>Why it matters</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Known vs unknown</strong></td>
+      <td>Do we actually know this—or are we assuming?</td>
+      <td>Prevents “confident nonsense” from becoming operational truth</td>
+      <td>“Door burst time is unknown” (don’t treat it as a clean trigger)</td>
+    </tr>
+    <tr>
+      <td><strong>Comparable vs not comparable</strong></td>
+      <td>Are we comparing the same operating conditions and cycle phase?</td>
+      <td>Stops false conclusions from apples-to-oranges days</td>
+      <td>“Before was veg + curtains open; after is flower + curtains closed” → not comparable</td>
+    </tr>
+    <tr>
+      <td><strong>Trusted vs uncertain</strong></td>
+      <td>How confident are we in sensor placement/quality and the measurement context?</td>
+      <td>Makes “false green” visible by separating reliable evidence from shaky readings</td>
+      <td>“Sensor bumped yesterday; placement approximate” → uncertain evidence</td>
+    </tr>
+  </tbody>
+</table>
+
+              <p class="research-detail__text">
+
                 If something is unknowable, the correct output is not a pretty chart.
                 It’s ABSTAIN.
                 That’s not pessimism — it’s integrity. It prevents false confidence.
@@ -1649,13 +1678,44 @@
                 Make one change. Re-run. Compare. Verdict.
                 Because if you change five things, you didn’t fix anything — you just changed the story.
                 So the workflow is designed around:
-                <ul>
-                    <li>baseline (ruler)</li>
-                    <li>intervention (one knob)</li>
-                    <li>verification run (same ruler)</li>
-                    <li>comparison (did the pocket actually die?)</li>
-                </ul>
-              </p>
+                </p>
+<table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>Workflow step</th>
+      <th>What you do</th>
+      <th>Why it matters</th>
+      <th>Output you should get</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Baseline</strong> (ruler)</td>
+      <td>Capture the current behavior and the pocket signature under normal operation</td>
+      <td>Gives you a stable reference so you’re not debating memory</td>
+      <td>A “before” record: zone + trigger + window + severity/persistence</td>
+    </tr>
+    <tr>
+      <td><strong>Intervention</strong> (one knob)</td>
+      <td>Change one thing you believe should affect the pocket</td>
+      <td>Keeps causality interpretable; avoids story inflation from multiple changes</td>
+      <td>A single, explicit change note (what/where/how much)</td>
+    </tr>
+    <tr>
+      <td><strong>Verification run</strong> (same ruler)</td>
+      <td>Re-run comparable cycles and observe the same window with the same measurement context</td>
+      <td>Makes “after” evidence comparable instead of opportunistic</td>
+      <td>An “after” record collected with the same criteria</td>
+    </tr>
+    <tr>
+      <td><strong>Comparison</strong> (did the pocket actually die?)</td>
+      <td>Compare pocket formation, severity, and persistence against baseline</td>
+      <td>Forces a real verdict: improved, unchanged, worse, or uncertain</td>
+      <td>A verdict you can defend (and repeat), not “it felt better”</td>
+    </tr>
+  </tbody>
+</table>
+
 
               <div class="rd-figure" role="group" aria-label="Illustration placeholder: compare view baseline vs verification">
                 <div class="rd-figure__label">IMAGE (compare view: baseline vs verification; pocket metrics reduced)</div>
@@ -1666,11 +1726,35 @@
               <p class="research-detail__text">
                 The final output is not “a dashboard.”
                 It’s a decision you can stand behind:
-                <ul>
-                    <li>Did the lights-off fog bank disappear in the defined window?</li>
-                    <li>Did the door corridor plume stop reaching canopy depth?</li>
-                    <li>Did the stratification pocket collapse into a mixed layer?</li>
-                </ul>
+                </p>
+<table class="research-detail__table">
+  <thead>
+    <tr>
+      <th>Decision question</th>
+      <th>What “yes” looks like</th>
+      <th>How you verify</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Did the lights-off fog bank disappear in the defined window?</strong></td>
+      <td>The layer no longer forms (or is materially weaker/shorter) after lights-off across comparable cycles</td>
+      <td>Check the same zone at the same post–lights-off window; compare to baseline severity/persistence</td>
+    </tr>
+    <tr>
+      <td><strong>Did the door corridor plume stop reaching canopy depth?</strong></td>
+      <td>The corridor “lane” no longer penetrates to canopy depth, or it decays before the problematic rack/bay</td>
+      <td>Observe immediately after door events; compare plume penetration/decay and affected-lane signature vs baseline</td>
+    </tr>
+    <tr>
+      <td><strong>Did the stratification pocket collapse into a mixed layer?</strong></td>
+      <td>Vertical layers flatten: fewer persistent gradients; the “bad layer” no longer stays cooler/wetter at the same HVAC phase</td>
+      <td>Compare upper vs lower canopy readings at the same HVAC cycle phase; confirm pocket doesn’t re-form in the window</td>
+    </tr>
+  </tbody>
+</table>
+
+              <p class="research-detail__text">
                 And if comparability fails, the UI doesn’t let you declare victory just because the line “looks better.”
                 It forces the honest answer:
                 we don’t know yet — run it again, properly.
