@@ -41,25 +41,36 @@
     <link rel="stylesheet" href="../research-detail.css" />
 
     <style>
-      /* Keep your research-detail look; add card layout helpers */
+      /* Keep your “research detail” look; add only landing helpers */
       .lp-hero { padding: 18px 0 12px; }
       .lp-hero__kicker {
-        display: inline-flex; align-items: center; gap: 8px;
-        font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
-        font-size: 0.84rem; opacity: 0.75; margin: 0 0 10px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        font-size: 0.84rem;
+        opacity: 0.75;
+        margin: 0 0 10px;
       }
       .lp-hero__title {
         font-size: clamp(1.65rem, 2.8vw, 2.45rem);
-        line-height: 1.1; margin: 0 0 10px;
+        line-height: 1.1;
+        margin: 0 0 10px;
       }
       .lp-hero__lede {
-        font-size: 1.05rem; line-height: 1.45;
-        margin: 0 0 14px; max-width: 80ch;
+        font-size: 1.05rem;
+        line-height: 1.45;
+        margin: 0 0 14px;
+        max-width: 80ch;
       }
-
       .lp-cta-row {
-        display: flex; flex-wrap: wrap; gap: 10px;
-        align-items: center; margin: 14px 0 8px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        margin: 14px 0 8px;
       }
       .lp-btn {
         appearance: none;
@@ -81,67 +92,32 @@
         border-color: rgba(0,0,0,0.90);
       }
       .lp-btn--primary:hover { background: rgba(0,0,0,0.82); border-color: rgba(0,0,0,0.82); }
-
       .lp-fineprint {
-        font-size: 0.95rem; opacity: 0.78; margin: 8px 0 0; max-width: 82ch;
+        font-size: 0.95rem;
+        opacity: 0.78;
+        margin: 8px 0 0;
+        max-width: 82ch;
       }
       .lp-slim { margin-top: 8px; }
 
-      .lp-grid {
+      .lp-two {
         display: grid;
-        grid-template-columns: repeat(12, 1fr);
         gap: 14px;
       }
+      @media (min-width: 920px) {
+        .lp-two { grid-template-columns: 1fr 1fr; }
+      }
       .lp-card {
-        grid-column: span 12;
         border: 1px solid rgba(0,0,0,0.12);
         border-radius: 14px;
         background: rgba(0,0,0,0.02);
         padding: 14px;
       }
-      .lp-card__kicker {
-        font-size: 0.86rem;
-        text-transform: uppercase;
-        letter-spacing: 0.04em;
-        opacity: 0.7;
-        margin: 0 0 6px;
-        font-weight: 750;
-      }
-      .lp-card h3 {
-        margin: 0 0 8px;
-        font-size: 1.05rem;
-        line-height: 1.2;
-      }
+      .lp-card h3 { margin: 0 0 8px; font-size: 1.05rem; }
       .lp-card p { margin: 0; }
-      .lp-card ul {
-        margin: 10px 0 0;
-        padding-left: 1.15rem;
-      }
-      .lp-card li { margin: 4px 0; }
-      .lp-card__meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-top: 10px;
-      }
-      .lp-pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 5px 9px;
-        border-radius: 999px;
-        border: 1px solid rgba(0,0,0,0.14);
-        background: rgba(0,0,0,0.02);
-        font-size: 0.92rem;
-        opacity: 0.92;
-      }
-
-      @media (min-width: 920px) {
-        .lp-span6 { grid-column: span 6; }
-        .lp-span4 { grid-column: span 4; }
-      }
 
       .lp-steps {
+        counter-reset: step;
         list-style: none;
         padding: 0;
         margin: 0;
@@ -153,13 +129,31 @@
         background: rgba(0,0,0,0.02);
         border-radius: 14px;
         padding: 12px 12px 12px 14px;
+        position: relative;
       }
-      .lp-steps h4 { margin: 0 0 4px; font-size: 1.02rem; }
-      .lp-steps p { margin: 0; opacity: 0.9; }
+      .lp-steps li::before {
+        counter-increment: step;
+        content: counter(step);
+        display: inline-grid;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 999px;
+        border: 1px solid rgba(0,0,0,0.18);
+        background: rgba(0,0,0,0.03);
+        font-weight: 800;
+        margin-right: 10px;
+      }
+      .lp-steps__row { display: flex; gap: 10px; align-items: flex-start; }
+      .lp-steps__text h4 { margin: 1px 0 4px; font-size: 1.02rem; }
+      .lp-steps__text p { margin: 0; opacity: 0.9; }
 
       .lp-inline-cta {
-        display: flex; flex-wrap: wrap; gap: 10px;
-        align-items: center; margin-top: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        margin-top: 12px;
       }
 
       .lp-faq details {
@@ -181,7 +175,7 @@
       <section class="research-detail" aria-labelledby="lp-title">
         <div class="research-detail__inner">
 
-          <!-- HERO -->
+          <!-- HERO: symptom-first + “why hard to catch” framing -->
           <header class="research-detail__header lp-hero">
             <div class="rd-title-lockup">
               <p class="lp-hero__kicker">
@@ -195,9 +189,12 @@
               </h1>
 
               <p class="lp-hero__lede">
-                Repeatable grow-room symptoms are often <strong>local</strong>, <strong>vertical</strong>, and <strong>time-locked to triggers</strong>.
-                Most dashboards watch <strong>global averages</strong>. That mismatch is how the same wet corner, dead bay, or canopy-layer fog can
-                repeat for weeks while the room still reads “fine.”
+                In indoor cultivation, the room usually doesn’t go “bad” all at once. It fails as a repeating symptom:
+                the same corner gets wet after lights-off, the same rack bay goes still after HVAC ramps, the same canopy layer
+                condenses in the same window night after night. If the symptom is so repeatable, it feels like it should be easy to detect.
+                But most teams only have <strong>global averages</strong> (a wall sensor, a controller mean, a single VPD/RH readout).
+                Repeatable symptoms are often <strong>local, thin, vertical, and time-locked to triggers</strong>—so they can hide in plain sight
+                while the dashboard stays green.
               </p>
 
               <div class="lp-cta-row">
@@ -205,254 +202,356 @@
                   <i class="fa-solid fa-bolt" aria-hidden="true"></i>
                   Take the self-assessment
                 </a>
-                <a class="lp-btn" href="#symptoms">
-                  <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
-                  See the symptoms
+                <a class="lp-btn" href="#why-hard">
+                  <i class="fa-solid fa-circle-question" aria-hidden="true"></i>
+                  Why symptoms hide
                 </a>
               </div>
 
               <p class="lp-fineprint">
-                The self-assessment checks what your facility can reliably <strong>see</strong>, <strong>clear</strong>, <strong>move</strong>, and <strong>prove</strong>
-                (O/M/A/P) and routes you to the pilot your setup can actually support right now.
+                The self-assessment tells you what your facility can reliably <strong>see</strong>, <strong>clear</strong>, <strong>move</strong>, and <strong>prove</strong>
+                (O/M/A/P), then routes you to the pilot your setup can actually support right now.
               </p>
 
               <nav class="rd-toc" aria-label="Page navigation">
-                <a href="#symptoms">Symptoms</a>
-                <a href="#why-hard">Why they hide</a>
-                <a href="#catch">How to catch them</a>
-                <a href="#axes">O/M/A/P</a>
-                <a href="#how">Assessment flow</a>
+                <a href="#symptoms">Common symptoms</a>
+                <a href="#why-hard">Why they’re hard to catch</a>
+                <a href="#naming">How to catch them</a>
+                <a href="#axes">What we check (O/M/A/P)</a>
+                <a href="#how">How the self-assessment works</a>
                 <a href="#faq">FAQ</a>
               </nav>
             </div>
           </header>
 
-          <!-- SYMPTOMS as CARDS (replace table) -->
+          <!-- SYMPTOMS: keep table -->
           <section class="research-detail__section" id="symptoms" aria-labelledby="s-symptoms">
-            <h2 class="research-detail__heading" id="s-symptoms">Common repeating symptoms</h2>
+            <h2 class="research-detail__heading" id="s-symptoms">Common repeating symptoms (what shows up on the floor)</h2>
             <div class="research-detail__panel">
               <p class="research-detail__text">
-                Start with what repeats. A symptom has a location, a trigger window, and a fingerprint. Each one points to a first check.
+                The fastest way out of debate mode is to start with the symptom. A symptom is practical:
+                it has a location, a trigger window, and a recognizable fingerprint. Each one points to a first check you can run next cycle.
               </p>
 
-              <div class="lp-grid" role="list" aria-label="Symptom cards">
-                <article class="lp-card lp-span4" role="listitem">
-                  <p class="lp-card__kicker">Symptom 1</p>
-                  <h3>Lights-Off Fog Bank</h3>
-                  <ul class="research-detail__table-list">
-                    <li><strong>Signature:</strong> thin condensation/humidity layer after lights-off</li>
-                    <li><strong>Hides:</strong> canopy depth, under benches, behind racks</li>
-                    <li><strong>First check:</strong> 0–45 min after lights-off in the suspected zone</li>
-                  </ul>
-                  <div class="lp-card__meta">
-                    <span class="lp-pill"><i class="fa-solid fa-clock" aria-hidden="true"></i> Trigger window</span>
-                    <span class="lp-pill"><i class="fa-solid fa-arrows-up-down" aria-hidden="true"></i> Vertical layer</span>
-                  </div>
-                </article>
+              <table class="research-detail__table research-detail__table--compact" aria-label="Common repeating microclimate symptoms and first tests">
+                <thead>
+                  <tr>
+                    <th>Symptom</th>
+                    <th>Signature</th>
+                    <th>Where it hides</th>
+                    <th>Why the dashboard misses it</th>
+                    <th>First thing to test</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>1) Lights-Off Fog Bank</strong></td>
+                    <td>
+                      <ul class="research-detail__table-list">
+                        <li>A thin humidity/condensation layer shows up reliably after lights-off.</li>
+                        <li>The same zones get wet without any obvious “spill” event.</li>
+                      </ul>
+                    </td>
+                    <td>
+                      <ul class="research-detail__table-list">
+                        <li>Inside canopy depth.</li>
+                        <li>Under benches.</li>
+                        <li>Behind racks.</li>
+                        <li>Near cold boundaries (walls, coils, supply ducts).</li>
+                      </ul>
+                    </td>
+                    <td>
+                      <ul class="research-detail__table-list">
+                        <li>A wall sensor can sit in a well-mixed zone while a thin layer forms where plants actually live.</li>
+                        <li>The room average stays calm because the failure is local and vertical.</li>
+                      </ul>
+                    </td>
+                    <td>
+                      <ul class="research-detail__table-list">
+                        <li>Treat lights-off as a trigger.</li>
+                        <li>Check a defined window (example: 0–45 minutes after lights-off) in the suspected zone, at canopy depth.</li>
+                        <li>If it’s real, it repeats on comparable cycles.</li>
+                      </ul>
+                    </td>
+                  </tr>
 
-                <article class="lp-card lp-span4" role="listitem">
-                  <p class="lp-card__kicker">Symptom 2</p>
-                  <h3>Door-Corridor Plume</h3>
-                  <ul class="research-detail__table-list">
-                    <li><strong>Signature:</strong> narrow lane travels down an aisle then stalls</li>
-                    <li><strong>Hides:</strong> one corridor, wake zones, first obstruction hit point</li>
-                    <li><strong>First check:</strong> 0–10 min after a door burst; note stall location</li>
-                  </ul>
-                  <div class="lp-card__meta">
-                    <span class="lp-pill"><i class="fa-solid fa-road" aria-hidden="true"></i> Aisle-shaped</span>
-                    <span class="lp-pill"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Pulse event</span>
-                  </div>
-                </article>
+                  <tr>
+                    <td><strong>2) Door-Corridor Plume</strong></td>
+                    <td>
+                      <ul class="research-detail__table-list">
+                        <li>A door opening injects a narrow lane of different air (temperature/moisture).</li>
+                        <li>It travels down a corridor, then curls and stalls when it hits geometry.</li>
+                        <li>Problems track an aisle, not the whole room.</li>
+                      </ul>
+                    </td>
+                    <td>
+                      <ul class="research-detail__table-list">
+                        <li>Along a single corridor or rack lane.</li>
+                        <li>In wakes behind racks and curtains.</li>
+                        <li>At the “first obstruction hit point” where the plume slams into a change in layout.</li>
+                      </ul>
+                    </td>
+                    <td>
+                      <ul class="research-detail__table-list">
+                        <li>It’s intense but narrow.</li>
+                        <li>The rest of the room can stay “normal” while one lane gets hammered.</li>
+                      </ul>
+                    </td>
+                    <td>
+                      <ul class="research-detail__table-list">
+                        <li>Log or approximate door events.</li>
+                        <li>Watch the first 10 minutes (0–10 minutes after a door burst).</li>
+                        <li>Look for a corridor-shaped lane that repeats, then identify where it stalls.</li>
+                      </ul>
+                    </td>
+                  </tr>
 
-                <article class="lp-card lp-span4" role="listitem">
-                  <p class="lp-card__kicker">Symptom 3</p>
-                  <h3>HVAC Stratification Pocket</h3>
-                  <ul class="research-detail__table-list">
-                    <li><strong>Signature:</strong> “two-story” layers by HVAC phase</li>
-                    <li><strong>Hides:</strong> upper vs lower canopy, between jet paths</li>
-                    <li><strong>First check:</strong> compare heights at the same HVAC phase edge</li>
-                  </ul>
-                  <div class="lp-card__meta">
-                    <span class="lp-pill"><i class="fa-solid fa-fan" aria-hidden="true"></i> HVAC phase</span>
-                    <span class="lp-pill"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Layering</span>
-                  </div>
-                </article>
-              </div>
+                  <tr>
+                    <td><strong>3) HVAC Stratification Pocket</strong></td>
+                    <td>
+                      <ul class="research-detail__table-list">
+                        <li>The room behaves like it has two stories: one layer warmer/drier, another cooler/wetter.</li>
+                        <li>Pockets show up at the same phase of the HVAC cycle (start/stop/ramp).</li>
+                      </ul>
+                    </td>
+                    <td>
+                      <ul class="research-detail__table-list">
+                        <li>Upper vs lower canopy layers.</li>
+                        <li>Under jets or between jet paths.</li>
+                        <li>Behind dense canopy where mixing collapses.</li>
+                      </ul>
+                    </td>
+                    <td>
+                      <ul class="research-detail__table-list">
+                        <li>Sensors can sit in the “good layer.”</li>
+                        <li>The failure is vertical structure, not a single number.</li>
+                      </ul>
+                    </td>
+                    <td>
+                      <ul class="research-detail__table-list">
+                        <li>Label HVAC phases.</li>
+                        <li>Compare the same canopy heights at the same phase across comparable cycles.</li>
+                        <li>If the pocket is real, it appears at the same cycle edge.</li>
+                      </ul>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
 
               <div class="lp-inline-cta">
                 <a class="lp-btn lp-btn--primary" href="/engage/invest/pilots/self-assessment/">
                   <i class="fa-solid fa-clipboard-question" aria-hidden="true"></i>
                   Match me to the right pilot
                 </a>
-                <span class="lp-fineprint">If you can name the symptom, we can route the first move.</span>
+                <span class="lp-fineprint">If you can describe the symptom, we can route the first move.</span>
               </div>
             </div>
           </section>
 
-          <!-- WHY HARD to CATCH as CARDS (replace table) -->
+          <!-- WHY HARD TO CATCH: new centerpiece -->
           <section class="research-detail__section" id="why-hard" aria-labelledby="s-why-hard">
-            <h2 class="research-detail__heading" id="s-why-hard">Why repeatable symptoms hide</h2>
+            <h2 class="research-detail__heading" id="s-why-hard">If the symptom repeats, why is it so hard to catch?</h2>
             <div class="research-detail__panel">
               <p class="research-detail__text">
-                “Repeatable” doesn’t mean “obvious.” Symptoms repeat in ways dashboards aren’t built to detect.
+                Because “repeatable” does not mean “obvious.” Most symptoms repeat in ways that dashboards are not built to detect.
+                They tend to be:
               </p>
 
-              <div class="lp-grid" role="list" aria-label="Why symptoms hide cards">
-                <article class="lp-card lp-span6" role="listitem">
-                  <p class="lp-card__kicker">Pattern</p>
-                  <h3>They’re local</h3>
-                  <p class="research-detail__text">
-                    One rack bay fails while everything else stays fine.
-                    The sensor is elsewhere, so the average stays green.
-                  </p>
-                </article>
-
-                <article class="lp-card lp-span6" role="listitem">
-                  <p class="lp-card__kicker">Pattern</p>
-                  <h3>They’re vertical</h3>
-                  <p class="research-detail__text">
-                    The pocket is a layer in canopy depth.
-                    Wall-height measurements miss the layer.
-                  </p>
-                </article>
-
-                <article class="lp-card lp-span6" role="listitem">
-                  <p class="lp-card__kicker">Pattern</p>
-                  <h3>They’re time-locked to triggers</h3>
-                  <p class="research-detail__text">
-                    The symptom happens in a window (post lights-off, post door, HVAC edge).
-                    Dashboards smooth over time instead of aligning to events.
-                  </p>
-                </article>
-
-                <article class="lp-card lp-span6" role="listitem">
-                  <p class="lp-card__kicker">Pattern</p>
-                  <h3>They’re geometry-dependent</h3>
-                  <p class="research-detail__text">
-                    Behind racks, under benches, between jets.
-                    A “representative sensor” can’t represent a trap.
-                  </p>
-                </article>
-              </div>
+              <table class="research-detail__table research-detail__table--compact" aria-label="Why repeatable symptoms are hard to catch">
+                <thead>
+                  <tr>
+                    <th>How symptoms repeat</th>
+                    <th>What that looks like</th>
+                    <th>Why your dashboard misses it</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Local (small footprint)</strong></td>
+                    <td>A single rack bay, corner, or aisle lane fails while everything else is fine.</td>
+                    <td>The sensor is elsewhere; the mean stays “in spec.”</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Vertical (layered)</strong></td>
+                    <td>Canopy-depth layers condense or stall while the top layer looks normal.</td>
+                    <td>Most sensors sit at wall height in well-mixed air.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Time-locked (trigger windows)</strong></td>
+                    <td>It happens in a predictable window: 0–45 min post lights-off, 0–10 min post door, HVAC ramp edge.</td>
+                    <td>Dashboards smooth/average over time and ignore trigger alignment.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Geometry-dependent</strong></td>
+                    <td>Behind racks, under benches, between jet paths—where mixing collapses.</td>
+                    <td>A single “representative” sensor can’t represent geometry traps.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Masked by “false green” control logic</strong></td>
+                    <td>The room is controlled to a wall reading; the pocket can fail while control holds the mean.</td>
+                    <td>Control success ≠ pocket success.</td>
+                  </tr>
+                </tbody>
+              </table>
 
               <div class="rd-callout" role="note">
                 <p class="research-detail__text" style="margin:0;">
-                  The fix is not “more averages.” The fix is targeting: <strong>zone + trigger + window</strong>, on comparable cycles.
+                  This is why teams feel gaslit: the symptom repeats, but the measurement system isn’t looking in the right place or at the right time.
+                  The fix is not “more data.” The fix is <strong>better targeting</strong>: zone + trigger + window + comparable cycles.
                 </p>
               </div>
             </div>
           </section>
 
-          <!-- HOW TO CATCH (keep concise; turn “fields” into cards) -->
-          <section class="research-detail__section" id="catch" aria-labelledby="s-catch">
-            <h2 class="research-detail__heading" id="s-catch">How you catch a symptom (fast)</h2>
+          <!-- NAMING: how to catch -->
+          <section class="research-detail__section" id="naming" aria-labelledby="s-naming">
+            <h2 class="research-detail__heading" id="s-naming">How you catch a repeatable symptom (without guessing)</h2>
             <div class="research-detail__panel">
               <p class="research-detail__text">
-                Freeze the claim so it can’t drift. You’re locking a symptom into a checkable handle.
+                You catch it by turning “it feels weird” into a claim that can fail:
+                same zone, same trigger, same window, comparable context.
               </p>
 
-              <div class="lp-grid" role="list" aria-label="Naming fields cards">
-                <article class="lp-card lp-span6" role="listitem">
-                  <p class="lp-card__kicker">Field 1</p>
-                  <h3>Where</h3>
-                  <p class="research-detail__text">Exact zone: rack / bay / side / height.</p>
-                  <div class="lp-card__meta">
-                    <span class="lp-pill"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> “Rack B, Bay 3, lower canopy”</span>
-                  </div>
-                </article>
-
-                <article class="lp-card lp-span6" role="listitem">
-                  <p class="lp-card__kicker">Field 2</p>
-                  <h3>When</h3>
-                  <p class="research-detail__text">Trigger + window.</p>
-                  <div class="lp-card__meta">
-                    <span class="lp-pill"><i class="fa-solid fa-clock" aria-hidden="true"></i> “Lights-off + 0–45 min”</span>
-                    <span class="lp-pill"><i class="fa-solid fa-clock" aria-hidden="true"></i> “Door burst + 0–10 min”</span>
-                  </div>
-                </article>
-
-                <article class="lp-card lp-span6" role="listitem">
-                  <p class="lp-card__kicker">Field 3</p>
-                  <h3>What</h3>
-                  <p class="research-detail__text">Measurable symptom.</p>
-                  <div class="lp-card__meta">
-                    <span class="lp-pill"><i class="fa-solid fa-droplet" aria-hidden="true"></i> “Fog layer”</span>
-                    <span class="lp-pill"><i class="fa-solid fa-wind" aria-hidden="true"></i> “Dead pocket”</span>
-                  </div>
-                </article>
-
-                <article class="lp-card lp-span6" role="listitem">
-                  <p class="lp-card__kicker">Field 4</p>
-                  <h3>Context</h3>
-                  <p class="research-detail__text">Setup that makes cycles comparable.</p>
-                  <div class="lp-card__meta">
-                    <span class="lp-pill"><i class="fa-solid fa-sliders" aria-hidden="true"></i> Stage + key setpoints</span>
-                  </div>
-                </article>
-              </div>
+              <table class="research-detail__table research-detail__table--compact" aria-label="A named pathology: the four fields">
+                <thead>
+                  <tr>
+                    <th>Field</th>
+                    <th>What you lock down</th>
+                    <th>Examples</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>1) Where</strong></td>
+                    <td>The exact zone — rack / bay / side / height.</td>
+                    <td>
+                      <ul class="research-detail__table-list">
+                        <li>“Rack B, Bay 3, lower canopy, wall-side.”</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>2) When</strong></td>
+                    <td>A trigger and a window.</td>
+                    <td>
+                      <ul class="research-detail__table-list">
+                        <li>“Lights-off + 0–45 min.”</li>
+                        <li>“Door burst + 0–10 min.”</li>
+                        <li>“HVAC ramp edge.”</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>3) What</strong></td>
+                    <td>The measurable symptom.</td>
+                    <td>
+                      <ul class="research-detail__table-list">
+                        <li>“Fog layer.”</li>
+                        <li>“Dead pocket stillness.”</li>
+                        <li>“Jet striping.”</li>
+                        <li>“Two-layer stratification.”</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>4) Context</strong></td>
+                    <td>Stage/setup so cycles are comparable.</td>
+                    <td>
+                      <ul class="research-detail__table-list">
+                        <li>“Week 5 flower.”</li>
+                        <li>“Curtains deployed.”</li>
+                        <li>“Dehu setpoint 50%.”</li>
+                        <li>“Fans 60%.”</li>
+                      </ul>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </section>
 
-          <!-- AXES as CARDS (replace table, concise) -->
+          <!-- AXES: tighten to landing purpose -->
           <section class="research-detail__section" id="axes" aria-labelledby="s-axes">
-            <h2 class="research-detail__heading" id="s-axes">What the self-assessment checks (O/M/A/P)</h2>
+            <h2 class="research-detail__heading" id="s-axes">What the self-assessment checks (O/M/A/P readiness)</h2>
             <div class="research-detail__panel">
               <p class="research-detail__text">
-                The pilot you qualify for depends on what your facility can support right now.
+                Even with a perfectly named symptom, pilots fail if the facility can’t support the evidence. The self-assessment checks four capabilities:
               </p>
 
-              <div class="lp-grid" role="list" aria-label="O/M/A/P cards">
-                <article class="lp-card lp-span6" role="listitem">
-                  <p class="lp-card__kicker">O</p>
-                  <h3>Observability</h3>
-                  <p class="research-detail__text">Can you measure in the pocket (canopy depth), not just the wall?</p>
-                </article>
-
-                <article class="lp-card lp-span6" role="listitem">
-                  <p class="lp-card__kicker">M</p>
-                  <h3>Moisture control</h3>
-                  <p class="research-detail__text">Can you clear moisture debt after triggers?</p>
-                </article>
-
-                <article class="lp-card lp-span6" role="listitem">
-                  <p class="lp-card__kicker">A</p>
-                  <h3>Air movement</h3>
-                  <p class="research-detail__text">Can you exchange air through canopy depth where pockets form?</p>
-                </article>
-
-                <article class="lp-card lp-span6" role="listitem">
-                  <p class="lp-card__kicker">P</p>
-                  <h3>Proof loop</h3>
-                  <p class="research-detail__text">Can you run one-knob tests on comparable cycles and call a verdict?</p>
-                </article>
-              </div>
+              <table class="research-detail__table research-detail__table--compact" aria-label="DSM-MP axes">
+                <thead>
+                  <tr>
+                    <th>Axis</th>
+                    <th>Plain-language test</th>
+                    <th>Why it matters for pilot fit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>O — Observability</strong></td>
+                    <td>Can you measure in the pocket (canopy depth), with placement/cadence you trust?</td>
+                    <td>If you can’t see it, you can’t run a clean pilot. You’ll chase the mean.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>M — Moisture control</strong></td>
+                    <td>Can you clear moisture debt after triggers (lights-off, irrigation, load spikes)?</td>
+                    <td>If not, the symptom returns on schedule even if the room average behaves.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>A — Air movement</strong></td>
+                    <td>Can you exchange air through canopy depth (not just “fans exist”)?</td>
+                    <td>If not, geometry traps keep recreating the same pocket.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>P — Proof loop</strong></td>
+                    <td>Can you run one-knob changes on comparable cycles and produce a verdict?</td>
+                    <td>If not, you get “it feels better” and no defendable outcome.</td>
+                  </tr>
+                </tbody>
+              </table>
 
               <p class="lp-fineprint">
-                If comparability is missing, the correct output is <strong>ABSTAIN</strong>—and the checklist to make the next run comparable.
+                Each axis can be present or missing. That creates 16 facility types. The self-assessment classifies your type and routes you to the pilot that matches it.
               </p>
             </div>
           </section>
 
-          <!-- HOW (already card-like, keep concise) -->
+          <!-- HOW: self assessment -->
           <section class="research-detail__section" id="how" aria-labelledby="s-how">
             <h2 class="research-detail__heading" id="s-how">How the self-assessment works</h2>
             <div class="research-detail__panel">
               <ol class="lp-steps">
                 <li>
-                  <h4>Pick the symptom</h4>
-                  <p>Choose the closest match (or describe your own).</p>
+                  <div class="lp-steps__row">
+                    <div class="lp-steps__text">
+                      <h4>Pick the symptom you’re dealing with</h4>
+                      <p>Lights-off fog, door-corridor plume, stratification pocket—or your closest match.</p>
+                    </div>
+                  </div>
                 </li>
                 <li>
-                  <h4>Answer a few readiness questions</h4>
-                  <p>Can you observe the pocket, align to triggers, and keep cycles comparable?</p>
+                  <div class="lp-steps__row">
+                    <div class="lp-steps__text">
+                      <h4>Answer quick questions about where/when you can observe</h4>
+                      <p>Can you check canopy depth in the pocket, and align to trigger windows?</p>
+                    </div>
+                  </div>
                 </li>
                 <li>
-                  <h4>Get your pilot match</h4>
-                  <p>We route you to the pilot your setup can support now.</p>
+                  <div class="lp-steps__row">
+                    <div class="lp-steps__text">
+                      <h4>Get your pilot match + evidence minimums</h4>
+                      <p>We route you to the pilot your facility can support now, with a checklist for clean comparability.</p>
+                    </div>
+                  </div>
                 </li>
                 <li>
-                  <h4>Get a next-step checklist</h4>
-                  <p>If you’re not proof-ready yet, you’ll get the shortest path to become comparable.</p>
+                  <div class="lp-steps__row">
+                    <div class="lp-steps__text">
+                      <h4>Get an honest outcome if data is missing</h4>
+                      <p>If the comparison isn’t fair, the right answer is ABSTAIN—and what to fix first.</p>
+                    </div>
+                  </div>
                 </li>
               </ol>
 
@@ -473,19 +572,19 @@
               <details>
                 <summary>What if I don’t know the trigger?</summary>
                 <p class="research-detail__text">
-                  That’s common. The assessment can route you to an observability/baseline-first pilot that helps identify triggers and windows.
+                  That’s common. The assessment can route you to an observability/baseline-first pilot that helps identify triggers and windows (instead of pretending you have them).
                 </p>
               </details>
               <details>
                 <summary>Do I need new sensors?</summary>
                 <p class="research-detail__text">
-                  Not necessarily. Most teams just need one measurement placed where the symptom lives (in-zone, canopy depth) and aligned to a trigger window.
+                  Not necessarily. Most teams just need one measurement placed where the symptom lives (canopy depth, in-zone) and aligned to a trigger window.
                 </p>
               </details>
               <details>
-                <summary>Is this a score?</summary>
+                <summary>Is this a “score” of my facility?</summary>
                 <p class="research-detail__text">
-                  No. It’s a readiness classification so you don’t waste time on pilots your facility can’t support yet.
+                  No. It’s a readiness classification. It tells you what claims your current setup can support and what pilot won’t waste your time.
                 </p>
               </details>
 
@@ -494,7 +593,7 @@
                   <i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>
                   Start the self-assessment
                 </a>
-                <span class="lp-fineprint">Get matched to a pilot based on symptoms + readiness.</span>
+                <span class="lp-fineprint">Get matched to a pilot based on what your symptoms and setup can support.</span>
               </div>
             </div>
           </section>
