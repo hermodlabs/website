@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hermod Draft Assistant — Your Options Step 2" />
+  <title>Hermod — Your Options</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#03070d',
+            shell: '#07101a',
+            panel: '#09131f',
+            panel2: '#0d1927',
+            line: '#1c2b3d',
+            mist: '#9ca9bb',
+            signal: '#8b5cf6',
+            signal2: '#b79cff',
+            blue: '#5b8cff',
+            danger: '#ff4d57',
+            good: '#67d391',
+            warn: '#eebc66'
+          },
+          fontFamily: {
+            sans: ['Inter', 'Avenir Next', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            mono: ['IBM Plex Mono', 'SFMono-Regular', 'Consolas', 'ui-monospace', 'monospace']
+          },
+          boxShadow: {
+            glow: '0 0 0 1px rgba(139,92,246,.55), 0 0 34px rgba(139,92,246,.18)',
+            panel: '0 22px 60px rgba(0,0,0,.28)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { color-scheme: dark; --purple:#8b5cf6; --lavender:#b79cff; --blue:#5b8cff; }
+    * { box-sizing: border-box; scrollbar-width: thin; scrollbar-color: #26384c transparent; }
+    html, body { min-height: 100%; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 5% 2%, rgba(91,140,255,.11), transparent 26rem),
+        radial-gradient(circle at 86% 0%, rgba(139,92,246,.09), transparent 28rem),
+        linear-gradient(180deg, #03070d 0%, #06101a 48%, #03070d 100%);
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.012) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.72), transparent 84%);
+    }
+    .app-shell {
+      min-height: 100vh;
+      border: 1px solid rgba(80,110,145,.34);
+      background: rgba(2,8,14,.26);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.025), 0 30px 100px rgba(0,0,0,.38);
+    }
+    .sidebar {
+      background:
+        linear-gradient(180deg, rgba(8,18,29,.98), rgba(3,9,15,.99)),
+        radial-gradient(circle at 15% 7%, rgba(139,92,246,.08), transparent 18rem);
+    }
+    .brand-mark {
+      position: relative;
+      width: 34px;
+      height: 34px;
+      filter: drop-shadow(0 0 14px rgba(139,92,246,.38));
+    }
+    .brand-mark::before,
+    .brand-mark::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      bottom: 4px;
+      width: 10px;
+      background: linear-gradient(180deg, #c4b5fd, #8b5cf6 55%, #5b8cff);
+      clip-path: polygon(0 0, 100% 17%, 100% 60%, 50% 74%, 50% 100%, 0 83%);
+    }
+    .brand-mark::before { left: 4px; }
+    .brand-mark::after { right: 4px; transform: scaleX(-1); }
+    .nav-item { position: relative; transition: .18s ease; }
+    .nav-item::before {
+      content: '';
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 3px;
+      border-radius: 0 6px 6px 0;
+      background: linear-gradient(180deg,#5b8cff,#8b5cf6);
+      opacity: 0;
+    }
+    .nav-item.active {
+      background: linear-gradient(90deg, rgba(91,140,255,.14), rgba(63,91,126,.14));
+      border-color: rgba(91,140,255,.16);
+      color: #fff;
+    }
+    .nav-item.active::before { opacity: 1; }
+    .glass {
+      background: linear-gradient(180deg, rgba(8,18,29,.93), rgba(5,12,20,.96));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.025), 0 20px 60px rgba(0,0,0,.18);
+    }
+    .step-line {
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(90deg, rgba(139,92,246,.55), rgba(255,255,255,.10));
+    }
+    .mode-card {
+      position: relative;
+      overflow: hidden;
+      transition: transform .16s ease, border-color .16s ease, background .16s ease;
+    }
+    .mode-card:hover { transform: translateY(-1px); border-color: rgba(183,156,255,.34); }
+    .mode-card.selected {
+      border-color: rgba(139,92,246,.65);
+      background: linear-gradient(135deg, rgba(139,92,246,.12), rgba(91,140,255,.055));
+      box-shadow: 0 0 0 1px rgba(139,92,246,.14), 0 20px 50px rgba(0,0,0,.12);
+    }
+    .mode-card.selected::before {
+      content: '';
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 3px;
+      background: linear-gradient(180deg, #5b8cff, #8b5cf6, #b79cff);
+    }
+    .champ-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 230px;
+      isolation: isolate;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, opacity .18s ease;
+    }
+    .champ-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background-image: var(--splash);
+      background-size: cover;
+      background-position: center 18%;
+      filter: saturate(.82) brightness(.68);
+      transform: scale(1.015);
+      transition: transform .22s ease, filter .22s ease;
+    }
+    .champ-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(180deg, rgba(3,7,13,.10) 0%, rgba(3,7,13,.36) 45%, rgba(3,7,13,.95) 100%),
+        linear-gradient(90deg, rgba(4,10,18,.60), transparent 64%);
+    }
+    .champ-card.selectable { cursor: pointer; }
+    .champ-card.selectable:hover { transform: translateY(-3px); border-color: rgba(183,156,255,.34); box-shadow: 0 18px 42px rgba(0,0,0,.24); }
+    .champ-card.selectable:hover::before { transform: scale(1.04); filter: saturate(.94) brightness(.74); }
+    .champ-card.selected {
+      border-color: rgba(139,92,246,.78);
+      box-shadow: 0 0 0 1px rgba(139,92,246,.30), 0 0 34px rgba(139,92,246,.15), 0 22px 50px rgba(0,0,0,.24);
+    }
+    .champ-card.selected .select-indicator {
+      border-color: rgba(183,156,255,.95);
+      background: #8b5cf6;
+      color: white;
+      box-shadow: 0 0 18px rgba(139,92,246,.44);
+    }
+    .champ-card.unavailable { opacity: .52; filter: grayscale(.18); }
+    .champ-card.unavailable::after {
+      background:
+        linear-gradient(180deg, rgba(3,7,13,.34), rgba(3,7,13,.78)),
+        repeating-linear-gradient(135deg, rgba(255,77,87,.02) 0 8px, rgba(255,255,255,.01) 8px 16px);
+    }
+    .select-indicator {
+      width: 26px; height: 26px;
+      display: grid; place-items: center;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(3,8,14,.72);
+      color: transparent;
+      font-size: 13px;
+      font-weight: 900;
+      transition: .16s ease;
+    }
+    .context-row { border-top: 1px solid rgba(255,255,255,.052); }
+    .mini-champ {
+      width: 32px; height: 32px; object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: #0a111a;
+    }
+    .summary-chip { box-shadow: inset 0 1px 0 rgba(255,255,255,.035); }
+    .status-pill { box-shadow: inset 0 1px 0 rgba(255,255,255,.04); }
+    .selection-copy { transition: opacity .18s ease, transform .18s ease; }
+    @media (max-width: 1024px) {
+      .champ-card { min-height: 210px; }
+    }
+  </style>
+</head>
+<body class="font-sans text-slate-100 antialiased selection:bg-signal/40 selection:text-white">
+  <div class="app-shell grid lg:grid-cols-[246px_minmax(0,1fr)]">
+    <!-- Sidebar -->
+    <aside class="sidebar hidden min-h-screen border-r border-white/[0.06] lg:flex lg:flex-col">
+      <div class="flex h-[76px] items-center gap-3 border-b border-white/[0.05] px-7">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="text-[19px] font-semibold tracking-[.24em] text-slate-100">HERMOD</div>
+      </div>
+
+      <div class="flex-1 px-2 py-7">
+        <p class="px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Live</p>
+        <button class="nav-item active flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-semibold">
+          <span class="grid h-6 w-6 place-items-center text-signal2">⌾</span>
+          Draft Assistant
+        </button>
+
+        <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">You</p>
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200">
+          <span class="grid h-6 w-6 place-items-center">▦</span>
+          Champion Pool
+        </button>
+        <button class="nav-item mt-1 flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200">
+          <span class="grid h-6 w-6 place-items-center">◇</span>
+          Player Profile
+        </button>
+
+        <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Learn</p>
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200">
+          <span class="grid h-6 w-6 place-items-center">□</span>
+          Decision History
+        </button>
+        <button class="nav-item mt-1 flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200">
+          <span class="grid h-6 w-6 place-items-center">⌁</span>
+          Review & Learn
+        </button>
+      </div>
+
+      <div class="border-t border-white/[0.06] p-4">
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-4 py-3 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200">
+          <span>⚙</span> Settings
+        </button>
+        <div class="mt-3 flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.018] px-4 py-3">
+          <div class="grid h-9 w-9 place-items-center rounded-full border border-blue/30 bg-blue/10 text-xs font-bold text-blue">D2</div>
+          <div class="min-w-0 flex-1">
+            <p class="text-sm font-semibold text-slate-200">Mid Main</p>
+            <p class="text-xs text-slate-500">Diamond II</p>
+          </div>
+          <span class="text-slate-600">⌄</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="min-w-0">
+      <header class="flex h-[76px] items-center justify-between border-b border-white/[0.06] bg-black/10 px-5 sm:px-7 lg:px-8">
+        <div class="flex items-center gap-2.5 text-sm text-slate-500">
+          <span class="font-medium text-slate-300">Ranked Solo/Duo</span>
+          <span class="text-slate-700">•</span>
+          <span>Summoner's Rift</span>
+          <span class="hidden text-slate-700 sm:inline">•</span>
+          <span class="hidden sm:inline">Pick Phase</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="status-pill hidden rounded-full border border-good/20 bg-good/[0.06] px-3 py-1.5 text-[11px] font-semibold text-good sm:inline-flex">LIVE DRAFT</span>
+          <button id="resetBtn" class="rounded-lg border border-white/[0.07] bg-white/[0.02] px-3 py-2 text-xs font-medium text-slate-400 hover:text-white">Reset</button>
+        </div>
+      </header>
+
+      <div class="mx-auto max-w-[1450px] px-5 pb-12 pt-7 sm:px-7 lg:px-8">
+        <!-- Stepper -->
+        <section aria-label="Draft assistant progress" class="glass rounded-2xl border border-white/[0.07] px-5 py-4 sm:px-6">
+          <div class="flex items-center gap-2 sm:gap-3">
+            <div class="flex min-w-0 items-center gap-3 opacity-80">
+              <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-good/35 bg-good/[0.08] text-[11px] font-bold text-good">✓</span>
+              <div class="hidden min-w-0 sm:block">
+                <p class="text-[11px] font-bold uppercase tracking-[.16em] text-slate-300">Draft</p>
+                <p class="text-xs text-slate-600">Current state</p>
+              </div>
+            </div>
+            <div class="step-line"></div>
+            <div class="flex min-w-0 items-center gap-3">
+              <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-signal/70 bg-signal/15 text-[11px] font-bold text-signal2 shadow-[0_0_18px_rgba(139,92,246,.16)]">2</span>
+              <div class="min-w-0">
+                <p class="text-[11px] font-bold uppercase tracking-[.14em] text-signal2">Your Options</p>
+                <p class="hidden text-xs text-slate-500 sm:block">Pool for today</p>
+              </div>
+            </div>
+            <div class="step-line"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-45">
+              <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-500">3</span>
+              <div class="hidden min-w-0 lg:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500">Clarify</p><p class="text-xs text-slate-600">Only if needed</p></div>
+            </div>
+            <div class="step-line opacity-30"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-40">
+              <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-500">4</span>
+              <div class="hidden min-w-0 lg:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500">Recommendation</p><p class="text-xs text-slate-600">Rank choices</p></div>
+            </div>
+            <div class="step-line opacity-25"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-35">
+              <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-500">5</span>
+              <div class="hidden min-w-0 xl:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500">Decide</p><p class="text-xs text-slate-600">Record lock</p></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Heading -->
+        <section class="pb-7 pt-9">
+          <div class="flex flex-col justify-between gap-5 xl:flex-row xl:items-end">
+            <div>
+              <p class="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.2em] text-signal2">
+                <span class="h-1.5 w-1.5 rounded-full bg-signal shadow-[0_0_10px_rgba(139,92,246,.75)]"></span>
+                Step 2 · Your options
+              </p>
+              <h1 class="text-3xl font-semibold tracking-[-.035em] text-white sm:text-[38px]">What would you actually play here?</h1>
+              <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-400 sm:text-[15px]">Start from your saved MID pool, then make any one-draft adjustments. Hermod will only evaluate champions you would realistically lock today.</p>
+            </div>
+            <div class="flex items-center gap-2 rounded-full border border-white/[0.07] bg-white/[0.02] px-3 py-1.5 text-xs text-slate-500">
+              <span class="h-1.5 w-1.5 rounded-full bg-good"></span>
+              Draft state carried forward
+            </div>
+          </div>
+        </section>
+
+        <div class="grid gap-5 xl:grid-cols-[minmax(0,1fr)_330px]">
+          <!-- Main decision surface -->
+          <div class="min-w-0 space-y-5">
+            <!-- Pool source question -->
+            <section class="glass rounded-2xl border border-white/[0.07] p-5 sm:p-6">
+              <div class="flex flex-col justify-between gap-3 sm:flex-row sm:items-start">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <p class="text-sm font-semibold text-white">Use your normal champion pool for this draft?</p>
+                    <span class="rounded-full border border-white/[0.06] bg-white/[0.02] px-2 py-0.5 text-[10px] font-bold uppercase tracking-[.12em] text-slate-500">Required</span>
+                  </div>
+                  <p class="mt-1 text-xs leading-5 text-slate-500">Your saved pool is the default. Change it only if today's realistic options are different.</p>
+                </div>
+                <span class="rounded-full border border-blue/20 bg-blue/[0.06] px-3 py-1 text-[11px] font-semibold text-blue">MID · SAVED POOL</span>
+              </div>
+
+              <div class="mt-5 grid gap-3 md:grid-cols-2">
+                <button id="useSavedBtn" class="mode-card selected rounded-2xl border border-white/[0.09] bg-white/[0.022] p-4 text-left sm:p-5">
+                  <div class="flex items-start gap-4">
+                    <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-signal/25 bg-signal/[0.08] text-signal2">✓</span>
+                    <span>
+                      <span class="block text-sm font-semibold text-white">Yes, use my saved pool</span>
+                      <span class="mt-1 block text-xs leading-5 text-slate-500">Use your active MID pool, automatically excluding unavailable champions.</span>
+                    </span>
+                  </div>
+                </button>
+                <button id="changePoolBtn" class="mode-card rounded-2xl border border-white/[0.09] bg-white/[0.018] p-4 text-left sm:p-5">
+                  <div class="flex items-start gap-4">
+                    <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-white/[0.08] bg-white/[0.025] text-slate-500">✎</span>
+                    <span>
+                      <span class="block text-sm font-semibold text-slate-200">Change for this draft</span>
+                      <span class="mt-1 block text-xs leading-5 text-slate-500">Temporarily remove champions you technically play but would not lock right now.</span>
+                    </span>
+                  </div>
+                </button>
+              </div>
+            </section>
+
+            <!-- Champion pool -->
+            <section class="glass rounded-2xl border border-white/[0.07] p-5 sm:p-6">
+              <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+                <div>
+                  <p class="text-[11px] font-bold uppercase tracking-[.18em] text-signal2">Saved MID pool</p>
+                  <h2 id="poolHeading" class="mt-1 text-xl font-semibold tracking-[-.025em] text-white">4 champions in your profile</h2>
+                  <p id="poolInstruction" class="mt-1 text-xs leading-5 text-slate-500">Hermod will use the available champions below.</p>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span id="selectionCountTop" class="summary-chip rounded-full border border-good/20 bg-good/[0.06] px-3 py-1.5 text-[11px] font-semibold text-good">3 available</span>
+                  <button class="rounded-lg border border-white/[0.07] bg-white/[0.02] px-3 py-1.5 text-[11px] font-semibold text-slate-500 transition hover:text-slate-300">Edit saved pool</button>
+                </div>
+              </div>
+
+              <div id="championGrid" class="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4"></div>
+
+              <div id="changeHint" class="selection-copy mt-4 hidden rounded-xl border border-signal/18 bg-signal/[0.045] px-4 py-3 text-xs leading-5 text-slate-400">
+                <span class="font-semibold text-signal2">One-draft adjustment:</span> click an available champion card to include or exclude it. Your saved profile will not be changed.
+              </div>
+            </section>
+
+            <!-- Feasible set summary -->
+            <section class="rounded-2xl border border-white/[0.07] bg-[linear-gradient(90deg,rgba(91,140,255,.055),rgba(139,92,246,.045),rgba(255,255,255,.018))] p-5 sm:p-6">
+              <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+                <div class="min-w-0">
+                  <div class="flex items-center gap-2">
+                    <span class="grid h-6 w-6 place-items-center rounded-full border border-good/25 bg-good/[0.08] text-xs text-good">✓</span>
+                    <p class="text-sm font-semibold text-white">Current feasible set</p>
+                  </div>
+                  <div id="selectedChips" class="mt-3 flex flex-wrap gap-2"></div>
+                  <p id="selectionNote" class="mt-3 text-xs leading-5 text-slate-500">Viktor is in your saved pool but excluded because he is banned in this draft.</p>
+                </div>
+                <div class="flex shrink-0 items-center gap-3">
+                  <button id="backBtn" class="rounded-xl border border-white/[0.09] bg-white/[0.025] px-4 py-3 text-sm font-semibold text-slate-400 transition hover:text-white">← Back to Draft</button>
+                  <button id="continueBtn" class="group inline-flex items-center justify-center gap-2 rounded-xl bg-signal px-5 py-3 text-sm font-bold text-white shadow-[0_10px_28px_rgba(139,92,246,.18)] transition hover:bg-[#9b70f7] disabled:cursor-not-allowed disabled:opacity-45">
+                    <span id="continueLabel">Continue with 3 options</span>
+                    <span class="transition group-hover:translate-x-0.5">→</span>
+                  </button>
+                </div>
+              </div>
+              <div class="mt-4 flex items-start gap-2 border-t border-white/[0.055] pt-4 text-xs leading-5 text-slate-600">
+                <span class="mt-0.5 text-signal2">◇</span>
+                <span>Next, Hermod checks whether any missing fact could materially change the ranking. If not, Clarify can be skipped.</span>
+              </div>
+            </section>
+          </div>
+
+          <!-- Persistent draft context rail -->
+          <aside class="space-y-5">
+            <section class="glass overflow-hidden rounded-2xl border border-white/[0.07]">
+              <div class="flex items-center justify-between px-5 py-4">
+                <div>
+                  <p class="text-[10px] font-bold uppercase tracking-[.2em] text-slate-500">Draft context</p>
+                  <h2 class="mt-1 text-sm font-semibold text-white">B3 · MID</h2>
+                </div>
+                <span class="rounded-full border border-good/20 bg-good/[0.06] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[.11em] text-good">Step 1 saved</span>
+              </div>
+
+              <div class="context-row px-5 py-4">
+                <div class="flex items-center justify-between">
+                  <p class="text-[10px] font-bold uppercase tracking-[.16em] text-blue">Your team</p>
+                  <span class="text-[10px] text-slate-600">3 known</span>
+                </div>
+                <div class="mt-3 space-y-2.5">
+                  <div class="flex items-center gap-3"><img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Gnar.png" alt="Gnar"><div class="min-w-0"><p class="text-xs font-semibold text-slate-300">Gnar</p><p class="text-[10px] text-slate-600">Top</p></div></div>
+                  <div class="flex items-center gap-3"><img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/LeeSin.png" alt="Lee Sin"><div class="min-w-0"><p class="text-xs font-semibold text-slate-300">Lee Sin</p><p class="text-[10px] text-slate-600">Jungle</p></div></div>
+                  <div class="flex items-center gap-3"><div class="grid h-8 w-8 place-items-center rounded-lg border border-blue/25 bg-blue/[0.07] text-[9px] font-bold text-blue">YOU</div><div class="min-w-0"><p class="text-xs font-semibold text-blue">Your pick</p><p class="text-[10px] text-slate-600">Mid</p></div></div>
+                </div>
+              </div>
+
+              <div class="context-row px-5 py-4">
+                <div class="flex items-center justify-between">
+                  <p class="text-[10px] font-bold uppercase tracking-[.16em] text-red-300">Enemy team</p>
+                  <span class="text-[10px] text-slate-600">2 known</span>
+                </div>
+                <div class="mt-3 space-y-2.5">
+                  <div class="flex items-center gap-3"><img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Aatrox.png" alt="Aatrox"><div class="min-w-0"><p class="text-xs font-semibold text-slate-300">Aatrox</p><p class="text-[10px] text-slate-600">Top</p></div></div>
+                  <div class="flex items-center gap-3"><img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Maokai.png" alt="Maokai"><div class="min-w-0"><p class="text-xs font-semibold text-slate-300">Maokai</p><p class="text-[10px] text-slate-600">Jungle</p></div></div>
+                  <div class="flex items-center gap-3 text-xs text-slate-600"><span class="grid h-8 w-8 place-items-center rounded-lg border border-dashed border-white/[0.08]">?</span><span>Mid unresolved</span></div>
+                </div>
+              </div>
+
+              <div class="context-row px-5 py-4">
+                <div class="flex items-center justify-between gap-4">
+                  <div>
+                    <p class="text-[10px] font-bold uppercase tracking-[.16em] text-slate-500">Relevant bans</p>
+                    <div class="mt-2 flex items-center gap-2">
+                      <span class="rounded-lg border border-danger/15 bg-danger/[0.045] px-2.5 py-1 text-[10px] font-semibold text-red-300">LeBlanc</span>
+                      <span class="rounded-lg border border-danger/15 bg-danger/[0.045] px-2.5 py-1 text-[10px] font-semibold text-red-300">Viktor</span>
+                    </div>
+                  </div>
+                  <button id="editDraftBtn" class="rounded-lg border border-white/[0.07] bg-white/[0.02] px-2.5 py-1.5 text-[10px] font-semibold text-slate-500 hover:text-slate-300">Edit</button>
+                </div>
+              </div>
+            </section>
+
+            <section class="rounded-2xl border border-signal/15 bg-signal/[0.035] p-5">
+              <div class="flex gap-3">
+                <span class="grid h-8 w-8 shrink-0 place-items-center rounded-xl border border-signal/25 bg-signal/[0.07] text-signal2">◇</span>
+                <div>
+                  <p class="text-xs font-semibold text-slate-200">What this step controls</p>
+                  <p class="mt-1 text-xs leading-5 text-slate-500">This is not a tier list filter. It defines the set of champions Hermod is allowed to consider for this specific decision.</p>
+                </div>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="pointer-events-none fixed bottom-5 right-5 z-[60] translate-y-3 rounded-xl border border-white/[0.08] bg-[#0b1623]/95 px-4 py-3 text-sm text-slate-200 opacity-0 shadow-2xl transition duration-200">Options updated</div>
+
+  <script>
+    const champions = [
+      { name: 'Orianna', key: 'Orianna', proficiency: 'High', status: 'Active', unavailable: false },
+      { name: 'Ahri', key: 'Ahri', proficiency: 'High', status: 'Active', unavailable: false },
+      { name: 'Syndra', key: 'Syndra', proficiency: 'Medium', status: 'Active', unavailable: false },
+      { name: 'Viktor', key: 'Viktor', proficiency: 'High', status: 'Somewhat rusty', unavailable: true, unavailableReason: 'Banned' }
+    ];
+
+    const state = {
+      mode: 'saved',
+      selected: new Set(champions.filter(c => !c.unavailable).map(c => c.key))
+    };
+
+    const grid = document.getElementById('championGrid');
+    const savedBtn = document.getElementById('useSavedBtn');
+    const changeBtn = document.getElementById('changePoolBtn');
+    const hint = document.getElementById('changeHint');
+    const selectionCountTop = document.getElementById('selectionCountTop');
+    const selectedChips = document.getElementById('selectedChips');
+    const selectionNote = document.getElementById('selectionNote');
+    const continueLabel = document.getElementById('continueLabel');
+    const continueBtn = document.getElementById('continueBtn');
+    const poolInstruction = document.getElementById('poolInstruction');
+    const toast = document.getElementById('toast');
+
+    function splashUrl(key) {
+      return `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${key}_0.jpg`;
+    }
+
+    function iconUrl(key) {
+      return `https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/${key}.png`;
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.remove('opacity-0','translate-y-3');
+      setTimeout(() => toast.classList.add('opacity-0','translate-y-3'), 1500);
+    }
+
+    function renderCards() {
+      const selectable = state.mode === 'custom';
+      grid.innerHTML = champions.map(champ => {
+        const selected = state.selected.has(champ.key) && !champ.unavailable;
+        const statusTone = champ.status === 'Active' ? 'text-good border-good/20 bg-good/[0.06]' : 'text-warn border-warn/20 bg-warn/[0.06]';
+        return `
+          <button
+            class="champ-card ${selectable && !champ.unavailable ? 'selectable' : ''} ${selected ? 'selected' : ''} ${champ.unavailable ? 'unavailable' : ''} rounded-2xl border border-white/[0.09] text-left"
+            style="--splash:url('${splashUrl(champ.key)}')"
+            data-key="${champ.key}"
+            ${champ.unavailable ? 'disabled' : ''}
+            aria-pressed="${selected}">
+            <div class="flex h-full min-h-[230px] flex-col justify-between p-4">
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="rounded-full border border-white/[0.12] bg-black/35 px-2 py-1 text-[9px] font-bold uppercase tracking-[.11em] text-slate-200 backdrop-blur-md">${champ.proficiency} proficiency</span>
+                  <span class="rounded-full border ${statusTone} px-2 py-1 text-[9px] font-bold uppercase tracking-[.11em] backdrop-blur-md">${champ.status}</span>
+                </div>
+                ${champ.unavailable
+                  ? `<span class="rounded-full border border-danger/30 bg-danger/15 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[.12em] text-red-200 backdrop-blur-md">Banned</span>`
+                  : `<span class="select-indicator">✓</span>`}
+              </div>
+              <div>
+                <div class="flex items-center gap-3">
+                  <img class="h-10 w-10 rounded-xl border border-white/[0.16] object-cover shadow-lg" src="${iconUrl(champ.key)}" alt="${champ.name}">
+                  <div>
+                    <p class="text-lg font-semibold tracking-[-.025em] text-white">${champ.name}</p>
+                    <p class="mt-0.5 text-[11px] text-slate-400">${champ.unavailable ? 'Unavailable this draft' : selected ? 'Included in this decision' : 'Not in current feasible set'}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </button>`;
+      }).join('');
+
+      grid.querySelectorAll('[data-key]').forEach(card => {
+        card.addEventListener('click', () => {
+          if (state.mode !== 'custom') return;
+          const champ = champions.find(c => c.key === card.dataset.key);
+          if (!champ || champ.unavailable) return;
+          if (state.selected.has(champ.key)) state.selected.delete(champ.key);
+          else state.selected.add(champ.key);
+          render();
+          showToast(`${champ.name} ${state.selected.has(champ.key) ? 'included' : 'excluded'} for this draft`);
+        });
+      });
+    }
+
+    function renderSummary() {
+      const selected = champions.filter(c => state.selected.has(c.key) && !c.unavailable);
+      selectionCountTop.textContent = state.mode === 'saved' ? `${selected.length} available` : `${selected.length} selected`;
+      selectionCountTop.className = `summary-chip rounded-full border px-3 py-1.5 text-[11px] font-semibold ${selected.length ? 'border-good/20 bg-good/[0.06] text-good' : 'border-danger/20 bg-danger/[0.06] text-red-300'}`;
+
+      selectedChips.innerHTML = selected.length
+        ? selected.map(c => `<span class="flex items-center gap-2 rounded-xl border border-white/[0.08] bg-black/15 py-1.5 pl-1.5 pr-3"><img class="h-7 w-7 rounded-lg object-cover" src="${iconUrl(c.key)}" alt="${c.name}"><span class="text-xs font-semibold text-slate-300">${c.name}</span></span>`).join('')
+        : `<span class="rounded-xl border border-danger/20 bg-danger/[0.05] px-3 py-2 text-xs font-semibold text-red-300">No champions selected</span>`;
+
+      selectionNote.textContent = state.mode === 'saved'
+        ? 'Viktor is in your saved pool but excluded because he is banned in this draft.'
+        : selected.length
+          ? `This adjustment applies only to the current draft. Your saved champion pool remains unchanged.`
+          : 'Choose at least one champion you would genuinely be willing to lock in this draft.';
+
+      continueLabel.textContent = selected.length === 1 ? 'Continue with 1 option' : `Continue with ${selected.length} options`;
+      continueBtn.disabled = selected.length === 0;
+    }
+
+    function renderModes() {
+      savedBtn.classList.toggle('selected', state.mode === 'saved');
+      changeBtn.classList.toggle('selected', state.mode === 'custom');
+      hint.classList.toggle('hidden', state.mode !== 'custom');
+      poolInstruction.textContent = state.mode === 'saved'
+        ? 'Hermod will use the available champions below.'
+        : 'Select only the champions you would genuinely lock in this game.';
+    }
+
+    function render() {
+      renderModes();
+      renderCards();
+      renderSummary();
+    }
+
+    savedBtn.addEventListener('click', () => {
+      state.mode = 'saved';
+      state.selected = new Set(champions.filter(c => !c.unavailable).map(c => c.key));
+      render();
+      showToast('Using your saved MID pool');
+    });
+
+    changeBtn.addEventListener('click', () => {
+      state.mode = 'custom';
+      render();
+      showToast('Choose your options for this draft');
+    });
+
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      state.mode = 'saved';
+      state.selected = new Set(champions.filter(c => !c.unavailable).map(c => c.key));
+      render();
+      showToast('Step 2 reset');
+    });
+
+    document.getElementById('backBtn').addEventListener('click', () => showToast('Prototype: return to Live Draft — Step 1'));
+    document.getElementById('editDraftBtn').addEventListener('click', () => showToast('Prototype: edit Live Draft — Step 1'));
+    continueBtn.addEventListener('click', () => {
+      if (continueBtn.disabled) return;
+      const count = state.selected.size;
+      showToast(`Step 2 complete — checking whether clarification is needed`);
+    });
+
+    render();
+  </script>
+</body>
+</html>

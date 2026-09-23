@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hermod Draft Assistant - What could change this recommendation?" />
+  <title>Hermod - What Could Change This?</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#03070d', shell: '#07101a', panel: '#09131f', panel2: '#0d1927', line: '#1c2b3d',
+            mist: '#9ca9bb', signal: '#8b5cf6', signal2: '#b79cff', blue: '#5b8cff', danger: '#ff5b68',
+            good: '#67d391', warn: '#eebc66'
+          },
+          fontFamily: {
+            sans: ['Inter', 'Avenir Next', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            mono: ['IBM Plex Mono', 'SFMono-Regular', 'Consolas', 'ui-monospace', 'monospace']
+          },
+          boxShadow: {
+            glow: '0 0 0 1px rgba(139,92,246,.55), 0 0 34px rgba(139,92,246,.18)',
+            panel: '0 22px 60px rgba(0,0,0,.28)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { color-scheme: dark; --purple:#8b5cf6; --lavender:#b79cff; --blue:#5b8cff; }
+    * { box-sizing: border-box; scrollbar-width: thin; scrollbar-color: #26384c transparent; }
+    html, body { min-height: 100%; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 4% 2%, rgba(91,140,255,.11), transparent 26rem),
+        radial-gradient(circle at 88% 0%, rgba(139,92,246,.10), transparent 29rem),
+        linear-gradient(180deg, #03070d 0%, #06101a 48%, #03070d 100%);
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: -2; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.012) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.72), transparent 84%);
+    }
+    .app-shell {
+      min-height: 100vh; border: 1px solid rgba(80,110,145,.34); background: rgba(2,8,14,.26);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.025), 0 30px 100px rgba(0,0,0,.38);
+    }
+    .sidebar {
+      background: linear-gradient(180deg, rgba(8,18,29,.98), rgba(3,9,15,.99)),
+        radial-gradient(circle at 15% 7%, rgba(139,92,246,.08), transparent 18rem);
+    }
+    .brand-mark { position: relative; width: 34px; height: 34px; filter: drop-shadow(0 0 14px rgba(139,92,246,.38)); }
+    .brand-mark::before, .brand-mark::after {
+      content: ''; position: absolute; top: 4px; bottom: 4px; width: 10px;
+      background: linear-gradient(180deg, #c4b5fd, #8b5cf6 55%, #5b8cff);
+      clip-path: polygon(0 0, 100% 17%, 100% 60%, 50% 74%, 50% 100%, 0 83%);
+    }
+    .brand-mark::before { left: 4px; }
+    .brand-mark::after { right: 4px; transform: scaleX(-1); }
+    .nav-item { position: relative; transition: .18s ease; }
+    .nav-item::before {
+      content: ''; position: absolute; inset: 0 auto 0 0; width: 3px; border-radius: 0 6px 6px 0;
+      background: linear-gradient(180deg,#5b8cff,#8b5cf6); opacity: 0;
+    }
+    .nav-item.active { background: linear-gradient(90deg, rgba(91,140,255,.14), rgba(63,91,126,.14)); border-color: rgba(91,140,255,.16); color: #fff; }
+    .nav-item.active::before { opacity: 1; }
+    .glass { background: linear-gradient(180deg, rgba(8,18,29,.93), rgba(5,12,20,.96)); box-shadow: inset 0 1px 0 rgba(255,255,255,.025), 0 20px 60px rgba(0,0,0,.18); }
+    .step-line { height: 1px; flex: 1; background: linear-gradient(90deg, rgba(139,92,246,.55), rgba(255,255,255,.10)); }
+    .pulse { animation: pulse 2.15s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(139,92,246,.26); } 50% { box-shadow: 0 0 0 8px rgba(139,92,246,0); } }
+    .mini-champ { width: 34px; height: 34px; object-fit: cover; border-radius: 9px; border: 1px solid rgba(255,255,255,.10); background: #0a111a; }
+    .rank-icon { width: 44px; height: 44px; object-fit: cover; border-radius: 12px; border: 1px solid rgba(183,156,255,.30); }
+    .source-pill { border: 1px solid rgba(255,255,255,.065); background: rgba(255,255,255,.018); }
+    .factor-card { position: relative; overflow: hidden; transition: .18s ease; background: linear-gradient(180deg, rgba(12,24,38,.94), rgba(6,14,23,.98)); }
+    .factor-card::before { content:''; position:absolute; inset:0 auto 0 0; width:2px; opacity:.65; background:linear-gradient(180deg,transparent,rgba(238,188,102,.9),transparent); }
+    .factor-card.high::before { background:linear-gradient(180deg,transparent,rgba(255,91,104,.95),transparent); }
+    .factor-card.low::before { background:linear-gradient(180deg,transparent,rgba(91,140,255,.72),transparent); }
+    .factor-card:hover { border-color: rgba(183,156,255,.20); transform: translateY(-1px); }
+    .impact-track { height: 4px; border-radius: 99px; overflow: hidden; background: rgba(255,255,255,.07); }
+    .impact-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, rgba(139,92,246,.9), rgba(91,140,255,.9)); }
+    .choice { transition: .16s ease; }
+    .choice:hover { border-color: rgba(183,156,255,.30); background: rgba(139,92,246,.055); color:#fff; }
+    .choice.active { border-color: rgba(139,92,246,.55); background: rgba(139,92,246,.11); color: #ddd1ff; box-shadow: 0 0 18px rgba(139,92,246,.08); }
+    .preview-panel { background: linear-gradient(135deg, rgba(139,92,246,.08), rgba(91,140,255,.035)); }
+    .ranking-row { transition: transform .28s ease, border-color .2s ease, background .2s ease; }
+    .ranking-row.top { border-color: rgba(139,92,246,.28); background: rgba(139,92,246,.055); }
+    .rank-shift { animation: flash 1.1s ease; }
+    @keyframes flash { 0% { background: rgba(139,92,246,.20); } 100% { background: transparent; } }
+    .context-row { border-top: 1px solid rgba(255,255,255,.052); }
+    .change-log { animation: slideIn .25s ease; }
+    @keyframes slideIn { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
+    .toast { transform: translateY(20px); opacity:0; pointer-events:none; transition:.22s ease; }
+    .toast.show { transform: translateY(0); opacity:1; }
+    .modal-backdrop { background: rgba(1,4,8,.74); backdrop-filter: blur(8px); }
+    @media (prefers-reduced-motion: reduce) { .pulse { animation: none; } .factor-card:hover { transform:none; } }
+  </style>
+</head>
+<body class="font-sans text-slate-100 antialiased selection:bg-signal/40 selection:text-white">
+  <div class="app-shell grid lg:grid-cols-[246px_minmax(0,1fr)]">
+    <aside class="sidebar hidden min-h-screen border-r border-white/[0.06] lg:flex lg:flex-col">
+      <div class="flex h-[76px] items-center gap-3 border-b border-white/[0.05] px-7">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="text-[19px] font-semibold tracking-[.24em] text-slate-100">HERMOD</div>
+      </div>
+      <div class="flex-1 px-2 py-7">
+        <p class="px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Live</p>
+        <button class="nav-item active flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-semibold"><span class="grid h-6 w-6 place-items-center text-signal2">O</span>Draft Assistant</button>
+        <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">You</p>
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">#</span>Champion Pool</button>
+        <button class="nav-item mt-1 flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">D</span>Player Profile</button>
+        <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Learn</p>
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">[]</span>Decision History</button>
+        <button class="nav-item mt-1 flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">~</span>Review & Learn</button>
+      </div>
+      <div class="border-t border-white/[0.06] p-4">
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-4 py-3 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span>*</span> Settings</button>
+        <div class="mt-3 flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.018] px-4 py-3">
+          <div class="grid h-9 w-9 place-items-center rounded-full border border-blue/30 bg-blue/10 text-xs font-bold text-blue">D2</div>
+          <div class="min-w-0 flex-1"><p class="text-sm font-semibold text-slate-200">Mid Main</p><p class="text-xs text-slate-500">Diamond II</p></div>
+          <span class="text-slate-600">v</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="min-w-0">
+      <header class="flex h-[76px] items-center justify-between border-b border-white/[0.06] bg-[#050c14]/80 px-5 backdrop-blur-xl sm:px-7 xl:px-9">
+        <div class="flex items-center gap-3"><div class="brand-mark scale-90 lg:hidden" aria-hidden="true"></div><div><h1 class="text-sm font-semibold text-white">Draft Assistant</h1><p class="text-xs text-slate-600">Decision workspace</p></div></div>
+        <div class="flex items-center gap-2"><span class="hidden rounded-full border border-white/[0.07] bg-white/[0.018] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[.14em] text-slate-500 sm:inline">Live decision</span><button class="grid h-9 w-9 place-items-center rounded-xl border border-white/[0.07] bg-white/[0.02] text-slate-500 hover:text-white">?</button></div>
+      </header>
+
+      <div class="mx-auto max-w-[1510px] px-4 pb-12 pt-5 sm:px-6 xl:px-8">
+        <section class="glass rounded-2xl border border-white/[0.07] px-4 py-4 sm:px-5">
+          <div class="flex items-center gap-3 overflow-x-auto">
+            <div class="flex min-w-0 items-center gap-3"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-good/25 bg-good/[0.07] text-[11px] font-bold text-good">OK</span><div class="hidden min-w-0 md:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-300">Draft</p><p class="text-xs text-slate-600">State captured</p></div></div>
+            <div class="step-line"></div>
+            <div class="flex min-w-0 items-center gap-3"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-good/25 bg-good/[0.07] text-[11px] font-bold text-good">OK</span><div class="hidden min-w-0 md:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-300">Your Options</p><p class="text-xs text-slate-600">3 viable</p></div></div>
+            <div class="step-line"></div>
+            <div class="flex min-w-0 items-center gap-3"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-good/25 bg-good/[0.07] text-[11px] font-bold text-good">OK</span><div class="hidden min-w-0 md:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-300">Clarify</p><p class="text-xs text-slate-600">Decision ready</p></div></div>
+            <div class="step-line"></div>
+            <div class="flex min-w-0 items-center gap-3"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-signal/70 bg-signal/15 text-[11px] font-bold text-signal2 shadow-[0_0_18px_rgba(139,92,246,.16)]">4</span><div class="min-w-0"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-signal2">Recommendation</p><p class="hidden text-xs text-slate-500 sm:block">Sensitivity open</p></div></div>
+            <div class="step-line opacity-30"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-40"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-500">5</span><div class="hidden min-w-0 xl:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500">Decide</p><p class="text-xs text-slate-600">Record lock</p></div></div>
+          </div>
+        </section>
+
+        <section class="pb-7 pt-9">
+          <div class="flex flex-col justify-between gap-5 xl:flex-row xl:items-end">
+            <div>
+              <p class="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.2em] text-warn"><span class="pulse h-1.5 w-1.5 rounded-full bg-warn"></span>Recommendation / Sensitivity</p>
+              <h2 class="text-3xl font-semibold tracking-[-.035em] text-white sm:text-[38px]">What could change this?</h2>
+              <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-400 sm:text-[15px]">Hermod surfaces the assumptions and user-provided facts the recommendation is most sensitive to — then lets you test or revise them without restarting the draft.</p>
+            </div>
+            <div id="stabilityBadge" class="flex items-center gap-2 rounded-full border border-good/18 bg-good/[0.04] px-3 py-1.5 text-xs text-slate-400"><span class="h-1.5 w-1.5 rounded-full bg-good"></span><span>Recommendation currently stable</span></div>
+          </div>
+        </section>
+
+        <section class="glass mb-5 overflow-hidden rounded-2xl border border-white/[0.07]">
+          <div class="flex flex-col gap-4 px-5 py-4 lg:flex-row lg:items-center lg:justify-between">
+            <div class="flex items-center gap-3">
+              <span class="rounded-lg border border-blue/20 bg-blue/[0.06] px-2.5 py-1.5 font-mono text-[10px] font-bold tracking-[.12em] text-blue">B3 / MID</span>
+              <div><p class="text-xs font-semibold text-slate-300">Current recommendation state</p><p class="mt-0.5 text-[10px] text-slate-600">These are the inputs used to rank the current viable options.</p></div>
+            </div>
+            <div class="flex flex-wrap gap-2 text-[10px]">
+              <span class="source-pill rounded-md px-2 py-1 text-blue">Pool: 3 viable</span>
+              <span id="gragasContextPill" class="source-pill rounded-md px-2 py-1 text-good">Gragas: Top confirmed</span>
+              <span id="ahriContextPill" class="source-pill rounded-md px-2 py-1 text-signal2">Ahri: if needed</span>
+            </div>
+          </div>
+        </section>
+
+        <div class="grid gap-5 xl:grid-cols-[minmax(0,1fr)_330px]">
+          <div class="min-w-0 space-y-5">
+            <section class="glass rounded-2xl border border-signal/18 p-5 shadow-panel sm:p-6">
+              <div class="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
+                <div class="max-w-3xl">
+                  <p class="text-[10px] font-bold uppercase tracking-[.2em] text-signal2">Current ordering</p>
+                  <h3 id="headline" class="mt-2 text-2xl font-semibold tracking-[-.03em] text-white">Orianna remains the strongest overall choice.</h3>
+                  <p id="headlineSub" class="mt-2 text-sm leading-6 text-slate-400">The result is not equally sensitive to every unknown. Two factors are worth inspecting; the rest are currently too low-impact to interrupt you for.</p>
+                </div>
+                <div class="rounded-xl border border-white/[0.07] bg-white/[0.018] px-4 py-3 text-right">
+                  <p class="text-[9px] font-bold uppercase tracking-[.16em] text-slate-600">Confidence</p>
+                  <p id="confidenceValue" class="mt-1 text-xl font-semibold text-good">High</p>
+                  <p id="confidenceNote" class="mt-0.5 text-[10px] text-slate-600">Current state resolved</p>
+                </div>
+              </div>
+
+              <div id="rankingList" class="mt-6 grid gap-2">
+                <!-- populated by JS -->
+              </div>
+
+              <div id="changeLogWrap" class="mt-4 hidden rounded-xl border border-blue/18 bg-blue/[0.035] px-4 py-3">
+                <div class="change-log flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <div><p class="text-[9px] font-bold uppercase tracking-[.16em] text-blue">State updated</p><p id="changeLogText" class="mt-1 text-xs leading-5 text-slate-300"></p></div>
+                  <button id="undoChange" class="shrink-0 rounded-lg border border-blue/20 bg-blue/[0.05] px-3 py-2 text-xs font-semibold text-blue transition hover:bg-blue/[0.09]">Undo last change</button>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <div class="mb-3 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                <div><p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">Sensitivity factors</p><h3 class="mt-1 text-lg font-semibold text-white">Only show factors that could actually move the decision</h3></div>
+                <p class="max-w-md text-xs leading-5 text-slate-500">Changing a factor below previews a counterfactual first. Nothing becomes part of the decision state until you apply it.</p>
+              </div>
+
+              <div class="space-y-3">
+                <article class="factor-card high rounded-2xl border border-white/[0.08] p-5 sm:p-6" data-factor="gragas">
+                  <div class="grid gap-5 lg:grid-cols-[1fr_210px] lg:items-start">
+                    <div>
+                      <div class="flex flex-wrap items-center gap-2"><span class="rounded-md border border-danger/20 bg-danger/[0.05] px-2 py-1 text-[9px] font-bold uppercase tracking-[.13em] text-danger">High sensitivity</span><span class="rounded-md border border-white/[0.07] bg-white/[0.018] px-2 py-1 text-[9px] text-slate-500">Provided / resolved earlier</span></div>
+                      <h4 class="mt-3 text-xl font-semibold text-white">Gragas role assignment</h4>
+                      <p class="mt-1 text-sm leading-6 text-slate-400">Current state: <span id="gragasCurrentText" class="font-semibold text-slate-200">Top — confirmed</span>. If this role assignment is wrong or changes, the lane and counter-exposure model changes with it.</p>
+                      <div class="mt-4 rounded-xl border border-danger/12 bg-danger/[0.025] px-4 py-3">
+                        <p class="text-[9px] font-bold uppercase tracking-[.16em] text-danger">Potential effect</p>
+                        <p class="mt-1 text-sm text-slate-300">If Gragas is actually <strong>Jungle</strong>, Ahri can move to <strong>#1</strong> because the matchup and response profile changes.</p>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="flex items-center justify-between text-[10px]"><span class="text-slate-600">Decision impact</span><span class="font-semibold text-danger">High</span></div>
+                      <div class="impact-track mt-2"><div class="impact-fill" style="width:88%"></div></div>
+                      <button class="open-factor mt-4 w-full rounded-xl border border-signal/25 bg-signal/[0.06] px-4 py-3 text-xs font-semibold text-signal2 transition hover:border-signal/45 hover:bg-signal/[0.1]" data-target="gragasPanel">Test / revise this state</button>
+                    </div>
+                  </div>
+                  <div id="gragasPanel" class="mt-5 hidden border-t border-white/[0.06] pt-5">
+                    <div class="grid gap-4 lg:grid-cols-[1fr_1fr]">
+                      <div>
+                        <p class="text-[10px] font-bold uppercase tracking-[.16em] text-slate-600">What should Hermod use?</p>
+                        <div class="mt-3 grid grid-cols-2 gap-2">
+                          <button class="choice rounded-xl border border-white/[0.08] bg-white/[0.018] px-3 py-3 text-left text-xs text-slate-400" data-factor="gragas" data-value="top"><span class="block font-semibold text-slate-200">Top</span><span class="mt-1 block text-[10px] text-slate-600">Keep current state</span></button>
+                          <button class="choice rounded-xl border border-white/[0.08] bg-white/[0.018] px-3 py-3 text-left text-xs text-slate-400" data-factor="gragas" data-value="jungle"><span class="block font-semibold text-slate-200">Jungle</span><span class="mt-1 block text-[10px] text-slate-600">Changes matchup model</span></button>
+                          <button class="choice rounded-xl border border-white/[0.08] bg-white/[0.018] px-3 py-3 text-left text-xs text-slate-400" data-factor="gragas" data-value="flex"><span class="block font-semibold text-slate-200">Still flexed</span><span class="mt-1 block text-[10px] text-slate-600">Preserve ambiguity</span></button>
+                          <button class="choice rounded-xl border border-white/[0.08] bg-white/[0.018] px-3 py-3 text-left text-xs text-slate-400" data-factor="gragas" data-value="unknown"><span class="block font-semibold text-slate-200">I don't know</span><span class="mt-1 block text-[10px] text-slate-600">Continue uncertain</span></button>
+                        </div>
+                      </div>
+                      <div id="gragasPreview" class="preview-panel rounded-xl border border-signal/14 p-4">
+                        <p class="text-[9px] font-bold uppercase tracking-[.16em] text-signal2">Counterfactual preview</p>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">Choose a value to see how the recommendation would react before applying it.</p>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="factor-card rounded-2xl border border-white/[0.08] p-5 sm:p-6" data-factor="ahri">
+                  <div class="grid gap-5 lg:grid-cols-[1fr_210px] lg:items-start">
+                    <div>
+                      <div class="flex flex-wrap items-center gap-2"><span class="rounded-md border border-warn/20 bg-warn/[0.05] px-2 py-1 text-[9px] font-bold uppercase tracking-[.13em] text-warn">Medium sensitivity</span><span class="rounded-md border border-white/[0.07] bg-white/[0.018] px-2 py-1 text-[9px] text-slate-500">Player-specific</span></div>
+                      <h4 class="mt-3 text-xl font-semibold text-white">Current willingness on Ahri</h4>
+                      <p class="mt-1 text-sm leading-6 text-slate-400">Current state: <span id="ahriCurrentText" class="font-semibold text-slate-200">Yes, if needed</span>. This affects how aggressively Hermod should trade theoretical strength against your actual willingness to execute the pick.</p>
+                      <div class="mt-4 rounded-xl border border-warn/12 bg-warn/[0.025] px-4 py-3">
+                        <p class="text-[9px] font-bold uppercase tracking-[.16em] text-warn">Potential effect</p>
+                        <p class="mt-1 text-sm text-slate-300">If Ahri is something you would lock <strong>comfortably</strong>, she closes much of the execution gap with Orianna.</p>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="flex items-center justify-between text-[10px]"><span class="text-slate-600">Decision impact</span><span class="font-semibold text-warn">Medium</span></div>
+                      <div class="impact-track mt-2"><div class="impact-fill" style="width:61%"></div></div>
+                      <button class="open-factor mt-4 w-full rounded-xl border border-signal/25 bg-signal/[0.06] px-4 py-3 text-xs font-semibold text-signal2 transition hover:border-signal/45 hover:bg-signal/[0.1]" data-target="ahriPanel">Test / revise this state</button>
+                    </div>
+                  </div>
+                  <div id="ahriPanel" class="mt-5 hidden border-t border-white/[0.06] pt-5">
+                    <div class="grid gap-4 lg:grid-cols-[1fr_1fr]">
+                      <div>
+                        <p class="text-[10px] font-bold uppercase tracking-[.16em] text-slate-600">How willing are you right now?</p>
+                        <div class="mt-3 grid grid-cols-2 gap-2">
+                          <button class="choice rounded-xl border border-white/[0.08] bg-white/[0.018] px-3 py-3 text-left text-xs text-slate-400" data-factor="ahri" data-value="comfortable"><span class="block font-semibold text-slate-200">Yes, comfortably</span><span class="mt-1 block text-[10px] text-slate-600">Treat as fully feasible</span></button>
+                          <button class="choice rounded-xl border border-white/[0.08] bg-white/[0.018] px-3 py-3 text-left text-xs text-slate-400" data-factor="ahri" data-value="needed"><span class="block font-semibold text-slate-200">Yes, if needed</span><span class="mt-1 block text-[10px] text-slate-600">Current state</span></button>
+                          <button class="choice rounded-xl border border-white/[0.08] bg-white/[0.018] px-3 py-3 text-left text-xs text-slate-400" data-factor="ahri" data-value="probably_not"><span class="block font-semibold text-slate-200">Probably not</span><span class="mt-1 block text-[10px] text-slate-600">Downweight option</span></button>
+                          <button class="choice rounded-xl border border-white/[0.08] bg-white/[0.018] px-3 py-3 text-left text-xs text-slate-400" data-factor="ahri" data-value="no"><span class="block font-semibold text-slate-200">No</span><span class="mt-1 block text-[10px] text-slate-600">Remove from feasible set</span></button>
+                        </div>
+                      </div>
+                      <div id="ahriPreview" class="preview-panel rounded-xl border border-signal/14 p-4">
+                        <p class="text-[9px] font-bold uppercase tracking-[.16em] text-signal2">Counterfactual preview</p>
+                        <p class="mt-2 text-sm leading-6 text-slate-400">Choose a value to see how the recommendation would react before applying it.</p>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="factor-card low rounded-2xl border border-white/[0.08] p-5 sm:p-6">
+                  <div class="grid gap-5 lg:grid-cols-[1fr_210px] lg:items-start">
+                    <div>
+                      <div class="flex flex-wrap items-center gap-2"><span class="rounded-md border border-blue/20 bg-blue/[0.05] px-2 py-1 text-[9px] font-bold uppercase tracking-[.13em] text-blue">Low sensitivity</span><span class="rounded-md border border-white/[0.07] bg-white/[0.018] px-2 py-1 text-[9px] text-slate-500">Unknown</span></div>
+                      <h4 class="mt-3 text-xl font-semibold text-white">Enemy top player's champion pool</h4>
+                      <p class="mt-1 text-sm leading-6 text-slate-400">Hermod does not currently know their likely pool. That information could refine future-response analysis, but it is not important enough to justify interrupting this pick recommendation.</p>
+                      <div class="mt-4 rounded-xl border border-blue/12 bg-blue/[0.025] px-4 py-3">
+                        <p class="text-[9px] font-bold uppercase tracking-[.16em] text-blue">Why Hermod is not asking</p>
+                        <p class="mt-1 text-sm text-slate-300">Across the plausible values tested, Orianna remains #1. The uncertainty is real, but its expected decision value is low.</p>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="flex items-center justify-between text-[10px]"><span class="text-slate-600">Decision impact</span><span class="font-semibold text-blue">Low</span></div>
+                      <div class="impact-track mt-2"><div class="impact-fill" style="width:24%"></div></div>
+                      <button id="inspectLow" class="mt-4 w-full rounded-xl border border-white/[0.08] bg-white/[0.018] px-4 py-3 text-xs font-semibold text-slate-500 transition hover:border-blue/25 hover:text-slate-300">Inspect sensitivity</button>
+                    </div>
+                  </div>
+                  <div id="lowDetail" class="mt-5 hidden border-t border-white/[0.06] pt-5">
+                    <div class="grid gap-3 sm:grid-cols-3">
+                      <div class="rounded-xl border border-white/[0.06] bg-white/[0.015] p-4"><p class="text-[9px] font-bold uppercase tracking-[.15em] text-slate-600">Scenario A</p><p class="mt-2 text-sm font-semibold text-white">Camille / Jax heavy</p><p class="mt-1 text-xs text-slate-500">Orianna #1 remains</p></div>
+                      <div class="rounded-xl border border-white/[0.06] bg-white/[0.015] p-4"><p class="text-[9px] font-bold uppercase tracking-[.15em] text-slate-600">Scenario B</p><p class="mt-2 text-sm font-semibold text-white">Tank-heavy pool</p><p class="mt-1 text-xs text-slate-500">Orianna #1 remains</p></div>
+                      <div class="rounded-xl border border-white/[0.06] bg-white/[0.015] p-4"><p class="text-[9px] font-bold uppercase tracking-[.15em] text-slate-600">Scenario C</p><p class="mt-2 text-sm font-semibold text-white">Unknown / broad</p><p class="mt-1 text-xs text-slate-500">Orianna #1 remains</p></div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </section>
+
+            <section class="glass rounded-2xl border border-white/[0.07] p-5 sm:p-6">
+              <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                <div>
+                  <p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">Interpretation</p>
+                  <h3 class="mt-1 text-lg font-semibold text-white">Uncertainty is only useful when it changes what you should do.</h3>
+                  <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-400">This surface deliberately mixes confirmed facts, unresolved assumptions, and player-specific inputs. The point is not to make every field certain; it is to show which state revisions would materially change the recommendation.</p>
+                </div>
+                <button id="resetState" class="shrink-0 rounded-xl border border-white/[0.08] bg-white/[0.018] px-4 py-3 text-xs font-semibold text-slate-400 transition hover:border-signal/25 hover:text-white">Reset prototype state</button>
+              </div>
+            </section>
+          </div>
+
+          <aside class="space-y-5">
+            <section class="glass rounded-2xl border border-white/[0.07] p-5">
+              <div class="flex items-center justify-between"><p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">Decision state</p><span id="stateDot" class="h-2 w-2 rounded-full bg-good shadow-[0_0_14px_rgba(103,211,145,.5)]"></span></div>
+              <div class="mt-4 rounded-xl border border-signal/18 bg-signal/[0.035] p-4">
+                <div class="flex items-center gap-3"><img id="railTopIcon" class="rank-icon" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Orianna.png" alt="Orianna"/><div><p class="text-[9px] font-bold uppercase tracking-[.14em] text-signal2">Recommended</p><p id="railTopName" class="mt-0.5 text-lg font-semibold text-white">Orianna</p></div></div>
+                <div class="mt-4 grid grid-cols-2 gap-2 text-center"><div class="rounded-lg border border-white/[0.06] bg-black/10 px-2 py-2"><p class="text-[9px] uppercase tracking-[.13em] text-slate-600">Confidence</p><p id="railConfidence" class="mt-1 text-sm font-semibold text-good">High</p></div><div class="rounded-lg border border-white/[0.06] bg-black/10 px-2 py-2"><p class="text-[9px] uppercase tracking-[.13em] text-slate-600">Stability</p><p id="railStability" class="mt-1 text-sm font-semibold text-slate-200">Stable</p></div></div>
+              </div>
+
+              <div class="mt-5 space-y-0 text-xs">
+                <div class="context-row flex items-start justify-between gap-3 py-3"><div><p class="font-semibold text-slate-300">Gragas role</p><p class="mt-0.5 text-[10px] text-slate-600">Provided by you</p></div><span id="railGragas" class="text-right font-semibold text-good">Top</span></div>
+                <div class="context-row flex items-start justify-between gap-3 py-3"><div><p class="font-semibold text-slate-300">Ahri willingness</p><p class="mt-0.5 text-[10px] text-slate-600">Player-specific</p></div><span id="railAhri" class="text-right font-semibold text-signal2">If needed</span></div>
+                <div class="context-row flex items-start justify-between gap-3 py-3"><div><p class="font-semibold text-slate-300">Enemy top pool</p><p class="mt-0.5 text-[10px] text-slate-600">Unknown</p></div><span class="text-right font-semibold text-blue">Low impact</span></div>
+              </div>
+            </section>
+
+            <section class="glass rounded-2xl border border-white/[0.07] p-5">
+              <p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">Sensitivity summary</p>
+              <div class="mt-4 space-y-3">
+                <div class="rounded-xl border border-danger/12 bg-danger/[0.025] p-3"><div class="flex items-center justify-between gap-3"><span class="text-xs font-semibold text-slate-300">Could flip #1</span><span id="flipCount" class="text-xs font-bold text-danger">1 factor</span></div><p class="mt-1 text-[10px] leading-4 text-slate-600">A plausible state revision can change the recommended pick.</p></div>
+                <div class="rounded-xl border border-warn/12 bg-warn/[0.025] p-3"><div class="flex items-center justify-between gap-3"><span class="text-xs font-semibold text-slate-300">Could narrow gap</span><span class="text-xs font-bold text-warn">1 factor</span></div><p class="mt-1 text-[10px] leading-4 text-slate-600">May change confidence or ordering strength without flipping #1.</p></div>
+                <div class="rounded-xl border border-blue/12 bg-blue/[0.025] p-3"><div class="flex items-center justify-between gap-3"><span class="text-xs font-semibold text-slate-300">Safe to leave unresolved</span><span class="text-xs font-bold text-blue">1 shown</span></div><p class="mt-1 text-[10px] leading-4 text-slate-600">Uncertainty exists, but Hermod would not interrupt you for it.</p></div>
+              </div>
+            </section>
+
+            <section class="glass rounded-2xl border border-white/[0.07] p-5">
+              <p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">Actions</p>
+              <button id="backRecommendation" class="mt-4 w-full rounded-xl border border-white/[0.08] bg-white/[0.018] px-4 py-3 text-xs font-semibold text-slate-300 transition hover:border-signal/25 hover:text-white">← Back to recommendation</button>
+              <button id="continueDecide" class="mt-2 w-full rounded-xl bg-signal px-4 py-3 text-xs font-bold text-white shadow-[0_0_26px_rgba(139,92,246,.18)] transition hover:bg-[#9b70f8]">Continue to Decide →</button>
+              <p class="mt-3 text-center text-[10px] leading-4 text-slate-600">State revisions made here carry forward into the recorded decision.</p>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast fixed bottom-5 right-5 z-50 max-w-sm rounded-xl border border-signal/25 bg-[#0b1420]/95 px-4 py-3 shadow-2xl backdrop-blur-xl"><p id="toastTitle" class="text-xs font-semibold text-white">Decision state updated</p><p id="toastText" class="mt-1 text-[10px] leading-4 text-slate-500"></p></div>
+
+  <script>
+    const champions = {
+      Orianna: { icon:'https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Orianna.png', meta:'Control Mage' },
+      Ahri: { icon:'https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Ahri.png', meta:'Burst / Playmaker' },
+      Syndra: { icon:'https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Syndra.png', meta:'Burst Mage' }
+    };
+
+    const baseline = { gragas:'top', ahri:'needed' };
+    let state = { ...baseline };
+    let previousState = null;
+    let pending = { gragas:null, ahri:null };
+
+    const labels = {
+      gragas: { top:'Top', jungle:'Jungle', flex:'Still flexed', unknown:'Unknown' },
+      ahri: { comfortable:'Yes, comfortably', needed:'Yes, if needed', probably_not:'Probably not', no:'No' }
+    };
+
+    function getModel(s) {
+      let scores = { Orianna:88, Ahri:82, Syndra:76 };
+      let confidence = 'High';
+      let confidenceClass = 'text-good';
+      let note = 'Current state resolved';
+      let stable = true;
+
+      if (s.gragas === 'jungle') {
+        scores.Orianna -= 5;
+        scores.Ahri += 5;
+      } else if (s.gragas === 'flex' || s.gragas === 'unknown') {
+        scores.Orianna -= 3;
+        scores.Ahri += 2;
+        confidence = 'Medium'; confidenceClass = 'text-warn'; note = 'Role uncertainty preserved'; stable = false;
+      }
+
+      if (s.ahri === 'comfortable') {
+        scores.Ahri += 4;
+      } else if (s.ahri === 'probably_not') {
+        scores.Ahri -= 6;
+      } else if (s.ahri === 'no') {
+        scores.Ahri = -999;
+      }
+
+      const ranking = Object.entries(scores).filter(([,v])=>v>-100).sort((a,b)=>b[1]-a[1]);
+      if (ranking[0][0] !== 'Orianna') stable = false;
+      const topGap = ranking.length > 1 ? ranking[0][1]-ranking[1][1] : 99;
+      if (topGap <= 2 && confidence === 'High') { confidence='Medium-high'; confidenceClass='text-warn'; note='Top options are close'; stable=false; }
+      return { ranking, confidence, confidenceClass, note, stable, topGap };
+    }
+
+    function rankRow(name, score, index) {
+      const top = index === 0;
+      return `
+        <div class="ranking-row ${top?'top':''} grid grid-cols-[auto_1fr_auto] items-center gap-3 rounded-xl border border-white/[0.07] bg-white/[0.014] px-3 py-3 sm:px-4">
+          <span class="grid h-7 w-7 place-items-center rounded-lg ${top?'border border-signal/28 bg-signal/[0.07] text-signal2':'border border-white/[0.07] bg-white/[0.018] text-slate-500'} text-[10px] font-bold">${index+1}</span>
+          <div class="flex min-w-0 items-center gap-3"><img class="mini-champ" src="${champions[name].icon}" alt="${name}"/><div class="min-w-0"><p class="truncate text-sm font-semibold ${top?'text-white':'text-slate-300'}">${name}</p><p class="text-[10px] text-slate-600">${champions[name].meta}</p></div></div>
+          <div class="text-right"><p class="text-sm font-semibold ${top?'text-signal2':'text-slate-400'}">${score}</p><p class="text-[9px] uppercase tracking-[.12em] text-slate-700">fit</p></div>
+        </div>`;
+    }
+
+    function render(changeText='') {
+      const model = getModel(state);
+      document.getElementById('rankingList').innerHTML = model.ranking.map(([n,s],i)=>rankRow(n,s,i)).join('');
+      const topName = model.ranking[0][0];
+      document.getElementById('headline').textContent = topName === 'Orianna' ? 'Orianna remains the strongest overall choice.' : `${topName} now becomes the strongest overall choice.`;
+      document.getElementById('headlineSub').textContent = topName === 'Orianna'
+        ? (model.stable ? 'The recommendation survives the current uncertainty tests, but Hermod still shows the few state changes that could materially alter it.' : 'The recommendation still points to Orianna, but the current state makes the ordering less stable than before.')
+        : 'A state revision changed the ordering. Hermod recomputed the decision rather than treating the original result as fixed.';
+
+      const conf = document.getElementById('confidenceValue'); conf.textContent = model.confidence; conf.className = `mt-1 text-xl font-semibold ${model.confidenceClass}`;
+      document.getElementById('confidenceNote').textContent = model.note;
+      const badge = document.getElementById('stabilityBadge');
+      badge.className = `flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs text-slate-400 ${model.stable?'border-good/18 bg-good/[0.04]':'border-warn/18 bg-warn/[0.04]'}`;
+      badge.innerHTML = `<span class="h-1.5 w-1.5 rounded-full ${model.stable?'bg-good':'bg-warn'}"></span><span>${model.stable?'Recommendation currently stable':'Recommendation is sensitive'}</span>`;
+
+      const top = model.ranking[0][0];
+      document.getElementById('railTopName').textContent = top;
+      document.getElementById('railTopIcon').src = champions[top].icon;
+      document.getElementById('railTopIcon').alt = top;
+      const rc = document.getElementById('railConfidence'); rc.textContent=model.confidence; rc.className=`mt-1 text-sm font-semibold ${model.confidenceClass}`;
+      document.getElementById('railStability').textContent = model.stable ? 'Stable' : 'Sensitive';
+      document.getElementById('stateDot').className = `h-2 w-2 rounded-full ${model.stable?'bg-good shadow-[0_0_14px_rgba(103,211,145,.5)]':'bg-warn shadow-[0_0_14px_rgba(238,188,102,.5)]'}`;
+
+      document.getElementById('railGragas').textContent = labels.gragas[state.gragas];
+      document.getElementById('railGragas').className = `text-right font-semibold ${state.gragas==='top'||state.gragas==='jungle'?'text-good':'text-warn'}`;
+      document.getElementById('railAhri').textContent = state.ahri==='comfortable'?'Comfortable':state.ahri==='needed'?'If needed':state.ahri==='probably_not'?'Probably not':'No';
+      document.getElementById('railAhri').className = `text-right font-semibold ${state.ahri==='no'?'text-danger':state.ahri==='probably_not'?'text-warn':'text-signal2'}`;
+      document.getElementById('gragasCurrentText').textContent = state.gragas==='top'?'Top — confirmed':state.gragas==='jungle'?'Jungle — confirmed':state.gragas==='flex'?'Still flexed':'Unknown';
+      document.getElementById('ahriCurrentText').textContent = labels.ahri[state.ahri];
+      document.getElementById('gragasContextPill').textContent = `Gragas: ${labels.gragas[state.gragas]}`;
+      document.getElementById('gragasContextPill').className = `source-pill rounded-md px-2 py-1 ${state.gragas==='top'||state.gragas==='jungle'?'text-good':'text-warn'}`;
+      document.getElementById('ahriContextPill').textContent = `Ahri: ${state.ahri==='comfortable'?'comfortable':state.ahri==='needed'?'if needed':state.ahri==='probably_not'?'probably not':'excluded'}`;
+      document.getElementById('flipCount').textContent = state.gragas==='jungle' ? '0 current' : '1 factor';
+
+      if (changeText) {
+        document.getElementById('changeLogWrap').classList.remove('hidden');
+        document.getElementById('changeLogText').textContent = changeText;
+      }
+    }
+
+    function previewFactor(factor, value) {
+      pending[factor] = value;
+      document.querySelectorAll(`.choice[data-factor="${factor}"]`).forEach(b=>b.classList.toggle('active',b.dataset.value===value));
+      const test = { ...state, [factor]:value };
+      const model = getModel(test);
+      const currentModel = getModel(state);
+      const target = document.getElementById(factor==='gragas'?'gragasPreview':'ahriPreview');
+      const before = currentModel.ranking.map(x=>x[0]).join(' → ');
+      const after = model.ranking.map(x=>x[0]).join(' → ');
+      const topChanged = currentModel.ranking[0][0] !== model.ranking[0][0];
+      target.innerHTML = `
+        <p class="text-[9px] font-bold uppercase tracking-[.16em] text-signal2">Counterfactual preview</p>
+        <p class="mt-2 text-sm font-semibold ${topChanged?'text-warn':'text-white'}">${topChanged?'This would change the recommendation.':'The #1 pick stays the same.'}</p>
+        <div class="mt-3 rounded-lg border border-white/[0.06] bg-black/10 p-3">
+          <p class="text-[9px] uppercase tracking-[.13em] text-slate-700">Current</p><p class="mt-1 text-xs text-slate-500">${before}</p>
+          <p class="mt-3 text-[9px] uppercase tracking-[.13em] text-slate-700">If applied</p><p class="mt-1 text-xs font-semibold text-slate-200">${after}</p>
+        </div>
+        <div class="mt-3 flex gap-2"><button class="apply-change flex-1 rounded-lg bg-signal px-3 py-2.5 text-xs font-bold text-white" data-factor="${factor}">Apply to decision state</button><button class="cancel-preview rounded-lg border border-white/[0.08] px-3 py-2.5 text-xs font-semibold text-slate-500" data-factor="${factor}">Cancel</button></div>`;
+    }
+
+    function applyPending(factor) {
+      const value = pending[factor]; if (!value) return;
+      previousState = { ...state };
+      const oldLabel = labels[factor][state[factor]];
+      state[factor] = value;
+      const newLabel = labels[factor][value];
+      pending[factor] = null;
+      render(`${factor==='gragas'?'Gragas role':'Ahri willingness'} changed from ${oldLabel} to ${newLabel}. Hermod recomputed the ranking and confidence from the revised state.`);
+      resetPreview(factor);
+      showToast('Decision state updated', `${factor==='gragas'?'Gragas role':'Ahri willingness'} is now ${newLabel}.`);
+    }
+
+    function resetPreview(factor) {
+      document.querySelectorAll(`.choice[data-factor="${factor}"]`).forEach(b=>b.classList.remove('active'));
+      const target = document.getElementById(factor==='gragas'?'gragasPreview':'ahriPreview');
+      target.innerHTML = `<p class="text-[9px] font-bold uppercase tracking-[.16em] text-signal2">Counterfactual preview</p><p class="mt-2 text-sm leading-6 text-slate-400">Choose a value to see how the recommendation would react before applying it.</p>`;
+      pending[factor] = null;
+    }
+
+    function showToast(title,text){
+      const t=document.getElementById('toast'); document.getElementById('toastTitle').textContent=title; document.getElementById('toastText').textContent=text; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2600);
+    }
+
+    document.querySelectorAll('.open-factor').forEach(btn=>btn.addEventListener('click',()=>{
+      const panel=document.getElementById(btn.dataset.target); panel.classList.toggle('hidden');
+      btn.textContent=panel.classList.contains('hidden')?'Test / revise this state':'Close state editor';
+    }));
+
+    document.addEventListener('click',e=>{
+      const choice=e.target.closest('.choice'); if(choice) previewFactor(choice.dataset.factor, choice.dataset.value);
+      const apply=e.target.closest('.apply-change'); if(apply) applyPending(apply.dataset.factor);
+      const cancel=e.target.closest('.cancel-preview'); if(cancel) resetPreview(cancel.dataset.factor);
+    });
+
+    document.getElementById('inspectLow').addEventListener('click',()=>{
+      const d=document.getElementById('lowDetail'); d.classList.toggle('hidden'); document.getElementById('inspectLow').textContent=d.classList.contains('hidden')?'Inspect sensitivity':'Hide sensitivity';
+    });
+
+    document.getElementById('undoChange').addEventListener('click',()=>{
+      if(!previousState) return;
+      const current={...state}; state={...previousState}; previousState=current;
+      render('Last state revision was undone. Hermod recomputed the recommendation using the restored decision state.');
+      showToast('State restored','The previous decision state is active again.');
+    });
+
+    document.getElementById('resetState').addEventListener('click',()=>{
+      previousState={...state}; state={...baseline}; resetPreview('gragas'); resetPreview('ahri'); render('Prototype reset to the baseline state used when this sensitivity view first opened.'); showToast('Prototype reset','Baseline recommendation restored.');
+    });
+
+    document.getElementById('backRecommendation').addEventListener('click',()=>showToast('Prototype navigation','This would return to the Recommendation overview.'));
+    document.getElementById('continueDecide').addEventListener('click',()=>showToast('Ready for Decide','The current revised state would carry into the next page.'));
+
+    render();
+  </script>
+</body>
+</html>

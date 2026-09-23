@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hermod Draft Assistant — Clarify Step 3" />
+  <title>Hermod — Clarify</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#03070d', shell: '#07101a', panel: '#09131f', panel2: '#0d1927', line: '#1c2b3d',
+            mist: '#9ca9bb', signal: '#8b5cf6', signal2: '#b79cff', blue: '#5b8cff', danger: '#ff4d57',
+            good: '#67d391', warn: '#eebc66'
+          },
+          fontFamily: {
+            sans: ['Inter', 'Avenir Next', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            mono: ['IBM Plex Mono', 'SFMono-Regular', 'Consolas', 'ui-monospace', 'monospace']
+          },
+          boxShadow: {
+            glow: '0 0 0 1px rgba(139,92,246,.55), 0 0 34px rgba(139,92,246,.18)',
+            panel: '0 22px 60px rgba(0,0,0,.28)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { color-scheme: dark; --purple:#8b5cf6; --lavender:#b79cff; --blue:#5b8cff; }
+    * { box-sizing: border-box; scrollbar-width: thin; scrollbar-color: #26384c transparent; }
+    html, body { min-height: 100%; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 5% 2%, rgba(91,140,255,.11), transparent 26rem),
+        radial-gradient(circle at 86% 0%, rgba(139,92,246,.09), transparent 28rem),
+        linear-gradient(180deg, #03070d 0%, #06101a 48%, #03070d 100%);
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.012) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.72), transparent 84%);
+    }
+    .app-shell {
+      min-height: 100vh;
+      border: 1px solid rgba(80,110,145,.34);
+      background: rgba(2,8,14,.26);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.025), 0 30px 100px rgba(0,0,0,.38);
+    }
+    .sidebar {
+      background:
+        linear-gradient(180deg, rgba(8,18,29,.98), rgba(3,9,15,.99)),
+        radial-gradient(circle at 15% 7%, rgba(139,92,246,.08), transparent 18rem);
+    }
+    .brand-mark {
+      position: relative; width: 34px; height: 34px;
+      filter: drop-shadow(0 0 14px rgba(139,92,246,.38));
+    }
+    .brand-mark::before, .brand-mark::after {
+      content: ''; position: absolute; top: 4px; bottom: 4px; width: 10px;
+      background: linear-gradient(180deg, #c4b5fd, #8b5cf6 55%, #5b8cff);
+      clip-path: polygon(0 0, 100% 17%, 100% 60%, 50% 74%, 50% 100%, 0 83%);
+    }
+    .brand-mark::before { left: 4px; }
+    .brand-mark::after { right: 4px; transform: scaleX(-1); }
+    .nav-item { position: relative; transition: .18s ease; }
+    .nav-item::before {
+      content: ''; position: absolute; inset: 0 auto 0 0; width: 3px; border-radius: 0 6px 6px 0;
+      background: linear-gradient(180deg,#5b8cff,#8b5cf6); opacity: 0;
+    }
+    .nav-item.active {
+      background: linear-gradient(90deg, rgba(91,140,255,.14), rgba(63,91,126,.14));
+      border-color: rgba(91,140,255,.16); color: #fff;
+    }
+    .nav-item.active::before { opacity: 1; }
+    .glass {
+      background: linear-gradient(180deg, rgba(8,18,29,.93), rgba(5,12,20,.96));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.025), 0 20px 60px rgba(0,0,0,.18);
+    }
+    .step-line { height: 1px; flex: 1; background: linear-gradient(90deg, rgba(139,92,246,.55), rgba(255,255,255,.10)); }
+    .question-shell {
+      position: relative; overflow: hidden;
+      background:
+        radial-gradient(circle at 86% 12%, rgba(139,92,246,.10), transparent 22rem),
+        linear-gradient(180deg, rgba(8,18,29,.97), rgba(5,12,20,.98));
+    }
+    .question-shell::before {
+      content: ''; position: absolute; inset: 0 auto 0 0; width: 3px;
+      background: linear-gradient(180deg, #5b8cff, #8b5cf6 55%, #b79cff);
+    }
+    .answer-option {
+      position: relative; overflow: hidden; transition: transform .15s ease, border-color .15s ease, background .15s ease;
+    }
+    .answer-option:hover { transform: translateY(-1px); border-color: rgba(183,156,255,.38); background: rgba(139,92,246,.055); }
+    .answer-option.selected { border-color: rgba(139,92,246,.72); background: linear-gradient(90deg, rgba(139,92,246,.12), rgba(91,140,255,.045)); }
+    .answer-option.selected .choice-dot { border-color: #b79cff; background: #8b5cf6; box-shadow: 0 0 18px rgba(139,92,246,.40); }
+    .choice-dot { width: 18px; height: 18px; border-radius: 999px; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.025); transition: .15s ease; }
+    .choice-dot::after { content: ''; display: block; width: 6px; height: 6px; margin: 5px; border-radius: 999px; background: white; opacity: 0; }
+    .answer-option.selected .choice-dot::after { opacity: 1; }
+    .champ-portrait {
+      width: 72px; height: 72px; border-radius: 18px; object-fit: cover;
+      border: 1px solid rgba(255,255,255,.12); box-shadow: 0 12px 26px rgba(0,0,0,.28);
+    }
+    .mini-champ { width: 32px; height: 32px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,.10); background: #0a111a; }
+    .context-row { border-top: 1px solid rgba(255,255,255,.052); }
+    .source-dot { width: 7px; height: 7px; border-radius: 999px; }
+    .impact-bar { height: 5px; overflow: hidden; border-radius: 999px; background: rgba(255,255,255,.055); }
+    .impact-bar > span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg,#5b8cff,#8b5cf6,#b79cff); }
+    .accordion-body { max-height: 0; overflow: hidden; opacity: 0; transition: max-height .24s ease, opacity .18s ease, margin .18s ease; }
+    .accordion.open .accordion-body { max-height: 440px; opacity: 1; margin-top: 14px; }
+    .accordion.open .chevron { transform: rotate(180deg); }
+    .chevron { transition: transform .18s ease; }
+    .branch-card { background: linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,.012)); }
+    .pulse { animation: pulse 2.15s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(139,92,246,.26); } 50% { box-shadow: 0 0 0 8px rgba(139,92,246,0); } }
+    @media (prefers-reduced-motion: reduce) { .pulse { animation: none; } }
+  </style>
+</head>
+<body class="font-sans text-slate-100 antialiased selection:bg-signal/40 selection:text-white">
+  <div class="app-shell grid lg:grid-cols-[246px_minmax(0,1fr)]">
+    <!-- Sidebar -->
+    <aside class="sidebar hidden min-h-screen border-r border-white/[0.06] lg:flex lg:flex-col">
+      <div class="flex h-[76px] items-center gap-3 border-b border-white/[0.05] px-7">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="text-[19px] font-semibold tracking-[.24em] text-slate-100">HERMOD</div>
+      </div>
+
+      <div class="flex-1 px-2 py-7">
+        <p class="px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Live</p>
+        <button class="nav-item active flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-semibold">
+          <span class="grid h-6 w-6 place-items-center text-signal2">⌾</span>Draft Assistant
+        </button>
+
+        <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">You</p>
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">▦</span>Champion Pool</button>
+        <button class="nav-item mt-1 flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">◇</span>Player Profile</button>
+
+        <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Learn</p>
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">□</span>Decision History</button>
+        <button class="nav-item mt-1 flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">⌁</span>Review & Learn</button>
+      </div>
+
+      <div class="border-t border-white/[0.06] p-4">
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-4 py-3 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span>⚙</span> Settings</button>
+        <div class="mt-3 flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.018] px-4 py-3">
+          <div class="grid h-9 w-9 place-items-center rounded-full border border-blue/30 bg-blue/10 text-xs font-bold text-blue">D2</div>
+          <div class="min-w-0 flex-1"><p class="text-sm font-semibold text-slate-200">Mid Main</p><p class="text-xs text-slate-500">Diamond II</p></div>
+          <span class="text-slate-600">⌄</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="min-w-0">
+      <header class="flex h-[76px] items-center justify-between border-b border-white/[0.06] bg-black/10 px-5 sm:px-7 lg:px-8">
+        <div class="flex items-center gap-2.5 text-sm text-slate-500">
+          <span class="font-medium text-slate-300">Ranked Solo/Duo</span><span class="text-slate-700">•</span><span>Summoner's Rift</span><span class="hidden text-slate-700 sm:inline">•</span><span class="hidden sm:inline">Pick Phase</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="hidden rounded-full border border-good/20 bg-good/[0.06] px-3 py-1.5 text-[11px] font-semibold text-good sm:inline-flex">LIVE DRAFT</span>
+          <button id="resetBtn" class="rounded-lg border border-white/[0.07] bg-white/[0.02] px-3 py-2 text-xs font-medium text-slate-400 hover:text-white">Reset</button>
+        </div>
+      </header>
+
+      <div class="mx-auto max-w-[1450px] px-5 pb-12 pt-7 sm:px-7 lg:px-8">
+        <!-- Stepper -->
+        <section aria-label="Draft assistant progress" class="glass rounded-2xl border border-white/[0.07] px-5 py-4 sm:px-6">
+          <div class="flex items-center gap-2 sm:gap-3">
+            <div class="flex min-w-0 items-center gap-3 opacity-80"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-good/35 bg-good/[0.08] text-[11px] font-bold text-good">✓</span><div class="hidden min-w-0 sm:block"><p class="text-[11px] font-bold uppercase tracking-[.16em] text-slate-300">Draft</p><p class="text-xs text-slate-600">Current state</p></div></div>
+            <div class="step-line"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-80"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-good/35 bg-good/[0.08] text-[11px] font-bold text-good">✓</span><div class="hidden min-w-0 sm:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-300">Your Options</p><p class="text-xs text-slate-600">3 feasible</p></div></div>
+            <div class="step-line"></div>
+            <div class="flex min-w-0 items-center gap-3"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-signal/70 bg-signal/15 text-[11px] font-bold text-signal2 shadow-[0_0_18px_rgba(139,92,246,.16)]">3</span><div class="min-w-0"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-signal2">Clarify</p><p class="hidden text-xs text-slate-500 sm:block">Only what matters</p></div></div>
+            <div class="step-line opacity-35"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-40"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-500">4</span><div class="hidden min-w-0 lg:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500">Recommendation</p><p class="text-xs text-slate-600">Rank choices</p></div></div>
+            <div class="step-line opacity-25"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-35"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-500">5</span><div class="hidden min-w-0 xl:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500">Decide</p><p class="text-xs text-slate-600">Record lock</p></div></div>
+          </div>
+        </section>
+
+        <!-- Heading -->
+        <section class="pb-7 pt-9">
+          <div class="flex flex-col justify-between gap-5 xl:flex-row xl:items-end">
+            <div>
+              <p class="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.2em] text-signal2"><span class="pulse h-1.5 w-1.5 rounded-full bg-signal"></span>Step 3 · Clarify</p>
+              <h1 class="text-3xl font-semibold tracking-[-.035em] text-white sm:text-[38px]">Resolve only what could change the answer.</h1>
+              <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-400 sm:text-[15px]">Hermod checks the current ontology for decision-critical gaps. It asks one question, updates the state, then decides whether another interruption is worth it.</p>
+            </div>
+            <div class="flex items-center gap-2 rounded-full border border-signal/18 bg-signal/[0.04] px-3 py-1.5 text-xs text-slate-400"><span class="h-1.5 w-1.5 rounded-full bg-signal"></span><span id="headerStatus">1 high-impact uncertainty</span></div>
+          </div>
+        </section>
+
+        <div class="grid gap-5 xl:grid-cols-[minmax(0,1fr)_330px]">
+          <!-- Active state canvas -->
+          <div class="min-w-0 space-y-5">
+            <section id="questionCard" class="question-shell rounded-2xl border border-white/[0.08] p-6 shadow-panel sm:p-7 lg:p-8">
+              <div id="questionContent"></div>
+            </section>
+
+            <section id="uncertainBranch" class="hidden rounded-2xl border border-warn/18 bg-warn/[0.035] p-5 sm:p-6">
+              <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div class="flex gap-3">
+                  <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-warn/25 bg-warn/[0.08] text-warn">~</span>
+                  <div><p class="text-sm font-semibold text-white">Keep the uncertainty instead?</p><p class="mt-1 max-w-2xl text-xs leading-5 text-slate-500">Hermod can keep both role branches alive and carry the sensitivity into the recommendation, rather than forcing you to guess.</p></div>
+                </div>
+                <button id="keepUncertaintyBtn" class="shrink-0 rounded-xl border border-warn/25 bg-warn/[0.07] px-4 py-2.5 text-xs font-semibold text-warn transition hover:bg-warn/[0.11]">Keep uncertainty & continue</button>
+              </div>
+            </section>
+
+            <section class="rounded-2xl border border-white/[0.07] bg-[linear-gradient(90deg,rgba(91,140,255,.045),rgba(139,92,246,.035),rgba(255,255,255,.014))] p-5 sm:p-6">
+              <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+                <div>
+                  <div class="flex items-center gap-2"><span id="stateIcon" class="grid h-6 w-6 place-items-center rounded-full border border-warn/25 bg-warn/[0.07] text-[11px] text-warn">?</span><p id="stateTitle" class="text-sm font-semibold text-white">One unresolved factor still has high decision impact</p></div>
+                  <p id="stateCopy" class="mt-2 max-w-3xl text-xs leading-5 text-slate-500">Hermod is not trying to complete the ontology. It is only resolving missing facts that could materially change the ordering of your feasible picks.</p>
+                </div>
+                <div class="flex shrink-0 items-center gap-3">
+                  <button id="backAnswerBtn" class="hidden rounded-xl border border-white/[0.09] bg-white/[0.025] px-4 py-3 text-sm font-semibold text-slate-400 transition hover:text-white">← Previous answer</button>
+                  <button id="runBtn" class="hidden group items-center justify-center gap-2 rounded-xl bg-signal px-5 py-3 text-sm font-bold text-white shadow-[0_10px_28px_rgba(139,92,246,.18)] transition hover:bg-[#9b70f7]">
+                    <span>Run analysis</span><span class="transition group-hover:translate-x-0.5">→</span>
+                  </button>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- Decision context rail -->
+          <aside class="space-y-5">
+            <section class="glass overflow-hidden rounded-2xl border border-white/[0.07]">
+              <div class="flex items-center justify-between px-5 py-4">
+                <div><p class="text-[10px] font-bold uppercase tracking-[.2em] text-slate-500">Decision context</p><h2 class="mt-1 text-sm font-semibold text-white">B3 · MID</h2></div>
+                <span class="rounded-full border border-signal/20 bg-signal/[0.06] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[.11em] text-signal2">Adaptive</span>
+              </div>
+
+              <div class="context-row px-5 py-4">
+                <div class="flex items-center justify-between"><p class="text-[10px] font-bold uppercase tracking-[.16em] text-slate-500">Current feasible set</p><span id="optionCount" class="text-[10px] text-good">3 options</span></div>
+                <div id="feasibleChips" class="mt-3 flex flex-wrap gap-2"></div>
+              </div>
+
+              <div class="context-row px-5 py-4">
+                <p class="text-[10px] font-bold uppercase tracking-[.16em] text-slate-500">Relevant state</p>
+                <div class="mt-3 space-y-3">
+                  <div class="flex items-start gap-3"><span class="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full border border-good/25 bg-good/[0.07] text-[9px] font-bold text-good">✓</span><div><p class="text-xs font-semibold text-slate-300">Playing MID</p><p class="text-[10px] text-slate-600">Provided by you</p></div></div>
+                  <div class="flex items-start gap-3"><span class="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full border border-good/25 bg-good/[0.07] text-[9px] font-bold text-good">✓</span><div><p class="text-xs font-semibold text-slate-300">Pick slot B3</p><p class="text-[10px] text-slate-600">Provided by you</p></div></div>
+                  <div id="roleStateRow" class="flex items-start gap-3"><span id="roleStateIcon" class="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full border border-warn/25 bg-warn/[0.07] text-[9px] font-bold text-warn">?</span><div><p id="roleStateTitle" class="text-xs font-semibold text-slate-300">Gragas role</p><p id="roleStateCopy" class="text-[10px] text-warn">High impact · unresolved</p></div></div>
+                  <div id="comfortStateRow" class="flex items-start gap-3 opacity-55"><span id="comfortStateIcon" class="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full border border-white/[0.10] bg-white/[0.025] text-[9px] font-bold text-slate-500">?</span><div><p id="comfortStateTitle" class="text-xs font-semibold text-slate-400">Ahri current willingness</p><p id="comfortStateCopy" class="text-[10px] text-slate-600">May be asked if still relevant</p></div></div>
+                </div>
+              </div>
+
+              <div class="context-row px-5 py-4">
+                <div class="flex items-center justify-between"><p class="text-[10px] font-bold uppercase tracking-[.16em] text-slate-500">Decision readiness</p><span id="readinessLabel" class="text-[10px] font-semibold text-warn">NOT READY</span></div>
+                <div class="mt-3 impact-bar"><span id="readinessBar" style="width:72%"></span></div>
+                <p id="readinessCopy" class="mt-2 text-[10px] leading-4 text-slate-600">Enough state is known to narrow the problem, but one missing fact can still change the ranking.</p>
+              </div>
+            </section>
+
+            <section class="glass overflow-hidden rounded-2xl border border-white/[0.07]">
+              <div class="px-5 py-4"><p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-500">Current draft</p></div>
+              <div class="context-row px-5 py-4">
+                <div class="flex items-center justify-between"><p class="text-[10px] font-bold uppercase tracking-[.16em] text-blue">Your team</p><span class="text-[10px] text-slate-600">Known</span></div>
+                <div class="mt-3 space-y-2.5">
+                  <div class="flex items-center gap-3"><img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Gnar.png" alt="Gnar"><div><p class="text-xs font-semibold text-slate-300">Gnar</p><p class="text-[10px] text-slate-600">Top</p></div></div>
+                  <div class="flex items-center gap-3"><img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/LeeSin.png" alt="Lee Sin"><div><p class="text-xs font-semibold text-slate-300">Lee Sin</p><p class="text-[10px] text-slate-600">Jungle</p></div></div>
+                  <div class="flex items-center gap-3"><div class="grid h-8 w-8 place-items-center rounded-lg border border-blue/25 bg-blue/[0.07] text-[9px] font-bold text-blue">YOU</div><div><p class="text-xs font-semibold text-blue">Your pick</p><p class="text-[10px] text-slate-600">Mid</p></div></div>
+                </div>
+              </div>
+              <div class="context-row px-5 py-4">
+                <div class="flex items-center justify-between"><p class="text-[10px] font-bold uppercase tracking-[.16em] text-red-300">Enemy team</p><span class="text-[10px] text-slate-600">Known + flex</span></div>
+                <div class="mt-3 space-y-2.5">
+                  <div class="flex items-center gap-3"><div class="relative"><img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Gragas.png" alt="Gragas"><span class="absolute -right-1 -top-1 grid h-4 w-4 place-items-center rounded-full border border-warn/30 bg-[#17120a] text-[8px] font-bold text-warn">?</span></div><div><p class="text-xs font-semibold text-slate-300">Gragas</p><p id="draftGragasRole" class="text-[10px] text-warn">Top / Jungle flex</p></div></div>
+                  <div class="flex items-center gap-3"><img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Zed.png" alt="Zed"><div><p class="text-xs font-semibold text-slate-300">Zed</p><p class="text-[10px] text-slate-600">Mid</p></div></div>
+                  <div class="flex items-center gap-3"><img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Nautilus.png" alt="Nautilus"><div><p class="text-xs font-semibold text-slate-300">Nautilus</p><p class="text-[10px] text-slate-600">Support</p></div></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="rounded-2xl border border-signal/15 bg-signal/[0.035] p-5">
+              <div class="flex gap-3"><span class="grid h-8 w-8 shrink-0 place-items-center rounded-xl border border-signal/25 bg-signal/[0.07] text-signal2">◇</span><div><p class="text-xs font-semibold text-slate-200">No fixed question count</p><p class="mt-1 text-xs leading-5 text-slate-500">After every answer, Hermod checks whether another unknown still has enough expected decision value to justify interrupting you.</p></div></div>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="pointer-events-none fixed bottom-5 right-5 z-[60] translate-y-3 rounded-xl border border-white/[0.08] bg-[#0b1623]/95 px-4 py-3 text-sm text-slate-200 opacity-0 shadow-2xl transition duration-200">State updated</div>
+
+  <script>
+    const ICON = 'https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/';
+    const state = {
+      stage: 0,
+      roleAnswer: null,
+      roleUncertain: false,
+      comfortAnswer: null,
+      history: [],
+      feasible: ['Orianna','Ahri','Syndra']
+    };
+
+    const roleOptions = [
+      { value: 'TOP', label: 'Top', sub: 'Treat Gragas as the enemy top laner.' },
+      { value: 'JUNGLE', label: 'Jungle', sub: 'Treat Gragas as the enemy jungler.' },
+      { value: 'FLEXED', label: 'Still flexed', sub: 'Keep both plausible role branches alive.' },
+      { value: 'UNKNOWN', label: "I don't know", sub: 'Do not guess; preserve the uncertainty.' }
+    ];
+    const comfortOptions = [
+      { value: 'YES_COMFORTABLY', label: 'Yes, comfortably', sub: 'Ahri is a realistic option for you here.' },
+      { value: 'YES_IF_NEEDED', label: 'Yes, if needed', sub: 'Keep Ahri feasible, but account for lower willingness.' },
+      { value: 'PROBABLY_NOT', label: 'Probably not', sub: 'Treat Ahri as a weak practical option.' },
+      { value: 'NO', label: 'No', sub: 'Remove Ahri from this decision.' }
+    ];
+
+    const questionContent = document.getElementById('questionContent');
+    const uncertainBranch = document.getElementById('uncertainBranch');
+    const backAnswerBtn = document.getElementById('backAnswerBtn');
+    const runBtn = document.getElementById('runBtn');
+    const toast = document.getElementById('toast');
+
+    function iconUrl(name) { return `${ICON}${name}.png`; }
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.remove('opacity-0','translate-y-3');
+      setTimeout(() => toast.classList.add('opacity-0','translate-y-3'), 1450);
+    }
+
+    function optionButton(opt, selected) {
+      return `<button class="answer-option ${selected ? 'selected' : ''} flex w-full items-center gap-4 rounded-xl border border-white/[0.09] bg-white/[0.018] px-4 py-3.5 text-left" data-answer="${opt.value}">
+        <span class="choice-dot shrink-0"></span>
+        <span class="min-w-0"><span class="block text-sm font-semibold text-slate-200">${opt.label}</span><span class="mt-0.5 block text-xs leading-5 text-slate-500">${opt.sub}</span></span>
+      </button>`;
+    }
+
+    function roleQuestion() {
+      questionContent.innerHTML = `
+        <div class="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+          <div class="max-w-2xl">
+            <div class="flex flex-wrap items-center gap-2"><span class="rounded-full border border-warn/20 bg-warn/[0.06] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[.14em] text-warn">Role uncertainty</span><span class="rounded-full border border-white/[0.07] bg-white/[0.02] px-2.5 py-1 text-[10px] font-semibold text-slate-500">High decision impact</span></div>
+            <p class="mt-5 text-[11px] font-bold uppercase tracking-[.18em] text-slate-500">Hermod needs one fact</p>
+            <h2 class="mt-2 text-2xl font-semibold tracking-[-.03em] text-white sm:text-3xl">Is Gragas's role known?</h2>
+            <p class="mt-2 text-sm leading-6 text-slate-400">The draft still supports more than one role assignment, and that ambiguity changes how your candidate picks are evaluated.</p>
+          </div>
+          <div class="flex items-center gap-3 rounded-2xl border border-white/[0.07] bg-black/15 p-3">
+            <img class="champ-portrait" src="${iconUrl('Gragas')}" alt="Gragas">
+            <div class="pr-3"><p class="text-sm font-semibold text-white">Gragas</p><p class="mt-1 text-xs text-warn">Top / Jungle</p><p class="mt-2 text-[10px] uppercase tracking-[.14em] text-slate-600">Role ambiguous</p></div>
+          </div>
+        </div>
+        <div class="mt-7 grid gap-3 md:grid-cols-2">${roleOptions.map(o => optionButton(o, state.roleAnswer === o.value)).join('')}</div>
+        <div id="whyAccordion" class="accordion mt-6 rounded-xl border border-white/[0.07] bg-black/10 px-4 py-3.5">
+          <button id="whyBtn" class="flex w-full items-center justify-between gap-4 text-left"><span><span class="block text-xs font-semibold text-slate-300">Why is Hermod asking this?</span><span class="mt-0.5 block text-[11px] text-slate-600">See how this unknown could change the recommendation.</span></span><span class="chevron text-slate-500">⌄</span></button>
+          <div class="accordion-body">
+            <div class="grid gap-3 md:grid-cols-2">
+              <div class="branch-card rounded-xl border border-white/[0.07] p-4"><div class="flex items-center gap-2"><span class="grid h-6 w-6 place-items-center rounded-lg border border-blue/20 bg-blue/[0.06] text-[10px] font-bold text-blue">TOP</span><p class="text-xs font-semibold text-slate-300">If Gragas is Top</p></div><p class="mt-3 text-xs leading-5 text-slate-500">Orianna remains the safest composition fit. Ahri's relative value drops because the enemy jungle profile stays unchanged.</p><div class="mt-3 text-[10px] font-semibold text-slate-500">Current branch: <span class="text-slate-300">Orianna #1 · Ahri #2</span></div></div>
+              <div class="branch-card rounded-xl border border-white/[0.07] p-4"><div class="flex items-center gap-2"><span class="grid h-6 w-6 place-items-center rounded-lg border border-signal/20 bg-signal/[0.06] text-[10px] font-bold text-signal2">JG</span><p class="text-xs font-semibold text-slate-300">If Gragas is Jungle</p></div><p class="mt-3 text-xs leading-5 text-slate-500">Ahri moves closer to Orianna because the opponent's engage and follow-up profile changes.</p><div class="mt-3 text-[10px] font-semibold text-slate-500">Alternative branch: <span class="text-slate-300">Orianna #1 · Ahri close #2</span></div></div>
+            </div>
+            <p class="mt-3 text-[10px] leading-4 text-slate-600">The UI explains the decision sensitivity, not the ontology implementation.</p>
+          </div>
+        </div>`;
+
+      wireQuestionEvents('role');
+    }
+
+    function comfortQuestion() {
+      questionContent.innerHTML = `
+        <div class="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+          <div class="max-w-2xl">
+            <div class="flex flex-wrap items-center gap-2"><span class="rounded-full border border-signal/20 bg-signal/[0.06] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[.14em] text-signal2">Player feasibility</span><span class="rounded-full border border-white/[0.07] bg-white/[0.02] px-2.5 py-1 text-[10px] font-semibold text-slate-500">Still decision-relevant</span></div>
+            <p class="mt-5 text-[11px] font-bold uppercase tracking-[.18em] text-slate-500">Hermod re-checked the state</p>
+            <h2 class="mt-2 text-2xl font-semibold tracking-[-.03em] text-white sm:text-3xl">Would you genuinely lock Ahri into Zed today?</h2>
+            <p class="mt-2 text-sm leading-6 text-slate-400">Ahri still ranks highly enough that your current willingness could change the practical recommendation.</p>
+          </div>
+          <div class="flex items-center gap-2 rounded-2xl border border-white/[0.07] bg-black/15 p-3">
+            <div class="text-center"><img class="champ-portrait" src="${iconUrl('Ahri')}" alt="Ahri"><p class="mt-2 text-[10px] font-semibold text-slate-400">YOU</p></div>
+            <span class="px-1 text-slate-600">vs</span>
+            <div class="text-center"><img class="champ-portrait" src="${iconUrl('Zed')}" alt="Zed"><p class="mt-2 text-[10px] font-semibold text-slate-400">ENEMY MID</p></div>
+          </div>
+        </div>
+        <div class="mt-7 grid gap-3 md:grid-cols-2">${comfortOptions.map(o => optionButton(o, state.comfortAnswer === o.value)).join('')}</div>
+        <div id="whyAccordion" class="accordion mt-6 rounded-xl border border-white/[0.07] bg-black/10 px-4 py-3.5">
+          <button id="whyBtn" class="flex w-full items-center justify-between gap-4 text-left"><span><span class="block text-xs font-semibold text-slate-300">Why is Hermod asking this?</span><span class="mt-0.5 block text-[11px] text-slate-600">A theoretically strong pick is only useful if it is realistic for you.</span></span><span class="chevron text-slate-500">⌄</span></button>
+          <div class="accordion-body"><div class="rounded-xl border border-white/[0.07] bg-white/[0.018] p-4"><p class="text-xs leading-5 text-slate-400">Hermod already knows Ahri is in your saved pool and that your general proficiency is high. It does <span class="text-slate-200">not</span> yet know whether you would actually choose this matchup today. Because Ahri is near the top of the current candidate set, that distinction is worth asking about.</p></div></div>
+        </div>`;
+      wireQuestionEvents('comfort');
+    }
+
+    function readyState() {
+      questionContent.innerHTML = `
+        <div class="py-3 sm:py-6">
+          <div class="mx-auto max-w-3xl text-center">
+            <span class="mx-auto grid h-12 w-12 place-items-center rounded-2xl border border-good/25 bg-good/[0.08] text-xl text-good shadow-[0_0_30px_rgba(103,211,145,.10)]">✓</span>
+            <p class="mt-5 text-[11px] font-bold uppercase tracking-[.2em] text-good">Decision-ready</p>
+            <h2 class="mt-2 text-3xl font-semibold tracking-[-.035em] text-white sm:text-4xl">Hermod has enough information to analyze.</h2>
+            <p class="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-400">No remaining user-resolvable unknown has enough expected decision value to justify another interruption.</p>
+            <div class="mt-7 flex flex-wrap items-center justify-center gap-2">${state.feasible.map(c => `<span class="flex items-center gap-2 rounded-xl border border-white/[0.08] bg-black/15 py-1.5 pl-1.5 pr-3"><img class="h-7 w-7 rounded-lg object-cover" src="${iconUrl(c)}" alt="${c}"><span class="text-xs font-semibold text-slate-300">${c}</span></span>`).join('')}</div>
+            <div class="mx-auto mt-7 grid max-w-2xl gap-3 sm:grid-cols-3">
+              <div class="rounded-xl border border-white/[0.07] bg-white/[0.018] p-4"><p class="text-[10px] uppercase tracking-[.14em] text-slate-600">Draft</p><p class="mt-1 text-xs font-semibold text-slate-300">Sufficient</p></div>
+              <div class="rounded-xl border border-white/[0.07] bg-white/[0.018] p-4"><p class="text-[10px] uppercase tracking-[.14em] text-slate-600">Feasible options</p><p class="mt-1 text-xs font-semibold text-slate-300">${state.feasible.length} champions</p></div>
+              <div class="rounded-xl border border-white/[0.07] bg-white/[0.018] p-4"><p class="text-[10px] uppercase tracking-[.14em] text-slate-600">High-impact gaps</p><p class="mt-1 text-xs font-semibold text-good">0 unresolved</p></div>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function wireQuestionEvents(type) {
+      document.querySelectorAll('[data-answer]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const answer = btn.dataset.answer;
+          if (type === 'role') answerRole(answer);
+          else answerComfort(answer);
+        });
+      });
+      const whyBtn = document.getElementById('whyBtn');
+      if (whyBtn) whyBtn.addEventListener('click', () => document.getElementById('whyAccordion').classList.toggle('open'));
+    }
+
+    function answerRole(answer) {
+      state.roleAnswer = answer;
+      state.roleUncertain = ['FLEXED','UNKNOWN'].includes(answer);
+      state.history.push({ stage: 0, roleAnswer: answer });
+      render();
+      showToast(answer === 'TOP' ? 'Gragas set to Top' : answer === 'JUNGLE' ? 'Gragas set to Jungle' : 'Role uncertainty preserved');
+      if (!state.roleUncertain) setTimeout(() => { state.stage = 1; render(); }, 380);
+    }
+
+    function answerComfort(answer) {
+      state.comfortAnswer = answer;
+      state.history.push({ stage: 1, comfortAnswer: answer });
+      if (answer === 'NO') state.feasible = state.feasible.filter(c => c !== 'Ahri');
+      else state.feasible = ['Orianna','Ahri','Syndra'];
+      render();
+      showToast(answer === 'NO' ? 'Ahri removed from this decision' : 'Current willingness updated');
+      setTimeout(() => { state.stage = 2; render(); }, 380);
+    }
+
+    document.getElementById('keepUncertaintyBtn').addEventListener('click', () => {
+      if (state.stage !== 0 || !state.roleUncertain) return;
+      state.stage = 1;
+      render();
+      showToast('Gragas role kept as an explicit uncertainty');
+    });
+
+    backAnswerBtn.addEventListener('click', () => {
+      if (state.stage === 2) {
+        state.stage = 1;
+        state.comfortAnswer = null;
+        state.feasible = ['Orianna','Ahri','Syndra'];
+      } else if (state.stage === 1) {
+        state.stage = 0;
+        state.roleAnswer = null;
+        state.roleUncertain = false;
+      }
+      render();
+      showToast('Returned to the previous clarification');
+    });
+
+    runBtn.addEventListener('click', () => showToast('Ready for Step 4 — Recommendation'));
+
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      state.stage = 0; state.roleAnswer = null; state.roleUncertain = false; state.comfortAnswer = null; state.history = []; state.feasible = ['Orianna','Ahri','Syndra'];
+      render(); showToast('Clarify step reset');
+    });
+
+    function renderRail() {
+      const roleResolved = !!state.roleAnswer && !state.roleUncertain;
+      const roleText = state.roleAnswer === 'TOP' ? 'Top confirmed' : state.roleAnswer === 'JUNGLE' ? 'Jungle confirmed' : state.roleUncertain ? 'Uncertainty preserved' : 'High impact · unresolved';
+      const roleIcon = document.getElementById('roleStateIcon');
+      roleIcon.textContent = roleResolved ? '✓' : state.roleUncertain ? '~' : '?';
+      roleIcon.className = `mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full border text-[9px] font-bold ${roleResolved ? 'border-good/25 bg-good/[0.07] text-good' : state.roleUncertain ? 'border-warn/25 bg-warn/[0.07] text-warn' : 'border-warn/25 bg-warn/[0.07] text-warn'}`;
+      document.getElementById('roleStateCopy').textContent = roleText;
+      document.getElementById('roleStateCopy').className = `text-[10px] ${roleResolved ? 'text-good' : 'text-warn'}`;
+      document.getElementById('draftGragasRole').textContent = state.roleAnswer === 'TOP' ? 'Top confirmed' : state.roleAnswer === 'JUNGLE' ? 'Jungle confirmed' : 'Top / Jungle flex';
+
+      const comfortRow = document.getElementById('comfortStateRow');
+      const comfortIcon = document.getElementById('comfortStateIcon');
+      const comfortCopy = document.getElementById('comfortStateCopy');
+      if (state.stage === 0) {
+        comfortRow.className = 'flex items-start gap-3 opacity-55';
+        comfortIcon.textContent = '?';
+        comfortIcon.className = 'mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full border border-white/[0.10] bg-white/[0.025] text-[9px] font-bold text-slate-500';
+        comfortCopy.textContent = 'May be asked if still relevant'; comfortCopy.className = 'text-[10px] text-slate-600';
+      } else if (!state.comfortAnswer) {
+        comfortRow.className = 'flex items-start gap-3';
+        comfortIcon.textContent = '?';
+        comfortIcon.className = 'mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full border border-warn/25 bg-warn/[0.07] text-[9px] font-bold text-warn';
+        comfortCopy.textContent = 'High impact · current question'; comfortCopy.className = 'text-[10px] text-warn';
+      } else {
+        comfortRow.className = 'flex items-start gap-3';
+        comfortIcon.textContent = '✓';
+        comfortIcon.className = 'mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full border border-good/25 bg-good/[0.07] text-[9px] font-bold text-good';
+        const labels = {YES_COMFORTABLY:'Comfortable',YES_IF_NEEDED:'Yes if needed',PROBABLY_NOT:'Probably not',NO:'Would not lock'};
+        comfortCopy.textContent = labels[state.comfortAnswer]; comfortCopy.className = 'text-[10px] text-good';
+      }
+
+      document.getElementById('feasibleChips').innerHTML = state.feasible.map(c => `<span class="flex items-center gap-1.5 rounded-lg border border-white/[0.07] bg-black/15 py-1 pl-1 pr-2"><img class="h-6 w-6 rounded-md object-cover" src="${iconUrl(c)}" alt="${c}"><span class="text-[10px] font-semibold text-slate-400">${c}</span></span>`).join('');
+      document.getElementById('optionCount').textContent = `${state.feasible.length} options`;
+
+      const ready = state.stage === 2;
+      document.getElementById('readinessLabel').textContent = ready ? 'READY' : 'NOT READY';
+      document.getElementById('readinessLabel').className = `text-[10px] font-semibold ${ready ? 'text-good' : 'text-warn'}`;
+      document.getElementById('readinessBar').style.width = ready ? '100%' : state.stage === 1 ? '88%' : '72%';
+      document.getElementById('readinessCopy').textContent = ready ? 'No remaining user-resolvable high-impact gap is blocking the analysis.' : state.stage === 1 ? 'One player-specific fact can still change the practical candidate set.' : 'One role ambiguity can still change the ranking of your feasible options.';
+      document.getElementById('headerStatus').textContent = ready ? 'Decision-ready' : state.stage === 1 ? '1 player-specific question' : '1 high-impact uncertainty';
+    }
+
+    function renderBottomState() {
+      const icon = document.getElementById('stateIcon');
+      const title = document.getElementById('stateTitle');
+      const copy = document.getElementById('stateCopy');
+      if (state.stage === 2) {
+        icon.textContent = '✓'; icon.className = 'grid h-6 w-6 place-items-center rounded-full border border-good/25 bg-good/[0.07] text-[11px] text-good';
+        title.textContent = 'Enough information to analyze this decision';
+        copy.textContent = 'The remaining unknowns are either low-impact, not user-resolvable, or can be carried into the model as uncertainty.';
+        runBtn.classList.remove('hidden'); runBtn.classList.add('inline-flex');
+        backAnswerBtn.classList.remove('hidden');
+      } else {
+        icon.textContent = '?'; icon.className = 'grid h-6 w-6 place-items-center rounded-full border border-warn/25 bg-warn/[0.07] text-[11px] text-warn';
+        title.textContent = state.stage === 1 ? 'One player-specific fact can still change the practical result' : 'One unresolved factor still has high decision impact';
+        copy.textContent = state.stage === 1 ? 'Because Ahri remains highly ranked, Hermod is checking whether theoretical viability matches what you would actually lock today.' : 'Hermod is not trying to complete the ontology. It is only resolving missing facts that could materially change the ordering of your feasible picks.';
+        runBtn.classList.add('hidden'); runBtn.classList.remove('inline-flex');
+        backAnswerBtn.classList.toggle('hidden', state.stage === 0);
+      }
+    }
+
+    function render() {
+      uncertainBranch.classList.add('hidden');
+      if (state.stage === 0) {
+        roleQuestion();
+        if (state.roleUncertain) uncertainBranch.classList.remove('hidden');
+      } else if (state.stage === 1) comfortQuestion();
+      else readyState();
+      renderRail();
+      renderBottomState();
+    }
+
+    render();
+  </script>
+</body>
+</html>

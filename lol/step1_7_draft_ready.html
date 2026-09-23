@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hermod Draft Assistant — Draft Ready state" />
+  <title>Hermod — Draft Ready</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink:'#03070d', shell:'#07101a', panel:'#09131f', panel2:'#0d1927', line:'#1c2b3d',
+            mist:'#9ca9bb', signal:'#8b5cf6', signal2:'#b79cff', blue:'#5b8cff', danger:'#ff4d57',
+            good:'#67d391', warn:'#f3b95f'
+          },
+          fontFamily: {
+            sans:['Inter','Avenir Next','ui-sans-serif','system-ui','sans-serif'],
+            mono:['IBM Plex Mono','SFMono-Regular','Consolas','ui-monospace','monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing:border-box; scrollbar-width:thin; scrollbar-color:#26384c transparent; }
+    html,body { min-height:100%; }
+    body {
+      margin:0;
+      background:
+        radial-gradient(circle at 5% 2%, rgba(91,140,255,.11), transparent 26rem),
+        radial-gradient(circle at 86% 0%, rgba(139,92,246,.09), transparent 28rem),
+        linear-gradient(180deg,#03070d 0%,#06101a 48%,#03070d 100%);
+    }
+    body::before {
+      content:''; position:fixed; inset:0; z-index:-2; pointer-events:none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.012) 1px, transparent 1px);
+      background-size:34px 34px;
+      mask-image:linear-gradient(to bottom,rgba(0,0,0,.72),transparent 84%);
+    }
+    .app-shell { min-height:100vh; border:1px solid rgba(80,110,145,.34); background:rgba(2,8,14,.26); }
+    .sidebar {
+      background:linear-gradient(180deg,rgba(8,18,29,.98),rgba(3,9,15,.99)),
+                 radial-gradient(circle at 15% 7%,rgba(139,92,246,.08),transparent 18rem);
+    }
+    .brand-mark { position:relative; width:34px; height:34px; filter:drop-shadow(0 0 14px rgba(139,92,246,.38)); }
+    .brand-mark::before,.brand-mark::after {
+      content:''; position:absolute; top:4px; bottom:4px; width:10px;
+      background:linear-gradient(180deg,#c4b5fd,#8b5cf6 55%,#5b8cff);
+      clip-path:polygon(0 0,100% 17%,100% 60%,50% 74%,50% 100%,0 83%);
+    }
+    .brand-mark::before{left:4px}.brand-mark::after{right:4px;transform:scaleX(-1)}
+    .nav-item { position:relative; transition:.18s ease; }
+    .nav-item::before { content:''; position:absolute; inset:0 auto 0 0; width:3px; border-radius:0 6px 6px 0; background:linear-gradient(180deg,#5b8cff,#8b5cf6); opacity:0; }
+    .nav-item.active { background:linear-gradient(90deg,rgba(91,140,255,.14),rgba(63,91,126,.14)); border-color:rgba(91,140,255,.16); color:#fff; }
+    .nav-item.active::before{opacity:1}
+    .glass { background:linear-gradient(180deg,rgba(8,18,29,.93),rgba(5,12,20,.96)); box-shadow:inset 0 1px 0 rgba(255,255,255,.025),0 20px 60px rgba(0,0,0,.18); }
+    .step-line { height:1px; flex:1; background:linear-gradient(90deg,rgba(139,92,246,.55),rgba(255,255,255,.10)); }
+    .ready-hero {
+      background:
+        radial-gradient(circle at 8% 12%,rgba(103,211,145,.10),transparent 20rem),
+        radial-gradient(circle at 87% 7%,rgba(139,92,246,.08),transparent 24rem),
+        linear-gradient(135deg,rgba(8,18,29,.98),rgba(5,12,20,.98));
+    }
+    .ready-ring { box-shadow:0 0 0 1px rgba(103,211,145,.12),0 0 34px rgba(103,211,145,.09); }
+    .champion-icon { width:42px; height:42px; object-fit:cover; border-radius:11px; border:1px solid rgba(255,255,255,.11); background:#0a111a; box-shadow:0 5px 18px rgba(0,0,0,.22); }
+    .unknown-icon { width:42px; height:42px; display:grid; place-items:center; border-radius:11px; border:1px dashed rgba(255,255,255,.11); background:rgba(255,255,255,.018); color:#64748b; }
+    .team-row { display:grid; grid-template-columns:58px 48px minmax(0,1fr) auto; align-items:center; min-height:64px; border-top:1px solid rgba(255,255,255,.055); }
+    .role-badge { font-size:10px; font-weight:800; letter-spacing:.05em; color:#718096; }
+    .summary-box { background:linear-gradient(90deg,rgba(91,140,255,.065),rgba(139,92,246,.055),rgba(255,255,255,.018)); }
+    .small-stat { box-shadow:inset 0 1px 0 rgba(255,255,255,.025); }
+    .modal-backdrop { background:rgba(0,4,9,.78); backdrop-filter:blur(10px); }
+  </style>
+</head>
+<body class="font-sans text-slate-100 antialiased selection:bg-signal/40 selection:text-white">
+  <div class="app-shell grid lg:grid-cols-[246px_minmax(0,1fr)]">
+    <aside class="sidebar hidden min-h-screen border-r border-white/[0.06] lg:flex lg:flex-col">
+      <div class="flex h-[76px] items-center gap-3 border-b border-white/[0.05] px-7">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="text-[19px] font-semibold tracking-[.24em] text-slate-100">HERMOD</div>
+      </div>
+      <div class="flex-1 px-2 py-7">
+        <p class="px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Live</p>
+        <button class="nav-item active flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-semibold"><span class="grid h-6 w-6 place-items-center text-signal2">⌾</span>Draft Assistant</button>
+        <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">You</p>
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400"><span class="grid h-6 w-6 place-items-center">▦</span>Champion Pool</button>
+        <button class="nav-item mt-1 flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400"><span class="grid h-6 w-6 place-items-center">◇</span>Player Profile</button>
+        <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Learn</p>
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400"><span class="grid h-6 w-6 place-items-center">□</span>Decision History</button>
+        <button class="nav-item mt-1 flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400"><span class="grid h-6 w-6 place-items-center">⌁</span>Review & Learn</button>
+      </div>
+      <div class="border-t border-white/[0.06] p-4">
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-4 py-3 text-left text-sm font-medium text-slate-400"><span>⚙</span>Settings</button>
+        <div class="mt-3 flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.018] px-4 py-3">
+          <div class="grid h-9 w-9 place-items-center rounded-full border border-blue/30 bg-blue/10 text-xs font-bold text-blue">D2</div>
+          <div class="min-w-0 flex-1"><p class="text-sm font-semibold text-slate-200">Mid Main</p><p class="text-xs text-slate-500">Diamond II</p></div>
+          <span class="text-slate-600">⌄</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="min-w-0">
+      <header class="flex h-[76px] items-center justify-between border-b border-white/[0.06] bg-black/10 px-5 sm:px-7 lg:px-8">
+        <div class="flex items-center gap-2.5 text-sm text-slate-500"><span class="font-medium text-slate-300">Ranked Solo/Duo</span><span class="text-slate-700">•</span><span>Summoner's Rift</span><span class="hidden text-slate-700 sm:inline">•</span><span class="hidden sm:inline">Pick Phase</span></div>
+        <div class="flex items-center gap-3"><span class="hidden rounded-full border border-good/20 bg-good/[0.06] px-3 py-1.5 text-[11px] font-semibold text-good sm:inline-flex">LIVE DRAFT</span><button id="editBtnTop" class="rounded-lg border border-white/[0.07] bg-white/[0.02] px-3 py-2 text-xs font-medium text-slate-400 hover:text-white">Edit draft</button></div>
+      </header>
+
+      <div class="mx-auto max-w-[1450px] px-5 pb-12 pt-7 sm:px-7 lg:px-8">
+        <section aria-label="Draft assistant progress" class="glass rounded-2xl border border-white/[0.07] px-5 py-4 sm:px-6">
+          <div class="flex items-center gap-2 sm:gap-3">
+            <div class="flex min-w-0 items-center gap-3"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-good/50 bg-good/10 text-[11px] font-bold text-good">✓</span><div class="min-w-0"><p class="text-[11px] font-bold uppercase tracking-[.16em] text-good">Draft</p><p class="hidden text-xs text-slate-500 sm:block">Ready</p></div></div>
+            <div class="step-line"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-65"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-400">2</span><div class="hidden min-w-0 md:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-400">Your Options</p><p class="text-xs text-slate-600">Next</p></div></div>
+            <div class="step-line opacity-35"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-40"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-500">3</span><div class="hidden min-w-0 lg:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500">Clarify</p><p class="text-xs text-slate-600">Only if needed</p></div></div>
+            <div class="step-line opacity-30"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-35"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-500">4</span><div class="hidden min-w-0 lg:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500">Recommendation</p></div></div>
+            <div class="step-line opacity-25"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-30"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-500">5</span><div class="hidden min-w-0 xl:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500">Decide</p></div></div>
+          </div>
+        </section>
+
+        <section class="ready-hero ready-ring mt-6 overflow-hidden rounded-3xl border border-good/20 p-6 sm:p-8">
+          <div class="flex flex-col gap-7 xl:flex-row xl:items-center xl:justify-between">
+            <div class="max-w-4xl">
+              <div class="flex flex-wrap items-center gap-3">
+                <span class="grid h-9 w-9 place-items-center rounded-full border border-good/30 bg-good/10 text-lg text-good">✓</span>
+                <div><p class="text-[10px] font-bold uppercase tracking-[.22em] text-good">Draft captured</p><p class="mt-1 text-xs text-slate-500">Step 1 has enough information to proceed.</p></div>
+              </div>
+              <h1 class="mt-6 text-3xl font-semibold tracking-[-.035em] text-white sm:text-[40px]">B3 · MID · <span class="text-blue">BLUE SIDE</span></h1>
+              <p id="summarySentence" class="mt-4 max-w-4xl text-[15px] leading-7 text-slate-300">You are choosing Mid on B3. Gnar and Lee Sin are already selected for your team. Aatrox and Maokai have been revealed by the opponent. Ahri is unavailable.</p>
+            </div>
+            <div class="grid min-w-[280px] grid-cols-2 gap-3">
+              <div class="small-stat rounded-2xl border border-white/[0.07] bg-black/15 p-4"><p class="text-[10px] font-bold uppercase tracking-[.15em] text-slate-600">Visible picks</p><p class="mt-2 text-2xl font-semibold text-white">4</p></div>
+              <div class="small-stat rounded-2xl border border-white/[0.07] bg-black/15 p-4"><p class="text-[10px] font-bold uppercase tracking-[.15em] text-slate-600">Relevant bans</p><p class="mt-2 text-2xl font-semibold text-white">1</p></div>
+              <div class="small-stat col-span-2 rounded-2xl border border-good/15 bg-good/[0.045] p-4"><div class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-good"></span><p class="text-[10px] font-bold uppercase tracking-[.15em] text-good">Ready means enough, not complete</p></div><p class="mt-2 text-xs leading-5 text-slate-400">Unknown future picks are valid. Hermod can move on without pretending the entire draft is known.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <div class="mt-5 grid gap-5 xl:grid-cols-[minmax(0,1fr)_310px]">
+          <div class="space-y-5">
+            <section class="grid gap-5 md:grid-cols-2">
+              <article class="glass overflow-hidden rounded-2xl border border-blue/15">
+                <div class="flex items-center justify-between px-5 py-4 sm:px-6"><div><p class="text-[11px] font-bold uppercase tracking-[.18em] text-blue">Your team</p><p class="mt-1 text-xs text-slate-500">Known state at B3</p></div><span class="rounded-full border border-blue/20 bg-blue/[0.07] px-3 py-1 text-[10px] font-semibold text-blue">2 picked + you</span></div>
+                <div class="team-row px-5 sm:px-6"><span class="role-badge">TOP</span><img class="champion-icon" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Gnar.png" alt="Gnar"><div><p class="text-sm font-semibold text-slate-200">Gnar</p><p class="text-[11px] text-slate-600">B1 · already selected</p></div><span class="text-[10px] font-bold uppercase tracking-[.12em] text-good">Known</span></div>
+                <div class="team-row px-5 sm:px-6"><span class="role-badge">JNG</span><img class="champion-icon" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/LeeSin.png" alt="Lee Sin"><div><p class="text-sm font-semibold text-slate-200">Lee Sin</p><p class="text-[11px] text-slate-600">B2 · already selected</p></div><span class="text-[10px] font-bold uppercase tracking-[.12em] text-good">Known</span></div>
+                <div class="team-row bg-blue/[0.055] px-5 sm:px-6"><span class="role-badge text-blue">MID</span><div class="unknown-icon border-blue/25 bg-blue/[0.06] text-[9px] font-extrabold text-blue">YOU</div><div><p class="text-sm font-semibold text-blue">Your pick</p><p class="text-[11px] text-slate-500">B3 · current action</p></div><span class="rounded-full border border-blue/20 bg-blue/[0.07] px-2 py-1 text-[9px] font-bold uppercase tracking-[.12em] text-blue">Now</span></div>
+                <div class="team-row px-5 opacity-55 sm:px-6"><span class="role-badge">BOT</span><div class="unknown-icon">—</div><div><p class="text-sm font-medium text-slate-500">Not selected yet</p><p class="text-[11px] text-slate-700">Future draft action</p></div><span class="text-[10px] text-slate-700">Later</span></div>
+                <div class="team-row px-5 opacity-55 sm:px-6"><span class="role-badge">SUP</span><div class="unknown-icon">—</div><div><p class="text-sm font-medium text-slate-500">Not selected yet</p><p class="text-[11px] text-slate-700">Future draft action</p></div><span class="text-[10px] text-slate-700">Later</span></div>
+              </article>
+
+              <article class="glass overflow-hidden rounded-2xl border border-danger/15">
+                <div class="flex items-center justify-between px-5 py-4 sm:px-6"><div><p class="text-[11px] font-bold uppercase tracking-[.18em] text-danger">Enemy team</p><p class="mt-1 text-xs text-slate-500">What has been revealed so far</p></div><span class="rounded-full border border-danger/20 bg-danger/[0.06] px-3 py-1 text-[10px] font-semibold text-red-300">2 known</span></div>
+                <div class="team-row px-5 sm:px-6"><span class="role-badge">TOP</span><img class="champion-icon" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Aatrox.png" alt="Aatrox"><div><p class="text-sm font-semibold text-slate-200">Aatrox</p><p class="text-[11px] text-slate-600">R1 · revealed</p></div><span class="text-[10px] font-bold uppercase tracking-[.12em] text-good">Known</span></div>
+                <div class="team-row px-5 sm:px-6"><span class="role-badge">JNG</span><img class="champion-icon" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Maokai.png" alt="Maokai"><div><p class="text-sm font-semibold text-slate-200">Maokai</p><p class="text-[11px] text-slate-600">R2 · revealed</p></div><span class="text-[10px] font-bold uppercase tracking-[.12em] text-good">Known</span></div>
+                <div class="team-row px-5 sm:px-6"><span class="role-badge">MID</span><div class="unknown-icon">?</div><div><p class="text-sm font-medium text-slate-400">Unknown</p><p class="text-[11px] text-slate-600">No Mid pick revealed yet</p></div><span class="rounded-full border border-white/[0.07] bg-white/[0.02] px-2 py-1 text-[9px] font-bold uppercase tracking-[.12em] text-slate-600">Valid unknown</span></div>
+                <div class="team-row px-5 opacity-55 sm:px-6"><span class="role-badge">BOT</span><div class="unknown-icon">—</div><div><p class="text-sm font-medium text-slate-500">Not selected yet</p><p class="text-[11px] text-slate-700">Future draft action</p></div><span class="text-[10px] text-slate-700">Later</span></div>
+                <div class="team-row px-5 opacity-55 sm:px-6"><span class="role-badge">SUP</span><div class="unknown-icon">—</div><div><p class="text-sm font-medium text-slate-500">Not selected yet</p><p class="text-[11px] text-slate-700">Future draft action</p></div><span class="text-[10px] text-slate-700">Later</span></div>
+              </article>
+            </section>
+
+            <section class="glass rounded-2xl border border-white/[0.07] p-5 sm:p-6">
+              <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div><p class="text-sm font-semibold text-white">Relevant ban</p><p class="mt-1 text-xs leading-5 text-slate-500">Only the ban that changes your realistic option set is emphasized here.</p></div>
+                <div class="flex items-center gap-3 rounded-xl border border-danger/18 bg-danger/[0.035] py-2 pl-2 pr-4">
+                  <img class="h-9 w-9 rounded-lg border border-white/[0.1] object-cover opacity-75 saturate-75" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Ahri.png" alt="Ahri">
+                  <div><p class="text-xs font-semibold text-slate-200">Ahri</p><p class="text-[9px] font-bold uppercase tracking-[.12em] text-danger">Your pool · banned</p></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="summary-box rounded-2xl border border-white/[0.07] p-5 sm:p-6">
+              <p class="text-[10px] font-bold uppercase tracking-[.18em] text-signal2">Hermod's current understanding</p>
+              <p class="mt-3 text-lg leading-8 text-white">You are choosing <strong>Mid on B3</strong>. <strong>Gnar</strong> and <strong>Lee Sin</strong> are already selected for your team. <strong>Aatrox</strong> and <strong>Maokai</strong> have been revealed by the opponent. <strong>Ahri is unavailable.</strong></p>
+              <div class="mt-4 flex items-start gap-2 text-xs leading-5 text-slate-500"><span class="mt-0.5 text-good">✓</span><span>Several future positions are still unknown. That does not prevent Hermod from moving to the next step.</span></div>
+            </section>
+          </div>
+
+          <aside class="glass h-fit rounded-2xl border border-white/[0.07] p-5">
+            <p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">Decision readiness</p>
+            <div class="mt-4 flex items-center gap-3 rounded-xl border border-good/18 bg-good/[0.045] p-4"><span class="grid h-9 w-9 place-items-center rounded-full bg-good/10 text-good">✓</span><div><p class="text-sm font-semibold text-white">Ready to proceed</p><p class="mt-0.5 text-[11px] text-slate-500">Enough observable state is captured.</p></div></div>
+            <div class="mt-5 space-y-4 text-xs">
+              <div class="flex items-center justify-between"><span class="text-slate-500">Your role</span><span class="font-semibold text-white">MID</span></div>
+              <div class="flex items-center justify-between"><span class="text-slate-500">Current pick</span><span class="font-semibold text-blue">B3</span></div>
+              <div class="flex items-center justify-between"><span class="text-slate-500">Side</span><span class="font-semibold text-blue">Blue</span></div>
+              <div class="flex items-center justify-between"><span class="text-slate-500">Visible picks</span><span class="font-semibold text-white">4</span></div>
+              <div class="flex items-center justify-between"><span class="text-slate-500">Relevant bans</span><span class="font-semibold text-white">1</span></div>
+            </div>
+            <div class="my-5 h-px bg-white/[0.06]"></div>
+            <p class="text-[10px] font-bold uppercase tracking-[.16em] text-slate-600">Still unknown</p>
+            <div class="mt-3 space-y-2">
+              <div class="rounded-xl border border-white/[0.06] bg-white/[0.018] px-3 py-2.5"><div class="flex items-center justify-between gap-3"><span class="text-xs text-slate-400">Enemy Mid</span><span class="text-[9px] font-bold uppercase tracking-[.11em] text-slate-600">Doesn't block</span></div></div>
+              <div class="rounded-xl border border-white/[0.06] bg-white/[0.018] px-3 py-2.5"><div class="flex items-center justify-between gap-3"><span class="text-xs text-slate-400">Future Bot / Support</span><span class="text-[9px] font-bold uppercase tracking-[.11em] text-slate-600">Not selected</span></div></div>
+            </div>
+            <button id="editBtnRail" class="mt-5 w-full rounded-xl border border-white/[0.08] bg-white/[0.025] px-4 py-2.5 text-xs font-semibold text-slate-400 hover:border-signal/30 hover:text-white">Something looks wrong · Edit draft</button>
+          </aside>
+        </div>
+
+        <section class="mt-6 rounded-2xl border border-good/18 bg-[linear-gradient(90deg,rgba(103,211,145,.05),rgba(91,140,255,.045),rgba(139,92,246,.04))] p-5 sm:p-6">
+          <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <div class="flex items-center gap-2 text-sm font-semibold text-white"><span class="grid h-5 w-5 place-items-center rounded-full bg-good/10 text-[11px] text-good">✓</span>Hermod understands the current decision</div>
+              <p class="mt-2 max-w-3xl text-xs leading-5 text-slate-500">Step 1 is complete because the decision is well-defined—not because every future draft slot has a value.</p>
+            </div>
+            <button id="continueBtn" class="group inline-flex items-center justify-center gap-2 rounded-xl bg-signal px-5 py-3 text-sm font-bold text-white shadow-[0_10px_28px_rgba(139,92,246,.18)] transition hover:bg-[#9b70f7]">Continue to Your Options <span class="transition group-hover:translate-x-0.5">→</span></button>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div id="editModal" class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <div class="glass w-full max-w-xl rounded-3xl border border-white/[0.09] p-6 shadow-2xl shadow-black/60 sm:p-7">
+      <div class="flex items-start justify-between gap-5"><div><p class="text-[10px] font-bold uppercase tracking-[.2em] text-signal2">Revise Step 1</p><h2 class="mt-1 text-xl font-semibold text-white">Edit the captured draft</h2></div><button id="closeEdit" class="grid h-9 w-9 place-items-center rounded-lg border border-white/[0.08] bg-white/[0.025] text-slate-400 hover:text-white">×</button></div>
+      <p class="mt-3 text-sm leading-6 text-slate-400">In the full workflow this returns the page to the editable Step 1 state. The important behavior is that “Ready” never locks the draft permanently.</p>
+      <div class="mt-5 rounded-xl border border-white/[0.07] bg-white/[0.018] p-4 text-xs leading-5 text-slate-500">Example revisions: change B3 to another pick slot, correct a champion, add a newly revealed pick, or remove Ahri from the relevant bans.</div>
+      <button id="closeEdit2" class="mt-5 w-full rounded-xl bg-signal px-4 py-3 text-sm font-bold text-white">Return to Draft Ready</button>
+    </div>
+  </div>
+
+  <div id="toast" class="pointer-events-none fixed bottom-5 right-5 z-[60] translate-y-3 rounded-xl border border-white/[0.08] bg-[#0b1623]/95 px-4 py-3 text-sm text-slate-200 opacity-0 shadow-2xl transition duration-200">Ready for Your Options</div>
+
+  <script>
+    const modal=document.getElementById('editModal');
+    const toast=document.getElementById('toast');
+    function openEdit(){ modal.classList.remove('hidden'); modal.classList.add('flex'); }
+    function closeEdit(){ modal.classList.add('hidden'); modal.classList.remove('flex'); }
+    function showToast(message){ toast.textContent=message; toast.classList.remove('opacity-0','translate-y-3'); setTimeout(()=>toast.classList.add('opacity-0','translate-y-3'),1600); }
+    document.getElementById('editBtnTop').addEventListener('click',openEdit);
+    document.getElementById('editBtnRail').addEventListener('click',openEdit);
+    document.getElementById('closeEdit').addEventListener('click',closeEdit);
+    document.getElementById('closeEdit2').addEventListener('click',closeEdit);
+    modal.addEventListener('click',e=>{if(e.target===modal)closeEdit();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeEdit();});
+    document.getElementById('continueBtn').addEventListener('click',()=>showToast('Step 1 complete — ready for Your Options'));
+  </script>
+</body>
+</html>

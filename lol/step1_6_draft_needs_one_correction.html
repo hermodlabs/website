@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hermod Draft Assistant — Draft Needs One Correction" />
+  <title>Hermod — Draft Needs One Correction</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#03070d', shell: '#07101a', panel: '#09131f', panel2: '#0d1927',
+            line: '#1c2b3d', mist: '#9ca9bb', signal: '#8b5cf6', signal2: '#b79cff',
+            blue: '#5b8cff', danger: '#ff5a63', good: '#67d391', warn: '#f6c768'
+          },
+          fontFamily: {
+            sans: ['Inter','Avenir Next','ui-sans-serif','system-ui','sans-serif'],
+            mono: ['IBM Plex Mono','SFMono-Regular','Consolas','ui-monospace','monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    html, body { min-height: 100%; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 5% 2%, rgba(91,140,255,.11), transparent 26rem),
+        radial-gradient(circle at 86% 0%, rgba(139,92,246,.09), transparent 28rem),
+        linear-gradient(180deg,#03070d 0%,#06101a 48%,#03070d 100%);
+    }
+    body::before {
+      content:''; position:fixed; inset:0; z-index:-2; pointer-events:none;
+      background-image:linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);
+      background-size:34px 34px;
+      mask-image:linear-gradient(to bottom,rgba(0,0,0,.72),transparent 84%);
+    }
+    .sidebar { background:linear-gradient(180deg,rgba(8,18,29,.98),rgba(3,9,15,.99)); }
+    .glass { background:linear-gradient(180deg,rgba(8,18,29,.93),rgba(5,12,20,.96)); box-shadow:inset 0 1px 0 rgba(255,255,255,.025),0 20px 60px rgba(0,0,0,.18); }
+    .brand-mark { position:relative; width:34px; height:34px; filter:drop-shadow(0 0 14px rgba(139,92,246,.38)); }
+    .brand-mark::before,.brand-mark::after { content:''; position:absolute; top:4px; bottom:4px; width:10px; background:linear-gradient(180deg,#c4b5fd,#8b5cf6 55%,#5b8cff); clip-path:polygon(0 0,100% 17%,100% 60%,50% 74%,50% 100%,0 83%); }
+    .brand-mark::before { left:4px; } .brand-mark::after { right:4px; transform:scaleX(-1); }
+    .nav-item.active { background:linear-gradient(90deg,rgba(91,140,255,.14),rgba(63,91,126,.14)); color:#fff; }
+    .step-line { height:1px; flex:1; background:linear-gradient(90deg,rgba(139,92,246,.55),rgba(255,255,255,.10)); }
+    .choice { transition:.18s ease; }
+    .choice:hover { transform:translateY(-1px); border-color:rgba(183,156,255,.42); background:rgba(139,92,246,.06); }
+    .choice.selected { border-color:rgba(103,211,145,.55); background:rgba(103,211,145,.08); box-shadow:0 0 0 1px rgba(103,211,145,.12); }
+    .champ-icon { width:44px; height:44px; border-radius:11px; object-fit:cover; border:1px solid rgba(255,255,255,.1); box-shadow:0 6px 18px rgba(0,0,0,.3); }
+    .pulse { animation:pulse 1.8s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(246,199,104,.28)} 50%{box-shadow:0 0 0 8px rgba(246,199,104,0)} }
+  </style>
+</head>
+<body class="font-sans text-slate-100 antialiased selection:bg-signal/40 selection:text-white">
+  <div class="min-h-screen lg:grid lg:grid-cols-[246px_minmax(0,1fr)]">
+    <aside class="sidebar hidden min-h-screen border-r border-white/[0.06] lg:flex lg:flex-col">
+      <div class="flex h-[76px] items-center gap-3 border-b border-white/[0.05] px-7">
+        <div class="brand-mark"></div><div class="text-[19px] font-semibold tracking-[.24em]">HERMOD</div>
+      </div>
+      <div class="flex-1 px-2 py-7">
+        <p class="px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Live</p>
+        <div class="nav-item active flex items-center gap-3 rounded-xl px-5 py-3.5 text-sm font-semibold"><span class="text-signal2">⌾</span> Draft Assistant</div>
+        <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">You</p>
+        <div class="nav-item flex items-center gap-3 rounded-xl px-5 py-3.5 text-sm text-slate-400"><span>▦</span> Champion Pool</div>
+        <div class="nav-item flex items-center gap-3 rounded-xl px-5 py-3.5 text-sm text-slate-400"><span>◇</span> Player Profile</div>
+        <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Learn</p>
+        <div class="nav-item flex items-center gap-3 rounded-xl px-5 py-3.5 text-sm text-slate-400"><span>□</span> Decision History</div>
+        <div class="nav-item flex items-center gap-3 rounded-xl px-5 py-3.5 text-sm text-slate-400"><span>⌁</span> Review & Learn</div>
+      </div>
+      <div class="border-t border-white/[0.06] p-4">
+        <div class="flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.018] px-4 py-3">
+          <div class="grid h-9 w-9 place-items-center rounded-full border border-blue/30 bg-blue/10 text-xs font-bold text-blue">D2</div>
+          <div><p class="text-sm font-semibold">Mid Main</p><p class="text-xs text-slate-500">Diamond II</p></div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="min-w-0">
+      <header class="flex h-[76px] items-center justify-between border-b border-white/[0.06] bg-black/10 px-5 sm:px-7 lg:px-8">
+        <div class="flex items-center gap-2.5 text-sm text-slate-500"><span class="font-medium text-slate-300">Ranked Solo/Duo</span><span>•</span><span>Summoner's Rift</span><span>•</span><span>Pick Phase</span></div>
+        <div class="flex items-center gap-3"><span class="rounded-full border border-warn/25 bg-warn/[0.07] px-3 py-1.5 text-[11px] font-semibold text-warn">CHECK NEEDED</span><button id="resetBtn" class="rounded-lg border border-white/[0.07] bg-white/[0.02] px-3 py-2 text-xs text-slate-400 hover:text-white">Reset</button></div>
+      </header>
+
+      <div class="mx-auto max-w-[1450px] px-5 pb-12 pt-7 sm:px-7 lg:px-8">
+        <section class="glass rounded-2xl border border-white/[0.07] px-5 py-4 sm:px-6">
+          <div class="flex items-center gap-3">
+            <div class="flex items-center gap-3"><span class="grid h-7 w-7 place-items-center rounded-full border border-signal/70 bg-signal/15 text-[11px] font-bold text-signal2">1</span><div><p class="text-[11px] font-bold uppercase tracking-[.16em] text-signal2">Draft</p><p class="text-xs text-slate-500">Current state</p></div></div>
+            <div class="step-line"></div>
+            <div class="flex items-center gap-3 opacity-50"><span class="grid h-7 w-7 place-items-center rounded-full border border-white/[0.12] text-[11px] text-slate-400">2</span><span class="hidden text-[11px] font-bold uppercase tracking-[.14em] text-slate-400 md:inline">Your Options</span></div>
+            <div class="step-line opacity-35"></div>
+            <div class="flex items-center gap-3 opacity-40"><span class="grid h-7 w-7 place-items-center rounded-full border border-white/[0.12] text-[11px] text-slate-500">3</span><span class="hidden text-[11px] font-bold uppercase tracking-[.14em] text-slate-500 lg:inline">Clarify</span></div>
+            <div class="step-line opacity-25"></div>
+            <div class="flex items-center gap-3 opacity-35"><span class="grid h-7 w-7 place-items-center rounded-full border border-white/[0.12] text-[11px] text-slate-500">4</span><span class="hidden text-[11px] font-bold uppercase tracking-[.14em] text-slate-500 xl:inline">Recommendation</span></div>
+            <div class="step-line opacity-20"></div>
+            <div class="flex items-center gap-3 opacity-30"><span class="grid h-7 w-7 place-items-center rounded-full border border-white/[0.12] text-[11px] text-slate-500">5</span><span class="hidden text-[11px] font-bold uppercase tracking-[.14em] text-slate-500 xl:inline">Decide</span></div>
+          </div>
+        </section>
+
+        <section class="pb-7 pt-9">
+          <p class="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.2em] text-warn"><span class="pulse h-1.5 w-1.5 rounded-full bg-warn"></span> Draft needs one correction</p>
+          <h1 class="text-3xl font-semibold tracking-[-.035em] sm:text-[38px]">One thing looks inconsistent</h1>
+          <p class="mt-2 max-w-3xl text-[15px] leading-6 text-slate-400">Hermod found two pieces of draft state that cannot both be true. Pick the one that matches what actually happened and the rest of the draft will be preserved.</p>
+        </section>
+
+        <div class="grid gap-5 xl:grid-cols-[minmax(0,1fr)_330px]">
+          <div class="space-y-5">
+            <section class="glass overflow-hidden rounded-3xl border border-warn/25 shadow-[0_24px_70px_rgba(0,0,0,.26)]">
+              <div class="border-b border-white/[0.06] bg-warn/[0.035] px-6 py-5">
+                <div class="flex flex-col justify-between gap-4 md:flex-row md:items-center">
+                  <div>
+                    <p class="text-[10px] font-bold uppercase tracking-[.2em] text-warn">Inconsistency detected</p>
+                    <h2 class="mt-2 text-2xl font-semibold tracking-[-.025em] text-white">Zed is shown as both picked and banned.</h2>
+                  </div>
+                  <span class="rounded-full border border-warn/20 bg-warn/[0.08] px-3 py-1.5 text-[11px] font-semibold text-warn">1 correction needed</span>
+                </div>
+              </div>
+
+              <div class="grid gap-4 p-6 md:grid-cols-2">
+                <div class="rounded-2xl border border-danger/20 bg-danger/[0.035] p-5">
+                  <p class="text-[10px] font-bold uppercase tracking-[.18em] text-danger">Enemy pick</p>
+                  <div class="mt-4 flex items-center gap-4">
+                    <img class="champ-icon" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Zed.png" alt="Zed" />
+                    <div><p class="text-lg font-semibold text-white">Zed</p><p class="text-sm text-slate-400">Enemy MID · picked</p></div>
+                  </div>
+                </div>
+                <div class="rounded-2xl border border-warn/20 bg-warn/[0.03] p-5">
+                  <p class="text-[10px] font-bold uppercase tracking-[.18em] text-warn">Relevant ban</p>
+                  <div class="mt-4 flex items-center gap-4">
+                    <img class="champ-icon grayscale opacity-75" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Zed.png" alt="Zed" />
+                    <div><p class="text-lg font-semibold text-white">Zed</p><p class="text-sm text-slate-400">Marked unavailable</p></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="border-t border-white/[0.06] px-6 py-6">
+                <p class="text-sm font-semibold text-white">Which is correct?</p>
+                <p class="mt-1 text-xs leading-5 text-slate-500">Choose the statement that reflects the draft you are looking at. Hermod will correct the other value automatically.</p>
+                <div class="mt-5 grid gap-3 md:grid-cols-2">
+                  <button class="choice rounded-2xl border border-white/[0.09] bg-white/[0.02] p-5 text-left" data-resolution="picked">
+                    <div class="flex items-start gap-3"><span class="mt-0.5 grid h-7 w-7 place-items-center rounded-full border border-danger/25 bg-danger/[0.06] text-xs text-danger">A</span><div><p class="font-semibold text-white">Zed was picked</p><p class="mt-1 text-xs leading-5 text-slate-500">Keep Zed as enemy MID and remove him from relevant bans.</p></div></div>
+                  </button>
+                  <button class="choice rounded-2xl border border-white/[0.09] bg-white/[0.02] p-5 text-left" data-resolution="banned">
+                    <div class="flex items-start gap-3"><span class="mt-0.5 grid h-7 w-7 place-items-center rounded-full border border-warn/25 bg-warn/[0.06] text-xs text-warn">B</span><div><p class="font-semibold text-white">Zed was banned</p><p class="mt-1 text-xs leading-5 text-slate-500">Keep Zed unavailable and clear the enemy MID pick.</p></div></div>
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <section id="resolvedPanel" class="hidden rounded-2xl border border-good/20 bg-good/[0.045] p-5 sm:p-6">
+              <div class="flex items-start gap-4">
+                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-good/30 bg-good/10 text-good">✓</span>
+                <div class="flex-1">
+                  <p class="text-sm font-semibold text-white">Draft state corrected</p>
+                  <p id="resolvedText" class="mt-1 text-sm leading-6 text-slate-400"></p>
+                  <div class="mt-4 flex flex-wrap gap-2"><span id="resolvedChipA" class="rounded-full border border-white/[0.07] bg-black/15 px-3 py-1.5 text-xs text-slate-300"></span><span id="resolvedChipB" class="rounded-full border border-white/[0.07] bg-black/15 px-3 py-1.5 text-xs text-slate-300"></span></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="glass rounded-2xl border border-white/[0.07] p-5 sm:p-6">
+              <div class="flex flex-col justify-between gap-4 md:flex-row md:items-center">
+                <div>
+                  <p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-500">Another example</p>
+                  <h3 class="mt-2 text-lg font-semibold text-white">Draft sequence may not match the selected pick.</h3>
+                  <p class="mt-1 text-sm leading-6 text-slate-500">This is the same correction pattern applied to timing rather than champion availability.</p>
+                </div>
+                <button id="toggleExample" class="rounded-xl border border-white/[0.08] bg-white/[0.02] px-4 py-2.5 text-xs font-semibold text-slate-300 hover:border-signal/30 hover:text-white">Show example</button>
+              </div>
+              <div id="sequenceExample" class="mt-5 hidden rounded-2xl border border-blue/15 bg-blue/[0.035] p-5">
+                <p class="text-sm text-slate-300">Current pick is set to <strong class="text-white">B2</strong>, but Blue-side already shows <strong class="text-white">Gnar</strong> and <strong class="text-white">Lee Sin</strong> as locked.</p>
+                <p class="mt-2 text-sm text-slate-400">This draft looks like you may be on <strong class="text-blue">B3</strong> rather than B2.</p>
+                <div class="mt-4 flex flex-wrap gap-3"><button class="rounded-xl bg-blue px-4 py-2.5 text-xs font-bold text-white">Change to B3</button><button class="rounded-xl border border-white/[0.09] bg-white/[0.02] px-4 py-2.5 text-xs font-semibold text-slate-300">Keep B2</button></div>
+              </div>
+            </section>
+          </div>
+
+          <aside class="space-y-5">
+            <section class="glass rounded-2xl border border-white/[0.07] p-5">
+              <p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-500">Decision context</p>
+              <div class="mt-4 space-y-3 text-sm">
+                <div class="flex items-center justify-between"><span class="text-slate-500">Role</span><span class="font-semibold text-white">MID</span></div>
+                <div class="flex items-center justify-between"><span class="text-slate-500">Current pick</span><span class="font-semibold text-blue">B3</span></div>
+                <div class="flex items-center justify-between"><span class="text-slate-500">Side</span><span class="font-semibold text-white">Blue</span></div>
+              </div>
+            </section>
+
+            <section class="glass rounded-2xl border border-white/[0.07] p-5">
+              <div class="flex items-center justify-between"><p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-500">State quality</p><span id="qualityPill" class="rounded-full border border-warn/20 bg-warn/[0.06] px-2.5 py-1 text-[10px] font-bold text-warn">NEEDS CHECK</span></div>
+              <div class="mt-4 space-y-3">
+                <div class="flex items-start gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-good"></span><div><p class="text-sm font-medium text-slate-200">Pick position coherent</p><p class="text-xs text-slate-600">B3 · MID</p></div></div>
+                <div class="flex items-start gap-3"><span id="conflictDot" class="mt-1 h-2 w-2 rounded-full bg-warn"></span><div><p id="conflictTitle" class="text-sm font-medium text-slate-200">Zed conflict</p><p id="conflictSub" class="text-xs text-slate-600">Picked and banned</p></div></div>
+              </div>
+            </section>
+
+            <section class="rounded-2xl border border-signal/15 bg-signal/[0.035] p-5">
+              <p class="text-[10px] font-bold uppercase tracking-[.18em] text-signal2">Why Hermod pauses here</p>
+              <p class="mt-3 text-sm leading-6 text-slate-400">Later recommendations depend on Step 1 representing the draft faithfully. Hermod asks for one correction instead of silently guessing which value is wrong.</p>
+            </section>
+          </aside>
+        </div>
+
+        <section class="mt-6 rounded-2xl border border-white/[0.07] bg-[linear-gradient(90deg,rgba(91,140,255,.055),rgba(139,92,246,.045),rgba(255,255,255,.018))] p-5 sm:p-6">
+          <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <p id="footerTitle" class="text-sm font-semibold text-white">Resolve the inconsistency to continue</p>
+              <p id="footerSub" class="mt-1 text-xs text-slate-500">Hermod will preserve the rest of the draft state exactly as entered.</p>
+            </div>
+            <button id="continueBtn" disabled class="cursor-not-allowed rounded-xl bg-slate-800 px-5 py-3 text-sm font-bold text-slate-500">Continue to Your Options →</button>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="pointer-events-none fixed bottom-5 right-5 z-50 translate-y-3 rounded-xl border border-white/[0.08] bg-[#0b1623]/95 px-4 py-3 text-sm text-slate-200 opacity-0 shadow-2xl transition duration-200">Draft state corrected</div>
+
+  <script>
+    const choices = [...document.querySelectorAll('[data-resolution]')];
+    const resolvedPanel = document.getElementById('resolvedPanel');
+    const resolvedText = document.getElementById('resolvedText');
+    const resolvedChipA = document.getElementById('resolvedChipA');
+    const resolvedChipB = document.getElementById('resolvedChipB');
+    const continueBtn = document.getElementById('continueBtn');
+    const qualityPill = document.getElementById('qualityPill');
+    const conflictDot = document.getElementById('conflictDot');
+    const conflictTitle = document.getElementById('conflictTitle');
+    const conflictSub = document.getElementById('conflictSub');
+    const footerTitle = document.getElementById('footerTitle');
+    const footerSub = document.getElementById('footerSub');
+    const toast = document.getElementById('toast');
+    let resolution = null;
+
+    function showToast(msg){ toast.textContent = msg; toast.classList.remove('opacity-0','translate-y-3'); setTimeout(()=>toast.classList.add('opacity-0','translate-y-3'),1400); }
+
+    function resolve(type){
+      resolution = type;
+      choices.forEach(c => c.classList.toggle('selected', c.dataset.resolution === type));
+      resolvedPanel.classList.remove('hidden');
+      if(type === 'picked'){
+        resolvedText.textContent = 'Zed remains the enemy MID pick. Hermod removed Zed from the relevant-ban list.';
+        resolvedChipA.textContent = 'Enemy MID · Zed';
+        resolvedChipB.textContent = 'Relevant ban · removed';
+      } else {
+        resolvedText.textContent = 'Zed remains banned. Hermod cleared the enemy MID slot so the draft no longer contains a contradiction.';
+        resolvedChipA.textContent = 'Enemy MID · not selected yet';
+        resolvedChipB.textContent = 'Relevant ban · Zed';
+      }
+      qualityPill.textContent = 'COHERENT';
+      qualityPill.className = 'rounded-full border border-good/20 bg-good/[0.06] px-2.5 py-1 text-[10px] font-bold text-good';
+      conflictDot.className = 'mt-1 h-2 w-2 rounded-full bg-good';
+      conflictTitle.textContent = 'Conflict resolved';
+      conflictSub.textContent = type === 'picked' ? 'Zed kept as enemy MID' : 'Zed kept as banned';
+      footerTitle.textContent = 'Draft state is coherent';
+      footerSub.textContent = 'You can continue without re-entering any of the unaffected draft information.';
+      continueBtn.disabled = false;
+      continueBtn.className = 'rounded-xl bg-signal px-5 py-3 text-sm font-bold text-white shadow-[0_10px_28px_rgba(139,92,246,.18)] transition hover:bg-[#9b70f7]';
+      showToast('Draft state corrected');
+    }
+
+    choices.forEach(c => c.addEventListener('click', () => resolve(c.dataset.resolution)));
+
+    document.getElementById('toggleExample').addEventListener('click', (e) => {
+      const ex = document.getElementById('sequenceExample');
+      const hidden = ex.classList.toggle('hidden');
+      e.currentTarget.textContent = hidden ? 'Show example' : 'Hide example';
+    });
+
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      resolution = null;
+      choices.forEach(c => c.classList.remove('selected'));
+      resolvedPanel.classList.add('hidden');
+      qualityPill.textContent = 'NEEDS CHECK';
+      qualityPill.className = 'rounded-full border border-warn/20 bg-warn/[0.06] px-2.5 py-1 text-[10px] font-bold text-warn';
+      conflictDot.className = 'mt-1 h-2 w-2 rounded-full bg-warn';
+      conflictTitle.textContent = 'Zed conflict';
+      conflictSub.textContent = 'Picked and banned';
+      footerTitle.textContent = 'Resolve the inconsistency to continue';
+      footerSub.textContent = 'Hermod will preserve the rest of the draft state exactly as entered.';
+      continueBtn.disabled = true;
+      continueBtn.className = 'cursor-not-allowed rounded-xl bg-slate-800 px-5 py-3 text-sm font-bold text-slate-500';
+      showToast('Prototype reset');
+    });
+
+    continueBtn.addEventListener('click', () => { if(resolution) showToast('Ready for Your Options'); });
+  </script>
+</body>
+</html>

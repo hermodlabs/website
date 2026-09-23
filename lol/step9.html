@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hermod player setup - role, champion pool, and proficiency." />
+  <title>Hermod - Player Setup</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#03070d', shell: '#07101a', panel: '#09131f', panel2: '#0d1927', line: '#1c2b3d',
+            mist: '#9ca9bb', signal: '#8b5cf6', signal2: '#b79cff', blue: '#5b8cff', danger: '#ff5b68',
+            good: '#67d391', warn: '#eebc66'
+          },
+          fontFamily: {
+            sans: ['Inter', 'Avenir Next', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            mono: ['IBM Plex Mono', 'SFMono-Regular', 'Consolas', 'ui-monospace', 'monospace']
+          },
+          boxShadow: {
+            glow: '0 0 0 1px rgba(139,92,246,.55), 0 0 34px rgba(139,92,246,.18)',
+            panel: '0 22px 60px rgba(0,0,0,.28)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { color-scheme: dark; --purple:#8b5cf6; --lavender:#b79cff; --blue:#5b8cff; }
+    * { box-sizing: border-box; scrollbar-width: thin; scrollbar-color: #26384c transparent; }
+    html, body { min-height: 100%; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 4% 2%, rgba(91,140,255,.11), transparent 26rem),
+        radial-gradient(circle at 88% 0%, rgba(139,92,246,.10), transparent 29rem),
+        linear-gradient(180deg, #03070d 0%, #06101a 48%, #03070d 100%);
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: -2; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.012) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.72), transparent 84%);
+    }
+    .app-shell {
+      min-height: 100vh; border: 1px solid rgba(80,110,145,.34); background: rgba(2,8,14,.26);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.025), 0 30px 100px rgba(0,0,0,.38);
+    }
+    .sidebar {
+      background: linear-gradient(180deg, rgba(8,18,29,.98), rgba(3,9,15,.99)),
+        radial-gradient(circle at 15% 7%, rgba(139,92,246,.08), transparent 18rem);
+    }
+    .brand-mark { position: relative; width: 34px; height: 34px; filter: drop-shadow(0 0 14px rgba(139,92,246,.38)); }
+    .brand-mark::before, .brand-mark::after {
+      content: ''; position: absolute; top: 4px; bottom: 4px; width: 10px;
+      background: linear-gradient(180deg, #c4b5fd, #8b5cf6 55%, #5b8cff);
+      clip-path: polygon(0 0, 100% 17%, 100% 60%, 50% 74%, 50% 100%, 0 83%);
+    }
+    .brand-mark::before { left: 4px; }
+    .brand-mark::after { right: 4px; transform: scaleX(-1); }
+    .nav-item { position: relative; transition: .18s ease; }
+    .nav-item::before {
+      content: ''; position: absolute; inset: 0 auto 0 0; width: 3px; border-radius: 0 6px 6px 0;
+      background: linear-gradient(180deg,#5b8cff,#8b5cf6); opacity: 0;
+    }
+    .nav-item.active { background: linear-gradient(90deg, rgba(91,140,255,.14), rgba(63,91,126,.14)); border-color: rgba(91,140,255,.16); color: #fff; }
+    .nav-item.active::before { opacity: 1; }
+    .glass { background: linear-gradient(180deg, rgba(8,18,29,.93), rgba(5,12,20,.96)); box-shadow: inset 0 1px 0 rgba(255,255,255,.025), 0 20px 60px rgba(0,0,0,.18); }
+    .setup-step { transition: .18s ease; }
+    .setup-step.complete { color: #67d391; }
+    .setup-step.active { color: #fff; }
+    .step-rail { height: 1px; flex: 1; background: rgba(255,255,255,.085); }
+    .step-rail.complete { background: linear-gradient(90deg, rgba(103,211,145,.65), rgba(139,92,246,.5)); }
+    .role-card, .champ-card, .prof-btn { transition: .17s ease; }
+    .role-card:hover, .champ-card:hover { transform: translateY(-1px); border-color: rgba(183,156,255,.28); background-color: rgba(139,92,246,.035); }
+    .role-card.selected { border-color: rgba(139,92,246,.52); background: linear-gradient(145deg, rgba(139,92,246,.10), rgba(91,140,255,.035)); box-shadow: 0 0 0 1px rgba(139,92,246,.08), 0 18px 42px rgba(0,0,0,.20); }
+    .champ-card { position: relative; overflow: hidden; }
+    .champ-card.selected { border-color: rgba(139,92,246,.54); background: linear-gradient(180deg, rgba(33,24,55,.92), rgba(8,15,26,.98)); box-shadow: 0 0 0 1px rgba(139,92,246,.10), 0 14px 34px rgba(0,0,0,.22); }
+    .champ-card.selected .check-badge { opacity: 1; transform: scale(1); }
+    .champ-card.selected img { filter: saturate(1.08) brightness(1.04); }
+    .check-badge { opacity: 0; transform: scale(.8); transition: .15s ease; }
+    .champ-img { width: 54px; height: 54px; border-radius: 13px; object-fit: cover; border: 1px solid rgba(255,255,255,.10); background:#0b121b; }
+    .champ-small { width: 36px; height: 36px; border-radius: 9px; object-fit: cover; border: 1px solid rgba(255,255,255,.09); background:#0b121b; }
+    .prof-btn:hover { border-color: rgba(183,156,255,.28); color: #fff; }
+    .prof-btn.active { border-color: rgba(139,92,246,.50); background: rgba(139,92,246,.10); color: #ded2ff; }
+    .context-row { border-top: 1px solid rgba(255,255,255,.052); }
+    .summary-chip { border: 1px solid rgba(255,255,255,.065); background: rgba(255,255,255,.018); }
+    .search-field:focus { outline: none; border-color: rgba(139,92,246,.38); box-shadow: 0 0 0 3px rgba(139,92,246,.06); }
+    .fade-in { animation: fadeIn .22s ease; }
+    @keyframes fadeIn { from { opacity:0; transform:translateY(5px); } to { opacity:1; transform:translateY(0); } }
+    .toast { transform: translateY(18px); opacity:0; pointer-events:none; transition:.22s ease; }
+    .toast.show { transform: translateY(0); opacity:1; }
+    @media (prefers-reduced-motion: reduce) { .fade-in { animation:none; } .role-card:hover, .champ-card:hover { transform:none; } }
+  </style>
+</head>
+<body class="font-sans text-slate-100 antialiased selection:bg-signal/40 selection:text-white">
+  <div class="app-shell grid lg:grid-cols-[246px_minmax(0,1fr)]">
+    <aside class="sidebar hidden min-h-screen border-r border-white/[0.06] lg:flex lg:flex-col">
+      <div class="flex h-[76px] items-center gap-3 border-b border-white/[0.05] px-7">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="text-[19px] font-semibold tracking-[.24em] text-slate-100">HERMOD</div>
+      </div>
+      <div class="flex-1 px-2 py-7">
+        <p class="px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Live</p>
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center text-signal2">O</span>Draft Assistant</button>
+        <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">You</p>
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">#</span>Champion Pool</button>
+        <button class="nav-item active mt-1 flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-semibold"><span class="grid h-6 w-6 place-items-center">D</span>Player Profile</button>
+        <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Learn</p>
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">[]</span>Decision History</button>
+        <button class="nav-item mt-1 flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">~</span>Review & Learn</button>
+      </div>
+      <div class="border-t border-white/[0.06] p-4">
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-4 py-3 text-left text-sm font-medium text-slate-500 hover:bg-white/[0.025] hover:text-slate-300"><span class="grid h-6 w-6 place-items-center">*</span>Settings</button>
+      </div>
+    </aside>
+
+    <main class="min-w-0">
+      <header class="flex h-[76px] items-center justify-between border-b border-white/[0.06] bg-[#050c14]/75 px-5 backdrop-blur-xl sm:px-7 xl:px-10">
+        <div class="flex items-center gap-3">
+          <button class="grid h-9 w-9 place-items-center rounded-xl border border-white/[0.07] text-slate-500 lg:hidden">=</button>
+          <div><p class="text-sm font-semibold text-white">Player Setup</p><p class="mt-0.5 text-[10px] uppercase tracking-[.16em] text-slate-600">Persistent draft profile</p></div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="hidden rounded-lg border border-white/[0.07] bg-white/[0.018] px-2.5 py-1.5 font-mono text-[10px] tracking-[.12em] text-slate-500 sm:inline-flex">SAVED ACROSS DRAFTS</span>
+          <span id="headerStatus" class="rounded-lg border border-signal/20 bg-signal/[0.05] px-2.5 py-1.5 font-mono text-[10px] font-bold tracking-[.12em] text-signal2">SETUP 1 / 3</span>
+        </div>
+      </header>
+
+      <div class="mx-auto max-w-[1460px] px-5 pb-16 sm:px-7 xl:px-10">
+        <section class="border-b border-white/[0.055] py-5">
+          <div class="flex items-center gap-3 overflow-x-auto">
+            <button class="setup-step active flex shrink-0 items-center gap-2" data-step-nav="1"><span class="grid h-7 w-7 place-items-center rounded-full border border-signal/40 bg-signal/[0.08] text-[10px] font-bold text-signal2">1</span><span class="text-xs font-semibold">Role</span></button>
+            <div id="rail1" class="step-rail min-w-12"></div>
+            <button class="setup-step flex shrink-0 items-center gap-2 text-slate-600" data-step-nav="2"><span class="grid h-7 w-7 place-items-center rounded-full border border-white/[0.08] bg-white/[0.015] text-[10px] font-bold">2</span><span class="text-xs font-semibold">Champion Pool</span></button>
+            <div id="rail2" class="step-rail min-w-12"></div>
+            <button class="setup-step flex shrink-0 items-center gap-2 text-slate-600" data-step-nav="3"><span class="grid h-7 w-7 place-items-center rounded-full border border-white/[0.08] bg-white/[0.015] text-[10px] font-bold">3</span><span class="text-xs font-semibold">Proficiency</span></button>
+          </div>
+        </section>
+
+        <section class="py-7">
+          <div class="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
+            <div>
+              <p class="text-[10px] font-bold uppercase tracking-[.20em] text-signal2">Player model</p>
+              <h1 id="pageTitle" class="mt-2 text-3xl font-semibold tracking-[-.035em] text-white sm:text-4xl">Which role are you drafting for?</h1>
+              <p id="pageSubtitle" class="mt-3 max-w-3xl text-sm leading-6 text-slate-400">Hermod uses this as your default role and limits later champion questions to choices that are relevant to you.</p>
+            </div>
+            <div class="flex items-center gap-2 rounded-full border border-blue/16 bg-blue/[0.035] px-3 py-1.5 text-[10px] text-slate-500"><span class="h-1.5 w-1.5 rounded-full bg-blue"></span><span id="modelHint">This profile is reused in future drafts</span></div>
+          </div>
+        </section>
+
+        <div class="grid gap-5 xl:grid-cols-[minmax(0,1fr)_330px]">
+          <div class="min-w-0">
+            <!-- STEP 1 -->
+            <section id="step1" class="glass fade-in rounded-2xl border border-white/[0.07] p-5 shadow-panel sm:p-6">
+              <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                <div><p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">Default role</p><h2 class="mt-1 text-xl font-semibold text-white">Choose the role Hermod should optimize for.</h2></div>
+                <p class="max-w-md text-xs leading-5 text-slate-500">You can override this for any individual draft later.</p>
+              </div>
+              <div id="roleGrid" class="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-5"></div>
+              <div class="mt-6 flex flex-col gap-3 border-t border-white/[0.055] pt-5 sm:flex-row sm:items-center sm:justify-between">
+                <p id="roleHelper" class="text-xs text-slate-600">Select one role to continue.</p>
+                <button id="continueRole" disabled class="rounded-xl bg-signal px-5 py-3 text-xs font-bold text-white opacity-40 shadow-[0_0_26px_rgba(139,92,246,.15)] transition enabled:hover:bg-[#9b70f8] disabled:cursor-not-allowed">Continue to champion pool</button>
+              </div>
+            </section>
+
+            <!-- STEP 2 -->
+            <section id="step2" class="glass hidden fade-in rounded-2xl border border-white/[0.07] p-5 shadow-panel sm:p-6">
+              <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                <div><p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">Feasible champion pool</p><h2 class="mt-1 text-xl font-semibold text-white">Which champions would you genuinely lock today?</h2><p class="mt-2 max-w-2xl text-xs leading-5 text-slate-500">This is about realistic willingness, not theoretical strength. Hermod will only recommend from this set unless you change it for a specific draft.</p></div>
+                <label class="relative block w-full max-w-xs"><span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-600">⌕</span><input id="champSearch" class="search-field w-full rounded-xl border border-white/[0.08] bg-white/[0.018] py-2.5 pl-9 pr-3 text-xs text-white placeholder:text-slate-600" placeholder="Search champions" /></label>
+              </div>
+              <div class="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-white/[0.055] bg-white/[0.012] px-4 py-3">
+                <div class="flex items-center gap-2"><span id="rolePoolBadge" class="rounded-md border border-signal/18 bg-signal/[0.04] px-2 py-1 text-[9px] font-bold uppercase tracking-[.14em] text-signal2">MID pool</span><span class="text-[10px] text-slate-600">Showing common role options for the prototype</span></div>
+                <p id="selectedCount" class="text-xs font-semibold text-slate-400">0 selected</p>
+              </div>
+              <div id="champGrid" class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"></div>
+              <div class="mt-6 flex flex-col gap-3 border-t border-white/[0.055] pt-5 sm:flex-row sm:items-center sm:justify-between">
+                <button id="backToRole" class="rounded-xl border border-white/[0.08] bg-white/[0.018] px-4 py-3 text-xs font-semibold text-slate-400 transition hover:border-signal/25 hover:text-white">← Back</button>
+                <div class="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center"><p id="poolHelper" class="text-xs text-slate-600 sm:mr-2">Select at least one champion.</p><button id="continuePool" disabled class="rounded-xl bg-signal px-5 py-3 text-xs font-bold text-white opacity-40 transition enabled:hover:bg-[#9b70f8] disabled:cursor-not-allowed">Continue to proficiency</button></div>
+              </div>
+            </section>
+
+            <!-- STEP 3 -->
+            <section id="step3" class="glass hidden fade-in rounded-2xl border border-white/[0.07] p-5 shadow-panel sm:p-6">
+              <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                <div><p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">Execution proficiency</p><h2 class="mt-1 text-xl font-semibold text-white">How comfortable are you on each champion?</h2><p class="mt-2 max-w-2xl text-xs leading-5 text-slate-500">Hermod uses this to distinguish champions you technically play from champions you can execute reliably right now.</p></div>
+                <span class="rounded-md border border-blue/16 bg-blue/[0.035] px-2.5 py-1.5 text-[9px] font-bold uppercase tracking-[.14em] text-blue">Current proficiency</span>
+              </div>
+              <div id="profList" class="mt-5 space-y-3"></div>
+              <div class="mt-6 flex flex-col gap-3 border-t border-white/[0.055] pt-5 sm:flex-row sm:items-center sm:justify-between">
+                <button id="backToPool" class="rounded-xl border border-white/[0.08] bg-white/[0.018] px-4 py-3 text-xs font-semibold text-slate-400 transition hover:border-signal/25 hover:text-white">← Back</button>
+                <div class="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center"><p id="profHelper" class="text-xs text-slate-600 sm:mr-2">Rate every selected champion.</p><button id="finishSetup" disabled class="rounded-xl bg-signal px-5 py-3 text-xs font-bold text-white opacity-40 transition enabled:hover:bg-[#9b70f8] disabled:cursor-not-allowed">Save player profile</button></div>
+              </div>
+            </section>
+
+            <!-- COMPLETE -->
+            <section id="completeState" class="hidden fade-in space-y-5">
+              <div class="glass rounded-2xl border border-good/18 p-5 shadow-panel sm:p-6">
+                <div class="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
+                  <div class="flex items-start gap-4"><div class="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-good/25 bg-good/[0.07] text-sm font-bold text-good">OK</div><div><p class="text-[10px] font-bold uppercase tracking-[.18em] text-good">Player profile ready</p><h2 class="mt-2 text-2xl font-semibold tracking-[-.03em] text-white">Hermod now knows what you can realistically play.</h2><p class="mt-2 max-w-2xl text-sm leading-6 text-slate-400">This profile becomes persistent context. Live drafts can now start with your saved role, pool, and proficiency instead of asking for them again.</p></div></div>
+                  <button id="editSetup" class="shrink-0 rounded-xl border border-white/[0.08] bg-white/[0.018] px-4 py-3 text-xs font-semibold text-slate-400 transition hover:border-signal/25 hover:text-white">Edit setup</button>
+                </div>
+                <div class="mt-6 grid gap-3 md:grid-cols-3">
+                  <div class="rounded-xl border border-white/[0.065] bg-white/[0.014] p-4"><p class="text-[9px] font-bold uppercase tracking-[.15em] text-slate-600">Default role</p><p id="completeRole" class="mt-2 text-base font-semibold text-white">MID</p><p class="mt-1 text-[10px] text-slate-600">Used as the live-draft default</p></div>
+                  <div class="rounded-xl border border-signal/14 bg-signal/[0.025] p-4"><p class="text-[9px] font-bold uppercase tracking-[.15em] text-signal2">Feasible pool</p><p id="completePool" class="mt-2 text-base font-semibold text-white">4 champions</p><p class="mt-1 text-[10px] text-slate-600">Recommendation boundary</p></div>
+                  <div class="rounded-xl border border-blue/14 bg-blue/[0.025] p-4"><p class="text-[9px] font-bold uppercase tracking-[.15em] text-blue">Proficiency</p><p id="completeRated" class="mt-2 text-base font-semibold text-white">4 / 4 rated</p><p class="mt-1 text-[10px] text-slate-600">Player-specific execution context</p></div>
+                </div>
+              </div>
+
+              <div class="glass rounded-2xl border border-white/[0.07] p-5 sm:p-6">
+                <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+                  <div><p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">Next time you draft</p><h3 class="mt-1 text-lg font-semibold text-white">Hermod can begin with live state instead of setup questions.</h3><p class="mt-1 max-w-2xl text-xs leading-5 text-slate-500">You can still change the pool for a specific game without changing this saved profile.</p></div>
+                  <button id="startDraft" class="shrink-0 rounded-xl bg-signal px-5 py-3 text-xs font-bold text-white transition hover:bg-[#9b70f8]">Go to Draft Assistant →</button>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- RIGHT RAIL -->
+          <aside class="space-y-5">
+            <section class="glass rounded-2xl border border-white/[0.07] p-5 shadow-panel xl:sticky xl:top-5">
+              <div class="flex items-center justify-between gap-3"><div><p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">Player model</p><h3 class="mt-1 text-lg font-semibold text-white">Persistent context</h3></div><span id="railState" class="rounded-md border border-signal/18 bg-signal/[0.04] px-2 py-1 text-[9px] font-bold uppercase tracking-[.13em] text-signal2">Building</span></div>
+              <p class="mt-3 text-xs leading-5 text-slate-500">These are facts about what you can realistically execute. Hermod reuses them instead of asking again every draft.</p>
+
+              <div class="mt-5">
+                <div class="context-row flex items-center justify-between gap-4 py-3 first:border-t-0"><div><p class="text-[9px] font-bold uppercase tracking-[.14em] text-slate-600">Default role</p><p id="railRole" class="mt-1 text-sm font-semibold text-slate-300">Not set</p></div><span id="railRoleState" class="text-[10px] text-warn">Needed</span></div>
+                <div class="context-row flex items-center justify-between gap-4 py-3"><div><p class="text-[9px] font-bold uppercase tracking-[.14em] text-slate-600">Champion pool</p><p id="railPool" class="mt-1 text-sm font-semibold text-slate-300">Not set</p></div><span id="railPoolState" class="text-[10px] text-slate-600">Waiting</span></div>
+                <div class="context-row flex items-center justify-between gap-4 py-3"><div><p class="text-[9px] font-bold uppercase tracking-[.14em] text-slate-600">Proficiency</p><p id="railProf" class="mt-1 text-sm font-semibold text-slate-300">Not rated</p></div><span id="railProfState" class="text-[10px] text-slate-600">Waiting</span></div>
+              </div>
+
+              <div class="mt-4 rounded-xl border border-white/[0.06] bg-white/[0.012] p-4">
+                <p class="text-[9px] font-bold uppercase tracking-[.15em] text-slate-600">Why this exists</p>
+                <p class="mt-2 text-xs leading-5 text-slate-400">The live assistant should know your feasible decision space before it evaluates the draft. Setup establishes that once; live questions only override it when today's situation is different.</p>
+              </div>
+
+              <div id="railChampsWrap" class="mt-4 hidden">
+                <p class="text-[9px] font-bold uppercase tracking-[.15em] text-slate-600">Selected champions</p>
+                <div id="railChamps" class="mt-3 flex flex-wrap gap-2"></div>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast fixed bottom-5 right-5 z-50 rounded-xl border border-signal/20 bg-[#0b1320]/95 px-4 py-3 text-xs text-slate-300 shadow-2xl backdrop-blur-xl">Prototype action</div>
+
+  <script>
+    const VERSION = '16.16.1';
+    const CDN = `https://ddragon.leagueoflegends.com/cdn/${VERSION}/img/champion/`;
+
+    const roleMeta = {
+      TOP: { label: 'Top', glyph: 'T', desc: 'Solo lane / side lane' },
+      JUNGLE: { label: 'Jungle', glyph: 'J', desc: 'Map pressure / setup' },
+      MID: { label: 'Mid', glyph: 'M', desc: 'Central lane / rotation' },
+      ADC: { label: 'Bottom', glyph: 'B', desc: 'Marksman / carry' },
+      SUPPORT: { label: 'Support', glyph: 'S', desc: 'Utility / initiation' }
+    };
+
+    const pools = {
+      TOP: [
+        ['Gnar','Gnar'],['Camille','Camille'],['Aatrox','Aatrox'],['Ornn','Ornn'],['Jax','Jax'],['Renekton','Renekton'],['Fiora','Fiora'],['Kennen','Kennen'],['Malphite','Malphite'],['Gwen','Gwen']
+      ],
+      JUNGLE: [
+        ['LeeSin','Lee Sin'],['Vi','Vi'],['Sejuani','Sejuani'],['Maokai','Maokai'],['JarvanIV','Jarvan IV'],['Graves','Graves'],['Nocturne','Nocturne'],['Viego','Viego'],['Nidalee','Nidalee'],['Elise','Elise']
+      ],
+      MID: [
+        ['Orianna','Orianna'],['Ahri','Ahri'],['Syndra','Syndra'],['Viktor','Viktor'],['Azir','Azir'],['Hwei','Hwei'],['Leblanc','LeBlanc'],['Annie','Annie'],['TwistedFate','Twisted Fate'],['Taliyah','Taliyah']
+      ],
+      ADC: [
+        ['Jinx','Jinx'],['Caitlyn','Caitlyn'],['Ezreal','Ezreal'],['Lucian','Lucian'],['Ashe','Ashe'],['Xayah','Xayah'],['Kaisa',"Kai'Sa"],['Varus','Varus'],['Sivir','Sivir'],['Aphelios','Aphelios']
+      ],
+      SUPPORT: [
+        ['Lulu','Lulu'],['Nautilus','Nautilus'],['Thresh','Thresh'],['Rakan','Rakan'],['Leona','Leona'],['Nami','Nami'],['Braum','Braum'],['Milio','Milio'],['Bard','Bard'],['Rell','Rell']
+      ]
+    };
+
+    const state = {
+      step: 1,
+      role: null,
+      selected: new Map(),
+      proficiency: new Map(),
+      complete: false
+    };
+
+    const el = id => document.getElementById(id);
+
+    function icon(key) { return `${CDN}${key}.png`; }
+
+    function showToast(message) {
+      el('toast').textContent = message;
+      el('toast').classList.add('show');
+      clearTimeout(showToast.timer);
+      showToast.timer = setTimeout(() => el('toast').classList.remove('show'), 2200);
+    }
+
+    function renderRoles() {
+      el('roleGrid').innerHTML = Object.entries(roleMeta).map(([key, r]) => `
+        <button data-role="${key}" class="role-card ${state.role===key?'selected':''} rounded-2xl border border-white/[0.08] bg-white/[0.012] p-4 text-left">
+          <div class="flex items-start justify-between gap-3"><span class="grid h-10 w-10 place-items-center rounded-xl border border-signal/20 bg-signal/[0.045] font-mono text-xs font-bold text-signal2">${r.glyph}</span><span class="${state.role===key?'opacity-100':'opacity-0'} grid h-6 w-6 place-items-center rounded-full border border-signal/30 bg-signal/[0.08] text-[10px] text-signal2">✓</span></div>
+          <p class="mt-5 text-base font-semibold text-white">${r.label}</p>
+          <p class="mt-1 text-[10px] leading-4 text-slate-600">${r.desc}</p>
+        </button>`).join('');
+
+      document.querySelectorAll('[data-role]').forEach(btn => btn.addEventListener('click', () => {
+        const next = btn.dataset.role;
+        if (state.role && state.role !== next && state.selected.size) {
+          state.selected.clear(); state.proficiency.clear();
+        }
+        state.role = next;
+        renderRoles(); updateUI();
+      }));
+    }
+
+    function renderChampions() {
+      if (!state.role) return;
+      const q = el('champSearch').value.trim().toLowerCase();
+      const data = pools[state.role].filter(([key,name]) => name.toLowerCase().includes(q));
+      el('champGrid').innerHTML = data.map(([key,name]) => {
+        const selected = state.selected.has(key);
+        return `<button data-champ="${key}" data-name="${name}" class="champ-card ${selected?'selected':''} flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-white/[0.012] p-3 text-left">
+          <div class="relative shrink-0"><img class="champ-img" src="${icon(key)}" alt="${name}"/><span class="check-badge absolute -right-1 -top-1 grid h-5 w-5 place-items-center rounded-full border border-signal/40 bg-[#171029] text-[9px] text-signal2">✓</span></div>
+          <div class="min-w-0"><p class="truncate text-sm font-semibold text-white">${name}</p><p class="mt-1 text-[9px] uppercase tracking-[.13em] text-slate-600">${roleMeta[state.role].label}</p></div>
+        </button>`;
+      }).join('') || `<div class="col-span-full rounded-xl border border-dashed border-white/[0.08] p-8 text-center text-xs text-slate-600">No champions match that search.</div>`;
+
+      document.querySelectorAll('[data-champ]').forEach(btn => btn.addEventListener('click', () => {
+        const key = btn.dataset.champ, name = btn.dataset.name;
+        if (state.selected.has(key)) { state.selected.delete(key); state.proficiency.delete(key); }
+        else { state.selected.set(key, name); }
+        renderChampions(); updateUI();
+      }));
+    }
+
+    function renderProficiency() {
+      const options = ['LOW','MEDIUM','HIGH','VERY_HIGH'];
+      el('profList').innerHTML = [...state.selected.entries()].map(([key,name]) => `
+        <div class="rounded-2xl border border-white/[0.07] bg-white/[0.012] p-4">
+          <div class="grid gap-4 lg:grid-cols-[210px_minmax(0,1fr)] lg:items-center">
+            <div class="flex items-center gap-3"><img class="champ-small" src="${icon(key)}" alt="${name}"/><div><p class="text-sm font-semibold text-white">${name}</p><p class="mt-0.5 text-[9px] uppercase tracking-[.13em] text-slate-600">Current execution</p></div></div>
+            <div class="grid grid-cols-2 gap-2 sm:grid-cols-4">${options.map(opt => `<button data-prof-key="${key}" data-prof="${opt}" class="prof-btn ${state.proficiency.get(key)===opt?'active':''} rounded-xl border border-white/[0.08] bg-white/[0.014] px-3 py-2.5 text-[10px] font-semibold text-slate-500">${opt==='VERY_HIGH'?'Very high':opt[0]+opt.slice(1).toLowerCase()}</button>`).join('')}</div>
+          </div>
+        </div>`).join('');
+      document.querySelectorAll('[data-prof-key]').forEach(btn => btn.addEventListener('click', () => {
+        state.proficiency.set(btn.dataset.profKey, btn.dataset.prof);
+        renderProficiency(); updateUI();
+      }));
+    }
+
+    function setStep(step) {
+      if (step === 2 && !state.role) return;
+      if (step === 3 && state.selected.size === 0) return;
+      state.complete = false;
+      state.step = step;
+      ['step1','step2','step3','completeState'].forEach(id => el(id).classList.add('hidden'));
+      el(`step${step}`).classList.remove('hidden');
+      if (step === 2) renderChampions();
+      if (step === 3) renderProficiency();
+      updateUI();
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    function setComplete() {
+      state.complete = true;
+      ['step1','step2','step3'].forEach(id => el(id).classList.add('hidden'));
+      el('completeState').classList.remove('hidden');
+      updateUI();
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    function updateStepper() {
+      const navs = [...document.querySelectorAll('[data-step-nav]')];
+      navs.forEach((nav, idx) => {
+        const n = idx + 1;
+        nav.classList.remove('active','complete','text-slate-600');
+        const circle = nav.querySelector('span:first-child');
+        circle.className = 'grid h-7 w-7 place-items-center rounded-full border text-[10px] font-bold';
+        if (state.complete || n < state.step) {
+          nav.classList.add('complete');
+          circle.classList.add('border-good/30','bg-good/[0.06]','text-good');
+          circle.textContent = '✓';
+        } else if (n === state.step) {
+          nav.classList.add('active');
+          circle.classList.add('border-signal/40','bg-signal/[0.08]','text-signal2');
+          circle.textContent = n;
+        } else {
+          nav.classList.add('text-slate-600');
+          circle.classList.add('border-white/[0.08]','bg-white/[0.015]');
+          circle.textContent = n;
+        }
+      });
+      el('rail1').classList.toggle('complete', state.complete || state.step > 1);
+      el('rail2').classList.toggle('complete', state.complete || state.step > 2);
+    }
+
+    function updateTitles() {
+      if (state.complete) {
+        el('pageTitle').textContent = 'Your player profile is ready.';
+        el('pageSubtitle').textContent = 'Hermod can now reuse this feasible decision space across live drafts and only interrupt you when today differs from your saved state.';
+        el('modelHint').textContent = 'Persistent context saved for future drafts';
+        el('headerStatus').textContent = 'PROFILE READY';
+        return;
+      }
+      const copy = {
+        1: ['Which role are you drafting for?', 'Hermod uses this as your default role and limits later champion questions to choices that are relevant to you.', 'This profile is reused in future drafts'],
+        2: ['Build your realistic champion pool.', 'Select champions you would genuinely consider locking today. This defines the feasible options Hermod can recommend by default.', 'Choose realistic options, not every champion you have played'],
+        3: ['Tell Hermod what you execute well.', 'Rate your current comfort on each selected champion so a theoretically strong pick does not outrank something you can actually execute.', 'Proficiency changes recommendations only when it matters']
+      }[state.step];
+      el('pageTitle').textContent = copy[0]; el('pageSubtitle').textContent = copy[1]; el('modelHint').textContent = copy[2];
+      el('headerStatus').textContent = `SETUP ${state.step} / 3`;
+    }
+
+    function updateRail() {
+      el('railRole').textContent = state.role ? roleMeta[state.role].label.toUpperCase() : 'Not set';
+      el('railRoleState').textContent = state.role ? 'Known' : 'Needed';
+      el('railRoleState').className = `text-[10px] ${state.role?'text-good':'text-warn'}`;
+
+      el('railPool').textContent = state.selected.size ? `${state.selected.size} champion${state.selected.size===1?'':'s'}` : 'Not set';
+      el('railPoolState').textContent = state.selected.size ? 'Known' : (state.role ? 'Needed' : 'Waiting');
+      el('railPoolState').className = `text-[10px] ${state.selected.size?'text-good':(state.role?'text-warn':'text-slate-600')}`;
+
+      const rated = state.proficiency.size;
+      el('railProf').textContent = state.selected.size ? `${rated} / ${state.selected.size} rated` : 'Not rated';
+      const profDone = state.selected.size && rated === state.selected.size;
+      el('railProfState').textContent = profDone ? 'Known' : (state.selected.size ? 'Needed' : 'Waiting');
+      el('railProfState').className = `text-[10px] ${profDone?'text-good':(state.selected.size?'text-warn':'text-slate-600')}`;
+
+      el('railState').textContent = state.complete ? 'Ready' : 'Building';
+      el('railState').className = `rounded-md border px-2 py-1 text-[9px] font-bold uppercase tracking-[.13em] ${state.complete?'border-good/18 bg-good/[0.04] text-good':'border-signal/18 bg-signal/[0.04] text-signal2'}`;
+
+      const wrap = el('railChampsWrap');
+      if (state.selected.size) {
+        wrap.classList.remove('hidden');
+        el('railChamps').innerHTML = [...state.selected.entries()].map(([key,name]) => `<div class="summary-chip flex items-center gap-2 rounded-lg px-2 py-1.5"><img class="h-6 w-6 rounded-md object-cover" src="${icon(key)}" alt="${name}"/><span class="max-w-[88px] truncate text-[10px] text-slate-400">${name}</span></div>`).join('');
+      } else wrap.classList.add('hidden');
+    }
+
+    function updateUI() {
+      updateStepper(); updateTitles(); updateRail();
+      el('continueRole').disabled = !state.role; el('continueRole').classList.toggle('opacity-40', !state.role);
+      el('roleHelper').textContent = state.role ? `${roleMeta[state.role].label} will be used as your default role.` : 'Select one role to continue.';
+      if (state.role) el('rolePoolBadge').textContent = `${roleMeta[state.role].label.toUpperCase()} POOL`;
+      el('selectedCount').textContent = `${state.selected.size} selected`;
+      el('continuePool').disabled = state.selected.size === 0; el('continuePool').classList.toggle('opacity-40', state.selected.size===0);
+      el('poolHelper').textContent = state.selected.size ? `${state.selected.size} realistic option${state.selected.size===1?'':'s'} selected.` : 'Select at least one champion.';
+      const profDone = state.selected.size > 0 && state.proficiency.size === state.selected.size;
+      el('finishSetup').disabled = !profDone; el('finishSetup').classList.toggle('opacity-40', !profDone);
+      el('profHelper').textContent = profDone ? 'All selected champions are rated.' : `${state.proficiency.size} of ${state.selected.size} rated.`;
+      if (state.complete) {
+        el('completeRole').textContent = roleMeta[state.role].label.toUpperCase();
+        el('completePool').textContent = `${state.selected.size} champion${state.selected.size===1?'':'s'}`;
+        el('completeRated').textContent = `${state.proficiency.size} / ${state.selected.size} rated`;
+      }
+    }
+
+    renderRoles(); updateUI();
+
+    el('continueRole').addEventListener('click', () => setStep(2));
+    el('backToRole').addEventListener('click', () => setStep(1));
+    el('continuePool').addEventListener('click', () => setStep(3));
+    el('backToPool').addEventListener('click', () => setStep(2));
+    el('finishSetup').addEventListener('click', () => setComplete());
+    el('editSetup').addEventListener('click', () => setStep(1));
+    el('champSearch').addEventListener('input', renderChampions);
+    el('startDraft').addEventListener('click', () => showToast('Prototype: this would open Live Draft - Step 1.'));
+
+    document.querySelectorAll('[data-step-nav]').forEach(btn => btn.addEventListener('click', () => {
+      const target = Number(btn.dataset.stepNav);
+      if (state.complete) return setStep(target);
+      if (target === 1 || (target === 2 && state.role) || (target === 3 && state.selected.size)) setStep(target);
+    }));
+  </script>
+</body>
+</html>

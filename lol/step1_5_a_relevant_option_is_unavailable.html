@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hermod Draft Assistant — A Relevant Option Is Unavailable" />
+  <title>Hermod — Relevant Option Unavailable</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink:'#03070d', shell:'#07101a', panel:'#09131f', panel2:'#0d1927', line:'#1c2b3d',
+            mist:'#9ca9bb', signal:'#8b5cf6', signal2:'#b79cff', blue:'#5b8cff', danger:'#ff4d57',
+            good:'#67d391', warn:'#f3b95f'
+          },
+          fontFamily: {
+            sans:['Inter','Avenir Next','ui-sans-serif','system-ui','sans-serif'],
+            mono:['IBM Plex Mono','SFMono-Regular','Consolas','ui-monospace','monospace']
+          },
+          boxShadow: {
+            glow:'0 0 0 1px rgba(139,92,246,.55),0 0 34px rgba(139,92,246,.18)',
+            panel:'0 22px 60px rgba(0,0,0,.28)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root{color-scheme:dark;--purple:#8b5cf6;--lavender:#b79cff;--blue:#5b8cff}
+    *{box-sizing:border-box;scrollbar-width:thin;scrollbar-color:#26384c transparent}
+    html,body{min-height:100%}
+    body{margin:0;background:radial-gradient(circle at 5% 2%,rgba(91,140,255,.11),transparent 26rem),radial-gradient(circle at 86% 0%,rgba(139,92,246,.09),transparent 28rem),linear-gradient(180deg,#03070d 0%,#06101a 48%,#03070d 100%)}
+    body::before{content:'';position:fixed;inset:0;z-index:-2;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);background-size:34px 34px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.72),transparent 84%)}
+    .app-shell{min-height:100vh;border:1px solid rgba(80,110,145,.34);background:rgba(2,8,14,.26)}
+    .sidebar{background:linear-gradient(180deg,rgba(8,18,29,.98),rgba(3,9,15,.99)),radial-gradient(circle at 15% 7%,rgba(139,92,246,.08),transparent 18rem)}
+    .brand-mark{position:relative;width:34px;height:34px;filter:drop-shadow(0 0 14px rgba(139,92,246,.38))}
+    .brand-mark::before,.brand-mark::after{content:'';position:absolute;top:4px;bottom:4px;width:10px;background:linear-gradient(180deg,#c4b5fd,#8b5cf6 55%,#5b8cff);clip-path:polygon(0 0,100% 17%,100% 60%,50% 74%,50% 100%,0 83%)}
+    .brand-mark::before{left:4px}.brand-mark::after{right:4px;transform:scaleX(-1)}
+    .nav-item{position:relative;transition:.18s ease}.nav-item::before{content:'';position:absolute;inset:0 auto 0 0;width:3px;border-radius:0 6px 6px 0;background:linear-gradient(180deg,#5b8cff,#8b5cf6);opacity:0}
+    .nav-item.active{background:linear-gradient(90deg,rgba(91,140,255,.14),rgba(63,91,126,.14));border-color:rgba(91,140,255,.16);color:#fff}.nav-item.active::before{opacity:1}
+    .glass{background:linear-gradient(180deg,rgba(8,18,29,.93),rgba(5,12,20,.96));box-shadow:inset 0 1px 0 rgba(255,255,255,.025),0 20px 60px rgba(0,0,0,.18)}
+    .step-line{height:1px;flex:1;background:linear-gradient(90deg,rgba(139,92,246,.55),rgba(255,255,255,.10))}
+    .pool-card{position:relative;overflow:hidden;transition:transform .16s ease,border-color .16s ease,background-color .16s ease}.pool-card:hover{transform:translateY(-1px)}
+    .pool-card.banned{border-color:rgba(255,77,87,.42);background:linear-gradient(180deg,rgba(255,77,87,.09),rgba(255,77,87,.025));box-shadow:0 0 0 1px rgba(255,77,87,.08),0 14px 36px rgba(0,0,0,.22)}
+    .pool-card.banned::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 35%,rgba(255,77,87,.09) 36%,rgba(255,77,87,.09) 40%,transparent 41%);pointer-events:none}
+    .champion-icon{width:52px;height:52px;object-fit:cover;border-radius:13px;border:1px solid rgba(255,255,255,.11);box-shadow:0 6px 22px rgba(0,0,0,.26);background:#0a111a}
+    .mini-champ{width:36px;height:36px;object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,.10);background:#0a111a}
+    .ban-row{transition:background-color .16s ease,border-color .16s ease}.ban-row:hover{background:rgba(255,255,255,.025)}
+    .ban-row.relevant{background:linear-gradient(90deg,rgba(255,77,87,.075),rgba(255,77,87,.015));border-color:rgba(255,77,87,.22)}
+    .modal-backdrop{background:rgba(0,4,9,.78);backdrop-filter:blur(10px)}
+    .champ-option{transition:transform .16s ease,border-color .16s ease,background-color .16s ease}.champ-option:hover{transform:translateY(-2px);border-color:rgba(139,92,246,.55);background:rgba(139,92,246,.055)}
+    .summary-card{background:linear-gradient(90deg,rgba(255,77,87,.055),rgba(139,92,246,.035),rgba(255,255,255,.014))}
+  </style>
+</head>
+<body class="font-sans text-slate-100 antialiased selection:bg-signal/40 selection:text-white">
+<div class="app-shell grid lg:grid-cols-[246px_minmax(0,1fr)]">
+  <aside class="sidebar hidden min-h-screen border-r border-white/[0.06] lg:flex lg:flex-col">
+    <div class="flex h-[76px] items-center gap-3 border-b border-white/[0.05] px-7"><div class="brand-mark" aria-hidden="true"></div><div class="text-[19px] font-semibold tracking-[.24em] text-slate-100">HERMOD</div></div>
+    <div class="flex-1 px-2 py-7">
+      <p class="px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Live</p>
+      <button class="nav-item active flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-semibold"><span class="grid h-6 w-6 place-items-center text-signal2">⌾</span>Draft Assistant</button>
+      <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">You</p>
+      <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">▦</span>Champion Pool</button>
+      <button class="nav-item mt-1 flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">◇</span>Player Profile</button>
+      <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Learn</p>
+      <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">□</span>Decision History</button>
+      <button class="nav-item mt-1 flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">⌁</span>Review & Learn</button>
+    </div>
+    <div class="border-t border-white/[0.06] p-4">
+      <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-4 py-3 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span>⚙</span>Settings</button>
+      <div class="mt-3 flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.018] px-4 py-3"><div class="grid h-9 w-9 place-items-center rounded-full border border-blue/30 bg-blue/10 text-xs font-bold text-blue">D2</div><div class="min-w-0 flex-1"><p class="text-sm font-semibold text-slate-200">Mid Main</p><p class="text-xs text-slate-500">Diamond II</p></div><span class="text-slate-600">⌄</span></div>
+    </div>
+  </aside>
+
+  <main class="min-w-0">
+    <header class="flex h-[76px] items-center justify-between border-b border-white/[0.06] bg-black/10 px-5 sm:px-7 lg:px-8">
+      <div class="flex items-center gap-2.5 text-sm text-slate-500"><span class="font-medium text-slate-300">Ranked Solo/Duo</span><span class="text-slate-700">•</span><span>Summoner's Rift</span><span class="hidden text-slate-700 sm:inline">•</span><span class="hidden sm:inline">Pick Phase</span></div>
+      <div class="flex items-center gap-3"><span class="hidden rounded-full border border-good/20 bg-good/[0.06] px-3 py-1.5 text-[11px] font-semibold text-good sm:inline-flex">LIVE DRAFT</span><button id="resetBtn" class="rounded-lg border border-white/[0.07] bg-white/[0.02] px-3 py-2 text-xs font-medium text-slate-400 hover:text-white">Reset example</button></div>
+    </header>
+
+    <div class="mx-auto max-w-[1450px] px-5 pb-12 pt-7 sm:px-7 lg:px-8">
+      <section aria-label="Draft assistant progress" class="glass rounded-2xl border border-white/[0.07] px-5 py-4 sm:px-6">
+        <div class="flex items-center gap-2 sm:gap-3">
+          <div class="flex min-w-0 items-center gap-3"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-signal/70 bg-signal/15 text-[11px] font-bold text-signal2">1</span><div class="min-w-0"><p class="text-[11px] font-bold uppercase tracking-[.16em] text-signal2">Draft</p><p class="hidden text-xs text-slate-500 sm:block">Availability</p></div></div>
+          <div class="step-line"></div>
+          <div class="flex min-w-0 items-center gap-3 opacity-55"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-400">2</span><div class="hidden md:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-400">Your Options</p><p class="text-xs text-slate-600">Pool for today</p></div></div>
+          <div class="step-line opacity-35"></div>
+          <div class="flex min-w-0 items-center gap-3 opacity-45"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-500">3</span><div class="hidden lg:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500">Clarify</p><p class="text-xs text-slate-600">Only if needed</p></div></div>
+          <div class="step-line opacity-30"></div>
+          <div class="flex min-w-0 items-center gap-3 opacity-40"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-500">4</span><div class="hidden lg:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500">Recommendation</p><p class="text-xs text-slate-600">Rank choices</p></div></div>
+          <div class="step-line opacity-25"></div>
+          <div class="flex min-w-0 items-center gap-3 opacity-35"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-500">5</span><div class="hidden xl:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500">Decide</p><p class="text-xs text-slate-600">Record lock</p></div></div>
+        </div>
+      </section>
+
+      <section class="pb-7 pt-9">
+        <div class="flex flex-col justify-between gap-5 xl:flex-row xl:items-end">
+          <div>
+            <p class="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.2em] text-danger"><span class="h-1.5 w-1.5 rounded-full bg-danger shadow-[0_0_10px_rgba(255,77,87,.55)]"></span>Step 1 · Availability check</p>
+            <h1 class="text-3xl font-semibold tracking-[-.035em] text-white sm:text-[38px]">A relevant option is unavailable</h1>
+            <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-400 sm:text-[15px]">The draft itself is understood. Hermod is only surfacing bans that change what you could realistically choose on this pick.</p>
+          </div>
+          <div id="impactBadge" class="flex items-center gap-2 rounded-full border border-danger/22 bg-danger/[0.055] px-4 py-2 text-xs font-semibold text-red-300"><span class="h-1.5 w-1.5 rounded-full bg-danger"></span><span id="impactBadgeText">1 pool champion unavailable</span></div>
+        </div>
+      </section>
+
+      <section class="glass overflow-hidden rounded-2xl border border-white/[0.07]">
+        <div class="grid gap-0 xl:grid-cols-[.75fr_1.25fr]">
+          <div class="border-b border-white/[0.06] p-5 sm:p-6 xl:border-b-0 xl:border-r">
+            <p class="text-[10px] font-bold uppercase tracking-[.2em] text-blue">Your decision</p>
+            <div class="mt-4 flex items-center gap-4"><div class="grid h-14 w-14 place-items-center rounded-2xl border border-signal/40 bg-signal/10 text-lg font-extrabold text-signal2">B3</div><div><p class="text-2xl font-semibold text-white">MID</p><p class="mt-1 text-xs text-slate-500">Blue side · third pick</p></div></div>
+            <p class="mt-5 text-sm leading-6 text-slate-400">You are choosing Mid with <span class="font-medium text-slate-200">Gnar</span> and <span class="font-medium text-slate-200">Lee Sin</span> already selected into <span class="font-medium text-slate-200">Aatrox</span> and <span class="font-medium text-slate-200">Maokai</span>.</p>
+          </div>
+          <div class="p-5 sm:p-6">
+            <div class="flex items-start justify-between gap-4"><div><p class="text-[10px] font-bold uppercase tracking-[.2em] text-slate-500">Already revealed</p><p class="mt-1 text-sm font-semibold text-white">The decision boundary is already established</p></div><span class="rounded-full border border-good/20 bg-good/[0.055] px-3 py-1 text-[10px] font-bold uppercase tracking-[.12em] text-good">Draft understood</span></div>
+            <div class="mt-5 grid gap-3 sm:grid-cols-2">
+              <div class="rounded-xl border border-blue/15 bg-blue/[0.035] p-4"><p class="text-[10px] font-bold uppercase tracking-[.16em] text-blue">Your team</p><div class="mt-3 flex flex-wrap gap-2"><span class="rounded-lg border border-white/[0.07] bg-black/15 px-3 py-2 text-xs text-slate-300">Gnar · TOP</span><span class="rounded-lg border border-white/[0.07] bg-black/15 px-3 py-2 text-xs text-slate-300">Lee Sin · JUNGLE</span></div></div>
+              <div class="rounded-xl border border-danger/15 bg-danger/[0.025] p-4"><p class="text-[10px] font-bold uppercase tracking-[.16em] text-red-300">Enemy</p><div class="mt-3 flex flex-wrap gap-2"><span class="rounded-lg border border-white/[0.07] bg-black/15 px-3 py-2 text-xs text-slate-300">Aatrox · TOP</span><span class="rounded-lg border border-white/[0.07] bg-black/15 px-3 py-2 text-xs text-slate-300">Maokai · JUNGLE</span></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="summary-card mt-5 rounded-2xl border border-danger/18 p-5 sm:p-6">
+        <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+          <div><p class="text-[10px] font-bold uppercase tracking-[.2em] text-red-300">What changed</p><p id="naturalSummary" class="mt-3 max-w-5xl text-lg leading-8 text-slate-200">Ahri is banned. Orianna, Syndra, and Viktor remain available from your saved Mid pool.</p><p class="mt-2 text-xs leading-5 text-slate-500">Hermod does not need every ban to be equally prominent. It needs to know which bans change the options you could actually choose.</p></div>
+          <button id="showAllBtn" class="shrink-0 rounded-xl border border-white/[0.09] bg-white/[0.025] px-4 py-2.5 text-xs font-semibold text-slate-300 hover:border-signal/30 hover:text-white">Show all 5 recorded bans</button>
+        </div>
+      </section>
+
+      <section class="mt-5 grid gap-5 xl:grid-cols-[1.12fr_.88fr]">
+        <article class="glass rounded-2xl border border-white/[0.07] p-5 sm:p-6">
+          <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-start">
+            <div><p class="text-[11px] font-bold uppercase tracking-[.18em] text-signal2">Your saved Mid pool</p><h2 class="mt-2 text-xl font-semibold text-white">Which of your realistic options are still available?</h2><p class="mt-2 max-w-2xl text-xs leading-5 text-slate-500">This is not a recommendation yet. It is simply the availability boundary Hermod will carry into the next step.</p></div>
+            <span class="rounded-full border border-white/[0.07] bg-white/[0.02] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.12em] text-slate-500">Saved pool · 4</span>
+          </div>
+          <div id="poolGrid" class="mt-6 grid gap-3 sm:grid-cols-2"></div>
+          <div class="mt-5 rounded-xl border border-white/[0.06] bg-white/[0.018] p-4"><p class="text-[10px] font-bold uppercase tracking-[.16em] text-slate-500">Why this is enough</p><p class="mt-2 text-xs leading-5 text-slate-400">Step 1 is not trying to reconstruct the entire ban phase. It only needs enough information to avoid carrying an unavailable champion into your realistic option set.</p></div>
+        </article>
+
+        <article class="glass overflow-hidden rounded-2xl border border-white/[0.07]">
+          <div class="flex items-start justify-between gap-4 border-b border-white/[0.06] px-5 py-4 sm:px-6">
+            <div><p class="text-[11px] font-bold uppercase tracking-[.18em] text-danger">Ban context</p><p class="mt-1 text-xs text-slate-500">Relevant first; everything else can stay in the background.</p></div>
+            <button id="addBanBtn" class="rounded-xl border border-white/[0.08] bg-white/[0.025] px-3 py-2 text-xs font-semibold text-slate-300 hover:border-signal/35 hover:text-white">＋ Add ban</button>
+          </div>
+          <div id="banRows" class="p-3 sm:p-4"></div>
+          <div class="border-t border-white/[0.06] px-5 py-4 sm:px-6"><p class="text-xs leading-5 text-slate-500"><span class="font-semibold text-slate-300">Decision-relevant view:</span> unrelated bans are intentionally de-emphasized because they do not change your current feasible pool.</p></div>
+        </article>
+      </section>
+
+      <section class="mt-6 rounded-2xl border border-good/16 bg-[linear-gradient(90deg,rgba(103,211,145,.045),rgba(91,140,255,.045),rgba(139,92,246,.04))] p-5 sm:p-6">
+        <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+          <div><div class="flex items-center gap-2 text-sm font-semibold text-white"><span class="grid h-5 w-5 place-items-center rounded-full bg-good/10 text-[11px] text-good">✓</span><span id="footerHeadline">Availability captured without recreating the full ban phase</span></div><p id="footerCopy" class="mt-2 max-w-3xl text-xs leading-5 text-slate-500">Hermod will carry Orianna, Syndra, and Viktor forward as available saved-pool options and exclude Ahri automatically.</p></div>
+          <button id="continueBtn" class="group inline-flex items-center justify-center gap-2 rounded-xl bg-signal px-5 py-3 text-sm font-bold text-white shadow-[0_10px_28px_rgba(139,92,246,.18)] transition hover:bg-[#9b70f7]">Continue to Your Options <span class="transition group-hover:translate-x-0.5">→</span></button>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<div id="pickerModal" class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center p-4">
+  <div class="glass flex max-h-[84vh] w-full max-w-3xl flex-col overflow-hidden rounded-3xl border border-white/[0.09] shadow-2xl shadow-black/60">
+    <div class="flex items-start justify-between gap-5 border-b border-white/[0.07] px-6 py-5"><div><p class="text-[10px] font-bold uppercase tracking-[.2em] text-signal2">Ban context</p><h2 class="mt-1 text-xl font-semibold text-white">Add a banned champion</h2><p class="mt-1 text-xs text-slate-500">If the ban intersects your saved pool, Hermod will surface it immediately.</p></div><button id="closeModal" class="grid h-9 w-9 place-items-center rounded-lg border border-white/[0.08] bg-white/[0.025] text-slate-400 hover:text-white">×</button></div>
+    <div class="border-b border-white/[0.06] px-6 py-4"><input id="champSearch" type="search" placeholder="Search champions…" class="w-full rounded-xl border border-white/[0.08] bg-black/20 px-4 py-3 text-sm text-white outline-none placeholder:text-slate-600 focus:border-signal/50" /></div>
+    <div id="champGrid" class="grid flex-1 grid-cols-3 gap-3 overflow-y-auto p-5 sm:grid-cols-5 md:grid-cols-6"></div>
+  </div>
+</div>
+
+<div id="toast" class="pointer-events-none fixed bottom-5 right-5 z-[60] translate-y-3 rounded-xl border border-white/[0.08] bg-[#0b1623]/95 px-4 py-3 text-sm text-slate-200 opacity-0 shadow-2xl transition duration-200">Updated</div>
+
+<script>
+const DDRAGON='https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/';
+const champions=[
+ ['Ahri','Ahri'],['Akali','Akali'],['Annie','Annie'],['Aatrox','Aatrox'],['Azir','Azir'],['Caitlyn','Caitlyn'],['Camille','Camille'],['Draven','Draven'],['Galio','Galio'],['Gnar','Gnar'],['Gragas','Gragas'],['Hwei','Hwei'],['Jinx','Jinx'],['Kha\'Zix','Khazix'],['LeBlanc','Leblanc'],['Lee Sin','LeeSin'],['Maokai','Maokai'],['Nautilus','Nautilus'],['Orianna','Orianna'],['Renata Glasc','Renata'],['Rumble','Rumble'],['Syndra','Syndra'],['Viktor','Viktor'],['Zed','Zed']
+].map(([name,key])=>({name,key,image:DDRAGON+key+'.png'}));
+const savedPool=['Orianna','Ahri','Syndra','Viktor'];
+const proficiency={Orianna:'Very High',Ahri:'High',Syndra:'High',Viktor:'Medium'};
+const initialBans=['Ahri','Draven','Rumble',"Kha'Zix",'Renata Glasc'];
+let state={bans:[...initialBans],showAll:false};
+
+const poolGrid=document.getElementById('poolGrid');
+const banRows=document.getElementById('banRows');
+const showAllBtn=document.getElementById('showAllBtn');
+const naturalSummary=document.getElementById('naturalSummary');
+const impactBadgeText=document.getElementById('impactBadgeText');
+const footerCopy=document.getElementById('footerCopy');
+const modal=document.getElementById('pickerModal');
+const champGrid=document.getElementById('champGrid');
+const champSearch=document.getElementById('champSearch');
+const toast=document.getElementById('toast');
+
+function champ(name){return champions.find(c=>c.name===name)||{name,key:name.replace(/\s/g,''),image:DDRAGON+name.replace(/\s/g,'')+'.png'}}
+function relevantBans(){return state.bans.filter(b=>savedPool.includes(b))}
+function availablePool(){return savedPool.filter(p=>!state.bans.includes(p))}
+function showToast(message){toast.textContent=message;toast.classList.remove('opacity-0','translate-y-3');setTimeout(()=>toast.classList.add('opacity-0','translate-y-3'),1400)}
+
+function renderPool(){
+  poolGrid.innerHTML=savedPool.map(name=>{
+    const c=champ(name); const banned=state.bans.includes(name);
+    return `<div class="pool-card ${banned?'banned':''} rounded-2xl border border-white/[0.08] bg-white/[0.018] p-4">
+      <div class="relative z-10 flex items-center gap-4"><div class="relative"><img class="champion-icon ${banned?'grayscale opacity-60':''}" src="${c.image}" alt="${name}"/>${banned?'<span class="absolute -right-1 -top-1 grid h-5 w-5 place-items-center rounded-full border border-danger/40 bg-[#2a0b10] text-[10px] font-bold text-danger">×</span>':''}</div>
+      <div class="min-w-0 flex-1"><div class="flex items-center justify-between gap-3"><p class="truncate text-sm font-semibold ${banned?'text-slate-300':'text-white'}">${name}</p>${banned?'<span class="rounded-full border border-danger/25 bg-danger/[0.07] px-2 py-0.5 text-[9px] font-bold uppercase tracking-[.12em] text-red-300">Banned</span>':'<span class="rounded-full border border-good/18 bg-good/[0.05] px-2 py-0.5 text-[9px] font-bold uppercase tracking-[.12em] text-good">Available</span>'}</div>
+      <p class="mt-1 text-[11px] text-slate-600">${proficiency[name]} proficiency</p>${banned?'<p class="mt-2 text-[11px] font-medium text-red-300">Your pool · unavailable this draft</p>':'<p class="mt-2 text-[11px] text-slate-500">Carries forward to Your Options</p>'}</div></div>
+    </div>`
+  }).join('');
+}
+
+function banRow(name){
+  const c=champ(name); const relevant=savedPool.includes(name);
+  return `<div class="ban-row ${relevant?'relevant':''} flex items-center gap-3 rounded-xl border border-transparent px-3 py-3">
+    <img class="mini-champ ${relevant?'':'opacity-55 saturate-[.72]'}" src="${c.image}" alt="${name}"/>
+    <div class="min-w-0 flex-1"><div class="flex flex-wrap items-center gap-2"><p class="text-sm font-semibold ${relevant?'text-white':'text-slate-400'}">${name}</p>${relevant?'<span class="rounded-full border border-danger/25 bg-danger/[0.07] px-2 py-0.5 text-[9px] font-bold uppercase tracking-[.11em] text-red-300">Your pool · relevant</span>':''}</div><p class="mt-0.5 text-[11px] ${relevant?'text-red-200/60':'text-slate-600'}">${relevant?'Changes your realistic option set':'Recorded ban · does not change your saved Mid pool'}</p></div>
+    <button data-remove="${name}" class="grid h-8 w-8 place-items-center rounded-lg border border-white/[0.06] bg-white/[0.015] text-slate-600 hover:border-danger/25 hover:text-danger" aria-label="Remove ${name}">×</button>
+  </div>`
+}
+
+function renderBans(){
+  const rel=relevantBans();
+  let visible=state.showAll?state.bans:rel;
+  if(!visible.length){banRows.innerHTML='<div class="m-2 rounded-xl border border-dashed border-white/[0.08] px-4 py-5 text-center text-xs text-slate-600">No bans currently intersect your saved Mid pool.</div>'}
+  else banRows.innerHTML=visible.map(banRow).join('');
+  banRows.querySelectorAll('[data-remove]').forEach(btn=>btn.addEventListener('click',()=>{state.bans=state.bans.filter(b=>b!==btn.dataset.remove);renderAll();showToast(`${btn.dataset.remove} removed from bans`)}));
+  const hidden=Math.max(0,state.bans.length-rel.length);
+  if(state.showAll){showAllBtn.textContent='Show decision-relevant bans only'}
+  else {showAllBtn.textContent=hidden?`Show all ${state.bans.length} recorded bans`:'All recorded bans are relevant'}
+  showAllBtn.disabled=!state.showAll && hidden===0;
+  showAllBtn.classList.toggle('opacity-50',showAllBtn.disabled);
+}
+
+function renderCopy(){
+  const rel=relevantBans(); const avail=availablePool();
+  impactBadgeText.textContent=`${rel.length} pool champion${rel.length===1?'':'s'} unavailable`;
+  if(rel.length){
+    naturalSummary.textContent=`${rel.join(' and ')} ${rel.length===1?'is':'are'} banned. ${avail.length?avail.join(', ').replace(/, ([^,]*)$/,', and $1'):'No saved-pool champions'} remain${avail.length===1?'s':''} available from your saved Mid pool.`;
+    footerCopy.textContent=`Hermod will carry ${avail.length?avail.join(', ').replace(/, ([^,]*)$/,', and $1'):'no saved-pool champions'} forward as available options and exclude ${rel.join(' and ')} automatically.`;
+  } else {
+    naturalSummary.textContent='None of the recorded bans currently remove a champion from your saved Mid pool.';
+    footerCopy.textContent='All four saved-pool champions remain available to carry forward into Your Options.';
+  }
+}
+function renderAll(){renderPool();renderBans();renderCopy()}
+
+showAllBtn.addEventListener('click',()=>{if(showAllBtn.disabled)return;state.showAll=!state.showAll;renderBans()});
+document.getElementById('resetBtn').addEventListener('click',()=>{state={bans:[...initialBans],showAll:false};renderAll();showToast('Representative state restored')});
+document.getElementById('continueBtn').addEventListener('click',()=>showToast('Step 1 complete — availability will carry into Your Options'));
+
+document.getElementById('addBanBtn').addEventListener('click',()=>{champSearch.value='';renderChampionGrid('');modal.classList.remove('hidden');modal.classList.add('flex');setTimeout(()=>champSearch.focus(),50)});
+document.getElementById('closeModal').addEventListener('click',closeModal);modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+function closeModal(){modal.classList.add('hidden');modal.classList.remove('flex')}
+function renderChampionGrid(query){const q=query.trim().toLowerCase();const filtered=champions.filter(c=>c.name.toLowerCase().includes(q));champGrid.innerHTML=filtered.map(c=>`<button data-champ="${c.name.replace(/"/g,'&quot;')}" class="champ-option overflow-hidden rounded-xl border border-white/[0.07] bg-white/[0.018] p-2 text-left ${state.bans.includes(c.name)?'opacity-35':''}" ${state.bans.includes(c.name)?'disabled':''}><div class="aspect-square overflow-hidden rounded-lg bg-black/20"><img class="h-full w-full object-cover" src="${c.image}" alt="${c.name}"/></div><p class="mt-2 truncate px-0.5 text-xs font-semibold text-slate-300">${c.name}</p>${savedPool.includes(c.name)?'<p class="mt-0.5 text-[9px] font-bold uppercase tracking-[.1em] text-signal2">Your pool</p>':''}</button>`).join('');champGrid.querySelectorAll('[data-champ]:not([disabled])').forEach(btn=>btn.addEventListener('click',()=>{state.bans.push(btn.dataset.champ);closeModal();renderAll();showToast(`${btn.dataset.champ} added to bans`)}))}
+champSearch.addEventListener('input',e=>renderChampionGrid(e.target.value));
+renderAll();
+</script>
+</body>
+</html>

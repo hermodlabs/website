@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Hermod Draft Assistant concept — a League of Legends champion-select recommendation interface."
+  />
+  <title>Hermod — Draft Assistant</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#03070d',
+            shell: '#07101a',
+            panel: '#09131f',
+            panel2: '#0d1927',
+            line: '#1c2b3d',
+            mist: '#9ca9bb',
+            signal: '#8b5cf6',
+            signal2: '#b79cff',
+            blue: '#5b8cff',
+            danger: '#ff4d57',
+            good: '#67d391'
+          },
+          fontFamily: {
+            sans: ['Inter', 'Avenir Next', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            mono: ['IBM Plex Mono', 'SFMono-Regular', 'Consolas', 'ui-monospace', 'monospace']
+          },
+          boxShadow: {
+            glow: '0 0 0 1px rgba(139,92,246,.65), 0 0 34px rgba(139,92,246,.25)',
+            panel: '0 22px 60px rgba(0,0,0,.28)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --brand-purple: #8b5cf6;
+      --brand-lavender: #b79cff;
+      --brand-blue: #5b8cff;
+      --danger: #ff4d57;
+    }
+
+    * { scrollbar-width: thin; scrollbar-color: #26384c transparent; }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 3% 4%, rgba(91,140,255,.12), transparent 26rem),
+        radial-gradient(circle at 78% 8%, rgba(139,92,246,.10), transparent 29rem),
+        linear-gradient(180deg, #03070d 0%, #06101a 44%, #03070d 100%);
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.014) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.014) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.75), transparent 82%);
+    }
+
+    .app-shell {
+      min-height: 100vh;
+      border: 1px solid rgba(80, 110, 145, .36);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.025), 0 30px 100px rgba(0,0,0,.4);
+    }
+
+    .sidebar {
+      background:
+        linear-gradient(180deg, rgba(8,18,29,.97), rgba(3,9,15,.98)),
+        radial-gradient(circle at 20% 10%, rgba(139,92,246,.08), transparent 18rem);
+    }
+
+    .brand-mark {
+      position: relative;
+      width: 34px;
+      height: 34px;
+      filter: drop-shadow(0 0 14px rgba(139,92,246,.38));
+    }
+
+    .brand-mark::before,
+    .brand-mark::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      bottom: 4px;
+      width: 10px;
+      background: linear-gradient(180deg, #c4b5fd, #8b5cf6 55%, #5b8cff);
+      clip-path: polygon(0 0, 100% 17%, 100% 60%, 50% 74%, 50% 100%, 0 83%);
+    }
+
+    .brand-mark::before { left: 4px; }
+    .brand-mark::after { right: 4px; transform: scaleX(-1); }
+
+    .nav-item {
+      position: relative;
+      transition: background-color .18s ease, color .18s ease, border-color .18s ease;
+    }
+
+    .nav-item::before {
+      content: '';
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 3px;
+      border-radius: 0 6px 6px 0;
+      background: linear-gradient(180deg, #5b8cff, #8b5cf6);
+      opacity: 0;
+    }
+
+    .nav-item.active {
+      color: #f4f6fb;
+      background: linear-gradient(90deg, rgba(91,140,255,.14), rgba(63,91,126,.15));
+      border-color: rgba(91,140,255,.16);
+    }
+
+    .nav-item.active::before { opacity: 1; }
+
+    .glass-panel {
+      background: linear-gradient(180deg, rgba(7,16,26,.93), rgba(4,11,18,.95));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.018);
+    }
+
+    .champ-icon {
+      background: #09111b;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.05);
+    }
+
+    .team-row {
+      border: 1px solid transparent;
+      transition: border-color .16s ease, background-color .16s ease;
+    }
+
+    .team-row:hover {
+      border-color: rgba(255,255,255,.055);
+      background: rgba(255,255,255,.025);
+    }
+
+    .team-row.you {
+      border-color: rgba(91,140,255,.08);
+      background: linear-gradient(90deg, rgba(91,140,255,.14), rgba(91,140,255,.035));
+    }
+
+    .ban-icon {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.09);
+      background: #0a1119;
+    }
+
+    .ban-icon::after {
+      content: '';
+      position: absolute;
+      left: 6px;
+      right: 6px;
+      bottom: 5px;
+      height: 2px;
+      background: rgba(215,220,229,.8);
+      border-radius: 999px;
+      transform: rotate(-45deg);
+      box-shadow: 0 0 0 1px rgba(4,8,13,.75);
+    }
+
+    .filter-strip {
+      background: linear-gradient(180deg, rgba(7,15,24,.92), rgba(6,13,21,.96));
+    }
+
+    .pick-card {
+      isolation: isolate;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(9,18,29,.97), rgba(5,12,20,.98));
+      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+
+    .pick-card:hover { transform: translateY(-2px); }
+
+    .pick-card.recommended {
+      border-color: rgba(139,92,246,.9);
+      box-shadow: 0 0 0 1px rgba(139,92,246,.55), 0 0 28px rgba(139,92,246,.24), inset 0 1px 0 rgba(255,255,255,.06);
+    }
+
+    .pick-card.recommended::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      background: linear-gradient(135deg, rgba(139,92,246,.12), transparent 45%, rgba(91,140,255,.03));
+    }
+
+    .splash-wrap {
+      position: relative;
+      overflow: hidden;
+      min-height: 155px;
+      background: #09121e;
+    }
+
+    .splash-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 22%;
+      transform: scale(1.03);
+    }
+
+    .splash-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(4,10,17,.08), rgba(4,10,17,.15) 42%, rgba(5,12,20,.96) 100%),
+        linear-gradient(90deg, rgba(5,12,20,.25), transparent 55%);
+    }
+
+    .role-icon {
+      width: 20px;
+      height: 20px;
+      opacity: .72;
+      display: inline-grid;
+      place-items: center;
+    }
+
+    .role-icon svg { width: 18px; height: 18px; }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      border-radius: .5rem;
+      border: 1px solid rgba(255,255,255,.06);
+      background: rgba(27,42,61,.55);
+      padding: .36rem .58rem;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .015em;
+      white-space: nowrap;
+    }
+
+    .timer-ring {
+      --p: 77%;
+      position: relative;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: conic-gradient(var(--brand-purple) var(--p), #172435 0);
+    }
+
+    .timer-ring::after {
+      content: '';
+      position: absolute;
+      inset: 5px;
+      border-radius: 50%;
+      background: #07101a;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.03);
+    }
+
+    .explain-box {
+      background: linear-gradient(180deg, rgba(10,21,34,.96), rgba(6,15,25,.97));
+    }
+
+    .micro-divider {
+      background: linear-gradient(90deg, transparent, rgba(117,141,170,.16), transparent);
+      height: 1px;
+    }
+
+    @media (max-width: 1180px) {
+      .sidebar { width: 82px !important; }
+      .sidebar .sidebar-label,
+      .sidebar .brand-word,
+      .sidebar .profile-copy,
+      .sidebar .profile-arrow,
+      .sidebar .feedback-copy { display: none; }
+      .sidebar .nav-item { justify-content: center; padding-left: .75rem; padding-right: .75rem; }
+      .sidebar .profile { justify-content: center; }
+    }
+
+    @media (max-width: 820px) {
+      .app-shell { border-radius: 0 !important; }
+      .sidebar { display: none; }
+      .main-topbar { padding-left: 1rem; padding-right: 1rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .pick-card, .nav-item, .team-row { transition: none; }
+    }
+  </style>
+</head>
+
+<body class="text-slate-100 antialiased selection:bg-signal/50 selection:text-white">
+  <div class="app-shell mx-auto flex w-full overflow-hidden rounded-[18px] bg-ink xl:min-h-[928px]">
+    <!-- Sidebar -->
+    <aside class="sidebar sticky top-0 flex h-screen w-[266px] shrink-0 flex-col border-r border-slate-700/25 xl:min-h-[928px] xl:h-auto">
+      <div class="flex h-[104px] items-center gap-4 border-b border-white/[0.035] px-7">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-word text-[23px] font-semibold tracking-[0.22em] text-slate-100">HERMOD</span>
+      </div>
+
+      <nav class="mt-2 space-y-2 px-2 py-4" aria-label="Application navigation">
+        <a class="nav-item active flex items-center gap-4 rounded-lg border px-5 py-3.5 text-[16px] font-medium" href="#draft">
+          <svg class="h-6 w-6 text-signal2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9 7 7M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"></path><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"></circle>
+          </svg>
+          <span class="sidebar-label">Draft Assistant</span>
+        </a>
+
+        <a class="nav-item flex items-center gap-4 rounded-lg border border-transparent px-5 py-3.5 text-[16px] text-slate-400" href="#insights">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 18V9M10 18V5M16 18v-7M22 18V3"></path><path d="m3 6 5-3 5 4 8-6"></path></svg>
+          <span class="sidebar-label">Matchup Insights</span>
+        </a>
+
+        <a class="nav-item flex items-center gap-4 rounded-lg border border-transparent px-5 py-3.5 text-[16px] text-slate-400" href="#pool">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"></rect><path d="M8 7h3M8 11h8M8 15h5M16 7h.01M16 15h.01"></path></svg>
+          <span class="sidebar-label">Champion Pool</span>
+        </a>
+
+        <a class="nav-item flex items-center gap-4 rounded-lg border border-transparent px-5 py-3.5 text-[16px] text-slate-400" href="#review">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M7 5h10v14H7z"></path><path d="M10 2v6M14 16l4 4M18 16l-4 4"></path></svg>
+          <span class="sidebar-label">Review & Learn</span>
+        </a>
+
+        <a class="nav-item flex items-center gap-4 rounded-lg border border-transparent px-5 py-3.5 text-[16px] text-slate-400" href="#settings">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"></path><path d="m4.9 4.9 2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1M12 2v3M12 19v3M2 12h3M19 12h3"></path></svg>
+          <span class="sidebar-label">Settings</span>
+        </a>
+      </nav>
+
+      <div class="mt-auto border-t border-white/[0.045] p-4">
+        <button class="profile flex w-full items-center gap-3 rounded-xl px-1 py-3 text-left" type="button">
+          <span class="grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-full border border-blue/30 bg-blue/10">
+            <img src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Orianna.png" alt="Orianna profile icon" class="h-full w-full object-cover" />
+          </span>
+          <span class="profile-copy min-w-0 flex-1">
+            <span class="block text-[14px] font-semibold text-slate-200">Mid Main</span>
+            <span class="block text-[13px] text-slate-500">Diamond II</span>
+          </span>
+          <svg class="profile-arrow h-4 w-4 text-slate-500" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m5 7.5 5 5 5-5"></path></svg>
+        </button>
+
+        <button class="mt-4 flex w-full items-center justify-center gap-3 rounded-xl border border-slate-700/40 bg-white/[0.015] px-4 py-3 text-[14px] text-slate-400 transition hover:border-slate-600/60 hover:text-slate-200" type="button">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m5 7 7 6 7-6"></path></svg>
+          <span class="feedback-copy">Share Feedback</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main application -->
+    <main id="draft" class="min-w-0 flex-1">
+      <header class="main-topbar flex h-[72px] items-center justify-between border-b border-slate-700/25 px-7 lg:px-8">
+        <div class="flex min-w-0 items-center gap-3 text-[15px] text-slate-400">
+          <span class="truncate">Ranked Solo/Duo</span>
+          <span class="text-slate-700">•</span>
+          <span class="truncate text-slate-300">Summoner's Rift</span>
+          <span class="text-slate-700">•</span>
+          <span class="truncate text-slate-300">Pick Phase</span>
+        </div>
+
+        <div class="ml-4 flex items-center gap-3">
+          <div class="text-right leading-tight">
+            <p class="text-[12px] text-slate-500">You pick in</p>
+            <p id="timerText" class="text-[24px] font-semibold text-signal2">18s</p>
+          </div>
+          <div id="timerRing" class="timer-ring" aria-hidden="true"></div>
+        </div>
+      </header>
+
+      <!-- Team / bans -->
+      <section class="glass-panel border-b border-slate-700/25 px-7 py-4 lg:px-8">
+        <div class="grid gap-7 2xl:grid-cols-[1fr_260px_1fr_260px] xl:grid-cols-[1fr_220px_1fr_220px] lg:grid-cols-2">
+          <!-- Your team -->
+          <div>
+            <p class="mb-2 text-[13px] font-bold uppercase tracking-[0.035em] text-blue">Your Team</p>
+            <div class="space-y-[2px]">
+              <div class="team-row flex h-34 items-center gap-3 rounded-md px-1.5 py-1">
+                <span class="role-icon text-slate-500"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 20 20 4M7 4h13v13"></path></svg></span>
+                <span class="w-[84px] text-[12px] font-semibold uppercase tracking-wide text-slate-400">Top</span>
+                <img class="champ-icon h-8 w-8 rounded-sm object-cover" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Gnar.png" alt="Gnar" />
+                <span class="text-[14px] text-slate-300">Gnar</span>
+              </div>
+              <div class="team-row flex items-center gap-3 rounded-md px-1.5 py-1">
+                <span class="role-icon text-slate-500"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3 8 10l4 11 4-11-4-7Z"></path><path d="M4 5l4 5M20 5l-4 5"></path></svg></span>
+                <span class="w-[84px] text-[12px] font-semibold uppercase tracking-wide text-slate-400">Jungle</span>
+                <img class="champ-icon h-8 w-8 rounded-sm object-cover" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/LeeSin.png" alt="Lee Sin" />
+                <span class="text-[14px] text-slate-300">Lee Sin</span>
+              </div>
+              <div class="team-row you flex items-center gap-3 rounded-md px-1.5 py-1">
+                <span class="role-icon text-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 19 19 5M6 5h13v13"></path><path d="M5 5v14h14"></path></svg></span>
+                <span class="w-[84px] text-[12px] font-bold uppercase tracking-wide text-blue">Mid</span>
+                <img class="champ-icon h-8 w-8 rounded-sm object-cover grayscale-[.35]" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Orianna.png" alt="Your current mid lane placeholder" />
+                <span class="text-[14px] font-medium text-blue">You</span>
+              </div>
+              <div class="team-row flex items-center gap-3 rounded-md px-1.5 py-1">
+                <span class="role-icon text-slate-500"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 7h14v10H5z"></path><path d="M8 20h8M12 17v3"></path></svg></span>
+                <span class="w-[84px] text-[12px] font-semibold uppercase tracking-wide text-slate-400">Bottom</span>
+                <img class="champ-icon h-8 w-8 rounded-sm object-cover" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Jinx.png" alt="Jinx" />
+                <span class="text-[14px] text-slate-300">Jinx</span>
+              </div>
+              <div class="team-row flex items-center gap-3 rounded-md px-1.5 py-1">
+                <span class="role-icon text-slate-500"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21V8M6 13l6-5 6 5M5 4h14"></path></svg></span>
+                <span class="w-[84px] text-[12px] font-semibold uppercase tracking-wide text-slate-400">Support</span>
+                <img class="champ-icon h-8 w-8 rounded-sm object-cover" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Lulu.png" alt="Lulu" />
+                <span class="text-[14px] text-slate-300">Lulu</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ally bans -->
+          <div class="flex flex-col justify-center border-l border-slate-700/20 pl-6 lg:border-l-0 lg:pl-0 xl:border-l xl:pl-6">
+            <p class="mb-3 text-center text-[13px] font-bold uppercase tracking-[0.035em] text-blue">Bans</p>
+            <div class="flex justify-center gap-3">
+              <div class="ban-icon h-12 w-12 rounded-md"><img class="h-full w-full object-cover opacity-70 grayscale-[.25]" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Samira.png" alt="Samira banned" /></div>
+              <div class="ban-icon h-12 w-12 rounded-md"><img class="h-full w-full object-cover opacity-70 grayscale-[.25]" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Poppy.png" alt="Poppy banned" /></div>
+              <div class="ban-icon h-12 w-12 rounded-md"><img class="h-full w-full object-cover opacity-70 grayscale-[.25]" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Rengar.png" alt="Rengar banned" /></div>
+            </div>
+          </div>
+
+          <!-- Enemy team -->
+          <div class="lg:mt-3 xl:mt-0">
+            <p class="mb-2 text-[13px] font-bold uppercase tracking-[0.035em] text-danger">Enemy Team</p>
+            <div class="space-y-[2px]">
+              <div class="team-row flex items-center gap-3 rounded-md px-1.5 py-1">
+                <span class="role-icon text-slate-500"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 20 20 4M7 4h13v13"></path></svg></span>
+                <span class="w-[84px] text-[12px] font-semibold uppercase tracking-wide text-slate-400">Top</span>
+                <img class="champ-icon h-8 w-8 rounded-sm object-cover ring-1 ring-danger/20" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Aatrox.png" alt="Aatrox" />
+                <span class="text-[14px] text-slate-300">Aatrox</span>
+              </div>
+              <div class="team-row flex items-center gap-3 rounded-md px-1.5 py-1">
+                <span class="role-icon text-slate-500"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3 8 10l4 11 4-11-4-7Z"></path><path d="M4 5l4 5M20 5l-4 5"></path></svg></span>
+                <span class="w-[84px] text-[12px] font-semibold uppercase tracking-wide text-slate-400">Jungle</span>
+                <img class="champ-icon h-8 w-8 rounded-sm object-cover ring-1 ring-danger/20" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Maokai.png" alt="Maokai" />
+                <span class="text-[14px] text-slate-300">Maokai</span>
+              </div>
+              <div class="team-row flex items-center gap-3 rounded-md px-1.5 py-1">
+                <span class="role-icon text-slate-500"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 19 19 5M6 5h13v13"></path><path d="M5 5v14h14"></path></svg></span>
+                <span class="w-[84px] text-[12px] font-semibold uppercase tracking-wide text-slate-400">Mid</span>
+                <img class="champ-icon h-8 w-8 rounded-sm object-cover ring-1 ring-danger/20" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Zed.png" alt="Zed" />
+                <span class="text-[14px] text-slate-300">Zed</span>
+              </div>
+              <div class="team-row flex items-center gap-3 rounded-md px-1.5 py-1">
+                <span class="role-icon text-slate-500"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 7h14v10H5z"></path><path d="M8 20h8M12 17v3"></path></svg></span>
+                <span class="w-[84px] text-[12px] font-semibold uppercase tracking-wide text-slate-400">Bottom</span>
+                <img class="champ-icon h-8 w-8 rounded-sm object-cover ring-1 ring-danger/20" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Caitlyn.png" alt="Caitlyn" />
+                <span class="text-[14px] text-slate-300">Caitlyn</span>
+              </div>
+              <div class="team-row flex items-center gap-3 rounded-md px-1.5 py-1">
+                <span class="role-icon text-slate-500"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21V8M6 13l6-5 6 5M5 4h14"></path></svg></span>
+                <span class="w-[84px] text-[12px] font-semibold uppercase tracking-wide text-slate-400">Support</span>
+                <img class="champ-icon h-8 w-8 rounded-sm object-cover ring-1 ring-danger/20" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Nautilus.png" alt="Nautilus" />
+                <span class="text-[14px] text-slate-300">Nautilus</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Enemy bans -->
+          <div class="flex flex-col justify-center border-l border-slate-700/20 pl-6 lg:border-l-0 lg:pl-0 xl:border-l xl:pl-6">
+            <p class="mb-3 text-center text-[13px] font-bold uppercase tracking-[0.035em] text-danger">Bans</p>
+            <div class="flex justify-center gap-3">
+              <div class="ban-icon h-12 w-12 rounded-md"><img class="h-full w-full object-cover opacity-70 grayscale-[.25]" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Nocturne.png" alt="Nocturne banned" /></div>
+              <div class="ban-icon h-12 w-12 rounded-md"><img class="h-full w-full object-cover opacity-70 grayscale-[.25]" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Aurora.png" alt="Aurora banned" /></div>
+              <div class="ban-icon h-12 w-12 rounded-md"><img class="h-full w-full object-cover opacity-70 grayscale-[.25]" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Akshan.png" alt="Akshan banned" /></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Filter / rationale control -->
+      <section class="filter-strip flex min-h-[60px] flex-wrap items-center justify-between gap-3 border-b border-slate-700/25 px-7 py-3 lg:px-8">
+        <div class="flex flex-wrap items-center gap-2 text-[13px] text-slate-400">
+          <svg class="h-5 w-5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 5h16l-6 7v5l-4 2v-7L4 5Z"></path><path d="M18 16v6M15 19h6"></path></svg>
+          <span>Pool filtered by your playable champions</span>
+          <span class="grid h-5 w-5 place-items-center rounded-full bg-good text-[12px] font-bold text-ink">✓</span>
+          <span>Mid Lane</span>
+          <span class="text-slate-700">•</span>
+          <span>Patches 14.9+</span>
+          <span class="text-slate-700">•</span>
+          <span>Diamond+</span>
+        </div>
+
+        <button type="button" class="inline-flex items-center gap-2 rounded-lg border border-slate-700/40 bg-white/[0.015] px-4 py-2 text-[13px] text-slate-300 transition hover:border-slate-600/60 hover:bg-white/[0.03]">
+          Why these picks?
+          <span class="grid h-5 w-5 place-items-center rounded-full border border-slate-500 text-[11px] text-slate-400">i</span>
+        </button>
+      </section>
+
+      <!-- Recommendations -->
+      <section class="px-7 pb-5 pt-5 lg:px-8">
+        <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <h1 class="text-[19px] font-semibold uppercase tracking-[0.09em] text-slate-200">Your Viable Choices</h1>
+            <span class="rounded-full border border-slate-700/40 bg-slate-800/60 px-2.5 py-1 text-[12px] text-slate-400">3 picks</span>
+          </div>
+
+          <div class="inline-flex items-center gap-2 rounded-lg border border-slate-700/35 bg-panel/70 px-3 py-2 text-[12px] text-slate-400">
+            <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M2 14 7 9l3 3 6-7"></path><path d="M11 5h5v5"></path></svg>
+            <span>Execution fit:</span>
+            <span class="font-semibold text-blue">High</span>
+          </div>
+        </div>
+
+        <div class="grid gap-5 2xl:grid-cols-3 xl:grid-cols-3 lg:grid-cols-2">
+          <!-- Orianna -->
+          <article class="pick-card recommended relative min-h-[365px] rounded-xl border">
+            <div class="splash-wrap h-[168px]">
+              <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Orianna_0.jpg" alt="Orianna splash art" />
+              <div class="absolute left-4 top-4 z-10 inline-flex items-center gap-2 rounded-md bg-signal px-3 py-2 text-[12px] font-bold uppercase tracking-wide text-white shadow-lg shadow-signal/20">
+                <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="m10 1.7 2.1 4.25 4.7.68-3.4 3.31.8 4.67L10 12.4l-4.2 2.21.8-4.67-3.4-3.31 4.7-.68L10 1.7Z"></path></svg>
+                Recommended
+              </div>
+            </div>
+
+            <div class="relative z-10 -mt-7 px-5 pb-5">
+              <div class="flex items-end gap-3">
+                <img class="h-14 w-14 rounded-lg border-2 border-slate-700 bg-panel object-cover shadow-lg" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Orianna.png" alt="Orianna icon" />
+                <div class="pb-1">
+                  <h2 class="text-[24px] font-medium text-white">Orianna</h2>
+                  <p class="text-[13px] text-slate-300">Control Mage</p>
+                </div>
+              </div>
+
+              <div class="mt-5 flex gap-3">
+                <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full border border-signal text-[11px] font-bold text-signal2">✓</span>
+                <div>
+                  <p class="text-[15px] font-semibold text-slate-100">Best control mage into this draft.</p>
+                  <p class="mt-1 text-[14px] leading-6 text-slate-400">Safest execution with your pool.</p>
+                </div>
+              </div>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="tag text-signal2">COMFORT: <strong class="text-signal2">High</strong></span>
+                <span class="tag text-signal2">EXECUTION FIT: <strong class="text-signal2">High</strong></span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Ahri -->
+          <article class="pick-card relative min-h-[365px] rounded-xl border border-slate-700/45">
+            <div class="splash-wrap h-[168px]">
+              <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg" alt="Ahri splash art" />
+              <div class="absolute left-4 top-4 z-10 inline-flex items-center gap-2 rounded-md bg-slate-900/75 px-3 py-2 text-[11px] font-semibold uppercase tracking-wide text-slate-300 backdrop-blur-sm">
+                <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 4h14M5 4l2 12M15 4l-2 12M7 9h6"></path></svg>
+                Strong Alternative
+              </div>
+            </div>
+
+            <div class="relative z-10 -mt-7 px-5 pb-5">
+              <div class="flex items-end gap-3">
+                <img class="h-14 w-14 rounded-lg border-2 border-slate-700 bg-panel object-cover shadow-lg" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Ahri.png" alt="Ahri icon" />
+                <div class="pb-1">
+                  <h2 class="text-[24px] font-medium text-white">Ahri</h2>
+                  <p class="text-[13px] text-slate-300">Burst / Playmaker</p>
+                </div>
+              </div>
+
+              <div class="mt-5 min-h-[70px] text-[15px] leading-7 text-slate-400">
+                <p>Higher playmaking,</p>
+                <p>slightly riskier lane.</p>
+              </div>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="tag text-blue">COMFORT: <strong class="text-blue">High</strong></span>
+                <span class="tag text-blue">EXECUTION FIT: <strong class="text-blue">Medium</strong></span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Syndra -->
+          <article class="pick-card relative min-h-[365px] rounded-xl border border-slate-700/45 lg:col-span-2 xl:col-span-1">
+            <div class="splash-wrap h-[168px]">
+              <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Syndra_0.jpg" alt="Syndra splash art" />
+              <div class="absolute left-4 top-4 z-10 inline-flex items-center gap-2 rounded-md bg-slate-900/75 px-3 py-2 text-[11px] font-semibold uppercase tracking-wide text-slate-300 backdrop-blur-sm">
+                <span class="grid h-4 w-4 place-items-center rounded-full border border-slate-400 text-[10px]">i</span>
+                Situational
+              </div>
+            </div>
+
+            <div class="relative z-10 -mt-7 px-5 pb-5">
+              <div class="flex items-end gap-3">
+                <img class="h-14 w-14 rounded-lg border-2 border-slate-700 bg-panel object-cover shadow-lg" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Syndra.png" alt="Syndra icon" />
+                <div class="pb-1">
+                  <h2 class="text-[24px] font-medium text-white">Syndra</h2>
+                  <p class="text-[13px] text-slate-300">Scaling Mage</p>
+                </div>
+              </div>
+
+              <div class="mt-5 min-h-[70px] text-[15px] leading-7 text-slate-400">
+                <p>Good vs heavy engage.</p>
+                <p>Needs time to scale.</p>
+              </div>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="tag text-slate-300">COMFORT: <strong class="text-slate-300">Medium</strong></span>
+                <span class="tag text-slate-300">EXECUTION FIT: <strong class="text-slate-300">Medium-Low</strong></span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Explanation strip -->
+        <div class="explain-box mt-6 grid gap-5 rounded-xl border border-slate-700/40 px-5 py-4 shadow-panel lg:grid-cols-[1.25fr_1fr] lg:items-center">
+          <div class="flex items-center gap-4">
+            <span class="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-signal/10 text-signal">
+              <svg class="h-8 w-8" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 4c-3 0-5 2-5 5 0 1 .3 2 .8 2.8A5.5 5.5 0 0 0 9 22.5c.7 2.9 3.4 5 6.5 5V4H12Z"></path><path d="M20 4c3 0 5 2 5 5 0 1-.3 2-.8 2.8A5.5 5.5 0 0 1 23 22.5c-.7 2.9-3.4 5-6.5 5V4H20Z"></path><path d="M11 10h4M17 10h4M10 17h5M17 17h5M12 23h3M17 23h3"></path></svg>
+            </span>
+            <div>
+              <h3 class="text-[16px] font-semibold text-slate-200">The decision, not the tier list.</h3>
+              <p class="mt-1 max-w-2xl text-[13px] leading-5 text-slate-400">Hermod filters the draft to a small set of realistic picks from your champion pool, then recommends between them based on this game's context.</p>
+            </div>
+          </div>
+
+          <div class="grid gap-1.5 text-[13px] text-slate-400 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+            <p class="flex items-start gap-2"><span class="text-signal">✓</span><span>Based on your pool and this draft</span></p>
+            <p class="flex items-start gap-2"><span class="text-signal">✓</span><span>Prioritizes execution and consistency</span></p>
+            <p class="flex items-start gap-2"><span class="text-signal">✓</span><span>Actionable choices you can win with</span></p>
+          </div>
+        </div>
+
+        <p class="mt-4 text-center text-[10px] leading-5 text-slate-600">
+          Concept UI. League of Legends champion imagery is loaded from Riot Games' Data Dragon CDN. Hermod is not endorsed by Riot Games.
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Small prototype interaction: a looping mock champion-select countdown.
+    const timerText = document.getElementById('timerText');
+    const timerRing = document.getElementById('timerRing');
+    let seconds = 18;
+    const maxSeconds = 18;
+
+    window.setInterval(() => {
+      seconds -= 1;
+      if (seconds < 0) seconds = maxSeconds;
+      timerText.textContent = `${seconds}s`;
+      const pct = Math.max(0, (seconds / maxSeconds) * 100);
+      timerRing.style.setProperty('--p', `${pct}%`);
+    }, 1000);
+  </script>
+</body>
+</html>
