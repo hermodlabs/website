@@ -1,71 +1,70 @@
-const betaForm = document.querySelector('#beta-request-form');
-
 // Forminit allows credential-free cross-origin requests, including file://
 // previews. Native POST remains the fallback when JavaScript is unavailable.
-if (betaForm && window.fetch) {
-  const button = betaForm.querySelector('button[type="submit"]');
-  const fields = betaForm.querySelector('fieldset');
-  const status = document.querySelector('#beta-request-status');
+document.querySelectorAll('form[data-forminit-request]').forEach((form) => {
+  if (!window.fetch) return;
+  const button = form.querySelector('button[type="submit"]');
+  const fields = form.querySelector('fieldset');
+  const status = form.querySelector('[role="status"]');
   const originalLabel = button.innerHTML;
-  const homeUrl = new URL(betaForm.dataset.successUrl, window.location.href);
+  const homeUrl = new URL(form.dataset.successUrl, window.location.href);
   let pending = false;
-  let submitted = window.history.state?.betaAccessSubmitted === true;
+  let submitted = window.history.state?.forminitSubmitted === form.id;
 
   const markSubmitted = (value) => {
     submitted = value;
     try {
       // Associate the reset with this history entry, without storing form data.
-      window.history.replaceState({ ...window.history.state, betaAccessSubmitted: value }, '');
+      window.history.replaceState({ ...window.history.state, forminitSubmitted: value ? form.id : null }, '');
     } catch {
       // The in-memory flag still handles a restored page if history is restricted.
     }
   };
 
   const clearForm = () => {
-    betaForm.reset();
-    for (const field of fields.querySelectorAll('input, textarea')) field.value = '';
+    form.reset();
+    for (const field of fields.querySelectorAll('input:not([type="hidden"]), textarea')) field.value = '';
     pending = false;
     button.disabled = false;
     fields.disabled = false;
     button.innerHTML = originalLabel;
-    betaForm.removeAttribute('aria-busy');
+    form.removeAttribute('aria-busy');
     status.textContent = '';
     delete status.dataset.state;
   };
 
   window.addEventListener('pageshow', () => {
-    if (submitted || window.history.state?.betaAccessSubmitted === true) {
+    if (submitted || window.history.state?.forminitSubmitted === form.id) {
       clearForm();
       // Browsers can restore saved input values after pageshow on Back/Forward.
       window.setTimeout(() => {
-        if (submitted || window.history.state?.betaAccessSubmitted === true) clearForm();
+        if (submitted || window.history.state?.forminitSubmitted === form.id) clearForm();
       }, 0);
     }
   });
 
-  betaForm.addEventListener('input', () => {
+  form.addEventListener('input', () => {
     // Preserve a new, unfinished request if the visitor navigates away and back.
-    if (submitted || window.history.state?.betaAccessSubmitted === true) markSubmitted(false);
+    if (submitted || window.history.state?.forminitSubmitted === form.id) markSubmitted(false);
   });
 
-  betaForm.addEventListener('submit', async (event) => {
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
-    if (pending || !betaForm.reportValidity()) return;
+    if (pending || !form.reportValidity()) return;
 
-    const data = new FormData(betaForm);
+    const data = new FormData(form);
     pending = true;
     button.disabled = true;
     fields.disabled = true;
     button.textContent = 'Sending request…';
-    betaForm.setAttribute('aria-busy', 'true');
+    form.setAttribute('aria-busy', 'true');
     status.dataset.state = 'pending';
-    status.textContent = 'Sending your beta access request…';
+    status.textContent = form.dataset.pendingMessage || 'Sending your request…';
 
     const controller = new AbortController();
     const timeout = window.setTimeout(() => controller.abort(), 20000);
 
     try {
-      const response = await fetch(betaForm.action, {
+      const response = await fetch(form.action, {
         method: 'POST',
         credentials: 'omit',
         headers: { Accept: 'application/json' },
@@ -92,8 +91,8 @@ if (betaForm && window.fetch) {
       button.disabled = false;
       fields.disabled = false;
       button.innerHTML = originalLabel;
-      betaForm.removeAttribute('aria-busy');
+      form.removeAttribute('aria-busy');
       if (!submitted) status.focus({ preventScroll: true });
     }
   });
-}
+});

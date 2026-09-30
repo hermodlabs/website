@@ -89,6 +89,17 @@ p.lead { font-size: 21px; line-height: 1.55; color: var(--ink); }
 .unavailable { font-size: 13px; color: var(--muted); }
 .tool-card p.tool-attribution { border-top: 1px solid var(--line); padding-top: 20px; font-size: 12px; line-height: 1.8; width: 100%; max-width: none; margin-bottom: 0; }
 .tool-attribution a { text-decoration: underline; text-underline-offset: 3px; }
+.tier-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 52px; }
+.tier-card { display: flex; flex-direction: column; min-width: 0; border-top: 2px solid var(--ink); padding-top: 25px; }
+.tier-card-top { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 22px; }
+.tier-card-top h3 { font-size: 38px; letter-spacing: -1.2px; margin: 0; }
+.tier-card .eyebrow { margin-bottom: 14px; }
+.tier-card > p { color: var(--muted); }
+.tier-card p.tier-purpose { color: var(--ink); font-size: 22px; line-height: 1.4; letter-spacing: -.4px; margin-bottom: 16px; }
+.tier-features { margin: 0 0 28px; padding-left: 20px; font-size: 16px; }
+.tier-features li { padding-left: 4px; margin-bottom: 7px; }
+.tier-features li::marker { color: var(--accent); }
+.tier-card .actions { margin-top: auto; padding-top: 8px; }
 .questions { background: var(--ink); color: white; }
 .questions em, .questions .eyebrow { color: var(--accent-light); }
 .questions .prose p, .questions p.lead { color: #ddd; }
@@ -177,7 +188,7 @@ figcaption { color: var(--muted); font-size: 13px; margin-top: 16px; }
   .has-js .site-nav.is-open { display: flex; }
   .principles { gap: 24px; }
   .hero-grid, .split, .section-heading { gap: 6%; }
-  .tool-grid { gap: 32px; }
+  .tool-grid, .tier-grid { gap: 32px; }
   .section { padding-block: 65px; }
   .hero-intro .actions { align-items: flex-start; flex-direction: column; }
   .footer-top { flex-wrap: wrap; }
@@ -215,7 +226,7 @@ figcaption { color: var(--muted); font-size: 13px; margin-top: 16px; }
   .boundary { display: block; margin-top: 35px; }
   .boundary .eyebrow { margin-bottom: 14px; }
   .boundary p + p { margin-top: 18px; }
-  .tool-grid { grid-template-columns: 1fr; gap: 40px; margin-top: 35px; }
+  .tool-grid, .tier-grid { grid-template-columns: 1fr; gap: 40px; margin-top: 35px; }
   .tool-card h3 { font-size: 32px; }
   .tool-card .eyebrow { margin-bottom: 12px; }
   .tool-card .actions { gap: 20px; }
