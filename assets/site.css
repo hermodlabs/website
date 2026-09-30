@@ -141,6 +141,23 @@ figcaption { color: var(--muted); font-size: 13px; margin-top: 16px; }
 .article-list p { color: var(--muted); }
 .reading-width { max-width: 850px; }
 .callout { border-left: 2px solid var(--accent); padding: 24px; background: var(--surface); margin-block: 30px; }
+.beta-form { min-width: 0; border-top: 2px solid var(--ink); padding-top: 24px; }
+.form-intro, .form-note { color: var(--muted); font-size: 14px; }
+.beta-form fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+.form-field { margin-bottom: 22px; }
+.form-field label { display: block; margin-bottom: 8px; font-size: 15px; font-weight: 600; }
+.form-field label span { color: var(--muted); font-size: 13px; font-weight: 400; }
+.form-field input, .form-field textarea { display: block; width: 100%; min-height: 48px; border: 1px solid #999; border-radius: 0; background: var(--bg); color: var(--ink); padding: 12px; font: inherit; font-size: 16px; line-height: 1.5; }
+.form-field textarea { resize: vertical; }
+.form-field :disabled { color: var(--muted); background: var(--surface); }
+.beta-form .button { cursor: pointer; }
+.beta-form .button:disabled { cursor: wait; background: #655085; border-color: #655085; }
+.form-status { margin-block: 20px 0; font-size: 15px; }
+.form-status:empty { display: none; }
+.form-status[data-state="success"] { color: #235c3e; }
+.form-status[data-state="error"] { color: #9c2929; }
+.form-note { margin: 20px 0 0; }
+.form-note a { text-decoration: underline; text-underline-offset: 4px; }
 .site-footer { border-top: 2px solid var(--ink); padding-block: 28px 30px; font-size: 14px; color: var(--muted); }
 .footer-top, .footer-bottom { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; }
 .footer-brand { color: var(--ink); font-size: 17px; font-weight: 600; }
@@ -220,6 +237,7 @@ figcaption { color: var(--muted); font-size: 13px; margin-top: 16px; }
   .comparison-table th, .comparison-table td { padding: 20px 20px 20px 0; }
   .screenshot { margin-top: 30px; }
   .article-list { margin-top: 30px; }
+  .beta-form { margin-top: 32px; }
   .footer-top, .footer-bottom { flex-direction: column; align-items: flex-start; gap: 14px; }
   .footer-bottom nav { gap: 18px; }
 }
