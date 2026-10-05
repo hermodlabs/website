@@ -1,3 +1,22 @@
+// Classic scripts keep runtime configuration available on file:// previews too.
+const decisionLabLocation = window.HERMOD_FEATURE_FLAGS?.decisionLabUrl;
+document.querySelectorAll('[data-decision-lab-link]').forEach((link) => {
+  if (typeof decisionLabLocation !== 'string' || !decisionLabLocation.trim()) return;
+  try {
+    const siteRoot = new URL(link.dataset.siteRoot, document.baseURI);
+    const location = decisionLabLocation.trim();
+    // Resolve site-relative paths within the deployment, including subpaths.
+    const target = new URL(location.startsWith('/') && !location.startsWith('//') ? `.${location}` : location, siteRoot);
+    if (!['https:', 'http:'].includes(target.protocol)
+      && !(siteRoot.protocol === 'file:' && target.protocol === 'file:')) return;
+    if (target.protocol === 'file:' && target.pathname.endsWith('/')) target.pathname += 'index.html';
+    link.href = target.href;
+    link.hidden = false;
+  } catch {
+    // Leave the launch link hidden if the configured location is invalid.
+  }
+});
+
 const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('.site-nav');
 
