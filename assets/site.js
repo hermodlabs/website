@@ -13,7 +13,7 @@ document.querySelectorAll('[data-decision-lab-link]').forEach((link) => {
     link.href = target.href;
     link.hidden = false;
   } catch {
-    // Leave the launch link hidden if the configured location is invalid.
+    // No alternate destination: only a valid configured app URL enables links.
   }
 });
 
