@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-V2474V50XP');
+</script>
+
+
+  <title>Ways of Thinking About Human Decisions | Hermod Labs</title>
+  <meta name="description" content="We can understand the parts and still miss their connections. How can we make a larger decision easier to think about?">
+  <link rel="canonical" href="https://hermodlabs.com/articles/ways-of-thinking-about-human-decisions/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Hermod Labs">
+  <meta property="og:title" content="Ways of Thinking About Human Decisions | Hermod Labs">
+  <meta property="og:description" content="We can understand the parts and still miss their connections. How can we make a larger decision easier to think about?">
+  <meta property="og:url" content="https://hermodlabs.com/articles/ways-of-thinking-about-human-decisions/">
+  <meta property="og:image" content="https://hermodlabs.com/assets/hermod-wordmark.jpeg">
+  <meta name="theme-color" content="#7850c2">
+  <link rel="icon" type="image/jpeg" href="../../assets/hermod-symbol.jpeg">
+  <link rel="stylesheet" href="../../assets/site.css">
+
+  <script src="../../assets/feature-flags.js" defer></script>
+  <script src="../../assets/site.js" defer></script>
+
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+  <a class="brand" href="../../index.html" aria-label="Hermod Labs home"><img src="../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">+</span></button>
+  <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
+    <a href="../index.html" aria-current="page">Articles</a><a href="../../tools/index.html">Tools</a><a href="../../platform/index.html">Platform</a>
+    <a class="button nav-cta" data-decision-lab-link data-site-root="../../index.html" hidden>Try our free tool <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+
+  <main id="main" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="reading-header wrap">
+  <p class="reading-breadcrumb"><a href="../index.html">All articles</a><span aria-hidden="true">/</span><a class="article-category" href="../ways-of-thinking/index.html">Ways of Thinking</a></p>
+
+  <p class="eyebrow">Ways of Thinking</p>
+
+  <h1>Ways of Thinking About Human Decisions</h1>
+  <p class="reading-meta">Hermod Labs <span aria-hidden="true">·</span> 11 min read</p>
+  <ul class="article-tags" aria-label="Article topics">
+    
+    <li><a href="../topics/ontology-engineering/index.html">Ontology engineering</a></li>
+    
+    <li><a href="../topics/requirements/index.html">Requirements</a></li>
+    
+    <li><a href="../topics/decision-lab/index.html">Decision Lab</a></li>
+    
+  </ul>
+</header>
+<div class="reading-layout wrap standalone-reading">
+
+  <article class="article-body" id="article-content" aria-label="Ways of Thinking About Human Decisions">
+    
+      
+    <p>You can understand every part of a problem and still miss what happens when the parts come together.</p>
+      
+    
+      
+    <p>A purchasing manager finds a cheaper supplier. Quality knows how to test the replacement. Production knows how to run the trial. Each person has a sensible view of the work. Then someone notices that the trial needs the same production line already committed to customer orders. The savings depend on a test, the test depends on a resource, and that resource belongs to another plan.</p>
+      
+    
+      
+    <p>Situations like this shape how we think at Hermod Labs. <strong>We build Decision Lab around people who must make decisions larger than what they can hold in mind at once.</strong> The Ways of Thinking section explains the positions behind that approach, with ontology engineering at their center: how we define the things that matter, preserve their relationships, and reason about them together. Systems engineering and feedback loops help us connect those models to the larger operation and learn from what happens.</p>
+      
+    
+      
+    <p>Our starting point is our humanity. Attention is finite. We forget details, move between responsibilities, and rely on other people to understand parts of the world we cannot inspect ourselves. We want to model how people actually work, including those limits and the ways they compensate for them.</p>
+      
+    
+      
+    <p>Research on <a href="https://pubmed.ncbi.nlm.nih.gov/11515286/">working memory</a> describes limits on how much information people can actively hold at once. Experience and the way information is grouped affect what fits within those limits. Expertise helps us recognize meaningful patterns, but we still have to direct our attention somewhere.</p>
+      
+    
+      
+    <p>In everyday work, we manage complexity by grouping related things, building simplified models, and breaking large questions into smaller ones. A supplier decision becomes questions about quality, capacity, timing, cost, and authority. Each question can be divided again until someone can work on it.</p>
+      
+    
+      
+    <p>That is hierarchical decomposition: parts within parts. Herbert Simon explored how <a href="https://www.andrew.cmu.edu/course/15-440/assets/READINGS/simon-architecture-of-complexity-1962.pdf">hierarchical organization can make complex systems understandable</a>, particularly when interactions within a part are stronger than interactions between parts. For us, limited working memory is one reason to build around this way of organizing a problem.</p>
+      
+    
+      
+    <p>The difficulty comes when we put the parts back together. The categories in our heads do not reserve time on a production line. A department boundary does not remove a dependency. A hierarchy helps us organize the problem, while relationships often cross its branches.</p>
+      
+    
+      
+    <p><strong>Our central design commitment is to make the parts manageable while keeping their meanings and connections available for examination.</strong></p>
+      
+    
+      
+    <p>This is an opinionated position. It influences what we ask people to describe, what distinctions the software preserves, and what work we expect it to perform.</p>
+      
+    
+      
+    <p>Ruby on Rails offers a useful analogy. Rails is a framework for building web applications, and its <a href="https://rubyonrails.org/doctrine#convention-over-configuration">convention over configuration</a> philosophy makes deliberate choices about how applications should be organized. When developers follow those conventions, the framework can infer details they would otherwise have to specify repeatedly. For example, its <a href="https://guides.rubyonrails.org/active_record_basics.html#naming-conventions">naming conventions</a> let it connect a model called “Book” to a database table called “books.”</p>
+      
+    
+      
+    <p>Those opinions create opportunities for automation. A shared structure gives the software something dependable to work with.</p>
+      
+    
+      
+    <p>We take a similar approach to decision modeling. We favor explicitly defined concepts and relationships, reusable pieces of reasoning, and clear conditions for accepting a conclusion. These conventions require some effort from the person building the model. In return, they give the software a basis for checking combinations and tracing consequences.</p>
+      
+    
+      
+    <p>The choice of conventions is ours to justify. The goals, standards, and acceptable tradeoffs of a particular decision belong to the people responsible for it.</p>
+      
+    
+      
+    <p><strong>Ontology engineering is central to how we make this approach work.</strong> An ontology describes the kinds of things a model recognizes, the relationships between them, and the distinctions it must preserve. Ontology engineering is the work of choosing, defining, checking, and maintaining that structure as our understanding of the work changes.</p>
+      
+    
+      
+    <p>In the supplier example, a trial, its report, a reviewer’s finding, and permission to purchase each play a different role. The report records what happened during the trial. A finding interprets the evidence against a standard. Purchasing permission depends on the relevant authority. Defining those relationships gives people and software a way to follow the reasoning from evidence to action.</p>
+      
+    
+      
+    <p>We begin with the distinctions people already use in their work, including ones they rarely need to explain within their own team. When those ideas cross a boundary, their meanings need attention. Quality and Purchasing can use the same word, “approved,” while answering different questions. Making those meanings explicit is part of building a model that respects how both teams work.</p>
+      
+    
+      
+    <p>These are consequential modeling choices. If we represent every kind of approval as a single status, the software loses distinctions it may need to check a decision. If we separate the relevant judgments and connect them to their evidence and scope, we create a basis for more useful automation. That is why ontology engineering runs through our approach.</p>
+      
+    
+      
+    <p><strong>Reasoning modules</strong> organize manageable parts of this work. A module gathers the concepts it uses, the relevant claims, the rules connecting them, and the conditions under which its conclusions can be used. In the supplier example, one module might concern technical qualification and another purchasing authority. Those modules can become parts of a larger supplier decision. The intent is to let someone concentrate on one question, then use its conclusion at a broader level without losing the conditions attached to it.</p>
+      
+    
+      
+    <p>This resembles something people already do. You ask a colleague whether a proposal has passed review because you need to rely on their expertise. You expect the answer to preserve the distinctions that matter for your next action.</p>
+      
+    
+      
+    <p>Suppose Quality says the supplier is “approved.” That might mean the product passed a technical review. Purchasing may still need permission to spend the money. A useful module makes the scope of its conclusion clear enough for another part of the decision to rely on it. Reusing a result requires understanding what it establishes and what remains unresolved.</p>
+      
+    
+      
+    <p>That brings us to <strong>phrase patterns</strong> and <strong>computational linguistics</strong>. Much of the knowledge needed for decisions arrives in language: emails, procedures, meeting notes, and statements from people who know the work. Small differences in wording can carry substantial differences in meaning.</p>
+      
+    
+      
+    <p>“The trial is planned,” “the trial is complete,” and “the trial passed” describe different situations. A system that treats them as interchangeable can move a decision forward before its prerequisites have been met.</p>
+      
+    
+      
+    <p>We use phrase patterns to give recurring statements a consistent shape and a defined interpretation. An illustrative pattern such as “Trial [name] requires production line [line]” identifies a trial, a resource, and their relationship. Computational linguistics informs the connection between language and structured representations that software can process.</p>
+      
+    
+      
+    <p>Phrase patterns provide a readable way to make statements using the ontology. Reasoning modules package the relevant concepts, relationships, and rules for particular questions. Requirements state what acceptable combinations must satisfy. <strong>Ontology engineering helps keep the meanings aligned as these pieces are joined.</strong> A conclusion about technical acceptance needs to retain that meaning when purchasing uses it.</p>
+      
+    
+      
+    <p>Our opinion here is that meaning deserves explicit attention wherever a decision depends on it. Familiar words can conceal differences between roles. A consistent phrase gives people a place to examine those differences and gives software a defined interpretation to apply.</p>
+      
+    
+      
+    <p>With those concepts in place, <strong>requirements engineering</strong> helps us state what an acceptable result must satisfy. In the supplier decision, that could mean completing a qualifying trial, preserving committed deliveries, and obtaining spending authorization before placing an order.</p>
+      
+    
+      
+    <p>These conditions make the tradeoffs visible. The lowest purchase price may require a trial that cannot happen in time. Paying for an extra shift may make an earlier trial possible. Waiting may preserve the current schedule while postponing the savings.</p>
+      
+    
+      
+    <p>We draw on <a href="https://www.nasa.gov/reference/2-0-fundamentals-of-systems-engineering/"><strong>systems engineering</strong></a> to keep the purpose of the whole operation in view. It connects needs and requirements to how the parts are designed, combined, tested, and used. In our example, the relevant system includes the supplier, production equipment, people, procedures, and customer commitments. Their interactions determine whether the proposed change serves the larger purpose.</p>
+      
+    
+      
+    <p>This adds a discipline to decomposition: each part needs to fit back into the whole. A lower purchase price could create more inspection work or slower production elsewhere. We want to examine those consequences across the relevant boundaries, then check whether the combined result meets the need that prompted the decision.</p>
+      
+    
+      
+    <p>We call a complete candidate combination an <strong>arrangement</strong>. It brings choices together with the dependencies and conditions needed to assess them. The question becomes whether the proposed supplier, trial, schedule, resources, and approvals can work together under the model we have described.</p>
+      
+    
+      
+    <p>If the model says two activities need the same line at the same time, and the line can support only one, the software can identify that incompatible combination. The relationships and requirements make that check possible.</p>
+      
+    
+      
+    <p>Several arrangements may satisfy the requirements. Choosing among them still involves priorities and judgment. The model can help people see what each choice depends on and what obligations it creates.</p>
+      
+    
+      
+    <p>This is also why we care about change. If the extra-shift crew becomes unavailable, that fact can affect the trial, the qualification date, and the orders that could use the replacement supplier. Recording those connections gives us a basis for working through the consequences without asking someone to reconstruct every dependency from memory.</p>
+      
+    
+      
+    <p><strong>Feedback loops connect decisions to what happens afterward.</strong> We form a model, choose an arrangement, act, observe the results, and compare them with what we expected. Those observations can lead people to revise an assumption, change a method, or reconsider whether the requirements capture the intended outcome. The revised understanding then informs the next decision.</p>
+      
+    
+      
+    <p>Suppose the replacement supplier’s material passes its trial, but regular production takes longer than expected. The team can compare actual production times with the assumption behind the savings estimate, investigate the difference, and reassess future orders. Ontology engineering matters here too: the model needs to preserve the distinction between an acceptable trial result and sustained production performance.</p>
+      
+    
+      
+    <p>Feedback can also occur within the operation itself. Imagine that defects create rework, rework creates a backlog, and pressure to clear the backlog leads to rushed work that produces more defects. That loop reinforces the original problem. Recognizing it helps people examine where an intervention could interrupt the cycle.</p>
+      
+    
+      
+    <p>Our design goal is to help people close these loops deliberately: identify what to observe, who will review it, and what findings should trigger reconsideration. A report becomes useful feedback when someone can connect its evidence to a decision and respond. Keeping the original assumptions and the later observations available makes that review possible.</p>
+      
+    
+      
+    <p>Real work also includes uncertainty, interruptions, competing incentives, and incomplete evidence. A person may understand why an exception matters before they can explain it precisely. Two departments may disagree about the standard a proposal should satisfy. A model should give that uncertainty and disagreement a visible place in the decision.</p>
+      
+    
+      
+    <p>In our approach, an assumption should remain identifiable as an assumption. Planning a review should leave the review outstanding. Evidence that supports a technical judgment should retain its connection to that judgment. These are practical commitments about how to represent work as it happens.</p>
+      
+    
+      
+    <p>This is what we mean by Decision Lab as a <strong>force multiplier for human decision making</strong>. We want people to spend more of their attention interpreting evidence, examining tradeoffs, and learning from outcomes. Software can help maintain the relationships that make those judgments consequential across a larger problem and preserve the reasoning people need to revisit when circumstances change.</p>
+      
+    
+      
+    <p>There is a cost to making a model explicit. Someone has to identify the relevant distinctions and keep them aligned with the work. Our approach is to begin with a concrete decision and add detail where it changes an option, an obligation, or the confidence someone can place in a conclusion. Useful pieces can then be refined and reused.</p>
+      
+    
+      
+    <p>A model can also omit something important. Making its assumptions visible gives people an opportunity to challenge them. That ability to inspect and revise the reasoning is part of the value we are trying to build.</p>
+      
+    
+      
+    <p>The essays in Ways of Thinking explore these commitments and their consequences. Ontology engineering asks which distinctions and relationships a decision needs to preserve. Reasoning modules raise questions about what we can safely rely on. Phrase patterns raise questions about how language carries meaning. Requirements engineering raises questions about what counts as acceptable. Systems engineering asks how the parts work together toward a purpose. Feedback loops ask how results change our understanding and our next decision. Together, they lead to a broader question: how can people contribute different pieces of understanding, assess the decision those pieces support, and learn from its consequences?</p>
+      
+    
+      
+    <p>The Arrangement Problem series works through concrete situations where those connections matter. Our practical articles show how we build with these ideas. Here, we explain the reasoning behind the approach, including the choices readers may reasonably disagree with.</p>
+      
+    
+      
+    <p>Bring a decision from your own work as you read. Notice which parts you already understand, which parts you entrust to someone else, and which relationships you repeatedly have to reconstruct. Consider what you would observe after acting, and what result would make you reconsider. Those are useful places to begin making a larger decision easier to think about.</p>
+      
+    
+    
+
+    <nav class="article-category-return" aria-label="More articles">
+      <a class="text-link" href="../ways-of-thinking/index.html">More in Ways of Thinking <span aria-hidden="true">→</span></a>
+      <a class="text-link" href="../index.html">All articles <span aria-hidden="true">→</span></a>
+    </nav>
+
+  </article>
+</div>
+
+
+</main>
+  <footer class="site-footer wrap">
+  <div class="footer-top"><a class="footer-brand" href="../../index.html">Hermod Labs</a><p>Automated reasoning. Human judgment.</p><a class="text-link" href="mailto:contact@hermodlabs.com">contact@hermodlabs.com <span aria-hidden="true">↗</span></a></div>
+  <div class="footer-bottom"><p>Read the thinking. Explore the tools.</p><nav aria-label="Footer navigation"><a href="../index.html">Articles</a><a href="../../tools/index.html">Tools</a><a href="../../platform/index.html">Platform</a></nav></div>
+</footer>
+
+</body>
+</html>
