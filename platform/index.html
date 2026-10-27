@@ -14,13 +14,13 @@
 </script>
 
 
-  <title>The platform | Hermod Labs</title>
-  <meta name="description" content="Decision Lab is the Hermod Labs platform for examining decisions. Hermod.gg is a League of Legends strategy application built on Decision Lab.">
+  <title>The concepts behind Decision Lab | Hermod Labs</title>
+  <meta name="description" content="The concepts behind Decision Lab — conventions, ontology engineering, reasoning modules, phrase patterns, requirements engineering, systems engineering, and feedback loops.">
   <link rel="canonical" href="https://hermodlabs.com/platform/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Hermod Labs">
-  <meta property="og:title" content="The platform | Hermod Labs">
-  <meta property="og:description" content="Decision Lab is the Hermod Labs platform for examining decisions. Hermod.gg is a League of Legends strategy application built on Decision Lab.">
+  <meta property="og:title" content="The concepts behind Decision Lab | Hermod Labs">
+  <meta property="og:description" content="The concepts behind Decision Lab — conventions, ontology engineering, reasoning modules, phrase patterns, requirements engineering, systems engineering, and feedback loops.">
   <meta property="og:url" content="https://hermodlabs.com/platform/">
   <meta property="og:image" content="https://hermodlabs.com/assets/hermod-wordmark.jpeg">
   <meta name="theme-color" content="#7850c2">
@@ -42,35 +42,101 @@
   </nav>
 </header>
 
-  <main id="main" tabindex="-1"><section class="page-hero wrap">
-  <p class="eyebrow">The platform / Decision Lab</p>
-  <h1>Make the reasoning visible.<br><em>Keep judgment human.</em></h1>
-  <p class="lead">Decision Lab is our platform for examining decisions. Make objectives, evidence, constraints, and alternatives explicit so people can inspect the basis for a choice and revisit it when things change.</p>
-  <div class="actions"><a class="button" data-decision-lab-link data-site-root="../index.html" hidden>Try Decision Lab for free <span aria-hidden="true">↗</span></a><a class="text-link" href="../articles/good-choices-impossible-plan/index.html">Read the series <span aria-hidden="true">→</span></a></div>
-  <p class="note">Start with the Free personal public beta. For recurring analysis and work across teams, <a href="../index.html#pilots">explore the Decision Lab pilots</a>.</p>
+  <main id="main" tabindex="-1"><section class="page-hero wrap platform-hero">
+  <p class="eyebrow">Platform / The concepts behind Decision Lab</p>
+  <h1>Make the parts manageable.<br><em>Keep the connections.</em></h1>
+  <p class="lead">A decision can be larger than any one person can hold in mind. These seven concepts guide how we give its parts a shared meaning, reason about them together, and learn from what happens.</p>
+  <a class="text-link" href="../articles/ways-of-thinking-about-human-decisions/index.html">Read the thinking behind the approach <span aria-hidden="true">→</span></a>
 </section>
 
-<section class="section wrap" aria-labelledby="foundation-heading">
-  <div class="split">
-    <div><p class="eyebrow">The platform in practice</p><h2 id="foundation-heading">Decision Lab.<br><em>Hermod.gg built on top.</em></h2></div>
-    <div class="prose">
-      <p><a href="../tools/decision-lab/index.html">Decision Lab</a> provides a foundation for making objectives, requirements, and relationships between choices explicit. Its Free personal version supports individual decision reviews, local browser storage, basic reports, and manual export and import.</p>
-      <p><a href="../tools/hermod-gg/index.html">Hermod.gg</a> is a League of Legends strategy application built on Decision Lab. It brings the platform into the game’s setting: team compositions, champion choices, and the conditions behind a plan.</p>
-      <p>A good choice can create trouble for the rest of a plan. <a href="../series/the-arrangement-problem/index.html">Read The Arrangement Problem.</a></p>
+<nav class="platform-index wrap" id="concepts" aria-label="Platform concepts">
+  <p class="eyebrow">Explore the concepts</p>
+  <ol class="platform-index-list">
+    <li><a href="#conventions"><span aria-hidden="true">01</span>Convention based modeling <span aria-hidden="true">↘</span></a></li>
+    <li><a href="#ontology-engineering"><span aria-hidden="true">02</span>Ontology engineering <span aria-hidden="true">↘</span></a></li>
+    <li><a href="#reasoning-modules"><span aria-hidden="true">03</span>Reasoning modules <span aria-hidden="true">↘</span></a></li>
+    <li><a href="#phrase-patterns"><span aria-hidden="true">04</span>Phrase patterns <span aria-hidden="true">↘</span></a></li>
+    <li><a href="#requirements-engineering"><span aria-hidden="true">05</span>Requirements engineering <span aria-hidden="true">↘</span></a></li>
+    <li><a href="#systems-engineering"><span aria-hidden="true">06</span>Systems engineering <span aria-hidden="true">↘</span></a></li>
+    <li><a href="#feedback-loops"><span aria-hidden="true">07</span>Feedback loops <span aria-hidden="true">↘</span></a></li>
+  </ol>
+</nav>
+
+<section class="platform-concept section" id="conventions" aria-labelledby="conventions-heading">
+  <div class="wrap platform-concept-grid">
+    <div><p class="eyebrow">01 / Shared structure</p><h2 id="conventions-heading">Convention based<br><em>modeling.</em></h2></div>
+    <div class="platform-concept-copy">
+      <p class="concept-lead">Make deliberate choices about how a decision is described.</p>
+      <p>We favor defined concepts and relationships, reusable pieces of reasoning, and clear conditions for accepting a conclusion. Following a shared structure gives people a consistent way to describe the work and gives software a basis for checking it.</p>
+      <p>The model takes effort to make explicit. The return is reasoning that can be examined, combined, and reused. The goals and acceptable tradeoffs remain with the people responsible for the decision.</p>
     </div>
   </div>
 </section>
 
-<section class="section surface" id="approach" aria-labelledby="approach-heading">
-  <div class="wrap"><div class="section-heading"><div><p class="eyebrow">How we approach the work</p><h2 id="approach-heading">Reasoning people can<br><em>inspect and revise.</em></h2></div><p>A useful model makes its assumptions visible and gives people a basis for questioning its conclusions.</p></div>
-  <div class="principles"><article><span class="index">01</span><h3>Make requirements explicit.</h3><p>State what counts as finished, whose outcomes matter, and which constraints a choice must satisfy.</p></article><article><span class="index">02</span><h3>Examine the relationships.</h3><p>Look at what each choice depends on and what it makes possible for the rest of the work.</p></article><article><span class="index">03</span><h3>Keep conclusions revisable.</h3><p>Return to the reasoning when evidence, assumptions, or requirements change. Keep the final judgment with people.</p></article></div>
-  <div class="boundary"><p>A consistent model can still be incomplete or wrong. The reasoning must remain open to better evidence, revised definitions, and human correction.</p></div></div>
+<section class="platform-concept section surface" id="ontology-engineering" aria-labelledby="ontology-engineering-heading">
+  <div class="wrap platform-concept-grid">
+    <div><p class="eyebrow">02 / Meaning and relationships</p><h2 id="ontology-engineering-heading">Ontology<br><em>engineering.</em></h2></div>
+    <div class="platform-concept-copy">
+      <p class="concept-lead">Preserve the distinctions a decision depends on.</p>
+      <p>An ontology defines the kinds of things a model recognizes and the relationships between them. Ontology engineering is the work of choosing, checking, and maintaining those meanings as our understanding changes.</p>
+      <p>A trial, its report, a technical finding, and permission to purchase play different roles. Keeping them distinct lets people follow the reasoning from evidence to action. A technical approval retains its scope when another team uses it.</p>
+    </div>
+  </div>
 </section>
 
-<section class="section wrap" id="about-hermod" aria-labelledby="about-heading">
-  <div class="split">
-    <div><p class="eyebrow">About Hermod Labs</p><h2 id="about-heading">The people behind<br><em>the platform and articles.</em></h2></div>
-    <div class="prose"><p>Hermod Labs builds Decision Lab and applications like Hermod.gg. The goal is to make the reasons behind a decision clear enough to question and revisit.</p><p>Have a question about the articles or an observation from trying Decision Lab? We welcome thoughtful challenges and concrete examples from your work.</p><a class="text-link" href="mailto:contact@hermodlabs.com">contact@hermodlabs.com <span aria-hidden="true">↗</span></a></div>
+<section class="platform-concept section" id="reasoning-modules" aria-labelledby="reasoning-modules-heading">
+  <div class="wrap platform-concept-grid">
+    <div><p class="eyebrow">03 / Manageable questions</p><h2 id="reasoning-modules-heading">Reasoning<br><em>modules.</em></h2></div>
+    <div class="platform-concept-copy">
+      <p class="concept-lead">Work on one question without losing what its answer means.</p>
+      <p>A reasoning module gathers the concepts, claims, rules, and conditions relevant to a question. It gives someone a manageable part of the work to examine and a conclusion that can contribute to a larger decision.</p>
+      <p>Technical qualification and purchasing authority can be separate modules within a supplier decision. Each makes clear what it establishes, what it depends on, and what remains unresolved. Reuse carries those conditions forward.</p>
+    </div>
+  </div>
+</section>
+
+<section class="platform-concept section surface" id="phrase-patterns" aria-labelledby="phrase-patterns-heading">
+  <div class="wrap platform-concept-grid">
+    <div><p class="eyebrow">04 / Pattern languages</p><h2 id="phrase-patterns-heading">Phrase<br><em>patterns.</em></h2></div>
+    <div class="platform-concept-copy">
+      <p class="concept-lead">Give recurring statements a readable form and a defined meaning.</p>
+      <p>We use phrase patterns to connect the language people use with the concepts and relationships in a model. Together, those patterns provide a language for making statements the software can interpret consistently.</p>
+      <blockquote class="phrase-example"><p>Trial [name] requires production line [line].</p></blockquote>
+      <p>This pattern identifies a trial, a resource, and their relationship. Other patterns preserve differences such as a trial being planned, completed, or passed. Computational linguistics informs how we connect those statements to a structured representation.</p>
+    </div>
+  </div>
+</section>
+
+<section class="platform-concept section" id="requirements-engineering" aria-labelledby="requirements-engineering-heading">
+  <div class="wrap platform-concept-grid">
+    <div><p class="eyebrow">05 / Conditions for acceptance</p><h2 id="requirements-engineering-heading">Requirements<br><em>engineering.</em></h2></div>
+    <div class="platform-concept-copy">
+      <p class="concept-lead">State what an acceptable result must satisfy.</p>
+      <p>Requirements turn needs, constraints, and standards into conditions we can examine together. They give us a basis for checking whether a proposed combination of choices works and for seeing where a tradeoff arises.</p>
+      <p>A supplier change might require a qualifying trial, preserved customer deliveries, and spending authorization. A lower price may depend on a trial that cannot happen in time. Making those conditions explicit shows what would have to change.</p>
+    </div>
+  </div>
+</section>
+
+<section class="platform-concept section surface" id="systems-engineering" aria-labelledby="systems-engineering-heading">
+  <div class="wrap platform-concept-grid">
+    <div><p class="eyebrow">06 / The purpose of the whole</p><h2 id="systems-engineering-heading">Systems<br><em>engineering.</em></h2></div>
+    <div class="platform-concept-copy">
+      <p class="concept-lead">Examine how the parts work together toward a purpose.</p>
+      <p>Systems engineering connects needs and requirements to how parts are designed, combined, tested, and used. It asks us to consider the interactions across people, equipment, procedures, and the wider operation.</p>
+      <p>A cheaper material could create more inspection work or slow production. We examine those consequences across the relevant boundaries and check whether the combined result serves the need that prompted the decision.</p>
+    </div>
+  </div>
+</section>
+
+<section class="platform-concept section" id="feedback-loops" aria-labelledby="feedback-loops-heading">
+  <div class="wrap platform-concept-grid">
+    <div><p class="eyebrow">07 / Learning from results</p><h2 id="feedback-loops-heading">Feedback<br><em>loops.</em></h2></div>
+    <div class="platform-concept-copy">
+      <p class="concept-lead">Connect what happens to the next decision.</p>
+      <p>We form a model, choose, act, observe, and compare the results with what we expected. Those observations can change an assumption, a method, or the requirements themselves. Keeping the original reasoning available makes that comparison possible.</p>
+      <p>If material passes its trial but slows regular production, the team can revisit the savings estimate. We ask what to observe, who will review it, and which findings should trigger reconsideration. We also examine loops within the work, such as rework creating pressure that produces more defects.</p>
+    </div>
   </div>
 </section>
 </main>
