@@ -15,12 +15,12 @@
 
 
   <title>Decision Lab — free tools from Hermod Labs | Hermod Labs</title>
-  <meta name="description" content="Try Decision Lab for free, see it in action through Hermod.gg, explore the philosophy in The Arrangement Problem, and help shape the next pilots.">
+  <meta name="description" content="Try Decision Lab for free, see how a structural description leads to a useful schedule, explore Hermod.gg, and help shape the next pilots.">
   <link rel="canonical" href="https://hermodlabs.com/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Hermod Labs">
   <meta property="og:title" content="Decision Lab — free tools from Hermod Labs | Hermod Labs">
-  <meta property="og:description" content="Try Decision Lab for free, see it in action through Hermod.gg, explore the philosophy in The Arrangement Problem, and help shape the next pilots.">
+  <meta property="og:description" content="Try Decision Lab for free, see how a structural description leads to a useful schedule, explore Hermod.gg, and help shape the next pilots.">
   <meta property="og:url" content="https://hermodlabs.com/">
   <meta property="og:image" content="https://hermodlabs.com/assets/hermod-wordmark.jpeg">
   <meta name="theme-color" content="#7850c2">
@@ -65,185 +65,110 @@
 <section class="section series-section" aria-labelledby="series-heading">
   <div class="wrap">
     <div class="series-introduction">
-  <p class="eyebrow">The Arrangement Problem / A series from Hermod Labs</p>
+  <p class="eyebrow">Decision Lab / From description to report</p>
   <h2 id="series-heading">Good choices need<br><em>to work together.</em></h2>
-  <p>A choice that makes sense on its own can create problems elsewhere. People, timing, and shared resources can change whether a plan works.</p>
+  <p>A client report needs two days of preparation and a separate reviewer before the end of day three. Describe the people, timing, and requirements, then see how the work fits together.</p>
+</div>
+
+    <div class="model-example">
+  <section class="model-source" aria-labelledby="home-description-heading">
+    <div class="model-panel-heading">
+      <h3 id="home-description-heading">Describe the work.</h3>
+      <span>Description language</span>
+    </div>
+
+    <pre class="model-code"><code><span class="model-code-line"><span class="model-line-number" data-line="1" aria-hidden="true"></span>Objective &quot;Reviewed report&quot;.</span>
+<span class="model-code-line"><span class="model-line-number" data-line="2" aria-hidden="true"></span>Step &quot;Prepare report&quot;.</span>
+<span class="model-code-line"><span class="model-line-number" data-line="3" aria-hidden="true"></span>Step &quot;Independent review&quot;.</span>
+<span class="model-code-line"><span class="model-line-number" data-line="4" aria-hidden="true"></span>Resource &quot;Noah&quot;.</span>
+<span class="model-code-line"><span class="model-line-number" data-line="5" aria-hidden="true"></span>Resource &quot;Maya&quot;.</span>
+<span class="model-code-line"><span class="model-line-number" data-line="6" aria-hidden="true"></span>Check &quot;Confirm reviewer independence&quot;.</span>
+<span class="model-code-line"><span class="model-line-number" data-line="7" aria-hidden="true"></span>&quot;Reviewed report&quot; requires all of &quot;Prepare report&quot;, &quot;Independent review&quot;.</span>
+<span class="model-code-line"><span class="model-line-number" data-line="8" aria-hidden="true"></span>&quot;Independent review&quot; requires check &quot;Confirm reviewer independence&quot;.</span>
+<span class="model-code-line"><span class="model-line-number" data-line="9" aria-hidden="true"></span>Schedule spans day 1 through day 3.</span>
+<span class="model-code-line"><span class="model-line-number" data-line="10" aria-hidden="true"></span>Schedule orders shifts &quot;work&quot;.</span>
+<span class="model-code-line"><span class="model-line-number" data-line="11" aria-hidden="true"></span>&quot;Noah&quot; is available from day 1 through day 2.</span>
+<span class="model-code-line"><span class="model-line-number" data-line="12" aria-hidden="true"></span>&quot;Noah&quot; is available during shifts &quot;work&quot;.</span>
+<span class="model-code-line"><span class="model-line-number" data-line="13" aria-hidden="true"></span>&quot;Maya&quot; is available from day 3 through day 3.</span>
+<span class="model-code-line"><span class="model-line-number" data-line="14" aria-hidden="true"></span>&quot;Maya&quot; is available during shifts &quot;work&quot;.</span>
+<span class="model-code-line"><span class="model-line-number" data-line="15" aria-hidden="true"></span>&quot;Prepare report&quot; takes 2 consecutive calendar days.</span>
+<span class="model-code-line"><span class="model-line-number" data-line="16" aria-hidden="true"></span>&quot;Prepare report&quot; runs during shift &quot;work&quot;.</span>
+<span class="model-code-line"><span class="model-line-number" data-line="17" aria-hidden="true"></span>&quot;Prepare report&quot; uses resource &quot;Noah&quot;.</span>
+<span class="model-code-line"><span class="model-line-number" data-line="18" aria-hidden="true"></span>&quot;Independent review&quot; takes 1 consecutive calendar day.</span>
+<span class="model-code-line"><span class="model-line-number" data-line="19" aria-hidden="true"></span>&quot;Independent review&quot; runs during shift &quot;work&quot;.</span>
+<span class="model-code-line"><span class="model-line-number" data-line="20" aria-hidden="true"></span>&quot;Independent review&quot; uses resource &quot;Maya&quot;.</span>
+<span class="model-code-line"><span class="model-line-number" data-line="21" aria-hidden="true"></span>&quot;Independent review&quot; starts after &quot;Prepare report&quot; finishes.</span>
+<span class="model-code-line"><span class="model-line-number" data-line="22" aria-hidden="true"></span>&quot;Reviewed report&quot; must finish by day 3.</span>
+<span class="model-code-line"><span class="model-line-number" data-line="23" aria-hidden="true"></span>Find arrangements for &quot;Reviewed report&quot;.</span></code></pre>
+  </section>
+  <section class="model-output" id="home-example-report" tabindex="-1" aria-labelledby="home-report-heading">
+    <div class="model-panel-heading">
+      <h3 id="home-report-heading">One feasible schedule</h3>
+      <span>Query result</span>
+    </div>
+    <figure class="model-report">
+      <div class="model-chart-scroll" role="region" tabindex="0" aria-label="Three-day report schedule" aria-describedby="home-schedule-caption">
+
+
+
+
+
+<svg class="home-report-schedule" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" width="440" height="280" role="img" aria-labelledby="home-report-title home-report-description" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#111">
+  <title id="home-report-title">A three-day report preparation and independent review plan</title>
+  <desc id="home-report-description">Noah prepares the report on days 1–2. Maya performs the independent review on day 3. The planned review finishes by the deadline at the end of day 3. The bars cover inclusive day intervals and show planned work, not evidence of actual completion.</desc>
+  <rect width="440" height="280" fill="#fff" />
+  <text x="24" y="28" font-size="17" font-weight="600">Planned schedule</text>
+  <text x="416" y="28" text-anchor="end" font-size="14" fill="#aa3542">Due end of day 3</text>
+
+  <line x1="24" y1="80" x2="24" y2="254" stroke="#e5e8ec" />
+
+  <line x1="154.67" y1="80" x2="154.67" y2="254" stroke="#e5e8ec" />
+
+  <line x1="285.33" y1="80" x2="285.33" y2="254" stroke="#e5e8ec" />
+
+  <line x1="416" y1="80" x2="416" y2="254" stroke="#e5e8ec" />
+
+
+  <text data-day="1" x="89.33" y="64" text-anchor="middle" fill="#555">Day 1</text>
+
+  <text data-day="2" x="220" y="64" text-anchor="middle" fill="#555">Day 2</text>
+
+  <text data-day="3" x="350.67" y="64" text-anchor="middle" fill="#555">Day 3</text>
+
+
+
+
+
+  <text x="24" y="96" text-anchor="start">Prepare report · Noah</text>
+  <rect data-task="prepare" data-person="Noah" data-start-day="1" data-finish-day="2" x="24" y="108" width="261.33" height="38" rx="3" fill="#f0e9fa" stroke="#7850c2" stroke-width="1.5" />
+  <text x="154.67" y="133" text-anchor="middle">2 days</text>
+
+
+
+
+  <text x="416" y="192" text-anchor="end">Independent review · Maya</text>
+  <rect data-task="review" data-person="Maya" data-start-day="3" data-finish-day="3" x="285.33" y="204" width="130.67" height="38" rx="3" fill="#e5f1f0" stroke="#287d80" stroke-width="1.5" />
+  <text x="350.67" y="229" text-anchor="middle">1 day</text>
+
+  <line data-deadline-day="3" x1="416" y1="80" x2="416" y2="254" stroke="#aa3542" stroke-width="1.5" stroke-dasharray="6 5" />
+</svg>
+
+      </div>
+      <p class="model-chart-hint" aria-hidden="true">Scroll to view the full schedule <span>↔</span></p>
+      <figcaption id="home-schedule-caption">Noah prepares the report on days 1–2. Maya reviews it on day 3, within the deadline.</figcaption>
+    </figure>
+    <div class="model-pending">
+      <span class="model-pending-label">Check still pending</span>
+      <p>Confirm reviewer independence.</p>
+    </div>
+    <p class="model-result-note">A feasible plan shows what can fit. Completing the work and confirming its checks still need evidence.</p>
+  </section>
 </div>
 
     <div class="section-links">
-      <a class="text-link" href="series/the-arrangement-problem/index.html">Explore the series <span aria-hidden="true">→</span></a>
+      <a class="text-link" href="series/the-arrangement-problem/index.html">Read the full series <span aria-hidden="true">→</span></a>
       <a class="text-link" href="articles/index.html">All articles <span aria-hidden="true">→</span></a>
     </div>
-
-    <div class="article-card-grid">
-
-
-  <article class="article-card" data-article-number="1">
-    <div class="article-card-meta">
-      <a class="article-category" href="articles/start-here/index.html">Start Here</a>
-      <span>3 min read</span>
-    </div>
-
-
-    <p class="article-card-series">The Arrangement Problem <span aria-hidden="true">/</span> 1 of 11</p>
-
-    <h3><a href="articles/good-choices-impossible-plan/index.html">Why Can Good Choices Produce an Impossible Plan?</a></h3>
-    <p class="article-card-description">Your best writer is ready to help. The report still needs an independent review by noon. Can the plan hold together?</p>
-    <a class="text-link article-card-action" href="articles/good-choices-impossible-plan/index.html" aria-label="Read Article 1: Why Can Good Choices Produce an Impossible Plan?">Read article <span aria-hidden="true">→</span></a>
-  </article>
-
-
-  <article class="article-card" data-article-number="2">
-    <div class="article-card-meta">
-      <a class="article-category" href="articles/start-here/index.html">Start Here</a>
-      <span>3 min read</span>
-    </div>
-
-
-    <p class="article-card-series">The Arrangement Problem <span aria-hidden="true">/</span> 2 of 11</p>
-
-    <h3><a href="articles/complete-arrangement/index.html">What Counts as a Complete Arrangement?</a></h3>
-    <p class="article-card-description">The writer is assigned. The deadline is set. What still needs to be decided before the job can get done?</p>
-    <a class="text-link article-card-action" href="articles/complete-arrangement/index.html" aria-label="Read Article 2: What Counts as a Complete Arrangement?">Read article <span aria-hidden="true">→</span></a>
-  </article>
-
-
-  <article class="article-card" data-article-number="3">
-    <div class="article-card-meta">
-      <a class="article-category" href="articles/start-here/index.html">Start Here</a>
-      <span>3 min read</span>
-    </div>
-
-
-    <p class="article-card-series">The Arrangement Problem <span aria-hidden="true">/</span> 3 of 11</p>
-
-    <h3><a href="articles/checking-each-choice/index.html">Why Isn&#39;t Checking Each Choice Enough?</a></h3>
-    <p class="article-card-description">Every report has someone who could review it. Can the team get them all finished on time?</p>
-    <a class="text-link article-card-action" href="articles/checking-each-choice/index.html" aria-label="Read Article 3: Why Isn&#39;t Checking Each Choice Enough?">Read article <span aria-hidden="true">→</span></a>
-  </article>
-
-
-  <article class="article-card" data-article-number="4">
-    <div class="article-card-meta">
-      <a class="article-category" href="articles/start-here/index.html">Start Here</a>
-      <span>3 min read</span>
-    </div>
-
-
-    <p class="article-card-series">The Arrangement Problem <span aria-hidden="true">/</span> 4 of 11</p>
-
-    <h3><a href="articles/no-arrangement-works/index.html">What Does It Mean When No Arrangement Works?</a></h3>
-    <p class="article-card-description">Three reports need review. Two reviewers are available. What would have to change for all three to finish by noon?</p>
-    <a class="text-link article-card-action" href="articles/no-arrangement-works/index.html" aria-label="Read Article 4: What Does It Mean When No Arrangement Works?">Read article <span aria-hidden="true">→</span></a>
-  </article>
-
-
-  <article class="article-card" data-article-number="5">
-    <div class="article-card-meta">
-      <a class="article-category" href="articles/start-here/index.html">Start Here</a>
-      <span>3 min read</span>
-    </div>
-
-
-    <p class="article-card-series">The Arrangement Problem <span aria-hidden="true">/</span> 5 of 11</p>
-
-    <h3><a href="articles/more-than-one-arrangement/index.html">What If More Than One Arrangement Works?</a></h3>
-    <p class="article-card-description">Two plans get every report reviewed by noon. One adds a $150 fee; the other moves a customer meeting. Which tradeoff would you accept?</p>
-    <a class="text-link article-card-action" href="articles/more-than-one-arrangement/index.html" aria-label="Read Article 5: What If More Than One Arrangement Works?">Read article <span aria-hidden="true">→</span></a>
-  </article>
-
-
-  <article class="article-card" data-article-number="6">
-    <div class="article-card-meta">
-      <a class="article-category" href="articles/start-here/index.html">Start Here</a>
-      <span>3 min read</span>
-    </div>
-
-
-    <p class="article-card-series">The Arrangement Problem <span aria-hidden="true">/</span> 6 of 11</p>
-
-    <h3><a href="articles/choosing-an-arrangement/index.html">What Does Choosing an Arrangement Commit Us To?</a></h3>
-    <p class="article-card-description">The reviewer is chosen and the fee approved. Who needs to act next, and what will show the work is finished?</p>
-    <a class="text-link article-card-action" href="articles/choosing-an-arrangement/index.html" aria-label="Read Article 6: What Does Choosing an Arrangement Commit Us To?">Read article <span aria-hidden="true">→</span></a>
-  </article>
-
-
-  <article class="article-card" data-article-number="7">
-    <div class="article-card-meta">
-      <a class="article-category" href="articles/start-here/index.html">Start Here</a>
-      <span>3 min read</span>
-    </div>
-
-
-    <p class="article-card-series">The Arrangement Problem <span aria-hidden="true">/</span> 7 of 11</p>
-
-    <h3><a href="articles/one-fact-changes/index.html">What Changes When One Fact Changes?</a></h3>
-    <p class="article-card-description">At 10:30, your reviewer’s availability changes. The deadline stays the same. Can another plan still work?</p>
-    <a class="text-link article-card-action" href="articles/one-fact-changes/index.html" aria-label="Read Article 7: What Changes When One Fact Changes?">Read article <span aria-hidden="true">→</span></a>
-  </article>
-
-
-  <article class="article-card" data-article-number="8">
-    <div class="article-card-meta">
-      <a class="article-category" href="articles/start-here/index.html">Start Here</a>
-      <span>3 min read</span>
-    </div>
-
-
-    <p class="article-card-series">The Arrangement Problem <span aria-hidden="true">/</span> 8 of 11</p>
-
-    <h3><a href="articles/describing-the-problem/index.html">How Do We Describe the Problem So a Tool Can Check It?</a></h3>
-    <p class="article-card-description">A reviewer is available for an hour, yet the review still misses its deadline. What would a tool need to know to catch the conflict?</p>
-    <a class="text-link article-card-action" href="articles/describing-the-problem/index.html" aria-label="Read Article 8: How Do We Describe the Problem So a Tool Can Check It?">Read article <span aria-hidden="true">→</span></a>
-  </article>
-
-
-  <article class="article-card" data-article-number="9">
-    <div class="article-card-meta">
-      <a class="article-category" href="articles/start-here/index.html">Start Here</a>
-      <span>3 min read</span>
-    </div>
-
-
-    <p class="article-card-series">The Arrangement Problem <span aria-hidden="true">/</span> 9 of 11</p>
-
-    <h3><a href="articles/observations-same-explanation/index.html">Which Observations Can Fit the Same Explanation?</a></h3>
-    <p class="article-card-description">Four sightings. Two carts. Which pairings could explain what the cameras saw?</p>
-    <a class="text-link article-card-action" href="articles/observations-same-explanation/index.html" aria-label="Read Article 9: Which Observations Can Fit the Same Explanation?">Read article <span aria-hidden="true">→</span></a>
-  </article>
-
-
-  <article class="article-card" data-article-number="10">
-    <div class="article-card-meta">
-      <a class="article-category" href="articles/start-here/index.html">Start Here</a>
-      <span>6 min read</span>
-    </div>
-
-
-    <p class="article-card-series">The Arrangement Problem <span aria-hidden="true">/</span> 10 of 11</p>
-
-    <h3><a href="articles/which-agent-acts-next/index.html">Which Agent Should Act Next—and What Must Happen Afterward?</a></h3>
-    <p class="article-card-description">The right agent gets every task. A briefing still misses its deadline. Could a different order make the whole plan work?</p>
-    <a class="text-link article-card-action" href="articles/which-agent-acts-next/index.html" aria-label="Read Article 10: Which Agent Should Act Next—and What Must Happen Afterward?">Read article <span aria-hidden="true">→</span></a>
-  </article>
-
-
-  <article class="article-card" data-article-number="11">
-    <div class="article-card-meta">
-      <a class="article-category" href="articles/start-here/index.html">Start Here</a>
-      <span>2 min read</span>
-    </div>
-
-
-    <p class="article-card-series">The Arrangement Problem <span aria-hidden="true">/</span> 11 of 11</p>
-
-    <h3><a href="articles/change-the-pick/index.html">Change the Pick. Understand the Consequences.</a></h3>
-    <p class="article-card-description">Ashe or Varus? Keep the other picks fixed. What changes about the team’s plan?</p>
-    <a class="text-link article-card-action" href="articles/change-the-pick/index.html" aria-label="Read Article 11: Change the Pick. Understand the Consequences.">Read article <span aria-hidden="true">→</span></a>
-  </article>
-
-</div>
-
   </div>
 </section>
 
@@ -251,24 +176,28 @@
   <div class="wrap">
     <div class="section-heading">
       <div><p class="eyebrow">Help shape what comes next</p><h2 id="pilots-heading">Your work.<br><em>Our next pilots.</em></h2></div>
-      <p>We’re seeking analysts, teams, and organizations to help shape Decision Lab. Explore the proposed scope and tell us about a real use case.</p>
+      <p>We’re seeking professionals, teams, and organizations to help shape Decision Lab. Explore the proposed scope and tell us about a real use case.</p>
     </div>
     <div class="pilot-grid">
 
-      <article class="pilot-card" id="analyst-pilot" aria-labelledby="analyst-pilot-heading">
-        <p class="eyebrow">For regular practitioners</p>
-        <h3 id="analyst-pilot-heading">Analyst</h3>
-        <p class="pilot-purpose">Carry context from one review to the next.</p>
-        <p>Build on previous work, compare possible choices, and examine how a change affects related cases. Help shape support for recurring analysis as your body of work grows.</p>
-        <div class="pilot-scope" aria-labelledby="analyst-scope-heading">
-          <h4 id="analyst-scope-heading">Proposed pilot scope</h4>
+      <article class="pilot-card" id="professional-pilot" aria-labelledby="professional-pilot-heading">
+
+        <span class="visually-hidden" id="analyst-pilot" aria-hidden="true"></span>
+
+        <p class="eyebrow">For professional practitioners and organizations</p>
+        <h3 id="professional-pilot-heading">Professional</h3>
+        <p class="pilot-purpose">Bring automation into your decision work.</p>
+        <p>Use tools such as ChatGPT to find relevant information and prepare mappings into model code. You write and review the code; a programmable interface and connected sources automate the work around it.</p>
+        <div class="pilot-scope" aria-labelledby="professional-scope-heading">
+          <h4 id="professional-scope-heading">Proposed pilot scope</h4>
           <div class="pilot-scope-content">
-            <ul class="tier-features"><li>Reusable review templates</li><li>Comparison of alternatives</li><li>Analysis across related cases</li><li>Versioned evidence attachments</li><li>Automated backup options</li></ul>
+            <ul class="tier-features"><li>Programmable CLI for scripted workflows</li><li>No character limits on model code</li><li>Connectors for email, Slack, and databases</li><li>MCP integration with compatible AI tools</li><li>LLM-assisted discovery and mapping of source information</li></ul>
           </div>
         </div>
       </article>
 
       <article class="pilot-card" id="team-pilot" aria-labelledby="team-pilot-heading">
+
         <p class="eyebrow">For people working together</p>
         <h3 id="team-pilot-heading">Team</h3>
         <p class="pilot-purpose">Give each contribution a clear owner.</p>
@@ -282,6 +211,7 @@
       </article>
 
       <article class="pilot-card" id="enterprise-pilot" aria-labelledby="enterprise-pilot-heading">
+
         <p class="eyebrow">For organizations</p>
         <h3 id="enterprise-pilot-heading">Enterprise</h3>
         <p class="pilot-purpose">Coordinate decisions across teams and programs.</p>
@@ -312,7 +242,7 @@
     <div class="form-field"><label for="pilot-name">Name <span>(required)</span></label><input id="pilot-name" type="text" name="fi-sender-fullName" autocomplete="name" maxlength="160" required></div>
     <div class="form-field"><label for="pilot-email">Email <span>(required)</span></label><input id="pilot-email" type="email" name="fi-sender-email" autocomplete="email" maxlength="254" required></div>
     <div class="form-field"><label for="pilot-company">Organization <span>(optional)</span></label><input id="pilot-company" type="text" name="fi-sender-company" autocomplete="organization" maxlength="200"></div>
-    <div class="form-field"><label for="pilot-message">What decision work would you explore? <span>(required)</span></label><textarea id="pilot-message" name="fi-text-message" rows="5" maxlength="5000" placeholder="Tell us about a decision, recurring analysis, or shared review you’d like to explore." required></textarea></div>
+    <div class="form-field"><label for="pilot-message">What decision work would you explore? <span>(required)</span></label><textarea id="pilot-message" name="fi-text-message" rows="5" maxlength="5000" placeholder="Tell us about a decision, automation workflow, or shared review you’d like to explore." required></textarea></div>
     <div class="form-field"><label for="pilot-outcomes">What would make a pilot useful to you? <span>(optional)</span></label><textarea id="pilot-outcomes" name="fi-text-outcomes" rows="3" maxlength="3000" placeholder="Describe what you would want to learn or improve, and whose work it would affect."></textarea></div>
   </fieldset>
   <button class="button" type="submit">Send pilot inquiry <span aria-hidden="true">↗</span></button>
@@ -325,9 +255,68 @@
 </section>
 
 </main>
-  <footer class="site-footer wrap">
-  <div class="footer-top"><a class="footer-brand" href="index.html">Hermod Labs</a><p>Automated reasoning. Human judgment.</p><a class="text-link" href="mailto:contact@hermodlabs.com">contact@hermodlabs.com <span aria-hidden="true">↗</span></a></div>
-  <div class="footer-bottom"><p>Read the thinking. Explore the tools.</p><nav aria-label="Footer navigation"><a href="articles/index.html">Articles</a><a href="tools/index.html">Tools</a><a href="platform/index.html">Platform</a></nav></div>
+  <footer class="site-footer">
+  <div class="wrap">
+    <section class="footer-action" aria-labelledby="footer-action-heading">
+      <div>
+        <p class="eyebrow">Put the ideas to work</p>
+        <h2 id="footer-action-heading">A decision of your own?<br><em>Try Decision Lab.</em></h2>
+        <p class="footer-action-copy">Review your objectives, evidence, and assumptions. Keep a record of the reasoning behind your choice.</p>
+      </div>
+      <div class="footer-action-links">
+        <a class="button" data-decision-lab-link data-site-root="index.html" hidden>Try Decision Lab for free <span aria-hidden="true">↗</span></a>
+        <a class="text-link" href="tools/decision-lab/index.html">Decision Lab details <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <div class="footer-directory">
+      <div class="footer-identity">
+        <a class="footer-brand" href="index.html" aria-label="Hermod Labs home"><img src="assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
+        <p class="footer-description">Tools and ideas for decisions you can inspect and revise.</p>
+        <a class="footer-contact" href="mailto:contact@hermodlabs.com">contact@hermodlabs.com <span aria-hidden="true">↗</span></a>
+      </div>
+
+      <nav class="footer-navigation" aria-label="Footer navigation">
+        <div class="footer-link-group">
+          <h3 id="footer-reading-heading">Articles</h3>
+          <ul aria-labelledby="footer-reading-heading">
+            <li><a href="articles/index.html">All articles</a></li>
+
+            <li><a href="articles/start-here/index.html">Start Here</a></li>
+
+            <li><a href="articles/ways-of-thinking/index.html">Ways of Thinking</a></li>
+
+            <li><a href="articles/how-to-build/index.html">How to Build <span class="footer-coming-soon">(coming soon)</span></a></li>
+
+            <li><a href="series/the-arrangement-problem/index.html">The Arrangement Problem</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-group">
+          <h3 id="footer-tools-heading">Tools</h3>
+          <ul aria-labelledby="footer-tools-heading">
+            <li><a href="tools/decision-lab/index.html">Decision Lab</a></li>
+            <li><a href="tools/hermod-gg/index.html">Hermod.gg</a></li>
+            <li><a href="tools/index.html">All tools</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-group">
+          <h3 id="footer-platform-heading">Platform</h3>
+          <ul aria-labelledby="footer-platform-heading">
+            <li><a href="about/index.html">About Hermod Labs</a></li>
+            <li><a href="platform/index.html">Explore the platform</a></li>
+            <li><a href="platform/index.html#concepts">Core concepts</a></li>
+            <li><a href="index.html#pilot-inquiry">Discuss a pilot</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2026 Hermod Labs</p>
+      <p class="footer-signoff">Automated reasoning. Human judgment.</p>
+      <a class="footer-top-link" href="#main">Back to top <span aria-hidden="true">↑</span></a>
+    </div>
+  </div>
 </footer>
 
 </body>

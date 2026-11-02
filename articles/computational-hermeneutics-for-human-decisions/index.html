@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-V2474V50XP');
+</script>
+
+
+  <title>Computational Hermeneutics for Human Decisions | Hermod Labs</title>
+  <meta name="description" content="Examine how statements are interpreted in context, preserve their conditions, and trace what follows from different readings.">
+  <link rel="canonical" href="https://hermodlabs.com/articles/computational-hermeneutics-for-human-decisions/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Hermod Labs">
+  <meta property="og:title" content="Computational Hermeneutics for Human Decisions | Hermod Labs">
+  <meta property="og:description" content="Examine how statements are interpreted in context, preserve their conditions, and trace what follows from different readings.">
+  <meta property="og:url" content="https://hermodlabs.com/articles/computational-hermeneutics-for-human-decisions/">
+  <meta property="og:image" content="https://hermodlabs.com/assets/hermod-wordmark.jpeg">
+  <meta name="theme-color" content="#7850c2">
+  <link rel="icon" type="image/jpeg" href="../../assets/hermod-symbol.jpeg">
+  <link rel="stylesheet" href="../../assets/site.css">
+
+  <script src="../../assets/feature-flags.js" defer></script>
+  <script src="../../assets/site.js" defer></script>
+
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+  <a class="brand" href="../../index.html" aria-label="Hermod Labs home"><img src="../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">+</span></button>
+  <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
+    <a href="../index.html" aria-current="page">Articles</a><a href="../../tools/index.html">Tools</a><a href="../../platform/index.html">Platform</a>
+    <a class="button nav-cta" data-decision-lab-link data-site-root="../../index.html" hidden>Try our free tool <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+
+  <main id="main" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="reading-header wrap">
+  <p class="reading-breadcrumb"><a href="../index.html">All articles</a><span aria-hidden="true">/</span><a class="article-category" href="../ways-of-thinking/index.html">Ways of Thinking</a></p>
+
+  <p class="eyebrow">Ways of Thinking</p>
+
+  <h1>Computational Hermeneutics for Human Decisions</h1>
+  <p class="reading-meta">Hermod Labs <span aria-hidden="true">·</span> 6 min read</p>
+  <ul class="article-tags" aria-label="Article topics">
+    
+    <li><a href="../topics/computational-hermeneutics/index.html">Computational hermeneutics</a></li>
+    
+    <li><a href="../topics/ontology-engineering/index.html">Ontology engineering</a></li>
+    
+    <li><a href="../topics/reasoning-modules/index.html">Reasoning modules</a></li>
+    
+  </ul>
+</header>
+<div class="reading-layout wrap standalone-reading">
+
+  <article class="article-body" id="article-content" aria-label="Computational Hermeneutics for Human Decisions">
+    
+      
+    <p>“We can run the trial on Friday if Quality signs off.”</p>
+      
+    
+      
+    <p>A sentence like this can move a decision forward. It can also leave several questions open. The trial needs to be identified, Friday needs a date, and “signs off” needs a meaning in the relevant process. The statement is conditional. Its interpretation affects what someone can reasonably conclude and what still needs to happen.</p>
+      
+    
+      
+    <p>In the previous article, we described pattern languages as shared ways to recognize recurring problems and organize responses. Much of the information used in those responses arrives through ordinary language: emails, procedures, meeting notes, and conversations. Computational hermeneutics concerns how we examine the interpretations that turn that language into something a decision model can use.</p>
+      
+    
+      
+    <p>Hermeneutics is concerned with interpretation. For our purposes, computational hermeneutics means using explicit representations and computational tools to help people examine what statements mean in context and what follows from particular readings. It connects the language people use with the concepts, relationships, and rules on which the larger decision depends.</p>
+      
+    
+      
+    <p>Work by David Fuenmayor and Christoph Benzmüller provides a useful example of this approach. Their research on <a href="https://arxiv.org/abs/1906.06582">computational hermeneutics</a> uses automated reasoning to help develop and assess formal interpretations of natural-language arguments. Interpretation proceeds iteratively: the reading of an individual statement is examined in relation to the arguments around it, and the interpretation of the larger argument depends on its parts.</p>
+      
+    
+      
+    <p>This movement between parts and whole is often called the hermeneutic circle. For our decision models, it suggests a practical way of working. We propose an interpretation, express it clearly enough to examine its consequences, and return to the source and context when those consequences raise questions.</p>
+      
+    
+      
+    <p>Consider the sentence about Friday. If Operations wrote it in response to a question about production capacity, “can” may express expected feasibility. In a message from someone granting permission, the same word may have a different role. The surrounding conversation, the speaker’s responsibilities, and the relevant procedure help us decide which reading is justified.</p>
+      
+    
+      
+    <p>Suppose the context supports a reading about expected line availability, conditional on a satisfactory quality review. We can represent that claim with its source, the intended trial, the relevant date, and the outstanding condition. It leaves the separate purchasing authorization requirement in our model to be addressed.</p>
+      
+    
+      
+    <p>The interpretation should preserve what the sentence actually establishes. It does not report that Quality has already signed off or that the trial has happened. If the statement is later summarized as “the trial is approved,” that summary may lose both the condition and the distinction between capacity and permission.</p>
+      
+    
+      
+    <p>Small changes in wording can therefore have substantial consequences. “The trial is planned,” “the trial is complete,” and “the trial passed” describe different situations. Completion may make evidence available for review. A satisfactory finding may satisfy a technical requirement. Planning the work leaves those later questions outstanding.</p>
+      
+    
+      
+    <p>Context can also be carried in details that are easy to omit. A finding may concern one material revision or one production process. A permission may cover a limited quantity. A statement about “the current specification” depends on which specification was current when the statement was made. Those references need to remain connected to the interpretation when they affect the decision.</p>
+      
+    
+      
+    <p>Ontology engineering gives us the concepts needed to express these differences. We need ways to represent an activity, a report, a finding, an authorization, and their scope. Computational interpretation then asks which of those meanings a particular statement supports in its context.</p>
+      
+    
+      
+    <p>Phrase patterns help make recurring statements more explicit. An illustrative form such as “Reviewer [person] accepts material [material] for process [process]” gives us places to identify the participants and the scope of a finding. The meaning of “accepts” still needs to be defined. The pattern makes that interpretation available for examination wherever the statement is used.</p>
+      
+    
+      
+    <p>Different wording can also preserve the same meaning. “Maya reviewed report R” and “Report R was reviewed by Maya” can express the same relationship when the person, report, and meaning of review are fixed. Replacing “reviewed” with “approved” introduces a different claim. A review can result in acceptance, rejection, or a request for more evidence.</p>
+      
+    
+      
+    <p>This is where we borrow an engineering analogy from the <a href="https://www.cs.cmu.edu/Groups/venari/subtype-toplas.html">Liskov substitution principle</a>. In software, behavioral subtyping concerns preserving the properties that users of a type can rely on when a subtype is substituted. Our adaptation asks whether replacing one expression with another preserves what the surrounding reasoning is entitled to rely on. It is an analogy for examining meaning in context, rather than a claim that natural-language paraphrases are software subtypes.</p>
+      
+    
+      
+    <p>We also adapt the <a href="https://www.rfc-editor.org/rfc/rfc1122.html#section-1.2.2">robustness principle</a> to this setting. We favor precise expression while allowing different wording when it preserves the relevant meaning. That flexibility concerns expression; an uncertain interpretation still needs to remain visible for review. Familiar phrasing should not silently strengthen a claim or remove a condition.</p>
+      
+    
+      
+    <p>Computational tools can help by making the consequences of an interpretation easier to inspect. If we represent a statement as a resource commitment, it may conflict with another scheduled activity. If we represent it as a conditional proposal, it may create an outstanding requirement. Comparing those consequences can help people identify the clarification the decision needs.</p>
+      
+    
+      
+    <p>The computation does not, by itself, settle which reading the speaker intended. A conflict might reveal a mistaken interpretation, an incorrect fact elsewhere in the model, or a real disagreement in the work. We need to return to the source and examine the reason for the conflict. A faithful interpretation can reveal that a conclusion is unsupported.</p>
+      
+    
+      
+    <p>This gives us a useful discipline for handling ambiguity. We can record the plausible readings, identify which conclusions depend on the difference, and seek clarification where it matters. If one reading permits a purchase while another leaves authorization unresolved, the ambiguity affects the decision directly.</p>
+      
+    
+      
+    <p>We want the interpretation to remain traceable to the statement that prompted it. The source wording, its author and date, the relevant context, and the assumptions used to interpret it can all matter. Keeping that connection allows another person to examine why the model contains a particular claim and to challenge the interpretation without reconstructing the entire conversation.</p>
+      
+    
+      
+    <p>Understanding what someone said also leaves a separate question about whether the claim is adequately supported. A report that a trial passed needs the relevant evidence and assessment criteria. A statement granting permission needs to be evaluated against the authority recognized by the decision model. A clear interpretation gives us a claim to examine; the reasoning modules assess how it contributes to the decision.</p>
+      
+    
+      
+    <p>This distinction matters when information crosses organizational boundaries. Quality may use “accepted” to describe a technical judgment, while Purchasing needs permission to spend. Preserving the original scope lets the technical finding contribute to the purchasing decision while keeping the remaining requirements visible.</p>
+      
+    
+      
+    <p>Interpretations may need revision as context develops. A later message may identify the intended material, correct a date, or explain that a statement was a proposal. When a recorded interpretation changes, the conclusions that depend on it need attention. Explicit dependencies give software a basis for finding those consequences across modules.</p>
+      
+    
+      
+    <p>Our aim is to direct interpretive effort toward differences that matter for the work. A change in meaning that affects an option, an obligation, or the support for a conclusion deserves examination. Shared definitions and phrase patterns can reduce repeated uncertainty while leaving room for people to explain circumstances the model does not yet capture.</p>
+      
+    
+      
+    <p>At Hermod Labs, this is part of helping humans think. We want people to see how their language has been interpreted, inspect the consequences, and revise that interpretation when the context warrants it. Computational hermeneutics makes interpretation an explicit part of the decision, with a path from the original statement to the reasoning that relies on it.</p>
+      
+    
+    
+
+
+
+
+    <nav class="essay-followup" aria-label="Continue reading">
+
+      <a href="../pattern-languages-for-human-decisions/index.html" rel="prev"><span>Previous essay</span><strong>Pattern Languages for Human Decisions</strong></a>
+
+
+      <a href="../requirements-engineering-for-human-decisions/index.html" rel="next"><span>Follow-up essay <span aria-hidden="true">→</span></span><strong>Requirements Engineering for Human Decisions</strong></a>
+
+    </nav>
+
+    <nav class="article-category-return" aria-label="More articles">
+      <a class="text-link" href="../ways-of-thinking/index.html">More in Ways of Thinking <span aria-hidden="true">→</span></a>
+      <a class="text-link" href="../index.html">All articles <span aria-hidden="true">→</span></a>
+    </nav>
+
+  </article>
+</div>
+
+
+
+
+
+
+
+
+
+
+</main>
+  <footer class="site-footer">
+  <div class="wrap">
+    <section class="footer-action" aria-labelledby="footer-action-heading">
+      <div>
+        <p class="eyebrow">Put the ideas to work</p>
+        <h2 id="footer-action-heading">A decision of your own?<br><em>Try Decision Lab.</em></h2>
+        <p class="footer-action-copy">Review your objectives, evidence, and assumptions. Keep a record of the reasoning behind your choice.</p>
+      </div>
+      <div class="footer-action-links">
+        <a class="button" data-decision-lab-link data-site-root="../../index.html" hidden>Try Decision Lab for free <span aria-hidden="true">↗</span></a>
+        <a class="text-link" href="../../tools/decision-lab/index.html">Decision Lab details <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <div class="footer-directory">
+      <div class="footer-identity">
+        <a class="footer-brand" href="../../index.html" aria-label="Hermod Labs home"><img src="../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
+        <p class="footer-description">Tools and ideas for decisions you can inspect and revise.</p>
+        <a class="footer-contact" href="mailto:contact@hermodlabs.com">contact@hermodlabs.com <span aria-hidden="true">↗</span></a>
+      </div>
+
+      <nav class="footer-navigation" aria-label="Footer navigation">
+        <div class="footer-link-group">
+          <h3 id="footer-reading-heading">Articles</h3>
+          <ul aria-labelledby="footer-reading-heading">
+            <li><a href="../index.html">All articles</a></li>
+
+            <li><a href="../start-here/index.html">Start Here</a></li>
+
+            <li><a href="../ways-of-thinking/index.html">Ways of Thinking</a></li>
+
+            <li><a href="../how-to-build/index.html">How to Build <span class="footer-coming-soon">(coming soon)</span></a></li>
+
+            <li><a href="../../series/the-arrangement-problem/index.html">The Arrangement Problem</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-group">
+          <h3 id="footer-tools-heading">Tools</h3>
+          <ul aria-labelledby="footer-tools-heading">
+            <li><a href="../../tools/decision-lab/index.html">Decision Lab</a></li>
+            <li><a href="../../tools/hermod-gg/index.html">Hermod.gg</a></li>
+            <li><a href="../../tools/index.html">All tools</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-group">
+          <h3 id="footer-platform-heading">Platform</h3>
+          <ul aria-labelledby="footer-platform-heading">
+            <li><a href="../../about/index.html">About Hermod Labs</a></li>
+            <li><a href="../../platform/index.html">Explore the platform</a></li>
+            <li><a href="../../platform/index.html#concepts">Core concepts</a></li>
+            <li><a href="../../index.html#pilot-inquiry">Discuss a pilot</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2026 Hermod Labs</p>
+      <p class="footer-signoff">Automated reasoning. Human judgment.</p>
+      <a class="footer-top-link" href="#main">Back to top <span aria-hidden="true">↑</span></a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

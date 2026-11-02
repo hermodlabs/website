@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-V2474V50XP');
+</script>
+
+
+  <title>Reasoning Modules for Human Decisions | Hermod Labs</title>
+  <meta name="description" content="Organize evidence, claims, and rules around manageable questions while preserving the scope and dependencies of each conclusion.">
+  <link rel="canonical" href="https://hermodlabs.com/articles/reasoning-modules-for-human-decisions/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Hermod Labs">
+  <meta property="og:title" content="Reasoning Modules for Human Decisions | Hermod Labs">
+  <meta property="og:description" content="Organize evidence, claims, and rules around manageable questions while preserving the scope and dependencies of each conclusion.">
+  <meta property="og:url" content="https://hermodlabs.com/articles/reasoning-modules-for-human-decisions/">
+  <meta property="og:image" content="https://hermodlabs.com/assets/hermod-wordmark.jpeg">
+  <meta name="theme-color" content="#7850c2">
+  <link rel="icon" type="image/jpeg" href="../../assets/hermod-symbol.jpeg">
+  <link rel="stylesheet" href="../../assets/site.css">
+
+  <script src="../../assets/feature-flags.js" defer></script>
+  <script src="../../assets/site.js" defer></script>
+
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+  <a class="brand" href="../../index.html" aria-label="Hermod Labs home"><img src="../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">+</span></button>
+  <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
+    <a href="../index.html" aria-current="page">Articles</a><a href="../../tools/index.html">Tools</a><a href="../../platform/index.html">Platform</a>
+    <a class="button nav-cta" data-decision-lab-link data-site-root="../../index.html" hidden>Try our free tool <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+
+  <main id="main" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="reading-header wrap">
+  <p class="reading-breadcrumb"><a href="../index.html">All articles</a><span aria-hidden="true">/</span><a class="article-category" href="../ways-of-thinking/index.html">Ways of Thinking</a></p>
+
+  <p class="eyebrow">Ways of Thinking</p>
+
+  <h1>Reasoning Modules for Human Decisions</h1>
+  <p class="reading-meta">Hermod Labs <span aria-hidden="true">·</span> 6 min read</p>
+  <ul class="article-tags" aria-label="Article topics">
+    
+    <li><a href="../topics/reasoning-modules/index.html">Reasoning modules</a></li>
+    
+    <li><a href="../topics/evidence/index.html">Evidence</a></li>
+    
+    <li><a href="../topics/dependencies/index.html">Dependencies</a></li>
+    
+  </ul>
+</header>
+<div class="reading-layout wrap standalone-reading">
+
+  <article class="article-body" id="article-content" aria-label="Reasoning Modules for Human Decisions">
+    
+      
+    <p>A useful answer to a difficult question often arrives as a conclusion: “The material is suitable,” “The line is available,” or “The purchase is authorized.” Each statement compresses work that someone has done. To rely on it, another person needs to know what it establishes and what supports it.</p>
+      
+    
+      
+    <p>In the previous article, we described ontology engineering as the work of defining the concepts and relationships a decision needs. Reasoning modules organize the work we do with those meanings. They give us manageable places to examine how particular conclusions follow and how those conclusions contribute to a larger decision.</p>
+      
+    
+      
+    <p>In our approach, a reasoning module brings together a question, the concepts it uses, the relevant claims and evidence, and the rules connecting them to possible conclusions. It also makes the scope of those conclusions and the conditions for relying on them available for examination. A module can contain several connected lines of reasoning, including reasons that support different answers.</p>
+      
+    
+      
+    <p>Consider the supplier decision we have used throughout this series. One module might address whether a proposed material satisfies the technical requirements for a particular production process. Another might address whether the necessary trial can fit into the production schedule. A third might address purchasing authority.</p>
+      
+    
+      
+    <p>The technical module needs a precise question. “Is this a good supplier?” could involve many unrelated judgments. “Does this material satisfy these requirements for this process?” gives the work a clearer scope. It directs attention toward the relevant specification, trial results, review criteria, and conditions of use.</p>
+      
+    
+      
+    <p>Within that module, some claims may be supported by recorded observations. Others may be assumptions that still need examination. The report may establish what happened during a trial, while the expectation that the trial represents routine production depends on additional reasoning. Keeping those roles visible helps a reviewer identify what the conclusion actually rests on.</p>
+      
+    
+      
+    <p>The result should preserve that scope. A finding that the material satisfies the requirements within a particular temperature range gives another part of the decision something specific to use. The evidence and reasoning remain available when someone needs to examine why that finding was reached.</p>
+      
+    
+      
+    <p>One source of inspiration is the <a href="https://research-portal.uu.nl/en/publications/the-aspic-framework-for-structured-argumentation-a-tutorial/">ASPIC+ framework for structured argumentation</a>, explained in a tutorial by Sanjay Modgil and Henry Prakken. We are not using ASPIC+ as our reasoning framework. We take inspiration from its attention to the internal structure of arguments.</p>
+      
+    
+      
+    <p>ASPIC+ builds arguments from premises through inference rules. It distinguishes strict rules, whose conclusions follow deductively when their premises hold, from defeasible rules, whose inferences can be defeated by other arguments. It also distinguishes challenges to uncertain premises, conclusions of defeasible inferences, and the applicability of defeasible rules. Explicit preferences can affect whether certain attacks succeed.</p>
+      
+    
+      
+    <p>For our purposes, this encourages a practical discipline: identify which part of the reasoning a challenge concerns. In the supplier example, someone might dispute whether a report describes the intended material, present evidence against its suitability, or question whether trial conditions justify an inference about regular production. Those concerns call for different investigations.</p>
+      
+    
+      
+    <p>A module should give people enough structure to locate such concerns. If the issue is the identity of the tested material, repeating the calculation on the same report will leave that issue unresolved. If the issue is whether trial conditions represent production, the measurements may be accurate while the broader conclusion still needs support.</p>
+      
+    
+      
+    <p>This is one reason we care about the reasoning between evidence and conclusion. A valid deductive step can rely on premises that need examination. A reasonable provisional judgment can need reconsideration when new evidence arrives. People reviewing a module should be able to identify which claims they accept, which they question, and how that affects the result.</p>
+      
+    
+      
+    <p>A module also needs to accommodate unfinished work. A missing review, an unresolved disagreement, and an adverse finding describe different situations. Each may affect whether a larger decision can proceed, but each calls for a different response. The module’s contribution can include outstanding conditions and obligations as well as supported conclusions.</p>
+      
+    
+      
+    <p>Suppose the technical module has a satisfactory finding, while the scheduling module cannot yet establish a time for the required trial of a different production setup. The larger decision needs both results with their meanings intact. Completing one part of the reasoning does not settle the other question.</p>
+      
+    
+      
+    <p>Composition is the work of bringing these contributions together. A module using another module’s conclusion needs to establish that the result fits the question it is trying to answer. A finding about one process must retain that process as part of its scope. A resource reservation must retain its time interval. An authorization must retain the action and limits it covers.</p>
+      
+    
+      
+    <p>This is where the ontology becomes essential. Shared definitions help the modules refer to the same material, resource, activity, or person. Their rules and requirements then determine whether the contributions can be used together. When a technical finding covers one material revision and a proposed order names another, the difference needs to remain visible at the point of integration.</p>
+      
+    
+      
+    <p>We also need to preserve shared dependencies. Two modules may rely on the same trial report. Their conclusions represent two uses of that evidence; the existence of two modules does not make the evidence independent. If the report is later corrected, both lines of reasoning may need attention. Keeping the common source visible helps people understand the reach of the change.</p>
+      
+    
+      
+    <p>The same applies to assumptions. A technical assessment and a cost estimate might both depend on an expected production rate. If experience shows that rate was too optimistic, the consequences can extend into both modules and then into the overall arrangement. Recorded dependencies give software a basis for locating those consequences without asking someone to remember every place the assumption was used.</p>
+      
+    
+      
+    <p>Reuse requires care at a different boundary. We can reuse the structure of a qualification module across supplier decisions: the kinds of evidence it expects, the relationships it preserves, and the questions it helps answer. Each use still needs the facts, standards, and evidence appropriate to that case. A familiar reasoning pattern helps organize a new assessment; its earlier conclusion retains the scope of the earlier assessment.</p>
+      
+    
+      
+    <p>Choosing module boundaries is therefore an engineering judgment. A useful module addresses a coherent question that someone can review and contributes a result another part of the decision can interpret. If a module constantly needs to inspect unrelated details elsewhere, its scope or its connections may need revision. If it gathers too many different questions, people may struggle to understand what its overall result means.</p>
+      
+    
+      
+    <p>We can examine a proposed module using concrete cases. We can check what happens when evidence is missing, when a finding applies to the wrong scope, or when a supporting assumption changes. We can also check cases where the evidence and conditions should support the intended conclusion. These exercises help us assess both the local reasoning and the way its results are used by other modules.</p>
+      
+    
+      
+    <p>For a human reviewer, the value is being able to concentrate on the question that needs attention while retaining a path into its supporting detail. For someone relying on the result, the value is knowing what has been established, what remains unresolved, and what would require reconsideration.</p>
+      
+    
+      
+    <p>Software can help maintain those relationships, apply the specified rules, check combinations, and assemble an account of the reasoning. Our design goal is for the resulting explanation to remain connected to the claims and dependencies used in the assessment, so people can inspect and revise the basis of a result.</p>
+      
+    
+      
+    <p>Reasoning modules give hierarchical decomposition a practical unit of work. Ontology engineering supplies the meanings, shared conventions make the structure reusable, and modules organize how evidence and rules bear on particular questions. Together, they help people contribute pieces of understanding to a decision larger than any one person can hold in mind at once.</p>
+      
+    
+    
+
+
+
+
+    <nav class="essay-followup" aria-label="Continue reading">
+
+      <a href="../ontology-engineering-for-human-decisions/index.html" rel="prev"><span>Previous essay</span><strong>Ontology Engineering for Human Decisions</strong></a>
+
+
+      <a href="../pattern-languages-for-human-decisions/index.html" rel="next"><span>Follow-up essay <span aria-hidden="true">→</span></span><strong>Pattern Languages for Human Decisions</strong></a>
+
+    </nav>
+
+    <nav class="article-category-return" aria-label="More articles">
+      <a class="text-link" href="../ways-of-thinking/index.html">More in Ways of Thinking <span aria-hidden="true">→</span></a>
+      <a class="text-link" href="../index.html">All articles <span aria-hidden="true">→</span></a>
+    </nav>
+
+  </article>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</main>
+  <footer class="site-footer">
+  <div class="wrap">
+    <section class="footer-action" aria-labelledby="footer-action-heading">
+      <div>
+        <p class="eyebrow">Put the ideas to work</p>
+        <h2 id="footer-action-heading">A decision of your own?<br><em>Try Decision Lab.</em></h2>
+        <p class="footer-action-copy">Review your objectives, evidence, and assumptions. Keep a record of the reasoning behind your choice.</p>
+      </div>
+      <div class="footer-action-links">
+        <a class="button" data-decision-lab-link data-site-root="../../index.html" hidden>Try Decision Lab for free <span aria-hidden="true">↗</span></a>
+        <a class="text-link" href="../../tools/decision-lab/index.html">Decision Lab details <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <div class="footer-directory">
+      <div class="footer-identity">
+        <a class="footer-brand" href="../../index.html" aria-label="Hermod Labs home"><img src="../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
+        <p class="footer-description">Tools and ideas for decisions you can inspect and revise.</p>
+        <a class="footer-contact" href="mailto:contact@hermodlabs.com">contact@hermodlabs.com <span aria-hidden="true">↗</span></a>
+      </div>
+
+      <nav class="footer-navigation" aria-label="Footer navigation">
+        <div class="footer-link-group">
+          <h3 id="footer-reading-heading">Articles</h3>
+          <ul aria-labelledby="footer-reading-heading">
+            <li><a href="../index.html">All articles</a></li>
+
+            <li><a href="../start-here/index.html">Start Here</a></li>
+
+            <li><a href="../ways-of-thinking/index.html">Ways of Thinking</a></li>
+
+            <li><a href="../how-to-build/index.html">How to Build <span class="footer-coming-soon">(coming soon)</span></a></li>
+
+            <li><a href="../../series/the-arrangement-problem/index.html">The Arrangement Problem</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-group">
+          <h3 id="footer-tools-heading">Tools</h3>
+          <ul aria-labelledby="footer-tools-heading">
+            <li><a href="../../tools/decision-lab/index.html">Decision Lab</a></li>
+            <li><a href="../../tools/hermod-gg/index.html">Hermod.gg</a></li>
+            <li><a href="../../tools/index.html">All tools</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-group">
+          <h3 id="footer-platform-heading">Platform</h3>
+          <ul aria-labelledby="footer-platform-heading">
+            <li><a href="../../about/index.html">About Hermod Labs</a></li>
+            <li><a href="../../platform/index.html">Explore the platform</a></li>
+            <li><a href="../../platform/index.html#concepts">Core concepts</a></li>
+            <li><a href="../../index.html#pilot-inquiry">Discuss a pilot</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2026 Hermod Labs</p>
+      <p class="footer-signoff">Automated reasoning. Human judgment.</p>
+      <a class="footer-top-link" href="#main">Back to top <span aria-hidden="true">↑</span></a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

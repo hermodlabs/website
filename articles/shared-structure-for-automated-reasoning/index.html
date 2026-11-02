@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-V2474V50XP');
+</script>
+
+
+  <title>Shared Structure for Automated Reasoning | Hermod Labs</title>
+  <meta name="description" content="Shared concepts, defined relationships, and explicit conditions give software a basis for checking decisions and tracing their consequences.">
+  <link rel="canonical" href="https://hermodlabs.com/articles/shared-structure-for-automated-reasoning/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Hermod Labs">
+  <meta property="og:title" content="Shared Structure for Automated Reasoning | Hermod Labs">
+  <meta property="og:description" content="Shared concepts, defined relationships, and explicit conditions give software a basis for checking decisions and tracing their consequences.">
+  <meta property="og:url" content="https://hermodlabs.com/articles/shared-structure-for-automated-reasoning/">
+  <meta property="og:image" content="https://hermodlabs.com/assets/hermod-wordmark.jpeg">
+  <meta name="theme-color" content="#7850c2">
+  <link rel="icon" type="image/jpeg" href="../../assets/hermod-symbol.jpeg">
+  <link rel="stylesheet" href="../../assets/site.css">
+
+  <script src="../../assets/feature-flags.js" defer></script>
+  <script src="../../assets/site.js" defer></script>
+
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+  <a class="brand" href="../../index.html" aria-label="Hermod Labs home"><img src="../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">+</span></button>
+  <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
+    <a href="../index.html" aria-current="page">Articles</a><a href="../../tools/index.html">Tools</a><a href="../../platform/index.html">Platform</a>
+    <a class="button nav-cta" data-decision-lab-link data-site-root="../../index.html" hidden>Try our free tool <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+
+  <main id="main" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="reading-header wrap">
+  <p class="reading-breadcrumb"><a href="../index.html">All articles</a><span aria-hidden="true">/</span><a class="article-category" href="../ways-of-thinking/index.html">Ways of Thinking</a></p>
+
+  <p class="eyebrow">Ways of Thinking</p>
+
+  <h1>Shared Structure for Automated Reasoning</h1>
+  <p class="reading-meta">Hermod Labs <span aria-hidden="true">·</span> 6 min read</p>
+  <ul class="article-tags" aria-label="Article topics">
+    
+    <li><a href="../topics/conventions/index.html">Conventions</a></li>
+    
+    <li><a href="../topics/ontology-engineering/index.html">Ontology engineering</a></li>
+    
+    <li><a href="../topics/dependencies/index.html">Dependencies</a></li>
+    
+  </ul>
+</header>
+<div class="reading-layout wrap standalone-reading">
+
+  <article class="article-body" id="article-content" aria-label="Shared Structure for Automated Reasoning">
+    
+      
+    <p>In the previous article, we described how hierarchical decomposition helps people work on manageable parts of a decision and integrate those parts into a larger whole. That approach raises another question: what shared structure allows software to help with the integration?</p>
+      
+    
+      
+    <p>At Hermod Labs, we take an opinionated position about how decisions should be represented. We favor explicit concepts, relationships with defined meanings, and conclusions whose supporting conditions remain available for examination. These are deliberate choices about how to organize reasoning. By adopting them consistently, we give the software a basis for doing more of the work automatically.</p>
+      
+    
+      
+    <p>Ruby on Rails offers a useful analogy. Rails is a framework for building web applications with a <a href="https://rubyonrails.org/doctrine">design philosophy</a> that makes choices on behalf of developers about how common parts of an application should be organized. Those choices reduce the number of recurring decisions a developer has to make and give the framework a structure it can rely on.</p>
+      
+    
+      
+    <p>For example, Rails uses <a href="https://guides.rubyonrails.org/active_record_basics.html#naming-conventions">naming conventions</a> to connect a model called “Book” with a database table called “books.” A developer following that convention can rely on the framework to establish the mapping. The convention settles a recurring question, and the software implements the consequences.</p>
+      
+    
+      
+    <p>That is the relationship we want to draw attention to. An opinionated framework can automate work because it has already committed to particular answers about how things fit together. People who follow those commitments can use the resulting behavior repeatedly.</p>
+      
+    
+      
+    <p>Our equivalent is a commitment to shared structure in decision models.</p>
+      
+    
+      
+    <p>Consider the statement “the supplier is approved.” Within a team, people may understand what that means from the surrounding conversation. Across a larger decision, it could refer to technical qualification, acceptance of commercial terms, or permission to place an order. Each interpretation supports different next steps.</p>
+      
+    
+      
+    <p>We choose to preserve those distinctions. A technical finding should identify what was assessed and the conditions under which it applies. An authorization should identify the action it permits and the authority supporting it. Evidence should remain connected to the claim it supports. A planned activity should remain distinguishable from a completed one.</p>
+      
+    
+      
+    <p>These choices give us recurring structures that software can recognize. Once the relevant relationships and rules have been defined, the software can check whether a proposed action has the prerequisites the model requires. It can identify conditions that remain unestablished and show how a conclusion depends on other parts of the model.</p>
+      
+    
+      
+    <p>The opinion becomes operational through definitions and rules. Simply preferring clear reasoning would leave too much unspecified. We have to decide which distinctions the model preserves, how statements express them, and what follows when those statements are combined.</p>
+      
+    
+      
+    <p>This is why ontology engineering is central to our approach. It defines the kinds of things the model recognizes and the relationships between them. Phrase patterns give people consistent ways to express statements using that structure. Reasoning modules organize those statements and rules around particular questions. Together, they provide a common basis for interpretation and computation.</p>
+      
+    
+      
+    <p>Return to the supplier example. Suppose a qualifying trial needs exclusive use of a production line for two hours. An existing customer order also needs that line during part of the same period. The model identifies the same resource in both activities, records their time requirements, and includes a rule that the line can support only one activity at a time.</p>
+      
+    
+      
+    <p>Those commitments make a particular automation possible: checking for incompatible demands on the line. The software can apply the same rule whenever activities compete for that modeled resource. If someone changes the trial time, it can check the revised combination using the same definitions.</p>
+      
+    
+      
+    <p>The effort goes into describing the situation and establishing the rule. Once that work has been done, each additional combination can be checked without someone reconstructing the conflict from separate schedules.</p>
+      
+    
+      
+    <p>The same approach applies to prerequisites. Suppose the purchasing model requires both a satisfactory technical finding and spending authorization before an order can proceed. Recording a satisfactory finding establishes the technical condition. The authorization condition remains outstanding until the model contains the authorization it requires.</p>
+      
+    
+      
+    <p>We can automate that check because we have chosen to represent the two conditions separately and defined how they contribute to the decision. If both had been collapsed into a single “approved” status, the information needed for that check would have been lost.</p>
+      
+    
+      
+    <p>These examples also show why the position is philosophical. We believe people benefit from being able to inspect the distinctions on which a decision depends. We are willing to ask for more explicit modeling in order to preserve those distinctions. We prefer structures that let a conclusion be examined, reused, and reconsidered as circumstances change. Those values influence the work we ask people to do and the automation we build around it.</p>
+      
+    
+      
+    <p>There is a practical exchange involved. Someone has to identify the relevant concepts, resolve ambiguous terms, and state the conditions that matter. Shared conventions can make that effort reusable. A new supplier decision may involve different materials, reviewers, and schedules while using the same ways of representing evidence, resource demands, and authorization.</p>
+      
+    
+      
+    <p>This is also how the approach supports hierarchical decomposition. Modules built around shared meanings can contribute to a larger decision with clearer expectations about what each result establishes. A scheduling module can use the resource requirements supplied by a trial module. A purchasing module can use a technical finding while retaining its scope. Common conventions reduce the interpretation that must be repeated at every connection.</p>
+      
+    
+      
+    <p>The conventions we choose concern the structure of reasoning. The people responsible for a decision still supply its goals, standards, and acceptable tradeoffs. One organization may require a single reviewer; another may require two independent reviewers. Both can express their requirements within a common framework that represents reviewers, independence, findings, and prerequisites.</p>
+      
+    
+      
+    <p>An opinionated approach therefore gives us a stable way to express meaningful differences. People can disagree about a requirement while agreeing on how that requirement is recorded, what evidence bears on it, and which decisions depend on it. Making those relationships explicit gives the disagreement a place where it can be examined.</p>
+      
+    
+      
+    <p>Our conventions also need to be open to revision. If a useful distinction cannot be expressed, or a shared term carries different meanings in different contexts, that is a reason to examine the model. A convention earns its place through the understanding and useful computation it supports. When its meaning changes, the reasoning that relies on it needs attention too.</p>
+      
+    
+      
+    <p>The goal is to make more human understanding available to the software in a form it can work with. With that structure in place, we can automate checks across candidate arrangements, maintain dependencies, and trace the consequences of changes. People can then spend more attention examining evidence and deciding what the results mean for their work.</p>
+      
+    
+      
+    <p>This follows the same general principle that makes an opinionated framework useful: settle recurring structural choices, implement their consequences, and let people build on them. For Hermod Labs, shared structure is a philosophical commitment with a practical payoff. It gives us a basis for automation that people can understand, inspect, and use to think through a larger decision.</p>
+      
+    
+    
+
+
+
+
+    <nav class="essay-followup" aria-label="Continue reading">
+
+      <a href="../hierarchical-decomposition-for-human-decisions/index.html" rel="prev"><span>Previous essay</span><strong>Hierarchical Decomposition for Human Decisions</strong></a>
+
+
+      <a href="../ontology-engineering-for-human-decisions/index.html" rel="next"><span>Follow-up essay <span aria-hidden="true">→</span></span><strong>Ontology Engineering for Human Decisions</strong></a>
+
+    </nav>
+
+    <nav class="article-category-return" aria-label="More articles">
+      <a class="text-link" href="../ways-of-thinking/index.html">More in Ways of Thinking <span aria-hidden="true">→</span></a>
+      <a class="text-link" href="../index.html">All articles <span aria-hidden="true">→</span></a>
+    </nav>
+
+  </article>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</main>
+  <footer class="site-footer">
+  <div class="wrap">
+    <section class="footer-action" aria-labelledby="footer-action-heading">
+      <div>
+        <p class="eyebrow">Put the ideas to work</p>
+        <h2 id="footer-action-heading">A decision of your own?<br><em>Try Decision Lab.</em></h2>
+        <p class="footer-action-copy">Review your objectives, evidence, and assumptions. Keep a record of the reasoning behind your choice.</p>
+      </div>
+      <div class="footer-action-links">
+        <a class="button" data-decision-lab-link data-site-root="../../index.html" hidden>Try Decision Lab for free <span aria-hidden="true">↗</span></a>
+        <a class="text-link" href="../../tools/decision-lab/index.html">Decision Lab details <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <div class="footer-directory">
+      <div class="footer-identity">
+        <a class="footer-brand" href="../../index.html" aria-label="Hermod Labs home"><img src="../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
+        <p class="footer-description">Tools and ideas for decisions you can inspect and revise.</p>
+        <a class="footer-contact" href="mailto:contact@hermodlabs.com">contact@hermodlabs.com <span aria-hidden="true">↗</span></a>
+      </div>
+
+      <nav class="footer-navigation" aria-label="Footer navigation">
+        <div class="footer-link-group">
+          <h3 id="footer-reading-heading">Articles</h3>
+          <ul aria-labelledby="footer-reading-heading">
+            <li><a href="../index.html">All articles</a></li>
+
+            <li><a href="../start-here/index.html">Start Here</a></li>
+
+            <li><a href="../ways-of-thinking/index.html">Ways of Thinking</a></li>
+
+            <li><a href="../how-to-build/index.html">How to Build <span class="footer-coming-soon">(coming soon)</span></a></li>
+
+            <li><a href="../../series/the-arrangement-problem/index.html">The Arrangement Problem</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-group">
+          <h3 id="footer-tools-heading">Tools</h3>
+          <ul aria-labelledby="footer-tools-heading">
+            <li><a href="../../tools/decision-lab/index.html">Decision Lab</a></li>
+            <li><a href="../../tools/hermod-gg/index.html">Hermod.gg</a></li>
+            <li><a href="../../tools/index.html">All tools</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-group">
+          <h3 id="footer-platform-heading">Platform</h3>
+          <ul aria-labelledby="footer-platform-heading">
+            <li><a href="../../about/index.html">About Hermod Labs</a></li>
+            <li><a href="../../platform/index.html">Explore the platform</a></li>
+            <li><a href="../../platform/index.html#concepts">Core concepts</a></li>
+            <li><a href="../../index.html#pilot-inquiry">Discuss a pilot</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2026 Hermod Labs</p>
+      <p class="footer-signoff">Automated reasoning. Human judgment.</p>
+      <a class="footer-top-link" href="#main">Back to top <span aria-hidden="true">↑</span></a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

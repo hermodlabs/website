@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-V2474V50XP');
+</script>
+
+
+  <title>Ontology Engineering for Human Decisions | Hermod Labs</title>
+  <meta name="description" content="Define the concepts, relationships, identities, and conditions a decision needs to preserve as its parts are combined.">
+  <link rel="canonical" href="https://hermodlabs.com/articles/ontology-engineering-for-human-decisions/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Hermod Labs">
+  <meta property="og:title" content="Ontology Engineering for Human Decisions | Hermod Labs">
+  <meta property="og:description" content="Define the concepts, relationships, identities, and conditions a decision needs to preserve as its parts are combined.">
+  <meta property="og:url" content="https://hermodlabs.com/articles/ontology-engineering-for-human-decisions/">
+  <meta property="og:image" content="https://hermodlabs.com/assets/hermod-wordmark.jpeg">
+  <meta name="theme-color" content="#7850c2">
+  <link rel="icon" type="image/jpeg" href="../../assets/hermod-symbol.jpeg">
+  <link rel="stylesheet" href="../../assets/site.css">
+
+  <script src="../../assets/feature-flags.js" defer></script>
+  <script src="../../assets/site.js" defer></script>
+
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+  <a class="brand" href="../../index.html" aria-label="Hermod Labs home"><img src="../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">+</span></button>
+  <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
+    <a href="../index.html" aria-current="page">Articles</a><a href="../../tools/index.html">Tools</a><a href="../../platform/index.html">Platform</a>
+    <a class="button nav-cta" data-decision-lab-link data-site-root="../../index.html" hidden>Try our free tool <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+
+  <main id="main" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="reading-header wrap">
+  <p class="reading-breadcrumb"><a href="../index.html">All articles</a><span aria-hidden="true">/</span><a class="article-category" href="../ways-of-thinking/index.html">Ways of Thinking</a></p>
+
+  <p class="eyebrow">Ways of Thinking</p>
+
+  <h1>Ontology Engineering for Human Decisions</h1>
+  <p class="reading-meta">Hermod Labs <span aria-hidden="true">·</span> 7 min read</p>
+  <ul class="article-tags" aria-label="Article topics">
+    
+    <li><a href="../topics/ontology-engineering/index.html">Ontology engineering</a></li>
+    
+    <li><a href="../topics/requirements/index.html">Requirements</a></li>
+    
+    <li><a href="../topics/evidence/index.html">Evidence</a></li>
+    
+  </ul>
+</header>
+<div class="reading-layout wrap standalone-reading">
+
+  <article class="article-body" id="article-content" aria-label="Ontology Engineering for Human Decisions">
+    
+      
+    <p>A trial report, a technical finding, and permission to purchase can all concern the same supplier. They establish different things. A useful decision model needs to preserve those differences wherever the information is used.</p>
+      
+    
+      
+    <p>In the previous article, we argued that shared structure gives software a basis for automation. Ontology engineering is where we work out what that structure means: which kinds of things the model recognizes, how they relate, and which distinctions a decision depends on.</p>
+      
+    
+      
+    <p>In knowledge engineering, an <a href="https://tomgruber.org/writing/ontolingua-kaj-1993/">ontology specifies the concepts and relationships used to represent a domain</a>. For our supplier decision, that domain might include materials, trials, production resources, evidence, findings, and authorizations. The ontology gives us defined ways to describe them and connect them.</p>
+      
+    
+      
+    <p>Ontology engineering is the work of developing and maintaining that representation. It involves learning how people understand the work, choosing useful distinctions, expressing their meanings, and checking whether the resulting model supports the decisions it is meant to help with.</p>
+      
+    
+      
+    <p>We begin with a purpose. In their guide to ontology development, Natalya Noy and Deborah McGuinness describe using <a href="https://protege.stanford.edu/publications/ontology_development/ontology101-noy-mcguinness.html">competency questions</a>: questions a knowledge base built with the ontology should be able to answer. These questions help establish the scope and provide a basis for evaluating the design.</p>
+      
+    
+      
+    <p>For the supplier decision, we might need to establish which material was tested, which production conditions the finding covers, what resources a further trial requires, and who can authorize a purchase. Each question tells us something about the information and relationships our model needs to preserve.</p>
+      
+    
+      
+    <p>This also helps us choose a useful level of detail. If the decision concerns whether to order a particular material, identifying only its supplier may be too coarse. One supplier can provide several materials with different properties. If a finding applies only to a particular batch, the batch must have a place in the model too. We add distinctions where they change what the decision can reasonably rely on.</p>
+      
+    
+      
+    <p>The relationships deserve as much attention as the things they connect. A production line is a kind of resource. A particular line is an instance of that kind. A pump may be part of that line. “Kind of,” “instance of,” and “part of” express different relationships. Keeping them distinct helps us describe both the categories in the model and the composition of the actual operation.</p>
+      
+    
+      
+    <p>Other relationships carry the reasoning between people. A report records observations from a trial. A reviewer uses evidence to reach a finding against a standard. An authorization permits a specified action within a defined scope. Representing those connections gives us a way to follow how evidence contributes to a decision.</p>
+      
+    
+      
+    <p>Consider a report marked “accepted.” That could mean someone checked the document for completeness, or that a reviewer found the tested material suitable for a particular use. The distinction matters if purchasing relies on that acceptance. Ontology engineering gives the team a place to resolve the meaning and represent the relevant judgment explicitly.</p>
+      
+    
+      
+    <p>We need the people who do the work to help establish these meanings. Purchasing, Quality, and Operations may use different terms for the same thing, or the same term for different things. Their everyday language is evidence about how the work is understood. We can preserve familiar wording while making its interpretation clear in context.</p>
+      
+    
+      
+    <p>Identity is another practical modeling decision. Suppose Quality refers to the “pilot line” and Operations refers to “Line 1.” If those names identify the same physical resource, the model needs to preserve that identity. Otherwise, two activities could appear to use different resources even though they compete for the same equipment. Conversely, two machines of the same type still need separate identities when each can be scheduled independently.</p>
+      
+    
+      
+    <p>Roles create a related problem. A person can prepare one report and review another. “Preparer” and “reviewer” describe their participation in particular activities. If a requirement calls for different people to prepare and review a given report, the model needs to connect each role to the person performing it and to that report. Two role labels alone do not establish that two people are involved.</p>
+      
+    
+      
+    <p>Scope and time also affect meaning. A technical finding may apply to a particular material, process, and temperature range. An authorization may cover a specified purchase amount or period. Recording a positive result without those conditions could let another part of the decision rely on it too broadly. The ontology needs a way to represent the conditions that limit its use.</p>
+      
+    
+      
+    <p>These choices give reasoning something precise to operate on. A decision model combines the ontology with facts about a case and the requirements and rules governing an acceptable result. If a rule requires an independent review for each qualifying trial, identifying an activity as a qualifying trial gives the software a basis for identifying that review requirement. The recorded participants can then be checked against the model’s definition of independence.</p>
+      
+    
+      
+    <p>Missing information needs a deliberate interpretation as well. A missing review record leaves a different situation from a completed review with an adverse finding. A policy may require evidence of a satisfactory review before proceeding. The model can keep that prerequisite unresolved while preserving the distinction between an unrecorded result and a known negative result.</p>
+      
+    
+      
+    <p>This is part of our opinionated position. We want a model to retain differences that affect what someone can conclude or do. That gives automation a more useful basis: it can show which condition remains unresolved and how that condition affects the larger decision.</p>
+      
+    
+      
+    <p>The engineering work includes testing these distinctions with concrete cases. Suppose a technical finding covers Material A, while the proposed order is for Material B from the same supplier. The model should preserve the mismatch. Suppose an authorization covers the purchase but has expired. The time restriction should remain relevant. Suppose the same person appears under two job titles. An independence check should still consider the person’s identity.</p>
+      
+    
+      
+    <p>Cases like these help us examine the ontology together with the rules and checks that use it. A model that treats meaningfully different situations as interchangeable needs attention. The missing distinction might concern identity, scope, time, or the relationship between a judgment and the action it supports.</p>
+      
+    
+      
+    <p>We should also test cases that ought to work. Two departments may use different names for the same material. A reviewer may be qualified for one assessment and unsuitable for another. Useful modeling has to preserve legitimate relationships as carefully as it distinguishes incompatible ones. Reviewing the examples with the people responsible for the work helps reveal whether the definitions match their intended use.</p>
+      
+    
+      
+    <p>Ontology engineering continues as the operation changes. A new material specification may require a distinction between revisions. A new review policy may change which relationships matter. An existing concept may prove too broad. Those changes should lead us to examine the facts, rules, and modules that rely on the affected definitions.</p>
+      
+    
+      
+    <p>Reuse requires the same care. A concept developed for one decision can be useful elsewhere when its meaning fits the new context. When we combine reasoning modules, we need to examine whether one module’s result establishes what another expects. A finding about a single trial, for example, may contribute evidence to a broader qualification decision while leaving other requirements outstanding.</p>
+      
+    
+      
+    <p>This connects ontology engineering to hierarchical decomposition. Each module lets someone concentrate on a manageable question. The ontology helps preserve the meaning of its contribution as it becomes part of a larger model. People can move between levels of detail with clearer expectations about what each conclusion establishes.</p>
+      
+    
+      
+    <p>A coherent ontology still needs contact with the work it represents. Its definitions are modeling choices, and the facts recorded using them need evidence. We judge the representation by whether it helps people ask useful questions, distinguish relevant situations, and revise their understanding when experience exposes something missing.</p>
+      
+    
+      
+    <p>At Hermod Labs, ontology engineering is central to helping humans think. It makes the concepts people rely on available for shared examination and gives software a defined structure for maintaining their relationships. The practical aim is for someone to follow a conclusion back to its meaning, scope, and support—and understand what changes when any of those change.</p>
+      
+    
+    
+
+
+
+
+    <nav class="essay-followup" aria-label="Continue reading">
+
+      <a href="../shared-structure-for-automated-reasoning/index.html" rel="prev"><span>Previous essay</span><strong>Shared Structure for Automated Reasoning</strong></a>
+
+
+      <a href="../reasoning-modules-for-human-decisions/index.html" rel="next"><span>Follow-up essay <span aria-hidden="true">→</span></span><strong>Reasoning Modules for Human Decisions</strong></a>
+
+    </nav>
+
+    <nav class="article-category-return" aria-label="More articles">
+      <a class="text-link" href="../ways-of-thinking/index.html">More in Ways of Thinking <span aria-hidden="true">→</span></a>
+      <a class="text-link" href="../index.html">All articles <span aria-hidden="true">→</span></a>
+    </nav>
+
+  </article>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</main>
+  <footer class="site-footer">
+  <div class="wrap">
+    <section class="footer-action" aria-labelledby="footer-action-heading">
+      <div>
+        <p class="eyebrow">Put the ideas to work</p>
+        <h2 id="footer-action-heading">A decision of your own?<br><em>Try Decision Lab.</em></h2>
+        <p class="footer-action-copy">Review your objectives, evidence, and assumptions. Keep a record of the reasoning behind your choice.</p>
+      </div>
+      <div class="footer-action-links">
+        <a class="button" data-decision-lab-link data-site-root="../../index.html" hidden>Try Decision Lab for free <span aria-hidden="true">↗</span></a>
+        <a class="text-link" href="../../tools/decision-lab/index.html">Decision Lab details <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <div class="footer-directory">
+      <div class="footer-identity">
+        <a class="footer-brand" href="../../index.html" aria-label="Hermod Labs home"><img src="../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
+        <p class="footer-description">Tools and ideas for decisions you can inspect and revise.</p>
+        <a class="footer-contact" href="mailto:contact@hermodlabs.com">contact@hermodlabs.com <span aria-hidden="true">↗</span></a>
+      </div>
+
+      <nav class="footer-navigation" aria-label="Footer navigation">
+        <div class="footer-link-group">
+          <h3 id="footer-reading-heading">Articles</h3>
+          <ul aria-labelledby="footer-reading-heading">
+            <li><a href="../index.html">All articles</a></li>
+
+            <li><a href="../start-here/index.html">Start Here</a></li>
+
+            <li><a href="../ways-of-thinking/index.html">Ways of Thinking</a></li>
+
+            <li><a href="../how-to-build/index.html">How to Build <span class="footer-coming-soon">(coming soon)</span></a></li>
+
+            <li><a href="../../series/the-arrangement-problem/index.html">The Arrangement Problem</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-group">
+          <h3 id="footer-tools-heading">Tools</h3>
+          <ul aria-labelledby="footer-tools-heading">
+            <li><a href="../../tools/decision-lab/index.html">Decision Lab</a></li>
+            <li><a href="../../tools/hermod-gg/index.html">Hermod.gg</a></li>
+            <li><a href="../../tools/index.html">All tools</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-group">
+          <h3 id="footer-platform-heading">Platform</h3>
+          <ul aria-labelledby="footer-platform-heading">
+            <li><a href="../../about/index.html">About Hermod Labs</a></li>
+            <li><a href="../../platform/index.html">Explore the platform</a></li>
+            <li><a href="../../platform/index.html#concepts">Core concepts</a></li>
+            <li><a href="../../index.html#pilot-inquiry">Discuss a pilot</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2026 Hermod Labs</p>
+      <p class="footer-signoff">Automated reasoning. Human judgment.</p>
+      <a class="footer-top-link" href="#main">Back to top <span aria-hidden="true">↑</span></a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

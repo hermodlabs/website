@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-V2474V50XP');
+</script>
+
+
+  <title>The Arrangement Problem in Human Decisions | Hermod Labs</title>
+  <meta name="description" content="Examine how choices, dependencies, evidence, and requirements fit together—and what their combination makes possible.">
+  <link rel="canonical" href="https://hermodlabs.com/articles/the-arrangement-problem-in-human-decisions/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Hermod Labs">
+  <meta property="og:title" content="The Arrangement Problem in Human Decisions | Hermod Labs">
+  <meta property="og:description" content="Examine how choices, dependencies, evidence, and requirements fit together—and what their combination makes possible.">
+  <meta property="og:url" content="https://hermodlabs.com/articles/the-arrangement-problem-in-human-decisions/">
+  <meta property="og:image" content="https://hermodlabs.com/assets/hermod-wordmark.jpeg">
+  <meta name="theme-color" content="#7850c2">
+  <link rel="icon" type="image/jpeg" href="../../assets/hermod-symbol.jpeg">
+  <link rel="stylesheet" href="../../assets/site.css">
+
+  <script src="../../assets/feature-flags.js" defer></script>
+  <script src="../../assets/site.js" defer></script>
+
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+  <a class="brand" href="../../index.html" aria-label="Hermod Labs home"><img src="../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">+</span></button>
+  <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
+    <a href="../index.html" aria-current="page">Articles</a><a href="../../tools/index.html">Tools</a><a href="../../platform/index.html">Platform</a>
+    <a class="button nav-cta" data-decision-lab-link data-site-root="../../index.html" hidden>Try our free tool <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+
+  <main id="main" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="reading-header wrap">
+  <p class="reading-breadcrumb"><a href="../index.html">All articles</a><span aria-hidden="true">/</span><a class="article-category" href="../ways-of-thinking/index.html">Ways of Thinking</a></p>
+
+  <p class="eyebrow">Ways of Thinking</p>
+
+  <h1>The Arrangement Problem in Human Decisions</h1>
+  <p class="reading-meta">Hermod Labs <span aria-hidden="true">·</span> 6 min read</p>
+  <ul class="article-tags" aria-label="Article topics">
+    
+    <li><a href="../topics/arrangements/index.html">Arrangements</a></li>
+    
+    <li><a href="../topics/dependencies/index.html">Dependencies</a></li>
+    
+    <li><a href="../topics/requirements/index.html">Requirements</a></li>
+    
+  </ul>
+</header>
+<div class="reading-layout wrap standalone-reading">
+
+  <article class="article-body" id="article-content" aria-label="The Arrangement Problem in Human Decisions">
+    
+      
+    <p>A cheaper supplier, a suitable material, an available production line, and a qualified reviewer can each look like a reasonable choice. Bringing them together raises a different question. The material may arrive after the line is available. The reviewer may be qualified for a different process. A plan can contain individually acceptable parts whose combination fails to meet the intended outcome.</p>
+      
+    
+      
+    <p>At Hermod Labs, we call this the arrangement problem: determining which combinations of choices and relationships can jointly satisfy requirements for a stated purpose, under the assumptions we have made explicit. The work involves identifying the choices, understanding their dependencies, and assessing what becomes possible when they are considered together.</p>
+      
+    
+      
+    <p>In our <a href="https://hermodlabs.com/articles/ways-of-thinking-about-human-decisions/index.html">original account of human decisions</a>, we introduced an arrangement as a complete candidate combination. Completeness makes it possible to examine the proposed whole. Whether that arrangement satisfies the relevant conditions remains a separate question.</p>
+      
+    
+      
+    <p>Consider the supplier change used throughout this series. A useful candidate might specify the supplier, material, qualification method, production schedule, required resources, and authorization path. Choosing a supplier introduces further dependencies: its material may require a particular trial, and that trial may require equipment and expertise that other options would not need.</p>
+      
+    
+      
+    <p>An option first needs to be eligible for the role it is being considered for. A supplier may be able to provide the required material, or a reviewer may have the relevant competence. Those local assessments help define the available choices. Their significance depends on the requirements of the particular decision.</p>
+      
+    
+      
+    <p>A complete candidate then specifies the choices required within the model’s scope, including dependencies introduced by those choices. Leaving the trial resource unspecified leaves part of the proposal open. Specifying a resource completes that part of the description, while its availability and suitability still need to be assessed.</p>
+      
+    
+      
+    <p>Feasibility requires examining the combination against the relevant constraints. The proposed trial must fit the equipment, material, people, and available time. Its findings must be available when the purchasing decision needs them. The production proposal must remain within the scope of the qualification evidence on which it relies.</p>
+      
+    
+      
+    <p>Checking pairs of choices can still leave a problem unresolved. Suppose three activities each require three hours on one production line, and that line has eight hours available. Every pair fits into the available time. All three require nine hours. The shared capacity constraint applies to the full combination, so pairwise checks alone would miss the conflict.</p>
+      
+    
+      
+    <p>This problem has close connections to constraint satisfaction, discussed in Rina Dechter’s <a href="https://ics.uci.edu/~dechter/books/about.html">Constraint Processing</a>. Constraints express conditions that acceptable combinations must satisfy. Making those conditions explicit allows people and software to examine possible selections against them. The representation of the problem can remain clear while different computational methods are considered.</p>
+      
+    
+      
+    <p>The number of combinations can grow quickly. In a simple model with ten choice positions and three alternatives at each position, there are 59,049 complete selections before applying constraints. Some may be ruled out immediately, while others require examining several dependencies together. Explicit structure helps us reason about this space, although the computational difficulty still depends on the problem.</p>
+      
+    
+      
+    <p>Hierarchical decomposition gives people manageable questions to work on. One person can examine material suitability while another examines scheduling. Their contributions become useful to the larger decision when the relationships between them remain visible. Shared resources, timing conditions, and evidence requirements must survive the move from separate assessments to a combined arrangement.</p>
+      
+    
+      
+    <p>Several arrangements may satisfy the same requirements. One might offer lower cost with a later delivery; another might preserve an earlier date at greater expense. Preferences help people compare these feasible alternatives. A ranking should respect mandatory conditions and make clear which priorities explain why one arrangement is preferred.</p>
+      
+    
+      
+    <p>Evidence and assumptions can also distinguish apparently similar candidates. Two arrangements might be supported by the same accepted facts but make different operational choices. Another might depend on an unresolved interpretation of a trial result. People need to see that difference when comparing them; a proposal’s attractiveness does not settle the interpretation on which it relies.</p>
+      
+    
+      
+    <p>An arrangement can describe future work. Selecting a trial method can create obligations to reserve equipment, conduct the trial, review its findings, and obtain the required authorization. A complete plan can include outstanding obligations. Its assessment should preserve which conclusions are conditional on their completion and which are already supported.</p>
+      
+    
+      
+    <p>Logical compatibility has a specific role in that assessment. It can establish that the represented choices satisfy the represented constraints. Evidence supports the factual claims used in those checks, and authorization establishes whether the relevant actions are permitted. Keeping those relationships explicit prevents a feasible plan from being presented as an accomplished or authorized result.</p>
+      
+    
+      
+    <p>Multiple admissible arrangements can also reveal different kinds of conclusions. Some requirements may apply to every acceptable combination, while a particular delivery date may depend on which supplier and schedule are selected. Distinguishing shared conclusions from arrangement-dependent ones helps people understand both their commitments and their remaining choices.</p>
+      
+    
+      
+    <p>The scope of the search matters when making such claims. Examining a sample of arrangements supports conclusions about that sample. Establishing that a conclusion holds across every admissible arrangement requires adequate coverage or another justified method. Likewise, finding no solution during a limited search leaves open whether an unexplored combination would work.</p>
+      
+    
+      
+    <p>When the modeled requirements and available options are established to have no joint solution, the result can guide further investigation. The delivery deadline may conflict with the qualification period, or the only suitable reviewer may be unavailable. People can examine the conflicting conditions and decide whether to seek another option, change the schedule, or revisit a requirement with the appropriate authority.</p>
+      
+    
+      
+    <p>That conclusion remains bounded by the model. An unavailable arrangement among the represented choices may point toward an option nobody has included yet. A conflict may also expose a mistaken assumption or an inaccurate representation. Explaining the reason for the conflict gives people a useful place to investigate.</p>
+      
+    
+      
+    <p>The arrangement problem extends beyond selecting suppliers. In data fusion, observations may each be usable while their combination depends on compatible time periods, meanings, and method assumptions. In an automated workflow, individually capable tools still need compatible inputs, sufficient resources, and permission for the proposed actions. Strategic decisions similarly depend on how initiatives share budgets, people, and time.</p>
+      
+    
+      
+    <p>The common concern is whether the contributions fit together for the purpose at hand. Ontology engineering helps identify what those contributions mean. Requirements establish conditions for acceptance. Reasoning modules organize bounded assessments, and systems engineering examines how the resulting parts and relationships support the whole.</p>
+      
+    
+      
+    <p>Feedback makes the set of acceptable arrangements subject to revision. If inspection takes longer than expected, a previously supported schedule may need another look. The new observation can affect qualification timing, production commitments, and the cost assessment. Preserving those dependencies helps people follow the consequences of change.</p>
+      
+    
+      
+    <p>Useful automation begins with that explicit structure. Software can apply defined rules, exclude incompatible combinations, derive consequences, and identify outstanding obligations. For people to review the result, they need to see which conditions supported it, what remains uncertain, and how a different choice would change the assessment.</p>
+      
+    
+      
+    <p>Presenting the results is part of helping people think. A long list of combinations can be difficult to use. Grouping arrangements by meaningful differences can reveal that many share the same qualification requirement while only a few preserve a delivery date. The explanation should help people concentrate on the choices and dependencies that matter.</p>
+      
+    
+      
+    <p>The arrangement problem brings the earlier ideas in this series to a common task: assembling contributions into a whole that can be understood and assessed. We want people to see how a proposal fits together, why its conditions matter, what alternatives remain, and what would make them reconsider. That is the role we want automation to serve in human decisions.</p>
+      
+    
+    
+
+
+
+
+    <nav class="essay-followup" aria-label="Continue reading">
+
+      <a href="../feedback-loops-for-human-decisions/index.html" rel="prev"><span>Previous essay</span><strong>Feedback Loops for Human Decisions</strong></a>
+
+
+    </nav>
+
+    <nav class="article-category-return" aria-label="More articles">
+      <a class="text-link" href="../ways-of-thinking/index.html">More in Ways of Thinking <span aria-hidden="true">→</span></a>
+      <a class="text-link" href="../index.html">All articles <span aria-hidden="true">→</span></a>
+    </nav>
+
+  </article>
+</div>
+
+
+</main>
+  <footer class="site-footer">
+  <div class="wrap">
+    <section class="footer-action" aria-labelledby="footer-action-heading">
+      <div>
+        <p class="eyebrow">Put the ideas to work</p>
+        <h2 id="footer-action-heading">A decision of your own?<br><em>Try Decision Lab.</em></h2>
+        <p class="footer-action-copy">Review your objectives, evidence, and assumptions. Keep a record of the reasoning behind your choice.</p>
+      </div>
+      <div class="footer-action-links">
+        <a class="button" data-decision-lab-link data-site-root="../../index.html" hidden>Try Decision Lab for free <span aria-hidden="true">↗</span></a>
+        <a class="text-link" href="../../tools/decision-lab/index.html">Decision Lab details <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <div class="footer-directory">
+      <div class="footer-identity">
+        <a class="footer-brand" href="../../index.html" aria-label="Hermod Labs home"><img src="../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
+        <p class="footer-description">Tools and ideas for decisions you can inspect and revise.</p>
+        <a class="footer-contact" href="mailto:contact@hermodlabs.com">contact@hermodlabs.com <span aria-hidden="true">↗</span></a>
+      </div>
+
+      <nav class="footer-navigation" aria-label="Footer navigation">
+        <div class="footer-link-group">
+          <h3 id="footer-reading-heading">Articles</h3>
+          <ul aria-labelledby="footer-reading-heading">
+            <li><a href="../index.html">All articles</a></li>
+
+            <li><a href="../start-here/index.html">Start Here</a></li>
+
+            <li><a href="../ways-of-thinking/index.html">Ways of Thinking</a></li>
+
+            <li><a href="../how-to-build/index.html">How to Build <span class="footer-coming-soon">(coming soon)</span></a></li>
+
+            <li><a href="../../series/the-arrangement-problem/index.html">The Arrangement Problem</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-group">
+          <h3 id="footer-tools-heading">Tools</h3>
+          <ul aria-labelledby="footer-tools-heading">
+            <li><a href="../../tools/decision-lab/index.html">Decision Lab</a></li>
+            <li><a href="../../tools/hermod-gg/index.html">Hermod.gg</a></li>
+            <li><a href="../../tools/index.html">All tools</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-group">
+          <h3 id="footer-platform-heading">Platform</h3>
+          <ul aria-labelledby="footer-platform-heading">
+            <li><a href="../../about/index.html">About Hermod Labs</a></li>
+            <li><a href="../../platform/index.html">Explore the platform</a></li>
+            <li><a href="../../platform/index.html#concepts">Core concepts</a></li>
+            <li><a href="../../index.html#pilot-inquiry">Discuss a pilot</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2026 Hermod Labs</p>
+      <p class="footer-signoff">Automated reasoning. Human judgment.</p>
+      <a class="footer-top-link" href="#main">Back to top <span aria-hidden="true">↑</span></a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

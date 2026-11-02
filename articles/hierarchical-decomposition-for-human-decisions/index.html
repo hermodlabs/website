@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-V2474V50XP');
+</script>
+
+
+  <title>Hierarchical Decomposition for Human Decisions | Hermod Labs</title>
+  <meta name="description" content="Break a complex decision into manageable parts, then bring them together without losing their meanings, conditions, or dependencies.">
+  <link rel="canonical" href="https://hermodlabs.com/articles/hierarchical-decomposition-for-human-decisions/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Hermod Labs">
+  <meta property="og:title" content="Hierarchical Decomposition for Human Decisions | Hermod Labs">
+  <meta property="og:description" content="Break a complex decision into manageable parts, then bring them together without losing their meanings, conditions, or dependencies.">
+  <meta property="og:url" content="https://hermodlabs.com/articles/hierarchical-decomposition-for-human-decisions/">
+  <meta property="og:image" content="https://hermodlabs.com/assets/hermod-wordmark.jpeg">
+  <meta name="theme-color" content="#7850c2">
+  <link rel="icon" type="image/jpeg" href="../../assets/hermod-symbol.jpeg">
+  <link rel="stylesheet" href="../../assets/site.css">
+
+  <script src="../../assets/feature-flags.js" defer></script>
+  <script src="../../assets/site.js" defer></script>
+
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+  <a class="brand" href="../../index.html" aria-label="Hermod Labs home"><img src="../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">+</span></button>
+  <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
+    <a href="../index.html" aria-current="page">Articles</a><a href="../../tools/index.html">Tools</a><a href="../../platform/index.html">Platform</a>
+    <a class="button nav-cta" data-decision-lab-link data-site-root="../../index.html" hidden>Try our free tool <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+
+  <main id="main" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="reading-header wrap">
+  <p class="reading-breadcrumb"><a href="../index.html">All articles</a><span aria-hidden="true">/</span><a class="article-category" href="../ways-of-thinking/index.html">Ways of Thinking</a></p>
+
+  <p class="eyebrow">Ways of Thinking</p>
+
+  <h1>Hierarchical Decomposition for Human Decisions</h1>
+  <p class="reading-meta">Hermod Labs <span aria-hidden="true">·</span> 6 min read</p>
+  <ul class="article-tags" aria-label="Article topics">
+    
+    <li><a href="../topics/hierarchical-decomposition/index.html">Hierarchical decomposition</a></li>
+    
+    <li><a href="../topics/ontology-engineering/index.html">Ontology engineering</a></li>
+    
+    <li><a href="../topics/dependencies/index.html">Dependencies</a></li>
+    
+  </ul>
+</header>
+<div class="reading-layout wrap standalone-reading">
+
+  <article class="article-body" id="article-content" aria-label="Hierarchical Decomposition for Human Decisions">
+    
+      
+    <p>A complex decision can be larger than what any one person can hold in mind at once. We can still understand it by examining manageable parts and following how those parts fit together.</p>
+      
+    
+      
+    <p>In <a href="https://hermodlabs.com/articles/ways-of-thinking-about-human-decisions/index.html">Ways of Thinking About Human Decisions</a>, we introduced hierarchical decomposition as one way to work within the limits of human attention and memory. It deserves a closer look because it shapes both how we organize a problem and what we need from the software that helps us think about it.</p>
+      
+    
+      
+    <p>The statistician George Box wrote, <a href="https://gwern.net/doc/statistics/decision/1979-box.pdf">“All models are wrong but some are useful.”</a> A model represents selected aspects of the world. Its usefulness depends on whether those selections help us understand the situation and answer the question we care about. A purchasing model might need to represent delivery times, production capacity, and spending authority. It can leave many other details outside its scope. The judgment lies in choosing which simplifications the decision can tolerate.</p>
+      
+    
+      
+    <p>Our limited memory makes that selection unavoidable. Research on <a href="https://pubmed.ncbi.nlm.nih.gov/11515286/">working memory</a> examines constraints on how much information we can actively hold at once and how grouping information affects those constraints. In ordinary work, we compensate by writing things down, relying on other people, and organizing complicated situations into parts we can consider separately.</p>
+      
+    
+      
+    <p>Hierarchical decomposition makes that last strategy deliberate. We break a system or decision into component parts, then divide those parts again where necessary. We work at a level where the relevant details are manageable. We then integrate the parts into larger components, and those components into larger ones, until we can reason about the whole system at the level our decision requires.</p>
+      
+    
+      
+    <p>This gives us two directions of work. Decomposition takes us into the details. Integration brings what we have learned back into the larger decision. Each direction needs the other.</p>
+      
+    
+      
+    <p>Consider the supplier change from the previous article. The overall question is whether to introduce a replacement material into production. We can divide that question into technical suitability, production capacity, delivery timing, cost, and purchasing authority. Technical suitability can be divided further into the properties to test, the trial procedure, the evidence to collect, and the standard a reviewer will apply.</p>
+      
+    
+      
+    <p>Someone working on the trial procedure can concentrate on that question. Someone assessing the production schedule can work with the trial’s requirements without reviewing every detail of the test method. The larger decision can use both contributions, provided their meanings and dependencies remain clear.</p>
+      
+    
+      
+    <p>That proviso matters. A component becomes useful to a larger model when other parts can tell what it establishes and under what conditions.</p>
+      
+    
+      
+    <p>Suppose a technical review concludes that a material is suitable for a particular process within a specified temperature range. At the next level, that conclusion lets people reason about production without holding every measurement in mind. The temperature restriction still matters. If the proposed production plan exceeds it, the technical conclusion does not establish suitability for that plan.</p>
+      
+    
+      
+    <p>A useful abstraction lets us set aside detail while retaining the conditions that affect how we can use the result. The underlying evidence should remain available when someone needs to examine it. This is how a hierarchy can support understanding across several levels: we can work with a conclusion, then look inside it when its basis becomes relevant.</p>
+      
+    
+      
+    <p>Integration also requires us to examine interactions between components. A technical trial may be well designed, a production schedule may meet existing commitments, and a cost estimate may be reasonable under its assumptions. Combining them can still reveal a problem.</p>
+      
+    
+      
+    <p>The trial and the committed production may require the same line at the same time. Running the trial could delay customer orders. Adding a shift could preserve those orders while changing the cost estimate. Each proposed response changes the larger arrangement.</p>
+      
+    
+      
+    <p>A hierarchy gives us places to work on these questions. The relationships between the parts tell us what must be checked when we bring their answers together.</p>
+      
+    
+      
+    <p>This distinction is easy to lose in a diagram. We can draw technical qualification under Quality and the production schedule under Operations, with each branch neatly separated. The shared production line still connects them. Hierarchical decomposition organizes our representation of the problem; the relevant dependencies may cross its branches.</p>
+      
+    
+      
+    <p>For us, integration therefore includes checking whether the components use compatible meanings, whether their assumptions can hold together, and whether their combined demands fit the available resources. A result from one component must establish what another component actually needs. Technical acceptance, for example, can support a purchasing decision while leaving spending authorization outstanding.</p>
+      
+    
+      
+    <p>This is where ontology engineering becomes practical. Defining a resource, a reservation, a test result, and an authorization gives the model distinctions it can preserve as components are combined. Reasoning modules can then organize particular questions around those meanings. Their conclusions carry a defined scope into the next level of the decision.</p>
+      
+    
+      
+    <p>The choice of decomposition also deserves review. A departmental structure may be convenient for assigning work, but the strongest dependencies may follow a process that runs through several departments. If two supposedly separate components constantly require each other’s internal details, we may need to reconsider their boundaries or represent their shared concerns more explicitly.</p>
+      
+    
+      
+    <p>We also need judgment about where to stop. Dividing a question into increasingly small pieces creates more relationships to maintain. A useful stopping point is a component that someone can meaningfully examine and whose contribution to the larger decision can be stated clearly. Further detail earns its place when it changes a conclusion, reveals a dependency, or helps someone assess the evidence.</p>
+      
+    
+      
+    <p>Once those relationships are explicit, they can help us revisit a decision. If the production line becomes unavailable, we can follow the consequences into the trial schedule, the qualification date, and the orders that depend on the new material. People still need to judge the alternatives. The model gives them a structure for finding what needs attention.</p>
+      
+    
+      
+    <p>Box’s observation remains relevant throughout this work. A carefully organized model can still leave out an important influence. Agreement among its components tells us something about the model we have built. Experience, evidence, and review help us assess whether it represents the situation adequately. Decomposition gives people smaller pieces to question and revise as they learn.</p>
+      
+    
+      
+    <p>A familiar difficulty with large neural networks is that their learned behavior does not fit in our heads in a form we can readily examine. We may be able to use an output while struggling to understand why that particular result follows. For a tool intended to support human deliberation, that difficulty matters.</p>
+      
+    
+      
+    <p>Our goal at Hermod Labs is explicitly to help humans think, not to automate something they do not understand. A model built from explicit components can also grow far beyond what anyone can hold in mind at once. We want its structure to give people a way to navigate that complexity: examine a claim, inspect its basis, see what depends on it, and follow its consequences into the larger decision.</p>
+      
+    
+      
+    <p>Software can maintain those connections and check combinations under the rules people have specified. Human understanding develops through being able to inspect, challenge, and revise the reasoning at the level that needs attention.</p>
+      
+    
+      
+    <p>Hierarchical decomposition helps us work toward that goal. We make the parts small enough to examine, preserve what matters as we integrate them, and build an understanding of the whole through their relationships. A person should be able to start with a question they understand and follow it into a decision too large to hold in mind all at once.</p>
+      
+    
+    
+
+
+
+
+    <nav class="essay-followup" aria-label="Continue reading">
+
+      <a href="../ways-of-thinking-about-human-decisions/index.html" rel="prev"><span>Previous essay</span><strong>Ways of Thinking About Human Decisions</strong></a>
+
+
+      <a href="../shared-structure-for-automated-reasoning/index.html" rel="next"><span>Follow-up essay <span aria-hidden="true">→</span></span><strong>Shared Structure for Automated Reasoning</strong></a>
+
+    </nav>
+
+    <nav class="article-category-return" aria-label="More articles">
+      <a class="text-link" href="../ways-of-thinking/index.html">More in Ways of Thinking <span aria-hidden="true">→</span></a>
+      <a class="text-link" href="../index.html">All articles <span aria-hidden="true">→</span></a>
+    </nav>
+
+  </article>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</main>
+  <footer class="site-footer">
+  <div class="wrap">
+    <section class="footer-action" aria-labelledby="footer-action-heading">
+      <div>
+        <p class="eyebrow">Put the ideas to work</p>
+        <h2 id="footer-action-heading">A decision of your own?<br><em>Try Decision Lab.</em></h2>
+        <p class="footer-action-copy">Review your objectives, evidence, and assumptions. Keep a record of the reasoning behind your choice.</p>
+      </div>
+      <div class="footer-action-links">
+        <a class="button" data-decision-lab-link data-site-root="../../index.html" hidden>Try Decision Lab for free <span aria-hidden="true">↗</span></a>
+        <a class="text-link" href="../../tools/decision-lab/index.html">Decision Lab details <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <div class="footer-directory">
+      <div class="footer-identity">
+        <a class="footer-brand" href="../../index.html" aria-label="Hermod Labs home"><img src="../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
+        <p class="footer-description">Tools and ideas for decisions you can inspect and revise.</p>
+        <a class="footer-contact" href="mailto:contact@hermodlabs.com">contact@hermodlabs.com <span aria-hidden="true">↗</span></a>
+      </div>
+
+      <nav class="footer-navigation" aria-label="Footer navigation">
+        <div class="footer-link-group">
+          <h3 id="footer-reading-heading">Articles</h3>
+          <ul aria-labelledby="footer-reading-heading">
+            <li><a href="../index.html">All articles</a></li>
+
+            <li><a href="../start-here/index.html">Start Here</a></li>
+
+            <li><a href="../ways-of-thinking/index.html">Ways of Thinking</a></li>
+
+            <li><a href="../how-to-build/index.html">How to Build <span class="footer-coming-soon">(coming soon)</span></a></li>
+
+            <li><a href="../../series/the-arrangement-problem/index.html">The Arrangement Problem</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-group">
+          <h3 id="footer-tools-heading">Tools</h3>
+          <ul aria-labelledby="footer-tools-heading">
+            <li><a href="../../tools/decision-lab/index.html">Decision Lab</a></li>
+            <li><a href="../../tools/hermod-gg/index.html">Hermod.gg</a></li>
+            <li><a href="../../tools/index.html">All tools</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-group">
+          <h3 id="footer-platform-heading">Platform</h3>
+          <ul aria-labelledby="footer-platform-heading">
+            <li><a href="../../about/index.html">About Hermod Labs</a></li>
+            <li><a href="../../platform/index.html">Explore the platform</a></li>
+            <li><a href="../../platform/index.html#concepts">Core concepts</a></li>
+            <li><a href="../../index.html#pilot-inquiry">Discuss a pilot</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2026 Hermod Labs</p>
+      <p class="footer-signoff">Automated reasoning. Human judgment.</p>
+      <a class="footer-top-link" href="#main">Back to top <span aria-hidden="true">↑</span></a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
