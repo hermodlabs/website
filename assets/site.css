@@ -297,18 +297,17 @@ figcaption { color: var(--muted); font-size: 13px; margin-top: 16px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
-/* The free platform leads, with an application example, philosophy, and pilots. */
+/* Lead with the decision and its result; keep the model available to inspect. */
 .application-hero { padding-bottom: 64px; }
-.application-hero-grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: 8%; align-items: center; }
-.application-hero-grid > * { min-width: 0; }
-.application-hero h1 { font-size: clamp(48px, 6.4vw, 92px); margin-bottom: 28px; }
-.decision-lab-feature .lead { font-size: 25px; line-height: 1.35; max-width: 600px; letter-spacing: -.5px; margin-bottom: 18px; }
-.hero-description { max-width: 580px; color: var(--muted); font-size: 18px; margin-bottom: 28px; }
-.application-example { padding: 28px; background: var(--surface); border-top: 2px solid var(--accent); }
-.application-example > .eyebrow { color: var(--accent); margin-bottom: 20px; }
-.application-example h2 { font-size: 32px; margin-bottom: 18px; }
-.application-example > p:not(.eyebrow) { color: var(--muted); font-size: 16px; margin-bottom: 20px; }
-.application-example figure { margin: 22px 0; }
+.application-hero h1 { max-width: 1100px; font-size: clamp(48px, 7.1vw, 100px); margin-bottom: 28px; }
+.decision-lab-feature .lead { font-size: 25px; line-height: 1.35; max-width: 760px; letter-spacing: -.5px; margin-bottom: 18px; }
+.hero-description { max-width: 720px; color: var(--muted); font-size: 18px; margin-bottom: 28px; }
+.application-example { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 48px; align-items: center; padding: 36px; background: var(--surface); border-top: 2px solid var(--accent); }
+.application-example > * { min-width: 0; }
+.application-example-copy > .eyebrow { color: var(--accent); margin-bottom: 20px; }
+.application-example h2 { font-size: 38px; margin-bottom: 18px; }
+.application-example-copy > p:not(.eyebrow) { color: var(--muted); font-size: 16px; margin-bottom: 20px; }
+.application-example figure { margin: 0; }
 .application-example img { width: 100%; border: 1px solid var(--line); }
 .application-example figcaption { font-size: 11px; margin-top: 10px; }
 .pilot-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 36px; margin-top: 45px; }
@@ -328,9 +327,72 @@ figcaption { color: var(--muted); font-size: 13px; margin-top: 16px; }
 .series-introduction { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 8%; align-items: end; }
 .series-introduction > .eyebrow { grid-column: 1 / -1; margin-bottom: 10px; }
 .series-introduction > p:last-child { max-width: 460px; color: var(--muted); margin: 0; }
-.model-example { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); margin-top: 36px; border: 1px solid var(--line); }
+.ontology-story { margin-top: 40px; }
+.ontology-stage + .ontology-stage { margin-top: 36px; padding-top: 32px; border-top: 1px solid var(--line); }
+.ontology-stage { scroll-margin-top: 30px; }
+.ontology-stage-heading { max-width: 790px; margin-bottom: 24px; }
+.ontology-stage-label { margin: 0 0 12px; color: var(--accent); font-size: 11px; line-height: 1.5; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+.ontology-stage-heading h3 { margin: 0; font-size: 28px; line-height: 1.25; letter-spacing: -.7px; }
+.ontology-stage-heading > p:last-child { margin: 12px 0 0; color: var(--muted); font-size: 16px; }
+.ontology-vocabularies, .ontology-bridges { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.ontology-vocabulary, .ontology-bridge { min-width: 0; padding: 24px; }
+.ontology-vocabulary { display: flex; flex-direction: column; background: #fff; color: #252525; border: 1px solid #cfd5dc; }
+.ontology-vocabulary h4, .ontology-bridge h4 { margin: 0; color: #252525; font-size: 17px; line-height: 1.3; font-weight: 600; letter-spacing: 0; }
+.ontology-module-description { margin: 8px 0 16px; color: var(--muted); font-size: 14px; }
+.ontology-pattern-label { margin: 14px 0 7px; color: var(--muted); font-size: 10px; line-height: 1.5; font-weight: 600; letter-spacing: .7px; text-transform: uppercase; }
+.ontology-pattern, .ontology-instance { display: block; white-space: pre-wrap; overflow-wrap: anywhere; font: 12px/1.8 ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; }
+.ontology-pattern { color: #264e70; }
+.ontology-calendar .ontology-pattern { color: #264e70; }
+.ontology-mini-map { margin-top: 24px; }
+.ontology-node { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; min-width: 0; padding: 12px 10px; background: #f7f9fb; color: #252525; border: 1.5px solid #cfd5dc; text-align: center; }
+.ontology-node > span { font-size: 12px; line-height: 1.3; color: #555; }
+.ontology-node strong { font-size: 15px; line-height: 1.4; font-weight: 400; }
+.ontology-objective { max-width: 300px; margin-inline: auto; }
+.ontology-task-prepare { background: #e8eef4; border-color: #264e70; border-radius: 4px; }
+.ontology-task-review { background: #e5f1f0; border-color: #287d80; border-radius: 4px; }
+.ontology-resource { background: #fff; border-color: #264e70; border-radius: 50%; }
+.ontology-map-relation { margin: 9px 0; color: #555; font-size: 14px; text-align: center; }
+.ontology-branch-arrows { display: block; width: 100%; height: 32px; }
+.ontology-relation-arrow { display: block; width: 44px; height: 12px; margin: 4px auto 0; }
+.ontology-mini-map > .ontology-map-relation { margin-bottom: 0; }
+.ontology-branches { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.ontology-availability { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 10px; }
+.ontology-availability + .ontology-availability { margin-top: 12px; }
+.ontology-module-note { margin: auto 0 0; padding-top: 18px; color: var(--muted); font-size: 13px; }
+.ontology-bridge { border: 1px solid #cfd5dc; background: #fff; }
+.ontology-bridge .ontology-pattern { margin-top: 18px; }
+.ontology-bridge-examples { display: grid; gap: 8px; margin-top: 16px; }
+.ontology-bridge-key { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 20px 0 0; padding-top: 12px; border-top: 1px solid var(--line); font-size: 11px; }
+.ontology-bridge-key > span { color: #555; }
+.ontology-merged-figure { margin: 24px 0 0; border: 1px solid var(--line); background: #fff; }
+.ontology-graph-scroll { overflow-x: auto; overscroll-behavior-x: contain; }
+.ontology-graph-scroll svg { display: block; width: 100%; min-width: 900px; max-width: 1000px; height: auto; margin-inline: auto; }
+.ontology-merged-figure figcaption { margin: 0; padding: 16px 20px; border-top: 1px solid var(--line); font-size: 13px; }
+.ontology-merged-figure a, .model-report figcaption a { text-decoration: underline; text-decoration-color: #bcaad8; text-underline-offset: 4px; }
+.ontology-scroll-hint { display: none; }
+.ontology-equivalence { margin-top: 24px; padding: 22px 24px; background: #f7f9fb; border-left: 1.5px solid #264e70; }
+.ontology-equivalence h4 { margin: 0 0 10px; font-size: 19px; line-height: 1.3; font-weight: 500; letter-spacing: -.3px; }
+.ontology-equivalence p { max-width: 970px; margin: 0; color: var(--muted); font-size: 15px; }
+@media (max-width: 950px) {
+  .ontology-vocabularies, .ontology-bridges { grid-template-columns: minmax(0, 1fr); }
+  .ontology-scroll-hint { display: flex; justify-content: space-between; gap: 16px; margin: 0; padding: 10px 20px 0; color: var(--muted); font-size: 11px; }
+}
+@media (max-width: 650px) {
+  .ontology-story { margin-top: 32px; }
+  .ontology-stage + .ontology-stage { margin-top: 28px; padding-top: 28px; }
+  .ontology-stage-heading h3 { font-size: 25px; }
+  .ontology-vocabulary, .ontology-bridge { padding: 20px; }
+  .ontology-availability { gap: 8px; }
+  .ontology-node { padding-inline: 8px; }
+  .ontology-equivalence { padding: 20px; }
+}
+.model-example { margin-top: 36px; border: 1px solid var(--line); }
 .model-source, .model-output { min-width: 0; padding: 28px; }
-.model-source { background: var(--surface); border-right: 1px solid var(--line); }
+.model-source { background: var(--surface); border-top: 1px solid var(--line); }
+.model-source > summary { cursor: pointer; font-size: 17px; font-weight: 500; }
+.model-source > summary > span { display: inline-block; margin-left: 20px; color: var(--muted); font-size: 12px; font-weight: 400; }
+.model-source-content { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); }
+.model-source-note { margin: 16px 0 0; color: var(--muted); font-size: 14px; max-width: 760px; }
 .model-panel-heading { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px 18px; }
 .model-panel-heading h3 { margin: 0; font-size: 21px; letter-spacing: -.5px; }
 .model-panel-heading > span { color: var(--muted); font-size: 11px; }
@@ -339,26 +401,36 @@ figcaption { color: var(--muted); font-size: 13px; margin-top: 16px; }
 .model-code-line { display: block; position: relative; padding-left: 3.5ch; white-space: pre-wrap; }
 .model-line-number { position: absolute; top: 0; left: 0; width: 2.25ch; color: var(--muted); text-align: right; user-select: none; }
 .model-line-number::before { content: attr(data-line); }
-.model-output { display: flex; flex-direction: column; background: var(--bg); scroll-margin-top: 30px; }
+.model-output { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 0 36px; background: var(--bg); scroll-margin-top: 30px; }
+.model-output > .model-panel-heading, .model-result-summary, .model-result-note { grid-column: 1 / -1; }
+.model-result-summary { margin: 20px 0 28px; font-size: 21px; line-height: 1.45; }
 .model-output:target { outline: 2px solid var(--accent); outline-offset: -2px; }
-.model-report { margin: 32px 0 28px; }
+.model-report { margin: 0; }
 .model-chart-scroll { overflow-x: auto; overscroll-behavior-x: contain; }
-.model-chart-scroll svg { display: block; width: 100%; min-width: 440px; max-width: 560px; height: auto; margin-inline: auto; }
+.model-chart-scroll svg { display: block; width: 100%; min-width: 440px; max-width: 440px; height: auto; margin-inline: auto; }
 .model-report figcaption { max-width: 470px; font-size: 14px; }
 .model-chart-hint { display: none; }
-.model-pending { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--line); }
-.model-pending-label { display: block; color: #76551c; font-size: 11px; font-weight: 600; letter-spacing: .7px; text-transform: uppercase; }
-.model-pending p { margin: 8px 0 0; font-size: 17px; }
+.model-pending { align-self: start; padding: 24px; background: #fdf7f7; border-top: 2px solid #aa3542; }
+.model-pending-label { display: block; color: #aa3542; font-size: 11px; font-weight: 600; letter-spacing: .7px; text-transform: uppercase; }
+.model-pending p { margin: 12px 0 0; font-size: 15px; color: var(--muted); }
+.model-pending p.model-pending-name { margin-top: 8px; font-size: 15px; color: var(--ink); }
+.model-pending h4 { margin: 24px 0 0; font-size: 22px; line-height: 1.3; font-weight: 500; letter-spacing: -.4px; }
+.model-pending .text-link { margin-top: 20px; }
 .model-result-note { margin: 16px 0 0; color: var(--muted); font-size: 13px; }
+.example-next-step { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px 28px; margin-top: 24px; }
+.example-next-step p { margin: 0; max-width: 650px; color: var(--muted); font-size: 15px; }
 @media (max-width: 1100px) {
-  .model-example { grid-template-columns: minmax(0, 1fr); }
-  .model-source { border-right: 0; border-bottom: 1px solid var(--line); }
+  .model-output { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .model-result-summary, .model-result-note { margin: 0; }
+  .model-report figcaption { max-width: 650px; }
   .model-code { font-size: 13px; }
 }
 @media (max-width: 650px) {
   .model-example { margin-top: 28px; }
   .model-source, .model-output { padding: 22px 20px; }
   .model-panel-heading { align-items: flex-start; flex-direction: column; gap: 6px; }
+  .model-source > summary > span { display: block; margin: 8px 0 0; }
+  .model-pending { padding: 20px; }
   .model-code { font-size: 12px; }
   .model-chart-hint { display: flex; justify-content: space-between; gap: 16px; margin: 10px 0 0; color: var(--muted); font-size: 11px; }
 }
@@ -397,6 +469,11 @@ figcaption { color: var(--muted); font-size: 13px; margin-top: 16px; }
 .article-body em { font: inherit; font-style: italic; color: inherit; }
 .article-body a { text-decoration: underline; text-decoration-color: #bcaad8; text-underline-offset: 4px; }
 .article-body a:hover { color: var(--accent); }
+.article-body > h2 { margin: 42px 0 20px; font: 500 28px/1.25 Helvetica, Arial, sans-serif; letter-spacing: -.6px; scroll-margin-top: 30px; }
+.article-code { margin: 32px 0; background: var(--surface); border: 1px solid var(--line); }
+.article-code figcaption { margin: 0; padding: 14px 20px; border-bottom: 1px solid var(--line); font: 600 13px/1.5 Helvetica, Arial, sans-serif; color: var(--ink); }
+.article-code pre { margin: 0; padding: 20px; font: 13px/1.8 ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; white-space: pre-wrap; overflow-wrap: anywhere; }
+.article-code code { font: inherit; }
 .article-table-scroll { overflow-x: auto; margin-block: 32px; border-top: 2px solid var(--accent); }
 .article-table-scroll table { width: 100%; min-width: 440px; border-collapse: collapse; font: 14px/1.55 Helvetica, Arial, sans-serif; text-align: left; }
 .article-table-scroll th, .article-table-scroll td { padding: 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
@@ -425,16 +502,14 @@ figcaption { color: var(--muted); font-size: 13px; margin-top: 16px; }
 .reader-tools { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 35px; font: 14px/1.8 Helvetica, Arial, sans-serif; color: var(--muted); }
 .reader-tools a { color: var(--ink); }
 @media (max-width: 1100px) {
-  .application-hero-grid { gap: 5%; }
   .application-example { padding: 24px; }
   .pilot-grid { gap: 28px; }
   .series-entry { grid-template-columns: 50px minmax(0, 1fr) 125px; gap: 22px; }
   .reading-layout { grid-template-columns: 200px minmax(0, 740px); gap: 5%; }
 }
 @media (max-width: 900px) {
-  .application-hero-grid { grid-template-columns: 1fr; gap: 36px; }
   .application-hero h1 { font-size: clamp(48px, 9.5vw, 80px); }
-  .application-example { max-width: 560px; }
+  .application-example { grid-template-columns: minmax(0, 1fr); gap: 28px; }
   .pilot-grid { grid-template-columns: 1fr; gap: 35px; }
   .pilot-card > p { max-width: 650px; }
   .pilot-scope-content { max-width: 650px; }

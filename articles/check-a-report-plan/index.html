@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-V2474V50XP');
+</script>
+
+
+  <title>Check a Report Plan in Decision Lab | Hermod Labs</title>
+  <meta name="description" content="Run a three-day report plan, inspect the pending independence check, and see what changes when the deadline moves.">
+  <meta name="author" content="Jonathan Nacionales">
+
+  <link rel="canonical" href="https://hermodlabs.com/articles/check-a-report-plan/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Hermod Labs">
+  <meta property="og:title" content="Check a Report Plan in Decision Lab | Hermod Labs">
+  <meta property="og:description" content="Run a three-day report plan, inspect the pending independence check, and see what changes when the deadline moves.">
+  <meta property="og:url" content="https://hermodlabs.com/articles/check-a-report-plan/">
+  <meta property="og:image" content="https://hermodlabs.com/assets/hermod-wordmark.jpeg">
+  <meta name="theme-color" content="#7850c2">
+  <link rel="icon" type="image/jpeg" href="../../assets/hermod-symbol.jpeg">
+  <link rel="stylesheet" href="../../assets/site.css">
+
+  <script src="../../assets/feature-flags.js" defer></script>
+  <script src="../../assets/site.js" defer></script>
+
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+  <a class="brand" href="../../index.html" aria-label="Hermod Labs home"><img src="../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">+</span></button>
+  <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
+    <a href="../index.html" aria-current="page">Articles</a><a href="../../tools/index.html">Tools</a><a href="../../platform/index.html">Platform</a><a href="../../professional-services/index.html">Professional Services</a>
+    <a class="button nav-cta" data-decision-lab-link data-site-root="../../index.html" hidden>Try our free tool <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+
+  <main id="main" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="reading-header wrap">
+  <p class="reading-breadcrumb"><a href="../index.html">All articles</a><span aria-hidden="true">/</span><a class="article-category" href="../how-to-build/index.html">How to Build</a></p>
+
+  <p class="eyebrow">How to Build</p>
+
+  <h1>Check a Report Plan in Decision Lab</h1>
+  <p class="reading-meta"><span class="article-author">Jonathan Nacionales</span> <span aria-hidden="true">·</span> 6 min read</p>
+  <ul class="article-tags" aria-label="Article topics">
+    
+    <li><a href="../topics/decision-lab/index.html">Decision Lab</a></li>
+    
+    <li><a href="../topics/arrangements/index.html">Arrangements</a></li>
+    
+    <li><a href="../topics/dependencies/index.html">Dependencies</a></li>
+    
+    <li><a href="../topics/requirements/index.html">Requirements</a></li>
+    
+  </ul>
+</header>
+<div class="reading-layout wrap standalone-reading">
+
+  <article class="article-body" id="article-content" aria-label="Check a Report Plan in Decision Lab">
+    
+      
+    <p>Can a report be prepared and independently reviewed by the end of day three? This guide turns that question into a small description you can run in the Free Decision Lab public beta. You will inspect a feasible schedule, distinguish it from an unconfirmed requirement, and change one constraint to see the effect.</p>
+      
+    
+      
+    <p>The facts are fictional: Noah is available on days one and two, preparation takes two days, Maya is available on day three, and review takes one day. Review must start after preparation finishes. The meaning and evidence required for reviewer independence still need human examination.</p>
+      
+    
+      
+    <h2 id="enter-description">1. Enter the plan</h2>
+      
+    
+      
+    <p>Open <a href="../../tools/decision-lab/index.html">Decision Lab</a> and select the free beta action. In Workspaces, select New workspace if the start choices are hidden, then Blank description. Under Author, select Description; a new blank workspace initially shows Definitions.</p>
+      
+    
+      
+    <p>Paste the complete source below into Your description. This example uses the built-in planning phrases, so it needs no additional definition file. Use ordinary straight double quotes and keep the final Find arrangements instruction.</p>
+      
+    
+      
+    <p>You can also <a href="../../assets/examples/report-plan.hermod">open the report-plan.hermod source file</a>, save it, and select Open file in Workspaces to import it as a separate workspace.</p>
+      
+    
+      
+    <figure class="article-code">
+      <figcaption id="article-23-code-7">Complete report-plan.hermod description</figcaption>
+      <pre tabindex="0" aria-labelledby="article-23-code-7"><code>Objective &quot;Reviewed report&quot;.
+Step &quot;Prepare report&quot;.
+Step &quot;Independent review&quot;.
+Resource &quot;Noah&quot;.
+Resource &quot;Maya&quot;.
+Check &quot;Confirm reviewer independence&quot;.
+&quot;Reviewed report&quot; requires all of &quot;Prepare report&quot;, &quot;Independent review&quot;.
+&quot;Independent review&quot; requires check &quot;Confirm reviewer independence&quot;.
+Schedule spans day 1 through day 3.
+Schedule orders shifts &quot;work&quot;.
+&quot;Noah&quot; is available from day 1 through day 2.
+&quot;Noah&quot; is available during shifts &quot;work&quot;.
+&quot;Maya&quot; is available from day 3 through day 3.
+&quot;Maya&quot; is available during shifts &quot;work&quot;.
+&quot;Prepare report&quot; takes 2 consecutive calendar days.
+&quot;Prepare report&quot; runs during shift &quot;work&quot;.
+&quot;Prepare report&quot; uses resource &quot;Noah&quot;.
+&quot;Independent review&quot; takes 1 consecutive calendar day.
+&quot;Independent review&quot; runs during shift &quot;work&quot;.
+&quot;Independent review&quot; uses resource &quot;Maya&quot;.
+&quot;Independent review&quot; starts after &quot;Prepare report&quot; finishes.
+&quot;Reviewed report&quot; must finish by day 3.
+Find arrangements for &quot;Reviewed report&quot;.</code></pre>
+    </figure>
+      
+    
+      
+    <p>The first statements name the objective, steps, resources, and check. The remaining statements connect them and supply the calendar, availability, duration, order, and deadline. You authored each of these premises; the analysis evaluates them together.</p>
+      
+    
+      
+    <h2 id="read-result">2. Analyze and read the schedule</h2>
+      
+    
+      
+    <p>Select Analyze. When the workspace status reads Analysis current, open Results, then Reports, then Arrangements. Expand Timing and resource report. If only the code pane is visible, select Both or Results in the workspace controls.</p>
+      
+    
+      
+    <p>For this source, the analysis returns one arrangement with a feasible schedule:</p>
+      
+    
+      
+    <div class="article-table-scroll" role="region" tabindex="0" aria-label="Expected schedule from the complete report plan">
+      <table>
+        <caption class="visually-hidden">Expected schedule from the complete report plan</caption>
+        <thead><tr><th scope="col">Work</th><th scope="col">Person</th><th scope="col">Planned days</th></tr></thead>
+        <tbody>
+          
+          <tr><th scope="row">Prepare report</th><td>Noah</td><td>1–2</td></tr>
+          
+          <tr><th scope="row">Independent review</th><td>Maya</td><td>3</td></tr>
+          
+        </tbody>
+      </table>
+    </div>
+      
+    
+      
+    <p>The result fits the declared availability and timing. Review follows preparation, and the plan finishes by day three. The two named assignments are fixed in this model; it searches for a feasible arrangement under those assignments, rather than choosing from a list of possible reviewers.</p>
+      
+    
+      
+    <h2 id="inspect-check">3. Inspect what remains unresolved</h2>
+      
+    
+      
+    <p>In Arrangements, Confirm reviewer independence appears under Required contributions and checks. Expand Evidence readiness for this arrangement to inspect its unresolved evidence. In the timing report, the same check is listed under Required work without planned dates.</p>
+      
+    
+      
+    <p>Why is it there? The description explicitly says that Independent review requires this check. Calling the step “Independent review” and assigning it to Maya do not establish the applicable criteria or supply evidence that she meets them.</p>
+      
+    
+      
+    <p>Ask the responsible person what independence requires for this report. Does it mean someone other than the preparer, or does it also exclude someone who advised on the work? Seek the relevant facts before recording a conclusion. These are manual clarification prompts for you; this example contains no recorded answer or evidence assessment.</p>
+      
+    
+      
+    <p>A useful answer may leave the schedule unchanged while exposing an unsupported assumption. The check remains pending in this supplied model. If clarification changes the work or assignments, revise the relevant description and analyze it again.</p>
+      
+    
+      
+    <h2 id="change-deadline">4. Move the deadline and rerun</h2>
+      
+    
+      
+    <p>In Author → Description, replace just this statement:</p>
+      
+    
+      
+    <figure class="article-code">
+      <figcaption id="article-23-code-21">Original deadline</figcaption>
+      <pre tabindex="0" aria-labelledby="article-23-code-21"><code>&quot;Reviewed report&quot; must finish by day 3.</code></pre>
+    </figure>
+      
+    
+      
+    <p>with:</p>
+      
+    
+      
+    <figure class="article-code">
+      <figcaption id="article-23-code-23">Earlier deadline</figcaption>
+      <pre tabindex="0" aria-labelledby="article-23-code-23"><code>&quot;Reviewed report&quot; must finish by day 2.</code></pre>
+    </figure>
+      
+    
+      
+    <p>Select Analyze again, return to Arrangements, and expand Timing and resource report. The analysis now returns no feasible arrangement. The timing selection reports No feasible schedule: the required review cannot finish by day two under the supplied duration, order, and availability.</p>
+      
+    
+      
+    <p>This result concerns this description. A different reviewer, a different duration supported by the work, or a revised deadline would be a change to the problem. Restore the day-three deadline and analyze again to recover the original feasible schedule.</p>
+      
+    
+      
+    <h2 id="keep-copy">5. Keep the description and result</h2>
+      
+    
+      
+    <p>Select Export → Complete description (.hermod) for an editable copy. Analysis results (.json) and Report (.md) preserve calculated output in structured and readable forms. Use Workspaces → Open file to reopen the complete description as a separate workspace and run it again.</p>
+      
+    
+      
+    <p>Workspaces are saved in this browser. Keep an exported file when you need an independent copy. A feasible schedule describes planned timing; completed work, supporting evidence, and permission to proceed require their own records and judgments.</p>
+      
+    
+      
+    <p>To see why this distinction matters, read <a href="../computational-hermeneutics-for-human-decisions/index.html">Computational Hermeneutics for Human Decisions</a>. To follow how plans depend on combinations of choices, start with <a href="../good-choices-impossible-plan/index.html">Why Can Good Choices Produce an Impossible Plan?</a></p>
+      
+    
+    
+
+
+
+
+    <nav class="article-category-return" aria-label="More articles">
+      <a class="text-link" href="../how-to-build/index.html">More in How to Build <span aria-hidden="true">→</span></a>
+      <a class="text-link" href="../index.html">All articles <span aria-hidden="true">→</span></a>
+    </nav>
+
+  </article>
+</div>
+
+
+</main>
+  <footer class="site-footer">
+  <div class="wrap">
+    <section class="footer-action" aria-labelledby="footer-action-heading">
+      <div>
+        <p class="eyebrow">Put the ideas to work</p>
+        <h2 id="footer-action-heading">A decision of your own?<br><em>Try Decision Lab.</em></h2>
+        <p class="footer-action-copy">Describe the work and its requirements. Examine which arrangements can work and keep unresolved checks visible.</p>
+      </div>
+      <div class="footer-action-links">
+        <a class="button" data-decision-lab-link data-site-root="../../index.html" hidden>Try Decision Lab for free <span aria-hidden="true">↗</span></a>
+        <a class="text-link" href="../../tools/decision-lab/index.html">Decision Lab details <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <div class="footer-directory">
+      <div class="footer-identity">
+        <a class="footer-brand" href="../../index.html" aria-label="Hermod Labs home"><img src="../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
+        <p class="footer-description">Tools and ideas for decisions you can inspect and revise.</p>
+        <a class="footer-contact" href="mailto:contact@hermodlabs.com">contact@hermodlabs.com <span aria-hidden="true">↗</span></a>
+      </div>
+
+      <nav class="footer-navigation" aria-label="Footer navigation">
+        <div class="footer-link-group">
+          <h3 id="footer-reading-heading">Articles</h3>
+          <ul aria-labelledby="footer-reading-heading">
+            <li><a href="../index.html">All articles</a></li>
+
+            <li><a href="../start-here/index.html">Start Here</a></li>
+
+            <li><a href="../ways-of-thinking/index.html">Ways of Thinking</a></li>
+
+            <li><a href="../how-to-build/index.html">How to Build</a></li>
+
+            <li><a href="../../series/the-arrangement-problem/index.html">The Arrangement Problem</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-group">
+          <h3 id="footer-tools-heading">Tools</h3>
+          <ul aria-labelledby="footer-tools-heading">
+            <li><a href="../../tools/decision-lab/index.html">Decision Lab</a></li>
+            <li><a href="../../tools/hermod-gg/index.html">Hermod.gg</a></li>
+            <li><a href="../../tools/index.html">All tools</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-group">
+          <h3 id="footer-platform-heading">Platform</h3>
+          <ul aria-labelledby="footer-platform-heading">
+            <li><a href="../../about/index.html">About Hermod Labs</a></li>
+            <li><a href="../../platform/index.html">Explore the platform</a></li>
+            <li><a href="../../platform/index.html#concepts">Core concepts</a></li>
+            <li><a href="../../professional-services/index.html">Professional Services</a></li>
+            <li><a href="../../index.html#pilot-inquiry">Discuss a pilot</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2026 Hermod Labs</p>
+      <p class="footer-signoff">Automated reasoning. Human judgment.</p>
+      <a class="footer-top-link" href="#main">Back to top <span aria-hidden="true">↑</span></a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
