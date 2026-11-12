@@ -31,6 +31,8 @@
   <link rel="stylesheet" href="../../assets/site.css">
 
 
+  <link rel="stylesheet" href="../../assets/reader.css">
+
   <script src="../../assets/feature-flags.js" defer></script>
   <script src="../../assets/site.js" defer></script>
 
@@ -42,7 +44,7 @@
   <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">+</span></button>
   <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
     <a href="../index.html" aria-current="page">Articles</a><a href="../../blog/index.html">Blog</a><a href="../../tools/index.html">Tools</a><a href="../../platform/index.html">Platform</a><a href="../../professional-services/index.html">Professional Services</a>
-    <a class="button nav-cta" data-decision-lab-link data-site-root="../../index.html" hidden>Try our free tool <span aria-hidden="true">↗</span></a>
+    <a class="button nav-cta" data-decision-lab-link data-site-root="../../index.html" hidden>Try Decision Lab free <span aria-hidden="true">↗</span></a>
   </nav>
 </header>
 
@@ -88,12 +90,25 @@
 
 
 
+
+
 <header class="reading-header wrap">
-  <p class="reading-breadcrumb"><a href="../index.html">All articles</a><span aria-hidden="true">/</span><a class="article-category" href="../ways-of-thinking/index.html">Ways of Thinking</a></p>
+  
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+
+  
+  <a href="../index.html">All articles</a>
+
+  <span aria-hidden="true">/</span>
+  <a class="article-category" href="../ways-of-thinking/index.html">Ways of Thinking</a>
+
+</nav>
+
 
   <p class="eyebrow">Ways of Thinking</p>
 
   <h1>Computational Hermeneutics for Human Decisions</h1>
+  <p class="reading-description">Examine how statements are interpreted in context, preserve their conditions, and trace what follows from different readings.</p>
   <p class="reading-meta"><span class="article-author">Jonathan Nacionales</span> <span aria-hidden="true">·</span> 8 min read</p>
   <ul class="article-tags" aria-label="Article topics">
     
@@ -105,16 +120,41 @@
     
   </ul>
 </header>
-<div class="reading-layout wrap standalone-reading">
+<div class="reader-layout reading-layout wrap standalone-reading">
 
-  <article class="article-body" id="article-content" aria-label="Computational Hermeneutics for Human Decisions">
+  <aside class="reader-navigation" aria-label="Reading navigation">
+
+  <nav class="reader-toc" aria-labelledby="reader-toc-heading">
+  <details class="reader-nav-disclosure" open>
+    <summary><h2 id="reader-toc-heading">On this page</h2></summary>
+    <ol>
+      <li><a href="#friday-trial-exchange">Clarify the Friday trial statement</a></li>
+      <li><a href="#interpretation-in-context">Interpret statements in their wider context</a></li>
+      <li><a href="#preserve-statement-conditions">Preserve the conditions behind a statement</a></li>
+      <li><a href="#wording-and-claim-equivalence">Test whether wording preserves the claim</a></li>
+      <li><a href="#consequences-and-sources">Inspect consequences and return to the source</a></li>
+      <li><a href="#revise-interpretations-and-support">Reassess support when interpretations change</a></li>
+    </ol>
+  </details>
+</nav>
+
+
+
+  </aside>
+
+  <article class="reader-prose article-body" id="article-content" aria-label="Computational Hermeneutics for Human Decisions">
+    <div class="reader-content">
     
       
-    <p>“We can run the trial on Friday if Quality signs off.”</p>
+    <p class="reader-lead">“We can run the trial on Friday if Quality signs off.”</p>
       
     
       
     <p>A sentence like this can move a decision forward. It can also leave several questions open. The trial needs to be identified, Friday needs a date, and “signs off” needs a meaning in the relevant process. The statement is conditional. Its interpretation affects what someone can reasonably conclude and what still needs to happen.</p>
+      
+    
+      
+    <h2 id="friday-trial-exchange">Clarify the Friday trial statement</h2>
       
     
       
@@ -124,7 +164,7 @@
       
     <div class="article-table-scroll" role="region" tabindex="0" aria-label="A manual worked exchange: clarifying the Friday trial statement">
       <table>
-        <caption class="visually-hidden">A manual worked exchange: clarifying the Friday trial statement</caption>
+        <caption>A manual worked exchange: clarifying the Friday trial statement</caption>
         <thead><tr><th scope="col">Step</th><th scope="col">What a person examines or records</th></tr></thead>
         <tbody>
           
@@ -158,6 +198,10 @@
       
     
       
+    <h2 id="interpretation-in-context">Interpret statements in their wider context</h2>
+      
+    
+      
     <p>In the previous article, we described pattern languages as shared ways to recognize recurring problems and organize responses. Much of the information used in those responses arrives through ordinary language: emails, procedures, meeting notes, and conversations. Computational hermeneutics concerns how we examine the interpretations that turn that language into something a decision model can use.</p>
       
     
@@ -171,6 +215,10 @@
     
       
     <p>This movement between parts and whole is often called the hermeneutic circle. For our decision models, it suggests a practical way of working. We propose an interpretation, express it clearly enough to examine its consequences, and return to the source and context when those consequences raise questions.</p>
+      
+    
+      
+    <h2 id="preserve-statement-conditions">Preserve the conditions behind a statement</h2>
       
     
       
@@ -190,6 +238,10 @@
       
     
       
+    <h2 id="wording-and-claim-equivalence">Test whether wording preserves the claim</h2>
+      
+    
+      
     <p>Different wording can also preserve the same meaning. “Maya reviewed report R” and “Report R was reviewed by Maya” can express the same relationship when the person, report, and meaning of review are fixed. Replacing “reviewed” with “approved” introduces a different claim. A review can result in acceptance, rejection, or a request for more evidence.</p>
       
     
@@ -199,6 +251,10 @@
     
       
     <p>We also adapt the <a href="https://www.rfc-editor.org/rfc/rfc1122.html#section-1.2.2">robustness principle</a> to this setting. We favor precise expression while allowing different wording when it preserves the relevant meaning. That flexibility concerns expression; an uncertain interpretation still needs to remain visible for review. Familiar phrasing should not silently strengthen a claim or remove a condition.</p>
+      
+    
+      
+    <h2 id="consequences-and-sources">Inspect consequences and return to the source</h2>
       
     
       
@@ -215,6 +271,10 @@
     
       
     <p>We want the interpretation to remain traceable to the statement that prompted it. The source wording, its author and date, the relevant context, and the assumptions used to interpret it can all matter. Keeping that connection allows another person to examine why the model contains a particular claim and to challenge the interpretation without reconstructing the entire conversation.</p>
+      
+    
+      
+    <h2 id="revise-interpretations-and-support">Reassess support when interpretations change</h2>
       
     
       
@@ -237,7 +297,9 @@
     <p>At Hermod Labs, this is part of helping humans think. We want people to see how their language has been interpreted, inspect the consequences, and revise that interpretation when the context warrants it. Computational hermeneutics makes interpretation an explicit part of the decision, with a path from the original statement to the reasoning that relies on it.</p>
       
     
+    </div>
     
+
 
 
 
@@ -251,11 +313,11 @@
 
     </nav>
 
-    <nav class="article-category-return" aria-label="More articles">
+
+    <nav class="reader-return article-category-return" aria-label="More articles">
       <a class="text-link" href="../ways-of-thinking/index.html">More in Ways of Thinking <span aria-hidden="true">→</span></a>
       <a class="text-link" href="../index.html">All articles <span aria-hidden="true">→</span></a>
     </nav>
-
   </article>
 </div>
 
@@ -273,17 +335,7 @@
 </main>
   <footer class="site-footer">
   <div class="wrap">
-    <section class="footer-action" aria-labelledby="footer-action-heading">
-      <div>
-        <p class="eyebrow">Put the ideas to work</p>
-        <h2 id="footer-action-heading">A decision of your own?<br><em>Try Decision Lab.</em></h2>
-        <p class="footer-action-copy">Describe the work and its requirements. Examine which arrangements can work and keep unresolved checks visible.</p>
-      </div>
-      <div class="footer-action-links">
-        <a class="button" data-decision-lab-link data-site-root="../../index.html" hidden>Try Decision Lab for free <span aria-hidden="true">↗</span></a>
-        <a class="text-link" href="../../tools/decision-lab/index.html">Decision Lab details <span aria-hidden="true">→</span></a>
-      </div>
-    </section>
+
 
     <div class="footer-directory">
       <div class="footer-identity">
@@ -320,7 +372,7 @@
           <h3 id="footer-platform-heading">Platform</h3>
           <ul aria-labelledby="footer-platform-heading">
             <li><a href="../../about/index.html">About Hermod Labs</a></li>
-            <li><a href="../../platform/index.html">Explore the platform</a></li>
+            <li><a href="../../platform/index.html">Concepts behind Decision Lab</a></li>
             <li><a href="../../platform/index.html#concepts">Core concepts</a></li>
             <li><a href="../../professional-services/index.html">Professional Services</a></li>
             <li><a href="../../index.html#pilot-inquiry">Discuss a pilot</a></li>

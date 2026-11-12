@@ -34,6 +34,8 @@
 
   <link rel="stylesheet" href="../../assets/blog.css">
 
+  <link rel="stylesheet" href="../../assets/reader.css">
+
   <script src="../../assets/feature-flags.js" defer></script>
   <script src="../../assets/site.js" defer></script>
 
@@ -45,41 +47,64 @@
   <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">+</span></button>
   <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
     <a href="../../articles/index.html">Articles</a><a href="../index.html" aria-current="page">Blog</a><a href="../../tools/index.html">Tools</a><a href="../../platform/index.html">Platform</a><a href="../../professional-services/index.html">Professional Services</a>
-    <a class="button nav-cta" data-decision-lab-link data-site-root="../../index.html" hidden>Try our free tool <span aria-hidden="true">↗</span></a>
+    <a class="button nav-cta" data-decision-lab-link data-site-root="../../index.html" hidden>Try Decision Lab free <span aria-hidden="true">↗</span></a>
   </nav>
 </header>
 
-  <main id="main" tabindex="-1"><header class="reading-header wrap blog-header">
-  <p class="reading-breadcrumb"><a href="../index.html">Blog</a></p>
+  <main id="main" tabindex="-1">
+
+
+<header class="reading-header wrap blog-header">
+  
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+
+  
+  <a href="../index.html">Blog</a>
+
+</nav>
+
   <h1>What Is a Question Worth?</h1>
-  <p class="blog-description">Entropy, experiment cost, and the value of information, explained with marbles and Decision Lab.</p>
+  <p class="reading-description blog-description">Entropy, experiment cost, and the value of information, explained with marbles and Decision Lab.</p>
 
   <p class="reading-meta blog-meta"><span class="article-author">Jonathan Nacionales, Founder, Hermod Labs</span> <span aria-hidden="true">·</span> <time datetime="2026-11-12">November 12, 2026</time> <span aria-hidden="true">·</span> 28 min read</p>
 </header>
-<div class="wrap blog-reading-layout">
+<div class="wrap reader-layout blog-reading-layout">
 
-  <nav class="blog-toc" aria-labelledby="blog-toc-heading">
-    <h2 id="blog-toc-heading">On this page</h2>
+  <aside class="reader-navigation" aria-label="Reading navigation">
+    
+    <nav class="reader-toc blog-toc" aria-labelledby="reader-toc-heading">
+  <details class="reader-nav-disclosure" open>
+    <summary><h2 id="reader-toc-heading">On this page</h2></summary>
     <ol>
       <li><a href="#what-changed">What changed about the decision?</a></li>
+      <li><a href="#shared-structure">One shared structure, different conditions</a></li>
       <li><a href="#possibilities">Begin with the possibilities</a></li>
-      <li><a href="#entropy">Entropy</a></li>
-      <li><a href="#information-gain">Information gain</a></li>
-      <li><a href="#experiment-cost">Experiment cost</a></li>
-      <li><a href="#required-answer">Change the required answer</a></li>
-      <li><a href="#colored-bags">Value of information</a></li>
-      <li><a href="#decision-lab">Try it in Decision Lab</a></li>
-      <li><a href="#real-work">Carry it into real work</a></li>
+      <li><a href="#search-strategies">Three ways to ask the question</a></li>
+      <li><a href="#entropy">Entropy: how much uncertainty remains?</a></li>
+      <li><a href="#information-gain">Information gain: what does an experiment teach us?</a></li>
+      <li><a href="#experiment-cost">Experiment cost: what must we spend to learn?</a></li>
+      <li><a href="#required-answer">Keep the marbles; change the required answer</a></li>
+      <li><a href="#colored-bags">Colored bags: give the information something to change</a></li>
+      <li><a href="#different-value">Two questions, one bit each, different value</a></li>
+      <li><a href="#decision-network">How information reaches a decision</a></li>
+      <li><a href="#decision-lab">Put the lesson to work in Decision Lab</a></li>
+      <li><a href="#requirements">Read the requirements before choosing a plan</a></li>
+      <li><a href="#evidence-timing">Count the work between observation and action</a></li>
+      <li><a href="#learning">Learning within a case, or changing the case?</a></li>
+      <li><a href="#real-work">Carry the decision structure into real work</a></li>
       <li><a href="#references">References</a></li>
     </ol>
-  </nav>
+  </details>
+</nav>
 
-  <article class="blog-prose" aria-label="What Is a Question Worth?">
-    
+  </aside>
+
+  <article class="reader-prose blog-prose" aria-label="What Is a Question Worth?">
+    <div class="reader-content">
 
 <p class="blog-source-note">Decision engineering / Test and learn · <a href="../../assets/blog/question-worth/what-is-a-question-worth.pdf">Download the original PDF</a> · <a href="../../assets/blog/question-worth/source-files.zip">Download the source files</a></p>
 
-<p>Someone hands you a bag of 1,024 marbles. Exactly one is heavier than the others. You have a balance and a question: which marble is it?</p>
+<p class="reader-lead">Someone hands you a bag of 1,024 marbles. Exactly one is heavier than the others. You have a balance and a question: which marble is it?</p>
 <p>You could check them individually. You could divide them into groups. Both approaches can eventually answer the question, but they require very different amounts of work.</p>
 <p>Next, keep the same 1,024 marbles and put 512 in a red bag and 512 in a blue bag. There is still exactly one heavy marble across both bags. Change the question: which bag contains it? We now need less detail, even though the physical uncertainty about the marble remains.</p>
 <p>Then introduce a separate game in which bags have different payouts and you can buy a test before choosing one to redeem. That adds a reason to care about the answer. Finally, give the choice a deadline: useful evidence must arrive with time left to act.</p>
@@ -210,7 +235,7 @@
 <div class="blog-equation" role="group" tabindex="0" aria-label="Shannon entropy">
   <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="H of X equals the negative sum over i of p sub i times log base two of p sub i"><mi>H</mi><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo><mo>=</mo><mo>−</mo><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>p</mi><mi>i</mi></msub><mspace width="0.2em"/><msub><mi mathvariant="normal">log</mi><mn>2</mn></msub><msub><mi>p</mi><mi>i</mi></msub><mo>.</mo></math>
 </div>
-<p>The probabilities matter. A bag with one overwhelmingly likely candidate has less uncertainty than a bag with the same number of equally likely candidates. The logarithm’s base determines the unit: base two gives bits. Entropy provides a lower bound on the average number of binary answers needed for exact identification under an appropriate question scheme.<sup><a href="#reference-1" role="doc-noteref" aria-label="Reference 1">[1]</a>, <a href="#reference-2" role="doc-noteref" aria-label="Reference 2">[2]</a></sup></p>
+<p>The probabilities matter. A bag with one overwhelmingly likely candidate has less uncertainty than a bag with the same number of equally likely candidates. The logarithm’s base determines the unit: base two gives bits. Entropy provides a lower bound on the average number of binary answers needed for exact identification under an appropriate question scheme.<sup><a href="#reference-1" role="doc-noteref" aria-label="Reference 1" id="citation-reference-1-1">[1]</a>, <a href="#reference-2" role="doc-noteref" aria-label="Reference 2" id="citation-reference-2-1">[2]</a></sup></p>
 <aside class="blog-callout"><p><strong>A bit is an amount of information, not a dollar or a minute.</strong> For equally likely candidates, halving the remaining possibilities removes one bit of uncertainty.</p></aside>
 <p>That distinction helps us avoid a common mistake. Ten binary weighings and seven three-outcome weighings solve the same initial identification problem. They use different information channels, rather than starting with different amounts of uncertainty.</p>
 
@@ -225,7 +250,7 @@
 <div class="blog-equation" role="group" tabindex="0" aria-label="Expected information gain">
   <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="Expected information gain equals H of X minus the sum over y of P of y times H of X conditional on Y equals y"><mi mathvariant="normal">EIG</mi><mo>=</mo><mi>H</mi><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo><mo>−</mo><munder><mo>∑</mo><mi>y</mi></munder><mi>P</mi><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo><mi>H</mi><mo stretchy="false">(</mo><mi>X</mi><mo>|</mo><mi>Y</mi><mo>=</mo><mi>y</mi><mo stretchy="false">)</mo><mo>.</mo></math>
 </div>
-<p>This is the mutual information between the location and the observation. The averaging matters: with unequal prior probabilities, a particular surprising result can increase posterior entropy even though expected information gain is nonnegative.<sup><a href="#reference-2" role="doc-noteref" aria-label="Reference 2">[2]</a></sup></p>
+<p>This is the mutual information between the location and the observation. The averaging matters: with unequal prior probabilities, a particular surprising result can increase posterior entropy even though expected information gain is nonnegative.<sup><a href="#reference-2" role="doc-noteref" aria-label="Reference 2" id="citation-reference-2-2">[2]</a></sup></p>
 
 
 
@@ -313,7 +338,7 @@
   <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="Gross value of information equals 80 dollars minus 60 dollars equals 20 dollars"><mtext>Gross value of information</mtext><mo>=</mo><mtext>$80</mtext><mo>−</mo><mtext>$60</mtext><mo>=</mo><mtext>$20.</mtext></math>
 </div>
 <p>After paying $5, the expected payout is $75. The expected improvement over choosing red immediately is therefore $15.</p>
-<p>This is the decision-theoretic meaning of <strong>value of information</strong>: the expected improvement from being able to choose after receiving evidence. Study cost is then deducted to obtain the net benefit of obtaining that evidence. The comparison must use the best available action in each case, rather than the prize amount alone.<sup><a href="#reference-3" role="doc-noteref" aria-label="Reference 3">[3]</a></sup></p>
+<p>This is the decision-theoretic meaning of <strong>value of information</strong>: the expected improvement from being able to choose after receiving evidence. Study cost is then deducted to obtain the net benefit of obtaining that evidence. The comparison must use the best available action in each case, rather than the prize amount alone.<sup><a href="#reference-3" role="doc-noteref" aria-label="Reference 3" id="citation-reference-3-1">[3]</a></sup></p>
 <aside class="blog-callout"><p>Before paying for an experiment, <strong>specify what you would do after each possible result.</strong> The value comes from the better decisions those results enable.</p></aside>
 <p>If the fee rises to $25, this test is no longer worthwhile under the scoring rule. If red instead guarantees $120, information about blue has zero value for choosing a bag: red wins in either state.</p>
 
@@ -344,7 +369,7 @@
 <p><strong>There is no universal dollars-per-bit conversion.</strong> The same amount of information can have different value because it changes different decisions. Once the useful weighing has settled this choice, identifying the exact marble supplies nine more bits but no further payout benefit under these rules.</p>
 
 <h2 id="decision-network">How information reaches a decision</h2>
-<p>The shared ontology links the objects and rules. For the payout game, we can also draw a <strong>decision network</strong>: a view that separates unknown quantities, choices, and value. The result depends on both the chosen test and the hidden heavy-marble positions. The bag choice can use the test and its result. The payout depends on the chosen bag and the actual situation, while testing contributes cost.<sup><a href="#reference-4" role="doc-noteref" aria-label="Reference 4">[4]</a></sup></p>
+<p>The shared ontology links the objects and rules. For the payout game, we can also draw a <strong>decision network</strong>: a view that separates unknown quantities, choices, and value. The result depends on both the chosen test and the hidden heavy-marble positions. The bag choice can use the test and its result. The payout depends on the chosen bag and the actual situation, while testing contributes cost.<sup><a href="#reference-4" role="doc-noteref" aria-label="Reference 4" id="citation-reference-4-1">[4]</a></sup></p>
 
 
 
@@ -356,12 +381,12 @@
   <figcaption id="figure-10-caption"><strong>Figure 10.</strong> The structure behind the payout calculation. Rounded nodes are uncertain quantities, rectangular nodes are choices, and the diamond is value. Arrows into a choice show available information; arrows into the result show what it depends on; arrows into value show its inputs. The hidden positions are not directly observed before choosing. This is a decision view of the payout case, rather than a diagram of every ontology entity. <a href="../../assets/blog/question-worth/figure-10.svg">Open full size</a></figcaption>
 </figure>
 
-<p>The important link is from the result to a subsequent choice. If the same action remains best after every possible result, the information has zero gross value for that decision. Its acquisition can still cost money.<sup><a href="#reference-5" role="doc-noteref" aria-label="Reference 5">[5]</a>, <a href="#reference-3" role="doc-noteref" aria-label="Reference 3">[3]</a></sup></p>
+<p>The important link is from the result to a subsequent choice. If the same action remains best after every possible result, the information has zero gross value for that decision. Its acquisition can still cost money.<sup><a href="#reference-5" role="doc-noteref" aria-label="Reference 5" id="citation-reference-5-1">[5]</a>, <a href="#reference-3" role="doc-noteref" aria-label="Reference 3" id="citation-reference-3-2">[3]</a></sup></p>
 <p>A deadline adds an execution condition: the test must finish, the result must be interpreted, and the choice must be completed while it is still available. A result arriving after a fixed handoff cannot change that completed commitment. The deadline limits which evidence can be used; the payoffs establish why changing the choice matters.</p>
 <p>We will now use the app to examine that execution question under explicit reliability, resource, and timing conditions. The walkthrough uses <strong>Requirements</strong> to check the required distinction, <strong>Plan comparison</strong> to compare the supplied plans against requirements and resource limits, and <strong>Evidence timing</strong> to check interpretation and commitment readiness. The article’s separate payoff calculation answers whether buying information improves expected dollars.</p>
 
 <h2 id="decision-lab">Put the lesson to work in Decision Lab</h2>
-<p>The live app provides a smaller operational variant called <em>Marbles and colored bags</em>. Reset the physical rules again: there are <strong>nine marbles in total</strong>, arranged in three bags of three, with exactly one heavy marble across all three bags. Each bag is available at minute 0. The goal is to identify the containing bag and complete the choice before a handoff deadline.</p>
+<p>The live app provides a smaller operational variant called <em>Marbles and colored bags</em>. Reset the physical rules again: there are <strong>nine marbles in total</strong>, arranged in three bags of three, with exactly one heavy marble across all three bags. Each bag is available at minute 0. The goal is to identify the containing bag and complete the choice before a handoff deadline.<sup><a href="#reference-7" role="doc-noteref" aria-label="Reference 7" id="citation-reference-7-1">[7]</a></sup></p>
 <p>This returns to one heavy marble in total and a bag-identification task. We now examine execution feasibility, including a permitted incorrect report. We do not carry the payout game’s two-heavy allocation or dollar prizes into the app.</p>
 <aside class="blog-callout"><p><strong>What the app demonstrates.</strong> The screenshots show calculated plan sufficiency, physical weighing counts, resource credits, and evidence timing under stated assumptions. The entropy and dollar-value calculations in this article are worked separately. The marble report does not calculate those dollar values, and its resource credits are not economic information value.</p></aside>
 <p>To reproduce the main comparison, open <a href="https://hermodlabs.github.io/review_lab/">Decision Lab</a>, choose <strong>Workspaces</strong>, then <strong>New workspace</strong> if necessary, and open the example <strong>Marbles and colored bags</strong>. Work in <strong>Guided questions</strong>. Use these premises:</p>
@@ -479,7 +504,7 @@
   <li>Does the expected improvement justify the cost and delay?</li>
 </ul>
 <p>The mapping still needs scrutiny. Real tests can be noisy, explanations can overlap, and results can arrive too late or apply to a different situation. A model should retain those limitations alongside the judgment it supports.</p>
-<p>Before carrying out a trial, write down the decision, the expected observations, and the response to each result. Afterward, retain what actually happened and revise the assumptions or proposed action. This connects the information calculation to an explicit learning cycle: plan, do, study, and act.<sup><a href="#reference-6" role="doc-noteref" aria-label="Reference 6">[6]</a></sup></p>
+<p>Before carrying out a trial, write down the decision, the expected observations, and the response to each result. Afterward, retain what actually happened and revise the assumptions or proposed action. This connects the information calculation to an explicit learning cycle: plan, do, study, and act.<sup><a href="#reference-6" role="doc-noteref" aria-label="Reference 6" id="citation-reference-6-1">[6]</a></sup></p>
 <p>In the payout game, one bit improves the expected decision by $20 while another bit changes nothing. In the app, one plan provides enough reliable distinction in time, while a more detailed plan misses the commitment. Both examples make the same demand of a learning plan: identify the decision it will support and show how its results can still change what happens next.</p>
 <aside class="blog-callout">
   <p>Before commissioning the next test, finish this sentence:</p>
@@ -489,37 +514,27 @@
 <section class="blog-references" role="doc-endnotes" aria-labelledby="references">
   <h2 id="references">References</h2>
   <ol>
-    <li id="reference-1" role="doc-endnote">C. E. Shannon. <a href="https://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf">A Mathematical Theory of Communication</a>. <em>Bell System Technical Journal</em> 27, 379–423 and 623–656 (1948). Reprint of the original paper.</li>
-    <li id="reference-2" role="doc-endnote">Paul Penfield. <a href="https://ocw.mit.edu/courses/6-050j-information-and-entropy-spring-2008/80c7258fd6bc5780797975eabb6fd747_MIT6_050JS08_textbook.pdf">Information and Entropy</a>. MIT OpenCourseWare, 6.050J/2.110J, spring 2008. Course textbook, especially the treatment of bits, entropy, conditional uncertainty, and mutual information.</li>
-    <li id="reference-3" role="doc-endnote">C. Rothery, M. Strong, H. Koffijberg, et al. <a href="https://www.ispor.org/heor-resources/good-practices/article/value-of-information-analytical-methods-report-2">Value of Information Analytical Methods: Report 2 of the ISPOR Value of Information Analysis Emerging Good Practices Task Force</a>. <em>Value in Health</em> 23(3), 277–286 (2020). Official report page. Distinguishes the value of information from the net benefit after research cost.</li>
-    <li id="reference-4" role="doc-endnote">David L. Poole and Alan K. Mackworth. <em>Artificial Intelligence: Foundations of Computational Agents</em>, third edition. <a href="https://artint.info/3e/html/ArtInt3e.Ch12.S3.html">Section 12.3: Sequential Decisions</a>. Defines decision networks, information available at each choice, and contingent policies.</li>
-    <li id="reference-5" role="doc-endnote">David L. Poole and Alan K. Mackworth. Same work. <a href="https://artint.info/3e/html/ArtInt3e.Ch12.S4.html">Section 12.4: The Value of Information and Control</a>. Relates information value to improvements in subsequent decisions.</li>
-    <li id="reference-6" role="doc-endnote">Institute for Healthcare Improvement. <a href="https://www.ihi.org/library/model-for-improvement/testing-changes">Model for Improvement: Testing Changes</a>. Official PDSA guidance. Accessed 12 November 2026.</li>
-    <li id="reference-7" role="doc-endnote">Hermod Labs. <a href="https://hermodlabs.github.io/review_lab/">Decision Lab: Marbles and colored bags example</a>. Live UI inspected and screenshots captured 12 November 2026.</li>
+    <li id="reference-1" role="doc-endnote">C. E. Shannon. <a href="https://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf">A Mathematical Theory of Communication</a>. <em>Bell System Technical Journal</em> 27, 379–423 and 623–656 (1948). Reprint of the original paper. <span class="reference-returns"><a class="footnote-backlink" href="#citation-reference-1-1" role="doc-backlink" aria-label="Back to citation 1 of reference 1">↩</a></span></li>
+    <li id="reference-2" role="doc-endnote">Paul Penfield. <a href="https://ocw.mit.edu/courses/6-050j-information-and-entropy-spring-2008/80c7258fd6bc5780797975eabb6fd747_MIT6_050JS08_textbook.pdf">Information and Entropy</a>. MIT OpenCourseWare, 6.050J/2.110J, spring 2008. Course textbook, especially the treatment of bits, entropy, conditional uncertainty, and mutual information. <span class="reference-returns"><a class="footnote-backlink" href="#citation-reference-2-1" role="doc-backlink" aria-label="Back to citation 1 of reference 2">↩1</a> <a class="footnote-backlink" href="#citation-reference-2-2" role="doc-backlink" aria-label="Back to citation 2 of reference 2">↩2</a></span></li>
+    <li id="reference-3" role="doc-endnote">C. Rothery, M. Strong, H. Koffijberg, et al. <a href="https://www.ispor.org/heor-resources/good-practices/article/value-of-information-analytical-methods-report-2">Value of Information Analytical Methods: Report 2 of the ISPOR Value of Information Analysis Emerging Good Practices Task Force</a>. <em>Value in Health</em> 23(3), 277–286 (2020). Official report page. Distinguishes the value of information from the net benefit after research cost. <span class="reference-returns"><a class="footnote-backlink" href="#citation-reference-3-1" role="doc-backlink" aria-label="Back to citation 1 of reference 3">↩1</a> <a class="footnote-backlink" href="#citation-reference-3-2" role="doc-backlink" aria-label="Back to citation 2 of reference 3">↩2</a></span></li>
+    <li id="reference-4" role="doc-endnote">David L. Poole and Alan K. Mackworth. <em>Artificial Intelligence: Foundations of Computational Agents</em>, third edition. <a href="https://artint.info/3e/html/ArtInt3e.Ch12.S3.html">Section 12.3: Sequential Decisions</a>. Defines decision networks, information available at each choice, and contingent policies. <span class="reference-returns"><a class="footnote-backlink" href="#citation-reference-4-1" role="doc-backlink" aria-label="Back to citation 1 of reference 4">↩</a></span></li>
+    <li id="reference-5" role="doc-endnote">David L. Poole and Alan K. Mackworth. Same work. <a href="https://artint.info/3e/html/ArtInt3e.Ch12.S4.html">Section 12.4: The Value of Information and Control</a>. Relates information value to improvements in subsequent decisions. <span class="reference-returns"><a class="footnote-backlink" href="#citation-reference-5-1" role="doc-backlink" aria-label="Back to citation 1 of reference 5">↩</a></span></li>
+    <li id="reference-6" role="doc-endnote">Institute for Healthcare Improvement. <a href="https://www.ihi.org/library/model-for-improvement/testing-changes">Model for Improvement: Testing Changes</a>. Official PDSA guidance. Accessed 12 November 2026. <span class="reference-returns"><a class="footnote-backlink" href="#citation-reference-6-1" role="doc-backlink" aria-label="Back to citation 1 of reference 6">↩</a></span></li>
+    <li id="reference-7" role="doc-endnote">Hermod Labs. <a href="https://hermodlabs.github.io/review_lab/">Decision Lab: Marbles and colored bags example</a>. Live UI inspected and screenshots captured 12 November 2026. <span class="reference-returns"><a class="footnote-backlink" href="#citation-reference-7-1" role="doc-backlink" aria-label="Back to citation 1 of reference 7">↩</a></span></li>
   </ol>
 </section>
 <p class="blog-source-note"><strong>Reproduction note.</strong> Screenshots were captured from the existing <em>Marbles and colored bags</em> example in Decision Lab on 12 November 2026. They use the report preview, with fictional premises and no retained physical observations. The <a href="../../assets/blog/question-worth/source-files.zip">source archive</a> includes the original screenshots, input recipe, and verification calculations. No dollar-value-of-information output is implied by the resource-credit column.</p>
-
-    <nav class="blog-return" aria-label="More from Hermod Labs">
+</div>
+    <nav class="reader-return blog-return" aria-label="More from Hermod Labs">
       <a class="text-link" href="../index.html">All blog posts <span aria-hidden="true">→</span></a>
-      <a class="text-link" href="../../articles/index.html">Explore the article library <span aria-hidden="true">→</span></a>
+      <a class="text-link" href="../../articles/index.html">All articles <span aria-hidden="true">→</span></a>
     </nav>
   </article>
 </div>
 </main>
   <footer class="site-footer">
   <div class="wrap">
-    <section class="footer-action" aria-labelledby="footer-action-heading">
-      <div>
-        <p class="eyebrow">Put the ideas to work</p>
-        <h2 id="footer-action-heading">A decision of your own?<br><em>Try Decision Lab.</em></h2>
-        <p class="footer-action-copy">Describe the work and its requirements. Examine which arrangements can work and keep unresolved checks visible.</p>
-      </div>
-      <div class="footer-action-links">
-        <a class="button" data-decision-lab-link data-site-root="../../index.html" hidden>Try Decision Lab for free <span aria-hidden="true">↗</span></a>
-        <a class="text-link" href="../../tools/decision-lab/index.html">Decision Lab details <span aria-hidden="true">→</span></a>
-      </div>
-    </section>
+
 
     <div class="footer-directory">
       <div class="footer-identity">
@@ -556,7 +571,7 @@
           <h3 id="footer-platform-heading">Platform</h3>
           <ul aria-labelledby="footer-platform-heading">
             <li><a href="../../about/index.html">About Hermod Labs</a></li>
-            <li><a href="../../platform/index.html">Explore the platform</a></li>
+            <li><a href="../../platform/index.html">Concepts behind Decision Lab</a></li>
             <li><a href="../../platform/index.html#concepts">Core concepts</a></li>
             <li><a href="../../professional-services/index.html">Professional Services</a></li>
             <li><a href="../../index.html#pilot-inquiry">Discuss a pilot</a></li>

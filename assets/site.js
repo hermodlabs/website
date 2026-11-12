@@ -44,3 +44,48 @@ if (menuButton && navigation) {
   });
   window.matchMedia('(min-width: 1101px)').addEventListener('change', () => setMenu(false));
 }
+
+// Native disclosures remain expanded without JavaScript. On smaller screens,
+// readers can open a compact outline without losing meaningful chapter titles.
+const readerDisclosures = [...document.querySelectorAll('.reader-nav-disclosure')];
+const compactReader = window.matchMedia('(max-width: 900px)');
+const setReaderNavigation = () => {
+  readerDisclosures.forEach(details => { details.open = !compactReader.matches; });
+};
+setReaderNavigation();
+compactReader.addEventListener('change', setReaderNavigation);
+readerDisclosures.forEach(details => {
+  details.addEventListener('click', event => {
+    if (compactReader.matches && event.target.closest('a[href^="#"]')) details.open = false;
+  });
+});
+
+// A viewport threshold misses narrow columns beside navigation. Measure each
+// scroll region instead, and recheck when images, formulas, or layout resize.
+const scrollRegions = document.querySelectorAll('.gantt-scroll, .article-table-scroll, .blog-table-scroll, .blog-figure-scroll, .blog-equation, .model-chart-scroll, .ontology-graph-scroll, .table-scroll');
+scrollRegions.forEach((region, index) => {
+  const existingHint = region.nextElementSibling;
+  let hint = existingHint?.matches('.gantt-scroll-hint, .blog-figure-hint, .model-chart-hint, .ontology-scroll-hint') ? existingHint : null;
+  if (!hint) {
+    hint = document.createElement('p');
+    hint.textContent = region.matches('.blog-equation') ? 'Scroll to view the full formula ↔' : 'Scroll to view the full table ↔';
+    region.after(hint);
+  }
+  hint.classList.add('scroll-hint');
+  if (!hint.id) hint.id = `scroll-hint-${index + 1}`;
+  hint.removeAttribute('aria-hidden');
+  const describedBy = new Set((region.getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean));
+  describedBy.add(hint.id);
+  region.setAttribute('aria-describedby', [...describedBy].join(' '));
+  const update = () => { hint.hidden = region.scrollWidth <= region.clientWidth + 1; };
+  if ('ResizeObserver' in window) {
+    const observer = new ResizeObserver(update);
+    observer.observe(region);
+    [...region.children].forEach(child => observer.observe(child));
+  } else {
+    window.addEventListener('resize', update);
+  }
+  region.querySelectorAll('img').forEach(img => img.addEventListener('load', update));
+  document.fonts?.ready.then(update);
+  update();
+});

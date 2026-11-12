@@ -31,6 +31,8 @@
   <link rel="stylesheet" href="../../assets/site.css">
 
 
+  <link rel="stylesheet" href="../../assets/reader.css">
+
   <script src="../../assets/feature-flags.js" defer></script>
   <script src="../../assets/site.js" defer></script>
 
@@ -42,7 +44,7 @@
   <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">+</span></button>
   <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
     <a href="../index.html" aria-current="page">Articles</a><a href="../../blog/index.html">Blog</a><a href="../../tools/index.html">Tools</a><a href="../../platform/index.html">Platform</a><a href="../../professional-services/index.html">Professional Services</a>
-    <a class="button nav-cta" data-decision-lab-link data-site-root="../../index.html" hidden>Try our free tool <span aria-hidden="true">↗</span></a>
+    <a class="button nav-cta" data-decision-lab-link data-site-root="../../index.html" hidden>Try Decision Lab free <span aria-hidden="true">↗</span></a>
   </nav>
 </header>
 
@@ -98,12 +100,25 @@
 
 
 
+
+
 <header class="reading-header wrap">
-  <p class="reading-breadcrumb"><a href="../index.html">All articles</a><span aria-hidden="true">/</span><a class="article-category" href="../how-to-build/index.html">How to Build</a></p>
+  
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+
+  
+  <a href="../index.html">All articles</a>
+
+  <span aria-hidden="true">/</span>
+  <a class="article-category" href="../how-to-build/index.html">How to Build</a>
+
+</nav>
+
 
   <p class="eyebrow">How to Build</p>
 
   <h1>Check a Report Plan in Decision Lab</h1>
+  <p class="reading-description">Run a three-day report plan, inspect the pending independence check, and see what changes when the deadline moves.</p>
   <p class="reading-meta"><span class="article-author">Jonathan Nacionales</span> <span aria-hidden="true">·</span> 6 min read</p>
   <ul class="article-tags" aria-label="Article topics">
     
@@ -117,12 +132,32 @@
     
   </ul>
 </header>
-<div class="reading-layout wrap standalone-reading">
+<div class="reader-layout reading-layout wrap standalone-reading">
 
-  <article class="article-body" id="article-content" aria-label="Check a Report Plan in Decision Lab">
+  <aside class="reader-navigation" aria-label="Reading navigation">
+
+  <nav class="reader-toc" aria-labelledby="reader-toc-heading">
+  <details class="reader-nav-disclosure" open>
+    <summary><h2 id="reader-toc-heading">On this page</h2></summary>
+    <ol>
+      <li><a href="#enter-description">1. Enter the plan</a></li>
+      <li><a href="#read-result">2. Analyze and read the schedule</a></li>
+      <li><a href="#inspect-check">3. Inspect what remains unresolved</a></li>
+      <li><a href="#change-deadline">4. Move the deadline and rerun</a></li>
+      <li><a href="#keep-copy">5. Keep the description and result</a></li>
+    </ol>
+  </details>
+</nav>
+
+
+
+  </aside>
+
+  <article class="reader-prose article-body" id="article-content" aria-label="Check a Report Plan in Decision Lab">
+    <div class="reader-content">
     
       
-    <p>Can a report be prepared and independently reviewed by the end of day three? This guide turns that question into a small description you can run in the Free Decision Lab public beta. You will inspect a feasible schedule, distinguish it from an unconfirmed requirement, and change one constraint to see the effect.</p>
+    <p class="reader-lead">Can a report be prepared and independently reviewed by the end of day three? This guide turns that question into a small description you can run in the Free Decision Lab public beta. You will inspect a feasible schedule, distinguish it from an unconfirmed requirement, and change one constraint to see the effect.</p>
       
     
       
@@ -193,7 +228,7 @@ Find arrangements for &quot;Reviewed report&quot;.</code></pre>
       
     <div class="article-table-scroll" role="region" tabindex="0" aria-label="Expected schedule from the complete report plan">
       <table>
-        <caption class="visually-hidden">Expected schedule from the complete report plan</caption>
+        <caption>Expected schedule from the complete report plan</caption>
         <thead><tr><th scope="col">Work</th><th scope="col">Person</th><th scope="col">Planned days</th></tr></thead>
         <tbody>
           
@@ -280,16 +315,18 @@ Find arrangements for &quot;Reviewed report&quot;.</code></pre>
     <p>To see why this distinction matters, read <a href="../computational-hermeneutics-for-human-decisions/index.html">Computational Hermeneutics for Human Decisions</a>. To follow how plans depend on combinations of choices, start with <a href="../good-choices-impossible-plan/index.html">Why Can Good Choices Produce an Impossible Plan?</a></p>
       
     
+    </div>
     
 
 
 
 
-    <nav class="article-category-return" aria-label="More articles">
+
+
+    <nav class="reader-return article-category-return" aria-label="More articles">
       <a class="text-link" href="../how-to-build/index.html">More in How to Build <span aria-hidden="true">→</span></a>
       <a class="text-link" href="../index.html">All articles <span aria-hidden="true">→</span></a>
     </nav>
-
   </article>
 </div>
 
@@ -297,17 +334,7 @@ Find arrangements for &quot;Reviewed report&quot;.</code></pre>
 </main>
   <footer class="site-footer">
   <div class="wrap">
-    <section class="footer-action" aria-labelledby="footer-action-heading">
-      <div>
-        <p class="eyebrow">Put the ideas to work</p>
-        <h2 id="footer-action-heading">A decision of your own?<br><em>Try Decision Lab.</em></h2>
-        <p class="footer-action-copy">Describe the work and its requirements. Examine which arrangements can work and keep unresolved checks visible.</p>
-      </div>
-      <div class="footer-action-links">
-        <a class="button" data-decision-lab-link data-site-root="../../index.html" hidden>Try Decision Lab for free <span aria-hidden="true">↗</span></a>
-        <a class="text-link" href="../../tools/decision-lab/index.html">Decision Lab details <span aria-hidden="true">→</span></a>
-      </div>
-    </section>
+
 
     <div class="footer-directory">
       <div class="footer-identity">
@@ -344,7 +371,7 @@ Find arrangements for &quot;Reviewed report&quot;.</code></pre>
           <h3 id="footer-platform-heading">Platform</h3>
           <ul aria-labelledby="footer-platform-heading">
             <li><a href="../../about/index.html">About Hermod Labs</a></li>
-            <li><a href="../../platform/index.html">Explore the platform</a></li>
+            <li><a href="../../platform/index.html">Concepts behind Decision Lab</a></li>
             <li><a href="../../platform/index.html#concepts">Core concepts</a></li>
             <li><a href="../../professional-services/index.html">Professional Services</a></li>
             <li><a href="../../index.html#pilot-inquiry">Discuss a pilot</a></li>
