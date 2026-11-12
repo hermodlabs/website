@@ -327,6 +327,12 @@ figcaption { color: var(--muted); font-size: 13px; margin-top: 16px; }
 .series-introduction { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 8%; align-items: end; }
 .series-introduction > .eyebrow { grid-column: 1 / -1; margin-bottom: 10px; }
 .series-introduction > p:last-child { max-width: 460px; color: var(--muted); margin: 0; }
+.report-beta-output { align-items: start; margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--line); }
+.report-beta-output p { max-width: 540px; color: var(--muted); font-size: 16px; }
+.report-beta-output .screenshot { margin: 0; }
+@media (max-width: 650px) {
+  .report-beta-output .screenshot { margin-top: 28px; }
+}
 .ontology-story { margin-top: 40px; }
 .ontology-stage + .ontology-stage { margin-top: 36px; padding-top: 32px; border-top: 1px solid var(--line); }
 .ontology-stage { scroll-margin-top: 30px; }

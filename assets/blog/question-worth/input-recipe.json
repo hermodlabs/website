@@ -1,0 +1,52 @@
+{
+  "source": "What Is a Question Worth?, 12 November 2026",
+  "status": "Fictional case inputs from the essay; not physical observations or an app import file.",
+  "example": "Marbles and colored bags",
+  "required_identification": "Which bag should we hold?",
+  "commitment_deadline_minutes": 12,
+  "heavy_marble_rule": "Exactly one heavy marble across all nine marbles.",
+  "number_of_bags": 3,
+  "marbles_per_bag": 3,
+  "reliability": "At most one incorrect result in the whole run, not per comparison; no error probabilities assumed.",
+  "available_from_minute": {
+    "all_bags": 0,
+    "operator": 0,
+    "balance": 0
+  },
+  "durations_minutes": {
+    "preparation": 2,
+    "sorting": 1,
+    "each_weighing": 1,
+    "each_recording": 1,
+    "interpretation": 1,
+    "final_choice": 1
+  },
+  "cost_per_physical_weighing_credits": 1,
+  "maximum_cost_credits": 20,
+  "physical_weighing_limit": null,
+  "selected_plans": [
+    "BAG-QUICK",
+    "BAG-REPEAT",
+    "MARBLE-EXACT"
+  ],
+  "selected_requirements": [
+    "SUFFICIENCY",
+    "LEGAL",
+    "COUNT",
+    "TIME",
+    "COST",
+    "COVERAGE"
+  ],
+  "workflow": [
+    "Workspaces",
+    "New workspace if necessary",
+    "Marbles and colored bags",
+    "Guided questions",
+    "Update reports",
+    "Preview reports"
+  ],
+  "variations": [
+    "Select Reliable reports: no incorrect result, update and preview; then restore the one-error bound.",
+    "Change only the commitment deadline from minute 12 to minute 10, update and preview; then restore minute 12."
+  ]
+}
