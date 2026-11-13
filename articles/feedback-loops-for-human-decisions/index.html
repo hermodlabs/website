@@ -43,7 +43,7 @@
   <a class="brand" href="../../index.html" aria-label="Hermod Labs home"><img src="../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
   <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">+</span></button>
   <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
-    <a href="../index.html" aria-current="page">Articles</a><a href="../../blog/index.html">Blog</a><a href="../../tools/index.html">Tools</a><a href="../../platform/index.html">Platform</a><a href="../../professional-services/index.html">Professional Services</a>
+    <a href="../index.html">Articles</a><a href="../../blog/index.html">Blog</a><a href="../../tools/index.html">Tools</a><a href="../../platform/index.html" aria-current="page">Platform</a><a href="../../professional-services/index.html">Professional Services</a>
     <a class="button nav-cta" data-decision-lab-link data-site-root="../../index.html" hidden>Try Decision Lab free <span aria-hidden="true">↗</span></a>
   </nav>
 </header>
@@ -98,15 +98,22 @@
 
 
 
-<header class="reading-header wrap">
+
+
+
+
+<header class="reading-header wrap reading-header-with-cover">
+  <div class="reading-header-content">
+
   
+
   <nav class="breadcrumb" aria-label="Breadcrumb">
 
   
-  <a href="../index.html">All articles</a>
+  <a class="article-category" href="../../platform/index.html">Platform</a>
 
   <span aria-hidden="true">/</span>
-  <a class="article-category" href="../ways-of-thinking/index.html">Ways of Thinking</a>
+  <span aria-current="page">Feedback loops</span>
 
 </nav>
 
@@ -125,6 +132,12 @@
     <li><a href="../topics/dependencies/index.html">Dependencies</a></li>
     
   </ul>
+  </div>
+
+  <figure class="reading-cover article-cover">
+    <img class="reading-cover-image article-cover-image" src="../../assets/articles/covers/feedback-loops-for-human-decisions.svg" alt="A circular feedback path connects an inspection observation, a changed delivery plan, increased stored material, and a revised planning record." width="960" height="720" decoding="async">
+  </figure>
+
 </header>
 <div class="reader-layout reading-layout wrap standalone-reading">
 
@@ -287,10 +300,12 @@
     </nav>
 
 
-    <nav class="reader-return article-category-return" aria-label="More articles">
-      <a class="text-link" href="../ways-of-thinking/index.html">More in Ways of Thinking <span aria-hidden="true">→</span></a>
-      <a class="text-link" href="../index.html">All articles <span aria-hidden="true">→</span></a>
+
+    <nav class="reader-return article-category-return" aria-label="More Platform reading">
+      <a class="text-link" href="../../platform/index.html#feedback-loops">Back to Feedback loops <span aria-hidden="true">→</span></a>
+      <a class="text-link" href="../../platform/index.html#concepts">All Platform concepts <span aria-hidden="true">→</span></a>
     </nav>
+
   </article>
 </div>
 
@@ -320,8 +335,6 @@
 
             <li><a href="../start-here/index.html">Start Here</a></li>
 
-            <li><a href="../ways-of-thinking/index.html">Ways of Thinking</a></li>
-
             <li><a href="../how-to-build/index.html">How to Build</a></li>
 
             <li><a href="../../series/the-arrangement-problem/index.html">The Arrangement Problem</a></li>
@@ -339,7 +352,7 @@
           <h3 id="footer-platform-heading">Platform</h3>
           <ul aria-labelledby="footer-platform-heading">
             <li><a href="../../about/index.html">About Hermod Labs</a></li>
-            <li><a href="../../platform/index.html">Concepts behind Decision Lab</a></li>
+            <li><a href="../../platform/index.html">Ways of Thinking</a></li>
             <li><a href="../../platform/index.html#concepts">Core concepts</a></li>
             <li><a href="../../professional-services/index.html">Professional Services</a></li>
             <li><a href="../../index.html#pilot-inquiry">Discuss a pilot</a></li>

@@ -2,7 +2,34 @@
 .blog-index-header .lead { max-width: 670px; margin-bottom: 0; }
 .blog-list-heading { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 20px 32px; margin-bottom: 35px; }
 .blog-list-heading h2 { font-size: 32px; }
-.recent-blog-posts .reading-card-grid { margin-top: 45px; }
+/* Homepage editorial variant of the shared reading card. Layout responds to
+   available section/card width, including when only one post is published. */
+.recent-blog-posts > .wrap { container: blog-section / inline-size; }
+.blog-editorial { display: grid; gap: 24px; align-items: start; margin-top: 45px; }
+.blog-editorial-feature { display: grid; align-self: stretch; min-width: 0; container: blog-feature / inline-size; }
+.blog-post-featured { display: grid; gap: 28px; }
+.blog-post-featured > .reading-card-media { margin-bottom: 0; }
+.blog-post-featured .blog-card-content { align-self: center; }
+.blog-editorial .reading-card-meta { justify-content: flex-start; gap: 6px 10px; font-size: 12px; }
+.blog-post-featured .reading-card-title { font-size: clamp(30px, calc(24px + 1.5cqi), 44px); line-height: 1.12; letter-spacing: -.045em; text-wrap: pretty; }
+.blog-post-featured .reading-card-description { font-size: 17px; line-height: 1.65; max-width: 44ch; }
+.blog-editorial-supporting { display: grid; gap: 24px; align-items: start; min-width: 0; }
+.blog-editorial-supporting .reading-card { padding: 24px; }
+.blog-editorial-supporting .reading-card-meta { margin-bottom: 14px; }
+.blog-editorial-supporting .reading-card-title { margin-bottom: 12px; text-wrap: pretty; }
+.blog-editorial-supporting .reading-card-description { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; margin-bottom: 18px; }
+@container blog-feature (min-width: 640px) {
+  .blog-post-featured:has(.blog-card-media) { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 32px; }
+  .blog-post-featured .blog-card-content { grid-column: 1; grid-row: 1; }
+  .blog-post-featured .blog-card-media { grid-column: 2; grid-row: 1; align-self: center; }
+}
+@container blog-section (min-width: 600px) {
+  .blog-editorial-supporting { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@container blog-section (min-width: 1050px) {
+  .blog-editorial:not([data-post-count='1']) { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+  .blog-editorial-supporting { grid-template-columns: minmax(0, 1fr); }
+}
 .blog-figure-scroll { border: 1px solid #dce2e9; background: white; }
 .blog-figure-scroll > a { display: block; width: 100%; min-width: 760px; }
 .blog-figure-scroll img { display: block; width: 100%; height: auto; }
@@ -13,7 +40,7 @@
 .payout-partitions tbody tr:first-child { background: #eef6f5; }
 .blog-source-note { margin-bottom: 35px; padding-bottom: 25px; border-bottom: 1px solid var(--line); color: var(--muted); font: 14px/1.7 Helvetica, Arial, sans-serif; }
 @media (max-width: 650px) {
-  .recent-blog-posts .reading-card-grid { margin-top: 30px; }
+  .blog-editorial { margin-top: 30px; }
   .blog-list-heading { margin-bottom: 28px; }
   .blog-equation { padding: 16px 12px; }
 }

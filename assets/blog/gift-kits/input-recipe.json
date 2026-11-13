@@ -1,0 +1,55 @@
+{
+  "source": "Choose Checks Before Releasing Gift Kits, Jonathan Nacionales, 12 November 2026",
+  "scope": "Setup and narrative premises from the supplied PDF, not an application import file or a recorded physical run.",
+  "example": "Choose checks before releasing gift kits",
+  "campaign": {
+    "kits": 120,
+    "budget_usd": 6000
+  },
+  "decision": "Which corrections does the evidence justify before the printer cutoff?",
+  "correction_deadline_minutes": 16,
+  "reviewer_available_from_minute": 0,
+  "work_durations_minutes": {
+    "preparation": 2,
+    "recording_per_check": 1,
+    "interpretation": 2,
+    "final_choice": 1
+  },
+  "diagnostic_allowance_credits": 15,
+  "selected_plans": [
+    "QUICK",
+    "TARGETED",
+    "AUDIT"
+  ],
+  "selected_requirements": [
+    "SUFFICIENCY",
+    "APPLICABILITY",
+    "TIME",
+    "COST",
+    "COVERAGE"
+  ],
+  "workflow": [
+    "Workspaces",
+    "New workspace",
+    "Choose checks before releasing gift kits",
+    "Guided questions",
+    "Update reports",
+    "Preview reports"
+  ],
+  "simulation": {
+    "plan": "TARGETED",
+    "configuration": "110",
+    "faults": [
+      "unreadable print",
+      "incorrect link"
+    ],
+    "checkout": "approved checkout allowed"
+  },
+  "story_assumptions": [
+    "Retail-buyer audience",
+    "2:44 p.m. investigation start and 3:00 p.m. printer correction-choice cutoff",
+    "USD 8 per kit potential reopening handling rate",
+    "Physical checks and successful 3:30 p.m. replacement-insert rehearsal"
+  ],
+  "evidence_limit": "The source screenshots show calculations and a simulation. The demo has no retained physical run. The physical resolution belongs to the fictional story."
+}
