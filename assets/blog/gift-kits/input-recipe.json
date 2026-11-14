@@ -1,13 +1,34 @@
 {
-  "source": "Choose Checks Before Releasing Gift Kits, Jonathan Nacionales, 12 November 2026",
-  "scope": "Setup and narrative premises from the supplied PDF, not an application import file or a recorded physical run.",
+  "source": "Choose Checks Before Releasing Gift Kits, requirements-and-views revision, Jonathan Nacionales, 13 November 2026",
+  "source_pdf_sha256": "a5c4051c9b735fec3b17a5390b9af8bb9410f7e78b7c28139a7c3ca699301c69",
+  "scope": "Declared setup, requirements derivation, and fictional business records from the supplied PDF; not an application import or retained physical run.",
   "example": "Choose checks before releasing gift kits",
   "campaign": {
+    "job": "GK-120",
     "kits": 120,
-    "budget_usd": 6000
+    "allocation_usd": 6000
   },
-  "decision": "Which corrections does the evidence justify before the printer cutoff?",
-  "correction_deadline_minutes": 16,
+  "decision": "Which complete proposed investigation can establish the correction set and leave time for Leah to authorize and send the instruction by 3:00 p.m., within the available access and modeled resources?",
+  "case_basis": {
+    "scope_record": "SCOPE-01",
+    "initial_insert": "INSERT-R1",
+    "matching_artwork": "AW-R1",
+    "approved_destination": "P-01",
+    "test_account": "buyer-test-01",
+    "faults_can_coexist": [
+      "unreadable print",
+      "incorrect encoded destination",
+      "checkout restriction"
+    ],
+    "check_reliability": "Scoped checks are performed and reported accurately; no check or reporting error is modeled.",
+    "acceptance": "At least one modeled explanation remains and every compatible explanation requires the same complete correction set.",
+    "authority": "Leah can authorize scoped corrections and retain the packing hold. Model fit does not grant permission."
+  },
+  "correction_cutoff_minutes": 16,
+  "planned_start_clock": "14:44",
+  "remaining_authorization_and_transmission_minutes": 1,
+  "latest_usable_evidence_minutes": 15,
+  "planned_targeted_usable_evidence_minutes": 14,
   "reviewer_available_from_minute": 0,
   "work_durations_minutes": {
     "preparation": 2,
@@ -21,13 +42,24 @@
     "TARGETED",
     "AUDIT"
   ],
-  "selected_requirements": [
-    "SUFFICIENCY",
-    "APPLICABILITY",
-    "TIME",
-    "COST",
-    "COVERAGE"
-  ],
+  "active_requirement_trace": {
+    "R1": "SUFFICIENCY",
+    "R2": "APPLICABILITY",
+    "R4": "TIME",
+    "R5": "COST",
+    "R6": "COVERAGE"
+  },
+  "inactive_requirement_trace": {
+    "R3": "No check-count limit declared; no count requirement applied, and no pass supplied by an absent limit."
+  },
+  "views": {
+    "V1": "Complete-plan comparison",
+    "V2": "Basis matrix",
+    "V3": "Finding and reason",
+    "V4": "Evidence and commitment timing",
+    "V5": "Evidence kind and provenance",
+    "V6": "Case basis and revision"
+  },
   "workflow": [
     "Workspaces",
     "New workspace",
@@ -45,11 +77,44 @@
     ],
     "checkout": "approved checkout allowed"
   },
+  "direct_alternatives": {
+    "reprint_now": "Could preserve wrong link or checkout fault.",
+    "correct_all_three": "Unranked: complete cost, work, side effects and timing not supplied.",
+    "validated_replacement": "Unranked: availability, cost and readiness not supplied.",
+    "hold": "Available fallback pending review."
+  },
+  "business_records": [
+    "BRIEF-01",
+    "PR-Q-01",
+    "R0-01",
+    "FUL-EST-01",
+    "SCOPE-01",
+    "CHECK-01",
+    "LOG-01",
+    "PR-WO-01",
+    "PR-INV-01",
+    "REL-01",
+    "PK-01"
+  ],
+  "named_learning_commitment_slots": [
+    "decision_question",
+    "evidence_plan",
+    "evidence_condition",
+    "supported_action",
+    "fallback_action",
+    "usable_evidence_deadline",
+    "learning_plan_cost"
+  ],
+  "priced_scope": "Up to four diagnostic credits for modeled checks on the longer permitted TARGETED branch.",
+  "unpriced_work": "Preparation, recording, interpretation and final choice consume scheduled time with no separate resource price here. Replacement printing and revised-card release rehearsal lie outside diagnostic cost.",
   "story_assumptions": [
     "Retail-buyer audience",
-    "2:44 p.m. investigation start and 3:00 p.m. printer correction-choice cutoff",
-    "USD 8 per kit potential reopening handling rate",
-    "Physical checks and successful 3:30 p.m. replacement-insert rehearsal"
+    "Clock-time production timetable",
+    "USD 8 per kit conditional reopening handling estimate",
+    "Physical diagnostic findings and successful 3:30 p.m. revised-card rehearsal",
+    "All reconstructed business records, including USD 100 quote/invoice subtotal"
   ],
-  "evidence_limit": "The source screenshots show calculations and a simulation. The demo has no retained physical run. The physical resolution belongs to the fictional story."
+  "evidence_limit": "Current screenshots show model calculations and a simulated path. The demo has no retained physical run. LOG-01 and the physical resolution are fictional examples; model coverage is not established by one preview or one illustrated run.",
+  "economic_limit": "No dollar conversion, complete monetary acquisition cost or calculated economic information value is supplied. Campaign allocation does not establish remaining spending authority. USD 960 is potential exposure, not a measured saving.",
+  "schedule_limit": "The global Gantt establishes dependencies only; production and packing durations and capacity remain to be confirmed. The minute-scale model assesses the earlier correction-instruction commitment."
 }

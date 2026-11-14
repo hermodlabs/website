@@ -47,5 +47,20 @@
     "BAG-REPEAT_choice_ready": 11,
     "MARBLE-EXACT_choice_ready": 17
   },
+  "readiness_and_limits": {
+    "planned_evidence_ready_minute": 10,
+    "latest_usable_evidence_minute": 11,
+    "commitment_deadline_minute": 12,
+    "choice_ready_minute": 11,
+    "slack_minutes": 1,
+    "priced_resource_consumption_credits": 3,
+    "resource_ceiling_credits": 20
+  },
+  "modeled_world_report_paths": {
+    "BAG-QUICK": 27,
+    "BAG-REPEAT": 63,
+    "MARBLE-EXACT": 117
+  },
+  "path_count_basis": "Nine heavy-marble worlds; for n ternary reports at most one error gives one all-correct sequence plus two alternatives at each of n positions. These are modeled paths, not observed trials, probabilities, or empirical success rates.",
   "quick_plan_limitation": "The seven-minute nominal sequence does not establish reliable bag evidence under the global one-error bound."
 }
