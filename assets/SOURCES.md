@@ -17,9 +17,9 @@ Downloaded 2026-09-23 for the Hermod Labs corporate rebuild:
 
 `examples/report-plan.hermod` contains that same description and final query as plain text. The practical guide at `articles/check-a-report-plan/` retains this source and its download; moving only its deadline from day three to day two yields no feasible arrangement under the declared timing and availability.
 
-## Pilot icons
+## Audience icons
 
-`pilots/professional.svg`, `pilots/team.svg`, and `pilots/enterprise.svg` are original monochrome vector icons for the homepage pilot cards. They depict a programmable workflow, people sharing a review record, and connected organizational groups. Each uses a 96 × 96 viewBox with matching line weights and accessible SVG titles and descriptions; the cards display them at 40 × 40 pixels beside the tier names in their headings. They contain no external artwork or raster images.
+`pilots/professional.svg`, `pilots/team.svg`, and `pilots/enterprise.svg` are original monochrome vector icons for the homepage Professional, Team, and Enterprise development and consulting cards. They depict a programmable workflow, people sharing a review record, and connected organizational groups. Each uses a 96 × 96 viewBox with matching line weights and accessible SVG titles and descriptions; the cards display them at 40 × 40 pixels beside the tier names in their headings. They contain no external artwork or raster images.
 
 ## Navigation page covers
 
