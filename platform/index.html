@@ -33,7 +33,7 @@
 
   <script src="../assets/feature-flags.js" defer></script>
   <script src="../assets/site.js" defer></script>
-
+  <script src="../assets/form-request.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -41,30 +41,55 @@
   <a class="brand" href="../index.html" aria-label="Hermod Labs home"><img src="../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
   <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">+</span></button>
   <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
-    <a href="../articles/index.html">Articles</a><a href="../blog/index.html">Blog</a><a href="../tools/index.html">Tools</a><a href="index.html" aria-current="page">Platform</a><a href="../professional-services/index.html">Professional Services</a>
-    <a class="button nav-cta" data-decision-lab-link data-site-root="../index.html" hidden>Try Decision Lab free <span aria-hidden="true">↗</span></a>
+    <a href="../articles/index.html"><svg class="nav-icon nav-icon-articles" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M12 6.5C9.4 4.8 6.3 4.4 3 5.3v13.4c3.3-.9 6.4-.5 9 1.2 2.6-1.7 5.7-2.1 9-1.2V5.3c-3.3-.9-6.4-.5-9 1.2Z"/>
+  <path d="M12 6.5v13.4"/>
+</svg><span>Articles</span></a><a href="../blog/index.html"><svg class="nav-icon nav-icon-blog" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M11 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6"/>
+  <path d="m9 12 9-9 3 3-9 9-4 1 1-4Zm7-7 3 3"/>
+</svg><span>Blog</span></a><a href="index.html" aria-current="page"><svg class="nav-icon nav-icon-platform" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <rect x="3" y="3" width="6" height="6" rx="1.2"/>
+  <rect x="15" y="3" width="6" height="6" rx="1.2"/>
+  <rect x="9" y="15" width="6" height="6" rx="1.2"/>
+  <path d="M9 6h6M6 9v3h12V9m-6 3v3"/>
+</svg><span>Platform</span></a><a href="../professional-services/index.html"><svg class="nav-icon nav-icon-professional-services" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <circle cx="9" cy="8" r="3"/>
+  <path d="M3 20v-2a6 6 0 0 1 12 0v2M16 5a3 3 0 0 1 0 6m1 3a4 4 0 0 1 4 4v2"/>
+</svg><span>Professional Services</span></a>
+    <a class="button nav-cta" data-decision-lab-link data-site-root="../index.html" hidden><span>Try Decision Lab free</span><svg class="nav-icon nav-icon-launch" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M8 5h11v11M19 5 5 19"/>
+</svg></a>
   </nav>
 </header>
 
   <main id="main" tabindex="-1">
-<section class="page-hero wrap platform-hero" id="platform-overview" data-platform-article="12">
-  <p class="eyebrow">Platform / The concepts behind Decision Lab</p>
-  <h1>Make the parts manageable.<br><em>Keep the connections.</em></h1>
-  <div class="platform-overview-grid">
-    <div>
-      <p class="lead">A decision can be larger than any one person can hold in mind. These concepts guide how we give its parts a shared meaning, reason about them together, and learn from what happens.</p>
-      
-      <a class="platform-reading-link" href="../articles/ways-of-thinking-about-human-decisions/index.html">
+<section class="page-hero wrap platform-hero page-hero-with-cover" id="platform-overview" data-platform-article="12">
+  <div class="page-hero-copy">
+    <p class="eyebrow">Platform / The concepts behind Decision Lab</p>
+    <h1>Make the parts manageable.<br><em>Keep the connections.</em></h1>
+    <p class="lead">A decision can be larger than any one person can hold in mind. These concepts guide how we give its parts a shared meaning, reason about them together, and learn from what happens.</p>
+    
+    <a class="platform-reading-link" href="../articles/ways-of-thinking-about-human-decisions/index.html">
   <span class="platform-reading-label">Start with the overview <span aria-hidden="true">→</span></span>
-  <span class="platform-reading-title">Ways of Thinking About Human Decisions</span>
+  <span class="platform-reading-title">
+    <svg class="platform-article-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M14 3H5a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9l-6-6Z"/>
+  <path d="M14 3v6h6M8 12h8M8 16h6"/>
+</svg>
+
+    <span class="platform-reading-title-text">Ways of Thinking About Human Decisions</span>
+  </span>
   <span class="platform-reading-meta">11 min read</span>
 </a>
 
-    </div>
-    <figure class="platform-cover platform-overview-cover">
-      <img class="platform-cover-image" src="../assets/articles/covers/ways-of-thinking-about-human-decisions.svg" alt="A person keeps a report, a small relationship model, and a clock connected around their workspace." width="960" height="720" decoding="async">
-    </figure>
   </div>
+  
+  
+  
+  <figure class="page-hero-cover platform-cover platform-overview-cover">
+  <img class="page-hero-cover-image platform-cover-image" src="../assets/articles/covers/ways-of-thinking-about-human-decisions.svg" alt="A person keeps a report, a small relationship model, and a clock connected around their workspace." width="960" height="720" fetchpriority="high" decoding="async">
+</figure>
+
 </section>
 
 <nav class="page-index platform-index wrap" id="concepts" aria-label="Platform concepts">
@@ -119,7 +144,14 @@
 
       <a class="platform-reading-link" href="../articles/hierarchical-decomposition-for-human-decisions/index.html">
   <span class="platform-reading-label">Read the full article <span aria-hidden="true">→</span></span>
-  <span class="platform-reading-title">Hierarchical Decomposition for Human Decisions</span>
+  <span class="platform-reading-title">
+    <svg class="platform-article-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M14 3H5a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9l-6-6Z"/>
+  <path d="M14 3v6h6M8 12h8M8 16h6"/>
+</svg>
+
+    <span class="platform-reading-title-text">Hierarchical Decomposition for Human Decisions</span>
+  </span>
   <span class="platform-reading-meta">6 min read</span>
 </a>
 
@@ -150,7 +182,14 @@
 
       <a class="platform-reading-link" href="../articles/shared-structure-for-automated-reasoning/index.html">
   <span class="platform-reading-label">Read the full article <span aria-hidden="true">→</span></span>
-  <span class="platform-reading-title">Shared Structure for Automated Reasoning</span>
+  <span class="platform-reading-title">
+    <svg class="platform-article-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M14 3H5a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9l-6-6Z"/>
+  <path d="M14 3v6h6M8 12h8M8 16h6"/>
+</svg>
+
+    <span class="platform-reading-title-text">Shared Structure for Automated Reasoning</span>
+  </span>
   <span class="platform-reading-meta">6 min read</span>
 </a>
 
@@ -181,7 +220,14 @@
 
       <a class="platform-reading-link" href="../articles/ontology-engineering-for-human-decisions/index.html">
   <span class="platform-reading-label">Read the full article <span aria-hidden="true">→</span></span>
-  <span class="platform-reading-title">Ontology Engineering for Human Decisions</span>
+  <span class="platform-reading-title">
+    <svg class="platform-article-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M14 3H5a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9l-6-6Z"/>
+  <path d="M14 3v6h6M8 12h8M8 16h6"/>
+</svg>
+
+    <span class="platform-reading-title-text">Ontology Engineering for Human Decisions</span>
+  </span>
   <span class="platform-reading-meta">7 min read</span>
 </a>
 
@@ -212,7 +258,14 @@
 
       <a class="platform-reading-link" href="../articles/reasoning-modules-for-human-decisions/index.html">
   <span class="platform-reading-label">Read the full article <span aria-hidden="true">→</span></span>
-  <span class="platform-reading-title">Reasoning Modules for Human Decisions</span>
+  <span class="platform-reading-title">
+    <svg class="platform-article-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M14 3H5a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9l-6-6Z"/>
+  <path d="M14 3v6h6M8 12h8M8 16h6"/>
+</svg>
+
+    <span class="platform-reading-title-text">Reasoning Modules for Human Decisions</span>
+  </span>
   <span class="platform-reading-meta">6 min read</span>
 </a>
 
@@ -245,7 +298,14 @@
 
       <a class="platform-reading-link" href="../articles/pattern-languages-for-human-decisions/index.html">
   <span class="platform-reading-label">Read the full article <span aria-hidden="true">→</span></span>
-  <span class="platform-reading-title">Pattern Languages for Human Decisions</span>
+  <span class="platform-reading-title">
+    <svg class="platform-article-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M14 3H5a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9l-6-6Z"/>
+  <path d="M14 3v6h6M8 12h8M8 16h6"/>
+</svg>
+
+    <span class="platform-reading-title-text">Pattern Languages for Human Decisions</span>
+  </span>
   <span class="platform-reading-meta">7 min read</span>
 </a>
 
@@ -278,7 +338,14 @@
 
       <a class="platform-reading-link" href="../articles/computational-hermeneutics-for-human-decisions/index.html">
   <span class="platform-reading-label">Read the full article <span aria-hidden="true">→</span></span>
-  <span class="platform-reading-title">Computational Hermeneutics for Human Decisions</span>
+  <span class="platform-reading-title">
+    <svg class="platform-article-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M14 3H5a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9l-6-6Z"/>
+  <path d="M14 3v6h6M8 12h8M8 16h6"/>
+</svg>
+
+    <span class="platform-reading-title-text">Computational Hermeneutics for Human Decisions</span>
+  </span>
   <span class="platform-reading-meta">8 min read</span>
 </a>
 
@@ -309,7 +376,14 @@
 
       <a class="platform-reading-link" href="../articles/requirements-engineering-for-human-decisions/index.html">
   <span class="platform-reading-label">Read the full article <span aria-hidden="true">→</span></span>
-  <span class="platform-reading-title">Requirements Engineering for Human Decisions</span>
+  <span class="platform-reading-title">
+    <svg class="platform-article-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M14 3H5a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9l-6-6Z"/>
+  <path d="M14 3v6h6M8 12h8M8 16h6"/>
+</svg>
+
+    <span class="platform-reading-title-text">Requirements Engineering for Human Decisions</span>
+  </span>
   <span class="platform-reading-meta">7 min read</span>
 </a>
 
@@ -340,7 +414,14 @@
 
       <a class="platform-reading-link" href="../articles/systems-engineering-for-human-decisions/index.html">
   <span class="platform-reading-label">Read the full article <span aria-hidden="true">→</span></span>
-  <span class="platform-reading-title">Systems Engineering for Human Decisions</span>
+  <span class="platform-reading-title">
+    <svg class="platform-article-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M14 3H5a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9l-6-6Z"/>
+  <path d="M14 3v6h6M8 12h8M8 16h6"/>
+</svg>
+
+    <span class="platform-reading-title-text">Systems Engineering for Human Decisions</span>
+  </span>
   <span class="platform-reading-meta">7 min read</span>
 </a>
 
@@ -371,7 +452,14 @@
 
       <a class="platform-reading-link" href="../articles/feedback-loops-for-human-decisions/index.html">
   <span class="platform-reading-label">Read the full article <span aria-hidden="true">→</span></span>
-  <span class="platform-reading-title">Feedback Loops for Human Decisions</span>
+  <span class="platform-reading-title">
+    <svg class="platform-article-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M14 3H5a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9l-6-6Z"/>
+  <path d="M14 3v6h6M8 12h8M8 16h6"/>
+</svg>
+
+    <span class="platform-reading-title-text">Feedback Loops for Human Decisions</span>
+  </span>
   <span class="platform-reading-meta">6 min read</span>
 </a>
 
@@ -402,7 +490,14 @@
 
       <a class="platform-reading-link" href="../articles/the-arrangement-problem-in-human-decisions/index.html">
   <span class="platform-reading-label">Read the full article <span aria-hidden="true">→</span></span>
-  <span class="platform-reading-title">The Arrangement Problem in Human Decisions</span>
+  <span class="platform-reading-title">
+    <svg class="platform-article-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M14 3H5a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9l-6-6Z"/>
+  <path d="M14 3v6h6M8 12h8M8 16h6"/>
+</svg>
+
+    <span class="platform-reading-title-text">The Arrangement Problem in Human Decisions</span>
+  </span>
   <span class="platform-reading-meta">6 min read</span>
 </a>
 
@@ -422,7 +517,7 @@
       </div>
       <div class="footer-action-links">
         <a class="button" data-decision-lab-link data-site-root="../index.html" hidden>Try Decision Lab for free <span aria-hidden="true">↗</span></a>
-        <a class="text-link" href="../tools/decision-lab/index.html">Decision Lab details <span aria-hidden="true">→</span></a>
+        <a class="text-link" href="../index.html#decision-lab">About Decision Lab <span aria-hidden="true">→</span></a>
       </div>
     </section>
 
@@ -431,42 +526,27 @@
       <div class="footer-identity">
         <a class="footer-brand" href="../index.html" aria-label="Hermod Labs home"><img src="../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
         <p class="footer-description">Tools and ideas for decisions you can inspect and revise.</p>
-        <a class="footer-contact" href="mailto:contact@hermodlabs.com">contact@hermodlabs.com <span aria-hidden="true">↗</span></a>
-        <p><a class="footer-contact" href="../blog/index.html">From the blog <span aria-hidden="true">→</span></a></p>
       </div>
 
-      <nav class="footer-navigation" aria-label="Footer navigation">
-        <div class="footer-link-group">
-          <h3 id="footer-reading-heading">Articles</h3>
-          <ul aria-labelledby="footer-reading-heading">
-            <li><a href="../articles/index.html">All articles</a></li>
+      <section class="footer-contact-section" aria-labelledby="footer-contact-heading">
+        <h3 id="footer-contact-heading">Contact us</h3>
+        <form class="beta-form footer-contact-form" id="footer-contact-form" action="https://forminit.com/f/1vqi2088svl" method="POST" data-forminit-request data-pending-message="Sending your message…" data-success-message="Thanks, your message has been sent. We’ll reply by email." accept-charset="UTF-8" aria-labelledby="footer-contact-heading">
+  <input type="hidden" name="fi-text-request" value="Hermod Labs contact">
+  <input type="hidden" name="fi-text-subject" value="Hermod Labs — Contact form">
+  <input type="hidden" name="_gotcha" value="">
+  <fieldset>
+    <legend class="visually-hidden">Contact Hermod Labs</legend>
+    <div class="footer-contact-fields">
+      <div class="form-field"><label for="footer-name">Name <span>(required)</span></label><input id="footer-name" type="text" name="fi-sender-fullName" autocomplete="name" maxlength="160" required></div>
+      <div class="form-field"><label for="footer-email">Email <span>(required)</span></label><input id="footer-email" type="email" name="fi-sender-email" autocomplete="email" maxlength="254" required></div>
+    </div>
+    <div class="form-field"><label for="footer-message">Message <span>(required)</span></label><textarea id="footer-message" name="fi-text-message" rows="3" maxlength="5000" placeholder="Tell us what you’d like to discuss." required></textarea></div>
+  </fieldset>
+  <button class="button" type="submit">Send message <span aria-hidden="true">↗</span></button>
+  <p class="form-status" id="footer-contact-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></p>
+</form>
 
-            <li><a href="../articles/start-here/index.html">Start Here</a></li>
-
-            <li><a href="../articles/how-to-build/index.html">How to Build</a></li>
-
-            <li><a href="../series/the-arrangement-problem/index.html">The Arrangement Problem</a></li>
-          </ul>
-        </div>
-        <div class="footer-link-group">
-          <h3 id="footer-tools-heading">Tools</h3>
-          <ul aria-labelledby="footer-tools-heading">
-            <li><a href="../tools/decision-lab/index.html">Decision Lab</a></li>
-            <li><a href="../tools/hermod-gg/index.html">Hermod.gg</a></li>
-            <li><a href="../tools/index.html">All tools</a></li>
-          </ul>
-        </div>
-        <div class="footer-link-group">
-          <h3 id="footer-platform-heading">Platform</h3>
-          <ul aria-labelledby="footer-platform-heading">
-            <li><a href="../about/index.html">About Hermod Labs</a></li>
-            <li><a href="index.html">Ways of Thinking</a></li>
-            <li><a href="index.html#concepts">Core concepts</a></li>
-            <li><a href="../professional-services/index.html">Professional Services</a></li>
-            <li><a href="../index.html#pilot-inquiry">Discuss a pilot</a></li>
-          </ul>
-        </div>
-      </nav>
+      </section>
     </div>
 
     <div class="footer-bottom">

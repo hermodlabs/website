@@ -6,15 +6,28 @@ document.querySelectorAll('form[data-forminit-request]').forEach((form) => {
   const fields = form.querySelector('fieldset');
   const status = form.querySelector('[role="status"]');
   const originalLabel = button.innerHTML;
-  const homeUrl = new URL(form.dataset.successUrl, window.location.href);
+  const homeUrl = form.dataset.successUrl
+    ? new URL(form.dataset.successUrl, window.location.href)
+    : null;
   let pending = false;
-  let submitted = window.history.state?.forminitSubmitted === form.id;
+  const hasSubmitted = () => {
+    const saved = window.history.state?.forminitSubmitted;
+    // Accept the single-form marker used by older history entries as well.
+    return saved === form.id || saved?.[form.id] === true;
+  };
+  let submitted = hasSubmitted();
 
   const markSubmitted = (value) => {
     submitted = value;
     try {
-      // Associate the reset with this history entry, without storing form data.
-      window.history.replaceState({ ...window.history.state, forminitSubmitted: value ? form.id : null }, '');
+      // Track each form separately, without storing names, email, or messages.
+      const saved = window.history.state?.forminitSubmitted;
+      const markers = typeof saved === 'string'
+        ? { [saved]: true }
+        : { ...saved };
+      if (value) markers[form.id] = true;
+      else delete markers[form.id];
+      window.history.replaceState({ ...window.history.state, forminitSubmitted: markers }, '');
     } catch {
       // The in-memory flag still handles a restored page if history is restricted.
     }
@@ -33,18 +46,22 @@ document.querySelectorAll('form[data-forminit-request]').forEach((form) => {
   };
 
   window.addEventListener('pageshow', () => {
-    if (submitted || window.history.state?.forminitSubmitted === form.id) {
+    if (submitted || hasSubmitted()) {
       clearForm();
       // Browsers can restore saved input values after pageshow on Back/Forward.
       window.setTimeout(() => {
-        if (submitted || window.history.state?.forminitSubmitted === form.id) clearForm();
+        if (submitted || hasSubmitted()) clearForm();
       }, 0);
     }
   });
 
   form.addEventListener('input', () => {
     // Preserve a new, unfinished request if the visitor navigates away and back.
-    if (submitted || window.history.state?.forminitSubmitted === form.id) markSubmitted(false);
+    if (submitted || hasSubmitted()) markSubmitted(false);
+    if (status.dataset.state === 'success') {
+      status.textContent = '';
+      delete status.dataset.state;
+    }
   });
 
   form.addEventListener('submit', async (event) => {
@@ -76,15 +93,19 @@ document.querySelectorAll('form[data-forminit-request]').forEach((form) => {
         status.dataset.state = 'error';
         status.textContent = response.status === 429
           ? 'Please wait a moment before trying again. Your details are still here.'
-          : 'Your request could not be accepted. Please check your details and try again, or contact us below.';
+          : 'Your message could not be accepted. Your details are still here. Please check them and try again.';
       } else {
         markSubmitted(true);
         clearForm();
-        window.location.assign(homeUrl.href);
+        if (homeUrl) window.location.assign(homeUrl.href);
+        else {
+          status.dataset.state = 'success';
+          status.textContent = form.dataset.successMessage || 'Thanks, your message has been sent.';
+        }
       }
     } catch {
       status.dataset.state = 'error';
-      status.textContent = 'We couldn’t confirm your request. Your details are still here. Check your connection before trying again, or contact us below.';
+      status.textContent = 'We couldn’t confirm your message. Your details are still here. Check your connection before trying again.';
     } finally {
       window.clearTimeout(timeout);
       pending = false;
@@ -92,7 +113,7 @@ document.querySelectorAll('form[data-forminit-request]').forEach((form) => {
       fields.disabled = false;
       button.innerHTML = originalLabel;
       form.removeAttribute('aria-busy');
-      if (!submitted) status.focus({ preventScroll: true });
+      if (!submitted || !homeUrl) status.focus({ preventScroll: true });
     }
   });
 });

@@ -11,9 +11,19 @@ Downloaded 2026-09-23 for the Hermod Labs corporate rebuild:
 
 `hermod-wordmark-dark.png` is an existing repository asset retained for the standalone legacy League prototype pages.
 
-`decision-lab-report-plan.png` is an actual 663 × 685 capture of the Free beta timing report, taken on 2026-11-10 from the `review_lab` static application using the exact model in `src/_data/homeExample.json`. The required-work section is expanded to show that reviewer independence remains unconfirmed. The screenshot contains fictional example names and no customer records.
+`decision-lab-hero.png` is an unedited 2880 × 2000 capture of `https://hermodlabs.github.io/review_lab/`, taken on 14 November 2026 in a fresh Chrome context at a 1440 × 1000 viewport and 2× device scale. It shows the supplied synthetic FOOD-MINI-1 case in **Review food-traceability evidence**, app version 4, with YAML inputs alongside the Findings / Firm inclusion view. The case retains its published defaults; no interface labels, evidence, or results were changed. The homepage hero displays the complete frame and links to the original image. `decision-lab-hero-capture.json` records the source, capture steps, release, dimensions, and hash.
 
-`examples/report-plan.hermod` contains that same description and final query as plain text. The practical guide and Decision Lab product example use the same source; moving only its deadline from day three to day two yields no feasible arrangement under the declared timing and availability.
+`decision-lab-report-plan.png` is an actual 663 × 685 capture of the Free beta timing report, taken on 2026-11-10 from the `review_lab` static application using the exact model in `src/_data/homeExample.json`. The required-work section is expanded to show that reviewer independence remains unconfirmed. The screenshot contains fictional example names and no customer records. The former product-page presentation is retired; the capture remains an authoring reference.
+
+`examples/report-plan.hermod` contains that same description and final query as plain text. The practical guide at `articles/check-a-report-plan/` retains this source and its download; moving only its deadline from day three to day two yields no feasible arrangement under the declared timing and availability.
+
+## Pilot icons
+
+`pilots/professional.svg`, `pilots/team.svg`, and `pilots/enterprise.svg` are original monochrome vector icons for the homepage pilot cards. They depict a programmable workflow, people sharing a review record, and connected organizational groups. Each uses a 96 × 96 viewBox with matching line weights and accessible SVG titles and descriptions; the cards display them at 40 × 40 pixels beside the tier names in their headings. They contain no external artwork or raster images.
+
+## Navigation page covers
+
+`pages/articles.svg`, `pages/blog.svg`, and `pages/professional-services.svg` are original hand-authored vector illustrations for the main navigation landing pages. They depict an open book and connected ideas, a journal and fountain pen, and people collaborating on a model connected to a report. Each uses a 960 × 720 frame, accessible SVG title and description, and the established navy/teal/purple cover palette. They contain no external artwork or raster images. Platform retains the cover associated with its introductory Ways of Thinking article.
 
 ## Article covers
 
