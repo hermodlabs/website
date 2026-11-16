@@ -23,7 +23,7 @@ Downloaded 2026-09-23 for the Hermod Labs corporate rebuild:
 
 ## Navigation page covers
 
-`pages/articles.svg`, `pages/blog.svg`, and `pages/professional-services.svg` are original hand-authored vector illustrations for the main navigation landing pages. They depict an open book and connected ideas, a journal and fountain pen, and people collaborating on a model connected to a report. Each uses a 960 × 720 frame, accessible SVG title and description, and the established navy/teal/purple cover palette. They contain no external artwork or raster images. Platform retains the cover associated with its introductory Ways of Thinking article.
+`pages/articles.svg`, `pages/blog.svg`, `pages/products.svg`, and `pages/professional-services.svg` are original hand-authored native vector illustrations for the Articles, Blog, Products, and Professional Services landing pages. They depict an open book and connected ideas, a journal and fountain pen, terminal and code windows connected to a decision model, and people collaborating on a model connected to a report. Each uses a 960 × 720 frame, accessible SVG title and description, and the established navy/teal/purple cover palette. They contain no external artwork or raster images. Platform retains the cover associated with its introductory Ways of Thinking article. The Articles cover remains in use while its global navigation link is temporarily omitted.
 
 ## Article covers
 

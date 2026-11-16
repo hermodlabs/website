@@ -42,7 +42,7 @@ if (menuButton && navigation) {
       menuButton.focus();
     }
   });
-  window.matchMedia('(min-width: 1101px)').addEventListener('change', () => setMenu(false));
+  window.matchMedia('(min-width: 1201px)').addEventListener('change', () => setMenu(false));
 }
 
 // Native disclosures remain expanded without JavaScript. On smaller screens,
