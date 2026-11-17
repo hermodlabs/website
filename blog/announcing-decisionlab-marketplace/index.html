@@ -15,17 +15,18 @@
 
 
   <title>Announcing DecisionLab Marketplace | Hermod Labs</title>
-  <meta name="description" content="Reusable templates become apps for your domain. Install a collection, choose a use case, and start your own case.">
+  <meta name="description" content="Find apps and guided workflows for your domain. Install a collection, open a case, review Excel input changes, and inspect the findings.">
   <meta name="author" content="Jonathan Nacionales, Founder, Hermod Labs">
 
   <link rel="canonical" href="https://hermodlabs.com/blog/announcing-decisionlab-marketplace/">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Hermod Labs">
   <meta property="og:title" content="Announcing DecisionLab Marketplace | Hermod Labs">
-  <meta property="og:description" content="Reusable templates become apps for your domain. Install a collection, choose a use case, and start your own case.">
+  <meta property="og:description" content="Find apps and guided workflows for your domain. Install a collection, open a case, review Excel input changes, and inspect the findings.">
   <meta property="og:url" content="https://hermodlabs.com/blog/announcing-decisionlab-marketplace/">
   <meta property="og:image" content="https://hermodlabs.com/assets/hermod-wordmark.jpeg">
   <meta property="article:published_time" content="2026-11-14T00:00:00Z">
+  <meta property="article:modified_time" content="2026-11-17T00:00:00Z">
 
   <meta property="article:author" content="Jonathan Nacionales, Founder, Hermod Labs">
 
@@ -86,9 +87,9 @@
 </nav>
 
   <h1>Announcing DecisionLab Marketplace</h1>
-  <p class="reading-description blog-description">Reusable templates become apps for your domain. Install a collection, choose a use case, and start your own case.</p>
+  <p class="reading-description blog-description">Find apps and guided workflows for your domain. Install a collection, open a case, review Excel input changes, and inspect the findings.</p>
 
-  <p class="reading-meta blog-meta"><span class="article-author">Jonathan Nacionales, Founder, Hermod Labs</span> <span aria-hidden="true">·</span> <time datetime="2026-11-14">November 14, 2026</time> <span aria-hidden="true">·</span> 7 min read</p>
+  <p class="reading-meta blog-meta"><span class="article-author">Jonathan Nacionales, Founder, Hermod Labs</span> <span aria-hidden="true">·</span> <time datetime="2026-11-14">November 14, 2026</time> <span aria-hidden="true">·</span> <span class="blog-updated">Updated <time datetime="2026-11-17">November 17, 2026</time></span> <span aria-hidden="true">·</span> 9 min read</p>
   </div>
 
   <figure class="blog-article-cover reading-cover">
@@ -119,114 +120,153 @@
   <article class="reader-prose blog-prose" aria-label="Announcing DecisionLab Marketplace">
     <div class="reader-content">
 
-<p class="reader-lead">We’re introducing <strong>DecisionLab Marketplace</strong>: a place to discover and install decision apps organized around the work you do. Choose a domain collection, find a use case, and open an app to work on your own case.</p>
-<p>The idea connects three kinds of work. Template authors create reusable reasoning templates. App authors configure those templates for a particular domain and question. Case workers use the resulting apps with their own facts and evidence. Marketplace brings those apps together so people can find and use them.</p>
-<p><a href="https://hermodlabs.github.io/review_lab/">Open Decision Lab</a> and choose <strong>Marketplace</strong> in the sidebar to explore the collections available today.</p>
+<p class="reader-lead"><strong>DecisionLab Marketplace</strong> brings together apps and guided workflows for the decisions people work on. Find a collection for your domain, inspect the use cases it supports, and install it into your own Collections.</p>
+<p>From there, open an app for a particular case or start a guided review that connects several apps. Supply the information for your situation, inspect the findings, and decide what needs attention next.</p>
+<p>The idea connects three kinds of work. Template authors create reusable reasoning structures. App authors configure them for a domain and question, and connect apps into workflows where needed. Case workers use those published reviews with their own facts and evidence.</p>
+<p>The walkthrough below follows the current <strong>Food supply chains</strong> collection, from discovering its app to changing case inputs through Excel and reading the result. <a href="https://hermodlabs.github.io/review_lab/">Open Decision Lab</a> and choose <strong>Marketplace</strong> to follow along.</p>
 
 <h2 id="reusable-reasoning">A reusable foundation for domain apps</h2>
 <p>Many decisions share a structure even when their subject matter differs. A network operator may ask which equipment a set of test results implicates. A supply-chain analyst may ask which firms belong on a tracing inquiry list. Each needs to understand what the available evidence establishes, which explanations remain possible, and where an answer is still unresolved.</p>
-<p>A template captures that reusable reasoning structure. An app gives it the vocabulary, rules, questions, and starting information for a particular kind of work. A case supplies the specific situation being examined.</p>
-<p>The current collections illustrate this with the <strong>Evidence review</strong> pattern, built on the <strong>Establish the required answer</strong> template. Food tracing, network diagnosis, and the heavy-marble reference example use that shared foundation while keeping their own domain meanings and assumptions.</p>
+<p>A <strong>template</strong> captures a reusable checking or reasoning structure. An <strong>app</strong> gives it the vocabulary, rules, questions, and starting information for a particular kind of work. A <strong>case</strong> is a saved review of one situation, with its particular facts and evidence.</p>
+<p>Food tracing, network diagnosis, and the heavy-marble reference example illustrate the <strong>Evidence review</strong> pattern, built on the <strong>Establish the required answer</strong> template. They share a foundation while keeping their own domain meanings and assumptions. Other reviews examine whether a complete arrangement meets its requirements or whether learning something before committing would be useful.</p>
 
 <h2 id="three-roles">Three roles, connected by the same model</h2>
 
 <h3 id="template-authors">Template authors create the reusable structure</h3>
-<p>The template creation tool is where template authors define a reusable kind of reasoning: the information a model needs, the rules for assessing a question, and the findings and reports it can produce. They establish what the template’s results mean and the conditions under which the reasoning can be used.</p>
+<p>Template authors define a reusable kind of reasoning: the information a model needs, the structure for assessing a question, and the findings and reports it can produce. The tools for authoring templates capture that definition so it can be reused. Authors establish what the results mean and the conditions under which the reasoning can be used.</p>
 <p>That work gives app authors a common foundation. An evidence-review template, for example, provides a way to examine the explanations compatible with a record and determine whether they establish the required answer.</p>
 
 <h3 id="app-authors">App authors configure it for a domain and use case</h3>
 <p>App authors turn the template into something a domain specialist can use. They define the relevant objects and relationships, the possible explanations, the evidence rules, the questions to ask, and the wording of the reports. They also supply the app’s starting case and defaults.</p>
 <p>For food tracing, that means firms, products, business roles, and possible supply relationships. For network diagnosis, it means equipment, network paths, and test reports. The shared reasoning pattern remains useful because these domain meanings are made explicit.</p>
-<p>In the current browser application, authors work in <strong>Workspaces</strong>, starting from a template or an editable example. The authoring interface uses YAML with reports alongside it. Publishing an app fixes its rules and starting defaults in a release that other people can use.</p>
+<p>Authors prepare their models in <strong>Workspaces</strong>, starting from a template or an editable example and inspecting the reports alongside the configuration. Publishing an app fixes its rules and starting defaults in a release that other people can use.</p>
+<p>For a decision that needs several connected reviews, an author can prepare a <strong>guided workflow</strong>: which questions people answer, who reviews them, which apps calculate findings, and how those findings feed the next step. The workflow keeps the shared case information and the included app versions connected.</p>
 
 <h3 id="case-workers">Case workers apply the app to a specific situation</h3>
-<p>Case workers—analysts, reviewers, operators, and the people responsible for the work—open a published app and start an independent case. They provide the facts, evidence, scope, and exposed parameters for that situation, then inspect the resulting findings and explanations.</p>
-<p>They can revise the case as information changes. The published app supplies the shared rules; changes to those rules belong in a new authored app release. This lets an app author maintain a reusable model while different people work on separate cases.</p>
+<p>Case workers—analysts, reviewers, operators, and the people responsible for the work—open an app or start a guided review from an installed collection. They supply and review the information for their situation, then inspect the findings and explanations.</p>
+<p>An app can expose its case inputs through an Excel workbook, alongside the YAML editor and reports. A guided review also organizes questions, responsibilities, and the acceptance of calculated findings. Importing inputs, accepting a review result, and authorizing an actual business action are separate activities.</p>
+<p>Workers can revise case information as conditions change. The published release supplies the shared rules; changing those rules requires a new authored release. Separate cases can therefore use the same model without becoming the same investigation or decision.</p>
 
 <h2 id="collections-and-use-cases">Organized around your domain and the question you need to answer</h2>
-<p>We organize the apps into <strong>collections</strong> for specific domains. Within a collection, <strong>use cases</strong> describe the work or question. Each use case groups the <strong>apps</strong> that support it.</p>
-<div class="blog-table-scroll" role="region" tabindex="0" aria-label="Domain collections, use cases, and apps available at launch">
+<p>We organize apps and workflows into <strong>collections</strong> for specific domains. Within each collection, <strong>use cases</strong> describe the work or question. Each use case groups the apps and guided workflows that support it.</p>
+<div class="blog-table-scroll" role="region" tabindex="0" aria-label="Examples of domain collections, use cases, apps and workflows">
   <table>
-    <caption>Collections available in the Marketplace on November 14, 2026</caption>
-    <thead><tr><th scope="col">Domain collection</th><th scope="col">Use case</th><th scope="col">App</th></tr></thead>
+    <caption>Examples from the Marketplace</caption>
+    <thead><tr><th scope="col">Domain collection</th><th scope="col">Use case</th><th scope="col">App or workflow</th></tr></thead>
     <tbody>
       <tr><th scope="row">Food supply chains</th><td>Identify firms for a tracing inquiry</td><td>Review food-traceability evidence</td></tr>
       <tr><th scope="row">Network operations</th><td>Locate network faults</td><td>Localize network faults</td></tr>
       <tr><th scope="row">Canonical examples</th><td>Locate a heavy marble</td><td>Review marble evidence</td></tr>
+      <tr><th scope="row">Order fulfillment</th><td>Review a first shipment</td><td>Review a first shipment (guided workflow)</td></tr>
     </tbody>
   </table>
 </div>
-<p>This gives you two ways to recognize a useful app: the domain tells you where it belongs, and the use case tells you what it helps you examine. The pattern badge identifies the reusable reasoning behind it. A collection brings the relevant apps together in one installable group.</p>
+<p>The domain tells you where a collection belongs; the use case tells you what its apps and workflows help you examine. The <strong>All</strong>, <strong>Workflows</strong>, and <strong>Apps</strong> filters help you browse the kind of review you need.</p>
+<p>A <strong>standalone app</strong> answers its configured question for an independent case. A <strong>guided workflow</strong> connects several questions and app results into one review. In Collections, use <strong>Use app</strong> for an app or <strong>Start review</strong> for a workflow. The <a href="../../use-cases/shipment-readiness/index.html">shipment readiness use case</a> explains how connected reviews fit a wider business process.</p>
 
 <h2 id="install-a-collection">Install a collection in Decision Lab</h2>
-<p>Here is the process using <strong>Food supply chains</strong>. These screenshots come from the public application, captured in a fresh browser session on November 14, 2026.</p>
+<p>Start with <strong>Food supply chains</strong>. Its app helps examine which firms belong on a tracing inquiry list under the supplied evidence and assumptions. The worked case is fictional; use it to learn the process before replacing its information with your own.</p>
 
 <h3 id="open-marketplace">1. Open Marketplace and find your collection</h3>
-<p>Go to <a href="https://hermodlabs.github.io/review_lab/">Decision Lab</a> and select <strong>Marketplace</strong> in the sidebar. The collection cards show the domain, its use cases, and the apps included.</p>
-<p>Find <strong>Food supply chains</strong>. Its use case is <strong>Identify firms for a tracing inquiry</strong>, and the included app is <strong>Review food-traceability evidence</strong>. Read that description to check that it addresses the question you have.</p>
+<p>Go to <a href="https://hermodlabs.github.io/review_lab/">Decision Lab</a> and select <strong>Marketplace</strong> in the sidebar. Search by the work you do or browse the collection cards. Each card summarizes its domain and the apps, workflows, and use cases it contains.</p>
 
 
 
 <figure class="blog-figure" id="figure-1">
   <div class="blog-figure-scroll" role="region" tabindex="0" aria-labelledby="figure-1-caption">
-    <a href="../../assets/blog/marketplace/figure-01.png" aria-label="Open screenshot 1 at full size"><img src="../../assets/blog/marketplace/figure-01.png" width="1440" height="1050" alt="Decision Lab Marketplace with Canonical examples and Food supply chains collection cards. Food supply chains contains Identify firms for a tracing inquiry and Review food-traceability evidence, followed by an Install collection button." loading="lazy" decoding="async"></a>
+    <a href="../../assets/blog/marketplace/figure-01.png" aria-label="Open screenshot 1 at full size"><img src="../../assets/blog/marketplace/figure-01.png" width="1440" height="1050" alt="Decision Lab Marketplace with six compact collection cards, search, and All, Workflows and Apps filters." loading="lazy" decoding="async"></a>
   </div>
   <p class="scroll-hint blog-figure-hint">Scroll to inspect the screenshot, or open it at full size.</p>
-  <figcaption id="figure-1-caption"><strong>Screenshot 1.</strong> Open Marketplace and choose a domain collection. The Food supply chains card shows its use case and app, with Install collection at the bottom. <a href="../../assets/blog/marketplace/figure-01.png">Open full size</a></figcaption>
+  <figcaption id="figure-1-caption"><strong>Screenshot 1.</strong> Browse domain collections, then open a collection to inspect its use cases, apps and guided workflows. <a href="../../assets/blog/marketplace/figure-01.png">Open full size</a></figcaption>
 </figure>
 
 
-<h3 id="install-collection">2. Select Install collection</h3>
-<p>Select <strong>Install collection</strong> on the Food supply chains card. Decision Lab adds the collection’s published apps to this browser and automatically opens <strong>Published apps</strong>.</p>
-<p>You will now see the installed collection grouped by use case, with its app version and controls for using, sharing, or exporting the app.</p>
+<h3 id="install-collection">2. Inspect the collection, then install it</h3>
+<p>Select <strong>View collection</strong> on the Food supply chains card. The details show the use case <strong>Identify firms for a tracing inquiry</strong> and its standalone app, <strong>Review food-traceability evidence</strong>. Read the question and scope to check that they fit your work.</p>
 
 
 
 <figure class="blog-figure" id="figure-2">
   <div class="blog-figure-scroll" role="region" tabindex="0" aria-labelledby="figure-2-caption">
-    <a href="../../assets/blog/marketplace/figure-02.png" aria-label="Open screenshot 2 at full size"><img src="../../assets/blog/marketplace/figure-02.png" width="1440" height="1050" alt="Published apps after installing Food supply chains. A use-case row contains Review food-traceability evidence, version 1, with Use app, Copy app link, and Export controls." loading="lazy" decoding="async"></a>
+    <a href="../../assets/blog/marketplace/figure-02.png" aria-label="Open screenshot 2 at full size"><img src="../../assets/blog/marketplace/figure-02.png" width="1440" height="1050" alt="Food supply chains collection details showing Identify firms for a tracing inquiry, Review food-traceability evidence, and Install collection." loading="lazy" decoding="async"></a>
   </div>
   <p class="scroll-hint blog-figure-hint">Scroll to inspect the screenshot, or open it at full size.</p>
-  <figcaption id="figure-2-caption"><strong>Screenshot 2.</strong> After installation, Decision Lab opens Published apps. The Food supply chains collection is now available locally, with Use app beside its published release. <a href="../../assets/blog/marketplace/figure-02.png">Open full size</a></figcaption>
+  <figcaption id="figure-2-caption"><strong>Screenshot 2.</strong> Food supply chains contains a tracing-inquiry use case and its evidence-review app. Install collection adds this release to Collections on this device. <a href="../../assets/blog/marketplace/figure-02.png">Open full size</a></figcaption>
 </figure>
 
-<p>The <strong>Install collection</strong> button belongs to the collection card. The separate <strong>Install app</strong> control at the top concerns installing Decision Lab itself as a browser app.</p>
-
-<h2 id="from-app-to-case">From an installed app to your own case</h2>
-
-<h3 id="use-app">3. Choose Use app</h3>
-<p>Under Review food-traceability evidence, select <strong>Use app</strong>. This creates an independent case from that app’s published defaults. Installing the collection makes the apps available; opening an app starts the case you will work on.</p>
-<p>The current interface lets you edit the <strong>case YAML</strong> and inspect <strong>Findings</strong>, <strong>Explanations</strong>, and the <strong>Review record</strong>. Valid case YAML updates the reports automatically, and <strong>Run review</strong> is also available.</p>
+<p>Choose <strong>Install collection</strong> in this details panel. Decision Lab installs the collection and opens <strong>Collections</strong>, with Food supply chains selected. Its name also appears beneath Collections in the sidebar.</p>
 
 
 
 <figure class="blog-figure" id="figure-3">
   <div class="blog-figure-scroll" role="region" tabindex="0" aria-labelledby="figure-3-caption">
-    <a href="../../assets/blog/marketplace/figure-03.png" aria-label="Open screenshot 3 at full size"><img src="../../assets/blog/marketplace/figure-03.png" width="1440" height="1050" alt="A new food-traceability evidence case showing editable canonical case YAML on the left and Findings on the right. The synthetic example has an established Pacific Market inquiry finding and an unresolved Lake Market finding." loading="lazy" decoding="async"></a>
+    <a href="../../assets/blog/marketplace/figure-03.png" aria-label="Open screenshot 3 at full size"><img src="../../assets/blog/marketplace/figure-03.png" width="1440" height="1050" alt="Installed Food supply chains collection with Review food-traceability evidence, version 4, and its Use app control." loading="lazy" decoding="async"></a>
   </div>
   <p class="scroll-hint blog-figure-hint">Scroll to inspect the screenshot, or open it at full size.</p>
-  <figcaption id="figure-3-caption"><strong>Screenshot 3.</strong> Use app starts an independent case from the published defaults. The current interface places case YAML beside Findings, Explanations, and Review record. This is the supplied synthetic example. <a href="../../assets/blog/marketplace/figure-03.png">Open full size</a></figcaption>
+  <figcaption id="figure-3-caption"><strong>Screenshot 3.</strong> The installed collection opens in Collections. Use app starts a separate case from this published release. <a href="../../assets/blog/marketplace/figure-03.png">Open full size</a></figcaption>
 </figure>
 
-<p>The screenshot shows the supplied synthetic food-tracing example. Its findings concern the modeled inquiry and its assumptions. For your own case, review the starting inputs, enter the relevant information, and inspect the explanations and scope of the result. The app’s finding supports your review; people remain responsible for investigation and action.</p>
+<p>The table groups installed products by use case. This collection contains a standalone app with <strong>Use app</strong>. Collections that include guided workflows also offer <strong>Start review</strong>. The separate <strong>Install app</strong> control near the top installs Decision Lab itself as a browser app.</p>
 
-<h3 id="return-to-your-apps">4. Return to the installed collection</h3>
-<p>You can return to <strong>Published apps</strong> to find the releases you installed. In Marketplace, the collection now shows <strong>Installed</strong> and <strong>View apps</strong>, giving you a direct route back to those apps.</p>
+<h2 id="from-app-to-case">From an installed app to your own case</h2>
+
+<h3 id="use-app">3. Choose Use app</h3>
+<p>Under Review food-traceability evidence, select <strong>Use app</strong>. This starts an independent case with the supplied fictional inputs. Installing a collection makes its products available; opening an app creates the case you will work on.</p>
+<p>The layout control offers <strong>YAML</strong>, <strong>Both</strong>, and <strong>Reports</strong>. Choose Both to see the case inputs alongside the findings. The input area also provides <strong>Download Excel</strong>, <strong>Upload Excel</strong>, and <strong>Start another case</strong>.</p>
 
 
 
 <figure class="blog-figure" id="figure-4">
   <div class="blog-figure-scroll" role="region" tabindex="0" aria-labelledby="figure-4-caption">
-    <a href="../../assets/blog/marketplace/figure-04.png" aria-label="Open screenshot 4 at full size"><img src="../../assets/blog/marketplace/figure-04.png" width="1440" height="1050" alt="Marketplace after installation. The Food supply chains collection now displays Installed and View apps, while the other collections still offer Install collection." loading="lazy" decoding="async"></a>
+    <a href="../../assets/blog/marketplace/figure-04.png" aria-label="Open screenshot 4 at full size"><img src="../../assets/blog/marketplace/figure-04.png" width="1440" height="1050" alt="A fictional food-traceability case with Download Excel, Upload Excel, Start another case, canonical YAML, and findings for Pacific Market and Lake Market." loading="lazy" decoding="async"></a>
   </div>
   <p class="scroll-hint blog-figure-hint">Scroll to inspect the screenshot, or open it at full size.</p>
-  <figcaption id="figure-4-caption"><strong>Screenshot 4.</strong> Return to Marketplace to see the collection marked Installed. View apps takes you back to the releases you installed. <a href="../../assets/blog/marketplace/figure-04.png">Open full size</a></figcaption>
+  <figcaption id="figure-4-caption"><strong>Screenshot 4.</strong> Both places the supplied fictional case inputs beside the findings. Download Excel and Upload Excel offer a workbook route for editing those inputs. <a href="../../assets/blog/marketplace/figure-04.png">Open full size</a></figcaption>
 </figure>
 
-<p>Your work is saved in this browser. Use <strong>Export case</strong> to keep a portable copy of a case. <strong>Copy app link</strong> shares the published app version and its starting defaults, so another person can begin a separate case.</p>
+<p>The starting information helps you explore the app. Review every supplied value before using the case for your own work. The published app’s rules remain fixed while you change the case’s facts, evidence, and exposed parameters.</p>
+
+<h3 id="review-excel-inputs">4. Bring case information through Excel</h3>
+<p>Select <strong>Download Excel</strong> to get a workbook prefilled with this case’s inputs. Open <strong>What you can edit in Excel</strong> to see which inputs are mapped to worksheets. Edit those input sheets, keeping the workbook’s structure and reference information in place.</p>
+<p>For this example, change <strong>Firm to review</strong> on the <strong>Parameters</strong> worksheet from <code>F11</code> (Pacific Market) to <code>F09</code> (Lake Market). The other supplied facts stay the same.</p>
+<p>Save the workbook, then choose <strong>Upload Excel</strong>. Decision Lab opens <strong>Review workbook changes</strong>, where you can inspect the added, removed, and changed inputs before applying them.</p>
+
+
+
+<figure class="blog-figure" id="figure-5">
+  <div class="blog-figure-scroll" role="region" tabindex="0" aria-labelledby="figure-5-caption">
+    <a href="../../assets/blog/marketplace/figure-05.png" aria-label="Open screenshot 5 at full size"><img src="../../assets/blog/marketplace/figure-05.png" width="1440" height="1050" alt="Review workbook changes dialog showing Parameters: Firm to review, with zero added, zero removed, and one changed value, plus Cancel and Apply inputs." loading="lazy" decoding="async"></a>
+  </div>
+  <p class="scroll-hint blog-figure-hint">Scroll to inspect the screenshot, or open it at full size.</p>
+  <figcaption id="figure-5-caption"><strong>Screenshot 5.</strong> Uploading the edited workbook previews one change to Firm to review. The current inputs remain unchanged until Apply inputs is selected. <a href="../../assets/blog/marketplace/figure-05.png">Open full size</a></figcaption>
+</figure>
+
+<p>Check the proposed case inputs and choose <strong>Apply inputs</strong>. Uploading the workbook creates a preview; applying it updates the case. If the workbook needs attention, use the worksheet and cell details to correct the issue and try again.</p>
+<p>This changes the information in the case. The app continues to use the same published rules.</p>
+
+<h3 id="read-the-findings">5. Read the findings and their explanations</h3>
+<p>Wait for <strong>Reports current</strong>, then choose the <strong>Reports</strong> layout. In this app, <strong>Findings</strong> gives the answers, <strong>Explanations</strong> lets you examine their basis, and <strong>Review record</strong> preserves the review context. <strong>Run review</strong> is also available when you want to run the current inputs again.</p>
+
+
+
+<figure class="blog-figure" id="figure-6">
+  <div class="blog-figure-scroll" role="region" tabindex="0" aria-labelledby="figure-6-caption">
+    <a href="../../assets/blog/marketplace/figure-06.png" aria-label="Open screenshot 6 at full size"><img src="../../assets/blog/marketplace/figure-06.png" width="1440" height="1050" alt="Reports layout for the Lake Market tracing inquiry, showing Still open findings and the scope and assumptions controls." loading="lazy" decoding="async"></a>
+  </div>
+  <p class="scroll-hint blog-figure-hint">Scroll to inspect the screenshot, or open it at full size.</p>
+  <figcaption id="figure-6-caption"><strong>Screenshot 6.</strong> After Apply inputs, Reports shows the case focused on Lake Market. Its inclusion remains Still open under the unchanged rules and evidence. <a href="../../assets/blog/marketplace/figure-06.png">Open full size</a></figcaption>
+</figure>
+
+<p>The case now reviews <strong>Lake Market</strong>, whose inclusion remains <strong>Still open</strong>. The supplied information leaves that question unresolved; changing the firm under review supplies no additional evidence to settle it.</p>
+<p><strong>Established</strong> means the modeled question has a definite answer under the recorded evidence and assumptions. That answer can establish inclusion or absence. <strong>Still open</strong> means the permitted explanations do not establish one answer. Inspect the explanations and <strong>Scope and assumptions</strong> before deciding what to investigate or do next.</p>
+<p>The app helps examine a tracing inquiry. Its result does not establish contamination, actual shipments, or an issued recall.</p>
+
+<h3 id="return-to-your-apps">6. Resume this case or start another</h3>
+<p>Your work is saved in this browser. Return to <strong>Collections → Food supply chains</strong> and find <strong>Saved cases</strong>, then choose <strong>Resume case</strong> to continue the existing review. <strong>Start another case</strong> creates a separate case from the app’s published starting inputs.</p>
+<p>Use <strong>Export case</strong> to keep a portable copy. <strong>Copy app link</strong> shares the app version and its starting defaults so someone else can begin their own case.</p>
 
 <h2 id="start-with-your-domain">Start with your domain</h2>
-<p>To try it, <a href="https://hermodlabs.github.io/review_lab/">open Decision Lab</a>, choose <strong>Marketplace</strong>, and install a collection for the work you want to explore.</p>
+<p>To try it, <a href="https://hermodlabs.github.io/review_lab/">open Decision Lab</a>, choose <strong>Marketplace</strong>, inspect a collection, and install the reviews that fit your work. Start with the supplied example, then bring in the information for your own case.</p>
 </div>
 
 
