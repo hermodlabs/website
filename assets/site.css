@@ -25,6 +25,19 @@ p { margin-bottom: 20px; }
 em { color: var(--accent); font: inherit; }
 button { font: inherit; }
 [hidden] { display: none !important; }
+/* Shared native disclosure controls; content keeps its surrounding typography. */
+.disclosure { border-block: 1px solid var(--line); }
+.disclosure > summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; padding-block: 16px; margin: 0; color: var(--ink); font: 600 16px/1.5 Helvetica, Arial, sans-serif; letter-spacing: 0; text-transform: none; cursor: pointer; list-style: none; }
+.disclosure > summary::-webkit-details-marker { display: none; }
+.disclosure > summary::marker { content: ''; }
+.disclosure > summary::after { content: '+'; flex: 0 0 22px; width: 22px; color: var(--accent); font: 400 22px/1 Helvetica, Arial, sans-serif; text-align: center; }
+.disclosure[open] > summary::after { content: '−'; }
+.disclosure > summary > .disclosure-label { display: block; min-width: 0; margin: 0; font: inherit; letter-spacing: inherit; text-transform: inherit; }
+.disclosure > summary:hover { color: var(--accent); }
+.disclosure > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.disclosure[open] { padding-bottom: 16px; }
+.disclosure > :last-child { margin-bottom: 0; }
+.disclosure-meta { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; font-weight: 400; }
 .site-header { min-height: 120px; display: flex; align-items: center; justify-content: space-between; gap: 32px; border-bottom: 2px solid var(--ink); }
 .brand { display: block; flex: 0 0 275px; width: 275px; height: 64px; overflow: hidden; }
 .brand img { width: 320px; height: auto; max-width: none; position: relative; left: -25px; top: -22px; }
@@ -136,7 +149,7 @@ p.lead { font-size: 21px; line-height: 1.55; color: var(--ink); }
 .page-hero-with-cover { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); align-items: center; gap: 56px; }
 .page-hero-with-cover > * { min-width: 0; }
 .page-hero.page-hero-with-cover h1 { font-size: clamp(40px, 4.6vw, 64px); }
-.page-hero-copy > :last-child { margin-bottom: 0; }
+.page-hero > :last-child, .page-hero-copy > :last-child { margin-bottom: 0; }
 .page-hero-with-cover .page-hero-cover { width: min(100%, 480px); aspect-ratio: 4 / 3; margin: 0; justify-self: end; border: 1px solid #e6dff1; background: #f6f5f8; }
 .page-hero-cover img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .breadcrumb { display: flex; gap: 12px; flex-wrap: wrap; font-size: 13px; color: var(--muted); margin-bottom: 35px; }
@@ -209,7 +222,7 @@ figcaption { color: var(--muted); font-size: 13px; margin-top: 16px; }
 .skip { position: absolute; top: -100px; left: 20px; padding: 10px 16px; background: var(--ink); color: white; z-index: 10; }
 .skip:focus { top: 10px; color: white; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
   .site-header { flex-wrap: wrap; gap: 0 20px; padding-block: 20px; min-height: 105px; }
   .site-nav { flex: 1 0 100%; justify-content: flex-start; flex-wrap: wrap; gap: 12px 28px; padding-top: 20px; }
   .has-js .menu-toggle { display: flex; align-items: center; justify-content: space-between; min-width: 90px; min-height: 44px; gap: 15px; background: transparent; border: 1px solid var(--line); padding: 8px 12px; font-size: 14px; cursor: pointer; }
@@ -407,11 +420,9 @@ figcaption { color: var(--muted); font-size: 13px; margin-top: 16px; }
   .ontology-equivalence { padding: 20px; }
 }
 .model-example { margin-top: 36px; border: 1px solid var(--line); }
-.model-source, .model-output { min-width: 0; padding: 28px; }
-.model-source { background: var(--surface); border-top: 1px solid var(--line); }
-.model-source > summary { cursor: pointer; font-size: 17px; font-weight: 500; }
-.model-source > summary > span { display: inline-block; margin-left: 20px; color: var(--muted); font-size: 12px; font-weight: 400; }
-.model-source-content { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); }
+.model-output { min-width: 0; padding: 28px; }
+.model-source { min-width: 0; padding-inline: 28px; background: var(--surface); border-bottom: 0; }
+.model-source-content { padding-block: 8px 12px; }
 .model-source-note { margin: 16px 0 0; color: var(--muted); font-size: 14px; max-width: 760px; }
 .model-panel-heading { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px 18px; }
 .model-panel-heading h3 { margin: 0; font-size: 21px; letter-spacing: -.5px; }
@@ -447,9 +458,9 @@ figcaption { color: var(--muted); font-size: 13px; margin-top: 16px; }
 }
 @media (max-width: 650px) {
   .model-example { margin-top: 28px; }
-  .model-source, .model-output { padding: 22px 20px; }
+  .model-output { padding: 22px 20px; }
+  .model-source { padding-inline: 20px; }
   .model-panel-heading { align-items: flex-start; flex-direction: column; gap: 6px; }
-  .model-source > summary > span { display: block; margin: 8px 0 0; }
   .model-pending { padding: 20px; }
   .model-code { font-size: 12px; }
   .model-chart-hint { display: flex; justify-content: space-between; gap: 16px; margin: 10px 0 0; color: var(--muted); font-size: 11px; }
@@ -546,6 +557,7 @@ figcaption { color: var(--muted); font-size: 13px; margin-top: 16px; }
 .series-length { font-size: 13px; color: var(--muted); }
 .series-index .series-list { margin-top: 30px; }
 .platform-hero .lead { max-width: 850px; }
+.platform-technology-note { max-width: 740px; color: var(--muted); font-size: 16px; line-height: 1.7; }
 .platform-cover { width: min(100%, 320px); aspect-ratio: 4 / 3; margin: 28px 0 0; border: 1px solid #e6dff1; background: #f6f5f8; }
 .platform-cover-image { display: block; width: 100%; height: 100%; object-fit: contain; }
 .platform-reading-link { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; max-width: 640px; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); }

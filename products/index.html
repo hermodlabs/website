@@ -15,13 +15,13 @@
 
 
   <title>Products | Hermod Labs</title>
-  <meta name="description" content="Decision Lab CLI and SDK are coming soon. Developer tools for command-line workflows and applications built with Decision Lab.">
+  <meta name="description" content="Preview the Decision Lab CLI and SDK with working shipment-review examples. Run a review from your terminal or build its reports into your application. Coming soon.">
 
   <link rel="canonical" href="https://hermodlabs.com/products/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Hermod Labs">
   <meta property="og:title" content="Products | Hermod Labs">
-  <meta property="og:description" content="Decision Lab CLI and SDK are coming soon. Developer tools for command-line workflows and applications built with Decision Lab.">
+  <meta property="og:description" content="Preview the Decision Lab CLI and SDK with working shipment-review examples. Run a review from your terminal or build its reports into your application. Coming soon.">
   <meta property="og:url" content="https://hermodlabs.com/products/">
   <meta property="og:image" content="https://hermodlabs.com/assets/hermod-wordmark.jpeg">
 
@@ -30,6 +30,8 @@
   <link rel="stylesheet" href="../assets/site.css">
 
 
+
+  <link rel="stylesheet" href="../assets/products.css">
 
   <script src="../assets/feature-flags.js" defer></script>
   <script src="../assets/site.js" defer></script>
@@ -52,7 +54,10 @@
 </svg><span>Platform</span></a><a href="index.html" aria-current="page"><svg class="nav-icon nav-icon-products" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
   <rect x="3" y="4" width="18" height="16" rx="2"/>
   <path d="m7 9 3 3-3 3m6 0h4"/>
-</svg><span>Products</span></a><a href="../professional-services/index.html"><svg class="nav-icon nav-icon-professional-services" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+</svg><span>Products</span></a><a href="../use-cases/index.html"><svg class="nav-icon nav-icon-use-cases" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <rect x="3" y="7" width="18" height="14" rx="2"/>
+  <path d="M8 7V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3M3 12a22 22 0 0 0 18 0m-12 3 2 2 4-4"/>
+</svg><span>Use Cases</span></a><a href="../professional-services/index.html"><svg class="nav-icon nav-icon-professional-services" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
   <circle cx="9" cy="8" r="3"/>
   <path d="M3 20v-2a6 6 0 0 1 12 0v2M16 5a3 3 0 0 1 0 6m1 3a4 4 0 0 1 4 4v2"/>
 </svg><span>Professional Services</span></a>
@@ -77,6 +82,7 @@
 </section>
 
 <section class="section wrap" aria-label="Upcoming developer tools">
+  <p class="product-example-intro">Start with a configured review, supply the facts, and calculate the result. These examples use the same fictional shipment review: two arrangements meet its requirements, and the lowest-cost arrangement is preferred.</p>
   <div class="product-grid">
     <article class="product-card" id="decision-lab-cli" aria-labelledby="cli-heading">
       <p class="eyebrow">Coming soon</p>
@@ -84,7 +90,25 @@
   <rect x="2.5" y="4" width="19" height="16" rx="2"/>
   <path d="m7 9 3 3-3 3m6 0h4"/>
 </svg><span>Decision Lab CLI</span></h2>
-      <p>Bring Decision Lab into command-line and scripted workflows.</p>
+      <p>Start a case, check its inputs, and save the calculated result. Use the same commands in your terminal, scripts, or automated workflows.</p>
+      <figure class="product-code">
+        <figcaption id="cli-code-label">Shell · initialize, validate, run</figcaption>
+        <pre tabindex="0" role="region" aria-labelledby="cli-code-label"><code class="language-shell"># Start with the app&#39;s sample shipment.
+decision-lab case init &#92;
+  --app shipment.app.json &#92;
+  --output shipment.case.yaml
+
+# Check the inputs.
+decision-lab case validate &#92;
+  --app shipment.app.json &#92;
+  --case shipment.case.yaml
+
+# Calculate and save the complete result.
+decision-lab run &#92;
+  --app shipment.app.json &#92;
+  --case shipment.case.yaml &#92;
+  --output shipment.run.json</code></pre>
+      </figure>
     </article>
     <article class="product-card" id="decision-lab-sdk" aria-labelledby="sdk-heading">
       <p class="eyebrow">Coming soon</p>
@@ -92,7 +116,34 @@
   <rect x="2.5" y="4" width="19" height="16" rx="2"/>
   <path d="m8 9-3 3 3 3m8-6 3 3-3 3m-3-7-2 8"/>
 </svg><span>Decision Lab SDK</span></h2>
-      <p>Build applications that use Decision Lab as part of your own software.</p>
+      <p>Open an app, supply a case, and request a report. Use the returned tables, checks, and schedule data in your own application.</p>
+      <figure class="product-code">
+        <figcaption id="sdk-code-label">run-shipment.mjs · Node.js</figcaption>
+        <pre tabindex="0" role="region" aria-labelledby="sdk-code-label"><code class="language-javascript">import { readFile, writeFile } from &#39;node:fs/promises&#39;;
+import { createDecisionLab } from &#39;@decision-lab/sdk&#39;;
+import { createNodeExecutor } from &#39;@decision-lab/sdk/node&#39;;
+
+const executor = createNodeExecutor();
+const lab = createDecisionLab({ executor });
+
+try {
+  const app = lab.apps.open(
+    await readFile(&#39;shipment.app.json&#39;, &#39;utf8&#39;)
+  );
+  const inputs = lab.sources.parseCase(
+    await readFile(&#39;shipment.case.yaml&#39;, &#39;utf8&#39;)
+  );
+
+  const { report } = await lab.run({ app, case: inputs });
+
+  await writeFile(
+    &#39;shipment.report.json&#39;,
+    lab.sources.renderJSON(report)
+  );
+} finally {
+  await executor.close();
+}</code></pre>
+      </figure>
     </article>
   </div>
   <div class="boundary">

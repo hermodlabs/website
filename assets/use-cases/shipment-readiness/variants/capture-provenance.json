@@ -1,0 +1,88 @@
+{
+  "appUrl": "https://hermodlabs.github.io/review_lab/",
+  "capturedAt": "2026-11-16T22:50:21.486Z",
+  "viewport": {
+    "width": 1512,
+    "height": 1050
+  },
+  "deviceScaleFactor": 1,
+  "reducedMotion": "reduce",
+  "locale": "en-US",
+  "timezoneId": "America/Chicago",
+  "method": "Unedited screenshots of ordinary public-app controls in temporary isolated browser contexts. No UI text, controls or results were injected. No shared Marketplace publication occurred.",
+  "boundary": "All case values and registration/authority stipulations are fictional teaching inputs. A supported proposal is not an actual booking, issued permission or completed shipment.",
+  "authorTrial": "The YAML workspace trial confirms the model can be locally published through the UI. Runtime screenshots and case downloads use the exact stable SDK packages recorded in comparison-manifest.json, with the same authored model.",
+  "actions": [
+    "Opened the earliest-arrival model YAML in an ordinary author workspace, inspected its rule and published an illustrative local release after the visible review acknowledgment. This trial browser-generated identity is separate from the stable SDK package identities below.",
+    "Imported both exact downloadable SDK .app.json releases into a new browser context using Published apps → Import app, workflow or case.",
+    "Opened Lowest-cost shipment review with Use app; waited for its current report; verified the preferred row; exported the actual UI case and checked its unchanged shared inputs and package hash.",
+    "Opened Earliest-arrival shipment review with Use app; waited for its current report; verified the preferred row; exported the actual UI case and checked its unchanged shared inputs and package hash."
+  ],
+  "images": [
+    {
+      "file": "01-author-preference.png",
+      "sha256": "da3ca706118a5b12d6af50df8f4d5da22f1fbf846de4f17a2f386af01b90bcb0",
+      "width": 1512,
+      "height": 1050,
+      "description": "Canonical YAML authoring shows the arrival preference and expense tie-break near the top of the model."
+    },
+    {
+      "file": "02-two-published-apps.png",
+      "sha256": "f1d82376605e2beeb5d68a6466faeeddd988d017f4ea30ab1ff9d5f050f4ce50",
+      "width": 1080,
+      "height": 951,
+      "description": "The two immutable SDK app packages imported through Published apps, each at release 1."
+    },
+    {
+      "file": "3-lowest-cost-shipment-result.png",
+      "sha256": "db0c41700687eeda1086cc2903ada72ded6b812cb70131e72dc063bdf9a2bb3c",
+      "width": 1208,
+      "height": 771,
+      "description": "Lowest-cost shipment review: same case, both plans feasible, direct is preferred."
+    },
+    {
+      "file": "4-earliest-arrival-shipment-result.png",
+      "sha256": "1e17c71ca44e2145e916bb39f6b79e6445468dbf9235838809707ab53ae954f0",
+      "width": 1208,
+      "height": 771,
+      "description": "Earliest-arrival shipment review: same case, both plans feasible, backup is preferred."
+    }
+  ],
+  "exports": [
+    {
+      "file": "lowest-cost-shipment.app-case.json",
+      "sha256": "852fdb78b5f189cba4ec50bcd00aa7a6b3644d958158c8ab0d2189661d49d924"
+    },
+    {
+      "file": "earliest-arrival-shipment.app-case.json",
+      "sha256": "d39118f1e7d2e4577ccc925f7b46689daa1c8deaae0cce3b7253253ac9d7ab4d"
+    }
+  ],
+  "verification": {
+    "sameCaseInBothApps": true,
+    "bothPortableCasesImported": true,
+    "pageErrors": [],
+    "results": [
+      {
+        "appId": "shipment-planning-lowest-cost",
+        "packageHash": "cd734de5da72755a1cf29cde2b9aa477c4636a85490c4f3a5876bda0cf5d288b",
+        "selectedPlanId": "plan-000001",
+        "selectedArrangement": "direct",
+        "preferredText": "plan-000001\tPreferred complete plan\tdirect\t400,000 USD cent\t400,000 USD cent\t400,000\t0",
+        "exportedCase": "lowest-cost-shipment.app-case.json",
+        "identicalSharedInputs": true,
+        "portableCaseImported": true
+      },
+      {
+        "appId": "shipment-planning-earliest-arrival",
+        "packageHash": "59b959eff51d59881c79f6b16e2a498952f42afad051353178d10981eeee7db4",
+        "selectedPlanId": "plan-000002",
+        "selectedArrangement": "backup",
+        "preferredText": "plan-000002\tPreferred complete plan\tbackup\t600,000 USD cent\t600,000 USD cent\t3,600 → 600,000\t0",
+        "exportedCase": "earliest-arrival-shipment.app-case.json",
+        "identicalSharedInputs": true,
+        "portableCaseImported": true
+      }
+    ]
+  }
+}
