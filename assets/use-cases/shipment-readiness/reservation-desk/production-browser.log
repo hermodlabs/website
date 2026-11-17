@@ -1,0 +1,46 @@
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 95 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.59 kB │ gzip:   0.34 kB
+dist/assets/worker-5SBq1EMq.js  370.81 kB
+dist/assets/index--2UumzoR.css   17.86 kB │ gzip:   4.52 kB
+dist/assets/index-DFsjH8ar.js   842.29 kB │ gzip: 253.00 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 233ms
+{
+  "suite": "Shipment Reservation Desk production browser",
+  "checks": [
+    "confirmed: browser worker and CLI agree on every arrangement and failed condition",
+    "revised: browser worker and CLI agree on every arrangement and failed condition",
+    "permissions: browser worker and CLI agree on every arrangement and failed condition",
+    "A changed quote invalidates the displayed recommendation; reassessment agrees with the CLI and retains the earlier basis",
+    "Unsupported quote currency produces an input error and withholds the current review",
+    "A complete canonical case can be imported and evaluated without changing its permission or confirmation scope",
+    "A native SDK-bound case imports with its exact reviewed app binding and canonical inputs",
+    "An SDK-bound case from a different release is rejected without reusing its saved result",
+    "Cancellation and edits supersede an in-flight SDK job; only the latest reviewed records become current",
+    "Switching cases during evaluation cancels the earlier job and retains only the selected shipment result",
+    "A genuine calculated preference tie is retained in both the native run and the team view",
+    "Production worker assets load from the built client; desktop/mobile panels use normal page scrolling",
+    "Development StrictMode effect cleanup/setup still produces a complete browser SDK run with CLI parity"
+  ],
+  "workers": [
+    "/assets/worker-5SBq1EMq.js",
+    "/assets/worker-5SBq1EMq.js",
+    "/assets/worker-5SBq1EMq.js",
+    "/assets/worker-5SBq1EMq.js",
+    "/assets/worker-5SBq1EMq.js",
+    "/assets/worker-5SBq1EMq.js",
+    "/assets/worker-5SBq1EMq.js",
+    "/assets/worker-5SBq1EMq.js",
+    "/assets/worker-5SBq1EMq.js",
+    "/assets/worker-5SBq1EMq.js"
+  ]
+}

@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: form conversions round trip complete cases without changing record scopes
+ok 1 - form conversions round trip complete cases without changing record scopes
+  ---
+  duration_ms: 2.971625
+  type: 'test'
+  ...
+# Subtest: an absent confirmation stays absent; adding one requires actual record fields
+ok 2 - an absent confirmation stays absent; adding one requires actual record fields
+  ---
+  duration_ms: 0.432542
+  type: 'test'
+  ...
+# Subtest: amounts and dates use explicit supported units without coercion
+ok 3 - amounts and dates use explicit supported units without coercion
+  ---
+  duration_ms: 0.243333
+  type: 'test'
+  ...
+# Subtest: updating a confirmation does not rewrite other permissions or the source case
+ok 4 - updating a confirmation does not rewrite other permissions or the source case
+  ---
+  duration_ms: 0.152
+  type: 'test'
+  ...
+# Subtest: native SDK results support confirmed, revised and blocked shipment reviews
+ok 5 - native SDK results support confirmed, revised and blocked shipment reviews
+  ---
+  duration_ms: 1437.669709
+  type: 'test'
+  ...
+# Subtest: native SDK ties remain tied and an incomplete search offers no recommendation
+ok 6 - native SDK ties remain tied and an incomplete search offers no recommendation
+  ---
+  duration_ms: 465.416916
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2009.15575
