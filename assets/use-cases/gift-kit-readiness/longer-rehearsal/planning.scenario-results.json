@@ -1,0 +1,98 @@
+{
+  "format": "decision-lab-app-check-result/1",
+  "runId": "gifting-longer-rehearsal-native",
+  "createdAt": "2026-11-18T02:00:00.000Z",
+  "binding": {
+    "modelHash": "e1ea3f86d2377fcf98fe87a96da0d841f0109d7acdb086d0021f7b7abfed5315",
+    "moduleHash": "ab842463169fdbbb8b6304cf641e519eec9a54d77c7c3c1cb03737bdd78c2320",
+    "sourceHash": "4d7c3ce0bc178453be4acc21819e48ca3b6db5e4620419b793d59b6cc7313625",
+    "packageHash": "3ca159526681a1782d637f069f05c3f7f182b1e20f246215b43ac1cfaa29fd38",
+    "suiteHash": "2a0960052d9fae20ffa31e8e60986bc57f474ac20a9274a34168ca8a8a31cdd4",
+    "sdkVersion": "0.1.0"
+  },
+  "status": "passed",
+  "summary": {
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "unavailable": 0
+  },
+  "scenarios": [
+    {
+      "id": "too-short",
+      "title": "Five minutes does not satisfy the revised rehearsal rule",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-finding",
+          "id": "expectation-1",
+          "title": "Completion finding",
+          "status": "passed",
+          "expected": {
+            "finding": "no_feasible_plan"
+          },
+          "actual": {
+            "finding": "no_feasible_plan"
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-de555fdf96caf9180423aab6"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:fd1482397876decae1d2a898cae02c41858c2fcab2198bd09c457d95224049fa"
+    },
+    {
+      "id": "enough-time",
+      "title": "Ten minutes restores a complete correction package",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-finding",
+          "id": "expectation-1",
+          "title": "Completion finding",
+          "status": "passed",
+          "expected": {
+            "finding": "feasible_witness"
+          },
+          "actual": {
+            "finding": "feasible_witness"
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-2",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "actual": {
+            "choices": {
+              "packageId": "replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-0fd9cd8c24dbfb009a2efa71"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:eb9127ffe2ab4a617400203ab683e5f2c583c070b0e7e1e631e77110f0ae1b51"
+    }
+  ],
+  "contentHash": "2373ff97b59cbc61efcc716382f081704dd339f9653b64c7328ccc1475d3cb5d"
+}

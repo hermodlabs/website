@@ -1,0 +1,320 @@
+{
+  "format": "shipment-consolidation-authoring/1",
+  "createdAt": "2026-11-17T20:00:00.000Z",
+  "sdkVersion": "0.1.0",
+  "name": "Shipment review with consolidation",
+  "collection": "Order fulfillment",
+  "useCase": "Review a first shipment",
+  "source": {
+    "app": "shipment-planning-earliest-arrival",
+    "release": 1,
+    "packageHash": "59b959eff51d59881c79f6b16e2a498952f42afad051353178d10981eeee7db4",
+    "modelHash": "5e7984e401cdcd6a6d8d1f6f74251ca22f91f0c75334040aa560c018d03256e4"
+  },
+  "app": {
+    "id": "shipment-review-with-consolidation",
+    "release": 1,
+    "packageHash": "9a10492b24acf94db41a24ea90aee6d371c8de0d4797a6f334ba72e52205070a",
+    "moduleId": "shipment-arrangement-with-consolidation",
+    "modelHash": "44517cea5e67afc93bb204f8967b57bbe5cbd67e120b0edeca3018ae7a8b22de"
+  },
+  "scope": "A fictional standalone app adapted from the arrival-first shipment comparison. This does not revise the source app or any guided workflow dependency.",
+  "timeOrigin": "2026-11-17T00:00:00-06:00",
+  "expenseLimitMinor": 500000,
+  "cashLimitMinor": 650000,
+  "tradeoff": {
+    "directExpenseMinor": 400000,
+    "consolidatedExpenseMinor": 500000,
+    "expenseDifferenceMinor": 100000,
+    "arrivalImprovementHours": 18,
+    "directArrival": "2026-11-20T12:00:00-06:00",
+    "consolidatedArrival": "2026-11-19T18:00:00-06:00"
+  },
+  "baselineChecks": 18,
+  "addedChecks": [
+    "reviewed-arrangement-policy",
+    "scoped-consolidation-slot"
+  ],
+  "unchangedMandatoryRulesHash": "093e2d04b057b030420212987d0b94fe4197f8e6e052fba8f1606d4f84279bf3",
+  "unchangedPreferenceHash": "34ff6262466db48b611b1552914e43e185f3e9f18027a7ac97a24e0872861a43",
+  "confirmationModel": "One resolved current-status record per arrangement, with full shipment scope, confirmed/known timestamps and operational validity; cancelled/conflicting records fail and duplicate current records invalidate the case. Not an event-history reconciler or supplier authentication service.",
+  "scenarios": [
+    {
+      "id": "original-two-options",
+      "title": "Keep the original two-option result under the $5,000 expense limit",
+      "expectations": 3
+    },
+    {
+      "id": "slot-unconfirmed",
+      "title": "A third quote without slot confirmation remains blocked",
+      "expectations": 5
+    },
+    {
+      "id": "slot-confirmed",
+      "title": "A suitable current slot confirmation admits the earlier $5,000 option",
+      "expectations": 5
+    },
+    {
+      "id": "wrong-order-revision",
+      "title": "A confirmation for a different order revision does not cover this shipment",
+      "expectations": 5
+    },
+    {
+      "id": "wrong-ship-point",
+      "title": "A confirmation for a different ship point does not cover this service",
+      "expectations": 5
+    },
+    {
+      "id": "wrong-ship-date",
+      "title": "A confirmation for a different shipment date does not cover this shipment",
+      "expectations": 5
+    },
+    {
+      "id": "confirmed-after-cutoff",
+      "title": "A slot confirmed after the reservation cutoff remains blocked",
+      "expectations": 5
+    },
+    {
+      "id": "known-after-selection",
+      "title": "A confirmation unavailable to the team at selection cannot justify that decision",
+      "expectations": 5
+    },
+    {
+      "id": "slot-ends-too-soon",
+      "title": "A slot that ends before loading finishes does not cover the full loading window",
+      "expectations": 5
+    },
+    {
+      "id": "slot-starts-too-late",
+      "title": "A slot that starts after loading begins does not cover the full loading window",
+      "expectations": 5
+    },
+    {
+      "id": "expired-slot",
+      "title": "A slot that has already expired does not cover the loading window",
+      "expectations": 5
+    },
+    {
+      "id": "slot-cancelled",
+      "title": "A cancelled current slot is not a confirmed slot",
+      "expectations": 5
+    },
+    {
+      "id": "slot-conflicting",
+      "title": "Unresolved conflicting supplier messages do not establish a usable slot",
+      "expectations": 5
+    },
+    {
+      "id": "unknown-service",
+      "title": "An unfamiliar service cannot bypass a missing authored requirement policy",
+      "expectations": 3
+    }
+  ],
+  "summary": {
+    "total": 14,
+    "passed": 14,
+    "failed": 0,
+    "unavailable": 0
+  },
+  "duplicateCurrentRecordRejected": true,
+  "outcomes": [
+    {
+      "key": "unconfirmed",
+      "preferred": "direct",
+      "plans": [
+        {
+          "arrangement": "direct",
+          "feasible": true,
+          "expenseMinor": 400000,
+          "blockers": [],
+          "preference": [
+            5040,
+            400000
+          ]
+        },
+        {
+          "arrangement": "backup",
+          "feasible": false,
+          "expenseMinor": 600000,
+          "blockers": [
+            {
+              "constraintId": "total-expense-limit",
+              "requirement": "COST",
+              "scenarioId": "registered"
+            }
+          ],
+          "preference": null
+        },
+        {
+          "arrangement": "consolidated",
+          "feasible": false,
+          "expenseMinor": 500000,
+          "blockers": [
+            {
+              "constraintId": "scoped-consolidation-slot",
+              "requirement": "SLOT",
+              "scenarioId": "registered"
+            }
+          ],
+          "preference": null
+        }
+      ]
+    },
+    {
+      "key": "confirmed",
+      "preferred": "consolidated",
+      "plans": [
+        {
+          "arrangement": "direct",
+          "feasible": true,
+          "expenseMinor": 400000,
+          "blockers": [],
+          "preference": [
+            5040,
+            400000
+          ]
+        },
+        {
+          "arrangement": "backup",
+          "feasible": false,
+          "expenseMinor": 600000,
+          "blockers": [
+            {
+              "constraintId": "total-expense-limit",
+              "requirement": "COST",
+              "scenarioId": "registered"
+            }
+          ],
+          "preference": null
+        },
+        {
+          "arrangement": "consolidated",
+          "feasible": true,
+          "expenseMinor": 500000,
+          "blockers": [],
+          "preference": [
+            3960,
+            500000
+          ]
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "before-slot-rule.model.json",
+      "bytes": 43908,
+      "sha256": "b6df31b5de4e6ce985cc8e74a88e0856368c62e43982f3039495beb5089351ae"
+    },
+    {
+      "file": "before-slot-rule.model.yaml",
+      "bytes": 29968,
+      "sha256": "44d42d4a89764422391236818e9648283b8ef42165e3102ce34ad28118569970"
+    },
+    {
+      "file": "add-slot-input.edits.json",
+      "bytes": 1569,
+      "sha256": "e01fba3abd7070218a8f1e3c844e2d9bb7605be774d76657fa296f1589d739e6"
+    },
+    {
+      "file": "shipment-consolidation.model.json",
+      "bytes": 47543,
+      "sha256": "a32a2f6bf593a658802c79831a0b063920899ccf2017a9bdba76795cf86c71a5"
+    },
+    {
+      "file": "shipment-consolidation.model.yaml",
+      "bytes": 31919,
+      "sha256": "24d1c36941d7e12396870576f6f64b4324212f7aa79126144f45353b50b3c59e"
+    },
+    {
+      "file": "shipment-consolidation.app.json",
+      "bytes": 107155,
+      "sha256": "409dc299e6cde8abd54e942517471f6871e66ff7f4f7c7336f9b19ab1436b19e"
+    },
+    {
+      "file": "slot-requirement.edits.json",
+      "bytes": 2615,
+      "sha256": "e07bc5fcdffee5a349f6e35ec9f3025a60ef03eed2f4c554034841fd9e697ca2"
+    },
+    {
+      "file": "slot-requirement.preview.json",
+      "bytes": 84737,
+      "sha256": "db77cb1032355f2b682d3b0cb79dc94d0f2bebe2fb53e8884d5324e9a9dbf7f9"
+    },
+    {
+      "file": "unconfirmed.inputs.json",
+      "bytes": 5619,
+      "sha256": "3930aa8e68fdc51b5f7b302b4fc7dc0a95cb7ea944cfe42945180f9290883980"
+    },
+    {
+      "file": "unconfirmed.inputs.yaml",
+      "bytes": 4164,
+      "sha256": "a0701872d34af287fc3aac19d0a4b9feaee5db960bd2048a7ae2aa55c333df57"
+    },
+    {
+      "file": "before-slot-rule.assessment.json",
+      "bytes": 114162,
+      "sha256": "e3547859f5a9fddfc3c7aa92142241bf02376dd57c106b374f24de2aee3b0373"
+    },
+    {
+      "file": "confirmed.inputs.json",
+      "bytes": 6039,
+      "sha256": "721291917737d80d5c6476c9478c21f5303ecedb011b3665e5020aa5e757ab3b"
+    },
+    {
+      "file": "confirmed.inputs.yaml",
+      "bytes": 4484,
+      "sha256": "b1bbbca3e43cc74a78de42a6285a51d34b773aeb63b693bb6e26995e5a569773"
+    },
+    {
+      "file": "business-scenarios.json",
+      "bytes": 120097,
+      "sha256": "31508d1b9fc933077f2e8ec78bb37bd52b0df7907b67233dbc0a2b6306f645c9"
+    },
+    {
+      "file": "business-scenarios.yaml",
+      "bytes": 88208,
+      "sha256": "aad2dac50fe5a00c5c52b6007b3bb9fd942e0bbfaa770dc410617df58f86305d"
+    },
+    {
+      "file": "business-scenario-results.json",
+      "bytes": 51345,
+      "sha256": "e09316047c6daeadee57bc785be2e0b6b080a045b910dfb82bfb6e17f4974c60"
+    },
+    {
+      "file": "duplicate-current-record.validation.json",
+      "bytes": 181,
+      "sha256": "d0c737abe11862035db1103a7e1b8a3ab32a2e4dc554cb1390da35c974ae27c9"
+    },
+    {
+      "file": "unconfirmed.case.json",
+      "bytes": 62323,
+      "sha256": "2dda1be1f1c20935831eaea2f2a7f2b162e0fdac3f452cfee1e52caef9313dca"
+    },
+    {
+      "file": "unconfirmed.assessment.json",
+      "bytes": 121358,
+      "sha256": "237d19ac36a0630f2fdc9b11892f0403e78709651b197608d98a90d2e625e3aa"
+    },
+    {
+      "file": "unconfirmed.run.json",
+      "bytes": 483838,
+      "sha256": "aca3f982714db99393712007a95993dfc2ea9560823abd3dff245e36782139dd"
+    },
+    {
+      "file": "confirmed.case.json",
+      "bytes": 63598,
+      "sha256": "4af421b3b38b882137c8e29be349e00abebd108b69dc00d262cdb03d47ddbe8f"
+    },
+    {
+      "file": "confirmed.assessment.json",
+      "bytes": 122707,
+      "sha256": "db30af763c2bdd74d83955e73a9e511ddacfe3ca73868380045911bf08aee1c4"
+    },
+    {
+      "file": "confirmed.run.json",
+      "bytes": 464783,
+      "sha256": "3524db09b8de3a8241cb547e3f9f67c51fbfd64b0d087cf424d46bc208ae6b48"
+    }
+  ]
+}

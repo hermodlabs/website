@@ -32,6 +32,7 @@
 
 
 
+
   <script src="../assets/feature-flags.js" defer></script>
   <script src="../assets/site.js" defer></script>
   <script src="../assets/form-request.js" defer></script>
@@ -147,6 +148,7 @@
       <p>Technical qualification, production capacity, and purchasing authority can be examined separately. A trial and a customer order may still need the same production line. Keeping that dependency visible lets us check the combined demands when the parts come together.</p>
 
 
+
       <a class="platform-reading-link" href="../articles/hierarchical-decomposition-for-human-decisions/index.html">
   <span class="platform-reading-label">Read the full article <span aria-hidden="true">→</span></span>
   <span class="platform-reading-title">
@@ -183,6 +185,7 @@
       <p>We favor defined concepts and relationships, reusable pieces of reasoning, and clear conditions for accepting a conclusion. Following a shared structure gives people a consistent way to describe the work and gives software a basis for checking it.</p>
 
       <p>The model takes effort to make explicit. The return is reasoning that can be examined, combined, and reused. The goals and acceptable tradeoffs remain with the people responsible for the decision.</p>
+
 
 
       <a class="platform-reading-link" href="../articles/shared-structure-for-automated-reasoning/index.html">
@@ -223,6 +226,9 @@
       <p>A trial, its report, a technical finding, and permission to purchase play different roles. Keeping them distinct lets people follow the reasoning from evidence to action. A technical approval retains its scope when another team uses it.</p>
 
 
+      <p><strong>In the shipment case.</strong> In Maya’s shipment review, the expense limit, available cash, and permission to spend are separate conditions. Having enough cash does not establish who may authorize the shipment. Keeping those meanings distinct helps the team review what the proposed movement actually requires. <a href="../use-cases/supply-chain/shipment-readiness/compare-shipment-options/index.html#shared-shipment">See the shipment’s requirements.</a></p>
+
+
       <a class="platform-reading-link" href="../articles/ontology-engineering-for-human-decisions/index.html">
   <span class="platform-reading-label">Read the full article <span aria-hidden="true">→</span></span>
   <span class="platform-reading-title">
@@ -259,6 +265,7 @@
       <p>A reasoning module gathers the concepts, claims, rules, and conditions relevant to a question. It gives someone a manageable part of the work to examine and a conclusion that can contribute to a larger decision.</p>
 
       <p>Technical qualification and purchasing authority can be separate modules within a supplier decision. Each makes clear what it establishes, what it depends on, and what remains unresolved. Reuse carries those conditions forward.</p>
+
 
 
       <a class="platform-reading-link" href="../articles/reasoning-modules-for-human-decisions/index.html">
@@ -303,6 +310,9 @@
       <p>We put these approaches to work through reusable apps and stitch them into workflows. An evidence review can feed a feasibility check, whose findings then support a learning decision. Shared meanings and reviewed handoffs connect those parts to the purpose of the whole.</p>
 
 
+      <p><strong>In the shipment case.</strong> Maya’s shipment review reuses a simple approach: check complete combinations against the requirements, then compare those that pass. Two apps use the same shipment facts and checks while applying different priorities: lowest expense or earliest arrival. The team can adapt that approach for another shipment without starting its reasoning from scratch. <a href="../use-cases/supply-chain/shipment-readiness/compare-shipment-options/index.html#worker-comparison">Compare the two shipment priorities.</a></p>
+
+
       <a class="platform-reading-link" href="../articles/pattern-languages-for-human-decisions/index.html">
   <span class="platform-reading-label">Read the full article <span aria-hidden="true">→</span></span>
   <span class="platform-reading-title">
@@ -339,6 +349,7 @@
       <p>Compare plausible readings of a statement, inspect what each would imply, and ask for clarification where the difference affects the work. Record the answer with its source and conditions, revise the representation, and revisit the conclusions that depend on it.</p>
 
       <p>“We can run the trial on Friday” could express expected line availability, a reservation, permission, or several claims together. Clarification helps identify the claim being made. Evidence and the relevant authority still need examination before that claim can support a decision.</p>
+
 
 
       <p>Our approach draws on <a href="https://arxiv.org/abs/1906.06582">computational hermeneutics</a>: examining how context shapes meaning. The article below follows a manual worked exchange and the engineering analogies behind it. For a practical starting point in the current beta, <a href="../articles/check-a-report-plan/index.html">check a report plan</a>.</p>
@@ -381,6 +392,7 @@
       <p>A supplier change might require a qualifying trial, preserved customer deliveries, and spending authorization. A lower price may depend on a trial that cannot happen in time. Making those conditions explicit shows what would have to change.</p>
 
 
+
       <a class="platform-reading-link" href="../articles/requirements-engineering-for-human-decisions/index.html">
   <span class="platform-reading-label">Read the full article <span aria-hidden="true">→</span></span>
   <span class="platform-reading-title">
@@ -417,6 +429,7 @@
       <p>Systems engineering connects needs and requirements to how parts are designed, combined, tested, and used. It asks us to consider the interactions across people, equipment, procedures, and the wider operation.</p>
 
       <p>A cheaper material could create more inspection work or slow production. We examine those consequences across the relevant boundaries and check whether the combined result serves the need that prompted the decision.</p>
+
 
 
       <a class="platform-reading-link" href="../articles/systems-engineering-for-human-decisions/index.html">
@@ -457,6 +470,7 @@
       <p>If material passes its trial but slows regular production, the team can revisit the savings estimate. We ask what to observe, who will review it, and which findings should trigger reconsideration. We also examine loops within the work, such as rework creating pressure that produces more defects.</p>
 
 
+
       <a class="platform-reading-link" href="../articles/feedback-loops-for-human-decisions/index.html">
   <span class="platform-reading-label">Read the full article <span aria-hidden="true">→</span></span>
   <span class="platform-reading-title">
@@ -490,9 +504,12 @@
     <div class="platform-concept-copy">
       <p class="concept-lead">Ask whether the whole combination can satisfy its requirements.</p>
 
-      <p>A plan describes what we intend to do. An arrangement connects the work, people, resources, permissions, and dependencies needed to carry it out. As work progresses and conditions change, those connections evolve; a previously supported plan may need another review.</p>
+      <p>A plan describes what we intend to do. An arrangement represents the possible combinations of work, people, resources, permissions, and dependencies allowed by the rules and context. As work progresses and conditions change, the workable combinations can change too.</p>
 
       <p>Three activities may each need three hours on a line with eight hours available. Every pair fits; all three do not. Checking the full arrangement reveals the shared constraint. Changes to availability can change which arrangements work. Any result remains bounded by the modeled choices and assumptions, with outstanding obligations kept visible.</p>
+
+
+      <p><strong>In the shipment case.</strong> Maya’s direct and backup shipment options combine a ship point, timing, people, resources, and permissions. Both pass with a $6,500 expense limit. Lowering it to $5,000 rules out the $6,000 backup while leaving the $4,000 direct option available. Changing one condition changes the collection of workable combinations. <a href="../use-cases/supply-chain/shipment-readiness/compare-shipment-options/index.html#change-a-fact">See the expense-limit example.</a></p>
 
 
       <a class="platform-reading-link" href="../articles/the-arrangement-problem-in-human-decisions/index.html">

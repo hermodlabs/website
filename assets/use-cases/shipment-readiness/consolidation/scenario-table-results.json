@@ -1,0 +1,1747 @@
+{
+  "format": "decision-lab-app-check-result/1",
+  "runId": "app-check-7f0c273a78707f6fa0c3ec83",
+  "createdAt": "2026-11-17T17:09:27.758Z",
+  "binding": {
+    "modelHash": "54d29009ebb1d89ea66bc5c251b004aec59768e68cd6da4a9ca520661bfce9b1",
+    "moduleHash": "76656296942e61bdb04bb2ae06dbb3e7365af7ef7840eeff6db84502f7bbcfba",
+    "sourceHash": "3007897690ef59393ebdbf15d6fc03c680dbf1923968823358a4806bf4bb1550",
+    "packageHash": "4cc1f3ac5106be90059c5b12fae3e7961b12b7dad1406580d5f010b37a97f4a6",
+    "suiteHash": "2b9e5d582d2eedd6ff31c3572fe1f14f64a0105e4daafb62857226bf50abfa9f",
+    "sdkVersion": "0.1.0"
+  },
+  "status": "passed",
+  "summary": {
+    "total": 14,
+    "passed": 14,
+    "failed": 0,
+    "unavailable": 0
+  },
+  "scenarios": [
+    {
+      "id": "original-two-options",
+      "title": "Keep the original two-option result under the $5,000 expense limit",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "direct"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "direct"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-2",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-3",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "constraintId": "total-expense-limit",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "constraintId": "total-expense-limit",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "registered",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-b18b8a71ea53480649e8cceb"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:a7fd349c5c08706406195d90b6723aa335c4c93324697e336db0a275f88fd832"
+    },
+    {
+      "id": "slot-unconfirmed",
+      "title": "A third quote without slot confirmation remains blocked",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "direct"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "direct"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-2",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-3",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "constraintId": "total-expense-limit",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "constraintId": "total-expense-limit",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "registered",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-4",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-5",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "constraintId": "scoped-consolidation-slot",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "constraintId": "scoped-consolidation-slot",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "registered",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-e901a410a5a08d9ee61c534b"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:d98ce9b9421989232b248b3940b7b6024cb9105064cb3e6cdb863614c0c80f69"
+    },
+    {
+      "id": "slot-confirmed",
+      "title": "A suitable current slot confirmation admits the earlier $5,000 option",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "direct"
+            },
+            "feasible": true,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "direct"
+            },
+            "feasible": true,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-2",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-3",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "constraintId": "total-expense-limit",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "constraintId": "total-expense-limit",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "registered",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-4",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-5",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "constraintId": "scoped-consolidation-slot",
+            "passed": true
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "constraintId": "scoped-consolidation-slot",
+            "passed": true,
+            "scenarios": [
+              {
+                "scenarioId": "registered",
+                "passed": true
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-734ab970931ff67a400e7718"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:299aec2b0da9ace2fca23c030fae4a664a87bcf4a1468bb10d88a5e4c7e05524"
+    },
+    {
+      "id": "wrong-order-revision",
+      "title": "A confirmation for a different order revision does not cover this shipment",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "direct"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "direct"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-2",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-3",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "constraintId": "total-expense-limit",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "constraintId": "total-expense-limit",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "registered",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-4",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-5",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "constraintId": "scoped-consolidation-slot",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "constraintId": "scoped-consolidation-slot",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "registered",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-e75890c8cb964c23bb02331c"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:007edac291672292215433a16f21fd3d35bf87dd7a8f1562cb24ae4b2313de95"
+    },
+    {
+      "id": "wrong-ship-point",
+      "title": "A confirmation for a different ship point does not cover this service",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "direct"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "direct"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-2",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-3",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "constraintId": "total-expense-limit",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "constraintId": "total-expense-limit",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "registered",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-4",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-5",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "constraintId": "scoped-consolidation-slot",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "constraintId": "scoped-consolidation-slot",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "registered",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-6bdaf3b71f2fa8ad78985b2f"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:e29bbe2f0ff552a4f01766210341d90955a97f77de97391a2f59fa53544576fe"
+    },
+    {
+      "id": "wrong-ship-date",
+      "title": "A confirmation for a different shipment date does not cover this shipment",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "direct"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "direct"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-2",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-3",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "constraintId": "total-expense-limit",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "constraintId": "total-expense-limit",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "registered",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-4",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-5",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "constraintId": "scoped-consolidation-slot",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "constraintId": "scoped-consolidation-slot",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "registered",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-55896a273c9dbe63dc6dacfd"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:c932bfb342627c2e4699aeff6b542e8cadcbafffd24cebf2e4c890798dacd95e"
+    },
+    {
+      "id": "confirmed-after-cutoff",
+      "title": "A slot confirmed after the reservation cutoff remains blocked",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "direct"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "direct"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-2",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-3",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "constraintId": "total-expense-limit",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "constraintId": "total-expense-limit",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "registered",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-4",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-5",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "constraintId": "scoped-consolidation-slot",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "constraintId": "scoped-consolidation-slot",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "registered",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-a6441c1facc9079c80412169"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:d02e3c901e5b4e94b924ccb2b01a0ea54e6fdf5efcd0ac7023fcb5112aa0a46a"
+    },
+    {
+      "id": "known-after-selection",
+      "title": "A confirmation unavailable to the team at selection cannot justify that decision",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "direct"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "direct"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-2",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-3",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "constraintId": "total-expense-limit",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "constraintId": "total-expense-limit",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "registered",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-4",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-5",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "constraintId": "scoped-consolidation-slot",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "constraintId": "scoped-consolidation-slot",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "registered",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-9797eca4b8008e21f8572df5"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:00a08dd74222ec2591d368ebd04d4ab1f974d4dd32f66d4837ad2d4752c7aecb"
+    },
+    {
+      "id": "slot-ends-too-soon",
+      "title": "A slot that ends before loading finishes does not cover the full loading window",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "direct"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "direct"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-2",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-3",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "constraintId": "total-expense-limit",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "constraintId": "total-expense-limit",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "registered",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-4",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-5",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "constraintId": "scoped-consolidation-slot",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "constraintId": "scoped-consolidation-slot",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "registered",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-d9aa7ae19f06ab8b7cb21cbd"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:6aa19e6b257cde3acd3cad80fb868c98b193b83d0bc7ad05a8f76dfaebe13088"
+    },
+    {
+      "id": "slot-starts-too-late",
+      "title": "A slot that starts after loading begins does not cover the full loading window",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "direct"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "direct"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-2",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-3",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "constraintId": "total-expense-limit",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "constraintId": "total-expense-limit",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "registered",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-4",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-5",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "constraintId": "scoped-consolidation-slot",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "constraintId": "scoped-consolidation-slot",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "registered",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-087bc53eb7ce853ff3dbf2e3"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:ab67e1c0017168a8213a7600387fed1fdcd87e83b3d31b9d1281f0ed63c76a42"
+    },
+    {
+      "id": "expired-slot",
+      "title": "A slot that has already expired does not cover the loading window",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "direct"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "direct"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-2",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-3",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "constraintId": "total-expense-limit",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "constraintId": "total-expense-limit",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "registered",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-4",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-5",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "constraintId": "scoped-consolidation-slot",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "constraintId": "scoped-consolidation-slot",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "registered",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-16cfe33541d9005ac87aa3a6"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:b91ec12cdbd18f078ee32e446338ecc1132a0fa0a1f3ba48a1f1219b4952d8b6"
+    },
+    {
+      "id": "slot-cancelled",
+      "title": "A cancelled current slot is not a confirmed slot",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "direct"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "direct"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-2",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-3",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "constraintId": "total-expense-limit",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "constraintId": "total-expense-limit",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "registered",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-4",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-5",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "constraintId": "scoped-consolidation-slot",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "constraintId": "scoped-consolidation-slot",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "registered",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-c1d2f2448eb0b113e04e72fa"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:4604e206a295c72f350cdd30272ef2458d28e7964093dc4c28acbe84996d864b"
+    },
+    {
+      "id": "slot-conflicting",
+      "title": "Unresolved conflicting supplier messages do not establish a usable slot",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "direct"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "direct"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-2",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-3",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "constraintId": "total-expense-limit",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "backup"
+            },
+            "constraintId": "total-expense-limit",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "registered",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-4",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-5",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "constraintId": "scoped-consolidation-slot",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "constraintId": "scoped-consolidation-slot",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "registered",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-431fdf008ed2d32a8aeff598"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:d56b152ff7a24e624d79646963af412d2d58d4d9fde7a201876b11d3f64b2129"
+    },
+    {
+      "id": "unknown-service",
+      "title": "An unfamiliar service cannot bypass a missing authored requirement policy",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "consolidated"
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-2",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "unreviewed-service"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "unreviewed-service"
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-3",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "arrangement": "unreviewed-service"
+            },
+            "constraintId": "reviewed-arrangement-policy",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "arrangement": "unreviewed-service"
+            },
+            "constraintId": "reviewed-arrangement-policy",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "registered",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-611fe9a4f8faadca79ffdc88"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:c11a25cf1123f936b3b5ff8d7a6c32cf70dd7dfa16dd376a9763b7e3231d9469"
+    }
+  ],
+  "contentHash": "c6a0c35730d5356d322e8ab476d56d734f2961a4d337a96185972398cd1739bc"
+}

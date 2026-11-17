@@ -1,0 +1,1731 @@
+{
+  "format": "complete-a-commitment/1",
+  "module": {
+    "id": "shipment-arrangement-with-consolidation",
+    "title": "Shipment review with consolidation",
+    "description": "Compare Direct, Backup and Consolidated freight for the same order. Preserve the existing mandatory shipment checks; Consolidated additionally needs a current, scoped slot confirmation known by selection time and valid for its full 60-minute loading window before departure. Rank eligible arrangements by arrival, then complete expense.",
+    "preference": {
+      "direction": "min",
+      "expression": {
+        "ref": "derived.arrival"
+      },
+      "then": [
+        {
+          "direction": "min",
+          "expression": {
+            "ref": "finance.expense"
+          }
+        }
+      ]
+    },
+    "version": "1.0.0",
+    "metadata": {
+      "catalog": {
+        "domain": {
+          "id": "order-fulfillment",
+          "label": "Order fulfillment",
+          "description": "Review delivery commitments, operating prerequisites and shipment arrangements."
+        },
+        "useCase": {
+          "id": "review-first-shipment",
+          "label": "Review a first shipment",
+          "description": "Review one shipment before committing money to an arrangement."
+        }
+      }
+    },
+    "question": "Which complete arrangement can meet this shipment commitment under every remaining transportation state?",
+    "template": {
+      "id": "complete-a-commitment",
+      "version": 1
+    },
+    "units": {
+      "time": "minute",
+      "timeOrigin": "Minute 0 is 2026-11-17T00:00:00-06:00; fixed UTC-06:00 for this bounded shipment horizon.",
+      "money": "USD cent",
+      "count": "unit of resource capacity",
+      "quantity": "case"
+    },
+    "assumptions": [
+      "This fictional case contains one accepted order revision for 100 cases, complete mutually exclusive arrangements and a fixed receipt commitment. Direct, Backup and Consolidated are the only reviewed arrangement identities; an unfamiliar option must receive an authored policy before it can pass.",
+      "The listed operating states are a reviewed projection of the evidence result. No probabilities are inferred from evidence or used to remove a mandatory scenario.",
+      "Direct transportation requires registered SP-A. The backup uses independently registered SP-B in either state. Portal presence does not establish transportation registration.",
+      "Each arrangement includes all packing, release and freight expense in its quoted fee. Preparation and resource use are explicitly checked and add no separate charge.",
+      "The accepted 100 cases are stipulated to be available to either complete arrangement; this profile does not perform inventory allocation, manufacturing or replenishment.",
+      "The complete issued-grant registry, calendar, bookings and quoted capacities remain stable. Computing a proposal does not purchase verification, reserve freight, grant permission or release stock.",
+      "All tasks use half-open intervals. Packing starts when the arrangement can be selected; final release follows packing and must finish before the fixed offered departure.",
+      "Reservation must be possible by minute 720, independently of receipt by minute 5340. Equal-time completion at either inclusive deadline is allowed.",
+      "studyFee is one prospective or incurred verification fee counted once. The payment time is studyFeeAt, and the complete quoted arrangement fee is paid when that arrangement can be selected. There are no deposits, refunds, revenue or additional financing.",
+      "A complete static arrangement is assessed against every retained state. Learning may later choose among these complete arrangements only through separately checked report branches.",
+      "A nonzero verification fee needs an independently recorded scoped purchase grant and study-purchase cap at its payment time. Missing authority cannot be replaced by available budget or positive expected benefit.",
+      "Both SP-A and SP-B are stipulated transportation-registered for the exact shipment scope. Consolidated uses the already registered SP-B; this example does not establish a new ship point registration.",
+      "slotConfirmations is a complete current-status register, not a history of events. Its arrangement key permits at most one resolved current record per arrangement. The logistics coordinator must reconcile conflicting messages to status conflicting, and replace a cancelled confirmation with status cancelled; duplicate current rows are invalid inputs. The model does not authenticate supplier messages or reconcile an event stream.",
+      "Consolidated needs status confirmed for this arrangement, ship point, order revision, recipient, ship date and profile. Confirmation must exist and be known at selection time, be confirmed by the reservation cutoff, and cover the full half-open 60-minute loading window immediately before carrier departure. Missing, cancelled, conflicting, late or incorrectly scoped confirmation does not establish the requirement. This checks the recorded slot; it does not schedule loading work or resolve physical dock capacity conflicts.",
+      "Direct and Backup retain their original operating policies. The slot condition applies only to the authored Consolidated identity, while the separate reviewed-arrangement policy rejects unknown identities. No case checkbox can disable this prerequisite."
+    ],
+    "inputs": {
+      "parameters": {
+        "orderId": {
+          "type": "string"
+        },
+        "orderRevision": {
+          "type": "string"
+        },
+        "recipient": {
+          "type": "string"
+        },
+        "shipDate": {
+          "type": "string"
+        },
+        "profileVersion": {
+          "type": "string"
+        },
+        "currentTime": {
+          "type": "integer",
+          "unit": "time",
+          "minimum": 0
+        },
+        "actionReady": {
+          "type": "integer",
+          "unit": "time",
+          "minimum": 0
+        },
+        "reservationDeadline": {
+          "type": "integer",
+          "unit": "time",
+          "minimum": 0
+        },
+        "receiptDeadline": {
+          "type": "integer",
+          "unit": "time",
+          "minimum": 0
+        },
+        "receiptOpen": {
+          "type": "integer",
+          "unit": "time",
+          "minimum": 0
+        },
+        "receiptClose": {
+          "type": "integer",
+          "unit": "time",
+          "minimum": 0
+        },
+        "expenseLimit": {
+          "type": "integer",
+          "unit": "money",
+          "minimum": 0
+        },
+        "cashLimit": {
+          "type": "integer",
+          "unit": "money",
+          "minimum": 0
+        },
+        "studyFee": {
+          "type": "integer",
+          "unit": "money",
+          "minimum": 0
+        },
+        "studyFeeAt": {
+          "type": "integer",
+          "unit": "time",
+          "minimum": 0
+        },
+        "quantity": {
+          "type": "integer",
+          "unit": "quantity",
+          "minimum": 1
+        },
+        "packDuration": {
+          "type": "integer",
+          "unit": "time",
+          "minimum": 1
+        },
+        "releaseDuration": {
+          "type": "integer",
+          "unit": "time",
+          "minimum": 1
+        },
+        "packActor": {
+          "type": "string",
+          "references": {
+            "table": "actors",
+            "column": "id"
+          }
+        },
+        "releaseActor": {
+          "type": "string",
+          "references": {
+            "table": "actors",
+            "column": "id"
+          }
+        },
+        "studyPurchaseCap": {
+          "type": "integer",
+          "unit": "money",
+          "minimum": 0
+        },
+        "studyPurchaser": {
+          "type": "string"
+        }
+      },
+      "tables": {
+        "arrangements": {
+          "key": [
+            "id"
+          ],
+          "columns": {
+            "id": {
+              "type": "string"
+            },
+            "shipPoint": {
+              "type": "string"
+            },
+            "fee": {
+              "type": "integer",
+              "unit": "money",
+              "minimum": 0
+            },
+            "departure": {
+              "type": "integer",
+              "unit": "time",
+              "minimum": 0
+            },
+            "travelDuration": {
+              "type": "integer",
+              "unit": "time",
+              "minimum": 0
+            },
+            "capacity": {
+              "type": "integer",
+              "unit": "quantity",
+              "minimum": 0
+            }
+          }
+        },
+        "states": {
+          "key": [
+            "id"
+          ],
+          "columns": {
+            "id": {
+              "type": "string"
+            },
+            "registered": {
+              "type": "boolean"
+            }
+          }
+        },
+        "readiness": {
+          "key": [
+            "stateId",
+            "shipPoint"
+          ],
+          "columns": {
+            "stateId": {
+              "type": "string",
+              "references": {
+                "table": "states",
+                "column": "id"
+              }
+            },
+            "shipPoint": {
+              "type": "string"
+            },
+            "registered": {
+              "type": "boolean"
+            },
+            "orderId": {
+              "type": "string"
+            },
+            "orderRevision": {
+              "type": "string"
+            },
+            "recipient": {
+              "type": "string"
+            },
+            "shipDate": {
+              "type": "string"
+            },
+            "profileVersion": {
+              "type": "string"
+            }
+          }
+        },
+        "scenarios": {
+          "key": [
+            "id"
+          ],
+          "columns": {
+            "id": {
+              "type": "string"
+            },
+            "stateId": {
+              "type": "string",
+              "references": {
+                "table": "states",
+                "column": "id"
+              }
+            }
+          }
+        },
+        "actors": {
+          "key": [
+            "id"
+          ],
+          "columns": {
+            "id": {
+              "type": "string"
+            }
+          }
+        },
+        "capabilities": {
+          "key": [
+            "actor",
+            "action"
+          ],
+          "columns": {
+            "actor": {
+              "type": "string",
+              "references": {
+                "table": "actors",
+                "column": "id"
+              }
+            },
+            "action": {
+              "type": "string"
+            }
+          }
+        },
+        "calendars": {
+          "key": [
+            "actor",
+            "start",
+            "end"
+          ],
+          "columns": {
+            "actor": {
+              "type": "string",
+              "references": {
+                "table": "actors",
+                "column": "id"
+              }
+            },
+            "start": {
+              "type": "integer",
+              "unit": "time",
+              "minimum": 0
+            },
+            "end": {
+              "type": "integer",
+              "unit": "time",
+              "minimum": 0
+            }
+          }
+        },
+        "resources": {
+          "key": [
+            "id"
+          ],
+          "columns": {
+            "id": {
+              "type": "string"
+            },
+            "capacity": {
+              "type": "integer",
+              "unit": "count",
+              "minimum": 0
+            }
+          }
+        },
+        "bookings": {
+          "key": [
+            "id"
+          ],
+          "columns": {
+            "id": {
+              "type": "string"
+            },
+            "resource": {
+              "type": "string",
+              "references": {
+                "table": "resources",
+                "column": "id"
+              }
+            },
+            "start": {
+              "type": "integer",
+              "unit": "time",
+              "minimum": 0
+            },
+            "end": {
+              "type": "integer",
+              "unit": "time",
+              "minimum": 0
+            },
+            "amount": {
+              "type": "integer",
+              "unit": "count",
+              "minimum": 0
+            }
+          }
+        },
+        "grants": {
+          "key": [
+            "id"
+          ],
+          "columns": {
+            "id": {
+              "type": "string"
+            },
+            "actor": {
+              "type": "string",
+              "references": {
+                "table": "actors",
+                "column": "id"
+              }
+            },
+            "action": {
+              "type": "string"
+            },
+            "arrangement": {
+              "type": "string",
+              "references": {
+                "table": "arrangements",
+                "column": "id"
+              }
+            },
+            "shipPoint": {
+              "type": "string"
+            },
+            "orderId": {
+              "type": "string"
+            },
+            "orderRevision": {
+              "type": "string"
+            },
+            "recipient": {
+              "type": "string"
+            },
+            "shipDate": {
+              "type": "string"
+            },
+            "profileVersion": {
+              "type": "string"
+            },
+            "start": {
+              "type": "integer",
+              "unit": "time",
+              "minimum": 0
+            },
+            "end": {
+              "type": "integer",
+              "unit": "time",
+              "minimum": 0
+            }
+          }
+        },
+        "arrangementAuthorities": {
+          "key": [
+            "arrangement"
+          ],
+          "columns": {
+            "arrangement": {
+              "type": "string",
+              "references": {
+                "table": "arrangements",
+                "column": "id"
+              }
+            },
+            "orderId": {
+              "type": "string"
+            },
+            "orderRevision": {
+              "type": "string"
+            },
+            "recipient": {
+              "type": "string"
+            },
+            "shipDate": {
+              "type": "string"
+            },
+            "profileVersion": {
+              "type": "string"
+            },
+            "start": {
+              "type": "integer",
+              "unit": "time",
+              "minimum": 0
+            },
+            "end": {
+              "type": "integer",
+              "unit": "time",
+              "minimum": 0
+            }
+          }
+        },
+        "studyPurchaseGrants": {
+          "key": [
+            "id"
+          ],
+          "columns": {
+            "id": {
+              "type": "string"
+            },
+            "actor": {
+              "type": "string"
+            },
+            "action": {
+              "type": "string"
+            },
+            "orderId": {
+              "type": "string"
+            },
+            "orderRevision": {
+              "type": "string"
+            },
+            "recipient": {
+              "type": "string"
+            },
+            "shipDate": {
+              "type": "string"
+            },
+            "profileVersion": {
+              "type": "string"
+            },
+            "start": {
+              "type": "integer",
+              "unit": "time",
+              "minimum": 0
+            },
+            "end": {
+              "type": "integer",
+              "unit": "time",
+              "minimum": 0
+            },
+            "ceiling": {
+              "type": "integer",
+              "unit": "money",
+              "minimum": 0
+            }
+          }
+        },
+        "slotConfirmations": {
+          "key": [
+            "arrangement"
+          ],
+          "columns": {
+            "arrangement": {
+              "type": "string",
+              "references": {
+                "table": "arrangements",
+                "column": "id"
+              }
+            },
+            "shipPoint": {
+              "type": "string"
+            },
+            "orderId": {
+              "type": "string"
+            },
+            "orderRevision": {
+              "type": "string"
+            },
+            "recipient": {
+              "type": "string"
+            },
+            "shipDate": {
+              "type": "string"
+            },
+            "profileVersion": {
+              "type": "string"
+            },
+            "slotReference": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "confirmedAt": {
+              "type": "integer",
+              "unit": "time",
+              "minimum": 0
+            },
+            "knownAt": {
+              "type": "integer",
+              "unit": "time",
+              "minimum": 0
+            },
+            "validFrom": {
+              "type": "integer",
+              "unit": "time",
+              "minimum": 0
+            },
+            "validUntil": {
+              "type": "integer",
+              "unit": "time",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    },
+    "choices": [
+      {
+        "id": "arrangement",
+        "domain": {
+          "table": "arrangements",
+          "column": "id"
+        }
+      }
+    ],
+    "scenarioDomain": {
+      "table": "scenarios"
+    },
+    "lookupCoverage": [
+      {
+        "table": "readiness",
+        "keys": {
+          "stateId": {
+            "domain": {
+              "table": "scenarios",
+              "column": "stateId"
+            }
+          },
+          "shipPoint": {
+            "domain": {
+              "table": "arrangements",
+              "column": "shipPoint"
+            }
+          }
+        }
+      }
+    ],
+    "derived": [
+      {
+        "id": "shipPoint",
+        "type": "string",
+        "expr": {
+          "op": "lookup",
+          "table": "arrangements",
+          "where": {
+            "id": {
+              "ref": "choice.arrangement"
+            }
+          },
+          "column": "shipPoint"
+        }
+      },
+      {
+        "id": "departure",
+        "type": "integer",
+        "unit": "time",
+        "expr": {
+          "op": "lookup",
+          "table": "arrangements",
+          "where": {
+            "id": {
+              "ref": "choice.arrangement"
+            }
+          },
+          "column": "departure"
+        }
+      },
+      {
+        "id": "travelDuration",
+        "type": "integer",
+        "unit": "time",
+        "expr": {
+          "op": "lookup",
+          "table": "arrangements",
+          "where": {
+            "id": {
+              "ref": "choice.arrangement"
+            }
+          },
+          "column": "travelDuration"
+        }
+      },
+      {
+        "id": "arrival",
+        "type": "integer",
+        "unit": "time",
+        "expr": {
+          "op": "add",
+          "args": [
+            {
+              "ref": "derived.departure"
+            },
+            {
+              "ref": "derived.travelDuration"
+            }
+          ]
+        }
+      },
+      {
+        "id": "slotStart",
+        "type": "integer",
+        "unit": "time",
+        "expr": {
+          "op": "sub",
+          "args": [
+            {
+              "ref": "derived.departure"
+            },
+            {
+              "literal": 60
+            }
+          ]
+        }
+      }
+    ],
+    "activities": [
+      {
+        "id": "pack",
+        "actor": {
+          "ref": "parameter.packActor"
+        },
+        "start": {
+          "ref": "parameter.actionReady"
+        },
+        "duration": {
+          "ref": "parameter.packDuration"
+        },
+        "resources": [
+          {
+            "resource": {
+              "ref": "parameter.packActor"
+            },
+            "amount": {
+              "literal": 1
+            }
+          },
+          {
+            "resource": {
+              "literal": "packing-bench"
+            },
+            "amount": {
+              "literal": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "release",
+        "actor": {
+          "ref": "parameter.releaseActor"
+        },
+        "start": {
+          "ref": "activity.pack.end"
+        },
+        "duration": {
+          "ref": "parameter.releaseDuration"
+        },
+        "resources": [
+          {
+            "resource": {
+              "ref": "parameter.releaseActor"
+            },
+            "amount": {
+              "literal": 1
+            }
+          }
+        ]
+      }
+    ],
+    "resources": {
+      "definitions": {
+        "table": "resources",
+        "idColumn": "id",
+        "capacityColumn": "capacity"
+      },
+      "bookings": {
+        "table": "bookings",
+        "resourceColumn": "resource",
+        "startColumn": "start",
+        "endColumn": "end",
+        "amountColumn": "amount"
+      }
+    },
+    "requirements": [
+      {
+        "id": "SUFFICIENCY",
+        "label": "Complete accepted order",
+        "meaning": "The arrangement carries the accepted quantity using a transportation-registered ship point for this exact shipment scope.",
+        "waivable": false
+      },
+      {
+        "id": "RESOURCES",
+        "label": "Preparation staff and workspace",
+        "meaning": "Packing and release have the necessary capabilities, calendars and shared capacity for their complete durations.",
+        "waivable": false
+      },
+      {
+        "id": "AUTHORITY",
+        "label": "Purchase, arrangement and final release permission",
+        "meaning": "Recorded authorities cover verification purchase, arrangement selection and final release for the same order revision, recipient, shipment date and profile. A budget ceiling does not create permission.",
+        "waivable": false
+      },
+      {
+        "id": "TIME",
+        "label": "Reservation, preparation and receipt",
+        "meaning": "Select by the reservation cutoff, finish preparation before departure and meet the receipt deadline.",
+        "waivable": false
+      },
+      {
+        "id": "ACCESS",
+        "label": "Receiving window",
+        "meaning": "Arrival falls within the declared half-open receiving window.",
+        "waivable": false
+      },
+      {
+        "id": "COST",
+        "label": "Total expense and cash",
+        "meaning": "The quoted arrangement fee plus the single prospective or incurred verification fee stay within expense and peak-cash limits.",
+        "waivable": false
+      },
+      {
+        "id": "SLOT",
+        "label": "Confirmed consolidation slot",
+        "meaning": "Consolidated freight needs a resolved current supplier slot confirmation for this exact shipment, known at selection and covering the full 60-minute loading window immediately before departure.",
+        "waivable": false
+      }
+    ],
+    "constraints": [
+      {
+        "id": "capacity-for-complete-order",
+        "requirement": "SUFFICIENCY",
+        "kind": "predicate",
+        "predicate": {
+          "op": "gte",
+          "args": [
+            {
+              "op": "lookup",
+              "table": "arrangements",
+              "where": {
+                "id": {
+                  "ref": "choice.arrangement"
+                }
+              },
+              "column": "capacity"
+            },
+            {
+              "ref": "parameter.quantity"
+            }
+          ]
+        }
+      },
+      {
+        "id": "scoped-transportation-registration",
+        "requirement": "SUFFICIENCY",
+        "kind": "predicate",
+        "predicate": {
+          "op": "exists",
+          "table": "readiness",
+          "where": {
+            "stateId": {
+              "ref": "scenario.stateId"
+            },
+            "shipPoint": {
+              "ref": "derived.shipPoint"
+            },
+            "registered": {
+              "literal": true
+            },
+            "orderId": {
+              "ref": "parameter.orderId"
+            },
+            "orderRevision": {
+              "ref": "parameter.orderRevision"
+            },
+            "recipient": {
+              "ref": "parameter.recipient"
+            },
+            "shipDate": {
+              "ref": "parameter.shipDate"
+            },
+            "profileVersion": {
+              "ref": "parameter.profileVersion"
+            }
+          }
+        }
+      },
+      {
+        "id": "pack-capability",
+        "requirement": "RESOURCES",
+        "kind": "predicate",
+        "predicate": {
+          "op": "exists",
+          "table": "capabilities",
+          "where": {
+            "actor": {
+              "ref": "activity.pack.actor"
+            },
+            "action": {
+              "literal": "pack"
+            }
+          }
+        }
+      },
+      {
+        "id": "pack-availability",
+        "requirement": "RESOURCES",
+        "kind": "predicate",
+        "predicate": {
+          "op": "interval-covered",
+          "table": "calendars",
+          "where": {
+            "actor": {
+              "ref": "activity.pack.actor"
+            }
+          },
+          "start": {
+            "ref": "activity.pack.start"
+          },
+          "end": {
+            "ref": "activity.pack.end"
+          },
+          "startColumn": "start",
+          "endColumn": "end"
+        }
+      },
+      {
+        "id": "release-capability",
+        "requirement": "RESOURCES",
+        "kind": "predicate",
+        "predicate": {
+          "op": "exists",
+          "table": "capabilities",
+          "where": {
+            "actor": {
+              "ref": "activity.release.actor"
+            },
+            "action": {
+              "literal": "release"
+            }
+          }
+        }
+      },
+      {
+        "id": "release-availability",
+        "requirement": "RESOURCES",
+        "kind": "predicate",
+        "predicate": {
+          "op": "interval-covered",
+          "table": "calendars",
+          "where": {
+            "actor": {
+              "ref": "activity.release.actor"
+            }
+          },
+          "start": {
+            "ref": "activity.release.start"
+          },
+          "end": {
+            "ref": "activity.release.end"
+          },
+          "startColumn": "start",
+          "endColumn": "end"
+        }
+      },
+      {
+        "id": "combined-resource-capacity",
+        "requirement": "RESOURCES",
+        "kind": "resource-capacity"
+      },
+      {
+        "id": "arrangement-selection-authority",
+        "requirement": "AUTHORITY",
+        "kind": "predicate",
+        "predicate": {
+          "op": "exists",
+          "table": "arrangementAuthorities",
+          "where": {
+            "arrangement": {
+              "ref": "choice.arrangement"
+            },
+            "orderId": {
+              "ref": "parameter.orderId"
+            },
+            "orderRevision": {
+              "ref": "parameter.orderRevision"
+            },
+            "recipient": {
+              "ref": "parameter.recipient"
+            },
+            "shipDate": {
+              "ref": "parameter.shipDate"
+            },
+            "profileVersion": {
+              "ref": "parameter.profileVersion"
+            }
+          },
+          "test": {
+            "op": "and",
+            "args": [
+              {
+                "op": "lte",
+                "args": [
+                  {
+                    "ref": "row.start"
+                  },
+                  {
+                    "ref": "parameter.actionReady"
+                  }
+                ]
+              },
+              {
+                "op": "gt",
+                "args": [
+                  {
+                    "ref": "row.end"
+                  },
+                  {
+                    "ref": "parameter.actionReady"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "scoped-final-release-grant",
+        "requirement": "AUTHORITY",
+        "kind": "predicate",
+        "predicate": {
+          "op": "exists",
+          "table": "grants",
+          "where": {
+            "actor": {
+              "ref": "parameter.releaseActor"
+            },
+            "action": {
+              "literal": "release"
+            },
+            "arrangement": {
+              "ref": "choice.arrangement"
+            },
+            "shipPoint": {
+              "ref": "derived.shipPoint"
+            },
+            "orderId": {
+              "ref": "parameter.orderId"
+            },
+            "orderRevision": {
+              "ref": "parameter.orderRevision"
+            },
+            "recipient": {
+              "ref": "parameter.recipient"
+            },
+            "shipDate": {
+              "ref": "parameter.shipDate"
+            },
+            "profileVersion": {
+              "ref": "parameter.profileVersion"
+            }
+          },
+          "test": {
+            "op": "and",
+            "args": [
+              {
+                "op": "lte",
+                "args": [
+                  {
+                    "ref": "row.start"
+                  },
+                  {
+                    "ref": "activity.release.start"
+                  }
+                ]
+              },
+              {
+                "op": "gte",
+                "args": [
+                  {
+                    "ref": "row.end"
+                  },
+                  {
+                    "ref": "activity.release.end"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "selection-not-in-the-past",
+        "requirement": "TIME",
+        "kind": "predicate",
+        "predicate": {
+          "op": "gte",
+          "args": [
+            {
+              "ref": "parameter.actionReady"
+            },
+            {
+              "ref": "parameter.currentTime"
+            }
+          ]
+        }
+      },
+      {
+        "id": "verification-fee-before-response",
+        "requirement": "TIME",
+        "kind": "predicate",
+        "predicate": {
+          "op": "lte",
+          "args": [
+            {
+              "ref": "parameter.studyFeeAt"
+            },
+            {
+              "ref": "parameter.actionReady"
+            }
+          ]
+        }
+      },
+      {
+        "id": "reserve-before-cutoff",
+        "requirement": "TIME",
+        "kind": "predicate",
+        "predicate": {
+          "op": "lte",
+          "args": [
+            {
+              "ref": "parameter.actionReady"
+            },
+            {
+              "ref": "parameter.reservationDeadline"
+            }
+          ]
+        }
+      },
+      {
+        "id": "preparation-before-departure",
+        "requirement": "TIME",
+        "kind": "predicate",
+        "predicate": {
+          "op": "lte",
+          "args": [
+            {
+              "ref": "activity.release.end"
+            },
+            {
+              "ref": "derived.departure"
+            }
+          ]
+        }
+      },
+      {
+        "id": "receipt-by-required-time",
+        "requirement": "TIME",
+        "kind": "predicate",
+        "predicate": {
+          "op": "lte",
+          "args": [
+            {
+              "ref": "derived.arrival"
+            },
+            {
+              "ref": "parameter.receiptDeadline"
+            }
+          ]
+        }
+      },
+      {
+        "id": "receipt-within-access-window",
+        "requirement": "ACCESS",
+        "kind": "predicate",
+        "predicate": {
+          "op": "and",
+          "args": [
+            {
+              "op": "lte",
+              "args": [
+                {
+                  "ref": "parameter.receiptOpen"
+                },
+                {
+                  "ref": "derived.arrival"
+                }
+              ]
+            },
+            {
+              "op": "lt",
+              "args": [
+                {
+                  "ref": "derived.arrival"
+                },
+                {
+                  "ref": "parameter.receiptClose"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "total-expense-limit",
+        "requirement": "COST",
+        "kind": "predicate",
+        "predicate": {
+          "op": "lte",
+          "args": [
+            {
+              "ref": "finance.expense"
+            },
+            {
+              "ref": "parameter.expenseLimit"
+            }
+          ]
+        }
+      },
+      {
+        "id": "peak-cash-limit",
+        "requirement": "COST",
+        "kind": "predicate",
+        "predicate": {
+          "op": "lte",
+          "args": [
+            {
+              "ref": "finance.peakCash"
+            },
+            {
+              "ref": "parameter.cashLimit"
+            }
+          ]
+        }
+      },
+      {
+        "id": "scoped-verification-purchase-grant",
+        "requirement": "AUTHORITY",
+        "kind": "predicate",
+        "predicate": {
+          "op": "or",
+          "args": [
+            {
+              "op": "eq",
+              "args": [
+                {
+                  "ref": "parameter.studyFee"
+                },
+                {
+                  "literal": 0
+                }
+              ]
+            },
+            {
+              "op": "and",
+              "args": [
+                {
+                  "op": "lte",
+                  "args": [
+                    {
+                      "ref": "parameter.studyFee"
+                    },
+                    {
+                      "ref": "parameter.studyPurchaseCap"
+                    }
+                  ]
+                },
+                {
+                  "op": "exists",
+                  "table": "studyPurchaseGrants",
+                  "where": {
+                    "actor": {
+                      "ref": "parameter.studyPurchaser"
+                    },
+                    "orderId": {
+                      "ref": "parameter.orderId"
+                    },
+                    "orderRevision": {
+                      "ref": "parameter.orderRevision"
+                    },
+                    "recipient": {
+                      "ref": "parameter.recipient"
+                    },
+                    "shipDate": {
+                      "ref": "parameter.shipDate"
+                    },
+                    "profileVersion": {
+                      "ref": "parameter.profileVersion"
+                    },
+                    "action": {
+                      "literal": "purchase-verification"
+                    }
+                  },
+                  "test": {
+                    "op": "and",
+                    "args": [
+                      {
+                        "op": "lte",
+                        "args": [
+                          {
+                            "ref": "row.start"
+                          },
+                          {
+                            "ref": "parameter.studyFeeAt"
+                          }
+                        ]
+                      },
+                      {
+                        "op": "gt",
+                        "args": [
+                          {
+                            "ref": "row.end"
+                          },
+                          {
+                            "ref": "parameter.studyFeeAt"
+                          }
+                        ]
+                      },
+                      {
+                        "op": "gte",
+                        "args": [
+                          {
+                            "ref": "row.ceiling"
+                          },
+                          {
+                            "ref": "parameter.studyFee"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "reviewed-arrangement-policy",
+        "requirement": "SUFFICIENCY",
+        "kind": "predicate",
+        "predicate": {
+          "op": "in",
+          "args": [
+            {
+              "ref": "choice.arrangement"
+            },
+            {
+              "literal": [
+                "direct",
+                "backup",
+                "consolidated"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "scoped-consolidation-slot",
+        "requirement": "SLOT",
+        "kind": "predicate",
+        "predicate": {
+          "op": "or",
+          "args": [
+            {
+              "op": "not",
+              "args": [
+                {
+                  "op": "in",
+                  "args": [
+                    {
+                      "ref": "choice.arrangement"
+                    },
+                    {
+                      "literal": [
+                        "consolidated"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "op": "exists",
+              "table": "slotConfirmations",
+              "where": {
+                "arrangement": {
+                  "ref": "choice.arrangement"
+                },
+                "shipPoint": {
+                  "ref": "derived.shipPoint"
+                },
+                "orderId": {
+                  "ref": "parameter.orderId"
+                },
+                "orderRevision": {
+                  "ref": "parameter.orderRevision"
+                },
+                "recipient": {
+                  "ref": "parameter.recipient"
+                },
+                "shipDate": {
+                  "ref": "parameter.shipDate"
+                },
+                "profileVersion": {
+                  "ref": "parameter.profileVersion"
+                },
+                "status": {
+                  "literal": "confirmed"
+                }
+              },
+              "test": {
+                "op": "and",
+                "args": [
+                  {
+                    "op": "lte",
+                    "args": [
+                      {
+                        "ref": "row.confirmedAt"
+                      },
+                      {
+                        "ref": "parameter.reservationDeadline"
+                      }
+                    ]
+                  },
+                  {
+                    "op": "lte",
+                    "args": [
+                      {
+                        "ref": "row.confirmedAt"
+                      },
+                      {
+                        "ref": "row.knownAt"
+                      }
+                    ]
+                  },
+                  {
+                    "op": "lte",
+                    "args": [
+                      {
+                        "ref": "row.knownAt"
+                      },
+                      {
+                        "ref": "parameter.actionReady"
+                      }
+                    ]
+                  },
+                  {
+                    "op": "lte",
+                    "args": [
+                      {
+                        "ref": "row.validFrom"
+                      },
+                      {
+                        "ref": "derived.slotStart"
+                      }
+                    ]
+                  },
+                  {
+                    "op": "gte",
+                    "args": [
+                      {
+                        "ref": "row.validUntil"
+                      },
+                      {
+                        "ref": "derived.departure"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "finance": {
+      "mode": "expense-and-cash",
+      "charges": [
+        {
+          "id": "verification-fee",
+          "amount": {
+            "ref": "parameter.studyFee"
+          },
+          "at": {
+            "ref": "parameter.studyFeeAt"
+          }
+        },
+        {
+          "id": "complete-arrangement-fee",
+          "amount": {
+            "op": "lookup",
+            "table": "arrangements",
+            "where": {
+              "id": {
+                "ref": "choice.arrangement"
+              }
+            },
+            "column": "fee"
+          },
+          "at": {
+            "ref": "parameter.actionReady"
+          }
+        }
+      ],
+      "holds": []
+    },
+    "labels": {
+      "plan": "Shipment arrangement",
+      "object": "Order",
+      "actor": "Responsible worker",
+      "service": "Shipment arrangement",
+      "departure": "Carrier departure",
+      "arrival": "Customer receipt",
+      "expense": "Total shipment expense",
+      "choice.arrangement": "Arrangement",
+      "activity.pack": "Pack the complete order",
+      "activity.release": "Review and authorize final release",
+      "resource.packing-bench": "Packing bench",
+      "scenario.stateId": "Possible transportation state",
+      "input.actionReady": "Arrangement selection time",
+      "input.reservationDeadline": "Reservation cutoff",
+      "input.receiptDeadline": "Required receipt time",
+      "input.studyFee": "One verification fee",
+      "table.slotConfirmations": "Current consolidation slot status",
+      "table.slotConfirmations.arrangement": "Shipment arrangement",
+      "table.slotConfirmations.status": "Current slot status",
+      "table.slotConfirmations.knownAt": "Known to the team at",
+      "table.slotConfirmations.confirmedAt": "Supplier confirmed at",
+      "table.slotConfirmations.validFrom": "Slot valid from",
+      "table.slotConfirmations.validUntil": "Slot valid until",
+      "table.slotConfirmations.slotReference": "Supplier slot reference",
+      "derived.slotStart": "Required loading window starts"
+    }
+  },
+  "case": {
+    "id": "SHIP-104-CONSOLIDATION-UNCONFIRMED-r1",
+    "parameters": {
+      "orderId": "ORD-104",
+      "orderRevision": "1",
+      "recipient": "DC-X",
+      "shipDate": "2026-11-18",
+      "profileVersion": "1.0.0",
+      "currentTime": 480,
+      "actionReady": 480,
+      "reservationDeadline": 720,
+      "receiptDeadline": 5340,
+      "receiptOpen": 3600,
+      "receiptClose": 5341,
+      "expenseLimit": 500000,
+      "cashLimit": 650000,
+      "studyFee": 0,
+      "studyFeeAt": 480,
+      "quantity": 100,
+      "packDuration": 120,
+      "releaseDuration": 30,
+      "packActor": "packing-lead",
+      "releaseActor": "release-officer",
+      "studyPurchaseCap": 25000,
+      "studyPurchaser": "finance-reviewer"
+    },
+    "tables": {
+      "arrangements": [
+        {
+          "id": "direct",
+          "shipPoint": "SP-A",
+          "fee": 400000,
+          "departure": 1440,
+          "travelDuration": 3600,
+          "capacity": 100
+        },
+        {
+          "id": "backup",
+          "shipPoint": "SP-B",
+          "fee": 600000,
+          "departure": 1440,
+          "travelDuration": 2160,
+          "capacity": 100
+        },
+        {
+          "id": "consolidated",
+          "shipPoint": "SP-B",
+          "fee": 500000,
+          "departure": 1440,
+          "travelDuration": 2520,
+          "capacity": 100
+        }
+      ],
+      "states": [
+        {
+          "id": "registered",
+          "registered": true
+        }
+      ],
+      "readiness": [
+        {
+          "stateId": "registered",
+          "shipPoint": "SP-A",
+          "registered": true,
+          "orderId": "ORD-104",
+          "orderRevision": "1",
+          "recipient": "DC-X",
+          "shipDate": "2026-11-18",
+          "profileVersion": "1.0.0"
+        },
+        {
+          "stateId": "registered",
+          "shipPoint": "SP-B",
+          "registered": true,
+          "orderId": "ORD-104",
+          "orderRevision": "1",
+          "recipient": "DC-X",
+          "shipDate": "2026-11-18",
+          "profileVersion": "1.0.0"
+        }
+      ],
+      "scenarios": [
+        {
+          "id": "registered",
+          "stateId": "registered"
+        }
+      ],
+      "actors": [
+        {
+          "id": "packing-lead"
+        },
+        {
+          "id": "release-officer"
+        }
+      ],
+      "capabilities": [
+        {
+          "actor": "packing-lead",
+          "action": "pack"
+        },
+        {
+          "actor": "release-officer",
+          "action": "release"
+        }
+      ],
+      "calendars": [
+        {
+          "actor": "packing-lead",
+          "start": 480,
+          "end": 1440
+        },
+        {
+          "actor": "release-officer",
+          "start": 480,
+          "end": 1440
+        }
+      ],
+      "resources": [
+        {
+          "id": "packing-lead",
+          "capacity": 1
+        },
+        {
+          "id": "release-officer",
+          "capacity": 1
+        },
+        {
+          "id": "packing-bench",
+          "capacity": 1
+        }
+      ],
+      "bookings": [],
+      "grants": [
+        {
+          "id": "RELEASE-direct",
+          "actor": "release-officer",
+          "action": "release",
+          "arrangement": "direct",
+          "shipPoint": "SP-A",
+          "orderId": "ORD-104",
+          "orderRevision": "1",
+          "recipient": "DC-X",
+          "shipDate": "2026-11-18",
+          "profileVersion": "1.0.0",
+          "start": 480,
+          "end": 1440
+        },
+        {
+          "id": "RELEASE-backup",
+          "actor": "release-officer",
+          "action": "release",
+          "arrangement": "backup",
+          "shipPoint": "SP-B",
+          "orderId": "ORD-104",
+          "orderRevision": "1",
+          "recipient": "DC-X",
+          "shipDate": "2026-11-18",
+          "profileVersion": "1.0.0",
+          "start": 480,
+          "end": 1440
+        },
+        {
+          "id": "RELEASE-consolidated",
+          "actor": "release-officer",
+          "action": "release",
+          "arrangement": "consolidated",
+          "shipPoint": "SP-B",
+          "orderId": "ORD-104",
+          "orderRevision": "1",
+          "recipient": "DC-X",
+          "shipDate": "2026-11-18",
+          "profileVersion": "1.0.0",
+          "start": 480,
+          "end": 1440
+        }
+      ],
+      "arrangementAuthorities": [
+        {
+          "arrangement": "direct",
+          "orderId": "ORD-104",
+          "orderRevision": "1",
+          "recipient": "DC-X",
+          "shipDate": "2026-11-18",
+          "profileVersion": "1.0.0",
+          "start": 480,
+          "end": 721
+        },
+        {
+          "arrangement": "backup",
+          "orderId": "ORD-104",
+          "orderRevision": "1",
+          "recipient": "DC-X",
+          "shipDate": "2026-11-18",
+          "profileVersion": "1.0.0",
+          "start": 480,
+          "end": 721
+        },
+        {
+          "arrangement": "consolidated",
+          "orderId": "ORD-104",
+          "orderRevision": "1",
+          "recipient": "DC-X",
+          "shipDate": "2026-11-18",
+          "profileVersion": "1.0.0",
+          "start": 480,
+          "end": 721
+        }
+      ],
+      "studyPurchaseGrants": [
+        {
+          "id": "STUDY-PURCHASE-1",
+          "actor": "finance-reviewer",
+          "action": "purchase-verification",
+          "orderId": "ORD-104",
+          "orderRevision": "1",
+          "recipient": "DC-X",
+          "shipDate": "2026-11-18",
+          "profileVersion": "1.0.0",
+          "start": 480,
+          "end": 720,
+          "ceiling": 25000
+        }
+      ],
+      "slotConfirmations": []
+    },
+    "provenance": [
+      {
+        "id": "FICTIONAL-CONSOLIDATION-AUTHORING-EXAMPLE",
+        "description": "Continuation of the controlled shipment comparison: same registered ship points and baseline obligations; explicit $5,000 expense and $6,500 cash limits; fictional consolidated quote with scoped release/selection grants. No slot confirmation is supplied in the starter case. These are teaching inputs, not supplier records or operating permission."
+      }
+    ]
+  }
+}

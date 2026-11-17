@@ -1,0 +1,1638 @@
+{
+  "format": "decision-lab-app-check-result/1",
+  "runId": "gifting-earliest-native",
+  "createdAt": "2026-11-18T02:00:00.000Z",
+  "binding": {
+    "modelHash": "bab9e3281d8f91a706d93a23b2463956f7533c812a6b450f4c0694e6eb76c53b",
+    "moduleHash": "4586582a26a01cdf0a7dea739a9350d2abe32b2efbf62372a42002d169dc41d9",
+    "sourceHash": "2485ccdc55fd328c17ba84093350ad8ee92d6abbe89766981dd26384dbac239a",
+    "packageHash": "1fc3ad7559d0747fc61fa5b56be27a42c56dac653b28c255d44f3c321ed4c758",
+    "suiteHash": "1f21e4278e3b28303c9faf8e64cb288bf13990f9749f445e96dfe1ee80c48bc8",
+    "sdkVersion": "0.1.0"
+  },
+  "status": "passed",
+  "summary": {
+    "total": 15,
+    "passed": 15,
+    "failed": 0,
+    "unavailable": 0
+  },
+  "scenarios": [
+    {
+      "id": "missing",
+      "title": "No external-package confirmation has been recorded",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-2",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "scoped-package-confirmation",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "scoped-package-confirmation",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "none",
+                "passed": false
+              },
+              {
+                "scenarioId": "print",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination-checkout",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-3",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "actual": {
+            "choices": {
+              "packageId": "replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-ebb5d666b3f87176beaca00b"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:a9fb9f2872cd31bc53ef14f474052f418e3477789821c8a514b51651bcbfd344"
+    },
+    {
+      "id": "wrong-batch",
+      "title": "Confirmation concerns another batch",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-2",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "scoped-package-confirmation",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "scoped-package-confirmation",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "none",
+                "passed": false
+              },
+              {
+                "scenarioId": "print",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination-checkout",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-3",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "actual": {
+            "choices": {
+              "packageId": "replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-ac01ac644cd53fdf000ad215"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:8e457a93d96b34359ece4edef2d9623b99529cb2ac0145f5a9d8922b7009b80c"
+    },
+    {
+      "id": "wrong-insert",
+      "title": "Confirmation concerns another insert revision",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-2",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "scoped-package-confirmation",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "scoped-package-confirmation",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "none",
+                "passed": false
+              },
+              {
+                "scenarioId": "print",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination-checkout",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-3",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "actual": {
+            "choices": {
+              "packageId": "replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-9e1cb722d45ba88106940a33"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:a73a93bd96c37c452827a35d8fdaa8508107e5055f4ee45eef5883c9a0bf7432"
+    },
+    {
+      "id": "wrong-journey",
+      "title": "Confirmation concerns another checkout revision",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-2",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "scoped-package-confirmation",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "scoped-package-confirmation",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "none",
+                "passed": false
+              },
+              {
+                "scenarioId": "print",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination-checkout",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-3",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "actual": {
+            "choices": {
+              "packageId": "replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-146434e60eb8685e2a86b4b5"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:50929eddbad093f02e6f9cb264aa5c36c8731bae1142ab5c1667fc5165f83186"
+    },
+    {
+      "id": "wrong-package",
+      "title": "Confirmation concerns another correction package",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-2",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "scoped-package-confirmation",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "scoped-package-confirmation",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "none",
+                "passed": false
+              },
+              {
+                "scenarioId": "print",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination-checkout",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-3",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "actual": {
+            "choices": {
+              "packageId": "replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-4cbcd25c2cdd22e231f4e32f"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:4a4902e7e6c08a444e2e609b4d7ef6fa4cd6fffd837c7ec6ca79961d0d958931"
+    },
+    {
+      "id": "expired",
+      "title": "Confirmation expires before the complete handoff",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-2",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "scoped-package-confirmation",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "scoped-package-confirmation",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "none",
+                "passed": false
+              },
+              {
+                "scenarioId": "print",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination-checkout",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-3",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "actual": {
+            "choices": {
+              "packageId": "replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-f1d768b6d826e5e8ec2af4f5"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:1ea2686103db66e1353d7d4ed51d4c32c783814fa76a304e68fdc7e51aff3e51"
+    },
+    {
+      "id": "negative",
+      "title": "The recorded confirmation is explicitly negative",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-2",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "scoped-package-confirmation",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "scoped-package-confirmation",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "none",
+                "passed": false
+              },
+              {
+                "scenarioId": "print",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination-checkout",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-3",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "actual": {
+            "choices": {
+              "packageId": "replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-c3833fc22a66c4805a6a402a"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:e62527b09119888931715c83ba5bf091b1bf887c9b0c13b07b6df0f89a725c47"
+    },
+    {
+      "id": "late",
+      "title": "Confirmation was not recorded by the current review time",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-2",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "scoped-package-confirmation",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "scoped-package-confirmation",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "none",
+                "passed": false
+              },
+              {
+                "scenarioId": "print",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination-checkout",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-3",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "actual": {
+            "choices": {
+              "packageId": "replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-76f7a06a3a0c381f62157099"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:96b339ad2104af0d03ecd4193d31c13ba6b3ed1796a880ff6022b05e588d7fe5"
+    },
+    {
+      "id": "starts-late",
+      "title": "Confirmation takes effect after the commitment cutoff",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-2",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "scoped-package-confirmation",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "scoped-package-confirmation",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "none",
+                "passed": false
+              },
+              {
+                "scenarioId": "print",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination-checkout",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-3",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "actual": {
+            "choices": {
+              "packageId": "replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-25929e474516199c3b9c5042"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:a00c3b254ef6ef875bcff2fb89ef6a722ddc4cfb8ca6220373959c84f62df9a1"
+    },
+    {
+      "id": "valid",
+      "title": "Current exact-package and configuration confirmation admits the faster arrangement",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": true,
+            "preferred": true
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-2",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "scoped-package-confirmation",
+            "passed": true
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "scoped-package-confirmation",
+            "passed": true,
+            "scenarios": [
+              {
+                "scenarioId": "none",
+                "passed": true
+              },
+              {
+                "scenarioId": "print",
+                "passed": true
+              },
+              {
+                "scenarioId": "destination",
+                "passed": true
+              },
+              {
+                "scenarioId": "print-destination",
+                "passed": true
+              },
+              {
+                "scenarioId": "checkout",
+                "passed": true
+              },
+              {
+                "scenarioId": "print-checkout",
+                "passed": true
+              },
+              {
+                "scenarioId": "destination-checkout",
+                "passed": true
+              },
+              {
+                "scenarioId": "print-destination-checkout",
+                "passed": true
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-3",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": true,
+            "preferred": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": true,
+            "preferred": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-39f0cea1eda2232c824b63d3"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:7bd3cb3bfc3c357736aa9881437435b1bb34dce58c659da4f0a58c5eaee41dba"
+    },
+    {
+      "id": "cost",
+      "title": "Confirmation does not waive the spending ceiling",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-2",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "package-within-budget",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "package-within-budget",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "none",
+                "passed": false
+              },
+              {
+                "scenarioId": "print",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination-checkout",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-1578d8755d40382549e7964b"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:999345515765382092f82683abe6f481ea4664ae7a0294d5087a45f69d253c5a"
+    },
+    {
+      "id": "time",
+      "title": "Confirmation does not waive the complete-work cutoff",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-2",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "handoff-by-cutoff",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "handoff-by-cutoff",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "none",
+                "passed": false
+              },
+              {
+                "scenarioId": "print",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination-checkout",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-86e85c2585498c45264aafa7"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:b7e58c194c1916212604ad8956ad65f6b69a75f8ed9a091f42209637958a1874"
+    },
+    {
+      "id": "permission",
+      "title": "Confirmation does not grant permission",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-2",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "scoped-package-permission",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "scoped-package-permission",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "none",
+                "passed": false
+              },
+              {
+                "scenarioId": "print",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination-checkout",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-b156e5093d0da795f6da4e87"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:8897e512600fbd7ea4d0e44cc635f274d08f71650acbfa28f4e2381d95751c42"
+    },
+    {
+      "id": "capacity",
+      "title": "Confirmation does not create production capacity",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-2",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "resource-capacity",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "resource-capacity",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "none",
+                "passed": false
+              },
+              {
+                "scenarioId": "print",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination-checkout",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-712c29983e34e7eb2323b827"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:5a81de5bdca0690bc90c31fb80811e13fa14fe2e636881ee57931e1c574620f6"
+    },
+    {
+      "id": "rehearsal",
+      "title": "Confirmation does not waive the fresh rehearsal minimum",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-plan",
+          "id": "expectation-1",
+          "title": "Complete plan",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "feasible": false
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        },
+        {
+          "kind": "commitment-constraint",
+          "id": "expectation-2",
+          "title": "Required condition",
+          "status": "passed",
+          "expected": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "minimum-rehearsal",
+            "passed": false
+          },
+          "actual": {
+            "choices": {
+              "packageId": "external-replace-and-repair",
+              "startMinute": 0
+            },
+            "constraintId": "minimum-rehearsal",
+            "passed": false,
+            "scenarios": [
+              {
+                "scenarioId": "none",
+                "passed": false
+              },
+              {
+                "scenarioId": "print",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination",
+                "passed": false
+              },
+              {
+                "scenarioId": "checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "destination-checkout",
+                "passed": false
+              },
+              {
+                "scenarioId": "print-destination-checkout",
+                "passed": false
+              }
+            ]
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-2374f049592351e9f8f110ca"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:9d307b5d8760ec086855f9d369be34ea695ab8f1485608724bf9412ed08b5a4a"
+    }
+  ],
+  "contentHash": "70744424ebd352299af522a869dade3a2af1eca9bd1be5566ce94378ba6822e2"
+}

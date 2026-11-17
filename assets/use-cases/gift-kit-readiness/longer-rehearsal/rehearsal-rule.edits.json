@@ -1,0 +1,21 @@
+{
+  "format": "decision-lab-app-rule-edits/1",
+  "baseModelHash": "d4523de6a60b8cc08b815cc49587778af0c1950aaebdb8e808637a753b3b2733",
+  "changes": [
+    {
+      "kind": "set-condition",
+      "id": "minimum-rehearsal",
+      "requirement": "SUFFICIENCY",
+      "condition": {
+        "kind": "comparison",
+        "operator": "gte",
+        "left": {
+          "ref": "parameter.rehearsalMinutes"
+        },
+        "right": {
+          "literal": 10
+        }
+      }
+    }
+  ]
+}

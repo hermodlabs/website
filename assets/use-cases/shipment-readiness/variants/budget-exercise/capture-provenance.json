@@ -1,23 +1,64 @@
 {
-  "format": "shipment-budget-ui-capture/1",
+  "format": "shipment-budget-ui-capture/2",
   "publicAppUrl": "https://hermodlabs.github.io/review_lab/",
-  "capturedAt": "2026-11-17T02:53:10.179Z",
+  "capturedAt": "2026-11-17T14:03:22.096Z",
+  "captureDate": "2026-11-17",
   "viewport": {
-    "width": 1512,
+    "width": 1440,
     "height": 1050
   },
   "deviceScaleFactor": 1,
   "reducedMotion": "reduce",
   "locale": "en-US",
   "timezoneId": "America/Chicago",
-  "serviceWorkers": "block",
-  "method": "Unedited screenshot of a local read-only production build of Decision Lab served on loopback. The local source build is not asserted to be identical to the public deployment. All external network requests were blocked. A baseline fictional portable case was imported and its expenseLimit changed using the ordinary YAML editor. No UI text or results were injected; no shared publication occurred.",
-  "localBuild": {
-    "source": "../hermod-review-lab/dist",
-    "indexFileHash": "97e0a76212f10404502077940daebd58adb2fc130bfb67521d6961b760ca9f02",
-    "indexModifiedAt": "2026-11-17T02:43:59.499Z",
-    "script": "assets/index-DNfJ9Qpq.js",
-    "scriptFileHash": "b2296c738d718256cd7c977652fd958c0aaecb974c6b1de98c3f49b18c745eb9"
+  "method": "Unedited screenshots of the current public application in a fresh temporary browser profile. Only the retained fictional shipment case was imported. Ordinary Download Excel, Upload Excel, Review workbook changes and Apply inputs controls were used. One literal workbook value was changed. No UI labels, controls or results were injected; no shared publication occurred.",
+  "deployment": {
+    "index": {
+      "bytes": 1023,
+      "sha256": "35e29f0db813420bda828663734d9c3d0147a84ee6f4d36d520eb605285ec69d"
+    },
+    "assets": [
+      {
+        "path": "assets/index-bZWUJVSq.css",
+        "bytes": 245895,
+        "sha256": "c3a53aa3600168cdbc9ec0d91a90222949390686638e58220508fd26db55042d"
+      },
+      {
+        "path": "assets/index-Bsugdsay.js",
+        "bytes": 6984928,
+        "sha256": "59b98db1ad14cf83c9e0f6bb833aaf9e0b6bcbd13967faf1ea5dd7ff264377c7"
+      },
+      {
+        "path": "assets/worker-DdU8Ve5E.js",
+        "bytes": 369282,
+        "sha256": "212df626c3f31a9d6d0cd5379f5bd0643bb1bd0c36e4a35a72148924b177d269"
+      },
+      {
+        "path": "assets/worker-DdU8Ve5E.js",
+        "bytes": 369282,
+        "sha256": "212df626c3f31a9d6d0cd5379f5bd0643bb1bd0c36e4a35a72148924b177d269"
+      },
+      {
+        "path": "assets/exceljs.min-BWapBSXw.js",
+        "bytes": 929558,
+        "sha256": "629e5791d4d934f9c7552e8aaa2a75bc4766e6fc941e5cb40907bfce67711983"
+      },
+      {
+        "path": "assets/jszip.min-BbV_tVr1.js",
+        "bytes": 95949,
+        "sha256": "ae555221be5924cd85681546c1cb728dcde047c14ea8324497b61c53bd9cff97"
+      },
+      {
+        "path": "assets/worker-DdU8Ve5E.js",
+        "bytes": 369282,
+        "sha256": "212df626c3f31a9d6d0cd5379f5bd0643bb1bd0c36e4a35a72148924b177d269"
+      },
+      {
+        "path": "assets/worker-DdU8Ve5E.js",
+        "bytes": 369282,
+        "sha256": "212df626c3f31a9d6d0cd5379f5bd0643bb1bd0c36e4a35a72148924b177d269"
+      }
+    ]
   },
   "sourceCase": "../earliest-arrival-shipment.app-case.json",
   "sourceCaseHash": "d39118f1e7d2e4577ccc925f7b46689daa1c8deaae0cce3b7253253ac9d7ab4d",
@@ -28,32 +69,80 @@
     "after": 500000,
     "unit": "USD cent"
   },
+  "workbookEdit": {
+    "worksheet": "Parameters",
+    "column": "Parameters expense Limit",
+    "cell": "L2",
+    "before": 650000,
+    "after": 500000,
+    "cashLimitCell": "M2",
+    "cashLimit": 650000,
+    "zipPartsChanged": [
+      "xl/worksheets/sheet1.xml"
+    ]
+  },
   "actions": [
-    "Import baseline earliest-arrival-shipment.app-case.json using Published apps → Import app, workflow or case.",
-    "Choose Both in Workspace layout to reveal the case YAML beside the report.",
-    "In Canonical commitment case YAML, replace expenseLimit: 650000 with expenseLimit: 500000; leave all other values alone.",
-    "Wait for Reports current and Saved locally. Valid YAML updates reports automatically; Run calculation also reruns the valid case.",
-    "Choose Reports in Workspace layout. Verify direct is preferred and backup is blocked.",
-    "Export case and verify its exact immutable app package and changed-only case inputs.",
-    "Import the exported changed case in a separate fresh context and verify the direct preference again."
+    "In Collections, import earliest-arrival-shipment.app-case.json using Import app, workflow or case.",
+    "Choose Both, then Download Excel to obtain this case’s workbook.",
+    "In Parameters, change L2 (Parameters expense Limit) from 650000 to 500000; leave M2 (cash limit) and every other value unchanged.",
+    "Choose Upload Excel. Review workbook changes shows one changed value and no added or removed values.",
+    "Choose Apply inputs, then wait for Reports current and Saved locally.",
+    "Choose Reports, then Decision. Direct is preferred at 400000 USD cents; backup is blocked at 600000 with one failed check.",
+    "Export case and verify the exact immutable app package, unchanged module and only expenseLimit changed in case inputs.",
+    "Import the retained unchanged downloadable exercise case in a separate fresh context and verify direct is preferred again."
   ],
   "figure": {
     "file": "expense-limit-5000-report.png",
-    "width": 1208,
-    "height": 768,
-    "sha256": "c43ae7c393945c92766b29e4915cec56015e83daa6f65f171433fee8068cd8ef"
+    "width": 1440,
+    "height": 1050,
+    "bytes": 154509,
+    "sha256": "ed26455488ae70df7cd0ba8c8fe3e7d5ecc91fd95a3904dc5eab66979a33725d",
+    "caption": "With the expense limit reduced to $5,000, the $6,000 backup arrangement is blocked. Direct at $4,000 becomes preferred even though the app still favors earlier arrival among arrangements that pass.",
+    "alt": "Decision Lab’s current Reports layout: direct is the preferred complete plan at 400,000 USD cents; backup at 600,000 USD cents is blocked with one failed check and is not ranked."
   },
+  "figures": [
+    {
+      "file": "expense-limit-5000-preview.png",
+      "width": 1440,
+      "height": 1050,
+      "bytes": 244488,
+      "sha256": "905229e17a49c93734dda661ebde931b3bccd9d9ec1d78018d9a0283ab6e3ef4",
+      "caption": "Upload Excel previews one expense-limit change, from 650000 to 500000 USD cents. Apply inputs commits the case change while the app’s rules and arrival-first priority stay fixed.",
+      "alt": "Review workbook changes dialog showing one changed Parameters expense Limit value, zero added or removed values, and Apply inputs."
+    },
+    {
+      "file": "expense-limit-5000-report.png",
+      "width": 1440,
+      "height": 1050,
+      "bytes": 154509,
+      "sha256": "ed26455488ae70df7cd0ba8c8fe3e7d5ecc91fd95a3904dc5eab66979a33725d",
+      "caption": "With the expense limit reduced to $5,000, the $6,000 backup arrangement is blocked. Direct at $4,000 becomes preferred even though the app still favors earlier arrival among arrangements that pass.",
+      "alt": "Decision Lab’s current Reports layout: direct is the preferred complete plan at 400,000 USD cents; backup at 600,000 USD cents is blocked with one failed check and is not ranked."
+    }
+  ],
   "export": {
     "file": "expense-limit-5000.app-case.json",
-    "sha256": "f78108ce50707a62f0157d2c7435b883e320d76cc50459238d1e75238ae55d4d"
+    "sha256": "f78108ce50707a62f0157d2c7435b883e320d76cc50459238d1e75238ae55d4d",
+    "retainedFixtureUnchanged": true,
+    "currentSessionExportSHA256": "02007c0e6c56077d22825aae1e000678eb6c817921a7bf210f43d34da47e7db7"
   },
   "verification": {
     "appPackageUnchanged": true,
+    "frozenModuleUnchanged": true,
     "onlyCaseValueChanged": true,
+    "retainedFixtureInputsMatch": true,
     "portableCaseImported": true,
     "pageErrors": [],
-    "blockedExternalRequests": [],
     "preferredText": "plan-000001\tPreferred complete plan\tdirect\t400,000 USD cent\t400,000 USD cent\t5,040 → 400,000\t0",
-    "backupText": "plan-000002\tBlocked\tbackup\t600,000 USD cent\t600,000 USD cent\tNot ranked\t1"
+    "backupText": "plan-000002\tBlocked\tbackup\t600,000 USD cent\t600,000 USD cent\tNot ranked\t1",
+    "previewRows": [
+      "Parameters: Parameters expense Limit001"
+    ],
+    "failedCheckRows": [
+      "Total expense and cash · condition 1Total expense and cashFails"
+    ],
+    "failedConditions": [
+      "total-expense-limit"
+    ]
   }
 }

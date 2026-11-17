@@ -1,7 +1,20 @@
 .use-case-feature { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1fr); align-items: center; gap: 8%; }
+.use-case-feature + .use-case-feature { margin-top: 72px; padding-top: 72px; border-top: 1px solid var(--line); }
 .use-case-feature figure { margin: 0; background: #f7f5fb; border: 1px solid #e6dff1; }
 .use-case-feature img { width: 100%; }
 .use-case-feature h2 { margin-bottom: 25px; }
+.use-case-feature h3 { font-size: clamp(28px, 3.2vw, 44px); line-height: 1.15; letter-spacing: -1px; margin-bottom: 25px; text-wrap: balance; }
+.use-case-feature > div { min-width: 0; }
+.use-case-catalog-heading { max-width: 760px; margin-bottom: 48px; }
+.use-case-catalog-heading .eyebrow { margin-bottom: 18px; }
+.use-case-catalog-heading > p:not(.eyebrow) { color: var(--muted); }
+.use-case-article-list { list-style: none; padding: 0; margin: 0; }
+.use-case-article-list > li + li { margin-top: 64px; padding-top: 64px; border-top: 1px solid var(--line); }
+.use-case-scenario-context { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1fr); gap: 8%; }
+.use-case-scenario-context > p { color: var(--muted); margin-bottom: 0; }
+.use-case-scenario-context h2 { font-size: clamp(30px, 3.5vw, 48px); }
+.use-case-reference-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px; }
+.use-case-catalog-return { display: flex; flex-wrap: wrap; gap: 24px; padding-bottom: 60px; }
 #shipment-case-heading { text-wrap: balance; }
 #shipment-case-heading em { display: inline-block; max-width: 100%; text-wrap: balance; }
 .use-case-feature .eyebrow { margin-bottom: 20px; }
@@ -18,6 +31,9 @@
 .use-case-process img { width: 100%; background: #fff; border: 1px solid #dedbe7; }
 .use-case-process figcaption { margin-top: 14px; color: var(--muted); font-size: 13px; line-height: 1.6; }
 .use-case-process-actions { display: flex; flex-wrap: wrap; gap: 15px 24px; margin-top: 14px; }
+.reader-content .use-case-process-actions { margin-block: 28px 32px; }
+.reader-content .use-case-process-actions .button { font-family: var(--reader-ui-font); text-decoration: none; }
+.reader-content .use-case-process-actions .button:hover { color: #fff; }
 .use-case-process-copy p { color: var(--muted); }
 .use-case-terms { margin-bottom: 30px; padding-bottom: 28px; border-bottom: 1px solid var(--line); scroll-margin-top: 30px; }
 .use-case-terms h3 { font-size: 24px; margin-bottom: 20px; }
@@ -114,6 +130,7 @@
 .use-case-article-references p { margin-bottom: 18px; }
 .reader-content .use-case-source-disclosure .use-case-reference-grid h3:first-child { margin-top: 0; }
 @media (max-width: 900px) {
+  .use-case-scenario-context { grid-template-columns: minmax(0, 1fr); gap: 20px; }
   .use-case-walkthrough-feature { grid-template-columns: minmax(0, 1fr); gap: 30px; }
   .use-case-pattern-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
   .use-case-feature, .use-case-process-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
@@ -122,6 +139,8 @@
   .use-case-role-grid { gap: 30px; }
 }
 @media (max-width: 650px) {
+  .use-case-reference-list { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .use-case-article-list > li + li { margin-top: 40px; padding-top: 40px; }
   .reader-content .use-case-review-flow, .reader-content .use-case-concept-flow { grid-template-columns: minmax(0, 1fr); gap: 14px; }
   .use-case-diagram-hint { display: block; }
   .use-case-results { grid-template-columns: minmax(0, 1fr); gap: 30px; }
