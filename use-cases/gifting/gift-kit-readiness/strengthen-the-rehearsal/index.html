@@ -139,10 +139,10 @@
     <div class="reader-content">
       
       <p class="reader-lead">Leah’s team has a supported correction for its 120 gift kits: internal replacement and journey repair costs <strong>$300</strong> and reaches handoff at <strong>minute 35</strong>. That includes 25 minutes of correction, five minutes of fresh rehearsal and five minutes of handoff.</p>
-<p>Production now asks for a stronger check. The corrected kit needs <strong>at least ten minutes of fresh rehearsal</strong>. Finance still expects the expense to stay within $600, and marketing still needs handoff by minute 60.</p>
+<p>Production now asks for a stronger check. The corrected kit needs <strong>at least ten minutes of fresh rehearsal</strong>. Finance still expects the expense to stay within $600, and marketing still needs handoff within the <strong>one-day window, ending at minute 1,440</strong>.</p>
 <p>The app author has two connected jobs: express the new requirement in the planning app, then make a new workflow use that exact release. Publishing an app by itself does not change the workflow Leah runs.</p>
 <p>This follow-up continues <a href="../compare-correction-options/index.html">the original gift-kit decision</a>. It adapts the cost-first review and keeps the starter’s missing external confirmation. The expected corrected proposal remains internal work.</p>
-<p class="use-case-example-note">The walkthrough shows the updated collection and authoring controls in the current local working app. At capture, the public Marketplace still offered the earlier gifting collection. <a href="#source">Sources and scope</a> explain the example and capture basis.</p>
+<p class="use-case-example-note">The walkthrough shows the prepared one-day example and authoring controls in the current local working app. <a href="#source">Sources and scope</a> explain the adaptation and capture basis.</p>
 
 <h2 id="expected-behavior">Write the expected change before editing.</h2>
 <p>The team is changing a <strong>minimum requirement</strong>, not claiming that ten minutes of rehearsal have already been supplied. Leah’s existing five-minute input must remain five until she changes it.</p>
@@ -152,7 +152,7 @@
     <thead><tr><th scope="col">Recorded fresh rehearsal</th><th scope="col">Expected result under the new rule</th><th scope="col">Reason</th></tr></thead>
     <tbody>
       <tr><th scope="row">5 minutes</th><td>No complete correction proposal</td><td>The input fails the new ten-minute minimum.</td></tr>
-      <tr><th scope="row">10 minutes</th><td>Internal correction preferred: $300, handoff at minute 40</td><td>25 minutes of correction + 10 of rehearsal + 5 of handoff fit the hour.</td></tr>
+      <tr><th scope="row">10 minutes</th><td>Internal correction preferred: $300, handoff at minute 40</td><td>25 minutes of correction + 10 of rehearsal + 5 of handoff fit the one-day window.</td></tr>
     </tbody>
   </table>
 </div>
@@ -196,7 +196,7 @@
 
 
 <figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/gift-kit-readiness/09-app-scenario-results.png" tabindex="-1" aria-label="Open full-size screenshot: Readable business-scenario tables show five minutes blocked and ten minutes restoring a complete gift-kit correction arrangement."><img src="../../../../assets/use-cases/gift-kit-readiness/09-app-scenario-results.png" alt="Readable business-scenario tables show five minutes blocked and ten minutes restoring a complete gift-kit correction arrangement." width="1170" height="360" style="max-width: 1170px" loading="lazy" decoding="async"></a>
+  <a href="../../../../assets/use-cases/gift-kit-readiness/09-app-scenario-results.png" tabindex="-1" aria-label="Open full-size screenshot: Readable business-scenario tables show five minutes blocked and ten minutes restoring a complete gift-kit correction arrangement."><img src="../../../../assets/use-cases/gift-kit-readiness/09-app-scenario-results.png" alt="Readable business-scenario tables show five minutes blocked and ten minutes restoring a complete gift-kit correction arrangement." width="1170" height="359" style="max-width: 1170px" loading="lazy" decoding="async"></a>
   <figcaption><span>Declare the expected outcomes independently: five minutes must fail the new rule; ten minutes must restore a complete correction package. Both native app scenarios pass.</span><a href="../../../../assets/use-cases/gift-kit-readiness/09-app-scenario-results.png" aria-label="Open full-size screenshot: Readable business-scenario tables show five minutes blocked and ten minutes restoring a complete gift-kit correction arrangement.">View full size</a></figcaption>
 </figure>
 
@@ -212,7 +212,7 @@
 </aside>
 
 <h2 id="update-workflow">Connect the new release deliberately.</h2>
-<p>Open <strong>Workspaces → Create workflow</strong>. Under <strong>Installed workflow to adapt</strong>, select <strong>Review a gift-kit commitment · version 2.0.0</strong> and choose <strong>Start from installed workflow</strong>.</p>
+<p>Open <strong>Workspaces → Create workflow</strong>. Under <strong>Installed workflow to adapt</strong>, select the prepared one-day <strong>Review a gift-kit commitment · version 1.0.0</strong> and choose <strong>Start from installed workflow</strong>.</p>
 <p>Give the draft its own identity and the title <strong>Review gift kits with a longer rehearsal</strong>. This is a new workflow; it does not overwrite the source review.</p>
 <ol>
   <li>Open <strong>Supporting apps</strong> and find <strong>planning</strong>, the workflow’s name for its planning dependency.</li>
@@ -249,7 +249,7 @@
 
 
 <figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/gift-kit-readiness/11-workflow-scenario-results.png" tabindex="-1" aria-label="Open full-size screenshot: Workflow business-scenario tables compare expected and calculated correction proposals and decision-brief actions."><img src="../../../../assets/use-cases/gift-kit-readiness/11-workflow-scenario-results.png" alt="Workflow business-scenario tables compare expected and calculated correction proposals and decision-brief actions." width="1158" height="515" style="max-width: 1158px" loading="lazy" decoding="async"></a>
+  <a href="../../../../assets/use-cases/gift-kit-readiness/11-workflow-scenario-results.png" tabindex="-1" aria-label="Open full-size screenshot: Workflow business-scenario tables compare expected and calculated correction proposals and decision-brief actions."><img src="../../../../assets/use-cases/gift-kit-readiness/11-workflow-scenario-results.png" alt="Workflow business-scenario tables compare expected and calculated correction proposals and decision-brief actions." width="1158" height="516" style="max-width: 1158px" loading="lazy" decoding="async"></a>
   <figcaption><span>Test the full workflow, including both supporting apps and the decision brief. Five minutes offers no supported correction; ten minutes restores the internal proposal.</span><a href="../../../../assets/use-cases/gift-kit-readiness/11-workflow-scenario-results.png" aria-label="Open full-size screenshot: Workflow business-scenario tables compare expected and calculated correction proposals and decision-brief actions.">View full size</a></figcaption>
 </figure>
 
@@ -269,7 +269,7 @@
 <p>Open <strong>Review gift kits with a longer rehearsal</strong> with <strong>Try worked example</strong>. Review and accept the supplied context and observations, then the evidence result, as in the first article.</p>
 <p>Leave the recorded fresh rehearsal at <strong>five minutes</strong> for the first planning assessment. The new review cannot propose a complete correction: the input does not meet the stronger rule. That is the intended result, even though five minutes worked in the original review.</p>
 <p>Leah then records <strong>ten minutes</strong> for the fresh rehearsal, accepts the changed answer in the assigned role and reassesses planning. The accepted evidence can remain unchanged because the kit observations and scope have not changed.</p>
-<p>The internal correction is now preferred at <strong>$300</strong>, with handoff at <strong>minute 40</strong>: 25 minutes of correction, ten of fresh rehearsal and five of handoff. The extra five minutes fit within the original hour. The external package remains unavailable without its required confirmation.</p>
+<p>The internal correction is now preferred at <strong>$300</strong>, with handoff at <strong>minute 40</strong>: 25 minutes of correction, ten of fresh rehearsal and five of handoff. The extra five minutes fit comfortably within the one-day window. The external package remains unavailable without its required confirmation.</p>
 
 
 <figure class="use-case-figure">
@@ -287,10 +287,10 @@
     <div class="use-case-reference-grid">
       <div>
         <h3 id="worked-example-materials">Worked-example materials</h3>
-        <p>These articles use Hermod Labs’ <strong>Gift-kit Readiness and Correction 2.0.0</strong> example. Leah and the campaign are fictional; the records are teaching inputs, not customer data or an independently reported business case.</p>
-        <p>Read the <a href="../../../../assets/use-cases/gift-kit-readiness/README.md">example notes</a> and <a href="../../../../assets/use-cases/gift-kit-readiness/comparison.json">verified comparison</a>. The retained <a href="../../../../assets/use-cases/gift-kit-readiness/fixture-manifest.json">artifact manifest</a> records the inputs and results used to check the example.</p>
+        <p>These articles adapt Hermod Labs’ <strong>Gift-kit Readiness and Correction 2.0.0</strong> example with a <strong>24-hour handoff deadline</strong> and matching availability windows. The supplied correction costs and work durations remain the same. Leah and the campaign are fictional; the records are teaching inputs, not customer data or an independently reported business case.</p>
+        <p>Read the <a href="../../../../assets/use-cases/gift-kit-readiness/README.md">example notes</a> and <a href="../../../../assets/use-cases/gift-kit-readiness/comparison.json">verified comparison</a>. The <a href="../../../../assets/use-cases/gift-kit-readiness/source-provenance.json">adaptation record</a> identifies the upstream sources; the <a href="../../../../assets/use-cases/gift-kit-readiness/fixture-manifest.json">artifact manifest</a> records the inputs and results used to check the example.</p>
         <h3 id="working-app-screenshots">Working-app screenshots</h3>
-        <p>The screenshots show the current working app in an isolated local preview using the supplied synthetic inputs. At capture, the public Marketplace still offered the earlier gifting collection. The screenshots therefore show the updated workflow before that collection’s public release. <a href="../../../../assets/use-cases/gift-kit-readiness/capture-provenance.json">Capture details</a>.</p>
+        <p>The screenshots show the one-day example in an isolated local preview of the current working app. Its prepared workflow releases are separate from the original Marketplace example. The public standalone planning links use the same one-day inputs. <a href="../../../../assets/use-cases/gift-kit-readiness/capture-provenance.json">Capture details</a>.</p>
       </div>
       <div>
         <h3 id="what-the-review-establishes">What the review establishes</h3>

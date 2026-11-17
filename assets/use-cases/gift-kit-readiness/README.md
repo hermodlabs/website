@@ -5,16 +5,20 @@ observations, quotes, operating permissions and confirmations are fictional.
 It is not a report about a customer, an actual supplier commitment or a completed
 gift-kit release.
 
-The source is Decision Lab's **Gift-kit Readiness and Correction 2.0.0** example.
-The sealed template, two author configurations, exact app/workflow releases and
-independently authored scenario suites are retained beside this document. The
-`standard` and `earliest` directories preserve their source release bytes; their
-`manifest.json` files record the original source hashes. `fixture-manifest.json`
-records the bytes and SHA-256 of every generated verification artifact.
+This one-day adaptation is based on Decision Lab's **Gift-kit Readiness and
+Correction 2.0.0** example. The handoff deadline is 1,440 minutes (24 hours), with
+corresponding resource, permission and confirmation windows. The sealed template,
+correction prices and work durations remain unchanged. The independent website
+app and workflow releases do not replace the upstream releases. Their author
+configurations, packages and independently authored scenario suites are retained
+beside this document. `fixture-manifest.json` records the bytes and SHA-256 of
+every generated verification artifact.
 
 ## The business problem
 
-A team has 120 gift kits to hand off within 60 minutes and a $600 spending limit.
+A team has 120 gift kits to hand off within one day and a $600 spending limit.
+The 24-hour window gives people time to gather records, confirm availability and
+agree a correction. It is distinct from the short quoted work sequences below.
 Its printed code does not decode on the declared phone; the approved artwork
 points to the wrong destination. A separate checkout rehearsal is usable for the
 declared account. Those observations do not establish a successful end-to-end
@@ -27,7 +31,7 @@ correction, a fresh five-minute scoped rehearsal and a five-minute handoff.
 The cost-first and earliest-handoff apps use the same inputs and requirements;
 their ranking policies produce different preferred arrangements.
 
-The published starter has no external confirmation. `case.shared.json` adds one
+The prepared workflow starter has no external confirmation. `case.shared.json` adds one
 explicit fictional positive confirmation to both reviews for the controlled
 comparison. That record matches the selected package, batch, insert revision,
 destination revision, checkout revision, device and account. It is known at the
@@ -51,12 +55,17 @@ pin. Browser-captured publications, where supplied, are separate artifacts.
 
 ## What the example establishes
 
-There are 58 passing authored scenarios: 15 native app scenarios and 12 complete
-workflow scenarios for each original policy, plus two native and two workflow
+There are 60 authored scenarios: 15 native app scenarios and 13 complete
+workflow scenarios for each one-day policy, plus two native and two workflow
 scenarios for the longer-rehearsal change. They cover missing, incorrect, late,
 negative and expired confirmations, and preserve cost, time, permission,
 capacity and rehearsal conditions. Whole-workflow tests also check missing
 answers and the proposed next action.
+
+A delayed-review scenario for each policy starts work 12 hours into the one-day
+window. Internal correction then reaches handoff at minute 755, while confirmed
+external correction reaches handoff at minute 740. Both still meet the
+1,440-minute deadline, exercising the full-day availability and permission windows.
 
 Full workflow calculations are retained as compressed `.json.gz` files. They can
 be decompressed with standard gzip tools. Expected values were declared by the

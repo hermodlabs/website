@@ -1,8 +1,8 @@
 # Canonical Decision Lab data. Rules are data, never executable code.
 format: complete-a-commitment/1
 module:
-  id: review-gift-kit-flexible-planning
-  version: "2.0.0"
+  id: review-gift-kit-flexible-day-planning
+  version: "1.0.0"
   title: Gift-kit review with a longer rehearsal
   template:
     id: complete-a-commitment
@@ -106,15 +106,15 @@ module:
       format: decision-lab-app-adaptation/1
       mode: new
       source:
-        appId: review-gift-kit-flexible-planning
+        appId: review-gift-kit-flexible-day-planning
         version: 1
-        appHash: d394fd9e7730501bc51244d84bc406c0db4bef1c204a2f6b16e9c6f532d21ebd
-        packageHash: d99c58a18df7351840faa440806c8a62be6e56e03fcee4feb3d11561c9efdeac
-        sourceHash: cf44dec307c7adae7977c022bbfd21dfd5de293f324c7af3eb1962a9013bff2d
+        appHash: "1fc0b94ad98f06c370b8fc1b00a11a9cd27a2f02a40bebd9d79abde323356938"
+        packageHash: "1b038d1e90bbcccb70c92f64bc863c6251a1e913dad82dfbbd57e3199cbec60d"
+        sourceHash: cb0deb8bfff67970cc3efd2c7461f29184fd0225d3a78fc4fbddc62c154608f1
         name: "Review a gift-kit commitment — complete arrangements"
         pattern: complete-a-commitment/1
         templateHash: "1b3c51e805899ae2e0811c24552f611eecc1c739844c56d71d61504ddd29dc08"
-      createdAt: "2026-11-17T18:04:32.528Z"
+      createdAt: "2026-11-17T18:28:51.782Z"
   units:
     time: minute
     timeOrigin: Start of this gift-kit preparation review
@@ -1011,7 +1011,7 @@ case:
     actorId: campaign-owner-1
     quantity: 120
     nowMinute: 0
-    handoffDeadlineMinute: 60
+    handoffDeadlineMinute: 1440
     budgetMinor: 60000
     rehearsalMinutes: 5
     handoffMinutes: 5
@@ -1101,7 +1101,7 @@ case:
         packageId: rehearse-unchanged
         actorId: campaign-owner-1
         validFrom: 0
-        validThrough: 120
+        validThrough: 1440
         source: Fictional recorded campaign authorization
       - batchId: GIFT-120
         insertRevision: insert-3
@@ -1113,7 +1113,7 @@ case:
         packageId: reprint
         actorId: campaign-owner-1
         validFrom: 0
-        validThrough: 120
+        validThrough: 1440
         source: Fictional recorded campaign authorization
       - batchId: GIFT-120
         insertRevision: insert-3
@@ -1125,7 +1125,7 @@ case:
         packageId: repair-journey
         actorId: campaign-owner-1
         validFrom: 0
-        validThrough: 120
+        validThrough: 1440
         source: Fictional recorded campaign authorization
       - batchId: GIFT-120
         insertRevision: insert-3
@@ -1137,7 +1137,7 @@ case:
         packageId: replace-and-repair
         actorId: campaign-owner-1
         validFrom: 0
-        validThrough: 120
+        validThrough: 1440
         source: Fictional recorded campaign authorization
       - batchId: GIFT-120
         insertRevision: insert-3
@@ -1149,7 +1149,7 @@ case:
         packageId: external-replace-and-repair
         actorId: campaign-owner-1
         validFrom: 0
-        validThrough: 120
+        validThrough: 1440
         source: Fictional recorded campaign authorization
     resources:
       - id: production-team
@@ -1157,7 +1157,7 @@ case:
     calendars:
       - resource: production-team
         start: 0
-        end: 120
+        end: 1440
     bookings: []
     confirmations: []
   provenance: []
