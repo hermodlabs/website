@@ -93,31 +93,40 @@
   ],
   "figure": {
     "file": "expense-limit-5000-report.png",
-    "width": 1440,
-    "height": 1050,
-    "bytes": 154509,
-    "sha256": "ed26455488ae70df7cd0ba8c8fe3e7d5ecc91fd95a3904dc5eab66979a33725d",
+    "width": 1134,
+    "height": 610,
+    "bytes": 62373,
+    "sha256": "02ac59fd306661a369d17767f367b7827726666d9cdaa79f3c26eaff95d38548",
     "caption": "With the expense limit reduced to $5,000, the $6,000 backup arrangement is blocked. Direct at $4,000 becomes preferred even though the app still favors earlier arrival among arrangements that pass.",
-    "alt": "Decision Lab’s current Reports layout: direct is the preferred complete plan at 400,000 USD cents; backup at 600,000 USD cents is blocked with one failed check and is not ranked."
+    "alt": "The decision-first comparison prefers Direct at $4,000 and marks Backup at $6,000 blocked by the total-expense requirement.",
+    "description": "Decision-first finding: Direct remains preferred; Backup fails the expense requirement.",
+    "capturedAt": "2026-11-18T14:55:49.587Z",
+    "captureUrl": "http://127.0.0.1:5187/"
   },
   "figures": [
     {
       "file": "expense-limit-5000-preview.png",
-      "width": 1440,
-      "height": 1050,
-      "bytes": 244488,
-      "sha256": "905229e17a49c93734dda661ebde931b3bccd9d9ec1d78018d9a0283ab6e3ef4",
+      "width": 780,
+      "height": 436,
+      "bytes": 34927,
+      "sha256": "be538591b3f3f073d36328eaf496aea66b952589122b1ff219c9c506331ed6e2",
       "caption": "Upload Excel previews one expense-limit change, from 650000 to 500000 USD cents. Apply inputs commits the case change while the app’s rules and arrival-first priority stay fixed.",
-      "alt": "Review workbook changes dialog showing one changed Parameters expense Limit value, zero added or removed values, and Apply inputs."
+      "alt": "The current Excel review dialog previews the single expense-limit change from 650000 to 500000 USD cents before Apply inputs.",
+      "description": "One expense-limit input change is previewed before application.",
+      "capturedAt": "2026-11-18T14:55:46.920Z",
+      "captureUrl": "http://127.0.0.1:5187/"
     },
     {
       "file": "expense-limit-5000-report.png",
-      "width": 1440,
-      "height": 1050,
-      "bytes": 154509,
-      "sha256": "ed26455488ae70df7cd0ba8c8fe3e7d5ecc91fd95a3904dc5eab66979a33725d",
+      "width": 1134,
+      "height": 610,
+      "bytes": 62373,
+      "sha256": "02ac59fd306661a369d17767f367b7827726666d9cdaa79f3c26eaff95d38548",
       "caption": "With the expense limit reduced to $5,000, the $6,000 backup arrangement is blocked. Direct at $4,000 becomes preferred even though the app still favors earlier arrival among arrangements that pass.",
-      "alt": "Decision Lab’s current Reports layout: direct is the preferred complete plan at 400,000 USD cents; backup at 600,000 USD cents is blocked with one failed check and is not ranked."
+      "alt": "The decision-first comparison prefers Direct at $4,000 and marks Backup at $6,000 blocked by the total-expense requirement.",
+      "description": "Decision-first finding: Direct remains preferred; Backup fails the expense requirement.",
+      "capturedAt": "2026-11-18T14:55:49.587Z",
+      "captureUrl": "http://127.0.0.1:5187/"
     }
   ],
   "export": {
@@ -144,5 +153,69 @@
     "failedConditions": [
       "total-expense-limit"
     ]
+  },
+  "uiRefresh": {
+    "capturedAt": "2026-11-18T14:55:49.633Z",
+    "captureUrl": "http://127.0.0.1:5187/",
+    "buildId": "2f12f7f5656a4f5899a9",
+    "mode": "decision-focused",
+    "method": "Unedited browser element screenshots after importing retained frozen artifacts through normal controls. Decisions lead; selected details and complete reports are opened explicitly. No results or interface content were injected.",
+    "previousCaptureProvenance": {
+      "file": "capture-provenance.before-decision-views.json",
+      "sha256": "7bc98a06fe762bbf59b89a9556b2d986258d001389996a230760abe8f61ababc"
+    },
+    "frozenArtifactsUnchanged": true,
+    "artifactHashes": {
+      "README.md": "ccabddeb97a640901cca017fbe767a0a88c24f87c7e65cb385b943350b400eb0",
+      "expense-limit-5000.app-case.json": "f78108ce50707a62f0157d2c7435b883e320d76cc50459238d1e75238ae55d4d",
+      "expense-limit-5000.case.json": "265780165d3039535ffa8e807803db593bf792bf8aff124f68121ef52ee93353",
+      "expense-limit-5000.inputs.json": "61b62cb3a85f5b11a7145624c0f50348286cdbdb87edfa6ec7cd758e151ad84e",
+      "expense-limit-5000.inputs.yaml": "a59a6b4b7b33903b2128c47a774bdb856ca87cb22e70698ce946d5745006e32a",
+      "expense-limit-5000.run.json": "da1dcaf1118fcb6d0ac7616f4b66f73f093f45cb5d576cc97cd244647b3dab85"
+    },
+    "checks": {
+      "passed": true,
+      "details": [
+        "The normal Excel preview/apply path changed only expenseLimit from 650000 to 500000; compact result blocks Backup."
+      ],
+      "mobile": [
+        {
+          "file": "expense-limit-5000-report.png",
+          "width": 390,
+          "pageWidth": 390,
+          "decisionVisible": true,
+          "localTableScrollingAllowed": true
+        }
+      ]
+    },
+    "images": [
+      {
+        "file": "expense-limit-5000-preview.png",
+        "width": 780,
+        "height": 436,
+        "sha256": "be538591b3f3f073d36328eaf496aea66b952589122b1ff219c9c506331ed6e2",
+        "description": "One expense-limit input change is previewed before application.",
+        "capturedAt": "2026-11-18T14:55:46.920Z",
+        "captureUrl": "http://127.0.0.1:5187/",
+        "bytes": 34927,
+        "alt": "The current Excel review dialog previews the single expense-limit change from 650000 to 500000 USD cents before Apply inputs.",
+        "caption": "Upload Excel previews one expense-limit change, from 650000 to 500000 USD cents. Apply inputs commits the case change while the app’s rules and arrival-first priority stay fixed."
+      },
+      {
+        "file": "expense-limit-5000-report.png",
+        "width": 1134,
+        "height": 610,
+        "sha256": "02ac59fd306661a369d17767f367b7827726666d9cdaa79f3c26eaff95d38548",
+        "description": "Decision-first finding: Direct remains preferred; Backup fails the expense requirement.",
+        "capturedAt": "2026-11-18T14:55:49.587Z",
+        "captureUrl": "http://127.0.0.1:5187/",
+        "bytes": 62373,
+        "alt": "The decision-first comparison prefers Direct at $4,000 and marks Backup at $6,000 blocked by the total-expense requirement.",
+        "caption": "With the expense limit reduced to $5,000, the $6,000 backup arrangement is blocked. Direct at $4,000 becomes preferred even though the app still favors earlier arrival among arrangements that pass."
+      }
+    ],
+    "nativeResults": [],
+    "errors": [],
+    "boundary": "Current local production preview. Retained historical case reviews and calculation identities are displayed without asserting a new operating review. Preview offline installation status is separate from these retained findings."
   }
 }

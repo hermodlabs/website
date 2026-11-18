@@ -296,21 +296,35 @@ SHIP-106,ORD-106,1,consolidated,SLOT-C106,confirmed</code></pre>
     await writeFile(path.join(stage, &#39;shipments.csv&#39;), renderCSV(rows, metadata));</code></pre>
 </figure>
 
+<p>The current report uses <code>RecordsView</code> from <code>@decision-lab/react-views</code> for its shipment queue and arrangement tables. React renders those shared table components into the standalone HTML; the company adapter chooses columns, labels and artifact links:</p>
+
+
+<figure class="article-code">
+  <figcaption id="code-records">Render the company table with the shared RecordsView · <a href="../../../../assets/use-cases/shipment-readiness/exceptions/decision-views/source/src/report.mjs.txt">src/report.mjs, lines 301–306</a></figcaption>
+  <pre tabindex="0" role="region" aria-labelledby="code-records"><code class="language-javascript">function records(id, columns, rows, renderValue) {
+  return renderToStaticMarkup(element(RecordsView, {
+    view: { format: &#39;record-view/1&#39;, id, columns: columns.map(([key, label]) =&gt; ({ key, label })), rows },
+    renderValue,
+  }));
+}</code></pre>
+</figure>
+
+<p>The view renders findings already calculated by the CLI. It does not assess shipments while drawing the table. The native run retains every requested report and context, and the team’s CSV remains a separate export.</p>
 <p>For calculated shipments, the report links to source receipts, canonical inputs, validation and the full CLI calculation. Import failures retain their available source diagnostics. Maya can start with the exception list and inspect the basis for a particular proposal without asking a developer to interpret the whole batch.</p>
 
 <figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/shipment-readiness/exceptions/changed-order-arrangements.png" tabindex="-1" aria-label="Open full-size shipment exception report screenshot"><img src="../../../../assets/use-cases/shipment-readiness/exceptions/changed-order-arrangements.png" width="1450" height="413" alt="The generated CLI report for revised order ORD-105: Direct is preferred at $4,000, Backup exceeds the expense limit, and Consolidated lacks a confirmation covering the revised order." loading="lazy" decoding="async"></a>
-  <figcaption><span>The working sample’s report for ORD-105, revision 2. Direct becomes preferred; Consolidated’s old confirmation does not cover the changed order.</span><a href="../../../../assets/use-cases/shipment-readiness/exceptions/changed-order-arrangements.png">View full size</a></figcaption>
+  <a href="../../../../assets/use-cases/shipment-readiness/exceptions/decision-views/changed-order-arrangements.png" tabindex="-1" aria-label="Open full-size shipment exception report screenshot"><img src="../../../../assets/use-cases/shipment-readiness/exceptions/decision-views/changed-order-arrangements.png" width="1450" height="413" alt="The generated CLI report for revised order ORD-105: Direct is preferred at $4,000, Backup exceeds the expense limit, and Consolidated lacks a confirmation covering the revised order." loading="lazy" decoding="async"></a>
+  <figcaption><span>The current company report uses the shared RecordsView to present ORD-105’s calculated alternatives. Direct is preferred; the old consolidation confirmation still fails the recorded requirement.</span><a href="../../../../assets/use-cases/shipment-readiness/exceptions/decision-views/changed-order-arrangements.png">View full size</a></figcaption>
 </figure>
 
 <div class="actions use-case-process-actions" role="group" aria-label="Inspect the verified shipment exception report">
-  <a class="button" href="../../../../assets/use-cases/shipment-readiness/exceptions/reports/morning/shipments.html">Open the worked exception report <span aria-hidden="true">→</span></a>
-  <a class="text-link" href="../../../../assets/use-cases/shipment-readiness/exceptions/reports/morning/shipments.csv" download>Download the CSV report <span aria-hidden="true">↓</span></a>
+  <a class="button" href="../../../../assets/use-cases/shipment-readiness/exceptions/decision-views/reports/morning/shipments.html">Open the worked exception report <span aria-hidden="true">→</span></a>
+  <a class="text-link" href="../../../../assets/use-cases/shipment-readiness/exceptions/decision-views/reports/morning/shipments.csv" download>Download the CSV report <span aria-hidden="true">↓</span></a>
 </div>
 <p>“Unchanged” means the comparison found no changed calculated recommendation or inputs. It is not an approval, and it does not establish that the source records are true. Every calculated row still awaits human review.</p>
 
 <h2 id="follow-code">Explore the full implementation.</h2>
-<p>The <a href="https://github.com/hermodlabs/sample_code/tree/main/shipment-exceptions"><strong>shipment-exceptions repository directory</strong></a> contains the complete application, sample exports, retained cases, app package and tests. The selected excerpts above link to the <a href="https://github.com/hermodlabs/sample_code/tree/57c3adc1b90d95e590408dc73cbf5403e1c9b9c7/shipment-exceptions">version verified for this article</a>.</p>
+<p>The <a href="https://github.com/hermodlabs/sample_code/tree/main/shipment-exceptions"><strong>shipment-exceptions repository directory</strong></a> contains the public application, sample exports, retained cases, app package and tests. Core execution excerpts retain their public source links. The <a href="../../../../assets/use-cases/shipment-readiness/exceptions/decision-views/source-snapshot.zip">current client source snapshot</a> includes the shared table renderer shown here.</p>
 <p>Follow how the importer preserves source scope, how the fixed app assesses each shipment and how the reporting layer turns the results into Maya’s working list. The full files include the surrounding validation and error handling.</p>
 
 <h2 id="business-handoff">Give the exceptions back to their owners.</h2>
@@ -329,7 +343,7 @@ SHIP-106,ORD-106,1,consolidated,SLOT-C106,confirmed</code></pre>
         <p>Terry Clear’s <a href="https://www.8thandwalton.com/blog/case-study-walmart-launch">8th &amp; Walton Walmart launch case</a>, June 4, 2025, describes item-alignment corrections, cancelling and reissuing purchase orders, and changing freight terms. Those changes provide business context for reassessment. The source does not establish that the supplier used Decision Lab.</p>
         <p><a href="https://corporate.walmart.com/content/dam/corporate/documents/suppliers/apply-to-be-a-supplier/supplier-checklist.pdf#page=11">Walmart’s Supplier Checklist, page 11</a>, remains the original collect-supplier ship-point setup reference used in this series. The fictional orders, quotes, confirmation policy and numerical outcomes are not attributed to those sources.</p>
         <h3 id="code-and-verification">Code and verification</h3>
-        <p>The <a href="https://github.com/hermodlabs/sample_code/tree/57c3adc1b90d95e590408dc73cbf5403e1c9b9c7/shipment-exceptions">pinned public sample</a> supplies the source files and fictional records. The excerpts and retained reports were verified against that revision. Compare the <a href="../../../../assets/use-cases/shipment-readiness/exceptions/reports/baseline/shipments.html">retained baseline report</a> with the current report. The <a href="../../../../assets/use-cases/shipment-readiness/exceptions/verification.json">verification record</a> identifies the source revision and retained output artifacts.</p>
+        <p>The <a href="https://github.com/hermodlabs/sample_code/tree/57c3adc1b90d95e590408dc73cbf5403e1c9b9c7/shipment-exceptions">pinned public sample</a> supplies the source files and fictional records. The core excerpts retain their exact public source. The current report and shared-view excerpt use the separately retained <a href="../../../../assets/use-cases/shipment-readiness/exceptions/decision-views/source-snapshot.zip">client snapshot</a>; its source hashes and output receipts are recorded below. Historical native artifacts remain available. Compare the <a href="../../../../assets/use-cases/shipment-readiness/exceptions/decision-views/reports/baseline/shipments.html">retained baseline report</a> with the current report. The <a href="../../../../assets/use-cases/shipment-readiness/exceptions/decision-views/verification.json">verification record</a> identifies the source revision and retained output artifacts.</p>
       </div>
       <div>
         <h3 id="what-this-example-establishes">What this example establishes</h3>

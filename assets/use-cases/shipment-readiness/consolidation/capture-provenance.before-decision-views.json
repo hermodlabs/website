@@ -1,0 +1,197 @@
+{
+  "format": "shipment-consolidation-capture/1",
+  "appUrl": "https://hermodlabs.github.io/review_lab/",
+  "capturedAt": "2026-11-17T16:33:25.598Z",
+  "captureDate": "2026-11-17",
+  "timezone": "America/Chicago",
+  "viewport": {
+    "width": 1512,
+    "height": 1080
+  },
+  "deviceScaleFactor": 1,
+  "sourceApp": {
+    "appId": "shipment-planning-earliest-arrival",
+    "version": 1,
+    "appHash": "3dfef2fb7c70eb33b12b6fcdb4f50a8c82a90e1bbba6bd3941e03ab280ea6025",
+    "packageHash": "59b959eff51d59881c79f6b16e2a498952f42afad051353178d10981eeee7db4",
+    "sourceHash": "5597192f34c271371643c1ec5a8fd628af97420cd5ae08c6458e0df44218215f",
+    "name": "Earliest-arrival shipment review",
+    "pattern": "complete-a-commitment/1",
+    "templateHash": "2fe9902f4f2b8deebd5663a8467fc2d5c24aeaa9fdcdca1ccd1bb42574a144b2"
+  },
+  "newApp": {
+    "id": "app-diagnostic-48be6071-61e5-4d30-b5aa-bbcb6b3126a8",
+    "name": "Shipment review with consolidation",
+    "version": 1,
+    "contentHash": "c4bf403e593b0943ef6421b1190eb259574998659b3d59b0aaa0a22eda190beb",
+    "packageHash": "dc86ea310733c39bc55deaf90b47c3dbd77d7d9d4b0f870c156f3ef6083f1ed6",
+    "workbookReleaseHash": "592d36cd410b8933ec3903f71a253a30c68a4acae2fb49d971fc43be51c5c9eb"
+  },
+  "captureMethod": "Seven captures retain the original public application UI. The business-scenario figure was refreshed from the current Decision Lab working build through a local preview. All images use native UI and unchanged fictional inputs; no interface text or results were fabricated.",
+  "boundary": "Fictional teaching inputs, not supplier confirmations or production approval. Prepared shipment source retained the draft-generated appAuthoring metadata. The supplied confirmed case inputs add the resolved current slot record and change the input case label; all other business facts and the local saved case identity stayed fixed. The published rules stayed fixed.",
+  "steps": [
+    "Open original arrival-first app with its direct link.",
+    "Collections → Order fulfillment → Adapt app → Create a new app → Create draft.",
+    "Retain generated appAuthoring metadata while loading prepared third-option source in Canonical YAML.",
+    "Requirements & inputs → Requirements & checks: add SLOT and eight record matches plus five timing comparisons; Preview requirement edit → Apply edit to draft.",
+    "Business scenarios → Upload scenarios → Run business scenarios; all 14 passed.",
+    "Review commitment → Publish reviewed commitment app → Order fulfillment → Review a first shipment → Add to collection.",
+    "Use app; inspect Decision report without confirmation.",
+    "Both → Canonical commitment case YAML: apply confirmed inputs; inspect same app and case with valid confirmation.",
+    "Copy app link and open in a fresh browser profile; confirm automatic collection creation and unchanged missing-confirmation starter.",
+    "Resume original saved arrival case and export it to verify original source release and two-option model."
+  ],
+  "images": [
+    {
+      "key": "adapt",
+      "file": "01-adapt-app.png",
+      "width": 540,
+      "height": 560,
+      "sha256": "11c7e4269cdb83f5125167e19a0d1745ec91f369c797f5967d1c19e96f8d34d9",
+      "alt": "Decision Lab’s Adapt app dialog with Create a new app selected and Shipment review with consolidation entered as the new name.",
+      "caption": "Adapt the published arrival-first review as a separate app, retaining the source release."
+    },
+    {
+      "key": "requirement",
+      "file": "02-define-slot-requirement.png",
+      "width": 494,
+      "height": 384,
+      "sha256": "32b9b48cd638a4d5cf61c3debf54f2fe06e926e6b40e1660d8a606ad7e88b573",
+      "alt": "Guided requirement controls defining SLOT, Confirmed consolidation slot, and its meaning for this shipment and loading window.",
+      "caption": "Name the additional business requirement before specifying its matching-record check."
+    },
+    {
+      "key": "preview",
+      "file": "03-preview-slot-rule.png",
+      "width": 494,
+      "height": 215,
+      "sha256": "80528efb599589e4d849d52b6bdb09c1be5f59c180b79e931976cebdba2dc8ff",
+      "alt": "Rule edit preview naming the Confirmed consolidation slot requirement and scoped-consolidation-slot check, with Apply edit to draft.",
+      "caption": "Preview the requirement and its check, then apply the reviewed edit to the draft."
+    },
+    {
+      "key": "scenarios",
+      "file": "04-business-scenario-results.png",
+      "width": 1170,
+      "height": 677,
+      "sha256": "2d7f922fcfe266f5eb31d561da56845630fd3da937eca829489461130d3b934f",
+      "alt": "Readable business-scenario results with Check, Expected, Calculated and Result columns: Direct passes, Backup is blocked and Consolidated is preferred.",
+      "caption": "The valid-confirmation scenario compares business checks, expected outcomes and calculated results. All 14 configured scenarios passed.",
+      "capturedAt": "2026-11-17T17:09:30.889Z",
+      "captureUrl": "http://127.0.0.1:4789/"
+    },
+    {
+      "key": "publish",
+      "file": "05-review-publication.png",
+      "width": 760,
+      "height": 175,
+      "sha256": "9ea66a5d454dbdb18d626172acea2b3ebf9326ae7939d5ea3e39d042dab0d001",
+      "alt": "The publication review confirms the whole commitment, mandatory obligations, plan and situation domains, operating assumptions and financial basis.",
+      "caption": "Review the complete shipment commitment before publishing the tested app locally."
+    },
+    {
+      "key": "collection",
+      "file": "06-collection-with-adapted-app.png",
+      "width": 1080,
+      "height": 1138,
+      "sha256": "4e0997b7f2cfa11d0ac552a9b3f89eb4ae15c721b0a33db95d7d03eb36c05fcc",
+      "alt": "Order fulfillment’s Review a first shipment use case contains the original arrival-first and lowest-cost apps alongside Shipment review with consolidation, version 1.",
+      "caption": "Add the new review beside the existing apps in Order fulfillment → Review a first shipment."
+    },
+    {
+      "key": "unconfirmed",
+      "file": "07-without-slot-confirmation.png",
+      "width": 1206,
+      "height": 608,
+      "sha256": "1f271af6fa746ffadb9b3886bbfb6a1909cafa916640f415e29f5cabe880209e",
+      "alt": "The published review’s Decision report prefers Direct at 400,000 USD cents; Consolidated and Backup are blocked.",
+      "caption": "Without the required confirmation, Direct remains preferred. Consolidated fails its slot check; Backup exceeds the expense limit."
+    },
+    {
+      "key": "confirmed",
+      "file": "08-with-valid-slot-confirmation.png",
+      "width": 1206,
+      "height": 612,
+      "sha256": "96cf2b33933629876e1a627a078af1385b2bb23ab60d4f502b2eac0881e38073",
+      "alt": "The same published review with a valid slot record prefers Consolidated at 500,000 USD cents, with Direct still feasible and Backup blocked.",
+      "caption": "With suitable confirmation, Consolidated becomes preferred under the existing arrival-first priority."
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "adapted-original.model.yaml",
+      "sha256": "90f266b0bf1ef7250fcc488fb0f473856b5123b8e90bfd7ab4b7200bbca3edb7"
+    },
+    {
+      "file": "adapted-before-slot-rule.model.yaml",
+      "sha256": "1c71a5a3d42b3c897ca954079fcb50e5555b110450d7a1c99b204526fa8529d3"
+    },
+    {
+      "file": "guided-applied.model.yaml",
+      "sha256": "3007897690ef59393ebdbf15d6fc03c680dbf1923968823358a4806bf4bb1550"
+    },
+    {
+      "file": "browser-business-scenario-results.json",
+      "sha256": "05441fd91e04e9df1ace8c7fea29d86a3ffba77caa435538aff7352c67ab3fba"
+    },
+    {
+      "file": "published-consolidation.app.json",
+      "sha256": "e7b3e7417b38a05e2a99aa6b5f61f2d87e5820be0a0a06d9dc1c8bf30ac15a11"
+    },
+    {
+      "file": "published-consolidation.workbook-release.json",
+      "sha256": "4cedf7bf27e8accb496a8f43ee55cc05073ebbea4736d2b0176fdf6e3a4532bc"
+    },
+    {
+      "file": "published-launch.json",
+      "sha256": "49dee26642495c0b9e45e707d0afb4251eab4b76fae00af6449e98575c645be6"
+    },
+    {
+      "file": "browser-unconfirmed.case.json",
+      "sha256": "9c013e5ded183ebfc5410ba9c832ab38236a361b568d2d487181b49980ee785f"
+    },
+    {
+      "file": "browser-confirmed.case.json",
+      "sha256": "7058ffbb33259f7a5e0ae9708c6c471c73f4cbde7973ddc247c7224a8d278cf4"
+    },
+    {
+      "file": "source-arrival-preserved.case.json",
+      "sha256": "c9dbc534ec088bb4135c47b464477768ce40ace578c80740eb6ebb50a2f9b134"
+    },
+    {
+      "file": "direct-launch-verification.json",
+      "sha256": "a1a77d6286e02d8dd537c2bdab919db1701c1ab02402b5708ff5f46da658471b"
+    },
+    {
+      "file": "scenario-table-capture.json",
+      "sha256": "58ba6c8b44ca15b56d6122f9431bcfb88ee9d93ebb8e06f8683f46a8910f8eb2"
+    },
+    {
+      "file": "scenario-table-results.json",
+      "sha256": "9532aa9036eb432f3ed188dabd09139130f099377636ea6623296c4e5cf86b7c"
+    }
+  ],
+  "checks": {
+    "guidedModelMatchesFixtureExceptAdaptationLineage": true,
+    "businessScenarioCount": 14,
+    "businessScenariosPassed": 14,
+    "allBusinessScenariosPassed": true,
+    "nativeWrapperTargetMatchesSDKPackage": true,
+    "copyLinkPackageMatchesPublishedTarget": true,
+    "sourceReleaseRetained": true,
+    "sourceCaseHasTwoOptions": true,
+    "sameWorkerCaseAndRelease": true,
+    "onlySlotBusinessInputsAndCaseLabelChanged": true,
+    "moduleUnchangedByConfirmation": true,
+    "freshDirectLaunchCollectionCreated": true,
+    "freshDirectLaunchMissingConfirmationPrefersDirect": true,
+    "originalAppIdUnchanged": true,
+    "pageErrors": []
+  },
+  "scenarioTableRefresh": {
+    "file": "scenario-table-capture.json",
+    "capturedAt": "2026-11-17T17:09:30.889Z",
+    "captureUrl": "http://127.0.0.1:4789/",
+    "captureKind": "local-working-app-preview"
+  }
+}

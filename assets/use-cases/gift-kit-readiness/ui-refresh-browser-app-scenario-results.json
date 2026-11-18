@@ -1,0 +1,75 @@
+{
+  "format": "decision-lab-app-check-result/1",
+  "runId": "app-check-9dd38ab5851c1ef817eb8360",
+  "createdAt": "2026-11-18T14:53:30.088Z",
+  "binding": {
+    "modelHash": "e6e19b1ff0a96248b8bab848157caff10cbad3e2143b6aa353b11fe3c6bc2209",
+    "moduleHash": "c3b126e455d347e492a2242f891e963f6264fe77a24ab6291744dd1557b2c329",
+    "sourceHash": "c49aaf7d919e8aa4539069b7834c4d943f4fe65609f89daa7e6028e94f3297d0",
+    "packageHash": "df966aba50574db44256b469aca65ae2dc9451d024e3f6c01274bfb44352697e",
+    "suiteHash": "d133ef1c451ae35aa617b7c3dbe630e3173e4ee9084d227c5afadc670b3c2558",
+    "sdkVersion": "0.1.0"
+  },
+  "status": "passed",
+  "summary": {
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "unavailable": 0
+  },
+  "scenarios": [
+    {
+      "id": "too-short",
+      "title": "Five minutes does not satisfy the revised rehearsal rule",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-finding",
+          "id": "expectation-1",
+          "title": "Completion finding",
+          "status": "passed",
+          "expected": {
+            "finding": "no_feasible_plan"
+          },
+          "actual": {
+            "finding": "no_feasible_plan"
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-cb14b698299624f67016d790"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:117c41b1fe692ae4fe059b310990ddd648b1f5d380f8b79ac0fd49418b5de29d"
+    },
+    {
+      "id": "enough-time",
+      "title": "Ten minutes restores a complete correction package",
+      "status": "passed",
+      "checks": [
+        {
+          "kind": "commitment-finding",
+          "id": "expectation-1",
+          "title": "Completion finding",
+          "status": "passed",
+          "expected": {
+            "finding": "feasible_witness"
+          },
+          "actual": {
+            "finding": "feasible_witness"
+          },
+          "message": "The calculated outcome matches the authored expectation."
+        }
+      ],
+      "execution": {
+        "status": "completed",
+        "runId": "app-check-900dac8af17aac4440879769"
+      },
+      "assessmentComplete": true,
+      "inputHash": "execution-input:96b5f04da816f6f4d728f3ec7d2d8309580c1d9a772946e8657874fe672dd0cb"
+    }
+  ],
+  "contentHash": "a42db88b1bd79299ba0b933f2defd927e04e7e8675d21c38bd40b613183515da"
+}

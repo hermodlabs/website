@@ -1,0 +1,29 @@
+{
+  "name": "shipment-reservation-desk",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A focused React shipment review using the public Decision Lab SDK.",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node --test test/*.test.js",
+    "test:browser": "node test/browser.mjs"
+  },
+  "dependencies": {
+    "@decision-lab/sdk": "0.1.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "@decision-lab/react-views": "^0.1.0"
+  },
+  "devDependencies": {
+    "@decision-lab/cli": "0.1.0",
+    "@vitejs/plugin-react": "6.1.1",
+    "vite": "8.3.0",
+    "playwright": "1.62.1"
+  }
+}

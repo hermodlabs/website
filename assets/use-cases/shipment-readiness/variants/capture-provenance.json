@@ -21,31 +21,51 @@
   "images": [
     {
       "file": "01-author-preference.png",
-      "sha256": "03fdbc2c42be968a9d40ff3292f055657527b6485e771e5504089d2d3509a80a",
-      "width": 1512,
-      "height": 1050,
-      "description": "Canonical YAML authoring shows the arrival preference and expense tie-break near the top of the model."
+      "sha256": "a19a9c73bf2cd447e9ea976c2ac0035e17e5a876cde47425e8baa5e481d71fd4",
+      "width": 1208,
+      "height": 18748,
+      "description": "The unchanged author source beside its decision-first result.",
+      "capturedAt": "2026-11-18T14:55:49.144Z",
+      "captureUrl": "http://127.0.0.1:5187/",
+      "bytes": 1970760,
+      "alt": "The actual YAML author workspace shows the earliest-arrival preference and its expense tie-break beside the calculated report.",
+      "caption": "The author changes a declared preference in the model. Arrival comes first; expense breaks ties. The same reusable template still checks the mandatory obligations."
     },
     {
       "file": "02-two-published-apps.png",
-      "sha256": "0db9662f1aabd8286858608a187cd89c6cbab3e1c524637c49522882dc28e227",
-      "width": 1512,
-      "height": 1174,
-      "description": "Collections shows the two imported immutable SDK app packages, each at release 1."
+      "sha256": "c7495d63cd9e8b431c0ceb45e608b883e516f47e6764f461473fe0458f177bcb",
+      "width": 1208,
+      "height": 1268,
+      "description": "The same two frozen reviews and their saved cases in Collections.",
+      "capturedAt": "2026-11-18T14:55:47.159Z",
+      "captureUrl": "http://127.0.0.1:5187/",
+      "bytes": 150618,
+      "alt": "Collections lists Lowest-cost shipment review and Earliest-arrival shipment review as two separate version 1 apps, with Use app controls.",
+      "caption": "The two imported apps appear in Collections. Use app starts an independent case from either exact downloadable package."
     },
     {
       "file": "3-lowest-cost-shipment-result.png",
-      "sha256": "259b796000d749b85c1b005024633d1154fa14e514250fe2990d5b94674d2435",
-      "width": 1512,
-      "height": 1050,
-      "description": "Lowest-cost shipment review: same case, both plans feasible, direct is preferred."
+      "sha256": "b3c8bd79e24475eec2c94f0d50ba767363d06f8c5f75a10c30fee342a81e9131",
+      "width": 1134,
+      "height": 610,
+      "description": "Direct is preferred under the frozen app's priority; both complete arrangements pass.",
+      "capturedAt": "2026-11-18T14:55:43.959Z",
+      "captureUrl": "http://127.0.0.1:5187/",
+      "bytes": 59997,
+      "alt": "The current decision screen prefers Direct at $4,000. Both complete arrangements pass, and the comparison priority is lowest expense.",
+      "caption": "Cost first: Direct is preferred at $4,000. The compact decision keeps both passing arrangements visible; its Friday arrival comes from the unchanged shipment facts."
     },
     {
       "file": "4-earliest-arrival-shipment-result.png",
-      "sha256": "de2311dff4613a800f11fffc3412d4abb9f86f7ab94f3a1db75aeb9222a7ae1f",
-      "width": 1512,
-      "height": 1050,
-      "description": "Earliest-arrival shipment review: same case, both plans feasible, backup is preferred."
+      "sha256": "75cb98a474ff0121ead7c5aa75b10b30144ed4bf22872d652b815fbd0d9e67a0",
+      "width": 1134,
+      "height": 610,
+      "description": "Backup is preferred under the frozen app's priority; both complete arrangements pass.",
+      "capturedAt": "2026-11-18T14:55:46.686Z",
+      "captureUrl": "http://127.0.0.1:5187/",
+      "bytes": 62215,
+      "alt": "The current decision screen prefers Backup at $6,000 under the arrival-first priority. Direct still passes at $4,000.",
+      "caption": "Arrival first: Backup is preferred at $6,000. The same frozen case and requirements are reviewed; the priority favors its earlier receipt."
     }
   ],
   "exports": [
@@ -168,5 +188,113 @@
         "portableCaseImported": true
       }
     ]
+  },
+  "uiRefresh": {
+    "capturedAt": "2026-11-18T14:55:49.156Z",
+    "captureUrl": "http://127.0.0.1:5187/",
+    "buildId": "2f12f7f5656a4f5899a9",
+    "mode": "decision-focused",
+    "method": "Unedited browser element screenshots after importing retained frozen artifacts through normal controls. Decisions lead; selected details and complete reports are opened explicitly. No results or interface content were injected.",
+    "previousCaptureProvenance": {
+      "file": "capture-provenance.before-decision-views.json",
+      "sha256": "0510ec83c723cf42fe9ecd2d96ea8451d9bd4c74dd3899aa821dbacbeda103ef"
+    },
+    "frozenArtifactsUnchanged": true,
+    "artifactHashes": {
+      "comparison-manifest.json": "2fa3c2f9edc464c10a80b1512e363faeaa6a9c75fa201505bd0717bdc0cf5f91",
+      "earliest-arrival-shipment.app-case.json": "d39118f1e7d2e4577ccc925f7b46689daa1c8deaae0cce3b7253253ac9d7ab4d",
+      "earliest-arrival-shipment.app.json": "91749301d2f3ad101ea000d621d1e01f6086f846b94b0b4ee7d632763e999335",
+      "earliest-arrival-shipment.assessment.json": "804dd39ab5769a4787ff47e894185e482b0c8130365c2da14b10f80db089bfe4",
+      "earliest-arrival-shipment.case.json": "1d3499c5fbda48cbf61aea4c0e3581a10e8c9186b44f13baa48d5aef04f88cde",
+      "earliest-arrival-shipment.model.json": "7949a201093a4b3b48af6b62e4a976ff2ec44286459b18b7728d9a9bb21df95b",
+      "earliest-arrival-shipment.model.yaml": "5597192f34c271371643c1ec5a8fd628af97420cd5ae08c6458e0df44218215f",
+      "earliest-arrival-shipment.run.json": "1294f4acdba88643b6b61e5c849773926edf1daad763a227ec90fb9786a71095",
+      "lowest-cost-shipment.app-case.json": "852fdb78b5f189cba4ec50bcd00aa7a6b3644d958158c8ab0d2189661d49d924",
+      "lowest-cost-shipment.app.json": "c1d220ed5e88d379e0ab8ac8e268cf9e47d0a4fc00d65b8c3826231905eb39f2",
+      "lowest-cost-shipment.assessment.json": "41f58dcd588b5f9dedb0c3affa39f5aae1d003c6be50aa87609864a8757c7f2d",
+      "lowest-cost-shipment.case.json": "a69a220f2da474aadeaabd6c641878e1fc151abb294877cd3ff07e106f3e9e76",
+      "lowest-cost-shipment.model.json": "d456257f73f1654b58db28598100f3c4c44adceda3d757286d3f2c2e880f3883",
+      "lowest-cost-shipment.model.yaml": "d155e66a752c16948213e29d46a5c958d2a3c17b4bedf34cb0602ba01de0f7e2",
+      "lowest-cost-shipment.run.json": "b8f40474b7fbb7197a3ac3bccde1738369f428d63abab355141d74b070c5af6b",
+      "planning.template.json": "96b35149a2b6fade675d112f58b3dc4c7baeaeeeb1ee0cbfd0dd677beaea4c13",
+      "shared-case.inputs.json": "6b12f37571eaedcb1431045b6e2f037a08101cd71e3201948727825d12b937b8",
+      "shared-case.inputs.yaml": "78cc50e88a98e056efaca34f158d69f93ccf8178067e49b166b1ac36256b9b5d"
+    },
+    "checks": {
+      "passed": true,
+      "details": [
+        "lowest-cost-shipment: preferred Direct, both prices formatted in dollars; complete artifacts unchanged.",
+        "earliest-arrival-shipment: preferred Backup, both prices formatted in dollars; complete artifacts unchanged."
+      ],
+      "mobile": [
+        {
+          "file": "3-lowest-cost-shipment-result.png",
+          "width": 390,
+          "pageWidth": 390,
+          "decisionVisible": true,
+          "localTableScrollingAllowed": true
+        },
+        {
+          "file": "4-earliest-arrival-shipment-result.png",
+          "width": 390,
+          "pageWidth": 390,
+          "decisionVisible": true,
+          "localTableScrollingAllowed": true
+        }
+      ]
+    },
+    "images": [
+      {
+        "file": "3-lowest-cost-shipment-result.png",
+        "width": 1134,
+        "height": 610,
+        "sha256": "b3c8bd79e24475eec2c94f0d50ba767363d06f8c5f75a10c30fee342a81e9131",
+        "description": "Direct is preferred under the frozen app's priority; both complete arrangements pass.",
+        "capturedAt": "2026-11-18T14:55:43.959Z",
+        "captureUrl": "http://127.0.0.1:5187/",
+        "bytes": 59997,
+        "alt": "The current decision screen prefers Direct at $4,000. Both complete arrangements pass, and the comparison priority is lowest expense.",
+        "caption": "Cost first: Direct is preferred at $4,000. The compact decision keeps both passing arrangements visible; its Friday arrival comes from the unchanged shipment facts."
+      },
+      {
+        "file": "4-earliest-arrival-shipment-result.png",
+        "width": 1134,
+        "height": 610,
+        "sha256": "75cb98a474ff0121ead7c5aa75b10b30144ed4bf22872d652b815fbd0d9e67a0",
+        "description": "Backup is preferred under the frozen app's priority; both complete arrangements pass.",
+        "capturedAt": "2026-11-18T14:55:46.686Z",
+        "captureUrl": "http://127.0.0.1:5187/",
+        "bytes": 62215,
+        "alt": "The current decision screen prefers Backup at $6,000 under the arrival-first priority. Direct still passes at $4,000.",
+        "caption": "Arrival first: Backup is preferred at $6,000. The same frozen case and requirements are reviewed; the priority favors its earlier receipt."
+      },
+      {
+        "file": "02-two-published-apps.png",
+        "width": 1208,
+        "height": 1268,
+        "sha256": "c7495d63cd9e8b431c0ceb45e608b883e516f47e6764f461473fe0458f177bcb",
+        "description": "The same two frozen reviews and their saved cases in Collections.",
+        "capturedAt": "2026-11-18T14:55:47.159Z",
+        "captureUrl": "http://127.0.0.1:5187/",
+        "bytes": 150618,
+        "alt": "Collections lists Lowest-cost shipment review and Earliest-arrival shipment review as two separate version 1 apps, with Use app controls.",
+        "caption": "The two imported apps appear in Collections. Use app starts an independent case from either exact downloadable package."
+      },
+      {
+        "file": "01-author-preference.png",
+        "width": 1208,
+        "height": 18748,
+        "sha256": "a19a9c73bf2cd447e9ea976c2ac0035e17e5a876cde47425e8baa5e481d71fd4",
+        "description": "The unchanged author source beside its decision-first result.",
+        "capturedAt": "2026-11-18T14:55:49.144Z",
+        "captureUrl": "http://127.0.0.1:5187/",
+        "bytes": 1970760,
+        "alt": "The actual YAML author workspace shows the earliest-arrival preference and its expense tie-break beside the calculated report.",
+        "caption": "The author changes a declared preference in the model. Arrival comes first; expense breaks ties. The same reusable template still checks the mandatory obligations."
+      }
+    ],
+    "nativeResults": [],
+    "errors": [],
+    "boundary": "Current local production preview. Retained historical case reviews and calculation identities are displayed without asserting a new operating review. Preview offline installation status is separate from these retained findings."
   }
 }

@@ -15,14 +15,14 @@
 
 
   <title>A day to prepare. Which gift-kit campaigns need attention? | Hermod Labs</title>
-  <meta name="description" content="Leah needs a working list across several campaigns. A company script uses the CLI to compare complete correction packages, expose timing and record problems, and pass one case to the handoff desk.">
+  <meta name="description" content="Leah needs to know which campaigns have supported proposals and which need attention. Compare the developer’s options, then follow a CLI integration from complete case inputs to an actionable campaign report.">
   <meta name="author" content="Jonathan Nacionales">
 
   <link rel="canonical" href="https://hermodlabs.com/use-cases/gifting/gift-kit-readiness/screen-campaigns/">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Hermod Labs">
   <meta property="og:title" content="A day to prepare. Which gift-kit campaigns need attention? | Hermod Labs">
-  <meta property="og:description" content="Leah needs a working list across several campaigns. A company script uses the CLI to compare complete correction packages, expose timing and record problems, and pass one case to the handoff desk.">
+  <meta property="og:description" content="Leah needs to know which campaigns have supported proposals and which need attention. Compare the developer’s options, then follow a CLI integration from complete case inputs to an actionable campaign report.">
   <meta property="og:url" content="https://hermodlabs.com/use-cases/gifting/gift-kit-readiness/screen-campaigns/">
   <meta property="og:image" content="https://hermodlabs.com/assets/hermod-wordmark.jpeg">
 
@@ -98,8 +98,8 @@
 
     <p class="eyebrow">Gift-kit readiness / CLI integration</p>
     <h1>A day to prepare. Which gift-kit campaigns need attention?</h1>
-    <p class="reading-description">Leah needs a working list across several campaigns. A company script uses the CLI to compare complete correction packages, expose timing and record problems, and pass one case to the handoff desk.</p>
-    <p class="reading-meta">Jonathan Nacionales <span aria-hidden="true">·</span> 10 min read</p>
+    <p class="reading-description">Leah needs to know which campaigns have supported proposals and which need attention. Compare the developer’s options, then follow a CLI integration from complete case inputs to an actionable campaign report.</p>
+    <p class="reading-meta">Jonathan Nacionales <span aria-hidden="true">·</span> 11 min read</p>
   </div>
   <figure class="reading-cover">
     <img class="reading-cover-image" src="../../../../assets/use-cases/gift-kit-readiness/preflight/cover.svg" width="960" height="720" alt="Four gift-kit campaigns pass through the same CLI review into a working report and an individual case for follow-up." decoding="async">
@@ -112,12 +112,14 @@
   <details class="disclosure reader-nav-disclosure" open>
     <summary><h2 class="disclosure-label" id="reader-toc-heading">On this page</h2></summary>
     <ol>
+      <li><a href="#compare-approaches">What would the team otherwise build?</a></li>
       <li><a href="#campaign-review">Bring the campaign reviews into one working list.</a></li>
       <li><a href="#one-day-cases">A one-day cutoff. Four different recorded situations.</a></li>
       <li><a href="#complete-inputs">Keep the whole case behind each row.</a></li>
       <li><a href="#cli-review">Apply the same review to each campaign.</a></li>
       <li><a href="#time-and-records">Make the time basis visible.</a></li>
       <li><a href="#case-handoff">Pass one case to the person resolving it.</a></li>
+      <li><a href="#resolved-choice">A working list Leah can put back in the owners’ hands.</a></li>
       <li><a href="#source">Sources and scope</a></li>
     </ol>
   </details>
@@ -127,7 +129,7 @@
       <p>Gift-kit readiness</p>
       <a href="../index.html">Scenario overview</a>
       <p>Articles</p>
-      <a href="../compare-correction-options/index.html">Compare correction options</a><a href="../strengthen-the-rehearsal/index.html">Strengthen the rehearsal</a><a href="index.html" aria-current="page">Screen the campaigns</a><a href="../resolve-a-handoff-exception/index.html">Resolve a handoff exception</a>
+      <a href="../compare-correction-options/index.html">Compare correction options</a><a href="../strengthen-the-rehearsal/index.html">Strengthen the rehearsal</a><a href="index.html" aria-current="page">Screen the campaigns</a><a href="../resolve-a-handoff-exception/index.html">Build the handoff desk</a>
       
     </nav>
   </aside>
@@ -138,9 +140,27 @@
       
 
 
-<p class="reader-lead">Leah now coordinates several gift-kit campaigns. Each promises a working recipient experience: scan the printed code, reach the right destination and complete checkout. Marketing wants the kits ready, finance needs the correction costs controlled, and production needs a plan its people and supplier records can support.</p>
-<p>The preparation window is a full day. That gives the team time to resolve problems, but it does not tell Leah which campaign needs a new confirmation, which needs a different production interval, or which already has a supported proposal.</p>
-<p><strong>Gift-kit Preflight</strong> gives her one working report. A developer’s script brings complete campaign cases into the Decision Lab CLI, retains the calculations and exports individual cases for closer review. The people and records in this continuation are fictional.</p>
+<p class="reader-lead">Leah is accountable for several gift-kit campaigns reaching handoff with a recipient experience that works: scan the code, reach the right destination and complete checkout. Each campaign has <strong>120 kits, a $600 correction limit and a one-day preparation window</strong>. Marketing expects the promise kept, finance wants the expense justified, and production needs work its people and records can support.</p>
+<p>The campaign owners have different problems. Taylor’s GIFT-221 has a supported $300 in-house option, but the earlier external package has a confirmation for an old insert revision. Riley’s GIFT-222 has time remaining before cutoff, yet its production availability, permissions and confirmation have already expired. Treating both as simply “needs a check” leaves Leah without a useful next step.</p>
+<p>The developer needs to turn the existing gift-kit review into a working campaign list. Leah could review cases one at a time; the company could maintain a workbook or its own batch program; or the developer could reuse Decision Lab’s published model through the SDK or CLI. <strong>The choice is how to repeat the review, preserve its basis and put the findings into the team’s process.</strong></p>
+<p>This fictional case follows that choice through <strong>Gift-kit Preflight</strong>: a company script around the Decision Lab CLI, producing a report Leah can discuss with the owners and complete cases they can carry into individual follow-up.</p>
+
+<h2 id="compare-approaches">What would the team otherwise build?</h2>
+<p>The developer can reuse the existing decision model or implement another assessment. Reusing it still leaves a choice of interface: interactive review, direct SDK integration or the CLI’s command and file contract.</p>
+<div class="article-table-scroll" role="region" aria-label="Implementation choices for campaign preflight" tabindex="0">
+  <table>
+    <caption>The choice is how much assessment and processing infrastructure the team wants to own.</caption>
+    <thead><tr><th scope="col">Approach</th><th scope="col">Where it can fit</th><th scope="col">Responsibility for campaign screening</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Review each case interactively</th><td>A small set of cases needing close human inspection.</td><td>The existing app can supply the same reasoning. People still open each case, inspect its result and bring the findings into the working list.</td></tr>
+      <tr><th scope="row">Workbook or custom assessment program</th><td>A team-owned calculation tailored to its process.</td><td>Model package feasibility and preference, preserve revision and timing scope, distinguish input problems from calculated findings, and retain the supporting results.</td></tr>
+      <tr><th scope="row">Call the SDK directly</th><td>A service or application needing direct control of evaluation and results.</td><td>Reuse the published model while handling SDK execution, case loading and report integration in the application.</td></tr>
+      <tr><th scope="row">Script around the Decision Lab CLI</th><td>An existing review that should fit a command-and-file processing flow.</td><td>Use the CLI’s app, case-validation and assessment commands and their native outputs. The company script supplies the campaign loop, file handling, diagnostics collection and readable report.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>For this integration, the developer chooses the CLI. The gift-kit model already exists; the team needs repeated assessments and portable files behind its report rows. <strong>The script can pass complete cases to the same pinned review and retain its outputs without implementing the package requirements and ranking again.</strong></p>
+<p>A shared workbook, custom module or direct SDK integration can also provide consistent results when designed to do so. The CLI is useful here because its argument, output-file and exit-status contract fits the company’s scripted review. The surrounding script explicitly supplies the batch behavior and presentation.</p>
 
 <h2 id="campaign-review">Bring the campaign reviews into one working list.</h2>
 <p>The <a href="../compare-correction-options/index.html">first gifting article</a> compared correction options for one campaign. The <a href="../strengthen-the-rehearsal/index.html">authoring follow-up</a> showed how a stronger rehearsal requirement could be introduced. This developer example connects repeated reviews to the team’s operating process.</p>
@@ -172,8 +192,8 @@
 
 
 <figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/gift-kit-readiness/preflight/report-first-view.png" tabindex="-1" aria-label="Open full-size gift-kit preflight report screenshot"><img src="../../../../assets/use-cases/gift-kit-readiness/preflight/report-first-view.png" width="1440" height="1200" alt="The actual Gift-kit Preflight report shows GIFT-220 ready for review with external work at $400 and T+25 minutes, its T+24-hour cutoff and ten-minute plan under a five-minute minimum. The GIFT-221 in-house proposal begins below, with native case download links alongside the rows." loading="lazy" decoding="async"></a>
-  <figcaption><span>The opening of the generated one-day report. Each campaign pairs its finding with the recorded timing and links to the complete case, validation and calculation. Open the worked report below to inspect all four campaigns.</span><a href="../../../../assets/use-cases/gift-kit-readiness/preflight/report-first-view.png">View full size</a></figcaption>
+  <a href="../../../../assets/use-cases/gift-kit-readiness/preflight/decision-views/report-first-view.png" tabindex="-1" aria-label="Open full-size gift-kit preflight report screenshot"><img src="../../../../assets/use-cases/gift-kit-readiness/preflight/decision-views/report-first-view.png" width="1440" height="1200" alt="The actual Gift-kit Preflight report shows GIFT-220 ready for review with external work at $400 and T+25 minutes, its T+24-hour cutoff and ten-minute plan under a five-minute minimum. The GIFT-221 in-house proposal begins below, with native case download links alongside the rows." loading="lazy" decoding="async"></a>
+  <figcaption><span>The opening of the generated one-day report. Each campaign pairs its finding with the recorded timing and links to the complete case, validation and calculation. Open the worked report below to inspect all four campaigns.</span><a href="../../../../assets/use-cases/gift-kit-readiness/preflight/decision-views/report-first-view.png">View full size</a></figcaption>
 </figure>
 
 
@@ -240,7 +260,7 @@
       const evaluated = await invoke(args, commands);</code></pre>
 </figure>
 
-<p>The surrounding <code>invoke</code> helper calls <code>runCLI</code> from <code>@decision-lab/cli</code> and retains its arguments, exit code and diagnostics. Package feasibility, confirmation coverage and preference come from the published app.</p>
+<p>The surrounding <code>invoke</code> helper calls <code>runCLI</code> from <code>@decision-lab/cli</code> and retains its arguments, exit code and diagnostics. This is the public command handler used by the CLI, invoked directly by the Node.js script. The command contract identifies the app and case files, requests complete reports and names the output artifact. Package feasibility, confirmation coverage and preference come from the published app.</p>
 <p>A complete result with no feasible package is a business finding. Invalid inputs and an incomplete or unavailable assessment require different responses. The reporting code keeps those outcomes distinct:</p>
 
 
@@ -269,8 +289,8 @@
 
 
 <figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/gift-kit-readiness/preflight/recorded-intervals.png" tabindex="-1" aria-label="Open full-size gift-kit preflight report screenshot"><img src="../../../../assets/use-cases/gift-kit-readiness/preflight/recorded-intervals.png" width="470" height="1214" alt="GIFT-222’s expanded records show production availability and all five operating permissions from T+0 to T+2 hours, while the external confirmation covers T+0 to T+1 hour. Each permission and confirmation retains its campaign scope and source." loading="lazy" decoding="async"></a>
-  <figcaption><span>The native report’s supporting-record disclosure for GIFT-222. Its earlier intervals remain visible even though the campaign cutoff is T+24 hr and the proposed work starts at T+23 hr.</span><a href="../../../../assets/use-cases/gift-kit-readiness/preflight/recorded-intervals.png">View full size</a></figcaption>
+  <a href="../../../../assets/use-cases/gift-kit-readiness/preflight/decision-views/recorded-intervals.png" tabindex="-1" aria-label="Open full-size gift-kit preflight report screenshot"><img src="../../../../assets/use-cases/gift-kit-readiness/preflight/decision-views/recorded-intervals.png" width="469" height="1235" alt="GIFT-222’s expanded records show production availability and all five operating permissions from T+0 to T+2 hours, while the external confirmation covers T+0 to T+1 hour. Each permission and confirmation retains its campaign scope and source." loading="lazy" decoding="async"></a>
+  <figcaption><span>The native report’s supporting-record disclosure for GIFT-222. Its earlier intervals remain visible even though the campaign cutoff is T+24 hr and the proposed work starts at T+23 hr.</span><a href="../../../../assets/use-cases/gift-kit-readiness/preflight/decision-views/recorded-intervals.png">View full size</a></figcaption>
 </figure>
 
 
@@ -285,14 +305,28 @@
     await writeFile(path.join(stage, &#39;campaigns.html&#39;), renderHTML(manifest));</code></pre>
 </figure>
 
+<p>The current campaign queue and package tables use the shared <code>RecordsView</code> component from <code>@decision-lab/react-views</code>, rendered to standalone HTML with React DOM. The company adapter supplies the columns and links:</p>
+
+
+<figure class="article-code">
+  <figcaption id="code-records">Render the company table with the shared RecordsView · <a href="../../../../assets/use-cases/gift-kit-readiness/preflight/decision-views/source/src/report.mjs.txt">src/report.mjs, lines 19–21</a></figcaption>
+  <pre tabindex="0" role="region" aria-labelledby="code-records"><code class="language-javascript">const records = (id, columns, rows, renderValue) =&gt; h(RecordsView, {
+  view: { format: &#39;record-view/1&#39;, id, columns: columns.map(([key, label]) =&gt; ({ key, label })), rows }, renderValue,
+});</code></pre>
+</figure>
+
+<p>This is presentation of retained findings. Rendering the report does not run the decision model, change a permission or merge away a blocked campaign. The complete native run and every requested report context remain available separately.</p>
 <p>The report’s <strong>Download case for the React desk</strong> link retains the complete canonical inputs behind that campaign. Its calculation and validation are available separately. Missing or unreadable cases cannot supply a usable handoff; an exported invalid case still needs its source corrected.</p>
 <p>For Leah, the useful next step is GIFT-221. Taylor has a current in-house proposal, and a new external confirmation could change it. The exported case gives the handoff desk the same configuration, fault possibilities and supporting records that produced the report row.</p>
 <div class="actions use-case-process-actions" role="group" aria-label="Explore the gift-kit campaign review">
-  <a class="button" href="../../../../assets/use-cases/gift-kit-readiness/preflight/reports/one-day/campaigns.html">Open the worked campaign report <span aria-hidden="true">→</span></a>
-  <a class="text-link" href="../resolve-a-handoff-exception/index.html">Follow the case into the handoff desk <span aria-hidden="true">→</span></a>
+  <a class="button" href="../../../../assets/use-cases/gift-kit-readiness/preflight/decision-views/reports/one-day/campaigns.html">Open the worked campaign report <span aria-hidden="true">→</span></a>
+  <a class="text-link" href="../resolve-a-handoff-exception/index.html">See the SDK behind the handoff desk <span aria-hidden="true">→</span></a>
 </div>
-<p>The <a href="https://github.com/hermodlabs/sample_code/tree/main/gift-kit-preflight"><strong>Gift-kit Preflight repository directory</strong></a> contains the complete application, both scenario manifests, case inputs, pinned app and tests. The excerpts link to the <a href="https://github.com/hermodlabs/sample_code/tree/e638f7231c9b1a1592d560daed256eeee6ffddd1/gift-kit-preflight">exact version used here</a>.</p>
-<p>Leah has a list she can discuss with the campaign owners: supported proposals to review, an old-scope confirmation to replace and a late campaign whose records do not cover the work. The CLI brings the review into the team’s process; the responsible people still obtain approvals and carry out the corrections.</p>
+<p>The <a href="https://github.com/hermodlabs/sample_code/tree/main/gift-kit-preflight"><strong>Gift-kit Preflight repository directory</strong></a> contains the complete application, both scenario manifests, case inputs, pinned app and tests. Core excerpts retain their <a href="https://github.com/hermodlabs/sample_code/tree/e638f7231c9b1a1592d560daed256eeee6ffddd1/gift-kit-preflight">public source reference</a>; the <a href="../../../../assets/use-cases/gift-kit-readiness/preflight/decision-views/source-snapshot.zip">current client source snapshot</a> includes the shared report renderer shown here.</p>
+<h2 id="resolved-choice">A working list Leah can put back in the owners’ hands.</h2>
+<p>Leah can now separate the work. Morgan’s GIFT-220 has a supported external proposal to review. Taylor’s GIFT-221 has a valid in-house option and a specific external-confirmation mismatch to resolve. Riley’s GIFT-222 needs records that actually cover the later work or a revised plan. Devon’s GIFT-223 already supplies its own late records and supports the $400 external package with 35 minutes before cutoff.</p>
+<p>The developer’s choice produces a concrete handoff too. The company script builds the working list while the CLI applies the existing app’s requirements and preference. Each calculated row retains its native inputs and result; an input or assessment problem remains a separate finding. The developer maintains the company’s file mappings and report format around that shared review.</p>
+<p>Taylor can carry GIFT-221’s complete case into the <a href="../resolve-a-handoff-exception/index.html">SDK handoff desk</a>, preserving the basis for its current $300, T+40 min proposal while a new confirmation is obtained. Leah can take the supported proposals to production and finance for review. She has an owner and a concrete next action for each campaign, with the supporting case available when the conversation moves from screening to a decision.</p>
 
 <footer class="use-case-article-references" aria-labelledby="source">
   <details class="disclosure use-case-source-disclosure">
@@ -300,8 +334,8 @@
     <div class="use-case-reference-grid">
       <div>
         <h3 id="code-and-shared-inputs">Code and shared inputs</h3>
-        <p>The <a href="https://github.com/hermodlabs/sample_code/tree/e638f7231c9b1a1592d560daed256eeee6ffddd1/gift-kit-preflight">pinned public sample</a> supplies the unmodified code, app and four one-day inputs. <a href="https://github.com/hermodlabs/sample_code/blob/e638f7231c9b1a1592d560daed256eeee6ffddd1/gift-kit-preflight/fixtures/campaigns.one-day.json">The one-day manifest</a> selects GIFT-220 through GIFT-223. Both clients contain copies generated from the same maintained canonical inputs; the website introduces no separate scenario adaptation.</p>
-        <p>The <a href="../../../../assets/use-cases/gift-kit-readiness/preflight/verification.json">verification record</a> identifies the source, actual report, native artifacts and captures. Leah, campaign owners, costs, faults and supporting records are fictional teaching inputs.</p>
+        <p>The <a href="https://github.com/hermodlabs/sample_code/tree/e638f7231c9b1a1592d560daed256eeee6ffddd1/gift-kit-preflight">public sample</a> supplies the unchanged app and four one-day inputs. Refreshed report captures and the shared renderer excerpt use the exact <a href="../../../../assets/use-cases/gift-kit-readiness/preflight/decision-views/source-snapshot.zip">retained client snapshot</a>, whose display changes are newer than that public revision. <a href="https://github.com/hermodlabs/sample_code/blob/e638f7231c9b1a1592d560daed256eeee6ffddd1/gift-kit-preflight/fixtures/campaigns.one-day.json">The one-day manifest</a> selects GIFT-220 through GIFT-223. Both clients contain copies generated from the same maintained canonical inputs; the website introduces no separate scenario adaptation.</p>
+        <p>The <a href="../../../../assets/use-cases/gift-kit-readiness/preflight/decision-views/verification.json">verification record</a> identifies the source, actual report, native artifacts and captures. Leah, campaign owners, costs, faults and supporting records are fictional teaching inputs. The comparison describes engineering responsibilities, rather than measured savings or a claim that another implementation cannot provide the same behavior.</p>
       </div>
       <div>
         <h3 id="what-the-example-establishes">What the example establishes</h3>

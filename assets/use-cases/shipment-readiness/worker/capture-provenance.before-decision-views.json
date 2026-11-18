@@ -1,0 +1,151 @@
+{
+  "sourceUrl": "https://hermodlabs.github.io/review_lab/",
+  "capturedAt": "2026-11-16T19:29:06.400Z",
+  "browser": "157.0.8103.78",
+  "viewport": {
+    "width": 1512,
+    "height": 1050
+  },
+  "deviceScaleFactor": 1,
+  "locale": "en-US",
+  "timezone": "America/Chicago",
+  "collection": "App-author example imported from workflow package",
+  "importedPackage": "assets/use-cases/shipment-readiness/author/review-first-shipment-1.0.1.workflow.json",
+  "packageHash": "15cb4aa4b3e76af218b03a6ee0d4ab15581f525922cca5d41838e925e210ff35",
+  "workflow": {
+    "id": "review-first-shipment",
+    "version": "1.0.1",
+    "contentHash": "b787605fe9c32fb54bfccc3a8bcaf61217914832f91144975c0541d5558e4d67"
+  },
+  "example": {
+    "orderId": "ORD-104",
+    "orderRevision": "1",
+    "quantity": 100,
+    "quantityUnit": "case",
+    "fictional": true,
+    "source": "Published workflow → Try worked example; no case values changed.",
+    "reviewer": "Example reviewer",
+    "roles": [
+      "shipment-lead",
+      "finance-reviewer"
+    ],
+    "acceptedAnswers": 25,
+    "evaluatedAndAcceptedSteps": [
+      "evidence",
+      "planning",
+      "planning-fast",
+      "planning-slow",
+      "learning"
+    ],
+    "reviewedRunHash": "9b7c6debc5d983ac882c9f656f6b1fd95b6a84563cec41856c32605a0a64e8b8"
+  },
+  "actions": [
+    "Import the app-author workflow package in a fresh temporary browser context.",
+    "Open Guided reviews → Try worked example.",
+    "Export the supplied unreviewed case for visitor download.",
+    "Review all 25 supplied answers under their assigned roles.",
+    "Evaluate and explicitly accept all five assessments using the published browser calculation workers.",
+    "Inspect saved reports using normal tabs, selectors, and chart controls.",
+    "Capture unedited DOM regions using browser screenshots.",
+    "Create a second worked case for the unreviewed download; both downloads have distinct saved-review identities.",
+    "Import both downloads into one fresh context using Published apps → Import app, workflow or case."
+  ],
+  "notes": [
+    "Screenshots are direct browser captures; no interface labels, findings, styles or overlays were changed.",
+    "Review responsibility is recorded for a fictional demonstration. No verification was bought, shipment reserved, or release executed.",
+    "Element captures and explicit browser crops retain the visible report content; no bitmap editing was used.",
+    "Expected cost uses the example’s explicitly hypothetical 50/50 probability assessment, not record counts."
+  ],
+  "captures": [
+    {
+      "file": "00-review-case-input.png",
+      "state": "Commitment → Deadlines & windows → Reservation cutoff; supplied answer awaiting case-worker review.",
+      "width": 1206,
+      "height": 449,
+      "sha256": "537168852cda115abb60be891a067b910fc3f096a8a9818a7ff09ce66805c440"
+    },
+    {
+      "file": "01-delivery-commitment.png",
+      "state": "Next action → Delivery commitment; reservation and receipt deadlines, quantity and units.",
+      "width": 1158,
+      "height": 356,
+      "sha256": "57ee3f2080a414f791e9e0a9e50fa33e9e7d6cbf4f8ad8becf1f6ee7e67372f1"
+    },
+    {
+      "file": "hero-proposal.png",
+      "state": "Next action → Proposed next actions.",
+      "width": 1158,
+      "height": 554,
+      "sha256": "48b715cdd48ffb89caa2602d25f48e3727b544ff8c2eafef6f3b4f29673197b8"
+    },
+    {
+      "file": "07-decision-brief.png",
+      "state": "Next action → reviewed decision brief, through the proposed next actions.",
+      "width": 1208,
+      "height": 816,
+      "sha256": "905fe929e67ac00b344385a3d210975e06f589bbe91e392c7c92aa57196a2980"
+    },
+    {
+      "file": "02-records-and-possibilities.png",
+      "state": "Planning results → Review the transportation records → Explanations → Overview.",
+      "width": 1206,
+      "height": 842,
+      "sha256": "6d955c2806b19b1b54da92ec8596b903d59616be99d886ab9dcf1f8a238f9c62"
+    },
+    {
+      "file": "03-complete-alternatives.png",
+      "state": "Planning results → Compare complete shipment arrangements → Decision → Complete alternatives.",
+      "width": 1206,
+      "height": 864,
+      "sha256": "e137bd97ffebb5fe542f8ddc5f189a02ed4e50c64c23727e1c530c6fc8735f9e"
+    },
+    {
+      "file": "04-conditions-and-blockers.png",
+      "state": "Plan details → Conditions and blockers; direct plan, not_registered situation, obligation coverage table.",
+      "width": 1206,
+      "height": 643,
+      "sha256": "a2400b69c8eb24273218e4ff5e5346093d39793be2de1cbf3bdfc691863b899f"
+    },
+    {
+      "file": "05-verification-value.png",
+      "state": "Learning Decision → Verification before reservation → Bar chart.",
+      "width": 1158,
+      "height": 532,
+      "sha256": "8ff37317996136ba7812c44d0f9a9ce284a3318916932b3fd6c90514d1198eba"
+    },
+    {
+      "file": "06-verification-timing.png",
+      "state": "Learning Decision → Verification before reservation → Review timing → Timeline.",
+      "width": 1158,
+      "height": 708,
+      "sha256": "0aa2f30ffc1cc3f4d724a8cf1b60fd558629b3684af8ee32cb74c78c1b7c5a60"
+    }
+  ],
+  "downloads": [
+    {
+      "file": "shipment-example.workflow-run.json",
+      "bytes": 318105,
+      "sha256": "8e10b3908bb26bd66d70f1db5158ba7405a816bc5ea74aa8a0a32581babb79c7"
+    },
+    {
+      "file": "shipment-reviewed.workflow-run.json",
+      "bytes": 1782501,
+      "sha256": "626f882aa8b78650bb8afb9cdcf0045cfc4d57175eb81176427d07097c01b805"
+    },
+    {
+      "file": "shipment-decision-brief.md",
+      "bytes": 156172,
+      "sha256": "47d016867dd9e57fef1d0ef6341f7a78eb0289b0855dc3bb0c295d6b53b0bfed"
+    }
+  ],
+  "verification": {
+    "completeBrief": true,
+    "expectedCost": 5200,
+    "immediateBackupCost": 6000,
+    "expectedImprovement": 800,
+    "importedUnreviewedCase": true,
+    "importedReviewedCase": true,
+    "distinctCaseSnapshots": true,
+    "pageErrors": []
+  }
+}

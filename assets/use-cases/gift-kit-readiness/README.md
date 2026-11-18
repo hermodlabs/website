@@ -14,6 +14,12 @@ configurations, packages and independently authored scenario suites are retained
 beside this document. `fixture-manifest.json` records the bytes and SHA-256 of
 every generated verification artifact.
 
+## Current presentation
+
+The 18 November 2026 article refresh uses Decision Lab’s decision-focused screens: read the finding and next review task first, then open selected-option details, evidence explanations or the complete report when needed. These screens present the existing calculations; the one-day app/workflow releases, case inputs and original verification artifacts remain unchanged. Capture receipts identify the current local working build and preserve earlier capture history.
+
+The first two stories still distinguish a five-minute minimum from the authored ten-minute minimum. The connected CLI/SDK clients still use their separate fixed five-minute-minimum app with ten minutes planned. Their current shared views do not merge those policies, extend a record’s validity or establish that work occurred. Exact working client source snapshots are identified separately where they are newer than the public sample repository.
+
 ## The business problem
 
 A team has 120 gift kits to hand off within one day and a $600 spending limit.

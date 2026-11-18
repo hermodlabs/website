@@ -15,14 +15,14 @@
 
 
   <title>The confirmation arrived. Which arrangement can Maya put forward? | Hermod Labs</title>
-  <meta name="description" content="Follow a flagged order into a custom React interface. A small React hook connects Maya’s record changes directly to SDK validation, assessment and a proposal the team can review.">
+  <meta name="description" content="Follow a flagged order into a custom React interface. The SDK validates and assesses Maya’s records; its shared decision view presents the proposal, complete alternatives and supporting report.">
   <meta name="author" content="Jonathan Nacionales">
 
   <link rel="canonical" href="https://hermodlabs.com/use-cases/supply-chain/shipment-readiness/resolve-a-shipment-exception/">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Hermod Labs">
   <meta property="og:title" content="The confirmation arrived. Which arrangement can Maya put forward? | Hermod Labs">
-  <meta property="og:description" content="Follow a flagged order into a custom React interface. A small React hook connects Maya’s record changes directly to SDK validation, assessment and a proposal the team can review.">
+  <meta property="og:description" content="Follow a flagged order into a custom React interface. The SDK validates and assesses Maya’s records; its shared decision view presents the proposal, complete alternatives and supporting report.">
   <meta property="og:url" content="https://hermodlabs.com/use-cases/supply-chain/shipment-readiness/resolve-a-shipment-exception/">
   <meta property="og:image" content="https://hermodlabs.com/assets/hermod-wordmark.jpeg">
 
@@ -98,7 +98,7 @@
 
     <p class="eyebrow">Shipment readiness / SDK integration</p>
     <h1>The confirmation arrived. Which arrangement can Maya put forward?</h1>
-    <p class="reading-description">Follow a flagged order into a custom React interface. A small React hook connects Maya’s record changes directly to SDK validation, assessment and a proposal the team can review.</p>
+    <p class="reading-description">Follow a flagged order into a custom React interface. The SDK validates and assesses Maya’s records; its shared decision view presents the proposal, complete alternatives and supporting report.</p>
     <p class="reading-meta">Jonathan Nacionales <span aria-hidden="true">·</span> 10 min read</p>
   </div>
   <figure class="reading-cover">
@@ -116,6 +116,7 @@
       <li><a href="#confirmation-scope">Record what the new confirmation covers.</a></li>
       <li><a href="#reassess">Withdraw the old recommendation while records change.</a></li>
       <li><a href="#different-findings">Keep blocked shipments and input problems distinct.</a></li>
+      <li><a href="#inspect-the-basis">Reuse the decision screen and keep its complete basis available.</a></li>
       <li><a href="#retain-the-review">Carry the complete review into the handoff.</a></li>
       <li><a href="#team-interface">A team’s interface. A consistent shipment review.</a></li>
       <li><a href="#source">Sources and scope</a></li>
@@ -152,7 +153,7 @@
   <li class="use-case-flow-focus"><span class="use-case-flow-role">Maya and the SDK</span><strong>Record and reassess.</strong><span>Enter the supplied confirmation, review the complete shipment and compare the new finding.</span></li>
   <li><span class="use-case-flow-role">Responsible owners</span><strong>Review the proposal.</strong><span>Use the retained calculation to support the approval and reservation handoff.</span></li>
 </ol>
-<p>The screen keeps the order revision, destination, expense limit, delivery deadline and reservation cutoff above the editable records. Alongside the quote and confirmation forms, it displays the arrangement comparison and any failed conditions. An arrangement brings the shipment’s route, preparation, timing, resources and permissions into a complete combination that can be assessed together.</p>
+<p>The screen keeps the order revision, destination, expense limit, delivery deadline and reservation cutoff above the editable records. Alongside the quote and confirmation forms, the shared decision view starts with the business question, comparison priority, complete arrangements and material blockers. An arrangement brings the shipment’s route, preparation, timing, resources and permissions into a complete combination that can be assessed together.</p>
 <p>Maya selects the revised order, checks the loaded records and selects <strong>Review arrangements</strong> to establish the current proposal. Loading or importing a case prepares the form; calculation is an explicit action.</p>
 <p>The developer connects the screen through <code>useShipmentReview</code>, a small React hook. It creates the Decision Lab instance and a browser worker using the public SDK:</p>
 
@@ -169,8 +170,8 @@
 
 
 <figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/shipment-readiness/reservation-desk/desk-first-view.png" tabindex="-1" aria-label="Open full-size shipment reservation desk screenshot"><img src="../../../../assets/use-cases/shipment-readiness/reservation-desk/desk-first-view.png" width="1440" height="1050" alt="The working Shipment Reservation Desk for ORD-105 revision 2 shows a $5,000 expense limit, freight quote controls and Direct proposed for reservation at $4,000, arriving Friday at noon." loading="lazy" decoding="async"></a>
-  <figcaption><span>After Maya selects the revised order and reviews its arrangements, Direct is preferred. The shipment basis, quote form and calculated proposal stay in the same working screen.</span><a href="../../../../assets/use-cases/shipment-readiness/reservation-desk/desk-first-view.png">View full size</a></figcaption>
+  <a href="../../../../assets/use-cases/shipment-readiness/reservation-desk/decision-views/desk-first-view.png" tabindex="-1" aria-label="Open full-size shipment reservation desk screenshot"><img src="../../../../assets/use-cases/shipment-readiness/reservation-desk/decision-views/desk-first-view.png" width="1440" height="1050" alt="The working Shipment Reservation Desk for ORD-105 revision 2 shows a $5,000 expense limit, freight quote controls and Direct proposed for reservation at $4,000, arriving Friday at noon." loading="lazy" decoding="async"></a>
+  <figcaption><span>After Maya selects the revised order and reviews its arrangements, Direct is preferred. The shipment basis, quote form and calculated proposal stay in the same working screen.</span><a href="../../../../assets/use-cases/shipment-readiness/reservation-desk/decision-views/desk-first-view.png">View full size</a></figcaption>
 </figure>
 
 
@@ -203,15 +204,15 @@
 
 
 <figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/shipment-readiness/reservation-desk/confirmation-record.png" tabindex="-1" aria-label="Open full-size shipment reservation desk screenshot"><img src="../../../../assets/use-cases/shipment-readiness/reservation-desk/confirmation-record.png" width="567" height="562" alt="The consolidation confirmation form records NEW-SLOT-105-R2 as confirmed for ORD-105 revision 2, ship point SP-B, destination DC-X and ship date November 18, 2026, with a separate disclosure for confirmation and validity times." loading="lazy" decoding="async"></a>
-  <figcaption><span>Maya records the fictional newly issued confirmation and checks the order and location it covers. Confirmation and validity times remain available in the form’s disclosure.</span><a href="../../../../assets/use-cases/shipment-readiness/reservation-desk/confirmation-record.png">View full size</a></figcaption>
+  <a href="../../../../assets/use-cases/shipment-readiness/reservation-desk/decision-views/confirmation-record.png" tabindex="-1" aria-label="Open full-size shipment reservation desk screenshot"><img src="../../../../assets/use-cases/shipment-readiness/reservation-desk/decision-views/confirmation-record.png" width="567" height="562" alt="The consolidation confirmation form records NEW-SLOT-105-R2 as confirmed for ORD-105 revision 2, ship point SP-B, destination DC-X and ship date November 18, 2026, with a separate disclosure for confirmation and validity times." loading="lazy" decoding="async"></a>
+  <figcaption><span>Maya records the fictional newly issued confirmation and checks the order and location it covers. Confirmation and validity times remain available in the form’s disclosure.</span><a href="../../../../assets/use-cases/shipment-readiness/reservation-desk/decision-views/confirmation-record.png">View full size</a></figcaption>
 </figure>
 
 
 <p>The desk changes only the advertised quote and confirmation fields. It leaves the case’s supporting permissions intact. If those permissions covered the wrong revision, a new slot confirmation would not repair them.</p>
 
 <h2 id="reassess">Withdraw the old recommendation while records change.</h2>
-<p>As soon as Maya edits a field, the desk shows <strong>Needs reassessment</strong>. The earlier result stays visible as a comparison, while the current recommendation is cleared. It cannot keep presenting Direct as a current finding about records that have changed.</p>
+<p>As soon as Maya edits a field, the desk shows <strong>Needs reassessment</strong>. The earlier result remains available in its comparison disclosure, while the current recommendation is cleared. It cannot keep presenting Direct as a current finding about records that have changed.</p>
 
 
 <figure class="article-code">
@@ -221,6 +222,14 @@
     setStatus(&#39;dirty&#39;);
     setIssues([]);
   }</code></pre>
+</figure>
+
+<p>The earlier run is a separate, initially closed comparison. When Maya opens it, the shared view is explicitly marked as belonging to earlier inputs:</p>
+
+
+<figure class="article-code">
+  <figcaption id="code-previous">Keep the earlier calculation explicitly stale · <a href="../../../../assets/use-cases/shipment-readiness/reservation-desk/decision-views/source/src/App.jsx.txt">src/App.jsx, lines 372–372</a></figcaption>
+  <pre tabindex="0" role="region" aria-labelledby="code-previous"><code class="language-jsx">        &lt;DecisionView report={earlierRun.report} profile={config.decisionPresentation} stale /&gt;</code></pre>
 </figure>
 
 <p>The hook also interrupts superseded work. An abort controller and request counter prevent a late calculation for an older draft or another order from replacing the current screen.</p>
@@ -253,8 +262,8 @@
 
 
 <figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/shipment-readiness/reservation-desk/current-confirmation.png" tabindex="-1" aria-label="Open full-size shipment reservation desk screenshot"><img src="../../../../assets/use-cases/shipment-readiness/reservation-desk/current-confirmation.png" width="772" height="896" alt="After reassessment, Consolidated is preferred at $5,000, arriving Thursday at 6 p.m. Direct still passes at $4,000, arriving Friday at noon; Backup is blocked by the expense limit. The earlier Direct proposal remains labelled as the comparison." loading="lazy" decoding="async"></a>
-  <figcaption><span>The actual SDK result after recording the current confirmation: Consolidated is now preferred. The desk keeps Direct’s earlier proposal beneath the complete arrangement comparison.</span><a href="../../../../assets/use-cases/shipment-readiness/reservation-desk/current-confirmation.png">View full size</a></figcaption>
+  <a href="../../../../assets/use-cases/shipment-readiness/reservation-desk/decision-views/current-confirmation.png" tabindex="-1" aria-label="Open full-size shipment reservation desk screenshot"><img src="../../../../assets/use-cases/shipment-readiness/reservation-desk/decision-views/current-confirmation.png" width="772" height="970" alt="The shared DecisionView shows Consolidated preferred at $5,000, arriving Thursday at 6 p.m., with Direct and Backup in the complete arrangement comparison. Selected option details, Technical inspection and the collapsed earlier proposal are available below." loading="lazy" decoding="async"></a>
+  <figcaption><span>The same SDK report now supplies the shared DecisionView. It presents the priority, complete alternatives and material blockers first; the earlier proposal is retained in a separate disclosure.</span><a href="../../../../assets/use-cases/shipment-readiness/reservation-desk/decision-views/current-confirmation.png">View full size</a></figcaption>
 </figure>
 
 
@@ -275,22 +284,31 @@
   </table>
 </div>
 <p>The currency diagnostic comes from the form adapter before SDK evaluation. A complete calculation in which no arrangement passes is a business finding. A cancelled, incomplete or unavailable calculation cannot establish a current proposal. The desk keeps an earlier complete result labelled as the comparison instead of using it as a fallback recommendation.</p>
-<p>The hook uses <code>useMemo</code> to derive the current and earlier summaries from the retained runs. Inside <code>summarizeRun</code>, the SDK’s public <code>commitment.resolveCommitmentAssessment</code> helper reads the retained assessment and report:</p>
+<h2 id="inspect-the-basis">Reuse the decision screen and keep its complete basis available.</h2>
+<p>The developer passes the retained report to <code>DecisionView</code> from <code>@decision-lab/react-views</code>:</p>
 
 
 <figure class="article-code">
-  <figcaption id="code-display">Read the assessment through the public SDK helper · <a href="https://github.com/hermodlabs/sample_code/blob/7e2bb922b9b4275a786d85395a82e08e4df5e8d7/shipment-reservation-desk/src/shipment.js#L197-L203">src/shipment.js, lines 197–203</a></figcaption>
-  <pre tabindex="0" role="region" aria-labelledby="code-display"><code class="language-javascript">  // The public resolver restores the SDK&#39;s retained assessment. Consumers do
-  // not need to traverse normalized report tables or implement the decoder.
-  const assessment = commitment.resolveCommitmentAssessment(run.assessment, run.report);
-  if (assessment.status !== &#39;complete&#39; || assessment.coverage.complete !== true
-    || assessment.coverage.admissionComplete !== true) {
-    return unavailable(&#39;The calculation has not checked every admitted arrangement and situation.&#39;);
-  }</code></pre>
+  <figcaption id="code-display">Render a decision directly from the complete SDK report · <a href="../../../../assets/use-cases/shipment-readiness/reservation-desk/decision-views/source/README.md.txt">README.md, lines 157–160</a></figcaption>
+  <pre tabindex="0" role="region" aria-labelledby="code-display"><code class="language-jsx">import { DecisionView } from &#39;@decision-lab/react-views&#39;;
+import &#39;@decision-lab/react-views/styles.css&#39;;
+
+&lt;DecisionView report={run.report} profile={config.decisionPresentation} /&gt;</code></pre>
 </figure>
 
-<p>That helper exposes the calculated plans, failed conditions, expenses, arrival values and preferred ties. The screen checks completeness, applies its business labels and formats the comparison. The developer can use the supported assessment interface without traversing internal report tables or writing another shipment evaluator.</p>
-<p>The team gets familiar language and a compact layout while the requirements and ranking remain in the app configuration. A new business requirement belongs in a deliberately reviewed app release.</p>
+<p>The SDK prepares the decision projection; the shared React component presents it. Maya sees the supported finding, the arrival-first comparison priority, complete alternatives, costs and material blockers before opening the detailed analysis. The application’s presentation profile supplies business labels, selected report fields and explicit currency and time formatting.</p>
+<p>Rendering that report does not assess the edited form, renew a permission or change the ranking. The full calculation remains the basis. Distinct complete arrangements and genuine preferred ties stay distinct; a presentation setting cannot turn a failed requirement into a pass.</p>
+<p>Maya can select an arrangement and open <strong>Selected option details</strong> for its requirements and schedule. <strong>Technical inspection → Inspect complete report</strong> opens the complete native report, including its schedule and representation controls. <strong>Return to decision</strong> brings her back to the comparison without another calculation.</p>
+
+
+
+<figure class="use-case-figure">
+  <a href="../../../../assets/use-cases/shipment-readiness/reservation-desk/decision-views/technical-inspection.png" tabindex="-1" aria-label="Open full-size shipment reservation desk screenshot"><img src="../../../../assets/use-cases/shipment-readiness/reservation-desk/decision-views/technical-inspection.png" width="772" height="1243" alt="The complete native schedule is opened explicitly from Technical inspection in the shared DecisionView, with the full report’s navigation and representation controls." loading="lazy" decoding="async"></a>
+  <figcaption><span>Technical inspection opens the complete retained report. Return to decision restores the business comparison without another assessment.</span><a href="../../../../assets/use-cases/shipment-readiness/reservation-desk/decision-views/technical-inspection.png">View full size</a></figcaption>
+</figure>
+
+
+<p>The developer reuses both the modeled review and this report interface. They still own the shipment forms, trustworthy record mapping and result lifecycle. A different business requirement belongs in a reviewed app release; business wording and display columns belong in the presentation profile.</p>
 
 <h2 id="retain-the-review">Carry the complete review into the handoff.</h2>
 <p>Maya can retain more than a screenshot of the preferred option. The desk’s <strong>Download SDK run</strong> control saves the complete native <code>decision-lab-run/1</code> result, including its evaluated inputs, assessment and prepared report:</p>
@@ -305,13 +323,13 @@
 
 <p>The SDK renders the run as JSON for the download; the working screen presents tables and explanations. Its identity records the app release used for the calculation. A complete blocked result can be retained too. The download becomes available only when a complete current result exists.</p>
 <p><strong>Download case inputs</strong> separately saves the canonical inputs for a handoff to another tool or a later review. The desk can import those inputs, or a case bound to the pinned app, and prepare the form for a fresh assessment.</p>
-<p>The earlier result remains comparison state in the current React session; it is not bundled into the current SDK-run download. The screen has no automatic browser save or archived-run restoration. Maya retains the case inputs before leaving if she needs to preserve her edits, and keeps any calculation records needed for the handoff.</p>
+<p>The earlier result remains in its comparison disclosure in the current React session; it is not bundled into the current SDK-run download. The screen has no automatic browser save or archived-run restoration. Maya retains the case inputs before leaving if she needs to preserve her edits, and keeps any calculation records needed for the handoff.</p>
 <p>That record supports the team’s review of the proposal. It does not authenticate the carrier’s confirmation, grant authority or reserve freight. Actual approvals and booking remain with the responsible people. The example also assesses one shipment with its own recorded resources; it does not allocate a shared truck, dock or cash pool across the batch.</p>
 
 <h2 id="team-interface">A team’s interface. A consistent shipment review.</h2>
 <p>Maya can now explain the change to both launch and finance: the current confirmation removes Consolidated’s blocker; the arrival-first rules prefer its Thursday delivery; and the $5,000 expense stays within the limit. Operations can inspect the record that supports the proposal before proceeding.</p>
 <p>The CLI gave her a list of shipments needing attention. The SDK lets a developer put the same review inside a working interface for resolving one of those exceptions. Reusable decision patterns remain behind the published app; the surrounding forms, labels and handoff reflect the team’s own work.</p>
-<p>The <a href="https://github.com/hermodlabs/sample_code/tree/main/shipment-reservation-desk"><strong>Shipment Reservation Desk repository directory</strong></a> contains the complete React application, prepared cases, fixed app package and tests. Start with <a href="https://github.com/hermodlabs/sample_code/blob/7e2bb922b9b4275a786d85395a82e08e4df5e8d7/shipment-reservation-desk/src/useShipmentReview.js"><code>useShipmentReview.js</code></a> for the direct SDK integration and <a href="https://github.com/hermodlabs/sample_code/blob/7e2bb922b9b4275a786d85395a82e08e4df5e8d7/shipment-reservation-desk/src/shipment.js"><code>shipment.js</code></a> for the form conversions and assessment summary. The selected excerpts link to the <a href="https://github.com/hermodlabs/sample_code/tree/7e2bb922b9b4275a786d85395a82e08e4df5e8d7/shipment-reservation-desk">exact source revision used for this article</a>, including the surrounding validation and cancellation handling.</p>
+<p>The <a href="https://github.com/hermodlabs/sample_code/tree/main/shipment-reservation-desk"><strong>Shipment Reservation Desk repository directory</strong></a> provides the public example and prepared cases. The <a href="../../../../assets/use-cases/shipment-readiness/reservation-desk/decision-views/source-snapshot.zip">current client source snapshot</a> contains the shared-view integration shown here, including its forms, browser-worker lifecycle and tests. Excerpts link to their exact retained source or the unchanged public implementation they describe.</p>
 <p><strong>Use the CLI to find the shipment exceptions. Use a custom SDK interface to work through the records and review the resulting proposal.</strong></p>
 
 <footer class="use-case-article-references" aria-labelledby="source">
@@ -323,12 +341,12 @@
         <p>Terry Clear’s <a href="https://www.8thandwalton.com/blog/case-study-walmart-launch">8th &amp; Walton Walmart launch case</a>, June 4, 2025, describes item-alignment corrections, cancelling and reissuing purchase orders, and changing freight terms. It provides operational context for this series; it does not establish that the supplier used Decision Lab.</p>
         <p><a href="https://corporate.walmart.com/content/dam/corporate/documents/suppliers/apply-to-be-a-supplier/supplier-checklist.pdf#page=11">Walmart’s Supplier Checklist, page 11</a>, is the series’ original collect-supplier ship-point setup reference. The fictional confirmation requirement, people, records and numerical outcomes are not attributed to those sources.</p>
         <h3 id="implementation-and-captures">Implementation and captures</h3>
-        <p>The <a href="https://github.com/hermodlabs/sample_code/tree/7e2bb922b9b4275a786d85395a82e08e4df5e8d7/shipment-reservation-desk">pinned public React sample</a> supplies the implementation and prepared cases. Code excerpts retain their exact source lines. The <a href="../../../../assets/use-cases/shipment-readiness/reservation-desk/verification.json">verification record</a> identifies the source, runtime checks and working-interface captures.</p>
+        <p>The <a href="https://github.com/hermodlabs/sample_code/tree/7e2bb922b9b4275a786d85395a82e08e4df5e8d7/shipment-reservation-desk">public React example</a> is the repository reference. Refreshed excerpts and captures use the exact <a href="../../../../assets/use-cases/shipment-readiness/reservation-desk/decision-views/source-snapshot.zip">retained client snapshot</a>, whose shared-view changes are newer than that public revision. The <a href="../../../../assets/use-cases/shipment-readiness/reservation-desk/decision-views/verification.json">verification record</a> identifies source hashes, matching CLI findings, browser-worker checks and captures. The app package and prepared case inputs remain unchanged.</p>
       </div>
       <div>
         <h3 id="worked-example-boundaries">Worked-example boundaries</h3>
         <p>The cases have a fixed fictional review time and independent resource allocations. The continuation supplies a new revision-2 confirmation for ORD-105 while retaining the other scope and validity fields; its current permissions were already supplied. The form does not obtain or authenticate that confirmation.</p>
-        <p>The SDK evaluates the same fixed shipment app as the CLI. The React application supplies record mapping, input diagnostics, result lifecycle and presentation. Its forms and report projection target these three shipment arrangements; a different operating profile needs explicit mapping and presentation work.</p>
+        <p>The SDK evaluates the same fixed shipment app as the CLI. The React application supplies record mapping, input diagnostics and result lifecycle, while the SDK and shared view supply the decision presentation. Its forms and presentation profile target these three shipment arrangements; a different operating profile needs explicit mapping and presentation work.</p>
         <p>This is a standalone planning review, with no guided-workflow answer acceptance, ERP connection, authentication, freight booking or portfolio allocation. A calculated proposal remains subject to human review and the actual operating process.</p>
       </div>
     </div>
