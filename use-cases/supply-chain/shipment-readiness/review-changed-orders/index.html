@@ -147,7 +147,7 @@
 <p>Now Maya has proposals for several shipments, and revised purchase orders arrive alongside fresh quote and confirmation exports. Launch still wants the goods early. Finance expects the expense limit to hold. Operations needs each proposal to be supported by records for the order it will actually ship.</p>
 <p>Before the reservation cutoff, Maya needs to know <strong>which recommendations still stand, which have changed and which shipments need someone’s attention</strong>. Repeating the review shipment by shipment would mean bringing information from several systems together each time.</p>
 <p>A supplier’s developer builds a small integration around the existing Decision Lab CLI. It reads company exports, prepares each shipment’s inputs, runs the same published review and gives Maya one exception report.</p>
-<p class="use-case-example-note">Maya, the orders and the records are fictional. The scenario uses four independent shipments and the <a href="https://github.com/hermodlabs/sample_code/tree/main/shipment-exceptions">public shipment-exceptions sample code</a>. The excerpts below link to their full source files. <a href="#source">Sources and scope</a> are at the end.</p>
+<p class="use-case-example-note">Maya, the orders and the records are fictional. The scenario uses four independent shipments and the <a href="https://github.com/hermodlabs/sample_code/tree/main/shipping/shipment-exceptions">shipment-exceptions sample</a>. Each excerpt links to its exact public source revision. <a href="#source">Sources and scope</a> are at the end.</p>
 
 <h2 id="shared-reference">A shared reference: refresh, compare, review.</h2>
 <ol class="use-case-review-flow" aria-label="From revised company records to a reviewed shipment proposal">
@@ -186,7 +186,7 @@
 
 
 <figure class="article-code csv-excerpt">
-  <figcaption id="csv-orders">The current order revisions · <a href="https://github.com/hermodlabs/sample_code/blob/57c3adc1b90d95e590408dc73cbf5403e1c9b9c7/shipment-exceptions/fixtures/morning/orders.csv">fixtures/morning/orders.csv</a> · Selected columns and rows</figcaption>
+  <figcaption id="csv-orders">The current order revisions · <a href="https://github.com/hermodlabs/sample_code/blob/1114cfefd5ffa580b78c8f43610c3070480d2801/shipping/shipment-exceptions/fixtures/morning/orders.csv">fixtures/morning/orders.csv</a> · Selected columns and rows</figcaption>
   <pre tabindex="0" role="region" aria-labelledby="csv-orders"><code class="language-csv">shipment_id,order_id,order_revision,quantity,currency,expense_limit
 SHIP-104,ORD-104,1,100,USD,5000.00
 SHIP-105,ORD-105,2,100,USD,5000.00
@@ -198,24 +198,12 @@ SHIP-106,ORD-106,2,100,USD,5000.00</code></pre>
 
 
 <figure class="article-code csv-excerpt">
-  <figcaption id="csv-quotes">Quoted costs and a currency mismatch · <a href="https://github.com/hermodlabs/sample_code/blob/57c3adc1b90d95e590408dc73cbf5403e1c9b9c7/shipment-exceptions/fixtures/morning/quotes.csv">fixtures/morning/quotes.csv</a> · Selected columns and rows</figcaption>
+  <figcaption id="csv-quotes">Quoted costs and a currency mismatch · <a href="https://github.com/hermodlabs/sample_code/blob/1114cfefd5ffa580b78c8f43610c3070480d2801/shipping/shipment-exceptions/fixtures/morning/quotes.csv">fixtures/morning/quotes.csv</a> · Selected columns and rows</figcaption>
   <pre tabindex="0" role="region" aria-labelledby="csv-quotes"><code class="language-csv">shipment_id,order_id,order_revision,arrangement,currency,total_cost
 SHIP-105,ORD-105,2,direct,USD,4000.00
 SHIP-105,ORD-105,2,backup,USD,6000.00
 SHIP-105,ORD-105,2,consolidated,USD,5000.00
 SHIP-107,ORD-107,1,direct,EUR,4000.00</code></pre>
-</figure>
-
-
-
-<figure class="article-code">
-  <figcaption id="code-exports">Read and validate the current exports · <a href="https://github.com/hermodlabs/sample_code/blob/57c3adc1b90d95e590408dc73cbf5403e1c9b9c7/shipment-exceptions/src/inputs.mjs#L185-L190">src/inputs.mjs, lines 185–190</a></figcaption>
-  <pre tabindex="0" role="region" aria-labelledby="code-exports"><code class="language-javascript">  const snapshots = await Promise.all(specs.map(async ([name, columns]) =&gt; {
-    const csv = parseCsv(await readSource(path.join(inputDir, name)), { source: name });
-    checkColumns(csv, columns, name);
-    return csv.rows;
-  }));
-  const [orders, quotes, slots] = snapshots;</code></pre>
 </figure>
 
 <p>Those exports supplement a <strong>retained case for each shipment</strong>. The retained case supplies the other facts needed by the complete review: people, resources, calendars, registration records and scoped permissions. Three new CSV files do not establish all of those conditions.</p>
@@ -226,7 +214,7 @@ SHIP-107,ORD-107,1,direct,EUR,4000.00</code></pre>
 
 
 <figure class="article-code csv-excerpt">
-  <figcaption id="csv-slots">The confirmation still covers revision 1 · <a href="https://github.com/hermodlabs/sample_code/blob/57c3adc1b90d95e590408dc73cbf5403e1c9b9c7/shipment-exceptions/fixtures/morning/slot-confirmations.csv">fixtures/morning/slot-confirmations.csv</a> · Selected columns and rows</figcaption>
+  <figcaption id="csv-slots">The confirmation still covers revision 1 · <a href="https://github.com/hermodlabs/sample_code/blob/1114cfefd5ffa580b78c8f43610c3070480d2801/shipping/shipment-exceptions/fixtures/morning/slot-confirmations.csv">fixtures/morning/slot-confirmations.csv</a> · Selected columns and rows</figcaption>
   <pre tabindex="0" role="region" aria-labelledby="csv-slots"><code class="language-csv">shipment_id,order_id,order_revision,arrangement,slot_reference,status
 SHIP-104,ORD-104,1,consolidated,SLOT-C104,confirmed
 SHIP-105,ORD-105,1,consolidated,SLOT-C105,confirmed
@@ -234,20 +222,17 @@ SHIP-106,ORD-106,1,consolidated,SLOT-C106,confirmed</code></pre>
 </figure>
 
 <p>The slot’s <code>status</code> is <code>confirmed</code>, but its <code>order_revision</code> is still <code>1</code>. A confirmed slot for the old order does not establish that the changed order has a slot.</p>
+<p>The importer keeps confirmed, cancelled and conflicting slot records distinct. No row means no confirmation was supplied. These are states of a particular supporting record, separate from the shipment’s calculated outcome. The app still checks the record’s scope and interval.</p>
 <p><strong>Changing the confirmation’s revision number to match the new order would manufacture supporting evidence.</strong> The same applies to an authorization: changing the purchase order does not grant permission to act on its replacement.</p>
 <p>The preparation code starts from a copy of the retained case and replaces only the fields owned by these exports. It preserves the supporting evidence and permissions:</p>
 
 
 <figure class="article-code">
-  <figcaption id="code-scope">Preserve the retained case and its supporting scopes · <a href="https://github.com/hermodlabs/sample_code/blob/57c3adc1b90d95e590408dc73cbf5403e1c9b9c7/shipment-exceptions/src/inputs.mjs#L234-L241">src/inputs.mjs, lines 234–241</a></figcaption>
-  <pre tabindex="0" role="region" aria-labelledby="code-scope"><code class="language-javascript">    if (!job.errors.length) {
-      // Only the stated dynamic fields are replaced. Keep original evidence and
-      // permissions byte-for-byte in value, including their old revision IDs.
-      job.caseData = structuredClone(retainedCase);
+  <figcaption id="code-scope">Preserve the retained case and replace only mapped records · <a href="https://github.com/hermodlabs/sample_code/blob/1114cfefd5ffa580b78c8f43610c3070480d2801/shipping/shipment-exceptions/src/inputs.mjs#L238-L241">src/inputs.mjs, lines 238–241</a></figcaption>
+  <pre tabindex="0" role="region" aria-labelledby="code-scope"><code class="language-javascript">      job.caseData = structuredClone(retainedCase);
       job.caseData.parameters = { ...job.caseData.parameters, ...parameters };
       job.caseData.tables.arrangements = arrangements;
-      job.caseData.tables.slotConfirmations = slotConfirmations;
-    }</code></pre>
+      job.caseData.tables.slotConfirmations = slotConfirmations;</code></pre>
 </figure>
 
 <p>This is why SHIP-105 and SHIP-106 differ. The first has independently supplied current permissions, so Direct can still pass. The second retains permissions for the old revision, so none of its listed arrangements passes. The script does not create the missing authority.</p>
@@ -258,7 +243,7 @@ SHIP-106,ORD-106,1,consolidated,SLOT-C106,confirmed</code></pre>
 
 
 <figure class="article-code">
-  <figcaption id="code-run">Run the pinned review for this shipment · <a href="https://github.com/hermodlabs/sample_code/blob/57c3adc1b90d95e590408dc73cbf5403e1c9b9c7/shipment-exceptions/src/batch.mjs#L240-L244">src/batch.mjs, lines 240–244</a></figcaption>
+  <figcaption id="code-run">Run the pinned review for this shipment · <a href="https://github.com/hermodlabs/sample_code/blob/1114cfefd5ffa580b78c8f43610c3070480d2801/shipping/shipment-exceptions/src/batch.mjs#L217-L221">src/batch.mjs, lines 217–221</a></figcaption>
   <pre tabindex="0" role="region" aria-labelledby="code-run"><code class="language-javascript">        const args = [&#39;run&#39;, &#39;--app&#39;, appFile, &#39;--case&#39;, caseFile, &#39;--reports&#39;, &#39;all&#39;, &#39;--locale&#39;, &#39;en-US&#39;,
           &#39;--timeout-ms&#39;, String(options.timeoutMs ?? 30000), &#39;--max-output-bytes&#39;, &#39;50000000&#39;,
           &#39;--run-id&#39;, `batch-${job.shipmentId}`, &#39;--created-at&#39;, createdAt, &#39;--output&#39;, path.join(directory, &#39;run.json&#39;)];
@@ -266,49 +251,57 @@ SHIP-106,ORD-106,1,consolidated,SLOT-C106,confirmed</code></pre>
         const evaluated = await invokeCLI(args, transcript);</code></pre>
 </figure>
 
-<p><code>invokeCLI</code> calls the public <a href="https://github.com/hermodlabs/sample_code/blob/57c3adc1b90d95e590408dc73cbf5403e1c9b9c7/shipment-exceptions/src/cli.mjs"><code>runCLI</code> entry point from <code>@decision-lab/cli</code></a>, using the same arguments as the <code>decision-lab</code> executable. It retains the exit code and diagnostics along with the calculation. The script supplies no separate shipment evaluator.</p>
+<p><code>invokeCLI</code> calls the public <a href="https://github.com/hermodlabs/sample_code/blob/1114cfefd5ffa580b78c8f43610c3070480d2801/shipping/shipment-exceptions/src/cli.mjs"><code>runCLI</code> entry point from <code>@decision-lab/cli</code></a>, using the same arguments as the <code>decision-lab</code> executable. It retains the exit code and diagnostics along with the calculation. The script supplies no separate shipment evaluator.</p>
 <p>The batch reassesses <strong>every supplied order</strong>. The earlier manifest supplies the comparison basis; it is not a cache that skips unchanged shipments. A baseline using different app rules is rejected rather than presented as an equivalent comparison.</p>
-<p>If a calculation is incomplete or unavailable, the report keeps that distinction. It does not relabel an unfinished calculation as “no arrangement passes.”</p>
+<p><strong>A completed command does not mean a shipment passes.</strong> <code>CLI_EXIT_CODE.COMPLETED</code>, exported by <code>@decision-lab/cli</code>, names exit code zero. The script also requires a usable assessment before showing a current proposal:</p>
+
+
+<figure class="article-code">
+  <figcaption id="code-completion">Require both command completion and a usable assessment · <a href="https://github.com/hermodlabs/sample_code/blob/1114cfefd5ffa580b78c8f43610c3070480d2801/shipping/shipment-exceptions/src/batch.mjs#L231-L235">src/batch.mjs, lines 231–235</a></figcaption>
+  <pre tabindex="0" role="region" aria-labelledby="code-completion"><code class="language-javascript">        if (evaluated.exitCode !== CLI_EXIT_CODE.COMPLETED || !row.current?.available) {
+          row.status = evaluated.exitCode === CLI_EXIT_CODE.INVALID_INPUT ? BATCH_STATUS.INPUT_ERROR : BATCH_STATUS.UNAVAILABLE;
+          if (evaluated.exitCode === CLI_EXIT_CODE.OPERATIONAL_ERROR) row.failureKind = &#39;operational&#39;;
+          row.diagnostics.push(...(row.current?.issues?.map(message =&gt; ({ code: &#39;ASSESSMENT_UNAVAILABLE&#39;, message })) ?? diagnostics(evaluated, &#39;CLI_RUN_FAILED&#39;)));
+        }</code></pre>
+</figure>
+
+<p>SHIP-106 can have a completed calculation establishing that no arrangement passes. SHIP-107’s malformed quote prevents input preparation. A cancelled, incomplete or unavailable calculation needs reassessment instead of a negative business finding; an unrecognized command outcome cannot establish a current proposal either.</p>
+<p>The report adapter checks the SDK’s execution status and retained-report completeness before reading the finding:</p>
+
+
+<figure class="article-code">
+  <figcaption id="code-retention">Check SDK execution and retained-report completeness · <a href="https://github.com/hermodlabs/sample_code/blob/1114cfefd5ffa580b78c8f43610c3070480d2801/shipping/shipment-exceptions/src/report.mjs#L94-L98">src/report.mjs, lines 94–98</a></figcaption>
+  <pre tabindex="0" role="region" aria-labelledby="code-retention"><code class="language-javascript">    assert(run.execution?.status === EXECUTION_STATUS.COMPLETED, `The assessment did not complete (${text(run.execution?.status) || &#39;unknown execution status&#39;}).`);
+    const report = run.report;
+    assert(report?.format === &#39;decision-lab-report/1&#39;, &#39;The run has no complete retained report.&#39;);
+    const completeness = report.completeness;
+    assert(inspectReportCompleteness(report).complete, &#39;The retained report is incomplete or truncated.&#39;);</code></pre>
+</figure>
+
+<p><code>EXECUTION_STATUS</code> and <code>inspectReportCompleteness</code> come from <code>@decision-lab/sdk</code>. The completeness helper checks explicit report-retention flags; it does not establish feasibility, validate identity or grant approval.</p>
+<p>This CLI adapter reads normalized report metadata and tables, so it retains explicit checks of the pinned app, matching inputs, assessment coverage and consistency across the retained tables. It also checks established preference and preserves every preferred tie. The SDK’s native assessment helpers require a resolved assessment; they are not applied to this normalized record. The <a href="../resolve-a-shipment-exception/index.html">custom SDK desk</a> resolves that native payload before using them.</p>
+<p>A limited search can retain a <strong>checked feasible witness</strong>—a complete passing plan—while coverage or preference remains unestablished. That is useful evidence, but it cannot supply Maya’s ranked recommendation here. A complete assessment finding that no arrangement passes remains a finished business result.</p>
 
 <h2 id="company-report">Put the differences in the team’s working format.</h2>
 <p>The company script compares the current calculated proposal with its retained predecessor. It checks the preferred arrangements, their expenses and arrival times, preserving ties.</p>
-<p>A changed recommendation needs review. So does a changed condition even when the preferred arrangement keeps the same name:</p>
+<p>A changed recommendation needs review. So does a changed condition even when the preferred arrangement keeps the same name. The sample’s extracted comparison function keeps those outcomes separate:</p>
 
 
 <figure class="article-code">
-  <figcaption id="code-compare">Distinguish changed proposals from changed conditions · <a href="https://github.com/hermodlabs/sample_code/blob/57c3adc1b90d95e590408dc73cbf5403e1c9b9c7/shipment-exceptions/src/batch.mjs#L85-L91">src/batch.mjs, lines 85–91</a></figcaption>
-  <pre tabindex="0" role="region" aria-labelledby="code-compare"><code class="language-javascript">function classify(current, before, changes) {
-  if (!current?.available) return &#39;unavailable&#39;;
-  if (current.status === &#39;blocked&#39;) return &#39;blocked&#39;;
-  if (!before?.available) return &#39;new&#39;;
-  if (!isDeepStrictEqual(preferredSignature(current), preferredSignature(before))) return &#39;recommendation-changed&#39;;
-  return changes.length ? &#39;conditions-changed&#39; : &#39;unchanged&#39;;
+  <figcaption id="code-compare">Distinguish changed proposals from changed conditions · <a href="https://github.com/hermodlabs/sample_code/blob/1114cfefd5ffa580b78c8f43610c3070480d2801/shipping/shipment-exceptions/src/classify.mjs#L11-L19">src/classify.mjs, lines 11–19</a></figcaption>
+  <pre tabindex="0" role="region" aria-labelledby="code-compare"><code class="language-javascript">export function classify(current, before, changes) {
+  if (!current?.available) return BATCH_STATUS.UNAVAILABLE;
+  if (current.status === REVIEW_OUTCOME.BLOCKED) return BATCH_STATUS.BLOCKED;
+  if (!before?.available) return BATCH_STATUS.NEW;
+  if (!isDeepStrictEqual(preferredSignature(current), preferredSignature(before))) {
+    return BATCH_STATUS.RECOMMENDATION_CHANGED;
+  }
+  return changes.length ? BATCH_STATUS.CONDITIONS_CHANGED : BATCH_STATUS.UNCHANGED;
 }</code></pre>
 </figure>
 
-<p>The developer then renders an HTML report for Maya and a CSV for the logistics team’s spreadsheet. These are company-specific report adapters built around the CLI’s complete report data:</p>
-
-
-<figure class="article-code">
-  <figcaption id="code-report">Write the company’s reports · <a href="https://github.com/hermodlabs/sample_code/blob/57c3adc1b90d95e590408dc73cbf5403e1c9b9c7/shipment-exceptions/src/batch.mjs#L280-L282">src/batch.mjs, lines 280–282</a></figcaption>
-  <pre tabindex="0" role="region" aria-labelledby="code-report"><code class="language-javascript">    await writeFile(path.join(stage, &#39;manifest.json&#39;), json(manifest));
-    await writeFile(path.join(stage, &#39;shipments.html&#39;), renderHTML(rows, metadata));
-    await writeFile(path.join(stage, &#39;shipments.csv&#39;), renderCSV(rows, metadata));</code></pre>
-</figure>
-
-<p>The current report uses <code>RecordsView</code> from <code>@decision-lab/react-views</code> for its shipment queue and arrangement tables. React renders those shared table components into the standalone HTML; the company adapter chooses columns, labels and artifact links:</p>
-
-
-<figure class="article-code">
-  <figcaption id="code-records">Render the company table with the shared RecordsView · <a href="../../../../assets/use-cases/shipment-readiness/exceptions/decision-views/source/src/report.mjs.txt">src/report.mjs, lines 301–306</a></figcaption>
-  <pre tabindex="0" role="region" aria-labelledby="code-records"><code class="language-javascript">function records(id, columns, rows, renderValue) {
-  return renderToStaticMarkup(element(RecordsView, {
-    view: { format: &#39;record-view/1&#39;, id, columns: columns.map(([key, label]) =&gt; ({ key, label })), rows },
-    renderValue,
-  }));
-}</code></pre>
-</figure>
-
+<p><code>REVIEW_OUTCOME</code> and <code>BATCH_STATUS</code> belong to this company adapter. The first distinguishes an eligible, blocked or unavailable review; the second describes the queue and comparison with an earlier review. Neither is an SDK execution status. “Blocked” here means no listed arrangement passes, while “unchanged” means the comparison found no relevant difference. Neither records human approval.</p>
+<p>The developer then renders an HTML report for Maya and a CSV for the logistics team’s spreadsheet. The report uses the shared <code>RecordsView</code> component from <code>@decision-lab/react-views</code>, rendered to standalone HTML with React DOM. The company adapter chooses columns, labels and artifact links.</p>
 <p>The view renders findings already calculated by the CLI. It does not assess shipments while drawing the table. The native run retains every requested report and context, and the team’s CSV remains a separate export.</p>
 <p>For calculated shipments, the report links to source receipts, canonical inputs, validation and the full CLI calculation. Import failures retain their available source diagnostics. Maya can start with the exception list and inspect the basis for a particular proposal without asking a developer to interpret the whole batch.</p>
 
@@ -324,7 +317,7 @@ SHIP-106,ORD-106,1,consolidated,SLOT-C106,confirmed</code></pre>
 <p>“Unchanged” means the comparison found no changed calculated recommendation or inputs. It is not an approval, and it does not establish that the source records are true. Every calculated row still awaits human review.</p>
 
 <h2 id="follow-code">Explore the full implementation.</h2>
-<p>The <a href="https://github.com/hermodlabs/sample_code/tree/main/shipment-exceptions"><strong>shipment-exceptions repository directory</strong></a> contains the public application, sample exports, retained cases, app package and tests. Core execution excerpts retain their public source links. The <a href="../../../../assets/use-cases/shipment-readiness/exceptions/decision-views/source-snapshot.zip">current client source snapshot</a> includes the shared table renderer shown here.</p>
+<p>The <a href="https://github.com/hermodlabs/sample_code/tree/main/shipping/shipment-exceptions"><strong>shipment-exceptions repository directory</strong></a> contains the public application, sample exports, retained cases, app package and tests. The selected excerpts link to the <a href="https://github.com/hermodlabs/sample_code/tree/1114cfefd5ffa580b78c8f43610c3070480d2801/shipping/shipment-exceptions">pinned public revision</a>. Its <a href="../../../../assets/use-cases/sample-code/1114cfefd5ffa580b78c8f43610c3070480d2801/manifest.json">source manifest</a> records the retained files and hashes for those excerpts.</p>
 <p>Follow how the importer preserves source scope, how the fixed app assesses each shipment and how the reporting layer turns the results into Maya’s working list. The full files include the surrounding validation and error handling.</p>
 
 <h2 id="business-handoff">Give the exceptions back to their owners.</h2>
@@ -343,7 +336,7 @@ SHIP-106,ORD-106,1,consolidated,SLOT-C106,confirmed</code></pre>
         <p>Terry Clear’s <a href="https://www.8thandwalton.com/blog/case-study-walmart-launch">8th &amp; Walton Walmart launch case</a>, June 4, 2025, describes item-alignment corrections, cancelling and reissuing purchase orders, and changing freight terms. Those changes provide business context for reassessment. The source does not establish that the supplier used Decision Lab.</p>
         <p><a href="https://corporate.walmart.com/content/dam/corporate/documents/suppliers/apply-to-be-a-supplier/supplier-checklist.pdf#page=11">Walmart’s Supplier Checklist, page 11</a>, remains the original collect-supplier ship-point setup reference used in this series. The fictional orders, quotes, confirmation policy and numerical outcomes are not attributed to those sources.</p>
         <h3 id="code-and-verification">Code and verification</h3>
-        <p>The <a href="https://github.com/hermodlabs/sample_code/tree/57c3adc1b90d95e590408dc73cbf5403e1c9b9c7/shipment-exceptions">pinned public sample</a> supplies the source files and fictional records. The core excerpts retain their exact public source. The current report and shared-view excerpt use the separately retained <a href="../../../../assets/use-cases/shipment-readiness/exceptions/decision-views/source-snapshot.zip">client snapshot</a>; its source hashes and output receipts are recorded below. Historical native artifacts remain available. Compare the <a href="../../../../assets/use-cases/shipment-readiness/exceptions/decision-views/reports/baseline/shipments.html">retained baseline report</a> with the current report. The <a href="../../../../assets/use-cases/shipment-readiness/exceptions/decision-views/verification.json">verification record</a> identifies the source revision and retained output artifacts.</p>
+        <p>The selected code and fictional records come from the <a href="https://github.com/hermodlabs/sample_code/tree/1114cfefd5ffa580b78c8f43610c3070480d2801/shipping/shipment-exceptions">pinned public sample</a>; its <a href="../../../../assets/use-cases/sample-code/1114cfefd5ffa580b78c8f43610c3070480d2801/manifest.json">source manifest</a> records the exact excerpt files and hashes. The screenshots and generated report retain their separately verified <a href="../../../../assets/use-cases/shipment-readiness/exceptions/decision-views/source-snapshot.zip">capture-time client snapshot</a>. Historical native artifacts remain available. Compare the <a href="../../../../assets/use-cases/shipment-readiness/exceptions/decision-views/reports/baseline/shipments.html">retained baseline report</a> with the displayed report. The <a href="../../../../assets/use-cases/shipment-readiness/exceptions/decision-views/verification.json">verification record</a> identifies the original source revision and retained output artifacts; it is not a new execution receipt for this source refresh.</p>
       </div>
       <div>
         <h3 id="what-this-example-establishes">What this example establishes</h3>

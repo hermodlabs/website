@@ -31,6 +31,15 @@
 .blog-figure-scroll { border: 1px solid #dce2e9; background: white; }
 .blog-figure-scroll > a { display: block; width: 100%; min-width: 760px; }
 .blog-figure-scroll img { display: block; width: 100%; height: auto; }
+.blog-pattern-comparison { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; width: calc(100% + var(--reader-figure-extra, 0px)); margin-block: 32px; }
+.blog-pattern-panel { display: flex; flex-direction: column; min-width: 0; margin: 0; padding: 18px; border: 1px solid var(--line); background: #faf9fc; }
+.blog-pattern-panel h3 { margin: 0 0 16px; font-size: 19px; }
+.blog-pattern-image { display: block; flex-grow: 1; background: white; }
+.blog-pattern-image img { display: block; width: 100%; height: auto; }
+.blog-pattern-panel figcaption { margin-top: 18px; }
+.blog-pattern-panel figcaption p { margin-bottom: 14px; }
+.blog-pattern-links { display: flex; flex-wrap: wrap; gap: 10px 18px; }
+.reader-prose .blog-references > .disclosure > summary > .disclosure-label { margin: 0; font: inherit; letter-spacing: inherit; }
 .blog-equation { margin: 30px 0; padding: 20px 18px; border-block: 1px solid var(--line); overflow-x: auto; }
 .blog-equation math { width: max-content; min-width: min-content; max-width: none; margin-inline: auto; font-size: 1.08em; }
 .blog-prose .answer-blank { white-space: nowrap; }
@@ -40,4 +49,5 @@
 @media (max-width: 650px) {
   .blog-editorial { margin-top: 30px; }
   .blog-equation { padding: 16px 12px; }
+  .blog-pattern-comparison { grid-template-columns: minmax(0, 1fr); }
 }

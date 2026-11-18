@@ -1,0 +1,136 @@
+{
+  "format": "marketplace-decision-views-capture/1",
+  "capturedAt": "2026-11-18T15:15:35.152Z",
+  "source": "https://hermodlabs.github.io/review_lab/",
+  "captureUrl": "http://127.0.0.1:5187/",
+  "buildId": "2f12f7f5656a4f5899a9",
+  "currentLocalBuild": true,
+  "viewport": {
+    "width": 1440,
+    "height": 1280,
+    "deviceScaleFactor": 1
+  },
+  "method": "Unedited screenshots of native dialog and decision-brief elements in a fresh Chrome context. All interaction uses normal visible controls with the supplied fictional worked example. No DOM, storage, case, model or result injection; no shared publication.",
+  "collection": {
+    "id": "order-fulfillment",
+    "title": "Order fulfillment",
+    "version": "1.0.0",
+    "contentHash": "b496c5bd229d41b09dae7142712916ec5c72101f2587b80ee863b8a4cac649a9"
+  },
+  "useCase": {
+    "id": "review-first-shipment",
+    "label": "Review a first shipment",
+    "description": "Can we meet this delivery commitment, and what should we verify before committing money?"
+  },
+  "frozenAppIdentity": {
+    "workflowId": "review-first-shipment",
+    "workflowVersion": "1.0.0",
+    "definitionHash": "15e1b4f5b266253280f8eca828fa1e38dd69eecfaabd0c6ef7682e1e53000fdb",
+    "workflowPackageHash": "a26b11ba366c7493cfc1c4901fc8f80d23e1d31315cc8354636b1ffe16b617c5",
+    "dependencies": [
+      {
+        "id": "evidence",
+        "appId": "shipment-review-evidence",
+        "version": 1,
+        "appHash": "719cebdc2595450d8d0b6cd961ad32b443576bcb630cf11912d678679a305bbe",
+        "packageHash": "4ad35aeb54988d9028723f9cb846cee9e71d253160706345b0c46b47886e3010",
+        "pattern": "evidence-review/1"
+      },
+      {
+        "id": "planning",
+        "appId": "shipment-review-planning",
+        "version": 1,
+        "appHash": "754ab18d5e8d34070b4a288bc5a37ade4b2610c4d97979bd82ef358c3f5f26b1",
+        "packageHash": "3a577546ebb9aabff8ebc0c77ff56c1c1a0db57232e33808c1daaf8c4b33f22a",
+        "pattern": "complete-a-commitment/1"
+      },
+      {
+        "id": "learning",
+        "appId": "shipment-review-learning",
+        "version": 1,
+        "appHash": "073b250ac87b16326210c29fdf937f9dd51511efd542c623cca4d729b2b2d08f",
+        "packageHash": "cfcf967bf16ad3c18d38d1167c8131c8957fce0c037ebaace2ca5232a0a0d681",
+        "pattern": "assess-value-of-learning/1"
+      }
+    ],
+    "unchangedAfterNavigation": true
+  },
+  "catalog": {
+    "url": "http://127.0.0.1:5187/app-configs/catalog.json",
+    "exportedAt": "2026-11-16T18:00:00.000Z",
+    "sha256": "c60c644c5cbce5793d30e60dd43fb930c7c6d8c32ded7507f16bd10e2d433c91",
+    "unchangedAfterNavigation": true
+  },
+  "sourcePackages": [
+    {
+      "kind": "collection",
+      "id": "order-fulfillment",
+      "path": "collections/decision-lab/order-fulfillment/1.0.0/collection.collection.json",
+      "bytes": 2000,
+      "sha256": "f060cbe5d902fdaf696b4905f479a5f0a20018c6412efe5dab8901de8b273b57",
+      "contentHash": "b496c5bd229d41b09dae7142712916ec5c72101f2587b80ee863b8a4cac649a9"
+    },
+    {
+      "kind": "workflow",
+      "id": "review-first-shipment",
+      "path": "workflows/review-first-shipment/1.0.0/workflow.workflow.json",
+      "bytes": 926168,
+      "sha256": "57edec2aea6e721f284a8ca77abdd5b044071a2a5431d7c41df62fa841fa31da",
+      "contentHash": "a26b11ba366c7493cfc1c4901fc8f80d23e1d31315cc8354636b1ffe16b617c5"
+    }
+  ],
+  "figures": {
+    "collectionDetails": {
+      "file": "collection-details.png",
+      "image": "/assets/blog/marketplace/decision-views/collection-details.png",
+      "width": 780,
+      "height": 1150,
+      "sha256": "370918fe761fe1ba0caf83c05a19e4697d6db9ed450119bfb40e012d13983d42",
+      "title": "Choose a collection for the work you do",
+      "alt": "Order fulfillment collection details group shipment use cases, a standalone app and a guided review above the Install collection control.",
+      "caption": "A collection organizes related use cases, standalone apps and guided workflows. Install collection adds this release to your local Collections."
+    },
+    "workflowNextStep": {
+      "file": "workflow-next-step.png",
+      "image": "/assets/blog/marketplace/decision-views/workflow-next-step.png",
+      "width": 1136,
+      "height": 873,
+      "sha256": "558a092ce72c24976168c500061c63e608e751aeea77ef34b7bc5b915b38399a",
+      "title": "Start with the next required review",
+      "alt": "The new shipment review opens its decision brief with Next review step, the responsible shipment-lead role, and a button to review shipment identity and units. Supporting findings remain collapsed.",
+      "caption": "The worked example opens at the decision brief. Next review step takes the reviewer to the required task; it does not accept the supplied answer or run an assessment."
+    }
+  },
+  "steps": [
+    "Open Marketplace in a fresh browser context.",
+    "Open Order fulfillment collection details and capture the actual use-case, app, workflow and installation controls.",
+    "Select Install collection and wait for the installed Order fulfillment collection.",
+    "Open Guided reviews and select Try worked example for Review a first shipment.",
+    "Capture the initial decision brief and Next review step without accepting answers or evaluating supporting apps.",
+    "Export the initial workflow run through Review files & history.",
+    "Select Review answer: Shipment identity and units, then export the run again.",
+    "Verify the underlying run and frozen app identities are unchanged and all answers remain unaccepted with zero evaluations."
+  ],
+  "verification": {
+    "freshBrowserContext": true,
+    "initialView": "Decision brief / Next review step",
+    "firstRequiredTask": "Shipment identity and units",
+    "responsibleRole": "shipment-lead",
+    "requiredReviewSteps": 21,
+    "supportingFindingsCollapsed": true,
+    "completeReportsAppended": false,
+    "navigationDoesNotAcceptOrEvaluate": true,
+    "underlyingRunUnchangedAfterNavigation": true,
+    "acceptedAnswersBefore": 0,
+    "acceptedAnswersAfter": 0,
+    "evaluationsBefore": 0,
+    "evaluationsAfter": 0,
+    "retainedRunSha256": "f3266f09744cbb78f08f7197eb0c23d86e99a540518eaf15ce30aeb03f1e5685",
+    "nativeExports": {
+      "beforeSha256": "f3266f09744cbb78f08f7197eb0c23d86e99a540518eaf15ce30aeb03f1e5685",
+      "afterSha256": "f3266f09744cbb78f08f7197eb0c23d86e99a540518eaf15ce30aeb03f1e5685"
+    },
+    "sharedPublicationOccurred": false,
+    "pageErrors": []
+  }
+}

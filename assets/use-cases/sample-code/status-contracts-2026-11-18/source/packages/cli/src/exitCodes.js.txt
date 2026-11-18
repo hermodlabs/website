@@ -1,0 +1,8 @@
+/** Process outcomes, independent of whether a calculated business plan is feasible. */
+export const CLI_EXIT_CODE = Object.freeze(/** @type {const} */ ({
+  COMPLETED: 0,
+  EXPECTATION_FAILED: 1,
+  INVALID_INPUT: 2,
+  UNAVAILABLE: 3,
+  OPERATIONAL_ERROR: 4,
+}));

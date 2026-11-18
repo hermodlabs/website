@@ -1,0 +1,8 @@
+/** Computation outcomes, independent of the assessment's factual or business answer. */
+export const EXECUTION_STATUS = Object.freeze(/** @type {const} */ ({
+  COMPLETED: 'completed',
+  RESOURCE_LIMITED: 'resource-limited',
+  CANCELLED: 'cancelled',
+  TIMED_OUT: 'timed-out',
+  FAILED: 'failed',
+}));

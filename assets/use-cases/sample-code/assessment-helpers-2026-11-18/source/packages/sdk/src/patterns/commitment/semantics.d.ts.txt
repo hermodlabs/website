@@ -1,0 +1,29 @@
+import type { ValidationIssue } from '../../types.js';
+
+export interface CommitmentAssessmentCompletenessReceipt {
+  readonly complete: boolean;
+  readonly issues: readonly Readonly<ValidationIssue>[];
+}
+
+/**
+ * Inspect native assessment format/pattern/evaluator and exact declared
+ * completion, admission and coverage flags. Resolve references or normalized
+ * records with resolveCommitmentAssessment first. This reads evaluated or
+ * validated SDK data; it does not validate artifact integrity, witness proofs,
+ * business feasibility, optimality, external facts or operating permission.
+ */
+export declare function inspectAssessmentCompleteness(assessment: unknown): CommitmentAssessmentCompletenessReceipt;
+/** The same bounded completion checks as inspectAssessmentCompleteness, without diagnostics. */
+export declare function isAssessmentComplete(assessment: unknown): boolean;
+/**
+ * True when a complete or limited native assessment declares a feasible witness
+ * and its feasible identities refer to fully checked feasible retained plans.
+ * Does not require complete coverage or establish a preferred plan.
+ */
+export declare function hasFeasibleWitness(assessment: unknown): boolean;
+/**
+ * True for a complete native assessment with checked witnesses, established
+ * optimality/preference claims and retained preferred identities. Genuine ties
+ * are supported. This does not recompute or validate the declared ranking.
+ */
+export declare function hasEstablishedPreference(assessment: unknown): boolean;

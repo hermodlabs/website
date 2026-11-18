@@ -1,0 +1,14 @@
+import type { ValidationIssue } from '../types.js';
+
+export interface ReportCompletenessReceipt {
+  readonly complete: boolean;
+  readonly issues: readonly Readonly<ValidationIssue>[];
+}
+
+/**
+ * Check the report format and declared materialization, view/context retention,
+ * truncation and assessment-completion flags. This does not validate artifact
+ * integrity, execution, binding, native findings, optimality or human acceptance.
+ * Use reports.validate/runs.validate for imported artifacts.
+ */
+export declare function inspectReportCompleteness(report: unknown): ReportCompletenessReceipt;

@@ -1,0 +1,30 @@
+import { immutable } from '../authoring/common.js';
+import { REPORT_FORMAT } from './contracts.js';
+
+const checks = [
+  ['materialized', true, 'REPORT_MATERIALIZATION_INCOMPLETE', 'The report must explicitly retain its materialized output.'],
+  ['allRequestedViews', true, 'REPORT_VIEWS_INCOMPLETE', 'The report must retain every requested view.'],
+  ['allRetainedContexts', true, 'REPORT_CONTEXTS_INCOMPLETE', 'The report must retain every assessed context.'],
+  ['truncated', false, 'REPORT_TRUNCATION_UNCONFIRMED', 'The report must explicitly state that its output was not truncated.'],
+  ['assessmentComplete', true, 'REPORT_ASSESSMENT_INCOMPLETE', 'The retained assessment has not established complete coverage.'],
+];
+
+/**
+ * Inspect declared report completeness, without evaluating or changing anything.
+ * This checks metadata only. Validate imported artifacts with reports.validate
+ * or runs.validate; check execution, identity, native findings, preference and
+ * human acceptance separately. Complete negative or unresolved answers remain
+ * complete reports.
+ */
+export function inspectReportCompleteness(report) {
+  const issues = [];
+  if (report?.format !== REPORT_FORMAT) {
+    issues.push({ code: 'REPORT_FORMAT_INVALID', path: 'report.format', message: `Use ${REPORT_FORMAT} to inspect report completeness.` });
+  }
+  for (const [field, expected, code, message] of checks) {
+    if (report?.completeness?.[field] !== expected) {
+      issues.push({ code, path: `report.completeness.${field}`, message });
+    }
+  }
+  return immutable({ complete: issues.length === 0, issues });
+}

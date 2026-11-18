@@ -15,14 +15,14 @@
 
 
   <title>Build a gift-kit app with the Decision Lab SDK. | Hermod Labs</title>
-  <meta name="description" content="Reuse the published gift-kit decision model inside a custom application. See how the SDK supplies case validation, complete package assessment and a shared decision view, and what your team would otherwise need to build.">
+  <meta name="description" content="Reuse the gift-kit decision model inside a custom application. Follow SDK questions about complete assessment, feasible packages and established preference through to Leah’s handoff proposal.">
   <meta name="author" content="Jonathan Nacionales">
 
   <link rel="canonical" href="https://hermodlabs.com/use-cases/gifting/gift-kit-readiness/resolve-a-handoff-exception/">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Hermod Labs">
   <meta property="og:title" content="Build a gift-kit app with the Decision Lab SDK. | Hermod Labs">
-  <meta property="og:description" content="Reuse the published gift-kit decision model inside a custom application. See how the SDK supplies case validation, complete package assessment and a shared decision view, and what your team would otherwise need to build.">
+  <meta property="og:description" content="Reuse the gift-kit decision model inside a custom application. Follow SDK questions about complete assessment, feasible packages and established preference through to Leah’s handoff proposal.">
   <meta property="og:url" content="https://hermodlabs.com/use-cases/gifting/gift-kit-readiness/resolve-a-handoff-exception/">
   <meta property="og:image" content="https://hermodlabs.com/assets/hermod-wordmark.jpeg">
 
@@ -98,8 +98,8 @@
 
     <p class="eyebrow">Gift-kit readiness / SDK integration</p>
     <h1>Build a gift-kit app with the Decision Lab SDK.</h1>
-    <p class="reading-description">Reuse the published gift-kit decision model inside a custom application. See how the SDK supplies case validation, complete package assessment and a shared decision view, and what your team would otherwise need to build.</p>
-    <p class="reading-meta">Jonathan Nacionales <span aria-hidden="true">·</span> 9 min read</p>
+    <p class="reading-description">Reuse the gift-kit decision model inside a custom application. Follow SDK questions about complete assessment, feasible packages and established preference through to Leah’s handoff proposal.</p>
+    <p class="reading-meta">Jonathan Nacionales <span aria-hidden="true">·</span> 10 min read</p>
   </div>
   <figure class="reading-cover">
     <img class="reading-cover-image" src="../../../../assets/use-cases/gift-kit-readiness/handoff-desk/cover.svg" width="960" height="720" alt="A gift-kit handoff desk connects current campaign records and timing to a revised complete correction proposal under the same Decision Lab app." decoding="async">
@@ -116,6 +116,7 @@
       <li><a href="#bring-the-case">Open the published decision model inside your application.</a></li>
       <li><a href="#review-the-clock">Use one case contract for batch and interactive work.</a></li>
       <li><a href="#reassess-package">Assess complete alternatives with one SDK call.</a></li>
+      <li><a href="#check-the-result">Check what the result actually establishes.</a></li>
       <li><a href="#current-confirmation">Reuse the decision screen as well as the assessment.</a></li>
       <li><a href="#later-start">Reuse the full review when timing changes.</a></li>
       <li><a href="#retain-handoff">Retain the inputs and complete report for the handoff.</a></li>
@@ -140,13 +141,13 @@
       
 
 
-<p class="reader-lead">Leah is accountable for handing over <strong>120 gift kits that recipients can actually use</strong>. Marketing expects a working campaign, finance has capped corrections at <strong>$600</strong>, and production needs a complete plan supported by the available people and records. Leah has a full day before handoff, but she still has to explain which proposal the team should act on.</p>
+<p class="reader-lead">Leah is accountable for handing over <strong>120 gift kits that recipients can actually use</strong>. Marketing expects a working campaign, finance has capped corrections at <strong>$600</strong>, and production needs a plan supported by people and records. Leah has a full day before handoff, but she still has to explain which proposal the team should act on.</p>
 <p>Taylor, the owner of GIFT-221, has a supported in-house option: <strong>$300, finishing at T+40 min</strong>. External work could finish fifteen minutes earlier for $400. Its confirmation, however, still names insert-3 while the campaign uses insert-4. Leah cannot treat that quote as a supported booking, and Taylor needs to obtain a confirmation for the current configuration.</p>
-<p>The developer has a related choice. The <a href="../screen-campaigns/index.html">CLI campaign report</a> already applies a published decision model. Leah needs a custom desk where she can inspect a case and reassess new records. If those two interfaces disagree about the same facts, Leah and Taylor have another problem to resolve before they can put a proposal forward.</p>
+<p>The <a href="../screen-campaigns/index.html">CLI campaign report</a> already applies a published decision model. Leah now needs a custom desk to inspect a flagged case and reassess new records. The developer must keep those two interfaces consistent about the same facts.</p>
 <p><strong>Should the developer build and maintain that decision infrastructure, or embed the existing review through the SDK?</strong> This fictional case follows that choice through to a working application and a revised handoff proposal.</p>
 
 <h2 id="compare-approaches">What would the team otherwise build?</h2>
-<p>The developer can build the comparison logic or reuse a decision model already used by the CLI. A workbook, shared module or solver could also support the review. The choice is how much decision infrastructure the team wants to implement and maintain alongside its interface.</p>
+<p>A workbook, shared module or solver could also support this review. The choice is how much decision infrastructure the team wants to implement and maintain alongside its interface.</p>
 <div class="article-table-scroll" role="region" aria-label="Implementation approaches for the gift-kit application" tabindex="0">
   <table>
     <caption>The SDK’s advantage here is the existing model, execution and input/report contracts that the integration can reuse.</caption>
@@ -159,34 +160,29 @@
     </tbody>
   </table>
 </div>
-<p>For this desk, the developer chooses the SDK because the gift-kit model already exists and the CLI already uses it. <strong>The new interface can reuse that published review, its case contract and its reports.</strong> The implementation below shows how the same recorded case reaches the same conclusion in the desk, then changes when Taylor supplies a current confirmation.</p>
+<p>The developer chooses the SDK because the gift-kit model already exists and the CLI already uses it. <strong>The desk can reuse that review, its case contract and its reports.</strong> The same case should reach the same conclusion, then change when Taylor supplies a current confirmation.</p>
 
 <h2 id="bring-the-case">Open the published decision model inside your application.</h2>
 <p>The <a href="../screen-campaigns/index.html">Gift-kit Preflight CLI</a> already assesses these campaigns. Its companion <strong>Gift-kit Handoff Desk</strong> uses the same pinned app package in a browser. The developer creates the SDK instance with its browser executor:</p>
 
 
 <figure class="article-code">
-  <figcaption id="code-create">Create the Decision Lab SDK with a browser executor · <a href="https://github.com/hermodlabs/sample_code/blob/e638f7231c9b1a1592d560daed256eeee6ffddd1/gift-kit-handoff-desk/src/useGiftReview.js#L46-L47">src/useGiftReview.js, lines 46–47</a></figcaption>
+  <figcaption id="code-create">Create the SDK with a browser executor · <a href="https://github.com/hermodlabs/sample_code/blob/1114cfefd5ffa580b78c8f43610c3070480d2801/gifting/gift-kit-handoff-desk/src/useGiftReview.js#L47-L48">src/useGiftReview.js, lines 47–48</a></figcaption>
   <pre tabindex="0" role="region" aria-labelledby="code-create"><code class="language-javascript">    const executor = createBrowserExecutor();
     const lab = createDecisionLab({ executor });</code></pre>
 </figure>
 
 <p><code>createDecisionLab</code> comes from <code>@decision-lab/sdk</code>; <code>createBrowserExecutor</code> comes from <code>@decision-lab/sdk/browser</code>. Assessment and complete report preparation execute in a browser worker. The example uses React, while these SDK calls are ordinary JavaScript.</p>
-<p>The application then opens the published package and checks its identity against the configured binding:</p>
+<p>The application opens the published package:</p>
 
 
 <figure class="article-code">
-  <figcaption id="code-open">Open the published app and verify its configured binding · <a href="https://github.com/hermodlabs/sample_code/blob/e638f7231c9b1a1592d560daed256eeee6ffddd1/gift-kit-handoff-desk/src/useGiftReview.js#L56-L61">src/useGiftReview.js, lines 56–61</a></figcaption>
-  <pre tabindex="0" role="region" aria-labelledby="code-open"><code class="language-javascript">        const opened = lab.apps.open(await readJSON(new URL(settings.appUrl, configURL), controller.signal));
-        const timingPolicy = readTimingPolicy(opened);
-        const binding = lab.cases.create({ app: opened }).binding;
-        for (const [key, value] of Object.entries(settings.binding)) {
-          if (binding[key] !== value) throw new Error(`The app does not match the configured ${key}.`);
-        }</code></pre>
+  <figcaption id="code-open">Open the published decision app · <a href="https://github.com/hermodlabs/sample_code/blob/1114cfefd5ffa580b78c8f43610c3070480d2801/gifting/gift-kit-handoff-desk/src/useGiftReview.js#L57">src/useGiftReview.js, line 57</a></figcaption>
+  <pre tabindex="0" role="region" aria-labelledby="code-open"><code class="language-javascript">        const opened = lab.apps.open(await readJSON(new URL(settings.appUrl, configURL), controller.signal));</code></pre>
 </figure>
 
-<p>The app already encodes the correction packages, their effects, the scoped requirements and the earliest-finish preference. Its reusable commitment pattern brings correction, rehearsal and handoff into a complete plan. Opening that package gives this interface the same modeled review used by the CLI.</p>
-<p><strong>The benefit is reuse of the decision logic across interfaces.</strong> The developer supplies the screen and data mapping. They can keep the package’s requirements and ranking together rather than maintaining another implementation inside the form.</p>
+<p>The SDK’s <code>lab.cases.create</code> also exposes the app binding, which the example checks against its configured identity. The pinned app encodes the correction packages, effects, scoped requirements and earliest-finish preference. Its commitment pattern brings correction, rehearsal and handoff into a complete plan.</p>
+<p><strong>The developer reuses the decision logic across interfaces.</strong> The screen supplies forms and data mapping; the package keeps its requirements and ranking together.</p>
 
 
 
@@ -198,18 +194,18 @@
 
 
 <h2 id="review-the-clock">Use one case contract for batch and interactive work.</h2>
-<p>Leah’s case is exported from the actual CLI report and imported into the desk. It contains the quotes, timing, retained fault configurations, resources, permissions and confirmation needed by the review. A quote and a budget alone would leave much of that basis missing.</p>
+<p>Leah imports the case exported from the CLI report. It contains quotes, timing, retained fault configurations, resources, permissions and confirmation. A quote and a budget alone would leave much of that basis missing.</p>
 <p>The SDK binds the supplied inputs to the app and validates them against its declared input contract:</p>
 
 
 <figure class="article-code">
-  <figcaption id="code-validate">Bind the case and validate the supplied inputs · <a href="https://github.com/hermodlabs/sample_code/blob/e638f7231c9b1a1592d560daed256eeee6ffddd1/gift-kit-handoff-desk/src/useGiftReview.js#L105-L107">src/useGiftReview.js, lines 105–107</a></figcaption>
+  <figcaption id="code-validate">Bind and validate the case · <a href="https://github.com/hermodlabs/sample_code/blob/1114cfefd5ffa580b78c8f43610c3070480d2801/gifting/gift-kit-handoff-desk/src/useGiftReview.js#L106-L108">src/useGiftReview.js, lines 106–108</a></figcaption>
   <pre tabindex="0" role="region" aria-labelledby="code-validate"><code class="language-javascript">    const snapshot = lab.cases.create({ app, inputs });
     const validation = lab.cases.validate({ app, case: snapshot });
     if (!validation.valid) throw Object.assign(new Error(&#39;The case is invalid.&#39;), { issues: validation.issues });</code></pre>
 </figure>
 
-<p>This gives both clients a common admission path and structured validation issues. A case bound to the wrong app release or inputs that fail its declarations need attention before the application presents a calculated proposal.</p>
+<p>Both clients use a common admission path and structured validation issues. A case bound to the wrong app release or inputs that fail its declarations need attention before a calculated proposal is presented.</p>
 <p>Input validation checks the declared contract. Business eligibility is assessed next. Whether a permission covers the proposed work or the confirmation names the current insert belongs to the app’s requirements; the company remains responsible for the truth of its source records.</p>
 <p class="use-case-example-note">The one-day cases plan ten minutes of rehearsal under a published five-minute minimum. The <a href="../strengthen-the-rehearsal/index.html">earlier ten-minute-minimum adaptation</a> is a separate policy. A longer planned duration changes a case; a new minimum requires a reviewed app release.</p>
 
@@ -218,7 +214,7 @@
 
 
 <figure class="article-code">
-  <figcaption id="code-run">Assess the case and request the complete SDK report · <a href="https://github.com/hermodlabs/sample_code/blob/e638f7231c9b1a1592d560daed256eeee6ffddd1/gift-kit-handoff-desk/src/useGiftReview.js#L185-L191">src/useGiftReview.js, lines 185–191</a></figcaption>
+  <figcaption id="code-run">Assess the case and request the complete report · <a href="https://github.com/hermodlabs/sample_code/blob/1114cfefd5ffa580b78c8f43610c3070480d2801/gifting/gift-kit-handoff-desk/src/useGiftReview.js#L186-L192">src/useGiftReview.js, lines 186–192</a></figcaption>
   <pre tabindex="0" role="region" aria-labelledby="code-run"><code class="language-javascript">      const result = await lab.run({
         app,
         case: snapshot,
@@ -229,9 +225,58 @@
 </figure>
 
 <p><code>lab.run</code> applies the published model to the supplied inputs. For GIFT-221’s one candidate start, the retained calculation covers <strong>five packages × eight fault configurations: 40 package-and-scenario contexts</strong>. Each complete package is checked against the modeled requirements; the app ranks those that pass.</p>
-<p>The developer receives the assessment and prepared report through the same call, with execution status and coverage information. The shared decision view can present that report directly, rather than requiring another comparison table to be assembled in the application. The application can distinguish an invalid input, a complete finding with no feasible package, and an incomplete or unavailable assessment.</p>
+<p>The same call returns the assessment and prepared report, including execution status and coverage information. Requesting every report does not itself establish that all requested material was retained.</p>
+
+<h2 id="check-the-result">Check what the result actually establishes.</h2>
+<p>Leah needs a supported finding before putting a package forward. The desk first requires completed execution and complete retained-report metadata:</p>
+
+
+<figure class="article-code">
+  <figcaption id="code-completeness">Require completed execution and complete report metadata · <a href="https://github.com/hermodlabs/sample_code/blob/1114cfefd5ffa580b78c8f43610c3070480d2801/gifting/gift-kit-handoff-desk/src/gifting.js#L280-L283">src/gifting.js, lines 280–283</a></figcaption>
+  <pre tabindex="0" role="region" aria-labelledby="code-completeness"><code class="language-javascript">  if (run?.execution?.status !== EXECUTION_STATUS.COMPLETED
+    || !inspectReportCompleteness(run?.report).complete) {
+    return unavailable(&#39;The calculation or its report is incomplete. Review again before proposing a package.&#39;);
+  }</code></pre>
+</figure>
+
+<p><code>EXECUTION_STATUS</code> and <code>inspectReportCompleteness</code> come from <code>@decision-lab/sdk</code>. The helper checks the supported report format and explicit materialization, requested-view, retained-context, truncation and assessment-completion flags. Missing or incorrectly typed flags do not establish completeness.</p>
+<p>The SDK’s named states have matching literal TypeScript types. Saved runs keep their existing string values, so the team’s retained records remain compatible with these code changes.</p>
+<p><strong>That receipt checks metadata.</strong> It does not validate report identity or the full report schema, verify the pinned app, establish a preferred package, accept a human review or evaluate business rules. The client separately checks the app binding, retained timing, complete costs and schedules.</p>
+<p>Next it resolves the retained native commitment assessment, then uses the SDK’s named questions:</p>
+
+
+<figure class="article-code">
+  <figcaption id="code-questions">Resolve the native assessment and ask what it establishes · <a href="https://github.com/hermodlabs/sample_code/blob/1114cfefd5ffa580b78c8f43610c3070480d2801/gifting/gift-kit-handoff-desk/src/gifting.js#L295-L305">src/gifting.js, lines 295–305</a></figcaption>
+  <pre tabindex="0" role="region" aria-labelledby="code-questions"><code class="language-javascript">  try { assessment = commitment.resolveCommitmentAssessment(run.assessment, run.report); }
+  catch { return unavailable(&#39;The complete package assessment is unavailable in this result.&#39;); }
+  if (!commitment.isAssessmentComplete(assessment)) {
+    return unavailable(&#39;The calculation has not checked every admitted package and fault scenario.&#39;);
+  }
+  const hasWitness = commitment.hasFeasibleWitness(assessment);
+  const recommendation = assessment.recommendation;
+  // An unverified positive claim is unavailable, not evidence that every plan is blocked.
+  if (assessment.feasiblePlanIds.length &amp;&amp; !commitment.hasEstablishedPreference(assessment)) {
+    return unavailable(&#39;The calculation has not established a preferred package.&#39;);
+  }</code></pre>
+</figure>
+
+<p><code>isAssessmentComplete</code> asks whether evaluation, valid admission and search coverage are complete. <code>hasFeasibleWitness</code> asks whether checked feasible-plan identities have complete feasible plans behind them. <code>hasEstablishedPreference</code> asks whether a complete assessment establishes its preferred alternatives. None of those answers substitutes for the others:</p>
+<div class="article-table-scroll" role="region" aria-label="Distinct conclusions from a commitment assessment" tabindex="0">
+  <table>
+    <caption>A supported possibility and an established preference answer different questions.</caption>
+    <thead><tr><th scope="col">Retained assessment</th><th scope="col">Complete?</th><th scope="col">Feasible witness?</th><th scope="col">Established preference?</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Every supplied package checked; none passes</th><td>Yes</td><td>No</td><td>No</td></tr>
+      <tr><th scope="row">Limited search with a checked feasible package</th><td>No</td><td>Yes</td><td>No</td></tr>
+      <tr><th scope="row">Complete review with a valid preferred tie</th><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Leah’s desk requires a complete review before offering a proposal. A feasible witness from limited search would not be promoted to an established best package. When preference is established, the application keeps every retained preferred tie rather than selecting an arbitrary winner.</p>
+<p>These helpers inspect native retained claims. They do not evaluate rules, validate an entire artifact, prove that a result is current, authenticate records or accept a human review. An integration needing completeness diagnostics can use <a href="../../../../assets/use-cases/sample-code/assessment-helpers-2026-11-18/source/decision-lab-developer-docs/docs/reference/sdk-api.md.txt"><code>inspectAssessmentCompleteness</code></a>, which returns an immutable receipt with <code>complete</code> and issues containing <code>code</code>, <code>path</code> and <code>message</code>. This sample uses the boolean predicate.</p>
+<p>The desk keeps its own vocabulary separate: <code>REVIEW_OUTCOME</code> describes eligible, blocked or unavailable business results; <code>REVIEW_STATE</code> describes the interface’s lifecycle; <code>BOOKING_CONFIRMATION</code> distinguishes a missing record from a positive or negative one. These are local client constants. For Leah, <code>REVIEW_STATE.COMPLETE</code> can coexist with <code>REVIEW_OUTCOME.BLOCKED</code>: the review established that no package passes. An incomplete calculation remains unavailable and calls for reassessment; it is not treated as a finding that every package failed.</p>
 <p>Initially, the old insert confirmation blocks external work and in-house replacement and repair is preferred at <strong>$300 / T+40 min</strong>. Leah then records a separately supplied fictional confirmation for insert-4. Reassessing the updated case makes external replacement and repair preferred at <strong>$400 / T+25 min</strong>.</p>
-<p>The earlier finish follows the app’s configured preference. In-house work still passes. The developer does not need to add a special React condition to promote the external package when the confirmation changes.</p>
+<p>In-house work still passes. The external package becomes preferred through the app’s configured rules; the developer adds no second ranking rule to the screen.</p>
 
 
 
@@ -247,15 +292,14 @@
 
 
 <figure class="article-code">
-  <figcaption id="code-assessment">Render a decision directly from the complete SDK report · <a href="../../../../assets/use-cases/gift-kit-readiness/handoff-desk/decision-views/source/README.md.txt">README.md, lines 263–266</a></figcaption>
+  <figcaption id="code-assessment">Render the retained report with the shared decision view · <a href="https://github.com/hermodlabs/sample_code/blob/1114cfefd5ffa580b78c8f43610c3070480d2801/gifting/gift-kit-handoff-desk/README.md#L270-L273">README.md, lines 270–273</a></figcaption>
   <pre tabindex="0" role="region" aria-labelledby="code-assessment"><code class="language-jsx">import { DecisionView } from &#39;@decision-lab/react-views&#39;;
 import &#39;@decision-lab/react-views/styles.css&#39;;
 
 &lt;DecisionView report={run.report} profile={config.decisionPresentation} /&gt;</code></pre>
 </figure>
 
-<p>The SDK prepares the decision projection; the shared component starts with the question, supported finding, comparison priority, complete alternatives, costs and material blockers. It shows why the old confirmation blocks external work and which complete packages still pass. Selecting display fields does not add another feasibility or preference rule.</p>
-<p>The profile names this team’s correction packages and formats costs as USD. Its handoff column selects the retained end of the handoff activity. Those bindings present calculated values; they do not infer a deadline from descriptive text or recalculate a schedule.</p>
+<p>The SDK prepares the decision projection. The shared component starts with the question, finding, comparison priority, complete alternatives, costs and blockers. The profile supplies business labels and USD formatting; its handoff column selects the retained end of the handoff activity. These settings present calculated values without adding a feasibility rule or recalculating a schedule.</p>
 <p>Leah can select a package and open <strong>Selected option details</strong> for the supporting requirements and schedule. <strong>Technical inspection → Inspect complete report</strong> opens the complete native report and its representation controls. <strong>Return to decision</strong> restores the business comparison without another assessment.</p>
 
 
@@ -266,36 +310,26 @@ import &#39;@decision-lab/react-views/styles.css&#39;;
 </figure>
 
 
-<p><strong>The same retained report supports both levels of detail.</strong> The developer keeps control of the team’s forms and data source while reusing the decision view, its detail navigation and the complete-report inspection path. Complete alternatives and genuine preferred ties remain distinct.</p>
+<p><strong>The same retained report supports both levels of detail.</strong> The developer reuses the comparison, detail navigation and complete-report inspection while controlling the team’s forms and data source. Distinct alternatives and genuine preferred ties stay visible.</p>
 
 <h2 id="later-start">Reuse the full review when timing changes.</h2>
 <p>The same model also handles changes that a deadline-only check would miss. In GIFT-222, review and candidate start move to T+23 hr, with a T+24 hr cutoff. Some packages could finish before cutoff, but their recorded availability and permissions ended at T+2 hr and the external confirmation ended at T+1 hr. No listed package passes.</p>
 <p>GIFT-223 separately supplies current late records. Its external package finishes at <strong>T+23 hr 25 min</strong>, leaving <strong>35 min before cutoff</strong>. The SDK applies the same timing, scope, resource and preference requirements to that changed case.</p>
-<p>This is the practical value of keeping those requirements together in the published model. Changing the cutoff or a candidate start does not quietly renew a permission, extend a confirmation or remove a retained fault. The assessment compares only the supplied packages, candidate starts and admitted fault configurations.</p>
+<p>Keeping those requirements together matters: changing the cutoff or a candidate start does not renew a permission, extend a confirmation or remove a retained fault. The assessment compares the supplied packages, candidate starts and admitted fault configurations.</p>
 <p>The model must fit the business problem. These examples allocate resources independently to each campaign. Scheduling several campaigns against a shared production team requires a model that represents those shared demands, whichever implementation approach the team chooses.</p>
 
 <h2 id="retain-handoff">Retain the inputs and complete report for the handoff.</h2>
-<p>The SDK’s output supports more than the current screen. Its native run retains the evaluated inputs, app identity, assessment and prepared report. The application uses the SDK serializer for portable artifacts:</p>
+<p>For a current review that passes those checks, the native SDK run retains the evaluated inputs, app identity, assessment and complete report. The application serializes native artifacts through the SDK:</p>
 
 
 <figure class="article-code">
-  <figcaption id="code-export">Serialize a native artifact through the SDK · <a href="https://github.com/hermodlabs/sample_code/blob/e638f7231c9b1a1592d560daed256eeee6ffddd1/gift-kit-handoff-desk/src/useGiftReview.js#L18-L19">src/useGiftReview.js, lines 18–19</a></figcaption>
-  <pre tabindex="0" role="region" aria-labelledby="code-export"><code class="language-javascript">function download(filename, artifact, lab) {
-  const content = lab.sources.renderJSON(artifact, { maxBytes: 50000000 });</code></pre>
+  <figcaption id="code-export">Serialize a native artifact through the SDK · <a href="https://github.com/hermodlabs/sample_code/blob/1114cfefd5ffa580b78c8f43610c3070480d2801/gifting/gift-kit-handoff-desk/src/useGiftReview.js#L20">src/useGiftReview.js, line 20</a></figcaption>
+  <pre tabindex="0" role="region" aria-labelledby="code-export"><code class="language-javascript">  const content = lab.sources.renderJSON(artifact, { maxBytes: 50000000 });</code></pre>
 </figure>
 
 <p><strong>Download SDK run</strong> preserves the current complete calculation; <strong>Download case inputs</strong> preserves the canonical inputs for another review or CLI assessment. The company chooses where to store those artifacts and how to use them in its own reports or approval process.</p>
-<p>The screen still owns ordinary application behavior: importing files, mapping units, managing edits, cancelling superseded requests and retaining the earlier comparison. An edit withdraws the current recommendation; the previous calculation stays in a separate disclosure and is explicitly marked for reassessment when opened:
-</p>
-
-
-<figure class="article-code">
-  <figcaption id="code-previous">Keep the earlier calculation explicitly stale · <a href="../../../../assets/use-cases/gift-kit-readiness/handoff-desk/decision-views/source/src/App.jsx.txt">src/App.jsx, lines 236–236</a></figcaption>
-  <pre tabindex="0" role="region" aria-labelledby="code-previous"><code class="language-jsx">        &lt;DecisionView report={earlierRun.report} profile={desk.config.decisionPresentation} stale /&gt;</code></pre>
-</figure>
-
-<p> The company still owns its authentication, system integrations and storage. People authenticate operating records, approve work and carry out the correction and rehearsal.</p>
-<p>The <a href="https://github.com/hermodlabs/sample_code/tree/main/gift-kit-handoff-desk"><strong>Gift-kit Handoff Desk repository directory</strong></a> provides the public example. The <a href="../../../../assets/use-cases/gift-kit-readiness/handoff-desk/decision-views/source-snapshot.zip">current client source snapshot</a> contains the shared-view integration shown here, including SDK creation, app opening, validation, evaluation and the React component. Each excerpt links to its exact retained source or unchanged public implementation.</p>
+<p>The application still owns importing files, mapping units, managing edits and cancelling superseded requests. An edit withdraws the current recommendation; the earlier calculation stays in a separate disclosure and is marked for reassessment. The company owns authentication, system integrations and storage. People authenticate records, approve work and carry out the correction and rehearsal.</p>
+<p>The <a href="https://github.com/hermodlabs/sample_code/tree/main/gifting/gift-kit-handoff-desk"><strong>Gift-kit Handoff Desk repository directory</strong></a> provides the full implementation. These selected SDK and shared-view excerpts link to exact lines in the pinned public revision, with file hashes in its <a href="../../../../assets/use-cases/sample-code/1114cfefd5ffa580b78c8f43610c3070480d2801/manifest.json">source manifest</a>.</p>
 <h2 id="resolved-choice">A proposal Leah can explain. A model the developer can reuse.</h2>
 <p>Taylor supplies the current confirmation for insert-4. Leah reassesses the case and can now put forward <strong>external replacement and repair at $400, finishing at T+25 min</strong>. The proposal includes correction, the planned ten-minute rehearsal and handoff. It stays within the $600 limit, while the $300 in-house option remains available. The earlier finish follows the app’s configured priority; production and finance can review its basis before authorizing the work.</p>
 <p>The developer’s choice also has a concrete result. The custom desk and CLI produce matching findings from the same app and case. Updating the confirmation changes the recommendation through that shared model, without adding another gift-kit feasibility and ranking implementation to the screen. The developer still owns the forms, data mapping and system integration.</p>
@@ -307,7 +341,7 @@ import &#39;@decision-lab/react-views/styles.css&#39;;
     <div class="use-case-reference-grid">
       <div>
         <h3 id="implementation-and-evidence">Implementation and evidence</h3>
-        <p>The <a href="https://github.com/hermodlabs/sample_code/tree/e638f7231c9b1a1592d560daed256eeee6ffddd1/gift-kit-handoff-desk">public sample</a> supplies the unchanged app and native one-day inputs. Refreshed interface excerpts and captures use the exact <a href="../../../../assets/use-cases/gift-kit-readiness/handoff-desk/decision-views/source-snapshot.zip">retained client snapshot</a>, whose shared-view changes are newer than that public revision. The <a href="../../../../assets/use-cases/gift-kit-readiness/handoff-desk/decision-views/verification.json">verification record</a> retains source hashes, the actual CLI-to-React file handoff, matching findings, native calculations and captures.</p>
+        <p>The <a href="https://github.com/hermodlabs/sample_code/tree/1114cfefd5ffa580b78c8f43610c3070480d2801/gifting/gift-kit-handoff-desk">pinned public sample</a> supplies the code, app and native one-day inputs. Its <a href="../../../../assets/use-cases/sample-code/1114cfefd5ffa580b78c8f43610c3070480d2801/manifest.json">source manifest</a> retains file identities. Screenshots keep their capture-time <a href="../../../../assets/use-cases/gift-kit-readiness/handoff-desk/decision-views/source-snapshot.zip">client snapshot</a>; the <a href="../../../../assets/use-cases/gift-kit-readiness/handoff-desk/decision-views/verification.json">verification record</a> retains that implementation, source hashes, the actual CLI-to-desk handoff, matching findings and native calculations.</p>
         <p>The retained GIFT-221 calculation covers five candidates, eight scenarios and 40 package-and-scenario contexts. Its source requirements define the review’s scope. The comparison of implementation approaches describes engineering responsibilities, rather than a benchmark or a claim that another approach cannot reproduce the behavior.</p>
       </div>
       <div>

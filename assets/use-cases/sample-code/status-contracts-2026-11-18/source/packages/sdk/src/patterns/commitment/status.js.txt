@@ -1,0 +1,23 @@
+/** Whether the bounded commitment calculation completed its declared search. */
+export const COMMITMENT_ASSESSMENT_STATUS = Object.freeze(/** @type {const} */ ({
+  INVALID: 'invalid',
+  INCONSISTENT: 'inconsistent',
+  LIMITED: 'limited',
+  COMPLETE: 'complete',
+}));
+
+/** What the retained search establishes; a feasible witness need not be optimal. */
+export const COMMITMENT_FINDING = Object.freeze(/** @type {const} */ ({
+  INVALID_INPUT: 'invalid_input',
+  INCONSISTENT_BASIS: 'inconsistent_basis',
+  FEASIBLE_WITNESS: 'feasible_witness',
+  NO_FEASIBLE_PLAN: 'no_feasible_plan',
+  NOT_ESTABLISHED: 'not_established',
+}));
+
+/** Native commitment errors callers distinguish from an infeasible business result. */
+export const COMMITMENT_ERROR_CODE = Object.freeze(/** @type {const} */ ({
+  INVALID_INPUT: 'COMMITMENT_INVALID_INPUT',
+  OUTPUT_LIMIT: 'COMMITMENT_OUTPUT_LIMIT',
+  NORMALIZATION_INVALID: 'COMMITMENT_NORMALIZATION_INVALID',
+}));
