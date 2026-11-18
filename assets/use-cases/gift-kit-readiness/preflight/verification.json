@@ -1,0 +1,1308 @@
+{
+  "format": "gift-kit-preflight-website-verification/1",
+  "fictional": true,
+  "verifiedAt": "2026-11-18T01:17:28.610Z",
+  "commit": "e638f7231c9b1a1592d560daed256eeee6ffddd1",
+  "sourceUnmodified": true,
+  "caseInputsAdapted": false,
+  "appPackageModified": false,
+  "binding": {
+    "appId": "review-gift-kit-earliest-planning",
+    "release": 1,
+    "appHash": "5bc9b7c4eb79011e60feb6415a3060f9435b9a84461b4ed2ec1d8cb916f0f6b2",
+    "packageHash": "1fc3ad7559d0747fc61fa5b56be27a42c56dac653b28c255d44f3c321ed4c758",
+    "pattern": "complete-a-commitment/1",
+    "moduleHash": "4586582a26a01cdf0a7dea739a9350d2abe32b2efbf62372a42002d169dc41d9"
+  },
+  "runtime": {
+    "node": "v24.16.0",
+    "packages": [
+      {
+        "name": "@decision-lab/sdk",
+        "version": "0.1.0",
+        "filename": "decision-lab-sdk-0.1.0.tgz",
+        "bytes": 298278,
+        "sha256": "1f12000abb9d605799340d3f3cbfc2e81b0c662e01a870027f2919438ead3916"
+      },
+      {
+        "name": "@decision-lab/cli",
+        "version": "0.1.0",
+        "filename": "decision-lab-cli-0.1.0.tgz",
+        "bytes": 26856,
+        "sha256": "9362d9cf90b7ef3b89796abbe702cde21a10a1a1224388c689068478d523f402"
+      }
+    ]
+  },
+  "scenario": {
+    "cutoffMinute": 1440,
+    "plannedRehearsalMinute": 10,
+    "publishedMinimumRehearsalMinute": 5,
+    "handoffMinute": 5,
+    "quantity": 120,
+    "budgetMinor": 60000,
+    "retainedFaultScenarios": 8
+  },
+  "scope": "Native one-day cases and app from the pinned public repository. No website-only input adaptation. GIFT-223 separately supplies its late permission, availability and booking records; a cutoff change never obtains or extends them. The optional GIFT-221 confirmation update is a newly stipulated fictional record with a new ID/source and current insert revision; all other records, scopes, time intervals, retained faults and quotes are unchanged. Passing plans are proposals, not authenticated permission, completed corrections, rehearsals, handoffs or reservations. Each case has independently allocated resources.",
+  "repository": {
+    "url": "https://github.com/hermodlabs/sample_code/tree/main/gift-kit-preflight",
+    "pinnedUrl": "https://github.com/hermodlabs/sample_code/tree/e638f7231c9b1a1592d560daed256eeee6ffddd1/gift-kit-preflight",
+    "commit": "e638f7231c9b1a1592d560daed256eeee6ffddd1",
+    "sourceDirectory": "gift-kit-preflight",
+    "unmodified": true
+  },
+  "nativeTests": {
+    "command": "node --test --test-reporter=tap test/preflight.test.mjs",
+    "tests": 10,
+    "passed": 10,
+    "failed": 0,
+    "transcript": "native-tests.tap"
+  },
+  "execution": {
+    "command": "node review-campaigns.mjs --input fixtures/campaigns.one-day.json --output <retained reports/one-day>",
+    "exitCode": 0,
+    "report": "reports/one-day/campaigns.html",
+    "manifest": "reports/one-day/manifest.json",
+    "sourceManifest": "fixtures/campaigns.one-day.json",
+    "csvProduced": false
+  },
+  "storyChecks": [
+    {
+      "stage": "CLI preflight",
+      "id": "GIFT-220",
+      "finding": "feasible_witness",
+      "scenarioCount": 8,
+      "plans": [
+        {
+          "packageId": "rehearse-unchanged",
+          "startMinute": 0,
+          "feasible": false,
+          "expense": 0,
+          "finishMinute": 16,
+          "deadlineSlackMinute": 1424,
+          "preferred": false,
+          "blockers": [
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "destination"
+            },
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "checkout"
+            },
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print-destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "print-destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "print-destination-checkout"
+            }
+          ]
+        },
+        {
+          "packageId": "reprint",
+          "startMinute": 0,
+          "feasible": false,
+          "expense": 10000,
+          "finishMinute": 25,
+          "deadlineSlackMinute": 1415,
+          "preferred": false,
+          "blockers": [
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "destination"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "checkout"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "print-destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "print-destination-checkout"
+            }
+          ]
+        },
+        {
+          "packageId": "repair-journey",
+          "startMinute": 0,
+          "feasible": false,
+          "expense": 18000,
+          "finishMinute": 30,
+          "deadlineSlackMinute": 1410,
+          "preferred": false,
+          "blockers": [
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print"
+            },
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print-destination-checkout"
+            }
+          ]
+        },
+        {
+          "packageId": "replace-and-repair",
+          "startMinute": 0,
+          "feasible": true,
+          "expense": 30000,
+          "finishMinute": 40,
+          "deadlineSlackMinute": 1400,
+          "preferred": false,
+          "blockers": []
+        },
+        {
+          "packageId": "external-replace-and-repair",
+          "startMinute": 0,
+          "feasible": true,
+          "expense": 40000,
+          "finishMinute": 25,
+          "deadlineSlackMinute": 1415,
+          "preferred": true,
+          "blockers": []
+        }
+      ]
+    },
+    {
+      "stage": "CLI preflight",
+      "id": "GIFT-221",
+      "finding": "feasible_witness",
+      "scenarioCount": 8,
+      "plans": [
+        {
+          "packageId": "rehearse-unchanged",
+          "startMinute": 0,
+          "feasible": false,
+          "expense": 0,
+          "finishMinute": 16,
+          "deadlineSlackMinute": 1424,
+          "preferred": false,
+          "blockers": [
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "destination"
+            },
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "checkout"
+            },
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print-destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "print-destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "print-destination-checkout"
+            }
+          ]
+        },
+        {
+          "packageId": "reprint",
+          "startMinute": 0,
+          "feasible": false,
+          "expense": 10000,
+          "finishMinute": 25,
+          "deadlineSlackMinute": 1415,
+          "preferred": false,
+          "blockers": [
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "destination"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "checkout"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "print-destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "print-destination-checkout"
+            }
+          ]
+        },
+        {
+          "packageId": "repair-journey",
+          "startMinute": 0,
+          "feasible": false,
+          "expense": 18000,
+          "finishMinute": 30,
+          "deadlineSlackMinute": 1410,
+          "preferred": false,
+          "blockers": [
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print"
+            },
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print-destination-checkout"
+            }
+          ]
+        },
+        {
+          "packageId": "replace-and-repair",
+          "startMinute": 0,
+          "feasible": true,
+          "expense": 30000,
+          "finishMinute": 40,
+          "deadlineSlackMinute": 1400,
+          "preferred": true,
+          "blockers": []
+        },
+        {
+          "packageId": "external-replace-and-repair",
+          "startMinute": 0,
+          "feasible": false,
+          "expense": 40000,
+          "finishMinute": 25,
+          "deadlineSlackMinute": 1415,
+          "preferred": false,
+          "blockers": [
+            {
+              "constraintId": "scoped-package-confirmation",
+              "scenarioId": "none"
+            },
+            {
+              "constraintId": "scoped-package-confirmation",
+              "scenarioId": "print"
+            },
+            {
+              "constraintId": "scoped-package-confirmation",
+              "scenarioId": "destination"
+            },
+            {
+              "constraintId": "scoped-package-confirmation",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "scoped-package-confirmation",
+              "scenarioId": "checkout"
+            },
+            {
+              "constraintId": "scoped-package-confirmation",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "scoped-package-confirmation",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "scoped-package-confirmation",
+              "scenarioId": "print-destination-checkout"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "CLI preflight",
+      "id": "GIFT-222",
+      "finding": "no_feasible_plan",
+      "scenarioCount": 8,
+      "plans": [
+        {
+          "packageId": "rehearse-unchanged",
+          "startMinute": 1380,
+          "feasible": false,
+          "expense": 0,
+          "finishMinute": 1396,
+          "deadlineSlackMinute": 44,
+          "preferred": false,
+          "blockers": [
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "none"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "none"
+            },
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "print"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "print"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "destination"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "destination"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "destination"
+            },
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "checkout"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "checkout"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "checkout"
+            },
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print-destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "print-destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "print-destination-checkout"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "print-destination-checkout"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "print-destination-checkout"
+            }
+          ]
+        },
+        {
+          "packageId": "reprint",
+          "startMinute": 1380,
+          "feasible": false,
+          "expense": 10000,
+          "finishMinute": 1405,
+          "deadlineSlackMinute": 35,
+          "preferred": false,
+          "blockers": [
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "none"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "none"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "print"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "print"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "destination"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "destination"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "destination"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "checkout"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "checkout"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "checkout"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "print-destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "print-destination-checkout"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "print-destination-checkout"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "print-destination-checkout"
+            }
+          ]
+        },
+        {
+          "packageId": "repair-journey",
+          "startMinute": 1380,
+          "feasible": false,
+          "expense": 18000,
+          "finishMinute": 1410,
+          "deadlineSlackMinute": 30,
+          "preferred": false,
+          "blockers": [
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "none"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "none"
+            },
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "print"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "print"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "destination"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "destination"
+            },
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "checkout"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "checkout"
+            },
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print-destination-checkout"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "print-destination-checkout"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "print-destination-checkout"
+            }
+          ]
+        },
+        {
+          "packageId": "replace-and-repair",
+          "startMinute": 1380,
+          "feasible": false,
+          "expense": 30000,
+          "finishMinute": 1420,
+          "deadlineSlackMinute": 20,
+          "preferred": false,
+          "blockers": [
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "none"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "none"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "print"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "print"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "destination"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "destination"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "checkout"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "checkout"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "print-destination-checkout"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "print-destination-checkout"
+            }
+          ]
+        },
+        {
+          "packageId": "external-replace-and-repair",
+          "startMinute": 1380,
+          "feasible": false,
+          "expense": 40000,
+          "finishMinute": 1405,
+          "deadlineSlackMinute": 35,
+          "preferred": false,
+          "blockers": [
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "none"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "none"
+            },
+            {
+              "constraintId": "scoped-package-confirmation",
+              "scenarioId": "none"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "print"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "print"
+            },
+            {
+              "constraintId": "scoped-package-confirmation",
+              "scenarioId": "print"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "destination"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "destination"
+            },
+            {
+              "constraintId": "scoped-package-confirmation",
+              "scenarioId": "destination"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "scoped-package-confirmation",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "checkout"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "checkout"
+            },
+            {
+              "constraintId": "scoped-package-confirmation",
+              "scenarioId": "checkout"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "scoped-package-confirmation",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "scoped-package-confirmation",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "scoped-package-permission",
+              "scenarioId": "print-destination-checkout"
+            },
+            {
+              "constraintId": "resource-calendar",
+              "scenarioId": "print-destination-checkout"
+            },
+            {
+              "constraintId": "scoped-package-confirmation",
+              "scenarioId": "print-destination-checkout"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "CLI preflight",
+      "id": "GIFT-223",
+      "finding": "feasible_witness",
+      "scenarioCount": 8,
+      "plans": [
+        {
+          "packageId": "rehearse-unchanged",
+          "startMinute": 1380,
+          "feasible": false,
+          "expense": 0,
+          "finishMinute": 1396,
+          "deadlineSlackMinute": 44,
+          "preferred": false,
+          "blockers": [
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "destination"
+            },
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "checkout"
+            },
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print-destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "print-destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "print-destination-checkout"
+            }
+          ]
+        },
+        {
+          "packageId": "reprint",
+          "startMinute": 1380,
+          "feasible": false,
+          "expense": 10000,
+          "finishMinute": 1405,
+          "deadlineSlackMinute": 35,
+          "preferred": false,
+          "blockers": [
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "destination"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "checkout"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-1",
+              "scenarioId": "print-destination-checkout"
+            },
+            {
+              "constraintId": "correct-fault-2",
+              "scenarioId": "print-destination-checkout"
+            }
+          ]
+        },
+        {
+          "packageId": "repair-journey",
+          "startMinute": 1380,
+          "feasible": false,
+          "expense": 18000,
+          "finishMinute": 1410,
+          "deadlineSlackMinute": 30,
+          "preferred": false,
+          "blockers": [
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print"
+            },
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print-destination"
+            },
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print-checkout"
+            },
+            {
+              "constraintId": "correct-fault-0",
+              "scenarioId": "print-destination-checkout"
+            }
+          ]
+        },
+        {
+          "packageId": "replace-and-repair",
+          "startMinute": 1380,
+          "feasible": true,
+          "expense": 30000,
+          "finishMinute": 1420,
+          "deadlineSlackMinute": 20,
+          "preferred": false,
+          "blockers": []
+        },
+        {
+          "packageId": "external-replace-and-repair",
+          "startMinute": 1380,
+          "feasible": true,
+          "expense": 40000,
+          "finishMinute": 1405,
+          "deadlineSlackMinute": 35,
+          "preferred": true,
+          "blockers": []
+        }
+      ]
+    }
+  ],
+  "captures": [
+    {
+      "file": "report-overview.png",
+      "selector": "full page",
+      "width": 1440,
+      "height": 2883,
+      "sha256": "8fc5b8fd27fd120f678decdc85a1d068f68374c54aeac7cbbae898c82d09e3ef",
+      "method": "Playwright capture of the actual unmodified interface/report using visible controls; no page content, app state or calculated results substituted."
+    },
+    {
+      "file": "recorded-intervals.png",
+      "selector": "tbody > tr:nth-child(3) .records",
+      "width": 470,
+      "height": 1214,
+      "sha256": "1c7ba561b50c4b90acb1f2f24562b6ba0d0c3fbadd6fcd4f5d8ffec419996730",
+      "method": "Playwright capture of the actual unmodified interface/report using visible controls; no page content, app state or calculated results substituted."
+    },
+    {
+      "file": "late-case-records.png",
+      "selector": "tbody > tr:nth-child(3)",
+      "width": 1200,
+      "height": 1759,
+      "sha256": "58b9a4faf47f1f421115c01ff99d3c83a0e4bd302c0247442522636b49f83fcd",
+      "method": "Playwright capture of the actual unmodified interface/report using visible controls; no page content, app state or calculated results substituted."
+    },
+    {
+      "file": "report-first-view.png",
+      "selector": "viewport",
+      "width": 1440,
+      "height": 1200,
+      "sha256": "207583cd5f24d5fb8e72a420945e54efbdb0bd51c0ba0cf4b2cf5ece9daf112d",
+      "method": "Playwright viewport capture of the actual unmodified native HTML report; no content substitution."
+    }
+  ],
+  "sourceFiles": [
+    {
+      "file": ".gitignore",
+      "bytes": 23,
+      "sha256": "a11fd9df3bb4d06dcc5da3144629a859000321209e313d1b6ff7864b89935d5d"
+    },
+    {
+      "file": "README.md",
+      "bytes": 12658,
+      "sha256": "a0ac1338baa1e2e7037423405c6245dd2aa83006c6473dff4bd32c57e6979eb7"
+    },
+    {
+      "file": "data/config.json",
+      "bytes": 4907,
+      "sha256": "6eb4d202684b30314b9ceecd81d63f0a62ca383a452b2e1208cc9583df6d030f"
+    },
+    {
+      "file": "data/gifting.app.json",
+      "bytes": 124710,
+      "sha256": "7f93033c507b26ceead2fff7346f27a525a73c54208352644092f6887791c150"
+    },
+    {
+      "file": "fixtures/campaigns.json",
+      "bytes": 434,
+      "sha256": "2ea0735e0eaa7252769f8f534a532f2f6c863895b65e82902c04832e417d4189"
+    },
+    {
+      "file": "fixtures/campaigns.one-day.json",
+      "bytes": 463,
+      "sha256": "27bc4a9bc35e1fe16d57ee32b3fdf2b81bb680afd413709d74bfcb9ef08c90dd"
+    },
+    {
+      "file": "fixtures/cases/confirmed.json",
+      "bytes": 6790,
+      "sha256": "2cbeeb32a7c8abcb7adca990cfc8adfa0a69f231f0f63ffd97fe071a8f125921"
+    },
+    {
+      "file": "fixtures/cases/invalid.json",
+      "bytes": 6759,
+      "sha256": "33bc1c0c1587b7f15d829036605a54243f8004ac49d8f8f85766211a377b5c4e"
+    },
+    {
+      "file": "fixtures/cases/one-day-confirmed.json",
+      "bytes": 7111,
+      "sha256": "e8de9e9543c59f674377ac48d24fe6cc6a391aef9e9ee4f1c985ee97c48cfd89"
+    },
+    {
+      "file": "fixtures/cases/one-day-expired.json",
+      "bytes": 7169,
+      "sha256": "9b99abd5910142aa92aabcd98985d46e0bbb6c0dc371ca9984f261f0eb69b635"
+    },
+    {
+      "file": "fixtures/cases/one-day-late.json",
+      "bytes": 7571,
+      "sha256": "632166f20e76ff0c5c9f6604942b04fe3e5dedbfb217b815d82003da06928faf"
+    },
+    {
+      "file": "fixtures/cases/one-day-stale.json",
+      "bytes": 7109,
+      "sha256": "3cb2cb2d9cd74a3998ec748399a196dad7a18b176ad0000fb9caf4c0280d9a6b"
+    },
+    {
+      "file": "fixtures/cases/permissions.json",
+      "bytes": 6798,
+      "sha256": "1b5b1cd96a9b34e09fb1f97b6920b1dfd7bc660764facadbf6b29879577fd314"
+    },
+    {
+      "file": "fixtures/cases/stale.json",
+      "bytes": 6835,
+      "sha256": "33d5ce78569816f495081f83d089ba73b5ec5275a4eaa1d5495a19a2bb71451c"
+    },
+    {
+      "file": "package.json",
+      "bytes": 431,
+      "sha256": "a20b55d84677c3df22c33edc5a7ca57fd4b9bc5f71a080be52fee0bf059e489a"
+    },
+    {
+      "file": "review-campaigns.mjs",
+      "bytes": 1830,
+      "sha256": "b7046506026fca076ce1ec2de3786733f5470c80f61d1fe30c323fbb1979eed7"
+    },
+    {
+      "file": "run-demo.mjs",
+      "bytes": 1021,
+      "sha256": "4f974c996bbb4197f5d96b889fd67ea8dbf7cf79be6d00f11360473e206dd9b9"
+    },
+    {
+      "file": "src/gifting.js",
+      "bytes": 14263,
+      "sha256": "ca094d1d9d224dfc6f34a65ea52fe36c36e9103a804dd09c817f233c30db531e"
+    },
+    {
+      "file": "src/preflight.mjs",
+      "bytes": 12506,
+      "sha256": "2e3edab9e313dc4eb29a3716b2f7a2e934ccfd4b99ae3553bf25435ecccc26d0"
+    },
+    {
+      "file": "src/report.mjs",
+      "bytes": 8994,
+      "sha256": "2da67e31b7e8f32195181d98cac8746a9427ce9a92bae2e2e93e79286bbe96dc"
+    },
+    {
+      "file": "test/preflight.test.mjs",
+      "bytes": 12478,
+      "sha256": "4684bf49826b2b5515f63e24c1024ce008e30981d834dc3a6d55fe348d97ad69"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "reports/one-day/app.json",
+      "bytes": 124710,
+      "sha256": "7f93033c507b26ceead2fff7346f27a525a73c54208352644092f6887791c150"
+    },
+    {
+      "file": "reports/one-day/campaigns.html",
+      "bytes": 24805,
+      "sha256": "32908b2ae1a02b87f98d7e58c7e6af947ef9885ed93cfad3211f7dc00c4498f3"
+    },
+    {
+      "file": "reports/one-day/campaigns/GIFT-220/case.json",
+      "bytes": 7111,
+      "sha256": "e8de9e9543c59f674377ac48d24fe6cc6a391aef9e9ee4f1c985ee97c48cfd89"
+    },
+    {
+      "file": "reports/one-day/campaigns/GIFT-220/run.json",
+      "bytes": 321899,
+      "sha256": "249b27be02637f07b975541867a4fd3674cbeb2b9b350158cfd180cc769aa4dd"
+    },
+    {
+      "file": "reports/one-day/campaigns/GIFT-220/validation.json",
+      "bytes": 36,
+      "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c"
+    },
+    {
+      "file": "reports/one-day/campaigns/GIFT-221/case.json",
+      "bytes": 7109,
+      "sha256": "3cb2cb2d9cd74a3998ec748399a196dad7a18b176ad0000fb9caf4c0280d9a6b"
+    },
+    {
+      "file": "reports/one-day/campaigns/GIFT-221/run.json",
+      "bytes": 333202,
+      "sha256": "b7bb6711fd865fd071329b5dc67e525cf37b2fc0f2fa1fc4a39349a4ee4dc204"
+    },
+    {
+      "file": "reports/one-day/campaigns/GIFT-221/validation.json",
+      "bytes": 36,
+      "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c"
+    },
+    {
+      "file": "reports/one-day/campaigns/GIFT-222/case.json",
+      "bytes": 7169,
+      "sha256": "9b99abd5910142aa92aabcd98985d46e0bbb6c0dc371ca9984f261f0eb69b635"
+    },
+    {
+      "file": "reports/one-day/campaigns/GIFT-222/run.json",
+      "bytes": 335894,
+      "sha256": "807e646bbbed0bc452c9598d34128a4c4d48c4238ae6225cbcbafae9d68a7584"
+    },
+    {
+      "file": "reports/one-day/campaigns/GIFT-222/validation.json",
+      "bytes": 36,
+      "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c"
+    },
+    {
+      "file": "reports/one-day/campaigns/GIFT-223/case.json",
+      "bytes": 7571,
+      "sha256": "632166f20e76ff0c5c9f6604942b04fe3e5dedbfb217b815d82003da06928faf"
+    },
+    {
+      "file": "reports/one-day/campaigns/GIFT-223/run.json",
+      "bytes": 326398,
+      "sha256": "9cb6c4a30c21e7b13aa9c572c032f9f6384cd8b8efa28e94ffdd7fd324d1bb10"
+    },
+    {
+      "file": "reports/one-day/campaigns/GIFT-223/validation.json",
+      "bytes": 36,
+      "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c"
+    },
+    {
+      "file": "reports/one-day/commands.json",
+      "bytes": 5443,
+      "sha256": "7855833dd6f53e7c0402b74dedff390bf174d24243ada3c9d07170f690df28b1"
+    },
+    {
+      "file": "reports/one-day/manifest.json",
+      "bytes": 85621,
+      "sha256": "1b69155656833b53fafca139a8cb43dbf947ff17ddcabb62fd3d9b4a50401621"
+    }
+  ]
+}

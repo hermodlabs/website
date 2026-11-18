@@ -53,7 +53,30 @@ scenarios. The SDK draft deliberately retains author binding reviews as needing
 renewal. Publishing a supporting app by itself never updates an existing workflow
 pin. Browser-captured publications, where supplied, are separate artifacts.
 
-## What the example establishes
+## Connected CLI and SDK examples
+
+Two later articles use the separate standalone **Gift-kit Preflight** and
+**Gift-kit Handoff Desk** developer clients from the public sample-code repository.
+Their native one-day cases GIFT-220 through GIFT-223 and fixed earliest-handoff
+app are retained under `preflight/` and `handoff-desk/`. They are not adaptations
+of the guided workflow artifacts described above.
+
+Both clients share the exact same app and generated canonical inputs. Those
+inputs plan ten minutes of rehearsal while the published minimum stays five.
+The early cases prefer external work at $400/T+25 min when confirmed, or in-house
+work at $300/T+40 min with an old insert confirmation. At T+23 hr, expired records
+block the work; a separate case explicitly supplies current production
+availability, permissions and confirmation and supports external handoff at
+T+23 hr 25 min, with 35 min before the T+24 hr cutoff.
+
+Unlike the first two website examples, these clients use the repository's native
+one-day inputs without website-only extensions to availability, permission or
+confirmation windows. A longer cutoff preserves existing intervals. Their
+verification records identify the actual CLI report, complete exported cases,
+React file imports and calculations. The exported case transfers recorded inputs,
+not an accepted approval, diagnosis or completed-work record.
+
+## What the original guided example establishes
 
 There are 60 authored scenarios: 15 native app scenarios and 13 complete
 workflow scenarios for each one-day policy, plus two native and two workflow
