@@ -1,0 +1,948 @@
+{
+  "format": "shipment-operating-journey-verification/1",
+  "status": "verified-with-client-limitations",
+  "verifiedAt": "2026-11-18",
+  "source": {
+    "kind": "public-repository",
+    "commit": "18a9df77f3215adab459efb48274f7c15b729455",
+    "repository": "https://github.com/hermodlabs/sample_code",
+    "directories": [
+      "shipping/shipment-exceptions",
+      "shipping/shipment-reservation-desk"
+    ],
+    "sourceManifestUrl": "/assets/use-cases/sample-code/18a9df77f3215adab459efb48274f7c15b729455/manifest.json",
+    "unmodifiedClientSource": true,
+    "dependencyPreparation": "Copied unchanged clients into a temporary directory. Reused matching already-installed React/Vite/Playwright dependencies from a separate temporary installation, then extracted current SDK, CLI and React views package archives into the temporary node_modules. No sibling repository files changed. Offline npm installation was attempted but could not resolve its cache; no fresh-install success is claimed."
+  },
+  "runtime": {
+    "node": "24.16.0",
+    "packages": [
+      {
+        "name": "@decision-lab/sdk",
+        "version": "0.1.0",
+        "archive": "decision-lab-sdk-0.1.0.tgz",
+        "sha256": "6223b1633808e40d4a28692ea926c3a244adbb6a82eb3c0969c1312227129f6d"
+      },
+      {
+        "name": "@decision-lab/cli",
+        "version": "0.1.0",
+        "archive": "decision-lab-cli-0.1.0.tgz",
+        "sha256": "0ab849b7a2747c54c52b8acebb01e37db9000c1b194bc525dfbcdc7165f3550c"
+      },
+      {
+        "name": "@decision-lab/react-views",
+        "version": "0.1.0",
+        "archive": "decision-lab-react-views-0.1.0.tgz",
+        "sha256": "39d84d27787450519f2df32b70f82ad0e298c27a430468811f577c1a936f9146"
+      }
+    ],
+    "react": "19.3.0",
+    "vite": "8.3.0",
+    "playwright": "1.62.1",
+    "browser": "Installed Google Chrome, production Vite browser-worker build",
+    "assessmentTime": "2026-11-17T08:00:00-06:00; explicit separate 11:30 review",
+    "fictionalReceiptTimes": [
+      "2026-11-17T09:00:00-06:00",
+      "2026-11-17T11:35:00-06:00",
+      "2026-11-20T16:45:00-06:00"
+    ]
+  },
+  "binding": {
+    "appId": "shipment-exception-response",
+    "release": 1,
+    "appHash": "0cce758147637a6e7d3461a78987ccf7313574a52446aadadc2fecd16902ba1b",
+    "packageHash": "7d9b4d46f3df0743f239016d26e40003560b1f7c07ee96c497e7c02c964df001",
+    "pattern": "complete-a-commitment/1",
+    "moduleHash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c"
+  },
+  "workflowHash": "ff2ca5a32b41b6d7e566f248cabfbcb8ffbc3345b6097dc58e28265e0fa0689e",
+  "nativeTests": {
+    "cli": {
+      "passed": 38,
+      "failed": 0,
+      "transcript": "cli-native-tests.log"
+    },
+    "react": {
+      "passed": 9,
+      "failed": 0,
+      "transcript": "react-native-tests.log"
+    }
+  },
+  "productionBuild": {
+    "passed": true,
+    "artifacts": [
+      {
+        "file": "assets/index-C-8yN9yI.css",
+        "bytes": 48367,
+        "sha256": "dbd1620241758cf56408d09010a09da4d83f2edb981dde291edf2c581d6170b7"
+      },
+      {
+        "file": "assets/index-UfyRnGZI.js",
+        "bytes": 1002640,
+        "sha256": "af08783a3ce7a6f525a4ab0850810d3d3e0801b1be3df875eba7096f24f0b364"
+      },
+      {
+        "file": "assets/worker-8a2Wvs8k.js",
+        "bytes": 403482,
+        "sha256": "faf963ab42dc2d6d2a06c1115c02ddb25e06f43542faeab2b477a8bedabbc7c6"
+      },
+      {
+        "file": "data/README.md",
+        "bytes": 1314,
+        "sha256": "e35a5aa314849b76d971afb613c94cef5dc24bf5180783e53af48dc20a0057fd"
+      },
+      {
+        "file": "data/cases/confirmed.json",
+        "bytes": 7051,
+        "sha256": "a6f8e57de46ed51117e94e7dfb040417d5561419257b81f5579469e0ee5a0650"
+      },
+      {
+        "file": "data/cases/permissions.json",
+        "bytes": 7180,
+        "sha256": "9ce26a1405b0aa92901541179b0144a8d4bb320189f3b695d3b462781b22ccbd"
+      },
+      {
+        "file": "data/cases/revised.json",
+        "bytes": 7206,
+        "sha256": "fd6523eacdf6587028c620d1b6fdc5da861149d5b2f9bb8b46fbaf928718be85"
+      },
+      {
+        "file": "data/cases/urgent.json",
+        "bytes": 7051,
+        "sha256": "7571af32d9b6fd1f7b9e287e1f88572488364e58a885e5709527703eeab5a996"
+      },
+      {
+        "file": "data/config.json",
+        "bytes": 6692,
+        "sha256": "0ad7cff6dd50b64d683ad0840b8ab4ff9a49cc8ebdca24f226c2d3f2c6f42429"
+      },
+      {
+        "file": "data/shipment-review.app.json",
+        "bytes": 119972,
+        "sha256": "03e1357e59893f4c6171db069433fe073724658506ccacb95c49dea2646867ef"
+      },
+      {
+        "file": "data/shipment.workflow.json",
+        "bytes": 619417,
+        "sha256": "97c2dd1f4bb7dbb3d863c6b5a4922814a75127de5247d234cddf23a8021ab6e1"
+      },
+      {
+        "file": "index.html",
+        "bytes": 592,
+        "sha256": "ae0aa3fc46afdeef3bc23e7457d3f437f1f94edf387b8c6a0220e51af02aeda1"
+      }
+    ],
+    "browserWorker": {
+      "file": "assets/worker-8a2Wvs8k.js",
+      "bytes": 403482,
+      "sha256": "faf963ab42dc2d6d2a06c1115c02ddb25e06f43542faeab2b477a8bedabbc7c6"
+    }
+  },
+  "browser": {
+    "operatingJourneyPassed": true,
+    "method": "Unmodified pinned production clients; ordinary visible forms, file imports, downloads and local saves. Browser Date fixed to fictional record-receipt times Nov 17 and Nov 20; the case assessment clock remains an explicit input. No DOM, findings or application state injected.",
+    "checks": [
+      "Baseline exact CLI review imports pending; explicit review yields Direct $4,000; advancing actual assessment to 11:30 stales prior finding and yields Consolidated $5,000.",
+      "Full-history local save diagnostic: Review needs attention\nFailed to execute 'setItem' on 'Storage': Setting the value of 'shipment-review:7d9b4d46f3df0743f239016d26e40003560b1f7c07ee96c497e7c02c964df001:SHIP-105' exceeded the quota.",
+      "Exact morning SHIP-105 workflow continued through current confirmation, input review, assessment acceptance, selected feasible response, sourced authority, quote-linked reservation and full accepted delivery. Full-history continuation retained for native CLI reopening.",
+      "Mobile layout measured at 390px: document 555px; passed=false.",
+      "Latest negative reservation supersedes the historical positive; original-promise completion returns to not established without deleting earlier history."
+    ],
+    "errors": [],
+    "mobile": {
+      "viewport": 390,
+      "page": 555,
+      "passed": false,
+      "overflowingElements": [
+        {
+          "tag": "TABLE",
+          "className": "dw-table dv-comparison-table",
+          "width": 630,
+          "right": 663
+        },
+        {
+          "tag": "TABLE",
+          "className": "dw-table dv-comparison-table",
+          "width": 633,
+          "right": 685
+        }
+      ]
+    },
+    "limitations": {
+      "localStorage": "Review needs attention\nFailed to execute 'setItem' on 'Storage': Setting the value of 'shipment-review:7d9b4d46f3df0743f239016d26e40003560b1f7c07ee96c497e7c02c964df001:SHIP-105' exceeded the quota.",
+      "fullHistoryImport": {
+        "file": "browser-records/completed-review.json",
+        "bytes": 12551850,
+        "diagnostic": "Review needs attention\nJSON artifact exceeds its 8388608-byte source bound.",
+        "importSucceeded": false
+      }
+    }
+  },
+  "nativeResults": {
+    "passed": true,
+    "checks": [
+      {
+        "check": "Native CLI/browser parity",
+        "browser": "baseline-sdk-run.json",
+        "cli": "cli-reports/baseline/shipments/SHIP-104/run.json",
+        "result": {
+          "inputHash": "execution-input:a51ebf0adc91d02ec2ee837ba26f4a3347fdb2004ba876c46649d5f001892cad",
+          "preferred": [
+            {
+              "arrangement": "direct",
+              "expense": 400000,
+              "arrival": 5040
+            }
+          ],
+          "plans": [
+            {
+              "id": "plan-000001",
+              "arrangement": "direct",
+              "feasible": true,
+              "blockers": []
+            },
+            {
+              "id": "plan-000002",
+              "arrangement": "backup",
+              "feasible": false,
+              "blockers": [
+                "total-expense-limit"
+              ]
+            },
+            {
+              "id": "plan-000003",
+              "arrangement": "consolidated",
+              "feasible": true,
+              "blockers": []
+            }
+          ]
+        }
+      },
+      {
+        "check": "Native CLI/browser parity",
+        "browser": "late-sdk-run.json",
+        "cli": "late-cli-report/shipments/SHIP-104/run.json",
+        "result": {
+          "inputHash": "execution-input:85ec1e0945e62a6d43ee83ecdacfadfc673450e86a00d5949066c3fd6d1d321a",
+          "preferred": [
+            {
+              "arrangement": "consolidated",
+              "expense": 500000,
+              "arrival": 3960
+            }
+          ],
+          "plans": [
+            {
+              "id": "plan-000001",
+              "arrangement": "direct",
+              "feasible": false,
+              "blockers": [
+                "carrier-booking-cutoff"
+              ]
+            },
+            {
+              "id": "plan-000002",
+              "arrangement": "backup",
+              "feasible": false,
+              "blockers": [
+                "total-expense-limit"
+              ]
+            },
+            {
+              "id": "plan-000003",
+              "arrangement": "consolidated",
+              "feasible": true,
+              "blockers": []
+            }
+          ]
+        }
+      },
+      {
+        "check": "Native CLI/browser parity",
+        "browser": "revised-blocked-sdk-run.json",
+        "cli": "cli-reports/morning/shipments/SHIP-105/run.json",
+        "result": {
+          "inputHash": "execution-input:4acdbac1a6f299359137b191e32b28a0e089c03c1aee028eb07520dc97bb9825",
+          "preferred": [],
+          "plans": [
+            {
+              "id": "plan-000001",
+              "arrangement": "direct",
+              "feasible": false,
+              "blockers": [
+                "capacity-for-complete-order"
+              ]
+            },
+            {
+              "id": "plan-000002",
+              "arrangement": "backup",
+              "feasible": false,
+              "blockers": [
+                "total-expense-limit"
+              ]
+            },
+            {
+              "id": "plan-000003",
+              "arrangement": "consolidated",
+              "feasible": false,
+              "blockers": [
+                "scoped-consolidation-slot"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "check": "New scoped confirmation only",
+        "result": {
+          "inputHash": "execution-input:4161d3f67e58729ea347974dbc2933dbf41b4fa058b7765cce0acd52bc43c6ec",
+          "preferred": [
+            {
+              "arrangement": "consolidated",
+              "expense": 500000,
+              "arrival": 3960
+            }
+          ],
+          "plans": [
+            {
+              "id": "plan-000001",
+              "arrangement": "direct",
+              "feasible": false,
+              "blockers": [
+                "capacity-for-complete-order"
+              ]
+            },
+            {
+              "id": "plan-000002",
+              "arrangement": "backup",
+              "feasible": false,
+              "blockers": [
+                "total-expense-limit"
+              ]
+            },
+            {
+              "id": "plan-000003",
+              "arrangement": "consolidated",
+              "feasible": true,
+              "blockers": []
+            }
+          ]
+        }
+      },
+      {
+        "check": "Completed native workflow reopened by actual CLI continuation without changing its hash",
+        "runId": "shipment-SHIP-105-20261117140500",
+        "contentHash": "a31f64cbc9102bdd16e392eecf3bfd7a1de787c51f998d30fe701fcf251b1624",
+        "status": {
+          "authorizationRecorded": true,
+          "reservationRecorded": true,
+          "currentCommitmentCompleted": true,
+          "originalCommitmentCompleted": true,
+          "promiseRevised": false,
+          "escalationRecorded": false,
+          "meaning": "Operating conclusions use only the last supplied complete record of each kind on the current selected assessment and plan. A later negative or incorrectly scoped record cannot reuse an earlier positive. A reservation is not delivery. Escalation does not satisfy the original promise. Records remain external assertions; this tool does not authenticate them."
+        }
+      },
+      {
+        "check": "Latest negative reservation removes current support, history retains earlier positive",
+        "status": {
+          "authorizationRecorded": true,
+          "reservationRecorded": false,
+          "currentCommitmentCompleted": false,
+          "originalCommitmentCompleted": false,
+          "promiseRevised": false,
+          "escalationRecorded": false,
+          "meaning": "Operating conclusions use only the last supplied complete record of each kind on the current selected assessment and plan. A later negative or incorrectly scoped record cannot reuse an earlier positive. A reservation is not delivery. Escalation does not satisfy the original promise. Records remain external assertions; this tool does not authenticate them."
+        }
+      },
+      {
+        "check": "Public CLI changes command compares actual baseline and 11:30 runs",
+        "status": "changed",
+        "findings": {
+          "feasibility": {
+            "available": true,
+            "changed": true
+          },
+          "blockers": {
+            "available": true,
+            "changed": true
+          },
+          "preference": {
+            "available": true,
+            "changed": true
+          }
+        }
+      }
+    ]
+  },
+  "captures": [
+    {
+      "file": "baseline-direct.png",
+      "width": 772,
+      "height": 1155,
+      "sha256": "9da645213c37eb722502f5720114d7120c6ea7171605fff3ffd6d5c58d44b9bf",
+      "description": "Exact baseline CLI continuation, explicitly reviewed and assessed in the browser: Direct is preferred at $4,000 under cost-first policy."
+    },
+    {
+      "file": "chosen-response.png",
+      "width": 772,
+      "height": 554,
+      "sha256": "89f4946033c16b0c8c753b182b4a151030a2a6dc6e8f02459ee17b8d23ecc8fb",
+      "description": "Acceptance and chosen response are recorded separately; actual authorization, reservation and original delivery completion remain unestablished."
+    },
+    {
+      "file": "exception-details.png",
+      "width": 1376,
+      "height": 1976,
+      "sha256": "3793519aa3187ed404be4fd3a23e95bc5870982d306351e3fdf32de95fb93b56",
+      "description": "Source-aware changed findings and the complete arrangement comparison for SHIP-105."
+    },
+    {
+      "file": "exception-queue.png",
+      "width": 1376,
+      "height": 1846,
+      "sha256": "392d8e3df1a1c14de6db04a0bd4ac03d7824165020c71f0e7634b9640bc0fc4d",
+      "description": "Actual CLI morning queue distinguishes unchanged Direct, two blocked shipment reviews and a EUR input error."
+    },
+    {
+      "file": "late-consolidated.png",
+      "width": 772,
+      "height": 1206,
+      "sha256": "5be1f128dc7cb323fe6d4ab8dea0c6b967949e28dc0fb0d946e6c076f53a5ae5",
+      "description": "Same quote records at 11:30 a.m.: Direct fails its 11 a.m. cutoff; Consolidated at $5,000 remains supported before noon."
+    },
+    {
+      "file": "latest-cancellation.png",
+      "width": 772,
+      "height": 673,
+      "sha256": "f91d2b74710aef045682b1d937468fede5728e00f719106921ad6dcece1f51d4",
+      "description": "A later supplied negative reservation record removes current reservation and completion support; old positive records remain in the history."
+    },
+    {
+      "file": "mobile-current-review.png",
+      "width": 390,
+      "height": 844,
+      "sha256": "0cf3b6129f4bce8af7aba58710a3a24d67e32a8f551be523ac6215f513558a4d",
+      "description": "390px production desk: ordinary page scrolling and current native findings."
+    },
+    {
+      "file": "original-promise-completed.png",
+      "width": 772,
+      "height": 639,
+      "sha256": "a801d8d128ea267427e93e37053f6a59029ad274b260fe8ade81458c9e4f13f6",
+      "description": "Separately sourced authority, quote-linked booking and accepted delivery of 100 units within the original receiving window support original-promise completion."
+    },
+    {
+      "file": "queue-overview.png",
+      "width": 1440,
+      "height": 1050,
+      "sha256": "c80ebb8cc9dae21d0a42b7beed2180d36c23cd447c2e117ff2c1cce71260c29c",
+      "description": "Actual unedited generated CLI report capture."
+    },
+    {
+      "file": "replacement-confirmation.png",
+      "width": 567,
+      "height": 562,
+      "sha256": "12acf57c5c4b67194f3da6b9ec36b30c4f92e5eb0540bc91bb0d420d741d8f90",
+      "description": "Fictional newly received confirmation NEW-SLOT-105-R2 covers revision 2; scope and original validity are visible. This is stipulated new evidence, not a relabeled old document."
+    },
+    {
+      "file": "reservation-recorded.png",
+      "width": 772,
+      "height": 1541,
+      "sha256": "d78dcccad5bb81f8ded09faf077d4af90b8c1c80003032e0da5c659bd16d80db",
+      "description": "Current sourced authority and carrier reservation pass; the original delivery commitment is still not established."
+    },
+    {
+      "file": "revised-arrangements.png",
+      "width": 1326,
+      "height": 530,
+      "sha256": "3e1295f0e870acba0a99cff8150a4d28a9a392de35d027653daa9f54da3811b2",
+      "description": "Actual unedited generated CLI report capture."
+    },
+    {
+      "file": "revised-order-blocked.png",
+      "width": 772,
+      "height": 1225,
+      "sha256": "0d76d70ad322e19c274623c75112545832e2ef76a91580e16994130052df2346",
+      "description": "SHIP-105 revision 2 is blocked: Direct carries only 99 of 100 units; the Consolidated confirmation covers revision 1; Backup exceeds the limit."
+    },
+    {
+      "file": "updated-consolidated.png",
+      "width": 772,
+      "height": 1206,
+      "sha256": "74d58977d0538e7f28f6127c9467b32f4449108a29c970494f1103020ed62c50",
+      "description": "After explicitly reviewing the new scoped confirmation, Consolidated passes and is preferred at $5,000; Direct remains capacity-blocked."
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "browser-import-diagnostic.json",
+      "bytes": 199,
+      "sha256": "c651c598f9baddaa408b52ea3b9d2e1f7811d102766f36b990c54a70bfcde208"
+    },
+    {
+      "file": "browser-records/baseline-sdk-run.json",
+      "bytes": 230038,
+      "sha256": "d07f740e90d363d849894bb79f8ff92a55578e5870098ea81a935ffeaad3e652"
+    },
+    {
+      "file": "browser-records/cancelled-review.json",
+      "bytes": 13553632,
+      "sha256": "ad2bc8ec99dfe10d479b4563174c0751b28c7ddac82e31b7b84897ebec94c848"
+    },
+    {
+      "file": "browser-records/completed-review.json",
+      "bytes": 12551850,
+      "sha256": "05c4cddd72338fc2921b43d2fede4d7cb4730bb3544efd52199fd433c843fd04"
+    },
+    {
+      "file": "browser-records/late-sdk-run.json",
+      "bytes": 245820,
+      "sha256": "b315dd03f4eb610bec8f3f66aeae7c919687665c3fb15b23b32eeb4d5419f9f6"
+    },
+    {
+      "file": "browser-records/reserved-review.json",
+      "bytes": 11552232,
+      "sha256": "202c112c6ce0e614879268afb956d136f292048d88fe2484e4a469a500be47f8"
+    },
+    {
+      "file": "browser-records/revised-blocked-sdk-run.json",
+      "bytes": 245614,
+      "sha256": "b8a3005a62a3933aacdbe0cf530d3993cd5899c2fffd526588402e3b8094d8ad"
+    },
+    {
+      "file": "browser-records/updated-sdk-run.json",
+      "bytes": 245918,
+      "sha256": "81cee3b772f8257f9bf5fb9dfbad33a64ba346c2e57824b1c7285c32629e2a7f"
+    },
+    {
+      "file": "browser-results.json",
+      "bytes": 7540,
+      "sha256": "b60e4ca5af32341c59a4460e28560b1620b1c94f6830521d8b8062125b7108ed"
+    },
+    {
+      "file": "cli-native-tests.log",
+      "bytes": 3821,
+      "sha256": "8a1afb5a0193da9721cf06e1d1e796e153cb507c4d3fdc0803e0b6d3a76fd334"
+    },
+    {
+      "file": "late-finding-changes.json",
+      "bytes": 4468,
+      "sha256": "56b55f7347ebd03cc42d8812aeabb2c7e06088db50cc411192d3f86ddf4ddcc7"
+    },
+    {
+      "file": "native-parity.json",
+      "bytes": 6076,
+      "sha256": "0a13a45c006401c9a5f0b8c4564456c7c9f16b197d5ffd358265a2c7476cb88d"
+    },
+    {
+      "file": "react-native-tests.log",
+      "bytes": 1040,
+      "sha256": "53a39ffa0423243bac858b8d3970dd7bcdd0aa332a936b5f00efc4a2211a232e"
+    },
+    {
+      "file": "reports/baseline/app.json",
+      "bytes": 119972,
+      "sha256": "03e1357e59893f4c6171db069433fe073724658506ccacb95c49dea2646867ef"
+    },
+    {
+      "file": "reports/baseline/cli-commands.json",
+      "bytes": 10489,
+      "sha256": "37857403aefba74bda9140a5b832a5c7c95d29624c488d6be58228940835d962"
+    },
+    {
+      "file": "reports/baseline/manifest.json",
+      "bytes": 37290,
+      "sha256": "6df94bc41621d1b18a4f493fde2313ea4c0b4be4949c6b296ea95991586d59c7"
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-104/case.json",
+      "bytes": 7051,
+      "sha256": "a6f8e57de46ed51117e94e7dfb040417d5561419257b81f5579469e0ee5a0650"
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-104/review.json",
+      "bytes": 3398043,
+      "sha256": "ed3f084b870a3445667afb51c8674b938185575bc215684e3af648baf5662e52"
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-104/run.json",
+      "bytes": 234330,
+      "sha256": "ee1ad842b79d5959689baa6d9e8e04e3b097ca18f2d45fd62a4d8ebdfa968360"
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-104/sources.json",
+      "bytes": 962,
+      "sha256": "a0c9a5075f6a6e2b9c2309aa2e9fcc3970cab7ed951d5af2cc07aab290bffda7"
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-104/validation.json",
+      "bytes": 36,
+      "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c"
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-105/case.json",
+      "bytes": 7051,
+      "sha256": "96e4483fbbeec33532cf010f2dd48741b612f1c6533c96320819b2c1fe220dda"
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-105/review.json",
+      "bytes": 3398043,
+      "sha256": "ac9d67b735386f49499f83c7f4387d2abbfc58eab2d6198abc313154d213e449"
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-105/run.json",
+      "bytes": 234330,
+      "sha256": "f569524f2e6593fa972df707c5ba4376fef2abb9d448ada140b00a3e37409d2a"
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-105/sources.json",
+      "bytes": 962,
+      "sha256": "505ee2e7f2d92b79c22308f85ff5ec337e3063cb44c03533efe42b59ff452741"
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-105/validation.json",
+      "bytes": 36,
+      "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c"
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-106/case.json",
+      "bytes": 7051,
+      "sha256": "1aff327e8874f81a913150a7dc395ac78696cb88387d4e5f7619176b1198d796"
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-106/review.json",
+      "bytes": 3398043,
+      "sha256": "294b483b6838af8653baf82d9e4bd3fc1eca1cb43012b27b79855c902955d2b3"
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-106/run.json",
+      "bytes": 234330,
+      "sha256": "34976aad2325c74e4635c5ab5fbecfa173e4afcc23597ebcebe595f985732ff4"
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-106/sources.json",
+      "bytes": 962,
+      "sha256": "6f6383060d1bc00d531a87f9bb36b0957532dffe1027182cd56e6e0f32b9da32"
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-106/validation.json",
+      "bytes": 36,
+      "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c"
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-107/case.json",
+      "bytes": 7050,
+      "sha256": "af80bd4f80eb4e51d48150862ff2f10c1a2629641309d925fae23243e2f0c0b4"
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-107/review.json",
+      "bytes": 3397995,
+      "sha256": "df49e19daef6c8e0a94643d5e44477365fe603455c348c4bb295f32b8cb4a99d"
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-107/run.json",
+      "bytes": 234320,
+      "sha256": "d272f0cfe60ec92c4c0381b12f31aa2a5d41a064b4773ef9a3c7bd07cb5f3805"
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-107/sources.json",
+      "bytes": 962,
+      "sha256": "230abd3a474ebabb3b8ae34c0e52a5bbe3ad34123cbe3f1dce3823408ae6b8e6"
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-107/validation.json",
+      "bytes": 36,
+      "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c"
+    },
+    {
+      "file": "reports/baseline/shipments.csv",
+      "bytes": 3661,
+      "sha256": "3e2fdf01b125e821950f01cf6940c530893c95ca0deae5a4332c345ff1629519"
+    },
+    {
+      "file": "reports/baseline/shipments.html",
+      "bytes": 19007,
+      "sha256": "1cf4befabf157ef041ce373e7b159f57d1a44f53a57325b3c5998d4ba2271133"
+    },
+    {
+      "file": "reports/continued-completed/case.json",
+      "bytes": 7212,
+      "sha256": "660f946cb97cd72374e02ac3d422be2d07f33550ff4a1a24c7176dd836cd3e75"
+    },
+    {
+      "file": "reports/continued-completed/cli-commands.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "file": "reports/continued-completed/prepared-review.json",
+      "bytes": 36878412,
+      "sha256": "f450e8b2547ac5ab2583c12b4567411554b80fd8df9e15d6601750273903f858"
+    },
+    {
+      "file": "reports/continued-completed/review.json",
+      "bytes": 36878412,
+      "sha256": "f450e8b2547ac5ab2583c12b4567411554b80fd8df9e15d6601750273903f858"
+    },
+    {
+      "file": "reports/continued-completed/run.json",
+      "bytes": 542540,
+      "sha256": "0eab9045f5fa836eb13d9d7ae14c193b2951e25b043a99ffd1492d7837e072c4"
+    },
+    {
+      "file": "reports/continued-completed/shipment.html",
+      "bytes": 7926,
+      "sha256": "80ea9ac3cf5617b9a75b5d5228f29e617cb068548e3bcdd5f27ab9cd79e02f1b"
+    },
+    {
+      "file": "reports/late/app.json",
+      "bytes": 119972,
+      "sha256": "03e1357e59893f4c6171db069433fe073724658506ccacb95c49dea2646867ef"
+    },
+    {
+      "file": "reports/late/cli-commands.json",
+      "bytes": 10232,
+      "sha256": "073842d1db20a0502a58c34924cce0c0759b69696d806a0312a66150aab74bbc"
+    },
+    {
+      "file": "reports/late/manifest.json",
+      "bytes": 40086,
+      "sha256": "4c6e3943d8a31060718e5833bc166612477c94b21c0296bdfda5dffc0006d601"
+    },
+    {
+      "file": "reports/late/shipments/SHIP-104/case.json",
+      "bytes": 7051,
+      "sha256": "7571af32d9b6fd1f7b9e287e1f88572488364e58a885e5709527703eeab5a996"
+    },
+    {
+      "file": "reports/late/shipments/SHIP-104/review.json",
+      "bytes": 3557178,
+      "sha256": "9a8c060962e108cf95dc60525f00c185bafb8b553b1d01ac5387311d746e17eb"
+    },
+    {
+      "file": "reports/late/shipments/SHIP-104/run.json",
+      "bytes": 250128,
+      "sha256": "d4dd93c59517ddc802a2bcaa7ca03c2b8a48dc6d183d2a89ee4d99b851997679"
+    },
+    {
+      "file": "reports/late/shipments/SHIP-104/sources.json",
+      "bytes": 962,
+      "sha256": "a0c9a5075f6a6e2b9c2309aa2e9fcc3970cab7ed951d5af2cc07aab290bffda7"
+    },
+    {
+      "file": "reports/late/shipments/SHIP-104/validation.json",
+      "bytes": 36,
+      "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c"
+    },
+    {
+      "file": "reports/late/shipments/SHIP-105/case.json",
+      "bytes": 7051,
+      "sha256": "7322cdd667cf515c68089388f5ab4be81366773d6ecc90fb4d709a626274b31e"
+    },
+    {
+      "file": "reports/late/shipments/SHIP-105/review.json",
+      "bytes": 3557178,
+      "sha256": "ce26b868335f842e1342511281bcbf83660130869f59a8268831853153cef494"
+    },
+    {
+      "file": "reports/late/shipments/SHIP-105/run.json",
+      "bytes": 250128,
+      "sha256": "72b4714b571d8e9a54181911e877966b835b679ad1ddbaf213743c50575a3eaa"
+    },
+    {
+      "file": "reports/late/shipments/SHIP-105/sources.json",
+      "bytes": 962,
+      "sha256": "505ee2e7f2d92b79c22308f85ff5ec337e3063cb44c03533efe42b59ff452741"
+    },
+    {
+      "file": "reports/late/shipments/SHIP-105/validation.json",
+      "bytes": 36,
+      "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c"
+    },
+    {
+      "file": "reports/late/shipments/SHIP-106/case.json",
+      "bytes": 7051,
+      "sha256": "b57b5bee6c111ed690d10fdf0238e876824d5102a45fdeed076561e9a052e3a2"
+    },
+    {
+      "file": "reports/late/shipments/SHIP-106/review.json",
+      "bytes": 3557178,
+      "sha256": "84a624250e9f468df67294313acb2fe931b2b93401e7186e162f2364879a0568"
+    },
+    {
+      "file": "reports/late/shipments/SHIP-106/run.json",
+      "bytes": 250128,
+      "sha256": "6e717f9ccbe8ad769220f0d6c0d4968a5d88714b2c52f714aa7d5b1456213b2f"
+    },
+    {
+      "file": "reports/late/shipments/SHIP-106/sources.json",
+      "bytes": 962,
+      "sha256": "6f6383060d1bc00d531a87f9bb36b0957532dffe1027182cd56e6e0f32b9da32"
+    },
+    {
+      "file": "reports/late/shipments/SHIP-106/validation.json",
+      "bytes": 36,
+      "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c"
+    },
+    {
+      "file": "reports/late/shipments/SHIP-107/case.json",
+      "bytes": 7050,
+      "sha256": "5881c5de3678f42c85c5ea6520bba21e09fcb3c2a2605043540e0898a0b6b75d"
+    },
+    {
+      "file": "reports/late/shipments/SHIP-107/review.json",
+      "bytes": 3557130,
+      "sha256": "89717e0b74ead95445228d5c1cc35daf7d8ece0f05b302a9adf57b03c7dc4989"
+    },
+    {
+      "file": "reports/late/shipments/SHIP-107/run.json",
+      "bytes": 250118,
+      "sha256": "08e49634272d884931e7013462bddffc287f333ae527cc458266c11b2488d51c"
+    },
+    {
+      "file": "reports/late/shipments/SHIP-107/sources.json",
+      "bytes": 962,
+      "sha256": "230abd3a474ebabb3b8ae34c0e52a5bbe3ad34123cbe3f1dce3823408ae6b8e6"
+    },
+    {
+      "file": "reports/late/shipments/SHIP-107/validation.json",
+      "bytes": 36,
+      "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c"
+    },
+    {
+      "file": "reports/late/shipments.csv",
+      "bytes": 4001,
+      "sha256": "76c9c559cf7ba6963811bb14c5d68a3be2e4de240d70dc2f54d53c87ec00e064"
+    },
+    {
+      "file": "reports/late/shipments.html",
+      "bytes": 19779,
+      "sha256": "9b6135239cd427765da8f105ab77618028068116cf1a334a579ffd7f6604357f"
+    },
+    {
+      "file": "reports/morning/app.json",
+      "bytes": 119972,
+      "sha256": "03e1357e59893f4c6171db069433fe073724658506ccacb95c49dea2646867ef"
+    },
+    {
+      "file": "reports/morning/cli-commands.json",
+      "bytes": 8076,
+      "sha256": "5dca3de84316f3175625572fda036e0944f718fd51761dd96a92ee9867a55db5"
+    },
+    {
+      "file": "reports/morning/manifest.json",
+      "bytes": 105963,
+      "sha256": "ccc0883c31d745d94c8cfa3aa658f8d0d26e585b0df721907dd10b3b065437d6"
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-104/case.json",
+      "bytes": 7051,
+      "sha256": "a6f8e57de46ed51117e94e7dfb040417d5561419257b81f5579469e0ee5a0650"
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-104/review.json",
+      "bytes": 6074715,
+      "sha256": "798acfcd9e70793f7bcb4e96e79675881ac7c45b791d816d7f7de7b0fe2c96e9"
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-104/run.json",
+      "bytes": 234330,
+      "sha256": "ba0e16fbff5afeebd5b7b118ee6476cae946956c4fb51bb18c7f12af32e76589"
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-104/sources.json",
+      "bytes": 958,
+      "sha256": "17409a0d17c37c6ebb44fc1c7646ee3870d7e9d8d974269ea268eef6d146689b"
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-104/validation.json",
+      "bytes": 36,
+      "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c"
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-105/case.json",
+      "bytes": 7206,
+      "sha256": "fd6523eacdf6587028c620d1b6fdc5da861149d5b2f9bb8b46fbaf928718be85"
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-105/review.json",
+      "bytes": 6219019,
+      "sha256": "d5d2fefdc492e94982d3de7d125241888ab6e4fc4d82a95109b57afb5263a671"
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-105/run.json",
+      "bytes": 249906,
+      "sha256": "4a0a82d5e0e9eab93459e6b55ab0d164e1e3ea9ce9c898e353c6e00e7475823c"
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-105/sources.json",
+      "bytes": 958,
+      "sha256": "3f7aad3bb6eec15e188362becebd33894b3fb3644f532101436120a0871247f3"
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-105/validation.json",
+      "bytes": 36,
+      "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c"
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-106/case.json",
+      "bytes": 7180,
+      "sha256": "9ce26a1405b0aa92901541179b0144a8d4bb320189f3b695d3b462781b22ccbd"
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-106/review.json",
+      "bytes": 6199347,
+      "sha256": "9ba8da0b03006cf51d3ef136e127cd953ac1484352e44cf6a40b6afb0f6c8fb1"
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-106/run.json",
+      "bytes": 248762,
+      "sha256": "ea65f916e83dd65b8d52df8ccfe6cef66f6a4d4e3c26e4f252fbcf5039dbaf5e"
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-106/sources.json",
+      "bytes": 958,
+      "sha256": "ae43ecc58691aa95b6aeebcee712c2561eb7e673d3e66b03107b3ed822bfb4ec"
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-106/validation.json",
+      "bytes": 36,
+      "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c"
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-107/sources.json",
+      "bytes": 1118,
+      "sha256": "2f71b4ba2f6d1f23cf28d6517b7dcc466032f3368661b1837e61119389aad74d"
+    },
+    {
+      "file": "reports/morning/shipments.csv",
+      "bytes": 7650,
+      "sha256": "e2e5d0256dc99a99398e25a73d6a6d8fa884fe685d20cf37bdd429ada4014f4e"
+    },
+    {
+      "file": "reports/morning/shipments.html",
+      "bytes": 22884,
+      "sha256": "1fea3e6bc7163af5f9490411fd7c9dece3255d3af013a50242e9f68e28cfdcb4"
+    },
+    {
+      "file": "verify-native.mjs",
+      "bytes": 3685,
+      "sha256": "e40c4ecd584b2408abac0a5a49431695876cea8e88d75b1ac9d43bf99f728057"
+    }
+  ],
+  "reproduction": {
+    "temporaryDirectory": "/private/tmp/shipment-operating-18a9df77",
+    "captureScript": "scripts/capture-shipment-operating-journey.mjs",
+    "nativeCommands": [
+      "node run-demo.mjs --output /private/tmp/shipment-operating-18a9df77/cli-reports",
+      "npm test (each copied client)",
+      "npm run build (copied React client)",
+      "node review-shipments.mjs --input fixtures/baseline --retained fixtures/retained/baseline --as-of 2026-11-17T11:30:00-06:00 --output /private/tmp/shipment-operating-18a9df77/late-cli-report",
+      "decision-lab changes --before BASELINE.run.json --after LATE.run.json --output late-finding-changes.json",
+      "node continue-review.mjs --review completed-review.json --output continued-completed --created-at 2026-11-20T22:45:00Z"
+    ]
+  },
+  "scope": "Fictional records entered through normal forms; no externally performed authorization, reservation or delivery. A native calculation supports supplied-record conclusions only. Full native CLI continuation reopening passes and preserves exact workflow hash. The full-history browser import, browser local save and 390px app layout have the retained limitations; none is reported as passing."
+}

@@ -113,3 +113,21 @@ The website repository reproduces the results with
 `node scripts/build-gifting-use-case.mjs` and verifies retained artifacts with
 `node scripts/check-gifting-use-case.mjs`. Reproduction uses a compatible local
 Decision Lab SDK checkout, read-only, and writes only this website's assets.
+
+## Question-focused report refresh
+
+`question-focused/verification.json` records a presentation-only refresh through
+normal file imports, visible inspection/navigation controls and native exports.
+It checks the exact retained workflow hash before and after presentation changes,
+records current production bundle hashes and retains desktop/mobile browser checks.
+`node scripts/capture-gifting-question-focused.mjs` reproduces the captures using
+the current native production build and an isolated copy of the current gifting
+React sample built against the matching SDK and React-view packages.
+
+The v2 teaching cases, separately adapted ten-minute-minimum authoring cases and
+v3 cost-first operating cases preserve their original app/workflow definitions.
+The v3 plan supplies ten minutes of rehearsal under its unchanged five-minute
+minimum. None is silently migrated to a newly authored question-view release.
+The current shared `DecisionView` presents their focused finding, comparison and
+on-request details; full findings, sources and native histories remain available.
+Earlier captures and their provenance remain retained at their original paths.

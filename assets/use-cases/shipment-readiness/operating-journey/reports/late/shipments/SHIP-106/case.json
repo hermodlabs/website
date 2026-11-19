@@ -1,0 +1,275 @@
+{
+  "id": "SHIP-106",
+  "parameters": {
+    "orderId": "ORD-106",
+    "orderRevision": "1",
+    "recipient": "DC-X",
+    "shipDate": "2026-11-18",
+    "profileVersion": "1.0.0",
+    "currentTime": 690,
+    "actionReady": 690,
+    "reservationDeadline": 720,
+    "receiptDeadline": 5340,
+    "receiptOpen": 3600,
+    "receiptClose": 5341,
+    "expenseLimit": 500000,
+    "cashLimit": 650000,
+    "studyFee": 0,
+    "studyFeeAt": 480,
+    "quantity": 100,
+    "packDuration": 120,
+    "releaseDuration": 30,
+    "packActor": "SHIP-106-packing-lead",
+    "releaseActor": "SHIP-106-release-officer",
+    "studyPurchaseCap": 25000,
+    "studyPurchaser": "finance-reviewer"
+  },
+  "tables": {
+    "arrangements": [
+      {
+        "id": "direct",
+        "shipPoint": "SP-A",
+        "fee": 400000,
+        "departure": 1440,
+        "travelDuration": 3600,
+        "capacity": 100,
+        "quoteId": "Q-SHIP-106-direct",
+        "quoteRevision": "1",
+        "quoteOrderId": "ORD-106",
+        "quoteOrderRevision": "1",
+        "quoteKnownAt": 450,
+        "quoteValidFrom": 450,
+        "quoteValidUntil": 721,
+        "bookingCutoff": 660
+      },
+      {
+        "id": "backup",
+        "shipPoint": "SP-B",
+        "fee": 600000,
+        "departure": 1440,
+        "travelDuration": 2160,
+        "capacity": 100,
+        "quoteId": "Q-SHIP-106-backup",
+        "quoteRevision": "1",
+        "quoteOrderId": "ORD-106",
+        "quoteOrderRevision": "1",
+        "quoteKnownAt": 450,
+        "quoteValidFrom": 450,
+        "quoteValidUntil": 721,
+        "bookingCutoff": 720
+      },
+      {
+        "id": "consolidated",
+        "shipPoint": "SP-B",
+        "fee": 500000,
+        "departure": 1440,
+        "travelDuration": 2520,
+        "capacity": 100,
+        "quoteId": "Q-SHIP-106-consolidated",
+        "quoteRevision": "1",
+        "quoteOrderId": "ORD-106",
+        "quoteOrderRevision": "1",
+        "quoteKnownAt": 450,
+        "quoteValidFrom": 450,
+        "quoteValidUntil": 721,
+        "bookingCutoff": 720
+      }
+    ],
+    "states": [
+      {
+        "id": "registered",
+        "registered": true
+      }
+    ],
+    "readiness": [
+      {
+        "stateId": "registered",
+        "shipPoint": "SP-A",
+        "registered": true,
+        "orderId": "ORD-106",
+        "orderRevision": "1",
+        "recipient": "DC-X",
+        "shipDate": "2026-11-18",
+        "profileVersion": "1.0.0"
+      },
+      {
+        "stateId": "registered",
+        "shipPoint": "SP-B",
+        "registered": true,
+        "orderId": "ORD-106",
+        "orderRevision": "1",
+        "recipient": "DC-X",
+        "shipDate": "2026-11-18",
+        "profileVersion": "1.0.0"
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "registered",
+        "stateId": "registered"
+      }
+    ],
+    "actors": [
+      {
+        "id": "SHIP-106-packing-lead"
+      },
+      {
+        "id": "SHIP-106-release-officer"
+      }
+    ],
+    "capabilities": [
+      {
+        "actor": "SHIP-106-packing-lead",
+        "action": "pack"
+      },
+      {
+        "actor": "SHIP-106-release-officer",
+        "action": "release"
+      }
+    ],
+    "calendars": [
+      {
+        "actor": "SHIP-106-packing-lead",
+        "start": 480,
+        "end": 1440
+      },
+      {
+        "actor": "SHIP-106-release-officer",
+        "start": 480,
+        "end": 1440
+      }
+    ],
+    "resources": [
+      {
+        "id": "SHIP-106-packing-lead",
+        "capacity": 1
+      },
+      {
+        "id": "SHIP-106-release-officer",
+        "capacity": 1
+      },
+      {
+        "id": "packing-bench",
+        "capacity": 1
+      }
+    ],
+    "bookings": [],
+    "grants": [
+      {
+        "id": "SHIP-106-RELEASE-direct",
+        "actor": "SHIP-106-release-officer",
+        "action": "release",
+        "arrangement": "direct",
+        "shipPoint": "SP-A",
+        "orderId": "ORD-106",
+        "orderRevision": "1",
+        "recipient": "DC-X",
+        "shipDate": "2026-11-18",
+        "profileVersion": "1.0.0",
+        "start": 480,
+        "end": 1440
+      },
+      {
+        "id": "SHIP-106-RELEASE-backup",
+        "actor": "SHIP-106-release-officer",
+        "action": "release",
+        "arrangement": "backup",
+        "shipPoint": "SP-B",
+        "orderId": "ORD-106",
+        "orderRevision": "1",
+        "recipient": "DC-X",
+        "shipDate": "2026-11-18",
+        "profileVersion": "1.0.0",
+        "start": 480,
+        "end": 1440
+      },
+      {
+        "id": "SHIP-106-RELEASE-consolidated",
+        "actor": "SHIP-106-release-officer",
+        "action": "release",
+        "arrangement": "consolidated",
+        "shipPoint": "SP-B",
+        "orderId": "ORD-106",
+        "orderRevision": "1",
+        "recipient": "DC-X",
+        "shipDate": "2026-11-18",
+        "profileVersion": "1.0.0",
+        "start": 480,
+        "end": 1440
+      }
+    ],
+    "arrangementAuthorities": [
+      {
+        "arrangement": "direct",
+        "orderId": "ORD-106",
+        "orderRevision": "1",
+        "recipient": "DC-X",
+        "shipDate": "2026-11-18",
+        "profileVersion": "1.0.0",
+        "start": 480,
+        "end": 721,
+        "shipPoint": "SP-A"
+      },
+      {
+        "arrangement": "backup",
+        "orderId": "ORD-106",
+        "orderRevision": "1",
+        "recipient": "DC-X",
+        "shipDate": "2026-11-18",
+        "profileVersion": "1.0.0",
+        "start": 480,
+        "end": 721,
+        "shipPoint": "SP-B"
+      },
+      {
+        "arrangement": "consolidated",
+        "orderId": "ORD-106",
+        "orderRevision": "1",
+        "recipient": "DC-X",
+        "shipDate": "2026-11-18",
+        "profileVersion": "1.0.0",
+        "start": 480,
+        "end": 721,
+        "shipPoint": "SP-B"
+      }
+    ],
+    "studyPurchaseGrants": [
+      {
+        "id": "SHIP-106-STUDY-PURCHASE-1",
+        "actor": "finance-reviewer",
+        "action": "purchase-verification",
+        "orderId": "ORD-106",
+        "orderRevision": "1",
+        "recipient": "DC-X",
+        "shipDate": "2026-11-18",
+        "profileVersion": "1.0.0",
+        "start": 480,
+        "end": 720,
+        "ceiling": 25000
+      }
+    ],
+    "slotConfirmations": [
+      {
+        "arrangement": "consolidated",
+        "shipPoint": "SP-B",
+        "orderId": "ORD-106",
+        "orderRevision": "1",
+        "recipient": "DC-X",
+        "shipDate": "2026-11-18",
+        "profileVersion": "1.0.0",
+        "slotReference": "SLOT-C106",
+        "status": "confirmed",
+        "confirmedAt": 450,
+        "knownAt": 465,
+        "validFrom": 1380,
+        "validUntil": 1440
+      }
+    ]
+  },
+  "provenance": [
+    {
+      "id": "FICTIONAL-RETAINED-BASELINE-SHIP-106",
+      "description": "Fictional retained case for independent shipment SHIP-106. Preparation actors are shipment-specific. The model-local packing-bench resource is separately allocated to this case; the batch does not claim joint resource feasibility. This file records the supplied readiness, authority registry, calendars and resources; no live supplier records are represented."
+    }
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "Native CLI/browser parity",
+      "browser": "baseline-sdk-run.json",
+      "cli": "cli-reports/baseline/shipments/SHIP-104/run.json",
+      "result": {
+        "inputHash": "execution-input:a51ebf0adc91d02ec2ee837ba26f4a3347fdb2004ba876c46649d5f001892cad",
+        "preferred": [
+          {
+            "arrangement": "direct",
+            "expense": 400000,
+            "arrival": 5040
+          }
+        ],
+        "plans": [
+          {
+            "id": "plan-000001",
+            "arrangement": "direct",
+            "feasible": true,
+            "blockers": []
+          },
+          {
+            "id": "plan-000002",
+            "arrangement": "backup",
+            "feasible": false,
+            "blockers": [
+              "total-expense-limit"
+            ]
+          },
+          {
+            "id": "plan-000003",
+            "arrangement": "consolidated",
+            "feasible": true,
+            "blockers": []
+          }
+        ]
+      }
+    },
+    {
+      "check": "Native CLI/browser parity",
+      "browser": "late-sdk-run.json",
+      "cli": "late-cli-report/shipments/SHIP-104/run.json",
+      "result": {
+        "inputHash": "execution-input:85ec1e0945e62a6d43ee83ecdacfadfc673450e86a00d5949066c3fd6d1d321a",
+        "preferred": [
+          {
+            "arrangement": "consolidated",
+            "expense": 500000,
+            "arrival": 3960
+          }
+        ],
+        "plans": [
+          {
+            "id": "plan-000001",
+            "arrangement": "direct",
+            "feasible": false,
+            "blockers": [
+              "carrier-booking-cutoff"
+            ]
+          },
+          {
+            "id": "plan-000002",
+            "arrangement": "backup",
+            "feasible": false,
+            "blockers": [
+              "total-expense-limit"
+            ]
+          },
+          {
+            "id": "plan-000003",
+            "arrangement": "consolidated",
+            "feasible": true,
+            "blockers": []
+          }
+        ]
+      }
+    },
+    {
+      "check": "Native CLI/browser parity",
+      "browser": "revised-blocked-sdk-run.json",
+      "cli": "cli-reports/morning/shipments/SHIP-105/run.json",
+      "result": {
+        "inputHash": "execution-input:4acdbac1a6f299359137b191e32b28a0e089c03c1aee028eb07520dc97bb9825",
+        "preferred": [],
+        "plans": [
+          {
+            "id": "plan-000001",
+            "arrangement": "direct",
+            "feasible": false,
+            "blockers": [
+              "capacity-for-complete-order"
+            ]
+          },
+          {
+            "id": "plan-000002",
+            "arrangement": "backup",
+            "feasible": false,
+            "blockers": [
+              "total-expense-limit"
+            ]
+          },
+          {
+            "id": "plan-000003",
+            "arrangement": "consolidated",
+            "feasible": false,
+            "blockers": [
+              "scoped-consolidation-slot"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "check": "New scoped confirmation only",
+      "result": {
+        "inputHash": "execution-input:4161d3f67e58729ea347974dbc2933dbf41b4fa058b7765cce0acd52bc43c6ec",
+        "preferred": [
+          {
+            "arrangement": "consolidated",
+            "expense": 500000,
+            "arrival": 3960
+          }
+        ],
+        "plans": [
+          {
+            "id": "plan-000001",
+            "arrangement": "direct",
+            "feasible": false,
+            "blockers": [
+              "capacity-for-complete-order"
+            ]
+          },
+          {
+            "id": "plan-000002",
+            "arrangement": "backup",
+            "feasible": false,
+            "blockers": [
+              "total-expense-limit"
+            ]
+          },
+          {
+            "id": "plan-000003",
+            "arrangement": "consolidated",
+            "feasible": true,
+            "blockers": []
+          }
+        ]
+      }
+    },
+    {
+      "check": "Completed native workflow reopened by actual CLI continuation without changing its hash",
+      "runId": "shipment-SHIP-105-20261117140500",
+      "contentHash": "a31f64cbc9102bdd16e392eecf3bfd7a1de787c51f998d30fe701fcf251b1624",
+      "status": {
+        "authorizationRecorded": true,
+        "reservationRecorded": true,
+        "currentCommitmentCompleted": true,
+        "originalCommitmentCompleted": true,
+        "promiseRevised": false,
+        "escalationRecorded": false,
+        "meaning": "Operating conclusions use only the last supplied complete record of each kind on the current selected assessment and plan. A later negative or incorrectly scoped record cannot reuse an earlier positive. A reservation is not delivery. Escalation does not satisfy the original promise. Records remain external assertions; this tool does not authenticate them."
+      }
+    },
+    {
+      "check": "Latest negative reservation removes current support, history retains earlier positive",
+      "status": {
+        "authorizationRecorded": true,
+        "reservationRecorded": false,
+        "currentCommitmentCompleted": false,
+        "originalCommitmentCompleted": false,
+        "promiseRevised": false,
+        "escalationRecorded": false,
+        "meaning": "Operating conclusions use only the last supplied complete record of each kind on the current selected assessment and plan. A later negative or incorrectly scoped record cannot reuse an earlier positive. A reservation is not delivery. Escalation does not satisfy the original promise. Records remain external assertions; this tool does not authenticate them."
+      }
+    },
+    {
+      "check": "Public CLI changes command compares actual baseline and 11:30 runs",
+      "status": "changed",
+      "findings": {
+        "feasibility": {
+          "available": true,
+          "changed": true
+        },
+        "blockers": {
+          "available": true,
+          "changed": true
+        },
+        "preference": {
+          "available": true,
+          "changed": true
+        }
+      }
+    }
+  ]
+}

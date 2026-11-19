@@ -106,6 +106,12 @@
   </figure>
 </header>
 <div class="wrap reader-layout use-case-reading-layout">
+<section class="use-case-brief" aria-labelledby="use-case-brief-heading">
+  <p class="use-case-brief-title" id="use-case-brief-heading">The case in brief</p>
+  <p class="use-case-brief-stakes"><strong>At stake.</strong> A shipment lead and finance reviewer need a consistent way to decide whether uncertain ship-point registration warrants verification before money is committed.</p>
+  <p class="use-case-brief-outcome"><strong>How it resolves.</strong> The author reviews all 36 bindings and publishes version 1.0.1 to a separate pilot collection, preserving the original rules and connecting evidence, planning and verification. Its worked case supports Backup at $6,000 immediately or $200 fast verification with $5,200 expected total cost under hypothetical 50/50 probabilities and perfect accuracy. Case workers still review the facts and proposals; publication does not authorize a purchase or reservation.</p>
+</section>
+
 
   <aside class="reader-navigation" aria-label="Reading navigation">
     <nav class="reader-toc" aria-labelledby="reader-toc-heading">
@@ -153,9 +159,12 @@
   <p>This source-informed demonstration uses fictional shipment inputs. The cited sources explain the requirements context; the existing template defines the rules this example actually checks. We retain those rules and the worked case, and publish version <strong>1.0.1</strong> so the author-to-worker handoff can be tested. The example has one shipment, two shipment plans with their recorded arrangements, one uncertain registration claim and one possible verification before plan selection.</p>
 </aside>
 
+<aside class="use-case-callout" aria-label="Current release and retained authoring exercise">
+  <p><strong>Current release:</strong> the local Marketplace preview offers shipment workflow <strong>1.1.0</strong>, with a focused answer, compact arrangement comparison and expandable supporting details. The <a href="../case-worker/index.html#current-question-view">current case-worker view</a> shows it in use. This reference deliberately retains the original 1.0.0 source and separately published 1.0.1 pilot so its authoring receipts and downloaded cases remain reproducible. Saved reviews retain their original definitions.</p>
+</aside>
 <h2 id="start-with-the-existing-workflow">1. Start with the existing workflow.</h2>
 <p>Open <a href="https://hermodlabs.github.io/review_lab/">Decision Lab</a>. In <strong>Marketplace</strong>, choose <strong>View collection</strong> for <strong>Order fulfillment</strong>, inspect its contents, and select <strong>Install collection</strong>. It opens in <strong>Collections</strong>. Then choose <strong>Workspaces → Create workflow</strong>.</p>
-<p>Under <strong>Start from an installed workflow</strong>, select <strong>Review a first shipment · version 1.0.0</strong> and choose <strong>Start from installed workflow</strong>. This creates an editable authoring copy with the exact supporting apps already embedded.</p>
+<p>For this retained exercise, import the <a href="../../../../assets/use-cases/shipment-readiness/author/shipment-workflow.workflow-draft.json" download>original reviewed authoring draft</a> through <strong>Import workflow</strong> to preserve the exact embedded releases. The original capture below shows the former Marketplace source. If that original release is already installed, under <strong>Start from an installed workflow</strong>, select <strong>Review a first shipment · version 1.0.0</strong> and choose <strong>Start from installed workflow</strong>. This creates an editable authoring copy with the exact supporting apps already embedded.</p>
 <p>This route lets us test the configuration that is available today. Creating a new generic reasoning template is separate work for a template author.</p>
 
 
@@ -187,7 +196,7 @@
 </ul>
 <p>The reusable pattern explains an approach. Each configured app supplies specified reasoning for this domain. The workflow connects those apps, their questions, responsibilities and findings for the shipment decision. Reuse still requires checking that their meanings and conditions fit the intended work.</p>
 <p>The exact package hashes identify the releases being reused. Retain them for this feedback exercise. Changing a label does not change an app’s underlying rules or add a new business requirement.</p>
-<p>The case worker now sees the decision before the complete analysis. Evidence leads with the supported answer or uncertainty; planning leads with the preferred arrangement, comparison priority and blockers; learning leads with acting now versus verification. Selected details and <strong>Technical inspection → Inspect complete report</strong> retain the supporting analysis. These views use the same frozen calculations and do not waive a requirement.</p>
+<p>Within a supporting assessment, the case worker sees the decision before the complete analysis. Evidence leads with the supported answer or uncertainty; planning leads with the preferred arrangement, comparison priority and blockers; learning leads with acting now versus verification. Selected details and the assessment’s <strong>Technical inspection → Inspect complete report</strong> retain its supporting analysis. These views use the same frozen calculations and do not waive a requirement.</p>
 
 
 <figure class="use-case-figure">
@@ -232,7 +241,8 @@
 </figure>
 
 <p>Choose <strong>Preview worked case</strong> to open the real guided-review interface in an isolated session. It starts at <strong>Next action</strong>, with the current decision status and <strong>Next review step</strong>. Check that this action identifies the right question or assessment and responsible role, and that selecting it navigates without accepting the task automatically.</p>
-<p>Check the compact findings first, then open supporting details when needed. The questions must be understandable, the roles must make sense and unresolved conditions must stay visible. Supplied answers still need explicit case review; publication does not turn fictional defaults into evidence.</p>
+<p>The worker’s <strong>Inputs</strong> groups and subtabs are independent of the <strong>Reports</strong> groups. Test that an input question can stay beside <strong>Next action</strong>, that <strong>Forms / YAML</strong> switches between authored questions and the complete shared case, and that unfinished edits survive navigation. <strong>Planning results</strong> opens supporting assessments; the Reports pane’s <strong>Reports</strong> group opens the authored report views. Changing these selections must leave answers and reviews unchanged.</p>
+<p>Check the compact findings first, then open supporting details when needed. In a current question-focused release, also check that the authored summary fields and comparison answer the business question, that missing values remain visible and that inspecting another arrangement stays synchronized across the brief and report. A new field in complete SDK output must not automatically add another visible column. Inspecting a row must leave business choices, reviews and permissions unchanged. The questions must be understandable, the roles must make sense and unresolved conditions must stay visible. Supplied answers still need explicit case review; publication does not turn fictional defaults into evidence.</p>
 <p>The <a href="../case-worker/index.html">case-worker reference guide</a> runs this same exported version through its assessments. It shows the known baseline results so a reviewer can check the complete process. Choose <strong>Return to authoring</strong> to continue configuring the draft.</p>
 
 

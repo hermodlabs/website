@@ -1,0 +1,170 @@
+{
+  "format": "shipment-question-focused-refresh/1",
+  "capturedAt": "2026-11-19T05:54:56.291Z",
+  "sourceCommit": "ceab0c551ea2573430b36ad7d48276ace59bf672",
+  "publicSampleCommit": "f3584a5ec5aef6594b640b5e9d10f8e06041d4eb",
+  "mainUrl": "http://127.0.0.1:5227/",
+  "deskUrl": "http://127.0.0.1:5228/",
+  "method": "Production builds; native file imports, ordinary controls and element screenshots. No injected DOM, CSS, business findings or application state. Inspection changes presentation only.",
+  "captures": [
+    {
+      "file": "backup-focused-answer.png",
+      "width": 1052,
+      "height": 329,
+      "sha256": "c09129072260ae3eb094129510f959bd8b1141c27aed0f522b15a34a7b756bfd",
+      "description": "Current1.1.0 authored answer for Backup: only the authored summary facts and context, with supporting details collapsed."
+    },
+    {
+      "file": "backup-focused.png",
+      "width": 1052,
+      "height": 867,
+      "sha256": "5b3604ee5a84db467153de2d4820d41450668f8d9597d137e4714822923ca205",
+      "description": "Current 1.1.0 authored arrangement view: Backup focused, complete expense, deadline and cutoff; compact comparison expanded; supporting details collapsed."
+    },
+    {
+      "file": "direct-blocked-focused.png",
+      "width": 1052,
+      "height": 970,
+      "sha256": "32d32b6bb557f967a06254beefac1bce75e13b81b407d6592929aa7539292da0",
+      "description": "Same reviewed facts and current arrangement view, inspecting blocked Direct. Inspection neither chooses Direct nor accepts or authorizes anything."
+    },
+    {
+      "file": "direct-supporting-details.png",
+      "width": 1052,
+      "height": 1360,
+      "sha256": "7c649119b926150f848e605b71d58a5ff412706374010eb3b2a8a93bf0e0d031",
+      "description": "Direct supporting detail group explicitly expanded; the focused answer and compact comparison remain visible."
+    },
+    {
+      "file": "shipment-question-mobile.png",
+      "width": 286,
+      "height": 550,
+      "sha256": "3898aada6db9accf268fc07c0bce74b2890b8dd730f0c9d76f1554d056351285",
+      "description": "Current authored question view at390px, ordinary page flow."
+    },
+    {
+      "file": "retained-1.0.1-brief.png",
+      "width": 1136,
+      "height": 1119,
+      "sha256": "1c0bd71dd8cf733a60babdcdace092c5a44d5bcff34465499afbd0d83e6c3660",
+      "description": "The retained1.0.1 worked review in the current production renderer. Existing saved definitions retain their original version and authored fields."
+    },
+    {
+      "file": "tutorial-cost-first-current.png",
+      "width": 1134,
+      "height": 610,
+      "sha256": "b3c8bd79e24475eec2c94f0d50ba767363d06f8c5f75a10c30fee342a81e9131",
+      "description": "Current renderer of exact retained tutorial variants/lowest-cost-shipment.app-case.json: Direct preferred. Frozen rules and business priority unchanged."
+    },
+    {
+      "file": "tutorial-arrival-first-current.png",
+      "width": 1134,
+      "height": 610,
+      "sha256": "48ff7c9893ed685ef64db35a1eaae958f8b6857f11702208912cc8f3ebb9a0c4",
+      "description": "Current renderer of exact retained tutorial variants/earliest-arrival-shipment.app-case.json: Backup preferred. Frozen rules and business priority unchanged."
+    },
+    {
+      "file": "tutorial-budget-current.png",
+      "width": 1134,
+      "height": 610,
+      "sha256": "eedb87ee486a669a14ca8582d43cda7b0f9ecc4d30083526859ffe13192e60f0",
+      "description": "Current renderer of exact retained tutorial variants/budget-exercise/expense-limit-5000.app-case.json: Direct preferred. Frozen rules and business priority unchanged."
+    },
+    {
+      "file": "tutorial-no-slot-current.png",
+      "width": 1134,
+      "height": 658,
+      "sha256": "a8a4e25c5ea284cfeeed3c7cce9221fd91f6282e76966411a4050a159ad6ad4c",
+      "description": "Current renderer of exact retained tutorial consolidation/browser-unconfirmed.case.json: Direct preferred. Frozen rules and business priority unchanged."
+    },
+    {
+      "file": "tutorial-valid-slot-current.png",
+      "width": 1134,
+      "height": 658,
+      "sha256": "0dd8365405307638c99debef153c89271b92d7ea0e456365d130bbd01a117a46",
+      "description": "Current renderer of exact retained tutorial consolidation/browser-confirmed.case.json: Consolidated preferred. Frozen rules and business priority unchanged."
+    },
+    {
+      "file": "desk-blocked-current.png",
+      "width": 770,
+      "height": 810,
+      "sha256": "75c40b26b242fcf025a23b901a9d863d0308daa5cc3174ea1ca703abb03b7c79",
+      "description": "Current SDK sample, same revised order and missing current confirmation: full native finding with compact comparison."
+    },
+    {
+      "file": "desk-confirmed-current.png",
+      "width": 770,
+      "height": 791,
+      "sha256": "fdfc63e44e3eff2df2ecc2cf09c59291e4cf61e42c4e9595c6b538c517e6e6d5",
+      "description": "Current SDK sample, same order with genuinely new scoped confirmation: Consolidated preferred, selected details available on request."
+    }
+  ],
+  "checks": [
+    "Current shipment1.1.0 view: focused answer, compact authored columns and explicit details; shared inspection stays synchronized across brief and report tabs.",
+    "Native exported run deep-equals imported run after inspection changes: answers, findings, reviews, proposals and permissions unchanged.",
+    "390px current authored shipment view has no page horizontal overflow.",
+    "Retained1.0.1 worker case opens as its own saved definition; no relabeling as1.1.0.",
+    "Current renderer preserves cost-first, arrival-first, tighter-budget and both scoped-slot tutorial findings on their exact retained artifacts.",
+    "Latest copied SDK sample production build renders retained blocked and confirmed cases with DecisionView;390px page has no horizontal overflow. No question-view migration claimed for this custom client."
+  ],
+  "artifacts": [
+    {
+      "file": "shipment-1.1.0-reviewed.run.json",
+      "sha256": "1ee8ca2a2918897f067d4527c0b1b051a617edf9c5ea4388443a9f10beb249d7",
+      "source": "/Users/jnaciona/code/hermod-review-lab/artifacts/promotion/shipping-question-views/shipment.run.json",
+      "workflowVersion": "1.1.0",
+      "definitionHash": "b35c516e650c62a0713ca154fe66c67fd76cdb79125a48fcb1f5b1d3e34e53e3",
+      "reviewBasis": "Supplied fictional demonstration, with explicit synthetic input and assessment reviews."
+    },
+    {
+      "file": "inspection-only-export.run.json",
+      "sha256": "6be2643e34b54061b91bd90e548228ca750c30da7cd6803bfda2746feab052a3",
+      "bytes": 1840947
+    },
+    {
+      "file": "variants/lowest-cost-shipment.app-case.json",
+      "location": "parent",
+      "sha256": "852fdb78b5f189cba4ec50bcd00aa7a6b3644d958158c8ab0d2189661d49d924"
+    },
+    {
+      "file": "variants/earliest-arrival-shipment.app-case.json",
+      "location": "parent",
+      "sha256": "d39118f1e7d2e4577ccc925f7b46689daa1c8deaae0cce3b7253253ac9d7ab4d"
+    },
+    {
+      "file": "variants/budget-exercise/expense-limit-5000.app-case.json",
+      "location": "parent",
+      "sha256": "f78108ce50707a62f0157d2c7435b883e320d76cc50459238d1e75238ae55d4d"
+    },
+    {
+      "file": "consolidation/browser-unconfirmed.case.json",
+      "location": "parent",
+      "sha256": "9c013e5ded183ebfc5410ba9c832ab38236a361b568d2d487181b49980ee785f"
+    },
+    {
+      "file": "consolidation/browser-confirmed.case.json",
+      "location": "parent",
+      "sha256": "7058ffbb33259f7a5e0ae9708c6c471c73f4cbde7973ddc247c7224a8d278cf4"
+    }
+  ],
+  "errors": [],
+  "buildId": "bd1a4819f6e6adcf4c73",
+  "passed": true,
+  "deskBuildAssets": [
+    {
+      "file": "index-D3KWzFV5.css",
+      "bytes": 49446,
+      "sha256": "32a7b4d9f883bc32894c738d30b425235098406db1e00e1de1e71113d4f37e52"
+    },
+    {
+      "file": "worker-BG99G3G7.js",
+      "bytes": 402966,
+      "sha256": "ff3155c8696e4b5682d6c32f6e3bfeffd10865b7f0d2b2ddc1c9d96568af1e71"
+    },
+    {
+      "file": "index-DNMiE0Ox.js",
+      "bytes": 1015155,
+      "sha256": "baa2eebf2ab1e0f27c04d3f7d6816a62438c6a12a2d801978772af78b04f4544"
+    }
+  ]
+}

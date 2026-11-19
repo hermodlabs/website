@@ -106,13 +106,20 @@
   </figure>
 </header>
 <div class="wrap reader-layout use-case-reading-layout">
+<section class="use-case-brief" aria-labelledby="use-case-brief-heading">
+  <p class="use-case-brief-title" id="use-case-brief-heading">The case in brief</p>
+  <p class="use-case-brief-stakes"><strong>At stake.</strong> The shipment lead must choose before noon, but the supplied portal listing does not establish whether the cheaper $4,000 Direct option can fulfill the complete order.</p>
+  <p class="use-case-brief-outcome"><strong>How it resolves.</strong> The review supports Backup at $6,000 across both possible registration states. Under hypothetical 50/50 probabilities and perfectly accurate verification, the $200 fast check offers a $5,200 expected total cost and a response by 10:30 a.m.; the cheaper slow check misses the cutoff. The lead can propose the timely check; responsible owners still authorize purchases, booking and release.</p>
+</section>
+
 
   <aside class="reader-navigation" aria-label="Reading navigation">
     <nav class="reader-toc" aria-labelledby="reader-toc-heading">
   <details class="disclosure reader-nav-disclosure" open>
     <summary><h2 class="disclosure-label" id="reader-toc-heading">On this page</h2></summary>
     <ol>
-      <li><a href="#open-the-published-example">Open the published example.</a></li>
+      <li><a href="#current-question-view">Read the current answer, then inspect the support.</a></li>
+      <li><a href="#open-the-published-example">Continue the retained author-to-worker exercise.</a></li>
       <li><a href="#review-the-supplied-answers">Review the supplied answers.</a></li>
       <li><a href="#shipment-commitment">1. Start with the shipment commitment.</a></li>
       <li><a href="#shipment-records">2. See what the records establish.</a></li>
@@ -150,12 +157,44 @@
 </aside>
 <p>The workflow brings together reusable solutions to recurring problems: interpret evidence while keeping uncertainty visible, compare complete shipment plans with their recorded arrangements, and assess whether verification would help before commitment. The app author has connected these approaches for this review. You supply this shipment’s facts and review the resulting findings. See <a href="../../../../articles/pattern-languages-for-human-decisions/index.html">Pattern Languages for Human Decisions</a> for the broader idea.</p>
 <p>A <strong>shipment plan</strong> describes the intended route, dates and cost. An <strong>arrangement</strong> connects the work, people, resources, permissions and dependencies needed to carry it out over time. The arrangement changes as the situation develops; this app evaluates the version you have recorded. Update answers and reassess affected findings when conditions or evidence change. See <a href="../../../../articles/the-arrangement-problem-in-human-decisions/index.html">The Arrangement Problem in Human Decisions</a> for the broader concept.</p>
-<p>This walkthrough runs the exact <strong>1.0.1</strong> release exported in the <a href="../app-author/index.html">app-author reference guide</a>. It retains the existing template’s fictional shipment example and underlying rules. Keep the <a href="../compare-shipment-options/index.html#process">business process chart</a> available as a reference.</p>
+<p>The author-to-worker exercise below retains the exact <strong>1.0.1</strong> release exported in the <a href="../app-author/index.html">app-author reference guide</a>. It retains the existing template’s fictional shipment example and underlying rules. Keep the <a href="../compare-shipment-options/index.html#process">business process chart</a> available as a reference.</p>
 <aside class="use-case-callout" aria-label="Scope of the worked case">
   <p>Here, “readiness” means the requirements declared by this shipment example. It examines transportation registration, shipment plans and their recorded arrangements, timing, resources, expense, cash, and recorded authority. The wider launch problem includes work outside this review.</p>
 </aside>
 
-<h2 id="open-the-published-example">Open the published example.</h2>
+<h2 id="current-question-view">Read the current answer, then inspect the support.</h2>
+<p>The current <strong>1.1.0</strong> shipment workflow gives the same registration problem a focused arrangement view. It asks <strong>Which complete arrangements meet this delivery commitment?</strong> The inspected arrangement shows its complete expense, receipt deadline, reservation cutoff, operating fit and unmet conditions together. The author decides which fields answer that question; the brief does not display every field in the complete SDK result.</p>
+<p>The <strong>Inputs</strong> and <strong>Reports</strong> panes have independent navigation. In <strong>Inputs → Forms</strong>, choose a group such as <strong>Arrangements</strong> and a subtab such as <strong>Available options</strong>. The Reports pane can keep <strong>Next action</strong> in view beside those answers; <strong>Planning results</strong> opens supporting assessments, while its <strong>Reports</strong> group opens the configured report views. Use the outer <strong>Both</strong> control to see the two panes together.</p>
+
+<figure class="use-case-figure">
+  <a href="../../../../assets/use-cases/shipment-readiness/input-report-navigation/workflow-independent-panels.png" tabindex="-1" aria-label="View the screenshot for Independent shipment input and report navigation at full size"><img src="../../../../assets/use-cases/shipment-readiness/input-report-navigation/workflow-independent-panels.png" width="1136" height="660" alt="The current 1.1.0 shipment workflow shows Forms and Arrangements input subtabs on the left, while Next action and the Backup arrangement remain in the independent Reports pane on the right." loading="lazy" decoding="async"></a>
+  <figcaption><span>The same reviewed 1.1.0 case with independent navigation: edit the arrangement inputs while keeping Next action visible. Tabs change what you inspect; they do not record answers, accept findings or choose a shipment.</span><a href="../../../../assets/use-cases/shipment-readiness/input-report-navigation/workflow-independent-panels.png" aria-label="View the screenshot for Independent shipment input and report navigation at full size">View full size</a></figcaption>
+</figure>
+
+
+<figure class="use-case-figure">
+  <a href="../../../../assets/use-cases/shipment-readiness/question-focused/backup-focused-answer.png" tabindex="-1" aria-label="View the screenshot for The current focused shipment answer at full size"><img src="../../../../assets/use-cases/shipment-readiness/question-focused/backup-focused-answer.png" width="1052" height="329" alt="The current shipment workflow focuses on Backup: $6,000 complete expense, Friday 5 p.m. receipt deadline, noon reservation cutoff, and recorded requirements met." loading="lazy" decoding="async"></a>
+  <figcaption><span>Current 1.1.0 view of the fictional registration example. The authored answer puts expense, deadlines and operating fit together; supporting details open on request.</span><a href="../../../../assets/use-cases/shipment-readiness/question-focused/backup-focused-answer.png" aria-label="View the screenshot for The current focused shipment answer at full size">View full size</a></figcaption>
+</figure>
+
+<p>Expand <strong>Compare complete arrangements</strong> for the short comparison. Backup meets the recorded requirements across both possible registration states. Direct costs less, but its registration requirement is not established in one remaining state.</p>
+
+<figure class="use-case-figure">
+  <a href="../../../../assets/use-cases/shipment-readiness/question-focused/backup-focused.png" tabindex="-1" aria-label="View the screenshot for The current compact shipment comparison at full size"><img src="../../../../assets/use-cases/shipment-readiness/question-focused/backup-focused.png" width="1052" height="867" alt="The current shipment question view focuses on Backup and compares both arrangements using four columns: arrangement, recorded requirements, complete expense and unmet conditions." loading="lazy" decoding="async"></a>
+  <figcaption><span>Expand Compare complete arrangements to see the $4,000 Direct arrangement’s registration blocker alongside the supported $6,000 Backup arrangement.</span><a href="../../../../assets/use-cases/shipment-readiness/question-focused/backup-focused.png" aria-label="View the screenshot for The current compact shipment comparison at full size">View full size</a></figcaption>
+</figure>
+
+<p>Use <strong>Item to inspect</strong> or an <strong>Inspect</strong> row action to examine Direct. <strong>Delivery in each possible situation</strong> and <strong>Shipment and timing basis</strong> open the supporting details. The same arrangement stays in view when moving between <strong>Next action</strong> and the Reports pane’s <strong>Reports → Arrangements</strong> view. <strong>Inspection changes only what you are reading:</strong> it does not choose a shipment, accept a finding, create permission or book freight.</p>
+<details class="disclosure use-case-technical-note"><summary><span class="disclosure-label">Inspect the blocked arrangement’s supporting details</span></summary>
+
+<figure class="use-case-figure">
+  <a href="../../../../assets/use-cases/shipment-readiness/question-focused/direct-supporting-details.png" tabindex="-1" aria-label="View the screenshot for Direct supporting details at full size"><img src="../../../../assets/use-cases/shipment-readiness/question-focused/direct-supporting-details.png" width="1052" height="1360" alt="Inspecting Direct in the current shipment view shows its unmet registration condition and expanded results for both possible registration situations." loading="lazy" decoding="async"></a>
+  <figcaption><span>Inspect changes what you read. Direct is blocked in the not-registered situation; viewing its details records no shipment choice, review or authority.</span><a href="../../../../assets/use-cases/shipment-readiness/question-focused/direct-supporting-details.png" aria-label="View the screenshot for Direct supporting details at full size">View full size</a></figcaption>
+</figure>
+
+</details>
+<p><a href="../../../../assets/use-cases/shipment-readiness/question-focused/shipment-1.1.0-reviewed.run.json" download>Download the current 1.1.0 reviewed example</a> to inspect this exact fictional demonstration through <strong>Collections → Import app, workflow or case</strong>. The local Marketplace preview includes this release; the download preserves the exact version shown here. Existing saved reviews keep the version and reviewed basis they started with; opening an older case does not add the new authored view to it. Complete assessments, reports and review history remain available.</p>
+<h2 id="open-the-published-example">Continue the retained author-to-worker exercise.</h2>
 <p>If you completed the app-author reference guide, use the locally published <strong>1.0.1</strong> release in <strong>Shipment review pilots</strong>. It stays separate from the original workflow pinned in the installed Marketplace collection.</p>
 <p>To inspect the exact saved states below, open <a href="https://hermodlabs.github.io/review_lab/">Decision Lab</a> in a separate browser profile without an installed shipment workflow. Choose <strong>Collections → Import app, workflow or case</strong>, then select one of these downloads. Each saved run includes its exact workflow release; installing the original Marketplace workflow first is unnecessary.</p>
 <ul>
@@ -165,9 +204,10 @@
 <p>To make further cases from version <strong>1.0.1</strong>, open <strong>Guided reviews</strong> and choose <strong>Start review</strong>. In an empty profile, you can also <a href="../../../../assets/use-cases/shipment-readiness/author/review-first-shipment-1.0.1.workflow.json" download>import the author’s workflow package</a> using the same import control. New reviews are prefilled with supplied starter inputs; review every answer and replace fictional examples with your shipment’s facts. To continue a saved review, find <strong>Saved reviews</strong> and choose <strong>Resume review</strong>.</p>
 
 <h2 id="review-the-supplied-answers">Review the supplied answers.</h2>
-<p>The workflow opens at <strong>Next action</strong>. Start with its decision status and <strong>Next review step</strong>, which identifies the next required task and responsible role. Selecting that action navigates to the answer or assessment; it does not accept an answer, evaluate a result or grant permission.</p>
+<p>The Reports pane opens at <strong>Next action</strong>. Start with its decision status and <strong>Next review step</strong>, which identifies the next required task and responsible role. Selecting that action navigates to the answer in Inputs or the supporting assessment in Planning results; it does not accept an answer, evaluate a result or grant permission.</p>
 <p>Open <strong>Review responsibility</strong> to enter a reviewer name and select the question’s assigned <strong>Acting role</strong>. Inspect the supplied information and choose <strong>Accept answer</strong> when you have reviewed it. <strong>Commitment</strong>, <strong>Arrangements</strong> and <strong>Prerequisites &amp; records</strong> remain available for direct input review.</p>
 <p>The shipment lead reviews shipment and operating details. The finance reviewer reviews funding, purchase authority, the probability assessment and verification offers. Completing the worked review requires all 25 supplied answers and the five assessment results to be reviewed. Follow the next task as prerequisites become ready. A missing or unknown answer does not become established just because another field is filled in.</p>
+<p><strong>Inputs → YAML</strong> shows the complete shared case, rather than only the selected question. <strong>Preview changes</strong> and <strong>Apply case changes</strong> submit edited answers for review; they do not accept them. Switching Forms/YAML or input/report tabs retains drafts. Reports continue to use recorded answers while edits are pending. <strong>Work with Excel</strong> is a separate disclosure in Inputs.</p>
 
 <figure class="use-case-figure">
   <a href="../../../../assets/use-cases/shipment-readiness/worker/00-review-case-input.png" tabindex="-1" aria-label="View the screenshot for Review the supplied answers at full size"><img src="../../../../assets/use-cases/shipment-readiness/worker/00-review-case-input.png" width="1086" height="191" alt="The fresh shipment workflow shows Next review step, the responsible shipment-lead role, and Review answer: Shipment identity and units. Other required review steps remain collapsed." loading="lazy" decoding="async"></a>
@@ -176,7 +216,7 @@
 
 <p>The screenshots record illustrative reviews under the name <strong>Example reviewer</strong>. Selecting an acting role records responsibility within this case; actual business authority is represented separately.</p>
 <p>This worked case includes optional verification analysis. A review of shipment feasibility can use the evidence and planning results without assigning probabilities; the expected-value comparison needs a separately reviewed probability assessment.</p>
-<p>Each assessment opens with its decision: the evidence answer, the supported arrangements or the value of verification. Open <strong>Why this finding?</strong>, <strong>Selected option details</strong> or <strong>Responses to possible results</strong> for the relevant support. <strong>Technical inspection → Inspect complete report</strong> retains the exhaustive analysis; <strong>Return to decision</strong> restores the smaller screen.</p>
+<p>The retained 1.0.1 case uses its original assessment screens in the current renderer. Within <strong>Reports → Planning results</strong>, inspect a supporting assessment to see its evidence answer, supported arrangements or value of verification. Open <strong>Why this finding?</strong>, <strong>Selected option details</strong> or <strong>Responses to possible results</strong> for the relevant support. Inside that assessment, <strong>Technical inspection → Inspect complete report</strong> retains the exhaustive analysis; <strong>Return to decision</strong> restores the smaller screen. This assessment-level path is separate from the workflow’s report groups.</p>
 
 
 <h2 id="shipment-commitment">1. Start with the shipment commitment.</h2>
@@ -243,8 +283,8 @@
 <p>Return to decision brief after accepting the current assessment results. Next action leads with the supported $6,000 shipment proposal and the fast-verification proposal with $5,200 expected cost and $800 expected improvement. Proposal details and Supporting findings keep the complete basis available on request.</p><p>Expand Authority and next operating actions to inspect the recorded $250 verification purchase limit and separate release authority. These business proposals differ from Next review step, which identifies the next required answer or result review while the case is incomplete. Opening that task does not accept it or carry out a purchase, booking or release.</p><p>Use Review files &amp; history → Export workflow run for the portable review, or Download decision brief for its recorded basis. If a quote, record or approval changes, review and accept the updated answer, then reassess the affected findings. A previous calculation remains historical support, not an assessment of the changed inputs.</p>
 
 <figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/shipment-readiness/worker/07-decision-brief.png" tabindex="-1" aria-label="View the screenshot for Keep the recommendation and its conditions together. at full size"><img src="../../../../assets/use-cases/shipment-readiness/worker/07-decision-brief.png" width="1136" height="1119" alt="The current reviewed brief leads with the supported Backup proposal and fast verification, while Proposal details and Supporting findings stay collapsed until requested." loading="lazy" decoding="async"></a>
-  <figcaption><span>Business proposals lead the completed brief. Ordered review tasks guide an incomplete review; neither is an operating authorization.</span><a href="../../../../assets/use-cases/shipment-readiness/worker/07-decision-brief.png" aria-label="View the screenshot for Keep the recommendation and its conditions together. at full size">View full size</a></figcaption>
+  <a href="../../../../assets/use-cases/shipment-readiness/question-focused/retained-1.0.1-brief.png" tabindex="-1" aria-label="View the screenshot for Keep the recommendation and its conditions together. at full size"><img src="../../../../assets/use-cases/shipment-readiness/question-focused/retained-1.0.1-brief.png" width="1136" height="1119" alt="The current reviewed brief leads with the supported Backup proposal and fast verification, while Proposal details and Supporting findings stay collapsed until requested." loading="lazy" decoding="async"></a>
+  <figcaption><span>The exact retained 1.0.1 review in the current renderer. The saved workflow keeps its authored brief and original calculations; it has not been upgraded to 1.1.0.</span><a href="../../../../assets/use-cases/shipment-readiness/question-focused/retained-1.0.1-brief.png" aria-label="View the screenshot for Keep the recommendation and its conditions together. at full size">View full size</a></figcaption>
 </figure>
 
 <p><a href="../../../../assets/use-cases/shipment-readiness/worker/shipment-decision-brief.md" download>Download the exported decision brief</a>.</p>

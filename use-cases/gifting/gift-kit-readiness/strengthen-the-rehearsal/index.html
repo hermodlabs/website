@@ -106,12 +106,19 @@
   </figure>
 </header>
 <div class="wrap reader-layout use-case-reading-layout">
+<section class="use-case-brief" aria-labelledby="use-case-brief-heading">
+  <p class="use-case-brief-title" id="use-case-brief-heading">The case in brief</p>
+  <p class="use-case-brief-stakes"><strong>At stake.</strong> Production requires ten minutes of fresh rehearsal before Leah hands over 120 gift kits, but the existing review still accepts five minutes and could support an insufficient plan.</p>
+  <p class="use-case-brief-outcome"><strong>How it resolves.</strong> The author publishes a separate app and connects a new workflow with a ten-minute minimum: five-minute plans are blocked; ten-minute plans support $300 internal correction and a planned handoff after forty minutes. Leah gains a proposal reflecting production’s policy, while earlier cases retain their original rules. People still need to approve and perform the work and pass the actual rehearsal.</p>
+</section>
+
 
   <aside class="reader-navigation" aria-label="Reading navigation">
     <nav class="reader-toc" aria-labelledby="reader-toc-heading">
   <details class="disclosure reader-nav-disclosure" open>
     <summary><h2 class="disclosure-label" id="reader-toc-heading">On this page</h2></summary>
     <ol>
+      <li><a href="#policy-in-context">The stronger rule needs to change the finding.</a></li>
       <li><a href="#choose-approach">How should the team make ten minutes a requirement?</a></li>
       <li><a href="#expected-behavior">Write the expected change before editing.</a></li>
       <li><a href="#adapt-app">Adapt the planning app included in the workflow.</a></li>
@@ -143,8 +150,72 @@
       <p class="reader-lead">Leah is accountable for handing over <strong>120 gift kits that recipients can actually use</strong>. Her team has a supported correction: internal replacement and journey repair costs <strong>$300</strong> and reaches handoff at <strong>minute 35</strong>. That plan includes 25 minutes of correction, five minutes of fresh rehearsal and five minutes of handoff.</p>
 <p>Production now wants <strong>at least ten minutes of fresh rehearsal</strong> before handoff. Finance still expects the expense to stay within $600, and marketing still needs the kits within the <strong>one-day window, ending at minute 1,440</strong>. Leah needs a proposal that reflects that stronger requirement, rather than a calculation that still permits five minutes.</p>
 <p>The app author must decide how to make the policy part of the review. Changing Leah’s current answer to ten minutes would address this case, but future cases could still supply five under the existing rule. Changing the rule also needs care: the workflow must use the intended release, and earlier cases must retain their original basis.</p>
-<p>This follow-up continues <a href="../compare-correction-options/index.html">the original gift-kit decision</a>. It adapts the cost-first review and keeps the starter’s missing external confirmation. The expected corrected proposal remains internal work.</p>
+<p>This authoring exercise branches from the <strong>retained version 2 teaching release</strong> in <a href="../compare-correction-options/index.html">the original gift-kit article</a>. It adapts that cost-first review and keeps the starter’s missing external confirmation. The expected corrected proposal remains internal work.</p>
+<p>The steps and results below retain that earlier review’s exact release. The later CLI and SDK operating stories use a separately authored <strong>version 3 profile that plans ten minutes under a five-minute minimum</strong>. This exercise instead makes ten minutes mandatory. Following it does not replace the operating app or silently move an existing case onto new rules; the <a href="../index.html#series-path">series guide distinguishes the paths</a>.</p>
 <p class="use-case-example-note">The walkthrough shows the prepared one-day example and authoring controls in the current local working app. <a href="#source">Sources and scope</a> explain the adaptation and capture basis.</p>
+
+<h2 id="policy-in-context">The stronger rule needs to change the finding.</h2>
+<section class="use-case-comparison" aria-label="Five- and ten-minute case inputs under the same adapted ten-minute minimum" data-comparison="gifting-authored-rehearsal" data-comparison-kind="context">
+  <div class="use-case-comparison-basis">
+    <p><strong>Shared basis.</strong> The same separately adapted app and workflow require at least ten minutes of fresh rehearsal. The original 120-kit, minute-1,440 promise, $600 limit, observations, quotes and missing external confirmation remain fixed. This authoring release is separate from the v3 operating profile.</p>
+    <p class="use-case-comparison-change"><strong>What changes.</strong> Only the planned fresh-rehearsal answer changes: five minutes versus ten. Both views already use the stronger mandatory minimum.</p>
+  </div>
+  <div class="use-case-comparison-panels">
+
+
+    <article class="use-case-comparison-panel" aria-labelledby="gifting-authored-rehearsal-panel-1">
+      <h3 id="gifting-authored-rehearsal-panel-1">Five minutes supplied</h3>
+      <p class="use-case-comparison-finding"><strong>No complete correction meets the new rule.</strong></p>
+      <dl class="use-case-comparison-inputs">
+
+        <div><dt>Mandatory minimum</dt><dd>10 minutes in the adapted app</dd></div>
+
+        <div><dt>Case answer</dt><dd>5 minutes of planned rehearsal</dd></div>
+
+        <div><dt>Business response</dt><dd>Revise the proposal; the shortfall stays visible</dd></div>
+
+      </dl>
+      <div class="use-case-comparison-observation">
+      <figure class="use-case-comparison-screen">
+        <a href="../../../../assets/use-cases/gift-kit-readiness/input-report-navigation/12-five-minutes-blocked.png" aria-label="Open the Five minutes supplied view at full size">
+          <img src="../../../../assets/use-cases/gift-kit-readiness/input-report-navigation/12-five-minutes-blocked.png" width="677" height="978" alt="The separate adapted ten-minute-minimum release blocks complete corrections while the case supplies five minutes." loading="lazy" decoding="async">
+        </a>
+        <figcaption>The stronger requirement leaves the original five-minute case input untouched. No complete correction passes. <a href="../../../../assets/use-cases/gift-kit-readiness/input-report-navigation/12-five-minutes-blocked.png">View full size</a></figcaption>
+      </figure>
+      <p class="use-case-comparison-judgment">Leah cannot put forward this case as satisfying production’s new policy. Publishing a stronger requirement must not silently change her answer.</p>
+      </div>
+    </article>
+
+
+    <article class="use-case-comparison-panel" aria-labelledby="gifting-authored-rehearsal-panel-2">
+      <h3 id="gifting-authored-rehearsal-panel-2">Ten minutes supplied</h3>
+      <p class="use-case-comparison-finding"><strong>$300 in-house correction is supported.</strong></p>
+      <dl class="use-case-comparison-inputs">
+
+        <div><dt>Mandatory minimum</dt><dd>The same 10-minute requirement</dd></div>
+
+        <div><dt>Case answer</dt><dd>10 minutes of planned rehearsal</dd></div>
+
+        <div><dt>Calculated handoff</dt><dd>Minute 40: 25 correction + 10 rehearsal + 5 handoff</dd></div>
+
+      </dl>
+      <div class="use-case-comparison-observation">
+      <figure class="use-case-comparison-screen">
+        <a href="../../../../assets/use-cases/gift-kit-readiness/input-report-navigation/13-ten-minutes-supported.png" aria-label="Open the Ten minutes supplied view at full size">
+          <img src="../../../../assets/use-cases/gift-kit-readiness/input-report-navigation/13-ten-minutes-supported.png" width="677" height="922" alt="The same adapted release supports the $300 internal correction with ten minutes planned and handoff at minute 40." loading="lazy" decoding="async">
+        </a>
+        <figcaption>The case now supplies ten minutes under the same stronger requirement. People still authorize and carry out the work. <a href="../../../../assets/use-cases/gift-kit-readiness/input-report-navigation/13-ten-minutes-supported.png">View full size</a></figcaption>
+      </figure>
+      <p class="use-case-comparison-judgment">Leah can put forward the complete in-house sequence under the new rule. Finance sees the same $300 expense; marketing sees that the longer planned check still fits the one-day window.</p>
+      </div>
+    </article>
+
+  </div>
+  <p class="use-case-comparison-takeaway"><strong>What this means for the decision.</strong> The author changes a reusable requirement in a deliberate new release. Leah supplies a case that meets it. The review exposes the consequence of each input; an actual passed rehearsal still needs its own operating record.</p>
+</section>
+
+<p>First the author changes the mandatory minimum from five to ten in a <strong>separate app and workflow release</strong>. The two views above then hold that new release fixed and change only Leah’s planned rehearsal input. A policy change and a case-input change are separate actions; neither establishes that a real rehearsal has passed.</p>
+<p>This is <a href="../../../../articles/requirements-engineering-for-human-decisions/index.html">requirements engineering</a>: distinguish what a case proposes from what every acceptable proposal must satisfy. Planning ten minutes supplies a longer case value. Requiring at least ten minutes changes the criterion used to assess every case run through the adapted review.</p>
 
 <h2 id="choose-approach">How should the team make ten minutes a requirement?</h2>
 <p>The team has several workable approaches. The choice depends on whether ten minutes is a plan for this campaign, a policy people enforce outside the tool, or a requirement the modeled review must apply whenever this workflow is used.</p>
@@ -165,18 +236,22 @@
 
 <h2 id="expected-behavior">Write the expected change before editing.</h2>
 <p>The team is changing a <strong>minimum requirement</strong>, not claiming that ten minutes of rehearsal have already been supplied. Leah’s existing five-minute input must remain five until she changes it.</p>
-<div class="article-table-scroll" role="region" aria-label="Expected outcomes under the stronger rehearsal policy" tabindex="0">
-  <table>
-    <caption>The new rule changes what can be proposed from the same case.</caption>
-    <thead><tr><th scope="col">Recorded fresh rehearsal</th><th scope="col">Expected result under the new rule</th><th scope="col">Reason</th></tr></thead>
-    <tbody>
-      <tr><th scope="row">5 minutes</th><td>No complete correction proposal</td><td>The input fails the new ten-minute minimum.</td></tr>
-      <tr><th scope="row">10 minutes</th><td>Internal correction preferred: $300, handoff at minute 40</td><td>25 minutes of correction + 10 of rehearsal + 5 of handoff fit the one-day window.</td></tr>
-    </tbody>
-  </table>
-</div>
+<figure class="use-case-explanatory-map" id="rehearsal-policy" aria-labelledby="rehearsal-policy-caption">
+  <a class="use-case-explanatory-map-image" href="../../../../assets/use-cases/gift-kit-readiness/decision-maps/rehearsal-policy.svg" tabindex="-1" aria-label="Open the decision illustration at full size">
+    <picture>
+      <source media="(max-width: 650px)" srcset="../../../../assets/use-cases/gift-kit-readiness/decision-maps/rehearsal-policy-mobile.svg" width="360" height="650">
+      <img src="../../../../assets/use-cases/gift-kit-readiness/decision-maps/rehearsal-policy.svg" width="650" height="410" alt="The original five-minute minimum becomes a ten-minute requirement in an adapted teaching release. A case planning five minutes is blocked; planning ten supports internal correction at $300 and minute 40." loading="lazy" decoding="async">
+    </picture>
+  </a>
+  <figcaption id="rehearsal-policy-caption">
+    <span>Separate v2 authoring branch: change the mandatory minimum, then test different case inputs against that same adapted rule. The current v3 operating profile is not substituted.</span>
+    <span class="use-case-explanatory-map-links"><a href="../../../../assets/use-cases/gift-kit-readiness/decision-maps/rehearsal-policy.svg">View full-size SVG</a><a href="../../../../assets/use-cases/gift-kit-readiness/decision-maps/model.json" download>Download structured map</a></span>
+  </figcaption>
+</figure>
+
 <p>These expectations make a useful acceptance check. If editing the rule also silently changed Leah’s answer to ten, the first situation would never expose the missing time. If the workflow still used the original app, it would continue accepting five.</p>
 <p>The scope of the change is narrow: the same kit observations, fault review, correction packages, permissions, budget, deadline and cost-first priority remain. The minimum fresh-rehearsal duration changes from <strong>5 to 10 minutes</strong>.</p>
+<p>The author is adapting an implementation of the <strong>same corrective commitment decision pattern</strong>: establish the faults, compare complete corrections and prepare a bounded commitment for fresh verification. The problem family is unchanged. The adapted planning app applies the stronger requirement; the workflow must deliberately connect that app to the existing evidence review and resulting brief.</p>
 
 <h2 id="adapt-app">Adapt the planning app included in the workflow.</h2>
 <p>In <strong>Gifting operations → Prepare a gift-kit campaign</strong>, find <strong>Review a gift-kit commitment</strong>. Expand <strong>Included app releases</strong> and choose <strong>Adapt supporting app</strong> for its planning app.</p>
@@ -260,7 +335,7 @@
 
 
 <p>A <strong>binding</strong> is a connection that supplies an app input or brief from a shared case answer or an accepted stage result. The author checks that it still carries the intended business information, describes the same kit configuration and uses compatible units after the app replacement.</p>
-<p>Here the evidence result must still describe these gift kits, planning must still receive the established faults, and the brief must still reflect planning’s actual outcome. Recording a review is an authoring action; it does not approve Leah’s live correction work.</p>
+<p><strong>What may the next step rely on?</strong> This is the practical question behind <a href="../../../../articles/computational-hermeneutics-for-human-decisions/index.html">computational hermeneutics</a>. The unchanged evidence app’s finding must still describe the exact kit configuration; the adapted planning app must receive those established faults and apply its ten-minute minimum. The workflow brief can then use planning’s actual outcome. A supported schedule does not establish completed correction or a passed rehearsal. Recording the binding review is an authoring action; it does not approve Leah’s live correction work.</p>
 
 <h2 id="test-workflow">Test the whole workflow before handing it over.</h2>
 <p>Open <strong>Preview &amp; publish → Workflow business scenarios</strong>. Upload the <a href="../../../../assets/use-cases/gift-kit-readiness/authored-workflow-scenarios.json" download>supplied workflow scenarios</a> and choose <strong>Run workflow scenarios</strong>.</p>
@@ -286,43 +361,33 @@
 
 <h2 id="worker-handoff">Let Leah see the consequence of the stronger rule.</h2>
 <p>Open <strong>Review gift kits with a longer rehearsal</strong> with <strong>Try worked example</strong>. Its <strong>Decision brief</strong> opens first. Follow <strong>Next review step</strong> to the required task, then review and accept the supplied context and observations and the evidence result, as in the first article. The navigation control opens work to review; it does not accept an answer or assess the case for Leah.</p>
-<p>Leave the recorded fresh rehearsal at <strong>five minutes</strong> for the first planning assessment. In <strong>Review findings → Coordinate supporting assessments</strong>, evaluate planning and read its concise decision before accepting the result. The new review cannot propose a complete correction: the input does not meet the stronger rule. That is the intended finding, even though five minutes worked in the original review.</p>
-
-
-<figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/gift-kit-readiness/18-five-minute-rehearsal-blocked.png" tabindex="-1" aria-label="Open full-size screenshot: The adapted app’s decision shows no complete option meeting the commitment while the recorded fresh rehearsal remains five minutes."><img src="../../../../assets/use-cases/gift-kit-readiness/18-five-minute-rehearsal-blocked.png" alt="The adapted app’s decision shows no complete option meeting the commitment while the recorded fresh rehearsal remains five minutes." width="1206" height="865" style="max-width: 1206px" loading="lazy" decoding="async"></a>
-  <figcaption><span>The new minimum does not rewrite the worker’s answer. The concise assessment exposes the insufficient rehearsal before the worker records ten minutes.</span><a href="../../../../assets/use-cases/gift-kit-readiness/18-five-minute-rehearsal-blocked.png" aria-label="Open full-size screenshot: The adapted app’s decision shows no complete option meeting the commitment while the recorded fresh rehearsal remains five minutes.">View full size</a></figcaption>
-</figure>
-
-
-<p>Leah then records <strong>ten minutes</strong> for the fresh rehearsal, accepts the changed answer in the assigned role and reassesses planning. The earlier planning result stays labelled as an earlier basis until a current assessment is available. The accepted evidence can remain unchanged because the kit observations and scope have not changed.</p>
+<p>The workflow keeps input and report navigation separate. In <strong>Inputs → Forms → Correction arrangements → Quotes and work</strong>, leave the recorded fresh rehearsal at <strong>five minutes</strong> for the first assessment. In <strong>Reports → Review findings → Coordinate supporting assessments</strong>, evaluate planning and read its concise decision before accepting the result. The new review cannot propose a complete correction: the input does not meet the stronger rule. That is the intended finding, even though five minutes worked in the original review.</p>
+<p>The <a href="#policy-in-context">five-minute view at the beginning</a> shows this blocked planning result under the adapted minimum.</p>
+<p>Leah returns to the same input section, records <strong>ten minutes</strong> for the fresh rehearsal, accepts the changed answer in the assigned role and reassesses planning. Changing an input tab preserves the report selection; an unfinished form edit still leaves the displayed findings on their earlier basis. The accepted evidence can remain unchanged because the kit observations and scope have not changed.</p>
 <p>The internal correction is now preferred at <strong>$300</strong>, with handoff at <strong>minute 40</strong>: 25 minutes of correction, ten of fresh rehearsal and five of handoff. The extra five minutes fit comfortably within the one-day window. The external package remains unavailable without its required confirmation.</p>
+<p>The <a href="#policy-in-context">ten-minute view at the beginning</a> shows the restored planning result under that same adapted release.</p>
+<p><strong>Return to decision brief</strong> brings Leah back to the authored business proposal and any outstanding required review. Read the focused answer first, compare the available arrangements, then expand supporting findings when a requirement needs explanation. Inspecting a row changes only the presentation; it does not supply a longer rehearsal answer, accept the assessment or authorize work. In an assessment, <strong>Selected option details</strong> opens the arrangement’s requirements; <strong>Work and timing</strong> inspects its schedule, and <strong>Technical inspection → Inspect complete report</strong> retains the complete calculation. The concise screen changes presentation, rather than the minimum or the case answer.</p>
 
-
-<figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/gift-kit-readiness/15-revised-worker-decision-brief.png" tabindex="-1" aria-label="Open full-size screenshot: The revised gift-kit decision brief proposes the $300 internal correction with a ten-minute fresh rehearsal and completion at minute 40, while supporting findings remain on request."><img src="../../../../assets/use-cases/gift-kit-readiness/15-revised-worker-decision-brief.png" alt="The revised gift-kit decision brief proposes the $300 internal correction with a ten-minute fresh rehearsal and completion at minute 40, while supporting findings remain on request." width="1208" height="1620" style="max-width: 1208px" loading="lazy" decoding="async"></a>
-  <figcaption><span>The worker supplies ten minutes and reassesses planning. The accepted evidence stays intact; the decision brief presents the resulting complete proposal without claiming the work is complete.</span><a href="../../../../assets/use-cases/gift-kit-readiness/15-revised-worker-decision-brief.png" aria-label="Open full-size screenshot: The revised gift-kit decision brief proposes the $300 internal correction with a ten-minute fresh rehearsal and completion at minute 40, while supporting findings remain on request.">View full size</a></figcaption>
-</figure>
-
-
-<p><strong>Return to decision brief</strong> brings Leah back to the business proposal and any outstanding required review. Supporting findings remain available on request. In an assessment, <strong>Selected option details</strong> opens the arrangement’s requirements; <strong>Work and timing</strong> inspects its schedule, and <strong>Technical inspection → Inspect complete report</strong> retains the complete calculation. The concise screen changes presentation, rather than the minimum or the case answer.</p>
+<p>The <a href="../../../../assets/use-cases/gift-kit-readiness/input-report-navigation/verification.json">current navigation verification</a> reopens the exact five- and ten-minute cases without changing their workflow definitions or saved findings. The stronger minimum remains a deliberately separate release; a clearer display does not migrate earlier cases to a different policy.</p>
 
 <h2 id="resolved-requirement">A stronger requirement the team can see in the result.</h2>
 <p>Leah can now explain the consequence of production’s policy. In the new workflow, a five-minute rehearsal supplies no complete correction proposal. With ten minutes recorded, internal work remains preferred at <strong>$300, with handoff at minute 40</strong>. Finance can see that the correction price is unchanged; marketing can see the extra five minutes of planned work within the next-day deadline.</p>
 <p>The author has changed the requirement, tested both outcomes and connected the exact adapted planning release to a separately published workflow. Production’s minimum now affects the proposal and brief in that review. The original cost-first review and its saved cases still use their original planning release; selecting that earlier review still selects its earlier policy.</p>
 <p>The new brief gives Leah and the responsible people a plan to review and carry out. It does not establish that the fresh rehearsal has passed or authorize release of the kits. The adapted app, workflow and case make the policy change explicit while preserving the basis of earlier decisions.</p>
 <p>For a closer review, the retained <a href="../../../../assets/use-cases/gift-kit-readiness/longer-rehearsal/planning.model.yaml" download>adapted planning model</a>, <a href="../../../../assets/use-cases/gift-kit-readiness/longer-rehearsal/dependency.preview.json">dependency preview</a> and <a href="../../../../assets/use-cases/gift-kit-readiness/longer-rehearsal/workflow.scenario-results.json.gz" download>compressed workflow scenario results</a> preserve the authored change and its verification.</p>
-<p><strong>Next:</strong> <a href="../screen-campaigns/index.html">see how a developer brings campaign preflight into the team’s process</a> and passes a case to a custom handoff desk. Those connected clients use a separate, fixed earliest-handoff app with a five-minute minimum and a ten-minute planned rehearsal; they do not replace this adapted workflow.</p>
+<p>The operating continuation applies the same discipline to a broader change: publish a separate, tested app and workflow for the intended business policy. Its <strong>version 3 cost-first profile</strong> prefers $300 internal work with ample time; the $400 external package becomes necessary when the internal sequence would miss the original cutoff. It keeps a five-minute published minimum and plans ten minutes of rehearsal. It does not inherit or replace the ten-minute mandatory minimum authored in this walkthrough.</p>
+<p><strong>Next:</strong> <a href="../screen-campaigns/index.html">see the CLI identify which campaigns still have a supported response and who needs to act</a>, then <a href="../resolve-a-handoff-exception/index.html">follow one continuing review in the SDK desk through selection, actual correction, a fresh rehearsal and handoff records</a>. The new workflow preserves the original quantity and cutoff separately from revised proposals. Accepting a finding does not authorize spending, and recording a plan does not establish that the kits were corrected or delivered.</p>
 <footer class="use-case-article-references" aria-labelledby="source">
   <details class="disclosure use-case-source-disclosure">
     <summary><h2 class="disclosure-label" id="source">Sources and scope</h2></summary>
     <div class="use-case-reference-grid">
       <div>
         <h3 id="worked-example-materials">Worked-example materials</h3>
-        <p>These articles adapt Hermod Labs’ <strong>Gift-kit Readiness and Correction 2.0.0</strong> example with a <strong>24-hour handoff deadline</strong> and matching availability windows. The supplied correction costs and work durations remain the same. Leah and the campaign are fictional; the records are teaching inputs, not customer data or an independently reported business case.</p>
+        <p>The original comparison and authoring walkthroughs adapt Hermod Labs’ <strong>Gift-kit Readiness and Correction 2.0.0</strong> example with a <strong>24-hour handoff deadline</strong> and matching availability windows. The supplied correction costs and work durations remain the same. Leah and the campaign are fictional; the records are teaching inputs, not customer data or an independently reported business case.</p>
         <p>Read the <a href="../../../../assets/use-cases/gift-kit-readiness/README.md">example notes</a> and <a href="../../../../assets/use-cases/gift-kit-readiness/comparison.json">verified comparison</a>. The <a href="../../../../assets/use-cases/gift-kit-readiness/source-provenance.json">adaptation record</a> identifies the upstream sources; the <a href="../../../../assets/use-cases/gift-kit-readiness/fixture-manifest.json">artifact manifest</a> records the inputs and results used to check the example.</p>
         <h3 id="working-app-screenshots">Working-app screenshots</h3>
-        <p>The screenshots show the one-day example with the current decision-focused views in an isolated local preview. Findings and the next review task lead; supporting details and complete reports remain available on request. The prepared workflow releases are separate from the original Marketplace example, and the frozen app definitions and worked inputs are retained. The public standalone planning links use the same one-day inputs. <a href="../../../../assets/use-cases/gift-kit-readiness/capture-provenance.json">Capture details</a>.</p>
+        <p>The <a href="../../../../assets/use-cases/gift-kit-readiness/question-focused/verification.json">current-interface capture record</a> reopens the exact saved reviews in the current native app and SDK desk. Reports lead with a focused answer and compact comparison; supporting details and complete findings remain available on request. Inspection and navigation preserve each native review’s content hash, choices and authorization records.</p>
+        <p>The one-day version-2 teaching cases, separate ten-minute-minimum authoring release and cost-first version-3 operating cases retain their original definitions, planned durations and records. They have not been silently migrated to a new policy or authored question view. The public standalone planning links retain the one-day teaching inputs. Earlier authoring-control screenshots and their <a href="../../../../assets/use-cases/gift-kit-readiness/capture-provenance.json">historical capture details</a> remain available alongside the refreshed report views.</p>
       </div>
       <div>
         <h3 id="what-the-review-establishes">What the review establishes</h3>

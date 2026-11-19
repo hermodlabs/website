@@ -15,14 +15,14 @@
 
 
   <title>Computational Hermeneutics for Human Decisions | Hermod Labs</title>
-  <meta name="description" content="Examine how statements are interpreted in context, preserve their conditions, and trace what follows from different readings.">
+  <meta name="description" content="Examine what a statement or finding means before another part of a decision relies on it.">
   <meta name="author" content="Jonathan Nacionales">
 
   <link rel="canonical" href="https://hermodlabs.com/articles/computational-hermeneutics-for-human-decisions/">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Hermod Labs">
   <meta property="og:title" content="Computational Hermeneutics for Human Decisions | Hermod Labs">
-  <meta property="og:description" content="Examine how statements are interpreted in context, preserve their conditions, and trace what follows from different readings.">
+  <meta property="og:description" content="Examine what a statement or finding means before another part of a decision relies on it.">
   <meta property="og:url" content="https://hermodlabs.com/articles/computational-hermeneutics-for-human-decisions/">
   <meta property="og:image" content="https://hermodlabs.com/assets/hermod-wordmark.jpeg">
 
@@ -136,7 +136,7 @@
   <p class="eyebrow">Ways of Thinking</p>
 
   <h1>Computational Hermeneutics for Human Decisions</h1>
-  <p class="reading-description">Examine how statements are interpreted in context, preserve their conditions, and trace what follows from different readings.</p>
+  <p class="reading-description">Examine what a statement or finding means before another part of a decision relies on it.</p>
   <p class="reading-meta"><span class="article-author">Jonathan Nacionales</span> <span aria-hidden="true">·</span> 8 min read</p>
   <ul class="article-tags" aria-label="Article topics">
     
@@ -162,12 +162,13 @@
   <details class="disclosure reader-nav-disclosure" open>
     <summary><h2 class="disclosure-label" id="reader-toc-heading">On this page</h2></summary>
     <ol>
+      <li><a href="#interpretation-in-context">Interpret meaning at the connection between parts</a></li>
+      <li><a href="#reuse-methods-and-findings">Distinguish reusing a method from relying on a finding</a></li>
       <li><a href="#friday-trial-exchange">Clarify the Friday trial statement</a></li>
-      <li><a href="#interpretation-in-context">Interpret statements in their wider context</a></li>
-      <li><a href="#preserve-statement-conditions">Preserve the conditions behind a statement</a></li>
-      <li><a href="#wording-and-claim-equivalence">Test whether wording preserves the claim</a></li>
-      <li><a href="#consequences-and-sources">Inspect consequences and return to the source</a></li>
-      <li><a href="#revise-interpretations-and-support">Reassess support when interpretations change</a></li>
+      <li><a href="#preserve-statement-conditions">Preserve what the finding establishes and applies to</a></li>
+      <li><a href="#wording-and-claim-equivalence">Ask whether a replacement supports the intended use</a></li>
+      <li><a href="#consequences-and-sources">Interpret, represent, examine and clarify</a></li>
+      <li><a href="#revise-interpretations-and-support">Connect interpretation to the working review</a></li>
     </ol>
   </details>
 </nav>
@@ -180,11 +181,51 @@
     <div class="reader-content">
     
       
-    <p class="reader-lead">“We can run the trial on Friday if Quality signs off.”</p>
+    <p class="reader-lead">A workflow can bring several assessments into one decision. For that combination to be useful, the receiving step needs to know what each contribution establishes. A feasible schedule, evidence of completed work and permission to proceed support different conclusions. <strong>What may the next step rely on?</strong></p>
       
     
       
-    <p>A sentence like this can move a decision forward. It can also leave several questions open. The trial needs to be identified, Friday needs a date, and “signs off” needs a meaning in the relevant process. The statement is conditional. Its interpretation affects what someone can reasonably conclude and what still needs to happen.</p>
+    <p>In <a href="../shared-structure-for-automated-reasoning/index.html#conventions-for-automation">Hermod Labs’ convention</a>, workflows put decision patterns into practice and configured apps apply supporting reasoning patterns. Composing those parts requires attention to meaning: the information one part supplies must fit the question another part needs to answer.</p>
+      
+    
+      
+    <h2 id="interpretation-in-context">Interpret meaning at the connection between parts</h2>
+      
+    
+      
+    <p>For our purposes, <strong>computational hermeneutics</strong> means using explicit representations and computational tools to help people examine what statements mean in context and what follows from particular readings. It makes interpretation part of the work of connecting information, assessments and commitments.</p>
+      
+    
+      
+    <p>Shared structure gives us a way to reuse reasoning. Interpreting that structure in context helps us decide which reuse is justified. A familiar label such as “available,” “accepted” or “complete” still needs a meaning appropriate to the decision.</p>
+      
+    
+      
+    <h2 id="reuse-methods-and-findings">Distinguish reusing a method from relying on a finding</h2>
+      
+    
+      
+    <div class="article-table-scroll" role="region" tabindex="0" aria-label="Two kinds of reuse require different examinations.">
+      <table>
+        <caption>Two kinds of reuse require different examinations.</caption>
+        <thead><tr><th scope="col">Kind of reuse</th><th scope="col">What needs examination</th></tr></thead>
+        <tbody>
+          
+          <tr><th scope="row">Reuse a reasoning method</th><td>Does the method fit the new question, domain concepts and requirements? The model and its assumptions need to be appropriate to that setting.</td></tr>
+          
+          <tr><th scope="row">Use a finding in another decision</th><td>Does this particular finding establish what the receiving step needs, within the required scope and conditions? Its evidence and outstanding requirements remain relevant.</td></tr>
+          
+        </tbody>
+      </table>
+    </div>
+      
+    
+      
+    <p>The same feasibility approach can support <a href="../../use-cases/nightlife/street-team-deployment/review-tonights-promotion/index.html">Sam’s street-team deployment</a> and <a href="../../use-cases/supply-chain/shipment-readiness/compare-shipment-options/index.html">Maya’s shipment review</a>. Both examine complete arrangements against recorded requirements. The domain meanings still differ: a qualified staff member, an available freight route and permission to spend each need appropriate definitions. Reusing the method does not make a staffing permission transferable to a shipment.</p>
+      
+    
+      
+    <p>Using a finding requires a more specific judgment about what the next question needs. A result can contain more information than that question requires while still supplying the relevant support. Its usefulness in that handoff does not make it interchangeable with every other result. Two models reaching the same recommendation in one case also need not share the same meanings, assumptions or rules.</p>
       
     
       
@@ -192,7 +233,11 @@
       
     
       
-    <p>This manual worked exchange illustrates the approach: a person asks the question, records the answer, and reassesses the affected requirements.</p>
+    <p>“We can run the trial on Friday if Quality signs off.”</p>
+      
+    
+      
+    <p>A scheduling review might read this as expected availability. Purchasing might treat it as permission to commit. The trial needs an identity, Friday needs a date, and “signs off” needs a meaning in the relevant process. This manual worked exchange shows a person clarifying the claim before another part of the decision relies on it.</p>
       
     
       
@@ -220,115 +265,87 @@
       
     
       
-    <p>The person answering can also challenge the available categories: “None of those quite captures it; I can release the line only if the customer order finishes early.” That answer calls for a new dependency on the customer order, rather than forcing the statement into “available” or “unavailable.” The representation and the questions must remain open to revision.</p>
+    <p>The clarification preserves a conditional expectation of availability. A confirmed reservation and purchasing permission remain outstanding. The proposed date is unchanged, but the larger decision now has a more precise account of what the statement contributes.</p>
       
     
       
-    <p>Clarification establishes the claim being made. Evidence is still needed to assess the reported capacity, and the relevant authority must be established for any permission. A clearer interpretation can leave the proposed schedule unchanged while exposing the work needed to support it.</p>
+    <p>The person answering can also challenge the categories: “None of those quite captures it; I can release the line only if the customer order finishes early.” That introduces another dependency to examine. The representation and the questions must remain open to revision as the context becomes clearer.</p>
       
     
       
-    <p>For a practical starting point in the current beta, follow the <a href="../check-a-report-plan/index.html">report-plan guide</a>. It shows how a person makes a small arrangement explicit and examines the limits of a saved result.</p>
+    <h2 id="preserve-statement-conditions">Preserve what the finding establishes and applies to</h2>
       
     
       
-    <h2 id="interpretation-in-context">Interpret statements in their wider context</h2>
+    <p>A contribution needs its <strong>subject and revision, status, scope, conditions, assumptions and source</strong>. Where it concerns permission, the relevant authority and limits matter too. “The trial is planned,” “the trial is complete” and “the trial passed” establish different things. Completion may make evidence available; a satisfactory finding still needs its assessment criteria and conditions of use.</p>
       
     
       
-    <p>In the previous article, we described pattern languages as shared ways to recognize recurring problems and organize responses. Much of the information used in those responses arrives through ordinary language: emails, procedures, meeting notes, and conversations. Computational hermeneutics concerns how we examine the interpretations that turn that language into something a decision model can use.</p>
+    <p>A finding may concern one material revision or one production process. A permission may cover a limited amount or period. “The current specification” depends on which specification was current when the statement was made. Those details need to travel with a contribution whenever they affect how it can be used.</p>
       
     
       
-    <p>Hermeneutics is concerned with interpretation. For our purposes, computational hermeneutics means using explicit representations and computational tools to help people examine what statements mean in context and what follows from particular readings. It connects the language people use with the concepts, relationships, and rules on which the larger decision depends.</p>
+    <p><a href="../ontology-engineering-for-human-decisions/index.html">Ontology engineering</a> supplies concepts for an activity, report, finding, authorization and their relationships. Interpretation asks which claim a statement supports in its context. <a href="../reasoning-modules-for-human-decisions/index.html">Reasoning modules</a> examine how the resulting claims and evidence contribute to a question. Understanding the claim leaves its accuracy and supporting evidence to assess.</p>
       
     
       
-    <p>Work by David Fuenmayor and Christoph Benzmüller provides a useful example of this approach. Their research on <a href="https://arxiv.org/abs/1906.06582">computational hermeneutics</a> uses automated reasoning to help develop and assess formal interpretations of natural-language arguments. Interpretation proceeds iteratively: the reading of an individual statement is examined in relation to the arguments around it, and the interpretation of the larger argument depends on its parts.</p>
+    <h2 id="wording-and-claim-equivalence">Ask whether a replacement supports the intended use</h2>
       
     
       
-    <p>This movement between parts and whole is often called the hermeneutic circle. For our decision models, it suggests a practical way of working. We propose an interpretation, express it clearly enough to examine its consequences, and return to the source and context when those consequences raise questions.</p>
+    <p>Suppose another review requires a successful trial finding for material revision 12. A feasible schedule for testing revision 12 leaves that requirement outstanding. A successful trial finding for revision 11 also leaves it outstanding. The first differs in what it establishes; the second differs in what it applies to. Neither supplies the required finding for revision 12.</p>
       
     
       
-    <h2 id="preserve-statement-conditions">Preserve the conditions behind a statement</h2>
+    <p>Different wording can preserve a claim. “Maya reviewed report R” and “Report R was reviewed by Maya” can express the same relationship when the person, report and meaning of review are fixed. Replacing “reviewed” with “approved” changes what another step might conclude. A review can result in acceptance, rejection or a request for more evidence.</p>
       
     
       
-    <p>Small changes in wording can therefore have substantial consequences. “The trial is planned,” “the trial is complete,” and “the trial passed” describe different situations. Completion may make evidence available for review. A satisfactory finding may satisfy a technical requirement. Planning the work leaves those later questions outstanding.</p>
+    <p>The <a href="https://www.cs.cmu.edu/Groups/venari/subtype-toplas.html">Liskov substitution principle</a> offers an engineering analogy: examine whether a replacement preserves what its user may rely on. We apply that question to a particular interpretive handoff; natural-language expressions are not thereby software subtypes.</p>
       
     
       
-    <p>Context can also be carried in details that are easy to omit. A finding may concern one material revision or one production process. A permission may cover a limited quantity. A statement about “the current specification” depends on which specification was current when the statement was made. Those references need to remain connected to the interpretation when they affect the decision.</p>
+    <p>Allow varied wording when it preserves the relevant claim and its conditions. Keep an uncertain reading provisional until the ambiguity that matters to the decision has been examined.</p>
       
     
       
-    <p>Ontology engineering gives us the concepts needed to express these differences. We need ways to represent an activity, a report, a finding, an authorization, and their scope. Computational interpretation then asks which of those meanings a particular statement supports in its context.</p>
+    <h2 id="consequences-and-sources">Interpret, represent, examine and clarify</h2>
       
     
       
-    <p>Phrase patterns help make recurring statements more explicit. An illustrative form such as “Reviewer [person] accepts material [material] for process [process]” gives us places to identify the participants and the scope of a finding. The meaning of “accepts” still needs to be defined. The pattern makes that interpretation available for examination wherever the statement is used.</p>
+    <p>The practical cycle is to <strong>propose an interpretation, represent it, inspect its consequences, seek clarification and revise</strong>. If a recorded statement is treated as a resource commitment, it may conflict with another activity. If it is a conditional expectation, a reservation may remain outstanding. The difference identifies a useful question to take back to the source.</p>
       
     
       
-    <h2 id="wording-and-claim-equivalence">Test whether wording preserves the claim</h2>
+    <p>A conflict can reflect a mistaken interpretation, an incorrect fact elsewhere in the model or a real disagreement. Computation helps expose the consequences of a reading. The speaker’s intended meaning still requires examination in context; choosing a convenient interpretation merely because it removes a conflict would weaken the review.</p>
       
     
       
-    <p>Different wording can also preserve the same meaning. “Maya reviewed report R” and “Report R was reviewed by Maya” can express the same relationship when the person, report, and meaning of review are fixed. Replacing “reviewed” with “approved” introduces a different claim. A review can result in acceptance, rejection, or a request for more evidence.</p>
+    <p>David Fuenmayor and Christoph Benzmüller’s <a href="https://arxiv.org/abs/1906.06582">computational-hermeneutics research</a> examines formal interpretations of individual arguments alongside their role in a larger argument. This iterative movement between parts and whole is the hermeneutic circle. Using that idea to examine decision-workflow handoffs is Hermod’s engineering application of the approach.</p>
       
     
       
-    <p>This is where we borrow an engineering analogy from the <a href="https://www.cs.cmu.edu/Groups/venari/subtype-toplas.html">Liskov substitution principle</a>. In software, behavioral subtyping concerns preserving the properties that users of a type can rely on when a subtype is substituted. Our adaptation asks whether replacing one expression with another preserves what the surrounding reasoning is entitled to rely on. It is an analogy for examining meaning in context, rather than a claim that natural-language paraphrases are software subtypes.</p>
+    <p>Keep the original wording, its author and date, the relevant context, the clarification and the assumptions used to interpret it. Another person can then challenge the recorded reading without reconstructing the entire exchange. A faithful interpretation may reveal that the proposed action still lacks support.</p>
       
     
       
-    <p>We also adapt the <a href="https://www.rfc-editor.org/rfc/rfc1122.html#section-1.2.2">robustness principle</a> to this setting. We favor precise expression while allowing different wording when it preserves the relevant meaning. That flexibility concerns expression; an uncertain interpretation still needs to remain visible for review. Familiar phrasing should not silently strengthen a claim or remove a condition.</p>
+    <h2 id="revise-interpretations-and-support">Connect interpretation to the working review</h2>
       
     
       
-    <h2 id="consequences-and-sources">Inspect consequences and return to the source</h2>
+    <p>In current Decision Lab authoring, people review how workflow questions and app results are connected. They record the intended meaning, scope and units of those mappings. The software checks the required declarations and review records against the current definitions. Those records retain a person’s stated judgment; they do not establish that the interpretation or underlying evidence is correct.</p>
       
     
       
-    <p>Computational tools can help by making the consequences of an interpretation easier to inspect. If we represent a statement as a resource commitment, it may conflict with another scheduled activity. If we represent it as a conditional proposal, it may create an outstanding requirement. Comparing those consequences can help people identify the clarification the decision needs.</p>
+    <p>When an authored mapping changes, the affected authoring reviews need reconsideration. When a case fact changes within a published model, the relevant assessment and decision support need review. In both situations, explicit dependencies help connect the changed premise to the conclusions that relied on it. People clarify and model the meaning; configured apps and workflows calculate within those definitions.</p>
       
     
       
-    <p>The computation does not, by itself, settle which reading the speaker intended. A conflict might reveal a mistaken interpretation, an incorrect fact elsewhere in the model, or a real disagreement in the work. We need to return to the source and examine the reason for the conflict. A faithful interpretation can reveal that a conclusion is unsupported.</p>
+    <p>This is a discipline for using the current tools, rather than a claim that Decision Lab automatically interprets ordinary language or proves general equivalence between business meanings. The <a href="../check-a-report-plan/index.html">report-plan guide</a> provides a small worked starting point: a feasible schedule still leaves a reviewer-independence requirement to examine.</p>
       
     
       
-    <p>This gives us a useful discipline for handling ambiguity. We can record the plausible readings, identify which conclusions depend on the difference, and seek clarification where it matters. If one reading permits a purchase while another leaves authorization unresolved, the ambiguity affects the decision directly.</p>
-      
-    
-      
-    <p>We want the interpretation to remain traceable to the statement that prompted it. The source wording, its author and date, the relevant context, and the assumptions used to interpret it can all matter. Keeping that connection allows another person to examine why the model contains a particular claim and to challenge the interpretation without reconstructing the entire conversation.</p>
-      
-    
-      
-    <h2 id="revise-interpretations-and-support">Reassess support when interpretations change</h2>
-      
-    
-      
-    <p>Understanding what someone said also leaves a separate question about whether the claim is adequately supported. A report that a trial passed needs the relevant evidence and assessment criteria. A statement granting permission needs to be evaluated against the authority recognized by the decision model. A clear interpretation gives us a claim to examine; the reasoning modules assess how it contributes to the decision.</p>
-      
-    
-      
-    <p>This distinction matters when information crosses organizational boundaries. Quality may use “accepted” to describe a technical judgment, while Purchasing needs permission to spend. Preserving the original scope lets the technical finding contribute to the purchasing decision while keeping the remaining requirements visible.</p>
-      
-    
-      
-    <p>Interpretations may need revision as context develops. A later message may identify the intended material, correct a date, or explain that a statement was a proposal. When a recorded interpretation changes, the conclusions that depend on it need attention. Explicit dependencies give software a basis for finding those consequences across modules.</p>
-      
-    
-      
-    <p>Our aim is to direct interpretive effort toward differences that matter for the work. A change in meaning that affects an option, an obligation, or the support for a conclusion deserves examination. Shared definitions and phrase patterns can reduce repeated uncertainty while leaving room for people to explain circumstances the model does not yet capture.</p>
-      
-    
-      
-    <p>At Hermod Labs, this is part of helping humans think. We want people to see how their language has been interpreted, inspect the consequences, and revise that interpretation when the context warrants it. Computational hermeneutics makes interpretation an explicit part of the decision, with a path from the original statement to the reasoning that relies on it.</p>
+    <p>Reusable reasoning becomes dependable when the connection preserves what a contribution establishes, where it applies and what remains unresolved. Computational hermeneutics gives that interpretive work an explicit place in the decision: a path from the source statement, through a reviewed representation, to the next step that relies on it.</p>
       
     
     </div>

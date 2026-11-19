@@ -1,0 +1,136 @@
+import assert from 'node:assert/strict';
+import { mkdtemp, readFile, writeFile, cp, rm, symlink, readdir, mkdir } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import test from 'node:test';
+import { spawnSync } from 'node:child_process';
+import { runBatch } from '../src/batch.mjs';
+
+const directory = fileURLToPath(new URL('../', import.meta.url));
+const fixtures = path.join(directory, 'fixtures');
+const createdAt = '2026-11-17T14:05:00Z';
+const readJSON = async file => JSON.parse(await readFile(file, 'utf8'));
+const writeJSON = (file, value) => writeFile(file, `${JSON.stringify(value, null, 2)}\n`);
+const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
+const options = (root, snapshot, more = {}) => ({ inputDir: path.join(fixtures, snapshot),
+  retainedDir: path.join(fixtures, 'retained', snapshot), outputDir: path.join(root, snapshot), createdAt, ...more });
+async function withDirectory(operation) {
+  const root = await mkdtemp(path.join(tmpdir(), 'shipment-cli-example-'));
+  try { await operation(root); }
+  finally { await rm(root, { recursive: true, force: true }); }
+}
+
+// These tests use the public CLI and real evaluator. The expected arrangements
+// are checks on a worked scenario, not a second implementation of the rules.
+test('reassesses revised orders, preserves old scopes, and retains complete native reports', async () => withDirectory(async root => {
+  const baseline = await runBatch(options(root, 'baseline'));
+  assert.equal(baseline.exitCode, 0);
+  assert.deepEqual(baseline.manifest.rows.map(row => row.current.preferredIds), Array(4).fill(['direct']));
+  const baselineBytes = await readFile(path.join(root, 'baseline/manifest.json'));
+  const morning = await runBatch(options(root, 'morning', { previousFile: path.join(root, 'baseline/manifest.json') }));
+  assert.equal(morning.exitCode, 2, 'one malformed quote must be visible to an automated caller');
+  assert.deepEqual(morning.manifest.rows.map(row => row.status), ['unchanged', 'blocked', 'blocked', 'input-error']);
+  const [unchanged, revised, blocked, invalid] = morning.manifest.rows;
+  assert.equal(unchanged.actionWindows.find(row => row.arrangement === 'direct').dueMinute, 660);
+  assert.equal(unchanged.actionWindows.find(row => row.arrangement === 'direct').remainingMinutes, 180);
+  assert.deepEqual(unchanged.current.preferredIds, ['direct']);
+  assert.deepEqual(revised.before.preferredIds, ['direct']);
+  assert.deepEqual(revised.current.preferredIds, []);
+  assert.ok(revised.current.plans.find(plan => plan.arrangementId === 'consolidated').blockers.some(check => check.id === 'scoped-consolidation-slot'));
+  assert.equal(blocked.current.available, true);
+  assert.equal(blocked.current.finding, 'no_feasible_plan');
+  assert.deepEqual(blocked.current.preferredIds, []);
+  assert.equal(invalid.current, null);
+  assert.match(invalid.diagnostics[0].message, /USD/);
+  const revisedCase = await readJSON(path.join(root, 'morning/shipments/SHIP-105/case.json'));
+  assert.equal(revisedCase.parameters.orderRevision, '2');
+  assert.equal(revisedCase.tables.slotConfirmations[0].orderRevision, '1');
+  const blockedCase = await readJSON(path.join(root, 'morning/shipments/SHIP-106/case.json'));
+  assert.ok(blockedCase.tables.grants.every(grant => grant.orderRevision === '1'));
+  const retained = await readJSON(path.join(fixtures, 'retained/morning/SHIP-106.json'));
+  assert.deepEqual(blockedCase.tables.grants, retained.tables.grants);
+  assert.equal(await readFile(path.join(root, 'baseline/manifest.json'), 'utf8'), baselineBytes.toString());
+  const run = await readJSON(path.join(root, 'morning/shipments/SHIP-105/run.json'));
+  assert.equal(run.report.completeness.allRetainedContexts, true);
+  assert.deepEqual(run.input.inputs, revisedCase);
+  assert.equal(run.identity.appHash, morning.manifest.binding.appHash);
+  const transcript = await readJSON(path.join(root, 'morning/cli-commands.json'));
+  assert.equal(transcript.commands.filter(command => command.args[0] === 'run').length, 3);
+  assert.ok(transcript.commands.filter(command => command.args[0] === 'run').every(command => command.exitCode === 0), 'blocked is a successful native assessment');
+  assert.ok(transcript.commands.every(command => !command.args.includes('--force')));
+  const html = await readFile(path.join(root, 'morning/shipments.html'), 'utf8');
+  assert.match(html, /No arrangement passes/);
+  assert.match(html, /No arrangement passes/);
+  assert.match(html, /Selection authority covers this order/);
+  assert.match(html, /shipments\/SHIP-105\/run.json/);
+  for (const receipt of morning.manifest.inputSources.filter(value => !value.missing)) {
+    assert.equal(sha256(await readFile(receipt.file)), receipt.sha256, `source stays unchanged: ${receipt.file}`);
+  }
+}));
+
+test('search-limited native runs are unavailable and never inherit yesterday\'s proposal', async () => withDirectory(async root => {
+  const result = await runBatch(options(root, 'baseline', { maxPlans: 0 }));
+  assert.equal(result.exitCode, 3);
+  assert.ok(result.manifest.rows.every(row => row.status === 'unavailable' && row.current.available === false && row.current.preferredIds.length === 0));
+  const run = await readJSON(path.join(root, 'baseline/shipments/SHIP-104/run.json'));
+  assert.notEqual(run.execution.status, 'completed');
+  assert.equal(run.report.completeness.assessmentComplete, false);
+}));
+
+test('a native case admission failure is isolated and diagnosed', async () => withDirectory(async root => {
+  const retainedDir = path.join(root, 'retained');
+  await cp(path.join(fixtures, 'retained/baseline'), retainedDir, { recursive: true });
+  const file = path.join(retainedDir, 'SHIP-104.json');
+  const value = await readJSON(file); value.parameters.packDuration = 'unknown'; await writeJSON(file, value);
+  const result = await runBatch(options(root, 'baseline', { retainedDir }));
+  assert.equal(result.exitCode, 2);
+  assert.equal(result.manifest.rows[0].status, 'input-error');
+  assert.ok(result.manifest.rows[0].diagnostics.length);
+  assert.ok(result.manifest.rows.slice(1).every(row => row.current.available));
+  assert.equal(result.manifest.rows[0].artifacts.run, undefined);
+}));
+
+test('refuses existing output and output overlap through a read alias', async () => withDirectory(async root => {
+  const outputDir = path.join(root, 'review');
+  await mkdir(outputDir); await writeFile(path.join(outputDir, 'keep.txt'), 'reviewed');
+  await assert.rejects(runBatch(options(root, 'baseline', { outputDir })), /already exists/);
+  assert.equal(await readFile(path.join(outputDir, 'keep.txt'), 'utf8'), 'reviewed');
+  const alias = path.join(root, 'alias');
+  await symlink(path.join(fixtures, 'baseline'), alias);
+  await assert.rejects(runBatch(options(root, 'baseline', { inputDir: alias, outputDir: path.join(alias, 'new-output') })), /overlaps/);
+}));
+
+test('refuses corrupted previous artifacts and comparisons across app releases', async () => withDirectory(async root => {
+  const baseline = await runBatch(options(root, 'baseline'));
+  const previousFile = path.join(root, 'baseline/manifest.json');
+  const runFile = path.join(root, 'baseline/shipments/SHIP-104/run.json');
+  const original = await readFile(runFile);
+  await writeFile(runFile, Buffer.concat([original, Buffer.from('\n')]));
+  await assert.rejects(runBatch(options(root, 'morning', { previousFile })), /previous run changed/);
+  await assert.rejects(readFile(path.join(root, 'morning/manifest.json')), { code: 'ENOENT' });
+  await writeFile(runFile, original);
+  baseline.manifest.binding.release = 99; await writeJSON(previousFile, baseline.manifest);
+  await assert.rejects(runBatch(options(root, 'morning', { previousFile })), /different app rules/);
+}));
+
+test('accepts filename-safe dots and rejects malformed arguments before creating outputs', async () => withDirectory(async root => {
+  const inputDir = path.join(root, 'inputs'), retainedDir = path.join(root, 'retained');
+  await cp(path.join(fixtures, 'baseline'), inputDir, { recursive: true });
+  await cp(path.join(fixtures, 'retained/baseline'), retainedDir, { recursive: true });
+  for (const name of ['orders.csv', 'quotes.csv', 'slot-confirmations.csv']) {
+    const file = path.join(inputDir, name);
+    await writeFile(file, (await readFile(file, 'utf8')).replaceAll('SHIP-104', 'SHIP.104'));
+  }
+  const retained = await readJSON(path.join(retainedDir, 'SHIP-104.json'));
+  retained.id = 'SHIP.104'; await writeJSON(path.join(retainedDir, 'SHIP.104.json'), retained);
+  const result = await runBatch({ inputDir, retainedDir, outputDir: path.join(root, 'review'), createdAt });
+  assert.equal(result.exitCode, 0);
+  assert.equal(result.manifest.rows[0].shipmentId, 'SHIP.104');
+  assert.deepEqual(result.manifest.rows[0].current.preferredIds, ['direct']);
+  const command = spawnSync(process.execPath, [path.join(directory, 'review-shipments.mjs'), '--max-plans', '-1'], { encoding: 'utf8' });
+  assert.equal(command.status, 2);
+  assert.match(command.stderr, /whole number/);
+  assert.ok((await readdir(root)).includes('review'));
+}));

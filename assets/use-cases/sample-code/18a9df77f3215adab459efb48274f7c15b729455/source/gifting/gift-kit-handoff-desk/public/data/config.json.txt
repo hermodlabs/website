@@ -1,0 +1,143 @@
+{
+  "format": "gifting-example/1",
+  "title": "Gift-kit Handoff Desk",
+  "appUrl": "./gifting.app.json",
+  "appFileSHA256": "7f93033c507b26ceead2fff7346f27a525a73c54208352644092f6887791c150",
+  "binding": {
+    "appId": "review-gift-kit-earliest-planning",
+    "release": 1,
+    "appHash": "5bc9b7c4eb79011e60feb6415a3060f9435b9a84461b4ed2ec1d8cb916f0f6b2",
+    "packageHash": "1fc3ad7559d0747fc61fa5b56be27a42c56dac653b28c255d44f3c321ed4c758",
+    "pattern": "complete-a-commitment/1",
+    "moduleHash": "4586582a26a01cdf0a7dea739a9350d2abe32b2efbf62372a42002d169dc41d9"
+  },
+  "currency": "USD",
+  "moneyDivisor": 100,
+  "confirmationPackage": "external-replace-and-repair",
+  "labels": {
+    "packages": {
+      "rehearse-unchanged": "Rehearse unchanged kits",
+      "reprint": "Replace printed inserts",
+      "repair-journey": "Repair destination and checkout",
+      "replace-and-repair": "Replace and repair in-house",
+      "external-replace-and-repair": "External replacement and repair"
+    },
+    "checks": {
+      "declared-fault-state": "Every retained fault scenario is covered by this review",
+      "published-package-effects": "The package keeps its authored correction effects",
+      "correct-fault-0": "The package addresses an unreadable printed code",
+      "correct-fault-1": "The package addresses the wrong destination",
+      "correct-fault-2": "The package addresses checkout failure",
+      "known-owner": "The package has a named responsible owner",
+      "scoped-package-permission": "Permission covers this campaign and all current revisions",
+      "resource-calendar": "The production team is available throughout the work",
+      "resource-capacity": "The production team can cover the complete schedule",
+      "not-in-past": "Correction work starts at or after the review origin",
+      "handoff-by-cutoff": "Correction, rehearsal and handoff meet the cutoff",
+      "package-within-budget": "Complete package cost stays within the campaign budget",
+      "quoted-quantity": "The quote covers the full kit quantity",
+      "minimum-rehearsal": "The package leaves the required rehearsal time",
+      "scoped-package-confirmation": "A recorded external booking covers the current campaign revisions and work interval"
+    }
+  },
+  "cases": [
+    {
+      "id": "confirmed",
+      "label": "Confirmed external booking \u00b7 GIFT-120",
+      "description": "Current permission and external booking. External replacement and repair should finish at minute 20.",
+      "url": "./cases/confirmed.json",
+      "scenarioGroup": "One-hour demo"
+    },
+    {
+      "id": "stale",
+      "label": "Revised insert, older booking \u00b7 GIFT-121",
+      "description": "The insert is now revision 4. Permissions cover revision 4, but the external booking still covers revision 3. In-house work should be preferred.",
+      "url": "./cases/stale.json",
+      "scenarioGroup": "One-hour demo"
+    },
+    {
+      "id": "permissions",
+      "label": "Revised insert, older permissions \u00b7 GIFT-122",
+      "description": "The booking covers revision 4, but all package permissions still cover revision 3. No package should pass.",
+      "url": "./cases/permissions.json",
+      "scenarioGroup": "One-hour demo"
+    },
+    {
+      "id": "one-day-confirmed",
+      "label": "One-day cutoff, current booking \u00b7 GIFT-220",
+      "description": "A 24-hour handoff window with a ten-minute planned rehearsal. Existing short-lived records cover work starting now; external replacement and repair finishes at minute 25.",
+      "url": "./cases/one-day-confirmed.json",
+      "scenarioGroup": "One-day campaign"
+    },
+    {
+      "id": "one-day-stale",
+      "label": "One-day cutoff, older booking \u00b7 GIFT-221",
+      "description": "A ten-minute rehearsal and a 24-hour handoff window do not cure the older insert revision on the external booking. In-house replacement and repair finishes at minute 40.",
+      "url": "./cases/one-day-stale.json",
+      "scenarioGroup": "One-day campaign"
+    },
+    {
+      "id": "one-day-expired",
+      "label": "Late start, expired records \u00b7 GIFT-222",
+      "description": "The review and only candidate start are at minute 1,380, with handoff due at minute 1,440. Original production availability and permissions end at minute 120; the external booking ends at minute 60. No package is eligible.",
+      "url": "./cases/one-day-expired.json",
+      "scenarioGroup": "One-day campaign"
+    },
+    {
+      "id": "one-day-late",
+      "label": "Late start, renewed records \u00b7 GIFT-223",
+      "description": "The review and only candidate start are at minute 1,380. Explicit fictional production availability, permissions, and external booking cover work through minute 1,440. External replacement and repair finishes at minute 1,405.",
+      "url": "./cases/one-day-late.json",
+      "scenarioGroup": "One-day campaign"
+    }
+  ],
+  "appFile": "gifting.app.json",
+  "decisionPresentation": {
+    "format": "decision-presentation/1",
+    "title": "Complete correction packages",
+    "question": "Which complete package can correct, rehearse and hand off these kits before the cutoff?",
+    "priorityLabel": "Earliest handoff, then lower complete package cost",
+    "moneyFormat": {
+      "currency": "USD",
+      "divisor": 100
+    },
+    "columns": [
+      {
+        "id": "package",
+        "label": "Correction package",
+        "source": "choice:packageId",
+        "valueLabels": {
+          "rehearse-unchanged": "Rehearse unchanged kits",
+          "reprint": "Replace printed inserts",
+          "repair-journey": "Repair destination and checkout",
+          "replace-and-repair": "Replace and repair in-house",
+          "external-replace-and-repair": "External replacement and repair"
+        }
+      },
+      {
+        "id": "status",
+        "label": "Result"
+      },
+      {
+        "id": "expense",
+        "label": "Complete cost"
+      },
+      {
+        "id": "finish",
+        "label": "Handoff (minutes from review origin)",
+        "source": {
+          "kind": "activity",
+          "id": "handoff",
+          "field": "end"
+        },
+        "format": {
+          "kind": "time"
+        }
+      },
+      {
+        "id": "blockers",
+        "label": "Conditions needing attention"
+      }
+    ]
+  }
+}

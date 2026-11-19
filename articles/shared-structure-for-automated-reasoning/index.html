@@ -15,14 +15,14 @@
 
 
   <title>Shared Structure for Automated Reasoning | Hermod Labs</title>
-  <meta name="description" content="Shared concepts, defined relationships, and explicit conditions give software a basis for checking decisions and tracing their consequences.">
+  <meta name="description" content="Hermod’s convention connects decision patterns, supporting reasoning, workflows and apps while preserving what each finding establishes.">
   <meta name="author" content="Jonathan Nacionales">
 
   <link rel="canonical" href="https://hermodlabs.com/articles/shared-structure-for-automated-reasoning/">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Hermod Labs">
   <meta property="og:title" content="Shared Structure for Automated Reasoning | Hermod Labs">
-  <meta property="og:description" content="Shared concepts, defined relationships, and explicit conditions give software a basis for checking decisions and tracing their consequences.">
+  <meta property="og:description" content="Hermod’s convention connects decision patterns, supporting reasoning, workflows and apps while preserving what each finding establishes.">
   <meta property="og:url" content="https://hermodlabs.com/articles/shared-structure-for-automated-reasoning/">
   <meta property="og:image" content="https://hermodlabs.com/assets/hermod-wordmark.jpeg">
 
@@ -128,7 +128,7 @@
   <p class="eyebrow">Ways of Thinking</p>
 
   <h1>Shared Structure for Automated Reasoning</h1>
-  <p class="reading-description">Shared concepts, defined relationships, and explicit conditions give software a basis for checking decisions and tracing their consequences.</p>
+  <p class="reading-description">Hermod’s convention connects decision patterns, supporting reasoning, workflows and apps while preserving what each finding establishes.</p>
   <p class="reading-meta"><span class="article-author">Jonathan Nacionales</span> <span aria-hidden="true">·</span> 6 min read</p>
   <ul class="article-tags" aria-label="Article topics">
     
@@ -154,11 +154,12 @@
   <details class="disclosure reader-nav-disclosure" open>
     <summary><h2 class="disclosure-label" id="reader-toc-heading">On this page</h2></summary>
     <ol>
-      <li><a href="#conventions-for-automation">Conventions give automation something to rely on</a></li>
+      <li><a href="#conventions-for-automation">The convention we use</a></li>
+      <li><a href="#from-pattern-to-review">From a reusable approach to a working review</a></li>
       <li><a href="#meanings-of-approval">Preserve the different meanings of approval</a></li>
-      <li><a href="#resource-conflicts-and-prerequisites">Define resource conflicts and prerequisites</a></li>
-      <li><a href="#reusable-modeling-effort">Make modeling effort reusable</a></li>
-      <li><a href="#revisable-conventions">Keep shared conventions open to disagreement</a></li>
+      <li><a href="#resource-conflicts-and-prerequisites">Define the conditions software can check</a></li>
+      <li><a href="#reusable-modeling-effort">Compose reasoning without losing its meaning</a></li>
+      <li><a href="#revisable-conventions">Keep the convention open to revision</a></li>
     </ol>
   </details>
 </nav>
@@ -171,31 +172,71 @@
     <div class="reader-content">
     
       
-    <p class="reader-lead">In the previous article, we described how hierarchical decomposition helps people work on manageable parts of a decision and integrate those parts into a larger whole. That approach raises another question: what shared structure allows software to help with the integration?</p>
+    <p class="reader-lead">Hierarchical decomposition lets us examine manageable parts of a decision. Bringing those parts together requires shared meanings: what question each part answers, what its result establishes and when that result can support a commitment.</p>
       
     
       
-    <p>At Hermod Labs, we take an opinionated position about how decisions should be represented. We favor explicit concepts, relationships with defined meanings, and conclusions whose supporting conditions remain available for examination. These are deliberate choices about how to organize reasoning. By adopting them consistently, we give the software a basis for doing more of the work automatically.</p>
+    <p>At Hermod Labs, we use a convention for organizing this work. We distinguish the recurring problem, the overall decision approach, its supporting reasoning and the software implementation. The convention gives authors a common structure while leaving the goals and acceptable tradeoffs with the people responsible for the decision.</p>
       
     
       
-    <h2 id="conventions-for-automation">Conventions give automation something to rely on</h2>
+    <h2 id="conventions-for-automation">The convention we use</h2>
       
     
       
-    <p>Ruby on Rails offers a useful analogy. Rails is a framework for building web applications with a <a href="https://rubyonrails.org/doctrine">design philosophy</a> that makes choices on behalf of developers about how common parts of an application should be organized. Those choices reduce the number of recurring decisions a developer has to make and give the framework a structure it can rely on.</p>
+    <p><strong>Decision patterns</strong> describe reusable approaches to organizing a decision. <strong>Reasoning patterns</strong> describe reusable methods for answering its supporting questions. A decision pattern connects the work to a purpose; its supporting reasoning helps establish what can be concluded from the available information.</p>
       
     
       
-    <p>For example, Rails uses <a href="https://guides.rubyonrails.org/active_record_basics.html#naming-conventions">naming conventions</a> to connect a model called “Book” with a database table called “books.” A developer following that convention can rely on the framework to establish the mapping. The convention settles a recurring question, and the software implements the consequences.</p>
+    <p>We put decision patterns into practice through <strong>workflows</strong>, using configured <strong>apps</strong> to apply supported reasoning patterns. A workflow coordinates questions, reviews, app assessments and the steps leading to a choice or commitment. An app supplies a domain model and the rules and meanings used in its assessment.</p>
       
     
       
-    <p>That is the relationship we want to draw attention to. An opinionated framework can automate work because it has already committed to particular answers about how things fit together. People who follow those commitments can use the resulting behavior repeatedly.</p>
+    <div class="article-table-scroll" role="region" tabindex="0" aria-label="Hermod’s organizing convention, illustrated by a fictional street-team decision.">
+      <table>
+        <caption>Hermod’s organizing convention, illustrated by a fictional street-team decision.</caption>
+        <thead><tr><th scope="col">Level</th><th scope="col">Meaning in Sam’s example</th></tr></thead>
+        <tbody>
+          
+          <tr><th scope="row">Problem family</th><td>Allocate limited staff between outreach and customer service while preserving minimum floor coverage.</td></tr>
+          
+          <tr><th scope="row">Decision pattern</th><td>Compare complete assignments, examine their requirements and exposure, then make a bounded operating commitment.</td></tr>
+          
+          <tr><th scope="row">Supporting reasoning patterns</th><td>Check staffing, timing, access and spending conditions; calculate conditional expense-recovery thresholds; revisit findings when their supporting facts change.</td></tr>
+          
+          <tr><th scope="row">Implementation</th><td>Hermod’s authored workflow, configured operating app, financial calculations, questions, review responsibilities, reports, and separate choice and authorization steps.</td></tr>
+          
+        </tbody>
+      </table>
+    </div>
       
     
       
-    <p>Our equivalent is a commitment to shared structure in decision models.</p>
+    <p>The relationship resembles strategy and tactics: an overall approach draws on supporting methods. Here, that analogy concerns the roles of the patterns. Sam’s immediate staffing choice is an operating decision. Several combinations of supporting methods may serve the same overall decision purpose.</p>
+      
+    
+      
+    <p>These are distinctions in our convention, rather than a fixed sequence of four software objects. A pattern describes an approach that can be adapted. Its implementation makes particular choices about questions, models, rules and handoffs.</p>
+      
+    
+      
+    <h2 id="from-pattern-to-review">From a reusable approach to a working review</h2>
+      
+    
+      
+    <p>In <a href="../../use-cases/nightlife/street-team-deployment/review-tonights-promotion/index.html">Sam’s fictional promotion decision</a>, five staff are available and four must remain inside. Promoters want people on outreach; the floor team wants capacity for customer service. Sam wants to improve profit without making an unsupported commitment. Recognizing the shared-staff allocation problem helps us identify which alternatives and requirements the review must bring together.</p>
+      
+    
+      
+    <p>The decision pattern is a bounded deployment review. The workflow gathers the operating facts, organizes their review, presents the findings and retains Sam’s separate choice and specific authorization. Its configured operating app checks complete assignments against the staffing, timing, access and spending requirements.</p>
+      
+    
+      
+    <p>The workflow also calculates conditional guest thresholds from the assessed expense and reviewed financial assumptions. In this implementation, that calculation lives in the workflow. Apps provide reusable assessments, while workflows may contain supporting calculations and review logic as well as coordinating those assessments.</p>
+      
+    
+      
+    <p>Hermod’s contribution was to recognize the recurring structure, select the supporting reasoning and turn it into an authored review. The resulting workflow makes those choices available for use and examination. It establishes no customer-response forecast: Sam still judges whether he is willing to risk $200 on the opportunity.</p>
       
     
       
@@ -203,87 +244,67 @@
       
     
       
-    <p>Consider the statement “the supplier is approved.” Within a team, people may understand what that means from the surrounding conversation. Across a larger decision, it could refer to technical qualification, acceptance of commercial terms, or permission to place an order. Each interpretation supports different next steps.</p>
+    <p>The same convention applies to the supplier decision used elsewhere in this series. “The supplier is approved” could mean a satisfactory technical finding, accepted commercial terms or permission to place an order. Each meaning supports different next steps.</p>
       
     
       
-    <p>We choose to preserve those distinctions. A technical finding should identify what was assessed and the conditions under which it applies. An authorization should identify the action it permits and the authority supporting it. Evidence should remain connected to the claim it supports. A planned activity should remain distinguishable from a completed one.</p>
+    <p>A technical finding identifies what was assessed and the conditions under which it applies. An authorization identifies the action it permits and the authority supporting it. A workflow can require both without collapsing them into a single approval status. Planned work also remains distinguishable from completed work.</p>
       
     
       
-    <p>These choices give us recurring structures that software can recognize. Once the relevant relationships and rules have been defined, the software can check whether a proposed action has the prerequisites the model requires. It can identify conditions that remain unestablished and show how a conclusion depends on other parts of the model.</p>
+    <p><a href="../ontology-engineering-for-human-decisions/index.html">Ontology engineering</a> defines these concepts and relationships. Phrase patterns provide consistent ways to express statements using them. <a href="../reasoning-modules-for-human-decisions/index.html">Reasoning modules</a> organize the claims, evidence and rules around particular questions. Those shared meanings let one part interpret another part’s contribution.</p>
       
     
       
-    <p>The opinion becomes operational through definitions and rules. Simply preferring clear reasoning would leave too much unspecified. We have to decide which distinctions the model preserves, how statements express them, and what follows when those statements are combined.</p>
+    <h2 id="resource-conflicts-and-prerequisites">Define the conditions software can check</h2>
       
     
       
-    <p>This is why ontology engineering is central to our approach. It defines the kinds of things the model recognizes and the relationships between them. Phrase patterns give people consistent ways to express statements using that structure. Reasoning modules organize those statements and rules around particular questions. Together, they provide a common basis for interpretation and computation.</p>
+    <p>Suppose a supplier’s qualifying trial needs exclusive use of a production line for two hours. A customer order also needs that line during part of the same period. Identifying the same resource, recording both intervals and declaring its capacity gives software a basis for checking the conflict. The check follows from the modeled conditions.</p>
       
     
       
-    <h2 id="resource-conflicts-and-prerequisites">Define resource conflicts and prerequisites</h2>
+    <p>A purchasing review may also require a satisfactory technical finding and spending authorization. Recording one leaves the other outstanding. The software can check that distinction because the model preserves it. Someone must still establish that the records, requirements and their scope fit the actual purchase.</p>
       
     
       
-    <p>Return to the supplier example. Suppose a qualifying trial needs exclusive use of a production line for two hours. An existing customer order also needs that line during part of the same period. The model identifies the same resource in both activities, records their time requirements, and includes a rule that the line can support only one activity at a time.</p>
+    <p>This is the practical value of a shared convention. <a href="https://guides.rubyonrails.org/active_record_basics.html#naming-conventions">Rails naming conventions</a> provide a familiar analogy: connecting a model called “Book” to a table called “books” gives the framework a recurring mapping it can implement. In decision modeling, explicit concepts, relationships and rules give software defined consequences to calculate and check.</p>
       
     
       
-    <p>Those commitments make a particular automation possible: checking for incompatible demands on the line. The software can apply the same rule whenever activities compete for that modeled resource. If someone changes the trial time, it can check the revised combination using the same definitions.</p>
+    <h2 id="reusable-modeling-effort">Compose reasoning without losing its meaning</h2>
       
     
       
-    <p>The effort goes into describing the situation and establishing the rule. Once that work has been done, each additional combination can be checked without someone reconstructing the conflict from separate schedules.</p>
+    <p>A decision pattern can use several reasoning patterns, and the same reasoning pattern can support several decision patterns. A workflow may use multiple apps. Another workflow can reuse a suitable assessment component while organizing different questions, review responsibilities or commitments. <a href="../pattern-languages-for-human-decisions/index.html">Pattern languages</a> help describe these connections and the reasons for choosing them.</p>
       
     
       
-    <p>The same approach applies to prerequisites. Suppose the purchasing model requires both a satisfactory technical finding and spending authorization before an order can proceed. Recording a satisfactory finding establishes the technical condition. The authorization condition remains outstanding until the model contains the authorization it requires.</p>
+    <p>Alternative methods need compatible contributions. Their inputs, units, scope, assumptions and outstanding conditions must establish what the receiving question requires. A feasible schedule cannot supply evidence that work has finished. Two findings based on one report retain that shared dependency; combining them does not create independent evidence.</p>
       
     
       
-    <p>We can automate that check because we have chosen to represent the two conditions separately and defined how they contribute to the decision. If both had been collapsed into a single “approved” status, the information needed for that check would have been lost.</p>
+    <p>Reuse also preserves the boundary between structure and a case. Another evening can use the same published review with newly reviewed facts. Changing its required coverage rule or introducing a requirement the model does not express needs an authored revision. An earlier conclusion or authorization retains the scope of the earlier situation.</p>
       
     
       
-    <h2 id="reusable-modeling-effort">Make modeling effort reusable</h2>
+    <p>When another employee calls out before Sam’s team leaves, <a href="../../use-cases/nightlife/street-team-deployment/build-the-workflow/index.html">the changed staffing returns the decision to Sam</a>. The review retains the earlier choice while showing that its operating basis is no longer current. This connects a smaller factual change to the larger commitment that depended on it.</p>
       
     
       
-    <p>These examples also show why the position is philosophical. We believe people benefit from being able to inspect the distinctions on which a decision depends. We are willing to ask for more explicit modeling in order to preserve those distinctions. We prefer structures that let a conclusion be examined, reused, and reconsidered as circumstances change. Those values influence the work we ask people to do and the automation we build around it.</p>
+    <h2 id="revisable-conventions">Keep the convention open to revision</h2>
       
     
       
-    <p>There is a practical exchange involved. Someone has to identify the relevant concepts, resolve ambiguous terms, and state the conditions that matter. Shared conventions can make that effort reusable. A new supplier decision may involve different materials, reviewers, and schedules while using the same ways of representing evidence, resource demands, and authorization.</p>
+    <p>Our convention concerns how reasoning is organized. The people responsible supply the goals, standards, evidence and acceptable tradeoffs. A completed assessment, a feasible arrangement, an established preference, a human choice and an authorization carry different meanings. The review must preserve the distinctions its decision needs.</p>
       
     
       
-    <p>This is also how the approach supports hierarchical decomposition. Modules built around shared meanings can contribute to a larger decision with clearer expectations about what each result establishes. A scheduling module can use the resource requirements supplied by a trial module. A purchasing module can use a technical finding while retaining its scope. Common conventions reduce the interpretation that must be repeated at every connection.</p>
+    <p>The convention also needs examination through use. A missing distinction, an unsuitable module boundary or a handoff that loses scope gives us a reason to revise it. Changes to meanings and rules require attention to the dependent models and reviews.</p>
       
     
       
-    <h2 id="revisable-conventions">Keep shared conventions open to disagreement</h2>
-      
-    
-      
-    <p>The conventions we choose concern the structure of reasoning. The people responsible for a decision still supply its goals, standards, and acceptable tradeoffs. One organization may require a single reviewer; another may require two independent reviewers. Both can express their requirements within a common framework that represents reviewers, independence, findings, and prerequisites.</p>
-      
-    
-      
-    <p>An opinionated approach therefore gives us a stable way to express meaningful differences. People can disagree about a requirement while agreeing on how that requirement is recorded, what evidence bears on it, and which decisions depend on it. Making those relationships explicit gives the disagreement a place where it can be examined.</p>
-      
-    
-      
-    <p>Our conventions also need to be open to revision. If a useful distinction cannot be expressed, or a shared term carries different meanings in different contexts, that is a reason to examine the model. A convention earns its place through the understanding and useful computation it supports. When its meaning changes, the reasoning that relies on it needs attention too.</p>
-      
-    
-      
-    <p>The goal is to make more human understanding available to the software in a form it can work with. With that structure in place, we can automate checks across candidate arrangements, maintain dependencies, and trace the consequences of changes. People can then spend more attention examining evidence and deciding what the results mean for their work.</p>
-      
-    
-      
-    <p>This follows the same general principle that makes an opinionated framework useful: settle recurring structural choices, implement their consequences, and let people build on them. For Hermod Labs, shared structure is a philosophical commitment with a practical payoff. It gives us a basis for automation that people can understand, inspect, and use to think through a larger decision.</p>
+    <p>Shared structure makes selected reasoning reusable and its modeled consequences available for automation. Workflows organize how those contributions reach a decision; apps provide configured assessments within that process. People can inspect the basis, question the assumptions and decide what commitment the findings support.</p>
       
     
     </div>
