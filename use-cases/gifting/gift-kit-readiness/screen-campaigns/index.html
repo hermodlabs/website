@@ -148,7 +148,10 @@
 
 <p class="reader-lead">Leah is accountable for <strong>120 usable gift kits per campaign, a $600 correction limit and a handoff at the end of the day</strong>. Marketing needs recipients to scan the printed code, reach the right destination and complete checkout. Finance expects a reason for correction spending. Production needs time, permission and a workable package of tasks.</p>
 <p>Several campaigns now need attention. One still has ample time for a $300 in-house correction. Another has reached the last half hour of its one-day window, when the faster $400 external package can make a difference. An incomplete booking or an unsupported diagnosis could make either proposal unsafe to put forward.</p>
-<p>Jordan Reed owns these fictional cases. Leah needs a queue that tells them <strong>what to review next</strong>, with the supporting case attached. A list of calculated winners would leave the input review, evidence, operating choice and actual handoff unresolved.</p>
+<p>Jordan Reed owns these fictional cases. Leah needs a queue that tells them <strong>what to review next</strong>, with the supporting case attached. A list of calculated winners would leave the supporting facts, operating choice and actual handoff unexplained.</p>
+<aside class="use-case-callout" aria-label="This client's workflow policy">
+  <p>This developer example uses a separately authored <strong>reviewed-mode workflow around its version 3 app profile</strong>, shared with the Handoff Desk. Its explicit input and finding reviews are part of that integration's chosen policy. The <a href="../compare-correction-options/index.html#calculate-the-case">current Marketplace 2.1.0 workflow uses Start analysis → Calculate</a>, with supplied inputs and no reviewer or acceptance steps. Installing that release does not rewrite this sample's pinned definition, portable files or operating history.</p>
+</aside>
 
 <h2 id="different-contexts">Similar campaigns need different interventions.</h2>
 <section class="use-case-comparison" aria-label="The same cost-first policy in ample and urgent campaign contexts" data-comparison="gifting-time-window" data-comparison-kind="context">
@@ -349,7 +352,7 @@
 <p>A calculation stops for finding review. The normal queue does not synthesize that review. For verification only, the supplied fictional demonstration explicitly opts into synthetic input and finding reviews; it supplies no operating decision or actual-event record.</p>
 
 <h2 id="compare-and-continue">Keep changes and completion attached to their basis.</h2>
-<p>When a source or review time changes, the native workflow marks the changed answer as awaiting review and makes dependent findings stale. The integration can compare compatible retained planning findings through the SDK:</p>
+<p>When a source or review time changes, <strong>this reviewed-mode definition</strong> marks the changed answer as awaiting review and makes dependent findings stale. A calculation-mode definition instead takes applied values as supplied and recalculates the affected findings. The integration can compare compatible retained planning findings through the SDK:</p>
 
 
 <figure class="article-code">
@@ -360,7 +363,7 @@
 
 <p>This applies <a href="../../../../articles/hierarchical-decomposition-for-human-decisions/index.html">hierarchical decomposition</a> to the intervention: a changed answer affects the supporting findings that depend on it, and those findings affect the campaign proposal. The next owner reviews the changed premise and reassesses the affected questions before relying on a current proposal. A batch screen gives Leah a place to start; the dependent review explains what must happen next.</p>
 <p>The company report can use those differences to organize attention. It must preserve unavailable comparisons and preferred ties instead of manufacturing a changed winner.</p>
-<p>The queue gives Leah the concise answer she needs across campaigns: the current issue, its owner and the next review. Opening one case gives her a focused planning answer and compact comparison; supporting checks, schedules and source history stay available on request. A shorter visible report does not discard the complete calculation or native workflow.</p>
+<p>The queue gives Leah the concise answer she needs across campaigns: the current issue, its owner and the next review. Opening one case in this client gives her a focused planning answer and compact comparison; supporting checks, schedules and source history stay available on request. A shorter visible report does not discard the complete calculation or native workflow.</p>
 <p>The continuation also writes the complete <code>WorkflowOutput</code> to <code>output.json</code>. It retains the brief, supporting findings, review states and history for the custom integration. An exported brief alone is a narrower business handoff, rather than a substitute for that complete output or the saved native review.</p>
 <p>An accepted planning finding is still separate from choosing a complete arrangement, authorizing its spend, performing the correction, rehearsing its corrected output and handing over all 120 kits. The native review carries those separate records into the desk. The <a href="../resolve-a-handoff-exception/index.html">SDK continuation</a> follows that urgent campaign through the actual-event gate—and shows why a later failed test reopens the conclusion.</p>
 <p>The <a href="https://github.com/hermodlabs/sample_code/tree/main/gifting/gift-kit-preflight"><strong>Gift-kit Preflight repository</strong></a> contains the full integration. The excerpts here link to the exact public revision. The <a href="../../../../assets/use-cases/gift-kit-readiness/operating-journey/reports/queue/campaigns.html">worked intervention queue</a> shows the ordinary unreviewed handoff.</p>

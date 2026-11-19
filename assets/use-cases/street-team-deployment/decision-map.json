@@ -1,7 +1,7 @@
 {
   "format": "decision-lab-explanatory-decision-map/1",
   "id": "street-team-staff-allocation",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "title": "One staff pool. Several responsibilities.",
   "fictional": true,
   "scope": "Explanation of the existing finite street-team alternatives: evaluated coverage bindings alongside declared stakeholder goals and directional business trade-offs. Not a new operating model, profit forecast or runtime evaluator.",
@@ -136,7 +136,7 @@
     "pointerConvention": "Source JSON pointers follow RFC 6901 and are relative to each referenced retained file. Report record paths address the losslessly expanded normalized assessment, not the encoded payload nodes. All file paths are relative to this file.",
     "resourceInterpretation": "The graph names a conceptual shared resource. The existing app uses aggregate qualifiedStaff, unavailableStaff, option promoters and the insideStaff consequence; native resources/bookings tables are empty. No individual scheduling or new capacity engine is implied.",
     "assessmentInterpretation": "Coverage records copy native insideStaff values and staffing-coverage/SUFFICIENCY findings for the declared situation. Passing this condition alone is not whole-plan feasibility, preference, financial return, managerial authorization or actual execution.",
-    "reportingInterpretation": "The floor team and promoters report to Sam and influence the deployment through their declared priorities. Sam reports to the owner and alone makes the deployment decision within the spending and operating scope delegated to him. Reporting to the owner does not add an owner approval step to this decision. These are author-declared relationships, not app-assessed authority, authenticated identities or a multi-user governance feature."
+    "reportingInterpretation": "The floor team and promoters report to Alex and influence the deployment through their declared priorities. Alex reports to the owner and alone makes the deployment decision within the spending and operating scope delegated to him. Reporting to the owner does not add an owner approval step to this decision. These are author-declared relationships, not app-assessed authority, authenticated identities or a multi-user governance feature."
   },
   "nodes": [
     {
@@ -145,7 +145,7 @@
       "label": "Owner",
       "status": "declared-context",
       "goalId": "improve-evening-result",
-      "description": "Sam reports to the owner; the deployment decision remains with Sam within his delegated scope."
+      "description": "Alex reports to the owner; the deployment decision remains with Alex within his delegated scope."
     },
     {
       "id": "floor-team",
@@ -167,7 +167,7 @@
     {
       "id": "sam",
       "type": "stakeholder",
-      "label": "Sam",
+      "label": "Alex",
       "status": "declared-context",
       "goalId": "supportable-commitment",
       "description": "The deployment decision maker, influenced by team priorities and accountable to the owner."
@@ -193,7 +193,7 @@
       "label": "People doing outreach",
       "status": "declared-context",
       "evaluated": false,
-      "description": "Promoters want people assigned to outreach; this priority influences Sam's decision but grants no deployment authority."
+      "description": "Promoters want people assigned to outreach; this priority influences Alex's decision but grants no deployment authority."
     },
     {
       "id": "clear-assignment-fair-credit",
@@ -208,7 +208,7 @@
       "label": "Improve profit",
       "status": "declared-context",
       "evaluated": false,
-      "description": "Sam aims to improve the venue's profit through a supportable commitment within delegated spending, staffing and operating limits; this is an objective, not a calculated profit finding."
+      "description": "Alex aims to improve the venue's profit through a supportable commitment within delegated spending, staffing and operating limits; this is an objective, not a calculated profit finding."
     },
     {
       "id": "deployment-decision",
@@ -269,7 +269,7 @@
       "label": "Venue profit",
       "status": "declared-context",
       "evaluated": false,
-      "description": "Revenue less all relevant costs is the business result Sam wants to improve. The directional map does not calculate profit. The article's separate bounded comparison uses contribution after the offer and relevant variable costs, then deducts additional deployment cost and any lost existing-customer contribution once; it is not total venue profit."
+      "description": "Revenue less all relevant costs is the business result Alex wants to improve. The directional map does not calculate profit. The article's separate bounded comparison uses contribution after the offer and relevant variable costs, then deducts additional deployment cost and any lost existing-customer contribution once; it is not total venue profit."
     },
     {
       "id": "qualified-staff",
@@ -838,12 +838,12 @@
       "type": "informs-objective",
       "from": "venue-profit",
       "to": "supportable-commitment",
-      "label": "informs Sam's objective",
+      "label": "informs Alex's objective",
       "status": "declared-context",
       "certainty": "hypothesis",
       "basis": "structural-assumption",
       "effect": "positive",
-      "description": "Improving the venue's profit is Sam's declared objective within delegated limits. This link expresses alignment with his goal rather than an automatic recommendation or authority transfer."
+      "description": "Improving the venue's profit is Alex's declared objective within delegated limits. This link expresses alignment with his goal rather than an automatic recommendation or authority transfer."
     }
   ],
   "bindings": {

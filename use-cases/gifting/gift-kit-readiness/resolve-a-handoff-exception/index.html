@@ -150,6 +150,9 @@
 <p class="reader-lead">Leah has promised <strong>120 usable gift kits by the end of a one-day preparation window</strong>. Marketing expects the recipient journey to work, finance caps correction spending at $600, and production needs a response it can actually carry out. A calculated package helps, but Leah still has to connect that proposal to reviewed records, a decision and the work that follows.</p>
 <p>The <a href="../screen-campaigns/index.html">CLI intervention queue</a> has flagged Jordan Reed's GIFT-321. Its review clock is at <strong>minute 1,410 of 1,440</strong>: thirty minutes remain in this particular case. The $300 in-house package takes forty minutes. A confirmed $400 external package can finish in twenty-five. Paying the premium makes sense only if the complete response meets the requirements and the team can support the original handoff.</p>
 <p>The developer needs a custom desk where Leah can continue that review, inspect the evidence, choose work and retain what actually happened. <strong>Should the team build a second decision-and-review implementation, or reuse the published workflow through the SDK?</strong></p>
+<aside class="use-case-callout" aria-label="Calculation workflows and this reviewed client">
+  <p>The Handoff Desk intentionally retains its <strong>separately authored reviewed-mode workflow around the version 3 app profile</strong>. Its review buttons, native receipts and operating-record gates belong to that pinned client. The <a href="../compare-correction-options/index.html#calculate-the-case">current Marketplace 2.1.0 workflow uses Start analysis → Calculate</a> without reviewer identities or acceptance steps. The SDK supports both policies; changing a workflow's execution policy requires a new authored definition, rather than relabeling saved reviews.</p>
+</aside>
 
 <h2 id="booking-changes-decision">The same urgent campaign. Two defensible next actions.</h2>
 <section class="use-case-comparison" aria-label="The same urgent campaign with a current or old-scope external booking" data-comparison="gifting-booking-scope" data-comparison-kind="context">
@@ -255,7 +258,7 @@
 <p class="use-case-example-note">This continuation uses the <strong>cost-first v3 policy</strong>: meet all requirements, then lower expense, then earlier handoff. It preserves a ten-minute planned rehearsal under the app's five-minute minimum. The <a href="../strengthen-the-rehearsal/index.html">earlier ten-minute-minimum adaptation</a> is a separate authored release.</p>
 
 <h2 id="review-before-planning">Keep changed inputs, calculated evidence and reviewed findings separate.</h2>
-<p>When Leah changes a source field or timing premise, the shared integration module writes that change through the SDK as an answer awaiting review:</p>
+<p>When Leah changes a source field or timing premise, this client's shared integration module writes that change through the SDK as an answer awaiting review. That is the retained reviewed-mode policy, rather than a requirement for current calculation workflows:</p>
 
 
 <figure class="article-code">
@@ -385,7 +388,7 @@
 
 <h2 id="resolved-choice">A justified premium, with an honest account of what happened.</h2>
 <p>Leah can explain why this urgent campaign supports a $400 package with a current booking, while an old-scope booking calls for intervention. Ample-window work can use $300. Jordan can point to the exact reviewed plan and the separate authorization, correction, rehearsal and handoff records. When the later failed test arrives, they can see why the original completion is no longer established and which evidence needs attention.</p>
-<p>The current sample renders its pinned gifting report through <code>DecisionView</code>. Its frozen workflow has not been rewritten as a new authored question view. The SDK’s full output and the saved native review remain available alongside the focused screen, preserving evidence, evaluations and operating history.</p>
+<p>The sample renders its pinned gifting report through <code>DecisionView</code>. Its reviewed-mode workflow and custom desk have not been migrated to the Marketplace calculation interface. The SDK’s full output and the saved native review remain available alongside the focused screen, preserving evidence, evaluations and operating history.</p>
 <p>The developer has built a team-specific working interface around the same native review used by the CLI. The SDK retains the state and assessments; the authored workflow supplies the domain requirements; shared views present the reports. The company still owns trustworthy sources, operating judgment and the work itself.</p>
 
 <footer class="use-case-article-references" aria-labelledby="source">

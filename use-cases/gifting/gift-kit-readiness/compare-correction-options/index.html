@@ -122,6 +122,8 @@
       <li><a href="#compare-approaches">How else could the team reach a decision?</a></li>
       <li><a href="#shared-reference">A shared reference: from a failed scan to a supported handoff.</a></li>
       <li><a href="#booking-context">A quote cannot substitute for a booking.</a></li>
+      <li><a href="#calculate-the-case">Supply the case. Calculate the supported correction.</a></li>
+      <li><a href="#changed-spending-boundary">A changed boundary needs a new finding.</a></li>
       <li><a href="#observations">Start with what the team actually observed.</a></li>
       <li><a href="#complete-options">A cheap partial fix is still a partial fix.</a></li>
       <li><a href="#same-facts">The same facts. Two business priorities.</a></li>
@@ -149,7 +151,7 @@
       <p class="reader-lead">Leah has promised <strong>120 usable gift kits by the end of a one-day preparation window</strong>. A failed scan and a wrong destination put that promise at risk. Marketing wants a working recipient experience on time; production needs a complete correction it can actually carry out; finance expects Leah to justify the expense within <strong>$600</strong>.</p>
 <p>The cheapest quote is not necessarily a complete response. A <strong>$100 reprint</strong> leaves the wrong destination unresolved in these scenarios. A <strong>$400 external package</strong> can correct both faults faster, but that does not make its premium worthwhile in every situation. This is a <a href="../../../../articles/systems-engineering-for-human-decisions/index.html">systems engineering concern: protect the whole recipient journey</a>, rather than improving one part while the promised experience still fails.</p>
 <p><strong>What should Leah propose while there is ample time—and what should she propose when the remaining window becomes tight?</strong> Decision Lab puts each complete correction beside the conditions that make it available, then applies the same cost-first policy in both contexts.</p>
-<p class="use-case-example-note">Leah and the campaigns are fictional. One day is 1,440 elapsed minutes from the recorded origin. These current version 3 scenarios plan ten minutes of fresh rehearsal under a five-minute minimum. The original five-minute teaching review remains separately identified below. <a href="#source">Sources and scope</a> are at the end.</p>
+<p class="use-case-example-note">Leah and the campaigns are fictional. One day is 1,440 elapsed minutes from the recorded origin. The paired operating scenarios use the separately authored version 3 client profile: ten minutes of planned rehearsal under a five-minute minimum. The current Marketplace calculation walkthrough and the original five-minute teaching release are identified separately below. <a href="#source">Sources and scope</a> are at the end.</p>
 <figure class="use-case-explanatory-map" id="interests" aria-labelledby="interests-caption">
   <a class="use-case-explanatory-map-image" href="../../../../assets/use-cases/gift-kit-readiness/decision-maps/interests.svg" tabindex="-1" aria-label="Open the decision illustration at full size">
     <picture>
@@ -242,7 +244,7 @@
 <p>These are <strong>matched operating scenarios</strong>, rather than one case with only its clock edited. The urgent case has its own campaign identity, scoped source references and observation and booking-recording times. Candidate starts follow its current review time; resource availability and the recorded permission and booking validity intervals stay unchanged. The original quantity, deadline, $600 limit, complete-package prices and cost-first app remain the same. The <a href="../../../../assets/use-cases/gift-kit-readiness/context-comparisons/verification.json">comparison record lists every changed input</a>; moving the clock never silently renews an old confirmation or permission.</p>
 <p>The urgent case gives Leah a reason to defend the extra $100: the internal sequence would miss the original cutoff by ten minutes, while confirmed external work leaves five. With ample time, that timing constraint does not require a premium, so the same cost-first policy supports the $300 complete correction. Production, marketing and finance can inspect the conditions behind either proposal.</p>
 <p>This is a recurring problem: <strong>restore a defective deliverable while protecting its intended use, deadline and expense boundary</strong>. The decision pattern is to review scoped observations, compare complete corrections, make a bounded commitment and obtain fresh verification. The approach is reusable; this campaign's facts determine which correction it supports.</p>
-<p><strong>Hermod Labs authored the evidence and planning apps and the workflow connecting them.</strong> The evidence assessment establishes which faults the supplied observations support; its reviewed findings become requirements for planning. The planning assessment checks complete corrections and compares passing arrangements under the cost-first priority. This is <a href="../../../../articles/shared-structure-for-automated-reasoning/index.html">shared structure for automated reasoning</a> in practice: the workflow organizes the overall decision, while the apps supply its supporting assessments. People still review the findings, approve and perform the correction, and obtain a fresh rehearsal result for the kits they intend to hand over.</p>
+<p><strong>Hermod Labs authored the evidence and planning apps and the workflow connecting them.</strong> The evidence assessment establishes which faults the supplied observations support; its scoped findings become requirements for planning. The planning assessment checks complete corrections and compares passing arrangements under the cost-first priority. This is <a href="../../../../articles/shared-structure-for-automated-reasoning/index.html">shared structure for automated reasoning</a> in practice: the workflow organizes the overall decision, while the apps supply its supporting assessments. People still inspect the findings, approve and perform the correction, and obtain a fresh rehearsal result for the kits they intend to hand over.</p>
 
 <h2 id="compare-approaches">How else could the team reach a decision?</h2>
 <p>Leah could bring production, marketing and finance together and prepare the decision herself. A careful discussion, checklist or spreadsheet can reach the same supported conclusion. Each approach still needs to connect the observed faults to complete corrections and establish that the quoted work is available for these kits.</p>
@@ -339,12 +341,112 @@
 </section>
 
 <p>An <strong>arrangement</strong> is a possible combination of correction work, people, resources, timing and permissions under the rules and current context. The plan puts forward one of those combinations. This is the <a href="../../../../articles/the-arrangement-problem-in-human-decisions/index.html">Arrangement Problem</a>: establish what works together, rather than checking a quote in isolation. In the urgent case, an unsupported external package and a late internal package leave Leah with no complete arrangement to propose. Her next step becomes obtaining a genuine current booking or escalating the promise.</p>
-<p>The review reuses a short sequence: <strong>review the evidence → compare complete corrections → prepare a decision</strong>. The reviewed fault findings become planning inputs. Leah can inspect the conditions without re-entering the diagnosis in a separate calculator.</p>
+<p>The workflow reuses a short sequence: <strong>interpret the evidence → compare complete corrections → prepare a decision</strong>. Current fault findings become planning inputs. Leah can inspect the conditions without re-entering the diagnosis in a separate calculator.</p>
+
+<h2 id="calculate-the-case">Supply the case. Calculate the supported correction.</h2>
+<p>In the current workflow, Leah supplies the campaign facts and selects <strong>Calculate</strong>. Decision Lab calculates the evidence and dependent planning findings in order, then opens a focused <strong>Decision summary</strong>. She does not select a reviewer identity or accept each intermediate result to make the calculation proceed.</p>
+<p>In <a href="https://hermodlabs.github.io/review_lab/">Decision Lab</a>, open <strong>Marketplace → Gifting operations</strong>. Install the collection, or update it when the new release is available. Under <strong>Prepare a gift-kit campaign</strong>, <strong>Plan a gift-kit commitment · 2.1.0</strong> offers <strong>Start analysis</strong>. Previously saved reviews keep their embedded releases and review steps.</p>
+
+
+<figure class="use-case-figure">
+  <a href="../../../../assets/use-cases/gift-kit-readiness/calculation-flow/01-start-analysis.png" tabindex="-1" aria-label="Open full-size screenshot: The installed Plan a gift-kit commitment workflow is version 2.1.0 and offers Start analysis."><img src="../../../../assets/use-cases/gift-kit-readiness/calculation-flow/01-start-analysis.png" alt="The installed Plan a gift-kit commitment workflow is version 2.1.0 and offers Start analysis." width="759" height="293" style="max-width: 759px" loading="lazy" decoding="async"></a>
+  <figcaption><span>Start analysis creates a calculation case using this exact workflow release. Saved older reviews keep their own rules and execution policy.</span><a href="../../../../assets/use-cases/gift-kit-readiness/calculation-flow/01-start-analysis.png" aria-label="Open full-size screenshot: The installed Plan a gift-kit commitment workflow is version 2.1.0 and offers Start analysis.">View full size</a></figcaption>
+</figure>
+
+
+<p>The screenshots use this article's <a href="../../../../assets/use-cases/gift-kit-readiness/calculation-flow/one-day-planned-ten.case.json" download>supplied fictional one-day case</a>, rather than the workflow's shorter published starter. It retains the 120-kit promise, minute-1,440 cutoff, $600 boundary and explicitly scoped resources, permissions and external booking. The case plans ten minutes of rehearsal; the app's mandatory minimum remains five.</p>
+<p>For the exact worked inputs, open <strong>Inputs → YAML</strong>, paste the contents of that case file, then choose <strong>Preview changes → Apply case changes</strong>. This supplies the case's own recorded availability and permission intervals; extending a deadline alone would not extend those supporting records.</p>
+<ol>
+  <li><strong>Supply the facts.</strong> <strong>Inputs → Forms</strong> groups Commitment, Rehearsal records and Correction arrangements. Check the kit configuration, quantity, cutoff, observations, complete quotes and supporting records. Choose <strong>Apply inputs</strong> after editing a form.</li>
+  <li><strong>Calculate the complete response.</strong> Use <strong>Calculate</strong> at the top of Inputs. The scoped evidence finding feeds planning; a missing or incomplete calculation cannot supply a usable downstream finding.</li>
+  <li><strong>Read the answer, then inspect its basis.</strong> <strong>Decision summary</strong> proposes the $300 internal correction, with handoff at minute 40. <strong>Calculations → Supporting calculations → Inspect result</strong> opens the evidence or planning comparison; <strong>Reports</strong> keeps the configured supporting views available.</li>
+</ol>
+
+
+<figure class="use-case-figure">
+  <a href="../../../../assets/use-cases/gift-kit-readiness/calculation-flow/02-one-day-supplied-inputs.png" tabindex="-1" aria-label="Open full-size screenshot: The calculation workflow shows Calculate above Forms, with supplied inputs of 120 kits, a 1,440-minute deadline and a $600 budget."><img src="../../../../assets/use-cases/gift-kit-readiness/calculation-flow/02-one-day-supplied-inputs.png" alt="The calculation workflow shows Calculate above Forms, with supplied inputs of 120 kits, a 1,440-minute deadline and a $600 budget." width="1208" height="1368" style="max-width: 1208px" loading="lazy" decoding="async"></a>
+  <figcaption><span>This article supplies its fictional one-day case to the unchanged 2.1.0 workflow and plans ten minutes of rehearsal. Apply inputs records a value; Calculate runs the dependent assessments.</span><a href="../../../../assets/use-cases/gift-kit-readiness/calculation-flow/02-one-day-supplied-inputs.png" aria-label="Open full-size screenshot: The calculation workflow shows Calculate above Forms, with supplied inputs of 120 kits, a 1,440-minute deadline and a $600 budget.">View full size</a></figcaption>
+</figure>
+
+
+<p>Input and report tabs remain independent. <strong>YAML</strong> edits the complete shared case through <strong>Preview changes → Apply case changes</strong>; it does not change the fixed rules. Switching Forms/YAML preserves drafts. <strong>Work with Excel</strong> keeps workbook tools in a separate disclosure. The optional <strong>Auto-update</strong> recalculates after applied changes; Leah can leave it off and choose when to recalculate.</p>
+
+
+<figure class="use-case-figure">
+  <a href="../../../../assets/use-cases/gift-kit-readiness/calculation-flow/03-supported-decision-summary.png" tabindex="-1" aria-label="Open full-size screenshot: The current calculation’s decision summary supports the $300 internal complete correction with handoff at minute 40."><img src="../../../../assets/use-cases/gift-kit-readiness/calculation-flow/03-supported-decision-summary.png" alt="The current calculation’s decision summary supports the $300 internal complete correction with handoff at minute 40." width="1206" height="385" style="max-width: 1206px" loading="lazy" decoding="async"></a>
+  <figcaption><span>The completed calculation carries the evidence finding into planning and the decision summary. It records no answer acceptance, operating choice or authorization.</span><a href="../../../../assets/use-cases/gift-kit-readiness/calculation-flow/03-supported-decision-summary.png" aria-label="Open full-size screenshot: The current calculation’s decision summary supports the $300 internal complete correction with handoff at minute 40.">View full size</a></figcaption>
+</figure>
+
+
+
+<h2 id="changed-spending-boundary">A changed boundary needs a new finding.</h2>
+<p>Now finance reduces the available correction expense to <strong>$200</strong>. Keep the observations, quotes, timing, permissions and booking fixed. Leah edits <strong>Correction expense limit (USD cents)</strong> from 60,000 to 20,000 and chooses <strong>Apply inputs</strong>. The earlier planning result becomes stale; the summary withdraws its current proposal until she selects <strong>Recalculate</strong>.</p>
+<section class="use-case-comparison" aria-label="The same complete corrections under two spending boundaries" data-comparison="gifting-calculation-budget" data-comparison-kind="context">
+  <div class="use-case-comparison-basis">
+    <p><strong>Shared basis.</strong> Current Plan a gift-kit commitment workflow 2.1.0, 120 kits by minute 1,440, the same scoped observations, quotes, resources, permissions and current external booking. Both cases plan ten minutes of fresh rehearsal under the unchanged five-minute minimum.</p>
+    <p class="use-case-comparison-change"><strong>What changes.</strong> Only the applied expense limit changes: $600 versus $200. Recalculate retains the unchanged evidence calculation and reassesses planning against the new boundary.</p>
+  </div>
+  <div class="use-case-comparison-panels">
+
+
+    <article class="use-case-comparison-panel" aria-labelledby="gifting-calculation-budget-panel-1">
+      <h3 id="gifting-calculation-budget-panel-1">$600 available</h3>
+      <p class="use-case-comparison-finding"><strong>$300 internal correction is preferred.</strong></p>
+      <dl class="use-case-comparison-inputs">
+
+        <div><dt>Complete packages</dt><dd>$300 internal; $400 external</dd></div>
+
+        <div><dt>Handoff</dt><dd>Internal at minute 40; external at 25</dd></div>
+
+        <div><dt>Calculated basis</dt><dd>Both established faults must be corrected</dd></div>
+
+      </dl>
+      <div class="use-case-comparison-observation">
+      <figure class="use-case-comparison-screen">
+        <a href="../../../../assets/use-cases/gift-kit-readiness/calculation-flow/05-complete-correction-comparison.png" aria-label="Open the $600 available view at full size">
+          <img src="../../../../assets/use-cases/gift-kit-readiness/calculation-flow/05-complete-correction-comparison.png" width="777" height="825" alt="The current planning calculation prefers internal replacement and journey repair at $300, with complete external correction available at $400." loading="lazy" decoding="async">
+        </a>
+        <figcaption>Both complete corrections pass under the confirmed one-day case. The cost-first workflow prefers $300 internal work; the case plans ten minutes under a five-minute minimum. <a href="../../../../assets/use-cases/gift-kit-readiness/calculation-flow/05-complete-correction-comparison.png">View full size</a></figcaption>
+      </figure>
+      <p class="use-case-comparison-judgment">Leah can propose the cheaper complete response. Both packages meet the original deadline and recorded requirements.</p>
+      </div>
+    </article>
+
+
+    <article class="use-case-comparison-panel" aria-labelledby="gifting-calculation-budget-panel-2">
+      <h3 id="gifting-calculation-budget-panel-2">$200 available</h3>
+      <p class="use-case-comparison-finding"><strong>No supplied complete correction passes.</strong></p>
+      <dl class="use-case-comparison-inputs">
+
+        <div><dt>Complete packages</dt><dd>Both exceed the changed boundary</dd></div>
+
+        <div><dt>Cheaper packages</dt><dd>$100 and $180 leave a fault unresolved</dd></div>
+
+        <div><dt>Calculated basis</dt><dd>The same established faults and fixed rules</dd></div>
+
+      </dl>
+      <div class="use-case-comparison-observation">
+      <figure class="use-case-comparison-screen">
+        <a href="../../../../assets/use-cases/gift-kit-readiness/calculation-flow/09-budget-200-no-complete-correction.png" aria-label="Open the $200 available view at full size">
+          <img src="../../../../assets/use-cases/gift-kit-readiness/calculation-flow/09-budget-200-no-complete-correction.png" width="777" height="825" alt="Recalculation under the $200 limit finds no complete correction meeting the recorded requirements." loading="lazy" decoding="async">
+        </a>
+        <figcaption>The $100 and $180 partial fixes remain insufficient; the $300 and $400 complete packages exceed the changed boundary. A complete calculation can establish that no supplied option fits. <a href="../../../../assets/use-cases/gift-kit-readiness/calculation-flow/09-budget-200-no-complete-correction.png">View full size</a></figcaption>
+      </figure>
+      <p class="use-case-comparison-judgment">Leah needs another supported package, an appropriate change of spending authority or an escalation. Recalculation cannot turn a partial repair into a complete one.</p>
+      </div>
+    </article>
+
+  </div>
+  <p class="use-case-comparison-takeaway"><strong>What this means for the decision.</strong> A complete calculation can establish that no supplied arrangement fits. The changed spending boundary withdraws the earlier proposal without erasing its original calculation.</p>
+</section>
+
+<p>This is a useful answer even though it offers no correction to approve. The cheaper packages still leave an established fault unresolved; the complete packages exceed the new boundary. Leah needs a different supported quote, a changed spending authorization or an escalation. A completed calculation does not mean a feasible plan exists, and neither result authorizes work or establishes that a fresh rehearsal has passed.</p>
+<p class="use-case-example-note">These captures use the current local production preview. The <a href="../../../../assets/use-cases/gift-kit-readiness/calculation-flow/verification.json">calculation capture record</a> retains the exact workflow, supplied inputs, native exports and runtime identity. The custom CLI and SDK stories retain a separately authored reviewed-mode workflow; installing the calculation release does not convert those examples or earlier saved reviews.</p>
 
 <details class="disclosure use-case-technical-note">
   <summary><span class="disclosure-label">Reference walkthrough: the original five-minute teaching release</span></summary>
   <div class="use-case-reference-walkthrough">
-<p>The following retained version 2 walkthrough demonstrates the original collection and a separate change of business priority. It plans <strong>five minutes</strong> of rehearsal, producing <strong>35- and 20-minute</strong> complete sequences. The current version 3 contexts above plan ten and produce <strong>40- and 25-minute</strong> sequences. These app definitions and case inputs have not been silently substituted for one another.</p>
+<p>The following archived version 2 walkthrough demonstrates the original <strong>reviewed-mode</strong> collection and a separate change of business priority. Its screenshots and acceptance steps document that retained release, rather than the current <strong>Start analysis → Calculate</strong> path above. It plans <strong>five minutes</strong> of rehearsal, producing <strong>35- and 20-minute</strong> complete sequences. The separately authored version 3 client contexts above plan ten and produce <strong>40- and 25-minute</strong> sequences. These app definitions and case inputs have not been silently substituted for one another.</p>
 
 <h2 id="observations">Start with what the team actually observed.</h2>
 <p>The review starts with three supplied rehearsal records. Each describes the same batch, insert revision, destination revision, checkout revision, test phone and recipient account. Those six details define the <strong>scope</strong>: a result for a different insert or account would not establish what works for these kits.</p>
@@ -463,7 +565,7 @@
 <p>Confirmation does not grant operating permission or create production capacity. Those remain separate requirements, alongside the budget limit. People still authenticate the source before relying on the record.</p>
 
 <h2 id="work-through">Work through the gift-kit review.</h2>
-<p class="use-case-example-note">The screenshots show the one-day example in the current local working app. These full-workflow steps refer to the collection prepared for this walkthrough; the public standalone planning links below include the same 24-hour deadline. <a href="https://hermodlabs.github.io/review_lab/">Open Decision Lab</a>.</p>
+<p class="use-case-example-note">The archived screenshots and full-workflow steps refer to the earlier reviewed-mode collection prepared for this teaching walkthrough. The standalone planning links below include the same 24-hour deadline and retain their original app releases. For the current calculation flow, use <a href="#calculate-the-case">Start analysis and Calculate above</a>.</p>
 <p>In the prepared <strong>Gifting operations</strong> collection, open <strong>Prepare a gift-kit campaign</strong> and start <strong>Review a gift-kit commitment</strong> or its earliest-handoff counterpart with <strong>Try worked example</strong>.</p>
 <p>The review opens at its <strong>Decision brief</strong>, showing what still needs attention and the <strong>Next review step</strong>. That control opens the next required task and identifies the responsible role. Opening a task does not accept its answer or run an assessment.</p>
 <p><strong>Inputs</strong> and <strong>Reports</strong> have independent tabs. In Inputs, <strong>Forms</strong> groups Commitment, Rehearsal records and Correction arrangements, with sections inside each group. Reports keeps the selected Decision brief, Review findings or configured report open while Leah changes input sections. Long forms and reports grow with the page.</p>
@@ -529,7 +631,7 @@
 <h2 id="operating-profile">A proposal Leah can explain in its context.</h2>
 <p>With ample time, Leah puts forward the <strong>$300 in-house complete correction</strong>. With thirty minutes left and a current external booking, she puts forward the <strong>$400 external complete correction</strong>, finishing at minute 1,435. If that booking covers the old insert, the tool exposes the unsupported condition instead of treating an attractive quote as an available plan.</p>
 <p>Finance can see when the premium protects the deadline. Production can see the full work sequence and its supporting records. Marketing can see whether that sequence protects the original 120-kit promise. Leah retains responsibility for choosing a response and coordinating authorization, correction, a fresh rehearsal and handoff.</p>
-<p>The <a href="../strengthen-the-rehearsal/index.html">authoring exercise branches from the older version 2 teaching release and makes ten minutes a mandatory rehearsal minimum</a>. The current version 3 scenarios above and the developer stories instead <strong>plan ten minutes under an unchanged five-minute minimum</strong>. The <a href="../screen-campaigns/index.html">CLI story compares six campaigns and their next actions</a>; the <a href="../resolve-a-handoff-exception/index.html">SDK story follows the urgent booking decision through a custom desk and actual operating records</a>. The <a href="../index.html#series-path">series guide distinguishes these paths</a>.</p>
+<p>The <a href="../strengthen-the-rehearsal/index.html">authoring exercise branches from the older version 2 teaching release and makes ten minutes a mandatory rehearsal minimum</a>. The separately authored version 3 scenarios above and the developer stories instead <strong>plan ten minutes under an unchanged five-minute minimum</strong>, as does the current calculation walkthrough. The <a href="../screen-campaigns/index.html">CLI story compares six campaigns and their next actions</a>; the <a href="../resolve-a-handoff-exception/index.html">SDK story follows the urgent booking decision through a custom desk and actual operating records</a>. Those developer clients deliberately retain their reviewed-mode implementation. The <a href="../index.html#series-path">series guide distinguishes these paths</a>.</p>
 <p class="use-case-example-note">The <a href="../../../../assets/use-cases/gift-kit-readiness/input-report-navigation/verification.json">native navigation capture record</a> verifies that input/report tabs and Forms/YAML preserve the retained teaching cases. The current operating comparisons have their own <a href="../../../../assets/use-cases/gift-kit-readiness/context-comparisons/verification.json">capture and changed-input verification</a> and <a href="../../../../assets/use-cases/gift-kit-readiness/question-focused/verification.json">SDK view record</a>. A supported plan is a finding about the supplied records, not evidence that the kits have been corrected or handed over.</p>
 <footer class="use-case-article-references" aria-labelledby="source">
   <details class="disclosure use-case-source-disclosure">
