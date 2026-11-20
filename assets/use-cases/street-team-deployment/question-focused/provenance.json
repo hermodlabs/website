@@ -1,0 +1,268 @@
+{
+  "format": "promotion-question-view-article-provenance/1",
+  "status": "passed",
+  "runtimeStatus": "implemented-and-qualified",
+  "capturedAt": "2026-11-19T05:56:11.431Z",
+  "publicRepository": "https://github.com/hermodlabs/sample_code/tree/main/nightlife/street-team-deployment",
+  "sourceScope": "Local user-supplied current sample and production build. A current public repository link is supplied for readers; no exact equivalence to a public commit is asserted. Earlier CLI source/captures remain frozen in ../cli/.",
+  "workflowVersion": "1.1.0",
+  "workflowPackageHash": "966b0d13926da6ac0e600599d618b8f06c9b18524aa7db33456d076f570e8583",
+  "workflowDefinitionHash": "246fb8e7d7d7ea9099d53bd4d4b7977044989776f2d15cfd03f7a652712aa407",
+  "packages": [
+    {
+      "name": "@decision-lab/sdk",
+      "version": "0.1.0",
+      "filename": "decision-lab-sdk-0.1.0.tgz",
+      "sha256": "44c160677353cd407c53d4934f009e70f6225968dea5a4dc5cb8d7ee75210fea"
+    },
+    {
+      "name": "@decision-lab/cli",
+      "version": "0.1.0",
+      "filename": "decision-lab-cli-0.1.0.tgz",
+      "sha256": "0ab849b7a2747c54c52b8acebb01e37db9000c1b194bc525dfbcdc7165f3550c"
+    }
+  ],
+  "checks": [
+    "The inspected deployment stays synchronized between brief and report across reload, while the complete exported run, including choice and authorization, remains byte-equivalent as JSON.",
+    "retained/decision/run.json: imported current qualified workflow and case; verified 2 fully checked operating option(s), $200/$40/5/6 financial answer and current eligibility.",
+    "retained/changed-staffing/run.json: imported current qualified workflow and case; verified 1 fully checked operating option(s), $200/$40/5/6 financial answer and current eligibility.",
+    "No DOM, text, style or application-state injection; unaltered native element screenshots.",
+    "No browser page errors."
+  ],
+  "captures": [
+    {
+      "file": "promotion-guest-thresholds.png",
+      "sourcePath": "/Users/jnaciona/code/hermod-review-lab/artifacts/promotion/consumer/promotion-guest-thresholds.png",
+      "bytes": 40796,
+      "sha256": "2993a6b52900f6673c9ec57dbadf83c37f66ccdb888d2c93990c48732fb11a29",
+      "width": 537,
+      "height": 447,
+      "origin": "copied-existing-verified-browser-capture",
+      "qualification": "retained/browser-qualification.json",
+      "uiRegion": "Native authored question-focused financial answer or decision brief; source receipt identifies the current release."
+    },
+    {
+      "file": "promotion-decision-brief.png",
+      "sourcePath": "/Users/jnaciona/code/hermod-review-lab/artifacts/promotion/consumer/promotion-decision-brief.png",
+      "bytes": 155001,
+      "sha256": "1368920099f541feeab055d132fa2f4144fbab96a0610cbf6ff00666b745b2a4",
+      "width": 1208,
+      "height": 1352,
+      "origin": "copied-existing-verified-browser-capture",
+      "qualification": "retained/browser-qualification.json",
+      "uiRegion": "Native authored question-focused financial answer or decision brief; source receipt identifies the current release."
+    },
+    {
+      "file": "promotion-third-callout.png",
+      "sourcePath": "/Users/jnaciona/code/hermod-review-lab/artifacts/promotion/consumer/promotion-third-callout.png",
+      "bytes": 176574,
+      "sha256": "076ab3ebfcbad2d682157cd5e0db365a10f5b23e2d6f167084dc48acf7b21dc7",
+      "width": 1208,
+      "height": 1641,
+      "origin": "copied-existing-verified-browser-capture",
+      "qualification": "retained/browser-qualification.json",
+      "uiRegion": "Native authored question-focused financial answer or decision brief; source receipt identifies the current release."
+    },
+    {
+      "file": "promotion-five-staff-financial-answer.png",
+      "width": 537,
+      "height": 447,
+      "bytes": 40796,
+      "sha256": "2993a6b52900f6673c9ec57dbadf83c37f66ccdb888d2c93990c48732fb11a29",
+      "origin": "new-local-production-ui-capture",
+      "procedure": "capture.mjs",
+      "qualification": "browser-qualification.json",
+      "retainedCase": "retained/decision/run.json",
+      "uiRegion": "Focused authored expense recovery answer, unchanged $200/$40/5/6 thresholds and current operating eligibility.",
+      "viewport": {
+        "width": 1512,
+        "height": 1100
+      },
+      "nativeText": "INSPECTING\nOne-person standard push\nThe financial hurdle\n\nHow many genuinely additional guests would cover this deployment?\n\nAdditional expense\n$200.00\nContribution per additional guest\n$40.00\nGuests needed to cover expense\n5\nFirst count exceeding expense\n6\nMeets operating requirements\nYes\nThreshold status\nConditional threshold calculated\nSeparate existing-customer discount loss\n$0.00\nContribution and separate losses\nCalculation and basis",
+      "inputSHA256": "2d0c99682c706c0b61a158f7ccb8138b9ebb3503e12b515bf392904976c9a26e"
+    },
+    {
+      "file": "promotion-financial-comparison.png",
+      "width": 537,
+      "height": 396,
+      "bytes": 29171,
+      "sha256": "693fba038f2364ed0cd5041fd85a5871dd5e710409fce53843066e50d746e4dd",
+      "origin": "new-local-production-ui-capture",
+      "procedure": "capture.mjs",
+      "qualification": "browser-qualification.json",
+      "retainedCase": "retained/decision/run.json",
+      "uiRegion": "Focused financial answer with expanded authored four-column comparison; assumptions remain collapsed.",
+      "viewport": {
+        "width": 1512,
+        "height": 1100
+      },
+      "nativeText": "Compare financial hurdles (4)\n\nQuestion this view answers\nHow do expense and guest thresholds differ across deployments?\n\nDeployment\tAdditional expense\tGuests to cover\tFirst count exceeding\nMake no further push\nInspect\n\t$0.00\tNot available\tNot available\nOne-person standard push\nInspect\n\t$200.00\t5\t6\nTwo-person standard push\nInspect\n\t$400.00\t10\t11\nTwo-person discount push\nInspect\n\t$400.00\t16\t17",
+      "inputSHA256": "2d0c99682c706c0b61a158f7ccb8138b9ebb3503e12b515bf392904976c9a26e"
+    },
+    {
+      "file": "promotion-current-choice.png",
+      "width": 571,
+      "height": 816,
+      "bytes": 41034,
+      "sha256": "0ae870b7d1924354b5e6fee28a84563151ae10b3be6b6067c37f8d4ee017c17d",
+      "origin": "new-local-production-ui-capture",
+      "procedure": "capture.mjs",
+      "qualification": "browser-qualification.json",
+      "retainedCase": "retained/decision/run.json",
+      "uiRegion": "Authored decision fields: current choice, matching authorization, $200 expense and four qualified people inside.",
+      "viewport": {
+        "width": 1512,
+        "height": 1100
+      },
+      "nativeText": "What has Sam chosen and specifically authorized?\nChoice matches the accepted current assessment\nYes\nSpecific authorization matches the current choice\nYes\nMeaning\nA current accepted assessment supports a scoped choice. A changed operating basis invalidates this choice basis; prior records remain in history. Recorded authorization is not authenticated authority or performed deployment.\nSam\u2019s current deployment choice\nOne-person standard push\nChosen incremental expense\n$200.00\nQualified staff remaining inside\n4",
+      "inputSHA256": "2d0c99682c706c0b61a158f7ccb8138b9ebb3503e12b515bf392904976c9a26e"
+    },
+    {
+      "file": "promotion-five-staff-options.png",
+      "width": 451,
+      "height": 211,
+      "bytes": 26527,
+      "sha256": "4e6c999d6cafa354e791ee0f3f886bcd3c3d759b40c2353a28bb982029590d4f",
+      "origin": "new-local-production-ui-capture",
+      "procedure": "capture.mjs",
+      "qualification": "browser-qualification.json",
+      "retainedCase": "retained/decision/run.json",
+      "uiRegion": "Native operating finding; current eligible option count without automatic ranking.",
+      "viewport": {
+        "width": 720,
+        "height": 1100
+      },
+      "nativeText": "Eligible options are available for your decision\n\n2 fully checked options meet the recorded requirements. Choose using your reviewed judgment; the app does not rank the eligible options.\n\nComparison priority: Feasibility only; Sam chooses among the passing deployments.\n\nDeclared rule: Operating eligibility; the decision-maker chooses",
+      "inputSHA256": "2d0c99682c706c0b61a158f7ccb8138b9ebb3503e12b515bf392904976c9a26e"
+    },
+    {
+      "file": "promotion-four-staff-financial-answer.png",
+      "width": 537,
+      "height": 447,
+      "bytes": 40769,
+      "sha256": "375c736ec2d7995ce494af1ceef4a1a68a0043a81f6875c7c3f5b702b0d59fa0",
+      "origin": "new-local-production-ui-capture",
+      "procedure": "capture.mjs",
+      "qualification": "browser-qualification.json",
+      "retainedCase": "retained/changed-staffing/run.json",
+      "uiRegion": "Focused authored expense recovery answer, unchanged $200/$40/5/6 thresholds and current operating eligibility.",
+      "viewport": {
+        "width": 1512,
+        "height": 1100
+      },
+      "nativeText": "INSPECTING\nOne-person standard push\nThe financial hurdle\n\nHow many genuinely additional guests would cover this deployment?\n\nAdditional expense\n$200.00\nContribution per additional guest\n$40.00\nGuests needed to cover expense\n5\nFirst count exceeding expense\n6\nMeets operating requirements\nNo\nThreshold status\nConditional threshold calculated\nSeparate existing-customer discount loss\n$0.00\nContribution and separate losses\nCalculation and basis",
+      "inputSHA256": "5852fd66426a2b1d9d545d191c34eb5aebffc9350660a3b81869509cfdfbc6cf"
+    },
+    {
+      "file": "promotion-four-staff-options.png",
+      "width": 451,
+      "height": 211,
+      "bytes": 26471,
+      "sha256": "f6dee69873745bf1530f4dfe76066ce6330c7e4b3dcbe52854e0cb1501295cfd",
+      "origin": "new-local-production-ui-capture",
+      "procedure": "capture.mjs",
+      "qualification": "browser-qualification.json",
+      "retainedCase": "retained/changed-staffing/run.json",
+      "uiRegion": "Native operating finding; current eligible option count without automatic ranking.",
+      "viewport": {
+        "width": 720,
+        "height": 1100
+      },
+      "nativeText": "Eligible options are available for your decision\n\n1 fully checked option meets the recorded requirements. Choose using your reviewed judgment; the app does not rank the eligible options.\n\nComparison priority: Feasibility only; Sam chooses among the passing deployments.\n\nDeclared rule: Operating eligibility; the decision-maker chooses",
+      "inputSHA256": "5852fd66426a2b1d9d545d191c34eb5aebffc9350660a3b81869509cfdfbc6cf"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "retained/author/promotion.workflow.json",
+      "sourcePath": "/Users/jnaciona/code/hermod-review-lab/artifacts/promotion/consumer/author/promotion.workflow.json",
+      "bytes": 113469,
+      "sha256": "935328d7467627f84f6015f0797e483b31456093469c85e5090a1e6d0c5aac97"
+    },
+    {
+      "file": "retained/decision/run.json",
+      "sourcePath": "/Users/jnaciona/code/hermod-review-lab/artifacts/promotion/consumer/decision/run.json",
+      "bytes": 405367,
+      "sha256": "2d0c99682c706c0b61a158f7ccb8138b9ebb3503e12b515bf392904976c9a26e"
+    },
+    {
+      "file": "retained/decision/complete.output.json",
+      "sourcePath": "/Users/jnaciona/code/hermod-review-lab/artifacts/promotion/consumer/decision/complete.output.json",
+      "bytes": 319921,
+      "sha256": "6eeb05962ed36e59b583939688364f58bc51f00d7b761da9f8bd1f6ed9e4df2a"
+    },
+    {
+      "file": "retained/changed-staffing/run.json",
+      "sourcePath": "/Users/jnaciona/code/hermod-review-lab/artifacts/promotion/consumer/changed-staffing/run.json",
+      "bytes": 542794,
+      "sha256": "5852fd66426a2b1d9d545d191c34eb5aebffc9350660a3b81869509cfdfbc6cf"
+    },
+    {
+      "file": "retained/qualification.json",
+      "sourcePath": "/Users/jnaciona/code/hermod-review-lab/artifacts/promotion/consumer/qualification.json",
+      "bytes": 1934,
+      "sha256": "3ebdfae065e5cf2ea18fbe4f2d08c157709d04b41344e1b57af5e329cbe4d368"
+    },
+    {
+      "file": "retained/browser-qualification.json",
+      "sourcePath": "/Users/jnaciona/code/hermod-review-lab/artifacts/promotion/consumer/browser-qualification.json",
+      "bytes": 2490,
+      "sha256": "e257e47c7f2b881dadbb2d91c07c36193199e5454e5e363b6d2daf5fffce012a"
+    },
+    {
+      "file": "retained/qualified-build.json",
+      "sourcePath": "/Users/jnaciona/code/hermod-review-lab/sample_code/nightlife/street-team-deployment/qualified-build.json",
+      "bytes": 1275,
+      "sha256": "f1126928e91c3a4a294aa495113930abea7e3ed945f4fe4b9f03fe0da02139bc"
+    },
+    {
+      "file": "retained/question-focused-reports.md",
+      "sourcePath": "/Users/jnaciona/code/hermod-review-lab/decision-lab-developer-docs/docs/guides/question-focused-reports.md",
+      "bytes": 10540,
+      "sha256": "46287d763df19b6bebce6c23b5c7f5955843b3e998a5bcdae0f2c4b654af9168"
+    },
+    {
+      "file": "retained/workflow.source.json",
+      "sourcePath": "/Users/jnaciona/code/hermod-review-lab/sample_code/nightlife/street-team-deployment/source/workflow.source.json",
+      "bytes": 143911,
+      "sha256": "1a2d3dad59814b54887fe968bf1362ba15b91d66829b87b0fcbe9437791696d8"
+    },
+    {
+      "file": "retained/promotion.model.json",
+      "sourcePath": "/Users/jnaciona/code/hermod-review-lab/sample_code/nightlife/street-team-deployment/source/promotion.model.json",
+      "bytes": 30926,
+      "sha256": "beb5fc7d863d0ca9a8200a597a254063f82d10241846faa627562a87984b42b9"
+    },
+    {
+      "file": "retained/README.md",
+      "sourcePath": "/Users/jnaciona/code/hermod-review-lab/sample_code/nightlife/street-team-deployment/README.md",
+      "bytes": 7622,
+      "sha256": "3a3dca1a80846f4e44fc2d073f50f94734b40d05e9b751a8b38f0d8d9711e30e"
+    },
+    {
+      "file": "browser-qualification.json",
+      "sha256": "ee9b332a4275d7c7e45a90e6512a6a63cfbd34a7903033e147d696af5e70c0a6",
+      "bytes": 8068,
+      "origin": "new-native-capture-receipt"
+    },
+    {
+      "file": "capture.mjs",
+      "sha256": "992a7324f27a49de56560d6e61391d1556ecdbcf3020b066ea7440edc69e815d",
+      "bytes": 9150,
+      "origin": "repository-native-procedure-or-illustration"
+    },
+    {
+      "file": "learning-bridge.svg",
+      "sha256": "c896827a2111cdc807051f8559609663bbdfea586e3cae6744a89a84f95731a8",
+      "bytes": 2982,
+      "origin": "repository-native-procedure-or-illustration"
+    },
+    {
+      "file": "retained/decision/inspection-only-export.run.json",
+      "origin": "native-browser-export-after-inspection-and-reload",
+      "sha256": "dbefecebad09923e705104162d042ee952fd0a799b209f0da784b1882495a3cc",
+      "bytes": 966049
+    }
+  ],
+  "illustrationScope": "learning-bridge.svg is an original explanatory illustration of a proposed learning process, not an application screenshot or completed experiment."
+}

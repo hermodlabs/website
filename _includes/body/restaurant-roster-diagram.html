@@ -1,9 +1,0 @@
-<figure class="use-case-explanatory-map" id="{{ rosterDiagram.id }}" aria-labelledby="{{ rosterDiagram.id }}-caption">
-  <a class="use-case-explanatory-map-image" href="{{ rosterDiagram.image | relativeUrl(page.url) }}" tabindex="-1" aria-label="Open the roster illustration at full size">
-    <picture>
-      <source media="(max-width: 650px)" srcset="{{ rosterDiagram.mobileImage | relativeUrl(page.url) }}" width="{{ rosterDiagram.mobileWidth }}" height="{{ rosterDiagram.mobileHeight }}">
-      <img src="{{ rosterDiagram.image | relativeUrl(page.url) }}" width="{{ rosterDiagram.width }}" height="{{ rosterDiagram.height }}" alt="{{ rosterDiagram.alt | escape }}" loading="lazy" decoding="async">
-    </picture>
-  </a>
-  <figcaption id="{{ rosterDiagram.id }}-caption"><span>{{ rosterDiagram.caption | escape }}</span><span class="use-case-explanatory-map-links"><a href="{{ rosterDiagram.image | relativeUrl(page.url) }}">View full-size SVG</a><a href="{{ '/assets/use-cases/restaurant-roster-repair/source/model.mjs' | relativeUrl(page.url) }}">See the model</a></span></figcaption>
-</figure>

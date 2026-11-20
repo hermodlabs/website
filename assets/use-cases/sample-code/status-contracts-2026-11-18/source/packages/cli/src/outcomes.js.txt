@@ -1,0 +1,64 @@
+import { EXECUTION_STATUS, commitment } from '@decision-lab/sdk';
+import { CLI_EXIT_CODE } from './exitCodes.js';
+
+// Request wrapping historically promotes these size limits to operational
+// failures. Other SDK request diagnostics remain input errors at that boundary.
+const REQUEST_LIMIT_CODES = new Set([
+  'WORKFLOW_OUTPUT_LIMIT', 'COMPOSITION_ARTIFACT_LIMIT', 'COMPARISON_OUTPUT_LIMIT',
+]);
+const OPERATIONAL_CODES = new Set([
+  'EXECUTOR_CONTRACT_INVALID', 'EXECUTION_FAILED', 'EXECUTION_MESSAGE_INVALID',
+  'EXECUTION_IDENTITY_MISMATCH', 'ASSESSMENT_ARTIFACT_LIMIT', 'ARTIFACT_SIZE_LIMIT',
+  'REPORT_OUTPUT_LIMIT', ...REQUEST_LIMIT_CODES,
+]);
+const UNAVAILABLE_CODES = new Set([
+  'WORKFLOW_NOT_READY', 'COMPARISON_NOT_READY', 'COMPARISON_VARIANT_UNAVAILABLE',
+]);
+const operationalCode = code => OPERATIONAL_CODES.has(code) || /INTERNAL|OPERATION/.test(code);
+
+/** A completed calculation can establish an infeasible or inconsistent answer. */
+export function executionExitCode(execution) {
+  switch (execution?.status) {
+    case EXECUTION_STATUS.COMPLETED: return CLI_EXIT_CODE.COMPLETED;
+    case EXECUTION_STATUS.RESOURCE_LIMITED:
+    case EXECUTION_STATUS.CANCELLED:
+    case EXECUTION_STATUS.TIMED_OUT: return CLI_EXIT_CODE.UNAVAILABLE;
+    case EXECUTION_STATUS.FAILED:
+      return execution.error?.code === commitment.COMMITMENT_ERROR_CODE.INVALID_INPUT
+        ? CLI_EXIT_CODE.INVALID_INPUT : CLI_EXIT_CODE.OPERATIONAL_ERROR;
+    default: return CLI_EXIT_CODE.OPERATIONAL_ERROR;
+  }
+}
+
+/** App checks treat any failed execution as operational, before expectation results. */
+export function appCheckExitCode(result) {
+  if (result.scenarios.some(scenario => scenario.execution?.status === EXECUTION_STATUS.FAILED)) return CLI_EXIT_CODE.OPERATIONAL_ERROR;
+  if (result.status === 'unavailable') return CLI_EXIT_CODE.UNAVAILABLE;
+  if (result.status === 'failed') return CLI_EXIT_CODE.EXPECTATION_FAILED;
+  return result.status === 'passed' ? CLI_EXIT_CODE.COMPLETED : CLI_EXIT_CODE.OPERATIONAL_ERROR;
+}
+
+/** Workflow fixture checks distinguish invalid commitment input from other execution failures. */
+export function workflowCheckExitCode(result) {
+  const failedExecutions = result.scenarios.flatMap(scenario => scenario.output?.evaluations ?? [])
+    .map(evaluation => evaluation.run.execution).filter(execution => execution.status === EXECUTION_STATUS.FAILED);
+  if (failedExecutions.length) return failedExecutions.some(execution => execution.error?.code !== commitment.COMMITMENT_ERROR_CODE.INVALID_INPUT)
+    ? CLI_EXIT_CODE.OPERATIONAL_ERROR : CLI_EXIT_CODE.INVALID_INPUT;
+  if (result.scenarios.some(scenario => scenario.issues?.some(issue => operationalCode(issue.code)))) return CLI_EXIT_CODE.OPERATIONAL_ERROR;
+  if (result.status === 'unavailable') return CLI_EXIT_CODE.UNAVAILABLE;
+  if (!result.passed) return CLI_EXIT_CODE.EXPECTATION_FAILED;
+  return result.status === 'passed' ? CLI_EXIT_CODE.COMPLETED : CLI_EXIT_CODE.OPERATIONAL_ERROR;
+}
+
+/** Preserve the narrower SDK request-wrapping policy and any explicit CLI outcome. */
+export function requestErrorExitCode(error) {
+  return error?.exitCode ?? (REQUEST_LIMIT_CODES.has(error?.code) ? CLI_EXIT_CODE.OPERATIONAL_ERROR
+    : UNAVAILABLE_CODES.has(error?.code) ? CLI_EXIT_CODE.UNAVAILABLE : CLI_EXIT_CODE.INVALID_INPUT);
+}
+
+/** Unhandled command errors require a code before they can be classified as input errors. */
+export function commandErrorExitCode(error) {
+  return error?.exitCode ?? (UNAVAILABLE_CODES.has(error?.code) ? CLI_EXIT_CODE.UNAVAILABLE
+    : error?.code && !operationalCode(error.code) && error.stage !== 'operation'
+      ? CLI_EXIT_CODE.INVALID_INPUT : CLI_EXIT_CODE.OPERATIONAL_ERROR);
+}

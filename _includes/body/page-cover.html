@@ -1,3 +1,0 @@
-<figure class="page-hero-cover{% if pageCoverFigureClass %} {{ pageCoverFigureClass }}{% endif %}">
-  <img class="page-hero-cover-image{% if pageCoverImageClass %} {{ pageCoverImageClass }}{% endif %}" src="{{ pageCover.coverImage | relativeUrl(page.url) }}" alt="{{ pageCover.coverAlt | escape }}" width="{{ pageCover.coverWidth }}" height="{{ pageCover.coverHeight }}" fetchpriority="high" decoding="async">
-</figure>

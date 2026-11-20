@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="1610" viewBox="0 0 360 1610" role="img" aria-labelledby="component-view-mobile-title component-view-mobile-desc">
+<title id="component-view-mobile-title">The components of the Python and Decision Lab integration</title>
+<desc id="component-view-mobile-desc">Offline training creates the fitted model loaded by the estimator. Team-specific Python components are outlined in teal. The same adapter is shown at two handoffs: it first binds the planning case, then combines complete planning findings with the reviewed numerical basis, check likelihoods, fee and timing. Decision Lab SDK evaluations are purple and load authored app definitions shown with dashed outlines. The team’s report renderer writes static HTML and retained JSON records.</desc>
+<style>
+  text{font-family:Helvetica,Arial,sans-serif;fill:#193743} .heading{font-weight:600} .muted{fill:#53717b} .teal{fill:#177681} .purple{fill:#7850c2}
+  .component{fill:#fff;stroke:#177681;stroke-width:2} .sdk{fill:#f1eafa;stroke:#7850c2;stroke-width:2}
+  .artifact{fill:#f6f5f8;stroke:#53717b;stroke-width:2;stroke-dasharray:7 5} .app{fill:#fff;stroke:#7850c2;stroke-width:2;stroke-dasharray:7 5}
+  .flow{fill:none;stroke:#193743;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow)}
+  .association{fill:none;stroke:#53717b;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .actor{fill:none;stroke:#193743;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+</style>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0 8 4 0 8" fill="none" stroke="#193743" stroke-width="1.4"/></marker></defs>
+<rect width="360" height="1610" fill="#f6f5f8"/>
+
+<text x="20" y="35" font-size="23" class="heading">Components and ownership</text>
+<text x="20" y="64" font-size="17" class="muted">One Python program; reusable SDK.</text>
+<rect x="16" y="91" width="328" height="224" rx="12" fill="#fff" stroke="#b7cbd1" stroke-width="2"/><text x="32" y="122" font-size="20" class="heading">Offline preparation</text>
+<rect x="32" y="143" width="296" height="65" rx="10" class="component"/><text x="180" y="170" text-anchor="middle" font-size="20" class="heading">Training · scikit-learn</text><text x="180" y="194" text-anchor="middle" font-size="16" class="muted">Separate from shipment assessment</text>
+<path d="M180 208v34" class="flow"/>
+<rect x="32" y="247" width="296" height="51" rx="9" class="artifact"/><text x="180" y="279" text-anchor="middle" font-size="18">Fitted model + support contract</text>
+<text x="24" y="349" font-size="21" class="heading teal">Team’s Python application</text>
+<path d="M328 273h22v139h-12" class="flow"/>
+<rect x="24" y="375" width="312" height="82" rx="10" class="component"/><text x="180" y="405" text-anchor="middle" font-size="21" class="heading">Estimator · scikit-learn</text><text x="180" y="433" text-anchor="middle" font-size="17">Loads the fitted model for inference</text>
+<path d="M180 457v34" class="flow"/><text x="193" y="481" font-size="17" class="muted">Numerical proposal</text>
+<rect x="24" y="497" width="312" height="90" rx="10" class="component"/><text x="180" y="528" text-anchor="middle" font-size="21" class="heading">Adapter + orchestration</text><text x="180" y="556" text-anchor="middle" font-size="17">Binds shipment facts</text><text x="180" y="578" text-anchor="middle" font-size="17">to the planning input contract</text>
+<path d="M180 587v35" class="flow"/><text x="193" y="612" font-size="17" class="muted">Planning case</text>
+<rect x="24" y="629" width="312" height="146" rx="10" class="sdk"/><text x="180" y="655" text-anchor="middle" font-size="16" class="purple">Public Decision Lab Python SDK</text><text x="180" y="685" text-anchor="middle" font-size="22" class="heading purple">Planning evaluation</text><text x="180" y="714" text-anchor="middle" font-size="17">Eligibility + cost in each state</text><rect x="43" y="730" width="274" height="30" rx="6" class="app"/><text x="180" y="751" text-anchor="middle" font-size="17">Loads planning.app.json</text>
+<path d="M180 775v46" class="flow"/><text x="193" y="804" font-size="17" class="muted">Complete findings</text>
+<rect x="24" y="828" width="312" height="142" rx="10" class="component"/><text x="180" y="859" text-anchor="middle" font-size="20" class="heading">Same adapter + orchestration</text><text x="180" y="889" text-anchor="middle" font-size="17">Combines eligibility and cost with</text><text x="180" y="915" text-anchor="middle" font-size="17">reviewed priors, check likelihoods,</text><text x="180" y="941" text-anchor="middle" font-size="17">fee and timing</text>
+<path d="M180 970v36" class="flow"/><text x="193" y="996" font-size="17" class="muted">Learning case</text>
+<rect x="24" y="1013" width="312" height="172" rx="10" class="sdk"/><text x="180" y="1040" text-anchor="middle" font-size="16" class="purple">Public Decision Lab Python SDK</text><text x="180" y="1074" text-anchor="middle" font-size="21" class="heading purple">Is checking worth buying?</text><text x="180" y="1103" text-anchor="middle" font-size="17">Information-value evaluation</text><text x="180" y="1127" text-anchor="middle" font-size="17">(learning app)</text><rect x="43" y="1141" width="274" height="30" rx="6" class="app"/><text x="180" y="1162" text-anchor="middle" font-size="17">Loads learning.app.json</text>
+<path d="M180 1185v36" class="flow"/><text x="193" y="1211" font-size="17" class="muted">Assessed findings</text>
+<rect x="24" y="1228" width="312" height="87" rx="10" class="component"/><text x="180" y="1261" text-anchor="middle" font-size="21" class="heading">Python report renderer</text><text x="180" y="1291" text-anchor="middle" font-size="17">Returns findings to the team’s format</text>
+<path d="M180 1315v36" class="flow"/><text x="193" y="1341" font-size="17" class="muted">Writes</text>
+<rect x="24" y="1358" width="312" height="82" rx="10" class="artifact"/><text x="180" y="1390" text-anchor="middle" font-size="21">Generated report</text><text x="180" y="1420" text-anchor="middle" font-size="17">Static HTML + retained JSON records</text>
+<rect x="24" y="1472" width="23" height="22" rx="4" class="component"/><text x="60" y="1490" font-size="17">Team-specific executable code</text><rect x="24" y="1508" width="23" height="22" rx="4" class="sdk"/><text x="60" y="1526" font-size="17">Reusable SDK evaluation</text><rect x="24" y="1544" width="23" height="22" rx="4" class="artifact"/><text x="60" y="1562" font-size="17">Data or authored artifact</text>
+<text x="24" y="1594" font-size="16" class="muted">One adapter is shown at its two handoffs.</text>
+
+</svg>

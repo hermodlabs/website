@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hermod Draft Assistant - Compare viable picks" />
+  <title>Hermod - Compare Picks</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#03070d', shell: '#07101a', panel: '#09131f', panel2: '#0d1927', line: '#1c2b3d',
+            mist: '#9ca9bb', signal: '#8b5cf6', signal2: '#b79cff', blue: '#5b8cff', danger: '#ff4d57',
+            good: '#67d391', warn: '#eebc66'
+          },
+          fontFamily: {
+            sans: ['Inter', 'Avenir Next', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            mono: ['IBM Plex Mono', 'SFMono-Regular', 'Consolas', 'ui-monospace', 'monospace']
+          },
+          boxShadow: {
+            glow: '0 0 0 1px rgba(139,92,246,.55), 0 0 34px rgba(139,92,246,.18)',
+            panel: '0 22px 60px rgba(0,0,0,.28)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { color-scheme: dark; --purple:#8b5cf6; --lavender:#b79cff; --blue:#5b8cff; }
+    * { box-sizing: border-box; scrollbar-width: thin; scrollbar-color: #26384c transparent; }
+    html, body { min-height: 100%; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 4% 2%, rgba(91,140,255,.11), transparent 26rem),
+        radial-gradient(circle at 88% 0%, rgba(139,92,246,.10), transparent 29rem),
+        linear-gradient(180deg, #03070d 0%, #06101a 48%, #03070d 100%);
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: -2; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.012) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.72), transparent 84%);
+    }
+    .app-shell {
+      min-height: 100vh;
+      border: 1px solid rgba(80,110,145,.34);
+      background: rgba(2,8,14,.26);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.025), 0 30px 100px rgba(0,0,0,.38);
+    }
+    .sidebar {
+      background:
+        linear-gradient(180deg, rgba(8,18,29,.98), rgba(3,9,15,.99)),
+        radial-gradient(circle at 15% 7%, rgba(139,92,246,.08), transparent 18rem);
+    }
+    .brand-mark { position: relative; width: 34px; height: 34px; filter: drop-shadow(0 0 14px rgba(139,92,246,.38)); }
+    .brand-mark::before, .brand-mark::after {
+      content: ''; position: absolute; top: 4px; bottom: 4px; width: 10px;
+      background: linear-gradient(180deg, #c4b5fd, #8b5cf6 55%, #5b8cff);
+      clip-path: polygon(0 0, 100% 17%, 100% 60%, 50% 74%, 50% 100%, 0 83%);
+    }
+    .brand-mark::before { left: 4px; }
+    .brand-mark::after { right: 4px; transform: scaleX(-1); }
+    .nav-item { position: relative; transition: .18s ease; }
+    .nav-item::before {
+      content: ''; position: absolute; inset: 0 auto 0 0; width: 3px; border-radius: 0 6px 6px 0;
+      background: linear-gradient(180deg,#5b8cff,#8b5cf6); opacity: 0;
+    }
+    .nav-item.active {
+      background: linear-gradient(90deg, rgba(91,140,255,.14), rgba(63,91,126,.14));
+      border-color: rgba(91,140,255,.16); color: #fff;
+    }
+    .nav-item.active::before { opacity: 1; }
+    .glass {
+      background: linear-gradient(180deg, rgba(8,18,29,.93), rgba(5,12,20,.96));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.025), 0 20px 60px rgba(0,0,0,.18);
+    }
+    .step-line { height: 1px; flex: 1; background: linear-gradient(90deg, rgba(139,92,246,.55), rgba(255,255,255,.10)); }
+    .pulse { animation: pulse 2.15s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(139,92,246,.26); } 50% { box-shadow: 0 0 0 8px rgba(139,92,246,0); } }
+    .mini-champ { width: 34px; height: 34px; object-fit: cover; border-radius: 9px; border: 1px solid rgba(255,255,255,.10); background: #0a111a; }
+    .champ-icon { object-fit: cover; border-radius: 15px; border: 1px solid rgba(183,156,255,.34); box-shadow: 0 0 26px rgba(139,92,246,.16); }
+    .source-pill { border: 1px solid rgba(255,255,255,.065); background: rgba(255,255,255,.018); }
+    .focus-tab { transition: .16s ease; white-space: nowrap; }
+    .focus-tab:hover { color: #fff; border-color: rgba(183,156,255,.28); background: rgba(139,92,246,.045); }
+    .focus-tab.active { color: #d9ccff; border-color: rgba(139,92,246,.5); background: rgba(139,92,246,.10); }
+    .candidate-card {
+      background: linear-gradient(180deg, rgba(12,24,38,.94), rgba(6,14,23,.98));
+      transition: .17s ease;
+    }
+    .candidate-card:hover { border-color: rgba(183,156,255,.25); }
+    .candidate-card.recommended { border-color: rgba(139,92,246,.34); box-shadow: inset 0 1px 0 rgba(183,156,255,.05), 0 0 30px rgba(139,92,246,.07); }
+    .compare-vs { background: radial-gradient(circle, rgba(139,92,246,.11), rgba(139,92,246,.02) 52%, transparent 72%); }
+    .dimension-row { transition: background .16s ease, border-color .16s ease; cursor: pointer; }
+    .dimension-row:hover { background: rgba(139,92,246,.025); border-color: rgba(183,156,255,.14); }
+    .dimension-row.active { background: rgba(139,92,246,.04); border-color: rgba(139,92,246,.24); }
+    .advantage-track {
+      position: relative; height: 4px; border-radius: 99px;
+      background: linear-gradient(90deg, rgba(183,156,255,.4), rgba(255,255,255,.08) 50%, rgba(91,140,255,.38));
+    }
+    .advantage-track::before { content:''; position:absolute; left:50%; top:-4px; width:1px; height:12px; background:rgba(255,255,255,.13); }
+    .advantage-dot {
+      position: absolute; top: 50%; width: 12px; height: 12px; border-radius: 999px; transform: translate(-50%,-50%);
+      border: 2px solid #07101a; box-shadow: 0 0 0 1px rgba(255,255,255,.16), 0 0 14px rgba(139,92,246,.25);
+      transition: left .28s ease, background-color .18s ease;
+    }
+    .gain-card { position:relative; overflow:hidden; background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.008)); }
+    .gain-card::before { content:''; position:absolute; inset:0 auto 0 0; width:2px; background:linear-gradient(180deg,transparent,rgba(139,92,246,.85),transparent); }
+    .gain-card.alt::before { background:linear-gradient(180deg,transparent,rgba(91,140,255,.85),transparent); }
+    .context-row { border-top: 1px solid rgba(255,255,255,.052); }
+    .alt-option { transition:.16s ease; }
+    .alt-option:hover { background:rgba(255,255,255,.025); border-color:rgba(183,156,255,.2); }
+    .inspector-node { background:rgba(255,255,255,.018); border:1px solid rgba(255,255,255,.065); }
+    .modal-backdrop { background: rgba(1,4,8,.74); backdrop-filter: blur(8px); }
+    @media (prefers-reduced-motion: reduce) { .pulse { animation: none; } }
+  </style>
+</head>
+<body class="font-sans text-slate-100 antialiased selection:bg-signal/40 selection:text-white">
+  <div class="app-shell grid lg:grid-cols-[246px_minmax(0,1fr)]">
+    <aside class="sidebar hidden min-h-screen border-r border-white/[0.06] lg:flex lg:flex-col">
+      <div class="flex h-[76px] items-center gap-3 border-b border-white/[0.05] px-7">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="text-[19px] font-semibold tracking-[.24em] text-slate-100">HERMOD</div>
+      </div>
+      <div class="flex-1 px-2 py-7">
+        <p class="px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Live</p>
+        <button class="nav-item active flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-semibold"><span class="grid h-6 w-6 place-items-center text-signal2">O</span>Draft Assistant</button>
+        <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">You</p>
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">#</span>Champion Pool</button>
+        <button class="nav-item mt-1 flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">D</span>Player Profile</button>
+        <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Learn</p>
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">[]</span>Decision History</button>
+        <button class="nav-item mt-1 flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">~</span>Review & Learn</button>
+      </div>
+      <div class="border-t border-white/[0.06] p-4">
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-4 py-3 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span>*</span> Settings</button>
+        <div class="mt-3 flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.018] px-4 py-3">
+          <div class="grid h-9 w-9 place-items-center rounded-full border border-blue/30 bg-blue/10 text-xs font-bold text-blue">D2</div>
+          <div class="min-w-0 flex-1"><p class="text-sm font-semibold text-slate-200">Mid Main</p><p class="text-xs text-slate-500">Diamond II</p></div>
+          <span class="text-slate-600">v</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="min-w-0">
+      <header class="flex h-[76px] items-center justify-between border-b border-white/[0.06] bg-[#050d16]/80 px-5 backdrop-blur-xl sm:px-8">
+        <div>
+          <p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">Live decision</p>
+          <div class="mt-1 flex items-center gap-2"><h1 class="text-sm font-semibold text-slate-200">Draft Assistant</h1><span class="text-slate-700">/</span><span class="text-xs text-signal2">Compare</span></div>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="backRecommendationTop" class="rounded-xl border border-white/[0.08] bg-white/[0.02] px-3.5 py-2 text-xs font-semibold text-slate-400 transition hover:border-signal/30 hover:text-white">Back to recommendation</button>
+          <div class="hidden items-center gap-2 rounded-full border border-good/15 bg-good/[0.035] px-3 py-1.5 text-[10px] text-slate-500 sm:flex"><span class="h-1.5 w-1.5 rounded-full bg-good"></span>Decision ready</div>
+        </div>
+      </header>
+
+      <div class="mx-auto max-w-[1580px] px-5 pb-10 sm:px-8">
+        <section class="border-b border-white/[0.055] py-5">
+          <div class="flex items-center gap-3">
+            <div class="flex min-w-0 items-center gap-3"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-good/25 bg-good/[0.07] text-[11px] font-bold text-good">OK</span><div class="hidden min-w-0 md:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-300">Draft</p><p class="text-xs text-slate-600">B3 state</p></div></div>
+            <div class="step-line"></div>
+            <div class="flex min-w-0 items-center gap-3"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-good/25 bg-good/[0.07] text-[11px] font-bold text-good">OK</span><div class="hidden min-w-0 md:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-300">Your Options</p><p class="text-xs text-slate-600">3 viable</p></div></div>
+            <div class="step-line"></div>
+            <div class="flex min-w-0 items-center gap-3"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-good/25 bg-good/[0.07] text-[11px] font-bold text-good">OK</span><div class="hidden min-w-0 md:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-300">Clarify</p><p class="text-xs text-slate-600">Decision ready</p></div></div>
+            <div class="step-line"></div>
+            <div class="flex min-w-0 items-center gap-3"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-signal/70 bg-signal/15 text-[11px] font-bold text-signal2 shadow-[0_0_18px_rgba(139,92,246,.16)]">4</span><div class="min-w-0"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-signal2">Recommendation</p><p class="hidden text-xs text-slate-500 sm:block">Compare open</p></div></div>
+            <div class="step-line opacity-30"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-40"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-500">5</span><div class="hidden min-w-0 xl:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500">Decide</p><p class="text-xs text-slate-600">Record lock</p></div></div>
+          </div>
+        </section>
+
+        <section class="pb-7 pt-9">
+          <div class="flex flex-col justify-between gap-5 xl:flex-row xl:items-end">
+            <div>
+              <p class="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.2em] text-blue"><span class="pulse h-1.5 w-1.5 rounded-full bg-blue"></span>Recommendation / Compare</p>
+              <h2 class="text-3xl font-semibold tracking-[-.035em] text-white sm:text-[38px]">Compare viable picks</h2>
+              <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-400 sm:text-[15px]">See exactly what you gain and give up with each choice. Hermod keeps the tradeoff visible instead of collapsing everything into one opaque score.</p>
+            </div>
+            <div class="flex items-center gap-2 rounded-full border border-blue/18 bg-blue/[0.04] px-3 py-1.5 text-xs text-slate-400"><span class="h-1.5 w-1.5 rounded-full bg-blue"></span><span id="pairBadge">Orianna vs Ahri</span></div>
+          </div>
+        </section>
+
+        <section class="glass mb-5 overflow-hidden rounded-2xl border border-white/[0.07]">
+          <div class="flex flex-col gap-4 px-5 py-4 lg:flex-row lg:items-center lg:justify-between">
+            <div class="flex items-center gap-3">
+              <span class="rounded-lg border border-blue/20 bg-blue/[0.06] px-2.5 py-1.5 font-mono text-[10px] font-bold tracking-[.12em] text-blue">B3 / MID</span>
+              <div><p class="text-xs font-semibold text-slate-300">Current recommendation context</p><p class="mt-0.5 text-[10px] text-slate-600">Comparison uses the same draft state that produced the ranking.</p></div>
+            </div>
+            <div class="flex flex-wrap gap-2 text-[10px]">
+              <span class="source-pill rounded-md px-2 py-1 text-blue">Pool: 3 viable</span>
+              <span class="source-pill rounded-md px-2 py-1 text-good">Gragas: Top resolved</span>
+              <span class="source-pill rounded-md px-2 py-1 text-signal2">Player-adjusted</span>
+            </div>
+          </div>
+        </section>
+
+        <div class="grid gap-5 xl:grid-cols-[minmax(0,1fr)_330px]">
+          <div class="min-w-0 space-y-5">
+            <section class="glass rounded-2xl border border-white/[0.07] p-5 sm:p-6">
+              <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                <div><p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">Comparison pair</p><p class="mt-1 text-sm text-slate-400">Start with the recommended option and compare it against the alternative you actually care about.</p></div>
+                <button id="changeAlternative" class="rounded-lg border border-white/[0.08] bg-white/[0.02] px-3 py-2 text-xs font-semibold text-slate-400 transition hover:border-blue/30 hover:text-white">Change alternative</button>
+              </div>
+
+              <div class="mt-5 grid gap-3 lg:grid-cols-[1fr_64px_1fr] lg:items-stretch">
+                <article class="candidate-card recommended rounded-2xl border p-4 sm:p-5">
+                  <div class="flex items-center gap-4">
+                    <img class="champ-icon h-16 w-16" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Orianna.png" alt="Orianna" />
+                    <div class="min-w-0 flex-1">
+                      <div class="flex flex-wrap items-center gap-2"><p class="text-xl font-semibold text-white">Orianna</p><span class="rounded-md border border-signal/20 bg-signal/[0.07] px-2 py-1 text-[9px] font-bold uppercase tracking-[.12em] text-signal2">Recommended</span></div>
+                      <p class="mt-1 text-xs text-slate-500">Control Mage · #1</p>
+                      <div class="mt-3 flex flex-wrap gap-2"><span class="rounded-md border border-good/15 bg-good/[0.035] px-2 py-1 text-[9px] font-semibold text-good">High proficiency</span><span class="rounded-md border border-white/[0.07] px-2 py-1 text-[9px] text-slate-500">Active</span></div>
+                    </div>
+                  </div>
+                </article>
+
+                <div class="compare-vs grid min-h-[72px] place-items-center rounded-2xl"><span class="font-mono text-[11px] font-bold tracking-[.16em] text-slate-600">VS</span></div>
+
+                <article id="rightCandidateCard" class="candidate-card rounded-2xl border border-white/[0.08] p-4 sm:p-5">
+                  <div class="flex items-center gap-4">
+                    <img id="rightCandidateIcon" class="champ-icon h-16 w-16" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Ahri.png" alt="Ahri" />
+                    <div class="min-w-0 flex-1">
+                      <div class="flex flex-wrap items-center gap-2"><p id="rightCandidateName" class="text-xl font-semibold text-white">Ahri</p><span id="rightCandidateStatus" class="rounded-md border border-blue/20 bg-blue/[0.06] px-2 py-1 text-[9px] font-bold uppercase tracking-[.12em] text-blue">Strong alternative</span></div>
+                      <p id="rightCandidateMeta" class="mt-1 text-xs text-slate-500">Burst / Playmaker · #2</p>
+                      <div id="rightCandidatePills" class="mt-3 flex flex-wrap gap-2"><span class="rounded-md border border-good/15 bg-good/[0.035] px-2 py-1 text-[9px] font-semibold text-good">High proficiency</span><span class="rounded-md border border-warn/15 bg-warn/[0.035] px-2 py-1 text-[9px] text-warn">Playable if needed</span></div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </section>
+
+            <section class="glass rounded-2xl border border-white/[0.07] p-5 sm:p-6">
+              <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                <div><p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">Comparison focus</p><p class="mt-1 text-sm text-slate-400">Overall is the default. Change focus only when you want to inspect one part of the tradeoff.</p></div>
+                <div id="focusTabs" class="flex max-w-full flex-wrap gap-2">
+                  <button class="focus-tab active rounded-lg border border-white/[0.08] bg-white/[0.018] px-3 py-2 text-xs font-semibold text-slate-400" data-focus="overall">Overall</button>
+                  <button class="focus-tab rounded-lg border border-white/[0.08] bg-white/[0.018] px-3 py-2 text-xs font-semibold text-slate-400" data-focus="lane">Lane</button>
+                  <button class="focus-tab rounded-lg border border-white/[0.08] bg-white/[0.018] px-3 py-2 text-xs font-semibold text-slate-400" data-focus="composition">Composition</button>
+                  <button class="focus-tab rounded-lg border border-white/[0.08] bg-white/[0.018] px-3 py-2 text-xs font-semibold text-slate-400" data-focus="teamfight">Teamfight</button>
+                  <button class="focus-tab rounded-lg border border-white/[0.08] bg-white/[0.018] px-3 py-2 text-xs font-semibold text-slate-400" data-focus="execution">Execution</button>
+                  <button class="focus-tab rounded-lg border border-white/[0.08] bg-white/[0.018] px-3 py-2 text-xs font-semibold text-slate-400" data-focus="scaling">Scaling</button>
+                  <button class="focus-tab rounded-lg border border-white/[0.08] bg-white/[0.018] px-3 py-2 text-xs font-semibold text-slate-400" data-focus="counter">Counter exposure</button>
+                  <button class="focus-tab rounded-lg border border-white/[0.08] bg-white/[0.018] px-3 py-2 text-xs font-semibold text-slate-400" data-focus="blind">Blind safety</button>
+                </div>
+              </div>
+            </section>
+
+            <section class="glass rounded-2xl border border-signal/18 p-5 shadow-panel sm:p-6">
+              <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <div>
+                  <p class="text-[10px] font-bold uppercase tracking-[.2em] text-signal2">The tradeoff</p>
+                  <h3 id="tradeoffTitle" class="mt-2 text-2xl font-semibold tracking-[-.03em] text-white">Orianna is more reliable; Ahri gives you more independent agency.</h3>
+                  <p id="tradeoffSummary" class="mt-2 max-w-3xl text-sm leading-6 text-slate-400">Both picks are viable. Orianna wins on composition reliability and player-adjusted execution; Ahri wins on pick creation and self-directed playmaking.</p>
+                </div>
+                <span id="focusBadge" class="shrink-0 rounded-full border border-signal/18 bg-signal/[0.04] px-3 py-1.5 text-[10px] font-semibold text-signal2">Overall tradeoff</span>
+              </div>
+
+              <div class="mt-6 overflow-hidden rounded-xl border border-white/[0.07]">
+                <div class="grid grid-cols-[minmax(0,1.15fr)_86px_minmax(110px,1fr)_86px] items-center gap-3 bg-white/[0.018] px-4 py-3 text-[9px] font-bold uppercase tracking-[.13em] text-slate-600 sm:grid-cols-[minmax(0,1.35fr)_100px_minmax(160px,1fr)_100px]">
+                  <span>Dimension</span><span class="text-center text-signal2">Orianna</span><span class="text-center">Relative edge</span><span id="rightHeaderName" class="text-center text-blue">Ahri</span>
+                </div>
+                <div id="dimensionRows"></div>
+              </div>
+
+              <p class="mt-3 text-[10px] leading-5 text-slate-600">Select any row to inspect why Hermod thinks the difference exists. The rail shows relative advantage only; it is not an exposed aggregate score.</p>
+            </section>
+
+            <section class="grid gap-4 lg:grid-cols-2">
+              <article class="gain-card rounded-2xl border border-signal/16 p-5">
+                <div class="flex items-center gap-3"><img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Orianna.png" alt="Orianna"><div><p class="text-[9px] font-bold uppercase tracking-[.14em] text-signal2">Choose Orianna when</p><p class="text-sm font-semibold text-white">You want the more reliable draft-level answer.</p></div></div>
+                <ul id="leftGainList" class="mt-4 space-y-3 text-sm leading-5 text-slate-400"></ul>
+              </article>
+              <article class="gain-card alt rounded-2xl border border-blue/16 p-5">
+                <div class="flex items-center gap-3"><img id="rightGainIcon" class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Ahri.png" alt="Ahri"><div><p id="rightGainEyebrow" class="text-[9px] font-bold uppercase tracking-[.14em] text-blue">Choose Ahri when</p><p id="rightGainHeadline" class="text-sm font-semibold text-white">You want to accept more variance for more agency.</p></div></div>
+                <ul id="rightGainList" class="mt-4 space-y-3 text-sm leading-5 text-slate-400"></ul>
+              </article>
+            </section>
+
+            <section class="glass rounded-2xl border border-white/[0.07] p-5 sm:p-6">
+              <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+                <div class="max-w-3xl">
+                  <p class="text-[10px] font-bold uppercase tracking-[.18em] text-blue">Why this difference?</p>
+                  <h3 id="inspectorTitle" class="mt-2 text-lg font-semibold text-white">Teamfight reliability favors Orianna.</h3>
+                  <p id="inspectorSummary" class="mt-1 text-sm leading-6 text-slate-500">Gnar and Lee Sin already create initiation windows. Orianna converts those windows more reliably, so Hermod values her teamfight contribution more highly in this exact composition.</p>
+                </div>
+                <span id="inspectorEdge" class="shrink-0 rounded-md border border-signal/18 bg-signal/[0.04] px-2.5 py-1.5 text-[9px] font-bold uppercase tracking-[.12em] text-signal2">Orianna edge</span>
+              </div>
+              <div class="mt-5 grid gap-2 xl:grid-cols-[1fr_auto_1fr_auto_1fr] xl:items-stretch">
+                <div class="inspector-node rounded-xl p-3"><p class="text-[9px] font-bold uppercase tracking-[.13em] text-blue">Known state</p><p id="inspectorFact" class="mt-2 text-xs leading-5 text-slate-400">Gnar and Lee Sin can create the first initiation window.</p></div>
+                <div class="hidden items-center text-slate-700 xl:flex">-&gt;</div>
+                <div class="inspector-node rounded-xl p-3"><p class="text-[9px] font-bold uppercase tracking-[.13em] text-signal2">Hermod derives</p><p id="inspectorInference" class="mt-2 text-xs leading-5 text-slate-400">Orianna has a more repeatable follow-up mechanism than Ahri.</p></div>
+                <div class="hidden items-center text-slate-700 xl:flex">-&gt;</div>
+                <div class="inspector-node rounded-xl p-3"><p class="text-[9px] font-bold uppercase tracking-[.13em] text-good">Tradeoff effect</p><p id="inspectorEffect" class="mt-2 text-xs leading-5 text-slate-400">More reliable composition value, but less independent pick creation.</p></div>
+              </div>
+            </section>
+
+            <section class="rounded-2xl border border-warn/14 bg-warn/[0.025] p-5">
+              <div class="flex gap-3">
+                <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full border border-warn/25 text-xs text-warn">!</span>
+                <div><p class="text-sm font-semibold text-slate-200">This is not a universal champion ranking.</p><p id="notUniversalCopy" class="mt-1 text-sm leading-6 text-slate-500">Orianna is preferred in this state because the current composition and your player model reward reliability. Ahri remains a strong alternative if you deliberately value independent pick creation more.</p></div>
+              </div>
+            </section>
+
+            <section class="flex flex-col justify-between gap-3 border-t border-white/[0.06] py-6 sm:flex-row sm:items-center">
+              <button id="backRecommendationBottom" class="rounded-xl border border-white/[0.08] bg-white/[0.018] px-4 py-3 text-sm font-semibold text-slate-400 transition hover:border-signal/30 hover:text-white">Back to recommendation</button>
+              <div class="flex gap-2"><button id="whyBtn" class="rounded-xl border border-signal/25 bg-signal/[0.05] px-4 py-3 text-sm font-semibold text-signal2 transition hover:bg-signal/[0.09]">Explain recommendation</button><button id="decideBtn" class="rounded-xl bg-signal px-5 py-3 text-sm font-bold text-white shadow-lg shadow-signal/15 transition hover:bg-[#9a70f8]">Continue to Decide</button></div>
+            </section>
+          </div>
+
+          <aside class="space-y-5">
+            <section class="glass rounded-2xl border border-white/[0.07] p-5 xl:sticky xl:top-5">
+              <p class="text-[10px] font-bold uppercase tracking-[.2em] text-slate-600">Comparison context</p>
+              <div class="mt-4 grid grid-cols-[1fr_auto_1fr] items-center gap-2 rounded-xl border border-white/[0.07] bg-white/[0.015] p-3">
+                <div class="flex min-w-0 items-center gap-2"><img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Orianna.png" alt="Orianna"><div class="min-w-0"><p class="truncate text-xs font-semibold text-white">Orianna</p><p class="text-[9px] text-signal2">#1</p></div></div>
+                <span class="font-mono text-[9px] text-slate-700">VS</span>
+                <div class="flex min-w-0 items-center justify-end gap-2 text-right"><div class="min-w-0"><p id="railRightName" class="truncate text-xs font-semibold text-slate-300">Ahri</p><p id="railRightRank" class="text-[9px] text-blue">#2</p></div><img id="railRightIcon" class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Ahri.png" alt="Ahri"></div>
+              </div>
+
+              <div class="context-row mt-5 pt-5">
+                <div class="flex items-center justify-between"><p class="text-xs text-slate-500">Focus</p><p id="railFocus" class="text-xs font-semibold text-slate-300">Overall</p></div>
+                <div class="mt-3 flex items-center justify-between"><p class="text-xs text-slate-500">Confidence</p><p class="text-xs font-semibold text-good">High</p></div>
+                <div class="mt-3 flex items-center justify-between"><p class="text-xs text-slate-500">Compared dimensions</p><p id="railDimensionCount" class="text-xs font-semibold text-slate-300">7</p></div>
+              </div>
+
+              <div class="context-row mt-5 pt-5">
+                <p class="text-[9px] font-bold uppercase tracking-[.15em] text-slate-600">Decision hinges</p>
+                <div id="railHinges" class="mt-3 space-y-3"></div>
+              </div>
+
+              <div class="context-row mt-5 pt-5">
+                <p class="text-[9px] font-bold uppercase tracking-[.15em] text-slate-600">Compare another option</p>
+                <button id="syndraQuick" class="alt-option mt-3 flex w-full items-center gap-3 rounded-xl border border-white/[0.07] p-2.5 text-left">
+                  <img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Syndra.png" alt="Syndra"><div class="min-w-0 flex-1"><p class="text-xs font-semibold text-slate-300">Syndra</p><p class="text-[9px] text-slate-600">Situational · #3</p></div><span class="text-[10px] text-blue">Compare</span>
+                </button>
+              </div>
+
+              <div class="context-row mt-5 pt-5">
+                <p class="text-[9px] font-bold uppercase tracking-[.15em] text-slate-600">Evidence boundary</p>
+                <div class="mt-3 space-y-2.5">
+                  <div class="flex items-start gap-2"><span class="mt-1 h-2 w-2 rounded-full bg-blue"></span><div><p class="text-xs font-semibold text-slate-300">Provided / imported</p><p class="text-[10px] leading-4 text-slate-600">Draft state, pool, proficiency, clarification answers.</p></div></div>
+                  <div class="flex items-start gap-2"><span class="mt-1 h-2 w-2 rounded-full bg-signal"></span><div><p class="text-xs font-semibold text-slate-300">Derived by Hermod</p><p class="text-[10px] leading-4 text-slate-600">Composition fit, execution risk, pick threat, counter exposure.</p></div></div>
+                </div>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="alternativeModal" class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center p-5">
+    <div class="glass w-full max-w-md rounded-2xl border border-blue/25 p-6 shadow-glow">
+      <div class="flex items-start justify-between gap-4"><div><p class="text-[10px] font-bold uppercase tracking-[.18em] text-blue">Comparison candidate</p><h3 class="mt-2 text-2xl font-semibold text-white">Compare Orianna against...</h3><p class="mt-1 text-sm text-slate-500">Choose one viable alternative.</p></div><button id="closeModal" class="grid h-8 w-8 place-items-center rounded-lg border border-white/[0.08] text-slate-500 transition hover:text-white">x</button></div>
+      <div class="mt-5 space-y-2">
+        <button class="alt-option flex w-full items-center gap-3 rounded-xl border border-blue/22 bg-blue/[0.04] p-3 text-left" data-alt="Ahri"><img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Ahri.png" alt="Ahri"><div class="flex-1"><p class="text-sm font-semibold text-white">Ahri</p><p class="text-[10px] text-slate-600">Strong alternative · #2</p></div><span class="text-[10px] font-semibold text-blue">Select</span></button>
+        <button class="alt-option flex w-full items-center gap-3 rounded-xl border border-white/[0.07] p-3 text-left" data-alt="Syndra"><img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Syndra.png" alt="Syndra"><div class="flex-1"><p class="text-sm font-semibold text-white">Syndra</p><p class="text-[10px] text-slate-600">Situational · #3</p></div><span class="text-[10px] font-semibold text-blue">Select</span></button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="pointer-events-none fixed bottom-5 left-1/2 z-[60] -translate-x-1/2 translate-y-3 rounded-xl border border-white/[0.08] bg-[#0a1522]/95 px-4 py-3 text-xs font-semibold text-slate-200 opacity-0 shadow-2xl backdrop-blur-xl transition"></div>
+
+  <script>
+    const championMeta = {
+      Ahri: {
+        icon:'https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Ahri.png',
+        meta:'Burst / Playmaker · #2', status:'Strong alternative', rank:'#2',
+        pills:'<span class="rounded-md border border-good/15 bg-good/[0.035] px-2 py-1 text-[9px] font-semibold text-good">High proficiency</span><span class="rounded-md border border-warn/15 bg-warn/[0.035] px-2 py-1 text-[9px] text-warn">Playable if needed</span>',
+        headline:'You want to accept more variance for more agency.'
+      },
+      Syndra: {
+        icon:'https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Syndra.png',
+        meta:'Burst / Scaling Mage · #3', status:'Situational', rank:'#3',
+        pills:'<span class="rounded-md border border-white/[0.07] px-2 py-1 text-[9px] text-slate-500">Medium proficiency</span><span class="rounded-md border border-white/[0.07] px-2 py-1 text-[9px] text-slate-500">Active</span>',
+        headline:'You want more range and scaling at a higher exposure cost.'
+      }
+    };
+
+    const dimensions = {
+      teamfight: {label:'Teamfight reliability', ratings:{Orianna:5,Ahri:3.4,Syndra:4.1}, fact:'Gnar and Lee Sin can create the first initiation window.', inference:{Ahri:'Orianna converts allied initiation more repeatably than Ahri, whose value is less dependent on grouped follow-up.',Syndra:'Orianna converts allied initiation more directly; Syndra contributes strong control but is less tightly coupled to the engage sequence.'}, effect:{Ahri:'More reliable composition value for Orianna; more independent agency for Ahri.',Syndra:'Orianna has the cleaner engage-conversion pattern; Syndra gives more ranged burst and zone pressure.'}},
+      playmaking: {label:'Independent playmaking', ratings:{Orianna:2.8,Ahri:5,Syndra:3.8}, fact:'The allied draft already has initiation, but there are still windows for mid to create plays alone.', inference:{Ahri:'Ahri can create picks and reposition without waiting for allied setup more often than Orianna.',Syndra:'Syndra can threaten catches from range more independently than Orianna, though with less mobility than Ahri.'}, effect:{Ahri:'Ahri gains more self-directed agency; Orianna remains more dependent on team structure.',Syndra:'Syndra gains more standalone catch threat; Orianna keeps the stronger coordinated pattern.'}},
+      execution: {label:'Execution for you', ratings:{Orianna:5,Ahri:3.2,Syndra:3.6}, fact:'Orianna is high proficiency; Ahri is playable if needed; Syndra is medium proficiency.', inference:{Ahri:'Your current player model expects Orianna to deliver more of her theoretical value with less execution variance.',Syndra:'Your current proficiency makes Orianna a more dependable realized-value choice than Syndra.'}, effect:{Ahri:'Player fit widens Orianna\'s edge beyond the theoretical champion matchup.',Syndra:'Orianna is the lower-load choice; Syndra asks you to accept more execution variance.'}},
+      composition: {label:'Composition fit', ratings:{Orianna:5,Ahri:3.6,Syndra:4.2}, fact:'The allied composition already has initiation and wants a coherent grouped fight.', inference:{Ahri:'Orianna adds follow-up and zone control to strengths that already exist; Ahri shifts more value toward pick creation.',Syndra:'Both add control, but Orianna compounds allied initiation more directly than Syndra.'}, effect:{Ahri:'Orianna improves the shared gameplan; Ahri diversifies it.',Syndra:'Orianna is more synergistic; Syndra is a strong but less exact fit.'}},
+      lane: {label:'Lane stability', ratings:{Orianna:4.5,Ahri:3.4,Syndra:3.7}, fact:'Zed creates short, high-impact trading and all-in windows.', inference:{Ahri:'Orianna gives you a more controllable spacing and wave-management pattern in the current player model.',Syndra:'Orianna is treated as slightly more stable for you; Syndra keeps range but carries more punishable execution windows.'}, effect:{Ahri:'Lower lane volatility for Orianna; more playmaking upside for Ahri.',Syndra:'Orianna reduces lane variance; Syndra offers more burst threat.'}},
+      pick: {label:'Pick threat', ratings:{Orianna:2.7,Ahri:5,Syndra:4.6}, fact:'The enemy still has targets that can be punished outside a full 5v5.', inference:{Ahri:'Ahri is much better at generating isolated catch windows by herself.',Syndra:'Syndra can threaten long-range catches and burst more directly than Orianna.'}, effect:{Ahri:'Ahri owns the clearest pick-threat advantage.',Syndra:'Syndra gives up some coordinated reliability for stronger isolated punish.'}},
+      objective: {label:'Objective control', ratings:{Orianna:5,Ahri:3.4,Syndra:4.4}, fact:'The allied draft benefits from fighting through constrained entrances around objectives.', inference:{Ahri:'Orianna projects more persistent spatial threat before a fight fully starts.',Syndra:'Both control space well, but Orianna integrates more directly with allied initiation zones.'}, effect:{Ahri:'Orianna makes objective setups more structured; Ahri creates more flank and catch pressure.',Syndra:'Orianna is slightly more coherent with the team setup; Syndra offers stronger long-range punishment.'}},
+      scaling: {label:'Scaling', ratings:{Orianna:4.5,Ahri:3.8,Syndra:5}, fact:'The current draft can plausibly reach structured mid- and late-game fights.', inference:{Ahri:'Orianna preserves more grouped-fight value as the game progresses than Ahri.',Syndra:'Syndra has the higher pure scaling ceiling, while Orianna maintains stronger composition synergy.'}, effect:{Ahri:'Orianna has the late-game reliability edge.',Syndra:'Syndra gains ceiling; Orianna keeps the more dependable team interaction.'}},
+      counter: {label:'Counter exposure', ratings:{Orianna:4.1,Ahri:3.5,Syndra:3.1}, fact:'The draft is not finished and the opponent can still shape later picks around mid.', inference:{Ahri:'Orianna is currently less sensitive to plausible remaining responses than Ahri in your player-adjusted model.',Syndra:'Syndra has more punishable response branches in the current draft than Orianna.'}, effect:{Ahri:'Orianna preserves more recommendation stability.',Syndra:'Orianna is safer against the remaining draft tree; Syndra offers more ceiling at greater exposure.'}},
+      blind: {label:'Blind safety', ratings:{Orianna:4.2,Ahri:3.7,Syndra:3.4}, fact:'Some enemy assignments and future responses remain unresolved.', inference:{Ahri:'Orianna keeps useful composition value across more plausible branches.',Syndra:'Orianna is less dependent on the exact future matchup and response structure.'}, effect:{Ahri:'Orianna is the more stable early commitment.',Syndra:'Orianna preserves more optionality; Syndra becomes stronger in narrower branches.'}},
+      roam: {label:'Roam / map agency', ratings:{Orianna:2.8,Ahri:4.9,Syndra:3.1}, fact:'Mid can create value by leaving lane and attacking side lanes.', inference:{Ahri:'Ahri has a much stronger mobility profile for turning lane windows into map pressure.',Syndra:'Syndra can move with pressure but lacks Ahri\'s mobility and Orianna\'s teamfight integration.'}, effect:{Ahri:'Ahri gains a clear map-agency edge.',Syndra:'Syndra gains some ranged threat, but neither matches Ahri\'s roam agency.'}},
+      range: {label:'Range control', ratings:{Orianna:4.4,Ahri:3.5,Syndra:5}, fact:'Both teams have reasons to contest space before fully committing.', inference:{Ahri:'Orianna can control approach zones more persistently than Ahri.',Syndra:'Syndra has the strongest direct long-range threat, while Orianna has the more synergistic zone pattern.'}, effect:{Ahri:'Orianna gains pre-fight control; Ahri gains mobility.',Syndra:'Syndra wins pure range pressure; Orianna wins coordinated control.'}}
+    };
+
+    const focusMap = {
+      overall: ['teamfight','playmaking','execution','composition','lane','pick','objective'],
+      lane: ['lane','execution','playmaking','range'],
+      composition: ['composition','teamfight','objective','playmaking'],
+      teamfight: ['teamfight','objective','range','execution'],
+      execution: ['execution','lane','playmaking'],
+      scaling: ['scaling','teamfight','range'],
+      counter: ['counter','blind','execution','pick'],
+      blind: ['blind','counter','composition','lane']
+    };
+
+    const focusCopy = {
+      overall: {badge:'Overall tradeoff', title:{Ahri:'Orianna is more reliable; Ahri gives you more independent agency.',Syndra:'Orianna is more coherent; Syndra gives you more range and scaling ceiling.'}, summary:{Ahri:'Both picks are viable. Orianna wins on composition reliability and player-adjusted execution; Ahri wins on pick creation and self-directed playmaking.',Syndra:'Orianna fits the existing draft more cleanly. Syndra gives you stronger range and scaling, but with more execution and counter exposure.'}},
+      lane: {badge:'Lane matchup', title:{Ahri:'Orianna gives you the steadier lane; Ahri gives you more escape and playmaking.',Syndra:'Orianna is steadier for you; Syndra offers more punish range.'}, summary:{Ahri:'The lane difference is not simply champion strength. Hermod prefers the more controllable Orianna pattern for your current proficiency while acknowledging Ahri\'s mobility upside.',Syndra:'Both can contest range into Zed, but your player model makes Orianna the lower-variance option.'}},
+      composition: {badge:'Composition fit', title:{Ahri:'Orianna compounds what your team already does well.',Syndra:'Both fit, but Orianna compounds allied initiation more directly.'}, summary:{Ahri:'Gnar and Lee Sin already give you initiation. Orianna adds the most dependable follow-up; Ahri adds a second way to create picks.',Syndra:'Syndra adds strong control and burst, but Orianna creates the tighter engage-to-follow-up chain.'}},
+      teamfight: {badge:'Teamfight', title:{Ahri:'Orianna owns the cleaner 5v5 pattern.',Syndra:'Orianna is more reliable in the teamfight sequence; Syndra has more ranged punish.'}, summary:{Ahri:'Orianna offers more repeatable grouped-fight conversion. Ahri is stronger when the fight breaks into isolated pick or chase states.',Syndra:'Syndra can dominate range windows, but Orianna is better aligned with the initiation your team already has.'}},
+      execution: {badge:'Execution difficulty', title:{Ahri:'Player fit is the tie-breaker in Orianna\'s favor.',Syndra:'Orianna is the lower-load option for your current player state.'}, summary:{Ahri:'The theoretical gap is modest. Your current proficiency and willingness make Orianna more likely to realize her value cleanly.',Syndra:'Syndra remains viable, but medium proficiency increases the execution variance relative to Orianna.'}},
+      scaling: {badge:'Scaling', title:{Ahri:'Orianna scales more reliably into structured fights.',Syndra:'Syndra has the higher pure ceiling; Orianna has the stronger team-fit floor.'}, summary:{Ahri:'As fights become more grouped, Orianna preserves more composition-level value than Ahri.',Syndra:'Syndra can outscale on raw damage and range, but the current recommendation still values Orianna\'s synergy and reliability.'}},
+      counter: {badge:'Counter exposure', title:{Ahri:'Orianna is less sensitive to the remaining draft branches.',Syndra:'Orianna is safer; Syndra exposes more punishable branches.'}, summary:{Ahri:'Neither option is completely blind-safe, but Orianna stays useful across more plausible opponent responses.',Syndra:'Syndra\'s upside is more branch-dependent. Orianna preserves more recommendation stability.'}},
+      blind: {badge:'Blind safety', title:{Ahri:'Orianna preserves more value before the draft is fully resolved.',Syndra:'Orianna is the safer commitment into uncertainty.'}, summary:{Ahri:'Orianna keeps a clearer role across multiple plausible enemy responses, while Ahri\'s value depends more on creating favorable movement and pick states.',Syndra:'Syndra can become stronger in the right branch, but Orianna keeps more consistent utility across unknowns.'}}
+    };
+
+    const gainCopy = {
+      Ahri: {
+        left:['You value coordinated teamfight conversion over independent pick creation.','You want to minimize player-adjusted execution variance.','You expect objectives and grouped fights to decide the game.'],
+        right:['You want more self-directed pick and roam agency.','You are willing to accept higher lane and execution variance.','You expect the game to reward catches before structured fights.'],
+        universal:'Orianna is preferred in this state because the current composition and your player model reward reliability. Ahri remains a strong alternative if you deliberately value independent pick creation more.'
+      },
+      Syndra: {
+        left:['You want the option that best compounds Gnar + Lee Sin initiation.','You value a more stable execution profile on your current pool.','You want useful value across more remaining draft branches.'],
+        right:['You want more long-range burst and punishment.','You are willing to accept more counter and execution exposure.','You value scaling ceiling enough to trade away some composition coherence.'],
+        universal:'Orianna is preferred because she fits the current team structure more exactly. Syndra is not weaker in general; she offers more range and scaling ceiling in exchange for a less stable fit in this state.'
+      }
+    };
+
+    let activeAlternative = 'Ahri';
+    let activeFocus = 'overall';
+    let activeDimension = 'teamfight';
+
+    const rowsEl = document.getElementById('dimensionRows');
+    const toast = document.getElementById('toast');
+    const modal = document.getElementById('alternativeModal');
+
+    function ratingLabel(v) {
+      if (v >= 4.7) return 'Strong';
+      if (v >= 4.1) return 'Very good';
+      if (v >= 3.5) return 'Good';
+      if (v >= 3.0) return 'Mixed';
+      return 'Limited';
+    }
+
+    function edgePosition(left, right) {
+      const diff = Math.max(-2.4, Math.min(2.4, right - left));
+      return 50 + (diff / 2.4) * 38;
+    }
+
+    function edgeText(left, right) {
+      const diff = left - right;
+      if (Math.abs(diff) < .3) return 'Near even';
+      const champ = diff > 0 ? 'Orianna' : activeAlternative;
+      const strength = Math.abs(diff) > 1.25 ? 'Clear' : Math.abs(diff) > .65 ? 'Moderate' : 'Slight';
+      return `${strength} ${champ} edge`;
+    }
+
+    function renderDimensions() {
+      const keys = focusMap[activeFocus];
+      if (!keys.includes(activeDimension)) activeDimension = keys[0];
+      document.getElementById('railDimensionCount').textContent = keys.length;
+      rowsEl.innerHTML = keys.map(key => {
+        const d = dimensions[key];
+        const left = d.ratings.Orianna;
+        const right = d.ratings[activeAlternative];
+        const pos = edgePosition(left,right);
+        const dotClass = left >= right ? 'bg-signal2' : 'bg-blue';
+        return `
+          <button class="dimension-row ${key===activeDimension?'active':''} grid w-full grid-cols-[minmax(0,1.15fr)_86px_minmax(110px,1fr)_86px] items-center gap-3 border-t border-white/[0.055] px-4 py-4 text-left sm:grid-cols-[minmax(0,1.35fr)_100px_minmax(160px,1fr)_100px]" data-dimension="${key}">
+            <span><span class="block text-xs font-semibold text-slate-300">${d.label}</span><span class="mt-1 block text-[9px] text-slate-600">${edgeText(left,right)}</span></span>
+            <span class="text-center text-xs font-semibold text-signal2">${ratingLabel(left)}</span>
+            <span class="px-2"><span class="advantage-track block"><span class="advantage-dot ${dotClass}" style="left:${pos}%"></span></span></span>
+            <span class="text-center text-xs font-semibold text-blue">${ratingLabel(right)}</span>
+          </button>`;
+      }).join('');
+      document.querySelectorAll('.dimension-row').forEach(row => row.addEventListener('click', () => {
+        activeDimension = row.dataset.dimension;
+        renderDimensions();
+        renderInspector();
+      }));
+    }
+
+    function renderInspector() {
+      const d = dimensions[activeDimension];
+      const left = d.ratings.Orianna;
+      const right = d.ratings[activeAlternative];
+      const leftWins = left >= right;
+      const edgeName = leftWins ? 'Orianna' : activeAlternative;
+      document.getElementById('inspectorTitle').textContent = `${d.label} ${leftWins?'favors':'favors'} ${edgeName}.`;
+      document.getElementById('inspectorSummary').textContent = d.inference[activeAlternative];
+      document.getElementById('inspectorFact').textContent = d.fact;
+      document.getElementById('inspectorInference').textContent = d.inference[activeAlternative];
+      document.getElementById('inspectorEffect').textContent = d.effect[activeAlternative];
+      const edgeEl = document.getElementById('inspectorEdge');
+      edgeEl.textContent = `${edgeName} edge`;
+      edgeEl.className = `shrink-0 rounded-md border px-2.5 py-1.5 text-[9px] font-bold uppercase tracking-[.12em] ${leftWins?'border-signal/18 bg-signal/[0.04] text-signal2':'border-blue/18 bg-blue/[0.04] text-blue'}`;
+    }
+
+    function renderGains() {
+      const copy = gainCopy[activeAlternative];
+      document.getElementById('leftGainList').innerHTML = copy.left.map(x=>`<li class="flex gap-2"><span class="text-signal2">+</span><span>${x}</span></li>`).join('');
+      document.getElementById('rightGainList').innerHTML = copy.right.map(x=>`<li class="flex gap-2"><span class="text-blue">+</span><span>${x}</span></li>`).join('');
+      document.getElementById('rightGainEyebrow').textContent = `Choose ${activeAlternative} when`;
+      document.getElementById('rightGainHeadline').textContent = championMeta[activeAlternative].headline;
+      document.getElementById('notUniversalCopy').textContent = copy.universal;
+    }
+
+    function renderHinges() {
+      const keys = focusMap[activeFocus];
+      const ranked = keys.map(key => {
+        const d = dimensions[key];
+        return {key, label:d.label, diff:d.ratings.Orianna-d.ratings[activeAlternative]};
+      }).sort((a,b)=>Math.abs(b.diff)-Math.abs(a.diff)).slice(0,3);
+      document.getElementById('railHinges').innerHTML = ranked.map(r => {
+        const winner = r.diff >= 0 ? 'Orianna' : activeAlternative;
+        const cls = winner==='Orianna' ? 'text-signal2 border-signal/15 bg-signal/[0.035]' : 'text-blue border-blue/15 bg-blue/[0.035]';
+        return `<div class="rounded-xl border border-white/[0.06] bg-white/[0.012] p-3"><div class="flex items-start justify-between gap-3"><p class="text-xs font-semibold text-slate-300">${r.label}</p><span class="shrink-0 rounded-md border px-2 py-1 text-[8px] font-bold uppercase tracking-[.1em] ${cls}">${winner}</span></div></div>`;
+      }).join('');
+    }
+
+    function renderAlternative() {
+      const meta = championMeta[activeAlternative];
+      document.getElementById('rightCandidateIcon').src = meta.icon;
+      document.getElementById('rightCandidateIcon').alt = activeAlternative;
+      document.getElementById('rightCandidateName').textContent = activeAlternative;
+      document.getElementById('rightCandidateStatus').textContent = meta.status;
+      document.getElementById('rightCandidateMeta').textContent = meta.meta;
+      document.getElementById('rightCandidatePills').innerHTML = meta.pills;
+      document.getElementById('rightHeaderName').textContent = activeAlternative;
+      document.getElementById('rightGainIcon').src = meta.icon;
+      document.getElementById('rightGainIcon').alt = activeAlternative;
+      document.getElementById('railRightName').textContent = activeAlternative;
+      document.getElementById('railRightRank').textContent = meta.rank;
+      document.getElementById('railRightIcon').src = meta.icon;
+      document.getElementById('railRightIcon').alt = activeAlternative;
+      document.getElementById('pairBadge').textContent = `Orianna vs ${activeAlternative}`;
+      document.getElementById('syndraQuick').style.display = activeAlternative === 'Syndra' ? 'none' : 'flex';
+      activeDimension = focusMap[activeFocus][0];
+      renderAll();
+    }
+
+    function renderFocusCopy() {
+      const copy = focusCopy[activeFocus];
+      document.getElementById('tradeoffTitle').textContent = copy.title[activeAlternative];
+      document.getElementById('tradeoffSummary').textContent = copy.summary[activeAlternative];
+      document.getElementById('focusBadge').textContent = copy.badge;
+      document.getElementById('railFocus').textContent = copy.badge.replace(' tradeoff','').replace(' difficulty','');
+    }
+
+    function renderAll() {
+      renderFocusCopy();
+      renderDimensions();
+      renderInspector();
+      renderGains();
+      renderHinges();
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.remove('opacity-0','translate-y-3');
+      window.setTimeout(() => toast.classList.add('opacity-0','translate-y-3'), 1800);
+    }
+
+    document.querySelectorAll('.focus-tab').forEach(btn => btn.addEventListener('click', () => {
+      activeFocus = btn.dataset.focus;
+      activeDimension = focusMap[activeFocus][0];
+      document.querySelectorAll('.focus-tab').forEach(b => b.classList.toggle('active', b === btn));
+      renderAll();
+    }));
+
+    function openModal() { modal.classList.remove('hidden'); modal.classList.add('flex'); }
+    function closeModal() { modal.classList.add('hidden'); modal.classList.remove('flex'); }
+    document.getElementById('changeAlternative').addEventListener('click', openModal);
+    document.getElementById('closeModal').addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    document.querySelectorAll('[data-alt]').forEach(btn => btn.addEventListener('click', () => {
+      activeAlternative = btn.dataset.alt;
+      closeModal();
+      renderAlternative();
+      showToast(`Now comparing Orianna vs ${activeAlternative}`);
+    }));
+    document.getElementById('syndraQuick').addEventListener('click', () => {
+      activeAlternative = 'Syndra';
+      renderAlternative();
+      showToast('Now comparing Orianna vs Syndra');
+    });
+
+    document.getElementById('backRecommendationTop').addEventListener('click', () => showToast('Prototype: return to Recommendation view'));
+    document.getElementById('backRecommendationBottom').addEventListener('click', () => showToast('Prototype: return to Recommendation view'));
+    document.getElementById('whyBtn').addEventListener('click', () => showToast('Prototype: open Why / Explanation'));
+    document.getElementById('decideBtn').addEventListener('click', () => showToast('Next: Continue to Decide'));
+
+    renderAll();
+  </script>
+</body>
+</html>

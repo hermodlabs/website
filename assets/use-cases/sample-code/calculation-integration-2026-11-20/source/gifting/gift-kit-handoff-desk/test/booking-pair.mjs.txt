@@ -1,0 +1,33 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { preview } from 'vite';
+import { chromium } from 'playwright';
+import { createDecisionLab } from '@decision-lab/sdk';
+import { openReviewJourney } from '../src/reviewJourney.js';
+import { inspectGiftingJourney } from '../src/giftingJourney.js';
+const root=fileURLToPath(new URL('../',import.meta.url)), output='/private/tmp/decision-lab-integration-alignment/gifting-captures';
+const read=async p=>JSON.parse(await fs.readFile(p,'utf8')),hash=bytes=>createHash('sha256').update(bytes).digest('hex');
+const config=await read(path.join(root,'public/data/journey-config.json')),definition=await read(path.join(root,'public/data',config.definitionUrl)),app=await read(path.join(root,'public/data',config.appUrl)),lab=createDecisionLab();
+let browser,server;const captures=[],errors=[];
+try{
+ server=await preview({configFile:path.join(root,'vite.config.mjs'),preview:{host:'127.0.0.1',port:0}});
+ browser=await chromium.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});
+ const page=await browser.newPage({viewport:{width:1800,height:1300}});page.on('pageerror',e=>errors.push(e.message));await page.goto(`http://127.0.0.1:${server.httpServer.address().port}/`);
+ await page.getByRole('heading',{name:'1. Current commitment and source records'}).waitFor();
+ await page.getByText('Start a fictional teaching case',{exact:true}).click();
+ await page.getByRole('button',{name:'GIFT-321 · urgent window',exact:true}).click();
+ const calc=async()=>{await page.getByRole('button',{name:/^(Calculate|Recalculate)$/,exact:true}).click();await page.getByRole('button',{name:'Cancel calculation',exact:true}).waitFor({state:'detached',timeout:120000});await page.locator('[data-decision-summary]').waitFor();};
+ const capture=async key=>{
+  const[download]=await Promise.all([page.waitForEvent('download'),page.getByRole('button',{name:'Download continuing review',exact:true}).click()]);const run=openReviewJourney({lab,value:await fs.readFile(await download.path(),'utf8'),app,definition}),view=inspectGiftingJourney({lab,run,config});
+  const native=`${key}.workflow.json`,full=`${key}.output.json`,png=`${key}.png`;await fs.writeFile(path.join(output,native),lab.sources.renderJSON(run,{maxBytes:50000000}));await fs.writeFile(path.join(output,full),lab.sources.renderJSON(view.output,{maxBytes:50000000}));
+  await page.getByRole('button',{name:'Reports',exact:true}).click();await page.locator('.journey-reports').screenshot({path:path.join(output,png),animations:'disabled'});await page.getByRole('button',{name:'Both',exact:true}).click();
+  const bytes=await fs.readFile(path.join(output,png));captures.push({key,image:png,width:bytes.readUInt32BE(16),height:bytes.readUInt32BE(20),sha256:hash(bytes),workflow:native,workflowSHA256:hash(await fs.readFile(path.join(output,native))),output:full,workflowHash:run.contentHash,definitionHash:run.definition.contentHash,caseId:run.case.gifting.id,preferred:view.review.preferred.map(row=>({id:row.id,packageId:row.packageId,expenseMinor:row.expense,finishMinute:row.finishMinute})),completed:view.closure.completed});return run;
+ };
+ await calc();const before=await capture('booking-current');assert.equal(inspectGiftingJourney({lab,run:before,config}).review.preferred[0].expense,40000);
+ await page.getByText('Scope stated by the booking',{exact:true}).click();await page.getByLabel('Booking Insert revision',{exact:true}).fill('insert-3');await page.getByRole('button',{name:'Apply inputs',exact:true}).click();await calc();const after=await capture('booking-old-scope');
+ assert.equal(inspectGiftingJourney({lab,run:after,config}).review.status,'blocked');const expected=structuredClone(before.case.gifting);expected.work.confirmations[0].scope.insertRevision='insert-3';assert.deepEqual(after.case.gifting,expected,'Only the booking insert revision changes.');assert.equal(before.case.gifting.id,after.case.gifting.id);assert.deepEqual(errors,[]);
+ await fs.writeFile(path.join(output,'booking-pair-verification.json'),JSON.stringify({format:'gifting-controlled-booking-pair/1',capturedAt:new Date().toISOString(),origin:'Local production browser demo using ordinary form edits, Apply inputs and Recalculate.',definitionHash:definition.contentHash,workflowVersion:definition.version,changedPath:'gifting.work.confirmations.0.scope.insertRevision',beforeValue:before.case.gifting.work.confirmations[0].scope.insertRevision,afterValue:after.case.gifting.work.confirmations[0].scope.insertRevision,captures,checks:{sameCampaign:true,onlyDeclaredBusinessInputChanged:true,current400Preferred:true,oldScopeBlocked:true,noReviewFabrication:true},errors},null,2));console.log('Verified same GIFT-321 with only the booking insert revision changed.');
+}finally{await browser?.close();await server?.close();}

@@ -1,0 +1,159 @@
+{
+  "format": "gift-kit-resolution-preflight/1",
+  "createdAt": "2026-11-20T15:13:39.648Z",
+  "executionMode": "calculation",
+  "syntheticFindingReviews": false,
+  "definitionHash": "679dec52de8d1c1ee17e69078af8ed8449b5ee38d2ee9d1c28e838d354a68a13",
+  "campaigns": [
+    {
+      "id": "GIFT-320",
+      "owner": "Jordan Reed",
+      "nextAction": "Record the operating decision",
+      "actionDueMinute": 1400,
+      "deadlineMeaning": "Schedule-only latest useful start; source availability and permission remain separate checks.",
+      "status": "eligible",
+      "preferred": [
+        {
+          "package": "Replace and repair in-house",
+          "expenseMinor": 30000,
+          "finishMinute": 40
+        }
+      ],
+      "workflow": "GIFT-320/review.workflow.json",
+      "output": "GIFT-320/output.json",
+      "source": {
+        "reference": "cases/ample-window.json",
+        "sha256": "059c0a71af6209b82d310fe2d5d31486c10edece44be90a42e951baa6868f97d"
+      },
+      "screening": {
+        "file": "GIFT-320/screening.run.json",
+        "outcome": "eligible",
+        "preferred": [
+          "Replace and repair in-house"
+        ],
+        "meaning": "Conservative screen over every published fault configuration; the connected calculation uses actual scoped diagnostic records."
+      }
+    },
+    {
+      "id": "GIFT-321",
+      "owner": "Jordan Reed",
+      "nextAction": "Record the operating decision",
+      "actionDueMinute": 1415,
+      "deadlineMeaning": "Schedule-only latest useful start; source availability and permission remain separate checks.",
+      "status": "eligible",
+      "preferred": [
+        {
+          "package": "External replacement and repair",
+          "expenseMinor": 40000,
+          "finishMinute": 1435
+        }
+      ],
+      "workflow": "GIFT-321/review.workflow.json",
+      "output": "GIFT-321/output.json",
+      "source": {
+        "reference": "cases/urgent-window.json",
+        "sha256": "eda63ca3308d1f34820a10d076f8c20ecaba3bcf5d6fce30d4e1bfded89505e3"
+      },
+      "screening": {
+        "file": "GIFT-321/screening.run.json",
+        "outcome": "eligible",
+        "preferred": [
+          "External replacement and repair"
+        ],
+        "meaning": "Conservative screen over every published fault configuration; the connected calculation uses actual scoped diagnostic records."
+      }
+    },
+    {
+      "id": "GIFT-322",
+      "owner": "Jordan Reed",
+      "nextAction": "Escalate or revise the commitment",
+      "actionDueMinute": 1415,
+      "deadlineMeaning": "Schedule-only latest useful start; source availability and permission remain separate checks.",
+      "status": "blocked",
+      "preferred": [],
+      "workflow": "GIFT-322/review.workflow.json",
+      "output": "GIFT-322/output.json",
+      "source": {
+        "reference": "cases/urgent-missing-booking.json",
+        "sha256": "17bf10dc18909a653d729fd4c7e2ea48c326ffd9c42ccd9206f46f139a91cbff"
+      },
+      "screening": {
+        "file": "GIFT-322/screening.run.json",
+        "outcome": "blocked",
+        "preferred": [],
+        "meaning": "Conservative screen over every published fault configuration; the connected calculation uses actual scoped diagnostic records."
+      }
+    },
+    {
+      "id": "GIFT-323",
+      "owner": "Jordan Reed",
+      "nextAction": "Escalate or revise the commitment",
+      "actionDueMinute": 1415,
+      "deadlineMeaning": "Schedule-only latest useful start; source availability and permission remain separate checks.",
+      "status": "blocked",
+      "preferred": [],
+      "workflow": "GIFT-323/review.workflow.json",
+      "output": "GIFT-323/output.json",
+      "source": {
+        "reference": "cases/urgent-stale-booking.json",
+        "sha256": "49a3ce733a61e45f685a13e67010117180f8d5c3a9527595f661474c2236a165"
+      },
+      "screening": {
+        "file": "GIFT-323/screening.run.json",
+        "outcome": "blocked",
+        "preferred": [],
+        "meaning": "Conservative screen over every published fault configuration; the connected calculation uses actual scoped diagnostic records."
+      }
+    },
+    {
+      "id": "GIFT-324",
+      "owner": "Jordan Reed",
+      "nextAction": "Record the operating decision",
+      "actionDueMinute": 1415,
+      "deadlineMeaning": "Schedule-only latest useful start; source availability and permission remain separate checks.",
+      "status": "eligible",
+      "preferred": [
+        {
+          "package": "Replace printed inserts",
+          "expenseMinor": 10000,
+          "finishMinute": 1435
+        }
+      ],
+      "workflow": "GIFT-324/review.workflow.json",
+      "output": "GIFT-324/output.json",
+      "source": {
+        "reference": "cases/supported-smaller-correction.json",
+        "sha256": "6d31c698eced9cc18e9a95be2408deea705d5ce44758b17d89c36403a3aee286"
+      },
+      "screening": {
+        "file": "GIFT-324/screening.run.json",
+        "outcome": "eligible",
+        "preferred": [
+          "External replacement and repair"
+        ],
+        "meaning": "Conservative screen over every published fault configuration; the connected calculation uses actual scoped diagnostic records."
+      }
+    },
+    {
+      "id": "GIFT-325",
+      "owner": "Jordan Reed",
+      "nextAction": "Escalate or revise the commitment",
+      "actionDueMinute": 1415,
+      "deadlineMeaning": "Schedule-only latest useful start; source availability and permission remain separate checks.",
+      "status": "blocked",
+      "preferred": [],
+      "workflow": "GIFT-325/review.workflow.json",
+      "output": "GIFT-325/output.json",
+      "source": {
+        "reference": "cases/missed-window.json",
+        "sha256": "ac7d37accd1d8b50c9e52c2f48940aa6030834ccff2a4c13a6e4f525af927df3"
+      },
+      "screening": {
+        "file": "GIFT-325/screening.run.json",
+        "outcome": "blocked",
+        "preferred": [],
+        "meaning": "Conservative screen over every published fault configuration; the connected calculation uses actual scoped diagnostic records."
+      }
+    }
+  ]
+}

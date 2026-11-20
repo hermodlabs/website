@@ -1,0 +1,40 @@
+{
+  "figures": {
+    "full": {
+      "image": "/assets/use-cases/restaurant-roster-repair/full-availability-decision.png",
+      "fullImage": "/assets/use-cases/restaurant-roster-repair/full-availability-complete.png",
+      "width": 640,
+      "height": 499,
+      "sha256": "c63d03279b35f390c70c0ca70cecd09a5bcfed59dc1339c52e45b47c4bbe3cda",
+      "alt": "The custom restaurant report identifies two feasible complete repairs with Rowan available until 10 p.m.; it establishes no preference.",
+      "caption": "Full availability leaves two feasible supplied repairs. The feasibility-only app does not rank them."
+    },
+    "short": {
+      "image": "/assets/use-cases/restaurant-roster-repair/short-availability-decision.png",
+      "fullImage": "/assets/use-cases/restaurant-roster-repair/short-availability-complete.png",
+      "width": 640,
+      "height": 474,
+      "sha256": "325683aff192c1b3bc17849f8c2c79c167642c07b662ada654219cb6028e030f",
+      "alt": "The same restaurant report identifies one feasible complete repair when Rowan’s availability ends at 8 p.m.; Rowan’s relief repair fails full-interval availability.",
+      "caption": "Only Rowan’s availability changes. The relief repair fails availability, while the coordinated repair remains feasible."
+    },
+    "stability": {
+      "image": "/assets/use-cases/restaurant-roster-repair/stability-first-decision.png",
+      "fullImage": "/assets/use-cases/restaurant-roster-repair/stability-first-complete.png",
+      "width": 640,
+      "height": 474,
+      "sha256": "3aba742b08b445be5da9a9849febef4ae9264574635c33cffed9f1f12353daa0",
+      "alt": "The stability-first restaurant report prefers bringing in Rowan, showing $180 additional expense, one changed published position and $836 remaining payroll.",
+      "caption": "Preserving published positions first makes Rowan preferred among the same four supplied repairs."
+    },
+    "cost": {
+      "image": "/assets/use-cases/restaurant-roster-repair/cost-first-decision.png",
+      "fullImage": "/assets/use-cases/restaurant-roster-repair/cost-first-complete.png",
+      "width": 640,
+      "height": 474,
+      "sha256": "336afe804b9a718dc254d3ff7c23b08671e6cfd30d0fab023a6e6b36a70c677e",
+      "alt": "The cost-first restaurant report prefers the coordinated repair, showing $80 additional expense, three changed published positions and $736 remaining payroll.",
+      "caption": "Minimizing remaining payroll first makes the coordinated repair preferred among the same four supplied repairs."
+    }
+  }
+}

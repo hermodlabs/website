@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hermod Review & Learn - review past draft decisions, identify missed concepts, and practice similar situations." />
+  <title>Hermod - Review & Learn</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#03070d', shell: '#07101a', panel: '#09131f', panel2: '#0d1927', line: '#1c2b3d',
+            mist: '#9ca9bb', signal: '#8b5cf6', signal2: '#b79cff', blue: '#5b8cff', danger: '#ff5b68',
+            good: '#67d391', warn: '#eebc66'
+          },
+          fontFamily: {
+            sans: ['Inter', 'Avenir Next', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            mono: ['IBM Plex Mono', 'SFMono-Regular', 'Consolas', 'ui-monospace', 'monospace']
+          },
+          boxShadow: {
+            glow: '0 0 0 1px rgba(139,92,246,.55), 0 0 34px rgba(139,92,246,.18)',
+            panel: '0 22px 60px rgba(0,0,0,.28)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { color-scheme: dark; --purple:#8b5cf6; --lavender:#b79cff; --blue:#5b8cff; }
+    * { box-sizing: border-box; scrollbar-width: thin; scrollbar-color: #26384c transparent; }
+    html, body { min-height: 100%; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 4% 2%, rgba(91,140,255,.11), transparent 26rem),
+        radial-gradient(circle at 88% 0%, rgba(139,92,246,.10), transparent 29rem),
+        linear-gradient(180deg, #03070d 0%, #06101a 48%, #03070d 100%);
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: -2; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.012) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.72), transparent 84%);
+    }
+    .app-shell {
+      min-height: 100vh; border: 1px solid rgba(80,110,145,.34); background: rgba(2,8,14,.26);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.025), 0 30px 100px rgba(0,0,0,.38);
+    }
+    .sidebar {
+      background: linear-gradient(180deg, rgba(8,18,29,.98), rgba(3,9,15,.99)),
+        radial-gradient(circle at 15% 7%, rgba(139,92,246,.08), transparent 18rem);
+    }
+    .brand-mark { position: relative; width: 34px; height: 34px; filter: drop-shadow(0 0 14px rgba(139,92,246,.38)); }
+    .brand-mark::before, .brand-mark::after {
+      content: ''; position: absolute; top: 4px; bottom: 4px; width: 10px;
+      background: linear-gradient(180deg, #c4b5fd, #8b5cf6 55%, #5b8cff);
+      clip-path: polygon(0 0, 100% 17%, 100% 60%, 50% 74%, 50% 100%, 0 83%);
+    }
+    .brand-mark::before { left: 4px; }
+    .brand-mark::after { right: 4px; transform: scaleX(-1); }
+    .nav-item { position: relative; transition: .18s ease; }
+    .nav-item::before {
+      content: ''; position: absolute; inset: 0 auto 0 0; width: 3px; border-radius: 0 6px 6px 0;
+      background: linear-gradient(180deg,#5b8cff,#8b5cf6); opacity: 0;
+    }
+    .nav-item.active { background: linear-gradient(90deg, rgba(91,140,255,.14), rgba(63,91,126,.14)); border-color: rgba(91,140,255,.16); color: #fff; }
+    .nav-item.active::before { opacity: 1; }
+    .glass { background: linear-gradient(180deg, rgba(8,18,29,.93), rgba(5,12,20,.96)); box-shadow: inset 0 1px 0 rgba(255,255,255,.025), 0 20px 60px rgba(0,0,0,.18); }
+    .stage-line { height: 1px; flex: 1; background: linear-gradient(90deg, rgba(139,92,246,.52), rgba(255,255,255,.08)); }
+    .mini-champ { width: 38px; height: 38px; object-fit: cover; border-radius: 10px; border: 1px solid rgba(255,255,255,.10); background: #0a111a; }
+    .tiny-champ { width: 27px; height: 27px; object-fit: cover; border-radius: 7px; border: 1px solid rgba(255,255,255,.09); background: #0a111a; }
+    .hero-champ { width: 58px; height: 58px; object-fit: cover; border-radius: 14px; border: 1px solid rgba(183,156,255,.24); background: #0a111a; }
+    .decision-card, .reason-btn, .mode-btn, .quiz-choice, .quiz-reason { transition: .17s ease; }
+    .decision-card:hover, .reason-btn:hover, .mode-btn:hover, .quiz-choice:hover, .quiz-reason:hover { border-color: rgba(183,156,255,.28); background-color: rgba(139,92,246,.035); }
+    .decision-card.selected { border-color: rgba(139,92,246,.46); background: linear-gradient(180deg, rgba(28,21,48,.72), rgba(8,16,27,.94)); box-shadow: 0 0 0 1px rgba(139,92,246,.09), 0 16px 36px rgba(0,0,0,.22); }
+    .reason-btn.active, .mode-btn.active, .quiz-choice.active, .quiz-reason.active { border-color: rgba(139,92,246,.52); background: rgba(139,92,246,.10); color:#ede7ff; }
+    .source-pill { border: 1px solid rgba(255,255,255,.065); background: rgba(255,255,255,.018); }
+    .insight-card { position: relative; overflow: hidden; }
+    .insight-card::before { content:''; position:absolute; inset:0 auto 0 0; width:2px; background:linear-gradient(180deg,transparent,rgba(139,92,246,.88),transparent); }
+    .comparison-grid { background-image: linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 20% 100%; }
+    .bar-track { position: relative; height: 6px; border-radius: 999px; background: rgba(255,255,255,.055); overflow: hidden; }
+    .bar-fill { height:100%; border-radius:999px; background: linear-gradient(90deg,#5b8cff,#8b5cf6,#b79cff); }
+    .concept-node { border: 1px solid rgba(183,156,255,.16); background: linear-gradient(180deg, rgba(139,92,246,.055), rgba(255,255,255,.012)); }
+    .learning-banner { background: linear-gradient(135deg, rgba(139,92,246,.10), rgba(91,140,255,.035)); }
+    .context-row { border-top: 1px solid rgba(255,255,255,.052); }
+    .fade-in { animation: fade .18s ease both; }
+    @keyframes fade { from { opacity:0; transform: translateY(4px); } to { opacity:1; transform:none; } }
+    @media (prefers-reduced-motion: reduce) { .fade-in { animation:none; } }
+  </style>
+</head>
+<body class="font-sans text-slate-100 antialiased selection:bg-signal/40 selection:text-white">
+  <div class="app-shell grid lg:grid-cols-[246px_minmax(0,1fr)]">
+    <aside class="sidebar hidden min-h-screen border-r border-white/[0.06] lg:flex lg:flex-col">
+      <div class="flex h-[76px] items-center gap-3 border-b border-white/[0.05] px-7">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="text-[19px] font-semibold tracking-[.24em] text-slate-100">HERMOD</div>
+      </div>
+      <div class="flex-1 px-2 py-7">
+        <p class="px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Live</p>
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center text-signal2">O</span>Draft Assistant</button>
+        <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">You</p>
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">#</span>Champion Pool</button>
+        <button class="nav-item mt-1 flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">D</span>Player Profile</button>
+        <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Learn</p>
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">[]</span>Decision History</button>
+        <button class="nav-item active mt-1 flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-semibold"><span class="grid h-6 w-6 place-items-center text-signal2">~</span>Review & Learn</button>
+      </div>
+      <div class="border-t border-white/[0.06] p-4">
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-4 py-3 text-left text-sm font-medium text-slate-500 hover:bg-white/[0.025] hover:text-slate-300"><span class="grid h-6 w-6 place-items-center">*</span>Settings</button>
+      </div>
+    </aside>
+
+    <main class="min-w-0">
+      <header class="flex h-[76px] items-center justify-between border-b border-white/[0.06] bg-[#050c14]/75 px-5 backdrop-blur-xl sm:px-7 xl:px-10">
+        <div class="flex items-center gap-3">
+          <button class="grid h-9 w-9 place-items-center rounded-xl border border-white/[0.07] text-slate-500 lg:hidden">=</button>
+          <div><p class="text-sm font-semibold text-white">Review & Learn</p><p class="mt-0.5 text-[10px] uppercase tracking-[.16em] text-slate-600">Decision review + practice</p></div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="hidden rounded-lg border border-white/[0.07] bg-white/[0.018] px-2.5 py-1.5 font-mono text-[10px] tracking-[.12em] text-slate-500 sm:inline-flex">PLAYER MODEL / MID</span>
+          <span class="rounded-lg border border-signal/20 bg-signal/[0.05] px-2.5 py-1.5 font-mono text-[10px] font-bold tracking-[.12em] text-signal2">LEARN</span>
+        </div>
+      </header>
+
+      <div class="mx-auto max-w-[1460px] px-5 pb-16 sm:px-7 xl:px-10">
+        <section class="border-b border-white/[0.055] py-5">
+          <div class="flex items-center gap-3 overflow-x-auto">
+            <div class="flex min-w-0 items-center gap-3"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-signal/70 bg-signal/15 text-[11px] font-bold text-signal2 shadow-[0_0_18px_rgba(139,92,246,.16)]">1</span><div class="min-w-0"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-signal2">Select</p><p class="hidden text-xs text-slate-500 sm:block">Decision record</p></div></div>
+            <div class="stage-line"></div>
+            <div class="flex min-w-0 items-center gap-3"><span id="stage2dot" class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.11] bg-white/[0.02] text-[11px] font-bold text-slate-600">2</span><div class="hidden min-w-0 sm:block"><p id="stage2title" class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500">Reflect</p><p class="text-xs text-slate-700">What mattered?</p></div></div>
+            <div class="stage-line"></div>
+            <div class="flex min-w-0 items-center gap-3"><span id="stage3dot" class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.11] bg-white/[0.02] text-[11px] font-bold text-slate-600">3</span><div class="hidden min-w-0 sm:block"><p id="stage3title" class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500">Learn</p><p class="text-xs text-slate-700">Diagnose or practice</p></div></div>
+          </div>
+        </section>
+
+        <section class="pb-7 pt-9">
+          <div class="flex flex-col justify-between gap-5 xl:flex-row xl:items-end">
+            <div>
+              <p class="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.2em] text-signal2"><span class="h-1.5 w-1.5 rounded-full bg-signal"></span>Review & Learn</p>
+              <h1 class="text-3xl font-semibold tracking-[-.035em] text-white sm:text-[38px]">Learn from the decision, not just the outcome.</h1>
+              <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-400 sm:text-[15px]">Replay a recorded draft decision, compare what you thought mattered with Hermod's analysis, then practice the concept in a similar situation.</p>
+            </div>
+            <div class="flex items-center gap-2 rounded-full border border-good/18 bg-good/[0.04] px-3 py-1.5 text-xs text-slate-400"><span class="h-1.5 w-1.5 rounded-full bg-good"></span><span>3 reviewable decisions</span></div>
+          </div>
+        </section>
+
+        <div class="grid gap-5 xl:grid-cols-[minmax(0,1fr)_330px]">
+          <div class="min-w-0 space-y-5">
+            <section class="glass rounded-2xl border border-white/[0.07] p-5 shadow-panel sm:p-6">
+              <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">1 / Choose a decision</p>
+                  <h2 class="mt-1 text-xl font-semibold text-white">Which draft do you want to review?</h2>
+                </div>
+                <button id="viewHistory" class="rounded-xl border border-white/[0.08] bg-white/[0.018] px-3 py-2 text-[11px] font-semibold text-slate-500 transition hover:border-signal/25 hover:text-white">View decision history</button>
+              </div>
+
+              <div class="mt-5 grid gap-3 md:grid-cols-3">
+                <button class="decision-card selected rounded-2xl border border-white/[0.08] p-4 text-left" data-decision="zed">
+                  <div class="flex items-center justify-between gap-2"><span class="font-mono text-[9px] uppercase tracking-[.13em] text-signal2">Yesterday · B3</span><span class="rounded-md border border-warn/20 bg-warn/[0.05] px-2 py-1 text-[8px] font-bold uppercase tracking-[.1em] text-warn">Different lock</span></div>
+                  <div class="mt-4 flex items-center gap-2.5"><img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Ahri.png" alt="Ahri"><div><p class="text-sm font-semibold text-white">You locked Ahri</p><p class="text-[10px] text-slate-600">vs Zed · Mid</p></div></div>
+                  <div class="mt-4 border-t border-white/[0.055] pt-3 text-[10px] text-slate-500"><span>Hermod recommended </span><span class="font-semibold text-signal2">Orianna</span></div>
+                </button>
+                <button class="decision-card rounded-2xl border border-white/[0.08] p-4 text-left" data-decision="akali">
+                  <div class="flex items-center justify-between gap-2"><span class="font-mono text-[9px] uppercase tracking-[.13em] text-slate-600">3 days ago · R3</span><span class="rounded-md border border-good/20 bg-good/[0.05] px-2 py-1 text-[8px] font-bold uppercase tracking-[.1em] text-good">Matched</span></div>
+                  <div class="mt-4 flex items-center gap-2.5"><img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Orianna.png" alt="Orianna"><div><p class="text-sm font-semibold text-white">You locked Orianna</p><p class="text-[10px] text-slate-600">vs Akali · Mid</p></div></div>
+                  <div class="mt-4 border-t border-white/[0.055] pt-3 text-[10px] text-slate-500"><span>Hermod recommended </span><span class="font-semibold text-signal2">Orianna</span></div>
+                </button>
+                <button class="decision-card rounded-2xl border border-white/[0.08] p-4 text-left" data-decision="syndra">
+                  <div class="flex items-center justify-between gap-2"><span class="font-mono text-[9px] uppercase tracking-[.13em] text-slate-600">6 days ago · B4</span><span class="rounded-md border border-white/[0.08] bg-white/[0.02] px-2 py-1 text-[8px] font-bold uppercase tracking-[.1em] text-slate-500">Review</span></div>
+                  <div class="mt-4 flex items-center gap-2.5"><img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Syndra.png" alt="Syndra"><div><p class="text-sm font-semibold text-white">You locked Syndra</p><p class="text-[10px] text-slate-600">vs Viktor · Mid</p></div></div>
+                  <div class="mt-4 border-t border-white/[0.055] pt-3 text-[10px] text-slate-500"><span>Hermod recommended </span><span class="font-semibold text-slate-300">Ahri</span></div>
+                </button>
+              </div>
+            </section>
+
+            <section id="replaySection" class="glass rounded-2xl border border-white/[0.07] p-5 sm:p-6">
+              <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                <div class="flex min-w-0 items-center gap-4">
+                  <img id="actualHero" class="hero-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Ahri.png" alt="Ahri">
+                  <div class="min-w-0">
+                    <p class="text-[9px] font-bold uppercase tracking-[.16em] text-signal2">Selected decision</p>
+                    <h3 id="decisionTitle" class="mt-1 text-xl font-semibold text-white">Ahri into Zed · B3 Mid</h3>
+                    <p id="decisionSubtitle" class="mt-1 text-xs leading-5 text-slate-500">Hermod recommended Orianna. You locked Ahri.</p>
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-2 text-[9px]">
+                  <span class="source-pill rounded-md px-2 py-1 text-blue">PATCH 16.16</span>
+                  <span class="source-pill rounded-md px-2 py-1 text-slate-500">SOLO QUEUE</span>
+                  <span class="source-pill rounded-md px-2 py-1 text-good">DRAFT RECORDED</span>
+                </div>
+              </div>
+
+              <div class="mt-5 grid gap-3 lg:grid-cols-2">
+                <div class="rounded-xl border border-white/[0.055] bg-black/10 p-4">
+                  <div class="flex items-center justify-between"><p class="text-[9px] font-bold uppercase tracking-[.15em] text-slate-600">Your team</p><span class="text-[9px] text-slate-700">At your decision</span></div>
+                  <div class="mt-3 flex items-center gap-2">
+                    <img class="tiny-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Gnar.png" alt="Gnar">
+                    <img class="tiny-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/LeeSin.png" alt="Lee Sin">
+                    <div id="selfSlot" class="grid h-[27px] min-w-[27px] place-items-center rounded-lg border border-signal/30 bg-signal/[0.07] px-2 font-mono text-[8px] font-bold text-signal2">YOU</div>
+                    <img class="tiny-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Jinx.png" alt="Jinx">
+                    <img class="tiny-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Lulu.png" alt="Lulu">
+                  </div>
+                </div>
+                <div class="rounded-xl border border-white/[0.055] bg-black/10 p-4">
+                  <div class="flex items-center justify-between"><p class="text-[9px] font-bold uppercase tracking-[.15em] text-slate-600">Enemy team</p><span class="text-[9px] text-slate-700">Known at B3</span></div>
+                  <div class="mt-3 flex items-center gap-2">
+                    <img class="tiny-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Aatrox.png" alt="Aatrox">
+                    <img class="tiny-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Gragas.png" alt="Gragas">
+                    <img id="enemyMidIcon" class="tiny-champ ring-1 ring-danger/25" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Zed.png" alt="Zed">
+                    <div class="grid h-[27px] min-w-[27px] place-items-center rounded-lg border border-white/[0.06] bg-white/[0.015] px-2 font-mono text-[8px] text-slate-700">?</div>
+                    <div class="grid h-[27px] min-w-[27px] place-items-center rounded-lg border border-white/[0.06] bg-white/[0.015] px-2 font-mono text-[8px] text-slate-700">?</div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="glass rounded-2xl border border-white/[0.07] p-5 sm:p-6">
+              <div>
+                <p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">2 / Reflect</p>
+                <h3 class="mt-1 text-xl font-semibold text-white">What mattered most when you made that choice?</h3>
+                <p class="mt-1 text-xs leading-5 text-slate-500">Hermod records your stated reason separately from its own explanation so it can diagnose the decision rather than just judge the champion.</p>
+              </div>
+              <div class="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+                <button class="reason-btn rounded-xl border border-white/[0.08] bg-white/[0.012] px-3 py-3 text-left text-xs font-semibold text-slate-400" data-reason="Lane matchup">Lane matchup</button>
+                <button class="reason-btn rounded-xl border border-white/[0.08] bg-white/[0.012] px-3 py-3 text-left text-xs font-semibold text-slate-400" data-reason="Champion comfort">Champion comfort</button>
+                <button class="reason-btn rounded-xl border border-white/[0.08] bg-white/[0.012] px-3 py-3 text-left text-xs font-semibold text-slate-400" data-reason="Team composition">Team composition</button>
+                <button class="reason-btn rounded-xl border border-white/[0.08] bg-white/[0.012] px-3 py-3 text-left text-xs font-semibold text-slate-400" data-reason="Counterpick">Counterpick</button>
+                <button class="reason-btn rounded-xl border border-white/[0.08] bg-white/[0.012] px-3 py-3 text-left text-xs font-semibold text-slate-400" data-reason="Scaling">Scaling</button>
+                <button class="reason-btn rounded-xl border border-white/[0.08] bg-white/[0.012] px-3 py-3 text-left text-xs font-semibold text-slate-400" data-reason="Teamfight">Teamfight</button>
+                <button class="reason-btn rounded-xl border border-white/[0.08] bg-white/[0.012] px-3 py-3 text-left text-xs font-semibold text-slate-400" data-reason="Enemy response risk">Enemy response risk</button>
+                <button class="reason-btn rounded-xl border border-white/[0.08] bg-white/[0.012] px-3 py-3 text-left text-xs font-semibold text-slate-400" data-reason="I was not sure">I was not sure</button>
+              </div>
+            </section>
+
+            <section id="learnSection" class="glass rounded-2xl border border-white/[0.07] p-5 sm:p-6">
+              <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                <div>
+                  <p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">3 / Learn</p>
+                  <h3 class="mt-1 text-xl font-semibold text-white">How do you want to review this draft?</h3>
+                </div>
+                <p id="reasonStatus" class="text-xs text-slate-600">Choose what mattered first.</p>
+              </div>
+
+              <div class="mt-5 grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
+                <button class="mode-btn active rounded-xl border border-signal/35 bg-signal/[0.08] px-3 py-3 text-left" data-mode="missed"><p class="text-xs font-semibold text-white">Show what I missed</p><p class="mt-1 text-[10px] leading-4 text-slate-500">Compare your stated reason with Hermod's diagnosis.</p></button>
+                <button class="mode-btn rounded-xl border border-white/[0.08] bg-white/[0.012] px-3 py-3 text-left" data-mode="tradeoff"><p class="text-xs font-semibold text-slate-300">Explain the tradeoff</p><p class="mt-1 text-[10px] leading-4 text-slate-600">Replay the viable choices and what each offered.</p></button>
+                <button class="mode-btn rounded-xl border border-white/[0.08] bg-white/[0.012] px-3 py-3 text-left" data-mode="quiz"><p class="text-xs font-semibold text-slate-300">Quiz me</p><p class="mt-1 text-[10px] leading-4 text-slate-600">Practice the concept in a similar draft.</p></button>
+                <button class="mode-btn rounded-xl border border-white/[0.08] bg-white/[0.012] px-3 py-3 text-left" data-mode="counterfactual"><p class="text-xs font-semibold text-slate-300">Show counterfactual</p><p class="mt-1 text-[10px] leading-4 text-slate-600">See how the draft changes with the other choice.</p></button>
+              </div>
+
+              <div id="modeContent" class="mt-5"></div>
+            </section>
+          </div>
+
+          <aside class="space-y-5">
+            <section class="glass rounded-2xl border border-white/[0.07] p-5">
+              <div class="flex items-center justify-between"><p class="text-[10px] font-bold uppercase tracking-[.17em] text-slate-600">Decision record</p><span class="h-1.5 w-1.5 rounded-full bg-good"></span></div>
+              <div class="mt-4 flex items-center gap-3"><img id="railActualIcon" class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Ahri.png" alt="Ahri"><div><p id="railActual" class="text-sm font-semibold text-white">Ahri locked</p><p id="railMeta" class="mt-0.5 text-[10px] text-slate-600">B3 · MID · vs Zed</p></div></div>
+              <div class="mt-5 space-y-0 text-xs">
+                <div class="context-row flex items-center justify-between py-3"><span class="text-slate-600">Hermod recommendation</span><span id="railRec" class="font-semibold text-signal2">Orianna</span></div>
+                <div class="context-row flex items-center justify-between py-3"><span class="text-slate-600">Actual lock</span><span id="railLock" class="font-semibold text-white">Ahri</span></div>
+                <div class="context-row flex items-center justify-between py-3"><span class="text-slate-600">Your stated reason</span><span id="railReason" class="max-w-[130px] text-right font-semibold text-slate-500">Not recorded</span></div>
+              </div>
+            </section>
+
+            <section class="learning-banner rounded-2xl border border-signal/16 p-5">
+              <div class="flex items-center justify-between"><p class="text-[10px] font-bold uppercase tracking-[.17em] text-signal2">Learning signal</p><span class="rounded-md border border-signal/20 bg-signal/[0.06] px-2 py-1 text-[8px] font-bold uppercase tracking-[.1em] text-signal2">Drafting</span></div>
+              <h3 id="learningTitle" class="mt-4 text-base font-semibold text-white">Waiting for your reason</h3>
+              <p id="learningText" class="mt-2 text-xs leading-5 text-slate-500">Once you say what mattered, Hermod can compare your decision model with the strategic factors it believed were decisive.</p>
+              <div id="conceptTags" class="mt-4 hidden flex-wrap gap-2">
+                <span class="rounded-md border border-signal/18 bg-signal/[0.05] px-2 py-1 font-mono text-[9px] text-signal2">FOLLOW_UP</span>
+                <span class="rounded-md border border-blue/18 bg-blue/[0.04] px-2 py-1 font-mono text-[9px] text-blue">ZONE_CONTROL</span>
+              </div>
+            </section>
+
+            <section class="glass rounded-2xl border border-white/[0.07] p-5">
+              <p class="text-[10px] font-bold uppercase tracking-[.17em] text-slate-600">What Hermod keeps separate</p>
+              <div class="mt-4 space-y-3 text-xs">
+                <div class="rounded-xl border border-white/[0.055] bg-white/[0.012] p-3"><p class="font-semibold text-slate-300">What happened</p><p class="mt-1 leading-5 text-slate-600">The actual champion you locked and the draft state at that moment.</p></div>
+                <div class="rounded-xl border border-white/[0.055] bg-white/[0.012] p-3"><p class="font-semibold text-slate-300">What you believed</p><p class="mt-1 leading-5 text-slate-600">The reason you say mattered when making the decision.</p></div>
+                <div class="rounded-xl border border-white/[0.055] bg-white/[0.012] p-3"><p class="font-semibold text-slate-300">What Hermod inferred</p><p class="mt-1 leading-5 text-slate-600">The strategic mechanisms its ontology says drove the recommendation.</p></div>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="fixed bottom-5 right-5 hidden rounded-xl border border-signal/20 bg-[#0b1420]/95 px-4 py-3 text-xs text-slate-300 shadow-2xl backdrop-blur-xl">Prototype action</div>
+
+  <script>
+    const D = 'https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/';
+    const decisions = {
+      zed: {
+        actual:'Ahri', actualFile:'Ahri.png', enemy:'Zed', enemyFile:'Zed.png', rec:'Orianna', slot:'B3',
+        title:'Ahri into Zed · B3 Mid', subtitle:'Hermod recommended Orianna. You locked Ahri.',
+        diagnosisTitle:'You optimized the lane; Hermod optimized the full composition.',
+        diagnosis:'Your choice emphasized personal safety and mobility into Zed. Hermod rated that as real value, but believed the larger decision hinged on reliable follow-up for Gnar + Lee Sin and stronger objective control.',
+        missed:['FOLLOW_UP','ZONE_CONTROL'],
+        counterActual:'Ahri gives you more independent mobility and pick threat.',
+        counterOther:'Orianna gives the team more reliable follow-up and objective control.',
+      },
+      akali: {
+        actual:'Orianna', actualFile:'Orianna.png', enemy:'Akali', enemyFile:'Akali.png', rec:'Orianna', slot:'R3',
+        title:'Orianna into Akali · R3 Mid', subtitle:'Hermod recommended Orianna. You locked Orianna.',
+        diagnosisTitle:'Your decision matched the recommendation, but the reason still matters.',
+        diagnosis:'The lock was consistent with Hermod. The useful review is whether you chose it for the same strategic reason: preserving teamfight control while avoiding unnecessary execution risk into Akali.',
+        missed:['TEAMFIGHT_CONTROL','EXECUTION_RISK'],
+        counterActual:'Orianna preserved the team's front-to-back plan and gave reliable follow-up.',
+        counterOther:'Ahri would have added more mobility, but less stable zone control around objectives.',
+      },
+      syndra: {
+        actual:'Syndra', actualFile:'Syndra.png', enemy:'Viktor', enemyFile:'Viktor.png', rec:'Ahri', slot:'B4',
+        title:'Syndra into Viktor · B4 Mid', subtitle:'Hermod recommended Ahri. You locked Syndra.',
+        diagnosisTitle:'You valued scaling; Hermod valued access and tempo.',
+        diagnosis:'Syndra's scaling and range were reasonable, but Hermod believed the draft needed a champion that could create earlier picks and reach priority targets more reliably.',
+        missed:['PICK_THREAT','BACKLINE_ACCESS'],
+        counterActual:'Syndra improves range, burst, and later-game control.',
+        counterOther:'Ahri gives earlier pick threat and more reliable access to exposed targets.',
+      }
+    };
+
+    let currentDecision = 'zed';
+    let currentReason = '';
+    let currentMode = 'missed';
+    let quizAnswer = '';
+    let quizReason = '';
+
+    const el = id => document.getElementById(id);
+    const toast = msg => { const t=el('toast'); t.textContent=msg; t.classList.remove('hidden'); clearTimeout(window.__toast); window.__toast=setTimeout(()=>t.classList.add('hidden'),1800); };
+
+    function stage(active) {
+      const s2=el('stage2dot'), s3=el('stage3dot'), t2=el('stage2title'), t3=el('stage3title');
+      [s2,s3].forEach(x=>x.className='grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.11] bg-white/[0.02] text-[11px] font-bold text-slate-600');
+      t2.className='text-[11px] font-bold uppercase tracking-[.14em] text-slate-500';
+      t3.className='text-[11px] font-bold uppercase tracking-[.14em] text-slate-500';
+      if(active>=2){ s2.className='grid h-7 w-7 shrink-0 place-items-center rounded-full border border-good/30 bg-good/[0.06] text-[11px] font-bold text-good'; t2.className='text-[11px] font-bold uppercase tracking-[.14em] text-slate-400'; }
+      if(active===2){ s2.className='grid h-7 w-7 shrink-0 place-items-center rounded-full border border-signal/70 bg-signal/15 text-[11px] font-bold text-signal2'; t2.className='text-[11px] font-bold uppercase tracking-[.14em] text-signal2'; }
+      if(active>=3){ s3.className='grid h-7 w-7 shrink-0 place-items-center rounded-full border border-signal/70 bg-signal/15 text-[11px] font-bold text-signal2'; t3.className='text-[11px] font-bold uppercase tracking-[.14em] text-signal2'; }
+    }
+
+    function applyDecision(key){
+      currentDecision=key; currentReason=''; quizAnswer=''; quizReason='';
+      const d=decisions[key];
+      document.querySelectorAll('.decision-card').forEach(b=>b.classList.toggle('selected',b.dataset.decision===key));
+      el('actualHero').src=D+d.actualFile; el('actualHero').alt=d.actual;
+      el('decisionTitle').textContent=d.title; el('decisionSubtitle').textContent=d.subtitle;
+      el('enemyMidIcon').src=D+d.enemyFile; el('enemyMidIcon').alt=d.enemy;
+      el('railActualIcon').src=D+d.actualFile; el('railActualIcon').alt=d.actual;
+      el('railActual').textContent=d.actual+' locked'; el('railMeta').textContent=d.slot+' · MID · vs '+d.enemy;
+      el('railRec').textContent=d.rec; el('railLock').textContent=d.actual; el('railReason').textContent='Not recorded';
+      document.querySelectorAll('.reason-btn').forEach(b=>b.classList.remove('active'));
+      el('reasonStatus').textContent='Choose what mattered first.';
+      el('learningTitle').textContent='Waiting for your reason';
+      el('learningText').textContent='Once you say what mattered, Hermod can compare your decision model with the strategic factors it believed were decisive.';
+      el('conceptTags').classList.add('hidden');
+      stage(1); renderMode();
+    }
+
+    function setReason(reason, button){
+      currentReason=reason;
+      document.querySelectorAll('.reason-btn').forEach(b=>b.classList.remove('active')); button.classList.add('active');
+      el('railReason').textContent=reason; el('reasonStatus').textContent='Recorded: '+reason;
+      const d=decisions[currentDecision];
+      el('learningTitle').textContent=d.diagnosisTitle;
+      el('learningText').textContent=d.diagnosis;
+      el('conceptTags').innerHTML=d.missed.map(x=>`<span class="rounded-md border border-signal/18 bg-signal/[0.05] px-2 py-1 font-mono text-[9px] text-signal2">${x}</span>`).join('');
+      el('conceptTags').classList.remove('hidden'); el('conceptTags').classList.add('flex');
+      stage(3); renderMode();
+    }
+
+    function missedMarkup(d){
+      if(!currentReason){
+        return `<div class="rounded-2xl border border-dashed border-white/[0.09] bg-black/10 px-5 py-7 text-center fade-in"><p class="text-sm font-semibold text-slate-300">Tell Hermod what mattered to you first.</p><p class="mt-1 text-xs text-slate-600">The review compares your stated decision model with Hermod's, so it should not invent your reason after the fact.</p></div>`;
+      }
+      return `<div class="grid gap-4 lg:grid-cols-2 fade-in">
+        <div class="rounded-2xl border border-blue/15 bg-blue/[0.035] p-5">
+          <p class="text-[9px] font-bold uppercase tracking-[.16em] text-blue">What you said mattered</p>
+          <h4 class="mt-3 text-lg font-semibold text-white">${currentReason}</h4>
+          <p class="mt-2 text-xs leading-5 text-slate-500">This is recorded as your stated reason. Hermod does not overwrite it based on the result.</p>
+        </div>
+        <div class="insight-card rounded-2xl border border-signal/18 bg-signal/[0.035] p-5">
+          <p class="text-[9px] font-bold uppercase tracking-[.16em] text-signal2">What Hermod thinks mattered most</p>
+          <h4 class="mt-3 text-lg font-semibold text-white">${d.missed.join(' + ').replaceAll('_',' ')}</h4>
+          <p class="mt-2 text-xs leading-5 text-slate-500">${d.diagnosis}</p>
+        </div>
+        <div class="lg:col-span-2 rounded-2xl border border-white/[0.065] bg-black/10 p-5">
+          <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div><p class="text-[9px] font-bold uppercase tracking-[.16em] text-warn">Learning opportunity</p><h4 class="mt-2 text-base font-semibold text-white">The useful gap is the reasoning, not whether the champion was simply “right.”</h4><p class="mt-2 max-w-3xl text-xs leading-5 text-slate-500">Practice recognizing when composition-level needs should outweigh the most obvious lane-level advantage.</p></div>
+            <button data-switch="quiz" class="switch-mode shrink-0 rounded-xl border border-signal/25 bg-signal/[0.08] px-4 py-3 text-xs font-bold text-signal2 hover:bg-signal/[0.12]">Practice a similar spot →</button>
+          </div>
+        </div>
+      </div>`;
+    }
+
+    function tradeoffMarkup(d){
+      const alt=d.rec;
+      return `<div class="space-y-4 fade-in">
+        <div class="grid gap-3 md:grid-cols-[1fr_auto_1fr] md:items-center">
+          <div class="rounded-2xl border border-white/[0.07] bg-black/10 p-4"><div class="flex items-center gap-3"><img class="mini-champ" src="${D+d.actualFile}" alt="${d.actual}"><div><p class="text-[9px] uppercase tracking-[.14em] text-slate-600">You locked</p><p class="text-sm font-semibold text-white">${d.actual}</p></div></div></div>
+          <div class="text-center font-mono text-[9px] text-slate-700">VERSUS</div>
+          <div class="rounded-2xl border border-signal/15 bg-signal/[0.025] p-4"><div class="flex items-center gap-3"><img class="mini-champ" src="${D+(alt==='Orianna'?'Orianna.png':'Ahri.png')}" alt="${alt}"><div><p class="text-[9px] uppercase tracking-[.14em] text-signal2">Hermod recommended</p><p class="text-sm font-semibold text-white">${alt}</p></div></div></div>
+        </div>
+        <div class="comparison-grid rounded-2xl border border-white/[0.06] bg-black/10 p-5">
+          ${metric('Lane safety', currentDecision==='zed'?74:63, currentDecision==='zed'?82:68, d.actual, alt)}
+          ${metric('Composition fit', currentDecision==='zed'?58:75, currentDecision==='zed'?91:82, d.actual, alt)}
+          ${metric('Playmaking', d.actual==='Ahri'?90:68, alt==='Ahri'?90:66, d.actual, alt)}
+          ${metric('Teamfight reliability', d.actual==='Orianna'?91:70, alt==='Orianna'?91:76, d.actual, alt)}
+        </div>
+        <div class="grid gap-3 lg:grid-cols-2"><div class="rounded-xl border border-white/[0.06] bg-white/[0.012] p-4"><p class="text-[9px] font-bold uppercase tracking-[.14em] text-blue">What your lock buys</p><p class="mt-2 text-xs leading-5 text-slate-400">${d.counterActual}</p></div><div class="rounded-xl border border-signal/14 bg-signal/[0.025] p-4"><p class="text-[9px] font-bold uppercase tracking-[.14em] text-signal2">What the recommendation buys</p><p class="mt-2 text-xs leading-5 text-slate-400">${d.counterOther}</p></div></div>
+      </div>`;
+    }
+
+    function metric(label,a,b,an,bn){
+      return `<div class="py-3 first:pt-0 last:pb-0"><div class="mb-2 flex items-center justify-between text-[10px]"><span class="font-semibold text-slate-400">${label}</span><span class="text-slate-700">${an} ${a} · ${bn} ${b}</span></div><div class="grid grid-cols-2 gap-2"><div class="bar-track"><div class="bar-fill opacity-60" style="width:${a}%"></div></div><div class="bar-track"><div class="bar-fill" style="width:${b}%"></div></div></div></div>`;
+    }
+
+    function quizMarkup(){
+      return `<div class="space-y-5 fade-in">
+        <div class="rounded-2xl border border-signal/14 bg-signal/[0.025] p-5">
+          <p class="text-[9px] font-bold uppercase tracking-[.16em] text-signal2">Practice scenario</p>
+          <h4 class="mt-2 text-lg font-semibold text-white">Your team already has reliable engage. Which Mid pick best adds dependable follow-up and objective control?</h4>
+          <p class="mt-2 text-xs leading-5 text-slate-500">Similar strategic shape, different champions. Choose the pick first, then explain why.</p>
+        </div>
+        <div>
+          <p class="mb-2 text-[9px] font-bold uppercase tracking-[.14em] text-slate-600">Choose a champion</p>
+          <div class="grid gap-2 sm:grid-cols-3">
+            ${quizChampion('Orianna','Orianna.png','Control / follow-up')}
+            ${quizChampion('Ahri','Ahri.png','Mobility / pick')}
+            ${quizChampion('Syndra','Syndra.png','Burst / range')}
+          </div>
+        </div>
+        <div id="quizReasonWrap" class="${quizAnswer?'':'opacity-40 pointer-events-none'}">
+          <p class="mb-2 text-[9px] font-bold uppercase tracking-[.14em] text-slate-600">Why?</p>
+          <div class="grid gap-2 sm:grid-cols-2">
+            ${quizReasonButton('Better lane matchup')}
+            ${quizReasonButton('We already have engage, so this adds reliable follow-up')}
+            ${quizReasonButton('More side-lane pressure')}
+            ${quizReasonButton('Lower mechanical difficulty')}
+          </div>
+        </div>
+        <div id="quizFeedback">${quizFeedback()}</div>
+      </div>`;
+    }
+    function quizChampion(name,file,sub){ return `<button class="quiz-choice ${quizAnswer===name?'active':''} rounded-xl border border-white/[0.08] bg-white/[0.012] p-3 text-left" data-quiz-choice="${name}"><div class="flex items-center gap-3"><img class="mini-champ" src="${D+file}" alt="${name}"><div><p class="text-sm font-semibold text-white">${name}</p><p class="mt-0.5 text-[9px] text-slate-600">${sub}</p></div></div></button>`; }
+    function quizReasonButton(text){ return `<button class="quiz-reason ${quizReason===text?'active':''} rounded-xl border border-white/[0.08] bg-white/[0.012] px-3 py-3 text-left text-xs text-slate-400" data-quiz-reason="${text}">${text}</button>`; }
+    function quizFeedback(){
+      if(!quizAnswer || !quizReason) return '';
+      const correct = quizAnswer==='Orianna' && quizReason==='We already have engage, so this adds reliable follow-up';
+      if(correct) return `<div class="rounded-xl border border-good/18 bg-good/[0.04] p-4 fade-in"><p class="text-xs font-semibold text-good">Concept understood</p><p class="mt-1 text-xs leading-5 text-slate-500">You selected the champion and the strategic mechanism Hermod was testing: existing engage makes dependable follow-up more valuable than adding another initiation pattern.</p></div>`;
+      return `<div class="rounded-xl border border-warn/18 bg-warn/[0.035] p-4 fade-in"><p class="text-xs font-semibold text-warn">Look at the mechanism, not only the champion</p><p class="mt-1 text-xs leading-5 text-slate-500">The target concept is composition fit: when engage already exists, a pick that reliably converts that engage can be more valuable than simply winning lane or adding mobility.</p></div>`;
+    }
+
+    function counterfactualMarkup(d){
+      return `<div class="space-y-4 fade-in">
+        <div class="grid gap-3 lg:grid-cols-2">
+          <div class="rounded-2xl border border-white/[0.07] bg-black/10 p-5"><p class="text-[9px] font-bold uppercase tracking-[.16em] text-slate-600">Recorded branch</p><div class="mt-3 flex items-center gap-3"><img class="hero-champ" src="${D+d.actualFile}" alt="${d.actual}"><div><p class="text-lg font-semibold text-white">Lock ${d.actual}</p><p class="mt-1 text-xs leading-5 text-slate-500">${d.counterActual}</p></div></div></div>
+          <div class="rounded-2xl border border-signal/20 bg-signal/[0.035] p-5"><p class="text-[9px] font-bold uppercase tracking-[.16em] text-signal2">Alternative branch</p><div class="mt-3 flex items-center gap-3"><img class="hero-champ" src="${D+(d.rec==='Orianna'?'Orianna.png':'Ahri.png')}" alt="${d.rec}"><div><p class="text-lg font-semibold text-white">Lock ${d.rec}</p><p class="mt-1 text-xs leading-5 text-slate-500">${d.counterOther}</p></div></div></div>
+        </div>
+        <div class="rounded-2xl border border-white/[0.06] bg-black/10 p-5"><p class="text-[9px] font-bold uppercase tracking-[.16em] text-warn">What changes?</p><div class="mt-4 grid gap-3 sm:grid-cols-3"><div class="rounded-xl border border-white/[0.05] bg-white/[0.01] p-3"><p class="text-[9px] uppercase tracking-[.12em] text-slate-600">Lane plan</p><p class="mt-2 text-xs leading-5 text-slate-400">Different trading and safety profile.</p></div><div class="rounded-xl border border-white/[0.05] bg-white/[0.01] p-3"><p class="text-[9px] uppercase tracking-[.12em] text-slate-600">Teamfight plan</p><p class="mt-2 text-xs leading-5 text-slate-400">Changes how reliably your engage converts into damage.</p></div><div class="rounded-xl border border-white/[0.05] bg-white/[0.01] p-3"><p class="text-[9px] uppercase tracking-[.12em] text-slate-600">Opponent incentives</p><p class="mt-2 text-xs leading-5 text-slate-400">Changes which responses are attractive later in the draft.</p></div></div></div>
+        <p class="text-[10px] leading-5 text-slate-600">This is a draft counterfactual, not a claim about the eventual game outcome. Hermod is replaying the decision state with a different action.</p>
+      </div>`;
+    }
+
+    function renderMode(){
+      const d=decisions[currentDecision];
+      let html='';
+      if(currentMode==='missed') html=missedMarkup(d);
+      if(currentMode==='tradeoff') html=tradeoffMarkup(d);
+      if(currentMode==='quiz') html=quizMarkup();
+      if(currentMode==='counterfactual') html=counterfactualMarkup(d);
+      el('modeContent').innerHTML=html;
+      bindDynamic();
+    }
+
+    function bindDynamic(){
+      document.querySelectorAll('.switch-mode').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.switch)));
+      document.querySelectorAll('[data-quiz-choice]').forEach(b=>b.addEventListener('click',()=>{ quizAnswer=b.dataset.quizChoice; quizReason=''; renderMode(); }));
+      document.querySelectorAll('[data-quiz-reason]').forEach(b=>b.addEventListener('click',()=>{ quizReason=b.dataset.quizReason; renderMode(); }));
+    }
+
+    function setMode(mode){
+      currentMode=mode;
+      document.querySelectorAll('.mode-btn').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));
+      renderMode();
+    }
+
+    document.querySelectorAll('.decision-card').forEach(b=>b.addEventListener('click',()=>applyDecision(b.dataset.decision)));
+    document.querySelectorAll('.reason-btn').forEach(b=>b.addEventListener('click',()=>setReason(b.dataset.reason,b)));
+    document.querySelectorAll('.mode-btn').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
+    el('viewHistory').addEventListener('click',()=>toast('Decision History would open here.'));
+
+    renderMode();
+  </script>
+</body>
+</html>

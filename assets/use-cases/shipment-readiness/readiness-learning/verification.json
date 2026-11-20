@@ -1,0 +1,938 @@
+{
+  "format": "shipment-readiness-learning-capture/1",
+  "capturedAt": "2026-11-20T02:04:57.544Z",
+  "repository": "hermodlabs/sample_code",
+  "sourceCommit": "f3584a5ec5aef6594b640b5e9d10f8e06041d4eb",
+  "method": "Unmodified qualified sample reports opened as local files in Chrome. Native rectangular captures and normal disclosures only; no DOM, styles, state or findings are injected.",
+  "qualification": "qualification.json",
+  "sourceChecks": [
+    {
+      "file": ".gitignore",
+      "blob": "6024e02197a4afc2d2fdb57c92df7e45b81de2ee",
+      "sha256": "6dc8b120d9ee258c5f8108047811923371b1d3f133b747315b1549bae9b5697f",
+      "bytes": 39
+    },
+    {
+      "file": "README.md",
+      "blob": "1a9bc6d06a4a815ba73c3c0e58f8c7d04c4bd2b5",
+      "sha256": "f9e034a19cf24a1e2cd3c45e3c53d2e2dcebdc52d0741044580d3d47f09c4569",
+      "bytes": 11716
+    },
+    {
+      "file": "assess.py",
+      "blob": "ed65bc476d9c85d6a0aa3fa800b0007554a94537",
+      "sha256": "b13fd1726a92f39006d8e850b11cf9c3b5ca9ce42a9c98ee112ed352ea3de678",
+      "bytes": 2541
+    },
+    {
+      "file": "data/cases/high-fee.json",
+      "blob": "74b768df4f5b5f5cbdd07c7df11fb23f5a6f76ac",
+      "sha256": "e52e30f8647fcf0137c43dc820aada4b534d69b1998fb7657086d104a63e638e",
+      "bytes": 511
+    },
+    {
+      "file": "data/cases/late.json",
+      "blob": "ac2db0281916ccfb08102729744aa0e91071a24f",
+      "sha256": "0c8d51f18adb10789a306eaedab6db0f082ae1d6edf76d80ee941f8b0a443130",
+      "bytes": 524
+    },
+    {
+      "file": "data/cases/timely.json",
+      "blob": "6a649cc399c05d71c69e8adc78b34f602ccdf3a9",
+      "sha256": "2a6a7626cd5af89cf995a177967f43328de74eaf9993a420960579c3094ce799",
+      "bytes": 499
+    },
+    {
+      "file": "data/cases/unsupported.json",
+      "blob": "f24d0cf0f5bb2f11208660cab46448617938355d",
+      "sha256": "96c9d702afaf11d7531299e91531197d9a8fd7d443a02aebf043c997ae7ce299",
+      "bytes": 519
+    },
+    {
+      "file": "data/config.json",
+      "blob": "9370b32c0b83897e458d64775e02b254248a17af",
+      "sha256": "ea6750d8787b935ffe9f013b9c472b36f1ea5586c6110ec4d288eb642d3395ce",
+      "bytes": 344
+    },
+    {
+      "file": "data/generate_apps.py",
+      "blob": "c4e4238f0c4fbadba093e7df9daf901ea10dbe8c",
+      "sha256": "49a7441dc379adc5a0c3af569370457fe5d6e629847d7612557eeb02320b9913",
+      "bytes": 2571
+    },
+    {
+      "file": "data/generate_history.py",
+      "blob": "3a813773aa3d99924b51e4f88b1006a486ac8bbd",
+      "sha256": "763abd4e51ca5bf084368fb637e54795f3beb1a25822eb215d4dadaa512cc538",
+      "bytes": 2884
+    },
+    {
+      "file": "data/history.csv",
+      "blob": "05cf2af25a04eef9abb877183ce867f268c1c973",
+      "sha256": "35b0e8dac987885ecb92428fc83f056ca282b6d99f5a3ff6e736abe6d1f4ca70",
+      "bytes": 157229
+    },
+    {
+      "file": "data/learning.app.json",
+      "blob": "f44a54106ac760a10e24be57ac546bb317cadf9d",
+      "sha256": "337e726621ff93f7d0993f17fb8bc65d8977d96782295ae2da8b71b912ca3437",
+      "bytes": 27972
+    },
+    {
+      "file": "data/learning.model.json",
+      "blob": "2e5e735eba09c1c89a6c087404ed6a7cab715b64",
+      "sha256": "e11eda79e0c859647b4276b66bce445a747d695f3b6a7691b023e582f0e7a3c4",
+      "bytes": 9359
+    },
+    {
+      "file": "data/planning.app.json",
+      "blob": "9d4a23e94c2812f63c38fe2e8e3a00f5486e75f1",
+      "sha256": "be4a77635ba4fde0d1318aaa8472b8e57996785e606371c2f5b5d52477b5131a",
+      "bytes": 64491
+    },
+    {
+      "file": "data/planning.model.json",
+      "blob": "cf02055e6a0b94406856874d471dfc30fed0ca09",
+      "sha256": "e4a39c1ef7491ab38bac18ac291cc69b68b56dbd1576c6eaf841bc4118526c89",
+      "bytes": 40708
+    },
+    {
+      "file": "data/training-policy.json",
+      "blob": "5959ee227afa2e8c620f474ad216389d6e4d6084",
+      "sha256": "64b4fdd5d101b95bc498932cbeba9f7a8a2b9e44f95a6359cce7347d94e00097",
+      "bytes": 860
+    },
+    {
+      "file": "decision.py",
+      "blob": "6e509448d5019b1dbe428e5e8ca2ff722b5b8a8d",
+      "sha256": "34374603a238640663f3b977f4f176d6a292e0dbb8c4bd7fdd2baac033d75fce",
+      "bytes": 18669
+    },
+    {
+      "file": "estimation.py",
+      "blob": "ecda118b14462481916109b81587ddc8ea4d2bbf",
+      "sha256": "f2a67796f957c999b83e457e1eaa8d247c18f718a028bc94d75f57b7c17d9f39",
+      "bytes": 8688
+    },
+    {
+      "file": "qualification.json",
+      "blob": "b2b7110447a42b3e127e179c2c11e82f9c6a54b4",
+      "sha256": "95e8f0ab2291fe82c9096f7acfe06947ce40bde82b2edcc13960d2f2ce89aa3c",
+      "bytes": 18761
+    },
+    {
+      "file": "report.py",
+      "blob": "f4802c405672e5a95beceec66b2145f4f9c920d7",
+      "sha256": "e84d360eed0239e11395d32447e097cd69520cef863bbdcfa472d78511aee750",
+      "bytes": 16675
+    },
+    {
+      "file": "requirements.lock.txt",
+      "blob": "5cbde47158eb6e0a02734fab1fb74466da2d7eea",
+      "sha256": "145831630d43035de068e1d9806133901b7f7d9d14599e44feeddbcf0df720c2",
+      "bytes": 282
+    },
+    {
+      "file": "requirements.txt",
+      "blob": "49582ac2b38dcda8ba743e3153deb12b4280d58c",
+      "sha256": "db2017b57a3b6ca1866a04096426af4f2b7d44055ed08d0a843b52e7fc5e657c",
+      "bytes": 208
+    },
+    {
+      "file": "test/test_decision.py",
+      "blob": "57783295cb460f358c5f68238708fc3307623dec",
+      "sha256": "43a9edc34b8344c083b7ec04289b69b268db56773328b4c99d72f54c32e5edcc",
+      "bytes": 9062
+    },
+    {
+      "file": "test/test_estimation.py",
+      "blob": "bce608f9f0277dd20a975a38cbf4041543f28fbb",
+      "sha256": "f3ef3401356b78e4a79535fbd38bfcbfc0003db28966d021cf0fa5d57ef20b5c",
+      "bytes": 8074
+    },
+    {
+      "file": "train.py",
+      "blob": "218e4b704e1a1aaaddaaeb3f932bbf3afb793e93",
+      "sha256": "f449d257f9c99d77a4a003a18337b6208361cf03a09ed44c92660ef4b4c855c7",
+      "bytes": 13864
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "qualification.json",
+      "sha256": "95e8f0ab2291fe82c9096f7acfe06947ce40bde82b2edcc13960d2f2ce89aa3c",
+      "bytes": 18761
+    },
+    {
+      "file": "reports/high-fee/business.case.json",
+      "sha256": "ae7f13e6009852a6f065ba3e586398ad3e4fd0f9b737f402688b63ae400c5215",
+      "bytes": 404
+    },
+    {
+      "file": "reports/high-fee/estimates.proposal.json",
+      "sha256": "46b61518e40c7b09a040491d48df4bd61b4f0d763ddc5ffc0aa7bf8ff713c37a",
+      "bytes": 5513
+    },
+    {
+      "file": "reports/high-fee/estimates.review.json",
+      "sha256": "e8ea6de066ddc04d630c53c480c11cb2ed334f3d5b7773cbe8c23061a57f347f",
+      "bytes": 329
+    },
+    {
+      "file": "reports/high-fee/learning.bound-case.json",
+      "sha256": "0654be9d39ee71f741b5a0d9f603e3b5cef7a416fd9f64bf171821fc936cc6b8",
+      "bytes": 18383
+    },
+    {
+      "file": "reports/high-fee/learning.case.json",
+      "sha256": "beb5b4861c059fcf3f99dea7307061ef63a774c9cf87ed4957665674a93d7b92",
+      "bytes": 4203
+    },
+    {
+      "file": "reports/high-fee/learning.model.json",
+      "sha256": "9a4a0ce8aa3d88faab301d2842c3b77accbc3088eab33ebc98053910c2e31867",
+      "bytes": 8688
+    },
+    {
+      "file": "reports/high-fee/learning.proposal.json",
+      "sha256": "6e9a73cfdb08966505e5223df2994fd8a5023fbeeae9e437967066a326ec9804",
+      "bytes": 4591
+    },
+    {
+      "file": "reports/high-fee/learning.report.json",
+      "sha256": "5c0a2bee1b540d13aa75fb9ae225ecf3d7f298a71357fe9b41224b1e17b25443",
+      "bytes": 174290
+    },
+    {
+      "file": "reports/high-fee/learning.run.json",
+      "sha256": "3b38d58aed6093b14a1f06543ab06b49f909458086934626a7a0d64def9dd826",
+      "bytes": 207269
+    },
+    {
+      "file": "reports/high-fee/planning-baseline.assessment.json",
+      "sha256": "7e35e98b69559f34f61dfc8a0cd50073b42cb0af14877d383958f70ca3e3cbff",
+      "bytes": 24409
+    },
+    {
+      "file": "reports/high-fee/planning-baseline.bound-case.json",
+      "sha256": "dee88e8dfedb7ff98428ec96a15e04fef044c41f4d398afc8be6dee7a5b5c0d1",
+      "bytes": 30965
+    },
+    {
+      "file": "reports/high-fee/planning-baseline.case.json",
+      "sha256": "47e7f2f8552d5d6f2e2992400548733850962be238845b00771d8ed3611fa3fd",
+      "bytes": 3632
+    },
+    {
+      "file": "reports/high-fee/planning-baseline.model.json",
+      "sha256": "24dfe3ac925644cab67bd4b638a2d59d7119b872bfe597613d4c00a900368bc2",
+      "bytes": 22290
+    },
+    {
+      "file": "reports/high-fee/planning-baseline.report.json",
+      "sha256": "df638198b2a48def5807ad288df09afe9e2a9262a497cb5615d086f9ff8ae3e9",
+      "bytes": 146264
+    },
+    {
+      "file": "reports/high-fee/planning-baseline.run.json",
+      "sha256": "d0456ad6296dd1f8e4772aca439ac127c83032466dca6a577d32535590cfe301",
+      "bytes": 179439
+    },
+    {
+      "file": "reports/high-fee/planning-study.assessment.json",
+      "sha256": "8df4eefdb027a25678932d1083690d87a6235bd2020e935aded8edb56ffecc61",
+      "bytes": 24711
+    },
+    {
+      "file": "reports/high-fee/planning-study.bound-case.json",
+      "sha256": "1766f3eabc7d558e35f1a5d0518869460d86df46af3860c086ec4f95e79334dc",
+      "bytes": 30986
+    },
+    {
+      "file": "reports/high-fee/planning-study.case.json",
+      "sha256": "7498242790665529f8ed89773b2bd9473e3a9735b2f26e3e3fd04343295c290e",
+      "bytes": 3639
+    },
+    {
+      "file": "reports/high-fee/planning-study.model.json",
+      "sha256": "5de711cd6a360ccea33490ba996dc49807c414721fcf31e6bcf0640e6304c6c6",
+      "bytes": 22297
+    },
+    {
+      "file": "reports/high-fee/planning-study.report.json",
+      "sha256": "96c8326b41e5d5c3544f2dbe5b07a9f461078e83040170cb2ec69ec44f1a0994",
+      "bytes": 147143
+    },
+    {
+      "file": "reports/high-fee/planning-study.run.json",
+      "sha256": "f0e6ddbda9c4a1635d6a19e717cff02332bd40f8c29c4b57c42e561062c998f0",
+      "bytes": 180333
+    },
+    {
+      "file": "reports/high-fee/report.html",
+      "sha256": "b57e6f9bbb931be5c10baf23c9e863871c33abcd37732d46fecc41d6c90539a0",
+      "bytes": 10870
+    },
+    {
+      "file": "reports/high-fee/sensitivity-10.run.json",
+      "sha256": "ba41897bb828bc3aa8635d7a96437ba51e4da450e192e3dc397d0cefd41944c6",
+      "bytes": 206234
+    },
+    {
+      "file": "reports/high-fee/sensitivity-30.run.json",
+      "sha256": "9481395cc4c61e4093c52bf5a28b0ef8e62d8f99b547d170dfa915179e673c50",
+      "bytes": 206255
+    },
+    {
+      "file": "reports/high-fee/sensitivity-50.run.json",
+      "sha256": "89cbe62d60b1238ca30b766a2787b4f0dea377baad3f9dd883cebf5a1f86e41e",
+      "bytes": 206251
+    },
+    {
+      "file": "reports/high-fee/sensitivity-70.run.json",
+      "sha256": "b2e14315ac957e67950b5f9d490a174dae630e5578533bfe42b42303fb852848",
+      "bytes": 206467
+    },
+    {
+      "file": "reports/high-fee/sensitivity-90.run.json",
+      "sha256": "befe063a1af565eb8403213aa7bda718ad74c45918f44e2979b68d2dd3e449e9",
+      "bytes": 206454
+    },
+    {
+      "file": "reports/high-fee/summary.json",
+      "sha256": "620e53f389460f4e98acdc2e63684a089a5289e9afd4090326e27f89964eb4e7",
+      "bytes": 12265
+    },
+    {
+      "file": "reports/late/business.case.json",
+      "sha256": "e9a61c888737a2233770265b06027d9170b954e0371cc68056ecdd7130618a4d",
+      "bytes": 417
+    },
+    {
+      "file": "reports/late/estimates.proposal.json",
+      "sha256": "46b61518e40c7b09a040491d48df4bd61b4f0d763ddc5ffc0aa7bf8ff713c37a",
+      "bytes": 5513
+    },
+    {
+      "file": "reports/late/estimates.review.json",
+      "sha256": "2ca1775166a4b9815595a35853dd8681652a01af8fd8b18bd5781ccb44fb8d93",
+      "bytes": 329
+    },
+    {
+      "file": "reports/late/learning.bound-case.json",
+      "sha256": "880831c2041d4451f440999e5e4329af020a821774ed104752fd161b9f821417",
+      "bytes": 19050
+    },
+    {
+      "file": "reports/late/learning.case.json",
+      "sha256": "90a5f3f049783443e3463d10c27a4b9938981c566180f585dff6ef0c3361aaa4",
+      "bytes": 4429
+    },
+    {
+      "file": "reports/late/learning.model.json",
+      "sha256": "15192e268479c9f91626874ab8d879d6303c43a0bcba3603eb83c873a041d020",
+      "bytes": 8914
+    },
+    {
+      "file": "reports/late/learning.proposal.json",
+      "sha256": "300e9254c75b42c3863ad5585210246a1924c9dc84347d1716b921763c4266de",
+      "bytes": 4817
+    },
+    {
+      "file": "reports/late/learning.report.json",
+      "sha256": "d835fe85a58f88599ae4b8bae7b0c7fbe81b944c1a9487431c4b939484a5e3b6",
+      "bytes": 187959
+    },
+    {
+      "file": "reports/late/learning.run.json",
+      "sha256": "5c640cf27436ae887359d215593626d1b8f8a31cb1c3d90b6d85f093bd81c31f",
+      "bytes": 222829
+    },
+    {
+      "file": "reports/late/planning-baseline.assessment.json",
+      "sha256": "0084e840e26bcbf0840209b89b46a7a36305cd33a25938643abc68ee062c2c95",
+      "bytes": 24401
+    },
+    {
+      "file": "reports/late/planning-baseline.bound-case.json",
+      "sha256": "d0dea18822bfd3eaf9a341f667bd31e38542aac687ac76a3348b164783a1493d",
+      "bytes": 30941
+    },
+    {
+      "file": "reports/late/planning-baseline.case.json",
+      "sha256": "1d591c71c96cc5bc70ab90417e79b0edbd01eca31a03d60ac06548cacfd3986f",
+      "bytes": 3624
+    },
+    {
+      "file": "reports/late/planning-baseline.model.json",
+      "sha256": "e0a178e1047366d5daf927740fcadeb5cec56f4110ccc89035237ac51804f556",
+      "bytes": 22282
+    },
+    {
+      "file": "reports/late/planning-baseline.report.json",
+      "sha256": "5258efeb6e7f23689d5af7d2b85bdd716cbe80648b5113ac37c9864b0e08cfd7",
+      "bytes": 146220
+    },
+    {
+      "file": "reports/late/planning-baseline.run.json",
+      "sha256": "4c65d53f04a856efe05eaddbe54846fff36a0058bac4cb249f073a6fcf54d156",
+      "bytes": 179363
+    },
+    {
+      "file": "reports/late/planning-study.assessment.json",
+      "sha256": "99c81c7e927f31ee50fe1f6da32f71559d6352d81a13082ec2a887d6233bf0ee",
+      "bytes": 25298
+    },
+    {
+      "file": "reports/late/planning-study.bound-case.json",
+      "sha256": "a44a083239091eeadc02bbb2b2bbc094561d52a2fb31cc4bb5575ff96c7a7027",
+      "bytes": 30959
+    },
+    {
+      "file": "reports/late/planning-study.case.json",
+      "sha256": "d39688478adf9cf86b1f44e9539a093aadfadd3d3bb51c96a77c628b1417d377",
+      "bytes": 3630
+    },
+    {
+      "file": "reports/late/planning-study.model.json",
+      "sha256": "b106069100d99f0f16f962d923331ff80a7b614fb344feaa9243f1e39befa943",
+      "bytes": 22288
+    },
+    {
+      "file": "reports/late/planning-study.report.json",
+      "sha256": "b0d260c36ec82e741a9b823f4bd7b61be4be7de1a9a4d6a0a092ea78b5d6198d",
+      "bytes": 147141
+    },
+    {
+      "file": "reports/late/planning-study.run.json",
+      "sha256": "054915e908fb3f8a880fe79510c9ab620db34e28668ad47e1668f3fd86b61db6",
+      "bytes": 180296
+    },
+    {
+      "file": "reports/late/report.html",
+      "sha256": "98e59fde870cf6c8c3ece3427dc4c361858878d1ff87517db9cd5bca309ed2af",
+      "bytes": 11918
+    },
+    {
+      "file": "reports/late/sensitivity-10.run.json",
+      "sha256": "b9416c85499f6ad8ed7cd2a7216ad915447bca8f88b67577e2ed4acceca1eed3",
+      "bytes": 221792
+    },
+    {
+      "file": "reports/late/sensitivity-30.run.json",
+      "sha256": "6aac5340faa67481507fb444d82652448490d75f13174c5c428b17be90db3b9b",
+      "bytes": 221800
+    },
+    {
+      "file": "reports/late/sensitivity-50.run.json",
+      "sha256": "1cf318d1c38095bd096a7a3bf1cb77cf47782d5f735a6e6665eff2e5564a0077",
+      "bytes": 221804
+    },
+    {
+      "file": "reports/late/sensitivity-70.run.json",
+      "sha256": "334b6469ddb54258ad364a640bfb68b24187a9a8bad7adaab5f35bfd5e3f75b9",
+      "bytes": 222044
+    },
+    {
+      "file": "reports/late/sensitivity-90.run.json",
+      "sha256": "f6e461f48077cbff0b2e0fe08e205dd249dd927d46e2e6852b6c8b01156d9b45",
+      "bytes": 222036
+    },
+    {
+      "file": "reports/late/summary.json",
+      "sha256": "58120eff8bf4bdd2d2ee52d61ee9ea9ba66af020ff34e980f5e919cdbc04020e",
+      "bytes": 15552
+    },
+    {
+      "file": "reports/model/check-statistics.json",
+      "sha256": "55695c8cf7a8b8aa12a91eed78865b6b9c4b8efb16be40b49619a6e377b2bec1",
+      "bytes": 1665
+    },
+    {
+      "file": "reports/model/manifest.json",
+      "sha256": "a823bcfbbf13be63f7a3065962c1ae33c318d128de6c301e79093aef5f0b4389",
+      "bytes": 2445
+    },
+    {
+      "file": "reports/model/model.joblib",
+      "sha256": "7020b3cfd676b7d3cb290f2c32f24c4f7188c0b0697b005c17fd9c6cfd180c8f",
+      "bytes": 2297
+    },
+    {
+      "file": "reports/model/training-policy.json",
+      "sha256": "8869239d8f4ce14f0c0b5c1f67a02c4ff05d5dfa4edacb3dcaa76602fda3f5c9",
+      "bytes": 956
+    },
+    {
+      "file": "reports/model/validation.json",
+      "sha256": "9b66ec0db48b57be806378d27721ecea67eb5546dea15fc814178f66d8bddad5",
+      "bytes": 2880
+    },
+    {
+      "file": "reports/proposal/business.case.json",
+      "sha256": "0e186052f1d000d4572254aface8a86d0ee250c4b1c99918acc7d535b776b803",
+      "bytes": 392
+    },
+    {
+      "file": "reports/proposal/estimates.proposal.json",
+      "sha256": "46b61518e40c7b09a040491d48df4bd61b4f0d763ddc5ffc0aa7bf8ff713c37a",
+      "bytes": 5513
+    },
+    {
+      "file": "reports/proposal/learning.proposal.json",
+      "sha256": "08470b35209c8215575eceeb91417d9b62b9643102abdb61979af900e12335c7",
+      "bytes": 4269
+    },
+    {
+      "file": "reports/proposal/planning-baseline.assessment.json",
+      "sha256": "02035b7e4a7ca8545418258097a8f32b4029d0e2d901bfc47e0e544679d5fe24",
+      "bytes": 24405
+    },
+    {
+      "file": "reports/proposal/planning-baseline.bound-case.json",
+      "sha256": "2cda3c86cfd61843e88c5512371b2318d913ab1ed3bd4409fee18ba923697a5b",
+      "bytes": 30953
+    },
+    {
+      "file": "reports/proposal/planning-baseline.case.json",
+      "sha256": "9ad7c80c0b07990d3e4990dcf907eb2eb3c73aed77b07198161393e0ba18eeea",
+      "bytes": 3628
+    },
+    {
+      "file": "reports/proposal/planning-baseline.model.json",
+      "sha256": "92354803299134c9c67a53a78a605bbc665facc37520ecece3aa6c6edcce75e8",
+      "bytes": 22286
+    },
+    {
+      "file": "reports/proposal/planning-baseline.report.json",
+      "sha256": "9b9f2aafb96bfb23aa42a626329bdf8b35d09fe65778419416dcca4b446034c4",
+      "bytes": 146242
+    },
+    {
+      "file": "reports/proposal/planning-baseline.run.json",
+      "sha256": "52f685a86defb18be04d0f308b813e2d9c6c16f8396cb2336a5851834b43d787",
+      "bytes": 179401
+    },
+    {
+      "file": "reports/proposal/planning-study.assessment.json",
+      "sha256": "53de9e55ce5645c712429edfe2ea04394e19f1bc67ce63664048ef30f0e0940f",
+      "bytes": 24691
+    },
+    {
+      "file": "reports/proposal/planning-study.bound-case.json",
+      "sha256": "9f6c23cfd737faeaab15ce188246d6f6b7c69fd314523337380fe62bcf1ce22d",
+      "bytes": 30971
+    },
+    {
+      "file": "reports/proposal/planning-study.case.json",
+      "sha256": "17e39faa15073d1f63f1bf3bf0cebee717b1e45092fe01305545f1b5694ca850",
+      "bytes": 3634
+    },
+    {
+      "file": "reports/proposal/planning-study.model.json",
+      "sha256": "dc612bc9964a69c5c960960e0071cbf7745faded2001f6a6e65828f52ccccb57",
+      "bytes": 22292
+    },
+    {
+      "file": "reports/proposal/planning-study.report.json",
+      "sha256": "3c120feae0ab23aaa423ca3a76decae26a297d684c18557350214ac9b00f6bb9",
+      "bytes": 147096
+    },
+    {
+      "file": "reports/proposal/planning-study.run.json",
+      "sha256": "edf4748c61a87359a5980112a8027ff06017805b86ff6b3e3d778e27eac9e3ed",
+      "bytes": 180267
+    },
+    {
+      "file": "reports/proposal/report.html",
+      "sha256": "9eec7282b9391e04969bb9affb8189326e45670d3d1674cf11e0758879b50cf6",
+      "bytes": 9084
+    },
+    {
+      "file": "reports/proposal/summary.json",
+      "sha256": "4c0ac4f64f5ccdac7d30d552cd64045885a117fd94b4059d825e850e3fd24f98",
+      "bytes": 9667
+    },
+    {
+      "file": "reports/screenshots/1-proposal.png",
+      "sha256": "796e63f8d681adacf27e756b5b309c33afc9d19ca629f55056b2d11480b12910",
+      "bytes": 149366
+    },
+    {
+      "file": "reports/screenshots/2-timely.png",
+      "sha256": "77322f4af68df6ccfe768c1f57c21c3a62f677bc72795f2d7fc8b8f208720879",
+      "bytes": 209858
+    },
+    {
+      "file": "reports/screenshots/3-high-fee.png",
+      "sha256": "87facab22013b0b1bd372e7226cf3d1d37c7750bf08ff39e6d718a98f568af1e",
+      "bytes": 210177
+    },
+    {
+      "file": "reports/screenshots/4-late.png",
+      "sha256": "d161db809b30379dac40c9c62b62794578eb54758c3d9491829f1a6726379c79",
+      "bytes": 268955
+    },
+    {
+      "file": "reports/screenshots/5-unsupported.png",
+      "sha256": "dfa28a7c1f7b9aaa1a8532ee1da709ed9ff1fe5becdfae907b754ac974bb73ff",
+      "bytes": 148624
+    },
+    {
+      "file": "reports/screenshots/6-validation.png",
+      "sha256": "db0c42ac48a7bec747f03db4ed3a638585a5aea7d98c1956b4d338e3244d2048",
+      "bytes": 289430
+    },
+    {
+      "file": "reports/screenshots/7-mobile.png",
+      "sha256": "e87b703043c27b25260fe67be52f40db036e70cab53fc65db49f671f6bc65cae",
+      "bytes": 229613
+    },
+    {
+      "file": "reports/timely/business.case.json",
+      "sha256": "0e186052f1d000d4572254aface8a86d0ee250c4b1c99918acc7d535b776b803",
+      "bytes": 392
+    },
+    {
+      "file": "reports/timely/estimates.proposal.json",
+      "sha256": "46b61518e40c7b09a040491d48df4bd61b4f0d763ddc5ffc0aa7bf8ff713c37a",
+      "bytes": 5513
+    },
+    {
+      "file": "reports/timely/estimates.review.json",
+      "sha256": "e863d90d87d6616fcfea2ee916ed770c5268f2f1ac45216aa5d1908e1529f796",
+      "bytes": 329
+    },
+    {
+      "file": "reports/timely/learning.bound-case.json",
+      "sha256": "0048d46f920933c687f035f209649759e6fa47b7c42c7934cecf96a3e93bad11",
+      "bytes": 18371
+    },
+    {
+      "file": "reports/timely/learning.case.json",
+      "sha256": "2fd31d08527d426bfbf6839f37363a0557c38090a3cd127758bfca3d055533cc",
+      "bytes": 4199
+    },
+    {
+      "file": "reports/timely/learning.cli.run.json",
+      "sha256": "670993797203b0536338bcff10f3d96f489a0c275017f561b6b016436a21d729",
+      "bytes": 207256
+    },
+    {
+      "file": "reports/timely/learning.model.json",
+      "sha256": "56636a88ae93baab4328176c157620e6de8ace0c50ac08c2ea8f791f76348673",
+      "bytes": 8684
+    },
+    {
+      "file": "reports/timely/learning.proposal.json",
+      "sha256": "b62a03d147e022308de800798ea34cdbafa04f285d350816c0215223131c982e",
+      "bytes": 4587
+    },
+    {
+      "file": "reports/timely/learning.report.json",
+      "sha256": "e13d1c86061348f3b07558532028132da265e99a266be8044a046dc53112f171",
+      "bytes": 174267
+    },
+    {
+      "file": "reports/timely/learning.run.json",
+      "sha256": "b94148f2c1fd3a39f5a8ee7d17eff96d750e80e4c0b4ac7cc54957abe2efd698",
+      "bytes": 207255
+    },
+    {
+      "file": "reports/timely/planning-baseline.assessment.json",
+      "sha256": "02035b7e4a7ca8545418258097a8f32b4029d0e2d901bfc47e0e544679d5fe24",
+      "bytes": 24405
+    },
+    {
+      "file": "reports/timely/planning-baseline.bound-case.json",
+      "sha256": "2cda3c86cfd61843e88c5512371b2318d913ab1ed3bd4409fee18ba923697a5b",
+      "bytes": 30953
+    },
+    {
+      "file": "reports/timely/planning-baseline.case.json",
+      "sha256": "9ad7c80c0b07990d3e4990dcf907eb2eb3c73aed77b07198161393e0ba18eeea",
+      "bytes": 3628
+    },
+    {
+      "file": "reports/timely/planning-baseline.model.json",
+      "sha256": "92354803299134c9c67a53a78a605bbc665facc37520ecece3aa6c6edcce75e8",
+      "bytes": 22286
+    },
+    {
+      "file": "reports/timely/planning-baseline.report.json",
+      "sha256": "9b9f2aafb96bfb23aa42a626329bdf8b35d09fe65778419416dcca4b446034c4",
+      "bytes": 146242
+    },
+    {
+      "file": "reports/timely/planning-baseline.run.json",
+      "sha256": "52f685a86defb18be04d0f308b813e2d9c6c16f8396cb2336a5851834b43d787",
+      "bytes": 179401
+    },
+    {
+      "file": "reports/timely/planning-study.assessment.json",
+      "sha256": "53de9e55ce5645c712429edfe2ea04394e19f1bc67ce63664048ef30f0e0940f",
+      "bytes": 24691
+    },
+    {
+      "file": "reports/timely/planning-study.bound-case.json",
+      "sha256": "9f6c23cfd737faeaab15ce188246d6f6b7c69fd314523337380fe62bcf1ce22d",
+      "bytes": 30971
+    },
+    {
+      "file": "reports/timely/planning-study.case.json",
+      "sha256": "17e39faa15073d1f63f1bf3bf0cebee717b1e45092fe01305545f1b5694ca850",
+      "bytes": 3634
+    },
+    {
+      "file": "reports/timely/planning-study.model.json",
+      "sha256": "dc612bc9964a69c5c960960e0071cbf7745faded2001f6a6e65828f52ccccb57",
+      "bytes": 22292
+    },
+    {
+      "file": "reports/timely/planning-study.report.json",
+      "sha256": "3c120feae0ab23aaa423ca3a76decae26a297d684c18557350214ac9b00f6bb9",
+      "bytes": 147096
+    },
+    {
+      "file": "reports/timely/planning-study.run.json",
+      "sha256": "edf4748c61a87359a5980112a8027ff06017805b86ff6b3e3d778e27eac9e3ed",
+      "bytes": 180267
+    },
+    {
+      "file": "reports/timely/report.html",
+      "sha256": "3a78d9d1df103cfa626b594cbef2e5d9ffa3d9e78ca6e2aa25e1388ed4a07e1c",
+      "bytes": 10843
+    },
+    {
+      "file": "reports/timely/sensitivity-10.run.json",
+      "sha256": "e1609ac4f18a392886d2e03a37079142f7ac646bfd5cac625b98b7057945f244",
+      "bytes": 206138
+    },
+    {
+      "file": "reports/timely/sensitivity-30.run.json",
+      "sha256": "a873048975fa867322f818dc180ab8d77cabed75714c6dc33e0b1cd51a4f0073",
+      "bytes": 206230
+    },
+    {
+      "file": "reports/timely/sensitivity-50.run.json",
+      "sha256": "e95755d4f23ebf15740bcfa1649848685f80718b5a0e2252b1d2f405360ffca2",
+      "bytes": 206213
+    },
+    {
+      "file": "reports/timely/sensitivity-70.run.json",
+      "sha256": "6ed47520b041d0c932e48cbfe5b634054b66399f64c3effe26f96bfaced8ba2e",
+      "bytes": 206437
+    },
+    {
+      "file": "reports/timely/sensitivity-90.run.json",
+      "sha256": "fbb1c5dfe3063c43e9f24c2ab9384263f50729a6893de30cb1805e980c16cc1c",
+      "bytes": 206493
+    },
+    {
+      "file": "reports/timely/summary.json",
+      "sha256": "f437240b21dccabde3a849cc803217dac9095c1fb9d683aec35a6900bcadcd3a",
+      "bytes": 12338
+    },
+    {
+      "file": "reports/unsupported/business.case.json",
+      "sha256": "e98eb28ef93debd06596bb8681bb532eddcb783e01f78df20fff25307f672da9",
+      "bytes": 412
+    },
+    {
+      "file": "reports/unsupported/estimates.proposal.json",
+      "sha256": "8a7154a5b6ccc6cc6c1a19ae826642c1082c71aab649665d889e6efa87fd23f2",
+      "bytes": 5075
+    },
+    {
+      "file": "reports/unsupported/learning.proposal.json",
+      "sha256": "d5e13ff4c69007e183502bf3fca88514fbc1b028ed172b445166634c18ef46ff",
+      "bytes": 174
+    },
+    {
+      "file": "reports/unsupported/planning-baseline.assessment.json",
+      "sha256": "8b8b8afcd162872f100b06b34775be197f22270803b0fc11eb51dcfa21cd82fb",
+      "bytes": 24415
+    },
+    {
+      "file": "reports/unsupported/planning-baseline.bound-case.json",
+      "sha256": "f55ca8bb37c68edfb5610e6a0bd0fbc4ca00daf63100a8d773b1630f701928ce",
+      "bytes": 30983
+    },
+    {
+      "file": "reports/unsupported/planning-baseline.case.json",
+      "sha256": "d4a81e46130cf333c7ac1307cd54ae4347e53fc293d158e9580b31c169cffb21",
+      "bytes": 3638
+    },
+    {
+      "file": "reports/unsupported/planning-baseline.model.json",
+      "sha256": "1f7d4b93fb2bd390fb5360bbaf75e7afd8a935db47eeab9ee3de0d71d63e5674",
+      "bytes": 22296
+    },
+    {
+      "file": "reports/unsupported/planning-baseline.report.json",
+      "sha256": "652c439145f6a1e304475e5baa1591a3875e65132e400bca0eb2686479b87a76",
+      "bytes": 146297
+    },
+    {
+      "file": "reports/unsupported/planning-baseline.run.json",
+      "sha256": "c9e21fd854126f0681e0647843d5b3b31cc87ca6aef5b8cd616d9ff78e50615c",
+      "bytes": 179496
+    },
+    {
+      "file": "reports/unsupported/planning-study.assessment.json",
+      "sha256": "68fa7c7f31d87a9edd4df73fdfce934700c0b7a9459d3ebdbdb27922aaeda274",
+      "bytes": 24701
+    },
+    {
+      "file": "reports/unsupported/planning-study.bound-case.json",
+      "sha256": "7d51cdf1cb035a38c2e96a5c81b05964824e0dfd4bb0055d842ebf76a9d4e60d",
+      "bytes": 31001
+    },
+    {
+      "file": "reports/unsupported/planning-study.case.json",
+      "sha256": "179560799f430eb9eef9131b74f29446273bbf3adf0b0a29bf91258c4d9542e0",
+      "bytes": 3644
+    },
+    {
+      "file": "reports/unsupported/planning-study.model.json",
+      "sha256": "9d44505f74b8b9dd32e29c260db3e5b84d5e099cc78748493d9fe55b781e80ea",
+      "bytes": 22302
+    },
+    {
+      "file": "reports/unsupported/planning-study.report.json",
+      "sha256": "8b9e5ad0b33e1727a5fb7ff40187fde0a2370a6d0272eef7133b79afb9c04f98",
+      "bytes": 147151
+    },
+    {
+      "file": "reports/unsupported/planning-study.run.json",
+      "sha256": "5fd2e9bda01f760e113d105d4417698838a4dc5fb6b45711e6cd8f5d049983a4",
+      "bytes": 180362
+    },
+    {
+      "file": "reports/unsupported/report.html",
+      "sha256": "c70b6a79269c6bfc33ccc4f098040ba7465bfbf6cd3099c8f9d302859df21e9e",
+      "bytes": 9186
+    },
+    {
+      "file": "reports/unsupported/summary.json",
+      "sha256": "4ef168f98675861b654565dc12e934430ffc2fa05288745e4e0f99cac91f2c4e",
+      "bytes": 9320
+    }
+  ],
+  "captures": [
+    {
+      "file": "proposal-decision.png",
+      "sha256": "1f7c7229e92a373ceb79e0bde1876fff2fb09984829107696f1a8304436e9ff4",
+      "bytes": 46744,
+      "width": 608,
+      "height": 470,
+      "reportFile": "reports/proposal/report.html"
+    },
+    {
+      "file": "proposal-complete.png",
+      "sha256": "222f7fcb4f90eeb61973741c540d8ade099044536a6e92f4965118cce5eb0129",
+      "bytes": 146535,
+      "width": 1280,
+      "height": 1253,
+      "reportFile": "reports/proposal/report.html"
+    },
+    {
+      "file": "timely-decision.png",
+      "sha256": "d6773718d06c839857152ccf49692a92f8221148057893b9f440c6a8ad724b1a",
+      "bytes": 44500,
+      "width": 608,
+      "height": 470,
+      "reportFile": "reports/timely/report.html"
+    },
+    {
+      "file": "timely-complete.png",
+      "sha256": "bbfc40f61451fce608ed272c9785dd3627122a7f9be0b3323c78a87d0ef6ad96",
+      "bytes": 209200,
+      "width": 1280,
+      "height": 1648,
+      "reportFile": "reports/timely/report.html"
+    },
+    {
+      "file": "high-fee-decision.png",
+      "sha256": "5b0207e0381e6c4cd6c0d3b9179981dbe89497b349a3fb45ed3ac65c54c6cd62",
+      "bytes": 44341,
+      "width": 608,
+      "height": 476,
+      "reportFile": "reports/high-fee/report.html"
+    },
+    {
+      "file": "high-fee-complete.png",
+      "sha256": "3d3e8e18ec966c7a8904aedd687bd0bbc47ab162b83a0403a86f96984ffc7d8e",
+      "bytes": 206364,
+      "width": 1280,
+      "height": 1648,
+      "reportFile": "reports/high-fee/report.html"
+    },
+    {
+      "file": "late-decision.png",
+      "sha256": "dc3ad5897f2bcd476f15c3f96a2b72fa069f6c2e1f2f6d4e3b5ef8fb68a7da70",
+      "bytes": 42016,
+      "width": 608,
+      "height": 449,
+      "reportFile": "reports/late/report.html"
+    },
+    {
+      "file": "late-complete.png",
+      "sha256": "40fa9f17cfef3c374c4a11f3272afebbfd6b116dc7b991dd564070a5023e037a",
+      "bytes": 242913,
+      "width": 1280,
+      "height": 1906,
+      "reportFile": "reports/late/report.html"
+    },
+    {
+      "file": "unsupported-decision.png",
+      "sha256": "689009471d5c3692d09edfc6544d7795852cec37a4690285644dd591ef33477a",
+      "bytes": 46001,
+      "width": 608,
+      "height": 470,
+      "reportFile": "reports/unsupported/report.html"
+    },
+    {
+      "file": "unsupported-complete.png",
+      "sha256": "e79676f4a133b6f53c8990bebf31154ead7063a5cd63933481453c4d140b6d67",
+      "bytes": 145870,
+      "width": 1280,
+      "height": 1253,
+      "reportFile": "reports/unsupported/report.html"
+    }
+  ],
+  "checks": [
+    "All 25 sample files match the public repository; every qualified source and all 131 retained outputs match the historical receipt.",
+    "Timely, high-fee, late, unsupported and unaccepted-proposal findings preserve the native SDK results.",
+    "Matched comparisons retain the same features and numerical proposal; only fee or check duration changes apart from case identity/title.",
+    "Five actual local reports captured in Chrome with unchanged HTML; five mobile layouts and model-basis disclosures checked."
+  ],
+  "comparisons": {
+    "fee": {
+      "changedFields": [
+        {
+          "path": "check.feeMinor",
+          "before": 20000,
+          "after": 250000
+        }
+      ],
+      "unchangedFeatures": true,
+      "unchangedEstimate": true,
+      "identityNote": "Case IDs and titles differ to label the scenarios; substantive changes are listed separately."
+    },
+    "timing": {
+      "changedFields": [
+        {
+          "path": "check.durationMinutes",
+          "before": 120,
+          "after": 390
+        }
+      ],
+      "unchangedFeatures": true,
+      "unchangedEstimate": true,
+      "identityNote": "Case IDs and titles differ to label the scenarios; substantive changes are listed separately."
+    }
+  },
+  "errors": [],
+  "passed": true
+}

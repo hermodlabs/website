@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" width="960" height="720" role="img" aria-labelledby="article-21-cover-title article-21-cover-desc">
+  <title id="article-21-cover-title">Feedback Loops for Human Decisions</title>
+  <desc id="article-21-cover-desc">Four broad arrows connect an observation about inspection time, an earlier-delivery response, the resulting inventory, and a revised planning assumption. The returned path makes the next decision depend on what was learned from the previous one.</desc>
+  <rect width="960" height="720" fill="#f6f5f8"/>
+  <circle cx="480" cy="349" r="286" fill="#fff"/>
+  <circle cx="480" cy="350" r="86" fill="#f1edf7"/>
+  <path d="M463 316a38 38 0 0 1 52 43m-1-20 2 22-23-3M496 383a38 38 0 0 1-52-43m1 20-2-22 23 3" fill="none" stroke="#bba9dc" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Deliberate, visible feedback connects the four stages. -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="7">
+    <path d="M388 184q92-66 184 0m-22-2 23 3-5-23" stroke="#177681"/>
+    <path d="M764 272q66 81 0 165m2-23-3 24 23-5" stroke="#7850c2"/>
+    <path d="M572 556q-92 66-184 0m22 2-23-3 5 23" stroke="#177681"/>
+    <path d="M196 437q-66-83 0-165m-2 23 3-24-23 5" stroke="#7850c2"/>
+  </g>
+
+  <!-- Observe inspection duration: expectation and experience differ. -->
+  <g stroke="#193743" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="234" y="130" width="124" height="166" rx="13" fill="#fff" stroke-width="5"/>
+    <rect x="265" y="118" width="62" height="25" rx="8" fill="#e5dfed" stroke-width="5"/>
+    <path d="M257 172h78" stroke="#193743" stroke-width="6"/>
+    <path d="M258 202h76" stroke="#d3dfe5" stroke-width="4"/>
+    <g fill="#c6e3e1" stroke="#177681" stroke-width="3"><circle cx="265" cy="221" r="7"/><circle cx="288" cy="221" r="7"/></g>
+    <g fill="#ddd0ee" stroke="#7850c2" stroke-width="3"><circle cx="265" cy="258" r="7"/><circle cx="288" cy="258" r="7"/><circle cx="311" cy="258" r="7"/><circle cx="334" cy="258" r="7"/></g>
+  </g>
+
+  <!-- Respond by bringing a delivery earlier. -->
+  <g stroke="#193743" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="608" y="144" width="137" height="130" rx="13" fill="#e6f2f0" stroke-width="5"/>
+    <path d="M608 180h137m-104-50v28m71-28v28" fill="none" stroke-width="6"/>
+    <path d="M714 218h-72m19-17-19 17 19 17" fill="none" stroke="#177681" stroke-width="7"/>
+    <path d="m682 258 32-13 32 13v37l-32 14-32-14z" fill="#eee8f7" stroke-width="4"/>
+    <path d="m682 258 32 13 32-13m-32 13v38" fill="none" stroke-width="4"/>
+  </g>
+
+  <!-- Consequences include the additional material held in storage. -->
+  <g stroke="#193743" stroke-width="5" stroke-linejoin="round">
+    <path d="M606 600h151" stroke-linecap="round"/>
+    <path d="M614 525h60v68h-60z" fill="#c6e3e1"/>
+    <path d="M682 525h60v68h-60z" fill="#ddd0ee"/>
+    <path d="M648 449h60v68h-60z" fill="#eee8f7"/>
+    <path d="M635 525v20h18v-20m50 0v20h18v-20m-52-76v20h18v-20" fill="#fff" stroke-width="4"/>
+  </g>
+
+  <!-- Revise the planning assumption while keeping the prior record. -->
+  <g stroke="#193743" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="220" y="453" width="119" height="148" rx="10" fill="#eee8f7" stroke="#bba9dc" stroke-width="4"/>
+    <rect x="242" y="433" width="119" height="148" rx="10" fill="#fff" stroke-width="5"/>
+    <path d="M264 461h73m-73 26h48m-48 56h44" fill="none" stroke="#bba9dc" stroke-width="6"/>
+    <path d="M264 515h57" fill="none" stroke="#177681" stroke-width="7"/>
+    <path d="m329 526 43-59 18 13-43 59-24 12z" fill="#c6e3e1" stroke-width="4"/>
+    <path d="m372 467 7-10q6-8 14-2t2 14l-5 11" fill="#ddd0ee" stroke-width="4"/>
+    <path d="m329 526 18 13-24 12z" fill="#193743" stroke-width="3"/>
+  </g>
+</svg>

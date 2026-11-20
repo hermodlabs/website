@@ -1,0 +1,53 @@
+{
+  "format": "street-team-worked-design/1",
+  "status": "proposed-configuration",
+  "role": "historical-editorial-reference",
+  "currentImplementation": "cli/README.md",
+  "fictional": true,
+  "manager": "Sam",
+  "minimumInside": 4,
+  "spendingLimitUSD": 400,
+  "currency": "USD",
+  "timeBasis": "Local elapsed minutes from the start of the same calendar day",
+  "timing": {
+    "review": 1170,
+    "authorizeAndDispatch": 1185,
+    "promotionStart": 1200,
+    "eventExit": 1215,
+    "promotionEnd": 1245,
+    "staffReturn": 1260,
+    "customerJourneyMinutes": 30,
+    "latestUsefulArrival": 1275
+  },
+  "assumptions": [
+    "All staff counted toward the simplified four-person floor requirement can perform that work throughout the planned absence.",
+    "Each deployment is a mutually exclusive complete option, with location access recorded as confirmed for the stated activity and window.",
+    "Deployment cost includes all additional labor, transport, materials and commissions attributable to the plan; already committed spending is excluded.",
+    "Contribution is venue-retained USD per genuinely additional guest after the offer and relevant variable costs, with no duplicate cost deduction.",
+    "Baseline tables assume zero discount loss on guests who would have attended anyway; that loss must be added separately if present.",
+    "The customer journey is a planned thirty-minute allowance, conditional on a person accepting the offer; it predicts neither acceptance nor attendance.",
+    "No further push is a zero-additional-spending baseline, not a prediction about the evening or a claim that it meets a revenue objective.",
+    "No demand distribution, expected customer count, causal marketing effect or preferred profit-maximizing plan is supplied."
+  ],
+  "plans": [
+    { "id": "hold", "label": "Make no further push", "peopleDeployed": 0, "deploymentCostUSD": 0, "contributionUSD": null, "breakEvenGuests": null, "firstPositiveGuests": null, "offer": "Baseline" },
+    { "id": "small-standard", "label": "One promoter · standard offer", "peopleDeployed": 1, "deploymentCostUSD": 200, "contributionUSD": 40, "breakEvenGuests": 5, "firstPositiveGuests": 6, "offer": "Standard" },
+    { "id": "large-standard", "label": "Two promoters · standard offer", "peopleDeployed": 2, "deploymentCostUSD": 400, "contributionUSD": 40, "breakEvenGuests": 10, "firstPositiveGuests": 11, "offer": "Standard" },
+    { "id": "large-discount", "label": "Two promoters · deeper discount", "peopleDeployed": 2, "deploymentCostUSD": 400, "contributionUSD": 25, "breakEvenGuests": 16, "firstPositiveGuests": 17, "offer": "Deeper discount" }
+  ],
+  "scenarios": [
+    { "id": "base", "label": "Seven staff available", "availableStaff": 7, "eventExit": 1215, "standardContributionUSD": 40, "expectedWorkablePushes": ["small-standard", "large-standard", "large-discount"] },
+    { "id": "staff-callouts", "label": "Two staff call out", "availableStaff": 5, "eventExit": 1215, "standardContributionUSD": 40, "expectedWorkablePushes": ["small-standard"] },
+    { "id": "lower-contribution", "label": "Standard-offer contribution falls to $25", "availableStaff": 7, "eventExit": 1215, "standardContributionUSD": 25, "expectedWorkablePushes": ["small-standard", "large-standard", "large-discount"] },
+    { "id": "late-event", "label": "Event exit moves to 9 p.m.", "availableStaff": 7, "eventExit": 1260, "standardContributionUSD": 40, "expectedWorkablePushes": [] }
+  ],
+  "financialExamples": {
+    "largeStandardAtTenGuestsUSD": 0,
+    "largeStandardAtElevenGuestsUSD": 40,
+    "largeStandardAtLowerContributionBreakEvenGuests": 16,
+    "smallStandardAtLowerContributionBreakEvenGuests": 8,
+    "existingGuestDiscountLossUSD": 50,
+    "largeStandardWithExistingGuestLossBreakEvenGuests": 12
+  },
+  "bounds": "An editorial worked-case fixture verified by ordinary arithmetic and declared-condition checks. It is not a Decision Lab app package, workflow export, customer trial or native SDK evaluation. Role-specific interval coverage, demand estimation, source authentication and venue-specific permissions require further modeling and operating review."
+}

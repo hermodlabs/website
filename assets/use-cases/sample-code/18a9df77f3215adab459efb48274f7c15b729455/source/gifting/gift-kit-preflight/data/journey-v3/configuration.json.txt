@@ -1,0 +1,284 @@
+{
+  "id": "review-gift-kit-resolution",
+  "version": "3.0.0",
+  "release": 1,
+  "title": "Resolve a gift-kit handoff exception",
+  "description": "Use current scoped diagnostic records to select the least expensive complete correction package that protects the kit cutoff. Retain the resulting review through the operating decision, actual correction, successful rehearsal and recorded handoff. The records are fictional and no external work is performed.",
+  "minimumRehearsalMinutes": 5,
+  "preference": "lowest-cost",
+  "packages": [
+    {
+      "id": "rehearse-unchanged",
+      "label": "Prepare, rehearse and hand off unchanged kits",
+      "corrects": [],
+      "requiresConfirmation": false
+    },
+    {
+      "id": "reprint",
+      "label": "Replace the printed inserts",
+      "corrects": [
+        "replace-insert"
+      ],
+      "requiresConfirmation": false
+    },
+    {
+      "id": "repair-journey",
+      "label": "Correct the destination and checkout",
+      "corrects": [
+        "correct-destination",
+        "fix-checkout"
+      ],
+      "requiresConfirmation": false
+    },
+    {
+      "id": "replace-and-repair",
+      "label": "Replace inserts and repair the journey",
+      "corrects": [
+        "replace-insert",
+        "correct-destination",
+        "fix-checkout"
+      ],
+      "requiresConfirmation": false
+    },
+    {
+      "id": "external-replace-and-repair",
+      "label": "External replacement and journey repair",
+      "corrects": [
+        "replace-insert",
+        "correct-destination",
+        "fix-checkout"
+      ],
+      "requiresConfirmation": true
+    }
+  ],
+  "confirmation": {
+    "enabled": true,
+    "label": "Confirm the selected arrangement for this exact gift-kit configuration",
+    "meaning": "For any author-designated package, retain a named, sourced positive confirmation matching its package and all six configuration fields, recorded by the current review time, effective when correction starts, and valid through handoff.",
+    "neededEvidence": "A sourced positive package confirmation, recorded by a named person, for this exact batch, insert, destination, checkout, device and account, effective at the planned start and valid through handoff."
+  },
+  "workedExample": {
+    "id": "GIFT-320",
+    "scope": {
+      "batchId": "GIFT-320",
+      "insertRevision": "insert-4",
+      "destinationRevision": "destination-2",
+      "checkoutRevision": "checkout-1",
+      "deviceScope": "campaign-test-phone",
+      "accountScope": "intended-recipient-account"
+    },
+    "commitment": {
+      "quantity": 120,
+      "nowMinute": 0,
+      "handoffDeadlineMinute": 1440,
+      "budgetMinor": 60000
+    },
+    "observations": [
+      {
+        "id": "CHECK-GIFT-320-1",
+        "checkId": "decode",
+        "outcomeId": "unreadable",
+        "scope": {
+          "batchId": "GIFT-320",
+          "insertRevision": "insert-4",
+          "destinationRevision": "destination-2",
+          "checkoutRevision": "checkout-1",
+          "deviceScope": "campaign-test-phone",
+          "accountScope": "intended-recipient-account"
+        },
+        "observedAtMinute": 0,
+        "source": "Fictional diagnostic record CHECK-GIFT-320-1",
+        "recordedBy": "campaign-test-owner",
+        "originalText": "The printed insert cannot be decoded on the declared test phone."
+      },
+      {
+        "id": "CHECK-GIFT-320-2",
+        "checkId": "proof",
+        "outcomeId": "wrong-target",
+        "scope": {
+          "batchId": "GIFT-320",
+          "insertRevision": "insert-4",
+          "destinationRevision": "destination-2",
+          "checkoutRevision": "checkout-1",
+          "deviceScope": "campaign-test-phone",
+          "accountScope": "intended-recipient-account"
+        },
+        "observedAtMinute": 0,
+        "source": "Fictional diagnostic record CHECK-GIFT-320-2",
+        "recordedBy": "campaign-test-owner",
+        "originalText": "The source artwork names the wrong destination."
+      },
+      {
+        "id": "CHECK-GIFT-320-3",
+        "checkId": "checkout",
+        "outcomeId": "usable",
+        "scope": {
+          "batchId": "GIFT-320",
+          "insertRevision": "insert-4",
+          "destinationRevision": "destination-2",
+          "checkoutRevision": "checkout-1",
+          "deviceScope": "campaign-test-phone",
+          "accountScope": "intended-recipient-account"
+        },
+        "observedAtMinute": 0,
+        "source": "Fictional diagnostic record CHECK-GIFT-320-3",
+        "recordedBy": "campaign-test-owner",
+        "originalText": "The intended account completed the checkout check."
+      }
+    ],
+    "work": {
+      "actorId": "coordinator-gift-320",
+      "people": [
+        {
+          "id": "coordinator-gift-320",
+          "name": "Jordan Reed",
+          "role": "production-owner"
+        }
+      ],
+      "quotes": [
+        {
+          "packageId": "rehearse-unchanged",
+          "quantity": 120,
+          "repairMinutes": 1,
+          "repairCostMinor": 0
+        },
+        {
+          "packageId": "reprint",
+          "quantity": 120,
+          "repairMinutes": 10,
+          "repairCostMinor": 10000
+        },
+        {
+          "packageId": "repair-journey",
+          "quantity": 120,
+          "repairMinutes": 15,
+          "repairCostMinor": 18000
+        },
+        {
+          "packageId": "replace-and-repair",
+          "quantity": 120,
+          "repairMinutes": 25,
+          "repairCostMinor": 30000
+        },
+        {
+          "packageId": "external-replace-and-repair",
+          "quantity": 120,
+          "repairMinutes": 10,
+          "repairCostMinor": 40000
+        }
+      ],
+      "rehearsalMinutes": 10,
+      "handoffMinutes": 5,
+      "resources": [
+        {
+          "id": "production-team",
+          "capacity": 1,
+          "availableFromMinute": 0,
+          "availableThroughMinute": 1440
+        }
+      ],
+      "permissions": [
+        {
+          "id": "AUTH-GIFT-320-rehearse-unchanged",
+          "packageId": "rehearse-unchanged",
+          "actorId": "coordinator-gift-320",
+          "scope": {
+            "batchId": "GIFT-320",
+            "insertRevision": "insert-4",
+            "destinationRevision": "destination-2",
+            "checkoutRevision": "checkout-1",
+            "deviceScope": "campaign-test-phone",
+            "accountScope": "intended-recipient-account"
+          },
+          "validFromMinute": 0,
+          "validThroughMinute": 1440,
+          "source": "Fictional campaign authorization AUTH-GIFT-320, explicitly covering insert-4 and the one-day work interval"
+        },
+        {
+          "id": "AUTH-GIFT-320-reprint",
+          "packageId": "reprint",
+          "actorId": "coordinator-gift-320",
+          "scope": {
+            "batchId": "GIFT-320",
+            "insertRevision": "insert-4",
+            "destinationRevision": "destination-2",
+            "checkoutRevision": "checkout-1",
+            "deviceScope": "campaign-test-phone",
+            "accountScope": "intended-recipient-account"
+          },
+          "validFromMinute": 0,
+          "validThroughMinute": 1440,
+          "source": "Fictional campaign authorization AUTH-GIFT-320, explicitly covering insert-4 and the one-day work interval"
+        },
+        {
+          "id": "AUTH-GIFT-320-repair-journey",
+          "packageId": "repair-journey",
+          "actorId": "coordinator-gift-320",
+          "scope": {
+            "batchId": "GIFT-320",
+            "insertRevision": "insert-4",
+            "destinationRevision": "destination-2",
+            "checkoutRevision": "checkout-1",
+            "deviceScope": "campaign-test-phone",
+            "accountScope": "intended-recipient-account"
+          },
+          "validFromMinute": 0,
+          "validThroughMinute": 1440,
+          "source": "Fictional campaign authorization AUTH-GIFT-320, explicitly covering insert-4 and the one-day work interval"
+        },
+        {
+          "id": "AUTH-GIFT-320-replace-and-repair",
+          "packageId": "replace-and-repair",
+          "actorId": "coordinator-gift-320",
+          "scope": {
+            "batchId": "GIFT-320",
+            "insertRevision": "insert-4",
+            "destinationRevision": "destination-2",
+            "checkoutRevision": "checkout-1",
+            "deviceScope": "campaign-test-phone",
+            "accountScope": "intended-recipient-account"
+          },
+          "validFromMinute": 0,
+          "validThroughMinute": 1440,
+          "source": "Fictional campaign authorization AUTH-GIFT-320, explicitly covering insert-4 and the one-day work interval"
+        },
+        {
+          "id": "AUTH-GIFT-320-external-replace-and-repair",
+          "packageId": "external-replace-and-repair",
+          "actorId": "coordinator-gift-320",
+          "scope": {
+            "batchId": "GIFT-320",
+            "insertRevision": "insert-4",
+            "destinationRevision": "destination-2",
+            "checkoutRevision": "checkout-1",
+            "deviceScope": "campaign-test-phone",
+            "accountScope": "intended-recipient-account"
+          },
+          "validFromMinute": 0,
+          "validThroughMinute": 1440,
+          "source": "Fictional campaign authorization AUTH-GIFT-320, explicitly covering insert-4 and the one-day work interval"
+        }
+      ],
+      "confirmations": [
+        {
+          "id": "BOOK-GIFT-320",
+          "packageId": "external-replace-and-repair",
+          "scope": {
+            "batchId": "GIFT-320",
+            "insertRevision": "insert-4",
+            "destinationRevision": "destination-2",
+            "checkoutRevision": "checkout-1",
+            "deviceScope": "campaign-test-phone",
+            "accountScope": "intended-recipient-account"
+          },
+          "confirmed": true,
+          "validFromMinute": 0,
+          "validThroughMinute": 1440,
+          "recordedAtMinute": 0,
+          "source": "Fictional written production booking BOOK-GIFT-320",
+          "recordedBy": "vendor-coordinator"
+        }
+      ]
+    }
+  }
+}

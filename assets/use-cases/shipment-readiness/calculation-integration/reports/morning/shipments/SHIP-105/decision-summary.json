@@ -1,0 +1,122 @@
+{
+  "format": "workflow-decision-summary/1",
+  "title": "Decision summary",
+  "question": "Which response protects this shipment, and what has actually happened?",
+  "finding": {
+    "availability": "available",
+    "metrics": [],
+    "issues": [],
+    "status": "blocked",
+    "heading": "No listed complete arrangement meets the recorded requirements.",
+    "priorityLabel": "Meet every requirement, then lower complete expense, then earlier completion",
+    "qualification": "The calculation supports a proposal. Selection, sourced operating authority and actual completion are separate records."
+  },
+  "comparison": {
+    "title": "Compare complete arrangements",
+    "columns": [
+      {
+        "key": "label",
+        "label": "Arrangement"
+      },
+      {
+        "key": "eligible",
+        "label": "Result"
+      },
+      {
+        "key": "preferred",
+        "label": "Preferred",
+        "format": "boolean"
+      },
+      {
+        "key": "expense",
+        "label": "Complete expense",
+        "format": "money"
+      },
+      {
+        "key": "finishMinute",
+        "label": "Arrival",
+        "format": {
+          "type": "time",
+          "unit": "minute",
+          "origin": "2026-11-17T00:00:00-06:00",
+          "timeZone": "Etc/GMT+6"
+        }
+      },
+      {
+        "key": "blockingCondition",
+        "label": "First blocking condition"
+      }
+    ],
+    "tabId": "arrangements",
+    "availability": "available",
+    "rows": [
+      {
+        "key": "plan-000001",
+        "label": "Direct",
+        "record": {
+          "label": "Direct",
+          "eligible": "Blocked",
+          "preferred": false,
+          "expense": 400000,
+          "finishMinute": 5040,
+          "blockingCondition": "capacity-for-complete-order"
+        },
+        "inspectionKey": "plan-000001"
+      },
+      {
+        "key": "plan-000002",
+        "label": "Backup",
+        "record": {
+          "label": "Backup",
+          "eligible": "Blocked",
+          "preferred": false,
+          "expense": 600000,
+          "finishMinute": 3600,
+          "blockingCondition": "Complete shipment expense is within the limit"
+        },
+        "inspectionKey": "plan-000002"
+      },
+      {
+        "key": "plan-000003",
+        "label": "Consolidated",
+        "record": {
+          "label": "Consolidated",
+          "eligible": "Blocked",
+          "preferred": false,
+          "expense": 500000,
+          "finishMinute": 3960,
+          "blockingCondition": "A current confirmation covers this order and consolidation slot"
+        },
+        "inspectionKey": "plan-000003"
+      }
+    ],
+    "issues": []
+  },
+  "conditions": [
+    {
+      "id": "scope",
+      "label": "Use current records for the exact order or configuration and declared operating time.",
+      "tabId": "arrangements"
+    }
+  ],
+  "actionGroups": [],
+  "links": [
+    {
+      "tabId": "arrangements",
+      "label": "Inspect complete arrangements"
+    }
+  ],
+  "displayContext": {
+    "currency": "USD",
+    "scale": 100,
+    "time": "minute",
+    "names": {
+      "direct": "Direct",
+      "backup": "Backup",
+      "consolidated": "Consolidated"
+    },
+    "labels": {},
+    "formats": {}
+  },
+  "issues": []
+}

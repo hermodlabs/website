@@ -1,0 +1,1026 @@
+{
+  "format": "decision-lab-app-check-suite/1",
+  "id": "street-team-operating-scenarios",
+  "title": "Street-team operating checks",
+  "pattern": "complete-a-commitment/1",
+  "scenarios": [
+    {
+      "id": "all-staff",
+      "title": "Seven qualified staff permit both one- and two-person deployments",
+      "inputs": {
+        "id": "street-team-friday",
+        "parameters": {
+          "venueId": "VENUE-SAM",
+          "eventId": "EVENT-1120",
+          "operatingDate": "2026-11-20",
+          "actorId": "Sam",
+          "qualifiedStaff": 7,
+          "unavailableStaff": 0,
+          "minimumInside": 4,
+          "reviewMinute": 1170,
+          "dispatchMinute": 1185,
+          "promotionStartMinute": 1200,
+          "eventExitMinute": 1215,
+          "contactEndMinute": 1245,
+          "staffReturnMinute": 1260,
+          "customerJourneyMinutes": 30,
+          "latestArrivalMinute": 1275,
+          "expenseLimitMinor": 40000
+        },
+        "tables": {
+          "options": [
+            {
+              "id": "hold",
+              "label": "Make no further push",
+              "promoters": 0,
+              "expenseMinor": 0
+            },
+            {
+              "id": "small-standard",
+              "label": "One-person standard push",
+              "promoters": 1,
+              "expenseMinor": 20000
+            },
+            {
+              "id": "large-standard",
+              "label": "Two-person standard push",
+              "promoters": 2,
+              "expenseMinor": 40000
+            },
+            {
+              "id": "large-discount",
+              "label": "Two-person discount push",
+              "promoters": 2,
+              "expenseMinor": 40000
+            }
+          ],
+          "scenarios": [
+            {
+              "id": "declared-evening"
+            }
+          ],
+          "access": [
+            {
+              "id": "ACCESS-1120",
+              "venueId": "VENUE-SAM",
+              "eventId": "EVENT-1120",
+              "operatingDate": "2026-11-20",
+              "activity": "street-promotion",
+              "granted": true,
+              "validFromMinute": 1200,
+              "validThroughMinute": 1260,
+              "source": "Fictional event organizer access record ACCESS-1120"
+            }
+          ],
+          "spending": [
+            {
+              "id": "BUDGET-1120",
+              "venueId": "VENUE-SAM",
+              "operatingDate": "2026-11-20",
+              "actorId": "Sam",
+              "ceilingMinor": 40000,
+              "validFromMinute": 1170,
+              "validThroughMinute": 1260,
+              "source": "Fictional delegated spending-limit record BUDGET-1120"
+            }
+          ],
+          "resources": [],
+          "bookings": []
+        },
+        "provenance": [
+          {
+            "source": "Fictional tutorial snapshot; review each current record before use."
+          }
+        ]
+      },
+      "expect": [
+        {
+          "kind": "commitment-plan",
+          "choices": {
+            "deployment": "hold"
+          },
+          "feasible": true,
+          "preferred": false
+        },
+        {
+          "kind": "commitment-plan",
+          "choices": {
+            "deployment": "small-standard"
+          },
+          "feasible": true,
+          "preferred": false
+        },
+        {
+          "kind": "commitment-plan",
+          "choices": {
+            "deployment": "large-standard"
+          },
+          "feasible": true,
+          "preferred": false
+        },
+        {
+          "kind": "commitment-plan",
+          "choices": {
+            "deployment": "large-discount"
+          },
+          "feasible": true,
+          "preferred": false
+        }
+      ]
+    },
+    {
+      "id": "two-callouts",
+      "title": "Two callouts leave exactly enough inside coverage for one promoter",
+      "inputs": {
+        "id": "street-team-friday",
+        "parameters": {
+          "venueId": "VENUE-SAM",
+          "eventId": "EVENT-1120",
+          "operatingDate": "2026-11-20",
+          "actorId": "Sam",
+          "qualifiedStaff": 7,
+          "unavailableStaff": 2,
+          "minimumInside": 4,
+          "reviewMinute": 1170,
+          "dispatchMinute": 1185,
+          "promotionStartMinute": 1200,
+          "eventExitMinute": 1215,
+          "contactEndMinute": 1245,
+          "staffReturnMinute": 1260,
+          "customerJourneyMinutes": 30,
+          "latestArrivalMinute": 1275,
+          "expenseLimitMinor": 40000
+        },
+        "tables": {
+          "options": [
+            {
+              "id": "hold",
+              "label": "Make no further push",
+              "promoters": 0,
+              "expenseMinor": 0
+            },
+            {
+              "id": "small-standard",
+              "label": "One-person standard push",
+              "promoters": 1,
+              "expenseMinor": 20000
+            },
+            {
+              "id": "large-standard",
+              "label": "Two-person standard push",
+              "promoters": 2,
+              "expenseMinor": 40000
+            },
+            {
+              "id": "large-discount",
+              "label": "Two-person discount push",
+              "promoters": 2,
+              "expenseMinor": 40000
+            }
+          ],
+          "scenarios": [
+            {
+              "id": "declared-evening"
+            }
+          ],
+          "access": [
+            {
+              "id": "ACCESS-1120",
+              "venueId": "VENUE-SAM",
+              "eventId": "EVENT-1120",
+              "operatingDate": "2026-11-20",
+              "activity": "street-promotion",
+              "granted": true,
+              "validFromMinute": 1200,
+              "validThroughMinute": 1260,
+              "source": "Fictional event organizer access record ACCESS-1120"
+            }
+          ],
+          "spending": [
+            {
+              "id": "BUDGET-1120",
+              "venueId": "VENUE-SAM",
+              "operatingDate": "2026-11-20",
+              "actorId": "Sam",
+              "ceilingMinor": 40000,
+              "validFromMinute": 1170,
+              "validThroughMinute": 1260,
+              "source": "Fictional delegated spending-limit record BUDGET-1120"
+            }
+          ],
+          "resources": [],
+          "bookings": []
+        },
+        "provenance": [
+          {
+            "source": "Fictional tutorial snapshot; review each current record before use."
+          }
+        ]
+      },
+      "expect": [
+        {
+          "kind": "commitment-plan",
+          "choices": {
+            "deployment": "hold"
+          },
+          "feasible": true,
+          "preferred": false
+        },
+        {
+          "kind": "commitment-plan",
+          "choices": {
+            "deployment": "small-standard"
+          },
+          "feasible": true,
+          "preferred": false
+        },
+        {
+          "kind": "commitment-plan",
+          "choices": {
+            "deployment": "large-standard"
+          },
+          "feasible": false,
+          "preferred": false
+        },
+        {
+          "kind": "commitment-plan",
+          "choices": {
+            "deployment": "large-discount"
+          },
+          "feasible": false,
+          "preferred": false
+        },
+        {
+          "kind": "commitment-constraint",
+          "choices": {
+            "deployment": "large-standard"
+          },
+          "constraintId": "staffing-coverage",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "event-delayed",
+      "title": "A late event exit misses both useful contact and customer arrival",
+      "inputs": {
+        "id": "street-team-friday",
+        "parameters": {
+          "venueId": "VENUE-SAM",
+          "eventId": "EVENT-1120",
+          "operatingDate": "2026-11-20",
+          "actorId": "Sam",
+          "qualifiedStaff": 7,
+          "unavailableStaff": 0,
+          "minimumInside": 4,
+          "reviewMinute": 1170,
+          "dispatchMinute": 1185,
+          "promotionStartMinute": 1200,
+          "eventExitMinute": 1260,
+          "contactEndMinute": 1245,
+          "staffReturnMinute": 1260,
+          "customerJourneyMinutes": 30,
+          "latestArrivalMinute": 1275,
+          "expenseLimitMinor": 40000
+        },
+        "tables": {
+          "options": [
+            {
+              "id": "hold",
+              "label": "Make no further push",
+              "promoters": 0,
+              "expenseMinor": 0
+            },
+            {
+              "id": "small-standard",
+              "label": "One-person standard push",
+              "promoters": 1,
+              "expenseMinor": 20000
+            },
+            {
+              "id": "large-standard",
+              "label": "Two-person standard push",
+              "promoters": 2,
+              "expenseMinor": 40000
+            },
+            {
+              "id": "large-discount",
+              "label": "Two-person discount push",
+              "promoters": 2,
+              "expenseMinor": 40000
+            }
+          ],
+          "scenarios": [
+            {
+              "id": "declared-evening"
+            }
+          ],
+          "access": [
+            {
+              "id": "ACCESS-1120",
+              "venueId": "VENUE-SAM",
+              "eventId": "EVENT-1120",
+              "operatingDate": "2026-11-20",
+              "activity": "street-promotion",
+              "granted": true,
+              "validFromMinute": 1200,
+              "validThroughMinute": 1260,
+              "source": "Fictional event organizer access record ACCESS-1120"
+            }
+          ],
+          "spending": [
+            {
+              "id": "BUDGET-1120",
+              "venueId": "VENUE-SAM",
+              "operatingDate": "2026-11-20",
+              "actorId": "Sam",
+              "ceilingMinor": 40000,
+              "validFromMinute": 1170,
+              "validThroughMinute": 1260,
+              "source": "Fictional delegated spending-limit record BUDGET-1120"
+            }
+          ],
+          "resources": [],
+          "bookings": []
+        },
+        "provenance": [
+          {
+            "source": "Fictional tutorial snapshot; review each current record before use."
+          }
+        ]
+      },
+      "expect": [
+        {
+          "kind": "commitment-plan",
+          "choices": {
+            "deployment": "hold"
+          },
+          "feasible": true,
+          "preferred": false
+        },
+        {
+          "kind": "commitment-plan",
+          "choices": {
+            "deployment": "small-standard"
+          },
+          "feasible": false,
+          "preferred": false
+        },
+        {
+          "kind": "commitment-constraint",
+          "choices": {
+            "deployment": "small-standard"
+          },
+          "constraintId": "contact-window",
+          "passed": false
+        },
+        {
+          "kind": "commitment-constraint",
+          "choices": {
+            "deployment": "small-standard"
+          },
+          "constraintId": "useful-arrival",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "access-missing",
+      "title": "Without event access the no-push baseline remains available",
+      "inputs": {
+        "id": "street-team-friday",
+        "parameters": {
+          "venueId": "VENUE-SAM",
+          "eventId": "EVENT-1120",
+          "operatingDate": "2026-11-20",
+          "actorId": "Sam",
+          "qualifiedStaff": 7,
+          "unavailableStaff": 0,
+          "minimumInside": 4,
+          "reviewMinute": 1170,
+          "dispatchMinute": 1185,
+          "promotionStartMinute": 1200,
+          "eventExitMinute": 1215,
+          "contactEndMinute": 1245,
+          "staffReturnMinute": 1260,
+          "customerJourneyMinutes": 30,
+          "latestArrivalMinute": 1275,
+          "expenseLimitMinor": 40000
+        },
+        "tables": {
+          "options": [
+            {
+              "id": "hold",
+              "label": "Make no further push",
+              "promoters": 0,
+              "expenseMinor": 0
+            },
+            {
+              "id": "small-standard",
+              "label": "One-person standard push",
+              "promoters": 1,
+              "expenseMinor": 20000
+            },
+            {
+              "id": "large-standard",
+              "label": "Two-person standard push",
+              "promoters": 2,
+              "expenseMinor": 40000
+            },
+            {
+              "id": "large-discount",
+              "label": "Two-person discount push",
+              "promoters": 2,
+              "expenseMinor": 40000
+            }
+          ],
+          "scenarios": [
+            {
+              "id": "declared-evening"
+            }
+          ],
+          "access": [],
+          "spending": [
+            {
+              "id": "BUDGET-1120",
+              "venueId": "VENUE-SAM",
+              "operatingDate": "2026-11-20",
+              "actorId": "Sam",
+              "ceilingMinor": 40000,
+              "validFromMinute": 1170,
+              "validThroughMinute": 1260,
+              "source": "Fictional delegated spending-limit record BUDGET-1120"
+            }
+          ],
+          "resources": [],
+          "bookings": []
+        },
+        "provenance": [
+          {
+            "source": "Fictional tutorial snapshot; review each current record before use."
+          }
+        ]
+      },
+      "expect": [
+        {
+          "kind": "commitment-plan",
+          "choices": {
+            "deployment": "hold"
+          },
+          "feasible": true,
+          "preferred": false
+        },
+        {
+          "kind": "commitment-plan",
+          "choices": {
+            "deployment": "small-standard"
+          },
+          "feasible": false,
+          "preferred": false
+        },
+        {
+          "kind": "commitment-constraint",
+          "choices": {
+            "deployment": "small-standard"
+          },
+          "constraintId": "event-access",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "access-scope",
+      "title": "Access for another event does not apply tonight",
+      "inputs": {
+        "id": "street-team-friday",
+        "parameters": {
+          "venueId": "VENUE-SAM",
+          "eventId": "EVENT-1120",
+          "operatingDate": "2026-11-20",
+          "actorId": "Sam",
+          "qualifiedStaff": 7,
+          "unavailableStaff": 0,
+          "minimumInside": 4,
+          "reviewMinute": 1170,
+          "dispatchMinute": 1185,
+          "promotionStartMinute": 1200,
+          "eventExitMinute": 1215,
+          "contactEndMinute": 1245,
+          "staffReturnMinute": 1260,
+          "customerJourneyMinutes": 30,
+          "latestArrivalMinute": 1275,
+          "expenseLimitMinor": 40000
+        },
+        "tables": {
+          "options": [
+            {
+              "id": "hold",
+              "label": "Make no further push",
+              "promoters": 0,
+              "expenseMinor": 0
+            },
+            {
+              "id": "small-standard",
+              "label": "One-person standard push",
+              "promoters": 1,
+              "expenseMinor": 20000
+            },
+            {
+              "id": "large-standard",
+              "label": "Two-person standard push",
+              "promoters": 2,
+              "expenseMinor": 40000
+            },
+            {
+              "id": "large-discount",
+              "label": "Two-person discount push",
+              "promoters": 2,
+              "expenseMinor": 40000
+            }
+          ],
+          "scenarios": [
+            {
+              "id": "declared-evening"
+            }
+          ],
+          "access": [
+            {
+              "id": "ACCESS-1120",
+              "venueId": "VENUE-SAM",
+              "eventId": "OTHER-EVENT",
+              "operatingDate": "2026-11-20",
+              "activity": "street-promotion",
+              "granted": true,
+              "validFromMinute": 1200,
+              "validThroughMinute": 1260,
+              "source": "Fictional event organizer access record ACCESS-1120"
+            }
+          ],
+          "spending": [
+            {
+              "id": "BUDGET-1120",
+              "venueId": "VENUE-SAM",
+              "operatingDate": "2026-11-20",
+              "actorId": "Sam",
+              "ceilingMinor": 40000,
+              "validFromMinute": 1170,
+              "validThroughMinute": 1260,
+              "source": "Fictional delegated spending-limit record BUDGET-1120"
+            }
+          ],
+          "resources": [],
+          "bookings": []
+        },
+        "provenance": [
+          {
+            "source": "Fictional tutorial snapshot; review each current record before use."
+          }
+        ]
+      },
+      "expect": [
+        {
+          "kind": "commitment-plan",
+          "choices": {
+            "deployment": "small-standard"
+          },
+          "feasible": false,
+          "preferred": false
+        },
+        {
+          "kind": "commitment-constraint",
+          "choices": {
+            "deployment": "small-standard"
+          },
+          "constraintId": "event-access",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "access-expired",
+      "title": "Access that ends before the contact window cannot cover it",
+      "inputs": {
+        "id": "street-team-friday",
+        "parameters": {
+          "venueId": "VENUE-SAM",
+          "eventId": "EVENT-1120",
+          "operatingDate": "2026-11-20",
+          "actorId": "Sam",
+          "qualifiedStaff": 7,
+          "unavailableStaff": 0,
+          "minimumInside": 4,
+          "reviewMinute": 1170,
+          "dispatchMinute": 1185,
+          "promotionStartMinute": 1200,
+          "eventExitMinute": 1215,
+          "contactEndMinute": 1245,
+          "staffReturnMinute": 1260,
+          "customerJourneyMinutes": 30,
+          "latestArrivalMinute": 1275,
+          "expenseLimitMinor": 40000
+        },
+        "tables": {
+          "options": [
+            {
+              "id": "hold",
+              "label": "Make no further push",
+              "promoters": 0,
+              "expenseMinor": 0
+            },
+            {
+              "id": "small-standard",
+              "label": "One-person standard push",
+              "promoters": 1,
+              "expenseMinor": 20000
+            },
+            {
+              "id": "large-standard",
+              "label": "Two-person standard push",
+              "promoters": 2,
+              "expenseMinor": 40000
+            },
+            {
+              "id": "large-discount",
+              "label": "Two-person discount push",
+              "promoters": 2,
+              "expenseMinor": 40000
+            }
+          ],
+          "scenarios": [
+            {
+              "id": "declared-evening"
+            }
+          ],
+          "access": [
+            {
+              "id": "ACCESS-1120",
+              "venueId": "VENUE-SAM",
+              "eventId": "EVENT-1120",
+              "operatingDate": "2026-11-20",
+              "activity": "street-promotion",
+              "granted": true,
+              "validFromMinute": 1200,
+              "validThroughMinute": 1230,
+              "source": "Fictional event organizer access record ACCESS-1120"
+            }
+          ],
+          "spending": [
+            {
+              "id": "BUDGET-1120",
+              "venueId": "VENUE-SAM",
+              "operatingDate": "2026-11-20",
+              "actorId": "Sam",
+              "ceilingMinor": 40000,
+              "validFromMinute": 1170,
+              "validThroughMinute": 1260,
+              "source": "Fictional delegated spending-limit record BUDGET-1120"
+            }
+          ],
+          "resources": [],
+          "bookings": []
+        },
+        "provenance": [
+          {
+            "source": "Fictional tutorial snapshot; review each current record before use."
+          }
+        ]
+      },
+      "expect": [
+        {
+          "kind": "commitment-plan",
+          "choices": {
+            "deployment": "small-standard"
+          },
+          "feasible": false,
+          "preferred": false
+        },
+        {
+          "kind": "commitment-constraint",
+          "choices": {
+            "deployment": "small-standard"
+          },
+          "constraintId": "event-access",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "delegation-missing",
+      "title": "Missing delegated spending permission blocks paid deployments",
+      "inputs": {
+        "id": "street-team-friday",
+        "parameters": {
+          "venueId": "VENUE-SAM",
+          "eventId": "EVENT-1120",
+          "operatingDate": "2026-11-20",
+          "actorId": "Sam",
+          "qualifiedStaff": 7,
+          "unavailableStaff": 0,
+          "minimumInside": 4,
+          "reviewMinute": 1170,
+          "dispatchMinute": 1185,
+          "promotionStartMinute": 1200,
+          "eventExitMinute": 1215,
+          "contactEndMinute": 1245,
+          "staffReturnMinute": 1260,
+          "customerJourneyMinutes": 30,
+          "latestArrivalMinute": 1275,
+          "expenseLimitMinor": 40000
+        },
+        "tables": {
+          "options": [
+            {
+              "id": "hold",
+              "label": "Make no further push",
+              "promoters": 0,
+              "expenseMinor": 0
+            },
+            {
+              "id": "small-standard",
+              "label": "One-person standard push",
+              "promoters": 1,
+              "expenseMinor": 20000
+            },
+            {
+              "id": "large-standard",
+              "label": "Two-person standard push",
+              "promoters": 2,
+              "expenseMinor": 40000
+            },
+            {
+              "id": "large-discount",
+              "label": "Two-person discount push",
+              "promoters": 2,
+              "expenseMinor": 40000
+            }
+          ],
+          "scenarios": [
+            {
+              "id": "declared-evening"
+            }
+          ],
+          "access": [
+            {
+              "id": "ACCESS-1120",
+              "venueId": "VENUE-SAM",
+              "eventId": "EVENT-1120",
+              "operatingDate": "2026-11-20",
+              "activity": "street-promotion",
+              "granted": true,
+              "validFromMinute": 1200,
+              "validThroughMinute": 1260,
+              "source": "Fictional event organizer access record ACCESS-1120"
+            }
+          ],
+          "spending": [],
+          "resources": [],
+          "bookings": []
+        },
+        "provenance": [
+          {
+            "source": "Fictional tutorial snapshot; review each current record before use."
+          }
+        ]
+      },
+      "expect": [
+        {
+          "kind": "commitment-plan",
+          "choices": {
+            "deployment": "hold"
+          },
+          "feasible": true,
+          "preferred": false
+        },
+        {
+          "kind": "commitment-plan",
+          "choices": {
+            "deployment": "small-standard"
+          },
+          "feasible": false,
+          "preferred": false
+        },
+        {
+          "kind": "commitment-constraint",
+          "choices": {
+            "deployment": "small-standard"
+          },
+          "constraintId": "spending-permission",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "spending-limit",
+      "title": "A $200 expense limit admits the small push but blocks both large pushes",
+      "inputs": {
+        "id": "street-team-friday",
+        "parameters": {
+          "venueId": "VENUE-SAM",
+          "eventId": "EVENT-1120",
+          "operatingDate": "2026-11-20",
+          "actorId": "Sam",
+          "qualifiedStaff": 7,
+          "unavailableStaff": 0,
+          "minimumInside": 4,
+          "reviewMinute": 1170,
+          "dispatchMinute": 1185,
+          "promotionStartMinute": 1200,
+          "eventExitMinute": 1215,
+          "contactEndMinute": 1245,
+          "staffReturnMinute": 1260,
+          "customerJourneyMinutes": 30,
+          "latestArrivalMinute": 1275,
+          "expenseLimitMinor": 20000
+        },
+        "tables": {
+          "options": [
+            {
+              "id": "hold",
+              "label": "Make no further push",
+              "promoters": 0,
+              "expenseMinor": 0
+            },
+            {
+              "id": "small-standard",
+              "label": "One-person standard push",
+              "promoters": 1,
+              "expenseMinor": 20000
+            },
+            {
+              "id": "large-standard",
+              "label": "Two-person standard push",
+              "promoters": 2,
+              "expenseMinor": 40000
+            },
+            {
+              "id": "large-discount",
+              "label": "Two-person discount push",
+              "promoters": 2,
+              "expenseMinor": 40000
+            }
+          ],
+          "scenarios": [
+            {
+              "id": "declared-evening"
+            }
+          ],
+          "access": [
+            {
+              "id": "ACCESS-1120",
+              "venueId": "VENUE-SAM",
+              "eventId": "EVENT-1120",
+              "operatingDate": "2026-11-20",
+              "activity": "street-promotion",
+              "granted": true,
+              "validFromMinute": 1200,
+              "validThroughMinute": 1260,
+              "source": "Fictional event organizer access record ACCESS-1120"
+            }
+          ],
+          "spending": [
+            {
+              "id": "BUDGET-1120",
+              "venueId": "VENUE-SAM",
+              "operatingDate": "2026-11-20",
+              "actorId": "Sam",
+              "ceilingMinor": 40000,
+              "validFromMinute": 1170,
+              "validThroughMinute": 1260,
+              "source": "Fictional delegated spending-limit record BUDGET-1120"
+            }
+          ],
+          "resources": [],
+          "bookings": []
+        },
+        "provenance": [
+          {
+            "source": "Fictional tutorial snapshot; review each current record before use."
+          }
+        ]
+      },
+      "expect": [
+        {
+          "kind": "commitment-plan",
+          "choices": {
+            "deployment": "small-standard"
+          },
+          "feasible": true,
+          "preferred": false
+        },
+        {
+          "kind": "commitment-plan",
+          "choices": {
+            "deployment": "large-standard"
+          },
+          "feasible": false,
+          "preferred": false
+        },
+        {
+          "kind": "commitment-constraint",
+          "choices": {
+            "deployment": "large-standard"
+          },
+          "constraintId": "expense-limit",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "hold-with-incorrect-charge",
+      "title": "A charged no-push row is not the authored zero-cost baseline",
+      "inputs": {
+        "id": "street-team-friday",
+        "parameters": {
+          "venueId": "VENUE-SAM",
+          "eventId": "EVENT-1120",
+          "operatingDate": "2026-11-20",
+          "actorId": "Sam",
+          "qualifiedStaff": 7,
+          "unavailableStaff": 0,
+          "minimumInside": 4,
+          "reviewMinute": 1170,
+          "dispatchMinute": 1185,
+          "promotionStartMinute": 1200,
+          "eventExitMinute": 1215,
+          "contactEndMinute": 1245,
+          "staffReturnMinute": 1260,
+          "customerJourneyMinutes": 30,
+          "latestArrivalMinute": 1275,
+          "expenseLimitMinor": 40000
+        },
+        "tables": {
+          "options": [
+            {
+              "id": "hold",
+              "label": "Make no further push",
+              "promoters": 0,
+              "expenseMinor": 1000
+            },
+            {
+              "id": "small-standard",
+              "label": "One-person standard push",
+              "promoters": 1,
+              "expenseMinor": 20000
+            },
+            {
+              "id": "large-standard",
+              "label": "Two-person standard push",
+              "promoters": 2,
+              "expenseMinor": 40000
+            },
+            {
+              "id": "large-discount",
+              "label": "Two-person discount push",
+              "promoters": 2,
+              "expenseMinor": 40000
+            }
+          ],
+          "scenarios": [
+            {
+              "id": "declared-evening"
+            }
+          ],
+          "access": [
+            {
+              "id": "ACCESS-1120",
+              "venueId": "VENUE-SAM",
+              "eventId": "EVENT-1120",
+              "operatingDate": "2026-11-20",
+              "activity": "street-promotion",
+              "granted": true,
+              "validFromMinute": 1200,
+              "validThroughMinute": 1260,
+              "source": "Fictional event organizer access record ACCESS-1120"
+            }
+          ],
+          "spending": [],
+          "resources": [],
+          "bookings": []
+        },
+        "provenance": [
+          {
+            "source": "Fictional tutorial snapshot; review each current record before use."
+          }
+        ]
+      },
+      "expect": [
+        {
+          "kind": "commitment-plan",
+          "choices": {
+            "deployment": "hold"
+          },
+          "feasible": false,
+          "preferred": false
+        },
+        {
+          "kind": "commitment-constraint",
+          "choices": {
+            "deployment": "hold"
+          },
+          "constraintId": "published-option-structure",
+          "passed": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "scope": "Illustrative analyst derivation from the supplied essay revision, not an application import file or newly observed app behavior.",
+  "Q0": "Which complete investigation plan establishes which bag to hold and leaves time to complete that choice by minute 12, within the available resources?",
+  "requirements": [
+    {
+      "question": "Q1: Could the reported bag be the permitted incorrect result?",
+      "id": "R1",
+      "app_column": "SUFFICIENCY",
+      "statement": "The plan shall establish the required bag for every permitted world/report path."
+    },
+    {
+      "question": "Q2: Is each proposed comparison physically valid?",
+      "id": "R2",
+      "app_column": "LEGAL",
+      "statement": "Each reachable weighing shall place equal positive numbers of marbles from disjoint sets on its two pans. Containers contribute no weight."
+    },
+    {
+      "question": "Q3: Does the physical operation count exceed a supplied limit?",
+      "id": "R3",
+      "app_column": "COUNT",
+      "statement": "If supplied, the physical-weighing limit shall not be exceeded on any permitted path. No limit is supplied here; its status is not applicable."
+    },
+    {
+      "question": "Q4: Is there time to complete the choice after adequate evidence?",
+      "id": "R4",
+      "app_column": "TIME",
+      "statement": "The plan shall make sufficient evidence usable and complete the final choice by minute 12."
+    },
+    {
+      "question": "Q5: Does the plan fit the resource allowance?",
+      "id": "R5",
+      "app_column": "COST",
+      "statement": "The plan shall consume at most 20 modeled resource credits on any permitted path."
+    },
+    {
+      "question": "Q6: Are all permitted paths accounted for?",
+      "id": "R6",
+      "app_column": "COVERAGE",
+      "statement": "The assessment shall cover all permitted world/report paths for the proposed policy."
+    }
+  ],
+  "basis_matrix": {
+    "columns": [
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "R5",
+      "R6"
+    ],
+    "BAG-QUICK": [
+      "conflict",
+      "satisfied",
+      "not_applicable",
+      "not_established",
+      "satisfied",
+      "satisfied"
+    ],
+    "BAG-REPEAT": [
+      "satisfied",
+      "satisfied",
+      "not_applicable",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "MARBLE-EXACT": [
+      "satisfied",
+      "satisfied",
+      "not_applicable",
+      "conflict",
+      "satisfied",
+      "satisfied"
+    ]
+  },
+  "views": {
+    "V1": "Plan comparison",
+    "V2": "Requirements",
+    "V3": "Finding detail pane",
+    "V4": "Evidence timing",
+    "V5": "Evidence & sources",
+    "V6": "Context & model"
+  },
+  "review_boundary": "Requirements validation reviews the need and assumptions. Candidate verification checks a plan against them. Fit does not rank economic value or grant execution authority."
+}

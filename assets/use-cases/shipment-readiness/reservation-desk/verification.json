@@ -1,0 +1,332 @@
+{
+  "format": "shipment-reservation-desk-website-verification/1",
+  "fictional": true,
+  "verifiedAt": "2026-11-17T22:18:15.207Z",
+  "repository": {
+    "url": "https://github.com/hermodlabs/sample_code/tree/main/shipment-reservation-desk",
+    "pinnedUrl": "https://github.com/hermodlabs/sample_code/tree/7e2bb922b9b4275a786d85395a82e08e4df5e8d7/shipment-reservation-desk",
+    "commit": "7e2bb922b9b4275a786d85395a82e08e4df5e8d7",
+    "sourceDirectory": "shipment-reservation-desk",
+    "unmodified": true
+  },
+  "runtime": {
+    "node": "v24.16.0",
+    "packages": [
+      {
+        "name": "@decision-lab/sdk",
+        "version": "0.1.0",
+        "filename": "decision-lab-sdk-0.1.0.tgz",
+        "bytes": 298278,
+        "sha256": "1f12000abb9d605799340d3f3cbfc2e81b0c662e01a870027f2919438ead3916"
+      },
+      {
+        "name": "@decision-lab/cli",
+        "version": "0.1.0",
+        "filename": "decision-lab-cli-0.1.0.tgz",
+        "bytes": 26856,
+        "sha256": "9362d9cf90b7ef3b89796abbe702cde21a10a1a1224388c689068478d523f402"
+      }
+    ],
+    "dependencies": "Exact declared React 19.3.0, React DOM 19.3.0, Vite 8.3.0, @vitejs/plugin-react 6.1.1, Playwright 1.62.1 installed in the isolated temporary copy; no source aliases or sibling source writes."
+  },
+  "binding": {
+    "appId": "shipment-review-with-consolidation",
+    "release": 1,
+    "appHash": "389fc6f51baf8f14424fe4da2cea612bc6c12f0248126ff5c682cb1d263e191c",
+    "packageHash": "9a10492b24acf94db41a24ea90aee6d371c8de0d4797a6f334ba72e52205070a",
+    "moduleHash": "771c2f10854ac05ac02b44cc4e01e4fb8eccb1cb1b677dab426a850e5ef571f0",
+    "pattern": "complete-a-commitment/1"
+  },
+  "nativeTests": {
+    "command": "node --test --test-reporter=tap test/shipment.test.js",
+    "tests": 6,
+    "passed": 6,
+    "failed": 0,
+    "transcript": {
+      "file": "native-tests.tap",
+      "bytes": 1429,
+      "sha256": "fbec4cd0a80290959dba531d66d4e49562e4fbd0b1a413f6a1535eca8e28c0ec"
+    }
+  },
+  "productionBrowser": {
+    "upstreamSuite": "browser-results.json",
+    "upstreamChecks": 13,
+    "workers": [
+      "/assets/worker-5SBq1EMq.js"
+    ],
+    "consoleErrors": []
+  },
+  "storyChecks": [
+    {
+      "case": "ORD-105 selected before review",
+      "evaluationExplicit": true,
+      "currentRecommendationWithheld": true
+    },
+    {
+      "case": "ORD-105 before new confirmation",
+      "finding": "feasible_witness",
+      "preferredIds": [
+        "direct"
+      ],
+      "plans": [
+        {
+          "id": "direct",
+          "feasible": true,
+          "preferred": true,
+          "expense": 400000,
+          "arrivalMinutes": 5040,
+          "failedChecks": []
+        },
+        {
+          "id": "backup",
+          "feasible": false,
+          "preferred": false,
+          "expense": 600000,
+          "arrivalMinutes": 3600,
+          "failedChecks": [
+            "total-expense-limit"
+          ]
+        },
+        {
+          "id": "consolidated",
+          "feasible": false,
+          "preferred": false,
+          "expense": 500000,
+          "arrivalMinutes": 3960,
+          "failedChecks": [
+            "scoped-consolidation-slot"
+          ]
+        }
+      ],
+      "cliParity": true
+    },
+    {
+      "case": "Edited confirmation",
+      "currentRecommendationWithheld": true,
+      "previousRetained": true
+    },
+    {
+      "case": "ORD-105 with fictional newly issued revision-2 confirmation",
+      "finding": "feasible_witness",
+      "preferredIds": [
+        "consolidated"
+      ],
+      "plans": [
+        {
+          "id": "direct",
+          "feasible": true,
+          "preferred": false,
+          "expense": 400000,
+          "arrivalMinutes": 5040,
+          "failedChecks": []
+        },
+        {
+          "id": "backup",
+          "feasible": false,
+          "preferred": false,
+          "expense": 600000,
+          "arrivalMinutes": 3600,
+          "failedChecks": [
+            "total-expense-limit"
+          ]
+        },
+        {
+          "id": "consolidated",
+          "feasible": true,
+          "preferred": true,
+          "expense": 500000,
+          "arrivalMinutes": 3960,
+          "failedChecks": []
+        }
+      ],
+      "cliParity": true,
+      "allOtherInputsUnmodified": true
+    },
+    {
+      "case": "Unsupported currency EUR",
+      "inputRejected": true,
+      "currentRecommendationWithheld": true
+    }
+  ],
+  "captures": [
+    {
+      "file": "desk-overview.png",
+      "selector": "full page",
+      "state": "ORD-105 revision 2; old revision-1 confirmation; Direct preferred",
+      "width": 1440,
+      "height": 1710,
+      "sha256": "dc4714a76c66205e63cc6e1969a9b7ec7456ca6ad900e800ded2460ce44c2e0d",
+      "method": "Playwright screenshot of visible production interface; no page content, app state or results injected."
+    },
+    {
+      "file": "desk-first-view.png",
+      "selector": "viewport",
+      "state": "ORD-105 initial custom interface: case cards, shipment header, quote controls and Direct recommendation",
+      "width": 1440,
+      "height": 1050,
+      "sha256": "8be8a947cee80dd4423ec5e677078ebfadbcb9ae83d8fa2081818c516dfc7fbc",
+      "method": "Playwright screenshot of visible production interface; no page content, app state or results injected."
+    },
+    {
+      "file": "revised-order.png",
+      "selector": ".results-panel",
+      "state": "Direct preferred; Consolidated blocked by old confirmation",
+      "width": 772,
+      "height": 871,
+      "sha256": "fd6f177cc573b16988ef1d5562d873c0655d2202fc006c76c02b7018acfb9e39",
+      "method": "Playwright screenshot of visible production interface; no page content, app state or results injected."
+    },
+    {
+      "file": "current-confirmation.png",
+      "selector": ".results-panel",
+      "state": "Consolidated preferred at $5,000 Thursday 6 p.m.; prior Direct retained",
+      "width": 772,
+      "height": 896,
+      "sha256": "6f5a59b5befd2cc782e7d49a27b82baf9d4c1b15640813f363810ae0d57aafe1",
+      "method": "Playwright screenshot of visible production interface; no page content, app state or results injected."
+    },
+    {
+      "file": "confirmation-record.png",
+      "selector": ".record-panel[aria-labelledby=\"confirmation-heading\"]",
+      "state": "Fictional newly issued NEW-SLOT-105-R2, revision 2, same scope and validity",
+      "width": 567,
+      "height": 562,
+      "sha256": "c5eb46afc7ed812c01eb6e48c08173623d392d0f8b57c08cff866565a9cef34f",
+      "method": "Playwright screenshot of visible production interface; no page content, app state or results injected."
+    },
+    {
+      "file": "input-error.png",
+      "selector": ".results-panel",
+      "state": "EUR input error; no current recommendation; earlier calculation retained as comparison",
+      "width": 772,
+      "height": 569,
+      "sha256": "bee7a5687ed87d5b7445a588784c247fd7daeb45c65b894de73a994788c1928d",
+      "method": "Playwright screenshot of visible production interface; no page content, app state or results injected."
+    }
+  ],
+  "scope": "New confirmation is a fictional newly issued record, not a correction of an old record to manufacture evidence. Only the reference and revision differ; all other scope, status and times happen to be the same in this worked situation. The comparison verifies that resources, grants and other inputs are untouched. The retained SDK files are native decision-lab-run/1 values; no custom review wrapper or archived-run import is offered. Selection and import require an explicit Review arrangements action. No reservation, approval, ERP integration or shared shipment allocation is performed.",
+  "sourceFiles": [
+    {
+      "file": ".gitignore",
+      "bytes": 29,
+      "sha256": "dd9f7ed5d965def0331e59341df672dda4c3b070343beec0a8fdd94e63a025a9"
+    },
+    {
+      "file": "README.md",
+      "bytes": 6985,
+      "sha256": "5102d80e167a4e04b120fb43d2258f16e889df8a348cd2eb6df1d8f9207c6b77"
+    },
+    {
+      "file": "index.html",
+      "bytes": 492,
+      "sha256": "60d29b07462437687db59b45b1d506bdc08d5325f25c2873db00c6eb76374b07"
+    },
+    {
+      "file": "package.json",
+      "bytes": 700,
+      "sha256": "348ef978168aa81d55713749712bba9ac4654ba59d2ed0ef1c0f4dfa4db5cb4c"
+    },
+    {
+      "file": "public/data/README.md",
+      "bytes": 1996,
+      "sha256": "3fc9231888580ec924ddf461a54ec2be2480775d091388fd112cceea5227a313"
+    },
+    {
+      "file": "public/data/cases/confirmed.json",
+      "bytes": 6172,
+      "sha256": "b9d16e8d5bbb23679e892818e2fa9ef4c0824128747a4073bf619b71339f8a44"
+    },
+    {
+      "file": "public/data/cases/permissions.json",
+      "bytes": 6301,
+      "sha256": "463dfafa114019346cc53f81cda828b752ca2e09f1b7d1017cdaa0b43b157118"
+    },
+    {
+      "file": "public/data/cases/revised.json",
+      "bytes": 6328,
+      "sha256": "02a91aeebcd348751297c34edaf3e3ece644e1f31dd9380c5fce4be105a37437"
+    },
+    {
+      "file": "public/data/config.json",
+      "bytes": 3481,
+      "sha256": "d4efb009f038d80c15f59213bcaa8696dc668d5600abbf4ac9343f51a8f975bb"
+    },
+    {
+      "file": "public/data/shipment-review.app.json",
+      "bytes": 107155,
+      "sha256": "409dc299e6cde8abd54e942517471f6871e66ff7f4f7c7336f9b19ab1436b19e"
+    },
+    {
+      "file": "src/App.jsx",
+      "bytes": 23215,
+      "sha256": "4af51d5e550d80b20f2f51b727674957d2417b263ebfd2f568dae00cb776e3bc"
+    },
+    {
+      "file": "src/main.jsx",
+      "bytes": 242,
+      "sha256": "314ec31b552d2961d32cb39bd121fda88d351ad3e8b581aa1d7fd425d9d94a85"
+    },
+    {
+      "file": "src/shipment.js",
+      "bytes": 10986,
+      "sha256": "859d3a0a29c25fb8a50feb1b03fa8c9e49f20d74bf45c006d7f8ee58a2e8ef65"
+    },
+    {
+      "file": "src/styles.css",
+      "bytes": 23129,
+      "sha256": "497e3bde2e833dc3359d231124908b680e3e29c06abbdb1f60d0db893f7e0d73"
+    },
+    {
+      "file": "src/useShipmentReview.js",
+      "bytes": 8419,
+      "sha256": "8cc5f2037c405fee93de3a29d6a772f917765c79c8663fd5efacc1acbf366ed3"
+    },
+    {
+      "file": "test/browser.mjs",
+      "bytes": 20984,
+      "sha256": "091e1f1a846f89a0db2b866f99bbe9e01ea6813365fecfd339fe93a368d12041"
+    },
+    {
+      "file": "test/shipment.test.js",
+      "bytes": 6915,
+      "sha256": "72d0ae0026d98fcb918f84d918626f50f62f14d19dc5f7971f6179ba042ed888"
+    },
+    {
+      "file": "vite.config.mjs",
+      "bytes": 536,
+      "sha256": "2ee21cb92b05cf4569fe7862ee6f678242fd4fef7bb9f7281199afedac759f63"
+    }
+  ],
+  "records": [
+    {
+      "file": "records/current-confirmation.case.json",
+      "bytes": 6334,
+      "sha256": "46831bafb2affdceab5c835af9294bf4f62c4f7383c65dd34c577a00a4402b24"
+    },
+    {
+      "file": "records/current-confirmation.cli-run.json",
+      "bytes": 213572,
+      "sha256": "2fa00a3545d9f831955b438e0cc8e79e2bfb69ac6816950de509a91fb7fbeec6"
+    },
+    {
+      "file": "records/current-confirmation.sdk-run.json",
+      "bytes": 214244,
+      "sha256": "33b976c142fa97b1dd57c86e57f3a2fda27b7afa9ad33d62b1d03cc99aa77a0d"
+    },
+    {
+      "file": "records/revised-order.case.json",
+      "bytes": 6328,
+      "sha256": "02a91aeebcd348751297c34edaf3e3ece644e1f31dd9380c5fce4be105a37437"
+    },
+    {
+      "file": "records/revised-order.cli-run.json",
+      "bytes": 226395,
+      "sha256": "ad3b0f3eb27797a5b13aaa99b11b6876eaf024b0161c546a3043caba34aba638"
+    },
+    {
+      "file": "records/revised-order.sdk-run.json",
+      "bytes": 222267,
+      "sha256": "2d335794c7155a8063e29908c3637f7ae0b415c809969fcd92f9940323df94d6"
+    }
+  ]
+}

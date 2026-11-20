@@ -1,0 +1,23 @@
+Objective "Reviewed report".
+Step "Prepare report".
+Step "Independent review".
+Resource "Noah".
+Resource "Maya".
+Check "Confirm reviewer independence".
+"Reviewed report" requires all of "Prepare report", "Independent review".
+"Independent review" requires check "Confirm reviewer independence".
+Schedule spans day 1 through day 3.
+Schedule orders shifts "work".
+"Noah" is available from day 1 through day 2.
+"Noah" is available during shifts "work".
+"Maya" is available from day 3 through day 3.
+"Maya" is available during shifts "work".
+"Prepare report" takes 2 consecutive calendar days.
+"Prepare report" runs during shift "work".
+"Prepare report" uses resource "Noah".
+"Independent review" takes 1 consecutive calendar day.
+"Independent review" runs during shift "work".
+"Independent review" uses resource "Maya".
+"Independent review" starts after "Prepare report" finishes.
+"Reviewed report" must finish by day 3.
+Find arrangements for "Reviewed report".

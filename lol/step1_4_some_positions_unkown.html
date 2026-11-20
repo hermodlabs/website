@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hermod Draft Assistant — Some Positions Are Unknown state" />
+  <title>Hermod — Some Positions Are Unknown</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink:'#03070d', shell:'#07101a', panel:'#09131f', panel2:'#0d1927',
+            line:'#1c2b3d', mist:'#9ca9bb', signal:'#8b5cf6', signal2:'#b79cff',
+            blue:'#5b8cff', danger:'#ff4d57', good:'#67d391', warn:'#f3b95f'
+          },
+          fontFamily: {
+            sans:['Inter','Avenir Next','ui-sans-serif','system-ui','sans-serif'],
+            mono:['IBM Plex Mono','SFMono-Regular','Consolas','ui-monospace','monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { color-scheme:dark; --purple:#8b5cf6; --lavender:#b79cff; --blue:#5b8cff; }
+    * { box-sizing:border-box; scrollbar-width:thin; scrollbar-color:#26384c transparent; }
+    html,body { min-height:100%; }
+    body {
+      margin:0;
+      background:
+        radial-gradient(circle at 5% 2%, rgba(91,140,255,.11), transparent 26rem),
+        radial-gradient(circle at 86% 0%, rgba(139,92,246,.09), transparent 28rem),
+        linear-gradient(180deg,#03070d 0%,#06101a 48%,#03070d 100%);
+    }
+    body::before {
+      content:''; position:fixed; inset:0; z-index:-2; pointer-events:none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.012) 1px, transparent 1px);
+      background-size:34px 34px;
+      mask-image:linear-gradient(to bottom,rgba(0,0,0,.72),transparent 84%);
+    }
+    .app-shell { min-height:100vh; border:1px solid rgba(80,110,145,.34); background:rgba(2,8,14,.26); }
+    .sidebar { background:linear-gradient(180deg,rgba(8,18,29,.98),rgba(3,9,15,.99)),radial-gradient(circle at 15% 7%,rgba(139,92,246,.08),transparent 18rem); }
+    .brand-mark { position:relative; width:34px; height:34px; filter:drop-shadow(0 0 14px rgba(139,92,246,.38)); }
+    .brand-mark::before,.brand-mark::after { content:''; position:absolute; top:4px; bottom:4px; width:10px; background:linear-gradient(180deg,#c4b5fd,#8b5cf6 55%,#5b8cff); clip-path:polygon(0 0,100% 17%,100% 60%,50% 74%,50% 100%,0 83%); }
+    .brand-mark::before{left:4px}.brand-mark::after{right:4px;transform:scaleX(-1)}
+    .nav-item { position:relative; transition:.18s ease; }
+    .nav-item::before { content:''; position:absolute; inset:0 auto 0 0; width:3px; border-radius:0 6px 6px 0; background:linear-gradient(180deg,#5b8cff,#8b5cf6); opacity:0; }
+    .nav-item.active { background:linear-gradient(90deg,rgba(91,140,255,.14),rgba(63,91,126,.14)); border-color:rgba(91,140,255,.16); color:#fff; }
+    .nav-item.active::before { opacity:1; }
+    .glass { background:linear-gradient(180deg,rgba(8,18,29,.93),rgba(5,12,20,.96)); box-shadow:inset 0 1px 0 rgba(255,255,255,.025),0 20px 60px rgba(0,0,0,.18); }
+    .step-line { height:1px; flex:1; background:linear-gradient(90deg,rgba(139,92,246,.55),rgba(255,255,255,.10)); }
+    .champion-icon { width:48px; height:48px; object-fit:cover; border-radius:12px; border:1px solid rgba(255,255,255,.11); box-shadow:0 5px 20px rgba(0,0,0,.24); background:#0a111a; }
+    .team-row { display:grid; grid-template-columns:52px minmax(0,1fr) auto; gap:12px; align-items:center; min-height:72px; border-top:1px solid rgba(255,255,255,.055); padding:12px 20px; }
+    .team-row.ambiguous { background:linear-gradient(90deg,rgba(243,185,95,.055),rgba(139,92,246,.035),transparent); }
+    .team-row.empty { opacity:.52; }
+    .ambiguity-card {
+      background:
+        radial-gradient(circle at 12% 20%, rgba(243,185,95,.10), transparent 20rem),
+        radial-gradient(circle at 92% 15%, rgba(139,92,246,.10), transparent 24rem),
+        linear-gradient(135deg,rgba(8,18,29,.98),rgba(5,12,20,.98));
+    }
+    .choice { transition:.17s ease; }
+    .choice:hover { transform:translateY(-1px); border-color:rgba(183,156,255,.38); background:rgba(139,92,246,.055); }
+    .choice.active { border-color:rgba(139,92,246,.72); background:linear-gradient(180deg,rgba(139,92,246,.16),rgba(91,140,255,.07)); color:white; box-shadow:0 0 0 1px rgba(139,92,246,.14),0 0 28px rgba(139,92,246,.10); }
+    .status-dot { box-shadow:0 0 12px currentColor; }
+  </style>
+</head>
+<body class="font-sans text-slate-100 antialiased selection:bg-signal/40 selection:text-white">
+  <div class="app-shell grid lg:grid-cols-[246px_minmax(0,1fr)]">
+    <aside class="sidebar hidden min-h-screen border-r border-white/[0.06] lg:flex lg:flex-col">
+      <div class="flex h-[76px] items-center gap-3 border-b border-white/[0.05] px-7">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="text-[19px] font-semibold tracking-[.24em] text-slate-100">HERMOD</div>
+      </div>
+      <div class="flex-1 px-2 py-7">
+        <p class="px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Live</p>
+        <button class="nav-item active flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-semibold"><span class="grid h-6 w-6 place-items-center text-signal2">⌾</span>Draft Assistant</button>
+        <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">You</p>
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400"><span class="grid h-6 w-6 place-items-center">▦</span>Champion Pool</button>
+        <button class="nav-item mt-1 flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400"><span class="grid h-6 w-6 place-items-center">◇</span>Player Profile</button>
+        <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Learn</p>
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400"><span class="grid h-6 w-6 place-items-center">□</span>Decision History</button>
+        <button class="nav-item mt-1 flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400"><span class="grid h-6 w-6 place-items-center">⌁</span>Review & Learn</button>
+      </div>
+      <div class="border-t border-white/[0.06] p-4">
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-4 py-3 text-left text-sm font-medium text-slate-400"><span>⚙</span>Settings</button>
+        <div class="mt-3 flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.018] px-4 py-3">
+          <div class="grid h-9 w-9 place-items-center rounded-full border border-blue/30 bg-blue/10 text-xs font-bold text-blue">D2</div>
+          <div class="min-w-0 flex-1"><p class="text-sm font-semibold text-slate-200">Mid Main</p><p class="text-xs text-slate-500">Diamond II</p></div>
+          <span class="text-slate-600">⌄</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="min-w-0">
+      <header class="flex h-[76px] items-center justify-between border-b border-white/[0.06] bg-black/10 px-5 sm:px-7 lg:px-8">
+        <div class="flex items-center gap-2.5 text-sm text-slate-500"><span class="font-medium text-slate-300">Ranked Solo/Duo</span><span class="text-slate-700">•</span><span>Summoner's Rift</span><span class="hidden text-slate-700 sm:inline">•</span><span class="hidden sm:inline">Pick Phase</span></div>
+        <div class="flex items-center gap-3"><span class="hidden rounded-full border border-warn/20 bg-warn/[0.06] px-3 py-1.5 text-[11px] font-semibold text-warn sm:inline-flex">ROLE AMBIGUITY</span><button id="resetBtn" class="rounded-lg border border-white/[0.07] bg-white/[0.02] px-3 py-2 text-xs font-medium text-slate-400 hover:text-white">Reset example</button></div>
+      </header>
+
+      <div class="mx-auto max-w-[1450px] px-5 pb-12 pt-7 sm:px-7 lg:px-8">
+        <section class="glass rounded-2xl border border-white/[0.07] px-5 py-4 sm:px-6">
+          <div class="flex items-center gap-2 sm:gap-3">
+            <div class="flex min-w-0 items-center gap-3"><span class="grid h-7 w-7 place-items-center rounded-full border border-signal/70 bg-signal/15 text-[11px] font-bold text-signal2">1</span><div><p class="text-[11px] font-bold uppercase tracking-[.16em] text-signal2">Draft</p><p class="hidden text-xs text-slate-500 sm:block">Represent what is known</p></div></div>
+            <div class="step-line"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-55"><span class="grid h-7 w-7 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-400">2</span><div class="hidden md:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-400">Your Options</p><p class="text-xs text-slate-600">Pool for today</p></div></div>
+            <div class="step-line opacity-35"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-45"><span class="grid h-7 w-7 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-500">3</span><div class="hidden lg:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500">Clarify</p><p class="text-xs text-slate-600">Only if needed</p></div></div>
+            <div class="step-line opacity-30"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-40"><span class="grid h-7 w-7 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-500">4</span><div class="hidden lg:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500">Recommendation</p><p class="text-xs text-slate-600">Rank choices</p></div></div>
+            <div class="step-line opacity-25"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-35"><span class="grid h-7 w-7 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-500">5</span><div class="hidden xl:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500">Decide</p><p class="text-xs text-slate-600">Record lock</p></div></div>
+          </div>
+        </section>
+
+        <section class="pb-7 pt-9">
+          <p class="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.2em] text-warn"><span class="status-dot h-1.5 w-1.5 rounded-full bg-warn text-warn"></span>Step 1 state · Some positions are unknown</p>
+          <h1 class="text-3xl font-semibold tracking-[-.035em] text-white sm:text-[38px]">Represent uncertainty without guessing</h1>
+          <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-400 sm:text-[15px]">Hermod knows which champions have been revealed, but not every role is resolved. The goal here is to capture the draft faithfully — not force the player to invent certainty.</p>
+        </section>
+
+        <section class="grid gap-5 xl:grid-cols-[1.3fr_.7fr]">
+          <div class="space-y-5">
+            <article class="ambiguity-card overflow-hidden rounded-3xl border border-warn/20 shadow-2xl shadow-black/25">
+              <div class="flex flex-col gap-6 border-b border-white/[0.07] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-7">
+                <div class="flex items-center gap-4">
+                  <img class="h-16 w-16 rounded-2xl border border-warn/25 object-cover shadow-lg" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Gragas.png" alt="Gragas" />
+                  <div><p class="text-[10px] font-bold uppercase tracking-[.2em] text-warn">Role assignment</p><h2 class="mt-1 text-2xl font-semibold tracking-[-.025em] text-white">Where is Gragas playing?</h2><p class="mt-1 text-sm text-slate-400">The champion is known. The role is not.</p></div>
+                </div>
+                <span id="ambiguityPill" class="rounded-full border border-warn/25 bg-warn/[0.07] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.13em] text-warn">Still flexed</span>
+              </div>
+
+              <div class="p-6 sm:p-7">
+                <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                  <button data-role-choice="TOP" class="choice rounded-xl border border-white/[0.08] bg-white/[0.018] px-4 py-4 text-left"><span class="block text-[10px] font-bold uppercase tracking-[.16em] text-blue">Top</span><span class="mt-1 block text-xs text-slate-500">Assign Gragas to Top</span></button>
+                  <button data-role-choice="JUNGLE" class="choice rounded-xl border border-white/[0.08] bg-white/[0.018] px-4 py-4 text-left"><span class="block text-[10px] font-bold uppercase tracking-[.16em] text-blue">Jungle</span><span class="mt-1 block text-xs text-slate-500">Assign Gragas to Jungle</span></button>
+                  <button data-role-choice="FLEXED" class="choice active rounded-xl border border-white/[0.08] bg-white/[0.018] px-4 py-4 text-left"><span class="block text-[10px] font-bold uppercase tracking-[.16em] text-signal2">Still flexed</span><span class="mt-1 block text-xs text-slate-500">Both roles remain plausible</span></button>
+                  <button data-role-choice="UNKNOWN" class="choice rounded-xl border border-white/[0.08] bg-white/[0.018] px-4 py-4 text-left"><span class="block text-[10px] font-bold uppercase tracking-[.16em] text-slate-400">I don't know</span><span class="mt-1 block text-xs text-slate-500">Preserve uncertainty</span></button>
+                </div>
+
+                <div id="stateExplanation" class="mt-5 rounded-2xl border border-signal/18 bg-signal/[0.045] p-4 sm:p-5">
+                  <div class="flex items-start gap-3"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full border border-signal/30 bg-signal/10 text-xs text-signal2">✓</span><div><p class="text-sm font-semibold text-white">“Still flexed” is valid information.</p><p class="mt-1 text-xs leading-5 text-slate-500">Hermod records the ambiguity instead of making you choose a role that has not been revealed. If this ambiguity matters later, Hermod can ask again during Clarify.</p></div></div>
+                </div>
+              </div>
+            </article>
+
+            <section class="grid gap-5 lg:grid-cols-2">
+              <article class="glass overflow-hidden rounded-2xl border border-blue/15">
+                <div class="flex items-center justify-between px-5 py-4 sm:px-6"><div><p class="text-[11px] font-bold uppercase tracking-[.18em] text-blue">Your team</p><p class="mt-1 text-xs text-slate-500">Known picks before your B3 action.</p></div><span class="rounded-full border border-blue/20 bg-blue/[0.07] px-3 py-1 text-[11px] font-semibold text-blue">2 picks + you</span></div>
+                <div class="team-row"><img class="champion-icon" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Gnar.png" alt="Gnar"><div><p class="text-sm font-semibold text-slate-200">Gnar</p><p class="mt-0.5 text-[11px] text-slate-600">TOP · known role</p></div><span class="text-[10px] font-bold uppercase tracking-[.13em] text-good">Known</span></div>
+                <div class="team-row"><img class="champion-icon" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/LeeSin.png" alt="Lee Sin"><div><p class="text-sm font-semibold text-slate-200">Lee Sin</p><p class="mt-0.5 text-[11px] text-slate-600">JUNGLE · known role</p></div><span class="text-[10px] font-bold uppercase tracking-[.13em] text-good">Known</span></div>
+                <div class="team-row"><div class="grid h-12 w-12 place-items-center rounded-xl border border-blue/25 bg-blue/[0.06] text-[10px] font-extrabold text-blue">YOU</div><div><p class="text-sm font-semibold text-blue">You</p><p class="mt-0.5 text-[11px] text-slate-600">MID · current decision</p></div><span class="text-[10px] font-bold uppercase tracking-[.13em] text-blue">B3</span></div>
+              </article>
+
+              <article class="glass overflow-hidden rounded-2xl border border-danger/15">
+                <div class="flex items-center justify-between px-5 py-4 sm:px-6"><div><p class="text-[11px] font-bold uppercase tracking-[.18em] text-danger">Enemy picks</p><p class="mt-1 text-xs text-slate-500">Champion identity and role are tracked separately.</p></div><span id="enemyStatePill" class="rounded-full border border-warn/20 bg-warn/[0.06] px-3 py-1 text-[11px] font-semibold text-warn">1 role unresolved</span></div>
+                <div id="gragasRow" class="team-row ambiguous"><img class="champion-icon" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Gragas.png" alt="Gragas"><div><p class="text-sm font-semibold text-slate-200">Gragas</p><p id="gragasRoleLabel" class="mt-0.5 text-[11px] text-warn">TOP / JUNGLE · role unresolved</p></div><span id="gragasBadge" class="rounded-full border border-warn/25 bg-warn/[0.07] px-2 py-1 text-[9px] font-bold uppercase tracking-[.12em] text-warn">Flexed</span></div>
+                <div class="team-row"><img class="champion-icon" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Zed.png" alt="Zed"><div><p class="text-sm font-semibold text-slate-200">Zed</p><p class="mt-0.5 text-[11px] text-slate-600">MID · known role</p></div><span class="text-[10px] font-bold uppercase tracking-[.13em] text-good">Known</span></div>
+                <div class="team-row empty"><div class="grid h-12 w-12 place-items-center rounded-xl border border-dashed border-white/[0.12] bg-white/[0.015] text-slate-600">—</div><div><p class="text-sm font-semibold text-slate-500">Not revealed yet</p><p class="mt-0.5 text-[11px] text-slate-700">Future enemy pick</p></div><span class="text-[10px] uppercase tracking-[.12em] text-slate-700">Later</span></div>
+              </article>
+            </section>
+          </div>
+
+          <aside class="space-y-5">
+            <section class="glass rounded-2xl border border-white/[0.07] p-5 sm:p-6">
+              <p class="text-[10px] font-bold uppercase tracking-[.2em] text-slate-500">Draft state</p>
+              <h3 class="mt-2 text-lg font-semibold text-white">Known vs unresolved</h3>
+              <div class="mt-5 space-y-4 text-sm">
+                <div class="flex items-center justify-between gap-4"><span class="text-slate-400">Current decision</span><span class="font-semibold text-white">B3 · MID</span></div>
+                <div class="flex items-center justify-between gap-4"><span class="text-slate-400">Allied roles</span><span class="font-semibold text-good">Known</span></div>
+                <div class="flex items-center justify-between gap-4"><span class="text-slate-400">Zed role</span><span class="font-semibold text-good">MID</span></div>
+                <div class="flex items-center justify-between gap-4"><span class="text-slate-400">Gragas role</span><span id="railGragas" class="font-semibold text-warn">Still flexed</span></div>
+              </div>
+            </section>
+
+            <section class="rounded-2xl border border-warn/16 bg-warn/[0.035] p-5 sm:p-6">
+              <p class="text-[10px] font-bold uppercase tracking-[.2em] text-warn">Why this state exists</p>
+              <p class="mt-3 text-sm leading-6 text-slate-300">A champion can be known while its position is still unresolved. Hermod should preserve that uncertainty rather than turning a guess into a fact.</p>
+              <div class="mt-4 border-t border-warn/10 pt-4"><p class="text-xs leading-5 text-slate-500">Step 1 records what is true now. Step 3 only revisits the ambiguity if resolving it would materially change the recommendation.</p></div>
+            </section>
+
+            <section class="glass rounded-2xl border border-white/[0.07] p-5 sm:p-6">
+              <p class="text-[10px] font-bold uppercase tracking-[.2em] text-slate-500">Hermod's current interpretation</p>
+              <p id="naturalSummary" class="mt-3 text-sm leading-6 text-slate-300">You are choosing Mid on B3. The enemy has shown Zed Mid and Gragas, whose role is still flexed between Top and Jungle.</p>
+              <div class="mt-4 rounded-xl border border-white/[0.06] bg-white/[0.018] p-3"><p class="text-[11px] leading-5 text-slate-500">This is enough to represent the draft faithfully. It is not yet a strategic conclusion.</p></div>
+            </section>
+          </aside>
+        </section>
+
+        <section class="mt-6 rounded-2xl border border-good/16 bg-[linear-gradient(90deg,rgba(103,211,145,.045),rgba(91,140,255,.045),rgba(139,92,246,.04))] p-5 sm:p-6">
+          <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+            <div><div class="flex items-center gap-2 text-sm font-semibold text-white"><span class="grid h-5 w-5 place-items-center rounded-full bg-good/10 text-[11px] text-good">✓</span>The draft can move forward with unresolved roles</div><p class="mt-2 max-w-3xl text-xs leading-5 text-slate-500">Hermod records the uncertainty now and continues. If Gragas's role later becomes decision-critical, Clarify can ask you to resolve it without pretending the role was known earlier.</p></div>
+            <button id="continueBtn" class="group inline-flex items-center justify-center gap-2 rounded-xl bg-signal px-5 py-3 text-sm font-bold text-white shadow-[0_10px_28px_rgba(139,92,246,.18)] transition hover:bg-[#9b70f7]">Continue with current state <span class="transition group-hover:translate-x-0.5">→</span></button>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="pointer-events-none fixed bottom-5 right-5 z-[60] translate-y-3 rounded-xl border border-white/[0.08] bg-[#0b1623]/95 px-4 py-3 text-sm text-slate-200 opacity-0 shadow-2xl transition duration-200">Draft state updated</div>
+
+  <script>
+    const initialChoice='FLEXED';
+    let roleChoice=initialChoice;
+    const buttons=[...document.querySelectorAll('[data-role-choice]')];
+    const pill=document.getElementById('ambiguityPill');
+    const roleLabel=document.getElementById('gragasRoleLabel');
+    const badge=document.getElementById('gragasBadge');
+    const row=document.getElementById('gragasRow');
+    const rail=document.getElementById('railGragas');
+    const summary=document.getElementById('naturalSummary');
+    const enemyPill=document.getElementById('enemyStatePill');
+    const explanation=document.getElementById('stateExplanation');
+    const toast=document.getElementById('toast');
+
+    function showToast(message){
+      toast.textContent=message;
+      toast.classList.remove('opacity-0','translate-y-3');
+      setTimeout(()=>toast.classList.add('opacity-0','translate-y-3'),1400);
+    }
+
+    function render(){
+      buttons.forEach(btn=>btn.classList.toggle('active',btn.dataset.roleChoice===roleChoice));
+      row.classList.remove('ambiguous');
+      if(roleChoice==='TOP'){
+        pill.textContent='Top confirmed';
+        roleLabel.textContent='TOP · role confirmed';
+        badge.textContent='Top';
+        rail.textContent='TOP';
+        rail.className='font-semibold text-good';
+        enemyPill.textContent='Roles resolved';
+        enemyPill.className='rounded-full border border-good/20 bg-good/[0.06] px-3 py-1 text-[11px] font-semibold text-good';
+        summary.textContent='You are choosing Mid on B3. The enemy has shown Zed Mid and Gragas Top.';
+        explanation.innerHTML='<div class="flex items-start gap-3"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full border border-good/30 bg-good/10 text-xs text-good">✓</span><div><p class="text-sm font-semibold text-white">Gragas is now represented as Top.</p><p class="mt-1 text-xs leading-5 text-slate-500">The ambiguity is resolved because you supplied a concrete observable fact.</p></div></div>';
+      } else if(roleChoice==='JUNGLE'){
+        pill.textContent='Jungle confirmed';
+        roleLabel.textContent='JUNGLE · role confirmed';
+        badge.textContent='Jungle';
+        rail.textContent='JUNGLE';
+        rail.className='font-semibold text-good';
+        enemyPill.textContent='Roles resolved';
+        enemyPill.className='rounded-full border border-good/20 bg-good/[0.06] px-3 py-1 text-[11px] font-semibold text-good';
+        summary.textContent='You are choosing Mid on B3. The enemy has shown Zed Mid and Gragas Jungle.';
+        explanation.innerHTML='<div class="flex items-start gap-3"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full border border-good/30 bg-good/10 text-xs text-good">✓</span><div><p class="text-sm font-semibold text-white">Gragas is now represented as Jungle.</p><p class="mt-1 text-xs leading-5 text-slate-500">The ambiguity is resolved because you supplied a concrete observable fact.</p></div></div>';
+      } else if(roleChoice==='UNKNOWN'){
+        row.classList.add('ambiguous');
+        pill.textContent="I don't know";
+        roleLabel.textContent='ROLE UNKNOWN · no assignment supplied';
+        badge.textContent='Unknown';
+        rail.textContent='Unknown';
+        rail.className='font-semibold text-warn';
+        enemyPill.textContent='1 role unresolved';
+        enemyPill.className='rounded-full border border-warn/20 bg-warn/[0.06] px-3 py-1 text-[11px] font-semibold text-warn';
+        summary.textContent="You are choosing Mid on B3. The enemy has shown Zed Mid and Gragas, but you do not know Gragas's role.";
+        explanation.innerHTML='<div class="flex items-start gap-3"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full border border-warn/30 bg-warn/10 text-xs text-warn">?</span><div><p class="text-sm font-semibold text-white">“I don\'t know” is also valid information.</p><p class="mt-1 text-xs leading-5 text-slate-500">Hermod records that the role is unknown instead of requiring a guess. The distinction from “Still flexed” is that you are not asserting which roles remain plausible.</p></div></div>';
+      } else {
+        row.classList.add('ambiguous');
+        pill.textContent='Still flexed';
+        roleLabel.textContent='TOP / JUNGLE · role unresolved';
+        badge.textContent='Flexed';
+        rail.textContent='Still flexed';
+        rail.className='font-semibold text-warn';
+        enemyPill.textContent='1 role unresolved';
+        enemyPill.className='rounded-full border border-warn/20 bg-warn/[0.06] px-3 py-1 text-[11px] font-semibold text-warn';
+        summary.textContent='You are choosing Mid on B3. The enemy has shown Zed Mid and Gragas, whose role is still flexed between Top and Jungle.';
+        explanation.innerHTML='<div class="flex items-start gap-3"><span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full border border-signal/30 bg-signal/10 text-xs text-signal2">✓</span><div><p class="text-sm font-semibold text-white">“Still flexed” is valid information.</p><p class="mt-1 text-xs leading-5 text-slate-500">Hermod records the ambiguity instead of making you choose a role that has not been revealed. If this ambiguity matters later, Hermod can ask again during Clarify.</p></div></div>';
+      }
+    }
+
+    buttons.forEach(btn=>btn.addEventListener('click',()=>{ roleChoice=btn.dataset.roleChoice; render(); showToast(`Gragas role state: ${btn.textContent.trim().split('\n')[0]}`); }));
+    document.getElementById('resetBtn').addEventListener('click',()=>{ roleChoice=initialChoice; render(); showToast('Representative ambiguity restored'); });
+    document.getElementById('continueBtn').addEventListener('click',()=>showToast('Draft state preserved — ready to continue'));
+    render();
+  </script>
+</body>
+</html>

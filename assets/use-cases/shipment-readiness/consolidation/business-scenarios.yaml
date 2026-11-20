@@ -1,0 +1,2899 @@
+format: decision-lab-app-check-suite/1
+id: shipment-consolidation-business-scenarios
+title: Preserve shipment checks while adding consolidated freight
+pattern: complete-a-commitment/1
+scenarios:
+  - id: original-two-options
+    title: "Keep the original two-option result under the $5,000 expense limit"
+    inputs:
+      id: SHIP-104-BASELINE-TWO-r1
+      parameters:
+        orderId: ORD-104
+        orderRevision: "1"
+        recipient: DC-X
+        shipDate: "2026-11-18"
+        profileVersion: "1.0.0"
+        currentTime: 480
+        actionReady: 480
+        reservationDeadline: 720
+        receiptDeadline: 5340
+        receiptOpen: 3600
+        receiptClose: 5341
+        expenseLimit: 500000
+        cashLimit: 650000
+        studyFee: 0
+        studyFeeAt: 480
+        quantity: 100
+        packDuration: 120
+        releaseDuration: 30
+        packActor: packing-lead
+        releaseActor: release-officer
+        studyPurchaseCap: 25000
+        studyPurchaser: finance-reviewer
+      tables:
+        arrangements:
+          - id: direct
+            shipPoint: SP-A
+            fee: 400000
+            departure: 1440
+            travelDuration: 3600
+            capacity: 100
+          - id: backup
+            shipPoint: SP-B
+            fee: 600000
+            departure: 1440
+            travelDuration: 2160
+            capacity: 100
+        states:
+          - id: registered
+            registered: true
+        readiness:
+          - stateId: registered
+            shipPoint: SP-A
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+          - stateId: registered
+            shipPoint: SP-B
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+        scenarios:
+          - id: registered
+            stateId: registered
+        actors:
+          - id: packing-lead
+          - id: release-officer
+        capabilities:
+          - actor: packing-lead
+            action: pack
+          - actor: release-officer
+            action: release
+        calendars:
+          - actor: packing-lead
+            start: 480
+            end: 1440
+          - actor: release-officer
+            start: 480
+            end: 1440
+        resources:
+          - id: packing-lead
+            capacity: 1
+          - id: release-officer
+            capacity: 1
+          - id: packing-bench
+            capacity: 1
+        bookings: []
+        grants:
+          - id: RELEASE-direct
+            actor: release-officer
+            action: release
+            arrangement: direct
+            shipPoint: SP-A
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-backup
+            actor: release-officer
+            action: release
+            arrangement: backup
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+        arrangementAuthorities:
+          - arrangement: direct
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: backup
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+        studyPurchaseGrants:
+          - id: STUDY-PURCHASE-1
+            actor: finance-reviewer
+            action: purchase-verification
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 720
+            ceiling: 25000
+        slotConfirmations: []
+      provenance:
+        - id: FICTIONAL-CONSOLIDATION-AUTHORING-EXAMPLE
+          description: "Continuation of the controlled shipment comparison: same registered ship points and baseline obligations; explicit $5,000 expense and $6,500 cash limits; fictional consolidated quote with scoped release/selection grants. No slot confirmation is supplied in the starter case. These are teaching inputs, not supplier records or operating permission."
+    expect:
+      - kind: commitment-plan
+        choices:
+          arrangement: direct
+        feasible: true
+        preferred: true
+      - kind: commitment-plan
+        choices:
+          arrangement: backup
+        feasible: false
+        preferred: false
+      - kind: commitment-constraint
+        choices:
+          arrangement: backup
+        constraintId: total-expense-limit
+        passed: false
+  - id: slot-unconfirmed
+    title: A third quote without slot confirmation remains blocked
+    inputs:
+      id: SHIP-104-CONSOLIDATION-UNCONFIRMED-r1
+      parameters:
+        orderId: ORD-104
+        orderRevision: "1"
+        recipient: DC-X
+        shipDate: "2026-11-18"
+        profileVersion: "1.0.0"
+        currentTime: 480
+        actionReady: 480
+        reservationDeadline: 720
+        receiptDeadline: 5340
+        receiptOpen: 3600
+        receiptClose: 5341
+        expenseLimit: 500000
+        cashLimit: 650000
+        studyFee: 0
+        studyFeeAt: 480
+        quantity: 100
+        packDuration: 120
+        releaseDuration: 30
+        packActor: packing-lead
+        releaseActor: release-officer
+        studyPurchaseCap: 25000
+        studyPurchaser: finance-reviewer
+      tables:
+        arrangements:
+          - id: direct
+            shipPoint: SP-A
+            fee: 400000
+            departure: 1440
+            travelDuration: 3600
+            capacity: 100
+          - id: backup
+            shipPoint: SP-B
+            fee: 600000
+            departure: 1440
+            travelDuration: 2160
+            capacity: 100
+          - id: consolidated
+            shipPoint: SP-B
+            fee: 500000
+            departure: 1440
+            travelDuration: 2520
+            capacity: 100
+        states:
+          - id: registered
+            registered: true
+        readiness:
+          - stateId: registered
+            shipPoint: SP-A
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+          - stateId: registered
+            shipPoint: SP-B
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+        scenarios:
+          - id: registered
+            stateId: registered
+        actors:
+          - id: packing-lead
+          - id: release-officer
+        capabilities:
+          - actor: packing-lead
+            action: pack
+          - actor: release-officer
+            action: release
+        calendars:
+          - actor: packing-lead
+            start: 480
+            end: 1440
+          - actor: release-officer
+            start: 480
+            end: 1440
+        resources:
+          - id: packing-lead
+            capacity: 1
+          - id: release-officer
+            capacity: 1
+          - id: packing-bench
+            capacity: 1
+        bookings: []
+        grants:
+          - id: RELEASE-direct
+            actor: release-officer
+            action: release
+            arrangement: direct
+            shipPoint: SP-A
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-backup
+            actor: release-officer
+            action: release
+            arrangement: backup
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-consolidated
+            actor: release-officer
+            action: release
+            arrangement: consolidated
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+        arrangementAuthorities:
+          - arrangement: direct
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: backup
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: consolidated
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+        studyPurchaseGrants:
+          - id: STUDY-PURCHASE-1
+            actor: finance-reviewer
+            action: purchase-verification
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 720
+            ceiling: 25000
+        slotConfirmations: []
+      provenance:
+        - id: FICTIONAL-CONSOLIDATION-AUTHORING-EXAMPLE
+          description: "Continuation of the controlled shipment comparison: same registered ship points and baseline obligations; explicit $5,000 expense and $6,500 cash limits; fictional consolidated quote with scoped release/selection grants. No slot confirmation is supplied in the starter case. These are teaching inputs, not supplier records or operating permission."
+    expect:
+      - kind: commitment-plan
+        choices:
+          arrangement: direct
+        feasible: true
+        preferred: true
+      - kind: commitment-plan
+        choices:
+          arrangement: backup
+        feasible: false
+        preferred: false
+      - kind: commitment-constraint
+        choices:
+          arrangement: backup
+        constraintId: total-expense-limit
+        passed: false
+      - kind: commitment-plan
+        choices:
+          arrangement: consolidated
+        feasible: false
+        preferred: false
+      - kind: commitment-constraint
+        choices:
+          arrangement: consolidated
+        constraintId: scoped-consolidation-slot
+        passed: false
+  - id: slot-confirmed
+    title: "A suitable current slot confirmation admits the earlier $5,000 option"
+    inputs:
+      id: SHIP-104-CONSOLIDATION-CONFIRMED-r1
+      parameters:
+        orderId: ORD-104
+        orderRevision: "1"
+        recipient: DC-X
+        shipDate: "2026-11-18"
+        profileVersion: "1.0.0"
+        currentTime: 480
+        actionReady: 480
+        reservationDeadline: 720
+        receiptDeadline: 5340
+        receiptOpen: 3600
+        receiptClose: 5341
+        expenseLimit: 500000
+        cashLimit: 650000
+        studyFee: 0
+        studyFeeAt: 480
+        quantity: 100
+        packDuration: 120
+        releaseDuration: 30
+        packActor: packing-lead
+        releaseActor: release-officer
+        studyPurchaseCap: 25000
+        studyPurchaser: finance-reviewer
+      tables:
+        arrangements:
+          - id: direct
+            shipPoint: SP-A
+            fee: 400000
+            departure: 1440
+            travelDuration: 3600
+            capacity: 100
+          - id: backup
+            shipPoint: SP-B
+            fee: 600000
+            departure: 1440
+            travelDuration: 2160
+            capacity: 100
+          - id: consolidated
+            shipPoint: SP-B
+            fee: 500000
+            departure: 1440
+            travelDuration: 2520
+            capacity: 100
+        states:
+          - id: registered
+            registered: true
+        readiness:
+          - stateId: registered
+            shipPoint: SP-A
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+          - stateId: registered
+            shipPoint: SP-B
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+        scenarios:
+          - id: registered
+            stateId: registered
+        actors:
+          - id: packing-lead
+          - id: release-officer
+        capabilities:
+          - actor: packing-lead
+            action: pack
+          - actor: release-officer
+            action: release
+        calendars:
+          - actor: packing-lead
+            start: 480
+            end: 1440
+          - actor: release-officer
+            start: 480
+            end: 1440
+        resources:
+          - id: packing-lead
+            capacity: 1
+          - id: release-officer
+            capacity: 1
+          - id: packing-bench
+            capacity: 1
+        bookings: []
+        grants:
+          - id: RELEASE-direct
+            actor: release-officer
+            action: release
+            arrangement: direct
+            shipPoint: SP-A
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-backup
+            actor: release-officer
+            action: release
+            arrangement: backup
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-consolidated
+            actor: release-officer
+            action: release
+            arrangement: consolidated
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+        arrangementAuthorities:
+          - arrangement: direct
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: backup
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: consolidated
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+        studyPurchaseGrants:
+          - id: STUDY-PURCHASE-1
+            actor: finance-reviewer
+            action: purchase-verification
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 720
+            ceiling: 25000
+        slotConfirmations:
+          - arrangement: consolidated
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            slotReference: SLOT-C104
+            status: confirmed
+            confirmedAt: 450
+            knownAt: 465
+            validFrom: 1380
+            validUntil: 1440
+      provenance:
+        - id: FICTIONAL-CONSOLIDATION-AUTHORING-EXAMPLE
+          description: "Continuation of the controlled shipment comparison: same registered ship points and baseline obligations; explicit $5,000 expense and $6,500 cash limits; fictional consolidated quote with scoped release/selection grants. No slot confirmation is supplied in the starter case. These are teaching inputs, not supplier records or operating permission."
+    expect:
+      - kind: commitment-plan
+        choices:
+          arrangement: direct
+        feasible: true
+        preferred: false
+      - kind: commitment-plan
+        choices:
+          arrangement: backup
+        feasible: false
+        preferred: false
+      - kind: commitment-constraint
+        choices:
+          arrangement: backup
+        constraintId: total-expense-limit
+        passed: false
+      - kind: commitment-plan
+        choices:
+          arrangement: consolidated
+        feasible: true
+        preferred: true
+      - kind: commitment-constraint
+        choices:
+          arrangement: consolidated
+        constraintId: scoped-consolidation-slot
+        passed: true
+  - id: wrong-order-revision
+    title: A confirmation for a different order revision does not cover this shipment
+    inputs:
+      id: SHIP-104-WRONG-ORDER-REVISION
+      parameters:
+        orderId: ORD-104
+        orderRevision: "1"
+        recipient: DC-X
+        shipDate: "2026-11-18"
+        profileVersion: "1.0.0"
+        currentTime: 480
+        actionReady: 480
+        reservationDeadline: 720
+        receiptDeadline: 5340
+        receiptOpen: 3600
+        receiptClose: 5341
+        expenseLimit: 500000
+        cashLimit: 650000
+        studyFee: 0
+        studyFeeAt: 480
+        quantity: 100
+        packDuration: 120
+        releaseDuration: 30
+        packActor: packing-lead
+        releaseActor: release-officer
+        studyPurchaseCap: 25000
+        studyPurchaser: finance-reviewer
+      tables:
+        arrangements:
+          - id: direct
+            shipPoint: SP-A
+            fee: 400000
+            departure: 1440
+            travelDuration: 3600
+            capacity: 100
+          - id: backup
+            shipPoint: SP-B
+            fee: 600000
+            departure: 1440
+            travelDuration: 2160
+            capacity: 100
+          - id: consolidated
+            shipPoint: SP-B
+            fee: 500000
+            departure: 1440
+            travelDuration: 2520
+            capacity: 100
+        states:
+          - id: registered
+            registered: true
+        readiness:
+          - stateId: registered
+            shipPoint: SP-A
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+          - stateId: registered
+            shipPoint: SP-B
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+        scenarios:
+          - id: registered
+            stateId: registered
+        actors:
+          - id: packing-lead
+          - id: release-officer
+        capabilities:
+          - actor: packing-lead
+            action: pack
+          - actor: release-officer
+            action: release
+        calendars:
+          - actor: packing-lead
+            start: 480
+            end: 1440
+          - actor: release-officer
+            start: 480
+            end: 1440
+        resources:
+          - id: packing-lead
+            capacity: 1
+          - id: release-officer
+            capacity: 1
+          - id: packing-bench
+            capacity: 1
+        bookings: []
+        grants:
+          - id: RELEASE-direct
+            actor: release-officer
+            action: release
+            arrangement: direct
+            shipPoint: SP-A
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-backup
+            actor: release-officer
+            action: release
+            arrangement: backup
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-consolidated
+            actor: release-officer
+            action: release
+            arrangement: consolidated
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+        arrangementAuthorities:
+          - arrangement: direct
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: backup
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: consolidated
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+        studyPurchaseGrants:
+          - id: STUDY-PURCHASE-1
+            actor: finance-reviewer
+            action: purchase-verification
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 720
+            ceiling: 25000
+        slotConfirmations:
+          - arrangement: consolidated
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "2"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            slotReference: SLOT-C104
+            status: confirmed
+            confirmedAt: 450
+            knownAt: 465
+            validFrom: 1380
+            validUntil: 1440
+      provenance:
+        - id: FICTIONAL-CONSOLIDATION-AUTHORING-EXAMPLE
+          description: "Continuation of the controlled shipment comparison: same registered ship points and baseline obligations; explicit $5,000 expense and $6,500 cash limits; fictional consolidated quote with scoped release/selection grants. No slot confirmation is supplied in the starter case. These are teaching inputs, not supplier records or operating permission."
+    expect:
+      - kind: commitment-plan
+        choices:
+          arrangement: direct
+        feasible: true
+        preferred: true
+      - kind: commitment-plan
+        choices:
+          arrangement: backup
+        feasible: false
+        preferred: false
+      - kind: commitment-constraint
+        choices:
+          arrangement: backup
+        constraintId: total-expense-limit
+        passed: false
+      - kind: commitment-plan
+        choices:
+          arrangement: consolidated
+        feasible: false
+        preferred: false
+      - kind: commitment-constraint
+        choices:
+          arrangement: consolidated
+        constraintId: scoped-consolidation-slot
+        passed: false
+  - id: wrong-ship-point
+    title: A confirmation for a different ship point does not cover this service
+    inputs:
+      id: SHIP-104-WRONG-SHIP-POINT
+      parameters:
+        orderId: ORD-104
+        orderRevision: "1"
+        recipient: DC-X
+        shipDate: "2026-11-18"
+        profileVersion: "1.0.0"
+        currentTime: 480
+        actionReady: 480
+        reservationDeadline: 720
+        receiptDeadline: 5340
+        receiptOpen: 3600
+        receiptClose: 5341
+        expenseLimit: 500000
+        cashLimit: 650000
+        studyFee: 0
+        studyFeeAt: 480
+        quantity: 100
+        packDuration: 120
+        releaseDuration: 30
+        packActor: packing-lead
+        releaseActor: release-officer
+        studyPurchaseCap: 25000
+        studyPurchaser: finance-reviewer
+      tables:
+        arrangements:
+          - id: direct
+            shipPoint: SP-A
+            fee: 400000
+            departure: 1440
+            travelDuration: 3600
+            capacity: 100
+          - id: backup
+            shipPoint: SP-B
+            fee: 600000
+            departure: 1440
+            travelDuration: 2160
+            capacity: 100
+          - id: consolidated
+            shipPoint: SP-B
+            fee: 500000
+            departure: 1440
+            travelDuration: 2520
+            capacity: 100
+        states:
+          - id: registered
+            registered: true
+        readiness:
+          - stateId: registered
+            shipPoint: SP-A
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+          - stateId: registered
+            shipPoint: SP-B
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+        scenarios:
+          - id: registered
+            stateId: registered
+        actors:
+          - id: packing-lead
+          - id: release-officer
+        capabilities:
+          - actor: packing-lead
+            action: pack
+          - actor: release-officer
+            action: release
+        calendars:
+          - actor: packing-lead
+            start: 480
+            end: 1440
+          - actor: release-officer
+            start: 480
+            end: 1440
+        resources:
+          - id: packing-lead
+            capacity: 1
+          - id: release-officer
+            capacity: 1
+          - id: packing-bench
+            capacity: 1
+        bookings: []
+        grants:
+          - id: RELEASE-direct
+            actor: release-officer
+            action: release
+            arrangement: direct
+            shipPoint: SP-A
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-backup
+            actor: release-officer
+            action: release
+            arrangement: backup
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-consolidated
+            actor: release-officer
+            action: release
+            arrangement: consolidated
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+        arrangementAuthorities:
+          - arrangement: direct
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: backup
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: consolidated
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+        studyPurchaseGrants:
+          - id: STUDY-PURCHASE-1
+            actor: finance-reviewer
+            action: purchase-verification
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 720
+            ceiling: 25000
+        slotConfirmations:
+          - arrangement: consolidated
+            shipPoint: SP-A
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            slotReference: SLOT-C104
+            status: confirmed
+            confirmedAt: 450
+            knownAt: 465
+            validFrom: 1380
+            validUntil: 1440
+      provenance:
+        - id: FICTIONAL-CONSOLIDATION-AUTHORING-EXAMPLE
+          description: "Continuation of the controlled shipment comparison: same registered ship points and baseline obligations; explicit $5,000 expense and $6,500 cash limits; fictional consolidated quote with scoped release/selection grants. No slot confirmation is supplied in the starter case. These are teaching inputs, not supplier records or operating permission."
+    expect:
+      - kind: commitment-plan
+        choices:
+          arrangement: direct
+        feasible: true
+        preferred: true
+      - kind: commitment-plan
+        choices:
+          arrangement: backup
+        feasible: false
+        preferred: false
+      - kind: commitment-constraint
+        choices:
+          arrangement: backup
+        constraintId: total-expense-limit
+        passed: false
+      - kind: commitment-plan
+        choices:
+          arrangement: consolidated
+        feasible: false
+        preferred: false
+      - kind: commitment-constraint
+        choices:
+          arrangement: consolidated
+        constraintId: scoped-consolidation-slot
+        passed: false
+  - id: wrong-ship-date
+    title: A confirmation for a different shipment date does not cover this shipment
+    inputs:
+      id: SHIP-104-WRONG-SHIP-DATE
+      parameters:
+        orderId: ORD-104
+        orderRevision: "1"
+        recipient: DC-X
+        shipDate: "2026-11-18"
+        profileVersion: "1.0.0"
+        currentTime: 480
+        actionReady: 480
+        reservationDeadline: 720
+        receiptDeadline: 5340
+        receiptOpen: 3600
+        receiptClose: 5341
+        expenseLimit: 500000
+        cashLimit: 650000
+        studyFee: 0
+        studyFeeAt: 480
+        quantity: 100
+        packDuration: 120
+        releaseDuration: 30
+        packActor: packing-lead
+        releaseActor: release-officer
+        studyPurchaseCap: 25000
+        studyPurchaser: finance-reviewer
+      tables:
+        arrangements:
+          - id: direct
+            shipPoint: SP-A
+            fee: 400000
+            departure: 1440
+            travelDuration: 3600
+            capacity: 100
+          - id: backup
+            shipPoint: SP-B
+            fee: 600000
+            departure: 1440
+            travelDuration: 2160
+            capacity: 100
+          - id: consolidated
+            shipPoint: SP-B
+            fee: 500000
+            departure: 1440
+            travelDuration: 2520
+            capacity: 100
+        states:
+          - id: registered
+            registered: true
+        readiness:
+          - stateId: registered
+            shipPoint: SP-A
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+          - stateId: registered
+            shipPoint: SP-B
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+        scenarios:
+          - id: registered
+            stateId: registered
+        actors:
+          - id: packing-lead
+          - id: release-officer
+        capabilities:
+          - actor: packing-lead
+            action: pack
+          - actor: release-officer
+            action: release
+        calendars:
+          - actor: packing-lead
+            start: 480
+            end: 1440
+          - actor: release-officer
+            start: 480
+            end: 1440
+        resources:
+          - id: packing-lead
+            capacity: 1
+          - id: release-officer
+            capacity: 1
+          - id: packing-bench
+            capacity: 1
+        bookings: []
+        grants:
+          - id: RELEASE-direct
+            actor: release-officer
+            action: release
+            arrangement: direct
+            shipPoint: SP-A
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-backup
+            actor: release-officer
+            action: release
+            arrangement: backup
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-consolidated
+            actor: release-officer
+            action: release
+            arrangement: consolidated
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+        arrangementAuthorities:
+          - arrangement: direct
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: backup
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: consolidated
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+        studyPurchaseGrants:
+          - id: STUDY-PURCHASE-1
+            actor: finance-reviewer
+            action: purchase-verification
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 720
+            ceiling: 25000
+        slotConfirmations:
+          - arrangement: consolidated
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-19"
+            profileVersion: "1.0.0"
+            slotReference: SLOT-C104
+            status: confirmed
+            confirmedAt: 450
+            knownAt: 465
+            validFrom: 1380
+            validUntil: 1440
+      provenance:
+        - id: FICTIONAL-CONSOLIDATION-AUTHORING-EXAMPLE
+          description: "Continuation of the controlled shipment comparison: same registered ship points and baseline obligations; explicit $5,000 expense and $6,500 cash limits; fictional consolidated quote with scoped release/selection grants. No slot confirmation is supplied in the starter case. These are teaching inputs, not supplier records or operating permission."
+    expect:
+      - kind: commitment-plan
+        choices:
+          arrangement: direct
+        feasible: true
+        preferred: true
+      - kind: commitment-plan
+        choices:
+          arrangement: backup
+        feasible: false
+        preferred: false
+      - kind: commitment-constraint
+        choices:
+          arrangement: backup
+        constraintId: total-expense-limit
+        passed: false
+      - kind: commitment-plan
+        choices:
+          arrangement: consolidated
+        feasible: false
+        preferred: false
+      - kind: commitment-constraint
+        choices:
+          arrangement: consolidated
+        constraintId: scoped-consolidation-slot
+        passed: false
+  - id: confirmed-after-cutoff
+    title: A slot confirmed after the reservation cutoff remains blocked
+    inputs:
+      id: SHIP-104-CONFIRMED-AFTER-CUTOFF
+      parameters:
+        orderId: ORD-104
+        orderRevision: "1"
+        recipient: DC-X
+        shipDate: "2026-11-18"
+        profileVersion: "1.0.0"
+        currentTime: 480
+        actionReady: 480
+        reservationDeadline: 720
+        receiptDeadline: 5340
+        receiptOpen: 3600
+        receiptClose: 5341
+        expenseLimit: 500000
+        cashLimit: 650000
+        studyFee: 0
+        studyFeeAt: 480
+        quantity: 100
+        packDuration: 120
+        releaseDuration: 30
+        packActor: packing-lead
+        releaseActor: release-officer
+        studyPurchaseCap: 25000
+        studyPurchaser: finance-reviewer
+      tables:
+        arrangements:
+          - id: direct
+            shipPoint: SP-A
+            fee: 400000
+            departure: 1440
+            travelDuration: 3600
+            capacity: 100
+          - id: backup
+            shipPoint: SP-B
+            fee: 600000
+            departure: 1440
+            travelDuration: 2160
+            capacity: 100
+          - id: consolidated
+            shipPoint: SP-B
+            fee: 500000
+            departure: 1440
+            travelDuration: 2520
+            capacity: 100
+        states:
+          - id: registered
+            registered: true
+        readiness:
+          - stateId: registered
+            shipPoint: SP-A
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+          - stateId: registered
+            shipPoint: SP-B
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+        scenarios:
+          - id: registered
+            stateId: registered
+        actors:
+          - id: packing-lead
+          - id: release-officer
+        capabilities:
+          - actor: packing-lead
+            action: pack
+          - actor: release-officer
+            action: release
+        calendars:
+          - actor: packing-lead
+            start: 480
+            end: 1440
+          - actor: release-officer
+            start: 480
+            end: 1440
+        resources:
+          - id: packing-lead
+            capacity: 1
+          - id: release-officer
+            capacity: 1
+          - id: packing-bench
+            capacity: 1
+        bookings: []
+        grants:
+          - id: RELEASE-direct
+            actor: release-officer
+            action: release
+            arrangement: direct
+            shipPoint: SP-A
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-backup
+            actor: release-officer
+            action: release
+            arrangement: backup
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-consolidated
+            actor: release-officer
+            action: release
+            arrangement: consolidated
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+        arrangementAuthorities:
+          - arrangement: direct
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: backup
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: consolidated
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+        studyPurchaseGrants:
+          - id: STUDY-PURCHASE-1
+            actor: finance-reviewer
+            action: purchase-verification
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 720
+            ceiling: 25000
+        slotConfirmations:
+          - arrangement: consolidated
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            slotReference: SLOT-C104
+            status: confirmed
+            confirmedAt: 721
+            knownAt: 721
+            validFrom: 1380
+            validUntil: 1440
+      provenance:
+        - id: FICTIONAL-CONSOLIDATION-AUTHORING-EXAMPLE
+          description: "Continuation of the controlled shipment comparison: same registered ship points and baseline obligations; explicit $5,000 expense and $6,500 cash limits; fictional consolidated quote with scoped release/selection grants. No slot confirmation is supplied in the starter case. These are teaching inputs, not supplier records or operating permission."
+    expect:
+      - kind: commitment-plan
+        choices:
+          arrangement: direct
+        feasible: true
+        preferred: true
+      - kind: commitment-plan
+        choices:
+          arrangement: backup
+        feasible: false
+        preferred: false
+      - kind: commitment-constraint
+        choices:
+          arrangement: backup
+        constraintId: total-expense-limit
+        passed: false
+      - kind: commitment-plan
+        choices:
+          arrangement: consolidated
+        feasible: false
+        preferred: false
+      - kind: commitment-constraint
+        choices:
+          arrangement: consolidated
+        constraintId: scoped-consolidation-slot
+        passed: false
+  - id: known-after-selection
+    title: A confirmation unavailable to the team at selection cannot justify that decision
+    inputs:
+      id: SHIP-104-KNOWN-AFTER-SELECTION
+      parameters:
+        orderId: ORD-104
+        orderRevision: "1"
+        recipient: DC-X
+        shipDate: "2026-11-18"
+        profileVersion: "1.0.0"
+        currentTime: 480
+        actionReady: 480
+        reservationDeadline: 720
+        receiptDeadline: 5340
+        receiptOpen: 3600
+        receiptClose: 5341
+        expenseLimit: 500000
+        cashLimit: 650000
+        studyFee: 0
+        studyFeeAt: 480
+        quantity: 100
+        packDuration: 120
+        releaseDuration: 30
+        packActor: packing-lead
+        releaseActor: release-officer
+        studyPurchaseCap: 25000
+        studyPurchaser: finance-reviewer
+      tables:
+        arrangements:
+          - id: direct
+            shipPoint: SP-A
+            fee: 400000
+            departure: 1440
+            travelDuration: 3600
+            capacity: 100
+          - id: backup
+            shipPoint: SP-B
+            fee: 600000
+            departure: 1440
+            travelDuration: 2160
+            capacity: 100
+          - id: consolidated
+            shipPoint: SP-B
+            fee: 500000
+            departure: 1440
+            travelDuration: 2520
+            capacity: 100
+        states:
+          - id: registered
+            registered: true
+        readiness:
+          - stateId: registered
+            shipPoint: SP-A
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+          - stateId: registered
+            shipPoint: SP-B
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+        scenarios:
+          - id: registered
+            stateId: registered
+        actors:
+          - id: packing-lead
+          - id: release-officer
+        capabilities:
+          - actor: packing-lead
+            action: pack
+          - actor: release-officer
+            action: release
+        calendars:
+          - actor: packing-lead
+            start: 480
+            end: 1440
+          - actor: release-officer
+            start: 480
+            end: 1440
+        resources:
+          - id: packing-lead
+            capacity: 1
+          - id: release-officer
+            capacity: 1
+          - id: packing-bench
+            capacity: 1
+        bookings: []
+        grants:
+          - id: RELEASE-direct
+            actor: release-officer
+            action: release
+            arrangement: direct
+            shipPoint: SP-A
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-backup
+            actor: release-officer
+            action: release
+            arrangement: backup
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-consolidated
+            actor: release-officer
+            action: release
+            arrangement: consolidated
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+        arrangementAuthorities:
+          - arrangement: direct
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: backup
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: consolidated
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+        studyPurchaseGrants:
+          - id: STUDY-PURCHASE-1
+            actor: finance-reviewer
+            action: purchase-verification
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 720
+            ceiling: 25000
+        slotConfirmations:
+          - arrangement: consolidated
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            slotReference: SLOT-C104
+            status: confirmed
+            confirmedAt: 450
+            knownAt: 481
+            validFrom: 1380
+            validUntil: 1440
+      provenance:
+        - id: FICTIONAL-CONSOLIDATION-AUTHORING-EXAMPLE
+          description: "Continuation of the controlled shipment comparison: same registered ship points and baseline obligations; explicit $5,000 expense and $6,500 cash limits; fictional consolidated quote with scoped release/selection grants. No slot confirmation is supplied in the starter case. These are teaching inputs, not supplier records or operating permission."
+    expect:
+      - kind: commitment-plan
+        choices:
+          arrangement: direct
+        feasible: true
+        preferred: true
+      - kind: commitment-plan
+        choices:
+          arrangement: backup
+        feasible: false
+        preferred: false
+      - kind: commitment-constraint
+        choices:
+          arrangement: backup
+        constraintId: total-expense-limit
+        passed: false
+      - kind: commitment-plan
+        choices:
+          arrangement: consolidated
+        feasible: false
+        preferred: false
+      - kind: commitment-constraint
+        choices:
+          arrangement: consolidated
+        constraintId: scoped-consolidation-slot
+        passed: false
+  - id: slot-ends-too-soon
+    title: A slot that ends before loading finishes does not cover the full loading window
+    inputs:
+      id: SHIP-104-SLOT-ENDS-TOO-SOON
+      parameters:
+        orderId: ORD-104
+        orderRevision: "1"
+        recipient: DC-X
+        shipDate: "2026-11-18"
+        profileVersion: "1.0.0"
+        currentTime: 480
+        actionReady: 480
+        reservationDeadline: 720
+        receiptDeadline: 5340
+        receiptOpen: 3600
+        receiptClose: 5341
+        expenseLimit: 500000
+        cashLimit: 650000
+        studyFee: 0
+        studyFeeAt: 480
+        quantity: 100
+        packDuration: 120
+        releaseDuration: 30
+        packActor: packing-lead
+        releaseActor: release-officer
+        studyPurchaseCap: 25000
+        studyPurchaser: finance-reviewer
+      tables:
+        arrangements:
+          - id: direct
+            shipPoint: SP-A
+            fee: 400000
+            departure: 1440
+            travelDuration: 3600
+            capacity: 100
+          - id: backup
+            shipPoint: SP-B
+            fee: 600000
+            departure: 1440
+            travelDuration: 2160
+            capacity: 100
+          - id: consolidated
+            shipPoint: SP-B
+            fee: 500000
+            departure: 1440
+            travelDuration: 2520
+            capacity: 100
+        states:
+          - id: registered
+            registered: true
+        readiness:
+          - stateId: registered
+            shipPoint: SP-A
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+          - stateId: registered
+            shipPoint: SP-B
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+        scenarios:
+          - id: registered
+            stateId: registered
+        actors:
+          - id: packing-lead
+          - id: release-officer
+        capabilities:
+          - actor: packing-lead
+            action: pack
+          - actor: release-officer
+            action: release
+        calendars:
+          - actor: packing-lead
+            start: 480
+            end: 1440
+          - actor: release-officer
+            start: 480
+            end: 1440
+        resources:
+          - id: packing-lead
+            capacity: 1
+          - id: release-officer
+            capacity: 1
+          - id: packing-bench
+            capacity: 1
+        bookings: []
+        grants:
+          - id: RELEASE-direct
+            actor: release-officer
+            action: release
+            arrangement: direct
+            shipPoint: SP-A
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-backup
+            actor: release-officer
+            action: release
+            arrangement: backup
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-consolidated
+            actor: release-officer
+            action: release
+            arrangement: consolidated
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+        arrangementAuthorities:
+          - arrangement: direct
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: backup
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: consolidated
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+        studyPurchaseGrants:
+          - id: STUDY-PURCHASE-1
+            actor: finance-reviewer
+            action: purchase-verification
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 720
+            ceiling: 25000
+        slotConfirmations:
+          - arrangement: consolidated
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            slotReference: SLOT-C104
+            status: confirmed
+            confirmedAt: 450
+            knownAt: 465
+            validFrom: 1380
+            validUntil: 1439
+      provenance:
+        - id: FICTIONAL-CONSOLIDATION-AUTHORING-EXAMPLE
+          description: "Continuation of the controlled shipment comparison: same registered ship points and baseline obligations; explicit $5,000 expense and $6,500 cash limits; fictional consolidated quote with scoped release/selection grants. No slot confirmation is supplied in the starter case. These are teaching inputs, not supplier records or operating permission."
+    expect:
+      - kind: commitment-plan
+        choices:
+          arrangement: direct
+        feasible: true
+        preferred: true
+      - kind: commitment-plan
+        choices:
+          arrangement: backup
+        feasible: false
+        preferred: false
+      - kind: commitment-constraint
+        choices:
+          arrangement: backup
+        constraintId: total-expense-limit
+        passed: false
+      - kind: commitment-plan
+        choices:
+          arrangement: consolidated
+        feasible: false
+        preferred: false
+      - kind: commitment-constraint
+        choices:
+          arrangement: consolidated
+        constraintId: scoped-consolidation-slot
+        passed: false
+  - id: slot-starts-too-late
+    title: A slot that starts after loading begins does not cover the full loading window
+    inputs:
+      id: SHIP-104-SLOT-STARTS-TOO-LATE
+      parameters:
+        orderId: ORD-104
+        orderRevision: "1"
+        recipient: DC-X
+        shipDate: "2026-11-18"
+        profileVersion: "1.0.0"
+        currentTime: 480
+        actionReady: 480
+        reservationDeadline: 720
+        receiptDeadline: 5340
+        receiptOpen: 3600
+        receiptClose: 5341
+        expenseLimit: 500000
+        cashLimit: 650000
+        studyFee: 0
+        studyFeeAt: 480
+        quantity: 100
+        packDuration: 120
+        releaseDuration: 30
+        packActor: packing-lead
+        releaseActor: release-officer
+        studyPurchaseCap: 25000
+        studyPurchaser: finance-reviewer
+      tables:
+        arrangements:
+          - id: direct
+            shipPoint: SP-A
+            fee: 400000
+            departure: 1440
+            travelDuration: 3600
+            capacity: 100
+          - id: backup
+            shipPoint: SP-B
+            fee: 600000
+            departure: 1440
+            travelDuration: 2160
+            capacity: 100
+          - id: consolidated
+            shipPoint: SP-B
+            fee: 500000
+            departure: 1440
+            travelDuration: 2520
+            capacity: 100
+        states:
+          - id: registered
+            registered: true
+        readiness:
+          - stateId: registered
+            shipPoint: SP-A
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+          - stateId: registered
+            shipPoint: SP-B
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+        scenarios:
+          - id: registered
+            stateId: registered
+        actors:
+          - id: packing-lead
+          - id: release-officer
+        capabilities:
+          - actor: packing-lead
+            action: pack
+          - actor: release-officer
+            action: release
+        calendars:
+          - actor: packing-lead
+            start: 480
+            end: 1440
+          - actor: release-officer
+            start: 480
+            end: 1440
+        resources:
+          - id: packing-lead
+            capacity: 1
+          - id: release-officer
+            capacity: 1
+          - id: packing-bench
+            capacity: 1
+        bookings: []
+        grants:
+          - id: RELEASE-direct
+            actor: release-officer
+            action: release
+            arrangement: direct
+            shipPoint: SP-A
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-backup
+            actor: release-officer
+            action: release
+            arrangement: backup
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-consolidated
+            actor: release-officer
+            action: release
+            arrangement: consolidated
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+        arrangementAuthorities:
+          - arrangement: direct
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: backup
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: consolidated
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+        studyPurchaseGrants:
+          - id: STUDY-PURCHASE-1
+            actor: finance-reviewer
+            action: purchase-verification
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 720
+            ceiling: 25000
+        slotConfirmations:
+          - arrangement: consolidated
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            slotReference: SLOT-C104
+            status: confirmed
+            confirmedAt: 450
+            knownAt: 465
+            validFrom: 1381
+            validUntil: 1440
+      provenance:
+        - id: FICTIONAL-CONSOLIDATION-AUTHORING-EXAMPLE
+          description: "Continuation of the controlled shipment comparison: same registered ship points and baseline obligations; explicit $5,000 expense and $6,500 cash limits; fictional consolidated quote with scoped release/selection grants. No slot confirmation is supplied in the starter case. These are teaching inputs, not supplier records or operating permission."
+    expect:
+      - kind: commitment-plan
+        choices:
+          arrangement: direct
+        feasible: true
+        preferred: true
+      - kind: commitment-plan
+        choices:
+          arrangement: backup
+        feasible: false
+        preferred: false
+      - kind: commitment-constraint
+        choices:
+          arrangement: backup
+        constraintId: total-expense-limit
+        passed: false
+      - kind: commitment-plan
+        choices:
+          arrangement: consolidated
+        feasible: false
+        preferred: false
+      - kind: commitment-constraint
+        choices:
+          arrangement: consolidated
+        constraintId: scoped-consolidation-slot
+        passed: false
+  - id: expired-slot
+    title: A slot that has already expired does not cover the loading window
+    inputs:
+      id: SHIP-104-EXPIRED-SLOT
+      parameters:
+        orderId: ORD-104
+        orderRevision: "1"
+        recipient: DC-X
+        shipDate: "2026-11-18"
+        profileVersion: "1.0.0"
+        currentTime: 480
+        actionReady: 480
+        reservationDeadline: 720
+        receiptDeadline: 5340
+        receiptOpen: 3600
+        receiptClose: 5341
+        expenseLimit: 500000
+        cashLimit: 650000
+        studyFee: 0
+        studyFeeAt: 480
+        quantity: 100
+        packDuration: 120
+        releaseDuration: 30
+        packActor: packing-lead
+        releaseActor: release-officer
+        studyPurchaseCap: 25000
+        studyPurchaser: finance-reviewer
+      tables:
+        arrangements:
+          - id: direct
+            shipPoint: SP-A
+            fee: 400000
+            departure: 1440
+            travelDuration: 3600
+            capacity: 100
+          - id: backup
+            shipPoint: SP-B
+            fee: 600000
+            departure: 1440
+            travelDuration: 2160
+            capacity: 100
+          - id: consolidated
+            shipPoint: SP-B
+            fee: 500000
+            departure: 1440
+            travelDuration: 2520
+            capacity: 100
+        states:
+          - id: registered
+            registered: true
+        readiness:
+          - stateId: registered
+            shipPoint: SP-A
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+          - stateId: registered
+            shipPoint: SP-B
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+        scenarios:
+          - id: registered
+            stateId: registered
+        actors:
+          - id: packing-lead
+          - id: release-officer
+        capabilities:
+          - actor: packing-lead
+            action: pack
+          - actor: release-officer
+            action: release
+        calendars:
+          - actor: packing-lead
+            start: 480
+            end: 1440
+          - actor: release-officer
+            start: 480
+            end: 1440
+        resources:
+          - id: packing-lead
+            capacity: 1
+          - id: release-officer
+            capacity: 1
+          - id: packing-bench
+            capacity: 1
+        bookings: []
+        grants:
+          - id: RELEASE-direct
+            actor: release-officer
+            action: release
+            arrangement: direct
+            shipPoint: SP-A
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-backup
+            actor: release-officer
+            action: release
+            arrangement: backup
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-consolidated
+            actor: release-officer
+            action: release
+            arrangement: consolidated
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+        arrangementAuthorities:
+          - arrangement: direct
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: backup
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: consolidated
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+        studyPurchaseGrants:
+          - id: STUDY-PURCHASE-1
+            actor: finance-reviewer
+            action: purchase-verification
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 720
+            ceiling: 25000
+        slotConfirmations:
+          - arrangement: consolidated
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            slotReference: SLOT-C104
+            status: confirmed
+            confirmedAt: 450
+            knownAt: 465
+            validFrom: 400
+            validUntil: 480
+      provenance:
+        - id: FICTIONAL-CONSOLIDATION-AUTHORING-EXAMPLE
+          description: "Continuation of the controlled shipment comparison: same registered ship points and baseline obligations; explicit $5,000 expense and $6,500 cash limits; fictional consolidated quote with scoped release/selection grants. No slot confirmation is supplied in the starter case. These are teaching inputs, not supplier records or operating permission."
+    expect:
+      - kind: commitment-plan
+        choices:
+          arrangement: direct
+        feasible: true
+        preferred: true
+      - kind: commitment-plan
+        choices:
+          arrangement: backup
+        feasible: false
+        preferred: false
+      - kind: commitment-constraint
+        choices:
+          arrangement: backup
+        constraintId: total-expense-limit
+        passed: false
+      - kind: commitment-plan
+        choices:
+          arrangement: consolidated
+        feasible: false
+        preferred: false
+      - kind: commitment-constraint
+        choices:
+          arrangement: consolidated
+        constraintId: scoped-consolidation-slot
+        passed: false
+  - id: slot-cancelled
+    title: A cancelled current slot is not a confirmed slot
+    inputs:
+      id: SHIP-104-SLOT-CANCELLED
+      parameters:
+        orderId: ORD-104
+        orderRevision: "1"
+        recipient: DC-X
+        shipDate: "2026-11-18"
+        profileVersion: "1.0.0"
+        currentTime: 480
+        actionReady: 480
+        reservationDeadline: 720
+        receiptDeadline: 5340
+        receiptOpen: 3600
+        receiptClose: 5341
+        expenseLimit: 500000
+        cashLimit: 650000
+        studyFee: 0
+        studyFeeAt: 480
+        quantity: 100
+        packDuration: 120
+        releaseDuration: 30
+        packActor: packing-lead
+        releaseActor: release-officer
+        studyPurchaseCap: 25000
+        studyPurchaser: finance-reviewer
+      tables:
+        arrangements:
+          - id: direct
+            shipPoint: SP-A
+            fee: 400000
+            departure: 1440
+            travelDuration: 3600
+            capacity: 100
+          - id: backup
+            shipPoint: SP-B
+            fee: 600000
+            departure: 1440
+            travelDuration: 2160
+            capacity: 100
+          - id: consolidated
+            shipPoint: SP-B
+            fee: 500000
+            departure: 1440
+            travelDuration: 2520
+            capacity: 100
+        states:
+          - id: registered
+            registered: true
+        readiness:
+          - stateId: registered
+            shipPoint: SP-A
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+          - stateId: registered
+            shipPoint: SP-B
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+        scenarios:
+          - id: registered
+            stateId: registered
+        actors:
+          - id: packing-lead
+          - id: release-officer
+        capabilities:
+          - actor: packing-lead
+            action: pack
+          - actor: release-officer
+            action: release
+        calendars:
+          - actor: packing-lead
+            start: 480
+            end: 1440
+          - actor: release-officer
+            start: 480
+            end: 1440
+        resources:
+          - id: packing-lead
+            capacity: 1
+          - id: release-officer
+            capacity: 1
+          - id: packing-bench
+            capacity: 1
+        bookings: []
+        grants:
+          - id: RELEASE-direct
+            actor: release-officer
+            action: release
+            arrangement: direct
+            shipPoint: SP-A
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-backup
+            actor: release-officer
+            action: release
+            arrangement: backup
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-consolidated
+            actor: release-officer
+            action: release
+            arrangement: consolidated
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+        arrangementAuthorities:
+          - arrangement: direct
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: backup
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: consolidated
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+        studyPurchaseGrants:
+          - id: STUDY-PURCHASE-1
+            actor: finance-reviewer
+            action: purchase-verification
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 720
+            ceiling: 25000
+        slotConfirmations:
+          - arrangement: consolidated
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            slotReference: SLOT-C104
+            status: cancelled
+            confirmedAt: 450
+            knownAt: 465
+            validFrom: 1380
+            validUntil: 1440
+      provenance:
+        - id: FICTIONAL-CONSOLIDATION-AUTHORING-EXAMPLE
+          description: "Continuation of the controlled shipment comparison: same registered ship points and baseline obligations; explicit $5,000 expense and $6,500 cash limits; fictional consolidated quote with scoped release/selection grants. No slot confirmation is supplied in the starter case. These are teaching inputs, not supplier records or operating permission."
+    expect:
+      - kind: commitment-plan
+        choices:
+          arrangement: direct
+        feasible: true
+        preferred: true
+      - kind: commitment-plan
+        choices:
+          arrangement: backup
+        feasible: false
+        preferred: false
+      - kind: commitment-constraint
+        choices:
+          arrangement: backup
+        constraintId: total-expense-limit
+        passed: false
+      - kind: commitment-plan
+        choices:
+          arrangement: consolidated
+        feasible: false
+        preferred: false
+      - kind: commitment-constraint
+        choices:
+          arrangement: consolidated
+        constraintId: scoped-consolidation-slot
+        passed: false
+  - id: slot-conflicting
+    title: Unresolved conflicting supplier messages do not establish a usable slot
+    inputs:
+      id: SHIP-104-SLOT-CONFLICTING
+      parameters:
+        orderId: ORD-104
+        orderRevision: "1"
+        recipient: DC-X
+        shipDate: "2026-11-18"
+        profileVersion: "1.0.0"
+        currentTime: 480
+        actionReady: 480
+        reservationDeadline: 720
+        receiptDeadline: 5340
+        receiptOpen: 3600
+        receiptClose: 5341
+        expenseLimit: 500000
+        cashLimit: 650000
+        studyFee: 0
+        studyFeeAt: 480
+        quantity: 100
+        packDuration: 120
+        releaseDuration: 30
+        packActor: packing-lead
+        releaseActor: release-officer
+        studyPurchaseCap: 25000
+        studyPurchaser: finance-reviewer
+      tables:
+        arrangements:
+          - id: direct
+            shipPoint: SP-A
+            fee: 400000
+            departure: 1440
+            travelDuration: 3600
+            capacity: 100
+          - id: backup
+            shipPoint: SP-B
+            fee: 600000
+            departure: 1440
+            travelDuration: 2160
+            capacity: 100
+          - id: consolidated
+            shipPoint: SP-B
+            fee: 500000
+            departure: 1440
+            travelDuration: 2520
+            capacity: 100
+        states:
+          - id: registered
+            registered: true
+        readiness:
+          - stateId: registered
+            shipPoint: SP-A
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+          - stateId: registered
+            shipPoint: SP-B
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+        scenarios:
+          - id: registered
+            stateId: registered
+        actors:
+          - id: packing-lead
+          - id: release-officer
+        capabilities:
+          - actor: packing-lead
+            action: pack
+          - actor: release-officer
+            action: release
+        calendars:
+          - actor: packing-lead
+            start: 480
+            end: 1440
+          - actor: release-officer
+            start: 480
+            end: 1440
+        resources:
+          - id: packing-lead
+            capacity: 1
+          - id: release-officer
+            capacity: 1
+          - id: packing-bench
+            capacity: 1
+        bookings: []
+        grants:
+          - id: RELEASE-direct
+            actor: release-officer
+            action: release
+            arrangement: direct
+            shipPoint: SP-A
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-backup
+            actor: release-officer
+            action: release
+            arrangement: backup
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-consolidated
+            actor: release-officer
+            action: release
+            arrangement: consolidated
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+        arrangementAuthorities:
+          - arrangement: direct
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: backup
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: consolidated
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+        studyPurchaseGrants:
+          - id: STUDY-PURCHASE-1
+            actor: finance-reviewer
+            action: purchase-verification
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 720
+            ceiling: 25000
+        slotConfirmations:
+          - arrangement: consolidated
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            slotReference: SLOT-C104
+            status: conflicting
+            confirmedAt: 450
+            knownAt: 465
+            validFrom: 1380
+            validUntil: 1440
+      provenance:
+        - id: FICTIONAL-CONSOLIDATION-AUTHORING-EXAMPLE
+          description: "Continuation of the controlled shipment comparison: same registered ship points and baseline obligations; explicit $5,000 expense and $6,500 cash limits; fictional consolidated quote with scoped release/selection grants. No slot confirmation is supplied in the starter case. These are teaching inputs, not supplier records or operating permission."
+    expect:
+      - kind: commitment-plan
+        choices:
+          arrangement: direct
+        feasible: true
+        preferred: true
+      - kind: commitment-plan
+        choices:
+          arrangement: backup
+        feasible: false
+        preferred: false
+      - kind: commitment-constraint
+        choices:
+          arrangement: backup
+        constraintId: total-expense-limit
+        passed: false
+      - kind: commitment-plan
+        choices:
+          arrangement: consolidated
+        feasible: false
+        preferred: false
+      - kind: commitment-constraint
+        choices:
+          arrangement: consolidated
+        constraintId: scoped-consolidation-slot
+        passed: false
+  - id: unknown-service
+    title: An unfamiliar service cannot bypass a missing authored requirement policy
+    inputs:
+      id: SHIP-104-UNREVIEWED-SERVICE
+      parameters:
+        orderId: ORD-104
+        orderRevision: "1"
+        recipient: DC-X
+        shipDate: "2026-11-18"
+        profileVersion: "1.0.0"
+        currentTime: 480
+        actionReady: 480
+        reservationDeadline: 720
+        receiptDeadline: 5340
+        receiptOpen: 3600
+        receiptClose: 5341
+        expenseLimit: 500000
+        cashLimit: 650000
+        studyFee: 0
+        studyFeeAt: 480
+        quantity: 100
+        packDuration: 120
+        releaseDuration: 30
+        packActor: packing-lead
+        releaseActor: release-officer
+        studyPurchaseCap: 25000
+        studyPurchaser: finance-reviewer
+      tables:
+        arrangements:
+          - id: direct
+            shipPoint: SP-A
+            fee: 400000
+            departure: 1440
+            travelDuration: 3600
+            capacity: 100
+          - id: backup
+            shipPoint: SP-B
+            fee: 600000
+            departure: 1440
+            travelDuration: 2160
+            capacity: 100
+          - id: consolidated
+            shipPoint: SP-B
+            fee: 500000
+            departure: 1440
+            travelDuration: 2520
+            capacity: 100
+          - id: unreviewed-service
+            shipPoint: SP-B
+            fee: 450000
+            departure: 1440
+            travelDuration: 2520
+            capacity: 100
+        states:
+          - id: registered
+            registered: true
+        readiness:
+          - stateId: registered
+            shipPoint: SP-A
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+          - stateId: registered
+            shipPoint: SP-B
+            registered: true
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+        scenarios:
+          - id: registered
+            stateId: registered
+        actors:
+          - id: packing-lead
+          - id: release-officer
+        capabilities:
+          - actor: packing-lead
+            action: pack
+          - actor: release-officer
+            action: release
+        calendars:
+          - actor: packing-lead
+            start: 480
+            end: 1440
+          - actor: release-officer
+            start: 480
+            end: 1440
+        resources:
+          - id: packing-lead
+            capacity: 1
+          - id: release-officer
+            capacity: 1
+          - id: packing-bench
+            capacity: 1
+        bookings: []
+        grants:
+          - id: RELEASE-direct
+            actor: release-officer
+            action: release
+            arrangement: direct
+            shipPoint: SP-A
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-backup
+            actor: release-officer
+            action: release
+            arrangement: backup
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-consolidated
+            actor: release-officer
+            action: release
+            arrangement: consolidated
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+          - id: RELEASE-unreviewed
+            actor: release-officer
+            action: release
+            arrangement: unreviewed-service
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 1440
+        arrangementAuthorities:
+          - arrangement: direct
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: backup
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: consolidated
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+          - arrangement: unreviewed-service
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 721
+        studyPurchaseGrants:
+          - id: STUDY-PURCHASE-1
+            actor: finance-reviewer
+            action: purchase-verification
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            start: 480
+            end: 720
+            ceiling: 25000
+        slotConfirmations:
+          - arrangement: consolidated
+            shipPoint: SP-B
+            orderId: ORD-104
+            orderRevision: "1"
+            recipient: DC-X
+            shipDate: "2026-11-18"
+            profileVersion: "1.0.0"
+            slotReference: SLOT-C104
+            status: confirmed
+            confirmedAt: 450
+            knownAt: 465
+            validFrom: 1380
+            validUntil: 1440
+      provenance:
+        - id: FICTIONAL-CONSOLIDATION-AUTHORING-EXAMPLE
+          description: "Continuation of the controlled shipment comparison: same registered ship points and baseline obligations; explicit $5,000 expense and $6,500 cash limits; fictional consolidated quote with scoped release/selection grants. No slot confirmation is supplied in the starter case. These are teaching inputs, not supplier records or operating permission."
+    expect:
+      - kind: commitment-plan
+        choices:
+          arrangement: consolidated
+        feasible: true
+        preferred: true
+      - kind: commitment-plan
+        choices:
+          arrangement: unreviewed-service
+        feasible: false
+        preferred: false
+      - kind: commitment-constraint
+        choices:
+          arrangement: unreviewed-service
+        constraintId: reviewed-arrangement-policy
+        passed: false

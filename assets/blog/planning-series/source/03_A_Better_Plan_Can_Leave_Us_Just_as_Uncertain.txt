@@ -1,0 +1,203 @@
+HERMOD LABS Article 3 of 3
+PLANNING, UNCERTAINTY, AND COMMITMENT / 3 OF 3
+A Better Plan Can Leave Us Just as Uncertain
+Compare learning, control, and responses by what they enable
+Jonathan Nacionales
+Founder, Hermod Labs
+November 18, 2026
+A team can know little about which future will occur and still have a well supported course of action. A
+second team can learn many details while making no better decision. Information matters through its
+relationship to the goal.
+Considerafictionalsupplierpreparingaretaillaunch. Mayacoordinatesashipmentrecommendationunder
+a $5,000 expense limit. In the worked example, Direct costs $4,000 and arrives Friday at noon. A current
+confirmation makes Consolidated available at $5,000 for Thursday at 6 p.m. The model’s earlier-arrival
+priority explains the changed preference; responsible people still decide whether to proceed.[3]
+That example separates feasibility, preference, and acceptance. A broader planning question is how to
+handle conditions that remain uncertain. Should Maya buy information, change the operation, avoid a
+dependency, or prepare a response? The numerical model below is an original teaching extension, not a
+calculation from that shipment application.
+We keep the same named decision statement throughout:
+This plan includes plan_contents.
+We have checked it under these conditions: assessed_conditions.
+The result establishes established_finding.
+We favor preferred_options because preference_basis.
+Acceptance of next_action is acceptance_status, with decision_owner responsible.
+If we observe reassessment_trigger, we will contingency_response before response_deadline.
+What does the proposed action change?
+Different actions can improve a decision through different mechanisms:
+Mechanism Example What needs support
+Learn Control Avoid dependence Cope or adapt Inspect an authoritative record before the
+next commitment.
+Secure a resource or change a process. Select an arrangement that does not need
+a particular confirmation.
+Provide a buffer or a response to a lost
+loading window.
+What the observation reveals, its reliability,
+and when it arrives.
+How the intervention changes operating
+possibilities, including failure modes.
+Which requirements apply to the selected
+branch.
+Whether the arrangement or response
+works with available time, resources, and
+authority.
+Planning, uncertainty, and commitment 1
+
+HERMOD LABS Article 3 of 3
+An action may combine these effects. A reservation can change capacity and produce evidence. A
+rehearsal can reveal a fault and consume a production window. Learning and control are therefore distinct
+modeling questions even when one activity provides both.[1]
+Choosing a service settles a choice in plan_contents; it does not by itself establish the future order state.
+A supplied or requested confirmation is also different from an authenticated confirmation covering the
+proposed work.
+Which uncertainty matters to the goal?
+For a simple extension, let S = (O, L, T ) combine an additional order change before a specified release
+review, availability of a loading window, and quoted transit versus one day longer. Use three independent
+fair binary variables, giving eight equally likely states and H(S |e) = 3 bits. These are stipulated
+probabilities.
+Let Fa(s) indicate whether action a achieves a stated operating target in state s. If probabilities are
+justified, its modeled target probability is
+qa =
+p(s |e)Fa(s). (1)
+s
+The binary outcome entropy is h2(qa). A plan that achieves the target in every modeled state has qa = 1
+and zero target-outcome entropy, even though H(S |e) can remain three bits. A plan that certainly
+misses the target also has zero target-outcome entropy. Minimizing entropy alone therefore cannot be the
+goal.
+If actions change the state distribution, that effect must be modeled separately; the preceding formula
+treats S as unaffected by the selected action. Where only unweighted scenarios are available, counting
+target-achieving cases provides coverage information rather than an automatic probability estimate.
+A worked comparison of learning and robust action
+Suppose Maya is considering two specialized arrangements, A and B, and a robust arrangement R. This
+abstract payoff model stipulates that all three meet their basic resource and authority requirements. The
+operating target may be missed and is penalized in value; it is not yet a universal feasibility gate. The
+next section examines what changes if target achievement is mandatory.
+The arrangements already accommodate both modeled loading and transit outcomes, so only O affects
+their payoffs. Establishing such coverage in a real operation would require its own evidence and feasible
+operating arrangements. Here it is an explicit teaching assumption.
+Arrangement O = 0 O = 1 Prior expected value
+A: specialized for unchanged order 120−80 20
+B: specialized for changed order−80 120 20
+R: works in either order state 60 60 60
+Values are stipulated units of operating benefit after operating costs. They are not freight quotes,
+measured profits, or dollar estimates for Maya’s published case. A study charge introduced below is
+additional and is counted once.
+Planning, uncertainty, and commitment 2
+
+HERMOD LABS Article 3 of 3
+With p(O = 0) = p(O = 1) = 1/2, the best current action is R:
+V0 = max
+E[U (a, S) |e] = max{20, 20, 60}= 60. a
+(2)
+The robust action leaves all three bits of state uncertainty unresolved while achieving the target in every
+stipulated state. The two specialized actions tie at 20; that tie is not the preferred set because R has
+greater expected value.
+Perfect information about O, available before choosing an arrangement, would permit A for O = 0
+and B for O = 1. It produces an expected value of 120. The value of perfect information is therefore
+120−60 = 60, using the best current action as the baseline. Comparing against the inferior value 20
+would overstate the benefit of learning.
+Now suppose a study returns a report Y that identifies O correctly with probability 0.9 in either state. Its
+errors do not depend on L, T given O. The study costs 10 value units and returns before the commitment
+cutoff, while all three arrangements remain available. These timing and availability assumptions are
+necessary for the following policy to be actionable.
+After Y = 0, Bayes’ rule gives probability 0.9 for O = 0. Arrangement A has conditional expected value
+0.9(120) + 0.1(−80) = 100, (3)
+compared with 60 for R and−60 for B. The symmetrical result after Y = 1 favors B. Both reports have
+probability 1/2, so the observation-contingent policy has gross value 100 and net value 100−10 = 90.
+Gross value of sample information = 100−60 = 40, Net improvement after study cost = 90−60 = 30. (4)
+(5)
+The study reveals only 1−h2(0.1) = 0.5310 bits about the state, leaving 2 + h2(0.1) = 2.4690 bits. That
+reduction is sufficient to improve the expected decision value in this model. An information-seeking action
+can be evaluated through the later choices its results enable.[1]
+For comparison, suppose a different study reveals L perfectly, also costs 10, and arrives in time. It
+removes one full bit. But L does not affect any payoff in this stipulated model, so R remains optimal
+after either result. Gross decision improvement is zero, and net value falls to 60−10 = 50.
+Strategy Residual state bits Target probability Net value
+Choose R now 3.0000 1.00 60
+Study O; select A or B from Y 2.4690 0.90 90
+Study L perfectly; still choose R 2.0000 1.00 50
+The study removing the most entropy has the lowest net value in this comparison. The strategy with the
+highest expected net value has a lower target probability than the robust action. These columns answer
+different questions; the decision criteria determine which tradeoff is acceptable.
+When is the apparently better strategy inadmissible?
+Suppose the operating target is a mandatory requirement: every modeled state must achieve it. Then A
+and B are not adequate fixed plans. The noisy-study policy also fails that gate because an erroneous
+report has positive probability. Its expected value of 90 cannot establish the required all-state support.
+Planning, uncertainty, and commitment 3
+
+HERMOD LABS Article 3 of 3
+The team must retain R, or establish another admissible policy with a verified fallback. That fallback
+must still be available after the observation and must meet the cost, timing, resource, and permission
+conditions. It cannot be assumed into existence because it would make the policy attractive.
+More generally, let A(e) contain the actions allowed under the current basis. For a study that leaves
+those opportunities intact, gross sample information value is
+EVSI(Y ) =
+p(y |e) max
+E[U (a, S) |e, y]
+a∈A(e,y)
+y
+(6)
+− max
+E[U (a, S) |e].
+a∈A(e)
+The study’s net improvement subtracts its cost in the same value units. Free optional information that
+can be ignored does not reduce the optimum when it leaves the available choices unchanged. A real study
+can consume time, money, and capacity, so it may change those choices as well as supply information.
+This preserves the distinction between completion, feasibility, preference, and acceptance. A computed
+expected value is a comparison under a model. It does not waive a mandatory condition or record a
+human decision.
+What do control and contingency preparation add?
+An effective intervention can change what happens. A process change might make an operating condition
+more predictable; a valid reservation might secure a resource. Such claims need support for their causal
+effect, scope, duration, and failure modes. Recording a request or choosing a convenient value does not
+establish that control was obtained.
+An arrangement can also avoid a dependency. If a route does not need a consolidation loading window,
+uncertainty about that window can cease to matter to its feasibility. The uncertain condition has not
+thereby been learned or eliminated from the world.
+A contingency policy specifies observable triggers and later actions. “If the window is lost, use the other
+service” is only useful if the loss is observable early enough and that service can still be authorized, funded,
+and booked. reassessment_trigger, contingency_response, and response_deadline should preserve those
+dependencies. Examining vulnerabilities and improving performance across plausible futures is the
+contribution of robust planning.[2]
+For the soft-target teaching example, an actionable proposed learning rule is: “Obtain Y before the
+commitment cutoff. If Y = 0, propose A; if Y = 1, propose B. The study costs 10 value units. If it
+cannot finish while those choices remain available, reassess the study purchase and the current robust
+action.” Human acceptance is still needed for the study and the resulting operating action, within their
+respective authority.
+Put the comparison beside the decision record
+The plan_contents identifies whether we are buying evidence, intervening, selecting a fixed arrangement,
+or preparing a contingent policy. assessed_conditions retains the probability and payoff assumptions,
+the observation stage, and the scope of the operating checks. The established_finding reports what
+those checks and calculations support. preferred_options and preference_basis preserve the accepted
+comparison rule, including whether target failure is permitted at all.
+next_action, acceptance_status, and decision_owner then identify the particular human commitment.
+Unknown approval status can be investigated; obtaining new approval requires an actual authorized
+decision. A forecast of acceptance is not the acceptance itself.
+Planning, uncertainty, and commitment 4
+
+HERMOD LABS Article 3 of 3
+Decision Lab’s public shipment and gifting CLI/SDK guides preserve distinctions between completed
+assessments, checked feasible plans, established preferences, and operating decisions. The gifting example,
+for instance, makes an earlier external correction preferable only after a confirmation covers the current
+insert version; the cheaper in-house correction continues to pass.[4] The information and utility calculations
+in this article are a proposed teaching layer, not reported outputs of those existing examples.
+A real extension would need reviewed outcome measures, probabilities where justified, feasible responses,
+funding and timing checks, and retained human decisions. Its purpose would be to compare what a course
+of action enables, rather than reward the largest reduction in a single uncertainty number.
+Before the next commitment, finish this statement: “If we observe this result, we will propose this action;
+otherwise, we will propose that response. We need the result by this time, it will cost this much, and this
+person must accept the next action.” Those entries connect learning to a decision that can still change.
+Companion articles: Why Plans Are Not Enough develops the claims a plan can support. How Much Uncertainty
+Is Left? derives the three-bit baseline and the noisy observation’s 0.5310-bit information gain.
+References
+[1] David L. Poole and Alan K. Mackworth (2023), Artificial Intelligence: Foundations of Computational Agents,
+third edition, section 12.4, “The Value of Information and Control.” The payoff matrix, study cost, and
+calculations here are original stipulated examples, not results reported in that source.
+[2] RAND, Robust Decision Making.
+[3] Hermod Labs, Resolve a shipment exception with the Decision Lab SDK. The source’s fictional freight prices
+are separate from this article’s value units.
+[4] Hermod Labs, Build a gift-kit app with the Decision Lab SDK. Its standalone assessment does not execute the
+operating work or accept a human review.
+[5] Claude E. Shannon (1948), A Mathematical Theory of Communication, Bell System Technical Journal 27,
+379–423 and 623–656, section 6.
+Planning, uncertainty, and commitment 5

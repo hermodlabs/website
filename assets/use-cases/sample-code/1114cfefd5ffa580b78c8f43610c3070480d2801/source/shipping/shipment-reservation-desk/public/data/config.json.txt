@@ -1,0 +1,110 @@
+{
+  "format": "shipment-reservation-config/1",
+  "title": "Shipment Reservation Desk",
+  "appFileSHA256": "409dc299e6cde8abd54e942517471f6871e66ff7f4f7c7336f9b19ab1436b19e",
+  "binding": {
+    "appId": "shipment-review-with-consolidation",
+    "release": 1,
+    "appHash": "389fc6f51baf8f14424fe4da2cea612bc6c12f0248126ff5c682cb1d263e191c",
+    "packageHash": "9a10492b24acf94db41a24ea90aee6d371c8de0d4797a6f334ba72e52205070a",
+    "moduleHash": "771c2f10854ac05ac02b44cc4e01e4fb8eccb1cb1b677dab426a850e5ef571f0",
+    "pattern": "complete-a-commitment/1"
+  },
+  "currency": "USD",
+  "moneyDivisor": 100,
+  "timeOrigin": "2026-11-17T00:00:00-06:00",
+  "timeZone": "Etc/GMT+6",
+  "labels": {
+    "arrangements": {
+      "direct": "Direct",
+      "backup": "Backup",
+      "consolidated": "Consolidated"
+    },
+    "checks": {
+      "capacity-for-complete-order": "The arrangement can carry the complete order",
+      "scoped-transportation-registration": "Transportation registration covers this order and ship point",
+      "pack-capability": "The assigned packing team can perform the packing work",
+      "pack-availability": "The packing team is available for the scheduled work",
+      "release-capability": "The assigned release officer can perform the release work",
+      "release-availability": "The release officer is available for the scheduled work",
+      "combined-resource-capacity": "Preparation has the required people and equipment",
+      "arrangement-selection-authority": "Selection authority covers this order and arrangement",
+      "scoped-final-release-grant": "Release permission covers this order and arrangement",
+      "selection-not-in-the-past": "The reservation decision has not been scheduled in the past",
+      "verification-fee-before-response": "Any verification fee is paid before the reservation decision",
+      "reserve-before-cutoff": "The reservation decision meets the booking cutoff",
+      "preparation-before-departure": "Packing and release finish before departure",
+      "receipt-by-required-time": "Arrival meets the delivery deadline",
+      "receipt-within-access-window": "Arrival falls within the receiving window",
+      "total-expense-limit": "Complete shipment expense is within the limit",
+      "peak-cash-limit": "Cash required stays within the available amount",
+      "scoped-verification-purchase-grant": "Any paid verification has the required spending permission",
+      "reviewed-arrangement-policy": "The arrangement is covered by this review",
+      "scoped-consolidation-slot": "A current confirmation covers this order and consolidation slot"
+    }
+  },
+  "appUrl": "./shipment-review.app.json",
+  "utcOffset": "-06:00",
+  "cases": [
+    {
+      "id": "confirmed",
+      "label": "Confirmed slot \u00b7 ORD-104",
+      "description": "Current registration, permissions and consolidation confirmation. Consolidated should be preferred.",
+      "url": "./cases/confirmed.json"
+    },
+    {
+      "id": "revised",
+      "label": "Revised order \u00b7 ORD-105",
+      "description": "Revision 2 has current registration and permissions, but the slot covers revision 1. Direct should be preferred.",
+      "url": "./cases/revised.json"
+    },
+    {
+      "id": "permissions",
+      "label": "Old permissions \u00b7 ORD-106",
+      "description": "Revision 2 has current registration, but selection and release permissions cover revision 1. No listed arrangement should pass.",
+      "url": "./cases/permissions.json"
+    }
+  ],
+  "decisionPresentation": {
+    "format": "decision-presentation/1",
+    "title": "Shipment arrangements",
+    "question": "Which complete arrangement meets the recorded requirements and arrives earliest?",
+    "priorityLabel": "Earliest arrival, then lower complete shipment expense",
+    "moneyFormat": {
+      "currency": "USD",
+      "divisor": 100
+    },
+    "columns": [
+      {
+        "id": "plan",
+        "label": "Arrangement"
+      },
+      {
+        "id": "status",
+        "label": "Result"
+      },
+      {
+        "id": "expense",
+        "label": "Complete cost"
+      },
+      {
+        "id": "arrival",
+        "label": "Calculated arrival",
+        "source": {
+          "kind": "derived",
+          "id": "arrival"
+        },
+        "format": {
+          "kind": "time",
+          "origin": "2026-11-17T00:00:00-06:00",
+          "timeZone": "Etc/GMT+6",
+          "unit": "minute"
+        }
+      },
+      {
+        "id": "blockers",
+        "label": "Conditions needing attention"
+      }
+    ]
+  }
+}

@@ -1,0 +1,921 @@
+{
+  "format": "gifting-use-case-verification/1",
+  "fictional": true,
+  "createdAt": "2026-11-18T02:00:00.000Z",
+  "sdkVersion": "0.1.0",
+  "source": "hermod-review-lab/examples/gifting/v2",
+  "sourceTemplateHash": "e8e8d8277ec58cddfddca9ac32c1f1267ec427c57fbf9b603746c357f927f782",
+  "websiteVariant": {
+    "independent": true,
+    "sourceReleasesModified": false,
+    "handoffDeadlineMinute": 1440,
+    "sourceProvenance": "source-provenance.json"
+  },
+  "scope": {
+    "quantity": 120,
+    "budgetMinor": 60000,
+    "handoffDeadlineMinute": 1440,
+    "originalRehearsalMinutes": 5,
+    "revisedMinimumRehearsalMinutes": 10
+  },
+  "identicalCaseHash": "16e73fc546172f79f77c6724796deb354db7dca7b4ad6dc2f31776245f998245",
+  "variants": {
+    "standard": {
+      "appPackageHash": "1b038d1e90bbcccb70c92f64bc863c6251a1e913dad82dfbbd57e3199cbec60d",
+      "workflowDefinitionHash": "f36f4bbabe0bd9f8e420279dcdc07cf66c222b3442dc4ecc29b52ab9dbe47063",
+      "nativeChecks": {
+        "total": 15,
+        "passed": 15,
+        "failed": 0,
+        "unavailable": 0
+      },
+      "workflowChecks": {
+        "total": 13,
+        "passed": 13,
+        "failed": 0,
+        "unavailable": 0,
+        "checks": 63
+      },
+      "recommendation": {
+        "id": "plan-000004",
+        "packageId": "replace-and-repair",
+        "label": "Replace inserts and repair the journey",
+        "description": "Replace inserts and repair the journey",
+        "corrects": [
+          "replace-insert",
+          "correct-destination",
+          "fix-checkout"
+        ],
+        "complete": true,
+        "feasible": true,
+        "status": "supported",
+        "expense": 30000,
+        "activities": [
+          {
+            "actor": "campaign-owner-1",
+            "duration": 25,
+            "end": 25,
+            "id": "correct",
+            "resources": [
+              {
+                "amount": 1,
+                "resource": "production-team"
+              }
+            ],
+            "start": 0
+          },
+          {
+            "actor": "campaign-owner-1",
+            "duration": 5,
+            "end": 30,
+            "id": "rehearse",
+            "resources": [
+              {
+                "amount": 1,
+                "resource": "production-team"
+              }
+            ],
+            "start": 25
+          },
+          {
+            "actor": "campaign-owner-1",
+            "duration": 5,
+            "end": 35,
+            "id": "handoff",
+            "resources": [
+              {
+                "amount": 1,
+                "resource": "production-team"
+              }
+            ],
+            "start": 30
+          }
+        ],
+        "startMinute": 0,
+        "finishMinute": 35,
+        "ownerId": "campaign-owner-1",
+        "deadlineMinute": 1440,
+        "blockers": [],
+        "scenarios": [
+          {
+            "constraints": [
+              {
+                "id": "declared-fault-state",
+                "passed": true,
+                "requirement": "COVERAGE",
+                "trace": []
+              },
+              {
+                "id": "published-package-effects",
+                "passed": true,
+                "requirement": "COVERAGE",
+                "trace": []
+              },
+              {
+                "id": "correct-fault-0",
+                "passed": true,
+                "requirement": "SUFFICIENCY",
+                "trace": []
+              },
+              {
+                "id": "correct-fault-1",
+                "passed": true,
+                "requirement": "SUFFICIENCY",
+                "trace": []
+              },
+              {
+                "id": "correct-fault-2",
+                "passed": true,
+                "requirement": "SUFFICIENCY",
+                "trace": []
+              },
+              {
+                "id": "known-owner",
+                "passed": true,
+                "requirement": "ACCESS",
+                "trace": [
+                  {
+                    "kind": "exists",
+                    "matchedKeys": [
+                      {
+                        "id": "campaign-owner-1"
+                      }
+                    ],
+                    "table": "people",
+                    "where": {
+                      "id": "campaign-owner-1"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "scoped-package-permission",
+                "passed": true,
+                "requirement": "ACCESS",
+                "trace": [
+                  {
+                    "kind": "exists",
+                    "matchedKeys": [
+                      {
+                        "id": "PERMISSION-replace-and-repair"
+                      }
+                    ],
+                    "table": "permissions",
+                    "where": {
+                      "accountScope": "intended-recipient-account",
+                      "actorId": "campaign-owner-1",
+                      "batchId": "GIFT-120",
+                      "checkoutRevision": "checkout-1",
+                      "destinationRevision": "destination-2",
+                      "deviceScope": "campaign-test-phone",
+                      "insertRevision": "insert-3",
+                      "packageId": "replace-and-repair"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "resource-calendar",
+                "passed": true,
+                "requirement": "ACCESS",
+                "trace": [
+                  {
+                    "covered": true,
+                    "end": 35,
+                    "kind": "interval-covered",
+                    "matchedKeys": [
+                      {
+                        "end": 1440,
+                        "resource": "production-team",
+                        "start": 0
+                      }
+                    ],
+                    "start": 0,
+                    "table": "calendars",
+                    "where": {
+                      "resource": "production-team"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "resource-capacity",
+                "passed": true,
+                "requirement": "ACCESS",
+                "trace": [
+                  {
+                    "assessmentRef": "resourceAssessment",
+                    "kind": "resource-capacity",
+                    "passed": true
+                  }
+                ]
+              },
+              {
+                "id": "not-in-past",
+                "passed": true,
+                "requirement": "TIME",
+                "trace": []
+              },
+              {
+                "id": "handoff-by-cutoff",
+                "passed": true,
+                "requirement": "TIME",
+                "trace": []
+              },
+              {
+                "id": "package-within-budget",
+                "passed": true,
+                "requirement": "COST",
+                "trace": []
+              },
+              {
+                "id": "quoted-quantity",
+                "passed": true,
+                "requirement": "SUFFICIENCY",
+                "trace": []
+              },
+              {
+                "id": "minimum-rehearsal",
+                "passed": true,
+                "requirement": "SUFFICIENCY",
+                "trace": []
+              },
+              {
+                "id": "scoped-package-confirmation",
+                "passed": true,
+                "requirement": "CONFIRMATION",
+                "trace": [
+                  {
+                    "kind": "exists",
+                    "matchedKeys": [],
+                    "table": "confirmations",
+                    "where": {
+                      "accountScope": "intended-recipient-account",
+                      "batchId": "GIFT-120",
+                      "checkoutRevision": "checkout-1",
+                      "destinationRevision": "destination-2",
+                      "deviceScope": "campaign-test-phone",
+                      "insertRevision": "insert-3",
+                      "packageId": "replace-and-repair"
+                    }
+                  }
+                ]
+              }
+            ],
+            "derived": {},
+            "finance": {
+              "cashEvents": [],
+              "charges": [
+                {
+                  "amount": 30000,
+                  "id": "complete-correction-package"
+                }
+              ],
+              "expense": 30000,
+              "holds": [],
+              "mode": "expense",
+              "peakCash": null
+            },
+            "id": "print-destination",
+            "inputs": {
+              "fault0": true,
+              "fault1": true,
+              "fault2": false,
+              "id": "print-destination"
+            },
+            "passed": true,
+            "requirements": [
+              {
+                "id": "SUFFICIENCY",
+                "passed": true
+              },
+              {
+                "id": "COVERAGE",
+                "passed": true
+              },
+              {
+                "id": "ACCESS",
+                "passed": true
+              },
+              {
+                "id": "TIME",
+                "passed": true
+              },
+              {
+                "id": "COST",
+                "passed": true
+              },
+              {
+                "id": "CONFIRMATION",
+                "passed": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "earliest": {
+      "appPackageHash": "d22d166a7dbfe5e249227560b617d55bc3520e2b9aa78a7afeeb4fa9bc63d0de",
+      "workflowDefinitionHash": "da0ebc8beb792ad42f0f637371018d696122ea1a85e3538bb561b3ab2c479e8d",
+      "nativeChecks": {
+        "total": 15,
+        "passed": 15,
+        "failed": 0,
+        "unavailable": 0
+      },
+      "workflowChecks": {
+        "total": 13,
+        "passed": 13,
+        "failed": 0,
+        "unavailable": 0,
+        "checks": 63
+      },
+      "recommendation": {
+        "id": "plan-000005",
+        "packageId": "external-replace-and-repair",
+        "label": "External replacement and journey repair",
+        "description": "External replacement and journey repair",
+        "corrects": [
+          "replace-insert",
+          "correct-destination",
+          "fix-checkout"
+        ],
+        "complete": true,
+        "feasible": true,
+        "status": "supported",
+        "expense": 40000,
+        "activities": [
+          {
+            "actor": "campaign-owner-1",
+            "duration": 10,
+            "end": 10,
+            "id": "correct",
+            "resources": [
+              {
+                "amount": 1,
+                "resource": "production-team"
+              }
+            ],
+            "start": 0
+          },
+          {
+            "actor": "campaign-owner-1",
+            "duration": 5,
+            "end": 15,
+            "id": "rehearse",
+            "resources": [
+              {
+                "amount": 1,
+                "resource": "production-team"
+              }
+            ],
+            "start": 10
+          },
+          {
+            "actor": "campaign-owner-1",
+            "duration": 5,
+            "end": 20,
+            "id": "handoff",
+            "resources": [
+              {
+                "amount": 1,
+                "resource": "production-team"
+              }
+            ],
+            "start": 15
+          }
+        ],
+        "startMinute": 0,
+        "finishMinute": 20,
+        "ownerId": "campaign-owner-1",
+        "deadlineMinute": 1440,
+        "blockers": [],
+        "scenarios": [
+          {
+            "constraints": [
+              {
+                "id": "declared-fault-state",
+                "passed": true,
+                "requirement": "COVERAGE",
+                "trace": []
+              },
+              {
+                "id": "published-package-effects",
+                "passed": true,
+                "requirement": "COVERAGE",
+                "trace": []
+              },
+              {
+                "id": "correct-fault-0",
+                "passed": true,
+                "requirement": "SUFFICIENCY",
+                "trace": []
+              },
+              {
+                "id": "correct-fault-1",
+                "passed": true,
+                "requirement": "SUFFICIENCY",
+                "trace": []
+              },
+              {
+                "id": "correct-fault-2",
+                "passed": true,
+                "requirement": "SUFFICIENCY",
+                "trace": []
+              },
+              {
+                "id": "known-owner",
+                "passed": true,
+                "requirement": "ACCESS",
+                "trace": [
+                  {
+                    "kind": "exists",
+                    "matchedKeys": [
+                      {
+                        "id": "campaign-owner-1"
+                      }
+                    ],
+                    "table": "people",
+                    "where": {
+                      "id": "campaign-owner-1"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "scoped-package-permission",
+                "passed": true,
+                "requirement": "ACCESS",
+                "trace": [
+                  {
+                    "kind": "exists",
+                    "matchedKeys": [
+                      {
+                        "id": "PERMISSION-external"
+                      }
+                    ],
+                    "table": "permissions",
+                    "where": {
+                      "accountScope": "intended-recipient-account",
+                      "actorId": "campaign-owner-1",
+                      "batchId": "GIFT-120",
+                      "checkoutRevision": "checkout-1",
+                      "destinationRevision": "destination-2",
+                      "deviceScope": "campaign-test-phone",
+                      "insertRevision": "insert-3",
+                      "packageId": "external-replace-and-repair"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "resource-calendar",
+                "passed": true,
+                "requirement": "ACCESS",
+                "trace": [
+                  {
+                    "covered": true,
+                    "end": 20,
+                    "kind": "interval-covered",
+                    "matchedKeys": [
+                      {
+                        "end": 1440,
+                        "resource": "production-team",
+                        "start": 0
+                      }
+                    ],
+                    "start": 0,
+                    "table": "calendars",
+                    "where": {
+                      "resource": "production-team"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "resource-capacity",
+                "passed": true,
+                "requirement": "ACCESS",
+                "trace": [
+                  {
+                    "assessmentRef": "resourceAssessment",
+                    "kind": "resource-capacity",
+                    "passed": true
+                  }
+                ]
+              },
+              {
+                "id": "not-in-past",
+                "passed": true,
+                "requirement": "TIME",
+                "trace": []
+              },
+              {
+                "id": "handoff-by-cutoff",
+                "passed": true,
+                "requirement": "TIME",
+                "trace": []
+              },
+              {
+                "id": "package-within-budget",
+                "passed": true,
+                "requirement": "COST",
+                "trace": []
+              },
+              {
+                "id": "quoted-quantity",
+                "passed": true,
+                "requirement": "SUFFICIENCY",
+                "trace": []
+              },
+              {
+                "id": "minimum-rehearsal",
+                "passed": true,
+                "requirement": "SUFFICIENCY",
+                "trace": []
+              },
+              {
+                "id": "scoped-package-confirmation",
+                "passed": true,
+                "requirement": "CONFIRMATION",
+                "trace": [
+                  {
+                    "kind": "exists",
+                    "matchedKeys": [
+                      {
+                        "id": "CONFIRM-EXTERNAL"
+                      }
+                    ],
+                    "table": "confirmations",
+                    "where": {
+                      "accountScope": "intended-recipient-account",
+                      "batchId": "GIFT-120",
+                      "checkoutRevision": "checkout-1",
+                      "destinationRevision": "destination-2",
+                      "deviceScope": "campaign-test-phone",
+                      "insertRevision": "insert-3",
+                      "packageId": "external-replace-and-repair"
+                    }
+                  }
+                ]
+              }
+            ],
+            "derived": {},
+            "finance": {
+              "cashEvents": [],
+              "charges": [
+                {
+                  "amount": 40000,
+                  "id": "complete-correction-package"
+                }
+              ],
+              "expense": 40000,
+              "holds": [],
+              "mode": "expense",
+              "peakCash": null
+            },
+            "id": "print-destination",
+            "inputs": {
+              "fault0": true,
+              "fault1": true,
+              "fault2": false,
+              "id": "print-destination"
+            },
+            "passed": true,
+            "requirements": [
+              {
+                "id": "SUFFICIENCY",
+                "passed": true
+              },
+              {
+                "id": "COVERAGE",
+                "passed": true
+              },
+              {
+                "id": "ACCESS",
+                "passed": true
+              },
+              {
+                "id": "TIME",
+                "passed": true
+              },
+              {
+                "id": "COST",
+                "passed": true
+              },
+              {
+                "id": "CONFIRMATION",
+                "passed": true
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "missingConfirmation": [
+    "replace-and-repair"
+  ],
+  "revised": {
+    "appPackageHash": "151a43340db89287b809319312ebd4faeb2677b10c6be9ed31ee449c716bdcfa",
+    "workflowDefinitionHash": "d38d7b61047788dcb8442c6e25eca71e9d23075836e6bfe3bbfe3911db9c365c",
+    "nativeChecks": {
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "unavailable": 0
+    },
+    "workflowChecks": {
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "unavailable": 0,
+      "checks": 6
+    },
+    "restoredPlan": {
+      "id": "plan-000004",
+      "packageId": "replace-and-repair",
+      "label": "Replace inserts and repair the journey",
+      "description": "Replace inserts and repair the journey",
+      "corrects": [
+        "replace-insert",
+        "correct-destination",
+        "fix-checkout"
+      ],
+      "complete": true,
+      "feasible": true,
+      "status": "supported",
+      "expense": 30000,
+      "activities": [
+        {
+          "actor": "campaign-owner-1",
+          "duration": 25,
+          "end": 25,
+          "id": "correct",
+          "resources": [
+            {
+              "amount": 1,
+              "resource": "production-team"
+            }
+          ],
+          "start": 0
+        },
+        {
+          "actor": "campaign-owner-1",
+          "duration": 10,
+          "end": 35,
+          "id": "rehearse",
+          "resources": [
+            {
+              "amount": 1,
+              "resource": "production-team"
+            }
+          ],
+          "start": 25
+        },
+        {
+          "actor": "campaign-owner-1",
+          "duration": 5,
+          "end": 40,
+          "id": "handoff",
+          "resources": [
+            {
+              "amount": 1,
+              "resource": "production-team"
+            }
+          ],
+          "start": 35
+        }
+      ],
+      "startMinute": 0,
+      "finishMinute": 40,
+      "ownerId": "campaign-owner-1",
+      "deadlineMinute": 1440,
+      "blockers": [],
+      "scenarios": [
+        {
+          "constraints": [
+            {
+              "id": "declared-fault-state",
+              "passed": true,
+              "requirement": "COVERAGE",
+              "trace": []
+            },
+            {
+              "id": "published-package-effects",
+              "passed": true,
+              "requirement": "COVERAGE",
+              "trace": []
+            },
+            {
+              "id": "correct-fault-0",
+              "passed": true,
+              "requirement": "SUFFICIENCY",
+              "trace": []
+            },
+            {
+              "id": "correct-fault-1",
+              "passed": true,
+              "requirement": "SUFFICIENCY",
+              "trace": []
+            },
+            {
+              "id": "correct-fault-2",
+              "passed": true,
+              "requirement": "SUFFICIENCY",
+              "trace": []
+            },
+            {
+              "id": "known-owner",
+              "passed": true,
+              "requirement": "ACCESS",
+              "trace": [
+                {
+                  "kind": "exists",
+                  "matchedKeys": [
+                    {
+                      "id": "campaign-owner-1"
+                    }
+                  ],
+                  "table": "people",
+                  "where": {
+                    "id": "campaign-owner-1"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "scoped-package-permission",
+              "passed": true,
+              "requirement": "ACCESS",
+              "trace": [
+                {
+                  "kind": "exists",
+                  "matchedKeys": [
+                    {
+                      "id": "PERMISSION-replace-and-repair"
+                    }
+                  ],
+                  "table": "permissions",
+                  "where": {
+                    "accountScope": "intended-recipient-account",
+                    "actorId": "campaign-owner-1",
+                    "batchId": "GIFT-120",
+                    "checkoutRevision": "checkout-1",
+                    "destinationRevision": "destination-2",
+                    "deviceScope": "campaign-test-phone",
+                    "insertRevision": "insert-3",
+                    "packageId": "replace-and-repair"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "resource-calendar",
+              "passed": true,
+              "requirement": "ACCESS",
+              "trace": [
+                {
+                  "covered": true,
+                  "end": 40,
+                  "kind": "interval-covered",
+                  "matchedKeys": [
+                    {
+                      "end": 1440,
+                      "resource": "production-team",
+                      "start": 0
+                    }
+                  ],
+                  "start": 0,
+                  "table": "calendars",
+                  "where": {
+                    "resource": "production-team"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "resource-capacity",
+              "passed": true,
+              "requirement": "ACCESS",
+              "trace": [
+                {
+                  "assessmentRef": "resourceAssessment",
+                  "kind": "resource-capacity",
+                  "passed": true
+                }
+              ]
+            },
+            {
+              "id": "not-in-past",
+              "passed": true,
+              "requirement": "TIME",
+              "trace": []
+            },
+            {
+              "id": "handoff-by-cutoff",
+              "passed": true,
+              "requirement": "TIME",
+              "trace": []
+            },
+            {
+              "id": "package-within-budget",
+              "passed": true,
+              "requirement": "COST",
+              "trace": []
+            },
+            {
+              "id": "quoted-quantity",
+              "passed": true,
+              "requirement": "SUFFICIENCY",
+              "trace": []
+            },
+            {
+              "id": "minimum-rehearsal",
+              "passed": true,
+              "requirement": "SUFFICIENCY",
+              "trace": []
+            },
+            {
+              "id": "scoped-package-confirmation",
+              "passed": true,
+              "requirement": "CONFIRMATION",
+              "trace": [
+                {
+                  "kind": "exists",
+                  "matchedKeys": [],
+                  "table": "confirmations",
+                  "where": {
+                    "accountScope": "intended-recipient-account",
+                    "batchId": "GIFT-120",
+                    "checkoutRevision": "checkout-1",
+                    "destinationRevision": "destination-2",
+                    "deviceScope": "campaign-test-phone",
+                    "insertRevision": "insert-3",
+                    "packageId": "replace-and-repair"
+                  }
+                }
+              ]
+            }
+          ],
+          "derived": {},
+          "finance": {
+            "cashEvents": [],
+            "charges": [
+              {
+                "amount": 30000,
+                "id": "complete-correction-package"
+              }
+            ],
+            "expense": 30000,
+            "holds": [],
+            "mode": "expense",
+            "peakCash": null
+          },
+          "id": "print-destination",
+          "inputs": {
+            "fault0": true,
+            "fault1": true,
+            "fault2": false,
+            "id": "print-destination"
+          },
+          "passed": true,
+          "requirements": [
+            {
+              "id": "SUFFICIENCY",
+              "passed": true
+            },
+            {
+              "id": "COVERAGE",
+              "passed": true
+            },
+            {
+              "id": "ACCESS",
+              "passed": true
+            },
+            {
+              "id": "TIME",
+              "passed": true
+            },
+            {
+              "id": "COST",
+              "passed": true
+            },
+            {
+              "id": "CONFIRMATION",
+              "passed": true
+            }
+          ]
+        }
+      ]
+    },
+    "invalidatedBindingReviews": [
+      "decision",
+      "dependency:planning",
+      "step:planning",
+      "brief"
+    ],
+    "readyToPublish": false
+  },
+  "qualification": "Fictional authored expectations and synthetic input/result reviews. These calculations do not establish completed correction, passing fresh rehearsal, external booking, operating authority or actual handoff."
+}

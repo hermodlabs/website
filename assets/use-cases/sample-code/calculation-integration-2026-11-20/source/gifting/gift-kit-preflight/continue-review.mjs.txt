@@ -1,0 +1,73 @@
+#!/usr/bin/env node
+// Continue the same native review exported by the batch or React desk. The CLI
+// evaluates apps; the shared adapter records explicit input/operating judgments.
+import { parseArgs } from 'node:util';
+import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { dirname, join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { createDecisionLab, isCalculationWorkflow, WORKFLOW_NEXT_ACTION_KIND } from '@decision-lab/sdk';
+import { CLI_EXIT_CODE, runCLI } from '@decision-lab/cli';
+import { atMinute, inspectGiftingJourney, minuteAt } from './src/giftingJourney.js';
+import { openReviewJourney, recordJourneyDecision, recordJourneyOperation, reviewJourneyInputs, updateReviewInputs } from './src/reviewJourney.js';
+
+try {
+  const { values } = parseArgs({ options: {
+    review: { type: 'string' }, output: { type: 'string' }, config: { type: 'string' }, actor: { type: 'string' },
+    'as-of': { type: 'string' }, 'review-inputs': { type: 'boolean' }, 'accept-finding': { type: 'string' },
+    choose: { type: 'string' }, kind: { type: 'string' }, record: { type: 'string' }, 'recorded-at': { type: 'string' },
+  } });
+  if (!values.review || !values.output) throw new Error('Supply --review NATIVE_WORKFLOW.json and --output FRESH_DIRECTORY.');
+  const configFile = resolve(values.config ?? fileURLToPath(new URL('./data/journey-config.json', import.meta.url)));
+  const read = async file => JSON.parse(await readFile(file, 'utf8'));
+  const config = await read(configFile), definition = await read(resolve(dirname(configFile), config.definitionFile));
+  const app = await read(resolve(dirname(configFile), config.appUrl));
+  const lab = createDecisionLab();
+  let run;
+  const value = await readFile(values.review, 'utf8');
+  for (const authored of [definition, ...await Promise.all((config.legacyDefinitions ?? []).map(entry => read(resolve(dirname(configFile), entry.definitionFile))))]) {
+    try { run = openReviewJourney({ lab, value, app, definition: authored }); break; }
+    catch (error) { if (error.code !== 'REVIEW_DEFINITION_MISMATCH') throw error; }
+  }
+  if (!run) throw new Error('This review uses an unsupported authored workflow.');
+  const commands = [];
+  const at = values['as-of'] ?? atMinute(run.case.gifting.commitment.nowMinute, config.profile.clockOrigin);
+  const reviewMinute = values['as-of'] ? minuteAt(at, config.profile.clockOrigin) : run.case.gifting.commitment.nowMinute;
+  if (reviewMinute < run.case.gifting.commitment.nowMinute) throw new Error('The review clock cannot precede the supplied snapshot.');
+  const output = resolve(values.output); await mkdir(output);
+  const currentPath = join(output, 'review.workflow.json');
+  const persist = async () => writeFile(currentPath, lab.sources.renderJSON(run, { maxBytes: 50000000 }));
+  if (values['as-of']) run = updateReviewInputs({ lab, run, values: { commitment: { ...run.case.gifting.commitment, nowMinute: reviewMinute } }, at });
+  if (values['review-inputs']) run = reviewJourneyInputs({ lab, run, actor: values.actor, at });
+  await persist();
+  async function command(words) {
+    let stdout = '', stderr = '';
+    const destination = join(output, `next-${commands.length}.workflow.json`), args = [...words, '--output', destination];
+    const exitCode = await runCLI(args, { stdout: { write(value) { stdout += value; } }, stderr: { write(value) { stderr += value; } } });
+    commands.push({ args, exitCode, stdout, stderr });
+    if (exitCode !== CLI_EXIT_CODE.COMPLETED && !(words[1] === 'solve' && exitCode === CLI_EXIT_CODE.UNAVAILABLE)) throw new Error(stderr || stdout || `CLI exited ${exitCode}.`);
+    run = await read(destination); await persist(); await rm(destination);
+  }
+  if (values['accept-finding']) {
+    const state = lab.workflows.prepare({ run, stepId: values['accept-finding'] });
+    if (state.status !== 'awaiting-review') throw new Error('Only a current completed finding can be accepted.');
+    if (!values.actor?.trim()) throw new Error('Name --actor for the explicit finding review.');
+    await command(['workflow', 'review', '--run', currentPath, '--evaluation', state.evaluationId,
+      '--status', 'accepted', '--actor', values.actor, '--role', state.role, '--at', at]);
+  }
+  if (values.choose) run = recordJourneyDecision({ lab, run, optionId: values.choose, actor: values.actor, at });
+  if (values.kind || values.record) {
+    if (!values.kind || !values.record || !values['recorded-at']) throw new Error('Operating records need --kind, --record ORIGINAL_RECORD.json and --recorded-at ISO_TIMESTAMP.');
+    run = recordJourneyOperation({ lab, run, kind: values.kind, record: await read(values.record), actor: values.actor, at: values['recorded-at'] });
+  }
+  await persist();
+  const next = lab.workflows.output({ run }).nextActions.find(action => action.kind === WORKFLOW_NEXT_ACTION_KIND.EVALUATE);
+  if (isCalculationWorkflow(run)) await command(['workflow', 'solve', '--run', currentPath, '--created-at', at, '--timeout-ms', '30000']);
+  else if (next) await command(['workflow', 'evaluate', '--run', currentPath, '--step', next.stepId, '--created-at', at, '--timeout-ms', '30000']);
+  const view = inspectGiftingJourney({ lab, run, config });
+  await writeFile(join(output, 'commands.json'), JSON.stringify(commands, null, 2));
+  await writeFile(join(output, 'output.json'), lab.sources.renderJSON(view.output, { maxBytes: 50000000 }));
+  if (view.currentRun && view.previousRun) {
+    await writeFile(join(output, 'changes.json'), lab.sources.renderJSON(lab.reports.compareFindings({ before: view.previousRun, after: view.currentRun })));
+  }
+  console.log(`${view.owner}: ${view.nextAction}\n${currentPath}`);
+} catch (error) { console.error(error.message); process.exitCode = CLI_EXIT_CODE.INVALID_INPUT; }

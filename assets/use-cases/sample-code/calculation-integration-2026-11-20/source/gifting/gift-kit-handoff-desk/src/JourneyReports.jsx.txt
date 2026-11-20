@@ -1,0 +1,44 @@
+import React, { useState } from 'react';
+import { DecisionSummaryView, DecisionProcessView, WorkflowMapView, QuestionView, RecordsView, ReportViewer } from '@decision-lab/react-views';
+
+// SDK materializations own every finding and inspection key. Navigation only
+// selects which retained view to display; it never records an operating choice.
+export default function JourneyReports({ output, definition, dirty, blockedReason = '' }) {
+  const [active, setActive] = useState('summary'), [tabId, setTabId] = useState('');
+  const [inspection, setInspection] = useState({}), [navigation, setNavigation] = useState({});
+  const presentation = definition.metadata.presentation ?? {};
+  const tabs = presentation.report?.tabs ?? [];
+  const tab = tabs.find(row => row.id === tabId) ?? tabs[0];
+  const question = output.questionViews?.find(row => row.id === tab?.viewId);
+  const section = output.brief.sections.find(row => row.id === tab?.sectionId);
+  const evaluations = output.evaluations ?? [];
+  const evaluation = evaluations.findLast(row => row.stepId === (tab?.stepIds?.[0] ?? (tab?.id === 'evidence' ? 'evidence' : 'planning')))
+    ?? evaluations.at(-1);
+  const openReport = (id, key) => {
+    setTabId(id); setInspection(current => ({ ...current, key })); setActive('supporting');
+  };
+  const openStep = stepId => { setTabId(stepId === 'evidence' ? 'evidence' : 'arrangements'); setActive('supporting'); };
+  const sections = [{ id: 'summary', label: 'Decision summary' }, { id: 'supporting', label: 'Supporting reports' },
+    ...(output.decisionProcess ? [{ id: 'process', label: 'Decision process' }] : []),
+    ...(output.workflowMap ? [{ id: 'dependencies', label: 'Calculation dependencies' }] : [])];
+  if (blockedReason) return <p className="notice warning" role="status">{blockedReason}</p>;
+  if (dirty) return <p className="notice warning" role="status">Pending input changes. Apply or discard them before calculating; the last result is not a current recommendation for this draft.</p>;
+  return <div className="journey-reports">
+    <div className="report-tabs" role="tablist" aria-label="Workflow reports">{sections.map(item => <button key={item.id} type="button" role="tab" aria-selected={active === item.id} onClick={() => setActive(item.id)}>{item.label}</button>)}</div>
+    {active === 'summary' && <DecisionSummaryView
+      summary={output.decisionSummary}
+      onOpenReport={openReport}
+      onViewProcess={output.decisionProcess ? () => setActive('process') : undefined}
+    />}
+    {active === 'supporting' && <section aria-label="Supporting reports"><div className="report-tabs" role="tablist" aria-label="Supporting report questions">{tabs.map(item => <button key={item.id} type="button" role="tab" aria-selected={tab?.id === item.id} onClick={() => { setTabId(item.id); setInspection({}); }}>{item.label}</button>)}</div>
+      {tab?.question && <p className="footnote">{tab.question}</p>}
+      {question ? <QuestionView view={question} context={output.decisionSummary?.displayContext ?? {}} showIntroduction={false} inspectionKey={inspection.key} onInspectionChange={key => setInspection({ key })} />
+        : section?.value?.rows && tab?.columns ? <RecordsView view={{ format: 'record-view/1', id: tab.id, title: tab.label, columns: tab.columns, rows: section.value.rows }} context={output.decisionSummary?.displayContext ?? {}} />
+          : evaluation?.run?.report ? <ReportViewer report={evaluation.run.report} navigation={{ ...navigation, ...(inspection.key ? { planId: inspection.key } : {}) }} onNavigate={setNavigation} />
+            : <p className="footnote">Calculate with the current required inputs to make this supporting report available.</p>}
+    </section>}
+    {active === 'process' && <><DecisionProcessView process={output.decisionProcess} navigation={navigation.process ?? {}} onNavigate={value => setNavigation(current => ({ ...current, process: value }))} onOpenStep={openStep} onOpenOutput={sectionId => { const report = tabs.find(row => row.sectionId === sectionId); if (report) openReport(report.id); }} />
+      <button type="button" onClick={() => setActive('dependencies')}>Inspect calculation dependencies</button></>}
+    {active === 'dependencies' && <WorkflowMapView map={output.workflowMap} navigation={navigation.dependencies ?? {}} onNavigate={value => setNavigation(current => ({ ...current, dependencies: value }))} onOpenStep={openStep} onOpenOutput={sectionId => { const report = tabs.find(row => row.sectionId === sectionId); if (report) openReport(report.id); }} />}
+  </div>;
+}

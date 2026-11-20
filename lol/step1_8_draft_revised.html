@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hermod Draft Assistant — Draft Revised state" />
+  <title>Hermod — Draft Revised</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink:'#03070d', shell:'#07101a', panel:'#09131f', panel2:'#0d1927', line:'#1c2b3d',
+            mist:'#9ca9bb', signal:'#8b5cf6', signal2:'#b79cff', blue:'#5b8cff', danger:'#ff4d57',
+            good:'#67d391', warn:'#f3b95f'
+          },
+          fontFamily: {
+            sans:['Inter','Avenir Next','ui-sans-serif','system-ui','sans-serif'],
+            mono:['IBM Plex Mono','SFMono-Regular','Consolas','ui-monospace','monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing:border-box; scrollbar-width:thin; scrollbar-color:#26384c transparent; }
+    html,body { min-height:100%; }
+    body {
+      margin:0;
+      background:
+        radial-gradient(circle at 5% 2%, rgba(91,140,255,.11), transparent 26rem),
+        radial-gradient(circle at 86% 0%, rgba(139,92,246,.09), transparent 28rem),
+        linear-gradient(180deg,#03070d 0%,#06101a 48%,#03070d 100%);
+    }
+    body::before {
+      content:''; position:fixed; inset:0; z-index:-2; pointer-events:none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.012) 1px, transparent 1px);
+      background-size:34px 34px;
+      mask-image:linear-gradient(to bottom,rgba(0,0,0,.72),transparent 84%);
+    }
+    .app-shell { min-height:100vh; border:1px solid rgba(80,110,145,.34); background:rgba(2,8,14,.26); }
+    .sidebar {
+      background:linear-gradient(180deg,rgba(8,18,29,.98),rgba(3,9,15,.99)),
+                 radial-gradient(circle at 15% 7%,rgba(139,92,246,.08),transparent 18rem);
+    }
+    .brand-mark { position:relative; width:34px; height:34px; filter:drop-shadow(0 0 14px rgba(139,92,246,.38)); }
+    .brand-mark::before,.brand-mark::after {
+      content:''; position:absolute; top:4px; bottom:4px; width:10px;
+      background:linear-gradient(180deg,#c4b5fd,#8b5cf6 55%,#5b8cff);
+      clip-path:polygon(0 0,100% 17%,100% 60%,50% 74%,50% 100%,0 83%);
+    }
+    .brand-mark::before{left:4px}.brand-mark::after{right:4px;transform:scaleX(-1)}
+    .nav-item { position:relative; transition:.18s ease; }
+    .nav-item::before { content:''; position:absolute; inset:0 auto 0 0; width:3px; border-radius:0 6px 6px 0; background:linear-gradient(180deg,#5b8cff,#8b5cf6); opacity:0; }
+    .nav-item.active { background:linear-gradient(90deg,rgba(91,140,255,.14),rgba(63,91,126,.14)); border-color:rgba(91,140,255,.16); color:#fff; }
+    .nav-item.active::before{opacity:1}
+    .glass { background:linear-gradient(180deg,rgba(8,18,29,.93),rgba(5,12,20,.96)); box-shadow:inset 0 1px 0 rgba(255,255,255,.025),0 20px 60px rgba(0,0,0,.18); }
+    .step-line { height:1px; flex:1; background:linear-gradient(90deg,rgba(139,92,246,.55),rgba(255,255,255,.10)); }
+    .update-hero {
+      background:
+        radial-gradient(circle at 8% 12%,rgba(243,185,95,.095),transparent 19rem),
+        radial-gradient(circle at 88% 7%,rgba(139,92,246,.08),transparent 24rem),
+        linear-gradient(135deg,rgba(8,18,29,.98),rgba(5,12,20,.98));
+    }
+    .champion-icon { width:42px; height:42px; object-fit:cover; border-radius:11px; border:1px solid rgba(255,255,255,.11); background:#0a111a; box-shadow:0 5px 18px rgba(0,0,0,.22); }
+    .unknown-icon { width:42px; height:42px; display:grid; place-items:center; border-radius:11px; border:1px dashed rgba(255,255,255,.11); background:rgba(255,255,255,.018); color:#64748b; }
+    .team-row { display:grid; grid-template-columns:58px 48px minmax(0,1fr) auto; align-items:center; min-height:64px; border-top:1px solid rgba(255,255,255,.055); }
+    .role-badge { font-size:10px; font-weight:800; letter-spacing:.05em; color:#718096; }
+    .change-arrow { height:1px; min-width:36px; background:linear-gradient(90deg,rgba(243,185,95,.2),rgba(243,185,95,.8)); position:relative; }
+    .change-arrow::after { content:''; position:absolute; right:-1px; top:-3px; width:7px; height:7px; border-top:1px solid #f3b95f; border-right:1px solid #f3b95f; transform:rotate(45deg); }
+    .status-card { box-shadow:inset 0 1px 0 rgba(255,255,255,.025); }
+    .choice { transition:.16s ease; }
+    .choice:hover { transform:translateY(-1px); border-color:rgba(183,156,255,.34); }
+    .choice.selected { border-color:rgba(139,92,246,.60); background:rgba(139,92,246,.08); box-shadow:0 0 0 1px rgba(139,92,246,.12); }
+    .toast { transition:.2s ease; }
+  </style>
+</head>
+<body class="font-sans text-slate-100 antialiased selection:bg-signal/40 selection:text-white">
+  <div class="app-shell grid lg:grid-cols-[246px_minmax(0,1fr)]">
+    <aside class="sidebar hidden min-h-screen border-r border-white/[0.06] lg:flex lg:flex-col">
+      <div class="flex h-[76px] items-center gap-3 border-b border-white/[0.05] px-7">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="text-[19px] font-semibold tracking-[.24em] text-slate-100">HERMOD</div>
+      </div>
+      <div class="flex-1 px-2 py-7">
+        <p class="px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Live</p>
+        <button class="nav-item active flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-semibold"><span class="grid h-6 w-6 place-items-center text-signal2">⌾</span>Draft Assistant</button>
+        <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">You</p>
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400"><span class="grid h-6 w-6 place-items-center">▦</span>Champion Pool</button>
+        <button class="nav-item mt-1 flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400"><span class="grid h-6 w-6 place-items-center">◇</span>Player Profile</button>
+        <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Learn</p>
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400"><span class="grid h-6 w-6 place-items-center">□</span>Decision History</button>
+        <button class="nav-item mt-1 flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400"><span class="grid h-6 w-6 place-items-center">⌁</span>Review & Learn</button>
+      </div>
+      <div class="border-t border-white/[0.06] p-4">
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-4 py-3 text-left text-sm font-medium text-slate-400"><span>⚙</span>Settings</button>
+        <div class="mt-3 flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.018] px-4 py-3">
+          <div class="grid h-9 w-9 place-items-center rounded-full border border-blue/30 bg-blue/10 text-xs font-bold text-blue">D2</div>
+          <div class="min-w-0 flex-1"><p class="text-sm font-semibold text-slate-200">Mid Main</p><p class="text-xs text-slate-500">Diamond II</p></div>
+          <span class="text-slate-600">⌄</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="min-w-0">
+      <header class="flex h-[76px] items-center justify-between border-b border-white/[0.06] bg-black/10 px-5 sm:px-7 lg:px-8">
+        <div class="flex items-center gap-2.5 text-sm text-slate-500"><span class="font-medium text-slate-300">Ranked Solo/Duo</span><span class="text-slate-700">•</span><span>Summoner's Rift</span><span class="hidden text-slate-700 sm:inline">•</span><span class="hidden sm:inline">Pick Phase</span></div>
+        <div class="flex items-center gap-3"><span class="hidden rounded-full border border-warn/20 bg-warn/[0.06] px-3 py-1.5 text-[11px] font-semibold text-warn sm:inline-flex">DRAFT UPDATED</span><button id="resetBtn" class="rounded-lg border border-white/[0.07] bg-white/[0.02] px-3 py-2 text-xs font-medium text-slate-400 hover:text-white">Reset example</button></div>
+      </header>
+
+      <div class="mx-auto max-w-[1450px] px-5 pb-12 pt-7 sm:px-7 lg:px-8">
+        <section aria-label="Draft assistant progress" class="glass rounded-2xl border border-white/[0.07] px-5 py-4 sm:px-6">
+          <div class="flex items-center gap-2 sm:gap-3">
+            <div class="flex min-w-0 items-center gap-3"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-signal/70 bg-signal/15 text-[11px] font-bold text-signal2">1</span><div class="min-w-0"><p class="text-[11px] font-bold uppercase tracking-[.16em] text-signal2">Draft</p><p class="hidden text-xs text-warn sm:block">Revised state</p></div></div>
+            <div class="step-line"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-70"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-400">2</span><div class="hidden md:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-400">Your Options</p><p class="text-xs text-slate-600">May need refresh</p></div></div>
+            <div class="step-line opacity-35"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-55"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-500">3</span><div class="hidden lg:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500">Clarify</p><p class="text-xs text-slate-600">Re-evaluate if needed</p></div></div>
+            <div class="step-line opacity-30"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-45"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-500">4</span><div class="hidden lg:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500">Recommendation</p><p class="text-xs text-slate-600">May change</p></div></div>
+            <div class="step-line opacity-25"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-35"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-500">5</span><div class="hidden xl:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500">Decide</p><p class="text-xs text-slate-600">Record lock</p></div></div>
+          </div>
+        </section>
+
+        <section class="pb-7 pt-9">
+          <p class="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.2em] text-warn"><span class="h-1.5 w-1.5 rounded-full bg-warn shadow-[0_0_10px_rgba(243,185,95,.7)]"></span>Step 1 · Draft revised</p>
+          <h1 class="text-3xl font-semibold tracking-[-.035em] text-white sm:text-[38px]">The draft changed. Hermod updated its understanding.</h1>
+          <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-400 sm:text-[15px]">Earlier draft entries are revisable. Changing a fact updates the current state without treating your previous answer as a permanent commitment.</p>
+        </section>
+
+        <section class="update-hero overflow-hidden rounded-3xl border border-warn/20 shadow-2xl shadow-black/20">
+          <div class="grid gap-0 xl:grid-cols-[1.32fr_.68fr]">
+            <div class="p-6 sm:p-8 lg:p-9">
+              <div class="flex flex-wrap items-center gap-3">
+                <span class="grid h-10 w-10 place-items-center rounded-full border border-warn/25 bg-warn/10 text-lg text-warn">↻</span>
+                <div><p class="text-[10px] font-bold uppercase tracking-[.2em] text-warn">Draft updated</p><h2 class="mt-1 text-2xl font-semibold tracking-[-.025em] text-white">Gragas is no longer assigned to Jungle.</h2></div>
+              </div>
+
+              <div class="mt-7 rounded-2xl border border-white/[0.08] bg-black/15 p-5 sm:p-6">
+                <p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">What changed</p>
+                <div class="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center">
+                  <div class="flex min-w-[220px] items-center gap-3 rounded-xl border border-white/[0.07] bg-white/[0.018] p-3">
+                    <img class="champion-icon" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Gragas.png" alt="Gragas" />
+                    <div><p class="text-sm font-semibold text-slate-200">Gragas</p><p class="text-[10px] font-bold uppercase tracking-[.13em] text-slate-500">Jungle</p></div>
+                  </div>
+                  <div class="flex items-center justify-center gap-3 sm:flex-1"><span class="change-arrow flex-1"></span><span class="shrink-0 text-[10px] font-bold uppercase tracking-[.14em] text-warn">Revised</span><span class="change-arrow flex-1"></span></div>
+                  <div class="flex min-w-[220px] items-center gap-3 rounded-xl border border-signal/25 bg-signal/[0.055] p-3">
+                    <img class="champion-icon" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Gragas.png" alt="Gragas" />
+                    <div><p class="text-sm font-semibold text-white">Gragas</p><p class="text-[10px] font-bold uppercase tracking-[.13em] text-signal2">Still flexed</p></div>
+                  </div>
+                </div>
+                <p class="mt-4 text-xs leading-5 text-slate-500">Hermod now treats Top and Jungle as plausible assignments instead of assuming a single role.</p>
+              </div>
+
+              <div class="mt-6 rounded-2xl border border-warn/16 bg-warn/[0.035] p-5">
+                <div class="flex items-start gap-3"><span class="mt-0.5 text-warn">△</span><div><p class="text-sm font-semibold text-white">This change may affect later recommendations.</p><p class="mt-1 text-xs leading-5 text-slate-500">You previously moved beyond Step 1 using Gragas = Jungle. Hermod will carry the revised draft forward and reconsider any later conclusions that depended on that role assignment.</p></div></div>
+              </div>
+            </div>
+
+            <aside class="border-t border-white/[0.06] bg-black/10 p-6 sm:p-8 xl:border-l xl:border-t-0">
+              <p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">Revision status</p>
+              <div class="mt-4 rounded-xl border border-warn/18 bg-warn/[0.045] p-4"><div class="flex items-center gap-3"><span class="grid h-9 w-9 place-items-center rounded-full bg-warn/10 text-warn">↻</span><div><p class="text-sm font-semibold text-white">Later state needs review</p><p class="mt-0.5 text-[11px] text-slate-500">The draft is coherent, but downstream conclusions may change.</p></div></div></div>
+              <div class="mt-5 space-y-4 text-xs">
+                <div class="flex items-center justify-between"><span class="text-slate-500">Current decision</span><span class="font-semibold text-white">B3 · MID</span></div>
+                <div class="flex items-center justify-between"><span class="text-slate-500">Changed fact</span><span class="font-semibold text-warn">Gragas role</span></div>
+                <div class="flex items-center justify-between"><span class="text-slate-500">Previous value</span><span class="font-semibold text-slate-400 line-through">Jungle</span></div>
+                <div class="flex items-center justify-between"><span class="text-slate-500">Current value</span><span class="font-semibold text-signal2">Still flexed</span></div>
+              </div>
+              <button id="undoBtn" class="mt-6 w-full rounded-xl border border-white/[0.08] bg-white/[0.025] px-4 py-2.5 text-xs font-semibold text-slate-400 hover:border-signal/30 hover:text-white">Undo this revision</button>
+            </aside>
+          </div>
+        </section>
+
+        <div class="mt-6 grid gap-5 xl:grid-cols-[1fr_330px]">
+          <div class="space-y-5">
+            <section class="grid gap-5 md:grid-cols-2">
+              <article class="glass overflow-hidden rounded-2xl border border-blue/15">
+                <div class="flex items-center justify-between px-5 py-4 sm:px-6"><div><p class="text-[11px] font-bold uppercase tracking-[.18em] text-blue">Your team</p><p class="mt-1 text-xs text-slate-500">Current captured state</p></div><span class="rounded-full border border-blue/20 bg-blue/[0.07] px-3 py-1 text-[10px] font-semibold text-blue">B3 · MID</span></div>
+                <div class="team-row px-5 sm:px-6"><span class="role-badge">TOP</span><img class="champion-icon" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Gnar.png" alt="Gnar"><div><p class="text-sm font-semibold text-slate-200">Gnar</p><p class="text-[11px] text-slate-600">Known pick</p></div><span class="text-[10px] font-bold uppercase tracking-[.12em] text-good">Known</span></div>
+                <div class="team-row px-5 sm:px-6"><span class="role-badge">JNG</span><img class="champion-icon" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/LeeSin.png" alt="Lee Sin"><div><p class="text-sm font-semibold text-slate-200">Lee Sin</p><p class="text-[11px] text-slate-600">Known pick</p></div><span class="text-[10px] font-bold uppercase tracking-[.12em] text-good">Known</span></div>
+                <div class="team-row bg-blue/[0.055] px-5 sm:px-6"><span class="role-badge text-blue">MID</span><div class="unknown-icon border-blue/25 bg-blue/[0.06] text-[9px] font-extrabold text-blue">YOU</div><div><p class="text-sm font-semibold text-blue">Your pick</p><p class="text-[11px] text-slate-500">Current action</p></div><span class="rounded-full border border-blue/20 bg-blue/[0.07] px-2 py-1 text-[9px] font-bold uppercase tracking-[.12em] text-blue">Now</span></div>
+              </article>
+
+              <article class="glass overflow-hidden rounded-2xl border border-danger/15">
+                <div class="flex items-center justify-between px-5 py-4 sm:px-6"><div><p class="text-[11px] font-bold uppercase tracking-[.18em] text-danger">Enemy picks</p><p class="mt-1 text-xs text-slate-500">Role assignment revised</p></div><span class="rounded-full border border-signal/20 bg-signal/[0.06] px-3 py-1 text-[10px] font-semibold text-signal2">1 unresolved role</span></div>
+                <div class="team-row bg-signal/[0.035] px-5 sm:px-6"><span class="role-badge text-signal2">TOP / JNG</span><img class="champion-icon" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Gragas.png" alt="Gragas"><div><p class="text-sm font-semibold text-white">Gragas</p><p id="gragasSub" class="text-[11px] text-signal2">Still flexed · Top or Jungle plausible</p></div><span id="gragasBadge" class="rounded-full border border-signal/25 bg-signal/[0.07] px-2 py-1 text-[9px] font-bold uppercase tracking-[.12em] text-signal2">Flexed</span></div>
+                <div class="team-row px-5 sm:px-6"><span class="role-badge">MID</span><img class="champion-icon" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Zed.png" alt="Zed"><div><p class="text-sm font-semibold text-slate-200">Zed</p><p class="text-[11px] text-slate-600">Known Mid</p></div><span class="text-[10px] font-bold uppercase tracking-[.12em] text-good">Known</span></div>
+                <div class="team-row px-5 sm:px-6"><span class="role-badge">SUP</span><img class="champion-icon" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Nautilus.png" alt="Nautilus"><div><p class="text-sm font-semibold text-slate-200">Nautilus</p><p class="text-[11px] text-slate-600">Known Support</p></div><span class="text-[10px] font-bold uppercase tracking-[.12em] text-good">Known</span></div>
+              </article>
+            </section>
+
+            <section class="glass rounded-2xl border border-white/[0.07] p-5 sm:p-6">
+              <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                <div><p class="text-sm font-semibold text-white">Current interpretation of Gragas</p><p class="mt-1 text-xs leading-5 text-slate-500">Earlier answers are beliefs about the draft, not permanent questionnaire responses.</p></div>
+                <div id="choices" class="flex flex-wrap gap-2">
+                  <button data-value="top" class="choice rounded-xl border border-white/[0.08] bg-white/[0.018] px-4 py-2.5 text-xs font-semibold text-slate-400">Top</button>
+                  <button data-value="jungle" class="choice rounded-xl border border-white/[0.08] bg-white/[0.018] px-4 py-2.5 text-xs font-semibold text-slate-400">Jungle</button>
+                  <button data-value="flexed" class="choice selected rounded-xl border border-white/[0.08] bg-white/[0.018] px-4 py-2.5 text-xs font-semibold text-slate-200">Still flexed</button>
+                  <button data-value="unknown" class="choice rounded-xl border border-white/[0.08] bg-white/[0.018] px-4 py-2.5 text-xs font-semibold text-slate-400">I don't know</button>
+                </div>
+              </div>
+            </section>
+
+            <section class="rounded-2xl border border-signal/14 bg-[linear-gradient(90deg,rgba(91,140,255,.045),rgba(139,92,246,.05),rgba(255,255,255,.018))] p-5 sm:p-6">
+              <p class="text-[10px] font-bold uppercase tracking-[.18em] text-signal2">Hermod's updated understanding</p>
+              <p id="summaryText" class="mt-3 text-lg leading-8 text-white">You are choosing <strong>Mid on B3</strong>. Gragas has been changed from a fixed Jungle assignment to <strong>Still flexed</strong>, so Hermod will preserve both Top and Jungle as plausible until the draft resolves or the distinction becomes decision-relevant.</p>
+            </section>
+          </div>
+
+          <aside class="glass h-fit rounded-2xl border border-white/[0.07] p-5">
+            <p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">What happens next</p>
+            <div class="mt-4 space-y-3">
+              <div class="status-card rounded-xl border border-good/16 bg-good/[0.035] p-3.5"><p class="text-xs font-semibold text-white">Draft remains valid</p><p class="mt-1 text-[11px] leading-5 text-slate-500">The revised state is internally coherent.</p></div>
+              <div class="status-card rounded-xl border border-warn/16 bg-warn/[0.035] p-3.5"><p class="text-xs font-semibold text-white">Later conclusions may change</p><p class="mt-1 text-[11px] leading-5 text-slate-500">Hermod will reconsider later reasoning that depended on Gragas being Jungle.</p></div>
+              <div class="status-card rounded-xl border border-white/[0.06] bg-white/[0.018] p-3.5"><p class="text-xs font-semibold text-white">No need to force certainty</p><p class="mt-1 text-[11px] leading-5 text-slate-500">Still flexed is a valid current state.</p></div>
+            </div>
+          </aside>
+        </div>
+
+        <section class="mt-6 rounded-2xl border border-warn/18 bg-[linear-gradient(90deg,rgba(243,185,95,.045),rgba(91,140,255,.04),rgba(139,92,246,.04))] p-5 sm:p-6">
+          <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+            <div><div class="flex items-center gap-2 text-sm font-semibold text-white"><span class="grid h-5 w-5 place-items-center rounded-full bg-warn/10 text-[11px] text-warn">↻</span>Use the revised world state</div><p class="mt-2 max-w-3xl text-xs leading-5 text-slate-500">Hermod will carry this updated draft forward and refresh any later reasoning that is no longer supported by the revised facts.</p></div>
+            <button id="continueBtn" class="group inline-flex items-center justify-center gap-2 rounded-xl bg-signal px-5 py-3 text-sm font-bold text-white shadow-[0_10px_28px_rgba(139,92,246,.18)] transition hover:bg-[#9b70f7]">Continue with updated draft <span class="transition group-hover:translate-x-0.5">→</span></button>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast pointer-events-none fixed bottom-5 right-5 z-50 translate-y-3 rounded-xl border border-white/[0.08] bg-[#0b1623]/95 px-4 py-3 text-sm text-slate-200 opacity-0 shadow-2xl">Draft state updated</div>
+
+  <script>
+    const choices = [...document.querySelectorAll('[data-value]')];
+    const gragasSub = document.getElementById('gragasSub');
+    const gragasBadge = document.getElementById('gragasBadge');
+    const summaryText = document.getElementById('summaryText');
+    const toast = document.getElementById('toast');
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.remove('opacity-0','translate-y-3');
+      setTimeout(() => toast.classList.add('opacity-0','translate-y-3'), 1500);
+    }
+
+    function setState(value, notify = true) {
+      choices.forEach(btn => btn.classList.toggle('selected', btn.dataset.value === value));
+      if (value === 'top') {
+        gragasSub.textContent = 'Role revised · Top';
+        gragasBadge.textContent = 'Top';
+        summaryText.innerHTML = 'You are choosing <strong>Mid on B3</strong>. Gragas is now represented as <strong>Top</strong>. Hermod will use that revised role assignment when it reconsiders later analysis.';
+      } else if (value === 'jungle') {
+        gragasSub.textContent = 'Role assignment · Jungle';
+        gragasBadge.textContent = 'Jungle';
+        summaryText.innerHTML = 'You are choosing <strong>Mid on B3</strong>. Gragas has been restored to <strong>Jungle</strong>, matching the earlier draft state.';
+      } else if (value === 'unknown') {
+        gragasSub.textContent = 'Role not known by the player';
+        gragasBadge.textContent = 'Unknown';
+        summaryText.innerHTML = 'You are choosing <strong>Mid on B3</strong>. Gragas is known to be picked, but you do <strong>not know the role assignment</strong>. Hermod will preserve that uncertainty instead of guessing.';
+      } else {
+        gragasSub.textContent = 'Still flexed · Top or Jungle plausible';
+        gragasBadge.textContent = 'Flexed';
+        summaryText.innerHTML = 'You are choosing <strong>Mid on B3</strong>. Gragas has been changed from a fixed Jungle assignment to <strong>Still flexed</strong>, so Hermod will preserve both Top and Jungle as plausible until the draft resolves or the distinction becomes decision-relevant.';
+      }
+      if (notify) showToast('Draft interpretation updated');
+    }
+
+    choices.forEach(btn => btn.addEventListener('click', () => setState(btn.dataset.value)));
+    document.getElementById('undoBtn').addEventListener('click', () => { setState('jungle', false); showToast('Revision undone · Gragas restored to Jungle'); });
+    document.getElementById('resetBtn').addEventListener('click', () => { setState('flexed', false); showToast('Example reset to Draft Revised'); });
+    document.getElementById('continueBtn').addEventListener('click', () => showToast('Updated draft accepted · later states will refresh'));
+  </script>
+</body>
+</html>

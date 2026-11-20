@@ -1,0 +1,97 @@
+{
+  "format": "shipment-scenario-table-capture/1",
+  "sourceUrl": "https://hermodlabs.github.io/review_lab/",
+  "captureUrl": "http://127.0.0.1:4789/",
+  "captureKind": "local-working-app-preview",
+  "localSource": "/Users/jnaciona/code/hermod-review-lab",
+  "localBuild": {
+    "command": "node node_modules/vite/bin/vite.js build --configLoader runner --config apps/decision-lab/vite.config.js --outDir /private/tmp/scenario-table-app",
+    "exitCode": 0,
+    "output": "/private/tmp/scenario-table-app",
+    "sourceFilesUnchanged": true
+  },
+  "publicDeploymentCheck": {
+    "asset": "https://hermodlabs.github.io/review_lab/assets/index-y0GnMhdM.js",
+    "sha256": "cb55b3ef9c09953363edaca91cd1809995cbd7718e34aacb4e0b0f22799fd736",
+    "stillUsesPriorJSONTable": true
+  },
+  "capturedAt": "2026-11-17T17:09:30.889Z",
+  "timeZone": "America/Chicago",
+  "viewport": {
+    "width": 1512,
+    "height": 1080,
+    "deviceScaleFactor": 1
+  },
+  "image": {
+    "file": "04-business-scenario-results.png",
+    "width": 1170,
+    "height": 677,
+    "sha256": "2d7f922fcfe266f5eb31d561da56845630fd3da937eca829489461130d3b934f"
+  },
+  "inputs": [
+    {
+      "file": "guided-applied.model.yaml",
+      "sha256": "3007897690ef59393ebdbf15d6fc03c680dbf1923968823358a4806bf4bb1550"
+    },
+    {
+      "file": "business-scenarios.yaml",
+      "sha256": "aad2dac50fe5a00c5c52b6007b3bb9fd942e0bbfaa770dc410617df58f86305d"
+    }
+  ],
+  "results": {
+    "file": "scenario-table-results.json",
+    "sha256": "9532aa9036eb432f3ed188dabd09139130f099377636ea6623296c4e5cf86b7c",
+    "status": "passed",
+    "summary": {
+      "total": 14,
+      "passed": 14,
+      "failed": 0,
+      "unavailable": 0
+    },
+    "binding": {
+      "modelHash": "54d29009ebb1d89ea66bc5c251b004aec59768e68cd6da4a9ca520661bfce9b1",
+      "moduleHash": "76656296942e61bdb04bb2ae06dbb3e7365af7ef7840eeff6db84502f7bbcfba",
+      "sourceHash": "3007897690ef59393ebdbf15d6fc03c680dbf1923968823358a4806bf4bb1550",
+      "packageHash": "4cc1f3ac5106be90059c5b12fae3e7961b12b7dad1406580d5f010b37a97f4a6",
+      "suiteHash": "2b9e5d582d2eedd6ff31c3572fe1f14f64a0105e4daafb62857226bf50abfa9f",
+      "sdkVersion": "0.1.0"
+    }
+  },
+  "scenario": {
+    "id": "slot-confirmed",
+    "title": "A suitable current slot confirmation admits the earlier $5,000 option",
+    "columns": [
+      "Check",
+      "Expected",
+      "Calculated",
+      "Result"
+    ],
+    "text": "A suitable current slot confirmation admits the earlier $5,000 option\nPassed\nCheck\tExpected\tCalculated\tResult\nComplete plan\nArrangement\nDirect\n\t\nFeasibility\nMeets requirements\nPreference\nNot preferred\n\t\nFeasibility\nMeets requirements\nPreference\nNot preferred\n\tMatches expectation\nComplete plan\nArrangement\nBackup\n\t\nFeasibility\nBlocked\nPreference\nNot preferred\n\t\nFeasibility\nBlocked\nPreference\nNot preferred\n\tMatches expectation\nRequired condition\nArrangement\nBackup\nCondition\nTotal expense and cash · condition 1\n\t\nCondition result\nNot met\n\t\nCondition result\nNot met\nOperating situations\nRegistered\nNot met\n\tMatches expectation\nComplete plan\nArrangement\nConsolidated\n\t\nFeasibility\nMeets requirements\nPreference\nPreferred\n\t\nFeasibility\nMeets requirements\nPreference\nPreferred\n\tMatches expectation\nRequired condition\nArrangement\nConsolidated\nCondition\nConfirmed consolidation slot · condition 1\n\t\nCondition result\nMet\n\t\nCondition result\nMet\nOperating situations\nRegistered\nMet\n\tMatches expectation"
+  },
+  "selector": ".app-business-scenarios-results .abs-scenario containing the heading for the valid-confirmation scenario",
+  "steps": [
+    "Build the unchanged current Decision Lab source into a temporary output directory and serve the local working app in a fresh browser profile.",
+    "Workspaces → Open file: import the unchanged retained guided-applied.model.yaml.",
+    "Business scenarios → Upload scenarios: import the unchanged retained business-scenarios.yaml.",
+    "Run business scenarios; all 14 passed.",
+    "Capture the full valid-confirmation scenario section, including heading, status, expected/calculated table and operating-situation detail.",
+    "Download native scenario results and compare their model/module/source/suite bindings to the original retained run."
+  ],
+  "checks": {
+    "sameModelModuleSourceSuiteBinding": true,
+    "allFourteenPassed": true,
+    "fullScenarioSection": true,
+    "rawJSONAbsent": true,
+    "pageErrors": []
+  },
+  "deploymentAssets": [
+    {
+      "url": "http://127.0.0.1:4789/assets/index-DjgyEy8W.css",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4789/assets/index-Ay8n8-LJ.js",
+      "status": 200
+    }
+  ]
+}

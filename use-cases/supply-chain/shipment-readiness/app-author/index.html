@@ -1,67 +1,196 @@
----
-layout: layouts/use-case-article.html
-title: Configure the original shipment workflow.
-description: Archived reference guide to reviewing the original shipment workflow, checking its questions and handoffs, and publishing a release for case workers.
-useCaseBrief:
-  stakes: >-
-    A shipment lead and finance reviewer need a consistent way to decide whether uncertain ship-point registration warrants verification before money is committed.
-  outcome: >-
-    The author reviews all 36 bindings and publishes version 1.0.1 to a separate pilot collection, preserving the original rules and connecting evidence, planning and verification. Its worked case supports Backup at $6,000 immediately or $200 fast verification with $5,200 expected total cost under hypothetical 50/50 probabilities and perfect accuracy. Case workers still review the facts and proposals; publication does not authorize a purchase or reservation.
-author: Jonathan Nacionales
-roleLabel: App author
-referenceGuide: true
-readingMinutes: 8
-coverImage: /assets/use-cases/shipment-readiness/cover.svg
-coverAlt: A shipment review connects a delivery commitment, evidence, complete plans and a proposed next action.
-coverWidth: 960
-coverHeight: 720
-permalink: /use-cases/supply-chain/shipment-readiness/app-author/index.html
-useCaseScenario: shipment-readiness
-useCasePurpose: supporting-reference
-useCaseChannels:
-  - decision-lab
-useCaseLabel: Workflow authoring
-useCaseOrder: 1
----
-{% macro authorFigure(key) %}
-{% set figure = shipmentAuthor.figures[key] %}
-<figure class="use-case-figure">
-  <a href="{{ figure.image | relativeUrl(page.url) }}" tabindex="-1" aria-label="Open full-size screenshot: {{ figure.alt | escape }}"><img src="{{ figure.image | relativeUrl(page.url) }}" alt="{{ figure.alt | escape }}" width="{{ figure.width }}" height="{{ figure.height }}" loading="lazy" decoding="async"></a>
-  <figcaption><span>{{ figure.caption | escape }}</span><a href="{{ figure.image | relativeUrl(page.url) }}" aria-label="Open full-size screenshot: {{ figure.alt | escape }}">View full size</a></figcaption>
-</figure>
-{% endmacro %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-V2474V50XP');
+</script>
 
 
-<p>This archived authoring exercise shows how an app author prepares a decision process that other people can run. For this first exercise, we reuse <strong>Review a first shipment</strong> and its existing evidence, planning and learning apps. The public interface calls this <strong>workflow authoring</strong>.</p>
+  <title>Configure the original shipment workflow. | Hermod Labs</title>
+  <meta name="description" content="Archived reference guide to reviewing the original shipment workflow, checking its questions and handoffs, and publishing a release for case workers.">
+  <meta name="author" content="Jonathan Nacionales">
+
+  <link rel="canonical" href="https://hermodlabs.com/use-cases/supply-chain/shipment-readiness/app-author/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Hermod Labs">
+  <meta property="og:title" content="Configure the original shipment workflow. | Hermod Labs">
+  <meta property="og:description" content="Archived reference guide to reviewing the original shipment workflow, checking its questions and handoffs, and publishing a release for case workers.">
+  <meta property="og:url" content="https://hermodlabs.com/use-cases/supply-chain/shipment-readiness/app-author/">
+  <meta property="og:image" content="https://hermodlabs.com/assets/hermod-wordmark.jpeg">
+
+  <meta name="theme-color" content="#7850c2">
+  <link rel="icon" type="image/jpeg" href="../../../../assets/hermod-symbol.jpeg">
+  <link rel="stylesheet" href="../../../../assets/site.css">
+
+
+  <link rel="stylesheet" href="../../../../assets/reader.css">
+
+  <link rel="stylesheet" href="../../../../assets/use-cases.css">
+
+
+  <script src="../../../../assets/feature-flags.js" defer></script>
+  <script src="../../../../assets/site.js" defer></script>
+  <script src="../../../../assets/form-request.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+  <a class="brand" href="../../../../index.html" aria-label="Hermod Labs home"><img src="../../../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">+</span></button>
+  <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
+    <a href="../../../../blog/index.html"><svg class="nav-icon nav-icon-blog" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M11 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6"/>
+  <path d="m9 12 9-9 3 3-9 9-4 1 1-4Zm7-7 3 3"/>
+</svg><span>Blog</span></a><a href="../../../../platform/index.html"><svg class="nav-icon nav-icon-platform" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <rect x="3" y="3" width="6" height="6" rx="1.2"/>
+  <rect x="15" y="3" width="6" height="6" rx="1.2"/>
+  <rect x="9" y="15" width="6" height="6" rx="1.2"/>
+  <path d="M9 6h6M6 9v3h12V9m-6 3v3"/>
+</svg><span>Platform</span></a><a href="../../../../products/index.html"><svg class="nav-icon nav-icon-products" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <rect x="3" y="4" width="18" height="16" rx="2"/>
+  <path d="m7 9 3 3-3 3m6 0h4"/>
+</svg><span>Products</span></a><a href="../../../index.html" aria-current="page"><svg class="nav-icon nav-icon-use-cases" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <rect x="3" y="7" width="18" height="14" rx="2"/>
+  <path d="M8 7V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3M3 12a22 22 0 0 0 18 0m-12 3 2 2 4-4"/>
+</svg><span>Use Cases</span></a><a href="../../../../professional-services/index.html"><svg class="nav-icon nav-icon-professional-services" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <circle cx="9" cy="8" r="3"/>
+  <path d="M3 20v-2a6 6 0 0 1 12 0v2M16 5a3 3 0 0 1 0 6m1 3a4 4 0 0 1 4 4v2"/>
+</svg><span>Professional Services</span></a>
+    <a class="button nav-cta" data-decision-lab-link data-site-root="../../../../index.html" hidden><span>Try Decision Lab free</span><svg class="nav-icon nav-icon-launch" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M8 5h11v11M19 5 5 19"/>
+</svg></a>
+  </nav>
+</header>
+
+  <main id="main" tabindex="-1">
+
+
+
+
+
+
+<header class="reading-header wrap reading-header-with-cover">
+  <div class="reading-header-content">
+    
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+
+  
+  <a href="../../../index.html">Use Cases</a>
+
+  <span aria-hidden="true">/</span>
+  <a href="../../index.html">Supply chain and fulfillment</a>
+
+  <span aria-hidden="true">/</span>
+  <a href="../index.html">Shipment readiness</a>
+
+  <span aria-hidden="true">/</span>
+  <span aria-current="page">Workflow authoring</span>
+
+</nav>
+
+    <p class="eyebrow">Shipment readiness / App author reference</p>
+    <h1>Configure the original shipment workflow.</h1>
+    <p class="reading-description">Archived reference guide to reviewing the original shipment workflow, checking its questions and handoffs, and publishing a release for case workers.</p>
+    <p class="reading-meta">Jonathan Nacionales <span aria-hidden="true">·</span> 8 min read</p>
+  </div>
+  <figure class="reading-cover">
+    <img class="reading-cover-image" src="../../../../assets/use-cases/shipment-readiness/cover.svg" width="960" height="720" alt="A shipment review connects a delivery commitment, evidence, complete plans and a proposed next action." decoding="async">
+  </figure>
+</header>
+<div class="wrap reader-layout use-case-reading-layout">
+<section class="use-case-brief" aria-labelledby="use-case-brief-heading">
+  <p class="use-case-brief-title" id="use-case-brief-heading">The case in brief</p>
+  <p class="use-case-brief-stakes"><strong>At stake.</strong> A shipment lead and finance reviewer need a consistent way to decide whether uncertain ship-point registration warrants verification before money is committed.</p>
+  <p class="use-case-brief-outcome"><strong>How it resolves.</strong> The author reviews all 36 bindings and publishes version 1.0.1 to a separate pilot collection, preserving the original rules and connecting evidence, planning and verification. Its worked case supports Backup at $6,000 immediately or $200 fast verification with $5,200 expected total cost under hypothetical 50/50 probabilities and perfect accuracy. Case workers still review the facts and proposals; publication does not authorize a purchase or reservation.</p>
+</section>
+
+
+  <aside class="reader-navigation" aria-label="Reading navigation">
+    <nav class="reader-toc" aria-labelledby="reader-toc-heading">
+  <details class="disclosure reader-nav-disclosure" open>
+    <summary><h2 class="disclosure-label" id="reader-toc-heading">On this page</h2></summary>
+    <ol>
+      <li><a href="#start-with-the-existing-workflow">1. Open the retained authoring exercise.</a></li>
+      <li><a href="#define-the-decision-and-release">2. Define the decision and release.</a></li>
+      <li><a href="#check-the-supporting-apps">3. Check the supporting apps.</a></li>
+      <li><a href="#check-questions-and-responsibilities">4. Check questions and responsibilities.</a></li>
+      <li><a href="#review-the-handoffs">5. Review the handoffs.</a></li>
+      <li><a href="#preview-the-working-case">6. Preview the working case.</a></li>
+      <li><a href="#publish-and-hand-over">7. Publish and hand over the release.</a></li>
+      <li><a href="#collect-feedback-on-the-existing-template">8. Collect feedback on the existing template.</a></li>
+    </ol>
+  </details>
+</nav>
+
+    <nav class="use-case-related" aria-label="In this use case">
+      <p>Shipment readiness</p>
+      <a href="../index.html">Scenario overview</a>
+      <p>Articles</p>
+      <a href="../compare-shipment-options/index.html">Compare shipment options</a><a href="../add-consolidated-freight/index.html">Add consolidated freight</a><a href="../review-changed-orders/index.html">Review changed orders</a><a href="../resolve-a-shipment-exception/index.html">Resolve a shipment exception</a><a href="../is-a-registration-check-worth-buying/index.html">Integrate Python machine learning</a>
+      
+      <p>Supporting references</p>
+      <a href="index.html" aria-current="page">Workflow authoring</a><a href="../case-worker/index.html">Evidence and verification</a><a href="../compare-priorities-and-limits/index.html">Priorities and spending limits</a>
+      
+    </nav>
+  </aside>
+
+  <article class="reader-prose" aria-label="Configure the original shipment workflow.">
+    <div class="reader-content">
+      <p class="reader-source-note use-case-source-note"><strong>Requirements reference:</strong> <a href="https://corporate.walmart.com/content/dam/corporate/documents/suppliers/apply-to-be-a-supplier/supplier-checklist.pdf#page=11">Walmart’s checklist, p. 11 (collect suppliers)</a>. <strong>Business context:</strong> <a href="https://www.8thandwalton.com/blog/case-study-walmart-launch">8th &amp; Walton (Terry Clear, June 4, 2025)</a>. This walkthrough uses a source-informed fictional example. <a href="../compare-shipment-options/index.html#source">Sources and demonstration scope</a>.</p>
+
+      
+
+
+<p class="reader-lead">This archived authoring exercise shows how an app author prepares a decision process that other people can run. For this first exercise, we reuse <strong>Review a first shipment</strong> and its existing evidence, planning and learning apps. The public interface calls this <strong>workflow authoring</strong>.</p>
 <p>The author’s job is to make the questions, responsibilities and handoffs clear enough for a case worker to use. The supplied reasoning contracts stay in place. The case worker then supplies and reviews the facts of a particular shipment.</p>
-<p>Authoring preserves the meaning of each <a href="{{ '/articles/from-arrangements-to-assessments/' | relativeUrl(page.url) }}">assessment</a>: evidence interprets the recorded basis, planning checks complete shipment responses, and learning compares verification with the best available response now. A handoff must retain the scope and conditions of the finding it supplies.</p>
-<p><a href="{{ shipmentCase.url | relativeUrl(page.url) }}">Maya’s main business story</a> asks which complete shipment remains supported as the booking window closes. This reference examines separate registration and verification questions.</p>
+<p>Authoring preserves the meaning of each <a href="../../../../articles/from-arrangements-to-assessments/index.html">assessment</a>: evidence interprets the recorded basis, planning checks complete shipment responses, and learning compares verification with the best available response now. A handoff must retain the scope and conditions of the finding it supplies.</p>
+<p><a href="../compare-shipment-options/index.html">Maya’s main business story</a> asks which complete shipment remains supported as the booking window closes. This reference examines separate registration and verification questions.</p>
 <aside id="one-pattern-different-priorities" class="use-case-callout" aria-label="Start with the shipment readiness article">
-  <p>Start with <a href="{{ (shipmentCase.priorityReferenceUrl + '#shared-shipment') | relativeUrl(page.url) }}">the retained shipment priority and spending-limit comparison</a>. Follow Maya as she reconciles launch, finance and operations needs, compares two passing shipment options, and tests a tighter expense limit. This detailed reference guide covers a separate workflow: registration remains uncertain, and the connected evidence, planning and verification apps help examine what to check before committing.</p>
+  <p>Start with <a href="../compare-priorities-and-limits/index.html#shared-shipment">the retained shipment priority and spending-limit comparison</a>. Follow Maya as she reconciles launch, finance and operations needs, compares two passing shipment options, and tests a tighter expense limit. This detailed reference guide covers a separate workflow: registration remains uncertain, and the connected evidence, planning and verification apps help examine what to check before committing.</p>
 </aside>
-<p>A <strong>shipment plan</strong> describes the intended route, dates and cost. An <strong>arrangement</strong> connects the work, people, resources, permissions and dependencies needed to carry it out over time. Those connections change as conditions and evidence change. This app reviews recorded versions, so case workers update answers and reassess affected findings. See <a href="{{ '/articles/the-arrangement-problem-in-human-decisions/' | relativeUrl(page.url) }}">The Arrangement Problem in Human Decisions</a> for the broader concept.</p>
+<p>A <strong>shipment plan</strong> describes the intended route, dates and cost. An <strong>arrangement</strong> connects the work, people, resources, permissions and dependencies needed to carry it out over time. Those connections change as conditions and evidence change. This app reviews recorded versions, so case workers update answers and reassess affected findings. See <a href="../../../../articles/the-arrangement-problem-in-human-decisions/index.html">The Arrangement Problem in Human Decisions</a> for the broader concept.</p>
 <aside class="use-case-callout" aria-label="Demonstration scope">
   <p>This source-informed demonstration uses fictional shipment inputs. The cited sources explain the requirements context; the existing template defines the rules this example actually checks. We retain those rules and the worked case, and publish version <strong>1.0.1</strong> so the author-to-worker handoff can be tested. The example has one shipment, two shipment plans with their recorded arrangements, one uncertain registration claim and one possible verification before plan selection.</p>
 </aside>
 
 <aside class="use-case-callout" aria-label="Current release and retained authoring exercise">
-  <p><strong>Current calculation flow:</strong> <strong>Compare first-shipment arrangements 1.4.0</strong> uses supplied inputs and <strong>Calculate / Recalculate</strong>, without a reviewer name, answer acceptance or finding signoff. The <a href="{{ (shipmentCase.workerUrl + '#current-question-view') | relativeUrl(page.url) }}">current case-worker guide</a> shows that flow. This archived exercise retains the original 1.0.0 source and separately published 1.0.1 reviewed pilot so its authoring receipts and downloaded cases remain reproducible. Their review steps apply to those retained definitions, not to a new calculation workflow.</p>
+  <p><strong>Current calculation flow:</strong> <strong>Compare first-shipment arrangements 1.4.0</strong> uses supplied inputs and <strong>Calculate / Recalculate</strong>, without a reviewer name, answer acceptance or finding signoff. The <a href="../case-worker/index.html#current-question-view">current case-worker guide</a> shows that flow. This archived exercise retains the original 1.0.0 source and separately published 1.0.1 reviewed pilot so its authoring receipts and downloaded cases remain reproducible. Their review steps apply to those retained definitions, not to a new calculation workflow.</p>
 </aside>
 <p>When adapting a current definition, inspect the <strong>Workflow execution policy</strong> card. <strong>Calculation workflow</strong> lets valid supplied inputs and complete current findings feed the next calculation. <strong>Reviewed workflow — legacy</strong> preserves the earlier acceptance requirements, including when adapted. Changing that policy requires an explicit new model revision with compatible handoffs and completion conditions. The author’s binding reviews check the configuration before publication; they are separate from the per-case acceptance steps removed in calculation mode.</p>
 <h2 id="start-with-the-existing-workflow">1. Open the retained authoring exercise.</h2>
-<p>The screenshots and controls below document the archived reviewed release. To reproduce it, open <a href="{{ shipmentAuthor.appUrl }}">Decision Lab</a> and choose <strong>Workspaces → Create workflow</strong>; use the retained draft rather than assuming the newest Marketplace release has the same execution policy.</p>
-<p>For this retained exercise, import the <a href="{{ shipmentAuthor.draftDownload | relativeUrl(page.url) }}" download>original reviewed authoring draft</a> through <strong>Import workflow</strong> to preserve the exact embedded releases. The original capture below shows the former Marketplace source. If that original release is already installed, under <strong>Start from an installed workflow</strong>, select <strong>Review a first shipment · version 1.0.0</strong> and choose <strong>Start from installed workflow</strong>. This creates an editable authoring copy with the exact supporting apps already embedded.</p>
+<p>The screenshots and controls below document the archived reviewed release. To reproduce it, open <a href="https://hermodlabs.github.io/review_lab/">Decision Lab</a> and choose <strong>Workspaces → Create workflow</strong>; use the retained draft rather than assuming the newest Marketplace release has the same execution policy.</p>
+<p>For this retained exercise, import the <a href="../../../../assets/use-cases/shipment-readiness/author/shipment-workflow.workflow-draft.json" download>original reviewed authoring draft</a> through <strong>Import workflow</strong> to preserve the exact embedded releases. The original capture below shows the former Marketplace source. If that original release is already installed, under <strong>Start from an installed workflow</strong>, select <strong>Review a first shipment · version 1.0.0</strong> and choose <strong>Start from installed workflow</strong>. This creates an editable authoring copy with the exact supporting apps already embedded.</p>
 <p>This route lets us examine the retained configuration. Creating a new generic reasoning template is separate work for a template author.</p>
-{{ authorFigure('installed') }}
+
+
+<figure class="use-case-figure">
+  <a href="../../../../assets/use-cases/shipment-readiness/author/01-adapt-installed-workflow.png" tabindex="-1" aria-label="Open full-size screenshot: Workflow authoring offers an editable copy of the installed Review a first shipment workflow, version 1.0.0."><img src="../../../../assets/use-cases/shipment-readiness/author/01-adapt-installed-workflow.png" alt="Workflow authoring offers an editable copy of the installed Review a first shipment workflow, version 1.0.0." width="1136" height="204" loading="lazy" decoding="async"></a>
+  <figcaption><span>Start with the installed workflow and its exact embedded apps. This is the app-author configuration route.</span><a href="../../../../assets/use-cases/shipment-readiness/author/01-adapt-installed-workflow.png" aria-label="Open full-size screenshot: Workflow authoring offers an editable copy of the installed Review a first shipment workflow, version 1.0.0.">View full size</a></figcaption>
+</figure>
+
 
 <h2 id="define-the-decision-and-release">2. Define the decision and release.</h2>
 <p>In <strong>Decision &amp; result</strong>, check the decision question: “Can we meet this delivery commitment, and what should we verify before committing money?” Keep the workflow ID <code>review-first-shipment</code> and set <strong>Release version</strong> to <strong>1.0.1</strong>.</p>
 <p>A published version is immutable. Keeping the ID and choosing a higher version records a new release of this workflow; a different workflow should have a different ID. The collection and use-case fields determine where the release appears locally.</p>
 <p>For this exercise, the question, description, domain profile and worked inputs stay as supplied. We are testing whether people can understand and use the existing configuration before expanding its business scope.</p>
-{{ authorFigure('decision') }}
+
+
+<figure class="use-case-figure">
+  <a href="../../../../assets/use-cases/shipment-readiness/author/02-decision-and-release.png" tabindex="-1" aria-label="Open full-size screenshot: Decision and intended result retains Review a first shipment and its decision question, with release version changed to 1.0.1."><img src="../../../../assets/use-cases/shipment-readiness/author/02-decision-and-release.png" alt="Decision and intended result retains Review a first shipment and its decision question, with release version changed to 1.0.1." width="1136" height="487" loading="lazy" decoding="async"></a>
+  <figcaption><span>Give the configuration a new release version while keeping the supplied decision and scope.</span><a href="../../../../assets/use-cases/shipment-readiness/author/02-decision-and-release.png" aria-label="Open full-size screenshot: Decision and intended result retains Review a first shipment and its decision question, with release version changed to 1.0.1.">View full size</a></figcaption>
+</figure>
+
 
 <h2 id="check-the-supporting-apps">3. Check the supporting apps.</h2>
-<p>A <strong>pattern</strong> describes a reusable solution to a recurring problem, together with the context and conditions that make it useful. We stitch these solutions together for the decision at hand. A pattern can inform several apps, and an app can draw on several patterns. See <a href="{{ '/articles/pattern-languages-for-human-decisions/' | relativeUrl(page.url) }}">Pattern Languages for Human Decisions</a> for how these approaches connect.</p>
+<p>A <strong>pattern</strong> describes a reusable solution to a recurring problem, together with the context and conditions that make it useful. We stitch these solutions together for the decision at hand. A pattern can inform several apps, and an app can draw on several patterns. See <a href="../../../../articles/pattern-languages-for-human-decisions/index.html">Pattern Languages for Human Decisions</a> for how these approaches connect.</p>
 <p><strong>Supporting apps</strong> identifies the three app releases that put these approaches to work in this shipment review:</p>
 <ul>
   <li><strong>Review ship-point registration</strong> applies evidence interpretation: determine which transportation states remain compatible with the reviewed records, preserving uncertainty where the records leave the registration question open.</li>
@@ -71,40 +200,76 @@ useCaseOrder: 1
 <p>The reusable pattern explains an approach. Each configured app supplies specified reasoning for this domain. The workflow connects those apps, their questions, responsibilities and findings for the shipment decision. Reuse still requires checking that their meanings and conditions fit the intended work.</p>
 <p>The exact package hashes identify the releases being reused. Retain them for this feedback exercise. Changing a label does not change an app’s underlying rules or add a new business requirement.</p>
 <p>Within a supporting assessment, the case worker sees the decision before the complete analysis. Evidence leads with the supported answer or uncertainty; planning leads with the preferred arrangement, comparison priority and blockers; learning leads with acting now versus verification. The archived interface uses selected details and <strong>Technical inspection → Inspect complete report</strong> for supporting analysis; the current renderer calls those assessment views <strong>Decision summary / Supporting reports</strong>. Both display the same frozen calculations and waive no requirement.</p>
-{{ authorFigure('apps') }}
+
+
+<figure class="use-case-figure">
+  <a href="../../../../assets/use-cases/shipment-readiness/author/03-supporting-apps.png" tabindex="-1" aria-label="Open full-size screenshot: Supporting apps lists Review ship-point registration, Plan this shipment before reservation, and Choose verification before reserving this shipment, with exact package hashes."><img src="../../../../assets/use-cases/shipment-readiness/author/03-supporting-apps.png" alt="Supporting apps lists Review ship-point registration, Plan this shipment before reservation, and Choose verification before reserving this shipment, with exact package hashes." width="1136" height="1015" loading="lazy" decoding="async"></a>
+  <figcaption><span>The workflow embeds three specific app releases. Their reasoning rules remain with those apps.</span><a href="../../../../assets/use-cases/shipment-readiness/author/03-supporting-apps.png" aria-label="Open full-size screenshot: Supporting apps lists Review ship-point registration, Plan this shipment before reservation, and Choose verification before reserving this shipment, with exact package hashes.">View full size</a></figcaption>
+</figure>
+
 
 <h2 id="check-questions-and-responsibilities">4. Check questions and responsibilities.</h2>
 <p>In <strong>Questions &amp; roles</strong>, inspect how each business question connects to its answer meaning, shared case path, answer type and responsible role. The configuration contains 25 questions, grouped into the case worker’s review stages.</p>
 <p>For example, <strong>Budget, cash and purchase authority</strong> supplies the <code>authority</code> object and belongs to <code>finance-reviewer</code>. A spending ceiling, available cash and permission to buy verification are separate parts of that answer. The shipment lead supplies the commitment, shipment plans, their recorded arrangements and operating records.</p>
-<p>In <strong>Shared information</strong>, review the shared paths and the supplied worked inputs. The dates, time origin, currency and quantity unit must mean the same thing across all three apps. Making these concepts and relationships explicit is part of <a href="{{ '/articles/ontology-engineering-for-human-decisions/' | relativeUrl(page.url) }}">Ontology Engineering for Human Decisions</a>: it helps reusable solutions exchange findings while preserving their business meaning. An unknown answer must remain unknown until the case worker has a basis for changing it.</p>
-<p>Review the source wording before turning it into a structured answer. “The ship point is set up” might mean that a portal listing exists or that transportation registration is complete. <a href="{{ '/articles/computational-hermeneutics-for-human-decisions/' | relativeUrl(page.url) }}">Computational Hermeneutics for Human Decisions</a> explains how making an interpretation explicit lets people examine the conclusions it supports. Here, people clarify the intended meaning and its scope and conditions, then use the configured review to inspect the consequences.</p>
-{{ authorFigure('question') }}
+<p>In <strong>Shared information</strong>, review the shared paths and the supplied worked inputs. The dates, time origin, currency and quantity unit must mean the same thing across all three apps. Making these concepts and relationships explicit is part of <a href="../../../../articles/ontology-engineering-for-human-decisions/index.html">Ontology Engineering for Human Decisions</a>: it helps reusable solutions exchange findings while preserving their business meaning. An unknown answer must remain unknown until the case worker has a basis for changing it.</p>
+<p>Review the source wording before turning it into a structured answer. “The ship point is set up” might mean that a portal listing exists or that transportation registration is complete. <a href="../../../../articles/computational-hermeneutics-for-human-decisions/index.html">Computational Hermeneutics for Human Decisions</a> explains how making an interpretation explicit lets people examine the conclusions it supports. Here, people clarify the intended meaning and its scope and conditions, then use the configured review to inspect the consequences.</p>
+
+
+<figure class="use-case-figure">
+  <a href="../../../../assets/use-cases/shipment-readiness/author/04-question-responsibility.png" tabindex="-1" aria-label="Open full-size screenshot: The Budget, cash and purchase authority question has shared case path authority, object answer type, and responsible role finance-reviewer."><img src="../../../../assets/use-cases/shipment-readiness/author/04-question-responsibility.png" alt="The Budget, cash and purchase authority question has shared case path authority, object answer type, and responsible role finance-reviewer." width="1086" height="523" loading="lazy" decoding="async"></a>
+  <figcaption><span>A question connects business wording to a case field, answer type and responsible role.</span><a href="../../../../assets/use-cases/shipment-readiness/author/04-question-responsibility.png" aria-label="Open full-size screenshot: The Budget, cash and purchase authority question has shared case path authority, object answer type, and responsible role finance-reviewer.">View full size</a></figcaption>
+</figure>
+
 
 <h2 id="review-the-handoffs">5. Review the handoffs.</h2>
 <p><strong>Handoffs &amp; completion</strong> declares required answers, prior findings and completion conditions. The evidence review supplies the retained transportation states to the planning app, which assesses shipment plans and their recorded arrangements across those states. Planning also checks the responses available after fast and slow verification. The verification comparison uses those supported responses to assess checking first against reserving now.</p>
 <p>Carry those shared meanings into each handoff. Check that findings concern the same shipment, order and revision, with compatible scope, time and units; distinguish the reservation cutoff from the receipt deadline; retain every operating state compatible with the records; and include a verification fee once in the relevant cost comparison. A handoff needs that business meaning as well as matching field types.</p>
 <p>The retained authoring exercise requires review of <strong>36 bindings</strong>: the decision, three apps, 25 questions, five assessment handoffs, the decision brief and its presentation. Open each review and check its <strong>Meaning</strong>, <strong>Scope</strong> and <strong>Units</strong> against the intended use before choosing <strong>Accept binding review</strong>. Check that the handoff preserves the reviewed interpretation of the source statement, including its conditions and remaining uncertainty. A changed basis requires another review.</p>
 <p>Our screenshots use the illustrative actor <strong>Example app author</strong>. Each review note identifies the unchanged example as a demonstration. A recorded name and a passed publication check do not establish production approval or authenticate a reviewer.</p>
-{{ authorFigure('handoff') }}
+
+
+<figure class="use-case-figure">
+  <a href="../../../../assets/use-cases/shipment-readiness/author/05-review-handoff.png" tabindex="-1" aria-label="Open full-size screenshot: The planning handoff has reviewed meaning, scope, units and an explicit note identifying this as an illustrative review of the unchanged example."><img src="../../../../assets/use-cases/shipment-readiness/author/05-review-handoff.png" alt="The planning handoff has reviewed meaning, scope, units and an explicit note identifying this as an illustrative review of the unchanged example." width="1086" height="556" loading="lazy" decoding="async"></a>
+  <figcaption><span>The example app author records a review of the planning handoff. This demonstration record is not a production validation.</span><a href="../../../../assets/use-cases/shipment-readiness/author/05-review-handoff.png" aria-label="Open full-size screenshot: The planning handoff has reviewed meaning, scope, units and an explicit note identifying this as an illustrative review of the unchanged example.">View full size</a></figcaption>
+</figure>
+
 
 <h2 id="preview-the-working-case">6. Preview the working case.</h2>
 <p>In <strong>Preview &amp; publish</strong>, resolve validation issues and unapplied section edits. The example reaches <strong>36 of 36 current bindings reviewed</strong>, making export and local publication available.</p>
-{{ authorFigure('validation') }}
+
+
+<figure class="use-case-figure">
+  <a href="../../../../assets/use-cases/shipment-readiness/author/06-validation-and-publication.png" tabindex="-1" aria-label="Open full-size screenshot: Preview and publish reports Ready to publish and 36 of 36 current bindings reviewed, with controls for preview, export and local publication."><img src="../../../../assets/use-cases/shipment-readiness/author/06-validation-and-publication.png" alt="Preview and publish reports Ready to publish and 36 of 36 current bindings reviewed, with controls for preview, export and local publication." width="1136" height="955" loading="lazy" decoding="async"></a>
+  <figcaption><span>Publication checks pass after the current binding reviews are recorded. The app still requires a worked-case test.</span><a href="../../../../assets/use-cases/shipment-readiness/author/06-validation-and-publication.png" aria-label="Open full-size screenshot: Preview and publish reports Ready to publish and 36 of 36 current bindings reviewed, with controls for preview, export and local publication.">View full size</a></figcaption>
+</figure>
+
 <p>Choose <strong>Preview worked case</strong> to open the real guided-review interface in an isolated session. It starts at <strong>Next action</strong>, with the current decision status and <strong>Next review step</strong>. Check that this action identifies the right question or assessment and responsible role, and that selecting it navigates without accepting the task automatically.</p>
 <p>The worker’s <strong>Inputs</strong> groups and subtabs are independent of the <strong>Reports</strong> groups. Test that an input question can stay beside <strong>Next action</strong>, that <strong>Forms / YAML</strong> switches between authored questions and the complete shared case, and that unfinished edits survive navigation. <strong>Planning results</strong> opens supporting assessments; the Reports pane’s <strong>Reports</strong> group opens the authored report views. Changing these selections must leave answers and reviews unchanged.</p>
 <p>Check the compact findings first, then open supporting details when needed. In a question-focused release, also check that the authored summary fields and comparison answer the business question, that missing values remain visible and that inspecting another arrangement stays synchronized across the brief and report. A new field in complete SDK output must not automatically add another visible column. Inspecting a row must leave business choices, reviews and permissions unchanged. The questions must be understandable, the roles must make sense and unresolved conditions must stay visible. Supplied answers still need explicit case review; publication does not turn fictional defaults into evidence.</p>
-<p>The <a href="{{ shipmentCase.workerUrl | relativeUrl(page.url) }}">case-worker reference guide</a> runs this same exported version through its assessments. It shows the known baseline results so a reviewer can check the complete process. Choose <strong>Return to authoring</strong> to continue configuring the draft.</p>
-{{ authorFigure('preview') }}
+<p>The <a href="../case-worker/index.html">case-worker reference guide</a> runs this same exported version through its assessments. It shows the known baseline results so a reviewer can check the complete process. Choose <strong>Return to authoring</strong> to continue configuring the draft.</p>
+
+
+<figure class="use-case-figure">
+  <a href="../../../../assets/use-cases/shipment-readiness/author/07-test-the-worked-case.png" tabindex="-1" aria-label="Open full-size screenshot: The current isolated workflow preview starts at the decision brief with Next review step and a responsible role. Supplied answers still await explicit case review."><img src="../../../../assets/use-cases/shipment-readiness/author/07-test-the-worked-case.png" alt="The current isolated workflow preview starts at the decision brief with Next review step and a responsible role. Supplied answers still await explicit case review." width="1136" height="874" loading="lazy" decoding="async"></a>
+  <figcaption><span>Preview the worker’s starting point: decision status and the next required review task, with supporting details available on request.</span><a href="../../../../assets/use-cases/shipment-readiness/author/07-test-the-worked-case.png" aria-label="Open full-size screenshot: The current isolated workflow preview starts at the decision brief with Next review step and a responsible role. Supplied answers still await explicit case review.">View full size</a></figcaption>
+</figure>
+
 
 <h2 id="publish-and-hand-over">7. Publish and hand over the release.</h2>
 <p>Choose <strong>Publish locally</strong>. In <strong>Choose a collection</strong>, choose <strong>Create another collection</strong> and create <strong>Shipment review pilots</strong>. Enter <strong>Review a first shipment</strong> as its new use case, then choose <strong>Add to collection</strong>. This makes version <strong>1.0.1</strong> available in a separate local collection while the installed Marketplace collection keeps its original pinned workflow.</p>
 <p>The installed collection cannot silently substitute a different release for its published product pin. Keeping the pilot separate lets the team test this release alongside the original. It does not update the public Marketplace. Choose <strong>Export workflow package</strong> to transfer the same self-contained workflow to another person; its collection membership does not change the frozen definition.</p>
-{{ authorFigure('published') }}
-<p><a class="use-case-file-link" href="{{ shipmentAuthor.packageDownload | relativeUrl(page.url) }}" download>Download the published shipment workflow (.workflow.json)</a>. A case worker can import it in a separate browser profile without the original shipment workflow through <strong>Collections → Import app, workflow or case</strong>, then open <strong>Guided reviews</strong> and choose <strong>Start review</strong>. On this device, use the release already published in <strong>Shipment review pilots</strong>. New reviews have supplied starter inputs that must be reviewed and replaced with the facts of the actual shipment.</p>
-<p>To inspect or continue the author’s configuration, <a class="use-case-file-link" href="{{ shipmentAuthor.draftDownload | relativeUrl(page.url) }}" download>download the authoring draft (.workflow-draft.json)</a> and use <strong>Workspaces → Create workflow → Import workflow</strong>. The draft and published package serve different purposes: the draft remains editable, while existing case reviews retain the exact published definition they started with.</p>
+
+
+<figure class="use-case-figure">
+  <a href="../../../../assets/use-cases/shipment-readiness/author/08-published-locally.png" tabindex="-1" aria-label="Open full-size screenshot: The public app confirms that Review a first shipment version 1.0.1 was published locally and the authoring draft remains available."><img src="../../../../assets/use-cases/shipment-readiness/author/08-published-locally.png" alt="The public app confirms that Review a first shipment version 1.0.1 was published locally and the authoring draft remains available." width="1136" height="388" loading="lazy" decoding="async"></a>
+  <figcaption><span>Publish locally creates an immutable release on this device. Export transfers that release to another person.</span><a href="../../../../assets/use-cases/shipment-readiness/author/08-published-locally.png" aria-label="Open full-size screenshot: The public app confirms that Review a first shipment version 1.0.1 was published locally and the authoring draft remains available.">View full size</a></figcaption>
+</figure>
+
+<p><a class="use-case-file-link" href="../../../../assets/use-cases/shipment-readiness/author/review-first-shipment-1.0.1.workflow.json" download>Download the published shipment workflow (.workflow.json)</a>. A case worker can import it in a separate browser profile without the original shipment workflow through <strong>Collections → Import app, workflow or case</strong>, then open <strong>Guided reviews</strong> and choose <strong>Start review</strong>. On this device, use the release already published in <strong>Shipment review pilots</strong>. New reviews have supplied starter inputs that must be reviewed and replaced with the facts of the actual shipment.</p>
+<p>To inspect or continue the author’s configuration, <a class="use-case-file-link" href="../../../../assets/use-cases/shipment-readiness/author/shipment-workflow.workflow-draft.json" download>download the authoring draft (.workflow-draft.json)</a> and use <strong>Workspaces → Create workflow → Import workflow</strong>. The draft and published package serve different purposes: the draft remains editable, while existing case reviews retain the exact published definition they started with.</p>
 
 <h2 id="collect-feedback-on-the-existing-template">8. Collect feedback on the existing template.</h2>
-<p>Ask a shipment lead and a finance reviewer to work through the same case without coaching. Use the <a href="{{ (shipmentCase.url + '#process') | relativeUrl(page.url) }}">business process chart</a> as a reference, and record where the app departs from their actual work.</p>
+<p>Ask a shipment lead and a finance reviewer to work through the same case without coaching. Use the <a href="../compare-shipment-options/index.html#process">business process chart</a> as a reference, and record where the app departs from their actual work.</p>
 <ul class="use-case-checklist">
   <li>Which questions require information they cannot obtain, and who actually owns it?</li>
   <li>Which real launch prerequisites or approvals have no explicit representation?</li>
@@ -112,3 +277,61 @@ useCaseOrder: 1
   <li>Does the final proposal identify a useful next action, its owner and the remaining conditions?</li>
 </ul>
 <p>Use those observations to decide what the next template must model. This first release is a way to get feedback on a bounded decision review; retailer onboarding, system setup and operational execution need their own explicit coverage before this becomes a complete launch process.</p>
+
+      
+    </div>
+
+    <nav class="reader-return" aria-label="Continue with this scenario">
+      <a class="text-link" href="../index.html">All shipment readiness articles <span aria-hidden="true">→</span></a>
+      <a class="text-link" href="https://hermodlabs.github.io/review_lab/">Open Decision Lab <span aria-hidden="true">↗</span></a>
+    </nav>
+  </article>
+</div>
+</main>
+  <footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-directory">
+      <div class="footer-identity">
+        <a class="footer-brand" href="../../../../index.html" aria-label="Hermod Labs home"><img src="../../../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
+        <p class="footer-description">Tools and ideas for decisions you can inspect and revise.</p>
+        <nav class="footer-social-links" aria-label="Hermod Labs profiles">
+          <a href="https://www.linkedin.com/company/hermodlabs/" aria-label="Hermod Labs on LinkedIn" title="LinkedIn"><svg class="footer-social-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124Zm1.782 13.019H3.555V9h3.564v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0Z"/>
+</svg></a>
+          <a href="https://github.com/hermodlabs" aria-label="Hermod Labs on GitHub" title="GitHub"><svg class="footer-social-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+  <path d="M12 .297a12 12 0 0 0-3.793 23.385c.6.111.82-.261.82-.577 0-.285-.011-1.04-.017-2.041-3.338.724-4.043-1.609-4.043-1.609-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.729.083-.729 1.205.085 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.303-5.467-1.334-5.467-5.931 0-1.31.469-2.381 1.236-3.221-.124-.303-.536-1.524.117-3.176 0 0 1.008-.323 3.301 1.23a11.52 11.52 0 0 1 3.003-.404c1.02.005 2.047.138 3.006.404 2.291-1.553 3.297-1.23 3.297-1.23.655 1.652.243 2.873.119 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.625-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .319.216.694.825.576A12.001 12.001 0 0 0 12 .297Z"/>
+</svg></a>
+        </nav>
+      </div>
+
+      <section class="footer-contact-section" aria-labelledby="footer-contact-heading">
+        <h3 id="footer-contact-heading">Contact us</h3>
+        <form class="beta-form footer-contact-form" id="footer-contact-form" action="https://forminit.com/f/1vqi2088svl" method="POST" data-forminit-request data-pending-message="Sending your message…" data-success-message="Thanks, your message has been sent. We’ll reply by email." accept-charset="UTF-8" aria-labelledby="footer-contact-heading">
+  <input type="hidden" name="fi-text-request" value="Hermod Labs contact">
+  <input type="hidden" name="fi-text-subject" value="Hermod Labs — Contact form">
+  <input type="hidden" name="_gotcha" value="">
+  <fieldset>
+    <legend class="visually-hidden">Contact Hermod Labs</legend>
+    <div class="footer-contact-fields">
+      <div class="form-field"><label for="footer-name">Name <span>(required)</span></label><input id="footer-name" type="text" name="fi-sender-fullName" autocomplete="name" maxlength="160" required></div>
+      <div class="form-field"><label for="footer-email">Email <span>(required)</span></label><input id="footer-email" type="email" name="fi-sender-email" autocomplete="email" maxlength="254" required></div>
+    </div>
+    <div class="form-field"><label for="footer-message">Message <span>(required)</span></label><textarea id="footer-message" name="fi-text-message" rows="3" maxlength="5000" placeholder="Tell us what you’d like to discuss." required></textarea></div>
+  </fieldset>
+  <button class="button" type="submit">Send message <span aria-hidden="true">↗</span></button>
+  <p class="form-status" id="footer-contact-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></p>
+</form>
+
+      </section>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2026 Hermod Labs</p>
+      <p class="footer-signoff">Automated reasoning. Human judgment.</p>
+      <a class="footer-top-link" href="#main">Back to top <span aria-hidden="true">↑</span></a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

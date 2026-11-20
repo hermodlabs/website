@@ -1,0 +1,233 @@
+{
+  "id": "GIFT-321",
+  "parameters": {
+    "batchId": "GIFT-321",
+    "insertRevision": "insert-4",
+    "destinationRevision": "destination-2",
+    "checkoutRevision": "checkout-1",
+    "deviceScope": "campaign-test-phone",
+    "accountScope": "intended-recipient-account",
+    "actorId": "coordinator-gift-321",
+    "quantity": 120,
+    "nowMinute": 1410,
+    "handoffDeadlineMinute": 1440,
+    "budgetMinor": 60000,
+    "rehearsalMinutes": 10,
+    "handoffMinutes": 5,
+    "startOptions": [
+      1410,
+      0
+    ]
+  },
+  "tables": {
+    "packages": [
+      {
+        "id": "rehearse-unchanged",
+        "quantity": 120,
+        "repairMinutes": 1,
+        "repairCostMinor": 0,
+        "fixes0": false,
+        "fixes1": false,
+        "fixes2": false
+      },
+      {
+        "id": "reprint",
+        "quantity": 120,
+        "repairMinutes": 10,
+        "repairCostMinor": 10000,
+        "fixes0": true,
+        "fixes1": false,
+        "fixes2": false
+      },
+      {
+        "id": "repair-journey",
+        "quantity": 120,
+        "repairMinutes": 15,
+        "repairCostMinor": 18000,
+        "fixes0": false,
+        "fixes1": true,
+        "fixes2": true
+      },
+      {
+        "id": "replace-and-repair",
+        "quantity": 120,
+        "repairMinutes": 25,
+        "repairCostMinor": 30000,
+        "fixes0": true,
+        "fixes1": true,
+        "fixes2": true
+      },
+      {
+        "id": "external-replace-and-repair",
+        "quantity": 120,
+        "repairMinutes": 10,
+        "repairCostMinor": 40000,
+        "fixes0": true,
+        "fixes1": true,
+        "fixes2": true
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "none",
+        "fault0": false,
+        "fault1": false,
+        "fault2": false
+      },
+      {
+        "id": "print",
+        "fault0": true,
+        "fault1": false,
+        "fault2": false
+      },
+      {
+        "id": "destination",
+        "fault0": false,
+        "fault1": true,
+        "fault2": false
+      },
+      {
+        "id": "print-destination",
+        "fault0": true,
+        "fault1": true,
+        "fault2": false
+      },
+      {
+        "id": "checkout",
+        "fault0": false,
+        "fault1": false,
+        "fault2": true
+      },
+      {
+        "id": "print-checkout",
+        "fault0": true,
+        "fault1": false,
+        "fault2": true
+      },
+      {
+        "id": "destination-checkout",
+        "fault0": false,
+        "fault1": true,
+        "fault2": true
+      },
+      {
+        "id": "print-destination-checkout",
+        "fault0": true,
+        "fault1": true,
+        "fault2": true
+      }
+    ],
+    "people": [
+      {
+        "id": "coordinator-gift-321",
+        "name": "Jordan Reed",
+        "role": "production-owner"
+      }
+    ],
+    "permissions": [
+      {
+        "batchId": "GIFT-321",
+        "insertRevision": "insert-4",
+        "destinationRevision": "destination-2",
+        "checkoutRevision": "checkout-1",
+        "deviceScope": "campaign-test-phone",
+        "accountScope": "intended-recipient-account",
+        "id": "AUTH-GIFT-321-rehearse-unchanged",
+        "packageId": "rehearse-unchanged",
+        "actorId": "coordinator-gift-321",
+        "validFrom": 0,
+        "validThrough": 1440,
+        "source": "Fictional campaign authorization AUTH-GIFT-321, explicitly covering insert-4 and the one-day work interval"
+      },
+      {
+        "batchId": "GIFT-321",
+        "insertRevision": "insert-4",
+        "destinationRevision": "destination-2",
+        "checkoutRevision": "checkout-1",
+        "deviceScope": "campaign-test-phone",
+        "accountScope": "intended-recipient-account",
+        "id": "AUTH-GIFT-321-reprint",
+        "packageId": "reprint",
+        "actorId": "coordinator-gift-321",
+        "validFrom": 0,
+        "validThrough": 1440,
+        "source": "Fictional campaign authorization AUTH-GIFT-321, explicitly covering insert-4 and the one-day work interval"
+      },
+      {
+        "batchId": "GIFT-321",
+        "insertRevision": "insert-4",
+        "destinationRevision": "destination-2",
+        "checkoutRevision": "checkout-1",
+        "deviceScope": "campaign-test-phone",
+        "accountScope": "intended-recipient-account",
+        "id": "AUTH-GIFT-321-repair-journey",
+        "packageId": "repair-journey",
+        "actorId": "coordinator-gift-321",
+        "validFrom": 0,
+        "validThrough": 1440,
+        "source": "Fictional campaign authorization AUTH-GIFT-321, explicitly covering insert-4 and the one-day work interval"
+      },
+      {
+        "batchId": "GIFT-321",
+        "insertRevision": "insert-4",
+        "destinationRevision": "destination-2",
+        "checkoutRevision": "checkout-1",
+        "deviceScope": "campaign-test-phone",
+        "accountScope": "intended-recipient-account",
+        "id": "AUTH-GIFT-321-replace-and-repair",
+        "packageId": "replace-and-repair",
+        "actorId": "coordinator-gift-321",
+        "validFrom": 0,
+        "validThrough": 1440,
+        "source": "Fictional campaign authorization AUTH-GIFT-321, explicitly covering insert-4 and the one-day work interval"
+      },
+      {
+        "batchId": "GIFT-321",
+        "insertRevision": "insert-4",
+        "destinationRevision": "destination-2",
+        "checkoutRevision": "checkout-1",
+        "deviceScope": "campaign-test-phone",
+        "accountScope": "intended-recipient-account",
+        "id": "AUTH-GIFT-321-external-replace-and-repair",
+        "packageId": "external-replace-and-repair",
+        "actorId": "coordinator-gift-321",
+        "validFrom": 0,
+        "validThrough": 1440,
+        "source": "Fictional campaign authorization AUTH-GIFT-321, explicitly covering insert-4 and the one-day work interval"
+      }
+    ],
+    "resources": [
+      {
+        "id": "production-team",
+        "capacity": 1
+      }
+    ],
+    "calendars": [
+      {
+        "resource": "production-team",
+        "start": 0,
+        "end": 1440
+      }
+    ],
+    "bookings": [],
+    "confirmations": [
+      {
+        "id": "BOOK-GIFT-321",
+        "packageId": "external-replace-and-repair",
+        "batchId": "GIFT-321",
+        "insertRevision": "insert-4",
+        "destinationRevision": "destination-2",
+        "checkoutRevision": "checkout-1",
+        "deviceScope": "campaign-test-phone",
+        "accountScope": "intended-recipient-account",
+        "confirmed": true,
+        "validFrom": 0,
+        "validThrough": 1440,
+        "recordedAt": 1410,
+        "source": "Fictional written production booking BOOK-GIFT-321",
+        "recordedBy": "vendor-coordinator"
+      }
+    ]
+  },
+  "provenance": []
+}

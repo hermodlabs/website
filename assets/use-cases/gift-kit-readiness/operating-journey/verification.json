@@ -1,0 +1,931 @@
+{
+  "format": "gifting-operating-journey-capture/1",
+  "capturedAt": "2026-11-19T00:01:48.075Z",
+  "sourceKind": "public-repository",
+  "commit": "18a9df77f3215adab459efb48274f7c15b729455",
+  "sourceManifestUrl": "/assets/use-cases/sample-code/18a9df77f3215adab459efb48274f7c15b729455/manifest.json",
+  "captureUrl": "http://127.0.0.1:5201/",
+  "queueCaptureUrl": "http://127.0.0.1:5202/campaigns.html",
+  "method": "Fresh Chrome contexts and normal visible controls against the production build of an independent public-source copy with installed release packages. CLI and UI native files were exported/imported through real controls. No DOM/storage/case/model/result injection, shared publication or live operating action.",
+  "viewport": {
+    "width": 1600,
+    "height": 1100
+  },
+  "deviceScaleFactor": 1,
+  "profile": {
+    "id": "gifting-resolution",
+    "version": "3.0.0",
+    "domain": "gifting",
+    "clockOrigin": "2026-11-18T00:00:00.000Z",
+    "ownerRole": "production-owner",
+    "decisionMeaning": "Select the least expensive supported complete correction package before its last useful start.",
+    "priorityRationale": "Protect the recorded handoff cutoff first, then avoid unnecessary correction expense. Earlier completion alone does not justify a premium.",
+    "operations": [
+      "authorization",
+      "correction",
+      "rehearsal",
+      "handoff"
+    ],
+    "completionMeaning": "The selected correction is recorded complete, a successful scoped rehearsal is recorded for its output, and the kit handoff is recorded before the original cutoff."
+  },
+  "binding": {
+    "appId": "review-gift-kit-resolution-planning",
+    "release": 1,
+    "appHash": "d98eeefb7677462bf9a9ea97f6b0dc2c47705b36656edd3ffe2c5b264cdc6f23",
+    "packageHash": "7faaa1bbec4110583bdbfc6db82025860de042af743db0fcfee595aec72986e1",
+    "pattern": "complete-a-commitment/1",
+    "moduleHash": "59f320350d4bad7e9712f68be27afec8995edab08e99ae8a9bfc330af1f1eeab"
+  },
+  "authoredDefinitionHash": "5ab83d583a10f282f616d3021535902aa04ed7e96b2bbb686250d89c39357eef",
+  "packages": [
+    {
+      "name": "@decision-lab/sdk",
+      "archive": "decision-lab-sdk-0.1.0.tgz",
+      "sha256": "6223b1633808e40d4a28692ea926c3a244adbb6a82eb3c0969c1312227129f6d"
+    },
+    {
+      "name": "@decision-lab/cli",
+      "archive": "decision-lab-cli-0.1.0.tgz",
+      "sha256": "0ab849b7a2747c54c52b8acebb01e37db9000c1b194bc525dfbcdc7165f3550c"
+    },
+    {
+      "name": "@decision-lab/react-views",
+      "archive": "decision-lab-react-views-0.1.0.tgz",
+      "sha256": "39d84d27787450519f2df32b70f82ad0e298c27a430468811f577c1a936f9146"
+    }
+  ],
+  "buildAssets": [
+    {
+      "file": "index-BwYxmeIx.js",
+      "bytes": 993107,
+      "sha256": "44567994458fa51fc2dd5e2476fc0e0a11248b43c6fd74e74699078c53cd2eec"
+    },
+    {
+      "file": "index-DbnSs3yQ.css",
+      "bytes": 38242,
+      "sha256": "115b5159f9b4843fb3d4f5d8174cc9f681b41263a551f0cdae5693549886f9fb"
+    },
+    {
+      "file": "worker-BJEcHj-S.js",
+      "bytes": 401805,
+      "sha256": "db7ffc9989a595b960f02866a26d60fcc878d4f6a4f612a2f5548614f2566b51"
+    }
+  ],
+  "ordinaryQueueManifest": {
+    "format": "gift-kit-resolution-preflight/1",
+    "createdAt": "2026-11-18T23:42:58.077Z",
+    "syntheticFindingReviews": false,
+    "definitionHash": "5ab83d583a10f282f616d3021535902aa04ed7e96b2bbb686250d89c39357eef",
+    "campaigns": [
+      {
+        "id": "GIFT-320",
+        "owner": "Jordan Reed",
+        "nextAction": "Review the changed source records",
+        "actionDueMinute": 1400,
+        "deadlineMeaning": "Schedule-only latest useful start; source availability and permission remain separate checks.",
+        "status": "needs-input",
+        "preferred": [],
+        "workflow": "GIFT-320/review.workflow.json",
+        "output": "GIFT-320/output.json",
+        "source": {
+          "reference": "cases/ample-window.json",
+          "sha256": "059c0a71af6209b82d310fe2d5d31486c10edece44be90a42e951baa6868f97d"
+        },
+        "screening": {
+          "file": "GIFT-320/screening.run.json",
+          "outcome": "eligible",
+          "preferred": [
+            "Replace and repair in-house"
+          ],
+          "meaning": "Unreviewed conservative screen over every published fault configuration; it is not an accepted workflow finding."
+        }
+      },
+      {
+        "id": "GIFT-321",
+        "owner": "Jordan Reed",
+        "nextAction": "Review the changed source records",
+        "actionDueMinute": 1415,
+        "deadlineMeaning": "Schedule-only latest useful start; source availability and permission remain separate checks.",
+        "status": "needs-input",
+        "preferred": [],
+        "workflow": "GIFT-321/review.workflow.json",
+        "output": "GIFT-321/output.json",
+        "source": {
+          "reference": "cases/urgent-window.json",
+          "sha256": "eda63ca3308d1f34820a10d076f8c20ecaba3bcf5d6fce30d4e1bfded89505e3"
+        },
+        "screening": {
+          "file": "GIFT-321/screening.run.json",
+          "outcome": "eligible",
+          "preferred": [
+            "External replacement and repair"
+          ],
+          "meaning": "Unreviewed conservative screen over every published fault configuration; it is not an accepted workflow finding."
+        }
+      },
+      {
+        "id": "GIFT-322",
+        "owner": "Jordan Reed",
+        "nextAction": "Review the changed source records",
+        "actionDueMinute": 1415,
+        "deadlineMeaning": "Schedule-only latest useful start; source availability and permission remain separate checks.",
+        "status": "needs-input",
+        "preferred": [],
+        "workflow": "GIFT-322/review.workflow.json",
+        "output": "GIFT-322/output.json",
+        "source": {
+          "reference": "cases/urgent-missing-booking.json",
+          "sha256": "17bf10dc18909a653d729fd4c7e2ea48c326ffd9c42ccd9206f46f139a91cbff"
+        },
+        "screening": {
+          "file": "GIFT-322/screening.run.json",
+          "outcome": "blocked",
+          "preferred": [],
+          "meaning": "Unreviewed conservative screen over every published fault configuration; it is not an accepted workflow finding."
+        }
+      },
+      {
+        "id": "GIFT-323",
+        "owner": "Jordan Reed",
+        "nextAction": "Review the changed source records",
+        "actionDueMinute": 1415,
+        "deadlineMeaning": "Schedule-only latest useful start; source availability and permission remain separate checks.",
+        "status": "needs-input",
+        "preferred": [],
+        "workflow": "GIFT-323/review.workflow.json",
+        "output": "GIFT-323/output.json",
+        "source": {
+          "reference": "cases/urgent-stale-booking.json",
+          "sha256": "49a3ce733a61e45f685a13e67010117180f8d5c3a9527595f661474c2236a165"
+        },
+        "screening": {
+          "file": "GIFT-323/screening.run.json",
+          "outcome": "blocked",
+          "preferred": [],
+          "meaning": "Unreviewed conservative screen over every published fault configuration; it is not an accepted workflow finding."
+        }
+      },
+      {
+        "id": "GIFT-324",
+        "owner": "Jordan Reed",
+        "nextAction": "Review the changed source records",
+        "actionDueMinute": 1415,
+        "deadlineMeaning": "Schedule-only latest useful start; source availability and permission remain separate checks.",
+        "status": "needs-input",
+        "preferred": [],
+        "workflow": "GIFT-324/review.workflow.json",
+        "output": "GIFT-324/output.json",
+        "source": {
+          "reference": "cases/supported-smaller-correction.json",
+          "sha256": "6d31c698eced9cc18e9a95be2408deea705d5ce44758b17d89c36403a3aee286"
+        },
+        "screening": {
+          "file": "GIFT-324/screening.run.json",
+          "outcome": "eligible",
+          "preferred": [
+            "External replacement and repair"
+          ],
+          "meaning": "Unreviewed conservative screen over every published fault configuration; it is not an accepted workflow finding."
+        }
+      },
+      {
+        "id": "GIFT-325",
+        "owner": "Jordan Reed",
+        "nextAction": "Review the changed source records",
+        "actionDueMinute": 1415,
+        "deadlineMeaning": "Schedule-only latest useful start; source availability and permission remain separate checks.",
+        "status": "needs-input",
+        "preferred": [],
+        "workflow": "GIFT-325/review.workflow.json",
+        "output": "GIFT-325/output.json",
+        "source": {
+          "reference": "cases/missed-window.json",
+          "sha256": "ac7d37accd1d8b50c9e52c2f48940aa6030834ccff2a4c13a6e4f525af927df3"
+        },
+        "screening": {
+          "file": "GIFT-325/screening.run.json",
+          "outcome": "blocked",
+          "preferred": [],
+          "meaning": "Unreviewed conservative screen over every published fault configuration; it is not an accepted workflow finding."
+        }
+      }
+    ]
+  },
+  "reviewedDemoManifest": {
+    "format": "gift-kit-resolution-preflight/1",
+    "createdAt": "2026-11-18T23:48:20.011Z",
+    "syntheticFindingReviews": true,
+    "definitionHash": "5ab83d583a10f282f616d3021535902aa04ed7e96b2bbb686250d89c39357eef",
+    "campaigns": [
+      {
+        "id": "GIFT-320",
+        "owner": "Jordan Reed",
+        "nextAction": "Record the operating decision",
+        "actionDueMinute": 1400,
+        "deadlineMeaning": "Schedule-only latest useful start; source availability and permission remain separate checks.",
+        "status": "eligible",
+        "preferred": [
+          {
+            "package": "Replace and repair in-house",
+            "expenseMinor": 30000,
+            "finishMinute": 40
+          }
+        ],
+        "workflow": "GIFT-320/review.workflow.json",
+        "output": "GIFT-320/output.json",
+        "source": {
+          "reference": "cases/ample-window.json",
+          "sha256": "059c0a71af6209b82d310fe2d5d31486c10edece44be90a42e951baa6868f97d"
+        },
+        "screening": {
+          "file": "GIFT-320/screening.run.json",
+          "outcome": "eligible",
+          "preferred": [
+            "Replace and repair in-house"
+          ],
+          "meaning": "Unreviewed conservative screen over every published fault configuration; it is not an accepted workflow finding."
+        }
+      },
+      {
+        "id": "GIFT-321",
+        "owner": "Jordan Reed",
+        "nextAction": "Record the operating decision",
+        "actionDueMinute": 1415,
+        "deadlineMeaning": "Schedule-only latest useful start; source availability and permission remain separate checks.",
+        "status": "eligible",
+        "preferred": [
+          {
+            "package": "External replacement and repair",
+            "expenseMinor": 40000,
+            "finishMinute": 1435
+          }
+        ],
+        "workflow": "GIFT-321/review.workflow.json",
+        "output": "GIFT-321/output.json",
+        "source": {
+          "reference": "cases/urgent-window.json",
+          "sha256": "eda63ca3308d1f34820a10d076f8c20ecaba3bcf5d6fce30d4e1bfded89505e3"
+        },
+        "screening": {
+          "file": "GIFT-321/screening.run.json",
+          "outcome": "eligible",
+          "preferred": [
+            "External replacement and repair"
+          ],
+          "meaning": "Unreviewed conservative screen over every published fault configuration; it is not an accepted workflow finding."
+        }
+      },
+      {
+        "id": "GIFT-322",
+        "owner": "Jordan Reed",
+        "nextAction": "Escalate or revise the commitment",
+        "actionDueMinute": 1415,
+        "deadlineMeaning": "Schedule-only latest useful start; source availability and permission remain separate checks.",
+        "status": "blocked",
+        "preferred": [],
+        "workflow": "GIFT-322/review.workflow.json",
+        "output": "GIFT-322/output.json",
+        "source": {
+          "reference": "cases/urgent-missing-booking.json",
+          "sha256": "17bf10dc18909a653d729fd4c7e2ea48c326ffd9c42ccd9206f46f139a91cbff"
+        },
+        "screening": {
+          "file": "GIFT-322/screening.run.json",
+          "outcome": "blocked",
+          "preferred": [],
+          "meaning": "Unreviewed conservative screen over every published fault configuration; it is not an accepted workflow finding."
+        }
+      },
+      {
+        "id": "GIFT-323",
+        "owner": "Jordan Reed",
+        "nextAction": "Escalate or revise the commitment",
+        "actionDueMinute": 1415,
+        "deadlineMeaning": "Schedule-only latest useful start; source availability and permission remain separate checks.",
+        "status": "blocked",
+        "preferred": [],
+        "workflow": "GIFT-323/review.workflow.json",
+        "output": "GIFT-323/output.json",
+        "source": {
+          "reference": "cases/urgent-stale-booking.json",
+          "sha256": "49a3ce733a61e45f685a13e67010117180f8d5c3a9527595f661474c2236a165"
+        },
+        "screening": {
+          "file": "GIFT-323/screening.run.json",
+          "outcome": "blocked",
+          "preferred": [],
+          "meaning": "Unreviewed conservative screen over every published fault configuration; it is not an accepted workflow finding."
+        }
+      },
+      {
+        "id": "GIFT-324",
+        "owner": "Jordan Reed",
+        "nextAction": "Record the operating decision",
+        "actionDueMinute": 1415,
+        "deadlineMeaning": "Schedule-only latest useful start; source availability and permission remain separate checks.",
+        "status": "eligible",
+        "preferred": [
+          {
+            "package": "Replace printed inserts",
+            "expenseMinor": 10000,
+            "finishMinute": 1435
+          }
+        ],
+        "workflow": "GIFT-324/review.workflow.json",
+        "output": "GIFT-324/output.json",
+        "source": {
+          "reference": "cases/supported-smaller-correction.json",
+          "sha256": "6d31c698eced9cc18e9a95be2408deea705d5ce44758b17d89c36403a3aee286"
+        },
+        "screening": {
+          "file": "GIFT-324/screening.run.json",
+          "outcome": "eligible",
+          "preferred": [
+            "External replacement and repair"
+          ],
+          "meaning": "Unreviewed conservative screen over every published fault configuration; it is not an accepted workflow finding."
+        }
+      },
+      {
+        "id": "GIFT-325",
+        "owner": "Jordan Reed",
+        "nextAction": "Escalate or revise the commitment",
+        "actionDueMinute": 1415,
+        "deadlineMeaning": "Schedule-only latest useful start; source availability and permission remain separate checks.",
+        "status": "blocked",
+        "preferred": [],
+        "workflow": "GIFT-325/review.workflow.json",
+        "output": "GIFT-325/output.json",
+        "source": {
+          "reference": "cases/missed-window.json",
+          "sha256": "ac7d37accd1d8b50c9e52c2f48940aa6030834ccff2a4c13a6e4f525af927df3"
+        },
+        "screening": {
+          "file": "GIFT-325/screening.run.json",
+          "outcome": "blocked",
+          "preferred": [],
+          "meaning": "Unreviewed conservative screen over every published fault configuration; it is not an accepted workflow finding."
+        }
+      }
+    ]
+  },
+  "artifacts": {
+    "completed": {
+      "sha256": "c174860893c20a1a4f12bf939f1a21d0f0ed725928a98b5c5704de72e5a6c17a",
+      "bytes": 23820490,
+      "contentHash": "59e81facaf0ea90801f8a5c2e1fae2c24e1f4cd4e36705c7ee7c83786446810c",
+      "revision": 21,
+      "nativeDefinitionHash": "2176d2f886b1dcfd5e4730f45ed878805c785200d04ef4d034ec690a17d84ed1",
+      "campaign": "GIFT-321",
+      "reviewMinute": 1410,
+      "originalCutoff": 1440,
+      "answerStatuses": {
+        "case-reference": "accepted",
+        "configuration": "accepted",
+        "commitment": "accepted",
+        "observations": "accepted",
+        "quotes": "accepted",
+        "rehearsal": "accepted",
+        "handoff": "accepted",
+        "work-owner": "accepted",
+        "people": "accepted",
+        "resources": "accepted",
+        "permissions": "accepted",
+        "confirmations": "accepted",
+        "journey-context": "awaiting-review",
+        "journey-operations": "accepted"
+      },
+      "stepStatuses": {
+        "evidence": "accepted",
+        "planning": "accepted"
+      },
+      "acceptedEvidenceStates": [
+        {
+          "id": "print-destination",
+          "label": "The printed code cannot be read; The code leads to the wrong destination",
+          "faultIds": [
+            "destination",
+            "print"
+          ],
+          "correctionIds": [
+            "correct-destination",
+            "replace-insert"
+          ]
+        }
+      ],
+      "preferred": [
+        {
+          "id": "plan-000009",
+          "packageId": "external-replace-and-repair",
+          "expense": 40000,
+          "finishMinute": 1435
+        }
+      ],
+      "operatingDecision": {
+        "kind": "decision",
+        "caseId": "gift-resolution-GIFT-321",
+        "caseRevision": 16,
+        "evaluationHash": "26068fb96793a216f211f868b4637dcea47893ad6eb7c018a817884e717c42bb",
+        "evaluationId": "workflow-evaluation-5b124cb702e5d60dbc7282765f267ca1770cb284803d48b5",
+        "runHash": "4161387ae9f02881ad8872ff689da82da299eb01a5570cca231c6019ca2fc85a",
+        "planId": "plan-000009",
+        "optionId": "plan-000009",
+        "choices": {
+          "packageId": "external-replace-and-repair",
+          "startMinute": 1410
+        },
+        "expense": 40000,
+        "actor": "Leah · fictional campaign reviewer",
+        "at": "2026-11-18T23:56:07.254Z"
+      },
+      "closure": {
+        "completed": true,
+        "meaning": "Requires a decision on the current accepted plan, a separate sourced spending authorization, actual correction for the selected package and current input scope, a passing fresh rehearsal on the corrected output scope, and the full quantity handed over before the original cutoff. Records are supplied assertions; this tool does not authenticate external sources."
+      },
+      "nextAction": "Original handoff recorded complete",
+      "operationCount": 5,
+      "file": "native/completed.workflow.json"
+    },
+    "later-failed": {
+      "sha256": "5bf3ee12282d8c3cc1e7822ca33663330b55e99ce741f5674a3d308aede35a12",
+      "bytes": 24821635,
+      "contentHash": "d12929c3128d0ef357fdcb8de2e17023d3f358adc2a254aec3c8aea66cd4b3fd",
+      "revision": 22,
+      "nativeDefinitionHash": "2176d2f886b1dcfd5e4730f45ed878805c785200d04ef4d034ec690a17d84ed1",
+      "campaign": "GIFT-321",
+      "reviewMinute": 1410,
+      "originalCutoff": 1440,
+      "answerStatuses": {
+        "case-reference": "accepted",
+        "configuration": "accepted",
+        "commitment": "accepted",
+        "observations": "accepted",
+        "quotes": "accepted",
+        "rehearsal": "accepted",
+        "handoff": "accepted",
+        "work-owner": "accepted",
+        "people": "accepted",
+        "resources": "accepted",
+        "permissions": "accepted",
+        "confirmations": "accepted",
+        "journey-context": "awaiting-review",
+        "journey-operations": "accepted"
+      },
+      "stepStatuses": {
+        "evidence": "accepted",
+        "planning": "accepted"
+      },
+      "acceptedEvidenceStates": [
+        {
+          "id": "print-destination",
+          "label": "The printed code cannot be read; The code leads to the wrong destination",
+          "faultIds": [
+            "destination",
+            "print"
+          ],
+          "correctionIds": [
+            "correct-destination",
+            "replace-insert"
+          ]
+        }
+      ],
+      "preferred": [
+        {
+          "id": "plan-000009",
+          "packageId": "external-replace-and-repair",
+          "expense": 40000,
+          "finishMinute": 1435
+        }
+      ],
+      "operatingDecision": {
+        "kind": "decision",
+        "caseId": "gift-resolution-GIFT-321",
+        "caseRevision": 16,
+        "evaluationHash": "26068fb96793a216f211f868b4637dcea47893ad6eb7c018a817884e717c42bb",
+        "evaluationId": "workflow-evaluation-5b124cb702e5d60dbc7282765f267ca1770cb284803d48b5",
+        "runHash": "4161387ae9f02881ad8872ff689da82da299eb01a5570cca231c6019ca2fc85a",
+        "planId": "plan-000009",
+        "optionId": "plan-000009",
+        "choices": {
+          "packageId": "external-replace-and-repair",
+          "startMinute": 1410
+        },
+        "expense": 40000,
+        "actor": "Leah · fictional campaign reviewer",
+        "at": "2026-11-18T23:56:07.254Z"
+      },
+      "closure": {
+        "completed": false,
+        "meaning": "Requires a decision on the current accepted plan, a separate sourced spending authorization, actual correction for the selected package and current input scope, a passing fresh rehearsal on the corrected output scope, and the full quantity handed over before the original cutoff. Records are supplied assertions; this tool does not authenticate external sources."
+      },
+      "nextAction": "Obtain and record the next actual operating record",
+      "operationCount": 6,
+      "file": "native/later-failed.workflow.json"
+    },
+    "pending-draft": {
+      "file": "native/pending-draft.workflow.json",
+      "sha256": "f171841d0826ef795364d6eb436ea545b76aaef68811ddef9ff64221f5ca3a49",
+      "bytes": 25821074,
+      "contentHash": "295301fc2b6dafb5590fc94b284b1289d3e3873e0b19a34dc9829e8684a94f80",
+      "revision": 23,
+      "nativeDefinitionHash": "2176d2f886b1dcfd5e4730f45ed878805c785200d04ef4d034ec690a17d84ed1",
+      "campaign": "GIFT-321",
+      "reviewMinute": 1411,
+      "originalCutoff": 1440,
+      "answerStatuses": {
+        "case-reference": "accepted",
+        "configuration": "accepted",
+        "commitment": "awaiting-review",
+        "observations": "accepted",
+        "quotes": "accepted",
+        "rehearsal": "accepted",
+        "handoff": "accepted",
+        "work-owner": "accepted",
+        "people": "accepted",
+        "resources": "accepted",
+        "permissions": "accepted",
+        "confirmations": "accepted",
+        "journey-context": "awaiting-review",
+        "journey-operations": "accepted"
+      },
+      "stepStatuses": {
+        "evidence": "stale",
+        "planning": "not-applicable"
+      },
+      "operatingDecision": null,
+      "closure": {
+        "completed": false,
+        "meaning": "Requires a decision on the current accepted plan, a separate sourced spending authorization, actual correction for the selected package and current input scope, a passing fresh rehearsal on the corrected output scope, and the full quantity handed over before the original cutoff. Records are supplied assertions; this tool does not authenticate external sources."
+      },
+      "nextAction": "Review the changed source records",
+      "operationCount": 6
+    },
+    "fresh-pending-import": {
+      "sha256": "f171841d0826ef795364d6eb436ea545b76aaef68811ddef9ff64221f5ca3a49",
+      "bytes": 25821074,
+      "contentHash": "295301fc2b6dafb5590fc94b284b1289d3e3873e0b19a34dc9829e8684a94f80",
+      "revision": 23,
+      "nativeDefinitionHash": "2176d2f886b1dcfd5e4730f45ed878805c785200d04ef4d034ec690a17d84ed1",
+      "campaign": "GIFT-321",
+      "reviewMinute": 1411,
+      "originalCutoff": 1440,
+      "answerStatuses": {
+        "case-reference": "accepted",
+        "configuration": "accepted",
+        "commitment": "awaiting-review",
+        "observations": "accepted",
+        "quotes": "accepted",
+        "rehearsal": "accepted",
+        "handoff": "accepted",
+        "work-owner": "accepted",
+        "people": "accepted",
+        "resources": "accepted",
+        "permissions": "accepted",
+        "confirmations": "accepted",
+        "journey-context": "awaiting-review",
+        "journey-operations": "accepted"
+      },
+      "stepStatuses": {
+        "evidence": "stale",
+        "planning": "not-applicable"
+      },
+      "operatingDecision": null,
+      "closure": {
+        "completed": false,
+        "meaning": "Requires a decision on the current accepted plan, a separate sourced spending authorization, actual correction for the selected package and current input scope, a passing fresh rehearsal on the corrected output scope, and the full quantity handed over before the original cutoff. Records are supplied assertions; this tool does not authenticate external sources."
+      },
+      "nextAction": "Review the changed source records",
+      "operationCount": 6
+    },
+    "small-pending": {
+      "sha256": "14d6678714d25a52a25ba1bd14053dee507f9fff4be1d0a6226b138a352156d7",
+      "bytes": 357145,
+      "contentHash": "5c90c470f3da43fe840957ce2f0698fea8f0251e2d5f8b2f3b6fb65f451486ae",
+      "revision": 1,
+      "nativeDefinitionHash": "2176d2f886b1dcfd5e4730f45ed878805c785200d04ef4d034ec690a17d84ed1",
+      "campaign": "GIFT-320",
+      "reviewMinute": 1,
+      "originalCutoff": 1440,
+      "answerStatuses": {
+        "case-reference": "awaiting-review",
+        "configuration": "awaiting-review",
+        "commitment": "awaiting-review",
+        "observations": "awaiting-review",
+        "quotes": "awaiting-review",
+        "rehearsal": "awaiting-review",
+        "handoff": "awaiting-review",
+        "work-owner": "awaiting-review",
+        "people": "awaiting-review",
+        "resources": "awaiting-review",
+        "permissions": "awaiting-review",
+        "confirmations": "awaiting-review",
+        "journey-context": "awaiting-review",
+        "journey-operations": "awaiting-review"
+      },
+      "stepStatuses": {
+        "evidence": "needs-input",
+        "planning": "not-applicable"
+      },
+      "operatingDecision": null,
+      "closure": {
+        "completed": false,
+        "meaning": "Requires a decision on the current accepted plan, a separate sourced spending authorization, actual correction for the selected package and current input scope, a passing fresh rehearsal on the corrected output scope, and the full quantity handed over before the original cutoff. Records are supplied assertions; this tool does not authenticate external sources."
+      },
+      "nextAction": "Review the changed source records",
+      "operationCount": 0
+    },
+    "small-pending-reopened": {
+      "sha256": "14d6678714d25a52a25ba1bd14053dee507f9fff4be1d0a6226b138a352156d7",
+      "bytes": 357145,
+      "contentHash": "5c90c470f3da43fe840957ce2f0698fea8f0251e2d5f8b2f3b6fb65f451486ae",
+      "revision": 1,
+      "nativeDefinitionHash": "2176d2f886b1dcfd5e4730f45ed878805c785200d04ef4d034ec690a17d84ed1",
+      "campaign": "GIFT-320",
+      "reviewMinute": 1,
+      "originalCutoff": 1440,
+      "answerStatuses": {
+        "case-reference": "awaiting-review",
+        "configuration": "awaiting-review",
+        "commitment": "awaiting-review",
+        "observations": "awaiting-review",
+        "quotes": "awaiting-review",
+        "rehearsal": "awaiting-review",
+        "handoff": "awaiting-review",
+        "work-owner": "awaiting-review",
+        "people": "awaiting-review",
+        "resources": "awaiting-review",
+        "permissions": "awaiting-review",
+        "confirmations": "awaiting-review",
+        "journey-context": "awaiting-review",
+        "journey-operations": "awaiting-review"
+      },
+      "stepStatuses": {
+        "evidence": "needs-input",
+        "planning": "not-applicable"
+      },
+      "operatingDecision": null,
+      "closure": {
+        "completed": false,
+        "meaning": "Requires a decision on the current accepted plan, a separate sourced spending authorization, actual correction for the selected package and current input scope, a passing fresh rehearsal on the corrected output scope, and the full quantity handed over before the original cutoff. Records are supplied assertions; this tool does not authenticate external sources."
+      },
+      "nextAction": "Review the changed source records",
+      "operationCount": 0
+    },
+    "ample": {
+      "sha256": "0e032fadd1970cbcecc9623aba118d897edc4cbad5353d79bd2303e440d70ff7",
+      "bytes": 1298604,
+      "contentHash": "9b6645cfc56d6755292952db6f6a62c226a9a7edb8d49c6217944ff9a324c5ef",
+      "revision": 15,
+      "nativeDefinitionHash": "2176d2f886b1dcfd5e4730f45ed878805c785200d04ef4d034ec690a17d84ed1",
+      "campaign": "GIFT-320",
+      "reviewMinute": 0,
+      "originalCutoff": 1440,
+      "answerStatuses": {
+        "case-reference": "accepted",
+        "configuration": "accepted",
+        "commitment": "accepted",
+        "observations": "accepted",
+        "quotes": "accepted",
+        "rehearsal": "accepted",
+        "handoff": "accepted",
+        "work-owner": "accepted",
+        "people": "accepted",
+        "resources": "accepted",
+        "permissions": "accepted",
+        "confirmations": "accepted",
+        "journey-context": "awaiting-review",
+        "journey-operations": "awaiting-review"
+      },
+      "stepStatuses": {
+        "evidence": "accepted",
+        "planning": "awaiting-review"
+      },
+      "acceptedEvidenceStates": [
+        {
+          "id": "print-destination",
+          "label": "The printed code cannot be read; The code leads to the wrong destination",
+          "faultIds": [
+            "destination",
+            "print"
+          ],
+          "correctionIds": [
+            "correct-destination",
+            "replace-insert"
+          ]
+        }
+      ],
+      "preferred": [
+        {
+          "id": "plan-000004",
+          "packageId": "replace-and-repair",
+          "expense": 30000,
+          "finishMinute": 40
+        }
+      ],
+      "operatingDecision": null,
+      "closure": {
+        "completed": false,
+        "meaning": "Requires a decision on the current accepted plan, a separate sourced spending authorization, actual correction for the selected package and current input scope, a passing fresh rehearsal on the corrected output scope, and the full quantity handed over before the original cutoff. Records are supplied assertions; this tool does not authenticate external sources."
+      },
+      "nextAction": "Review the planning finding",
+      "operationCount": 0
+    }
+  },
+  "figures": {
+    "queue": {
+      "image": "/assets/use-cases/gift-kit-readiness/operating-journey/01-campaign-queue.png",
+      "width": 1540,
+      "height": 477,
+      "sha256": "e6f72fbc2772e77629574a73887db246d0a14be21444008e2802510aa3753fa6",
+      "alt": "The actual six-campaign intervention queue separates its unreviewed conservative screen from pending input review, names Jordan Reed as owner and provides continuing-review downloads.",
+      "caption": "The ordinary CLI queue retains an unreviewed conservative screen. Each row names the next review action and carries the same native workflow into the desk; none has been silently accepted."
+    },
+    "imported": {
+      "image": "/assets/use-cases/gift-kit-readiness/operating-journey/02-continuing-review.png",
+      "width": 692,
+      "height": 578,
+      "sha256": "a6bee06460f472c6fbd1ca5515ebfe07309d7f80234ce5727f801c1c3d307377",
+      "alt": "GIFT-321 opens at Review the changed source records. Evidence and planning both require input review, and the original handoff is not yet established.",
+      "caption": "Opening the CLI file preserves its exact native history, sources and pending answers. Importing is neither an input review nor an accepted finding."
+    },
+    "evidence": {
+      "image": "/assets/use-cases/gift-kit-readiness/operating-journey/03-evidence-awaiting-review.png",
+      "width": 692,
+      "height": 618,
+      "sha256": "af806a08297f238f16fecca75ef2e231d9e45ce83e72188b7625de7a87742a61",
+      "alt": "The evidence calculation has finished but its finding awaits a separate explicit review; planning waits on that prerequisite.",
+      "caption": "Calculating evidence does not accept its finding. Planning can use the interpreted records after Leah reviews and accepts that result."
+    },
+    "urgent": {
+      "image": "/assets/use-cases/gift-kit-readiness/operating-journey/04-urgent-complete-packages.png",
+      "width": 691,
+      "height": 922,
+      "sha256": "1edfe56af771108706f4c8586d64466cf0b6130a39bbe501ad9e481b746dfa81",
+      "alt": "The urgent GIFT-321 review prefers the $400 external complete correction, finishing at minute 1,435 before the 1,440 cutoff. Accepting the finding is still separate.",
+      "caption": "The opening of the current finding. At minute 1,410, external work can finish by 1,440; the cheaper complete correction is too late. The complete comparison continues below this native crop."
+    },
+    "completed": {
+      "image": "/assets/use-cases/gift-kit-readiness/operating-journey/05-original-handoff-complete.png",
+      "width": 691,
+      "height": 519,
+      "sha256": "d01a4757e127f56cc2ed1271b5fbe5eb1bb604db9723ff97f205a90999c717fa",
+      "alt": "The original handoff is recorded complete after distinct selected-plan, authorization, correction, passed rehearsal and 120-kit handoff records; their retained references appear below.",
+      "caption": "The authored gate supports the original handoff after the linked actual records are supplied. Recording an assertion does not authenticate it or perform work."
+    },
+    "failed": {
+      "image": "/assets/use-cases/gift-kit-readiness/operating-journey/06-later-failed-rehearsal.png",
+      "width": 692,
+      "height": 579,
+      "sha256": "6d81b2ec7a377be4ef41833a164f0da5df54c883e10c2e76cf95f7a7ae2621bb",
+      "alt": "A later failed rehearsal supersedes the earlier positive. The original GIFT-321 handoff is no longer established while both tests and the earlier handoff remain in history.",
+      "caption": "The latest complete rehearsal record prevents fallback to the earlier positive. The original references and both tests remain in history."
+    },
+    "pending": {
+      "image": "/assets/use-cases/gift-kit-readiness/operating-journey/07-pending-export.png",
+      "width": 692,
+      "height": 797,
+      "sha256": "011eafc52304b1fd949882c12b214d426d819dfd8cdc3fa8525c17129f2f1590",
+      "alt": "The changed review time is retained as awaiting review, while current planning and the operating choice are stale. The actual browser reports that this large continuing review exceeds localStorage quota.",
+      "caption": "The native download retains the pending revision. This unmodified sample cannot save its full retained history in browser localStorage; the visible error is a deployment boundary."
+    },
+    "ample": {
+      "image": "/assets/use-cases/gift-kit-readiness/operating-journey/08-ample-cost-first.png",
+      "width": 644,
+      "height": 503,
+      "sha256": "f5d92735520951526819ffb285a73d97157a314edd7a5775d254eda9982584ce",
+      "alt": "The actual ample-window GIFT-320 decision prefers the $300 in-house complete correction at minute 40. The cost-first policy does not pay extra merely for an earlier finish.",
+      "caption": "The decision brief and preferred row. With an ample window, the same v3 cost-first policy prefers the supported $300 in-house complete correction. The full native comparison continues below this crop."
+    }
+  },
+  "checks": [
+    "The native UI reopened the full completed and later-failed exports and reproduced their distinct original-handoff conclusions.",
+    "390px pending workflow: no horizontal page overflow or nested page scroll.",
+    "Fresh-context native import preserves the full pending download exactly.",
+    "1600px complete decision: no horizontal page overflow or nested page scroll.",
+    "390px complete decision: no horizontal page overflow or nested page scroll.",
+    "Ordinary CLI import initially preserved its exact native hash, sources, pending inputs and zero evaluations.",
+    "Input review, evidence evaluation/review, planning evaluation/review and an exact operating choice are distinct visible actions.",
+    "Urgent external work costs400USD and finishes1435; ample in-house work costs300USD and finishes40 under the same v3 policy.",
+    "Only sourced authorization, corrected output, a linked passed ten-minute rehearsal and full handoff close the original120-kit/1440-minute promise.",
+    "A later failed test supersedes the positive; both remain in history and completion is withdrawn.",
+    "Dirty native export retains the changed pending answer and stale findings; small-case local save/reopen is verified separately from full-history quota failure."
+  ],
+  "boundaryChecks": {
+    "fullJourneyLocalSave": {
+      "pass": false,
+      "bytes": 25821074,
+      "messages": [
+        "Review needs attentionFailed to execute 'setItem' on 'Storage': Setting the value of 'decision-lab:gifting-journey:gift-resolution-GIFT-321' exceeded the quota."
+      ]
+    },
+    "390px pending workflow": {
+      "page": 390,
+      "viewport": 390,
+      "nested": [],
+      "pass": true
+    },
+    "fullJourneyImport": {
+      "pass": true,
+      "bytes": 25821074,
+      "messages": []
+    },
+    "smallPendingLocalSave": {
+      "pass": true,
+      "bytes": 357145,
+      "contentHash": "5c90c470f3da43fe840957ce2f0698fea8f0251e2d5f8b2f3b6fb65f451486ae"
+    },
+    "1600px complete decision": {
+      "page": 1600,
+      "viewport": 1600,
+      "nested": [],
+      "pass": true
+    },
+    "390px complete decision": {
+      "page": 390,
+      "viewport": 390,
+      "nested": [],
+      "pass": true
+    },
+    "390px expanded operating history": {
+      "viewport": 390,
+      "page": 390,
+      "nested": [],
+      "pass": true
+    },
+    "expandedHistoryImport": {
+      "pass": true,
+      "bytes": 24821635,
+      "currentClosureComplete": false
+    }
+  },
+  "limitations": [
+    {
+      "check": "fullJourneyLocalSave",
+      "messages": [
+        "Review needs attentionFailed to execute 'setItem' on 'Storage': Setting the value of 'decision-lab:gifting-journey:gift-resolution-GIFT-321' exceeded the quota."
+      ],
+      "meaning": "Browser localStorage rejected the full retained journey. Full-history local save/reopen is not established."
+    }
+  ],
+  "errors": [],
+  "bounds": "All people, source records and actual-event assertions are fictional demonstration inputs. Screenshots do not authenticate documents or establish real operating work. Each campaign has independently allocated resources. The latest complete record of each kind is authoritative within this bounded workflow.",
+  "artifactHashes": {
+    "native/completed.workflow.json": "c174860893c20a1a4f12bf939f1a21d0f0ed725928a98b5c5704de72e5a6c17a",
+    "native/later-failed.workflow.json": "5bf3ee12282d8c3cc1e7822ca33663330b55e99ce741f5674a3d308aede35a12",
+    "native/pending-draft.workflow.json": "f171841d0826ef795364d6eb436ea545b76aaef68811ddef9ff64221f5ca3a49",
+    "01-campaign-queue.png": "e6f72fbc2772e77629574a73887db246d0a14be21444008e2802510aa3753fa6",
+    "02-continuing-review.png": "a6bee06460f472c6fbd1ca5515ebfe07309d7f80234ce5727f801c1c3d307377",
+    "03-evidence-awaiting-review.png": "af806a08297f238f16fecca75ef2e231d9e45ce83e72188b7625de7a87742a61",
+    "04-urgent-complete-packages.png": "1edfe56af771108706f4c8586d64466cf0b6130a39bbe501ad9e481b746dfa81",
+    "05-original-handoff-complete.png": "d01a4757e127f56cc2ed1271b5fbe5eb1bb604db9723ff97f205a90999c717fa",
+    "06-later-failed-rehearsal.png": "6d81b2ec7a377be4ef41833a164f0da5df54c883e10c2e76cf95f7a7ae2621bb",
+    "07-pending-export.png": "011eafc52304b1fd949882c12b214d426d819dfd8cdc3fa8525c17129f2f1590",
+    "08-ample-cost-first.png": "f5d92735520951526819ffb285a73d97157a314edd7a5775d254eda9982584ce",
+    "mobile-operating-history.png": "3de2f58495a439b100a66b0f4ef6a56797f739334d0317c735a959ae17f6938e"
+  },
+  "tests": {
+    "nativeJourney": {
+      "command": "node --test test/journey.test.js",
+      "sourceDirectory": "gifting/gift-kit-handoff-desk",
+      "node": "24.16.0",
+      "passed": 7,
+      "failed": 0,
+      "durationMs": 55566,
+      "scope": [
+        "six native reviewed outcomes",
+        "actual correction/rehearsal/handoff closure",
+        "failed, short, wrong-scope, future and late records",
+        "stale source/time inputs and local storage conflict",
+        "revised cutoff does not complete original",
+        "retargeted campaign does not complete original",
+        "latest record supersedes older positives and a new correction needs a new chain"
+      ]
+    },
+    "productionBuild": {
+      "command": "vite build --config vite.config.mjs",
+      "exitCode": 0,
+      "scope": "isolated public-source copy with installed matching release archives"
+    },
+    "cliOrdinaryQueue": {
+      "exitCode": 0,
+      "syntheticFindingReviews": false,
+      "campaigns": 6
+    },
+    "cliReviewedDemonstration": {
+      "exitCode": 0,
+      "syntheticFindingReviews": true,
+      "campaigns": 6,
+      "expectedOutcomesVerified": true,
+      "operatingRecordsInvented": false
+    }
+  },
+  "steps": [
+    "Actual ordinary CLI queue generated six pending native reviews and conservative screens.",
+    "Fresh production React imported GIFT-321 without accepting answers or findings.",
+    "Explicit input review, evidence calculation/review, planning calculation/review and exact choice were separate visible actions.",
+    "Separate fictional source assertions recorded authorization, correction, fresh ten-minute successful rehearsal and full handoff; the original gate became complete.",
+    "A later failed rehearsal withdrew original completion while retaining prior history.",
+    "The native pending export reopened exactly in a fresh context; full-history localStorage failed quota while a small draft saved/reopened exactly.",
+    "A separate fresh GIFT-320 review established300USD/minute40 under the same v3 cost-first release."
+  ]
+}

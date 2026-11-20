@@ -1,0 +1,281 @@
+{
+  "format": "shipment-planning-comparison/1",
+  "builtAt": "2026-11-16T18:00:00.000Z",
+  "sdkVersion": "0.1.0",
+  "appUrl": "https://hermodlabs.github.io/review_lab/",
+  "scope": "Standalone supporting planning apps. This comparison does not change the full shipment workflow or its downstream expected-monetary-value verification objective.",
+  "boundary": "All case values and registration/authority stipulations are fictional teaching inputs. A supported proposal is not an actual booking, issued permission or completed shipment.",
+  "provenance": {
+    "baseModel": "examples/first-shipment-review/planning.model.json",
+    "baseModelHash": "66c6b9d3ead87e8fac1fd71661f233431e31beda62879da92db5395654c7c777",
+    "baseTemplate": "examples/first-shipment-review/artifacts/planning.template.json",
+    "templateId": "complete-a-commitment",
+    "templateVersion": "1.0.0",
+    "templatePattern": "complete-a-commitment/1",
+    "templateHash": "2fe9902f4f2b8deebd5663a8467fc2d5c24aeaa9fdcdca1ccd1bb42574a144b2",
+    "evaluator": "bounded-static-commitment/1",
+    "rebuild": "REVIEW_LAB_ROOT=/path/to/hermod-review-lab node scripts/build-shipment-planning-variants.mjs"
+  },
+  "sharedCase": {
+    "file": "shared-case.inputs.json",
+    "yamlFile": "shared-case.inputs.yaml",
+    "id": "SHIP-104-AUTHOR-COMPARISON-r1",
+    "inputsHash": "3fc5ff4960dae65684f6ef5bff578785da2a482d70858b28f84ddfa0f255dee4",
+    "parametersHash": "256ce625149cf7d96d78b343bb1e6b0f7b891d7f138df21659ea4f23e1f4c4c1",
+    "tablesHash": "c9f1af5e8478381732d1586f947b63b08f05f3a5484e868e1879da924a43c22a",
+    "scope": {
+      "orderId": "ORD-104",
+      "orderRevision": "1",
+      "recipient": "DC-X",
+      "shipDate": "2026-11-18",
+      "profileVersion": "1.0.0"
+    },
+    "timeOrigin": "2026-11-17T00:00:00-06:00",
+    "receiptOpen": "2026-11-19T12:00:00-06:00",
+    "receiptDeadline": "2026-11-20T17:00:00-06:00",
+    "comparisonChangesFromWorkflowCase": [
+      "Both ship points are stipulated transportation-registered in one admitted state.",
+      "The receiving window opens Thursday noon, so either arrival is acceptable.",
+      "Backup travel duration is 2,160 minutes instead of 3,600, producing an earlier Thursday arrival.",
+      "A new case identifier and fictional comparison provenance separate this case from the workflow demonstration."
+    ]
+  },
+  "invariants": {
+    "identicalTemplate": true,
+    "identicalCaseInputs": true,
+    "identicalMandatoryRules": true,
+    "identicalFeasibilityFindings": true,
+    "bothArrangementsFeasible": true,
+    "completeSearchAndUniqueRecommendations": true,
+    "onlyAuthorVariation": [
+      "module.id",
+      "module.title",
+      "module.preference",
+      "published app identity and name"
+    ],
+    "mandatoryRuleCount": 18,
+    "mandatoryRulesHash": "093e2d04b057b030420212987d0b94fe4197f8e6e052fba8f1606d4f84279bf3",
+    "requirementsHash": "dd23e9c481c16b3b32a66b27b520653798e5634b24cfb7d593f24061dff32fb5",
+    "unitsHash": "b029c0c67b1dbf6f91f31d408260a18f5ab5c698416704c78d2526e9b2082bbb",
+    "financeHash": "96c91f828eff394f1ff1e34283dc7da818b781712c3385c8e166bef52d026dd7"
+  },
+  "variants": [
+    {
+      "slug": "lowest-cost-shipment",
+      "name": "Lowest-cost shipment review",
+      "files": {
+        "app": "lowest-cost-shipment.app.json",
+        "model": "lowest-cost-shipment.model.json",
+        "source": "lowest-cost-shipment.model.yaml",
+        "case": "lowest-cost-shipment.case.json",
+        "assessment": "lowest-cost-shipment.assessment.json",
+        "run": "lowest-cost-shipment.run.json"
+      },
+      "appId": "shipment-planning-lowest-cost",
+      "release": 1,
+      "packageHash": "cd734de5da72755a1cf29cde2b9aa477c4636a85490c4f3a5876bda0cf5d288b",
+      "appHash": "0bb4b95cf1927de0eefb3add1db5060a9b4bdd28b88cb6df5367ffffe25a7213",
+      "moduleId": "shipment-arrangement-lowest-cost",
+      "moduleHash": "e6d425bf26b00ad3fdec3557a64c75ef321e50f7c618be7d36d3dbe894b58ee8",
+      "modelHash": "2b9fc4bf5cbe494ba9f8aba52477a83d420a7dbdb135818efe15f3de2a7a9bdc",
+      "executionInputHash": "execution-input:e6755c1ef048831ba86bb2764a937588f5d7e5fd7b90514ece9e8a3c7755d721",
+      "boundCaseHash": "9f41c441dfac5f2f411b98e8fd67190331c2290f90c1ac4d0fd93bc462e9eef3",
+      "sharedInputsHash": "3fc5ff4960dae65684f6ef5bff578785da2a482d70858b28f84ddfa0f255dee4",
+      "preference": {
+        "direction": "min",
+        "expression": {
+          "ref": "finance.expense"
+        }
+      },
+      "selectedPlanId": "plan-000001",
+      "selectedArrangement": "direct",
+      "recommendationUnique": true,
+      "plans": [
+        {
+          "planId": "plan-000001",
+          "arrangement": "direct",
+          "shipPoint": "SP-A",
+          "feasible": true,
+          "expenseMinor": 400000,
+          "peakCashMinor": 400000,
+          "departureMinute": 1440,
+          "arrivalMinute": 5040,
+          "arrival": "2026-11-20T12:00:00-06:00",
+          "preferenceValues": [
+            400000
+          ],
+          "mandatoryChecks": 18,
+          "failedChecks": 0
+        },
+        {
+          "planId": "plan-000002",
+          "arrangement": "backup",
+          "shipPoint": "SP-B",
+          "feasible": true,
+          "expenseMinor": 600000,
+          "peakCashMinor": 600000,
+          "departureMinute": 1440,
+          "arrivalMinute": 3600,
+          "arrival": "2026-11-19T12:00:00-06:00",
+          "preferenceValues": [
+            600000
+          ],
+          "mandatoryChecks": 18,
+          "failedChecks": 0
+        }
+      ]
+    },
+    {
+      "slug": "earliest-arrival-shipment",
+      "name": "Earliest-arrival shipment review",
+      "files": {
+        "app": "earliest-arrival-shipment.app.json",
+        "model": "earliest-arrival-shipment.model.json",
+        "source": "earliest-arrival-shipment.model.yaml",
+        "case": "earliest-arrival-shipment.case.json",
+        "assessment": "earliest-arrival-shipment.assessment.json",
+        "run": "earliest-arrival-shipment.run.json"
+      },
+      "appId": "shipment-planning-earliest-arrival",
+      "release": 1,
+      "packageHash": "59b959eff51d59881c79f6b16e2a498952f42afad051353178d10981eeee7db4",
+      "appHash": "3dfef2fb7c70eb33b12b6fcdb4f50a8c82a90e1bbba6bd3941e03ab280ea6025",
+      "moduleId": "shipment-arrangement-earliest-arrival",
+      "moduleHash": "1b5c9a8ed85f49b781f4f267b2b64d256958c648e624a5547cc8c086d44f8c96",
+      "modelHash": "5e7984e401cdcd6a6d8d1f6f74251ca22f91f0c75334040aa560c018d03256e4",
+      "executionInputHash": "execution-input:082f335672282d36dba4578223a876958a00869ca233a20a32fa53e7634054b5",
+      "boundCaseHash": "91a92627c9e7fabeed0657794a2dbd4e46457f3687db178c12eb501a42663efe",
+      "sharedInputsHash": "3fc5ff4960dae65684f6ef5bff578785da2a482d70858b28f84ddfa0f255dee4",
+      "preference": {
+        "direction": "min",
+        "expression": {
+          "ref": "derived.arrival"
+        },
+        "then": [
+          {
+            "direction": "min",
+            "expression": {
+              "ref": "finance.expense"
+            }
+          }
+        ]
+      },
+      "selectedPlanId": "plan-000002",
+      "selectedArrangement": "backup",
+      "recommendationUnique": true,
+      "plans": [
+        {
+          "planId": "plan-000001",
+          "arrangement": "direct",
+          "shipPoint": "SP-A",
+          "feasible": true,
+          "expenseMinor": 400000,
+          "peakCashMinor": 400000,
+          "departureMinute": 1440,
+          "arrivalMinute": 5040,
+          "arrival": "2026-11-20T12:00:00-06:00",
+          "preferenceValues": [
+            5040,
+            400000
+          ],
+          "mandatoryChecks": 18,
+          "failedChecks": 0
+        },
+        {
+          "planId": "plan-000002",
+          "arrangement": "backup",
+          "shipPoint": "SP-B",
+          "feasible": true,
+          "expenseMinor": 600000,
+          "peakCashMinor": 600000,
+          "departureMinute": 1440,
+          "arrivalMinute": 3600,
+          "arrival": "2026-11-19T12:00:00-06:00",
+          "preferenceValues": [
+            3600,
+            600000
+          ],
+          "mandatoryChecks": 18,
+          "failedChecks": 0
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "planning.template.json",
+      "bytes": 13858,
+      "sha256": "96b35149a2b6fade675d112f58b3dc4c7baeaeeeb1ee0cbfd0dd677beaea4c13"
+    },
+    {
+      "file": "shared-case.inputs.json",
+      "bytes": 4753,
+      "sha256": "6b12f37571eaedcb1431045b6e2f037a08101cd71e3201948727825d12b937b8"
+    },
+    {
+      "file": "shared-case.inputs.yaml",
+      "bytes": 3570,
+      "sha256": "78cc50e88a98e056efaca34f158d69f93ccf8178067e49b166b1ac36256b9b5d"
+    },
+    {
+      "file": "lowest-cost-shipment.app.json",
+      "bytes": 90451,
+      "sha256": "c1d220ed5e88d379e0ab8ac8e268cf9e47d0a4fc00d65b8c3826231905eb39f2"
+    },
+    {
+      "file": "lowest-cost-shipment.model.json",
+      "bytes": 38390,
+      "sha256": "d456257f73f1654b58db28598100f3c4c44adceda3d757286d3f2c2e880f3883"
+    },
+    {
+      "file": "lowest-cost-shipment.model.yaml",
+      "bytes": 25684,
+      "sha256": "d155e66a752c16948213e29d46a5c958d2a3c17b4bedf34cb0602ba01de0f7e2"
+    },
+    {
+      "file": "lowest-cost-shipment.case.json",
+      "bytes": 50991,
+      "sha256": "a69a220f2da474aadeaabd6c641878e1fc151abb294877cd3ff07e106f3e9e76"
+    },
+    {
+      "file": "lowest-cost-shipment.assessment.json",
+      "bytes": 89850,
+      "sha256": "41f58dcd588b5f9dedb0c3affa39f5aae1d003c6be50aa87609864a8757c7f2d"
+    },
+    {
+      "file": "lowest-cost-shipment.run.json",
+      "bytes": 353082,
+      "sha256": "b8f40474b7fbb7197a3ac3bccde1738369f428d63abab355141d74b070c5af6b"
+    },
+    {
+      "file": "earliest-arrival-shipment.app.json",
+      "bytes": 90751,
+      "sha256": "91749301d2f3ad101ea000d621d1e01f6086f846b94b0b4ee7d632763e999335"
+    },
+    {
+      "file": "earliest-arrival-shipment.model.json",
+      "bytes": 38550,
+      "sha256": "7949a201093a4b3b48af6b62e4a976ff2ec44286459b18b7728d9a9bb21df95b"
+    },
+    {
+      "file": "earliest-arrival-shipment.model.yaml",
+      "bytes": 25778,
+      "sha256": "5597192f34c271371643c1ec5a8fd628af97420cd5ae08c6458e0df44218215f"
+    },
+    {
+      "file": "earliest-arrival-shipment.case.json",
+      "bytes": 51172,
+      "sha256": "1d3499c5fbda48cbf61aea4c0e3581a10e8c9186b44f13baa48d5aef04f88cde"
+    },
+    {
+      "file": "earliest-arrival-shipment.assessment.json",
+      "bytes": 90128,
+      "sha256": "804dd39ab5769a4787ff47e894185e482b0c8130365c2da14b10f80db089bfe4"
+    },
+    {
+      "file": "earliest-arrival-shipment.run.json",
+      "bytes": 353729,
+      "sha256": "1294f4acdba88643b6b61e5c849773926edf1daad763a227ec90fb9786a71095"
+    }
+  ]
+}

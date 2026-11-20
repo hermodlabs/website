@@ -1,0 +1,237 @@
+{
+  "id": "GIFT-221",
+  "parameters": {
+    "batchId": "GIFT-221",
+    "insertRevision": "insert-4",
+    "destinationRevision": "destination-2",
+    "checkoutRevision": "checkout-1",
+    "deviceScope": "campaign-test-phone",
+    "accountScope": "intended-recipient-account",
+    "actorId": "campaign-owner-gift-221",
+    "quantity": 120,
+    "nowMinute": 0,
+    "handoffDeadlineMinute": 1440,
+    "budgetMinor": 60000,
+    "rehearsalMinutes": 10,
+    "handoffMinutes": 5,
+    "startOptions": [
+      0
+    ]
+  },
+  "tables": {
+    "packages": [
+      {
+        "id": "rehearse-unchanged",
+        "quantity": 120,
+        "repairMinutes": 1,
+        "repairCostMinor": 0,
+        "fixes0": false,
+        "fixes1": false,
+        "fixes2": false
+      },
+      {
+        "id": "reprint",
+        "quantity": 120,
+        "repairMinutes": 10,
+        "repairCostMinor": 10000,
+        "fixes0": true,
+        "fixes1": false,
+        "fixes2": false
+      },
+      {
+        "id": "repair-journey",
+        "quantity": 120,
+        "repairMinutes": 15,
+        "repairCostMinor": 18000,
+        "fixes0": false,
+        "fixes1": true,
+        "fixes2": true
+      },
+      {
+        "id": "replace-and-repair",
+        "quantity": 120,
+        "repairMinutes": 25,
+        "repairCostMinor": 30000,
+        "fixes0": true,
+        "fixes1": true,
+        "fixes2": true
+      },
+      {
+        "id": "external-replace-and-repair",
+        "quantity": 120,
+        "repairMinutes": 10,
+        "repairCostMinor": 40000,
+        "fixes0": true,
+        "fixes1": true,
+        "fixes2": true
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "none",
+        "fault0": false,
+        "fault1": false,
+        "fault2": false
+      },
+      {
+        "id": "print",
+        "fault0": true,
+        "fault1": false,
+        "fault2": false
+      },
+      {
+        "id": "destination",
+        "fault0": false,
+        "fault1": true,
+        "fault2": false
+      },
+      {
+        "id": "print-destination",
+        "fault0": true,
+        "fault1": true,
+        "fault2": false
+      },
+      {
+        "id": "checkout",
+        "fault0": false,
+        "fault1": false,
+        "fault2": true
+      },
+      {
+        "id": "print-checkout",
+        "fault0": true,
+        "fault1": false,
+        "fault2": true
+      },
+      {
+        "id": "destination-checkout",
+        "fault0": false,
+        "fault1": true,
+        "fault2": true
+      },
+      {
+        "id": "print-destination-checkout",
+        "fault0": true,
+        "fault1": true,
+        "fault2": true
+      }
+    ],
+    "people": [
+      {
+        "id": "campaign-owner-gift-221",
+        "name": "Taylor Chen",
+        "role": "campaign-owner"
+      }
+    ],
+    "permissions": [
+      {
+        "batchId": "GIFT-221",
+        "insertRevision": "insert-4",
+        "destinationRevision": "destination-2",
+        "checkoutRevision": "checkout-1",
+        "deviceScope": "campaign-test-phone",
+        "accountScope": "intended-recipient-account",
+        "id": "PERMISSION-rehearse-unchanged-GIFT-221",
+        "packageId": "rehearse-unchanged",
+        "actorId": "campaign-owner-gift-221",
+        "validFrom": 0,
+        "validThrough": 120,
+        "source": "Fictional authored permission record for GIFT-221"
+      },
+      {
+        "batchId": "GIFT-221",
+        "insertRevision": "insert-4",
+        "destinationRevision": "destination-2",
+        "checkoutRevision": "checkout-1",
+        "deviceScope": "campaign-test-phone",
+        "accountScope": "intended-recipient-account",
+        "id": "PERMISSION-reprint-GIFT-221",
+        "packageId": "reprint",
+        "actorId": "campaign-owner-gift-221",
+        "validFrom": 0,
+        "validThrough": 120,
+        "source": "Fictional authored permission record for GIFT-221"
+      },
+      {
+        "batchId": "GIFT-221",
+        "insertRevision": "insert-4",
+        "destinationRevision": "destination-2",
+        "checkoutRevision": "checkout-1",
+        "deviceScope": "campaign-test-phone",
+        "accountScope": "intended-recipient-account",
+        "id": "PERMISSION-repair-journey-GIFT-221",
+        "packageId": "repair-journey",
+        "actorId": "campaign-owner-gift-221",
+        "validFrom": 0,
+        "validThrough": 120,
+        "source": "Fictional authored permission record for GIFT-221"
+      },
+      {
+        "batchId": "GIFT-221",
+        "insertRevision": "insert-4",
+        "destinationRevision": "destination-2",
+        "checkoutRevision": "checkout-1",
+        "deviceScope": "campaign-test-phone",
+        "accountScope": "intended-recipient-account",
+        "id": "PERMISSION-replace-and-repair-GIFT-221",
+        "packageId": "replace-and-repair",
+        "actorId": "campaign-owner-gift-221",
+        "validFrom": 0,
+        "validThrough": 120,
+        "source": "Fictional authored permission record for GIFT-221"
+      },
+      {
+        "batchId": "GIFT-221",
+        "insertRevision": "insert-4",
+        "destinationRevision": "destination-2",
+        "checkoutRevision": "checkout-1",
+        "deviceScope": "campaign-test-phone",
+        "accountScope": "intended-recipient-account",
+        "id": "PERMISSION-external-GIFT-221",
+        "packageId": "external-replace-and-repair",
+        "actorId": "campaign-owner-gift-221",
+        "validFrom": 0,
+        "validThrough": 120,
+        "source": "Fictional authored permission record for GIFT-221"
+      }
+    ],
+    "resources": [
+      {
+        "id": "production-team",
+        "capacity": 1
+      }
+    ],
+    "calendars": [
+      {
+        "resource": "production-team",
+        "start": 0,
+        "end": 120
+      }
+    ],
+    "bookings": [],
+    "confirmations": [
+      {
+        "batchId": "GIFT-221",
+        "insertRevision": "insert-4",
+        "destinationRevision": "destination-2",
+        "checkoutRevision": "checkout-1",
+        "deviceScope": "campaign-test-phone",
+        "accountScope": "intended-recipient-account",
+        "id": "NEW-BOOKING-GIFT-221-R4",
+        "packageId": "external-replace-and-repair",
+        "confirmed": true,
+        "validFrom": 0,
+        "validThrough": 60,
+        "recordedAt": 0,
+        "source": "Fictional replacement booking for GIFT-221 insert-4",
+        "recordedBy": "production-owner-gift-221"
+      }
+    ]
+  },
+  "provenance": [
+    {
+      "id": "FICTIONAL-GIFTING-DEVELOPER-EXAMPLE-GIFT-221",
+      "description": "A ten-minute rehearsal and a 24-hour handoff window do not cure the older insert revision on the external booking. In-house replacement and repair finishes at minute 40. All values are fictional. Each case has its own independently allocated production team; the literal production-team resource ID is local to that case. This is a prospective package comparison, not evidence of completed repairs or a release approval. Only the scenario identity, timing parameters, owner and stated description differ from its one-hour counterpart; permission and booking scopes and validity, production availability, correction effects and all eight fault scenarios are retained."
+    }
+  ]
+}

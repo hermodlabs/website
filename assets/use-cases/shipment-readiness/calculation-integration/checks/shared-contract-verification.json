@@ -1,0 +1,48 @@
+{
+  "scope": "Shared integration calculation contracts and reproducible releases",
+  "sourceRoot": "/private/tmp/decision-lab-integration-alignment/source",
+  "tests": {
+    "passed": 10,
+    "failed": 0,
+    "log": "/private/tmp/decision-lab-integration-alignment/shared-contract-tests.log"
+  },
+  "checks": [
+    "calculation workflow generation --check",
+    "89 canonical gifting fixture copies --check",
+    "four shared helper copies --check"
+  ],
+  "files": [
+    {
+      "path": "sample_code/shared/reviewJourney.js",
+      "sha256": "2818d897eadca17a3e274883b14c2303fbbe82b8b227ef6c06d2fde7ab3fd795"
+    },
+    {
+      "path": "scripts/build-integration-calculation-journeys.mjs",
+      "sha256": "4a6e5b8dc76f77c023cc7873e5f693a582a987a8a43ce3ef5793b47c21e27e04"
+    },
+    {
+      "path": "examples/gifting/clients/generate.mjs",
+      "sha256": "f4beef00463e668ed89bc5330a9d6a26e49753b9f28b3749bbef6922e316d1a6"
+    },
+    {
+      "path": "tests/integrationCalculationJourneys.test.js",
+      "sha256": "4a8e756ef3dbac3edc6d511aedd5ec5d89534e0edae05338f912badc066b4afe"
+    },
+    {
+      "path": "sample_code/shipping/shipment-exceptions/app/shipment.workflow.json",
+      "sha256": "8967d300d274df4ecabc8d496495a12b9d1590acffd2ffe8c567871348d994fd"
+    },
+    {
+      "path": "sample_code/shipping/shipment-exceptions/app/workflow-releases/1.0.0/shipment.workflow.json",
+      "sha256": "97c2dd1f4bb7dbb3d863c6b5a4922814a75127de5247d234cddf23a8021ab6e1"
+    },
+    {
+      "path": "examples/gifting/clients/journey-v4/workflow.definition.json",
+      "sha256": "3f415fc544db7c2f83360e88ef88ece797abae8f9be2c43fd628c29ca5f42475"
+    },
+    {
+      "path": "examples/gifting/clients/journey-v3/workflow.definition.json",
+      "sha256": "574f5a7627b01ce5f0c484369990ccb15bca7f288063ad4d2564ae7235f93409"
+    }
+  ]
+}

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hermod Draft Assistant — Your Decision Point state" />
+  <title>Hermod — Your Decision Point</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#03070d', shell: '#07101a', panel: '#09131f', panel2: '#0d1927',
+            line: '#1c2b3d', mist: '#9ca9bb', signal: '#8b5cf6', signal2: '#b79cff',
+            blue: '#5b8cff', danger: '#ff4d57', good: '#67d391', warn: '#f3b95f'
+          },
+          fontFamily: {
+            sans: ['Inter','Avenir Next','ui-sans-serif','system-ui','sans-serif'],
+            mono: ['IBM Plex Mono','SFMono-Regular','Consolas','ui-monospace','monospace']
+          },
+          boxShadow: {
+            glow: '0 0 0 1px rgba(139,92,246,.55), 0 0 34px rgba(139,92,246,.18)',
+            panel: '0 22px 60px rgba(0,0,0,.28)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { color-scheme: dark; --purple:#8b5cf6; --lavender:#b79cff; --blue:#5b8cff; }
+    * { box-sizing: border-box; scrollbar-width: thin; scrollbar-color: #26384c transparent; }
+    html, body { min-height: 100%; }
+    body {
+      margin:0;
+      background:
+        radial-gradient(circle at 5% 2%, rgba(91,140,255,.11), transparent 26rem),
+        radial-gradient(circle at 86% 0%, rgba(139,92,246,.09), transparent 28rem),
+        linear-gradient(180deg,#03070d 0%,#06101a 48%,#03070d 100%);
+    }
+    body::before {
+      content:''; position:fixed; inset:0; z-index:-2; pointer-events:none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.012) 1px, transparent 1px);
+      background-size:34px 34px;
+      mask-image:linear-gradient(to bottom,rgba(0,0,0,.72),transparent 84%);
+    }
+    .app-shell { min-height:100vh; border:1px solid rgba(80,110,145,.34); background:rgba(2,8,14,.26); }
+    .sidebar {
+      background:linear-gradient(180deg,rgba(8,18,29,.98),rgba(3,9,15,.99)),
+                 radial-gradient(circle at 15% 7%,rgba(139,92,246,.08),transparent 18rem);
+    }
+    .brand-mark { position:relative; width:34px; height:34px; filter:drop-shadow(0 0 14px rgba(139,92,246,.38)); }
+    .brand-mark::before,.brand-mark::after {
+      content:''; position:absolute; top:4px; bottom:4px; width:10px;
+      background:linear-gradient(180deg,#c4b5fd,#8b5cf6 55%,#5b8cff);
+      clip-path:polygon(0 0,100% 17%,100% 60%,50% 74%,50% 100%,0 83%);
+    }
+    .brand-mark::before{left:4px}.brand-mark::after{right:4px;transform:scaleX(-1)}
+    .nav-item { position:relative; transition:.18s ease; }
+    .nav-item::before { content:''; position:absolute; inset:0 auto 0 0; width:3px; border-radius:0 6px 6px 0; background:linear-gradient(180deg,#5b8cff,#8b5cf6); opacity:0; }
+    .nav-item.active { background:linear-gradient(90deg,rgba(91,140,255,.14),rgba(63,91,126,.14)); border-color:rgba(91,140,255,.16); color:#fff; }
+    .nav-item.active::before{opacity:1}
+    .glass { background:linear-gradient(180deg,rgba(8,18,29,.93),rgba(5,12,20,.96)); box-shadow:inset 0 1px 0 rgba(255,255,255,.025),0 20px 60px rgba(0,0,0,.18); }
+    .step-line { height:1px; flex:1; background:linear-gradient(90deg,rgba(139,92,246,.55),rgba(255,255,255,.10)); }
+    .decision-hero {
+      background:
+        radial-gradient(circle at 8% 20%, rgba(91,140,255,.12), transparent 22rem),
+        radial-gradient(circle at 92% 20%, rgba(139,92,246,.10), transparent 24rem),
+        linear-gradient(135deg,rgba(8,18,29,.98),rgba(5,12,20,.98));
+    }
+    .pick-node { position:relative; transition:.16s ease; }
+    .pick-node::after { content:''; position:absolute; top:50%; left:100%; width:18px; height:1px; background:rgba(255,255,255,.09); }
+    .pick-node:last-child::after{display:none}
+    .pick-node.current { border-color:rgba(139,92,246,.72); background:linear-gradient(180deg,rgba(139,92,246,.16),rgba(91,140,255,.07)); box-shadow:0 0 0 1px rgba(139,92,246,.14),0 0 28px rgba(139,92,246,.10); }
+    .pick-node.past-blue { border-color:rgba(91,140,255,.22); background:rgba(91,140,255,.05); }
+    .pick-node.past-red { border-color:rgba(255,77,87,.20); background:rgba(255,77,87,.035); }
+    .pick-node.future { opacity:.36; }
+    .champion-icon { width:44px; height:44px; object-fit:cover; border-radius:11px; border:1px solid rgba(255,255,255,.11); box-shadow:0 5px 20px rgba(0,0,0,.24); background:#0a111a; }
+    .mini-champ { width:32px; height:32px; object-fit:cover; border-radius:9px; border:1px solid rgba(255,255,255,.10); }
+    .revealed-row { transition:.16s ease; }
+    .revealed-row:hover { background:rgba(255,255,255,.025); }
+    .summary-sentence { background:linear-gradient(90deg,rgba(91,140,255,.065),rgba(139,92,246,.055),rgba(255,255,255,.018)); }
+    .modal-backdrop { background:rgba(0,4,9,.78); backdrop-filter:blur(10px); }
+    .champ-option { transition:transform .16s ease,border-color .16s ease,background-color .16s ease; }
+    .champ-option:hover { transform:translateY(-2px); border-color:rgba(139,92,246,.55); background:rgba(139,92,246,.055); }
+    @media(max-width:850px){ .pick-node::after{display:none} }
+  </style>
+</head>
+<body class="font-sans text-slate-100 antialiased selection:bg-signal/40 selection:text-white">
+  <div class="app-shell grid lg:grid-cols-[246px_minmax(0,1fr)]">
+    <aside class="sidebar hidden min-h-screen border-r border-white/[0.06] lg:flex lg:flex-col">
+      <div class="flex h-[76px] items-center gap-3 border-b border-white/[0.05] px-7">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="text-[19px] font-semibold tracking-[.24em] text-slate-100">HERMOD</div>
+      </div>
+      <div class="flex-1 px-2 py-7">
+        <p class="px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Live</p>
+        <button class="nav-item active flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-semibold"><span class="grid h-6 w-6 place-items-center text-signal2">⌾</span>Draft Assistant</button>
+        <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">You</p>
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">▦</span>Champion Pool</button>
+        <button class="nav-item mt-1 flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">◇</span>Player Profile</button>
+        <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Learn</p>
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">□</span>Decision History</button>
+        <button class="nav-item mt-1 flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">⌁</span>Review & Learn</button>
+      </div>
+      <div class="border-t border-white/[0.06] p-4">
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-4 py-3 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span>⚙</span>Settings</button>
+        <div class="mt-3 flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.018] px-4 py-3">
+          <div class="grid h-9 w-9 place-items-center rounded-full border border-blue/30 bg-blue/10 text-xs font-bold text-blue">D2</div>
+          <div class="min-w-0 flex-1"><p class="text-sm font-semibold text-slate-200">Mid Main</p><p class="text-xs text-slate-500">Diamond II</p></div>
+          <span class="text-slate-600">⌄</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="min-w-0">
+      <header class="flex h-[76px] items-center justify-between border-b border-white/[0.06] bg-black/10 px-5 sm:px-7 lg:px-8">
+        <div class="flex items-center gap-2.5 text-sm text-slate-500"><span class="font-medium text-slate-300">Ranked Solo/Duo</span><span class="text-slate-700">•</span><span>Summoner's Rift</span><span class="hidden text-slate-700 sm:inline">•</span><span class="hidden sm:inline">Pick Phase</span></div>
+        <div class="flex items-center gap-3"><span class="hidden rounded-full border border-good/20 bg-good/[0.06] px-3 py-1.5 text-[11px] font-semibold text-good sm:inline-flex">LIVE DRAFT</span><button id="resetBtn" class="rounded-lg border border-white/[0.07] bg-white/[0.02] px-3 py-2 text-xs font-medium text-slate-400 hover:text-white">Reset example</button></div>
+      </header>
+
+      <div class="mx-auto max-w-[1450px] px-5 pb-12 pt-7 sm:px-7 lg:px-8">
+        <section aria-label="Draft assistant progress" class="glass rounded-2xl border border-white/[0.07] px-5 py-4 sm:px-6">
+          <div class="flex items-center gap-2 sm:gap-3">
+            <div class="flex min-w-0 items-center gap-3"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-signal/70 bg-signal/15 text-[11px] font-bold text-signal2">1</span><div class="min-w-0"><p class="text-[11px] font-bold uppercase tracking-[.16em] text-signal2">Draft</p><p class="hidden text-xs text-slate-500 sm:block">Decision point</p></div></div>
+            <div class="step-line"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-55"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-400">2</span><div class="hidden md:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-400">Your Options</p><p class="text-xs text-slate-600">Pool for today</p></div></div>
+            <div class="step-line opacity-35"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-45"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-500">3</span><div class="hidden lg:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500">Clarify</p><p class="text-xs text-slate-600">Only if needed</p></div></div>
+            <div class="step-line opacity-30"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-40"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-500">4</span><div class="hidden lg:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500">Recommendation</p><p class="text-xs text-slate-600">Rank choices</p></div></div>
+            <div class="step-line opacity-25"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-35"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-500">5</span><div class="hidden xl:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500">Decide</p><p class="text-xs text-slate-600">Record lock</p></div></div>
+          </div>
+        </section>
+
+        <section class="pb-7 pt-9">
+          <p class="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.2em] text-blue"><span class="h-1.5 w-1.5 rounded-full bg-blue shadow-[0_0_10px_rgba(91,140,255,.7)]"></span>Step 1 · Your decision point</p>
+          <div class="flex flex-col justify-between gap-5 xl:flex-row xl:items-end">
+            <div>
+              <h1 class="text-3xl font-semibold tracking-[-.035em] text-white sm:text-[38px]">We understand which decision you're making</h1>
+              <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-400 sm:text-[15px]">Before Hermod evaluates champions, confirm the exact moment in the draft. This is the boundary for the decision that follows.</p>
+            </div>
+            <div class="flex items-center gap-2 rounded-full border border-good/20 bg-good/[0.055] px-4 py-2 text-xs font-semibold text-good"><span class="h-1.5 w-1.5 rounded-full bg-good"></span>Decision point identified</div>
+          </div>
+        </section>
+
+        <section class="decision-hero overflow-hidden rounded-3xl border border-blue/20 shadow-panel">
+          <div class="grid gap-0 xl:grid-cols-[.78fr_1.22fr]">
+            <div class="border-b border-white/[0.06] p-6 sm:p-8 xl:border-b-0 xl:border-r">
+              <p class="text-[10px] font-bold uppercase tracking-[.2em] text-blue">Your decision</p>
+              <div class="mt-5 flex items-center gap-4">
+                <div class="grid h-16 w-16 place-items-center rounded-2xl border border-signal/45 bg-signal/10 text-xl font-extrabold text-signal2 shadow-[0_0_28px_rgba(139,92,246,.15)]">B3</div>
+                <div>
+                  <h2 class="text-3xl font-semibold tracking-[-.03em] text-white">MID</h2>
+                  <p class="mt-1 text-sm text-slate-400">Blue side · third pick</p>
+                </div>
+              </div>
+              <p class="mt-6 max-w-md text-sm leading-6 text-slate-300">You are choosing the <span class="font-semibold text-white">third Blue-side pick</span>. Your role is already known from your player profile.</p>
+              <button id="editDecisionBtn" class="mt-6 inline-flex items-center gap-2 rounded-xl border border-white/[0.09] bg-white/[0.025] px-4 py-2.5 text-xs font-semibold text-slate-300 hover:border-signal/30 hover:text-white"><span>✎</span>Edit decision point</button>
+            </div>
+
+            <div class="p-6 sm:p-8">
+              <div class="flex items-start justify-between gap-4">
+                <div><p class="text-[10px] font-bold uppercase tracking-[.2em] text-slate-500">Draft sequence</p><h3 class="mt-1 text-lg font-semibold text-white">Everything already revealed before B3</h3></div>
+                <span class="rounded-full border border-white/[0.07] bg-white/[0.02] px-3 py-1 text-[10px] font-bold uppercase tracking-[.12em] text-slate-500">4 prior picks</span>
+              </div>
+              <div id="draftSequence" class="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-5 xl:grid-cols-10"></div>
+              <p class="mt-4 text-xs leading-5 text-slate-500">Later slots are shown only to locate the current action. Hermod is not waiting for the rest of the draft to happen.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="summary-sentence mt-5 rounded-2xl border border-signal/18 p-5 sm:p-6">
+          <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <p class="text-[10px] font-bold uppercase tracking-[.2em] text-signal2">Hermod's understanding</p>
+              <p id="naturalSummary" class="mt-3 max-w-5xl text-lg leading-8 text-slate-200">You are choosing Mid on B3 with Gnar and Lee Sin already selected into Aatrox and Maokai.</p>
+              <p class="mt-2 text-xs leading-5 text-slate-500">Read this once. If it sounds wrong, fix the draft before continuing.</p>
+            </div>
+            <button id="summaryWrongBtn" class="shrink-0 rounded-xl border border-white/[0.09] bg-white/[0.025] px-4 py-2.5 text-xs font-semibold text-slate-300 hover:border-danger/30 hover:text-white">Something is wrong</button>
+          </div>
+        </section>
+
+        <section class="mt-5 grid gap-5 xl:grid-cols-2">
+          <article class="glass overflow-hidden rounded-2xl border border-blue/15">
+            <div class="flex items-center justify-between px-5 py-4 sm:px-6">
+              <div><p class="text-[11px] font-bold uppercase tracking-[.18em] text-blue">Your team · already revealed</p><p class="mt-1 text-xs text-slate-500">Picks locked before your B3 action.</p></div>
+              <span class="rounded-full border border-blue/20 bg-blue/[0.07] px-3 py-1 text-[11px] font-semibold text-blue">2 allies</span>
+            </div>
+            <div id="allyRevealed"></div>
+          </article>
+
+          <article class="glass overflow-hidden rounded-2xl border border-danger/15">
+            <div class="flex items-center justify-between px-5 py-4 sm:px-6">
+              <div><p class="text-[11px] font-bold uppercase tracking-[.18em] text-danger">Enemy · already revealed</p><p class="mt-1 text-xs text-slate-500">Opponent picks known before your B3 action.</p></div>
+              <span class="rounded-full border border-danger/20 bg-danger/[0.06] px-3 py-1 text-[11px] font-semibold text-red-300">2 enemies</span>
+            </div>
+            <div id="enemyRevealed"></div>
+          </article>
+        </section>
+
+        <section class="glass mt-5 rounded-2xl border border-white/[0.07] p-5 sm:p-6">
+          <div class="flex flex-col justify-between gap-4 md:flex-row md:items-center">
+            <div>
+              <div class="flex items-center gap-2"><p class="text-sm font-semibold text-white">Relevant bans</p><span class="rounded-full border border-white/[0.06] bg-white/[0.02] px-2 py-0.5 text-[10px] font-bold uppercase tracking-[.12em] text-slate-500">Optional</span></div>
+              <p class="mt-1 text-xs leading-5 text-slate-500">No relevant bans are recorded in this example. You can add one if it changes what is realistically available.</p>
+            </div>
+            <button id="addBanBtn" class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/[0.09] bg-white/[0.025] px-4 py-2.5 text-xs font-semibold text-slate-300 transition hover:border-signal/35 hover:bg-signal/[0.06] hover:text-white"><span class="text-signal2">＋</span>Add relevant ban</button>
+          </div>
+          <div id="banList" class="mt-5 flex min-h-[46px] flex-wrap gap-2"><div class="flex items-center gap-2 rounded-xl border border-dashed border-white/[0.08] px-4 py-3 text-xs text-slate-600"><span>○</span>No relevant bans added</div></div>
+        </section>
+
+        <section class="mt-6 rounded-2xl border border-good/16 bg-[linear-gradient(90deg,rgba(103,211,145,.045),rgba(91,140,255,.045),rgba(139,92,246,.04))] p-5 sm:p-6">
+          <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <div class="flex items-center gap-2 text-sm font-semibold text-white"><span class="grid h-5 w-5 place-items-center rounded-full bg-good/10 text-[11px] text-good">✓</span>Hermod knows the decision boundary</div>
+              <p class="mt-2 max-w-3xl text-xs leading-5 text-slate-500">Next, Hermod narrows this exact B3 Mid decision to champions you would realistically play. No strategic recommendation has been made yet.</p>
+            </div>
+            <button id="continueBtn" class="group inline-flex items-center justify-center gap-2 rounded-xl bg-signal px-5 py-3 text-sm font-bold text-white shadow-[0_10px_28px_rgba(139,92,246,.18)] transition hover:bg-[#9b70f7]">This looks right · Continue <span class="transition group-hover:translate-x-0.5">→</span></button>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div id="pickerModal" class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <div class="glass flex max-h-[86vh] w-full max-w-4xl flex-col overflow-hidden rounded-3xl border border-white/[0.09] shadow-2xl shadow-black/60">
+      <div class="flex items-start justify-between gap-5 border-b border-white/[0.07] px-6 py-5">
+        <div><p id="modalEyebrow" class="text-[10px] font-bold uppercase tracking-[.2em] text-signal2">Edit revealed pick</p><h2 id="modalTitle" class="mt-1 text-xl font-semibold tracking-[-.02em] text-white">Select champion</h2></div>
+        <button id="closeModal" class="grid h-9 w-9 place-items-center rounded-lg border border-white/[0.08] bg-white/[0.025] text-slate-400 hover:text-white">×</button>
+      </div>
+      <div class="border-b border-white/[0.06] px-6 py-4"><input id="champSearch" type="search" placeholder="Search champions…" class="w-full rounded-xl border border-white/[0.08] bg-black/20 px-4 py-3 text-sm text-white outline-none placeholder:text-slate-600 focus:border-signal/50" /></div>
+      <div id="champGrid" class="grid flex-1 grid-cols-3 gap-3 overflow-y-auto p-5 sm:grid-cols-5 md:grid-cols-6"></div>
+    </div>
+  </div>
+
+  <div id="decisionModal" class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <div class="glass w-full max-w-2xl rounded-3xl border border-white/[0.09] p-6 shadow-2xl shadow-black/60 sm:p-7">
+      <div class="flex items-start justify-between gap-5"><div><p class="text-[10px] font-bold uppercase tracking-[.2em] text-signal2">Edit decision point</p><h2 class="mt-1 text-xl font-semibold text-white">Which pick are you making?</h2></div><button id="closeDecisionModal" class="grid h-9 w-9 place-items-center rounded-lg border border-white/[0.08] bg-white/[0.025] text-slate-400 hover:text-white">×</button></div>
+      <p class="mt-2 text-sm leading-6 text-slate-500">This representative state is designed around B3, but you can preview how the page responds to a different slot.</p>
+      <div id="decisionChoices" class="mt-6 grid grid-cols-5 gap-2"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="pointer-events-none fixed bottom-5 right-5 z-[60] translate-y-3 rounded-xl border border-white/[0.08] bg-[#0b1623]/95 px-4 py-3 text-sm text-slate-200 opacity-0 shadow-2xl transition duration-200">Draft state updated</div>
+
+  <script>
+    const DDRAGON='https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/';
+    const champions=[['Ahri','Ahri'],['Akali','Akali'],['Annie','Annie'],['Aatrox','Aatrox'],['Azir','Azir'],['Caitlyn','Caitlyn'],['Camille','Camille'],['Diana','Diana'],['Ekko','Ekko'],['Galio','Galio'],['Gnar','Gnar'],['Gragas','Gragas'],['Hwei','Hwei'],['Irelia','Irelia'],['Jax','Jax'],['Jayce','Jayce'],['Jinx','Jinx'],['Kassadin','Kassadin'],['Katarina','Katarina'],['LeBlanc','Leblanc'],['Lee Sin','LeeSin'],['Lissandra','Lissandra'],['Lulu','Lulu'],['Lux','Lux'],['Maokai','Maokai'],['Nautilus','Nautilus'],['Orianna','Orianna'],['Poppy','Poppy'],['Renekton','Renekton'],['Sejuani','Sejuani'],['Syndra','Syndra'],['Taliyah','Taliyah'],['Twisted Fate','TwistedFate'],['Vi','Vi'],['Viktor','Viktor'],['Yone','Yone'],['Zed','Zed'],['Zoe','Zoe']].map(([name,key])=>({name,key,image:DDRAGON+key+'.png'}));
+    const pickOrder=['B1','R1','R2','B2','B3','R3','R4','B4','B5','R5'];
+
+    const initial={
+      pickSlot:'B3',
+      picks:[
+        {slot:'B1',side:'ally',role:'TOP',name:'Gnar',key:'Gnar'},
+        {slot:'R1',side:'enemy',role:'TOP',name:'Aatrox',key:'Aatrox'},
+        {slot:'R2',side:'enemy',role:'JUNGLE',name:'Maokai',key:'Maokai'},
+        {slot:'B2',side:'ally',role:'JUNGLE',name:'Lee Sin',key:'LeeSin'}
+      ],
+      bans:[]
+    };
+    let state=JSON.parse(JSON.stringify(initial));
+    let editIndex=null;
+
+    const seq=document.getElementById('draftSequence');
+    const allyRevealed=document.getElementById('allyRevealed');
+    const enemyRevealed=document.getElementById('enemyRevealed');
+    const summary=document.getElementById('naturalSummary');
+    const picker=document.getElementById('pickerModal');
+    const decisionModal=document.getElementById('decisionModal');
+    const champGrid=document.getElementById('champGrid');
+    const champSearch=document.getElementById('champSearch');
+    const toast=document.getElementById('toast');
+    const banList=document.getElementById('banList');
+
+    function showToast(message){
+      toast.textContent=message; toast.classList.remove('opacity-0','translate-y-3');
+      setTimeout(()=>toast.classList.add('opacity-0','translate-y-3'),1500);
+    }
+
+    function champByName(name){ return champions.find(c=>c.name===name); }
+
+    function renderSequence(){
+      const currentIdx=pickOrder.indexOf(state.pickSlot);
+      seq.innerHTML=pickOrder.map((slot,i)=>{
+        const p=state.picks.find(x=>x.slot===slot);
+        const isCurrent=slot===state.pickSlot;
+        const isPast=i<currentIdx;
+        let cls=isCurrent?'current':isPast?(slot.startsWith('B')?'past-blue':'past-red'):'future';
+        let body='';
+        if(p){
+          body=`<img class="mx-auto h-8 w-8 rounded-lg border border-white/[0.1] object-cover" src="${DDRAGON+p.key+'.png'}" alt="${p.name}"><span class="mt-1 block truncate text-[10px] font-semibold text-slate-300">${p.name}</span>`;
+        } else if(isCurrent){
+          body=`<span class="grid h-8 w-8 place-items-center rounded-lg border border-signal/30 bg-signal/10 text-[9px] font-extrabold text-signal2">YOU</span><span class="mt-1 block text-[10px] font-semibold text-white">MID</span>`;
+        } else {
+          body=`<span class="mx-auto block h-8 w-8 rounded-lg border border-dashed border-white/[0.08]"></span><span class="mt-1 block text-[10px] text-slate-600">Later</span>`;
+        }
+        return `<div class="pick-node ${cls} rounded-xl border border-white/[0.08] px-2 py-2 text-center">
+          <span class="block text-[9px] font-bold uppercase tracking-[.12em] ${slot.startsWith('B')?'text-blue':'text-red-300'}">${slot}</span>
+          <div class="mt-2 flex flex-col items-center">${body}</div>
+        </div>`;
+      }).join('');
+    }
+
+    function revealedMarkup(p,index){
+      return `<button data-edit-index="${index}" class="revealed-row grid w-full grid-cols-[54px_1fr_auto] items-center gap-3 border-t border-white/[0.055] px-5 py-4 text-left sm:px-6">
+        <img class="champion-icon" src="${DDRAGON+p.key+'.png'}" alt="${p.name}">
+        <span class="min-w-0"><span class="block text-sm font-semibold text-slate-200">${p.name}</span><span class="mt-0.5 block text-[11px] text-slate-600">${p.slot} · ${p.role}</span></span>
+        <span class="rounded-lg border border-white/[0.07] bg-white/[0.018] px-2.5 py-1.5 text-[10px] font-semibold text-slate-500">Edit</span>
+      </button>`;
+    }
+
+    function renderRevealed(){
+      const allies=state.picks.map((p,i)=>({...p,index:i})).filter(p=>p.side==='ally');
+      const enemies=state.picks.map((p,i)=>({...p,index:i})).filter(p=>p.side==='enemy');
+      allyRevealed.innerHTML=allies.map(p=>revealedMarkup(p,p.index)).join('');
+      enemyRevealed.innerHTML=enemies.map(p=>revealedMarkup(p,p.index)).join('');
+      document.querySelectorAll('[data-edit-index]').forEach(btn=>btn.addEventListener('click',()=>openPicker(Number(btn.dataset.editIndex))));
+    }
+
+    function listNames(side){ return state.picks.filter(p=>p.side===side).map(p=>p.name); }
+    function joinNames(names){ return names.length<=1?(names[0]||'no champions'):names.length===2?`${names[0]} and ${names[1]}`:`${names.slice(0,-1).join(', ')}, and ${names.at(-1)}`; }
+
+    function renderSummary(){
+      summary.textContent=`You are choosing Mid on ${state.pickSlot} with ${joinNames(listNames('ally'))} already selected into ${joinNames(listNames('enemy'))}.`;
+    }
+
+    function renderBans(){
+      if(!state.bans.length){
+        banList.innerHTML='<div class="flex items-center gap-2 rounded-xl border border-dashed border-white/[0.08] px-4 py-3 text-xs text-slate-600"><span>○</span>No relevant bans added</div>';
+        return;
+      }
+      banList.innerHTML=state.bans.map((b,i)=>`<button data-ban="${i}" class="flex items-center gap-2 rounded-xl border border-white/[0.08] bg-black/15 py-1.5 pl-1.5 pr-3"><img class="mini-champ opacity-75" src="${DDRAGON+b.key+'.png'}" alt="${b.name}"><span class="text-xs font-medium text-slate-300">${b.name}</span><span class="text-slate-600">×</span></button>`).join('');
+      banList.querySelectorAll('[data-ban]').forEach(btn=>btn.addEventListener('click',()=>{state.bans.splice(Number(btn.dataset.ban),1);renderBans();showToast('Ban removed');}));
+    }
+
+    function renderAll(){ renderSequence(); renderRevealed(); renderSummary(); renderBans(); }
+
+    function renderChampionGrid(query='',banMode=false){
+      const q=query.trim().toLowerCase();
+      const filtered=champions.filter(c=>c.name.toLowerCase().includes(q));
+      champGrid.innerHTML=filtered.map(c=>`<button data-champ="${c.name}" data-ban-mode="${banMode?'1':'0'}" class="champ-option overflow-hidden rounded-xl border border-white/[0.07] bg-white/[0.018] p-2 text-left"><div class="aspect-square overflow-hidden rounded-lg bg-black/20"><img class="h-full w-full object-cover" src="${c.image}" alt="${c.name}"></div><p class="mt-2 truncate px-0.5 text-xs font-semibold text-slate-300">${c.name}</p></button>`).join('');
+      champGrid.querySelectorAll('[data-champ]').forEach(btn=>btn.addEventListener('click',()=>chooseChampion(btn.dataset.champ,btn.dataset.banMode==='1')));
+    }
+
+    function openPicker(index){
+      editIndex=index;
+      const p=state.picks[index];
+      document.getElementById('modalEyebrow').textContent=`${p.slot} · ${p.role}`;
+      document.getElementById('modalTitle').textContent=`Edit ${p.name}`;
+      champSearch.value=''; renderChampionGrid('',false);
+      picker.classList.remove('hidden'); picker.classList.add('flex'); setTimeout(()=>champSearch.focus(),40);
+    }
+
+    function openBanPicker(){
+      editIndex='ban';
+      document.getElementById('modalEyebrow').textContent='Relevant bans';
+      document.getElementById('modalTitle').textContent='Add a banned champion';
+      champSearch.value=''; renderChampionGrid('',true);
+      picker.classList.remove('hidden'); picker.classList.add('flex'); setTimeout(()=>champSearch.focus(),40);
+    }
+
+    function closePicker(){ picker.classList.add('hidden'); picker.classList.remove('flex'); editIndex=null; }
+
+    function chooseChampion(name,banMode){
+      const c=champByName(name); if(!c) return;
+      if(banMode || editIndex==='ban'){
+        if(!state.bans.some(b=>b.name===c.name)) state.bans.push({name:c.name,key:c.key});
+        closePicker(); renderBans(); showToast(`${c.name} added to relevant bans`); return;
+      }
+      if(typeof editIndex==='number'){
+        const old=state.picks[editIndex].name;
+        state.picks[editIndex].name=c.name; state.picks[editIndex].key=c.key;
+        closePicker(); renderAll(); showToast(`${old} changed to ${c.name}`);
+      }
+    }
+
+    function renderDecisionChoices(){
+      const wrap=document.getElementById('decisionChoices');
+      wrap.innerHTML=pickOrder.map(slot=>`<button data-slot="${slot}" class="rounded-xl border ${slot===state.pickSlot?'border-signal/60 bg-signal/10 text-white':'border-white/[0.08] bg-white/[0.02] text-slate-400'} px-3 py-3 text-sm font-bold hover:border-signal/35">${slot}</button>`).join('');
+      wrap.querySelectorAll('[data-slot]').forEach(btn=>btn.addEventListener('click',()=>{
+        state.pickSlot=btn.dataset.slot; decisionModal.classList.add('hidden'); decisionModal.classList.remove('flex'); renderAll(); showToast(`Decision point changed to ${state.pickSlot}`);
+      }));
+    }
+
+    champSearch.addEventListener('input',e=>renderChampionGrid(e.target.value,editIndex==='ban'));
+    document.getElementById('closeModal').addEventListener('click',closePicker);
+    picker.addEventListener('click',e=>{if(e.target===picker)closePicker();});
+    document.getElementById('addBanBtn').addEventListener('click',openBanPicker);
+    document.getElementById('editDecisionBtn').addEventListener('click',()=>{renderDecisionChoices();decisionModal.classList.remove('hidden');decisionModal.classList.add('flex');});
+    document.getElementById('closeDecisionModal').addEventListener('click',()=>{decisionModal.classList.add('hidden');decisionModal.classList.remove('flex');});
+    decisionModal.addEventListener('click',e=>{if(e.target===decisionModal){decisionModal.classList.add('hidden');decisionModal.classList.remove('flex');}});
+    document.getElementById('summaryWrongBtn').addEventListener('click',()=>showToast('Edit any revealed pick or the decision point above'));
+    document.getElementById('continueBtn').addEventListener('click',()=>showToast('Decision point confirmed — ready for Your Options'));
+    document.getElementById('resetBtn').addEventListener('click',()=>{state=JSON.parse(JSON.stringify(initial));renderAll();showToast('Representative decision point restored');});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePicker();decisionModal.classList.add('hidden');decisionModal.classList.remove('flex');}});
+
+    renderAll();
+  </script>
+</body>
+</html>

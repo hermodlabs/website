@@ -1,0 +1,102 @@
+{
+  "format": "shipment-budget-exercise/1",
+  "sdkVersion": "0.1.0",
+  "appUrl": "https://hermodlabs.github.io/review_lab/",
+  "purpose": "Separate changed-fact exercise after the unchanged same-case two-app comparison.",
+  "source": {
+    "app": "../earliest-arrival-shipment.app.json",
+    "appFileHash": "91749301d2f3ad101ea000d621d1e01f6086f846b94b0b4ee7d632763e999335",
+    "packageHash": "59b959eff51d59881c79f6b16e2a498952f42afad051353178d10981eeee7db4",
+    "inputs": "../shared-case.inputs.json",
+    "inputsFileHash": "6b12f37571eaedcb1431045b6e2f037a08101cd71e3201948727825d12b937b8",
+    "baselineInputsHash": "3fc5ff4960dae65684f6ef5bff578785da2a482d70858b28f84ddfa0f255dee4"
+  },
+  "change": {
+    "path": "parameters.expenseLimit",
+    "before": 650000,
+    "after": 500000,
+    "unit": "USD cent",
+    "onlyCaseValueChanged": true,
+    "appPackageUnchanged": true
+  },
+  "result": {
+    "status": "complete",
+    "complete": true,
+    "preferredPlanId": "plan-000001",
+    "preferredArrangement": "direct",
+    "direct": {
+      "feasible": true,
+      "expenseMinor": 400000
+    },
+    "backup": {
+      "feasible": false,
+      "expenseMinor": 600000,
+      "failedConstraints": [
+        {
+          "id": "total-expense-limit",
+          "requirement": "COST"
+        }
+      ]
+    }
+  },
+  "artifacts": [
+    {
+      "file": "expense-limit-5000.inputs.json",
+      "bytes": 4753,
+      "sha256": "61b62cb3a85f5b11a7145624c0f50348286cdbdb87edfa6ec7cd758e151ad84e"
+    },
+    {
+      "file": "expense-limit-5000.inputs.yaml",
+      "bytes": 3505,
+      "sha256": "a59a6b4b7b33903b2128c47a774bdb856ca87cb22e70698ce946d5745006e32a"
+    },
+    {
+      "file": "expense-limit-5000.case.json",
+      "bytes": 51172,
+      "sha256": "265780165d3039535ffa8e807803db593bf792bf8aff124f68121ef52ee93353"
+    },
+    {
+      "file": "expense-limit-5000.run.json",
+      "bytes": 375843,
+      "sha256": "da1dcaf1118fcb6d0ac7616f4b66f73f093f45cb5d576cc97cd244647b3dab85"
+    },
+    {
+      "file": "expense-limit-5000.app-case.json",
+      "bytes": 415061,
+      "sha256": "f78108ce50707a62f0157d2c7435b883e320d76cc50459238d1e75238ae55d4d"
+    },
+    {
+      "file": "expense-limit-5000-report.png",
+      "bytes": 62373,
+      "sha256": "02ac59fd306661a369d17767f367b7827726666d9cdaa79f3c26eaff95d38548"
+    },
+    {
+      "file": "capture-provenance.json",
+      "bytes": 10700,
+      "sha256": "aadf1e086f74ca4490290b3f878454fe206a7fe73af750ecac0b161407357ef1"
+    },
+    {
+      "file": "expense-limit-5000-preview.png",
+      "bytes": 34927,
+      "sha256": "be538591b3f3f073d36328eaf496aea66b952589122b1ff219c9c506331ed6e2"
+    }
+  ],
+  "browserVerification": {
+    "localBuildOnly": false,
+    "publicDeployment": true,
+    "externalNetworkBlocked": false,
+    "exactAppPackageRetained": true,
+    "onlyCaseValueChanged": true,
+    "portableCaseImported": true,
+    "workbookPreviewApplied": true,
+    "provenance": "capture-provenance.json"
+  },
+  "uiRefresh": {
+    "capturedAt": "2026-11-18T14:55:49.635Z",
+    "captureUrl": "http://127.0.0.1:5187/",
+    "buildId": "2f12f7f5656a4f5899a9",
+    "provenance": "capture-provenance.json",
+    "previousManifest": "exercise-manifest.before-decision-views.json",
+    "nativeArtifactsUnchanged": true
+  }
+}

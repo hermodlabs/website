@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hermod Draft Assistant — Recommendation Step 4" />
+  <title>Hermod — Recommendation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#03070d', shell: '#07101a', panel: '#09131f', panel2: '#0d1927', line: '#1c2b3d',
+            mist: '#9ca9bb', signal: '#8b5cf6', signal2: '#b79cff', blue: '#5b8cff', danger: '#ff4d57',
+            good: '#67d391', warn: '#eebc66'
+          },
+          fontFamily: {
+            sans: ['Inter', 'Avenir Next', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            mono: ['IBM Plex Mono', 'SFMono-Regular', 'Consolas', 'ui-monospace', 'monospace']
+          },
+          boxShadow: {
+            glow: '0 0 0 1px rgba(139,92,246,.55), 0 0 34px rgba(139,92,246,.18)',
+            panel: '0 22px 60px rgba(0,0,0,.28)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { color-scheme: dark; --purple:#8b5cf6; --lavender:#b79cff; --blue:#5b8cff; }
+    * { box-sizing: border-box; scrollbar-width: thin; scrollbar-color: #26384c transparent; }
+    html, body { min-height: 100%; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 4% 2%, rgba(91,140,255,.11), transparent 26rem),
+        radial-gradient(circle at 88% 0%, rgba(139,92,246,.10), transparent 29rem),
+        linear-gradient(180deg, #03070d 0%, #06101a 48%, #03070d 100%);
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: -2; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.012) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.72), transparent 84%);
+    }
+    .app-shell {
+      min-height: 100vh;
+      border: 1px solid rgba(80,110,145,.34);
+      background: rgba(2,8,14,.26);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.025), 0 30px 100px rgba(0,0,0,.38);
+    }
+    .sidebar {
+      background:
+        linear-gradient(180deg, rgba(8,18,29,.98), rgba(3,9,15,.99)),
+        radial-gradient(circle at 15% 7%, rgba(139,92,246,.08), transparent 18rem);
+    }
+    .brand-mark { position: relative; width: 34px; height: 34px; filter: drop-shadow(0 0 14px rgba(139,92,246,.38)); }
+    .brand-mark::before, .brand-mark::after {
+      content: ''; position: absolute; top: 4px; bottom: 4px; width: 10px;
+      background: linear-gradient(180deg, #c4b5fd, #8b5cf6 55%, #5b8cff);
+      clip-path: polygon(0 0, 100% 17%, 100% 60%, 50% 74%, 50% 100%, 0 83%);
+    }
+    .brand-mark::before { left: 4px; }
+    .brand-mark::after { right: 4px; transform: scaleX(-1); }
+    .nav-item { position: relative; transition: .18s ease; }
+    .nav-item::before {
+      content: ''; position: absolute; inset: 0 auto 0 0; width: 3px; border-radius: 0 6px 6px 0;
+      background: linear-gradient(180deg,#5b8cff,#8b5cf6); opacity: 0;
+    }
+    .nav-item.active {
+      background: linear-gradient(90deg, rgba(91,140,255,.14), rgba(63,91,126,.14));
+      border-color: rgba(91,140,255,.16); color: #fff;
+    }
+    .nav-item.active::before { opacity: 1; }
+    .glass {
+      background: linear-gradient(180deg, rgba(8,18,29,.93), rgba(5,12,20,.96));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.025), 0 20px 60px rgba(0,0,0,.18);
+    }
+    .step-line { height: 1px; flex: 1; background: linear-gradient(90deg, rgba(139,92,246,.55), rgba(255,255,255,.10)); }
+    .mini-champ { width: 32px; height: 32px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,.10); background: #0a111a; }
+    .draft-chip { background: linear-gradient(180deg, rgba(255,255,255,.026), rgba(255,255,255,.012)); }
+    .pick-card {
+      position: relative; isolation: isolate; overflow: hidden;
+      background: linear-gradient(180deg, rgba(9,18,29,.97), rgba(5,12,20,.98));
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+    .pick-card:hover { transform: translateY(-2px); border-color: rgba(183,156,255,.36); }
+    .pick-card.recommended {
+      border-color: rgba(139,92,246,.78);
+      box-shadow: 0 0 0 1px rgba(139,92,246,.32), 0 0 30px rgba(139,92,246,.18), inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    .pick-card.recommended::before {
+      content: ''; position: absolute; inset: 0; z-index: 3; pointer-events: none;
+      background: linear-gradient(135deg, rgba(139,92,246,.11), transparent 44%, rgba(91,140,255,.025));
+    }
+    .splash-wrap { position: relative; overflow: hidden; height: 170px; background: #09121e; }
+    .splash-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 23%; transform: scale(1.03); }
+    .splash-wrap::after {
+      content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg, rgba(4,10,17,.02), rgba(4,10,17,.12) 42%, rgba(5,12,20,.97) 100%),
+        linear-gradient(90deg, rgba(5,12,20,.20), transparent 55%);
+    }
+    .tag {
+      display: inline-flex; align-items: center; gap: .35rem; border-radius: .5rem;
+      border: 1px solid rgba(255,255,255,.065); background: rgba(27,42,61,.55);
+      padding: .36rem .58rem; font-size: .67rem; font-weight: 700; letter-spacing: .015em; white-space: nowrap;
+    }
+    .action-btn { transition: .16s ease; }
+    .action-btn:hover { border-color: rgba(183,156,255,.35); background: rgba(139,92,246,.055); color: #fff; transform: translateY(-1px); }
+    .action-btn.active { border-color: rgba(139,92,246,.54); background: rgba(139,92,246,.10); color: #d8cbff; box-shadow: inset 0 0 0 1px rgba(139,92,246,.05); }
+    .analysis-panel {
+      background:
+        radial-gradient(circle at 90% 0%, rgba(139,92,246,.07), transparent 18rem),
+        linear-gradient(180deg, rgba(8,18,29,.95), rgba(5,12,20,.97));
+    }
+    .reason-number { background: linear-gradient(135deg, rgba(91,140,255,.13), rgba(139,92,246,.13)); }
+    .metric-track { height: 6px; border-radius: 999px; background: rgba(255,255,255,.05); overflow: hidden; }
+    .metric-fill { height: 100%; border-radius: inherit; background: linear-gradient(90deg,#5b8cff,#8b5cf6,#b79cff); }
+    .context-row { border-top: 1px solid rgba(255,255,255,.052); }
+    .source-pill { border: 1px solid rgba(255,255,255,.065); background: rgba(255,255,255,.018); }
+    .pulse { animation: pulse 2.15s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(139,92,246,.26); } 50% { box-shadow: 0 0 0 8px rgba(139,92,246,0); } }
+    @media (prefers-reduced-motion: reduce) { .pulse { animation: none; } }
+  </style>
+</head>
+<body class="font-sans text-slate-100 antialiased selection:bg-signal/40 selection:text-white">
+  <div class="app-shell grid lg:grid-cols-[246px_minmax(0,1fr)]">
+    <!-- Sidebar -->
+    <aside class="sidebar hidden min-h-screen border-r border-white/[0.06] lg:flex lg:flex-col">
+      <div class="flex h-[76px] items-center gap-3 border-b border-white/[0.05] px-7">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="text-[19px] font-semibold tracking-[.24em] text-slate-100">HERMOD</div>
+      </div>
+      <div class="flex-1 px-2 py-7">
+        <p class="px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Live</p>
+        <button class="nav-item active flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-semibold"><span class="grid h-6 w-6 place-items-center text-signal2">⌾</span>Draft Assistant</button>
+        <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">You</p>
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">▦</span>Champion Pool</button>
+        <button class="nav-item mt-1 flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">◇</span>Player Profile</button>
+        <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Learn</p>
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">□</span>Decision History</button>
+        <button class="nav-item mt-1 flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">⌁</span>Review & Learn</button>
+      </div>
+      <div class="border-t border-white/[0.06] p-4">
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-4 py-3 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span>⚙</span> Settings</button>
+        <div class="mt-3 flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.018] px-4 py-3">
+          <div class="grid h-9 w-9 place-items-center rounded-full border border-blue/30 bg-blue/10 text-xs font-bold text-blue">D2</div>
+          <div class="min-w-0 flex-1"><p class="text-sm font-semibold text-slate-200">Mid Main</p><p class="text-xs text-slate-500">Diamond II</p></div>
+          <span class="text-slate-600">⌄</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="min-w-0">
+      <header class="flex h-[76px] items-center justify-between border-b border-white/[0.06] bg-[#050d16]/75 px-5 backdrop-blur-xl sm:px-7 lg:px-8">
+        <div class="flex items-center gap-3">
+          <div class="brand-mark scale-[.8] lg:hidden" aria-hidden="true"></div>
+          <div><p class="text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Draft Assistant</p><p class="mt-1 text-sm font-semibold text-slate-200">Live decision · B3 MID</p></div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="hidden rounded-lg border border-white/[0.07] bg-white/[0.02] px-3 py-2 text-xs text-slate-500 sm:inline-flex">Patch 16.16 · Diamond+</span>
+          <button id="editContextBtn" class="rounded-lg border border-white/[0.07] bg-white/[0.02] px-3 py-2 text-xs font-medium text-slate-400 transition hover:text-white">← Edit context</button>
+        </div>
+      </header>
+
+      <div class="mx-auto max-w-[1500px] px-5 pb-12 pt-7 sm:px-7 lg:px-8">
+        <!-- Stepper -->
+        <section aria-label="Draft assistant progress" class="glass rounded-2xl border border-white/[0.07] px-5 py-4 sm:px-6">
+          <div class="flex items-center gap-2 sm:gap-3">
+            <div class="flex min-w-0 items-center gap-3 opacity-80"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-good/35 bg-good/[0.08] text-[11px] font-bold text-good">✓</span><div class="hidden min-w-0 sm:block"><p class="text-[11px] font-bold uppercase tracking-[.16em] text-slate-300">Draft</p><p class="text-xs text-slate-600">Current state</p></div></div>
+            <div class="step-line"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-80"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-good/35 bg-good/[0.08] text-[11px] font-bold text-good">✓</span><div class="hidden min-w-0 sm:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-300">Your Options</p><p class="text-xs text-slate-600">3 feasible</p></div></div>
+            <div class="step-line"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-80"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-good/35 bg-good/[0.08] text-[11px] font-bold text-good">✓</span><div class="hidden min-w-0 md:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-300">Clarify</p><p class="text-xs text-slate-600">Decision ready</p></div></div>
+            <div class="step-line"></div>
+            <div class="flex min-w-0 items-center gap-3"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-signal/70 bg-signal/15 text-[11px] font-bold text-signal2 shadow-[0_0_18px_rgba(139,92,246,.16)]">4</span><div class="min-w-0"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-signal2">Recommendation</p><p class="hidden text-xs text-slate-500 sm:block">Rank choices</p></div></div>
+            <div class="step-line opacity-30"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-40"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/[0.12] bg-white/[0.025] text-[11px] font-bold text-slate-500">5</span><div class="hidden min-w-0 xl:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-500">Decide</p><p class="text-xs text-slate-600">Record lock</p></div></div>
+          </div>
+        </section>
+
+        <!-- Heading -->
+        <section class="pb-7 pt-9">
+          <div class="flex flex-col justify-between gap-5 xl:flex-row xl:items-end">
+            <div>
+              <p class="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.2em] text-signal2"><span class="pulse h-1.5 w-1.5 rounded-full bg-signal"></span>Step 4 · Recommendation</p>
+              <h1 class="text-3xl font-semibold tracking-[-.035em] text-white sm:text-[38px]">Choose between the options you can actually play.</h1>
+              <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-400 sm:text-[15px]">Hermod has enough decision-relevant state. The recommendation is now the primary surface, with the draft and remaining uncertainty kept visible rather than hidden.</p>
+            </div>
+            <div class="flex items-center gap-2 rounded-full border border-good/18 bg-good/[0.04] px-3 py-1.5 text-xs text-slate-400"><span class="h-1.5 w-1.5 rounded-full bg-good"></span><span>Decision ready · 3 viable picks</span></div>
+          </div>
+        </section>
+
+        <div class="grid gap-5 xl:grid-cols-[minmax(0,1fr)_330px]">
+          <div class="min-w-0 space-y-5">
+            <!-- Compact draft context -->
+            <section class="glass overflow-hidden rounded-2xl border border-white/[0.07]">
+              <div class="flex flex-col gap-4 px-5 py-4 lg:flex-row lg:items-center lg:justify-between">
+                <div class="flex items-center gap-3">
+                  <span class="rounded-lg border border-blue/20 bg-blue/[0.06] px-2.5 py-1.5 font-mono text-[10px] font-bold tracking-[.12em] text-blue">B3 · MID</span>
+                  <div><p class="text-xs font-semibold text-slate-300">Current draft</p><p class="mt-0.5 text-[10px] text-slate-600">Compact, read-only in recommendation mode</p></div>
+                </div>
+                <button id="expandDraftBtn" class="text-xs font-medium text-slate-500 transition hover:text-slate-200">Show more context ↓</button>
+              </div>
+              <div class="grid gap-px border-t border-white/[0.06] bg-white/[0.04] lg:grid-cols-2">
+                <div class="bg-[#07111b] px-5 py-4">
+                  <div class="flex items-center justify-between"><p class="text-[10px] font-bold uppercase tracking-[.16em] text-blue">Your team</p><span class="text-[10px] text-slate-600">Known</span></div>
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    <div class="draft-chip flex items-center gap-2 rounded-xl border border-white/[0.06] px-2.5 py-2"><img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Gnar.png" alt="Gnar"><div><p class="text-xs font-semibold text-slate-300">Gnar</p><p class="text-[9px] text-slate-600">TOP</p></div></div>
+                    <div class="draft-chip flex items-center gap-2 rounded-xl border border-white/[0.06] px-2.5 py-2"><img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/LeeSin.png" alt="Lee Sin"><div><p class="text-xs font-semibold text-slate-300">Lee Sin</p><p class="text-[9px] text-slate-600">JUNGLE</p></div></div>
+                    <div class="draft-chip flex items-center gap-2 rounded-xl border border-blue/15 bg-blue/[0.035] px-2.5 py-2"><div class="grid h-8 w-8 place-items-center rounded-lg border border-blue/25 bg-blue/[0.08] text-[9px] font-bold text-blue">YOU</div><div><p class="text-xs font-semibold text-blue">Your pick</p><p class="text-[9px] text-slate-600">MID</p></div></div>
+                  </div>
+                </div>
+                <div class="bg-[#07111b] px-5 py-4">
+                  <div class="flex items-center justify-between"><p class="text-[10px] font-bold uppercase tracking-[.16em] text-red-300">Enemy team</p><span class="text-[10px] text-good">Role clarified</span></div>
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    <div class="draft-chip flex items-center gap-2 rounded-xl border border-white/[0.06] px-2.5 py-2"><img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Gragas.png" alt="Gragas"><div><p class="text-xs font-semibold text-slate-300">Gragas</p><p class="text-[9px] text-good">TOP CONFIRMED</p></div></div>
+                    <div class="draft-chip flex items-center gap-2 rounded-xl border border-white/[0.06] px-2.5 py-2"><img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Zed.png" alt="Zed"><div><p class="text-xs font-semibold text-slate-300">Zed</p><p class="text-[9px] text-slate-600">MID</p></div></div>
+                    <div class="draft-chip flex items-center gap-2 rounded-xl border border-white/[0.06] px-2.5 py-2"><img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Nautilus.png" alt="Nautilus"><div><p class="text-xs font-semibold text-slate-300">Nautilus</p><p class="text-[9px] text-slate-600">SUPPORT</p></div></div>
+                  </div>
+                </div>
+              </div>
+              <div id="expandedDraft" class="hidden border-t border-white/[0.06] bg-white/[0.012] px-5 py-4">
+                <div class="grid gap-4 sm:grid-cols-3">
+                  <div><p class="text-[9px] font-bold uppercase tracking-[.14em] text-slate-600">Pool source</p><p class="mt-1 text-xs text-slate-300">Saved pool, adjusted for this draft</p></div>
+                  <div><p class="text-[9px] font-bold uppercase tracking-[.14em] text-slate-600">Clarification</p><p class="mt-1 text-xs text-slate-300">Gragas = Top · Ahri = playable if needed</p></div>
+                  <div><p class="text-[9px] font-bold uppercase tracking-[.14em] text-slate-600">Relevant ban</p><p class="mt-1 text-xs text-slate-300">Viktor unavailable</p></div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Recommendation cards -->
+            <section>
+              <div class="mb-4 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+                <div><p class="text-[10px] font-bold uppercase tracking-[.2em] text-slate-600">Recommendation</p><h2 class="mt-1 text-xl font-semibold tracking-[-.025em] text-white">3 viable picks from your current pool</h2></div>
+                <div class="inline-flex items-center gap-2 rounded-lg border border-white/[0.07] bg-white/[0.018] px-3 py-2 text-xs text-slate-500"><span>Execution fit</span><span class="font-semibold text-blue">High</span></div>
+              </div>
+
+              <div class="grid gap-5 lg:grid-cols-2 2xl:grid-cols-3">
+                <!-- Orianna -->
+                <article class="pick-card recommended min-h-[390px] rounded-2xl border" data-champion="Orianna">
+                  <div class="splash-wrap">
+                    <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Orianna_0.jpg" alt="Orianna splash art" />
+                    <div class="absolute left-4 top-4 z-10 inline-flex items-center gap-2 rounded-lg bg-signal px-3 py-2 text-[10px] font-bold uppercase tracking-[.12em] text-white shadow-lg shadow-signal/20"><span>★</span>Recommended</div>
+                  </div>
+                  <div class="relative z-10 -mt-7 px-5 pb-5">
+                    <div class="flex items-end gap-3"><img class="h-14 w-14 rounded-xl border-2 border-[#27384b] bg-panel object-cover shadow-lg" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Orianna.png" alt="Orianna icon"><div class="pb-1"><h3 class="text-[24px] font-medium text-white">Orianna</h3><p class="text-[12px] text-slate-400">Control Mage</p></div></div>
+                    <div class="mt-5 flex gap-3"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full border border-signal text-[10px] font-bold text-signal2">✓</span><div><p class="text-sm font-semibold text-slate-100">Best overall fit for this draft.</p><p class="mt-1 text-[13px] leading-5 text-slate-400">Most reliable follow-up with Gnar and Lee Sin while keeping execution risk low.</p></div></div>
+                    <div class="mt-5 flex flex-wrap gap-2"><span class="tag text-signal2">COMFORT: <strong>High</strong></span><span class="tag text-signal2">EXECUTION: <strong>High</strong></span><span class="tag text-signal2">FIT: <strong>High</strong></span></div>
+                  </div>
+                </article>
+
+                <!-- Ahri -->
+                <article class="pick-card min-h-[390px] rounded-2xl border border-white/[0.09]" data-champion="Ahri">
+                  <div class="splash-wrap"><img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg" alt="Ahri splash art" /><div class="absolute left-4 top-4 z-10 rounded-lg border border-white/[0.08] bg-[#07101a]/80 px-3 py-2 text-[10px] font-bold uppercase tracking-[.11em] text-slate-300 backdrop-blur-sm">Strong alternative</div></div>
+                  <div class="relative z-10 -mt-7 px-5 pb-5">
+                    <div class="flex items-end gap-3"><img class="h-14 w-14 rounded-xl border-2 border-[#27384b] bg-panel object-cover shadow-lg" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Ahri.png" alt="Ahri icon"><div class="pb-1"><h3 class="text-[24px] font-medium text-white">Ahri</h3><p class="text-[12px] text-slate-400">Burst / Playmaker</p></div></div>
+                    <div class="mt-5 min-h-[62px]"><p class="text-sm font-semibold text-slate-200">More independent playmaking.</p><p class="mt-1 text-[13px] leading-5 text-slate-400">Can create picks on her own, but asks more of you into Zed and contributes less guaranteed teamfight control.</p></div>
+                    <div class="mt-5 flex flex-wrap gap-2"><span class="tag text-blue">COMFORT: <strong>High</strong></span><span class="tag text-blue">EXECUTION: <strong>Medium</strong></span><span class="tag text-blue">FIT: <strong>Medium+</strong></span></div>
+                  </div>
+                </article>
+
+                <!-- Syndra -->
+                <article class="pick-card min-h-[390px] rounded-2xl border border-white/[0.09] lg:col-span-2 2xl:col-span-1" data-champion="Syndra">
+                  <div class="splash-wrap"><img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Syndra_0.jpg" alt="Syndra splash art" /><div class="absolute left-4 top-4 z-10 rounded-lg border border-white/[0.08] bg-[#07101a]/80 px-3 py-2 text-[10px] font-bold uppercase tracking-[.11em] text-slate-300 backdrop-blur-sm">Situational</div></div>
+                  <div class="relative z-10 -mt-7 px-5 pb-5">
+                    <div class="flex items-end gap-3"><img class="h-14 w-14 rounded-xl border-2 border-[#27384b] bg-panel object-cover shadow-lg" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Syndra.png" alt="Syndra icon"><div class="pb-1"><h3 class="text-[24px] font-medium text-white">Syndra</h3><p class="text-[12px] text-slate-400">Burst / Scaling Mage</p></div></div>
+                    <div class="mt-5 min-h-[62px]"><p class="text-sm font-semibold text-slate-200">Strong punishment, less forgiving.</p><p class="mt-1 text-[13px] leading-5 text-slate-400">Offers range and burst, but your medium proficiency makes the execution tradeoff less attractive here.</p></div>
+                    <div class="mt-5 flex flex-wrap gap-2"><span class="tag text-slate-300">COMFORT: <strong>Medium</strong></span><span class="tag text-slate-300">EXECUTION: <strong>Medium</strong></span><span class="tag text-slate-300">FIT: <strong>Medium</strong></span></div>
+                  </div>
+                </article>
+              </div>
+            </section>
+
+            <!-- Result interrogation actions -->
+            <section class="rounded-2xl border border-white/[0.07] bg-white/[0.012] p-5 sm:p-6">
+              <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                <div><p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">Interrogate the result</p><p class="mt-1 text-sm font-semibold text-slate-200">The recommendation is a state you can inspect, not the end of the workflow.</p></div>
+                <div class="flex flex-wrap gap-2">
+                  <button class="action-btn active rounded-xl border border-white/[0.08] bg-white/[0.02] px-3.5 py-2.5 text-xs font-semibold text-slate-300" data-mode="why">Why Orianna?</button>
+                  <button class="action-btn rounded-xl border border-white/[0.08] bg-white/[0.02] px-3.5 py-2.5 text-xs font-semibold text-slate-300" data-mode="compare">Compare picks</button>
+                  <button class="action-btn rounded-xl border border-white/[0.08] bg-white/[0.02] px-3.5 py-2.5 text-xs font-semibold text-slate-300" data-mode="change">What could change this?</button>
+                  <button class="action-btn rounded-xl border border-white/[0.08] bg-white/[0.02] px-3.5 py-2.5 text-xs font-semibold text-slate-300" data-mode="response">Their likely response</button>
+                </div>
+              </div>
+            </section>
+
+            <!-- Dynamic analysis panel -->
+            <section id="analysisPanel" class="analysis-panel rounded-2xl border border-white/[0.08] p-6 shadow-panel sm:p-7">
+              <div id="analysisContent"></div>
+            </section>
+
+            <!-- Continue -->
+            <section class="rounded-2xl border border-signal/16 bg-[linear-gradient(90deg,rgba(91,140,255,.04),rgba(139,92,246,.05),rgba(255,255,255,.012))] p-5 sm:p-6">
+              <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div><div class="flex items-center gap-2"><span class="grid h-6 w-6 place-items-center rounded-full border border-good/25 bg-good/[0.07] text-[11px] text-good">✓</span><p class="text-sm font-semibold text-white">Recommendation available</p></div><p class="mt-2 max-w-2xl text-xs leading-5 text-slate-500">You can keep inspecting the result or move on and record what you actually lock.</p></div>
+                <button id="decideBtn" class="group inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-signal px-5 py-3 text-sm font-bold text-white shadow-[0_10px_28px_rgba(139,92,246,.18)] transition hover:bg-[#9b70f7]">Continue to Decide <span class="transition group-hover:translate-x-0.5">→</span></button>
+              </div>
+            </section>
+          </div>
+
+          <!-- Right rail -->
+          <aside class="space-y-5">
+            <section class="glass overflow-hidden rounded-2xl border border-white/[0.07]">
+              <div class="flex items-center justify-between px-5 py-4">
+                <div><p class="text-[10px] font-bold uppercase tracking-[.2em] text-slate-500">Decision state</p><h2 class="mt-1 text-sm font-semibold text-white">Orianna recommended</h2></div>
+                <span class="rounded-full border border-good/20 bg-good/[0.06] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[.11em] text-good">Ready</span>
+              </div>
+              <div class="context-row px-5 py-4">
+                <div class="flex items-center justify-between"><p class="text-[10px] font-bold uppercase tracking-[.16em] text-slate-500">Confidence</p><span class="text-[10px] font-semibold text-good">HIGH</span></div>
+                <div class="mt-3 metric-track"><div class="metric-fill" style="width:84%"></div></div>
+                <p class="mt-2 text-[10px] leading-4 text-slate-600">The ordering is stable under the high-impact uncertainties Hermod asked you to resolve.</p>
+              </div>
+              <div class="context-row px-5 py-4">
+                <p class="text-[10px] font-bold uppercase tracking-[.16em] text-slate-500">Based on</p>
+                <div class="mt-3 space-y-3">
+                  <div class="flex items-start gap-3"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full border border-good/25 bg-good/[0.07] text-[9px] font-bold text-good">✓</span><div><p class="text-xs font-semibold text-slate-300">Current draft</p><p class="text-[10px] text-slate-600">Provided by you</p></div></div>
+                  <div class="flex items-start gap-3"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full border border-good/25 bg-good/[0.07] text-[9px] font-bold text-good">✓</span><div><p class="text-xs font-semibold text-slate-300">Your feasible pool</p><p class="text-[10px] text-slate-600">Persistent + current state</p></div></div>
+                  <div class="flex items-start gap-3"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full border border-good/25 bg-good/[0.07] text-[9px] font-bold text-good">✓</span><div><p class="text-xs font-semibold text-slate-300">Gragas = Top</p><p class="text-[10px] text-slate-600">Clarified by you</p></div></div>
+                  <div class="flex items-start gap-3"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full border border-good/25 bg-good/[0.07] text-[9px] font-bold text-good">✓</span><div><p class="text-xs font-semibold text-slate-300">Ahri is playable</p><p class="text-[10px] text-slate-600">Clarified by you</p></div></div>
+                </div>
+              </div>
+              <div class="context-row px-5 py-4">
+                <div class="flex items-center justify-between"><p class="text-[10px] font-bold uppercase tracking-[.16em] text-slate-500">Remaining uncertainty</p><span class="text-[10px] font-semibold text-slate-500">LOW IMPACT</span></div>
+                <div class="mt-3 rounded-xl border border-white/[0.06] bg-white/[0.015] p-3"><p class="text-xs font-semibold text-slate-300">Enemy next response</p><p class="mt-1 text-[10px] leading-4 text-slate-600">Not yet known. It does not change the current ranking enough to interrupt you.</p></div>
+              </div>
+              <div class="context-row px-5 py-4">
+                <button class="action-btn w-full rounded-xl border border-white/[0.08] bg-white/[0.018] px-4 py-2.5 text-xs font-semibold text-slate-400" data-mode="change">Inspect uncertainty</button>
+              </div>
+            </section>
+
+            <section class="glass overflow-hidden rounded-2xl border border-white/[0.07]">
+              <div class="px-5 py-4"><p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-500">Current option set</p></div>
+              <div class="context-row px-5 py-4">
+                <div class="space-y-3">
+                  <button class="option-row flex w-full items-center gap-3 text-left" data-target="Orianna"><img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Orianna.png" alt="Orianna"><div class="min-w-0 flex-1"><p class="text-xs font-semibold text-white">1 · Orianna</p><p class="text-[10px] text-signal2">Recommended</p></div><span class="text-[10px] text-good">HIGH</span></button>
+                  <button class="option-row flex w-full items-center gap-3 text-left" data-target="Ahri"><img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Ahri.png" alt="Ahri"><div class="min-w-0 flex-1"><p class="text-xs font-semibold text-slate-300">2 · Ahri</p><p class="text-[10px] text-slate-600">Strong alternative</p></div><span class="text-[10px] text-blue">MED+</span></button>
+                  <button class="option-row flex w-full items-center gap-3 text-left" data-target="Syndra"><img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Syndra.png" alt="Syndra"><div class="min-w-0 flex-1"><p class="text-xs font-semibold text-slate-300">3 · Syndra</p><p class="text-[10px] text-slate-600">Situational</p></div><span class="text-[10px] text-slate-500">MED</span></button>
+                </div>
+              </div>
+            </section>
+
+            <section class="rounded-2xl border border-signal/15 bg-signal/[0.035] p-5">
+              <div class="flex gap-3"><span class="grid h-8 w-8 shrink-0 place-items-center rounded-xl border border-signal/25 bg-signal/[0.07] text-signal2">◇</span><div><p class="text-xs font-semibold text-slate-200">Recommendation, not verdict</p><p class="mt-1 text-xs leading-5 text-slate-500">Inspect why, compare alternatives, or test the assumptions that could move the ranking before you lock.</p></div></div>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="pointer-events-none fixed bottom-5 right-5 z-[60] translate-y-3 rounded-xl border border-white/[0.08] bg-[#0b1623]/95 px-4 py-3 text-sm text-slate-200 opacity-0 shadow-2xl transition duration-200">Updated</div>
+
+  <script>
+    const analysisContent = document.getElementById('analysisContent');
+    const actionButtons = [...document.querySelectorAll('[data-mode]')];
+    const toast = document.getElementById('toast');
+
+    const views = {
+      why: `
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <div><p class="text-[10px] font-bold uppercase tracking-[.2em] text-signal2">Why Orianna?</p><h3 class="mt-2 text-2xl font-semibold tracking-[-.03em] text-white">The recommendation comes from three mechanisms.</h3><p class="mt-2 max-w-3xl text-sm leading-6 text-slate-400">These are Hermod's derived conclusions from the draft and player state — not facts you had to enter manually.</p></div>
+          <span class="source-pill rounded-full px-3 py-1.5 text-[10px] font-semibold text-slate-500">Explanation target · Orianna</span>
+        </div>
+        <div class="mt-6 grid gap-4 lg:grid-cols-3">
+          <div class="rounded-xl border border-white/[0.07] bg-white/[0.016] p-4"><div class="flex items-center gap-3"><span class="reason-number grid h-8 w-8 place-items-center rounded-lg border border-blue/15 text-[10px] font-bold text-blue">01</span><p class="text-sm font-semibold text-white">Reliable follow-up</p></div><p class="mt-3 text-xs leading-5 text-slate-500">Gnar and Lee Sin already create initiation windows. Orianna converts those windows into more dependable teamfight value than the alternatives.</p></div>
+          <div class="rounded-xl border border-white/[0.07] bg-white/[0.016] p-4"><div class="flex items-center gap-3"><span class="reason-number grid h-8 w-8 place-items-center rounded-lg border border-signal/15 text-[10px] font-bold text-signal2">02</span><p class="text-sm font-semibold text-white">Objective control</p></div><p class="mt-3 text-xs leading-5 text-slate-500">The ball creates persistent zone pressure around entrances and objectives, which fits the front-to-back shape of the current allied draft.</p></div>
+          <div class="rounded-xl border border-white/[0.07] bg-white/[0.016] p-4"><div class="flex items-center gap-3"><span class="reason-number grid h-8 w-8 place-items-center rounded-lg border border-good/15 text-[10px] font-bold text-good">03</span><p class="text-sm font-semibold text-white">Lower execution risk</p></div><p class="mt-3 text-xs leading-5 text-slate-500">Your proficiency is high, while Ahri into Zed asks for more independent execution. The theoretical gap is small; the player-adjusted gap is larger.</p></div>
+        </div>
+        <div class="mt-5 rounded-xl border border-signal/15 bg-signal/[0.035] p-4"><p class="text-xs font-semibold text-slate-200">Important distinction</p><p class="mt-1 text-xs leading-5 text-slate-500">Hermod is not saying Orianna is universally stronger. In this state, she gives up some independent pick threat for more reliable teamfight follow-up and a safer execution profile.</p></div>
+      `,
+      compare: `
+        <div><p class="text-[10px] font-bold uppercase tracking-[.2em] text-blue">Compare · Orianna vs Ahri</p><h3 class="mt-2 text-2xl font-semibold tracking-[-.03em] text-white">A tradeoff, not a single hidden score.</h3><p class="mt-2 max-w-3xl text-sm leading-6 text-slate-400">The two picks are both viable. This view exposes where the recommendation changes rather than pretending one option dominates everywhere.</p></div>
+        <div class="mt-6 overflow-hidden rounded-xl border border-white/[0.07]">
+          <div class="grid grid-cols-[1fr_110px_110px] bg-white/[0.018] px-4 py-3 text-[10px] font-bold uppercase tracking-[.12em] text-slate-600"><span>Dimension</span><span class="text-center text-signal2">Orianna</span><span class="text-center text-blue">Ahri</span></div>
+          ${[
+            ['Teamfight reliability','Strong','Good'],['Independent playmaking','Good','Strong'],['Execution for you','Safer','Higher load'],['Composition fit','Strong','Good'],['Lane volatility','Lower','Higher'],['Pick threat','Good','Strong']
+          ].map((r,i)=>`<div class="grid grid-cols-[1fr_110px_110px] border-t border-white/[0.055] px-4 py-3 text-xs ${i%2?'bg-white/[0.008]':''}"><span class="text-slate-400">${r[0]}</span><span class="text-center font-semibold text-signal2">${r[1]}</span><span class="text-center font-semibold text-blue">${r[2]}</span></div>`).join('')}
+        </div>
+        <div class="mt-5 rounded-xl border border-white/[0.07] bg-white/[0.015] p-4"><p class="text-xs font-semibold text-white">The tradeoff</p><p class="mt-1 text-xs leading-5 text-slate-500">Pick Orianna if you want the more reliable composition-level answer. Pick Ahri if you are deliberately accepting more lane and execution variance for stronger independent pick creation.</p></div>
+      `,
+      change: `
+        <div><p class="text-[10px] font-bold uppercase tracking-[.2em] text-warn">Sensitivity</p><h3 class="mt-2 text-2xl font-semibold tracking-[-.03em] text-white">What could change the recommendation?</h3><p class="mt-2 max-w-3xl text-sm leading-6 text-slate-400">Only unresolved or changeable factors with enough decision impact belong here. Low-value ontology gaps remain hidden.</p></div>
+        <div class="mt-6 space-y-3">
+          <div class="rounded-xl border border-warn/18 bg-warn/[0.035] p-4"><div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><div><div class="flex items-center gap-2"><span class="rounded-md border border-warn/20 bg-warn/[0.07] px-2 py-1 text-[9px] font-bold uppercase tracking-[.12em] text-warn">Medium impact</span><p class="text-xs font-semibold text-slate-200">If your current willingness on Ahri were higher</p></div><p class="mt-2 text-xs leading-5 text-slate-500">Ahri would close part of the gap because the player-adjusted execution penalty would shrink. Orianna would still remain slightly ahead on composition fit.</p></div><button class="rounded-lg border border-warn/20 bg-warn/[0.06] px-3 py-2 text-[10px] font-semibold text-warn">Re-answer comfort</button></div></div>
+          <div class="rounded-xl border border-white/[0.07] bg-white/[0.015] p-4"><div class="flex items-start justify-between gap-4"><div><p class="text-xs font-semibold text-slate-300">Enemy next response</p><p class="mt-2 text-xs leading-5 text-slate-500">Unknown, but currently low impact. Hermod does not interrupt you because no plausible immediate response moves Orianna below Ahri in the current analysis.</p></div><span class="shrink-0 rounded-md border border-white/[0.07] px-2 py-1 text-[9px] font-bold uppercase tracking-[.1em] text-slate-600">Low impact</span></div></div>
+          <div class="rounded-xl border border-good/12 bg-good/[0.025] p-4"><div class="flex items-start justify-between gap-4"><div><p class="text-xs font-semibold text-slate-300">Gragas role</p><p class="mt-2 text-xs leading-5 text-slate-500">Resolved as Top. This was high impact before analysis, so Hermod asked you in Step 3 rather than carrying it silently into the result.</p></div><span class="shrink-0 rounded-md border border-good/15 px-2 py-1 text-[9px] font-bold uppercase tracking-[.1em] text-good">Resolved</span></div></div>
+        </div>
+      `,
+      response: `
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between"><div><p class="text-[10px] font-bold uppercase tracking-[.2em] text-signal2">Response analysis</p><h3 class="mt-2 text-2xl font-semibold tracking-[-.03em] text-white">If you lock Orianna, what are they incentivized to do?</h3><p class="mt-2 max-w-3xl text-sm leading-6 text-slate-400">This is a preview of the sequential-response mode. It stays secondary to the immediate pick recommendation.</p></div><span class="rounded-full border border-signal/15 bg-signal/[0.035] px-3 py-1.5 text-[10px] font-semibold text-signal2">Future-facing</span></div>
+        <div class="mt-6 grid gap-4 md:grid-cols-3">
+          <div class="rounded-xl border border-white/[0.07] bg-white/[0.015] p-4"><p class="text-[9px] font-bold uppercase tracking-[.13em] text-slate-600">Likely pressure</p><p class="mt-2 text-sm font-semibold text-white">Add backline access</p><p class="mt-2 text-xs leading-5 text-slate-500">Your pick makes front-to-back teamfights more coherent, so the opponent benefits from increasing access to Orianna and the allied backline.</p></div>
+          <div class="rounded-xl border border-white/[0.07] bg-white/[0.015] p-4"><p class="text-[9px] font-bold uppercase tracking-[.13em] text-slate-600">Draft incentive</p><p class="mt-2 text-sm font-semibold text-white">Preserve engage follow-up</p><p class="mt-2 text-xs leading-5 text-slate-500">Nautilus already supplies initiation. Their next choice is more valuable if it converts that initiation rather than duplicating it.</p></div>
+          <div class="rounded-xl border border-white/[0.07] bg-white/[0.015] p-4"><p class="text-[9px] font-bold uppercase tracking-[.13em] text-slate-600">Exposure</p><p class="mt-2 text-sm font-semibold text-white">Moderate counter risk</p><p class="mt-2 text-xs leading-5 text-slate-500">Orianna is not treated as fully blind-safe, but the current player fit and allied composition outweigh the expected response risk.</p></div>
+        </div>
+        <div class="mt-5 flex items-center gap-2 text-[10px] text-slate-600"><span class="grid h-5 w-5 place-items-center rounded-full border border-white/[0.08]">i</span><span>This panel is intentionally less prominent because deeper response search is not required for the Step 4 recommendation.</span></div>
+      `
+    };
+
+    function setMode(mode) {
+      analysisContent.innerHTML = views[mode] || views.why;
+      actionButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.mode === mode));
+      document.getElementById('analysisPanel').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.remove('opacity-0','translate-y-3');
+      window.setTimeout(() => toast.classList.add('opacity-0','translate-y-3'), 1700);
+    }
+
+    actionButtons.forEach(btn => btn.addEventListener('click', () => setMode(btn.dataset.mode)));
+    document.querySelectorAll('.option-row').forEach(btn => btn.addEventListener('click', () => showToast(`${btn.dataset.target} selected as explanation target`)));
+
+    document.getElementById('expandDraftBtn').addEventListener('click', (event) => {
+      const target = document.getElementById('expandedDraft');
+      const hidden = target.classList.toggle('hidden');
+      event.currentTarget.textContent = hidden ? 'Show more context ↓' : 'Hide extra context ↑';
+    });
+
+    document.getElementById('editContextBtn').addEventListener('click', () => showToast('Prototype: return to Clarify / earlier state'));
+    document.getElementById('decideBtn').addEventListener('click', () => showToast('Step 5 would open: record what you lock'));
+
+    setMode('why');
+  </script>
+</body>
+</html>

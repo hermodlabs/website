@@ -1,8 +1,0 @@
-<a class="platform-reading-link" href="{{ conceptArticle.url | relativeUrl(page.url) }}">
-  <span class="platform-reading-label">{% if platformOverview %}Start with the overview{% else %}Read the full article{% endif %} <span aria-hidden="true">→</span></span>
-  <span class="platform-reading-title">
-    {% include "icons/article.html" %}
-    <span class="platform-reading-title-text">{{ conceptArticle.title | escape }}</span>
-  </span>
-  <span class="platform-reading-meta">{{ conceptArticle.readingMinutes }} min read</span>
-</a>

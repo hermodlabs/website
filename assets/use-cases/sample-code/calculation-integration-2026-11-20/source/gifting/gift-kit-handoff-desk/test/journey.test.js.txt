@@ -1,0 +1,201 @@
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { after, test } from 'node:test';
+import { createDecisionLab } from '@decision-lab/sdk';
+import { createNodeExecutor } from '@decision-lab/sdk/node';
+import {
+  acceptReviewFinding, createReviewJourney, evaluateReviewJourney, openReviewJourney,
+  recordJourneyDecision, recordJourneyOperation, reviewJourneyInputs, saveReviewJourney, solveReviewJourney, updateReviewInputs,
+} from '../src/reviewJourney.js';
+import { atMinute, inspectGiftingJourney } from '../src/giftingJourney.js';
+
+const data = new URL('../public/data/', import.meta.url);
+const read = async path => JSON.parse(await readFile(new URL(path, data), 'utf8'));
+const config = await read('journey-config.json'), definition = await read(config.definitionUrl), app = await read(config.appUrl);
+const executor = createNodeExecutor(), lab = createDecisionLab({ executor });
+after(async () => executor.close());
+const actor = 'Fictional test reviewer';
+const time = minute => atMinute(minute, config.profile.clockOrigin);
+const inspect = run => inspectGiftingJourney({ lab, run, config });
+
+async function assessed(id) {
+  const businessCase = await read(`journey-v3/cases/${id}.json`);
+  let run = createReviewJourney({ lab, app, definition, case: businessCase, caseIdPath: 'gifting.id', owner: 'Jordan Reed', createdAt: time(businessCase.gifting.commitment.nowMinute) });
+  assert.equal(inspect(run).currentRun, null);
+  run = await solveReviewJourney({ lab, run, execution: { timeoutMs: 30000 } });
+  assert.equal(run.reviews.length, 0);
+  assert.ok(Object.values(run.answers).every(answer => answer.status !== 'awaiting-review'));
+  assert.ok(inspect(run).output.decisionSummary);
+  return run;
+}
+
+let ample, urgent;
+test('the connected calculation uses the real evidence and commitment apps to justify cost-first, urgency and smaller corrections', async () => {
+  const expected = [
+    ['ample-window', 'replace-and-repair', 30000, 40],
+    ['urgent-window', 'external-replace-and-repair', 40000, 1435],
+    ['urgent-missing-booking', null], ['urgent-stale-booking', null],
+    ['supported-smaller-correction', 'reprint', 10000, 1435], ['missed-window', null],
+  ];
+  for (const [id, packageId, expense, finish] of expected) {
+    const run = await assessed(id), view = inspect(run);
+    assert.equal(view.evidence.states.length, 1, 'Only native evidence, not a price or booking, narrows the fault states.');
+    assert.equal(view.closure.completed, false, 'A calculated plan does not prove a successful rehearsal or actual handoff.');
+    if (packageId) {
+      assert.equal(view.review.preferred.length, 1); const preferred = view.review.preferred[0];
+      assert.equal(preferred.packageId, packageId); assert.equal(preferred.expense, expense); assert.equal(preferred.finishMinute, finish);
+    } else assert.equal(view.review.status, 'blocked');
+    if (id === 'ample-window') ample = run;
+    if (id === 'urgent-window') urgent = run;
+  }
+});
+
+function event(run, kind, record, minute) {
+  return recordJourneyOperation({ lab, run, actor, kind, record, at: time(minute) });
+}
+function selected(run) {
+  return recordJourneyDecision({ lab, run, actor, optionId: inspect(run).review.preferred[0].id });
+}
+function actualRecords(run) {
+  const original = run.case.gifting.scope;
+  const corrected = { ...original, insertRevision: 'insert-5', destinationRevision: 'destination-3', checkoutRevision: 'checkout-2' };
+  return {
+    authorization: { reference: 'AUTH-ACTUAL-321', source: 'Fictional signed spend authorization', authorized: true, amountMinor: 40000, scope: original, authorizedAtMinute: 1410 },
+    correction: { reference: 'WORK-ACTUAL-321', source: 'Fictional production completion record', completed: true, packageId: 'external-replace-and-repair',
+      inputScope: original, outputScope: corrected, quantity: 120, startedAtMinute: 1410, completedAtMinute: 1420 },
+    rehearsal: { reference: 'TEST-ACTUAL-321', source: 'Fictional scoped end-to-end rehearsal log', passed: true, scope: corrected, correctionReference: 'WORK-ACTUAL-321', durationMinutes: 10, completedAtMinute: 1430 },
+    handoff: { reference: 'HANDOFF-ACTUAL-321', source: 'Fictional receiving-team acknowledgement', completed: true, scope: corrected, rehearsalReference: 'TEST-ACTUAL-321', quantity: 120, completedAtMinute: 1435 },
+  };
+}
+
+test('sourced actual correction, successful rehearsal and handoff close the original promise separately from calculation', async () => {
+  let run = selected(urgent ?? await assessed('urgent-window'));
+  assert.equal(inspect(run).closure.completed, false);
+  const records = actualRecords(run);
+  for (const [kind, minute] of [['authorization', 1410], ['correction', 1420], ['rehearsal', 1430]]) {
+    run = event(run, kind, records[kind], minute); assert.equal(inspect(run).closure.completed, false);
+  }
+  run = event(run, 'handoff', records.handoff, 1435);
+  assert.equal(inspect(run).closure.completed, true);
+  assert.equal(run.case.gifting.commitment.nowMinute, 1410, 'Actual events do not rewrite the historical decision time.');
+  assert.deepEqual(run.case.gifting.scope, urgent.case.gifting.scope, 'Post-correction tests never rewrite the pre-correction evidence basis.');
+  assert.equal(openReviewJourney({ lab, value: lab.sources.renderJSON(run), app, definition }).contentHash, run.contentHash);
+});
+
+test('failed, short, wrong-scope, future and late actual records cannot establish the final handoff', async () => {
+  const base = selected(urgent ?? await assessed('urgent-window'));
+  for (const [description, mutate] of [
+    ['failed rehearsal', records => { records.rehearsal.passed = false; }],
+    ['short rehearsal', records => { records.rehearsal.durationMinutes = 5; }],
+    ['wrong corrected scope', records => { records.rehearsal.scope = { ...records.rehearsal.scope, insertRevision: 'insert-4' }; }],
+    ['late handoff', records => { records.handoff.completedAtMinute = 1441; }],
+    ['future observation', records => { records.rehearsal.completedAtMinute = 1432; }],
+    ['missing authority', records => { records.authorization.authorized = false; }],
+    ['same original output', records => { records.correction.outputScope = records.correction.inputScope; }],
+  ]) {
+    const records = actualRecords(base); mutate(records); let run = base;
+    for (const [kind, minute] of [['authorization', 1410], ['correction', 1420], ['rehearsal', 1430], ['handoff', 1435]]) run = event(run, kind, records[kind], minute);
+    assert.equal(inspect(run).closure.completed, false, description);
+  }
+});
+
+test('source revisions and time changes stale findings and operating decisions; storage preserves that history', async () => {
+  let run = selected(ample ?? await assessed('ample-window'));
+  const changed = { ...run.case.gifting.commitment, nowMinute: 1410 };
+  run = updateReviewInputs({ lab, run, values: { commitment: changed } });
+  let view = inspect(run);
+  assert.equal(view.currentRun, null); assert.equal(view.decision, null); assert.ok(view.staleDecision);
+  assert.equal(view.closure.completed, false);
+  assert.throws(() => acceptReviewFinding({ lab, run, actor, stepId: 'planning' }), /current/);
+  const entries = new Map(), storage = { getItem: key => entries.get(key) ?? null, setItem: (key, value) => entries.set(key, value) };
+  const hash = saveReviewJourney({ lab, run, storage, key: 'campaign' });
+  assert.equal(openReviewJourney({ lab, value: storage.getItem('campaign'), app, definition }).contentHash, hash);
+  const other = updateReviewInputs({ lab, run, values: { commitment: { ...run.case.gifting.commitment, nowMinute: 1411 } } });
+  saveReviewJourney({ lab, run: other, storage, key: 'campaign', expectedHash: hash });
+  assert.throws(() => saveReviewJourney({ lab, run, storage, key: 'campaign', expectedHash: hash }), /Another saved revision/);
+});
+
+test('a revised cutoff and an escalation do not establish fulfillment of the original promise', async () => {
+  let run = await assessed('missed-window');
+  run = event(run, 'escalation', { reference: 'ESCALATE-325', source: 'Fictional campaign-owner request', requestedAtMinute: 1420, reason: 'No declared correction meets the original cutoff.' }, 1420);
+  assert.equal(inspect(run).closure.completed, false);
+  run = updateReviewInputs({ lab, run, values: {
+    commitment: { ...run.case.gifting.commitment, handoffDeadlineMinute: 1500 },
+    resources: run.case.gifting.work.resources.map(row => ({ ...row, availableThroughMinute: 1500 })),
+    permissions: run.case.gifting.work.permissions.map(row => ({ ...row, id: `${row.id}-REVISED`, validThroughMinute: 1500,
+      source: 'Fictional separately issued permission covering the revised work interval' })),
+  } });
+  run = await solveReviewJourney({ lab, run });
+  // The revised promise permits the cheaper in-house work. It remains too late
+  // for the original handoff even if the actual work is recorded successful.
+  const preferred = inspect(run).review.preferred[0];
+  run = recordJourneyDecision({ lab, run, actor, optionId: preferred.id });
+  const records = actualRecords(run);
+  records.authorization.amountMinor = preferred.expense; records.authorization.authorizedAtMinute = 1420;
+  records.correction.packageId = preferred.packageId; records.correction.startedAtMinute = 1420; records.correction.completedAtMinute = 1445;
+  records.rehearsal.completedAtMinute = 1455; records.handoff.completedAtMinute = 1460;
+  for (const [kind, minute] of [['authorization', 1420], ['correction', 1445], ['rehearsal', 1455], ['handoff', 1460]]) run = event(run, kind, records[kind], minute);
+  assert.equal(inspect(run).closure.completed, false);
+  assert.equal(run.case.journeyContext.originalCase.gifting.commitment.handoffDeadlineMinute, 1440);
+});
+
+test('a recalculated retargeted campaign cannot close the original scoped commitment', async () => {
+  let run = urgent ?? await assessed('urgent-window');
+  const scope = { ...run.case.gifting.scope, accountScope: 'a-different-intended-account' };
+  run = updateReviewInputs({ lab, run, values: {
+    configuration: scope,
+    observations: run.case.gifting.observations.map(row => ({ ...row, id: `RETARGET-${row.id}`, scope, source: 'Fictional newly scoped check for the revised intended account' })),
+    permissions: run.case.gifting.work.permissions.map(row => ({ ...row, id: `RETARGET-${row.id}`, scope, source: 'Fictional new authority for the revised intended account' })),
+    confirmations: run.case.gifting.work.confirmations.map(row => ({ ...row, id: `RETARGET-${row.id}`, scope, source: 'Fictional new booking for the revised intended account' })),
+  } });
+  run = await solveReviewJourney({ lab, run });
+  run = selected(run);
+  const records = actualRecords(run);
+  for (const [kind, minute] of [['authorization', 1410], ['correction', 1420], ['rehearsal', 1430], ['handoff', 1435]]) run = event(run, kind, records[kind], minute);
+  assert.equal(inspect(run).review.status, 'eligible', 'The revised case can have its own supported plan.');
+  assert.equal(inspect(run).closure.completed, false, 'A revised recipient scope is not fulfillment of the original promise.');
+});
+
+test('the latest complete event supersedes historical positives and recovery needs a current linked chain', async () => {
+  const base = selected(urgent ?? await assessed('urgent-window'));
+  const original = actualRecords(base); let completed = base;
+  for (const [kind, minute] of [['authorization', 1410], ['correction', 1420], ['rehearsal', 1430], ['handoff', 1435]]) completed = event(completed, kind, original[kind], minute);
+  assert.equal(inspect(completed).closure.completed, true);
+  for (const kind of ['authorization', 'correction', 'rehearsal', 'handoff']) {
+    const withdrawn = { ...original[kind], reference: `LATER-NEGATIVE-${kind}` };
+    withdrawn[kind === 'authorization' ? 'authorized' : kind === 'rehearsal' ? 'passed' : 'completed'] = false;
+    const updated = event(completed, kind, withdrawn, 1436);
+    assert.equal(inspect(updated).closure.completed, false, `A later negative ${kind} cannot fall back to historical positive evidence.`);
+    assert.equal(updated.case.journeyOperations.filter(row => row.kind === kind).length, 2, 'Superseded events stay in native history.');
+  }
+  const wrongScope = event(completed, 'rehearsal', { ...original.rehearsal, reference: 'LATER-WRONG-SCOPE',
+    scope: { ...original.rehearsal.scope, insertRevision: 'an-older-insert' } }, 1436);
+  assert.equal(inspect(wrongScope).closure.completed, false, 'Selecting the latest event happens before scope validation.');
+
+  let recovering = event(completed, 'correction', { ...original.correction, reference: 'LATER-INCOMPLETE-WORK', completed: false }, 1436);
+  const work = { ...original.correction, reference: 'CORRECTION-RESTORED' };
+  recovering = event(recovering, 'correction', work, 1437);
+  assert.equal(inspect(recovering).closure.completed, false, 'The old rehearsal is linked to superseded correction evidence.');
+  const rehearsal = { ...original.rehearsal, reference: 'REHEARSAL-RESTORED', correctionReference: work.reference };
+  recovering = event(recovering, 'rehearsal', rehearsal, 1438);
+  assert.equal(inspect(recovering).closure.completed, false, 'The old handoff is linked to a superseded rehearsal record.');
+  recovering = event(recovering, 'handoff', { ...original.handoff, reference: 'HANDOFF-RESTORED', rehearsalReference: rehearsal.reference }, 1439);
+  assert.equal(inspect(recovering).closure.completed, true, 'A fresh complete valid linked chain restores the finding.');
+});
+
+
+test('the retained v3 workflow still requires explicit input and finding reviews', async () => {
+  const archived = await read('journey-v3/workflow.definition.json');
+  const businessCase = await read('journey-v3/cases/urgent-window.json');
+  let run = createReviewJourney({ lab, app, definition: archived, case: businessCase, caseIdPath: 'gifting.id', owner: 'Jordan Reed' });
+  assert.equal(run.answers.commitment.status, 'awaiting-review');
+  run = reviewJourneyInputs({ lab, run, actor });
+  for (const stepId of ['evidence', 'planning']) {
+    run = await evaluateReviewJourney({ lab, run, stepId });
+    assert.equal(lab.workflows.prepare({ run, stepId }).status, 'awaiting-review');
+    run = acceptReviewFinding({ lab, run, actor, stepId });
+  }
+  assert.equal(inspect(run).review.preferred[0].expense, 40000);
+  assert.equal(run.reviews.length, 2);
+  assert.equal(inspect(run).closure.completed, false);
+});

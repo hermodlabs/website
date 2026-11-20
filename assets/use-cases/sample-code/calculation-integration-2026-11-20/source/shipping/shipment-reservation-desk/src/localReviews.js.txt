@@ -1,0 +1,50 @@
+import { saveReviewJourney } from './reviewJourney.js';
+
+// Native continuations retain full findings and history, so they can exceed
+// localStorage's small string quota. IndexedDB retains the same portable JSON.
+const databaseName = 'shipment-reservation-desk';
+const storeName = 'reviews';
+function openDatabase() {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(databaseName, 1);
+    request.onupgradeneeded = () => request.result.createObjectStore(storeName);
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
+  });
+}
+export async function readLocalReview(key) {
+  const database = await openDatabase();
+  try {
+    const value = await new Promise((resolve, reject) => {
+      const request = database.transaction(storeName).objectStore(storeName).get(key);
+      request.onsuccess = () => resolve(request.result ?? null);
+      request.onerror = () => reject(request.error);
+    });
+    // Retained reviews from earlier versions can still be explicitly reopened.
+    return value ?? localStorage.getItem(key);
+  } finally { database.close(); }
+}
+export async function saveLocalReview({ lab, run, key, expectedHash }) {
+  const database = await openDatabase();
+  try {
+    return await new Promise((resolve, reject) => {
+      const transaction = database.transaction(storeName, 'readwrite');
+      const store = transaction.objectStore(storeName);
+      let savedHash, failure;
+      const request = store.get(key);
+      request.onsuccess = () => {
+        try {
+          // Reuse the shared integrity and conflict checks within one atomic
+          // read/write transaction; another tab cannot overwrite a newer save.
+          savedHash = saveReviewJourney({ lab, run, key, expectedHash, storage: {
+            getItem: () => request.result ?? localStorage.getItem(key),
+            setItem: (storageKey, text) => store.put(text, storageKey),
+          } });
+        } catch (error) { failure = error; transaction.abort(); }
+      };
+      transaction.oncomplete = () => resolve(savedHash);
+      transaction.onerror = () => reject(failure ?? transaction.error);
+      transaction.onabort = () => reject(failure ?? transaction.error ?? new Error('The local save was aborted.'));
+    });
+  } finally { database.close(); }
+}

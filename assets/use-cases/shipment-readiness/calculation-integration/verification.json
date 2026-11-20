@@ -1,0 +1,1249 @@
+{
+  "format": "decision-lab-calculation-integration/1",
+  "sourceKind": "implemented-working-copy",
+  "origin": "Local production builds of updated sample clients and current SDK packages; fictional business records. These captures do not claim the new clients are published at the repository base commit.",
+  "capturedAt": "2026-11-20T15:22:53.438Z",
+  "sourceManifestUrl": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/manifest.json",
+  "repositoryBaseCommit": "f3584a5ec5aef6594b640b5e9d10f8e06041d4eb",
+  "workflowVersion": "2.0.0",
+  "sourceDefinitionHash": "06a2a9293701185fc0e6c2a9dae1bd5c6e13dcd0a5b4d120f5c116d07cfef593",
+  "extendedDefinitionHash": "2772fb65abbe8fedcd9db476b027a25b239dbba973fc5991d91d71ada3194cec",
+  "runs": {
+    "baseline": {
+      "file": "baseline.workflow-run.json",
+      "runHash": "d7964dbd91d196818692960b20ec62550e304d1e629191c72559c0414a61a7a4"
+    },
+    "inspected": {
+      "file": "inspected.workflow-run.json",
+      "runHash": "d7964dbd91d196818692960b20ec62550e304d1e629191c72559c0414a61a7a4"
+    },
+    "late-cutoff": {
+      "file": "late-cutoff.workflow-run.json",
+      "runHash": "0d7f55926033a1460cefd64328cf1e7d8e46ba1acdd2bf6e86c05b2a91d9d99e"
+    },
+    "blocked": {
+      "file": "blocked.workflow-run.json",
+      "runHash": "7007e40d80f0a86f1a4076834d2515597c44f67ae56a6d6be825f986d7e7e014"
+    },
+    "confirmed-revision": {
+      "file": "confirmed-revision.workflow-run.json",
+      "runHash": "0b6fb401c53b4c2135a4c92bff52e8812b5a4424563b89fab3a0617d4c5a9ad3"
+    },
+    "saved": {
+      "file": "saved.workflow-run.json",
+      "runHash": "0b6fb401c53b4c2135a4c92bff52e8812b5a4424563b89fab3a0617d4c5a9ad3"
+    },
+    "restored": {
+      "file": "restored.workflow-run.json",
+      "runHash": "0b6fb401c53b4c2135a4c92bff52e8812b5a4424563b89fab3a0617d4c5a9ad3"
+    },
+    "chosen": {
+      "file": "chosen.workflow-run.json",
+      "runHash": "9c73ce7536ff36cf5f39ec22bedce496bf38915df01ed9891fb78cdbcc3e9bfc"
+    },
+    "reserved": {
+      "file": "reserved.workflow-run.json",
+      "runHash": "c77382bfb44d09d405ddb8098e5be2b158bccce9648d9a4b47e6cb4fb3dc3168"
+    },
+    "completed": {
+      "file": "completed.workflow-run.json",
+      "runHash": "f2542f45207c15380e26bdcdd6d9a51d12a299c45fd6995b7c71c14cad6fbbc7"
+    },
+    "cancelled": {
+      "file": "cancelled.workflow-run.json",
+      "runHash": "89b40f4c7461e22d250814c669f14c2c2a5908ebfe78984e26c2f2fdc704ad50"
+    }
+  },
+  "captures": [
+    {
+      "key": "baseline",
+      "file": "baseline.png",
+      "width": 782,
+      "height": 1051,
+      "sha256": "8402e7be63e240b72024ee9abf8e381c462a3d5a0c45254c33b87a3389adfed8",
+      "bytes": 110137
+    },
+    {
+      "key": "supporting-direct",
+      "file": "supporting-direct.png",
+      "width": 782,
+      "height": 807,
+      "sha256": "bef28eb74a634bbbf69dc908bb2e3bfa74107dc1466530a368e5f3f1379b1dda",
+      "bytes": 60777
+    },
+    {
+      "key": "decision-process",
+      "file": "decision-process.png",
+      "width": 782,
+      "height": 898,
+      "sha256": "1fd2652fb7920b1c003cdad7df882838d86d67f9bcf77a6017ad611ddbf40c24",
+      "bytes": 90381
+    },
+    {
+      "key": "calculation-dependencies",
+      "file": "calculation-dependencies.png",
+      "width": 782,
+      "height": 876,
+      "sha256": "7729b17797318e2777e1b0fa0c2adf16e0647225316b7bdb5bb7b240eea88088",
+      "bytes": 81317
+    },
+    {
+      "key": "late-cutoff",
+      "file": "late-cutoff.png",
+      "width": 782,
+      "height": 1102,
+      "sha256": "3b1b23e1ad6a45c7a97d16dd888e938123d613113af4f1e32ccfe500132b42df",
+      "bytes": 121167
+    },
+    {
+      "key": "blocked",
+      "file": "blocked.png",
+      "width": 782,
+      "height": 1102,
+      "sha256": "b263ace62f905c4a672252f88cd24bb88dd41954d1b0c77135ce4e31da625668",
+      "bytes": 122166
+    },
+    {
+      "key": "pending",
+      "file": "pending.png",
+      "width": 782,
+      "height": 375,
+      "sha256": "1ddf476fe6c1585f0494385bc80b77a65ae5a12c686ed9efc7bf1608ea822039",
+      "bytes": 37889
+    },
+    {
+      "key": "stale",
+      "file": "stale.png",
+      "width": 782,
+      "height": 561,
+      "sha256": "5258e8a36594471ceeb94400078270f969fd81b0606a0b5aabcc908b40daff6c",
+      "bytes": 45131
+    },
+    {
+      "key": "confirmed-revision",
+      "file": "confirmed-revision.png",
+      "width": 782,
+      "height": 1102,
+      "sha256": "9671e532d15e407ffe90f278c19e04d79cf55e6889cb13c0fb1f5b01cd5d4094",
+      "bytes": 120097
+    },
+    {
+      "key": "chosen",
+      "file": "chosen.png",
+      "width": 782,
+      "height": 1722,
+      "sha256": "897d100fd06c9051e48d3ac5f26324fe3e42c330a2d49e3b0553296e23e56f6b",
+      "bytes": 193302
+    },
+    {
+      "key": "reserved",
+      "file": "reserved.png",
+      "width": 782,
+      "height": 2693,
+      "sha256": "5b93eef4b939e4047d1d575e4cead1570d0975e884e3b1e5de447d3e0ad03e03",
+      "bytes": 256322
+    },
+    {
+      "key": "completed",
+      "file": "completed.png",
+      "width": 782,
+      "height": 2710,
+      "sha256": "aa7a42328c9a5b0e96da774b6f7cbea1fdc3f97bf5433521b3ea7beb8983147c",
+      "bytes": 259847
+    },
+    {
+      "key": "cancelled",
+      "file": "cancelled.png",
+      "width": 782,
+      "height": 2727,
+      "sha256": "05d73c2cbf3c01c8e632619ca8d3bfe8b8ad213fba2290ff1217f7f19ca4f9b1",
+      "bytes": 261237
+    },
+    {
+      "key": "mobile",
+      "file": "mobile.png",
+      "width": 390,
+      "height": 5941,
+      "sha256": "37399b8a808bc4d4597ba69c0c1e315b3e862e61885b225d29752d6b0d3397fe",
+      "bytes": 420430
+    },
+    {
+      "key": "input-error",
+      "file": "input-error.png",
+      "width": 782,
+      "height": 481,
+      "sha256": "75a95f1c5d098f5ada2e362207c26741e033c19d7532f95b6887f4be86fdf562",
+      "bytes": 47254
+    },
+    {
+      "key": "queue-baseline",
+      "file": "queue-baseline.png",
+      "width": 1600,
+      "height": 5987,
+      "sha256": "8aa0784f2c6620004d96f43c52add3787f127b955136e51b07e6d345036885a9",
+      "bytes": 995323
+    },
+    {
+      "key": "queue-late",
+      "file": "queue-late.png",
+      "width": 1600,
+      "height": 6601,
+      "sha256": "adcee15294740cd098544c18698da68965396d973754c9a5acef428f9513eb87",
+      "bytes": 1190008
+    },
+    {
+      "key": "queue-morning",
+      "file": "queue-morning.png",
+      "width": 1600,
+      "height": 8138,
+      "sha256": "761e3fd19bf8e25f7624ce458a5f947513bd58539b13b6a3385e1a56a3f70b0a",
+      "bytes": 1451869
+    },
+    {
+      "key": "batch-supported",
+      "file": "batch-supported.png",
+      "width": 1450,
+      "height": 317,
+      "sha256": "49315821c0adcbb05da93eaad18ca09c35db66810aa3b5fc5423b408d3ef9da3",
+      "bytes": 53234
+    },
+    {
+      "key": "batch-blocked",
+      "file": "batch-blocked.png",
+      "width": 1450,
+      "height": 484,
+      "sha256": "a08562197b584d5d10af45c9d66cf319dfb9c01af8c3edacba8a4219b773b28b",
+      "bytes": 73318
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "baseline.workflow-run.json",
+      "sha256": "2d08a3f2017b0c9ec2b3b3ccf42062822e6031a35b9853b530202d7436a9dd8b",
+      "bytes": 1844528
+    },
+    {
+      "file": "blocked.workflow-run.json",
+      "sha256": "fb5fff4df3724489458bf5bc4b2687030d229e6a480c6782d85022eb4bffec53",
+      "bytes": 3361702
+    },
+    {
+      "file": "browser-receipt.json",
+      "sha256": "d488a41cfe7c4f15be9ff6619ffae7b7e93e2dfe2dbef87d3e84345b93f18661",
+      "bytes": 14153
+    },
+    {
+      "file": "cancelled.workflow-run.json",
+      "sha256": "d42e46922683875cbd140b40c018c3c3b59c45ecd36dfcc773b5d1000de8316a",
+      "bytes": 10582325
+    },
+    {
+      "file": "checks/shared-contract-tests.log",
+      "sha256": "c4c043ccbaebbea6774089813fb1b6f4476669be233b9ab0e66d99dedab62cf7",
+      "bytes": 1314
+    },
+    {
+      "file": "checks/shared-contract-verification.json",
+      "sha256": "5821f1f1a089c44e12c1581033f4f5369ae2cb96b2a147a7f122b41f17022a0e",
+      "bytes": 1828
+    },
+    {
+      "file": "checks/shipping-tests.log",
+      "sha256": "3fc5069cea1c6a94a5e7cf75b154ce27cc8415dfa4345d6219f19689d543bbbb",
+      "bytes": 4604
+    },
+    {
+      "file": "chosen.workflow-run.json",
+      "sha256": "e3e6f3a3b53f7a5b2e1f557e5ab1674547f46c069291aee56ef4d5db274276e6",
+      "bytes": 6588287
+    },
+    {
+      "file": "completed.workflow-run.json",
+      "sha256": "51301dbb10ce9ee7a431746d228c8a795616eeb6e6f36642d84e857be741070f",
+      "bytes": 9580798
+    },
+    {
+      "file": "confirmed-revision.case.json",
+      "sha256": "e3ed9e2d3ddc57ba813a9bdc001dbe3f5a4b9cebadfb1f7fa045261a60dfc272",
+      "bytes": 4886
+    },
+    {
+      "file": "confirmed-revision.workflow-run.json",
+      "sha256": "5d78dc148c58dac1c6727fa2470c3de36987c1a9bf07f8e7372c001dc95f44b5",
+      "bytes": 5595707
+    },
+    {
+      "file": "inspected.workflow-run.json",
+      "sha256": "2d08a3f2017b0c9ec2b3b3ccf42062822e6031a35b9853b530202d7436a9dd8b",
+      "bytes": 1844528
+    },
+    {
+      "file": "late-cutoff.workflow-run.json",
+      "sha256": "f6b940e79e8370959a9a4423f938b6718613d03f0d09a7c86cb89a845bb89732",
+      "bytes": 3361100
+    },
+    {
+      "file": "reports/baseline/app.json",
+      "sha256": "03e1357e59893f4c6171db069433fe073724658506ccacb95c49dea2646867ef",
+      "bytes": 119972
+    },
+    {
+      "file": "reports/baseline/cli-commands.json",
+      "sha256": "2498e4f5405cb5092c1ecc9f374ee0d20ac5ea855d292d079292231570eb658d",
+      "bytes": 15655
+    },
+    {
+      "file": "reports/baseline/manifest.json",
+      "sha256": "52e82f679e07633c404d8846b162db170dc6213febe9c7b452817d7a3686db11",
+      "bytes": 54552
+    },
+    {
+      "file": "reports/baseline/shipments.csv",
+      "sha256": "3e2fdf01b125e821950f01cf6940c530893c95ca0deae5a4332c345ff1629519",
+      "bytes": 3661
+    },
+    {
+      "file": "reports/baseline/shipments.html",
+      "sha256": "1e29847a18243e74fbfb7ee22c6057ecfc244af69c456fb56cbbed78c29dda64",
+      "bytes": 19586
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-104/case.json",
+      "sha256": "a6f8e57de46ed51117e94e7dfb040417d5561419257b81f5579469e0ee5a0650",
+      "bytes": 7051
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-104/decision-summary.json",
+      "sha256": "4c52aaeaa2e17cdcbf61160930362bfdc37c4d2e442818b266001b6a39adfbc7",
+      "bytes": 3149
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-104/prepared-review.json",
+      "sha256": "4be774492a4c2904744d9a667e63c3121c08556846ed2d40f94f438753aac5e4",
+      "bytes": 3305771
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-104/review.json",
+      "sha256": "b0c761870f402cc8bbd989bfb155451e472d214b72c804dc5d5e520e1001cce2",
+      "bytes": 5381330
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-104/run.json",
+      "sha256": "ee1ad842b79d5959689baa6d9e8e04e3b097ca18f2d45fd62a4d8ebdfa968360",
+      "bytes": 234330
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-104/sources.json",
+      "sha256": "ef2094eacf7552316f25e79adfe8f8b43d61af7c86adde339c86cd680b5cb7b7",
+      "bytes": 1102
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-104/validation.json",
+      "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c",
+      "bytes": 36
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-105/case.json",
+      "sha256": "96e4483fbbeec33532cf010f2dd48741b612f1c6533c96320819b2c1fe220dda",
+      "bytes": 7051
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-105/decision-summary.json",
+      "sha256": "4c52aaeaa2e17cdcbf61160930362bfdc37c4d2e442818b266001b6a39adfbc7",
+      "bytes": 3149
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-105/prepared-review.json",
+      "sha256": "f325a87d1d1463e193891e885a3f3f134b0241a1380e1807ae98d32446367390",
+      "bytes": 3305771
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-105/review.json",
+      "sha256": "5ba033d98737c6c34c613d96363f91439aa58af623085f16195452b58db76c94",
+      "bytes": 5381330
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-105/run.json",
+      "sha256": "f569524f2e6593fa972df707c5ba4376fef2abb9d448ada140b00a3e37409d2a",
+      "bytes": 234330
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-105/sources.json",
+      "sha256": "9a8aef0c57da11eef74fed3a2608419e133bc9fed5b80063e143ee2d4b5d61d8",
+      "bytes": 1102
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-105/validation.json",
+      "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c",
+      "bytes": 36
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-106/case.json",
+      "sha256": "1aff327e8874f81a913150a7dc395ac78696cb88387d4e5f7619176b1198d796",
+      "bytes": 7051
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-106/decision-summary.json",
+      "sha256": "4c52aaeaa2e17cdcbf61160930362bfdc37c4d2e442818b266001b6a39adfbc7",
+      "bytes": 3149
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-106/prepared-review.json",
+      "sha256": "0fd746fbde1f6a7d5cc33dce11051457bd5eb2bec2056e378931aea8a3d992b6",
+      "bytes": 3305771
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-106/review.json",
+      "sha256": "3e38d9fa0582cdd57c944305913996de62961d2c819fb08f64dc0c1bdb73e94a",
+      "bytes": 5381330
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-106/run.json",
+      "sha256": "34976aad2325c74e4635c5ab5fbecfa173e4afcc23597ebcebe595f985732ff4",
+      "bytes": 234330
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-106/sources.json",
+      "sha256": "d611e2422fbebec05c999aafeaec70778a6371f8613451091fd14ff60475470a",
+      "bytes": 1102
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-106/validation.json",
+      "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c",
+      "bytes": 36
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-107/case.json",
+      "sha256": "af80bd4f80eb4e51d48150862ff2f10c1a2629641309d925fae23243e2f0c0b4",
+      "bytes": 7050
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-107/decision-summary.json",
+      "sha256": "4c52aaeaa2e17cdcbf61160930362bfdc37c4d2e442818b266001b6a39adfbc7",
+      "bytes": 3149
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-107/prepared-review.json",
+      "sha256": "c97b9aee9fdf4a18c5c9f139f6d35b50c277942e5676b63235378808dd77ac66",
+      "bytes": 3305723
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-107/review.json",
+      "sha256": "1664674b695bb4d679ae8dcbcd990231089f4e3f630359e6a27e42b9b86e28b4",
+      "bytes": 5381247
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-107/run.json",
+      "sha256": "d272f0cfe60ec92c4c0381b12f31aa2a5d41a064b4773ef9a3c7bd07cb5f3805",
+      "bytes": 234320
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-107/sources.json",
+      "sha256": "525a00311dd692238c069469fba11fc2de16bacbe74f1cb7aee9f215bad93d58",
+      "bytes": 1102
+    },
+    {
+      "file": "reports/baseline/shipments/SHIP-107/validation.json",
+      "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c",
+      "bytes": 36
+    },
+    {
+      "file": "reports/late/app.json",
+      "sha256": "03e1357e59893f4c6171db069433fe073724658506ccacb95c49dea2646867ef",
+      "bytes": 119972
+    },
+    {
+      "file": "reports/late/cli-commands.json",
+      "sha256": "97eefc9ddbc6ff99769180a358f9230a36573ce3613da25b6c155eb73a8f1d87",
+      "bytes": 15555
+    },
+    {
+      "file": "reports/late/manifest.json",
+      "sha256": "bb550123547eaca32d327032ad45923ddae2f049dbdc8508e21ebd212cdb3972",
+      "bytes": 107733
+    },
+    {
+      "file": "reports/late/shipments.csv",
+      "sha256": "a786e662623e2449b24074e3cc395f7e4eb982fba5de7e07c30fc9eca440dde8",
+      "bytes": 4917
+    },
+    {
+      "file": "reports/late/shipments.html",
+      "sha256": "74f8e6280ebc8bcd2b70472e76da3e103376cc273a02ee7401c4733fdec59498",
+      "bytes": 21374
+    },
+    {
+      "file": "reports/late/shipments/SHIP-104/case.json",
+      "sha256": "7571af32d9b6fd1f7b9e287e1f88572488364e58a885e5709527703eeab5a996",
+      "bytes": 7051
+    },
+    {
+      "file": "reports/late/shipments/SHIP-104/decision-summary.json",
+      "sha256": "1f05e2f96638d59cf3eb8c857fd439111b315b00b6e11f5b8ae9c53e6f4bd54f",
+      "bytes": 3172
+    },
+    {
+      "file": "reports/late/shipments/SHIP-104/prepared-review.json",
+      "sha256": "ea2cf2e27b3223f2e445ab2321825dc82f08a6b7a83f3ef2b7ba33663c729c55",
+      "bytes": 6141519
+    },
+    {
+      "file": "reports/late/shipments/SHIP-104/review.json",
+      "sha256": "83b92a60f4c13a1a97e26b6f2a719f8dd5a631475ab0aec1b188df3f17a97ff8",
+      "bytes": 9743322
+    },
+    {
+      "file": "reports/late/shipments/SHIP-104/run.json",
+      "sha256": "ac474574b1b6ffee30357c6d64f6b0eec9862a198dae3c44a0a6b9effe8a52b9",
+      "bytes": 250112
+    },
+    {
+      "file": "reports/late/shipments/SHIP-104/sources.json",
+      "sha256": "ef2094eacf7552316f25e79adfe8f8b43d61af7c86adde339c86cd680b5cb7b7",
+      "bytes": 1102
+    },
+    {
+      "file": "reports/late/shipments/SHIP-104/validation.json",
+      "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c",
+      "bytes": 36
+    },
+    {
+      "file": "reports/late/shipments/SHIP-105/case.json",
+      "sha256": "7322cdd667cf515c68089388f5ab4be81366773d6ecc90fb4d709a626274b31e",
+      "bytes": 7051
+    },
+    {
+      "file": "reports/late/shipments/SHIP-105/decision-summary.json",
+      "sha256": "1f05e2f96638d59cf3eb8c857fd439111b315b00b6e11f5b8ae9c53e6f4bd54f",
+      "bytes": 3172
+    },
+    {
+      "file": "reports/late/shipments/SHIP-105/prepared-review.json",
+      "sha256": "883daa21d672c68b9e424ea6b73a41405b40c3248aa2eeda39e7b60d1433a885",
+      "bytes": 6141519
+    },
+    {
+      "file": "reports/late/shipments/SHIP-105/review.json",
+      "sha256": "356d711a2e7da6c7087b03d78f229067be735c95133d9df049941905e01e1469",
+      "bytes": 9743322
+    },
+    {
+      "file": "reports/late/shipments/SHIP-105/run.json",
+      "sha256": "8caab40b6af8143a85e3aa0a10f43adb96f80db24f1508a9ba50d04afcbdaed9",
+      "bytes": 250112
+    },
+    {
+      "file": "reports/late/shipments/SHIP-105/sources.json",
+      "sha256": "9a8aef0c57da11eef74fed3a2608419e133bc9fed5b80063e143ee2d4b5d61d8",
+      "bytes": 1102
+    },
+    {
+      "file": "reports/late/shipments/SHIP-105/validation.json",
+      "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c",
+      "bytes": 36
+    },
+    {
+      "file": "reports/late/shipments/SHIP-106/case.json",
+      "sha256": "b57b5bee6c111ed690d10fdf0238e876824d5102a45fdeed076561e9a052e3a2",
+      "bytes": 7051
+    },
+    {
+      "file": "reports/late/shipments/SHIP-106/decision-summary.json",
+      "sha256": "1f05e2f96638d59cf3eb8c857fd439111b315b00b6e11f5b8ae9c53e6f4bd54f",
+      "bytes": 3172
+    },
+    {
+      "file": "reports/late/shipments/SHIP-106/prepared-review.json",
+      "sha256": "385ba0f9252e7a575936c93897d7c655df39439b717555945ec2c9990febbb01",
+      "bytes": 6141519
+    },
+    {
+      "file": "reports/late/shipments/SHIP-106/review.json",
+      "sha256": "885c4de7b7dcbf9bebc46b82037cb03b0b85971d4be136ba60f20df01b07f872",
+      "bytes": 9743322
+    },
+    {
+      "file": "reports/late/shipments/SHIP-106/run.json",
+      "sha256": "b5d979f8aa1d7c0ce4aa9093cc0a1774936668646de37d91f3179f9c18baa468",
+      "bytes": 250112
+    },
+    {
+      "file": "reports/late/shipments/SHIP-106/sources.json",
+      "sha256": "d611e2422fbebec05c999aafeaec70778a6371f8613451091fd14ff60475470a",
+      "bytes": 1102
+    },
+    {
+      "file": "reports/late/shipments/SHIP-106/validation.json",
+      "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c",
+      "bytes": 36
+    },
+    {
+      "file": "reports/late/shipments/SHIP-107/case.json",
+      "sha256": "5881c5de3678f42c85c5ea6520bba21e09fcb3c2a2605043540e0898a0b6b75d",
+      "bytes": 7050
+    },
+    {
+      "file": "reports/late/shipments/SHIP-107/decision-summary.json",
+      "sha256": "1f05e2f96638d59cf3eb8c857fd439111b315b00b6e11f5b8ae9c53e6f4bd54f",
+      "bytes": 3172
+    },
+    {
+      "file": "reports/late/shipments/SHIP-107/prepared-review.json",
+      "sha256": "3f941bf32c9a0fc8c19f1eacf694d67afe075872a7879e9e17076a170b4dc4ec",
+      "bytes": 6141431
+    },
+    {
+      "file": "reports/late/shipments/SHIP-107/review.json",
+      "sha256": "4947578c87986682373e5f9ad10edb23618e1a3d631172196279defacaa0269a",
+      "bytes": 9743179
+    },
+    {
+      "file": "reports/late/shipments/SHIP-107/run.json",
+      "sha256": "7468e4540c43b5dd4962f0e3b6f652286e04c6cf2488d1c051d5319eb726912f",
+      "bytes": 250102
+    },
+    {
+      "file": "reports/late/shipments/SHIP-107/sources.json",
+      "sha256": "525a00311dd692238c069469fba11fc2de16bacbe74f1cb7aee9f215bad93d58",
+      "bytes": 1102
+    },
+    {
+      "file": "reports/late/shipments/SHIP-107/validation.json",
+      "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c",
+      "bytes": 36
+    },
+    {
+      "file": "reports/morning/app.json",
+      "sha256": "03e1357e59893f4c6171db069433fe073724658506ccacb95c49dea2646867ef",
+      "bytes": 119972
+    },
+    {
+      "file": "reports/morning/cli-commands.json",
+      "sha256": "9fc18c03e10e5b26944a9c0f2640b98b117da9bd6e86aee0bf56c093dcc1900d",
+      "bytes": 11970
+    },
+    {
+      "file": "reports/morning/manifest.json",
+      "sha256": "60209eef0000d01db49f7a5f28f4b7401fef4f400785135a35b7d794ba5bd92d",
+      "bytes": 119359
+    },
+    {
+      "file": "reports/morning/shipments.csv",
+      "sha256": "e2e5d0256dc99a99398e25a73d6a6d8fa884fe685d20cf37bdd429ada4014f4e",
+      "bytes": 7650
+    },
+    {
+      "file": "reports/morning/shipments.html",
+      "sha256": "41232df39ce0ed155baf3f0c74d8e5ed171a9530de8d002a54be13013529626f",
+      "bytes": 23463
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-104/case.json",
+      "sha256": "a6f8e57de46ed51117e94e7dfb040417d5561419257b81f5579469e0ee5a0650",
+      "bytes": 7051
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-104/decision-summary.json",
+      "sha256": "4c52aaeaa2e17cdcbf61160930362bfdc37c4d2e442818b266001b6a39adfbc7",
+      "bytes": 3149
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-104/prepared-review.json",
+      "sha256": "f0da7dc4b7acdabf9f851f5bc32844cf8b7de19a7d11112e7bbd2608e359e3db",
+      "bytes": 5982443
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-104/review.json",
+      "sha256": "dc30bd0ba34636340f83928d8ddc60e2194b2721d0fd986430c61a64b71250a4",
+      "bytes": 9463722
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-104/run.json",
+      "sha256": "ba0e16fbff5afeebd5b7b118ee6476cae946956c4fb51bb18c7f12af32e76589",
+      "bytes": 234330
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-104/sources.json",
+      "sha256": "ce720df3c2f12dc53071561f5559d995cc670838df10585e01fa62e25f78e61a",
+      "bytes": 1098
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-104/validation.json",
+      "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c",
+      "bytes": 36
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-105/case.json",
+      "sha256": "fd6523eacdf6587028c620d1b6fdc5da861149d5b2f9bb8b46fbaf928718be85",
+      "bytes": 7206
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-105/decision-summary.json",
+      "sha256": "09e9a2549f396b8e03101441b78042712d347b05994373ef3512f2fc759ec388",
+      "bytes": 3201
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-105/prepared-review.json",
+      "sha256": "79c3fe3c7d2d9bd766adc07c81080467a6c63ae695f6b6061f7aad6100f0977d",
+      "bytes": 6126747
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-105/review.json",
+      "sha256": "43d542ddca23a6d16b77c623862ea3a7e69b11dac79c63528f21af5345302011",
+      "bytes": 9717202
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-105/run.json",
+      "sha256": "4a0a82d5e0e9eab93459e6b55ab0d164e1e3ea9ce9c898e353c6e00e7475823c",
+      "bytes": 249906
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-105/sources.json",
+      "sha256": "54f1d42b530d8fe93a45403768b6d9542378a33085f89c02f39b102391940d5a",
+      "bytes": 1098
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-105/validation.json",
+      "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c",
+      "bytes": 36
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-106/case.json",
+      "sha256": "9ce26a1405b0aa92901541179b0144a8d4bb320189f3b695d3b462781b22ccbd",
+      "bytes": 7180
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-106/decision-summary.json",
+      "sha256": "d22557318f8f57080f8b70b929b1f4117d3494acf3f3044e3cf4ae00fb67f8a2",
+      "bytes": 3225
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-106/prepared-review.json",
+      "sha256": "b05e474d24411d5f03ab2ecd57245e2f95be2511f29953376878ea8efd5f2892",
+      "bytes": 6107075
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-106/review.json",
+      "sha256": "5bf2469690b74779ad85eafd6f0d59202b1ca7d2f99a808c7010d064775359bb",
+      "bytes": 9683994
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-106/run.json",
+      "sha256": "ea65f916e83dd65b8d52df8ccfe6cef66f6a4d4e3c26e4f252fbcf5039dbaf5e",
+      "bytes": 248762
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-106/sources.json",
+      "sha256": "02988f65bd07c7fe4d8c3af0e1d771b4c2ff3c40370c478711000f9ae3113cfa",
+      "bytes": 1098
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-106/validation.json",
+      "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c",
+      "bytes": 36
+    },
+    {
+      "file": "reports/morning/shipments/SHIP-107/sources.json",
+      "sha256": "bd3d004662bc96aa1c32a5db16b118a92bea00ca8d96f94ab824fca355bbdc1b",
+      "bytes": 1258
+    },
+    {
+      "file": "reserved.workflow-run.json",
+      "sha256": "0148129b90c93d1c0fed6e3c13c91dc032a538533ac882b33ec79a401c98c901",
+      "bytes": 8581283
+    },
+    {
+      "file": "restored.workflow-run.json",
+      "sha256": "5d78dc148c58dac1c6727fa2470c3de36987c1a9bf07f8e7372c001dc95f44b5",
+      "bytes": 5595707
+    },
+    {
+      "file": "saved.workflow-run.json",
+      "sha256": "5d78dc148c58dac1c6727fa2470c3de36987c1a9bf07f8e7372c001dc95f44b5",
+      "bytes": 5595707
+    }
+  ],
+  "browserReceipt": {
+    "file": "browser-receipt.json",
+    "sha256": "d488a41cfe7c4f15be9ff6619ffae7b7e93e2dfe2dbef87d3e84345b93f18661",
+    "bytes": 14153
+  },
+  "checks": [
+    "Actual public CLI batch: baseline Direct; late booking clock Consolidated; morning source errors and blocked findings remain separate",
+    "confirmed: production browser worker and public CLI agree on every arrangement and failed requirement",
+    "revised: production browser worker and public CLI agree on every arrangement and failed requirement",
+    "permissions: production browser worker and public CLI agree on every arrangement and failed requirement",
+    "urgent: production browser worker and public CLI agree on every arrangement and failed requirement",
+    "Native Decision summary Inspect selects the exact option; Supporting reports, Decision process and dependencies preserve run identity",
+    "Genuine revision-2 confirmation: pending draft disables calculation; Apply makes the retained result stale; Recalculate changes blocked to Consolidated without changing permissions",
+    "Save and reopen preserve applied inputs, findings, exact workflow version and history; unapplied form edits are discarded only by explicit restore",
+    "Operating choice, sourced authority, carrier reservation and delivery remain distinct; later negative records supersede historical support without erasing it",
+    "Unsupported currency is diagnosed separately from a complete blocked finding; stale current downloads remain disabled"
+  ],
+  "auxiliaryReceipts": [],
+  "errors": [],
+  "passed": true,
+  "comparisons": {
+    "bookingWindow": {
+      "before": {
+        "file": "baseline.workflow-run.json",
+        "inputPath": "case.inputs",
+        "runHash": "d7964dbd91d196818692960b20ec62550e304d1e629191c72559c0414a61a7a4",
+        "caseId": "SHIP-104"
+      },
+      "after": {
+        "file": "late-cutoff.workflow-run.json",
+        "inputPath": "case.inputs",
+        "runHash": "0d7f55926033a1460cefd64328cf1e7d8e46ba1acdd2bf6e86c05b2a91d9d99e",
+        "caseId": "SHIP-104"
+      },
+      "changedFields": [
+        {
+          "path": "inputs.parameters.actionReady",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": 480,
+          "after": 690
+        },
+        {
+          "path": "inputs.parameters.currentTime",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": 480,
+          "after": 690
+        }
+      ]
+    },
+    "confirmation": {
+      "before": {
+        "file": "blocked.workflow-run.json",
+        "inputPath": "case.inputs",
+        "runHash": "7007e40d80f0a86f1a4076834d2515597c44f67ae56a6d6be825f986d7e7e014",
+        "caseId": "SHIP-105"
+      },
+      "after": {
+        "file": "confirmed-revision.workflow-run.json",
+        "inputPath": "case.inputs",
+        "runHash": "0b6fb401c53b4c2135a4c92bff52e8812b5a4424563b89fab3a0617d4c5a9ad3",
+        "caseId": "SHIP-105"
+      },
+      "changedFields": [
+        {
+          "path": "inputs.tables.slotConfirmations.0.orderRevision",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "1",
+          "after": "2"
+        },
+        {
+          "path": "inputs.tables.slotConfirmations.0.slotReference",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "SLOT-C105",
+          "after": "SLOT-SHIP-105-REV2"
+        }
+      ]
+    },
+    "batchCases": {
+      "before": {
+        "file": "reports/morning/shipments/SHIP-104/review.json",
+        "inputPath": "case.inputs",
+        "runHash": "2e439a7e0d0cb282ae2668ae8abbeaa88293925808df4e08f51f528bae45c0ee",
+        "caseId": "SHIP-104"
+      },
+      "after": {
+        "file": "reports/morning/shipments/SHIP-105/review.json",
+        "inputPath": "case.inputs",
+        "runHash": "7007e40d80f0a86f1a4076834d2515597c44f67ae56a6d6be825f986d7e7e014",
+        "caseId": "SHIP-105"
+      },
+      "changedFields": [
+        {
+          "path": "inputs.id",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "SHIP-104",
+          "after": "SHIP-105"
+        },
+        {
+          "path": "inputs.parameters.orderId",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "ORD-104",
+          "after": "ORD-105"
+        },
+        {
+          "path": "inputs.parameters.orderRevision",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "1",
+          "after": "2"
+        },
+        {
+          "path": "inputs.parameters.packActor",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "SHIP-104-packing-lead",
+          "after": "SHIP-105-packing-lead"
+        },
+        {
+          "path": "inputs.parameters.releaseActor",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "SHIP-104-release-officer",
+          "after": "SHIP-105-release-officer"
+        },
+        {
+          "path": "inputs.provenance.0.description",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "Fictional retained case for independent shipment SHIP-104. Preparation actors are shipment-specific. The model-local packing-bench resource is separately allocated to this case; the batch does not claim joint resource feasibility. This file records the supplied readiness, authority registry, calendars and resources; no live supplier records are represented.",
+          "after": "Fictional retained case for independent shipment SHIP-105. Preparation actors are shipment-specific. The model-local packing-bench resource is separately allocated to this case; the batch does not claim joint resource feasibility. This file records the supplied readiness, authority registry, calendars and resources; no live supplier records are represented. The fixture author explicitly supplied reviewed revision-2 registration and selection/release authorities. The supplier slot record still covers revision 1."
+        },
+        {
+          "path": "inputs.provenance.0.id",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "FICTIONAL-RETAINED-BASELINE-SHIP-104",
+          "after": "FICTIONAL-RETAINED-MORNING-SHIP-105"
+        },
+        {
+          "path": "inputs.tables.actors.0.id",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "SHIP-104-packing-lead",
+          "after": "SHIP-105-packing-lead"
+        },
+        {
+          "path": "inputs.tables.actors.1.id",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "SHIP-104-release-officer",
+          "after": "SHIP-105-release-officer"
+        },
+        {
+          "path": "inputs.tables.arrangementAuthorities.0.orderId",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "ORD-104",
+          "after": "ORD-105"
+        },
+        {
+          "path": "inputs.tables.arrangementAuthorities.0.orderRevision",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "1",
+          "after": "2"
+        },
+        {
+          "path": "inputs.tables.arrangementAuthorities.1.orderId",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "ORD-104",
+          "after": "ORD-105"
+        },
+        {
+          "path": "inputs.tables.arrangementAuthorities.1.orderRevision",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "1",
+          "after": "2"
+        },
+        {
+          "path": "inputs.tables.arrangementAuthorities.2.orderId",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "ORD-104",
+          "after": "ORD-105"
+        },
+        {
+          "path": "inputs.tables.arrangementAuthorities.2.orderRevision",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "1",
+          "after": "2"
+        },
+        {
+          "path": "inputs.tables.arrangements.0.capacity",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": 100,
+          "after": 99
+        },
+        {
+          "path": "inputs.tables.arrangements.0.quoteId",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "Q-SHIP-104-direct",
+          "after": "Q-SHIP-105-direct"
+        },
+        {
+          "path": "inputs.tables.arrangements.0.quoteOrderId",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "ORD-104",
+          "after": "ORD-105"
+        },
+        {
+          "path": "inputs.tables.arrangements.0.quoteOrderRevision",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "1",
+          "after": "2"
+        },
+        {
+          "path": "inputs.tables.arrangements.0.quoteRevision",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "1",
+          "after": "2"
+        },
+        {
+          "path": "inputs.tables.arrangements.1.quoteId",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "Q-SHIP-104-backup",
+          "after": "Q-SHIP-105-backup"
+        },
+        {
+          "path": "inputs.tables.arrangements.1.quoteOrderId",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "ORD-104",
+          "after": "ORD-105"
+        },
+        {
+          "path": "inputs.tables.arrangements.1.quoteOrderRevision",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "1",
+          "after": "2"
+        },
+        {
+          "path": "inputs.tables.arrangements.1.quoteRevision",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "1",
+          "after": "2"
+        },
+        {
+          "path": "inputs.tables.arrangements.2.quoteId",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "Q-SHIP-104-consolidated",
+          "after": "Q-SHIP-105-consolidated"
+        },
+        {
+          "path": "inputs.tables.arrangements.2.quoteOrderId",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "ORD-104",
+          "after": "ORD-105"
+        },
+        {
+          "path": "inputs.tables.arrangements.2.quoteOrderRevision",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "1",
+          "after": "2"
+        },
+        {
+          "path": "inputs.tables.arrangements.2.quoteRevision",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "1",
+          "after": "2"
+        },
+        {
+          "path": "inputs.tables.calendars.0.actor",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "SHIP-104-packing-lead",
+          "after": "SHIP-105-packing-lead"
+        },
+        {
+          "path": "inputs.tables.calendars.1.actor",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "SHIP-104-release-officer",
+          "after": "SHIP-105-release-officer"
+        },
+        {
+          "path": "inputs.tables.capabilities.0.actor",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "SHIP-104-packing-lead",
+          "after": "SHIP-105-packing-lead"
+        },
+        {
+          "path": "inputs.tables.capabilities.1.actor",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "SHIP-104-release-officer",
+          "after": "SHIP-105-release-officer"
+        },
+        {
+          "path": "inputs.tables.grants.0.actor",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "SHIP-104-release-officer",
+          "after": "SHIP-105-release-officer"
+        },
+        {
+          "path": "inputs.tables.grants.0.id",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "SHIP-104-RELEASE-direct",
+          "after": "SHIP-105-RELEASE-direct"
+        },
+        {
+          "path": "inputs.tables.grants.0.orderId",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "ORD-104",
+          "after": "ORD-105"
+        },
+        {
+          "path": "inputs.tables.grants.0.orderRevision",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "1",
+          "after": "2"
+        },
+        {
+          "path": "inputs.tables.grants.1.actor",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "SHIP-104-release-officer",
+          "after": "SHIP-105-release-officer"
+        },
+        {
+          "path": "inputs.tables.grants.1.id",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "SHIP-104-RELEASE-backup",
+          "after": "SHIP-105-RELEASE-backup"
+        },
+        {
+          "path": "inputs.tables.grants.1.orderId",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "ORD-104",
+          "after": "ORD-105"
+        },
+        {
+          "path": "inputs.tables.grants.1.orderRevision",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "1",
+          "after": "2"
+        },
+        {
+          "path": "inputs.tables.grants.2.actor",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "SHIP-104-release-officer",
+          "after": "SHIP-105-release-officer"
+        },
+        {
+          "path": "inputs.tables.grants.2.id",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "SHIP-104-RELEASE-consolidated",
+          "after": "SHIP-105-RELEASE-consolidated"
+        },
+        {
+          "path": "inputs.tables.grants.2.orderId",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "ORD-104",
+          "after": "ORD-105"
+        },
+        {
+          "path": "inputs.tables.grants.2.orderRevision",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "1",
+          "after": "2"
+        },
+        {
+          "path": "inputs.tables.readiness.0.orderId",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "ORD-104",
+          "after": "ORD-105"
+        },
+        {
+          "path": "inputs.tables.readiness.0.orderRevision",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "1",
+          "after": "2"
+        },
+        {
+          "path": "inputs.tables.readiness.1.orderId",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "ORD-104",
+          "after": "ORD-105"
+        },
+        {
+          "path": "inputs.tables.readiness.1.orderRevision",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "1",
+          "after": "2"
+        },
+        {
+          "path": "inputs.tables.resources.0.id",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "SHIP-104-packing-lead",
+          "after": "SHIP-105-packing-lead"
+        },
+        {
+          "path": "inputs.tables.resources.1.id",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "SHIP-104-release-officer",
+          "after": "SHIP-105-release-officer"
+        },
+        {
+          "path": "inputs.tables.slotConfirmations.0.orderId",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "ORD-104",
+          "after": "ORD-105"
+        },
+        {
+          "path": "inputs.tables.slotConfirmations.0.slotReference",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "SLOT-C104",
+          "after": "SLOT-C105"
+        },
+        {
+          "path": "inputs.tables.studyPurchaseGrants.0.id",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "SHIP-104-STUDY-PURCHASE-1",
+          "after": "SHIP-105-STUDY-PURCHASE-1"
+        },
+        {
+          "path": "inputs.tables.studyPurchaseGrants.0.orderId",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "ORD-104",
+          "after": "ORD-105"
+        },
+        {
+          "path": "inputs.tables.studyPurchaseGrants.0.orderRevision",
+          "beforePresent": true,
+          "afterPresent": true,
+          "before": "1",
+          "after": "2"
+        }
+      ]
+    }
+  }
+}

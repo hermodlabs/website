@@ -1,0 +1,45 @@
+{
+  "format": "decision-lab-promotion-browser-qualification/1",
+  "status": "passed",
+  "createdAt": "2026-11-19T03:16:59.770Z",
+  "workflowPackageHash": "c5f715e708aa6c7c493112e8cdb7ebe53bb706d5449825316c19c2099ede2e21",
+  "workflowDefinitionHash": "72f661169d102ec0788ae8f653d1a6b8e038d339127341b33a3fe2d918f55ff2",
+  "packages": [
+    {
+      "name": "@decision-lab/sdk",
+      "version": "0.1.0",
+      "filename": "decision-lab-sdk-0.1.0.tgz",
+      "sha256": "0f9f32420d78a65a360fdba45b33c927dd5b17cddac4c88f5c5d25201f162f92"
+    },
+    {
+      "name": "@decision-lab/cli",
+      "version": "0.1.0",
+      "filename": "decision-lab-cli-0.1.0.tgz",
+      "sha256": "0ab849b7a2747c54c52b8acebb01e37db9000c1b194bc525dfbcdc7165f3550c"
+    }
+  ],
+  "cliRunHash": "f1fb38ad1643a2f88e7a58d1ce5e3981e0c832a3fea25ab57bd6c8c3cc9d36b0",
+  "revisedRunHash": "a01fa6f34e3f992ca368bf3e2e2d2538bd0e735b3917dba12a6099cd28802bf0",
+  "workbookReleaseHash": "98c95b2db9cb2cb4edbec072e47ff1d01e8da68431e9d36750a08466654a9efb",
+  "checks": [
+    "Collections installs and exports the exact CLI-authored workflow and its pinned operating app.",
+    "The authoring workspace accepts the reviewed CLI draft and recreates the same installable release.",
+    "The CLI decision opens as the same complete review, with a readable one-person $200 proposal and five-guest/six-guest thresholds retained in the report.",
+    "A third callout is accepted through the ordinary staffing form; old findings, choice and authorization remain in history but cease to support the current decision.",
+    "Reassessment leaves only no-further-push eligible, requires a fresh decision, preserves the prior reviewed night and survives reload."
+  ],
+  "screenshots": [
+    {
+      "name": "promotion-decision-brief.png",
+      "sha256": "2b9cb81823ba36925011d76d0e3e171772f9146b90a92a62f3bda82a87fafa06"
+    },
+    {
+      "name": "promotion-guest-thresholds.png",
+      "sha256": "bac6caa35a58aca6b5e9c313a985d6e22124c61cf56d4bbf37f60b48d1f9d11f"
+    },
+    {
+      "name": "promotion-third-callout.png",
+      "sha256": "4b18d0a617d0419e5eab6995dd84743384600ea20c1f464c5959d8e08c07787a"
+    }
+  ]
+}

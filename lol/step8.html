@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hermod Draft Assistant - Decide and record the actual lock." />
+  <title>Hermod - Decide</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#03070d', shell: '#07101a', panel: '#09131f', panel2: '#0d1927', line: '#1c2b3d',
+            mist: '#9ca9bb', signal: '#8b5cf6', signal2: '#b79cff', blue: '#5b8cff', danger: '#ff5b68',
+            good: '#67d391', warn: '#eebc66'
+          },
+          fontFamily: {
+            sans: ['Inter', 'Avenir Next', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            mono: ['IBM Plex Mono', 'SFMono-Regular', 'Consolas', 'ui-monospace', 'monospace']
+          },
+          boxShadow: {
+            glow: '0 0 0 1px rgba(139,92,246,.55), 0 0 34px rgba(139,92,246,.18)',
+            panel: '0 22px 60px rgba(0,0,0,.28)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { color-scheme: dark; --purple:#8b5cf6; --lavender:#b79cff; --blue:#5b8cff; }
+    * { box-sizing: border-box; scrollbar-width: thin; scrollbar-color: #26384c transparent; }
+    html, body { min-height: 100%; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 4% 2%, rgba(91,140,255,.11), transparent 26rem),
+        radial-gradient(circle at 88% 0%, rgba(139,92,246,.10), transparent 29rem),
+        linear-gradient(180deg, #03070d 0%, #06101a 48%, #03070d 100%);
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: -2; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.012) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.72), transparent 84%);
+    }
+    .app-shell {
+      min-height: 100vh; border: 1px solid rgba(80,110,145,.34); background: rgba(2,8,14,.26);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.025), 0 30px 100px rgba(0,0,0,.38);
+    }
+    .sidebar {
+      background: linear-gradient(180deg, rgba(8,18,29,.98), rgba(3,9,15,.99)),
+        radial-gradient(circle at 15% 7%, rgba(139,92,246,.08), transparent 18rem);
+    }
+    .brand-mark { position: relative; width: 34px; height: 34px; filter: drop-shadow(0 0 14px rgba(139,92,246,.38)); }
+    .brand-mark::before, .brand-mark::after {
+      content: ''; position: absolute; top: 4px; bottom: 4px; width: 10px;
+      background: linear-gradient(180deg, #c4b5fd, #8b5cf6 55%, #5b8cff);
+      clip-path: polygon(0 0, 100% 17%, 100% 60%, 50% 74%, 50% 100%, 0 83%);
+    }
+    .brand-mark::before { left: 4px; }
+    .brand-mark::after { right: 4px; transform: scaleX(-1); }
+    .nav-item { position: relative; transition: .18s ease; }
+    .nav-item::before {
+      content: ''; position: absolute; inset: 0 auto 0 0; width: 3px; border-radius: 0 6px 6px 0;
+      background: linear-gradient(180deg,#5b8cff,#8b5cf6); opacity: 0;
+    }
+    .nav-item.active { background: linear-gradient(90deg, rgba(91,140,255,.14), rgba(63,91,126,.14)); border-color: rgba(91,140,255,.16); color: #fff; }
+    .nav-item.active::before { opacity: 1; }
+    .glass { background: linear-gradient(180deg, rgba(8,18,29,.93), rgba(5,12,20,.96)); box-shadow: inset 0 1px 0 rgba(255,255,255,.025), 0 20px 60px rgba(0,0,0,.18); }
+    .step-line { height: 1px; flex: 1; background: linear-gradient(90deg, rgba(139,92,246,.55), rgba(255,255,255,.10)); }
+    .mini-champ { width: 36px; height: 36px; object-fit: cover; border-radius: 9px; border: 1px solid rgba(255,255,255,.10); background: #0a111a; }
+    .choice-card { position: relative; overflow: hidden; transition: .18s ease; background: linear-gradient(180deg, rgba(12,24,38,.94), rgba(6,14,23,.98)); }
+    .choice-card::before { content:''; position:absolute; inset:0 auto 0 0; width:2px; opacity:0; background:linear-gradient(180deg,transparent,rgba(139,92,246,.95),transparent); transition:.18s ease; }
+    .choice-card:hover { border-color: rgba(183,156,255,.26); transform: translateY(-1px); }
+    .choice-card:hover::before, .choice-card.selected::before { opacity: 1; }
+    .choice-card.selected { border-color: rgba(139,92,246,.48); background: linear-gradient(180deg, rgba(28,21,48,.90), rgba(8,15,27,.98)); box-shadow: 0 0 0 1px rgba(139,92,246,.10), 0 18px 40px rgba(0,0,0,.25); }
+    .choice-card.recommended { border-color: rgba(139,92,246,.22); }
+    .hero-portrait { width: 64px; height: 64px; object-fit: cover; border-radius: 15px; border: 1px solid rgba(183,156,255,.24); }
+    .source-pill { border: 1px solid rgba(255,255,255,.065); background: rgba(255,255,255,.018); }
+    .record-panel { background: linear-gradient(135deg, rgba(139,92,246,.08), rgba(91,140,255,.035)); }
+    .context-row { border-top: 1px solid rgba(255,255,255,.052); }
+    .timeline-line { width: 1px; background: rgba(255,255,255,.08); }
+    .pulse { animation: pulse 2.15s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(103,211,145,.26); } 50% { box-shadow: 0 0 0 8px rgba(103,211,145,0); } }
+    .toast { transform: translateY(20px); opacity:0; pointer-events:none; transition:.22s ease; }
+    .toast.show { transform: translateY(0); opacity:1; }
+    .modal-backdrop { background: rgba(1,4,8,.78); backdrop-filter: blur(8px); }
+    .champ-option { transition:.16s ease; }
+    .champ-option:hover { border-color: rgba(183,156,255,.30); background: rgba(139,92,246,.06); }
+    .confidence-btn { transition:.16s ease; }
+    .confidence-btn:hover { border-color: rgba(183,156,255,.28); color:#fff; }
+    .confidence-btn.active { border-color: rgba(139,92,246,.52); background: rgba(139,92,246,.10); color:#ddd1ff; }
+    @media (prefers-reduced-motion: reduce) { .pulse { animation:none; } .choice-card:hover { transform:none; } }
+  </style>
+</head>
+<body class="font-sans text-slate-100 antialiased selection:bg-signal/40 selection:text-white">
+  <div class="app-shell grid lg:grid-cols-[246px_minmax(0,1fr)]">
+    <aside class="sidebar hidden min-h-screen border-r border-white/[0.06] lg:flex lg:flex-col">
+      <div class="flex h-[76px] items-center gap-3 border-b border-white/[0.05] px-7">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="text-[19px] font-semibold tracking-[.24em] text-slate-100">HERMOD</div>
+      </div>
+      <div class="flex-1 px-2 py-7">
+        <p class="px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Live</p>
+        <button class="nav-item active flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-semibold"><span class="grid h-6 w-6 place-items-center text-signal2">O</span>Draft Assistant</button>
+        <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">You</p>
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">#</span>Champion Pool</button>
+        <button class="nav-item mt-1 flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">D</span>Player Profile</button>
+        <p class="mt-7 px-5 pb-2 text-[10px] font-bold uppercase tracking-[.22em] text-slate-600">Learn</p>
+        <button id="historyNav" class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">[]</span>Decision History</button>
+        <button id="reviewNav" class="nav-item mt-1 flex w-full items-center gap-3 rounded-xl border border-transparent px-5 py-3.5 text-left text-sm font-medium text-slate-400 hover:bg-white/[0.025] hover:text-slate-200"><span class="grid h-6 w-6 place-items-center">~</span>Review & Learn</button>
+      </div>
+      <div class="border-t border-white/[0.06] p-4">
+        <button class="nav-item flex w-full items-center gap-3 rounded-xl border border-transparent px-4 py-3 text-left text-sm font-medium text-slate-500 hover:bg-white/[0.025] hover:text-slate-300"><span class="grid h-6 w-6 place-items-center">*</span>Settings</button>
+      </div>
+    </aside>
+
+    <main class="min-w-0">
+      <header class="flex h-[76px] items-center justify-between border-b border-white/[0.06] bg-[#050c14]/75 px-5 backdrop-blur-xl sm:px-7 xl:px-10">
+        <div class="flex items-center gap-3">
+          <button class="grid h-9 w-9 place-items-center rounded-xl border border-white/[0.07] text-slate-500 lg:hidden">=</button>
+          <div><p class="text-sm font-semibold text-white">Draft Assistant</p><p class="mt-0.5 text-[10px] uppercase tracking-[.16em] text-slate-600">Live decision support</p></div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="hidden rounded-lg border border-white/[0.07] bg-white/[0.018] px-2.5 py-1.5 font-mono text-[10px] tracking-[.12em] text-slate-500 sm:inline-flex">PATCH 16.16</span>
+          <span class="rounded-lg border border-blue/20 bg-blue/[0.05] px-2.5 py-1.5 font-mono text-[10px] font-bold tracking-[.12em] text-blue">B3 / MID</span>
+        </div>
+      </header>
+
+      <div class="mx-auto max-w-[1460px] px-5 pb-16 sm:px-7 xl:px-10">
+        <section class="border-b border-white/[0.055] py-5">
+          <div class="flex items-center gap-3 overflow-x-auto">
+            <div class="flex min-w-0 items-center gap-3 opacity-70"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-good/30 bg-good/[0.06] text-[11px] font-bold text-good">1</span><div class="hidden min-w-0 sm:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-400">Draft</p><p class="text-xs text-slate-600">Complete</p></div></div>
+            <div class="step-line"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-70"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-good/30 bg-good/[0.06] text-[11px] font-bold text-good">2</span><div class="hidden min-w-0 sm:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-400">Your Options</p><p class="text-xs text-slate-600">3 viable</p></div></div>
+            <div class="step-line"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-70"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-good/30 bg-good/[0.06] text-[11px] font-bold text-good">3</span><div class="hidden min-w-0 sm:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-400">Clarify</p><p class="text-xs text-slate-600">Resolved</p></div></div>
+            <div class="step-line"></div>
+            <div class="flex min-w-0 items-center gap-3 opacity-70"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-good/30 bg-good/[0.06] text-[11px] font-bold text-good">4</span><div class="hidden min-w-0 sm:block"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-slate-400">Recommendation</p><p class="text-xs text-slate-600">Orianna</p></div></div>
+            <div class="step-line"></div>
+            <div class="flex min-w-0 items-center gap-3"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-signal/70 bg-signal/15 text-[11px] font-bold text-signal2 shadow-[0_0_18px_rgba(139,92,246,.16)]">5</span><div class="min-w-0"><p class="text-[11px] font-bold uppercase tracking-[.14em] text-signal2">Decide</p><p class="hidden text-xs text-slate-500 sm:block">Record lock</p></div></div>
+          </div>
+        </section>
+
+        <section class="pb-7 pt-9">
+          <div class="flex flex-col justify-between gap-5 xl:flex-row xl:items-end">
+            <div>
+              <p class="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.2em] text-signal2"><span class="h-1.5 w-1.5 rounded-full bg-signal"></span>Decision / Final step</p>
+              <h2 id="pageTitle" class="text-3xl font-semibold tracking-[-.035em] text-white sm:text-[38px]">What did you lock?</h2>
+              <p id="pageSub" class="mt-2 max-w-3xl text-sm leading-6 text-slate-400 sm:text-[15px]">Record the champion you actually chose. Hermod stores the recommendation and your real decision separately so the draft can be reviewed later.</p>
+            </div>
+            <div id="statusBadge" class="flex items-center gap-2 rounded-full border border-signal/18 bg-signal/[0.04] px-3 py-1.5 text-xs text-slate-400"><span class="h-1.5 w-1.5 rounded-full bg-signal"></span><span>Waiting for your lock</span></div>
+          </div>
+        </section>
+
+        <section class="glass mb-5 overflow-hidden rounded-2xl border border-white/[0.07]">
+          <div class="grid gap-4 px-5 py-4 lg:grid-cols-[1fr_auto_1fr] lg:items-center">
+            <div class="flex items-center gap-3">
+              <img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Orianna.png" alt="Orianna" />
+              <div><p class="text-[9px] font-bold uppercase tracking-[.16em] text-signal2">Hermod recommended</p><p class="mt-0.5 text-sm font-semibold text-white">Orianna</p></div>
+            </div>
+            <div class="hidden h-8 w-px bg-white/[0.07] lg:block"></div>
+            <div class="flex flex-wrap gap-2 lg:justify-end text-[10px]">
+              <span class="source-pill rounded-md px-2 py-1 text-blue">B3 / MID</span>
+              <span class="source-pill rounded-md px-2 py-1 text-good">Gragas: Top confirmed</span>
+              <span class="source-pill rounded-md px-2 py-1 text-signal2">Ahri: if needed</span>
+              <span class="source-pill rounded-md px-2 py-1 text-slate-500">3 viable options</span>
+            </div>
+          </div>
+        </section>
+
+        <div class="grid gap-5 xl:grid-cols-[minmax(0,1fr)_330px]">
+          <div class="min-w-0 space-y-5">
+            <section id="chooseSection" class="glass rounded-2xl border border-white/[0.07] p-5 shadow-panel sm:p-6">
+              <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">Your actual choice</p>
+                  <h3 class="mt-1 text-xl font-semibold text-white">Select the champion you locked in.</h3>
+                </div>
+                <p class="max-w-md text-xs leading-5 text-slate-500">This does not change the recommendation. It closes the loop by recording what happened.</p>
+              </div>
+
+              <div class="mt-5 grid gap-3 md:grid-cols-3">
+                <button class="choice-card recommended rounded-2xl border p-4 text-left" data-choice="Orianna">
+                  <div class="flex items-start justify-between gap-3"><img class="hero-portrait" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Orianna.png" alt="Orianna"/><span class="rounded-md border border-signal/25 bg-signal/[0.07] px-2 py-1 text-[9px] font-bold uppercase tracking-[.12em] text-signal2">Recommended</span></div>
+                  <p class="mt-4 text-lg font-semibold text-white">Orianna</p><p class="mt-1 text-xs text-slate-500">Control Mage</p>
+                  <div class="mt-4 flex items-center justify-between border-t border-white/[0.055] pt-3"><span class="text-[10px] text-slate-600">Hermod rank</span><span class="text-xs font-semibold text-signal2">#1</span></div>
+                </button>
+                <button class="choice-card rounded-2xl border border-white/[0.08] p-4 text-left" data-choice="Ahri">
+                  <div class="flex items-start justify-between gap-3"><img class="hero-portrait" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Ahri.png" alt="Ahri"/><span class="rounded-md border border-white/[0.07] bg-white/[0.018] px-2 py-1 text-[9px] font-bold uppercase tracking-[.12em] text-slate-500">Alternative</span></div>
+                  <p class="mt-4 text-lg font-semibold text-white">Ahri</p><p class="mt-1 text-xs text-slate-500">Burst / Playmaker</p>
+                  <div class="mt-4 flex items-center justify-between border-t border-white/[0.055] pt-3"><span class="text-[10px] text-slate-600">Hermod rank</span><span class="text-xs font-semibold text-slate-400">#2</span></div>
+                </button>
+                <button class="choice-card rounded-2xl border border-white/[0.08] p-4 text-left" data-choice="Syndra">
+                  <div class="flex items-start justify-between gap-3"><img class="hero-portrait" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Syndra.png" alt="Syndra"/><span class="rounded-md border border-white/[0.07] bg-white/[0.018] px-2 py-1 text-[9px] font-bold uppercase tracking-[.12em] text-slate-500">Situational</span></div>
+                  <p class="mt-4 text-lg font-semibold text-white">Syndra</p><p class="mt-1 text-xs text-slate-500">Burst Mage</p>
+                  <div class="mt-4 flex items-center justify-between border-t border-white/[0.055] pt-3"><span class="text-[10px] text-slate-600">Hermod rank</span><span class="text-xs font-semibold text-slate-400">#3</span></div>
+                </button>
+              </div>
+
+              <button id="otherChoice" class="mt-3 flex w-full items-center justify-between rounded-2xl border border-dashed border-white/[0.10] bg-white/[0.01] px-4 py-3.5 text-left transition hover:border-signal/25 hover:bg-signal/[0.025]">
+                <div><p class="text-sm font-semibold text-slate-300">I locked something else</p><p class="mt-0.5 text-[10px] text-slate-600">Record a champion outside the three ranked options.</p></div>
+                <span class="text-lg text-slate-600">+</span>
+              </button>
+            </section>
+
+            <section id="confirmSection" class="record-panel hidden rounded-2xl border border-signal/18 p-5 sm:p-6">
+              <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+                <div class="flex min-w-0 items-center gap-4">
+                  <img id="confirmIcon" class="hero-portrait" src="" alt="" />
+                  <div class="min-w-0"><p class="text-[9px] font-bold uppercase tracking-[.16em] text-signal2">Ready to record</p><h3 id="confirmName" class="mt-1 text-xl font-semibold text-white"></h3><p id="confirmMessage" class="mt-1 max-w-2xl text-xs leading-5 text-slate-400"></p></div>
+                </div>
+                <div class="flex shrink-0 gap-2"><button id="changeChoice" class="rounded-xl border border-white/[0.08] bg-white/[0.018] px-4 py-3 text-xs font-semibold text-slate-400 transition hover:border-signal/25 hover:text-white">Change</button><button id="recordChoice" class="rounded-xl bg-signal px-5 py-3 text-xs font-bold text-white shadow-[0_0_26px_rgba(139,92,246,.18)] transition hover:bg-[#9b70f8]">Record this lock</button></div>
+              </div>
+            </section>
+
+            <section id="recordedSection" class="hidden space-y-5">
+              <div class="glass rounded-2xl border border-good/18 p-5 shadow-panel sm:p-6">
+                <div class="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
+                  <div class="flex items-start gap-4"><div class="pulse mt-1 grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-good/25 bg-good/[0.07] text-sm font-bold text-good">OK</div><div><p class="text-[10px] font-bold uppercase tracking-[.18em] text-good">Decision recorded</p><h3 id="recordedHeadline" class="mt-2 text-2xl font-semibold tracking-[-.03em] text-white"></h3><p id="recordedSub" class="mt-2 max-w-2xl text-sm leading-6 text-slate-400"></p></div></div>
+                  <button id="editRecorded" class="shrink-0 rounded-xl border border-white/[0.08] bg-white/[0.018] px-4 py-3 text-xs font-semibold text-slate-400 transition hover:border-signal/25 hover:text-white">Change recorded lock</button>
+                </div>
+
+                <div class="mt-6 grid gap-3 md:grid-cols-3">
+                  <div class="rounded-xl border border-white/[0.065] bg-white/[0.014] p-4"><p class="text-[9px] font-bold uppercase tracking-[.15em] text-slate-600">Draft state</p><p class="mt-2 text-sm font-semibold text-slate-200">B3 / MID</p><p class="mt-1 text-[10px] text-slate-600">Current decision context preserved</p></div>
+                  <div class="rounded-xl border border-signal/14 bg-signal/[0.025] p-4"><p class="text-[9px] font-bold uppercase tracking-[.15em] text-signal2">Hermod recommendation</p><div class="mt-2 flex items-center gap-2"><img class="mini-champ" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Orianna.png" alt="Orianna"/><p class="text-sm font-semibold text-white">Orianna</p></div></div>
+                  <div class="rounded-xl border border-good/14 bg-good/[0.025] p-4"><p class="text-[9px] font-bold uppercase tracking-[.15em] text-good">Your actual lock</p><div class="mt-2 flex items-center gap-2"><img id="summaryActualIcon" class="mini-champ" src="" alt=""/><p id="summaryActualName" class="text-sm font-semibold text-white"></p></div></div>
+                </div>
+              </div>
+
+              <div class="glass rounded-2xl border border-white/[0.07] p-5 sm:p-6">
+                <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                  <div><p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">Optional reflection</p><h3 class="mt-1 text-lg font-semibold text-white">Add confidence only when it is useful.</h3><p class="mt-1 max-w-2xl text-xs leading-5 text-slate-500">The decision is already recorded. This extra signal is optional and is not required to finish the draft.</p></div>
+                  <button id="toggleConfidence" class="shrink-0 rounded-xl border border-white/[0.08] bg-white/[0.018] px-4 py-3 text-xs font-semibold text-slate-300 transition hover:border-signal/25 hover:text-white">Add confidence</button>
+                </div>
+                <div id="confidencePanel" class="mt-5 hidden border-t border-white/[0.055] pt-5">
+                  <p class="text-sm font-semibold text-slate-200">How confident were you in that pick?</p>
+                  <div class="mt-3 grid gap-2 sm:grid-cols-4">
+                    <button class="confidence-btn rounded-xl border border-white/[0.08] bg-white/[0.018] px-3 py-3 text-xs font-semibold text-slate-400" data-confidence="Very confident">Very confident</button>
+                    <button class="confidence-btn rounded-xl border border-white/[0.08] bg-white/[0.018] px-3 py-3 text-xs font-semibold text-slate-400" data-confidence="Confident">Confident</button>
+                    <button class="confidence-btn rounded-xl border border-white/[0.08] bg-white/[0.018] px-3 py-3 text-xs font-semibold text-slate-400" data-confidence="Unsure">Unsure</button>
+                    <button class="confidence-btn rounded-xl border border-white/[0.08] bg-white/[0.018] px-3 py-3 text-xs font-semibold text-slate-400" data-confidence="Guessing">Guessing</button>
+                  </div>
+                  <p id="confidenceSaved" class="mt-3 hidden text-xs font-semibold text-good">Confidence saved to this decision record.</p>
+                </div>
+              </div>
+
+              <div class="flex flex-col gap-3 sm:flex-row sm:justify-end">
+                <button id="reviewLater" class="rounded-xl border border-white/[0.08] bg-white/[0.018] px-5 py-3 text-xs font-semibold text-slate-300 transition hover:border-signal/25 hover:text-white">Review this decision later</button>
+                <button id="doneButton" class="rounded-xl bg-signal px-6 py-3 text-xs font-bold text-white shadow-[0_0_26px_rgba(139,92,246,.18)] transition hover:bg-[#9b70f8]">Done</button>
+              </div>
+            </section>
+          </div>
+
+          <aside class="space-y-5">
+            <section class="glass rounded-2xl border border-white/[0.07] p-5">
+              <div class="flex items-center justify-between"><p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">Decision record</p><span id="recordDot" class="h-2 w-2 rounded-full bg-signal shadow-[0_0_14px_rgba(139,92,246,.45)]"></span></div>
+              <div class="mt-4 rounded-xl border border-signal/18 bg-signal/[0.035] p-4">
+                <div class="flex items-center gap-3"><img class="hero-portrait" src="https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Orianna.png" alt="Orianna"/><div><p class="text-[9px] font-bold uppercase tracking-[.14em] text-signal2">Recommended</p><p class="mt-0.5 text-lg font-semibold text-white">Orianna</p><p class="mt-1 text-[10px] text-slate-600">High confidence</p></div></div>
+              </div>
+
+              <div class="mt-5">
+                <div class="grid grid-cols-[18px_1fr] gap-3">
+                  <div class="flex flex-col items-center"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-good"></span><div class="timeline-line flex-1"></div></div>
+                  <div class="pb-5"><p class="text-xs font-semibold text-slate-300">Draft state captured</p><p class="mt-1 text-[10px] leading-4 text-slate-600">B3 / MID, feasible pool, role resolutions and relevant uncertainty.</p></div>
+                </div>
+                <div class="grid grid-cols-[18px_1fr] gap-3">
+                  <div class="flex flex-col items-center"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-good"></span><div class="timeline-line flex-1"></div></div>
+                  <div class="pb-5"><p class="text-xs font-semibold text-slate-300">Recommendation produced</p><p class="mt-1 text-[10px] leading-4 text-slate-600">Orianna ranked #1 from the current state.</p></div>
+                </div>
+                <div class="grid grid-cols-[18px_1fr] gap-3">
+                  <div class="flex flex-col items-center"><span id="lockTimelineDot" class="mt-1 h-2.5 w-2.5 rounded-full border border-signal/60 bg-signal/15"></span></div>
+                  <div><p id="lockTimelineTitle" class="text-xs font-semibold text-slate-300">Actual lock pending</p><p id="lockTimelineSub" class="mt-1 text-[10px] leading-4 text-slate-600">Select what you actually played to close the decision loop.</p></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="glass rounded-2xl border border-white/[0.07] p-5">
+              <p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">What gets saved</p>
+              <div class="mt-4 space-y-0 text-xs">
+                <div class="context-row flex items-start justify-between gap-3 py-3"><div><p class="font-semibold text-slate-300">Recommendation</p><p class="mt-0.5 text-[10px] text-slate-600">Hermod output</p></div><span class="font-semibold text-signal2">Orianna</span></div>
+                <div class="context-row flex items-start justify-between gap-3 py-3"><div><p class="font-semibold text-slate-300">Actual choice</p><p class="mt-0.5 text-[10px] text-slate-600">Provided by you</p></div><span id="railActual" class="font-semibold text-slate-600">Pending</span></div>
+                <div class="context-row flex items-start justify-between gap-3 py-3"><div><p class="font-semibold text-slate-300">Confidence</p><p class="mt-0.5 text-[10px] text-slate-600">Optional</p></div><span id="railConfidence" class="font-semibold text-slate-600">Not asked</span></div>
+              </div>
+            </section>
+
+            <section class="glass rounded-2xl border border-white/[0.07] p-5">
+              <p class="text-[10px] font-bold uppercase tracking-[.18em] text-slate-600">Actions</p>
+              <button id="backRecommendation" class="mt-4 w-full rounded-xl border border-white/[0.08] bg-white/[0.018] px-4 py-3 text-xs font-semibold text-slate-300 transition hover:border-signal/25 hover:text-white">&larr; Back to recommendation</button>
+              <p class="mt-3 text-center text-[10px] leading-4 text-slate-600">You can revise the recorded lock before leaving this decision.</p>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="otherModal" class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <div class="glass w-full max-w-2xl rounded-2xl border border-white/[0.08] p-5 shadow-2xl sm:p-6">
+      <div class="flex items-start justify-between gap-4"><div><p class="text-[10px] font-bold uppercase tracking-[.18em] text-signal2">Other champion</p><h3 class="mt-1 text-xl font-semibold text-white">What did you lock?</h3><p class="mt-1 text-xs text-slate-500">Record the actual choice even if it was outside Hermod's ranked options.</p></div><button id="closeOther" class="grid h-9 w-9 place-items-center rounded-lg border border-white/[0.08] text-slate-500 hover:text-white">x</button></div>
+      <input id="champSearch" type="text" placeholder="Search champion..." class="mt-5 w-full rounded-xl border border-white/[0.08] bg-black/20 px-4 py-3 text-sm text-slate-200 outline-none placeholder:text-slate-700 focus:border-signal/35" />
+      <div id="otherGrid" class="mt-4 grid gap-2 sm:grid-cols-2 md:grid-cols-3"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast fixed bottom-5 right-5 z-[60] max-w-sm rounded-xl border border-signal/25 bg-[#0b1420]/95 px-4 py-3 shadow-2xl backdrop-blur-xl"><p id="toastTitle" class="text-xs font-semibold text-white"></p><p id="toastText" class="mt-1 text-[10px] leading-4 text-slate-500"></p></div>
+
+  <script>
+    const champions = {
+      Orianna: { icon:'https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Orianna.png', meta:'Control Mage' },
+      Ahri: { icon:'https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Ahri.png', meta:'Burst / Playmaker' },
+      Syndra: { icon:'https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Syndra.png', meta:'Burst Mage' },
+      Akali: { icon:'https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Akali.png', meta:'Assassin' },
+      Leblanc: { icon:'https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Leblanc.png', meta:'Burst Mage / Assassin', display:'LeBlanc' },
+      Viktor: { icon:'https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Viktor.png', meta:'Control Mage' },
+      Azir: { icon:'https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Azir.png', meta:'Specialist Mage' },
+      Hwei: { icon:'https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Hwei.png', meta:'Artillery Mage' },
+      Lux: { icon:'https://ddragon.leagueoflegends.com/cdn/16.16.1/img/champion/Lux.png', meta:'Burst / Artillery' }
+    };
+
+    let selected = null;
+    let recorded = false;
+    let confidence = null;
+
+    function labelFor(key){ return champions[key].display || key; }
+
+    function showToast(title,text){
+      const t=document.getElementById('toast');
+      document.getElementById('toastTitle').textContent=title;
+      document.getElementById('toastText').textContent=text;
+      t.classList.add('show');
+      setTimeout(()=>t.classList.remove('show'),2600);
+    }
+
+    function selectChoice(name){
+      selected=name;
+      document.querySelectorAll('.choice-card').forEach(card=>card.classList.toggle('selected',card.dataset.choice===name));
+      const c=champions[name];
+      document.getElementById('confirmIcon').src=c.icon;
+      document.getElementById('confirmIcon').alt=labelFor(name);
+      document.getElementById('confirmName').textContent=labelFor(name);
+      document.getElementById('confirmMessage').textContent = name==='Orianna'
+        ? 'This matches Hermod\'s recommendation. The decision record will preserve both the recommendation and the actual lock.'
+        : 'This differs from Hermod\'s recommendation. The decision record will preserve both the recommendation and your actual lock without rewriting the earlier analysis.';
+      document.getElementById('confirmSection').classList.remove('hidden');
+      document.getElementById('confirmSection').scrollIntoView({behavior:'smooth',block:'nearest'});
+      document.getElementById('railActual').textContent=labelFor(name)+' selected';
+      document.getElementById('railActual').className='font-semibold text-signal2';
+      document.getElementById('lockTimelineTitle').textContent=labelFor(name)+' selected';
+      document.getElementById('lockTimelineSub').textContent='Ready to record as the actual draft action.';
+    }
+
+    function recordChoice(){
+      if(!selected) return;
+      recorded=true;
+      const name=labelFor(selected);
+      const c=champions[selected];
+      document.getElementById('chooseSection').classList.add('hidden');
+      document.getElementById('confirmSection').classList.add('hidden');
+      document.getElementById('recordedSection').classList.remove('hidden');
+      document.getElementById('pageTitle').textContent='Decision recorded.';
+      document.getElementById('pageSub').textContent='The recommendation, decision state, and your actual lock are now preserved together for later review.';
+      document.getElementById('statusBadge').className='flex items-center gap-2 rounded-full border border-good/18 bg-good/[0.04] px-3 py-1.5 text-xs text-slate-400';
+      document.getElementById('statusBadge').innerHTML='<span class="pulse h-1.5 w-1.5 rounded-full bg-good"></span><span>Decision complete</span>';
+      document.getElementById('recordedHeadline').textContent='You locked '+name+'.';
+      document.getElementById('recordedSub').textContent = selected==='Orianna'
+        ? 'Your actual choice matches Hermod\'s recommendation. This decision can now move into history or a later review session.'
+        : 'Your actual choice differs from Hermod\'s recommendation. Hermod keeps that difference intact so a later review can compare what the model recommended with what you chose.';
+      document.getElementById('summaryActualIcon').src=c.icon;
+      document.getElementById('summaryActualIcon').alt=name;
+      document.getElementById('summaryActualName').textContent=name;
+      document.getElementById('railActual').textContent=name;
+      document.getElementById('railActual').className='font-semibold text-good';
+      document.getElementById('recordDot').className='h-2 w-2 rounded-full bg-good shadow-[0_0_14px_rgba(103,211,145,.5)]';
+      document.getElementById('lockTimelineDot').className='mt-1 h-2.5 w-2.5 rounded-full bg-good';
+      document.getElementById('lockTimelineTitle').textContent='Actual lock recorded';
+      document.getElementById('lockTimelineSub').textContent=name+' stored as the DRAFT_ACTION for this decision.';
+      showToast('Decision recorded',name+' is saved as the actual lock.');
+    }
+
+    function editRecorded(){
+      recorded=false;
+      confidence=null;
+      document.getElementById('recordedSection').classList.add('hidden');
+      document.getElementById('chooseSection').classList.remove('hidden');
+      document.getElementById('pageTitle').textContent='What did you lock?';
+      document.getElementById('pageSub').textContent='Record the champion you actually chose. Hermod stores the recommendation and your real decision separately so the draft can be reviewed later.';
+      document.getElementById('statusBadge').className='flex items-center gap-2 rounded-full border border-signal/18 bg-signal/[0.04] px-3 py-1.5 text-xs text-slate-400';
+      document.getElementById('statusBadge').innerHTML='<span class="h-1.5 w-1.5 rounded-full bg-signal"></span><span>Editing actual lock</span>';
+      document.getElementById('railActual').textContent=selected?labelFor(selected)+' selected':'Pending';
+      document.getElementById('railActual').className=selected?'font-semibold text-signal2':'font-semibold text-slate-600';
+      document.getElementById('railConfidence').textContent='Not asked';
+      document.getElementById('railConfidence').className='font-semibold text-slate-600';
+      document.getElementById('confidencePanel').classList.add('hidden');
+      document.getElementById('confidenceSaved').classList.add('hidden');
+      document.querySelectorAll('.confidence-btn').forEach(b=>b.classList.remove('active'));
+      document.getElementById('recordDot').className='h-2 w-2 rounded-full bg-signal shadow-[0_0_14px_rgba(139,92,246,.45)]';
+    }
+
+    function openOther(){
+      document.getElementById('otherModal').classList.remove('hidden');
+      document.getElementById('otherModal').classList.add('flex');
+      document.getElementById('champSearch').value='';
+      renderOther('');
+      setTimeout(()=>document.getElementById('champSearch').focus(),50);
+    }
+
+    function closeOther(){
+      document.getElementById('otherModal').classList.add('hidden');
+      document.getElementById('otherModal').classList.remove('flex');
+    }
+
+    function renderOther(filter){
+      const keys=['Akali','Leblanc','Viktor','Azir','Hwei','Lux'];
+      const q=filter.trim().toLowerCase();
+      const visible=keys.filter(k=>labelFor(k).toLowerCase().includes(q));
+      document.getElementById('otherGrid').innerHTML=visible.map(k=>{
+        const c=champions[k]; return `<button class="champ-option flex items-center gap-3 rounded-xl border border-white/[0.08] bg-white/[0.018] p-3 text-left" data-other="${k}"><img class="mini-champ" src="${c.icon}" alt="${labelFor(k)}"/><div><p class="text-xs font-semibold text-slate-200">${labelFor(k)}</p><p class="mt-0.5 text-[9px] text-slate-600">${c.meta}</p></div></button>`;
+      }).join('') || '<p class="col-span-full py-6 text-center text-xs text-slate-600">No prototype champions match that search.</p>';
+    }
+
+    document.querySelectorAll('.choice-card').forEach(card=>card.addEventListener('click',()=>selectChoice(card.dataset.choice)));
+    document.getElementById('otherChoice').addEventListener('click',openOther);
+    document.getElementById('closeOther').addEventListener('click',closeOther);
+    document.getElementById('otherModal').addEventListener('click',e=>{ if(e.target===document.getElementById('otherModal')) closeOther(); });
+    document.getElementById('champSearch').addEventListener('input',e=>renderOther(e.target.value));
+    document.getElementById('otherGrid').addEventListener('click',e=>{
+      const btn=e.target.closest('[data-other]'); if(!btn) return; closeOther(); selectChoice(btn.dataset.other);
+    });
+    document.getElementById('changeChoice').addEventListener('click',()=>{
+      document.getElementById('confirmSection').classList.add('hidden'); selected=null;
+      document.querySelectorAll('.choice-card').forEach(card=>card.classList.remove('selected'));
+      document.getElementById('railActual').textContent='Pending'; document.getElementById('railActual').className='font-semibold text-slate-600';
+      document.getElementById('lockTimelineTitle').textContent='Actual lock pending'; document.getElementById('lockTimelineSub').textContent='Select what you actually played to close the decision loop.';
+    });
+    document.getElementById('recordChoice').addEventListener('click',recordChoice);
+    document.getElementById('editRecorded').addEventListener('click',editRecorded);
+
+    document.getElementById('toggleConfidence').addEventListener('click',()=>{
+      const p=document.getElementById('confidencePanel'); p.classList.toggle('hidden');
+      document.getElementById('toggleConfidence').textContent=p.classList.contains('hidden')?'Add confidence':'Hide confidence';
+    });
+    document.querySelectorAll('.confidence-btn').forEach(btn=>btn.addEventListener('click',()=>{
+      confidence=btn.dataset.confidence;
+      document.querySelectorAll('.confidence-btn').forEach(b=>b.classList.toggle('active',b===btn));
+      document.getElementById('confidenceSaved').classList.remove('hidden');
+      document.getElementById('railConfidence').textContent=confidence;
+      document.getElementById('railConfidence').className='font-semibold text-signal2';
+      showToast('Confidence saved',confidence+' was added to the decision record.');
+    }));
+
+    document.getElementById('backRecommendation').addEventListener('click',()=>showToast('Prototype navigation','This would return to the Recommendation overview without deleting the current decision state.'));
+    document.getElementById('reviewLater').addEventListener('click',()=>showToast('Saved for review','This decision would be available from Decision History and Review & Learn.'));
+    document.getElementById('doneButton').addEventListener('click',()=>showToast('Draft complete','The live decision session would close and return to the Draft Assistant home state.'));
+    document.getElementById('historyNav').addEventListener('click',()=>showToast('Prototype navigation','This would open Decision History.'));
+    document.getElementById('reviewNav').addEventListener('click',()=>showToast('Prototype navigation','This would open Review & Learn.'));
+
+    renderOther('');
+  </script>
+</body>
+</html>

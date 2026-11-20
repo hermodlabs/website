@@ -1,0 +1,16 @@
+export { SDK_VERSION } from "@decision-lab/sdk";
+import type { ExecutionAbortSignal } from "@decision-lab/sdk";
+import type { CLIExitCode } from './exitCodes.js';
+export { CLI_EXIT_CODE } from './exitCodes.js';
+export type { CLIExitCode } from './exitCodes.js';
+export declare const CLI_VERSION: "0.1.0";
+export interface CLIOutput {
+  write(text: string): unknown;
+}
+export interface CLIOptions {
+  stdout?: CLIOutput;
+  stderr?: CLIOutput;
+  signal?: ExecutionAbortSignal;
+}
+/** Run authoring, guided rule edits, app/workflow scenario checks, collection membership, retained-result comparison, assessment, report, workflow or workbook commands, returning the documented exit code. Exit 1 is a scenario expectation mismatch. Rule edits write a separate model and return 2 for an invalid retained starter case. Workflow supporting-app updates write a separate draft; workflow checks use explicitly synthetic fixture reviews, never operational approval. Workbook import prepares a separate case file for review; it never applies or evaluates inputs. */
+export declare function runCLI(args: readonly string[], options?: CLIOptions): Promise<CLIExitCode>;

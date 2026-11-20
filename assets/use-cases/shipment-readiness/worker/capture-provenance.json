@@ -1,0 +1,369 @@
+{
+  "sourceUrl": "https://hermodlabs.github.io/review_lab/",
+  "capturedAt": "2026-11-16T19:29:06.400Z",
+  "browser": "157.0.8103.78",
+  "viewport": {
+    "width": 1512,
+    "height": 1050
+  },
+  "deviceScaleFactor": 1,
+  "locale": "en-US",
+  "timezone": "America/Chicago",
+  "collection": "App-author example imported from workflow package",
+  "importedPackage": "assets/use-cases/shipment-readiness/author/review-first-shipment-1.0.1.workflow.json",
+  "packageHash": "15cb4aa4b3e76af218b03a6ee0d4ab15581f525922cca5d41838e925e210ff35",
+  "workflow": {
+    "id": "review-first-shipment",
+    "version": "1.0.1",
+    "contentHash": "b787605fe9c32fb54bfccc3a8bcaf61217914832f91144975c0541d5558e4d67"
+  },
+  "example": {
+    "orderId": "ORD-104",
+    "orderRevision": "1",
+    "quantity": 100,
+    "quantityUnit": "case",
+    "fictional": true,
+    "source": "Published workflow → Try worked example; no case values changed.",
+    "reviewer": "Example reviewer",
+    "roles": [
+      "shipment-lead",
+      "finance-reviewer"
+    ],
+    "acceptedAnswers": 25,
+    "evaluatedAndAcceptedSteps": [
+      "evidence",
+      "planning",
+      "planning-fast",
+      "planning-slow",
+      "learning"
+    ],
+    "reviewedRunHash": "9b7c6debc5d983ac882c9f656f6b1fd95b6a84563cec41856c32605a0a64e8b8"
+  },
+  "actions": [
+    "Import the app-author workflow package in a fresh temporary browser context.",
+    "Open Guided reviews → Try worked example.",
+    "Export the supplied unreviewed case for visitor download.",
+    "Review all 25 supplied answers under their assigned roles.",
+    "Evaluate and explicitly accept all five assessments using the published browser calculation workers.",
+    "Inspect saved reports using normal tabs, selectors, and chart controls.",
+    "Capture unedited DOM regions using browser screenshots.",
+    "Create a second worked case for the unreviewed download; both downloads have distinct saved-review identities.",
+    "Import both downloads into one fresh context using Published apps → Import app, workflow or case."
+  ],
+  "notes": [
+    "Screenshots are direct browser captures; no interface labels, findings, styles or overlays were changed.",
+    "Review responsibility is recorded for a fictional demonstration. No verification was bought, shipment reserved, or release executed.",
+    "Element captures and explicit browser crops retain the visible report content; no bitmap editing was used.",
+    "Expected cost uses the example’s explicitly hypothetical 50/50 probability assessment, not record counts."
+  ],
+  "captures": [
+    {
+      "file": "00-review-case-input.png",
+      "state": "The first next-review action identifies a task and role; selecting it does not accept the answer.",
+      "width": 1086,
+      "height": 191,
+      "sha256": "cb9ac603968a7bd34e384e7fbe19b5c57fe4f67f5dbd28359089c0d50ccfab2b",
+      "description": "The first next-review action identifies a task and role; selecting it does not accept the answer.",
+      "capturedAt": "2026-11-18T14:59:48.831Z",
+      "captureUrl": "http://127.0.0.1:5187/",
+      "alt": "The fresh shipment workflow shows Next review step, the responsible shipment-lead role, and Review answer: Shipment identity and units. Other required review steps remain collapsed.",
+      "caption": "The next review task is explicit. Selecting it opens the required answer; it does not accept the answer, evaluate an assessment or authorize an operating action.",
+      "bytes": 13744
+    },
+    {
+      "file": "01-delivery-commitment.png",
+      "state": "Delivery commitment is available explicitly under Supporting findings.",
+      "width": 1086,
+      "height": 366,
+      "sha256": "e036c2c10698d434cfa7703115cab2b1ecbd2a6c593533cba4d218e195243d44",
+      "description": "Delivery commitment is available explicitly under Supporting findings.",
+      "capturedAt": "2026-11-18T14:59:54.429Z",
+      "captureUrl": "http://127.0.0.1:5187/",
+      "alt": "The app’s Delivery commitment section records DC-X, a November 17 noon reservation cutoff, November 20 at 5 p.m. receipt, 30 response minutes and 100 cases.",
+      "caption": "The delivery commitment is available on request beneath the decision brief. Its dates, quantity and response allowance are unchanged.",
+      "bytes": 21937
+    },
+    {
+      "file": "hero-proposal.png",
+      "state": "Supported business proposals are separate from the next required review task.",
+      "width": 1086,
+      "height": 555,
+      "sha256": "59833b43bab0d99b875a77fa0e66fba87efa530dc4436ba865f238936f0070cd",
+      "description": "Supported business proposals are separate from the next required review task.",
+      "capturedAt": "2026-11-18T14:59:54.249Z",
+      "captureUrl": "http://127.0.0.1:5187/",
+      "bytes": 39041
+    },
+    {
+      "file": "07-decision-brief.png",
+      "state": "Decision-first brief: supported proposals, with the complete supporting sections collapsed.",
+      "width": 1136,
+      "height": 1119,
+      "sha256": "1c0bd71dd8cf733a60babdcdace092c5a44d5bcff34465499afbd0d83e6c3660",
+      "description": "Decision-first brief: supported proposals, with the complete supporting sections collapsed.",
+      "capturedAt": "2026-11-18T14:59:53.993Z",
+      "captureUrl": "http://127.0.0.1:5187/",
+      "alt": "The current reviewed brief leads with the supported Backup proposal and fast verification, while Proposal details and Supporting findings stay collapsed until requested.",
+      "caption": "Business proposals lead the completed brief. Ordered review tasks guide an incomplete review; neither is an operating authorization.",
+      "bytes": 76133
+    },
+    {
+      "file": "02-records-and-possibilities.png",
+      "state": "The required registration answer and remaining uncertainty lead; supporting explanations are on request.",
+      "width": 1134,
+      "height": 469,
+      "sha256": "b7f0bc8e5481d060e08dfc7591b7d2f1f734b35308920b35f701bbb390f7f758",
+      "description": "The required registration answer and remaining uncertainty lead; supporting explanations are on request.",
+      "capturedAt": "2026-11-18T14:59:55.099Z",
+      "captureUrl": "http://127.0.0.1:5187/",
+      "alt": "The current evidence decision screen displays the registration question, remaining uncertainty and business explanation, with Why this finding? available for supporting explanations.",
+      "caption": "The business answer and its uncertainty lead. Possible explanations are available on request and do not supply probability weights.",
+      "bytes": 48742
+    },
+    {
+      "file": "03-complete-alternatives.png",
+      "state": "Backup is preferred; the compact comparison names the condition blocking Direct.",
+      "width": 1134,
+      "height": 616,
+      "sha256": "6cf72866cbe6da5eaa3141722d49598df39ca82dd1f0a639069f85692e739c6b",
+      "description": "Backup is preferred; the compact comparison names the condition blocking Direct.",
+      "capturedAt": "2026-11-18T14:59:55.769Z",
+      "captureUrl": "http://127.0.0.1:5187/",
+      "alt": "The compact shipment decision prefers Backup at $6,000 and shows Direct at $4,000 blocked by Complete accepted order.",
+      "caption": "The default screen presents the supported choice and its blocker in business terms. The complete calculation remains available behind the decision.",
+      "bytes": 60314
+    },
+    {
+      "file": "04-conditions-and-blockers.png",
+      "state": "Direct’s selected option details retain the complete assignment, requirement results and failed condition by situation.",
+      "width": 1086,
+      "height": 667,
+      "sha256": "e87515555b1e07f8997250d305e816d109d444b3a18556e81fcf9a16a869c312",
+      "description": "Direct’s selected option details retain the complete assignment, requirement results and failed condition by situation.",
+      "capturedAt": "2026-11-18T14:59:56.021Z",
+      "captureUrl": "http://127.0.0.1:5187/",
+      "alt": "Selected option details for Direct retain its assignment, mandatory requirement results and failed registration condition in the not_registered situation.",
+      "caption": "Selected details expose the failed condition without replacing the compact decision with the entire report by default.",
+      "bytes": 79198
+    },
+    {
+      "file": "05-verification-value.png",
+      "state": "Acting now, expected improvement, investigation availability and the preferred timely check lead the learning decision.",
+      "width": 1134,
+      "height": 1109,
+      "sha256": "70e6a28dc931566265813c0da0e008a724e68ff9c2f810e66035c475826df8db",
+      "description": "Acting now, expected improvement, investigation availability and the preferred timely check lead the learning decision.",
+      "capturedAt": "2026-11-18T14:59:57.328Z",
+      "captureUrl": "http://127.0.0.1:5187/",
+      "alt": "The learning decision compares acting now at minus $6,000 with fast verification at minus $5,200, shows $800 expected improvement and leaves slow verification unavailable.",
+      "caption": "The decision-first learning view shows expected payoff after costs in dollars. The same finding is expressed as $5,200 expected cost and $800 expected improvement in the brief.",
+      "bytes": 110057
+    },
+    {
+      "file": "06-verification-timing.png",
+      "state": "Explicit complete-report inspection retains the fast/slow response timeline.",
+      "width": 1038,
+      "height": 708,
+      "sha256": "ecfde54af8561055afa7a128c9ba7eabed4236dcedb68a3c5876df80fd2d201f",
+      "description": "Explicit complete-report inspection retains the fast/slow response timeline.",
+      "capturedAt": "2026-11-18T14:59:57.638Z",
+      "captureUrl": "http://127.0.0.1:5187/",
+      "alt": "The live app’s review-timing timeline shows the fast response ready at minute 630 and the slow response ready at minute 870, after the reservation deadline.",
+      "caption": "The complete timing analysis remains available by explicit inspection. Its original minute values are unchanged: 630 is 10:30 a.m., 720 noon and 870 2:30 p.m.",
+      "bytes": 98837
+    }
+  ],
+  "downloads": [
+    {
+      "file": "shipment-example.workflow-run.json",
+      "bytes": 318105,
+      "sha256": "8e10b3908bb26bd66d70f1db5158ba7405a816bc5ea74aa8a0a32581babb79c7"
+    },
+    {
+      "file": "shipment-reviewed.workflow-run.json",
+      "bytes": 1782501,
+      "sha256": "626f882aa8b78650bb8afb9cdcf0045cfc4d57175eb81176427d07097c01b805"
+    },
+    {
+      "file": "shipment-decision-brief.md",
+      "bytes": 156172,
+      "sha256": "47d016867dd9e57fef1d0ef6341f7a78eb0289b0855dc3bb0c295d6b53b0bfed"
+    }
+  ],
+  "verification": {
+    "completeBrief": true,
+    "expectedCost": 5200,
+    "immediateBackupCost": 6000,
+    "expectedImprovement": 800,
+    "importedUnreviewedCase": true,
+    "importedReviewedCase": true,
+    "distinctCaseSnapshots": true,
+    "pageErrors": []
+  },
+  "uiRefresh": {
+    "capturedAt": "2026-11-18T14:59:57.643Z",
+    "captureUrl": "http://127.0.0.1:5187/",
+    "buildId": "2f12f7f5656a4f5899a9",
+    "mode": "decision-focused",
+    "method": "Unedited browser element screenshots after importing retained frozen artifacts through normal controls. Decisions lead; selected details and complete reports are opened explicitly. No results or interface content were injected.",
+    "previousCaptureProvenance": {
+      "file": "capture-provenance.before-decision-views.json",
+      "sha256": "c276741f883d5edb37dc59f10d41da704e8f4b5165e156a73063732a7b26fac5"
+    },
+    "frozenArtifactsUnchanged": true,
+    "artifactHashes": {
+      "shipment-decision-brief.md": "47d016867dd9e57fef1d0ef6341f7a78eb0289b0855dc3bb0c295d6b53b0bfed",
+      "shipment-example.workflow-run.json": "8e10b3908bb26bd66d70f1db5158ba7405a816bc5ea74aa8a0a32581babb79c7",
+      "shipment-reviewed.workflow-run.json": "626f882aa8b78650bb8afb9cdcf0045cfc4d57175eb81176427d07097c01b805"
+    },
+    "checks": {
+      "passed": true,
+      "details": [
+        "Clicked the fresh next-review action, exported the native run and verified zero accepted answers and zero evaluations: navigation alone does not accept or calculate.",
+        "Evidence, commitment and learning use decision mode first; complete analysis remains explicitly reachable.",
+        "Retained reviewed run still contains all 25 accepted answers and five accepted evaluations; no review state was changed."
+      ],
+      "mobile": [
+        {
+          "file": "00-review-case-input.png",
+          "width": 390,
+          "pageWidth": 390,
+          "decisionVisible": true,
+          "localTableScrollingAllowed": true
+        },
+        {
+          "file": "02-records-and-possibilities.png",
+          "width": 390,
+          "pageWidth": 390,
+          "decisionVisible": true,
+          "localTableScrollingAllowed": true
+        },
+        {
+          "file": "03-complete-alternatives.png",
+          "width": 390,
+          "pageWidth": 390,
+          "decisionVisible": true,
+          "localTableScrollingAllowed": true
+        },
+        {
+          "file": "05-verification-value.png",
+          "width": 390,
+          "pageWidth": 390,
+          "decisionVisible": true,
+          "localTableScrollingAllowed": true
+        }
+      ]
+    },
+    "images": [
+      {
+        "file": "00-review-case-input.png",
+        "width": 1086,
+        "height": 191,
+        "sha256": "cb9ac603968a7bd34e384e7fbe19b5c57fe4f67f5dbd28359089c0d50ccfab2b",
+        "description": "The first next-review action identifies a task and role; selecting it does not accept the answer.",
+        "capturedAt": "2026-11-18T14:59:48.831Z",
+        "captureUrl": "http://127.0.0.1:5187/",
+        "alt": "The fresh shipment workflow shows Next review step, the responsible shipment-lead role, and Review answer: Shipment identity and units. Other required review steps remain collapsed.",
+        "caption": "The next review task is explicit. Selecting it opens the required answer; it does not accept the answer, evaluate an assessment or authorize an operating action.",
+        "bytes": 13744
+      },
+      {
+        "file": "07-decision-brief.png",
+        "width": 1136,
+        "height": 1119,
+        "sha256": "1c0bd71dd8cf733a60babdcdace092c5a44d5bcff34465499afbd0d83e6c3660",
+        "description": "Decision-first brief: supported proposals, with the complete supporting sections collapsed.",
+        "capturedAt": "2026-11-18T14:59:53.993Z",
+        "captureUrl": "http://127.0.0.1:5187/",
+        "alt": "The current reviewed brief leads with the supported Backup proposal and fast verification, while Proposal details and Supporting findings stay collapsed until requested.",
+        "caption": "Business proposals lead the completed brief. Ordered review tasks guide an incomplete review; neither is an operating authorization.",
+        "bytes": 76133
+      },
+      {
+        "file": "hero-proposal.png",
+        "width": 1086,
+        "height": 555,
+        "sha256": "59833b43bab0d99b875a77fa0e66fba87efa530dc4436ba865f238936f0070cd",
+        "description": "Supported business proposals are separate from the next required review task.",
+        "capturedAt": "2026-11-18T14:59:54.249Z",
+        "captureUrl": "http://127.0.0.1:5187/",
+        "bytes": 39041
+      },
+      {
+        "file": "01-delivery-commitment.png",
+        "width": 1086,
+        "height": 366,
+        "sha256": "e036c2c10698d434cfa7703115cab2b1ecbd2a6c593533cba4d218e195243d44",
+        "description": "Delivery commitment is available explicitly under Supporting findings.",
+        "capturedAt": "2026-11-18T14:59:54.429Z",
+        "captureUrl": "http://127.0.0.1:5187/",
+        "alt": "The app’s Delivery commitment section records DC-X, a November 17 noon reservation cutoff, November 20 at 5 p.m. receipt, 30 response minutes and 100 cases.",
+        "caption": "The delivery commitment is available on request beneath the decision brief. Its dates, quantity and response allowance are unchanged.",
+        "bytes": 21937
+      },
+      {
+        "file": "02-records-and-possibilities.png",
+        "width": 1134,
+        "height": 469,
+        "sha256": "b7f0bc8e5481d060e08dfc7591b7d2f1f734b35308920b35f701bbb390f7f758",
+        "description": "The required registration answer and remaining uncertainty lead; supporting explanations are on request.",
+        "capturedAt": "2026-11-18T14:59:55.099Z",
+        "captureUrl": "http://127.0.0.1:5187/",
+        "alt": "The current evidence decision screen displays the registration question, remaining uncertainty and business explanation, with Why this finding? available for supporting explanations.",
+        "caption": "The business answer and its uncertainty lead. Possible explanations are available on request and do not supply probability weights.",
+        "bytes": 48742
+      },
+      {
+        "file": "03-complete-alternatives.png",
+        "width": 1134,
+        "height": 616,
+        "sha256": "6cf72866cbe6da5eaa3141722d49598df39ca82dd1f0a639069f85692e739c6b",
+        "description": "Backup is preferred; the compact comparison names the condition blocking Direct.",
+        "capturedAt": "2026-11-18T14:59:55.769Z",
+        "captureUrl": "http://127.0.0.1:5187/",
+        "alt": "The compact shipment decision prefers Backup at $6,000 and shows Direct at $4,000 blocked by Complete accepted order.",
+        "caption": "The default screen presents the supported choice and its blocker in business terms. The complete calculation remains available behind the decision.",
+        "bytes": 60314
+      },
+      {
+        "file": "04-conditions-and-blockers.png",
+        "width": 1086,
+        "height": 667,
+        "sha256": "e87515555b1e07f8997250d305e816d109d444b3a18556e81fcf9a16a869c312",
+        "description": "Direct’s selected option details retain the complete assignment, requirement results and failed condition by situation.",
+        "capturedAt": "2026-11-18T14:59:56.021Z",
+        "captureUrl": "http://127.0.0.1:5187/",
+        "alt": "Selected option details for Direct retain its assignment, mandatory requirement results and failed registration condition in the not_registered situation.",
+        "caption": "Selected details expose the failed condition without replacing the compact decision with the entire report by default.",
+        "bytes": 79198
+      },
+      {
+        "file": "05-verification-value.png",
+        "width": 1134,
+        "height": 1109,
+        "sha256": "70e6a28dc931566265813c0da0e008a724e68ff9c2f810e66035c475826df8db",
+        "description": "Acting now, expected improvement, investigation availability and the preferred timely check lead the learning decision.",
+        "capturedAt": "2026-11-18T14:59:57.328Z",
+        "captureUrl": "http://127.0.0.1:5187/",
+        "alt": "The learning decision compares acting now at minus $6,000 with fast verification at minus $5,200, shows $800 expected improvement and leaves slow verification unavailable.",
+        "caption": "The decision-first learning view shows expected payoff after costs in dollars. The same finding is expressed as $5,200 expected cost and $800 expected improvement in the brief.",
+        "bytes": 110057
+      },
+      {
+        "file": "06-verification-timing.png",
+        "width": 1038,
+        "height": 708,
+        "sha256": "ecfde54af8561055afa7a128c9ba7eabed4236dcedb68a3c5876df80fd2d201f",
+        "description": "Explicit complete-report inspection retains the fast/slow response timeline.",
+        "capturedAt": "2026-11-18T14:59:57.638Z",
+        "captureUrl": "http://127.0.0.1:5187/",
+        "alt": "The live app’s review-timing timeline shows the fast response ready at minute 630 and the slow response ready at minute 870, after the reservation deadline.",
+        "caption": "The complete timing analysis remains available by explicit inspection. Its original minute values are unchanged: 630 is 10:30 a.m., 720 noon and 870 2:30 p.m.",
+        "bytes": 98837
+      }
+    ],
+    "nativeResults": [],
+    "errors": [],
+    "boundary": "Current local production preview. Retained historical case reviews and calculation identities are displayed without asserting a new operating review. Preview offline installation status is separate from these retained findings."
+  }
+}

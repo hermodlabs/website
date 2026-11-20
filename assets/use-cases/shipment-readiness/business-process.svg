@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1490" width="1200" height="1490" role="img" aria-labelledby="shipment-process-title shipment-process-desc">
+  <title id="shipment-process-title">A proposed business process for shipment readiness</title>
+  <desc id="shipment-process-desc">Hermod Labs business process reference. Business owners agree the requirements and decision priority. The shipment lead records the commitment, gathers readiness records, and compares complete plans. A plan can remain supported across unresolved states; not every unknown needs verification. Another check may be useful and timely. Obtaining that record happens before the case is updated and reassessed. A known failed requirement instead needs remediation or escalation. A supported plan can become a proposal. Business owners and operations separately approve, book, dispatch, receive, and record outcomes. Teal solid boxes show review steps. Dashed boxes show surrounding business work, including broader order, EDI, ship-point, and freight-term checks outside the demonstrated comparison.</desc>
+  <defs>
+    <marker id="shipment-process-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="m0 0 10 5-10 5z" fill="#177681"/></marker>
+    <marker id="shipment-process-handoff" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="m0 0 10 5-10 5z" fill="#667b86"/></marker>
+    <style>
+      text{font-family:Arial,Helvetica,sans-serif;fill:#193743}
+      .section{font-size:20px;font-weight:700;letter-spacing:2px}
+      .label{font-size:28px;font-weight:700}
+      .detail{font-size:23px;fill:#48616d}
+      .small{font-size:21px;fill:#48616d}
+      .review{fill:#f2f8f7;stroke:#177681;stroke-width:3}
+      .outside{fill:#fff;stroke:#899ba4;stroke-width:2.5;stroke-dasharray:8 7}
+      .flow{fill:none;stroke:#177681;stroke-width:3;stroke-linejoin:round;stroke-linecap:round;marker-end:url(#shipment-process-arrow)}
+      .handoff{fill:none;stroke:#667b86;stroke-width:3;stroke-linejoin:round;stroke-linecap:round;stroke-dasharray:8 7;marker-end:url(#shipment-process-handoff)}
+    </style>
+  </defs>
+  <rect width="1200" height="1490" rx="18" fill="#f6f5f8"/>
+  <text x="60" y="67" font-size="36" font-weight="700">From shipment review to business action</text>
+  <text x="60" y="103" class="detail">A proposed business process · Hermod Labs</text>
+  <g transform="translate(60 136)">
+    <rect x="0" y="0" width="27" height="20" rx="4" class="review"/>
+    <text x="39" y="17" class="small">Demonstrated review steps</text>
+    <rect x="489" y="0" width="27" height="20" rx="4" class="outside"/>
+    <text x="528" y="17" class="small">Surrounding business work</text>
+  </g>
+  <!-- Owners agree the business requirements before comparing shipment options. -->
+  <rect x="38" y="193" width="1124" height="151" rx="15" fill="#eee8f7"/>
+  <text x="63" y="232" class="section" fill="#7850c2">BUSINESS OWNERS</text>
+  <rect x="333" y="218" width="604" height="99" rx="13" class="outside"/>
+  <text x="635" y="259" class="label" text-anchor="middle">Agree requirements and priorities</text>
+  <text x="635" y="292" class="detail" text-anchor="middle">Deadlines · spending limits · acceptable options</text>
+  <!-- The existing example demonstrates the decision-review core. -->
+  <rect x="38" y="365" width="1124" height="779" rx="15" fill="#fff"/>
+  <path d="M635 317v72" class="handoff"/>
+  <text x="63" y="405" class="section">SHIPMENT LEAD</text>
+  <rect x="350" y="395" width="570" height="97" rx="13" class="review"/>
+  <text x="635" y="436" class="label" text-anchor="middle">Record the commitment</text>
+  <text x="635" y="468" class="detail" text-anchor="middle">Destination · quantity · deadline</text>
+  <path d="M635 492v38" class="flow"/>
+  <rect x="350" y="532" width="570" height="110" rx="13" class="review"/>
+  <text x="635" y="574" class="label" text-anchor="middle">Gather readiness records</text>
+  <text x="635" y="608" class="detail" text-anchor="middle">Example: registration &amp; authority</text>
+  <rect x="70" y="518" width="246" height="195" rx="13" class="outside"/>
+  <text x="193" y="553" class="small" font-weight="700" text-anchor="middle">WIDER CHECKS</text>
+  <text x="193" y="590" class="detail" text-anchor="middle">Orders &amp; EDI</text>
+  <text x="193" y="622" class="detail" text-anchor="middle">Ship-point readiness</text>
+  <text x="193" y="654" class="detail" text-anchor="middle">Freight terms</text>
+  <text x="193" y="688" font-size="19" fill="#667b86" text-anchor="middle">Check separately</text>
+  <path d="M316 585h29" class="handoff"/>
+  <path d="M635 642v38" class="flow"/>
+  <rect x="350" y="682" width="570" height="97" rx="13" class="review"/>
+  <text x="635" y="723" class="label" text-anchor="middle">Compare complete plans</text>
+  <text x="635" y="755" class="detail" text-anchor="middle">Timing · cost · recorded requirements</text>
+  <path d="M635 779v32" class="flow"/>
+  <path d="m635 815 174 69-174 69-174-69z" class="review"/>
+  <text x="635" y="879" font-size="25" font-weight="700" text-anchor="middle">Choose a</text>
+  <text x="635" y="910" font-size="25" font-weight="700" text-anchor="middle">next action</text>
+  <path d="M461 884H318" class="flow"/>
+  <text x="389" y="850" font-size="19" text-anchor="middle">Useful</text>
+  <text x="389" y="874" font-size="19" text-anchor="middle">information</text>
+  <rect x="70" y="832" width="246" height="95" rx="13" class="review"/>
+  <text x="193" y="863" font-size="25" font-weight="700" text-anchor="middle">Assess another</text>
+  <text x="193" y="892" font-size="25" font-weight="700" text-anchor="middle">check</text>
+  <text x="193" y="918" class="small" text-anchor="middle">If useful and timely</text>
+  <path d="M193 927v52" class="handoff"/>
+  <rect x="70" y="985" width="246" height="104" rx="13" class="outside"/>
+  <text x="193" y="1020" font-size="23" font-weight="700" text-anchor="middle">Obtain record</text>
+  <text x="193" y="1047" class="small" text-anchor="middle">outside app</text>
+  <text x="193" y="1076" class="small" text-anchor="middle">Then reassess</text>
+  <path d="M193 1089v23H52V743h276V620h17" class="handoff"/>
+  <path d="M809 884h127" class="handoff"/>
+  <text x="875" y="850" font-size="19" text-anchor="middle">Known</text>
+  <text x="875" y="874" font-size="19" text-anchor="middle">blocker</text>
+  <rect x="940" y="832" width="194" height="130" rx="13" class="outside"/>
+  <text x="1037" y="871" font-size="24" font-weight="700" text-anchor="middle">Remediate or</text>
+  <text x="1037" y="901" font-size="24" font-weight="700" text-anchor="middle">escalate</text>
+  <text x="1037" y="938" font-size="20" fill="#48616d" text-anchor="middle">Update the case</text>
+  <path d="M1037 832V587H925" class="handoff"/>
+  <path d="M635 953v47" class="flow"/>
+  <text x="657" y="984" class="small">Supported plan</text>
+  <rect x="350" y="1002" width="570" height="97" rx="13" class="review"/>
+  <text x="635" y="1043" class="label" text-anchor="middle">Choose a proposal</text>
+  <text x="635" y="1075" class="detail" text-anchor="middle">Unknowns may remain if the plan still passes</text>
+  <!-- The app's review result is a handoff, not an executed shipment. -->
+  <rect x="38" y="1166" width="1124" height="280" rx="15" fill="#edf1f3"/>
+  <path d="M635 1099v111" class="handoff"/>
+  <text x="63" y="1206" class="section">BUSINESS OWNERS &amp; OPERATIONS</text>
+  <rect x="350" y="1216" width="570" height="86" rx="13" class="outside"/>
+  <text x="635" y="1267" class="label" text-anchor="middle">Obtain business approvals</text>
+  <path d="M635 1302v30" class="handoff"/>
+  <rect x="350" y="1335" width="570" height="86" rx="13" class="outside"/>
+  <text x="635" y="1370" class="label" text-anchor="middle">Book · dispatch · receive</text>
+  <text x="635" y="1401" class="detail" text-anchor="middle">Record actual outcomes</text>
+</svg>

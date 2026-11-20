@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: forms round trip complete cases and preserve separate record scopes
+ok 1 - forms round trip complete cases and preserve separate record scopes
+  ---
+  duration_ms: 4.06675
+  type: 'test'
+  ...
+# Subtest: missing or negative bookings never become positive evidence
+ok 2 - missing or negative bookings never become positive evidence
+  ---
+  duration_ms: 0.732083
+  type: 'test'
+  ...
+# Subtest: money and elapsed minutes have explicit units and reject coercion
+ok 3 - money and elapsed minutes have explicit units and reject coercion
+  ---
+  duration_ms: 0.625125
+  type: 'test'
+  ...
+# Subtest: the rehearsal minimum comes from the published rule, with no inferred fallback
+ok 4 - the rehearsal minimum comes from the published rule, with no inferred fallback
+  ---
+  duration_ms: 0.566792
+  type: 'test'
+  ...
+# Subtest: review setup edits do not renew availability, permission or confirmation records
+ok 5 - review setup edits do not renew availability, permission or confirmation records
+  ---
+  duration_ms: 0.620583
+  type: 'test'
+  ...
+# Subtest: candidate starts and editable intervals accept exact whole minutes only
+ok 6 - candidate starts and editable intervals accept exact whole minutes only
+  ---
+  duration_ms: 1.188084
+  type: 'test'
+  ...
+# Subtest: native SDK chooses the fastest authorized package across all eight scenarios
+ok 7 - native SDK chooses the fastest authorized package across all eight scenarios
+  ---
+  duration_ms: 3822.982333
+  type: 'test'
+  ...
+# Subtest: native timing distinguishes rehearsal duration, candidate starts and genuinely current records
+ok 8 - native timing distinguishes rehearsal duration, candidate starts and genuinely current records
+  ---
+  duration_ms: 3339.523667
+  type: 'test'
+  ...
+# Subtest: ties and additional start options survive projection; partial searches cannot recommend
+ok 9 - ties and additional start options survive projection; partial searches cannot recommend
+  ---
+  duration_ms: 680.837833
+  type: 'test'
+  ...
+# Subtest: a missing budget remains an explicit native validation error
+ok 10 - a missing budget remains an explicit native validation error
+  ---
+  duration_ms: 101.616875
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 8073.366291

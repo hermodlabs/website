@@ -1,0 +1,9 @@
+/** Computation outcomes; COMPLETED does not mean a requirement passed. */
+export declare const EXECUTION_STATUS: Readonly<{
+  COMPLETED: 'completed';
+  RESOURCE_LIMITED: 'resource-limited';
+  CANCELLED: 'cancelled';
+  TIMED_OUT: 'timed-out';
+  FAILED: 'failed';
+}>;
+export type ExecutionStatus = typeof EXECUTION_STATUS[keyof typeof EXECUTION_STATUS];
