@@ -168,15 +168,26 @@
 <ol>
   <li><strong>Set the business context.</strong> Inputs have their own tabs and sections. Use the configured Forms or the complete YAML representation, then apply changes.</li>
   <li><strong>Calculate the findings.</strong> The Decision summary shows the supported answer, compact comparison, decisive conditions and available next actions. Changed inputs need a current calculation.</li>
-  <li><strong>Inspect the reason when needed.</strong> Open a linked supporting report or <strong>View decision process</strong> to see how questions and findings connect to the available responses.</li>
+  <li><strong>Inspect the reason when needed.</strong> Open a linked supporting report or <strong>View decision process</strong>. Its graph connects the questions, findings and available responses through labeled arrows, with the current case highlighted.</li>
 </ol>
 
 
 <figure class="blog-figure">
-  <a href="../../assets/use-cases/shipment-readiness/decision-summary-ui/decision-process.png" aria-label="Open the working example at full size"><img src="../../assets/use-cases/shipment-readiness/decision-summary-ui/decision-process.png" width="1208" height="950" alt="The beginning of Decision process shows the shipment commitment and transportation-evidence branches separately from the report details." loading="lazy" decoding="async"></a>
-  <figcaption>The beginning of the decision process connects the shipment commitment to its transportation evidence. Later stages continue to arrangements and verification. Inspecting a branch or report does not select an arrangement or book freight. <a href="../../assets/use-cases/shipment-readiness/decision-summary-ui/decision-process.png">View full size</a></figcaption>
+  <a href="../../assets/decision-process-refresh/shipment-detail.png" aria-label="Open the working example at full size"><img src="../../assets/decision-process-refresh/shipment-detail.png" width="731" height="424" alt="Inspecting the shipment question Does any complete arrangement meet the requirements shows its current Yes finding, basis, outgoing paths, inputs and supporting reports." loading="lazy" decoding="async"></a>
+  <figcaption>Inspecting the shipment feasibility question exposes its current finding and the responses that follow. Here, at least one complete arrangement meets the requirements, so the supported options can be compared. Inspection chooses no arrangement and books no freight. <a href="../../assets/decision-process-refresh/shipment-detail.png">View full size</a></figcaption>
 </figure>
 
+<details class="disclosure">
+  <summary><span class="disclosure-label">See the complete shipment process</span></summary>
+  <p>Labeled arrows connect the commitment, transportation evidence, complete arrangements and verification question. Highlighted paths apply to this recorded case; dashed paths return for reassessment.</p>
+  
+  
+  <figure class="blog-figure">
+  <a href="../../assets/decision-process-refresh/shipment-overview.png" aria-label="Open the working example at full size"><img src="../../assets/decision-process-refresh/shipment-overview.png" width="1546" height="3343" alt="The complete shipment Decision process graph links registration evidence, complete arrangements and timely verification, with labeled current-case paths and reassessment returns." loading="lazy" decoding="async"></a>
+  <figcaption>The complete graph keeps alternative responses visible around the current case. Selecting a question or action reveals its basis; it does not perform the action. <a href="../../assets/decision-process-refresh/shipment-overview.png">View full size</a></figcaption>
+</figure>
+
+</details>
 <p>Inputs and reports navigate independently. Someone can inspect another arrangement or supporting finding while keeping the current input section in view. Detailed calculations remain available without making every reader work through them first.</p>
 
 <h2 id="beyond-the-interface">Bring the same assessments into your own work.</h2>
@@ -187,7 +198,7 @@
   <details class="disclosure">
     <summary><h2 class="disclosure-label" id="sources-and-scope">Sources and scope</h2></summary>
     <p>Maya, Leah, shipments, campaigns, quotes and operating records are fictional worked examples. The screenshots show current guided-analysis releases: shipment 1.4.0 and gifting 2.3.0. The separate <a href="../../assets/decision-lab-public-build-check.json">public build check</a> matches the deployed interface and packages to the capture build. Older saved reviews can retain their original versions and behavior.</p>
-    <p>Native screenshots were captured from a local production build of the updated application. The <a href="../../assets/use-cases/shipment-readiness/decision-summary-ui/verification.json">shipment capture record</a> and <a href="../../assets/use-cases/gift-kit-readiness/decision-summary-ui/verification.json">gifting capture record</a> retain the build identity, source hashes, supplied cases and exported calculations.</p>
+    <p>The Decision summaries were captured from a local production build matched to the public application. The <a href="../../assets/use-cases/shipment-readiness/decision-summary-ui/verification.json">shipment capture record</a> and <a href="../../assets/use-cases/gift-kit-readiness/decision-summary-ui/verification.json">gifting capture record</a> retain their build identities, supplied cases and exported calculations. The process graph was captured separately from the updated public app; its <a href="../../assets/decision-process-refresh/verification.json">graph capture record</a> retains the deployed build and confirms that inspection preserves the case and findings.</p>
     <p>The comparisons establish findings within the supplied models, records and assumptions. They do not authenticate external authority, book freight, perform a correction or establish completed delivery. The linked CLI and SDK articles describe their own sample configurations and integration boundaries.</p>
   </details>
 </footer>

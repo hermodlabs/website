@@ -1,0 +1,1302 @@
+{
+  "format": "decision-lab-decision-process-refresh/1",
+  "capturedAt": "2026-11-20T19:26:26.088Z",
+  "method": "Unedited native Chrome element screenshots of the public production app. Ordinary Marketplace installation links, public fictional starter inputs, visible Forms/YAML controls, Calculate, graph navigation and native downloads. No local file import or DOM, CSS, storage or findings injection.",
+  "sources": [
+    {
+      "id": "shipment",
+      "scenario": "shipment",
+      "kind": "public-marketplace-workflow",
+      "captureUrl": "https://hermodlabs.github.io/review_lab/",
+      "build": {
+        "version": "619264e6c9e2fdf24b19",
+        "manifestFile": "offline-build.json",
+        "manifestSHA256": "69eb28323cd9ac29ab28526873809e1d9b72e44214724b6d2485324b24e8db79"
+      },
+      "workflow": {
+        "id": "review-first-shipment",
+        "version": "1.4.0",
+        "definitionHash": "a1d8e38e564ab73ec1c2bcc88a89ac9a8b7775f4eea443e3668789633c2849e5",
+        "packageHash": "576fc1df319695ea85f72aaa49a30a90ae36860ce503fb02dac1dc3350e0fb34"
+      },
+      "installUrl": "https://hermodlabs.github.io/review_lab/?install=workflow&id=review-first-shipment&version=1.4.0&publisher=decision-lab&collection=order-fulfillment&release=576fc1df319695ea85f72aaa49a30a90ae36860ce503fb02dac1dc3350e0fb34",
+      "before": {
+        "file": "shipment-before.run.json",
+        "sha256": "c8a58396506e1b9d96ded69527a8aba23983df0d735361003ee7be3995783263",
+        "bytes": 1466801,
+        "origin": "Ordinary native workflow export",
+        "contentHash": "9028ce2c93139966038218dbf8408807c05a6cf1be6886acfe68bc4c7b8824c9"
+      },
+      "graph": {
+        "nodes": [
+          {
+            "id": "define-shipment",
+            "status": "applicable"
+          },
+          {
+            "id": "establish-registration",
+            "status": "applicable"
+          },
+          {
+            "id": "registration-compatible",
+            "status": "applicable"
+          },
+          {
+            "id": "compare-arrangements",
+            "status": "applicable"
+          },
+          {
+            "id": "action-review-records",
+            "status": "not-applicable"
+          },
+          {
+            "id": "action-resolve-record-conflict",
+            "status": "not-applicable"
+          },
+          {
+            "id": "arrangements-feasible",
+            "status": "applicable"
+          },
+          {
+            "id": "action-review-planning",
+            "status": "not-applicable"
+          },
+          {
+            "id": "action-revise-commitment",
+            "status": "not-applicable"
+          },
+          {
+            "id": "action-propose-arrangement",
+            "status": "applicable"
+          },
+          {
+            "id": "verification-request",
+            "status": "applicable"
+          },
+          {
+            "id": "verification-assumptions",
+            "status": "applicable"
+          },
+          {
+            "id": "current-arrangements-only",
+            "status": "not-applicable"
+          },
+          {
+            "id": "action-review-verification",
+            "status": "not-applicable"
+          },
+          {
+            "id": "action-consider-probabilities",
+            "status": "not-applicable"
+          },
+          {
+            "id": "calculate-verification",
+            "status": "applicable"
+          },
+          {
+            "id": "action-propose-reviewed-choice",
+            "status": "applicable"
+          },
+          {
+            "id": "learning-improves-choice",
+            "status": "applicable"
+          },
+          {
+            "id": "positive-learning-value",
+            "status": "applicable"
+          },
+          {
+            "id": "no-positive-learning-value",
+            "status": "not-applicable"
+          }
+        ],
+        "edges": [
+          {
+            "id": "define-shipment-to-establish-registration",
+            "from": "define-shipment",
+            "to": "establish-registration",
+            "kind": "flow",
+            "status": "applicable"
+          },
+          {
+            "id": "establish-registration-to-registration-compatible",
+            "from": "establish-registration",
+            "to": "registration-compatible",
+            "kind": "flow",
+            "status": "applicable"
+          },
+          {
+            "id": "registration-compatible-to-compare-arrangements-true",
+            "from": "registration-compatible",
+            "to": "compare-arrangements",
+            "kind": "flow",
+            "status": "applicable"
+          },
+          {
+            "id": "registration-compatible-to-action-resolve-record-conflict-false",
+            "from": "registration-compatible",
+            "to": "action-resolve-record-conflict",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "registration-compatible-to-action-review-records-unknown",
+            "from": "registration-compatible",
+            "to": "action-review-records",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "compare-arrangements-to-arrangements-feasible",
+            "from": "compare-arrangements",
+            "to": "arrangements-feasible",
+            "kind": "flow",
+            "status": "applicable"
+          },
+          {
+            "id": "arrangements-feasible-to-action-propose-arrangement-true",
+            "from": "arrangements-feasible",
+            "to": "action-propose-arrangement",
+            "kind": "flow",
+            "status": "applicable"
+          },
+          {
+            "id": "arrangements-feasible-to-action-revise-commitment-false",
+            "from": "arrangements-feasible",
+            "to": "action-revise-commitment",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "arrangements-feasible-to-action-review-planning-unknown",
+            "from": "arrangements-feasible",
+            "to": "action-review-planning",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "action-propose-arrangement-to-verification-request",
+            "from": "action-propose-arrangement",
+            "to": "verification-request",
+            "kind": "flow",
+            "status": "applicable"
+          },
+          {
+            "id": "verification-request-to-verification-assumptions-true",
+            "from": "verification-request",
+            "to": "verification-assumptions",
+            "kind": "flow",
+            "status": "applicable"
+          },
+          {
+            "id": "verification-assumptions-to-calculate-verification-true",
+            "from": "verification-assumptions",
+            "to": "calculate-verification",
+            "kind": "flow",
+            "status": "applicable"
+          },
+          {
+            "id": "verification-assumptions-to-action-consider-probabilities-false",
+            "from": "verification-assumptions",
+            "to": "action-consider-probabilities",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "verification-assumptions-to-action-consider-probabilities-unknown",
+            "from": "verification-assumptions",
+            "to": "action-consider-probabilities",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "calculate-verification-to-action-propose-reviewed-choice",
+            "from": "calculate-verification",
+            "to": "action-propose-reviewed-choice",
+            "kind": "flow",
+            "status": "applicable"
+          },
+          {
+            "id": "action-review-verification-to-calculate-verification",
+            "from": "action-review-verification",
+            "to": "calculate-verification",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "action-resolve-record-conflict-to-establish-registration",
+            "from": "action-resolve-record-conflict",
+            "to": "establish-registration",
+            "kind": "reassessment",
+            "status": "not-applicable"
+          },
+          {
+            "id": "action-revise-commitment-to-define-shipment",
+            "from": "action-revise-commitment",
+            "to": "define-shipment",
+            "kind": "reassessment",
+            "status": "not-applicable"
+          },
+          {
+            "id": "verification-request-to-current-arrangements-only-false",
+            "from": "verification-request",
+            "to": "current-arrangements-only",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "verification-assumptions-to-action-review-verification-true",
+            "from": "verification-assumptions",
+            "to": "action-review-verification",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "registration-compatible-to-action-review-records-not-calculated",
+            "from": "registration-compatible",
+            "to": "action-review-records",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "arrangements-feasible-to-action-review-planning-not-calculated",
+            "from": "arrangements-feasible",
+            "to": "action-review-planning",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "registration-compatible-to-action-review-records-stale",
+            "from": "registration-compatible",
+            "to": "action-review-records",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "arrangements-feasible-to-action-review-planning-stale",
+            "from": "arrangements-feasible",
+            "to": "action-review-planning",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "registration-compatible-to-action-review-records-error",
+            "from": "registration-compatible",
+            "to": "action-review-records",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "arrangements-feasible-to-action-review-planning-error",
+            "from": "arrangements-feasible",
+            "to": "action-review-planning",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "calculate-verification-to-learning-improves-choice",
+            "from": "calculate-verification",
+            "to": "learning-improves-choice",
+            "kind": "flow",
+            "status": "applicable"
+          },
+          {
+            "id": "learning-improves-choice-to-positive-learning-value-true",
+            "from": "learning-improves-choice",
+            "to": "positive-learning-value",
+            "kind": "flow",
+            "status": "applicable"
+          },
+          {
+            "id": "learning-improves-choice-to-no-positive-learning-value-false",
+            "from": "learning-improves-choice",
+            "to": "no-positive-learning-value",
+            "kind": "flow",
+            "status": "not-applicable"
+          }
+        ]
+      },
+      "inspection": {
+        "selectedNodeId": "arrangements-feasible",
+        "diagramSelectedNodeId": "arrangements-feasible",
+        "tableSelectedNodeId": "arrangements-feasible"
+      },
+      "table": {
+        "nodes": [
+          {
+            "id": "action-consider-probabilities",
+            "status": "not-applicable"
+          },
+          {
+            "id": "action-propose-arrangement",
+            "status": "applicable"
+          },
+          {
+            "id": "action-propose-reviewed-choice",
+            "status": "applicable"
+          },
+          {
+            "id": "action-resolve-record-conflict",
+            "status": "not-applicable"
+          },
+          {
+            "id": "action-review-planning",
+            "status": "not-applicable"
+          },
+          {
+            "id": "action-review-records",
+            "status": "not-applicable"
+          },
+          {
+            "id": "action-review-verification",
+            "status": "not-applicable"
+          },
+          {
+            "id": "action-revise-commitment",
+            "status": "not-applicable"
+          },
+          {
+            "id": "arrangements-feasible",
+            "status": "applicable"
+          },
+          {
+            "id": "calculate-verification",
+            "status": "applicable"
+          },
+          {
+            "id": "compare-arrangements",
+            "status": "applicable"
+          },
+          {
+            "id": "current-arrangements-only",
+            "status": "not-applicable"
+          },
+          {
+            "id": "define-shipment",
+            "status": "applicable"
+          },
+          {
+            "id": "establish-registration",
+            "status": "applicable"
+          },
+          {
+            "id": "learning-improves-choice",
+            "status": "applicable"
+          },
+          {
+            "id": "no-positive-learning-value",
+            "status": "not-applicable"
+          },
+          {
+            "id": "positive-learning-value",
+            "status": "applicable"
+          },
+          {
+            "id": "registration-compatible",
+            "status": "applicable"
+          },
+          {
+            "id": "verification-assumptions",
+            "status": "applicable"
+          },
+          {
+            "id": "verification-request",
+            "status": "applicable"
+          }
+        ],
+        "edges": [
+          {
+            "id": "action-propose-arrangement-to-verification-request",
+            "status": "applicable"
+          },
+          {
+            "id": "action-resolve-record-conflict-to-establish-registration",
+            "status": "not-applicable"
+          },
+          {
+            "id": "action-review-verification-to-calculate-verification",
+            "status": "not-applicable"
+          },
+          {
+            "id": "action-revise-commitment-to-define-shipment",
+            "status": "not-applicable"
+          },
+          {
+            "id": "arrangements-feasible-to-action-propose-arrangement-true",
+            "status": "applicable"
+          },
+          {
+            "id": "arrangements-feasible-to-action-review-planning-error",
+            "status": "not-applicable"
+          },
+          {
+            "id": "arrangements-feasible-to-action-review-planning-not-calculated",
+            "status": "not-applicable"
+          },
+          {
+            "id": "arrangements-feasible-to-action-review-planning-stale",
+            "status": "not-applicable"
+          },
+          {
+            "id": "arrangements-feasible-to-action-review-planning-unknown",
+            "status": "not-applicable"
+          },
+          {
+            "id": "arrangements-feasible-to-action-revise-commitment-false",
+            "status": "not-applicable"
+          },
+          {
+            "id": "calculate-verification-to-action-propose-reviewed-choice",
+            "status": "applicable"
+          },
+          {
+            "id": "calculate-verification-to-learning-improves-choice",
+            "status": "applicable"
+          },
+          {
+            "id": "compare-arrangements-to-arrangements-feasible",
+            "status": "applicable"
+          },
+          {
+            "id": "define-shipment-to-establish-registration",
+            "status": "applicable"
+          },
+          {
+            "id": "establish-registration-to-registration-compatible",
+            "status": "applicable"
+          },
+          {
+            "id": "learning-improves-choice-to-no-positive-learning-value-false",
+            "status": "not-applicable"
+          },
+          {
+            "id": "learning-improves-choice-to-positive-learning-value-true",
+            "status": "applicable"
+          },
+          {
+            "id": "registration-compatible-to-action-resolve-record-conflict-false",
+            "status": "not-applicable"
+          },
+          {
+            "id": "registration-compatible-to-action-review-records-error",
+            "status": "not-applicable"
+          },
+          {
+            "id": "registration-compatible-to-action-review-records-not-calculated",
+            "status": "not-applicable"
+          },
+          {
+            "id": "registration-compatible-to-action-review-records-stale",
+            "status": "not-applicable"
+          },
+          {
+            "id": "registration-compatible-to-action-review-records-unknown",
+            "status": "not-applicable"
+          },
+          {
+            "id": "registration-compatible-to-compare-arrangements-true",
+            "status": "applicable"
+          },
+          {
+            "id": "verification-assumptions-to-action-consider-probabilities-false",
+            "status": "not-applicable"
+          },
+          {
+            "id": "verification-assumptions-to-action-consider-probabilities-unknown",
+            "status": "not-applicable"
+          },
+          {
+            "id": "verification-assumptions-to-action-review-verification-true",
+            "status": "not-applicable"
+          },
+          {
+            "id": "verification-assumptions-to-calculate-verification-true",
+            "status": "applicable"
+          },
+          {
+            "id": "verification-request-to-current-arrangements-only-false",
+            "status": "not-applicable"
+          },
+          {
+            "id": "verification-request-to-verification-assumptions-true",
+            "status": "applicable"
+          }
+        ]
+      },
+      "after": {
+        "file": "shipment-after.run.json",
+        "sha256": "c8a58396506e1b9d96ded69527a8aba23983df0d735361003ee7be3995783263",
+        "bytes": 1466801,
+        "origin": "Ordinary native workflow export",
+        "contentHash": "9028ce2c93139966038218dbf8408807c05a6cf1be6886acfe68bc4c7b8824c9"
+      },
+      "mobile": {
+        "width": 390,
+        "noPageOverflow": true
+      }
+    },
+    {
+      "id": "gifting",
+      "scenario": "gifting",
+      "kind": "public-marketplace-workflow",
+      "captureUrl": "https://hermodlabs.github.io/review_lab/",
+      "build": {
+        "version": "619264e6c9e2fdf24b19",
+        "manifestFile": "offline-build.json",
+        "manifestSHA256": "69eb28323cd9ac29ab28526873809e1d9b72e44214724b6d2485324b24e8db79"
+      },
+      "workflow": {
+        "id": "review-gift-kit-flexible",
+        "version": "2.3.0",
+        "definitionHash": "d3fe8c5ac5ab3bb9209034c29dace8079db0577e608758597dfee90461ec25d5",
+        "packageHash": "8230d835f2d1e69606c13b659e3600604d01619c8c063a1d7e5b82d9ef9836de"
+      },
+      "installUrl": "https://hermodlabs.github.io/review_lab/?install=workflow&id=review-gift-kit-flexible&version=2.3.0&publisher=decision-lab&collection=gifting-operations&release=8230d835f2d1e69606c13b659e3600604d01619c8c063a1d7e5b82d9ef9836de",
+      "before": {
+        "file": "gifting-before.run.json",
+        "sha256": "b407f70f1eca8a55459971a24447bb74fcfc16f239edcb8f4b669b7b1a21dbec",
+        "bytes": 965367,
+        "origin": "Ordinary native workflow export",
+        "contentHash": "2218b964154098f49f4248f5dc01da201f8610d0ea7edeb4c3b63d278ea61d04"
+      },
+      "graph": {
+        "nodes": [
+          {
+            "id": "define-kit-commitment",
+            "status": "applicable"
+          },
+          {
+            "id": "establish-corrections",
+            "status": "applicable"
+          },
+          {
+            "id": "corrections-supported",
+            "status": "applicable"
+          },
+          {
+            "id": "compare-corrections",
+            "status": "applicable"
+          },
+          {
+            "id": "action-resolve-evidence",
+            "status": "not-applicable"
+          },
+          {
+            "id": "action-supply-diagnostic-reports",
+            "status": "not-applicable"
+          },
+          {
+            "id": "correction-arrangement-feasible",
+            "status": "applicable"
+          },
+          {
+            "id": "action-propose-correction",
+            "status": "applicable"
+          },
+          {
+            "id": "action-revise-commitment",
+            "status": "not-applicable"
+          },
+          {
+            "id": "action-calculate-arrangements",
+            "status": "not-applicable"
+          },
+          {
+            "id": "use-calculated-arrangement",
+            "status": "applicable"
+          }
+        ],
+        "edges": [
+          {
+            "id": "define-kit-commitment-to-establish-corrections",
+            "from": "define-kit-commitment",
+            "to": "establish-corrections",
+            "kind": "flow",
+            "status": "applicable"
+          },
+          {
+            "id": "establish-corrections-to-corrections-supported",
+            "from": "establish-corrections",
+            "to": "corrections-supported",
+            "kind": "flow",
+            "status": "applicable"
+          },
+          {
+            "id": "corrections-supported-to-compare-corrections-true",
+            "from": "corrections-supported",
+            "to": "compare-corrections",
+            "kind": "flow",
+            "status": "applicable"
+          },
+          {
+            "id": "corrections-supported-to-action-resolve-evidence-false",
+            "from": "corrections-supported",
+            "to": "action-resolve-evidence",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "compare-corrections-to-correction-arrangement-feasible",
+            "from": "compare-corrections",
+            "to": "correction-arrangement-feasible",
+            "kind": "flow",
+            "status": "applicable"
+          },
+          {
+            "id": "correction-arrangement-feasible-to-action-propose-correction-true",
+            "from": "correction-arrangement-feasible",
+            "to": "action-propose-correction",
+            "kind": "flow",
+            "status": "applicable"
+          },
+          {
+            "id": "correction-arrangement-feasible-to-action-revise-commitment-false",
+            "from": "correction-arrangement-feasible",
+            "to": "action-revise-commitment",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "correction-arrangement-feasible-to-action-calculate-arrangements-unknown",
+            "from": "correction-arrangement-feasible",
+            "to": "action-calculate-arrangements",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "action-propose-correction-to-use-calculated-arrangement",
+            "from": "action-propose-correction",
+            "to": "use-calculated-arrangement",
+            "kind": "flow",
+            "status": "applicable"
+          },
+          {
+            "id": "action-resolve-evidence-to-establish-corrections",
+            "from": "action-resolve-evidence",
+            "to": "establish-corrections",
+            "kind": "reassessment",
+            "status": "not-applicable"
+          },
+          {
+            "id": "action-revise-commitment-to-define-kit-commitment",
+            "from": "action-revise-commitment",
+            "to": "define-kit-commitment",
+            "kind": "reassessment",
+            "status": "not-applicable"
+          },
+          {
+            "id": "corrections-supported-to-action-supply-diagnostic-reports-unknown",
+            "from": "corrections-supported",
+            "to": "action-supply-diagnostic-reports",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "corrections-supported-to-action-supply-diagnostic-reports-not-calculated",
+            "from": "corrections-supported",
+            "to": "action-supply-diagnostic-reports",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "corrections-supported-to-action-supply-diagnostic-reports-stale",
+            "from": "corrections-supported",
+            "to": "action-supply-diagnostic-reports",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "corrections-supported-to-action-supply-diagnostic-reports-error",
+            "from": "corrections-supported",
+            "to": "action-supply-diagnostic-reports",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "correction-arrangement-feasible-to-action-calculate-arrangements-not-calculated",
+            "from": "correction-arrangement-feasible",
+            "to": "action-calculate-arrangements",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "correction-arrangement-feasible-to-action-calculate-arrangements-stale",
+            "from": "correction-arrangement-feasible",
+            "to": "action-calculate-arrangements",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "correction-arrangement-feasible-to-action-calculate-arrangements-error",
+            "from": "correction-arrangement-feasible",
+            "to": "action-calculate-arrangements",
+            "kind": "flow",
+            "status": "not-applicable"
+          }
+        ]
+      },
+      "inspection": {
+        "selectedNodeId": "correction-arrangement-feasible",
+        "diagramSelectedNodeId": "correction-arrangement-feasible",
+        "tableSelectedNodeId": "correction-arrangement-feasible"
+      },
+      "table": {
+        "nodes": [
+          {
+            "id": "action-calculate-arrangements",
+            "status": "not-applicable"
+          },
+          {
+            "id": "action-propose-correction",
+            "status": "applicable"
+          },
+          {
+            "id": "action-resolve-evidence",
+            "status": "not-applicable"
+          },
+          {
+            "id": "action-revise-commitment",
+            "status": "not-applicable"
+          },
+          {
+            "id": "action-supply-diagnostic-reports",
+            "status": "not-applicable"
+          },
+          {
+            "id": "compare-corrections",
+            "status": "applicable"
+          },
+          {
+            "id": "correction-arrangement-feasible",
+            "status": "applicable"
+          },
+          {
+            "id": "corrections-supported",
+            "status": "applicable"
+          },
+          {
+            "id": "define-kit-commitment",
+            "status": "applicable"
+          },
+          {
+            "id": "establish-corrections",
+            "status": "applicable"
+          },
+          {
+            "id": "use-calculated-arrangement",
+            "status": "applicable"
+          }
+        ],
+        "edges": [
+          {
+            "id": "action-propose-correction-to-use-calculated-arrangement",
+            "status": "applicable"
+          },
+          {
+            "id": "action-resolve-evidence-to-establish-corrections",
+            "status": "not-applicable"
+          },
+          {
+            "id": "action-revise-commitment-to-define-kit-commitment",
+            "status": "not-applicable"
+          },
+          {
+            "id": "compare-corrections-to-correction-arrangement-feasible",
+            "status": "applicable"
+          },
+          {
+            "id": "correction-arrangement-feasible-to-action-calculate-arrangements-error",
+            "status": "not-applicable"
+          },
+          {
+            "id": "correction-arrangement-feasible-to-action-calculate-arrangements-not-calculated",
+            "status": "not-applicable"
+          },
+          {
+            "id": "correction-arrangement-feasible-to-action-calculate-arrangements-stale",
+            "status": "not-applicable"
+          },
+          {
+            "id": "correction-arrangement-feasible-to-action-calculate-arrangements-unknown",
+            "status": "not-applicable"
+          },
+          {
+            "id": "correction-arrangement-feasible-to-action-propose-correction-true",
+            "status": "applicable"
+          },
+          {
+            "id": "correction-arrangement-feasible-to-action-revise-commitment-false",
+            "status": "not-applicable"
+          },
+          {
+            "id": "corrections-supported-to-action-resolve-evidence-false",
+            "status": "not-applicable"
+          },
+          {
+            "id": "corrections-supported-to-action-supply-diagnostic-reports-error",
+            "status": "not-applicable"
+          },
+          {
+            "id": "corrections-supported-to-action-supply-diagnostic-reports-not-calculated",
+            "status": "not-applicable"
+          },
+          {
+            "id": "corrections-supported-to-action-supply-diagnostic-reports-stale",
+            "status": "not-applicable"
+          },
+          {
+            "id": "corrections-supported-to-action-supply-diagnostic-reports-unknown",
+            "status": "not-applicable"
+          },
+          {
+            "id": "corrections-supported-to-compare-corrections-true",
+            "status": "applicable"
+          },
+          {
+            "id": "define-kit-commitment-to-establish-corrections",
+            "status": "applicable"
+          },
+          {
+            "id": "establish-corrections-to-corrections-supported",
+            "status": "applicable"
+          }
+        ]
+      },
+      "after": {
+        "file": "gifting-after.run.json",
+        "sha256": "b407f70f1eca8a55459971a24447bb74fcfc16f239edcb8f4b669b7b1a21dbec",
+        "bytes": 965367,
+        "origin": "Ordinary native workflow export",
+        "contentHash": "2218b964154098f49f4248f5dc01da201f8610d0ea7edeb4c3b63d278ea61d04"
+      },
+      "mobile": {
+        "width": 390,
+        "noPageOverflow": true
+      }
+    },
+    {
+      "id": "nightlife",
+      "scenario": "nightlife",
+      "kind": "public-marketplace-workflow",
+      "captureUrl": "https://hermodlabs.github.io/review_lab/",
+      "build": {
+        "version": "619264e6c9e2fdf24b19",
+        "manifestFile": "offline-build.json",
+        "manifestSHA256": "69eb28323cd9ac29ab28526873809e1d9b72e44214724b6d2485324b24e8db79"
+      },
+      "workflow": {
+        "id": "street-team-deployment",
+        "version": "1.5.0",
+        "definitionHash": "f0ddf31cee30299f860ff6d758c01aa137039f15643b13e6eb7258aaebd32073",
+        "packageHash": "c49e9179b5336e933dab00f9184fef02b4c08a3a3e6547d32971617cee6989f0"
+      },
+      "installUrl": "https://hermodlabs.github.io/review_lab/?install=workflow&id=street-team-deployment&version=1.5.0&publisher=decision-lab&collection=venue-operations&release=c49e9179b5336e933dab00f9184fef02b4c08a3a3e6547d32971617cee6989f0",
+      "before": {
+        "file": "nightlife-before.run.json",
+        "sha256": "38eceb7605d28f66c54f964341a600dab9b69ad32dee19ed0cb8923a203e251e",
+        "bytes": 252504,
+        "origin": "Ordinary native workflow export",
+        "contentHash": "ff4c90edf1e6580b03305c2b4e46529f84cb401e7e466f5a9521cfb460c479c3"
+      },
+      "graph": {
+        "nodes": [
+          {
+            "id": "define-deployment",
+            "status": "applicable"
+          },
+          {
+            "id": "calculate-deployments",
+            "status": "applicable"
+          },
+          {
+            "id": "deployments-feasible",
+            "status": "applicable"
+          },
+          {
+            "id": "financial-assumptions",
+            "status": "applicable"
+          },
+          {
+            "id": "action-compare-deployments",
+            "status": "applicable"
+          },
+          {
+            "id": "action-revise-deployment",
+            "status": "not-applicable"
+          },
+          {
+            "id": "calculate-guest-thresholds",
+            "status": "applicable"
+          },
+          {
+            "id": "action-supply-financial-assumptions",
+            "status": "not-applicable"
+          },
+          {
+            "id": "action-inspect-guest-thresholds",
+            "status": "applicable"
+          }
+        ],
+        "edges": [
+          {
+            "id": "define-deployment-to-calculate-deployments",
+            "from": "define-deployment",
+            "to": "calculate-deployments",
+            "kind": "flow",
+            "status": "applicable"
+          },
+          {
+            "id": "calculate-deployments-to-deployments-feasible",
+            "from": "calculate-deployments",
+            "to": "deployments-feasible",
+            "kind": "flow",
+            "status": "applicable"
+          },
+          {
+            "id": "deployments-feasible-to-action-compare-deployments-true",
+            "from": "deployments-feasible",
+            "to": "action-compare-deployments",
+            "kind": "flow",
+            "status": "applicable"
+          },
+          {
+            "id": "deployments-feasible-to-action-revise-deployment-false",
+            "from": "deployments-feasible",
+            "to": "action-revise-deployment",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "calculate-deployments-to-financial-assumptions",
+            "from": "calculate-deployments",
+            "to": "financial-assumptions",
+            "kind": "flow",
+            "status": "applicable"
+          },
+          {
+            "id": "financial-assumptions-to-calculate-guest-thresholds-true",
+            "from": "financial-assumptions",
+            "to": "calculate-guest-thresholds",
+            "kind": "flow",
+            "status": "applicable"
+          },
+          {
+            "id": "financial-assumptions-to-action-supply-financial-assumptions-false",
+            "from": "financial-assumptions",
+            "to": "action-supply-financial-assumptions",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "financial-assumptions-to-action-supply-financial-assumptions-unknown",
+            "from": "financial-assumptions",
+            "to": "action-supply-financial-assumptions",
+            "kind": "flow",
+            "status": "not-applicable"
+          },
+          {
+            "id": "calculate-guest-thresholds-to-action-inspect-guest-thresholds",
+            "from": "calculate-guest-thresholds",
+            "to": "action-inspect-guest-thresholds",
+            "kind": "flow",
+            "status": "applicable"
+          },
+          {
+            "id": "action-revise-deployment-to-define-deployment",
+            "from": "action-revise-deployment",
+            "to": "define-deployment",
+            "kind": "reassessment",
+            "status": "not-applicable"
+          }
+        ]
+      },
+      "inspection": {
+        "selectedNodeId": "deployments-feasible",
+        "diagramSelectedNodeId": "deployments-feasible",
+        "tableSelectedNodeId": "deployments-feasible"
+      },
+      "table": {
+        "nodes": [
+          {
+            "id": "action-compare-deployments",
+            "status": "applicable"
+          },
+          {
+            "id": "action-inspect-guest-thresholds",
+            "status": "applicable"
+          },
+          {
+            "id": "action-revise-deployment",
+            "status": "not-applicable"
+          },
+          {
+            "id": "action-supply-financial-assumptions",
+            "status": "not-applicable"
+          },
+          {
+            "id": "calculate-deployments",
+            "status": "applicable"
+          },
+          {
+            "id": "calculate-guest-thresholds",
+            "status": "applicable"
+          },
+          {
+            "id": "define-deployment",
+            "status": "applicable"
+          },
+          {
+            "id": "deployments-feasible",
+            "status": "applicable"
+          },
+          {
+            "id": "financial-assumptions",
+            "status": "applicable"
+          }
+        ],
+        "edges": [
+          {
+            "id": "action-revise-deployment-to-define-deployment",
+            "status": "not-applicable"
+          },
+          {
+            "id": "calculate-deployments-to-deployments-feasible",
+            "status": "applicable"
+          },
+          {
+            "id": "calculate-deployments-to-financial-assumptions",
+            "status": "applicable"
+          },
+          {
+            "id": "calculate-guest-thresholds-to-action-inspect-guest-thresholds",
+            "status": "applicable"
+          },
+          {
+            "id": "define-deployment-to-calculate-deployments",
+            "status": "applicable"
+          },
+          {
+            "id": "deployments-feasible-to-action-compare-deployments-true",
+            "status": "applicable"
+          },
+          {
+            "id": "deployments-feasible-to-action-revise-deployment-false",
+            "status": "not-applicable"
+          },
+          {
+            "id": "financial-assumptions-to-action-supply-financial-assumptions-false",
+            "status": "not-applicable"
+          },
+          {
+            "id": "financial-assumptions-to-action-supply-financial-assumptions-unknown",
+            "status": "not-applicable"
+          },
+          {
+            "id": "financial-assumptions-to-calculate-guest-thresholds-true",
+            "status": "applicable"
+          }
+        ]
+      },
+      "after": {
+        "file": "nightlife-after.run.json",
+        "sha256": "38eceb7605d28f66c54f964341a600dab9b69ad32dee19ed0cb8923a203e251e",
+        "bytes": 252504,
+        "origin": "Ordinary native workflow export",
+        "contentHash": "ff4c90edf1e6580b03305c2b4e46529f84cb401e7e466f5a9521cfb460c479c3"
+      },
+      "mobile": {
+        "width": 390,
+        "noPageOverflow": true
+      }
+    }
+  ],
+  "captures": [
+    {
+      "sourceId": "shipment",
+      "role": "overview",
+      "file": "shipment-overview.png",
+      "width": 1546,
+      "height": 3343,
+      "sha256": "b0826e15fd30c8fe69c2fa48a0fcf1ad64c60e694351971f717a2bd4252176f4",
+      "bytes": 339990,
+      "viewport": {
+        "width": 1900,
+        "height": 1200
+      },
+      "nativeText": "Decide how to meet the shipment commitment\n\nEstablish the transportation facts, compare complete arrangements, and optionally compare buying timely verification. Several next actions can be available together. Booking, verification purchase and delivery remain separate operating actions.\n\nDiagram\nTable\n\nFollow the labeled arrows to see the available paths. Inspecting an action does not perform it. Reassessment returns to the inputs or question shown.\n\nShipment choice\nSeveral matching actions can apply.\nAction availability established\nFurther information\nSeveral matching actions can apply.\nAction availability established\n\nApplies now\nOther path\nReassessment\n\n−\n92%\n+\nFit width\n100%\n1. Define the commitment\n2. Establish the transportation facts\n3. Compare the complete arrangements\n4. Decide whether further verification helps\nUse shipment-scoped records\nUse the evidence finding\nRecords are consistent\nRecords conflict\nSupply or calculate the records\nUse the complete-plan finding\nAt least one arrangement fits\nNo listed arrangement fits\nCalculate current arrangements\nOptionally examine further verification\nComparison requested\nAssumptions supplied\nAssumptions missing or unknown\nAssumptions not available\nUse the current verification comparison\nCalculate the applicable comparison\nReassess corrected records\nReassess changed requirements or arrangements\nVerification comparison not requested\nCalculate the applicable comparison when needed\nCalculate the supplied records\nCalculate the supplied arrangements\nRecalculate the changed records\nRecalculate the changed arrangements\nResolve the record calculation error\nResolve the arrangement calculation error\nUse the current expected-value result\nPositive expected improvement\nNo positive expected improvement\nStage\nDefine the shipment commitment\nApplies now\nStage\nEstablish ship-point registration\nApplies now\nQuestion\nDo the records support a consistent registration situation?\nApplies now\nStage\nCompare complete shipment arrangements\nApplies now\nAction\nSupply or resolve the operating records\nDoes not apply now\nAction\nResolve the conflicting records before choosing an arrangement\nDoes not apply now\nQuestion\nDoes any complete arrangement meet the requirements?\nApplies now\nAction\nCalculate the complete shipment arrangements\nDoes not apply now\nAction\nRevise the commitment or available arrangements\nDoes not apply now\nAction\nCompare the supported complete arrangements\nApplies now\nQuestion\nShould further verification be compared?\nApplies now\nQuestion\nAre the probability assumptions supplied?\nApplies now\nOutcome\nUse the current complete-arrangement comparison\nDoes not apply now\nAction\nCalculate timely verification value\nDoes not apply now\nAction\nSupply probability assumptions to compare verification\nDoes not apply now\nStage\nCheck complete responses and verification value\nApplies now\nAction\nCompare reserving now with timely verification\nApplies now\nQuestion\nDoes timely verification improve the expected choice?\nApplies now\nOutcome\nCompare the favorable timely-verification option\nApplies now\nOutcome\nNo positive expected improvement over acting now\nDoes not apply now\n\nSelect a question or action to inspect its basis, inputs and supporting results."
+    },
+    {
+      "sourceId": "shipment",
+      "role": "detail",
+      "file": "shipment-detail.png",
+      "width": 731,
+      "height": 424,
+      "sha256": "e123d321878e1b7cab9f5282ccb41cb37af105eeaf80c14528cabbf20c77f8e5",
+      "bytes": 59360,
+      "viewport": {
+        "width": 1000,
+        "height": 1100
+      },
+      "nativeText": "Question\n\nDoes any complete arrangement meet the requirements?\nCurrent case\nApplies now\nCurrent basis\nThe condition is established as true for the current calculation basis.\n\nAt least one complete arrangement is feasible\nYes\n\nPaths from this point\nAt least one arrangement fits\nApplies now\n→\nCompare the supported complete arrangements\nNo listed arrangement fits\nDoes not apply now\n→\nRevise the commitment or available arrangements\nCalculate current arrangements\nDoes not apply now\n→\nCalculate the complete shipment arrangements\nCalculate the supplied arrangements\nDoes not apply now\n→\nCalculate the complete shipment arrangements\nRecalculate the changed arrangements\nDoes not apply now\n→\nCalculate the complete shipment arrangements\nResolve the arrangement calculation error\nDoes not apply now\n→\nCalculate the complete shipment arrangements\nCompare complete shipment arrangements"
+    },
+    {
+      "sourceId": "gifting",
+      "role": "overview",
+      "file": "gifting-overview.png",
+      "width": 1546,
+      "height": 2064,
+      "sha256": "e3851a46b47b5bd326afbaf16bfc227891c6a4bdaeff8233d8b5c818c1d3fd7c",
+      "bytes": 219483,
+      "viewport": {
+        "width": 1900,
+        "height": 1200
+      },
+      "nativeText": "Decide how to complete the gift-kit handoff\n\nEstablish the corrections required by the actual diagnostic reports, then compare complete correction arrangements. A calculated arrangement does not establish that correction work, rehearsal or handoff has happened.\n\nDiagram\nTable\n\nFollow the labeled arrows to see the available paths. Inspecting an action does not perform it. Reassessment returns to the inputs or question shown.\n\nAvailable next actions\nSeveral matching actions can apply.\nAction availability established\n\nApplies now\nOther path\nReassessment\n\n−\n92%\n+\nFit width\n100%\n1. Define the handoff commitment\n2. Establish the required corrections\n3. Compare complete correction arrangements\n4. Choose the next operating action\nUse the exact kit configuration\nUse the diagnostic finding\nCorrections established\nReports do not establish usable corrections\nUse complete-plan findings\nA complete arrangement fits\nNo listed arrangement fits\nCalculation still required\nCompare the supported arrangement\nReassess corrected diagnostic reports\nReassess changed commitment or operating facts\nDiagnostic inputs are unknown\nCalculate the diagnostic reports\nRecalculate the changed diagnostic reports\nResolve the diagnostic calculation error\nCalculate complete correction arrangements\nRecalculate changed correction arrangements\nResolve the correction arrangement calculation error\nStage\nDefine the kit configuration and handoff\nApplies now\nStage\nEstablish the required kit corrections\nApplies now\nQuestion\nDo the diagnostic reports establish the corrections?\nApplies now\nStage\nCompare complete correction arrangements\nApplies now\nAction\nResolve the conflicting rehearsal reports\nDoes not apply now\nAction\nSupply or calculate the current diagnostic reports\nDoes not apply now\nQuestion\nDoes a complete correction arrangement fit?\nApplies now\nAction\nCompare the supported complete correction arrangement\nApplies now\nAction\nResolve blockers or revise the gift-kit commitment\nDoes not apply now\nAction\nCalculate complete correction arrangements\nDoes not apply now\nOutcome\nUse the calculated arrangement to choose the next operating action\nApplies now\n\nSelect a question or action to inspect its basis, inputs and supporting results."
+    },
+    {
+      "sourceId": "gifting",
+      "role": "detail",
+      "file": "gifting-detail.png",
+      "width": 731,
+      "height": 440,
+      "sha256": "86645f3d363c0a1e60fb163b263a00317e5fc61193ac3cfd36d5681803f7988b",
+      "bytes": 60867,
+      "viewport": {
+        "width": 1000,
+        "height": 1100
+      },
+      "nativeText": "Question\n\nDoes a complete correction arrangement fit?\nCurrent case\nApplies now\nCurrent basis\nThe condition is established as true for the current calculation basis.\n\nAt least one complete correction arrangement meets the requirements\nYes\n\nPaths from this point\nA complete arrangement fits\nApplies now\n→\nCompare the supported complete correction arrangement\nNo listed arrangement fits\nDoes not apply now\n→\nResolve blockers or revise the gift-kit commitment\nCalculation still required\nDoes not apply now\n→\nCalculate complete correction arrangements\nCalculate complete correction arrangements\nDoes not apply now\n→\nCalculate complete correction arrangements\nRecalculate changed correction arrangements\nDoes not apply now\n→\nCalculate complete correction arrangements\nResolve the correction arrangement calculation error\nDoes not apply now\n→\nCalculate complete correction arrangements\nCompare complete correction arrangements"
+    },
+    {
+      "sourceId": "nightlife",
+      "role": "overview",
+      "file": "nightlife-overview.png",
+      "width": 1546,
+      "height": 1643,
+      "sha256": "c944be940b893f7caf2ca6c3041c4a573adcd8220a61f72aa65b618428dce541",
+      "bytes": 179978,
+      "viewport": {
+        "width": 1900,
+        "height": 1200
+      },
+      "nativeText": "Decide which promotion deployment can operate\n\nCompare complete deployments against the operating requirements, then inspect the conditional expense-recovery hurdle. Customer response, promotion effectiveness and profit-maximizing spending are not established by this calculation.\n\nDiagram\nTable\n\nFollow the labeled arrows to see the available paths. Inspecting an action does not perform it. Reassessment returns to the inputs or question shown.\n\nOperating choice\nSeveral matching actions can apply.\nAction availability established\nFinancial assumptions\nSeveral matching actions can apply.\nAction availability established\nExpense-recovery detail\nSeveral matching actions can apply.\nAction availability established\n\nApplies now\nOther path\nReassessment\n\n−\n100%\n+\nFit width\n100%\n1. Define the operating situation\n2. Establish which deployments can operate\n3. Establish the conditional financial hurdle\n4. Compare the available options and hurdles\nUse the supplied operating facts\nUse the complete-plan finding\nAt least one deployment fits\nNo deployment fits\nInspect the separate economic hurdle\nAssumptions supplied\nAssumptions missing or unknown\nAssumptions unavailable\nUse the conditional guest counts\nReassess revised operating facts\nStage\nDefine staffing, timing, access and spending\nApplies now\nStage\nCalculate complete operating deployments\nApplies now\nQuestion\nDoes any complete deployment meet the operating requirements?\nApplies now\nQuestion\nAre contribution and discount-loss assumptions supplied?\nApplies now\nAction\nCompare the deployments meeting the operating requirements\nApplies now\nAction\nResolve operating blockers or revise the deployment\nDoes not apply now\nStage\nCalculate the expense-recovery guest hurdle\nApplies now\nAction\nSupply contribution and discount-loss assumptions\nDoes not apply now\nAction\nInspect the expense-recovery guest thresholds\nApplies now\n\nSelect a question or action to inspect its basis, inputs and supporting results."
+    },
+    {
+      "sourceId": "nightlife",
+      "role": "detail",
+      "file": "nightlife-detail.png",
+      "width": 731,
+      "height": 322,
+      "sha256": "a9ce4b191b371930ccc914058275c960cfbceac5f9ebed566ea571d342e81011",
+      "bytes": 37203,
+      "viewport": {
+        "width": 1000,
+        "height": 1100
+      },
+      "nativeText": "Question\n\nDoes any complete deployment meet the operating requirements?\nCurrent case\nApplies now\nCurrent basis\nThe condition is established as true for the current calculation basis.\n\nAt least one complete deployment meets the requirements\nYes\n\nPaths from this point\nAt least one deployment fits\nApplies now\n→\nCompare the deployments meeting the operating requirements\nNo deployment fits\nDoes not apply now\n→\nResolve operating blockers or revise the deployment\nReview promotion plans"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "offline-build.json",
+      "sha256": "69eb28323cd9ac29ab28526873809e1d9b72e44214724b6d2485324b24e8db79",
+      "bytes": 10002,
+      "origin": "Current public production runtime manifest"
+    },
+    {
+      "file": "shipment.workflow.json",
+      "sha256": "708e54ecb095002432cafea35c0e0cb16378e1aa79ee152f1f7d3cf342bffdbb",
+      "bytes": 1016063,
+      "origin": "https://hermodlabs.github.io/review_lab/app-configs/workflows/review-first-shipment/1.4.0/workflow.workflow.json"
+    },
+    {
+      "file": "shipment-before.run.json",
+      "sha256": "c8a58396506e1b9d96ded69527a8aba23983df0d735361003ee7be3995783263",
+      "bytes": 1466801,
+      "origin": "Ordinary native workflow export"
+    },
+    {
+      "file": "shipment-after.run.json",
+      "sha256": "c8a58396506e1b9d96ded69527a8aba23983df0d735361003ee7be3995783263",
+      "bytes": 1466801,
+      "origin": "Ordinary native workflow export"
+    },
+    {
+      "file": "gifting.workflow.json",
+      "sha256": "5331653a0a2fa60fae78f2ab5cc358d407ad600147b539394fe66dcfc5200cda",
+      "bytes": 554545,
+      "origin": "https://hermodlabs.github.io/review_lab/app-configs/workflows/review-gift-kit-flexible/2.3.0/workflow.workflow.json"
+    },
+    {
+      "file": "gifting-before.run.json",
+      "sha256": "b407f70f1eca8a55459971a24447bb74fcfc16f239edcb8f4b669b7b1a21dbec",
+      "bytes": 965367,
+      "origin": "Ordinary native workflow export"
+    },
+    {
+      "file": "gifting-after.run.json",
+      "sha256": "b407f70f1eca8a55459971a24447bb74fcfc16f239edcb8f4b669b7b1a21dbec",
+      "bytes": 965367,
+      "origin": "Ordinary native workflow export"
+    },
+    {
+      "file": "nightlife.workflow.json",
+      "sha256": "4b550137bcb2c1635295f29f30806f4385547b20fbd870593d034b22c7a7d259",
+      "bytes": 246073,
+      "origin": "https://hermodlabs.github.io/review_lab/app-configs/workflows/street-team-deployment/1.5.0/workflow.workflow.json"
+    },
+    {
+      "file": "nightlife-before.run.json",
+      "sha256": "38eceb7605d28f66c54f964341a600dab9b69ad32dee19ed0cb8923a203e251e",
+      "bytes": 252504,
+      "origin": "Ordinary native workflow export"
+    },
+    {
+      "file": "nightlife-after.run.json",
+      "sha256": "38eceb7605d28f66c54f964341a600dab9b69ad32dee19ed0cb8923a203e251e",
+      "bytes": 252504,
+      "origin": "Ordinary native workflow export"
+    },
+    {
+      "file": "capture-procedure.mjs",
+      "sha256": "ec17e1d862caa7541e69935d67bf50b149bd58b1ceee3abc02685c44629b701a",
+      "bytes": 17039,
+      "origin": "Exact capture script used for this journey"
+    }
+  ],
+  "checks": [
+    "All three current public Marketplace calculation workflows captured from published installation links and fictional inputs.",
+    "Every authored node and labeled path is present; graph and accessible table share current-case statuses.",
+    "Question inspection and Diagram/Table changes preserve exact native workflow exports, including inputs, findings and history.",
+    "Production JavaScript, CSS and WebAssembly hashes match the retained public runtime manifest.",
+    "All three native graphs remain within the page at a390px mobile viewport."
+  ],
+  "errors": [],
+  "passed": true,
+  "runtimeVerification": [
+    {
+      "file": "assets/exceljs.min-DDCSi4mX.js",
+      "sha256": "cb978661525b4f7f5f7e38c72d4746a7b588aca216321107e89fa24d96ef28b3"
+    },
+    {
+      "file": "assets/index-BXHFdu6x.css",
+      "sha256": "7c2959b0dce9c1c4b70f8f22200aa116a15d6643c636bc1e193f105db5a6da69"
+    },
+    {
+      "file": "assets/index-DcBpRuF-.js",
+      "sha256": "0417b1544e4ba62a700d327a6fa972d777d1566beeb6f8797595b3e886d95781"
+    },
+    {
+      "file": "assets/jszip.min-NeXYBX4l.js",
+      "sha256": "ff413c00549c1167a49353460fa02e1bf1090499b92d39479c1f2810a6e3c2ff"
+    },
+    {
+      "file": "assets/worker-BG99G3G7.js",
+      "sha256": "ff3155c8696e4b5682d6c32f6e3bfeffd10865b7f0d2b2ddc1c9d96568af1e71"
+    },
+    {
+      "file": "index.html",
+      "sha256": "f0b7002eb5d2264a1f4c7a978aeb866d3aeba0116f74dcd979537aa403a1c777"
+    }
+  ]
+}

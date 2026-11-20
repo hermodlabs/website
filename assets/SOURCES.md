@@ -14,6 +14,8 @@ Screenshots use ordinary input, Calculate/Recalculate and inspection controls. T
 
 The current `capture-*-summary-ui.mjs` scripts reproduce these journeys. Each capture directory's README describes its case and verification boundaries.
 
+`decision-process-refresh/` supplements those captures with the connected Decision process graphs from the public production app, build `619264e6c9e2fdf24b19`. Three overview images and three selected-question details show the same shipment 1.4.0, gifting 2.3.0 and street-team 1.5.0 definitions. The independent receipt retains the public runtime manifest, verified runtime hashes, workflow packages and native exports before and after inspection. All authored graph nodes and paths match the table representation; inputs, findings and history remain unchanged. `scripts/capture-decision-process-graphs.mjs` reproduces the public installation and ordinary-control journey. Earlier summary and comparison receipts retain their original build identities.
+
 ## CLI, SDK and Python examples
 
 `use-cases/{shipment-readiness,gift-kit-readiness}/calculation-integration/` contains the working custom clients' screenshots, portable native workflows, generated reports and verification receipts. Shipping uses its calculation-mode workflow 2.0.0; gifting uses its calculation-mode workflow 4.0.0 around the pinned cost-first app. The receipts distinguish a calculation from a recorded business choice and from sourced authorization, reservation, correction, rehearsal, delivery or handoff events.

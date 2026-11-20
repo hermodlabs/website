@@ -200,14 +200,25 @@
   </table>
 </div>
 <p>Staffing, access and spending are smaller questions within Alex’s commitment decision. <a href="../../../../articles/hierarchical-decomposition-for-human-decisions/index.html#dependencies-across-branches">Structured thinking makes those dependencies explicit</a>. One operating app checks these conditions together; the workflow supplies focused inputs, runs that calculation and presents its findings. The table describes the venue’s responsibilities, rather than approval steps in the interface.</p>
-<p><strong>View decision process</strong>, beside the calculation control, makes that structure visible in the working app. The labeled paths separate “Does a deployment meet the operating requirements?” from “What response would cover its expense?” Current findings identify the applicable paths; other branches remain available to inspect. <strong>Diagram / Table</strong> changes the representation of the same process.</p>
+<p><strong>View decision process</strong>, beside the calculation control, makes that structure visible as a graph. Labeled arrows separate “Does a deployment meet the operating requirements?” from “What response would cover its expense?” Highlighted paths apply to the recorded case; other paths remain visible, and dashed arrows return for reassessment. Alex can see where the staffing finding constrains the next response without treating the guest hurdle as a prediction.</p>
 
 
 <figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/street-team-deployment/decision-summary-ui/deployment-decision-process.png" tabindex="-1" aria-label="View full-size screenshot: The current Decision process separates whether complete deployments meet operating requirements from calculating a financial guest hurdle, with labeled paths and reassessment."><img src="../../../../assets/use-cases/street-team-deployment/decision-summary-ui/deployment-decision-process.png" width="806" height="1390" alt="The current Decision process separates whether complete deployments meet operating requirements from calculating a financial guest hurdle, with labeled paths and reassessment." loading="lazy" decoding="async"></a>
-  <figcaption><span>The business process keeps operating eligibility and the financial hurdle separate. Its paths describe available responses; they record no dispatch or spending authorization.</span><a href="../../../../assets/use-cases/street-team-deployment/decision-summary-ui/deployment-decision-process.png">View full size</a></figcaption>
+  <a href="../../../../assets/decision-process-refresh/nightlife-overview.png" tabindex="-1" aria-label="View full-size screenshot: The street-team Decision process graph connects staffing and operating requirements to feasible deployments and a separate expense-recovery guest hurdle, with current-case and reassessment paths."><img src="../../../../assets/decision-process-refresh/nightlife-overview.png" width="1546" height="1643" alt="The street-team Decision process graph connects staffing and operating requirements to feasible deployments and a separate expense-recovery guest hurdle, with current-case and reassessment paths." loading="lazy" decoding="async"></a>
+  <figcaption><span>The connected graph keeps operating eligibility and the financial guest hurdle separate. Highlighted paths describe responses available in Alex’s five-staff case; they record no dispatch or spending authorization.</span><a href="../../../../assets/decision-process-refresh/nightlife-overview.png">View full size</a></figcaption>
 </figure>
 
+<details class="disclosure use-case-technical-note">
+  <summary><span class="disclosure-label">Inspect a question behind the next response</span></summary>
+  <p>Use <strong>Fit width</strong> for the overview, or zoom in to follow a branch. Select a question or action to inspect its current basis and linked results. <strong>Diagram / Table</strong> changes the representation of the same process. Inspecting an action does not release the crew or authorize spending.</p>
+  
+
+<figure class="use-case-figure">
+  <a href="../../../../assets/decision-process-refresh/nightlife-detail.png" tabindex="-1" aria-label="View full-size screenshot: The selected street-team feasibility question shows the current operating finding and the paths toward reviewing supported deployments or revising the plan."><img src="../../../../assets/decision-process-refresh/nightlife-detail.png" width="731" height="322" alt="The selected street-team feasibility question shows the current operating finding and the paths toward reviewing supported deployments or revising the plan." loading="lazy" decoding="async"></a>
+  <figcaption><span>Inspect the operating question to see why holding or sending one is supported. Its finding does not predict guest response or authorize a deployment.</span><a href="../../../../assets/decision-process-refresh/nightlife-detail.png">View full size</a></figcaption>
+</figure>
+
+</details>
 <p>The separate <strong>Calculation dependencies</strong> view explains how the answer is produced: one operating assessment checks the complete deployments, and derived arithmetic supplies the guest thresholds. The process shows possible responses; the dependencies show calculation relationships. Opening either view changes no staffing fact, calculation or authorization.</p>
 
 <h2 id="focused-review">Apply the change, then recalculate.</h2>
@@ -274,6 +285,7 @@
       <div>
         <h3 id="working-calculation-and-captured-stages">Working calculation and captured stages</h3>
         <p>The scenario, people, inputs and decisions are fictional. <a href="../../../../assets/use-cases/street-team-deployment/decision-summary-ui/README.md">Capture notes and native exports</a> identify the current local production preview and its Forms-based five-staff and four-staff calculations. The screenshots show the current decision process, applying inputs, the stale-answer notice and recalculation. They establish neither completed deployment nor measured business return.</p>
+        <p>The graph and selected-question detail were captured separately from the updated public app in the five-staff situation. Their <a href="../../../../assets/decision-process-refresh/verification.json">graph capture record</a> identifies the deployed build and verifies that inspecting paths or switching to the table changes no case facts, findings or operating decisions.</p>
         <p>The workflow is <strong>Plan a street-team deployment 1.5.0</strong> from Venue operations. The <a href="../index.html#try-the-review">shared setup instructions</a> show how to start an analysis and enter the article’s two-callout situation. The <a href="../index.html#adapt-the-review">optional developer reference</a> links the full authored workflow and worked examples.</p>
       </div>
       <div>

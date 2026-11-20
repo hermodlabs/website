@@ -194,6 +194,7 @@
       <li><a href="#six-questions">Read the summary through six questions</a></li>
       <li><a href="#two-domains">Two domains, a recognizable structure</a></li>
       <li><a href="#a-similar-view-can-answer-a-different-question">The same presentation can carry a different claim</a></li>
+      <li><a href="#follow-the-next-response">Follow the finding to an available response</a></li>
       <li><a href="#preserve-the-distinctions">Keep the distinctions that matter to action</a></li>
       <li><a href="#work-backward">Work backward from your own decision</a></li>
       <li><a href="#decision-view-sources">Sources and scope</a></li>
@@ -287,6 +288,24 @@
 <p>Here the financial figure is a <strong>required response threshold</strong>. It does not forecast attendance or establish a profit-maximizing deployment. Alex can use the hurdle to judge the commitment, seek evidence about response or hold the team. <a href="../../../use-cases/nightlife/street-team-deployment/review-tonights-promotion/index.html">Read the promotion case</a> to see how staffing and uncertain customer response constrain that judgment.</p>
 <p>Recognizing a layout is a starting point. Understanding what each finding establishes makes the report usable.</p>
 
+<h2 id="follow-the-next-response">Follow the finding to an available response</h2>
+<p>The <strong>Decision process</strong> graph connects a finding to the responses it supports. In the separate <a href="../../../use-cases/supply-chain/shipment-readiness/case-worker/index.html">registration-and-verification shipment walkthrough</a>, the selected question asks whether any complete arrangement meets the requirements. Its current answer supports comparing feasible options. A finding that none fit would instead support revising the commitment or arrangements.</p>
+
+<figure class="decision-view-figure">
+  <a class="decision-view-image-link" href="../../../assets/decision-process-refresh/shipment-detail.png" aria-label="Open the selected shipment process point at full size"><img src="../../../assets/decision-process-refresh/shipment-detail.png" width="731" height="424" alt="Inspecting the shipment question Does any complete arrangement meet the requirements shows its current Yes finding, basis, outgoing paths, inputs and supporting reports." loading="lazy" decoding="async"></a>
+  <figcaption>The selected question connects its current finding to its basis and the paths that follow. This workflow has different inputs from the paired SDK examples above. <a href="../../../assets/decision-process-refresh/shipment-detail.png">View full size</a></figcaption>
+</figure>
+<p>Selecting a question or action reveals its basis and linked inputs or supporting results. The graph helps someone ask what would change the next response. Inspecting it does not perform an action, book freight or grant permission to spend.</p>
+<details class="disclosure">
+  <summary><span class="disclosure-label">See the complete shipment process</span></summary>
+  <p>The full graph connects registration evidence, complete arrangements and the verification question through labeled arrows. Highlighted paths apply to its recorded case; other paths remain visible, and dashed paths return for reassessment.</p>
+  
+  <figure class="decision-view-figure">
+    <a class="decision-view-image-link" href="../../../assets/decision-process-refresh/shipment-overview.png" aria-label="Open the shipment Decision process graph at full size"><img src="../../../assets/decision-process-refresh/shipment-overview.png" width="1546" height="3343" alt="The complete shipment Decision process graph links registration evidence, complete arrangements and timely verification, with labeled current-case paths and reassessment returns." loading="lazy" decoding="async"></a>
+    <figcaption>The complete authored process retains the alternatives and reassessment paths around the current finding. <a href="../../../assets/decision-process-refresh/shipment-overview.png">View full size</a></figcaption>
+  </figure>
+</details>
+
 <h2 id="preserve-the-distinctions">Keep the distinctions that matter to action</h2>
 <p><strong>An unavailable answer differs from established infeasibility.</strong> Missing inputs, an incomplete search or a stale calculation can prevent a conclusion. A completed assessment establishing that no declared candidate meets the requirements supports a different response: reconsider the constraints, candidates or commitment. An empty display must not silently mean that nothing works.</p>
 <p><strong>Feasibility and preference answer different questions.</strong> A passing arrangement supplies a supported option. A declared comparison policy may establish a preference among passing options, including a genuine tie. The view should preserve all preferred ties rather than turn display order into a sole winner.</p>
@@ -309,9 +328,10 @@
 <footer class="decision-view-sources" aria-labelledby="decision-view-sources">
   <details class="disclosure">
     <summary><h2 class="disclosure-label" id="decision-view-sources">Sources and scope</h2></summary>
-    <p>Maya, Leah, Alex and all numerical cases are fictional worked examples. The paired screenshots show current native Decision summaries in SDK-based clients; they are separate cases with their own time origins and scoped records. The street-team capture shows the current Decision Lab workflow. The numbered diagram is an explanatory reading aid.</p>
+    <p>Maya, Leah, Alex and all numerical cases are fictional worked examples. The paired screenshots show current native Decision summaries in SDK-based clients; they are separate cases with their own time origins and scoped records. The process graph and selected-point detail show the separate registration-and-verification shipment workflow. The street-team capture shows the current Decision Lab workflow. The numbered diagram is an explanatory reading aid.</p>
     <ul>
       <li><a href="../../../assets/use-cases/shipment-readiness/calculation-integration/verification.json">Shipment capture and calculation verification</a>.</li>
+      <li><a href="../../../assets/decision-process-refresh/verification.json">Public-app process graph and inspection verification</a>.</li>
       <li><a href="../../../assets/use-cases/gift-kit-readiness/calculation-integration/verification.json">Gift-kit capture and calculation verification</a>.</li>
       <li><a href="../../../assets/use-cases/street-team-deployment/decision-summary-ui/verification.json">Street-team capture verification</a>.</li>
       <li><a href="https://github.com/hermodlabs/sample_code">Hermod Labs sample applications</a>, including the shipment and gifting clients.</li>
