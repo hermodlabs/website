@@ -67,10 +67,6 @@
 .use-case-references p:last-child { margin-bottom: 0; }
 .use-case-references a { text-decoration: underline; text-underline-offset: 3px; }
 .use-case-references #scope { scroll-margin-top: 30px; }
-.use-case-related { margin-top: 28px; border-top: 1px solid var(--line); font: 13px/1.5 var(--reader-ui-font, Helvetica, Arial, sans-serif); }
-.use-case-related p { font-size: 11px; font-weight: 600; letter-spacing: .8px; text-transform: uppercase; margin: 18px 0 8px; }
-.use-case-related a { display: block; padding-block: 10px; text-decoration: underline; text-underline-offset: 4px; }
-.use-case-related [aria-current="page"] { color: var(--accent); }
 .use-case-crosslinks { border-top: 1px solid var(--line); font: 16px/1.7 var(--reader-ui-font); }
 .use-case-crosslinks > h2 { max-width: 30ch; font: 500 28px/1.25 var(--reader-ui-font); letter-spacing: -.5px; }
 .use-case-crosslinks-intro { max-width: 75ch; color: var(--muted); font-size: 16px; line-height: 1.7; }
@@ -80,12 +76,8 @@
 .use-case-crosslink p:last-child { margin: 0; color: var(--muted); }
 .use-case-crosslink a { text-decoration: underline; text-underline-offset: 4px; }
 .use-case-crosslink .use-case-crosslink-relation { margin: 0 0 16px; color: var(--muted); font-size: 14px; line-height: 1.6; }
-.reader-prose > .use-case-crosslinks { margin-top: 40px; padding-top: 28px; }
 @media (max-width: 650px) {
   .use-case-crosslink-list { grid-template-columns: minmax(0, 1fr); }
-}
-@media print {
-  .reader-prose > .use-case-crosslinks { display: none; }
 }
 .reader-content .use-case-source-note { margin-bottom: 32px; padding-bottom: 22px; border-bottom: 1px solid var(--line); color: var(--muted); font: 14px/1.7 var(--reader-ui-font); }
 .use-case-reading-layout { row-gap: 36px; }
