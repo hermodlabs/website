@@ -54,7 +54,10 @@
   <rect x="15" y="3" width="6" height="6" rx="1.2"/>
   <rect x="9" y="15" width="6" height="6" rx="1.2"/>
   <path d="M9 6h6M6 9v3h12V9m-6 3v3"/>
-</svg><span>Platform</span></a><a href="../../../../products/index.html"><svg class="nav-icon nav-icon-products" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+</svg><span>Platform</span></a><a href="../../../../articles/index.html"><svg class="nav-icon nav-icon-articles" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M12 6.5C9.4 4.8 6.3 4.4 3 5.3v13.4c3.3-.9 6.4-.5 9 1.2 2.6-1.7 5.7-2.1 9-1.2V5.3c-3.3-.9-6.4-.5-9 1.2Z"/>
+  <path d="M12 6.5v13.4"/>
+</svg><span>Articles</span></a><a href="../../../../products/index.html"><svg class="nav-icon nav-icon-products" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
   <rect x="3" y="4" width="18" height="16" rx="2"/>
   <path d="m7 9 3 3-3 3m6 0h4"/>
 </svg><span>Products</span></a><a href="../../../index.html" aria-current="page"><svg class="nav-icon nav-icon-use-cases" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
@@ -136,10 +139,10 @@
       <p>Shipment readiness</p>
       <a href="../index.html">Scenario overview</a>
       <p>Articles</p>
-      <a href="../compare-shipment-options/index.html">Compare shipment options</a><a href="../add-consolidated-freight/index.html">Add consolidated freight</a><a href="../review-changed-orders/index.html">Review changed orders</a><a href="index.html" aria-current="page">Resolve a shipment exception</a><a href="../is-a-registration-check-worth-buying/index.html">Integrate Python machine learning</a>
+      <a href="../compare-shipment-options/index.html">Compare shipment options</a><a href="../review-changed-orders/index.html">Review changed orders</a><a href="index.html" aria-current="page">Resolve a shipment exception</a><a href="../is-a-registration-check-worth-buying/index.html">Integrate Python machine learning</a>
       
       <p>Supporting references</p>
-      <a href="../app-author/index.html">Workflow authoring</a><a href="../case-worker/index.html">Evidence and verification</a><a href="../compare-priorities-and-limits/index.html">Priorities and spending limits</a>
+      <a href="../case-worker/index.html">Evidence and verification</a>
       
     </nav>
   </aside>
@@ -353,11 +356,11 @@
   <a class="use-case-explanatory-map-image" href="../../../../assets/use-cases/shipment-readiness/decision-maps/operating-claims.svg" tabindex="-1" aria-label="Open the decision illustration at full size">
     <picture>
       <source media="(max-width: 650px)" srcset="../../../../assets/use-cases/shipment-readiness/decision-maps/operating-claims-mobile.svg" width="560" height="1520">
-      <img src="../../../../assets/use-cases/shipment-readiness/decision-maps/operating-claims.svg" width="1000" height="760" alt="Decision map connecting the reviewed finding to Maya’s separate choice, and showing the distinct authorization, reservation and delivery records required to check the original commitment." loading="lazy" decoding="async">
+      <img src="../../../../assets/use-cases/shipment-readiness/decision-maps/operating-claims.svg" width="1000" height="760" alt="Decision map connecting the calculated finding to Maya’s separate choice, and showing the distinct authorization, reservation and delivery records required to check the original commitment." loading="lazy" decoding="async">
     </picture>
   </a>
   <figcaption id="operating-claims-caption">
-    <span>Decision map: a reviewed finding informs a separate choice. Arrows between records show sequence; dashed links show scope and the records required by the completion review. Permission, booking and accepted receipt establish different things.</span>
+    <span>Decision map: a calculated finding informs a separate choice. Arrows between records show sequence; dashed links show scope and the records required by the completion review. Permission, booking and accepted receipt establish different things.</span>
     <span class="use-case-explanatory-map-links"><a href="../../../../assets/use-cases/shipment-readiness/decision-maps/operating-claims.svg">View full-size SVG</a><a href="../../../../assets/use-cases/shipment-readiness/decision-maps/model.json" download>Download structured map</a></span>
   </figcaption>
 </figure>
@@ -396,7 +399,7 @@
     <div class="use-case-reference-grid">
       <div>
         <h3 id="business-context">Business context</h3>
-        <p>The current CLI/SDK continuation uses a new calculation-mode definition with supplied inputs, complete current findings and no analytical signoff steps. Archived reviewed-mode definitions remain unchanged. The operating app, company forms and actual-event checks belong to this integration; the Marketplace registration example remains a separate business case.</p>
+        <p>The CLI/SDK continuation uses a calculation-mode definition with supplied inputs and complete current findings. The operating app, company forms and actual-event checks belong to this integration; the Marketplace registration example remains a separate business case.</p>
 <p>Terry Clear’s <a href="https://www.8thandwalton.com/blog/case-study-walmart-launch">8th &amp; Walton Walmart launch case</a>, June 4, 2025, describes corrected order alignment, cancelled and reissued purchase orders, and changed freight terms. It motivates this fictional scenario and does not establish a Decision Lab customer deployment.</p>
         <p><a href="https://corporate.walmart.com/content/dam/corporate/documents/suppliers/apply-to-be-a-supplier/supplier-checklist.pdf#page=11">Walmart’s Supplier Checklist, page 11</a>, is the series’ original ship-point setup reference. The cases, confirmation policy, cutoffs, authority and delivery records here are teaching declarations.</p>
         <h3 id="source-and-captures">Source and captures</h3>
@@ -406,7 +409,7 @@
       <div>
         <h3 id="worked-example-boundaries">Worked-example boundaries</h3>
         <p>The assessment uses an explicit November 17, 2026 business clock, UTC−06:00. The fictional operating records include November 17 authorization and reservation and November 19 delivery. Every event was entered through the normal form; no booking, delivery or source authentication occurred externally.</p>
-        <p>The new cost-first app and operating workflow are distinct from the archived arrival-first example. The native continuation preserves the original promise separately from revised terms. The latest supplied complete record of each kind on the selected assessment and plan determines current support; negative or mismatched replacements cannot revive an older positive.</p>
+        <p>The cost-first app and operating workflow preserve the original promise separately from revised terms. The latest supplied complete record of each kind on the selected assessment and plan determines current support; negative or mismatched replacements cannot revive an older positive.</p>
         <p>The complete continuation in this walkthrough is retained through native CLI reopening. The full worked history was imported, saved to IndexedDB and restored with its content hash intact. A production integration still needs its own durable storage, access controls and retention policy.</p>
         <p>The sample stipulates independent resources and one reviewed registration state. Unresolved factual alternatives need an explicit evidence model. Shared allocation, identity verification, live carrier connections and complete execution management require additional models and integrations. The tool records and checks external assertions; it does not issue authority, arrange freight or perform physical work.</p>
       </div>

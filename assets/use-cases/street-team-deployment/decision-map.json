@@ -8,7 +8,7 @@
   "defaultContextId": "five-available",
   "provenance": {
     "kind": "original-explanatory-model",
-    "nativeEvidence": "Retained fictional Marketplace workflow and complete SDK report records. Stakeholder priorities, the reporting chain and directional business relationships are declared article context supplied by the author, not elicited interests, calculated business outcomes or authenticated governance.",
+    "nativeEvidence": "Current fictional calculation-mode Marketplace exports and complete SDK report records. Stakeholder priorities, reporting relationships and directional business relationships are declared article context, not calculated business outcomes or authenticated governance.",
     "nativeAppId": "street-team-operating-review",
     "nativePattern": "complete-a-commitment/1",
     "nativeRequirementId": "SUFFICIENCY",
@@ -284,7 +284,7 @@
       "type": "interval",
       "label": "Same crew absence",
       "status": "evaluated-binding",
-      "description": "7:45–9 p.m.; floor coverage must hold during outreach and both journeys.",
+      "description": "7:45\u20139 p.m.; floor coverage must hold during outreach and both journeys.",
       "bindingId": "absence-assumption"
     },
     {
@@ -327,30 +327,6 @@
       "appDeploymentIds": [
         "hold"
       ]
-    },
-    {
-      "id": "coverage-seven-available-send-two",
-      "type": "assessment",
-      "label": "Coverage: send two",
-      "status": "evaluated-binding",
-      "contextId": "seven-available",
-      "recordId": "coverage-seven-available-send-two"
-    },
-    {
-      "id": "coverage-seven-available-send-one",
-      "type": "assessment",
-      "label": "Coverage: send one",
-      "status": "evaluated-binding",
-      "contextId": "seven-available",
-      "recordId": "coverage-seven-available-send-one"
-    },
-    {
-      "id": "coverage-seven-available-hold",
-      "type": "assessment",
-      "label": "Coverage: hold",
-      "status": "evaluated-binding",
-      "contextId": "seven-available",
-      "recordId": "coverage-seven-available-hold"
     },
     {
       "id": "coverage-five-available-send-two",
@@ -599,36 +575,6 @@
       "bindingId": "deployment-choice"
     },
     {
-      "id": "coverage-seven-available-send-two-assesses",
-      "type": "assesses",
-      "from": "coverage-seven-available-send-two",
-      "to": "send-two",
-      "label": "checks floor coverage",
-      "status": "evaluated-binding",
-      "contextId": "seven-available",
-      "requirementId": "minimum-floor-coverage"
-    },
-    {
-      "id": "coverage-seven-available-send-one-assesses",
-      "type": "assesses",
-      "from": "coverage-seven-available-send-one",
-      "to": "send-one",
-      "label": "checks floor coverage",
-      "status": "evaluated-binding",
-      "contextId": "seven-available",
-      "requirementId": "minimum-floor-coverage"
-    },
-    {
-      "id": "coverage-seven-available-hold-assesses",
-      "type": "assesses",
-      "from": "coverage-seven-available-hold",
-      "to": "hold",
-      "label": "checks floor coverage",
-      "status": "evaluated-binding",
-      "contextId": "seven-available",
-      "requirementId": "minimum-floor-coverage"
-    },
-    {
       "id": "coverage-five-available-send-two-assesses",
       "type": "assesses",
       "from": "coverage-five-available-send-two",
@@ -848,58 +794,58 @@
   ],
   "bindings": {
     "staffing-coverage": {
-      "file": "marketplace/article.run.json",
+      "file": "decision-summary-ui/retained/five-staff.run.json",
       "jsonPointer": "/definition/dependencies/0/app/app/model/module/constraints/1",
       "expectedId": "staffing-coverage",
       "requirementId": "SUFFICIENCY"
     },
     "inside-staff-requirement": {
-      "file": "marketplace/article.run.json",
+      "file": "decision-summary-ui/retained/five-staff.run.json",
       "jsonPointer": "/definition/dependencies/0/app/app/model/module/requirements/0",
       "expectedId": "SUFFICIENCY"
     },
     "inside-staff-consequence": {
-      "file": "marketplace/article.run.json",
+      "file": "decision-summary-ui/retained/five-staff.run.json",
       "jsonPointer": "/definition/dependencies/0/app/app/model/module/derived/1",
       "expectedId": "insideStaff"
     },
     "deployment-choice": {
-      "file": "marketplace/article.run.json",
+      "file": "decision-summary-ui/retained/five-staff.run.json",
       "jsonPointer": "/definition/dependencies/0/app/app/model/module/choices/0",
       "expectedId": "deployment"
     },
     "absence-assumption": {
-      "file": "marketplace/article.run.json",
+      "file": "decision-summary-ui/retained/five-staff.run.json",
       "jsonPointer": "/definition/dependencies/0/app/app/model/module/assumptions/3",
-      "expectedText": "The reviewed available count is qualified staff minus unavailable staff. The minimum inside count applies throughout the whole absence, not only at dispatch."
+      "expectedText": "Available qualified staff equals the roster count minus unavailable staff. Required inside staffing applies throughout the full absence, not only when the team leaves."
     },
     "current-staffing-input": {
-      "file": "marketplace/article.run.json",
+      "file": "decision-summary-ui/retained/five-staff.run.json",
       "jsonPointer": "/case/promotion/staffing"
     },
     "qualified-staff-assumption": {
-      "file": "marketplace/article.run.json",
+      "file": "decision-summary-ui/retained/five-staff.run.json",
       "jsonPointer": "/definition/dependencies/0/app/app/model/module/assumptions/2",
-      "expectedText": "Every staff member counted is qualified for the simplified inside work, and remains available throughout the entire declared promotion absence. Individual stations, breaks, travel staffing and unrelated bookings require a richer module."
+      "expectedText": "Every staff member counted can cover the required inside work and remains available throughout the full team absence. Individual stations, breaks, travel staffing and other bookings are outside this review."
     }
   },
   "contexts": [
     {
-      "id": "seven-available",
-      "label": "Seven available · no callouts",
+      "id": "five-available",
+      "label": "Five available \u00b7 two callouts",
       "qualifiedStaff": 7,
-      "unavailableStaff": 0,
-      "availableStaff": 7,
+      "unavailableStaff": 2,
+      "availableStaff": 5,
       "minimumInside": 4,
       "absenceStartMinute": 1185,
       "absenceEndMinute": 1260,
-      "timeLabel": "7:45–9 p.m.",
+      "timeLabel": "7:45\u20139 p.m.",
       "source": {
-        "file": "marketplace/article.run.json",
+        "file": "decision-summary-ui/retained/five-staff.run.json",
         "evaluationPointer": "/evaluations/0",
-        "evaluationId": "workflow-evaluation-4f1f6edf1209681d2b7425351f322c91d33e7e29a33e5c78",
-        "appHash": "170807f3452e7b86d4ed9bb50eb554d4e6a28b34e87943f74ec0bec2acb8c173",
-        "modelHash": "2af1ba8dd4f280ccd03bd88f10423c44ba12a9987e2d594beaf14e804df6c3e4",
+        "evaluationId": "workflow-evaluation-5de64897cc3e907a85a3314c82554fbf574a9197b6c574cc",
+        "appHash": "ba657e7bc03db98f19178bff31263b31b7d033e77aeecef4092bb1cb38d8ad94",
+        "modelHash": "4aa9d99bd2c838bb25b26498a3f54c96c20ca1b7e254fe170db441b2b4664c34",
         "inputPointers": {
           "qualifiedStaff": "/evaluations/0/inputs/parameters/qualifiedStaff",
           "unavailableStaff": "/evaluations/0/inputs/parameters/unavailableStaff",
@@ -910,21 +856,21 @@
       }
     },
     {
-      "id": "five-available",
-      "label": "Five available · two callouts",
+      "id": "four-available",
+      "label": "Four available \u00b7 three callouts",
       "qualifiedStaff": 7,
-      "unavailableStaff": 2,
-      "availableStaff": 5,
+      "unavailableStaff": 3,
+      "availableStaff": 4,
       "minimumInside": 4,
       "absenceStartMinute": 1185,
       "absenceEndMinute": 1260,
-      "timeLabel": "7:45–9 p.m.",
+      "timeLabel": "7:45\u20139 p.m.",
       "source": {
-        "file": "marketplace/article.run.json",
+        "file": "decision-summary-ui/retained/four-staff.run.json",
         "evaluationPointer": "/evaluations/1",
-        "evaluationId": "workflow-evaluation-7f777ec04b41b13d40fce091ca01fe0ec3c2199e8315fd34",
-        "appHash": "170807f3452e7b86d4ed9bb50eb554d4e6a28b34e87943f74ec0bec2acb8c173",
-        "modelHash": "b5c1035b1a9e449c15e0df2e032b309468dc18103fabfc355d274f5866497743",
+        "evaluationId": "workflow-evaluation-35b6f256e24c6c06aca9a6b2b36dd027bfa0beb29af4491b",
+        "appHash": "ba657e7bc03db98f19178bff31263b31b7d033e77aeecef4092bb1cb38d8ad94",
+        "modelHash": "dcd66659c4e5c7890693fa6e6d47a4f32d3e383ba82b298b31ae0b4324497e82",
         "inputPointers": {
           "qualifiedStaff": "/evaluations/1/inputs/parameters/qualifiedStaff",
           "unavailableStaff": "/evaluations/1/inputs/parameters/unavailableStaff",
@@ -933,45 +879,20 @@
           "staffReturnMinute": "/evaluations/1/inputs/parameters/staffReturnMinute"
         }
       }
-    },
-    {
-      "id": "four-available",
-      "label": "Four available · three callouts",
-      "qualifiedStaff": 7,
-      "unavailableStaff": 3,
-      "availableStaff": 4,
-      "minimumInside": 4,
-      "absenceStartMinute": 1185,
-      "absenceEndMinute": 1260,
-      "timeLabel": "7:45–9 p.m.",
-      "source": {
-        "file": "marketplace/retained/third-callout.output.json",
-        "evaluationPointer": "/evaluations/2",
-        "evaluationId": "workflow-evaluation-0b116fc2dd136939a7bd12d3132df1b3f9964d3ac1266c2a",
-        "appHash": "170807f3452e7b86d4ed9bb50eb554d4e6a28b34e87943f74ec0bec2acb8c173",
-        "modelHash": "7f740f2b96593fc47cd5e7603d4446a8ec50dd485e5c2e44e567446c4a0390f3",
-        "inputPointers": {
-          "qualifiedStaff": "/evaluations/2/inputs/parameters/qualifiedStaff",
-          "unavailableStaff": "/evaluations/2/inputs/parameters/unavailableStaff",
-          "minimumInside": "/evaluations/2/inputs/parameters/minimumInside",
-          "dispatchMinute": "/evaluations/2/inputs/parameters/dispatchMinute",
-          "staffReturnMinute": "/evaluations/2/inputs/parameters/staffReturnMinute"
-        }
-      }
     }
   ],
   "coverageRecords": [
     {
-      "id": "coverage-seven-available-send-two",
-      "contextId": "seven-available",
+      "id": "coverage-five-available-send-two",
+      "contextId": "five-available",
       "alternativeId": "send-two",
-      "insideStaff": 5,
-      "meetsMinimum": true,
-      "statusLabel": "Meets the four-person minimum",
+      "insideStaff": 3,
+      "meetsMinimum": false,
+      "statusLabel": "Below the four-person minimum",
       "scope": "Inside staffing only",
       "evidence": [
         {
-          "file": "marketplace/article.run.json",
+          "file": "decision-summary-ui/retained/five-staff.run.json",
           "outputPointer": "/evaluations/0/output/plans/2",
           "planId": "plan-000003",
           "deploymentId": "large-standard",
@@ -996,144 +917,11 @@
           ]
         },
         {
-          "file": "marketplace/article.run.json",
+          "file": "decision-summary-ui/retained/five-staff.run.json",
           "outputPointer": "/evaluations/0/output/plans/3",
           "planId": "plan-000004",
           "deploymentId": "large-discount",
           "reportAssessmentPointer": "/evaluations/0/run/report/datasets/commitment/assessment",
-          "reportRecordPath": [
-            "plans",
-            3,
-            "scenarios",
-            0
-          ],
-          "derivedPath": [
-            "derived",
-            "insideStaff"
-          ],
-          "constraintPath": [
-            "constraints",
-            1
-          ],
-          "requirementPath": [
-            "requirements",
-            0
-          ]
-        }
-      ]
-    },
-    {
-      "id": "coverage-seven-available-send-one",
-      "contextId": "seven-available",
-      "alternativeId": "send-one",
-      "insideStaff": 6,
-      "meetsMinimum": true,
-      "statusLabel": "Meets the four-person minimum",
-      "scope": "Inside staffing only",
-      "evidence": [
-        {
-          "file": "marketplace/article.run.json",
-          "outputPointer": "/evaluations/0/output/plans/1",
-          "planId": "plan-000002",
-          "deploymentId": "small-standard",
-          "reportAssessmentPointer": "/evaluations/0/run/report/datasets/commitment/assessment",
-          "reportRecordPath": [
-            "plans",
-            1,
-            "scenarios",
-            0
-          ],
-          "derivedPath": [
-            "derived",
-            "insideStaff"
-          ],
-          "constraintPath": [
-            "constraints",
-            1
-          ],
-          "requirementPath": [
-            "requirements",
-            0
-          ]
-        }
-      ]
-    },
-    {
-      "id": "coverage-seven-available-hold",
-      "contextId": "seven-available",
-      "alternativeId": "hold",
-      "insideStaff": 7,
-      "meetsMinimum": true,
-      "statusLabel": "Meets the four-person minimum",
-      "scope": "Inside staffing only",
-      "evidence": [
-        {
-          "file": "marketplace/article.run.json",
-          "outputPointer": "/evaluations/0/output/plans/0",
-          "planId": "plan-000001",
-          "deploymentId": "hold",
-          "reportAssessmentPointer": "/evaluations/0/run/report/datasets/commitment/assessment",
-          "reportRecordPath": [
-            "plans",
-            0,
-            "scenarios",
-            0
-          ],
-          "derivedPath": [
-            "derived",
-            "insideStaff"
-          ],
-          "constraintPath": [
-            "constraints",
-            1
-          ],
-          "requirementPath": [
-            "requirements",
-            0
-          ]
-        }
-      ]
-    },
-    {
-      "id": "coverage-five-available-send-two",
-      "contextId": "five-available",
-      "alternativeId": "send-two",
-      "insideStaff": 3,
-      "meetsMinimum": false,
-      "statusLabel": "Below the four-person minimum",
-      "scope": "Inside staffing only",
-      "evidence": [
-        {
-          "file": "marketplace/article.run.json",
-          "outputPointer": "/evaluations/1/output/plans/2",
-          "planId": "plan-000003",
-          "deploymentId": "large-standard",
-          "reportAssessmentPointer": "/evaluations/1/run/report/datasets/commitment/assessment",
-          "reportRecordPath": [
-            "plans",
-            2,
-            "scenarios",
-            0
-          ],
-          "derivedPath": [
-            "derived",
-            "insideStaff"
-          ],
-          "constraintPath": [
-            "constraints",
-            1
-          ],
-          "requirementPath": [
-            "requirements",
-            0
-          ]
-        },
-        {
-          "file": "marketplace/article.run.json",
-          "outputPointer": "/evaluations/1/output/plans/3",
-          "planId": "plan-000004",
-          "deploymentId": "large-discount",
-          "reportAssessmentPointer": "/evaluations/1/run/report/datasets/commitment/assessment",
           "reportRecordPath": [
             "plans",
             3,
@@ -1165,11 +953,11 @@
       "scope": "Inside staffing only",
       "evidence": [
         {
-          "file": "marketplace/article.run.json",
-          "outputPointer": "/evaluations/1/output/plans/1",
+          "file": "decision-summary-ui/retained/five-staff.run.json",
+          "outputPointer": "/evaluations/0/output/plans/1",
           "planId": "plan-000002",
           "deploymentId": "small-standard",
-          "reportAssessmentPointer": "/evaluations/1/run/report/datasets/commitment/assessment",
+          "reportAssessmentPointer": "/evaluations/0/run/report/datasets/commitment/assessment",
           "reportRecordPath": [
             "plans",
             1,
@@ -1201,11 +989,11 @@
       "scope": "Inside staffing only",
       "evidence": [
         {
-          "file": "marketplace/article.run.json",
-          "outputPointer": "/evaluations/1/output/plans/0",
+          "file": "decision-summary-ui/retained/five-staff.run.json",
+          "outputPointer": "/evaluations/0/output/plans/0",
           "planId": "plan-000001",
           "deploymentId": "hold",
-          "reportAssessmentPointer": "/evaluations/1/run/report/datasets/commitment/assessment",
+          "reportAssessmentPointer": "/evaluations/0/run/report/datasets/commitment/assessment",
           "reportRecordPath": [
             "plans",
             0,
@@ -1237,11 +1025,11 @@
       "scope": "Inside staffing only",
       "evidence": [
         {
-          "file": "marketplace/retained/third-callout.output.json",
-          "outputPointer": "/evaluations/2/output/plans/2",
+          "file": "decision-summary-ui/retained/four-staff.run.json",
+          "outputPointer": "/evaluations/1/output/plans/2",
           "planId": "plan-000003",
           "deploymentId": "large-standard",
-          "reportAssessmentPointer": "/evaluations/2/run/report/datasets/commitment/assessment",
+          "reportAssessmentPointer": "/evaluations/1/run/report/datasets/commitment/assessment",
           "reportRecordPath": [
             "plans",
             2,
@@ -1262,11 +1050,11 @@
           ]
         },
         {
-          "file": "marketplace/retained/third-callout.output.json",
-          "outputPointer": "/evaluations/2/output/plans/3",
+          "file": "decision-summary-ui/retained/four-staff.run.json",
+          "outputPointer": "/evaluations/1/output/plans/3",
           "planId": "plan-000004",
           "deploymentId": "large-discount",
-          "reportAssessmentPointer": "/evaluations/2/run/report/datasets/commitment/assessment",
+          "reportAssessmentPointer": "/evaluations/1/run/report/datasets/commitment/assessment",
           "reportRecordPath": [
             "plans",
             3,
@@ -1298,11 +1086,11 @@
       "scope": "Inside staffing only",
       "evidence": [
         {
-          "file": "marketplace/retained/third-callout.output.json",
-          "outputPointer": "/evaluations/2/output/plans/1",
+          "file": "decision-summary-ui/retained/four-staff.run.json",
+          "outputPointer": "/evaluations/1/output/plans/1",
           "planId": "plan-000002",
           "deploymentId": "small-standard",
-          "reportAssessmentPointer": "/evaluations/2/run/report/datasets/commitment/assessment",
+          "reportAssessmentPointer": "/evaluations/1/run/report/datasets/commitment/assessment",
           "reportRecordPath": [
             "plans",
             1,
@@ -1334,11 +1122,11 @@
       "scope": "Inside staffing only",
       "evidence": [
         {
-          "file": "marketplace/retained/third-callout.output.json",
-          "outputPointer": "/evaluations/2/output/plans/0",
+          "file": "decision-summary-ui/retained/four-staff.run.json",
+          "outputPointer": "/evaluations/1/output/plans/0",
           "planId": "plan-000001",
           "deploymentId": "hold",
-          "reportAssessmentPointer": "/evaluations/2/run/report/datasets/commitment/assessment",
+          "reportAssessmentPointer": "/evaluations/1/run/report/datasets/commitment/assessment",
           "reportRecordPath": [
             "plans",
             0,

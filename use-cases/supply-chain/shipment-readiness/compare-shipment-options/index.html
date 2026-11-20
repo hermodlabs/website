@@ -54,7 +54,10 @@
   <rect x="15" y="3" width="6" height="6" rx="1.2"/>
   <rect x="9" y="15" width="6" height="6" rx="1.2"/>
   <path d="M9 6h6M6 9v3h12V9m-6 3v3"/>
-</svg><span>Platform</span></a><a href="../../../../products/index.html"><svg class="nav-icon nav-icon-products" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+</svg><span>Platform</span></a><a href="../../../../articles/index.html"><svg class="nav-icon nav-icon-articles" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M12 6.5C9.4 4.8 6.3 4.4 3 5.3v13.4c3.3-.9 6.4-.5 9 1.2 2.6-1.7 5.7-2.1 9-1.2V5.3c-3.3-.9-6.4-.5-9 1.2Z"/>
+  <path d="M12 6.5v13.4"/>
+</svg><span>Articles</span></a><a href="../../../../products/index.html"><svg class="nav-icon nav-icon-products" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
   <rect x="3" y="4" width="18" height="16" rx="2"/>
   <path d="m7 9 3 3-3 3m6 0h4"/>
 </svg><span>Products</span></a><a href="../../../index.html" aria-current="page"><svg class="nav-icon nav-icon-use-cases" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
@@ -102,7 +105,7 @@
     <p class="reading-meta">Jonathan Nacionales <span aria-hidden="true">·</span> 7 min read</p>
   </div>
   <figure class="reading-cover">
-    <img class="reading-cover-image" src="../../../../assets/use-cases/shipment-readiness/cover.svg" width="960" height="720" alt="A shipment plan connects readiness evidence, timing and a reviewed decision." decoding="async">
+    <img class="reading-cover-image" src="../../../../assets/use-cases/shipment-readiness/cover.svg" width="960" height="720" alt="A shipment plan connects readiness evidence, timing and a supported operating decision." decoding="async">
   </figure>
 </header>
 <div class="wrap reader-layout use-case-reading-layout">
@@ -123,7 +126,6 @@
       <li><a href="#supported-finding">What does this answer establish?</a></li>
       <li><a href="#process">Turn a supported proposal into an operating response.</a></li>
       <li><a href="#explain-the-difference">Maya can justify the premium when the context requires it.</a></li>
-      <li><a href="#supporting-exercises">Explore separate questions about the shipment review.</a></li>
       <li><a href="#source">Sources and scope</a></li>
     </ol>
   </details>
@@ -133,10 +135,10 @@
       <p>Shipment readiness</p>
       <a href="../index.html">Scenario overview</a>
       <p>Articles</p>
-      <a href="index.html" aria-current="page">Compare shipment options</a><a href="../add-consolidated-freight/index.html">Add consolidated freight</a><a href="../review-changed-orders/index.html">Review changed orders</a><a href="../resolve-a-shipment-exception/index.html">Resolve a shipment exception</a><a href="../is-a-registration-check-worth-buying/index.html">Integrate Python machine learning</a>
+      <a href="index.html" aria-current="page">Compare shipment options</a><a href="../review-changed-orders/index.html">Review changed orders</a><a href="../resolve-a-shipment-exception/index.html">Resolve a shipment exception</a><a href="../is-a-registration-check-worth-buying/index.html">Integrate Python machine learning</a>
       
       <p>Supporting references</p>
-      <a href="../app-author/index.html">Workflow authoring</a><a href="../case-worker/index.html">Evidence and verification</a><a href="../compare-priorities-and-limits/index.html">Priorities and spending limits</a>
+      <a href="../case-worker/index.html">Evidence and verification</a>
       
     </nav>
   </aside>
@@ -180,6 +182,7 @@
 </div>
 <p>The same quotes, resources, confirmations and permissions are supplied in both cases. The review compares complete candidate arrangements, rather than treating a route, a price or an earlier arrival as sufficient on its own.</p>
 
+<span id="worker-comparison" class="use-case-anchor" aria-hidden="true"></span>
 <h2 id="operating-profile">At 8 a.m., save $1,000. At 11:30, protect the remaining option.</h2>
 
 <section class="use-case-comparison" aria-label="One shipment before and after Direct’s booking cutoff" data-comparison="shipment-booking-window" data-comparison-kind="context">
@@ -241,12 +244,14 @@
 <p><strong>If the same shipment is still unbooked at 11:30, Maya can propose Consolidated.</strong> Direct’s 11 a.m. cutoff has passed. Consolidated remains supported until noon. The changed context supplies a reason for the premium: the cheaper arrangement can no longer be selected in time.</p>
 <p>These are alternative assessment contexts, not an instruction to delay the cheaper booking. A reservation already made is a separate operating fact; passing its original cutoff does not cancel that reservation.</p>
 
+<span id="author-priority" class="use-case-anchor" aria-hidden="true"></span>
+<span id="change-a-fact" class="use-case-anchor" aria-hidden="true"></span>
 <h2 id="supported-finding">What does this answer establish?</h2>
 <p>The assessment first checks which complete supplied arrangements satisfy the mandatory conditions. It then applies the cost-first priority among those that pass. <strong>Preferred</strong> means the highest-ranked passing arrangement under that policy. It does not mean the cheapest quote in isolation or an arrangement the business has already authorized.</p>
-<p>At 11:30, changing the ranking cannot reopen Direct’s booking window. If Consolidated’s confirmation or another mandatory condition also fails, Maya needs current supporting records, another modeled response or an escalation of the delivery promise. A preference cannot repair a failed requirement.</p>
+<p>A priority selects among arrangements that meet the requirements; a mandatory condition determines whether an arrangement is eligible at all. At 11:30, changing the ranking cannot reopen Direct’s booking window. If Consolidated’s confirmation or another mandatory condition also fails, Maya needs current supporting records, another modeled response or an escalation of the delivery promise. A preference cannot repair a failed requirement.</p>
 <p>The conclusion covers the supplied candidates and declared conditions. It does not establish that every conceivable freight alternative was considered, that retailer onboarding is complete, or that the recorded information is authentic. Maya still needs the right records and people for the actual shipment.</p>
 <h3 id="decision-pattern">The reusable assessment behind the comparison.</h3>
-<p>This is a <strong>commitment assessment</strong>: which complete arrangement can meet this delivery commitment under the recorded conditions, and which passing arrangement does the agreed priority prefer? Each candidate represents a selectable operating plan. The comparison supports a proposal; separate records establish authority, reservation and completed delivery.</p>
+<p>This is a <a href="../../../../articles/assessment-patterns/can-we-complete-the-commitment/index.html"><strong>commitment assessment</strong></a>: which complete arrangement can meet this delivery commitment under the recorded conditions, and which passing arrangement does the agreed priority prefer? Each candidate represents a selectable operating plan. The comparison supports a proposal; separate records establish authority, reservation and completed delivery.</p>
 <p>Hermod Labs configured the app to check the shipment requirements and preference, and authored the workflow that connects that assessment with the wider operating work. The decision pattern is a bounded shipment commitment; the assessment supplies supporting reasoning. <a href="../../../../articles/from-arrangements-to-assessments/index.html">From Arrangements to Assessments</a> explains why a reusable pattern must specify both what its candidates represent and what its answer establishes. The <a href="../../../../articles/the-arrangement-problem-in-human-decisions/index.html">Arrangement Problem</a> describes the connected combinations that the assessment examines.</p>
 
 <h2 id="process"><span id="process-heading" class="use-case-anchor" aria-hidden="true"></span>Turn a supported proposal into an operating response.</h2>
@@ -273,23 +278,7 @@
 <p>The review resolves the disagreement about what the recorded requirements and policy support. Maya can identify the condition that changed, show the complete comparison and give the responsible owners a proposal to act on. They still need to verify the operating records, authorize the expense, reserve freight and establish actual delivery.</p>
 <p><a href="../review-changed-orders/index.html">Continue with the CLI: identify which changed orders need attention</a>, then <a href="../resolve-a-shipment-exception/index.html">follow Maya in the SDK desk as a genuine current confirmation makes a blocked shipment supportable</a>. Those integrations repeat and continue the assessment while retaining the difference between a calculated finding and an operating event.</p>
 
-<h2 id="supporting-exercises">Explore separate questions about the shipment review.</h2>
-<span id="original-priority-tutorial" class="use-case-anchor" aria-hidden="true"></span>
-<span id="author-priority" class="use-case-anchor" aria-hidden="true"></span>
-<span id="worker-comparison" class="use-case-anchor" aria-hidden="true"></span>
-<p><a href="../compare-priorities-and-limits/index.html#author-priority">What if launch and finance choose different priorities?</a> The retained two-option exercise compares cost first with arrival first using the original $6,500 limits. It asks a different question from the booking-window comparison above.</p>
-<span id="change-a-fact" class="use-case-anchor" aria-hidden="true"></span>
-<p><a href="../compare-priorities-and-limits/index.html#change-a-fact">What if finance lowers the expense limit to $5,000?</a> Follow the workbook change and see why a mandatory expense condition blocks the $6,000 Backup option even under an arrival-first priority.</p>
-<span id="walkthroughs" class="use-case-anchor" aria-hidden="true"></span>
-<span id="walkthroughs-heading" class="use-case-anchor" aria-hidden="true"></span>
-<span id="try-the-example" class="use-case-anchor" aria-hidden="true"></span>
-<span id="try-heading" class="use-case-anchor" aria-hidden="true"></span>
-<span id="try-the-comparison" class="use-case-anchor" aria-hidden="true"></span>
-<span id="published-apps" class="use-case-anchor" aria-hidden="true"></span>
-<p><a href="../compare-priorities-and-limits/index.html#try-the-comparison">Open the original cost-first and arrival-first reviews</a>. Their direct links, input instructions, screenshots and workbook exercise now live together in the supporting reference.</p>
-<span id="patterns" class="use-case-anchor" aria-hidden="true"></span>
-<span id="patterns-heading" class="use-case-anchor" aria-hidden="true"></span>
-<p><a href="../add-consolidated-freight/index.html">How does the team add Consolidated and its confirmation requirement?</a> The authoring branch returns to the earlier arrival-first tutorial and changes the supported options and rules. This article instead keeps the current cost-first app fixed and changes only the clock.</p>
+<p>For a separate current example of uncertainty before booking, <a href="../case-worker/index.html#current-question-view">calculate whether timely registration verification improves the shipment choice</a>. That walkthrough connects evidence, complete plans and verification under its own supplied facts.</p>
 
 <footer class="use-case-article-references" aria-labelledby="source">
   <details class="disclosure use-case-source-disclosure">
@@ -306,9 +295,8 @@
         <h3 id="what-this-case-covers">What this case covers</h3>
         <p>Maya and her team are fictional. Their order, quotes, dates, records and permissions are teaching inputs, not the source company’s data or a reconstruction of its outcome.</p>
         <p>The booking-window pair uses one pinned cost-first app and workflow. Its <a href="../../../../assets/use-cases/shipment-readiness/calculation-integration/verification.json">comparison receipt</a> verifies that the assessment-time control changes only current time and action-ready time, with the same app, prices, records and policy. All times are November 17, 2026, UTC−06:00. The wider operating verification is retained with the <a href="../../../../assets/use-cases/shipment-readiness/calculation-integration/verification.json">Shipment Reservation Desk verification</a>.</p>
-        <p>The screenshots show the custom SDK desk’s cost-first calculation workflow and shared decision views. Apply → Calculate/Recalculate and the summary-to-supporting-report navigation also carry into the CLI/SDK continuation. They do not depict the separate first-shipment <strong>1.4.0 calculation workflow</strong>, which uses supplied inputs, <strong>Calculate / Recalculate</strong> and a focused <strong>Decision summary</strong>, without reviewer identity or acceptance. Its fictional facts differ from Maya’s booking-window comparison; follow the <a href="../case-worker/index.html#current-question-view">first-shipment calculation walkthrough</a> for that registration-and-verification case.</p>
-        <p>The <a href="../compare-priorities-and-limits/index.html">priority and spending-limit reference</a> preserves the original two-app tutorial, launch links, screenshots and capture receipt separately. A collection update does not migrate saved cases or change a pinned app’s requirements.</p>
-        <span id="shared-meanings" class="use-case-anchor" aria-hidden="true"></span>
+        <p>The screenshots show the custom SDK desk’s cost-first calculation workflow and shared decision views. Apply → Calculate/Recalculate and the summary-to-supporting-report navigation also carry into the CLI/SDK continuation. They do not depict the separate first-shipment <strong>1.4.0 calculation workflow</strong>, which uses supplied inputs, <strong>Calculate / Recalculate</strong> and a focused <strong>Decision summary</strong>. Its fictional facts differ from Maya’s booking-window comparison; follow the <a href="../case-worker/index.html#current-question-view">first-shipment calculation walkthrough</a> for that registration-and-verification case.</p>
+                <span id="shared-meanings" class="use-case-anchor" aria-hidden="true"></span>
         <span id="interpretation" class="use-case-anchor" aria-hidden="true"></span>
         <p>The assessment uses recorded facts and declared conditions. People establish the requirements, verify records, agree the priority, authorize spending and execute the shipment. Wider onboarding and operational requirements may need separate checks. No monetary benefit for earlier receipt is supplied.</p>
       </div>

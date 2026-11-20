@@ -6,4 +6,4 @@ The native browser sequence installs the pinned workflow, applies two and then t
 
 Five available staff permit holding or the one-person assignment. Four permit holding only. The $200 expense, $40 contribution, five-guest break-even and six-guest first-positive result remain conditional financial hurdles rather than predictions. Choice, authorization, dispatch and measured business results remain outside the calculation.
 
-Reproduce with `node scripts/capture-street-team-summary-ui.mjs <production-preview-url> <capture-build-verification.json>`. Build hashes, exact package pins, native exports, screenshot hashes/dimensions and browser checks are in [verification.json](verification.json). Earlier qualified captures remain unchanged in their original folders.
+Reproduce with `node scripts/capture-street-team-summary-ui.mjs <production-preview-url> <capture-build-verification.json>`. Build hashes, exact package pins, native exports, screenshot hashes/dimensions and browser checks are in [verification.json](verification.json). The explanatory decision map and basis matrix use these same current native records.

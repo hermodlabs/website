@@ -1,0 +1,114 @@
+---
+layout: layouts/blog-post.html
+tags: [blogPosts]
+title: "Why Plans Are Not Enough"
+description: "What a plan establishes, and what still needs a decision."
+author: "Jonathan Nacionales, Founder, Hermod Labs"
+date: 2026-11-18
+readingMinutes: 9
+publicationOrder: 1
+blogSeries: "Planning, uncertainty, and commitment"
+seriesPart: 1
+seriesLength: 3
+coverImage: /assets/blog/planning-series/plans.svg
+coverAlt: "A definite shipment proposal connects four separate planning questions to eight possible futures, only two of which have been examined."
+coverWidth: 960
+coverHeight: 720
+permalink: /blog/why-plans-are-not-enough/index.html
+---
+<p>“Plans are worthless, but planning is everything.” Dwight D. Eisenhower used those words in November 1957 while explaining preparation for emergencies. Events would differ from the anticipated situation; the understanding developed through planning would help people respond intelligently. He introduced the phrase as a saying he had heard in the Army.<sup><a href="#ref-eisenhower" role="doc-noteref" aria-label="Reference 1">1</a></sup></p>
+<p>That observation gives us a practical business question: what should planning preserve beyond the instructions in a plan? A proposal can name every person, service, and date while leaving its feasibility, comparative value, or acceptance unresolved. Those are different claims.</p>
+<p>We can expose them with a short decision statement. Each named slot identifies information to supply, a conclusion to establish, or a decision to record:</p>
+<blockquote class="decision-statement">
+  <p>This plan includes <code>plan_contents</code>.<br>
+  We have checked it under these conditions: <code>assessed_conditions</code>.<br>
+  The result establishes <code>established_finding</code>.<br>
+  We favor <code>preferred_options</code> because <code>preference_basis</code>.<br>
+  Acceptance of <code>next_action</code> is <code>acceptance_status</code>, with <code>decision_owner</code> responsible.<br>
+  If we observe <code>reassessment_trigger</code>, we will <code>contingency_response</code> before <code>response_deadline</code>.</p>
+</blockquote>
+<p>Some entries describe choices and assumptions. Others report assessment results or human decisions. “Not established” and “pending” can be correct entries. Completing the wording is not proof that the proposed work can proceed.</p>
+
+<h2 id="shipment-proposal">What does the shipment proposal include?</h2>
+<p>Consider a fictional supplier preparing a retailer’s product launch. Maya coordinates its shipment recommendation. Launch wants the goods early, finance has set a $5,000 expense limit, and operations needs records and resources that support the actual shipment. A revised purchase order has changed the document specifying the goods and delivery requirements.</p>
+<p>Follow her team in <a href="{{ '/use-cases/supply-chain/shipment-readiness/review-changed-orders/' | relativeUrl(page.url) }}">The purchase orders changed. Which shipment recommendations need review again?</a> The walkthrough shows how revised orders, freight quotes, and confirmation records become an exception report that tells Maya which cases need her attention.</p>
+<p>Start with her earlier, ample-window case, before the order change. Maya has three quoted services and current supporting records. The updated review prefers the lowest complete expense among arrangements that meet every requirement, then earlier arrival. Each quote also has its own booking cutoff; a low price cannot keep a closed offer available.</p>
+<div class="blog-table-scroll" role="region" aria-label="Maya’s quoted shipment services and current issues" tabindex="0">
+  <table>
+    <thead><tr><th scope="col">Service</th><th scope="col">Expense</th><th scope="col">Quoted arrival</th><th scope="col">Current issue</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Direct</th><td>$4,000</td><td>Friday, noon</td><td>Supported in the ample-window case; booking closes at 11 a.m.</td></tr>
+      <tr><th scope="row">Consolidated</th><td>$5,000</td><td>Thursday, 6 p.m.</td><td>Current loading confirmation; booking remains open until noon.</td></tr>
+      <tr><th scope="row">Backup</th><td>$6,000</td><td>Thursday, noon</td><td>Expense exceeds the $5,000 limit.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>A loading confirmation identifies the reserved loading opportunity and the order it covers. An order change can make that scope outdated: a confirmation for the previous revision does not establish the required support for the revised order.</p>
+<p><strong>Completeness asks whether the required choices have been resolved.</strong> A complete shipment plan must connect the service to preparation, people, resources, and timing. We call this combination an <em>arrangement</em>; it supplies <code>plan_contents</code>. “Someone will prepare the goods” leaves a responsibility open. Naming a person and a time resolves the choice, even if that person later turns out to be unavailable.</p>
+<p>Completeness is relative to the commitment being modeled. If the job includes preparation, transport, and receipt, selecting a carrier alone cannot cover it. An assessment uses a model: the specified choices, facts, and rules it will examine. An obligation omitted from that description remains outside the result.</p>
+
+<h2 id="feasible-choices">Can the proposed choices work together?</h2>
+<p><strong>Feasibility asks whether the choices jointly satisfy the applicable requirements under the supplied conditions.</strong> An earlier arrival does not compensate for exceeding a mandatory expense limit. A document’s presence does not make its scope current.</p>
+<p>In the ample-window case, Direct and Consolidated pass; Backup is too expensive. Each passing, complete plan provides a <em>feasible witness</em>: concrete support that at least one arrangement meets the modeled requirements. The <code>established_finding</code> should remain attached to the <code>assessed_conditions</code> that support it.</p>
+<p>The revised-order exception is different. In that supplied case, Direct lacks the required capacity and Consolidated’s confirmation covers the earlier order revision. No arrangement passes. Maya needs current supporting records or an escalation, rather than a recommendation carried forward from the earlier case.</p>
+<p>This is a bounded conclusion. People still need to judge whether the model fits the operation and whether the records are trustworthy. Feasibility under stated inputs is not an unconditional forecast of successful delivery.</p>
+
+<h2 id="examined-conditions">Which possible conditions did we examine?</h2>
+<p>A contingency is a possible condition or event that could affect the next action. To illustrate coverage, extend the shipment situation with three uncertain conditions: another order change, loss of the loading window, and transit taking one day longer than quoted. If all combinations are admitted, there are eight modeled futures. The field names are <code>order_change</code>, <code>loading_window_status</code>, and <code>transit_duration</code>.</p>
+<p>Figure 1 highlights two futures examined by a hypothetical narrow review. These branches concern conditions Maya may face; they are not service choices she can select. Choosing a carrier does not choose whether the customer changes the order again.</p>
+<p>Even if a plan passes both examined futures, the other six remain unresolved. They are not thereby impossible or failed. Two of eight examined scenarios is also not a 25 percent success probability.</p>
+<p>Examining all eight would answer the chosen model’s questions. It would not show that the real operation contains only those three relevant conditions. A new receiving restriction or an unavailable worker could require a different model. This is a practical argument for continuing to plan, not a theorem that every plan must fail.</p>
+<p>Information entropy can quantify uncertainty over a specified set of outcomes when their probabilities are justified. It does not establish that the set is exhaustive. A robust arrangement may succeed across many modeled futures while their occurrence remains uncertain. Examining vulnerabilities across plausible futures is central to robust decision making.<sup><a href="#ref-rand" role="doc-noteref" aria-label="Reference 2">2</a></sup></p>
+<figure class="blog-figure">
+  <div class="blog-figure-scroll planning-coverage" role="region" aria-label="Branch diagram of the eight modeled shipment futures" tabindex="0">
+    <img src="{{ '/assets/blog/planning-series/coverage.svg' | relativeUrl(page.url) }}" alt="The shipment proposal branches into unchanged or changed order, then usable or lost loading window, then quoted transit or one day longer. Only S1 and S2, both with an unchanged order and usable window, are examined; S3 through S8 remain unexamined." width="960" height="640" loading="lazy" decoding="async">
+  </div>
+  <figcaption><strong>Figure 1:</strong> Blue paths are examined; gray paths are unexamined by this hypothetical review. Color reports coverage, not success or probability. This extension is not a calculation from the linked shipment application.</figcaption>
+</figure>
+
+<h2 id="established-preference">Why favor one feasible arrangement?</h2>
+<p>Return to the ample-window case, where Direct and Consolidated both have current support and remain bookable. The cost-first rule prefers Direct at $4,000 because both meet the delivery commitment. The extra $1,000 needs an operating reason.</p>
+{% set workingFigure = shipmentReservationDesk.figures.baseline %}
+{% set workingCaption = 'The working desk puts the complete alternatives and their requirements together. With time to book Direct, its $4,000 expense is preferred; an earlier arrival alone does not justify the $5,000 premium option.' %}
+{% include "body/blog-working-example.html" %}
+<p>Now assess that case at 11:30 a.m. Direct’s 11 a.m. booking cutoff has passed. Consolidated remains bookable until noon and has current supporting records, so its $5,000 complete arrangement becomes preferred. Backup remains over budget. Passing time has changed the available choice even without a new freight price.</p>
+<p>See these distinct situations in <a href="{{ '/use-cases/supply-chain/shipment-readiness/resolve-a-shipment-exception/' | relativeUrl(page.url) }}">Resolve a shipment exception with the Decision Lab SDK</a>. Follow the same portable review from the CLI into Maya’s desk, inspect what changed, and see how the team records its chosen response and the resulting operating evidence.</p>
+<p><strong>Established preference supports a comparison under explicit criteria.</strong> The <code>preferred_options</code> now names Consolidated; <code>preference_basis</code> retains the cost-first policy, current time, booking windows and supporting records. Finance can inspect why the premium is now needed to protect the commitment. A different feasible set or an explicitly different business priority could support another preference.</p>
+<p>Several alternatives may also tie under the declared rule. Keeping all preferred ties is a valid result. A tie differs from a comparison that remains unresolved; silently displaying one tied option as the sole winner invents a distinction.</p>
+<p>Completion of a command, assessment, or report remains a separate issue:</p>
+<div class="blog-table-scroll" role="region" aria-label="Assessment completion, feasible witnesses, and established preferences" tabindex="0">
+  <table>
+    <thead><tr><th scope="col">Assessment outcome</th><th scope="col">Complete?</th><th scope="col">Witness?</th><th scope="col">Preference?</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">All required evaluation finishes; no plan passes</th><td>Yes</td><td>No</td><td>No</td></tr>
+      <tr><th scope="row">Limited search finds a fully checked passing plan</th><td>No</td><td>Yes</td><td>No</td></tr>
+      <tr><th scope="row">Complete comparison establishes a valid preferred tie</th><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Finding a witness need not require examining every candidate. Establishing that none works, or that one is best, needs the relevant coverage or another sound proof or bound. Input diagnostics, unavailable calculations, and completed blocked findings therefore call for different responses. A fully retained report is not itself proof of feasibility or preference.</p>
+
+<h2 id="human-acceptance">Who has agreed to the next action?</h2>
+<p><strong>Human acceptance records a responsible person’s decision about a particular action and proposal.</strong> Existing permissions may already be modeled requirements. The separate question is whether the responsible person has accepted this next commitment under the reviewed conditions.</p>
+<p>For example, <code>next_action</code> could be “reserve Consolidated for the revised order.” Its <code>acceptance_status</code> may remain pending while the authorized <code>decision_owner</code> reviews it. A useful record preserves the proposal, reviewed basis, person, action, and conditions. Acceptance does not establish that the reservation or delivery has actually occurred.</p>
+<p>The same distinctions apply to a second fictional operation. Leah coordinates 120 gift kits whose printed code must lead recipients to a usable online checkout. Within a $600 correction limit and an ample one-day window, complete in-house correction costs $300 and finishes at minute 40. Confirmed external work costs $400 and takes 25 minutes. The cost-first review prefers in-house work.</p>
+<p>In an urgent campaign assessed at minute 1,410, only 30 minutes remain before the original minute-1,440 cutoff. In-house work would finish at 1,450; confirmed external work finishes at 1,435. Here the additional $100 protects the cutoff. In <a href="{{ '/use-cases/gifting/gift-kit-readiness/resolve-a-handoff-exception/' | relativeUrl(page.url) }}">Build a gift-kit app with the Decision Lab SDK</a>, follow that review through the chosen package, sourced authorization, actual correction, fresh rehearsal and handoff records.</p>
+<p>A missing booking or one covering an older insert can leave the urgent campaign without a passing package. At minute 1,420, even the 25-minute package misses the original cutoff. A completed review exposes the need to escalate or revise the promise; extending the proposed deadline does not establish that the original promise was met.</p>
+<p><a href="{{ '/use-cases/gifting/gift-kit-readiness/screen-campaigns/' | relativeUrl(page.url) }}">A day to prepare. Which gift-kit campaigns need attention?</a> shows how the team finds that blocked campaign among its other work. Read it to see how a campaign screening report separates supported proposals, blocked campaigns, and input problems, then hands one flagged case to the person who must resolve it.</p>
+
+<h2 id="put-distinctions-to-work">Put the distinctions to work</h2>
+<p>Decision Lab represents alternatives, checks their modeled requirements, and compares passing arrangements under specified preference rules. These shipment and gifting walkthroughs connect command-line screening to SDK applications through the same portable workflow. Input review, acceptance of an analytical finding, an operating choice and sourced external authority remain distinct records.</p>
+<p>The operating workflow also checks what the supplied records establish about completion. A reservation does not prove delivery; planned rehearsal time does not prove a successful test. A later cancellation or failed rehearsal supersedes the earlier positive record while preserving it in history. People and their connected systems still authenticate sources and perform the work.</p>
+<p>The public examples distinguish assessment completion, feasible witnesses, established preferences, limited searches, and genuine ties. They do not compute the entropy estimates developed in the next article. Their independent shipment and campaign cases also do not establish a feasible allocation of shared trucks, workers, or budgets.</p>
+<p>Return to the opening statement before acting. What supports each entry? Which change reopens it? Does the proposed response have the time, resources, and authority it needs? Those questions give the team a basis for continuing when the situation changes.</p>
+<p>Next: <a href="{{ '/blog/how-much-uncertainty-is-left/' | relativeUrl(page.url) }}">How Much Uncertainty Is Left?</a> develops a scoped numerical estimate and compares perfect and imperfect observations. <a href="{{ '/blog/a-better-plan-can-leave-us-just-as-uncertain/' | relativeUrl(page.url) }}">Article 3</a> examines whether learning, control, or a robust response actually improves the commitment.</p>
+
+<footer class="blog-references" aria-labelledby="sources-and-scope">
+  <details class="disclosure">
+    <summary><h2 class="disclosure-label" id="sources-and-scope">Sources and scope</h2></summary>
+    <ol>
+      <li id="ref-eisenhower" role="doc-endnote">Eisenhower Presidential Library, <a href="https://www.eisenhowerlibrary.gov/eisenhowers/quotes">Quotes</a>; Dwight D. Eisenhower, November 14, 1957, <a href="https://www.presidency.ucsb.edu/documents/remarks-the-national-defense-executive-reserve-conference">Remarks at the National Defense Executive Reserve Conference</a>. The four-claim interpretation here is our own.</li>
+      <li id="ref-rand" role="doc-endnote">RAND, <a href="https://www.rand.org/pubs/tools/TL320/tool/robust-decision-making.html">Robust Decision Making</a>. The branching example here is an original teaching illustration, not a RAND result.</li>
+    </ol>
+  </details>
+</footer>

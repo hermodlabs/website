@@ -524,7 +524,29 @@ figcaption { color: var(--muted); font-size: 13px; margin-top: 16px; }
 .library-hero .lead { max-width: 700px; }
 .library-categories { padding-bottom: 60px; }
 .category-card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-.library-platform-link { display: flex; flex-wrap: wrap; gap: 6px 8px; margin: 28px 0 0; color: var(--muted); font-size: 15px; }
+.category-card-grid.library-collection-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.library-collection-grid .collection-card { padding: 22px; background: var(--bg); border: 1px solid var(--line); }
+.collection-card-cover { width: 88px; aspect-ratio: 4 / 3; object-fit: contain; margin-bottom: 20px; }
+.collection-card-content { min-width: 0; }
+.collection-card-content .eyebrow { margin-bottom: 12px; color: var(--muted); }
+.collection-card-content h2 { font-size: 26px; line-height: 1.2; margin-bottom: 14px; }
+.collection-card-content h2 a { text-decoration: underline; text-decoration-color: #bcaad8; text-underline-offset: 4px; }
+.collection-card-content p:last-child { margin: 0; color: var(--muted); font-size: 16px; }
+.collection-intro { padding-block: 8px 12px; }
+.collection-intro > p { max-width: 80ch; color: var(--muted); font-size: 17px; }
+.collection-intro > :last-child { margin-bottom: 0; }
+.collection-context { padding-block: 28px 44px; border-top: 1px solid var(--line); }
+.collection-context h2 { font-size: 28px; line-height: 1.2; margin-bottom: 20px; }
+.collection-intro .article-table-scroll { max-width: 100%; overflow-x: auto; }
+.collection-intro table { width: 100%; min-width: 650px; border-collapse: collapse; font-size: 16px; }
+.collection-intro caption { padding-block: 16px; text-align: left; color: var(--muted); }
+.collection-intro :is(th, td) { padding: 14px 16px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.collection-intro a { text-decoration: underline; text-underline-offset: 4px; }
+.platform-pattern-links { padding-left: 22px; font-size: 16px; }
+.platform-pattern-links li { margin-bottom: 8px; }
+.platform-pattern-links a { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 900px) { .category-card-grid.library-collection-grid { grid-template-columns: minmax(0, 1fr); } }
+.library-platform-link { margin: 28px 0 0; color: var(--muted); font-size: 16px; }
 .library-platform-link .text-link { color: var(--ink); }
 .category-card { display: flex; flex-direction: column; min-width: 0; padding: 30px; background: var(--surface); border-top: 2px solid var(--accent); }
 .section .category-card > .eyebrow { margin-bottom: 24px; font-size: 11px; }

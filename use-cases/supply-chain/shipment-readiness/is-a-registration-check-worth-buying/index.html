@@ -54,7 +54,10 @@
   <rect x="15" y="3" width="6" height="6" rx="1.2"/>
   <rect x="9" y="15" width="6" height="6" rx="1.2"/>
   <path d="M9 6h6M6 9v3h12V9m-6 3v3"/>
-</svg><span>Platform</span></a><a href="../../../../products/index.html"><svg class="nav-icon nav-icon-products" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+</svg><span>Platform</span></a><a href="../../../../articles/index.html"><svg class="nav-icon nav-icon-articles" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M12 6.5C9.4 4.8 6.3 4.4 3 5.3v13.4c3.3-.9 6.4-.5 9 1.2 2.6-1.7 5.7-2.1 9-1.2V5.3c-3.3-.9-6.4-.5-9 1.2Z"/>
+  <path d="M12 6.5v13.4"/>
+</svg><span>Articles</span></a><a href="../../../../products/index.html"><svg class="nav-icon nav-icon-products" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
   <rect x="3" y="4" width="18" height="16" rx="2"/>
   <path d="m7 9 3 3-3 3m6 0h4"/>
 </svg><span>Products</span></a><a href="../../../index.html" aria-current="page"><svg class="nav-icon nav-icon-use-cases" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
@@ -134,10 +137,10 @@
       <p>Shipment readiness</p>
       <a href="../index.html">Scenario overview</a>
       <p>Articles</p>
-      <a href="../compare-shipment-options/index.html">Compare shipment options</a><a href="../add-consolidated-freight/index.html">Add consolidated freight</a><a href="../review-changed-orders/index.html">Review changed orders</a><a href="../resolve-a-shipment-exception/index.html">Resolve a shipment exception</a><a href="index.html" aria-current="page">Integrate Python machine learning</a>
+      <a href="../compare-shipment-options/index.html">Compare shipment options</a><a href="../review-changed-orders/index.html">Review changed orders</a><a href="../resolve-a-shipment-exception/index.html">Resolve a shipment exception</a><a href="index.html" aria-current="page">Integrate Python machine learning</a>
       
       <p>Supporting references</p>
-      <a href="../app-author/index.html">Workflow authoring</a><a href="../case-worker/index.html">Evidence and verification</a><a href="../compare-priorities-and-limits/index.html">Priorities and spending limits</a>
+      <a href="../case-worker/index.html">Evidence and verification</a>
       
     </nav>
   </aside>
@@ -189,7 +192,7 @@
 </figure>
 
 <p>The adapter is the connection between the parts. It calls the public <code>decision_lab</code> package, checks the planning findings and binds them into the information-value assessment alongside the numerical estimates. The pinned app definitions supply the requirements and comparison rules; the Python report renderer presents the returned findings.</p>
-<p><strong>The estimate and the decision answer different questions.</strong> Machine learning estimates registration from history. A commitment assessment establishes which complete shipment responses meet the recorded requirements. A learning assessment compares the check and its possible responses with <strong>the best supported outside option: reserve Backup now</strong>. This is the <a href="../../../../articles/from-arrangements-to-assessments/index.html">composition of assessment patterns</a> that the Python application connects through the SDK. The estimator stays in Python; the authored apps supply the planning and information-value rules.</p>
+<p><strong>The estimate and the decision answer different questions.</strong> Machine learning estimates registration from history. A commitment assessment establishes which complete shipment responses meet the recorded requirements. <a href="../../../../articles/assessment-patterns/what-is-a-question-worth/index.html">A learning assessment</a> compares the check and its possible responses with <strong>the best supported outside option: reserve Backup now</strong>. This is the <a href="../../../../articles/from-arrangements-to-assessments/index.html">composition of assessment patterns</a> that the Python application connects through the SDK. The estimator stays in Python; the authored apps supply the planning and information-value rules.</p>
 
 <h2 id="model-in-python">Keep the machine learning model in Python.</h2>
 <p>The sample trains a standardized logistic regression model with scikit-learn and calibrates its scores on a separate chronological partition. At assessment time, the fitted model supplies a registration probability through ordinary Python calls:</p>

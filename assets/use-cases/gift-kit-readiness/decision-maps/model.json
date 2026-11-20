@@ -3,7 +3,7 @@
   "id": "gift-kit-decision-maps",
   "title": "The basis for a gift-kit commitment",
   "description": "Declared business perspectives and source-bound worked findings distinguish a proposal, its conditions and actual completion records.",
-  "scope": "Fictional gift-kit examples. Current v3 operating reviews are separate from the v2 rehearsal-policy authoring branch. These explanatory relationships do not evaluate business rules or authenticate records.",
+  "scope": "Source-bound explanatory views of the current worked cases. Declared stakeholder concerns remain separate from calculated findings and records of actual operating events. The illustrations do not calculate eligibility or grant authority.",
   "nodes": [
     {
       "id": "promise",
@@ -150,45 +150,9 @@
       "status": "evaluated-binding"
     },
     {
-      "id": "original-minimum",
-      "type": "requirement",
-      "label": "Original minimum: 5m",
-      "status": "evaluated-binding"
-    },
-    {
-      "id": "adapted-minimum",
-      "type": "requirement",
-      "label": "Adapted minimum: 10m",
-      "status": "evaluated-binding"
-    },
-    {
-      "id": "planned-five",
-      "type": "work",
-      "label": "Case plans 5 minutes",
-      "status": "evaluated-binding"
-    },
-    {
-      "id": "planned-ten",
-      "type": "work",
-      "label": "Case plans 10 minutes",
-      "status": "evaluated-binding"
-    },
-    {
-      "id": "five-blocked",
-      "type": "finding",
-      "label": "No complete proposal",
-      "status": "evaluated-binding"
-    },
-    {
-      "id": "ten-supported",
-      "type": "finding",
-      "label": "Internal correction supported\n$300 \u00b7 handoff at minute 40",
-      "status": "evaluated-binding"
-    },
-    {
       "id": "conservative-screen",
       "type": "finding",
-      "label": "Unreviewed conservative screen\n8 published fault combinations\nComplete external correction: $400",
+      "label": "Conservative screen\n8 declared fault combinations\nComplete external correction: $400",
       "status": "evaluated-binding"
     },
     {
@@ -200,13 +164,13 @@
     {
       "id": "review-records",
       "type": "action",
-      "label": "People review the inputs and findings",
+      "label": "Check source records\nApply inputs and recalculate",
       "status": "declared-context"
     },
     {
       "id": "insert-fault",
       "type": "finding",
-      "label": "Reviewed diagnostic basis\nSupports insert-only correction",
+      "label": "Scoped diagnostic basis\nSupports insert-only correction",
       "status": "evaluated-binding"
     },
     {
@@ -324,69 +288,6 @@
       "status": "declared-context"
     },
     {
-      "id": "internal-correction-rehearsal",
-      "from": "internal-correction",
-      "to": "internal-rehearsal",
-      "type": "precedes",
-      "status": "declared-context"
-    },
-    {
-      "id": "internal-rehearsal-handoff",
-      "from": "internal-rehearsal",
-      "to": "internal-handoff",
-      "type": "precedes",
-      "status": "declared-context"
-    },
-    {
-      "id": "internal-finish-edge",
-      "from": "internal-handoff",
-      "to": "internal-finish",
-      "type": "supports",
-      "status": "declared-context"
-    },
-    {
-      "id": "external-correction-rehearsal",
-      "from": "external-correction",
-      "to": "external-rehearsal",
-      "type": "precedes",
-      "status": "declared-context"
-    },
-    {
-      "id": "external-rehearsal-handoff",
-      "from": "external-rehearsal",
-      "to": "external-handoff",
-      "type": "precedes",
-      "status": "declared-context"
-    },
-    {
-      "id": "external-finish-edge",
-      "from": "external-handoff",
-      "to": "external-finish",
-      "type": "supports",
-      "status": "declared-context"
-    },
-    {
-      "id": "booking-supports-external",
-      "from": "external-finish",
-      "to": "current-booking",
-      "type": "requires",
-      "status": "declared-context"
-    },
-    {
-      "id": "five-informs",
-      "from": "planned-five",
-      "to": "five-blocked",
-      "type": "informs",
-      "status": "declared-context"
-    },
-    {
-      "id": "ten-informs",
-      "from": "planned-ten",
-      "to": "ten-supported",
-      "type": "informs",
-      "status": "declared-context"
-    },
-    {
       "id": "screen-requests-review",
       "from": "conservative-screen",
       "to": "review-records",
@@ -464,20 +365,6 @@
       "status": "declared-context"
     },
     {
-      "id": "five-requires-rule",
-      "from": "planned-five",
-      "to": "adapted-minimum",
-      "type": "must-satisfy",
-      "status": "declared-context"
-    },
-    {
-      "id": "ten-requires-rule",
-      "from": "planned-ten",
-      "to": "adapted-minimum",
-      "type": "must-satisfy",
-      "status": "declared-context"
-    },
-    {
       "id": "authorization-supports-completion",
       "from": "actual-authorization",
       "to": "completion-claim",
@@ -502,63 +389,45 @@
   "sources": [
     {
       "id": "urgent",
-      "path": "assets/use-cases/gift-kit-readiness/context-comparisons/native/urgent-current-booking.workflow.json",
-      "sha256": "72f88e0c12de527d59920fc0fb914f64e49eb916a4ab137854d6a0b71dd0e06b",
-      "description": "Retained native v3 urgent campaign: current booking, complete quotes, planned durations, requirements and reviewed assessments."
-    },
-    {
-      "id": "operating-proof",
-      "path": "assets/use-cases/gift-kit-readiness/operating-journey/verification.json",
-      "sha256": "5a28df949240c00a63e55c42d2004ba0b0d83db3ccf709bffe7def99c1dafba3",
-      "description": "Retained native/browser verification and separate ordinary versus explicitly reviewed fictional campaign outcomes."
-    },
-    {
-      "id": "original-rule",
-      "path": "assets/use-cases/gift-kit-readiness/longer-rehearsal/baseline.model.json",
-      "sha256": "461fbc2d0a2c15a7e8cc47900c2c89c8d86ffc64006c20eb9ea3974f23645195",
-      "description": "Original v2 teaching planning model with a five-minute minimum."
-    },
-    {
-      "id": "adapted-rule",
-      "path": "assets/use-cases/gift-kit-readiness/longer-rehearsal/planning.model.json",
-      "sha256": "222f0643ab7c0c37a1c44681cb42d99a7da65a62063c195e67b7afb64cae9846",
-      "description": "Separate adapted teaching planning model with a ten-minute minimum."
-    },
-    {
-      "id": "author-inputs",
-      "path": "assets/use-cases/gift-kit-readiness/longer-rehearsal/planning.scenarios.json",
-      "sha256": "f3c9a09e09b157d62070e1937bcbabb97eedb10ef8b99c210bf3e3775811c5ea",
-      "description": "Separate five- and ten-minute inputs for the authored rule."
-    },
-    {
-      "id": "author-findings",
-      "path": "assets/use-cases/gift-kit-readiness/longer-rehearsal/planning.scenario-results.json",
-      "sha256": "aa1578d7640a235e2dd2deabf326c314a3b88e6adb0c05cb5f20b757f57b97ad",
-      "description": "Native business-scenario results for the stronger rehearsal rule."
-    },
-    {
-      "id": "smaller-case",
-      "path": "assets/use-cases/gift-kit-readiness/operating-journey/reports/queue/GIFT-324/review.workflow.json",
-      "sha256": "4cd811b3a993db8fefa49ba67386b9e93e698430581fc92be24941c05d685c9e",
-      "description": "Retained current GIFT-324 case and its scoped actual diagnostic source assertions; ordinary inputs remain pending review."
+      "path": "assets/use-cases/gift-kit-readiness/calculation-integration/urgent.workflow.json",
+      "sha256": "ce8dfa799d6a52e50f96ea2855118e2aecc98e2b4ec02983fe41f966ae3be2d6",
+      "description": "Current calculation-mode urgent campaign with scoped booking, complete quotes, planned durations and requirements."
     },
     {
       "id": "screen",
-      "path": "assets/use-cases/gift-kit-readiness/operating-journey/reports/queue/GIFT-324/screening.run.json",
-      "sha256": "ad80480f2497743b568c0c9f8b74a58d59ab7851c511c11a86804ed3369b1a84",
-      "description": "Unreviewed conservative screen across all eight published fault combinations."
+      "path": "assets/use-cases/gift-kit-readiness/calculation-integration/reports/queue/GIFT-324/screening.run.json",
+      "sha256": "37c31fbc5c400253bcaaa612a72c4504a65b606f2e01e3754cdae88e6a04dfcc",
+      "description": "Current conservative screen over all eight declared fault combinations."
+    },
+    {
+      "id": "smaller-case",
+      "path": "assets/use-cases/gift-kit-readiness/calculation-integration/supported-smaller.workflow.json",
+      "sha256": "a9173bbca2f8b03d41b5f046d22e57ad08e8d2f02afb3804a52eb10e5f57b9c1",
+      "description": "Current calculation workflow using the actual scoped diagnostic records for GIFT-324."
     },
     {
       "id": "completed",
-      "path": "assets/use-cases/gift-kit-readiness/operating-journey/native/completed.workflow.json",
-      "sha256": "c174860893c20a1a4f12bf939f1a21d0f0ed725928a98b5c5704de72e5a6c17a",
-      "description": "Retained native review with separate choice, authorization, correction, rehearsal and handoff records."
+      "path": "assets/use-cases/gift-kit-readiness/calculation-integration/completed.workflow.json",
+      "sha256": "329e08aa6f142fe4594bb62adbc47d46f2a8ea4f75583518df1f0aaea5225bf2",
+      "description": "Current calculation workflow with separate choice, authorization, correction, rehearsal and handoff records."
     },
     {
       "id": "later-failed",
-      "path": "assets/use-cases/gift-kit-readiness/operating-journey/native/later-failed.workflow.json",
-      "sha256": "5bf3ee12282d8c3cc1e7822ca33663330b55e99ce741f5674a3d308aede35a12",
-      "description": "Retained continuation adding a later failed rehearsal without deleting earlier records."
+      "path": "assets/use-cases/gift-kit-readiness/calculation-integration/later-failed.workflow.json",
+      "sha256": "c910a1a93f6da71a45216a14bf9bd9ae374c4a9a389b45e77c51fdd6ffe3f15a",
+      "description": "Current continuation retaining an additional failed rehearsal without deleting earlier records."
+    },
+    {
+      "id": "completed-output",
+      "path": "assets/use-cases/gift-kit-readiness/calculation-integration/completed.output.json",
+      "sha256": "49e471f9709b09143fe28fb13ca68dbaa02fbc96156299c876e8330a5c93ae8e",
+      "description": "Current materialized workflow output with its separate actual-handoff completion check."
+    },
+    {
+      "id": "later-failed-output",
+      "path": "assets/use-cases/gift-kit-readiness/calculation-integration/later-failed.output.json",
+      "sha256": "9220e3ee4f31a81b8f847e7f2968c54f3427c43774cf4e99cb86bd2b73acedf1",
+      "description": "Current materialized output after the later failed rehearsal supersedes the earlier pass."
     }
   ],
   "bindings": [
@@ -782,93 +651,6 @@
       "description": "The operating profile keeps its five-minute model minimum."
     },
     {
-      "id": "original-minimum-1",
-      "nodeId": "original-minimum",
-      "sourceId": "original-rule",
-      "pointer": "/module/constraints/13/predicate/args/1/literal",
-      "value": 5,
-      "description": "Original teaching-release minimum."
-    },
-    {
-      "id": "adapted-minimum-1",
-      "nodeId": "adapted-minimum",
-      "sourceId": "adapted-rule",
-      "pointer": "/module/constraints/13/predicate/args/1/literal",
-      "value": 10,
-      "description": "Mandatory requirement in the separate adapted release."
-    },
-    {
-      "id": "planned-five-1",
-      "nodeId": "planned-five",
-      "sourceId": "author-inputs",
-      "pointer": "/scenarios/0/inputs/parameters/rehearsalMinutes",
-      "value": 5,
-      "description": "The first input stays at five minutes."
-    },
-    {
-      "id": "planned-ten-1",
-      "nodeId": "planned-ten",
-      "sourceId": "author-inputs",
-      "pointer": "/scenarios/1/inputs/parameters/rehearsalMinutes",
-      "value": 10,
-      "description": "The second input supplies ten minutes."
-    },
-    {
-      "id": "five-blocked-1",
-      "nodeId": "five-blocked",
-      "sourceId": "author-findings",
-      "pointer": "/scenarios/0/checks/0/actual/finding",
-      "value": "no_feasible_plan",
-      "description": "Native no_feasible_plan result under the new rule."
-    },
-    {
-      "id": "ten-supported-1",
-      "nodeId": "ten-supported",
-      "sourceId": "author-findings",
-      "pointer": "/scenarios/1/checks/1/actual",
-      "value": {
-        "choices": {
-          "packageId": "replace-and-repair",
-          "startMinute": 0
-        },
-        "feasible": true,
-        "preferred": true
-      },
-      "description": "Native complete internal plan is feasible and preferred."
-    },
-    {
-      "id": "ten-supported-2",
-      "nodeId": "ten-supported",
-      "sourceId": "author-inputs",
-      "pointer": "/scenarios/1/inputs/tables/packages/3",
-      "value": {
-        "id": "replace-and-repair",
-        "quantity": 120,
-        "repairMinutes": 25,
-        "repairCostMinor": 30000,
-        "fixes0": true,
-        "fixes1": true,
-        "fixes2": true
-      },
-      "description": "Quote: 25 minutes and USD 30,000 cents."
-    },
-    {
-      "id": "ten-supported-3",
-      "nodeId": "ten-supported",
-      "sourceId": "author-inputs",
-      "pointer": "/scenarios/1/inputs/parameters/rehearsalMinutes",
-      "value": 10,
-      "description": "Ten planned rehearsal minutes."
-    },
-    {
-      "id": "ten-supported-4",
-      "nodeId": "ten-supported",
-      "sourceId": "author-inputs",
-      "pointer": "/scenarios/1/inputs/parameters/handoffMinutes",
-      "value": 5,
-      "description": "Five planned handoff minutes."
-    },
-    {
       "id": "conservative-screen-1",
       "nodeId": "conservative-screen",
       "sourceId": "screen",
@@ -924,21 +706,6 @@
         }
       ],
       "description": "All eight published fault combinations remain in the conservative screen."
-    },
-    {
-      "id": "conservative-screen-2",
-      "nodeId": "conservative-screen",
-      "sourceId": "operating-proof",
-      "pointer": "/ordinaryQueueManifest/campaigns/4/screening",
-      "value": {
-        "file": "GIFT-324/screening.run.json",
-        "outcome": "eligible",
-        "preferred": [
-          "External replacement and repair"
-        ],
-        "meaning": "Unreviewed conservative screen over every published fault configuration; it is not an accepted workflow finding."
-      },
-      "description": "Ordinary GIFT-324 screen remains unreviewed and names external correction."
     },
     {
       "id": "conservative-screen-3",
@@ -1011,14 +778,12 @@
     {
       "id": "insert-fault-1",
       "nodeId": "insert-fault",
-      "sourceId": "operating-proof",
-      "pointer": "/reviewedDemoManifest/campaigns/4/preferred/0",
-      "value": {
-        "package": "Replace printed inserts",
-        "expenseMinor": 10000,
-        "finishMinute": 1435
-      },
-      "description": "Explicitly reviewed fictional demonstration supports insert-only correction."
+      "sourceId": "smaller-case",
+      "pointer": "/evaluations/0/output/states/0/faultIds",
+      "value": [
+        "print"
+      ],
+      "description": "Current scoped diagnostics establish the print fault under the published evidence model."
     },
     {
       "id": "insert-fault-2",
@@ -1078,19 +843,15 @@
           "originalText": "The intended account completed the checkout check."
         }
       ],
-      "description": "Scoped source results narrow the relevant faults after review."
+      "description": "Scoped source results narrow the relevant faults under the current evidence assessment."
     },
     {
       "id": "smaller-correction-1",
       "nodeId": "smaller-correction",
-      "sourceId": "operating-proof",
-      "pointer": "/reviewedDemoManifest/campaigns/4/preferred/0",
-      "value": {
-        "package": "Replace printed inserts",
-        "expenseMinor": 10000,
-        "finishMinute": 1435
-      },
-      "description": "Native reviewed demonstration: insert replacement, USD 10,000 cents, finish 1,435."
+      "sourceId": "smaller-case",
+      "pointer": "/evaluations/1/output/recommendedPlans/0/expense",
+      "value": 10000,
+      "description": "The calculated insert-only correction costs USD 10,000 cents."
     },
     {
       "id": "actual-authorization-1",
@@ -1098,8 +859,8 @@
       "sourceId": "completed",
       "pointer": "/case/journeyOperations/1/record",
       "value": {
-        "reference": "AUTH-ACTUAL-321",
-        "source": "Fictional teaching source AUTH-ACTUAL-321",
+        "reference": "BROWSER-AUTH",
+        "source": "Fictional browser fixture record BROWSER-AUTH",
         "authorized": true,
         "scope": {
           "batchId": "GIFT-321",
@@ -1120,8 +881,8 @@
       "sourceId": "completed",
       "pointer": "/case/journeyOperations/2/record",
       "value": {
-        "reference": "WORK-ACTUAL-321",
-        "source": "Fictional teaching source WORK-ACTUAL-321",
+        "reference": "BROWSER-WORK",
+        "source": "Fictional browser fixture record BROWSER-WORK",
         "completed": true,
         "packageId": "external-replace-and-repair",
         "inputScope": {
@@ -1152,8 +913,8 @@
       "sourceId": "completed",
       "pointer": "/case/journeyOperations/3/record",
       "value": {
-        "reference": "TEST-ACTUAL-321",
-        "source": "Fictional teaching source TEST-ACTUAL-321",
+        "reference": "BROWSER-TEST",
+        "source": "Fictional browser fixture record BROWSER-TEST",
         "passed": true,
         "scope": {
           "batchId": "GIFT-321",
@@ -1163,7 +924,7 @@
           "deviceScope": "campaign-test-phone",
           "accountScope": "intended-recipient-account"
         },
-        "correctionReference": "WORK-ACTUAL-321",
+        "correctionReference": "BROWSER-WORK",
         "durationMinutes": 10,
         "completedAtMinute": 1430
       },
@@ -1175,8 +936,8 @@
       "sourceId": "completed",
       "pointer": "/case/journeyOperations/4/record",
       "value": {
-        "reference": "HANDOFF-ACTUAL-321",
-        "source": "Fictional teaching source HANDOFF-ACTUAL-321",
+        "reference": "BROWSER-HANDOFF",
+        "source": "Fictional browser fixture record BROWSER-HANDOFF",
         "completed": true,
         "scope": {
           "batchId": "GIFT-321",
@@ -1186,7 +947,7 @@
           "deviceScope": "campaign-test-phone",
           "accountScope": "intended-recipient-account"
         },
-        "rehearsalReference": "TEST-ACTUAL-321",
+        "rehearsalReference": "BROWSER-TEST",
         "quantity": 120,
         "completedAtMinute": 1435
       },
@@ -1195,10 +956,10 @@
     {
       "id": "completion-claim-1",
       "nodeId": "completion-claim",
-      "sourceId": "operating-proof",
-      "pointer": "/artifacts/completed/closure/completed",
+      "sourceId": "completed-output",
+      "pointer": "/brief/sections/6/value/completed",
       "value": true,
-      "description": "Original completion is supported by the earlier linked operating records."
+      "description": "The separate actual-handoff completion check passes before the later report."
     },
     {
       "id": "later-failure-1",
@@ -1206,8 +967,8 @@
       "sourceId": "later-failed",
       "pointer": "/case/journeyOperations/5/record",
       "value": {
-        "reference": "TEST-LATER-FAILED-321",
-        "source": "Fictional teaching source TEST-LATER-FAILED-321",
+        "reference": "BROWSER-LATER-FAILED-TEST",
+        "source": "Fictional browser fixture record BROWSER-LATER-FAILED-TEST",
         "passed": false,
         "scope": {
           "batchId": "GIFT-321",
@@ -1217,7 +978,7 @@
           "deviceScope": "campaign-test-phone",
           "accountScope": "intended-recipient-account"
         },
-        "correctionReference": "WORK-ACTUAL-321",
+        "correctionReference": "BROWSER-WORK",
         "durationMinutes": 10,
         "completedAtMinute": 1436
       },
@@ -1226,10 +987,10 @@
     {
       "id": "later-failure-2",
       "nodeId": "later-failure",
-      "sourceId": "operating-proof",
-      "pointer": "/artifacts/later-failed/closure/completed",
+      "sourceId": "later-failed-output",
+      "pointer": "/brief/sections/6/value/completed",
       "value": false,
-      "description": "The later report withdraws the current completion conclusion."
+      "description": "The later failed rehearsal withdraws current actual-completion support."
     },
     {
       "id": "internal-native-finish",
@@ -1246,6 +1007,22 @@
       "pointer": "/evaluations/1/output/plans/8/finishMinute",
       "value": 1435,
       "description": "Exact finish minute from the retained native planning assessment for this package starting at 1,410."
+    },
+    {
+      "id": "smaller-correction-finish",
+      "nodeId": "smaller-correction",
+      "sourceId": "smaller-case",
+      "pointer": "/evaluations/1/output/recommendedPlans/0/finishMinute",
+      "value": 1435,
+      "description": "The supported insert-only correction plans handoff at minute 1,435."
+    },
+    {
+      "id": "smaller-correction-package",
+      "nodeId": "smaller-correction",
+      "sourceId": "smaller-case",
+      "pointer": "/evaluations/1/output/recommendedPlans/0/packageId",
+      "value": "reprint",
+      "description": "The supported complete plan uses the published reprint package."
     }
   ],
   "views": [
@@ -1308,29 +1085,6 @@
         "timing-minimum"
       ],
       "relationshipIds": []
-    },
-    {
-      "id": "rehearsal-policy",
-      "file": "rehearsal-policy.svg",
-      "mobileFile": "rehearsal-policy-mobile.svg",
-      "width": 650,
-      "height": 410,
-      "mobileWidth": 360,
-      "mobileHeight": 650,
-      "nodeIds": [
-        "original-minimum",
-        "adapted-minimum",
-        "planned-five",
-        "planned-ten",
-        "five-blocked",
-        "ten-supported"
-      ],
-      "relationshipIds": [
-        "five-informs",
-        "ten-informs",
-        "five-requires-rule",
-        "ten-requires-rule"
-      ]
     },
     {
       "id": "evidence-correction",

@@ -54,7 +54,10 @@
   <rect x="15" y="3" width="6" height="6" rx="1.2"/>
   <rect x="9" y="15" width="6" height="6" rx="1.2"/>
   <path d="M9 6h6M6 9v3h12V9m-6 3v3"/>
-</svg><span>Platform</span></a><a href="../../../../products/index.html"><svg class="nav-icon nav-icon-products" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+</svg><span>Platform</span></a><a href="../../../../articles/index.html"><svg class="nav-icon nav-icon-articles" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M12 6.5C9.4 4.8 6.3 4.4 3 5.3v13.4c3.3-.9 6.4-.5 9 1.2 2.6-1.7 5.7-2.1 9-1.2V5.3c-3.3-.9-6.4-.5-9 1.2Z"/>
+  <path d="M12 6.5v13.4"/>
+</svg><span>Articles</span></a><a href="../../../../products/index.html"><svg class="nav-icon nav-icon-products" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
   <rect x="3" y="4" width="18" height="16" rx="2"/>
   <path d="m7 9 3 3-3 3m6 0h4"/>
 </svg><span>Products</span></a><a href="../../../index.html" aria-current="page"><svg class="nav-icon nav-icon-use-cases" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
@@ -137,10 +140,10 @@
       <p>Shipment readiness</p>
       <a href="../index.html">Scenario overview</a>
       <p>Articles</p>
-      <a href="../compare-shipment-options/index.html">Compare shipment options</a><a href="../add-consolidated-freight/index.html">Add consolidated freight</a><a href="index.html" aria-current="page">Review changed orders</a><a href="../resolve-a-shipment-exception/index.html">Resolve a shipment exception</a><a href="../is-a-registration-check-worth-buying/index.html">Integrate Python machine learning</a>
+      <a href="../compare-shipment-options/index.html">Compare shipment options</a><a href="index.html" aria-current="page">Review changed orders</a><a href="../resolve-a-shipment-exception/index.html">Resolve a shipment exception</a><a href="../is-a-registration-check-worth-buying/index.html">Integrate Python machine learning</a>
       
       <p>Supporting references</p>
-      <a href="../app-author/index.html">Workflow authoring</a><a href="../case-worker/index.html">Evidence and verification</a><a href="../compare-priorities-and-limits/index.html">Priorities and spending limits</a>
+      <a href="../case-worker/index.html">Evidence and verification</a>
       
     </nav>
   </aside>
@@ -271,7 +274,7 @@
 <p>Current authored workflow views can present a focused answer, compact comparison and expandable support from the same retained output. Inspection changes neither supplied inputs nor business choices or authorizations; complete CLI report data and review history remain available.</p>
 
 <h2 id="cost-and-cutoff">Meet the promise before paying for earliness.</h2>
-<p>The <a href="../add-consolidated-freight/index.html">earlier authoring example</a> explored an arrival-first priority. This operating example publishes a separate <strong>cost-first app</strong>: lowest complete expense among arrangements meeting every mandatory requirement, then arrival. Its original arrival-first release remains archived.</p>
+<p>The operating app applies the agreed <strong>cost-first policy</strong>: lowest complete expense among arrangements meeting every mandatory requirement, then arrival. The policy belongs to the configured app, so repeated CLI assessments apply the same priority as the interactive review.</p>
 <p>For unchanged SHIP-104 and the baseline cases at 8 a.m., Direct meets the Friday delivery promise for <strong>$4,000</strong>. Consolidated arrives Thursday at 6 p.m. for $5,000; Backup arrives Thursday at noon for $6,000. With a $5,000 expense limit, Direct is preferred, Consolidated is feasible and Backup is blocked. Earlier arrival alone does not justify the extra $1,000 under this policy.</p>
 <p>Each quote also has a booking cutoff. Direct closes at <strong>11 a.m.</strong>; Consolidated remains available until noon if its supporting records still pass. At 11:30, unchanged prices can lead to a different proposal. The CLI’s explicit assessment time advances the business review; changing artifact creation metadata does not.</p>
 <p><a href="../compare-shipment-options/index.html#operating-profile">Compare the same shipment at 8 a.m. and 11:30 side by side</a>. Only the assessment-time control changes in that separate clock comparison; the policy and records stay fixed.</p>
@@ -405,7 +408,7 @@ SHIP-106,ORD-106,1,consolidated,SLOT-C106,confirmed</code></pre>
     <div class="use-case-reference-grid">
       <div>
         <h3 id="business-context">Business context</h3>
-        <p>The current integration uses calculation-mode operating workflow 2.0.0. The CLI and SDK share supplied inputs and current complete calculations, while older saved reviewed-mode runs retain their embedded definitions and original history.</p>
+        <p>The integration uses calculation-mode operating workflow 2.0.0. The CLI and SDK share supplied inputs, complete calculations and portable operating history.</p>
 <p>Terry Clear’s <a href="https://www.8thandwalton.com/blog/case-study-walmart-launch">8th &amp; Walton Walmart launch case</a>, June 4, 2025, describes item-alignment corrections, cancelled and reissued purchase orders, and changed freight terms. It supplies business context, not these fictional records or evidence of a Decision Lab deployment.</p>
         <p><a href="https://corporate.walmart.com/content/dam/corporate/documents/suppliers/apply-to-be-a-supplier/supplier-checklist.pdf#page=11">Walmart’s Supplier Checklist, page 11</a>, is the series’ original collect-supplier ship-point setup reference. The prices, quote policy, confirmations, people and outcomes here are authored teaching inputs.</p>
         <h3 id="source-and-verification">Source and verification</h3>
@@ -415,7 +418,7 @@ SHIP-106,ORD-106,1,consolidated,SLOT-C106,confirmed</code></pre>
         <h3 id="model-and-operating-boundaries">Model and operating boundaries</h3>
         <p>The snapshots isolate record changes at 8 a.m. on November 17, 2026, UTC−06:00. The separate 11:30 review advances the case clock explicitly. All shipments stipulate independent resource allocations; individual passes do not prove that a shared truck, dock, worker or cash pool can serve the whole batch.</p>
         <p>The integration uses complete current snapshots, not a live ERP connector, scheduler or source-event reconciler. Local receipts identify bytes without authenticating their origin. Recorded owners and operating actors declare responsibility without identity verification.</p>
-        <p>The new cost-first app and authored operating workflow are separate from the archived arrival-first teaching app. The workflow evaluates supplied operating records; it does not issue authority, book freight, perform delivery or invent a recovery plan. Complete execution management and shared allocation need explicit integrations and models.</p>
+        <p>The cost-first app and authored operating workflow evaluate supplied operating records; it does not issue authority, book freight, perform delivery or invent a recovery plan. Complete execution management and shared allocation need explicit integrations and models.</p>
       </div>
     </div>
   </details>
