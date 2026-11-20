@@ -26,6 +26,8 @@ The Python machine-learning integration is retained under `use-cases/shipment-re
 
 ## Illustrations and article sources
 
+The decision-summary companion article reuses the current native shipment baseline, ample-time gift-kit and five-staff promotion captures, with their existing hash-checked verification records. Their different calendars and domain records remain separate. `articles/covers/what-should-a-decision-summary-help-you-decide.svg` and `articles/decision-views/reading-a-decision{,-mobile}.svg` are original accessible vectors explaining the reading structure; they are editorial illustrations and introduce no calculated findings.
+
 Page and article covers, navigation icons, business-process charts, timing diagrams and explanatory decision maps are original native SVGs. They use the site's visual system and include accessible titles and descriptions.
 
 The shipping and gifting `decision-maps/model.json` files bind their active illustrations to current calculation-integration records. The nightlife `decision-map.json` and basis-matrix dataset bind to current street-team Decision summary exports and the matching native financial output. The site copies those findings; it does not calculate business eligibility in its diagrams. Declared stakeholder interests and qualitative business effects remain distinct from evaluated conditions and measured outcomes.

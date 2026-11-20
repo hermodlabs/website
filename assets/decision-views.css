@@ -1,0 +1,23 @@
+/* Decision-view explanations reuse the shared article reader and native captures. */
+.decision-view-comparison { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 24px; width: calc(100% + var(--reader-figure-extra, 0px)); margin-block: 32px; }
+.decision-view-panel { min-width: 0; padding-top: 20px; border-top: 2px solid var(--line); }
+.reader-content .decision-view-panel h3 { margin: 0 0 16px; font-size: 21px; line-height: 1.35; }
+.reader-content .decision-view-panel > p { margin-bottom: 18px; font: 16px/1.7 var(--reader-ui-font); }
+.decision-view-panel figure { margin: 0; }
+.reader-content .decision-view-panel figure + p { margin-top: 18px; }
+.decision-view-image-link { display: block; }
+.decision-view-image-link img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
+.decision-view-figure { width: calc(100% + var(--reader-figure-extra, 0px)); margin: 32px 0; }
+.decision-view-figure img { display: block; width: 100%; height: auto; }
+.decision-view-contrast { max-width: 100%; margin: 32px 0; }
+.decision-view-contrast img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
+.reader-content .decision-view-sources { margin-top: 44px; font: 14px/1.7 var(--reader-ui-font); color: var(--muted); }
+.reader-content .decision-view-sources > .disclosure > summary > .disclosure-label { margin: 0; font: inherit; letter-spacing: inherit; }
+.reader-content .decision-view-sources ul { font: inherit; }
+@media (max-width: 900px) {
+  .decision-view-comparison { grid-template-columns: minmax(0, 1fr); gap: 30px; }
+}
+@media print {
+  .decision-view-comparison { grid-template-columns: minmax(0, 1fr); }
+  .decision-view-panel, .decision-view-figure, .decision-view-contrast { break-inside: avoid; }
+}
