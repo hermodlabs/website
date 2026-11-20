@@ -1,0 +1,46 @@
+{% macro streetTeamReferenceFigure(key) %}
+{% set figure = streetTeamUIRefresh.figures[key] or streetTeamCalculation.figures[key] %}
+<figure class="use-case-figure">
+  <a href="{{ figure.image | relativeUrl(page.url) }}" tabindex="-1" aria-label="View full-size screenshot: {{ figure.alt | escape }}"><img src="{{ figure.image | relativeUrl(page.url) }}" width="{{ figure.width }}" height="{{ figure.height }}" alt="{{ figure.alt | escape }}" loading="lazy" decoding="async"></a>
+  <figcaption><span>{{ figure.caption | escape }}</span><a href="{{ figure.image | relativeUrl(page.url) }}">View full size</a></figcaption>
+</figure>
+{% endmacro %}
+<section class="section wrap use-case-shared-guide" aria-labelledby="try-the-review">
+  <p class="eyebrow">Street-team deployment / Shared walkthrough</p>
+  <h2 id="try-the-review">Open the analysis behind the stories.</h2>
+  <p>Use the same calculation workflow to compare Alex’s fictional situations or supply your own facts. The three articles share these setup instructions.</p>
+  <div class="actions use-case-process-actions" role="group" aria-label="Open Decision Lab"><a class="button" href="{{ (streetTeamUIRefresh.appUrl or streetTeamCalculation.appUrl) | escape }}">Open Decision Lab</a></div>
+  <p>In <strong>Marketplace → Venue operations</strong>, install or update the collection. In <strong>Collections</strong>, choose <strong>Start analysis</strong> beside <strong>Plan a street-team deployment</strong>. These articles show <strong>version 1.5.0</strong>. A new analysis uses the supplied fictional starter inputs; older saved cases keep their original versions.</p>
+  <p>Choose <strong>Both</strong> to keep inputs beside the answer. <strong>Decision summary</strong> leads with operating fit and a compact financial comparison; <strong>Supporting reports</strong> explains the individual plans, requirements and assumptions. <strong>Decision process</strong> shows the business questions and available responses. <strong>Calculation dependencies</strong> separately shows how the calculation and derived guest thresholds connect. Input groups and report tabs navigate independently.</p>
+  <details class="disclosure use-case-technical-note" id="worked-case-setup">
+    <summary><span class="disclosure-label">Set up Alex’s five-staff situation</span></summary>
+    <div class="use-case-guide-content">
+      <ol>
+        <li>Start a new analysis and select <strong>Forms → Operating requirements → People and scope</strong>.</li>
+        <li>Keep <strong>Qualified staff on the roster</strong> at <strong>7</strong> and <strong>Required qualified staff inside</strong> at <strong>4</strong>. Change <strong>Unavailable qualified staff</strong> from <strong>0 to 2</strong>, then choose <strong>Apply inputs</strong>.</li>
+        <li>Choose <strong>Calculate</strong> above the input panel. The <strong>Decision summary</strong> puts all four deployments’ operating fit, additional expense and conditional guest targets in one comparison.</li>
+      </ol>
+      <p>This produces the first article’s situation: holding and sending one promoter meet the recorded requirements. The one-person plan costs <strong>$200</strong>; at <strong>$40</strong> contribution per genuinely additional guest, five cover its expense and six exceed it. The <a href="{{ '/use-cases/nightlife/street-team-deployment/build-the-workflow/#third-callout' | relativeUrl(page.url) }}">third-callout sequel</a> changes only the unavailable count to three and recalculates.</p>
+      <h3>Change inputs, then calculate.</h3>
+      <p><strong>Forms</strong> exposes the fields selected by the workflow author. <strong>YAML</strong> exposes the complete shared case. Neither edits the workflow’s rules. Switching between them preserves an unfinished form but applies nothing; reports continue to describe the saved inputs.</p>
+      <p>Use <strong>Apply inputs</strong> for a Forms change. For YAML, use <strong>Preview changes</strong>, then <strong>Apply case changes</strong>. Finish or discard a pending edit before applying the other representation. Then choose <strong>Calculate</strong> or <strong>Recalculate</strong>. An applied change can make an earlier result stale until its calculation is updated.</p>
+      <p><strong>View decision process</strong>, beside Calculate, opens the current paths through the business question. Switch <strong>Diagram / Table</strong> or inspect a question to follow its basis. Navigation neither applies inputs nor performs a business action. There are no reviewer-identity or acceptance steps in this calculation flow. People still check source facts and control actual spending and dispatch.</p>
+      {{ streetTeamReferenceFigure('starter') }}
+      <p><strong>Work with Excel</strong> starts collapsed beneath the inputs. Expand it when a workbook is useful; the <a href="{{ '/use-cases/nightlife/street-team-deployment/build-the-workflow/' | relativeUrl(page.url) }}">staffing sequel</a> retains Excel as an optional way to apply the same change.</p>
+      <p class="use-case-example-note">Alex is the fictional manager in the stories. Sample identifiers and some labels retain the name Sam. The screenshots show the current local production preview; <a href="{{ streetTeamUIRefresh.notesUrl | relativeUrl(page.url) }}">capture notes</a> and <a href="{{ streetTeamUIRefresh.verificationUrl | relativeUrl(page.url) }}">the verification record</a> identify the exact build, pinned 1.5.0 workflow and native exported cases. The separate <a href="{{ '/assets/decision-lab-public-build-check.json' | relativeUrl(page.url) }}">public build check</a> matches the deployed interface and packages to the capture build.</p>
+    </div>
+  </details>
+  <details class="disclosure use-case-technical-note" id="adapt-the-review">
+    <summary><span class="disclosure-label">Optional authoring reference: adapt the pattern</span></summary>
+    <div class="use-case-guide-content">
+      <p><strong>Hermod Labs authored the working implementation.</strong> The <a href="https://github.com/hermodlabs/sample_code/tree/main/nightlife/street-team-deployment">complete source example, workflow definition and creation commands</a> show how its inputs, operating reasoning and financial calculations fit together.</p>
+      <p>As an optional exercise, choose another situation where activities share limited staff. Identify the coverage, timing, spending and authority requirements, then decide which source facts the calculation needs.</p>
+      <ul>
+        <li><strong>Use the workflow:</strong> supply another case’s facts within the existing inputs and rules.</li>
+        <li><strong>Adapt the workflow:</strong> change the inputs, calculation sequence or reports in an authored definition.</li>
+        <li><strong>Extend the reasoning:</strong> model requirements outside this example, such as role-specific staffing, and test the revised rules.</li>
+      </ul>
+      <p>Test a case that should pass, one that should be blocked and one with missing information. Change a supporting fact and check which results become stale. Changing case facts does not change the workflow’s rules; an authored extension needs checked assumptions and tests of its own.</p>
+    </div>
+  </details>
+</section>

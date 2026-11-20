@@ -1,0 +1,15 @@
+<article class="reading-card blog-post-card{% if cardFeatured %} blog-post-featured{% endif %}{% if cardCompact %} catalog-card{% endif %}" data-post-url="{{ post.url | escape }}">
+{% if (cardFeatured or cardShowCover) and post.data.coverImage %}
+  <a class="reading-card-media blog-card-media{% if cardCompact %} catalog-card-media{% endif %}" href="{{ post.url | relativeUrl(page.url) }}" aria-label="Read {{ post.data.title | escape }}" tabindex="-1">
+    <img class="reading-card-cover blog-card-cover" src="{{ post.data.coverImage | relativeUrl(page.url) }}" alt="{{ post.data.coverAlt | escape }}"{% if post.data.coverWidth and post.data.coverHeight %} width="{{ post.data.coverWidth }}" height="{{ post.data.coverHeight }}"{% endif %} loading="lazy" decoding="async">
+  </a>
+{% endif %}
+  <div class="reading-card-content blog-card-content{% if cardCompact %} catalog-card-content{% endif %}">
+    <p class="reading-card-meta blog-card-meta">{% if post.data.seriesPart %}<span>Part {{ post.data.seriesPart }} of {{ post.data.seriesLength }}</span><span aria-hidden="true">·</span>{% endif %}<time datetime="{{ post.date | blogDateISO }}">{{ post.date | blogDateDisplay }}</time>{% if post.data.readingMinutes %}<span aria-hidden="true">·</span><span>{{ post.data.readingMinutes }} min read</span>{% endif %}</p>
+    <h3 class="reading-card-title"><a href="{{ post.url | relativeUrl(page.url) }}">{{ post.data.title | escape }}</a></h3>
+    <p class="reading-card-description blog-card-description{% if cardCompact %} catalog-card-description{% endif %}">{{ post.data.description | escape }}</p>
+{% if not cardCompact %}
+    <a class="text-link reading-card-action" href="{{ post.url | relativeUrl(page.url) }}" aria-label="Read {{ post.data.title | escape }}">Read post <span aria-hidden="true">→</span></a>
+{% endif %}
+  </div>
+</article>

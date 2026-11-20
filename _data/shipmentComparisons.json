@@ -1,0 +1,282 @@
+{
+  "bookingWindow": {
+    "id": "shipment-booking-window",
+    "kind": "context",
+    "title": "One shipment before and after Direct’s booking cutoff",
+    "sharedBasis": "ORD-104; 100 units; Thursday noon–Friday 5 p.m. receiving window; $5,000 expense limit. Same quotes, resources, current confirmations and cost-first app.",
+    "change": "Assessment as of: 8 a.m. → 11:30 a.m. This one control updates current time and the earliest selection time together. All times are November 17, 2026, UTC−06:00.",
+    "panels": [
+      {
+        "label": "A · The cheaper option is still bookable",
+        "inputs": [
+          {
+            "label": "Assessment time",
+            "value": "8 a.m."
+          },
+          {
+            "label": "Carrier booking windows",
+            "value": "Direct until 11 a.m.; Consolidated until noon"
+          }
+        ],
+        "finding": "Propose Direct · $4,000 · Friday noon",
+        "explanation": "Maya can meet the promise for less. She seeks the required authorization and reservation while Direct remains available.",
+        "figure": {
+          "image": "/assets/use-cases/shipment-readiness/calculation-integration/baseline.png",
+          "width": 782,
+          "height": 1051,
+          "sha256": "8402e7be63e240b72024ee9abf8e381c462a3d5a0c45254c33b87a3389adfed8",
+          "alt": "The native SDK Decision summary prefers Direct at $4,000 while the $5,000 Consolidated arrangement also meets the recorded requirements.",
+          "caption": "At 8 a.m., Direct protects the delivery promise for less. The cost-first policy remains fixed.",
+          "fullImage": "/assets/use-cases/shipment-readiness/calculation-integration/baseline.png"
+        }
+      },
+      {
+        "label": "B · Direct’s booking window has closed",
+        "inputs": [
+          {
+            "label": "Assessment time",
+            "value": "11:30 a.m."
+          },
+          {
+            "label": "Carrier booking windows",
+            "value": "The same 11 a.m. and noon cutoffs"
+          }
+        ],
+        "finding": "Propose Consolidated · $5,000 · Thursday 6 p.m.",
+        "explanation": "Maya can justify the $1,000 premium because Direct is no longer bookable for this unreserved shipment. Consolidated’s other requirements still pass.",
+        "figure": {
+          "image": "/assets/use-cases/shipment-readiness/calculation-integration/late-cutoff.png",
+          "width": 782,
+          "height": 1102,
+          "sha256": "3b1b23e1ad6a45c7a97d16dd888e938123d613113af4f1e32ccfe500132b42df",
+          "alt": "At 11:30 a.m., Direct is past its 11 a.m. booking cutoff and Consolidated is preferred at $5,000.",
+          "caption": "The changed booking context justifies the $1,000 premium. The quotes and cost-first policy remain fixed.",
+          "fullImage": "/assets/use-cases/shipment-readiness/calculation-integration/late-cutoff.png"
+        }
+      }
+    ],
+    "takeaway": "One policy produces different supported proposals as the available responses change. Earlier arrival alone does not justify the premium; the closed booking window does.",
+    "verificationUrl": "/assets/use-cases/shipment-readiness/calculation-integration/verification.json",
+    "currentViewVerificationUrl": "/assets/use-cases/shipment-readiness/calculation-integration/verification.json",
+    "proofKey": "bookingWindow",
+    "sourceKind": "implemented-working-copy"
+  },
+  "confirmation": {
+    "id": "shipment-confirmation-scope",
+    "kind": "context",
+    "title": "One revised order before and after a genuine current confirmation",
+    "sharedBasis": "ORD-105 revision 2; 100 units; 8 a.m.; $5,000 expense limit. Direct capacity stays 99, Backup stays $6,000, and the cost-first app and all other case inputs stay fixed.",
+    "change": "A newly received confirmation supplies SLOT-SHIP-105-REV2 for order revision 2 in place of the previous reference and revision-1 scope. The native before/after inputs retain every changed field.",
+    "panels": [
+      {
+        "label": "A · Confirmation covers the old order",
+        "inputs": [
+          {
+            "label": "Order being shipped",
+            "value": "ORD-105 · revision 2"
+          },
+          {
+            "label": "Confirmation",
+            "value": "SLOT-C105 · revision 1"
+          }
+        ],
+        "finding": "Obtain current support · No arrangement passes",
+        "explanation": "Maya asks the carrier coordinator for a genuine current confirmation or escalates another response. A confirmed record for the old order is insufficient.",
+        "figure": {
+          "image": "/assets/use-cases/shipment-readiness/calculation-integration/blocked.png",
+          "width": 782,
+          "height": 1102,
+          "sha256": "b263ace62f905c4a672252f88cd24bb88dd41954d1b0c77135ce4e31da625668",
+          "alt": "The revised order has no passing arrangement: Direct lacks capacity, Backup exceeds the spending boundary and Consolidated lacks current confirmation.",
+          "caption": "The compact comparison gives each arrangement its own condition to inspect.",
+          "fullImage": "/assets/use-cases/shipment-readiness/calculation-integration/blocked.png"
+        }
+      },
+      {
+        "label": "B · Newly received confirmation covers revision 2",
+        "inputs": [
+          {
+            "label": "Order being shipped",
+            "value": "The same ORD-105 · revision 2"
+          },
+          {
+            "label": "New source document",
+            "value": "SLOT-SHIP-105-REV2 · revision 2"
+          }
+        ],
+        "finding": "Propose Consolidated · $5,000 · Thursday 6 p.m.",
+        "explanation": "Maya reviews the newly received evidence and can put Consolidated forward. Direct still lacks capacity; Backup still exceeds the limit.",
+        "figure": {
+          "image": "/assets/use-cases/shipment-readiness/calculation-integration/confirmed-revision.png",
+          "width": 782,
+          "height": 1102,
+          "sha256": "9671e532d15e407ffe90f278c19e04d79cf55e6889cb13c0fb1f5b01cd5d4094",
+          "alt": "After applying a genuine revision-2 slot confirmation, the same shipment calculation prefers Consolidated at $5,000.",
+          "caption": "Direct remains capacity-blocked and Backup remains over the expense limit. The current confirmation changes Consolidated’s eligibility.",
+          "fullImage": "/assets/use-cases/shipment-readiness/calculation-integration/confirmed-revision.png"
+        }
+      }
+    ],
+    "takeaway": "The justified response changes because the team obtained evidence that covers the actual order. Relabeling the old confirmation would manufacture support and is not the action demonstrated here.",
+    "verificationUrl": "/assets/use-cases/shipment-readiness/calculation-integration/verification.json",
+    "currentViewVerificationUrl": "/assets/use-cases/shipment-readiness/calculation-integration/verification.json",
+    "proofKey": "confirmation",
+    "sourceKind": "implemented-working-copy"
+  },
+  "authorConfirmation": {
+    "id": "shipment-authored-confirmation",
+    "kind": "context",
+    "title": "The authored slot requirement with no confirmation and with a valid record",
+    "sharedBasis": "One frozen arrival-first tutorial app; the same three quotes; 100 cases; $5,000 expense limit; $6,500 cash limit. Earliest eligible arrival is the unchanged priority.",
+    "change": "The second case adds one confirmed slot record for the exact order, service and full loading window. The case identifier also differs; published rules, prices, permissions and timing parameters are identical.",
+    "panels": [
+      {
+        "label": "A · No current slot record",
+        "inputs": [
+          {
+            "label": "Slot confirmation",
+            "value": "No record supplied"
+          },
+          {
+            "label": "Priority",
+            "value": "Earliest eligible arrival, then expense"
+          }
+        ],
+        "finding": "Propose Direct · $4,000 · Friday noon",
+        "explanation": "Maya has a passing option. The new Consolidated quote cannot pass until the team has the required confirmation.",
+        "figure": {
+          "image": "/assets/use-cases/shipment-readiness/question-focused/tutorial-no-slot-current.png",
+          "width": 1134,
+          "height": 658,
+          "sha256": "a8a4e25c5ea284cfeeed3c7cce9221fd91f6282e76966411a4050a159ad6ad4c",
+          "fullImage": "/assets/use-cases/shipment-readiness/question-focused/tutorial-no-slot-current.png",
+          "alt": "Frozen arrival-first tutorial decision without a slot confirmation: Direct is preferred, Consolidated fails the slot condition and Backup exceeds the budget.",
+          "caption": "Current production renderer of the frozen arrival-first tutorial. Without the scoped slot confirmation, Direct remains preferred."
+        },
+        "navigationFigure": {
+          "width": 1136,
+          "height": 646,
+          "sha256": "5eb3ad6dd37c5009af9712406035a595892fbfef3d3ad0ec4c26d4b7ea127377",
+          "image": "/assets/use-cases/shipment-readiness/input-report-navigation/tutorial-no-slot.png",
+          "alt": "The frozen arrival-first authoring app without a current slot record: Direct is preferred, Consolidated fails its slot requirement and Backup exceeds the expense limit.",
+          "caption": "The separate arrival-first tutorial without a slot confirmation. The current navigation preserves Direct as the preferred supported arrangement."
+        },
+        "calculationFigure": {
+          "image": "/assets/use-cases/shipment-readiness/calculation-flow/tutorial-no-slot.png",
+          "width": 1136,
+          "height": 646,
+          "sha256": "48be48b64664c69ab21415c1faa72612ac6e3f40ef223676de2b1e3b6e75603f",
+          "alt": "The frozen arrival-first authoring app without a current slot record prefers Direct, while Consolidated fails its slot requirement and Backup exceeds the limit.",
+          "caption": "Without a current slot confirmation, Direct remains preferred in the separate arrival-first tutorial."
+        }
+      },
+      {
+        "label": "B · A valid scoped slot record",
+        "inputs": [
+          {
+            "label": "Slot confirmation",
+            "value": "SLOT-C104; confirmed 7:30 a.m.; known 7:45 a.m."
+          },
+          {
+            "label": "Covered loading window",
+            "value": "11 p.m.–midnight; exact shipment scope"
+          }
+        ],
+        "finding": "Propose Consolidated · $5,000 · Thursday 6 p.m.",
+        "explanation": "Under this tutorial’s arrival-first priority, the confirmed service becomes preferred. The launch owner still justifies the premium and the responsible owner authorizes it.",
+        "figure": {
+          "image": "/assets/use-cases/shipment-readiness/question-focused/tutorial-valid-slot-current.png",
+          "width": 1134,
+          "height": 658,
+          "sha256": "0dd8365405307638c99debef153c89271b92d7ea0e456365d130bbd01a117a46",
+          "fullImage": "/assets/use-cases/shipment-readiness/question-focused/tutorial-valid-slot-current.png",
+          "alt": "The same frozen tutorial app with a valid slot record prefers Consolidated at $5,000; Direct still passes and Backup remains over budget.",
+          "caption": "Current production renderer of the frozen arrival-first tutorial. With the valid scoped record, Consolidated becomes preferred under the original arrival-first policy."
+        },
+        "navigationFigure": {
+          "width": 1136,
+          "height": 646,
+          "sha256": "20ccb7d7ea97cd3adb50f7e26f6e108e0971b590454a0f8300e3fe1ed6eba164",
+          "image": "/assets/use-cases/shipment-readiness/input-report-navigation/tutorial-valid-slot.png",
+          "alt": "The same frozen arrival-first app with the valid scoped slot record: Consolidated is preferred at $5,000; Direct still passes and Backup remains over budget.",
+          "caption": "The same tutorial app with its valid scoped slot record. Consolidated becomes preferred under the unchanged arrival-first priority."
+        },
+        "calculationFigure": {
+          "image": "/assets/use-cases/shipment-readiness/calculation-flow/tutorial-valid-slot.png",
+          "width": 1136,
+          "height": 646,
+          "sha256": "416e3bc506a966f1d626952bd87426d1bb4a2ab4712727fbb111fe88062a2966",
+          "alt": "The same frozen arrival-first app with its valid scoped slot record prefers Consolidated at $5,000; Direct still passes and Backup remains over budget.",
+          "caption": "A valid scoped slot record makes Consolidated preferred under the unchanged arrival-first tutorial priority."
+        }
+      }
+    ],
+    "takeaway": "The author defines what support the service needs. Colleagues then get different, explainable findings when that support is absent or present. This arrival-first tutorial is separate from the cost-first operating app.",
+    "verificationUrl": "/assets/use-cases/shipment-readiness/context-comparisons/verification.json",
+    "currentViewVerificationUrl": "/assets/use-cases/shipment-readiness/question-focused/verification.json",
+    "inputReportNavigationVerificationUrl": "/assets/use-cases/shipment-readiness/input-report-navigation/verification.json",
+    "calculationVerificationUrl": "/assets/use-cases/shipment-readiness/calculation-flow/verification.json"
+  },
+  "batchCases": {
+    "id": "shipment-batch-contexts",
+    "kind": "context",
+    "title": "Two morning shipment contexts produce different interventions",
+    "sharedBasis": "The same cost-first shipment app and 8 a.m. assessment clock. Each independently allocated shipment needs 100 units by the original receiving deadline within a $5,000 expense limit.",
+    "change": "These are different shipments, not a single-field experiment: ORD-104 stays at revision 1 with complete support; ORD-105 is revision 2, Direct capacity is 99 and its Consolidated confirmation remains revision 1.",
+    "panels": [
+      {
+        "label": "A · ORD-104 retains complete support",
+        "inputs": [
+          {
+            "label": "Shipment and owner",
+            "value": "SHIP-104 · Maya Chen"
+          },
+          {
+            "label": "Current scope",
+            "value": "Order revision 1; current confirmation and permissions"
+          }
+        ],
+        "finding": "Review and reserve Direct · $4,000",
+        "explanation": "Maya checks the retained basis and passes the supported proposal to the responsible owner before Direct’s 11 a.m. carrier cutoff.",
+        "figure": {
+          "image": "/assets/use-cases/shipment-readiness/calculation-integration/batch-supported.png",
+          "width": 1450,
+          "height": 317,
+          "sha256": "49315821c0adcbb05da93eaad18ca09c35db66810aa3b5fc5423b408d3ef9da3",
+          "alt": "The actual CLI report for SHIP-104 shows Direct preferred at $4,000 and the complete alternatives.",
+          "caption": "The native morning report retains complete support for this shipment.",
+          "fullImage": "/assets/use-cases/shipment-readiness/calculation-integration/batch-supported.png"
+        }
+      },
+      {
+        "label": "B · ORD-105 has unresolved revision-2 support",
+        "inputs": [
+          {
+            "label": "Shipment and owner",
+            "value": "SHIP-105 · Maya Chen; carrier coordinator obtains slot"
+          },
+          {
+            "label": "Material exceptions",
+            "value": "Direct: 99 of 100 units; Consolidated confirmation: revision 1"
+          }
+        ],
+        "finding": "Obtain current confirmation or escalate · No arrangement passes",
+        "explanation": "The carrier coordinator must obtain actual support for revision 2. Maya cannot advance yesterday’s proposal as the current recommendation.",
+        "figure": {
+          "image": "/assets/use-cases/shipment-readiness/calculation-integration/batch-blocked.png",
+          "width": 1450,
+          "height": 484,
+          "sha256": "a08562197b584d5d10af45c9d66cf319dfb9c01af8c3edacba8a4219b773b28b",
+          "alt": "The actual CLI report for SHIP-105 separates capacity, spending and current-confirmation failures.",
+          "caption": "A different order context calls for obtaining the missing current support or escalating.",
+          "fullImage": "/assets/use-cases/shipment-readiness/calculation-integration/batch-blocked.png"
+        }
+      }
+    ],
+    "takeaway": "A batch review helps the owner distinguish work that can advance from work needing a specific intervention. The complete queue also separates old permissions and malformed source inputs.",
+    "verificationUrl": "/assets/use-cases/shipment-readiness/calculation-integration/verification.json",
+    "currentViewVerificationUrl": "/assets/use-cases/shipment-readiness/calculation-integration/verification.json",
+    "proofKey": "batchCases",
+    "sourceKind": "implemented-working-copy"
+  }
+}

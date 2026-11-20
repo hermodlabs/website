@@ -1,322 +1,99 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+---
+layout: layouts/use-case-article.html
+title: Calculate the options before committing money.
+description: Supply shipment records, calculate supported arrangements and compare timely verification with reserving now. An archived exercise retains the earlier reviewed workflow.
+useCaseBrief:
+  stakes: >-
+    The shipment lead must choose before noon, but the supplied portal listing does not establish whether the cheaper $4,000 Direct option can fulfill the complete order.
+  outcome: >-
+    The calculation supports Backup at $6,000 across both possible registration states. Under hypothetical 50/50 probabilities and perfectly accurate verification, the $200 fast check offers a $5,200 expected total cost and a response by 10:30 a.m.; the cheaper slow check misses the cutoff. The lead can propose the timely check; responsible owners still authorize purchases, booking and release.
+roleLabel: Case worker
+referenceGuide: true
+readingMinutes: 10
+permalink: /use-cases/supply-chain/shipment-readiness/case-worker/index.html
+useCaseScenario: shipment-readiness
+useCasePurpose: supporting-reference
+useCaseChannels:
+  - decision-lab
+useCaseLabel: Evidence and verification
+useCaseOrder: 2
+---
+{% macro workerFigure(figure, title) %}
+<figure class="use-case-figure">
+  <a href="{{ figure.image | relativeUrl(page.url) }}" tabindex="-1" aria-label="View the screenshot for {{ title | escape }} at full size"><img src="{{ figure.image | relativeUrl(page.url) }}" width="{{ figure.width }}" height="{{ figure.height }}" alt="{{ figure.alt | escape }}" loading="lazy" decoding="async"></a>
+  <figcaption><span>{{ figure.caption | escape }}</span><a href="{{ figure.image | relativeUrl(page.url) }}" aria-label="View the screenshot for {{ title | escape }} at full size">View full size</a></figcaption>
+</figure>
+{% endmacro %}
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { window.dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', 'G-V2474V50XP');
-</script>
-
-
-  <title>Calculate the options before committing money. | Hermod Labs</title>
-  <meta name="description" content="Supply shipment records, calculate supported arrangements and compare timely verification with reserving now. An archived exercise retains the earlier reviewed workflow.">
-  <meta name="author" content="Jonathan Nacionales">
-
-  <link rel="canonical" href="https://hermodlabs.com/use-cases/supply-chain/shipment-readiness/case-worker/">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="Hermod Labs">
-  <meta property="og:title" content="Calculate the options before committing money. | Hermod Labs">
-  <meta property="og:description" content="Supply shipment records, calculate supported arrangements and compare timely verification with reserving now. An archived exercise retains the earlier reviewed workflow.">
-  <meta property="og:url" content="https://hermodlabs.com/use-cases/supply-chain/shipment-readiness/case-worker/">
-  <meta property="og:image" content="https://hermodlabs.com/assets/hermod-wordmark.jpeg">
-
-  <meta name="theme-color" content="#7850c2">
-  <link rel="icon" type="image/jpeg" href="../../../../assets/hermod-symbol.jpeg">
-  <link rel="stylesheet" href="../../../../assets/site.css">
-
-
-  <link rel="stylesheet" href="../../../../assets/reader.css">
-
-  <link rel="stylesheet" href="../../../../assets/use-cases.css">
-
-
-  <script src="../../../../assets/feature-flags.js" defer></script>
-  <script src="../../../../assets/site.js" defer></script>
-  <script src="../../../../assets/form-request.js" defer></script>
-</head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="site-header wrap">
-  <a class="brand" href="../../../../index.html" aria-label="Hermod Labs home"><img src="../../../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
-  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">+</span></button>
-  <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
-    <a href="../../../../blog/index.html"><svg class="nav-icon nav-icon-blog" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-  <path d="M11 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6"/>
-  <path d="m9 12 9-9 3 3-9 9-4 1 1-4Zm7-7 3 3"/>
-</svg><span>Blog</span></a><a href="../../../../platform/index.html"><svg class="nav-icon nav-icon-platform" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-  <rect x="3" y="3" width="6" height="6" rx="1.2"/>
-  <rect x="15" y="3" width="6" height="6" rx="1.2"/>
-  <rect x="9" y="15" width="6" height="6" rx="1.2"/>
-  <path d="M9 6h6M6 9v3h12V9m-6 3v3"/>
-</svg><span>Platform</span></a><a href="../../../../products/index.html"><svg class="nav-icon nav-icon-products" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-  <rect x="3" y="4" width="18" height="16" rx="2"/>
-  <path d="m7 9 3 3-3 3m6 0h4"/>
-</svg><span>Products</span></a><a href="../../../index.html" aria-current="page"><svg class="nav-icon nav-icon-use-cases" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-  <rect x="3" y="7" width="18" height="14" rx="2"/>
-  <path d="M8 7V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3M3 12a22 22 0 0 0 18 0m-12 3 2 2 4-4"/>
-</svg><span>Use Cases</span></a><a href="../../../../professional-services/index.html"><svg class="nav-icon nav-icon-professional-services" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-  <circle cx="9" cy="8" r="3"/>
-  <path d="M3 20v-2a6 6 0 0 1 12 0v2M16 5a3 3 0 0 1 0 6m1 3a4 4 0 0 1 4 4v2"/>
-</svg><span>Professional Services</span></a>
-    <a class="button nav-cta" data-decision-lab-link data-site-root="../../../../index.html" hidden><span>Try Decision Lab free</span><svg class="nav-icon nav-icon-launch" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-  <path d="M8 5h11v11M19 5 5 19"/>
-</svg></a>
-  </nav>
-</header>
-
-  <main id="main" tabindex="-1">
-
-
-
-
-
-
-<header class="reading-header wrap reading-header-with-cover">
-  <div class="reading-header-content">
-    
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-
-  
-  <a href="../../../index.html">Use Cases</a>
-
-  <span aria-hidden="true">/</span>
-  <a href="../../index.html">Supply chain</a>
-
-  <span aria-hidden="true">/</span>
-  <a href="../index.html">Shipment readiness</a>
-
-  <span aria-hidden="true">/</span>
-  <span aria-current="page">Evidence and verification</span>
-
-</nav>
-
-    <p class="eyebrow">Shipment readiness / Case worker reference</p>
-    <h1>Calculate the options before committing money.</h1>
-    <p class="reading-description">Supply shipment records, calculate supported arrangements and compare timely verification with reserving now. An archived exercise retains the earlier reviewed workflow.</p>
-    <p class="reading-meta">Jonathan Nacionales <span aria-hidden="true">·</span> 10 min read</p>
-  </div>
-  <figure class="reading-cover">
-    <img class="reading-cover-image" src="../../../../assets/use-cases/shipment-readiness/cover.svg" width="960" height="720" alt="A shipment plan connects readiness evidence, timing and a reviewed decision." decoding="async">
-  </figure>
-</header>
-<div class="wrap reader-layout use-case-reading-layout">
-<section class="use-case-brief" aria-labelledby="use-case-brief-heading">
-  <p class="use-case-brief-title" id="use-case-brief-heading">The case in brief</p>
-  <p class="use-case-brief-stakes"><strong>At stake.</strong> The shipment lead must choose before noon, but the supplied portal listing does not establish whether the cheaper $4,000 Direct option can fulfill the complete order.</p>
-  <p class="use-case-brief-outcome"><strong>How it resolves.</strong> The calculation supports Backup at $6,000 across both possible registration states. Under hypothetical 50/50 probabilities and perfectly accurate verification, the $200 fast check offers a $5,200 expected total cost and a response by 10:30 a.m.; the cheaper slow check misses the cutoff. The lead can propose the timely check; responsible owners still authorize purchases, booking and release.</p>
-</section>
-
-
-  <aside class="reader-navigation" aria-label="Reading navigation">
-    <nav class="reader-toc" aria-labelledby="reader-toc-heading">
-  <details class="disclosure reader-nav-disclosure" open>
-    <summary><h2 class="disclosure-label" id="reader-toc-heading">On this page</h2></summary>
-    <ol>
-      <li><a href="#current-question-view">Supply the inputs. Calculate the decision support.</a></li>
-      <li><a href="#open-the-published-example">Continue the retained author-to-worker exercise.</a></li>
-      <li><a href="#review-the-supplied-answers">Review the supplied answers.</a></li>
-      <li><a href="#shipment-commitment">1. Start with the shipment commitment.</a></li>
-      <li><a href="#shipment-records">2. See what the records establish.</a></li>
-      <li><a href="#shipment-alternatives">3. Compare more than the freight quote.</a></li>
-      <li><a href="#shipment-blocker">4. Open the requirement behind the blocker.</a></li>
-      <li><a href="#shipment-verification-value">5. Ask whether another check is worth buying.</a></li>
-      <li><a href="#shipment-verification-timing">6. A cheaper answer can arrive too late.</a></li>
-      <li><a href="#shipment-next-action">7. Keep the recommendation and its conditions together.</a></li>
-      <li><a href="#test-the-review-against-your-work">Test the review against your work.</a></li>
-      <li><a href="#source">Sources and scope</a></li>
-    </ol>
-  </details>
-</nav>
-
-    <nav class="use-case-related" aria-label="In this use case">
-      <p>Shipment readiness</p>
-      <a href="../index.html">Scenario overview</a>
-      <p>Articles</p>
-      <a href="../compare-shipment-options/index.html">Compare shipment options</a><a href="../add-consolidated-freight/index.html">Add consolidated freight</a><a href="../review-changed-orders/index.html">Review changed orders</a><a href="../resolve-a-shipment-exception/index.html">Resolve a shipment exception</a><a href="../is-a-registration-check-worth-buying/index.html">Integrate Python machine learning</a>
-      
-      <p>Supporting references</p>
-      <a href="../app-author/index.html">Workflow authoring</a><a href="index.html" aria-current="page">Evidence and verification</a><a href="../compare-priorities-and-limits/index.html">Priorities and spending limits</a>
-      
-    </nav>
-  </aside>
-
-  <article class="reader-prose" aria-label="Calculate the options before committing money.">
-    <div class="reader-content">
-      <p class="reader-source-note use-case-source-note"><strong>Requirements reference:</strong> <a href="https://corporate.walmart.com/content/dam/corporate/documents/suppliers/apply-to-be-a-supplier/supplier-checklist.pdf#page=11">Walmart’s checklist, p. 11 (collect suppliers)</a>. <strong>Business context:</strong> <a href="https://www.8thandwalton.com/blog/case-study-walmart-launch">8th &amp; Walton (Terry Clear, June 4, 2025)</a>. This walkthrough uses a source-informed fictional example. <a href="../compare-shipment-options/index.html#source">Sources and demonstration scope</a>.</p>
-
-      
-
-<p class="reader-lead">The shipment lead has a noon reservation cutoff, a cheaper route with uncertain transportation registration and a customer promise to protect. Supply the available records, calculate which complete arrangements meet the requirements and inspect whether a timely check would improve the choice.</p>
+<p>The shipment lead has a noon reservation cutoff, a cheaper route with uncertain transportation registration and a customer promise to protect. Supply the available records, calculate which complete arrangements meet the requirements and inspect whether a timely check would improve the choice.</p>
 <aside class="use-case-callout" aria-label="Start with the shipment readiness article">
-  <p>Start with <a href="../compare-priorities-and-limits/index.html#shared-shipment">the retained shipment priority and spending-limit comparison</a>. Follow Maya as she reconciles launch, finance and operations needs, compares two passing shipment options, and tests a tighter expense limit. This detailed reference guide covers a different fictional case, where uncertain registration blocks one option and verification may help before commitment.</p>
+  <p>Start with <a href="{{ (shipmentCase.priorityReferenceUrl + '#shared-shipment') | relativeUrl(page.url) }}">the retained shipment priority and spending-limit comparison</a>. Follow Maya as she reconciles launch, finance and operations needs, compares two passing shipment options, and tests a tighter expense limit. This detailed reference guide covers a different fictional case, where uncertain registration blocks one option and verification may help before commitment.</p>
 </aside>
-<p>The workflow brings together reusable solutions to recurring problems: interpret evidence while keeping uncertainty visible, compare complete shipment plans with their recorded arrangements, and assess whether verification would help before commitment. The app author has connected these approaches for this review. You supply this shipment’s facts and review the resulting findings. See <a href="../../../../articles/pattern-languages-for-human-decisions/index.html">Pattern Languages for Human Decisions</a> for the broader idea.</p>
-<p>A <strong>shipment plan</strong> describes the intended route, dates and cost. An <strong>arrangement</strong> connects the work, people, resources, permissions and dependencies needed to carry it out over time. The arrangement changes as the situation develops; this app evaluates the version you have recorded. Update inputs and recalculate affected findings when conditions or evidence change. See <a href="../../../../articles/the-arrangement-problem-in-human-decisions/index.html">The Arrangement Problem in Human Decisions</a> for the broader concept.</p>
-<p>The calculation walkthrough uses <strong>Compare first-shipment arrangements 1.2.0</strong>. A separate archived exercise below retains the exact reviewed <strong>1.0.1</strong> release exported in the <a href="../app-author/index.html">app-author reference guide</a>. Keep the <a href="../compare-shipment-options/index.html#process">business process chart</a> available as a reference.</p>
+<p>The workflow brings together reusable solutions to recurring problems: interpret evidence while keeping uncertainty visible, compare complete shipment plans with their recorded arrangements, and assess whether verification would help before commitment. The app author has connected these approaches for this review. You supply this shipment’s facts and review the resulting findings. See <a href="{{ '/articles/pattern-languages-for-human-decisions/' | relativeUrl(page.url) }}">Pattern Languages for Human Decisions</a> for the broader idea.</p>
+<p>A <strong>shipment plan</strong> describes the intended route, dates and cost. An <strong>arrangement</strong> connects the work, people, resources, permissions and dependencies needed to carry it out over time. The arrangement changes as the situation develops; this app evaluates the version you have recorded. Update inputs and recalculate affected findings when conditions or evidence change. See <a href="{{ '/articles/the-arrangement-problem-in-human-decisions/' | relativeUrl(page.url) }}">The Arrangement Problem in Human Decisions</a> for the broader concept.</p>
+<p>The calculation walkthrough uses <strong>Compare first-shipment arrangements 1.4.0</strong>. A separate archived exercise below retains the exact reviewed <strong>1.0.1</strong> release exported in the <a href="{{ shipmentCase.authorUrl | relativeUrl(page.url) }}">app-author reference guide</a>. Keep the <a href="{{ (shipmentCase.url + '#process') | relativeUrl(page.url) }}">business process chart</a> available as a reference.</p>
 <aside class="use-case-callout" aria-label="Scope of the worked case">
   <p>Here, “readiness” means the requirements declared by this shipment example. It examines transportation registration, shipment plans and their recorded arrangements, timing, resources, expense, cash, and recorded authority. The wider launch problem includes work outside this review.</p>
 </aside>
 
-<p>The connected <a href="../../../../articles/from-arrangements-to-assessments/index.html">assessments answer different questions</a>: what the registration records support, which complete shipment responses satisfy the requirements, and whether timely verification improves the modeled outcome. Their findings retain the supplied scope and the hypothetical numerical assumptions below.</p>
+<p>The connected <a href="{{ '/articles/from-arrangements-to-assessments/' | relativeUrl(page.url) }}">assessments answer different questions</a>: what the registration records support, which complete shipment responses satisfy the requirements, and whether timely verification improves the modeled outcome. Their findings retain the supplied scope and the hypothetical numerical assumptions below.</p>
 
 <h2 id="current-question-view">Supply the inputs. Calculate the decision support.</h2>
-<p>Open <a href="https://hermodlabs.github.io/review_lab/">Decision Lab</a>, update the <strong>Order fulfillment</strong> collection in <strong>Marketplace</strong>, and open <strong>Compare first-shipment arrangements 1.2.0</strong>. Choose <strong>Start analysis</strong> for a fresh case. Updating an installed collection does not change a saved review’s embedded rules or execution policy.</p>
-
-<figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/shipment-readiness/calculation-flow/start-analysis.png" tabindex="-1" aria-label="View the screenshot for Start a first-shipment analysis at full size"><img src="../../../../assets/use-cases/shipment-readiness/calculation-flow/start-analysis.png" width="759" height="293" alt="Order fulfillment contains Compare first-shipment arrangements version 1.2.0, with Start analysis and its three included apps." loading="lazy" decoding="async"></a>
-  <figcaption><span>Start a fresh analysis from the exact calculation release. Existing saved reviews keep their original definitions.</span><a href="../../../../assets/use-cases/shipment-readiness/calculation-flow/start-analysis.png" aria-label="View the screenshot for Start a first-shipment analysis at full size">View full size</a></figcaption>
-</figure>
-
+<p>Open <a href="{{ shipmentCase.appUrl }}">Decision Lab</a>, update the <strong>Order fulfillment</strong> collection in <strong>Marketplace</strong>, and open <strong>Compare first-shipment arrangements 1.4.0</strong>. Choose <strong>Start analysis</strong> for a fresh case. Updating an installed collection does not change a saved review’s embedded rules or execution policy.</p>
+{{ workerFigure(shipmentUIRefresh.figures.entry, 'Start a first-shipment analysis') }}
 <p>The case starts with fictional supplied inputs. There is no reviewer-name field, answer-state selector or acceptance step in this calculation flow. Replace the examples with the shipment’s actual records before relying on a finding. Supplying a record does not authenticate its source or create operating authority.</p>
 <p><strong>Calculate</strong> sits at the top of <strong>Inputs</strong>, beside optional <strong>Auto-update</strong>. Use <strong>Both</strong> to keep inputs beside reports. Input groups and report groups navigate independently; <strong>Forms</strong> exposes the authored fields, while <strong>YAML</strong> exposes the complete shared case. <strong>Work with Excel</strong> remains an optional disclosure.</p>
-
-<figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/shipment-readiness/calculation-flow/supplied-inputs.png" tabindex="-1" aria-label="View the screenshot for Supplied shipment inputs and the calculation control at full size"><img src="../../../../assets/use-cases/shipment-readiness/calculation-flow/supplied-inputs.png" width="1136" height="740" alt="The current first-shipment analysis has supplied inputs beside a pending Decision summary, with Calculate and Auto-update at the top of Inputs." loading="lazy" decoding="async"></a>
-  <figcaption><span>Supply the case, then Calculate. The calculation flow has no reviewer identity, answer acceptance or finding signoff.</span><a href="../../../../assets/use-cases/shipment-readiness/calculation-flow/supplied-inputs.png" aria-label="View the screenshot for Supplied shipment inputs and the calculation control at full size">View full size</a></figcaption>
-</figure>
-
+{{ workerFigure(shipmentUIRefresh.figures.inputs, 'Supplied shipment inputs and the calculation control') }}
 <h3 id="calculate-the-shipment">Read the supported arrangements first.</h3>
 <p>Choose <strong>Calculate</strong>. Decision Lab runs the relevant supporting apps in dependency order: interpret the transportation records, check complete arrangements, check responses after verification and compare timely verification with reserving now. Complete current results feed later calculations without individual finding signoff. Missing information and incomplete results remain visible.</p>
-<p>The <strong>Decision summary</strong> leads with <strong>Which complete arrangements meet this delivery commitment?</strong> Expand <strong>Compare complete arrangements</strong>. Backup at <strong>$6,000</strong> meets the recorded requirements across both possible registration states. Direct at <strong>$4,000</strong> costs less, but its transportation-registration condition is not established in one remaining state. A portal listing alone does not settle that question.</p>
-
-<figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/shipment-readiness/calculation-flow/calculated-arrangements.png" tabindex="-1" aria-label="View the screenshot for Calculated first-shipment arrangements at full size"><img src="../../../../assets/use-cases/shipment-readiness/calculation-flow/calculated-arrangements.png" width="1086" height="1054" alt="The complete first-shipment calculation supports Backup at $6,000; Direct at $4,000 fails the registration condition in the transportation-not-registered situation." loading="lazy" decoding="async"></a>
-  <figcaption><span>The complete arrangement comparison preserves the uncertainty: Backup passes across both admitted states; the portal listing does not establish Direct’s registration.</span><a href="../../../../assets/use-cases/shipment-readiness/calculation-flow/calculated-arrangements.png" aria-label="View the screenshot for Calculated first-shipment arrangements at full size">View full size</a></figcaption>
-</figure>
-
-<p>Use <strong>Item to inspect</strong> or an <strong>Inspect</strong> row action for Direct’s unmet conditions. <strong>Delivery in each possible situation</strong> and <strong>Shipment and timing basis</strong> provide the supporting context. Reading another arrangement changes neither the inputs nor the business decision.</p>
+<p>The <strong>Decision summary</strong> opens with the supported answer, a compact <strong>Compare complete alternatives</strong> table and the conditions affecting the choice. Backup at <strong>$6,000</strong> meets the recorded requirements across both possible registration states. Direct at <strong>$4,000</strong> costs less, but its transportation-registration condition is not established in one remaining state. A portal listing alone does not settle that question.</p>
+{{ workerFigure(shipmentUIRefresh.figures.arrangements, 'Calculated first-shipment arrangements') }}
+<p>Choose <strong>Inspect</strong> beside Direct to open its exact arrangement in <strong>Supporting reports</strong>. The summary keeps the decision readable; the supporting view exposes the registration condition, work and timing behind it. Inspecting an arrangement changes neither the inputs nor the business decision.</p>
+{{ workerFigure(shipmentUIRefresh.figures.requirements, 'Inspect Direct’s registration condition') }}
 <h3 id="calculate-verification">Would checking first improve the choice?</h3>
-<p>In <strong>Reports → Further verification</strong>, compare the supplied offers. With hypothetical <strong>50/50</strong> registration probabilities and perfectly accurate verification, the <strong>$200 fast check</strong> gives a <strong>$5,200 expected total cost</strong>, including its fee, with time to respond by <strong>10:30 a.m.</strong> The <strong>$50 slow check</strong> reports at 2 p.m., after the noon reservation cutoff. The probabilities and accuracy assumptions are supplied premises, not conclusions inferred from the portal listing.</p>
-
-<figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/shipment-readiness/calculation-flow/verification-comparison.png" tabindex="-1" aria-label="View the screenshot for Compare timely verification with reserving now at full size"><img src="../../../../assets/use-cases/shipment-readiness/calculation-flow/verification-comparison.png" width="1136" height="806" alt="Reports, Further verification compares the $5,200 expected total cost of fast verification with the $6,000 supported acting-now arrangement under supplied hypothetical probabilities." loading="lazy" decoding="async"></a>
-  <figcaption><span>Under the supplied assumptions, fast verification improves expected total cost by $800. This calculated comparison grants no purchase or release authority.</span><a href="../../../../assets/use-cases/shipment-readiness/calculation-flow/verification-comparison.png" aria-label="View the screenshot for Compare timely verification with reserving now at full size">View full size</a></figcaption>
-</figure>
-
-<p>The shipment lead can put forward the timely check or an immediately supported arrangement. Responsible owners still decide, authorize purchases, reserve freight and carry out delivery. <strong>Current result</strong> means the declared calculation is complete for these inputs; it establishes no completed booking or shipment.</p>
-<p>Where could a numerical basis for that comparison come from? In a separate fictional Python example, <a href="../is-a-registration-check-worth-buying/index.html">connect a Python machine learning model to Decision Lab</a>. Follow the estimator’s output into the Python SDK’s planning and learning assessments, then back into an application report. The shipment’s requirements, check fee and response time supply the decision context. This tutorial retains its supplied 50/50 and perfect-verification assumptions.</p>
+<p>In <strong>Supporting reports → Further verification</strong>, open <strong>Comparison</strong> to compare the supplied offers. With hypothetical <strong>50/50</strong> registration probabilities and perfectly accurate verification, the <strong>$200 fast check</strong> gives a <strong>$5,200 expected total cost</strong>, including its fee, with time to respond by <strong>10:30 a.m.</strong> The <strong>$50 slow check</strong> reports at 2 p.m., after the noon reservation cutoff. The probabilities and accuracy assumptions are supplied premises, not conclusions inferred from the portal listing.</p>
+{{ workerFigure(shipmentUIRefresh.figures.verification, 'Compare timely verification with reserving now') }}
+<p>The shipment lead can put forward the timely check or an immediately supported arrangement. Responsible owners still decide, authorize purchases, reserve freight and carry out delivery. A current supported finding covers the declared calculation and inputs; it establishes no completed booking or shipment.</p>
+<p>Where could a numerical basis for that comparison come from? In a separate fictional Python example, <a href="{{ '/use-cases/supply-chain/shipment-readiness/is-a-registration-check-worth-buying/' | relativeUrl(page.url) }}">connect a Python machine learning model to Decision Lab</a>. Follow the estimator’s output into the Python SDK’s planning and learning assessments, then back into an application report. The shipment’s requirements, check fee and response time supply the decision context. This tutorial retains its supplied 50/50 and perfect-verification assumptions.</p>
+<h3 id="follow-the-decision-process">Follow the questions before inspecting the calculation chain.</h3>
+<p>Open <strong>Decision process</strong> to see how registration evidence, complete shipment arrangements and the verification question connect. Use its <strong>Diagram / Table</strong> switch to follow the same authored process in either representation. Its branches make the next available response visible; opening a branch does not authorize that response.</p>
+{{ workerFigure(shipmentUIRefresh.figures.process, 'Follow the shipment decision process') }}
 <h3 id="recalculate-changed-inputs">Keep a changed input separate from an updated finding.</h3>
-<p>A form edit is initially a draft. Choose <strong>Apply inputs</strong> to record it, then <strong>Recalculate</strong> for the affected dependency chain. Pending edits prevent calculation; applied changes make dependent earlier results outdated. The demonstration below changes quantity from 100 to 101 solely to expose that boundary, then restores 100 before recalculating the original case.</p>
-
-<figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/shipment-readiness/calculation-flow/inputs-changed.png" tabindex="-1" aria-label="View the screenshot for Changed inputs require recalculation at full size"><img src="../../../../assets/use-cases/shipment-readiness/calculation-flow/inputs-changed.png" width="1136" height="740" alt="After an applied quantity change, Recalculate is available and the Decision summary says Calculation pending, with no current arrangement finding." loading="lazy" decoding="async"></a>
-  <figcaption><span>Applied changes invalidate dependent findings. Earlier evaluations remain in history; they cannot supply a current recommendation for the changed case.</span><a href="../../../../assets/use-cases/shipment-readiness/calculation-flow/inputs-changed.png" aria-label="View the screenshot for Changed inputs require recalculation at full size">View full size</a></figcaption>
-</figure>
-
+<p>A form edit is initially a draft. Choose <strong>Apply inputs</strong> to record it, then <strong>Recalculate</strong> for the affected dependency chain. Pending edits prevent calculation; applied changes make dependent earlier results outdated. The alternative table then says <strong>The alternatives are stale; current findings are required</strong>, withholding the earlier comparison until it is recalculated. The demonstration below changes quantity from 100 to 101 solely to expose that boundary, then restores 100 before recalculating the original case.</p>
+{{ workerFigure(shipmentUIRefresh.figures.stale, 'Changed inputs require recalculation') }}
 <p><strong>Auto-update</strong>, when enabled, runs that recalculation after inputs are applied. It does not apply an unfinished form for you. <strong>Preview changes → Apply case changes</strong> performs the equivalent save for YAML. Changing a report tab cannot make an old finding current.</p>
-<p><strong>Calculations</strong> lists each supporting result. Choose <strong>Inspect result</strong> to open its <strong>Decision summary / Supporting reports</strong> views. These are assessment-level views; the workflow’s <strong>Decision summary</strong> and <strong>Reports</strong> organize the overall shipment question. <strong>Case files and history → Export workflow run</strong> preserves the supplied case, pinned definition and calculation history.</p>
-
-<figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/shipment-readiness/calculation-flow/calculation-status.png" tabindex="-1" aria-label="View the screenshot for Current supporting calculations at full size"><img src="../../../../assets/use-cases/shipment-readiness/calculation-flow/calculation-status.png" width="1136" height="671" alt="Calculations lists the evidence, planning, response and learning results as current, with Inspect result actions and no acceptance controls." loading="lazy" decoding="async"></a>
-  <figcaption><span>Supporting calculations feed the summary when current and complete. Inspect result exposes each retained assessment.</span><a href="../../../../assets/use-cases/shipment-readiness/calculation-flow/calculation-status.png" aria-label="View the screenshot for Current supporting calculations at full size">View full size</a></figcaption>
-</figure>
-
-<p class="use-case-example-note">The screenshots show the implemented 1.2.0 calculation release in a frozen local production preview. The <a href="../../../../assets/use-cases/shipment-readiness/calculation-flow/verification.json">capture receipt</a> records the exact build, package, native exports and unchanged baseline inputs; it does not claim that an older public deployment has already received the release.</p>
+<p><strong>Calculation dependencies</strong> shows the result handoffs between the supporting apps. It answers how one calculation supplies another; <strong>Decision process</strong> answers how the business questions and responses connect. Inspect a calculation when its retained assessment is needed, then return to the dependencies. <strong>Case files and history → Export workflow run</strong> preserves the supplied case, pinned definition and calculation history.</p>
+{{ workerFigure(shipmentUIRefresh.figures.status, 'Current supporting calculations') }}
+<p class="use-case-example-note">The screenshots show the implemented 1.4.0 calculation release in a fresh local production build of the updated interface. The <a href="{{ shipmentUIRefresh.verificationUrl | relativeUrl(page.url) }}">capture receipt</a> records the exact build, package, native exports and unchanged baseline inputs; a separate <a href="{{ '/assets/decision-lab-public-build-check.json' | relativeUrl(page.url) }}">public build check</a> matches the public interface, configuration and workflow packages to that build.</p>
 
 <details class="disclosure use-case-technical-note" id="archived-reviewed-exercise">
 <summary><span class="disclosure-label">Archived exercise: the 1.0.1 reviewed workflow</span></summary>
 <p>The following controls, screenshots and downloads preserve the earlier reviewed execution policy. Its reviewer identity, answer acceptance and finding review are deliberate features of that saved definition. They are not steps required by a new calculation analysis.</p>
 <h2 id="open-the-published-example">Continue the retained author-to-worker exercise.</h2>
 <p>If you completed the app-author reference guide, use the locally published <strong>1.0.1</strong> release in <strong>Shipment review pilots</strong>. It stays separate from the original workflow pinned in the installed Marketplace collection.</p>
-<p>To inspect the exact saved states below, open <a href="https://hermodlabs.github.io/review_lab/">Decision Lab</a> in a separate browser profile without an installed shipment workflow. Choose <strong>Collections → Import app, workflow or case</strong>, then select one of these downloads. Each saved run includes its exact workflow release; installing the original Marketplace workflow first is unnecessary.</p>
+<p>To inspect the exact saved states below, open <a href="{{ shipmentWorker.appUrl }}">Decision Lab</a> in a separate browser profile without an installed shipment workflow. Choose <strong>Collections → Import app, workflow or case</strong>, then select one of these downloads. Each saved run includes its exact workflow release; installing the original Marketplace workflow first is unnecessary.</p>
 <ul>
-  <li><a href="../../../../assets/use-cases/shipment-readiness/worker/shipment-reviewed.workflow-run.json" download>Reviewed example (.workflow-run.json)</a>: inspect the retained calculations and illustrative reviews shown in the screenshots. <strong>Next action</strong> leads with the supported proposals; expand their details or inspect a supporting assessment when needed.</li>
-  <li><a href="../../../../assets/use-cases/shipment-readiness/worker/shipment-example.workflow-run.json" download>Fresh example (.workflow-run.json)</a>: work through the supplied answers and assessments yourself. This is the starting point for the steps below.</li>
+  <li><a href="{{ shipmentWorker.reviewedDownload | relativeUrl(page.url) }}" download>Reviewed example (.workflow-run.json)</a>: inspect the retained calculations and illustrative reviews shown in the screenshots. <strong>Next action</strong> leads with the supported proposals; expand their details or inspect a supporting assessment when needed.</li>
+  <li><a href="{{ shipmentWorker.freshDownload | relativeUrl(page.url) }}" download>Fresh example (.workflow-run.json)</a>: work through the supplied answers and assessments yourself. This is the starting point for the steps below.</li>
 </ul>
-<p>To make further cases from version <strong>1.0.1</strong>, open <strong>Guided reviews</strong> and choose <strong>Start review</strong>. In an empty profile, you can also <a href="../../../../assets/use-cases/shipment-readiness/author/review-first-shipment-1.0.1.workflow.json" download>import the author’s workflow package</a> using the same import control. New reviews are prefilled with supplied starter inputs; review every answer and replace fictional examples with your shipment’s facts. To continue a saved review, find <strong>Saved reviews</strong> and choose <strong>Resume review</strong>.</p>
+<p>To make further cases from version <strong>1.0.1</strong>, open <strong>Guided reviews</strong> and choose <strong>Start review</strong>. In an empty profile, you can also <a href="{{ shipmentAuthor.packageDownload | relativeUrl(page.url) }}" download>import the author’s workflow package</a> using the same import control. New reviews are prefilled with supplied starter inputs; review every answer and replace fictional examples with your shipment’s facts. To continue a saved review, find <strong>Saved reviews</strong> and choose <strong>Resume review</strong>.</p>
 
 <h2 id="review-the-supplied-answers">Review the supplied answers.</h2>
 <p>The Reports pane opens at <strong>Next action</strong>. Start with its decision status and <strong>Next review step</strong>, which identifies the next required task and responsible role. Selecting that action navigates to the answer in Inputs or the supporting assessment in Planning results; it does not accept an answer, evaluate a result or grant permission.</p>
 <p>Open <strong>Review responsibility</strong> to enter a reviewer name and select the question’s assigned <strong>Acting role</strong>. Inspect the supplied information and choose <strong>Accept answer</strong> when you have reviewed it. <strong>Commitment</strong>, <strong>Arrangements</strong> and <strong>Prerequisites &amp; records</strong> remain available for direct input review.</p>
 <p>The shipment lead reviews shipment and operating details. The finance reviewer reviews funding, purchase authority, the probability assessment and verification offers. Completing the worked review requires all 25 supplied answers and the five assessment results to be reviewed. Follow the next task as prerequisites become ready. A missing or unknown answer does not become established just because another field is filled in.</p>
 <p><strong>Inputs → YAML</strong> shows the complete shared case, rather than only the selected question. <strong>Preview changes</strong> and <strong>Apply case changes</strong> submit edited answers for review; they do not accept them. Switching Forms/YAML or input/report tabs retains drafts. Reports continue to use recorded answers while edits are pending. <strong>Work with Excel</strong> is a separate disclosure in Inputs.</p>
-
-<figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/shipment-readiness/worker/00-review-case-input.png" tabindex="-1" aria-label="View the screenshot for Review the supplied answers at full size"><img src="../../../../assets/use-cases/shipment-readiness/worker/00-review-case-input.png" width="1086" height="191" alt="The fresh shipment workflow shows Next review step, the responsible shipment-lead role, and Review answer: Shipment identity and units. Other required review steps remain collapsed." loading="lazy" decoding="async"></a>
-  <figcaption><span>The next review task is explicit. Selecting it opens the required answer; it does not accept the answer, evaluate an assessment or authorize an operating action.</span><a href="../../../../assets/use-cases/shipment-readiness/worker/00-review-case-input.png" aria-label="View the screenshot for Review the supplied answers at full size">View full size</a></figcaption>
-</figure>
-
+{{ workerFigure(shipmentWorker.inputFigure, 'Review the supplied answers') }}
 <p>The screenshots record illustrative reviews under the name <strong>Example reviewer</strong>. Selecting an acting role records responsibility within this case; actual business authority is represented separately.</p>
 <p>This worked case includes optional verification analysis. A review of shipment feasibility can use the evidence and planning results without assigning probabilities; the expected-value comparison needs a separately reviewed probability assessment.</p>
 <p>The archived assessment screenshots below retain their original navigation labels. Within that captured interface, <strong>Planning results</strong> opened supporting assessments and <strong>Technical inspection → Inspect complete report</strong> opened their exhaustive analysis. The current renderer instead offers <strong>Decision summary / Supporting reports</strong> inside an opened assessment. That display change preserves the older run’s reviewed execution policy; it does not turn the run into a calculation analysis.</p>
 
-
-<h2 id="shipment-commitment">1. Start with the shipment commitment.</h2>
-<p>The workflow opens at Next action. For a fresh case, Next review step identifies the next required answer or assessment and its responsible role. Follow that action to the relevant question, inspect the supplied information and explicitly accept it only after review.</p><p>The commitment is still ORD-104: 100 cases for DC-X, reserved by noon on November 17 and received by 5 p.m. on November 20, with 30 minutes allowed to respond to verification. In the completed brief, expand Supporting findings → Delivery commitment to inspect these recorded details. Commitment, Arrangements and Prerequisites &amp; records remain available when reviewing the inputs.</p>
-
-<figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/shipment-readiness/worker/01-delivery-commitment.png" tabindex="-1" aria-label="View the screenshot for Start with the shipment commitment. at full size"><img src="../../../../assets/use-cases/shipment-readiness/worker/01-delivery-commitment.png" width="1086" height="366" alt="The app’s Delivery commitment section records DC-X, a November 17 noon reservation cutoff, November 20 at 5 p.m. receipt, 30 response minutes and 100 cases." loading="lazy" decoding="async"></a>
-  <figcaption><span>The delivery commitment is available on request beneath the decision brief. Its dates, quantity and response allowance are unchanged.</span><a href="../../../../assets/use-cases/shipment-readiness/worker/01-delivery-commitment.png" aria-label="View the screenshot for Start with the shipment commitment. at full size">View full size</a></figcaption>
-</figure>
-
-
-
-<h2 id="shipment-records">2. See what the records establish.</h2>
-<p>Follow the next review task to evaluate Review the transportation records. Inspect its decision screen before choosing Accept result for this review: the business question, supported answer or remaining uncertainty appears first.</p><p>The supplied portal capture lists SP-A, but does not settle transportation registration for this exact shipment. Open Why this finding? for contrasting possible explanations; registered and not_registered both remain possible. Keep both in planning. Technical inspection opens the complete evidence assessment if needed.</p>
-
-<figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/shipment-readiness/worker/02-records-and-possibilities.png" tabindex="-1" aria-label="View the screenshot for See what the records establish. at full size"><img src="../../../../assets/use-cases/shipment-readiness/worker/02-records-and-possibilities.png" width="1134" height="469" alt="The current evidence decision screen displays the registration question, remaining uncertainty and business explanation, with Why this finding? available for supporting explanations." loading="lazy" decoding="async"></a>
-  <figcaption><span>The business answer and its uncertainty lead. Possible explanations are available on request and do not supply probability weights.</span><a href="../../../../assets/use-cases/shipment-readiness/worker/02-records-and-possibilities.png" aria-label="View the screenshot for See what the records establish. at full size">View full size</a></figcaption>
-</figure>
-
-
-
-<h2 id="shipment-alternatives">3. Compare more than the freight quote.</h2>
-<p>Evaluate Compare complete shipment arrangements and inspect the decision screen. Available options compares the complete arrangements, with dollar costs, the configured priority and failed conditions. The same preparation, timing, resource, permission and cash checks still apply across both retained transportation states.</p><p>The $6,000 backup passes every mandatory obligation in both states. The $4,000 direct plan is blocked in the not-registered state, so its lower price does not make it an available choice on the current evidence. Accept the planning result after reviewing that comparison.</p>
-
-<figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/shipment-readiness/worker/03-complete-alternatives.png" tabindex="-1" aria-label="View the screenshot for Compare more than the freight quote. at full size"><img src="../../../../assets/use-cases/shipment-readiness/worker/03-complete-alternatives.png" width="1134" height="616" alt="The compact shipment decision prefers Backup at $6,000 and shows Direct at $4,000 blocked by Complete accepted order." loading="lazy" decoding="async"></a>
-  <figcaption><span>The default screen presents the supported choice and its blocker in business terms. The complete calculation remains available behind the decision.</span><a href="../../../../assets/use-cases/shipment-readiness/worker/03-complete-alternatives.png" aria-label="View the screenshot for Compare more than the freight quote. at full size">View full size</a></figcaption>
-</figure>
-
-
-
-<h2 id="shipment-blocker">4. Open the requirement behind the blocker.</h2>
-<p>Select Direct in Available options and expand Selected option details. The complete assignment, mandatory requirement results and Conditions needing attention show where its support fails. Open the relevant detail view or Technical inspection for the full plan-by-situation report.</p><p>Complete accepted order fails because the direct ship point must be transportation-registered for the exact shipment scope. The preparation, permission, timing, receiving-window, expense, and cash obligations pass in this situation. That tells the team which question needs resolving before the cheaper shipment plan could be supported.</p>
-
-<figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/shipment-readiness/worker/04-conditions-and-blockers.png" tabindex="-1" aria-label="View the screenshot for Open the requirement behind the blocker. at full size"><img src="../../../../assets/use-cases/shipment-readiness/worker/04-conditions-and-blockers.png" width="1086" height="667" alt="Selected option details for Direct retain its assignment, mandatory requirement results and failed registration condition in the not_registered situation." loading="lazy" decoding="async"></a>
-  <figcaption><span>Selected details expose the failed condition without replacing the compact decision with the entire report by default.</span><a href="../../../../assets/use-cases/shipment-readiness/worker/04-conditions-and-blockers.png" aria-label="View the screenshot for Open the requirement behind the blocker. at full size">View full size</a></figcaption>
-</figure>
-
-
-
-<h2 id="shipment-verification-value">5. Ask whether another check is worth buying.</h2>
-<p>Evaluate and review Check complete responses after fast verification and Check complete responses after slow verification. These assessments test the complete shipment choices still available after each possible report. Then select finance reviewer to evaluate and review Compare verification with reserving now.</p><p>Under the example’s explicitly hypothetical 50/50 probability assessment and stipulated perfectly accurate verification, the $200 fast verification supports an expected total cost of $5,200, including its fee. That is $800 below reserving the backup immediately. If registration is confirmed, the response can select direct shipment; if nonregistration is confirmed, it selects backup.</p><p>Inspect the learning decision screen: it puts acting now, expected improvement, the preferred investigation and unavailable options together. The monetary comparison is formatted in dollars. Responses to possible results retains the report-dependent actions and operating eligibility on request.</p>
-
-<figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/shipment-readiness/worker/05-verification-value.png" tabindex="-1" aria-label="View the screenshot for Ask whether another check is worth buying. at full size"><img src="../../../../assets/use-cases/shipment-readiness/worker/05-verification-value.png" width="1134" height="1109" alt="The learning decision compares acting now at minus $6,000 with fast verification at minus $5,200, shows $800 expected improvement and leaves slow verification unavailable." loading="lazy" decoding="async"></a>
-  <figcaption><span>The decision-first learning view shows expected payoff after costs in dollars. The same finding is expressed as $5,200 expected cost and $800 expected improvement in the brief.</span><a href="../../../../assets/use-cases/shipment-readiness/worker/05-verification-value.png" aria-label="View the screenshot for Ask whether another check is worth buying. at full size">View full size</a></figcaption>
-</figure>
-
-
-
-<h2 id="shipment-verification-timing">6. A cheaper answer can arrive too late.</h2>
-<p>The decision screen identifies when the selected investigation can support a response. For the full timing chart, open Technical inspection → Inspect complete report, select Verification before reservation and switch Review timing to Timeline. The fast report arrives at 10 a.m.; with the 30-minute allowance, the response is ready at 10:30 a.m., before the noon cutoff.</p><p>The $50 slow report arrives at 2 p.m. Its response would be ready at 2:30 p.m., after reservation closes. It cannot support a timely choice, even though its fee is lower. Compare when a result can change the action, as well as what the result might say.</p>
-
-<figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/shipment-readiness/worker/06-verification-timing.png" tabindex="-1" aria-label="View the screenshot for A cheaper answer can arrive too late. at full size"><img src="../../../../assets/use-cases/shipment-readiness/worker/06-verification-timing.png" width="1038" height="708" alt="The live app’s review-timing timeline shows the fast response ready at minute 630 and the slow response ready at minute 870, after the reservation deadline." loading="lazy" decoding="async"></a>
-  <figcaption><span>The complete timing analysis remains available by explicit inspection. Its original minute values are unchanged: 630 is 10:30 a.m., 720 noon and 870 2:30 p.m.</span><a href="../../../../assets/use-cases/shipment-readiness/worker/06-verification-timing.png" aria-label="View the screenshot for A cheaper answer can arrive too late. at full size">View full size</a></figcaption>
-</figure>
-
-
-
-<h2 id="shipment-next-action">7. Keep the recommendation and its conditions together.</h2>
-<p>Return to decision brief after accepting the current assessment results. Next action leads with the supported $6,000 shipment proposal and the fast-verification proposal with $5,200 expected cost and $800 expected improvement. Proposal details and Supporting findings keep the complete basis available on request.</p><p>Expand Authority and next operating actions to inspect the recorded $250 verification purchase limit and separate release authority. These business proposals differ from Next review step, which identifies the next required answer or result review while the case is incomplete. Opening that task does not accept it or carry out a purchase, booking or release.</p><p>Use Review files &amp; history → Export workflow run for the portable review, or Download decision brief for its recorded basis. If a quote, record or approval changes, review and accept the updated answer, then reassess the affected findings. A previous calculation remains historical support, not an assessment of the changed inputs.</p>
-
-<figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/shipment-readiness/question-focused/retained-1.0.1-brief.png" tabindex="-1" aria-label="View the screenshot for Keep the recommendation and its conditions together. at full size"><img src="../../../../assets/use-cases/shipment-readiness/question-focused/retained-1.0.1-brief.png" width="1136" height="1119" alt="The current reviewed brief leads with the supported Backup proposal and fast verification, while Proposal details and Supporting findings stay collapsed until requested." loading="lazy" decoding="async"></a>
-  <figcaption><span>The exact retained 1.0.1 review in the current renderer. The saved workflow keeps its authored brief and original calculations; it has not been upgraded to 1.1.0.</span><a href="../../../../assets/use-cases/shipment-readiness/question-focused/retained-1.0.1-brief.png" aria-label="View the screenshot for Keep the recommendation and its conditions together. at full size">View full size</a></figcaption>
-</figure>
-
-<p><a href="../../../../assets/use-cases/shipment-readiness/worker/shipment-decision-brief.md" download>Download the exported decision brief</a>.</p>
-
+{% for step in shipmentWorker.steps %}
+<h2 id="{{ step.id }}">{{ loop.index }}. {{ step.title }}</h2>
+{% for paragraph in step.paragraphs %}<p>{{ paragraph }}</p>{% endfor %}
+{{ workerFigure(step, step.title) }}
+{% if step.download %}<p><a href="{{ step.download | relativeUrl(page.url) }}" download>Download the exported decision brief</a>.</p>{% endif %}
+{% endfor %}
 
 </details>
 
@@ -333,63 +110,6 @@
 
 <footer class="use-case-article-references" aria-labelledby="source">
 <details class="disclosure use-case-source-disclosure"><summary><h2 class="disclosure-label" id="source">Sources and scope</h2></summary>
-<p>The first-shipment case, documents, probabilities, prices and operating authority are fictional. The current calculation walkthrough uses <strong>review-first-shipment 1.2.0</strong>; its <a href="../../../../assets/use-cases/shipment-readiness/calculation-flow/verification.json">native capture receipt</a> identifies the local production build, exact package, supplied starter, calculated result and changed-input exports. The complete original 100-case input is restored before the final recalculation.</p>
+<p>The first-shipment case, documents, probabilities, prices and operating authority are fictional. The current calculation walkthrough uses <strong>review-first-shipment 1.4.0</strong>; its <a href="{{ shipmentUIRefresh.verificationUrl | relativeUrl(page.url) }}">native capture receipt</a> identifies the local production build, exact package, supplied starter, calculated result and changed-input exports. The complete original 100-unit case is restored before the final recalculation.</p>
 <p>The collapsed author-to-worker exercise retains reviewed release <strong>1.0.1</strong> and its original artifacts. The cost-first consolidation story and CLI/SDK operating continuation use different apps and cases. A current calculation, an accepted historical finding, a chosen shipment and permission to act remain distinct claims.</p>
 </details></footer>
-
-      
-    </div>
-    <nav class="reader-return" aria-label="Continue with this scenario">
-      <a class="text-link" href="../index.html">All shipment readiness articles <span aria-hidden="true">→</span></a>
-      <a class="text-link" href="https://hermodlabs.github.io/review_lab/">Open Decision Lab <span aria-hidden="true">↗</span></a>
-    </nav>
-  </article>
-</div>
-</main>
-  <footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-directory">
-      <div class="footer-identity">
-        <a class="footer-brand" href="../../../../index.html" aria-label="Hermod Labs home"><img src="../../../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
-        <p class="footer-description">Tools and ideas for decisions you can inspect and revise.</p>
-        <nav class="footer-social-links" aria-label="Hermod Labs profiles">
-          <a href="https://www.linkedin.com/company/hermodlabs/" aria-label="Hermod Labs on LinkedIn" title="LinkedIn"><svg class="footer-social-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
-  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124Zm1.782 13.019H3.555V9h3.564v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0Z"/>
-</svg></a>
-          <a href="https://github.com/hermodlabs" aria-label="Hermod Labs on GitHub" title="GitHub"><svg class="footer-social-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
-  <path d="M12 .297a12 12 0 0 0-3.793 23.385c.6.111.82-.261.82-.577 0-.285-.011-1.04-.017-2.041-3.338.724-4.043-1.609-4.043-1.609-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.729.083-.729 1.205.085 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.303-5.467-1.334-5.467-5.931 0-1.31.469-2.381 1.236-3.221-.124-.303-.536-1.524.117-3.176 0 0 1.008-.323 3.301 1.23a11.52 11.52 0 0 1 3.003-.404c1.02.005 2.047.138 3.006.404 2.291-1.553 3.297-1.23 3.297-1.23.655 1.652.243 2.873.119 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.625-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .319.216.694.825.576A12.001 12.001 0 0 0 12 .297Z"/>
-</svg></a>
-        </nav>
-      </div>
-
-      <section class="footer-contact-section" aria-labelledby="footer-contact-heading">
-        <h3 id="footer-contact-heading">Contact us</h3>
-        <form class="beta-form footer-contact-form" id="footer-contact-form" action="https://forminit.com/f/1vqi2088svl" method="POST" data-forminit-request data-pending-message="Sending your message…" data-success-message="Thanks, your message has been sent. We’ll reply by email." accept-charset="UTF-8" aria-labelledby="footer-contact-heading">
-  <input type="hidden" name="fi-text-request" value="Hermod Labs contact">
-  <input type="hidden" name="fi-text-subject" value="Hermod Labs — Contact form">
-  <input type="hidden" name="_gotcha" value="">
-  <fieldset>
-    <legend class="visually-hidden">Contact Hermod Labs</legend>
-    <div class="footer-contact-fields">
-      <div class="form-field"><label for="footer-name">Name <span>(required)</span></label><input id="footer-name" type="text" name="fi-sender-fullName" autocomplete="name" maxlength="160" required></div>
-      <div class="form-field"><label for="footer-email">Email <span>(required)</span></label><input id="footer-email" type="email" name="fi-sender-email" autocomplete="email" maxlength="254" required></div>
-    </div>
-    <div class="form-field"><label for="footer-message">Message <span>(required)</span></label><textarea id="footer-message" name="fi-text-message" rows="3" maxlength="5000" placeholder="Tell us what you’d like to discuss." required></textarea></div>
-  </fieldset>
-  <button class="button" type="submit">Send message <span aria-hidden="true">↗</span></button>
-  <p class="form-status" id="footer-contact-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></p>
-</form>
-
-      </section>
-    </div>
-
-    <div class="footer-bottom">
-      <p class="footer-copyright">© 2026 Hermod Labs</p>
-      <p class="footer-signoff">Automated reasoning. Human judgment.</p>
-      <a class="footer-top-link" href="#main">Back to top <span aria-hidden="true">↑</span></a>
-    </div>
-  </div>
-</footer>
-
-</body>
-</html>

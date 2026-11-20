@@ -1,0 +1,173 @@
+---
+layout: layouts/blog-post.html
+tags: [blogPosts]
+title: "How Much Uncertainty Is Left?"
+description: "Estimate the unknowns inside a stated decision model."
+author: "Jonathan Nacionales, Founder, Hermod Labs"
+date: 2026-11-18
+publicationOrder: 2
+blogSeries: "Planning, uncertainty, and commitment"
+seriesPart: 2
+seriesLength: 3
+follows: /blog/why-plans-are-not-enough/
+readingMinutes: 10
+coverImage: /assets/blog/planning-series/uncertainty.svg
+coverAlt: "An imperfect observation changes eight state probabilities, reducing entropy from 3.0000 to 2.4690 bits while every state remains possible."
+coverWidth: 960
+coverHeight: 720
+permalink: /blog/how-much-uncertainty-is-left/index.html
+---
+<p>How much would we learn by obtaining one more record, running a check, or waiting for an observation? To answer numerically, we first need to specify what remains unknown and when the information could affect a decision.</p>
+<p>Consider a fictional supplier preparing a retail launch. Maya coordinates its shipment recommendation within a $5,000 expense limit. Direct costs $4,000 and Consolidated costs $5,000. The cost-first review prefers Direct while it meets the requirements and remains bookable; after Direct’s 11 a.m. cutoff, current support for Consolidated can make the premium necessary. <a href="{{ '/use-cases/supply-chain/shipment-readiness/resolve-a-shipment-exception/' | relativeUrl(page.url) }}">Follow Maya’s review in the Shipment Reservation Desk</a> to inspect the scoped records, compare the changed findings and see how the chosen response continues into operating records.</p>
+<p>The calculation below is a new teaching extension. Its probabilities and observation accuracy are stipulated assumptions, not measured shipment data or outputs from the published application. We use the following statement to keep choices, evidence, findings, and human decisions separate:</p>
+<blockquote>
+  <p>This plan includes <code>plan_contents</code>.<br>
+  We have checked it under these conditions: <code>assessed_conditions</code>.<br>
+  The result establishes <code>established_finding</code>.<br>
+  We favor <code>preferred_options</code> because <code>preference_basis</code>.<br>
+  Acceptance of <code>next_action</code> is <code>acceptance_status</code>, with <code>decision_owner</code> responsible.<br>
+  If we observe <code>reassessment_trigger</code>, we will <code>contingency_response</code> before <code>response_deadline</code>.</p>
+</blockquote>
+{% set workingFigure = shipmentReservationDesk.figures.late %}
+{% set workingCaption = 'The supplied later review has passed Direct’s booking cutoff. The current comparison shows which response still fits; the entropy estimates below are a separate teaching model, not a metric displayed by this desk.' %}
+{% include "body/blog-working-example.html" %}
+
+<h2 id="what-is-unknown">What exactly is unknown?</h2>
+<p>An uncertainty estimate needs a fixed question, operating interval, evidence basis, and set of possible conditions. Let <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline" aria-label="E equals e"><mi>E</mi><mo>=</mo><mi>e</mi></math> denote the information already available. We describe the uncertain shipment situation by <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline" aria-label="S equals the tuple O, L, T"><mi>S</mi><mo>=</mo><mo>(</mo><mi>O</mi><mo>,</mo><mi>L</mi><mo>,</mo><mi>T</mi><mo>)</mo></math>:</p>
+<div class="blog-table-scroll" role="region" tabindex="0" aria-label="The three uncertain shipment conditions and their modeled values">
+  <table>
+    <thead><tr><th scope="col">Variable</th><th scope="col">Named field</th><th scope="col">Values in the teaching model</th></tr></thead>
+    <tbody>
+      <tr><th scope="row"><var>O</var></th><td><code>order_change</code></td><td>0: no additional order revision before a specified release review; 1: an additional revision.</td></tr>
+      <tr><th scope="row"><var>L</var></th><td><code>loading_window_status</code></td><td>0: loading window usable at the planned loading time; 1: lost.</td></tr>
+      <tr><th scope="row"><var>T</var></th><td><code>transit_duration</code></td><td>0: quoted duration; 1: one day longer.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>These are conditions of the operation. Selecting a carrier is a decision about what to do; it is not an observation of <var>O</var>, <var>L</var>, or <var>T</var>. A loading slot means a reserved time window. The named information fields identify the quantities whose values or distributions we need to represent.</p>
+<p>The chosen scenario set is <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline" aria-label="Omega equals the set zero, one, cubed"><mi>Ω</mi><mo>=</mo><msup><mrow><mo>{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>}</mo></mrow><mn>3</mn></msup></math>. It admits eight combinations. That is a modeling choice: other delays, interruptions, and order changes outside the stated interval are not silently included. The <code>assessed_conditions</code> must retain that boundary as well as the supporting records.</p>
+
+<h2 id="what-bits-mean">What does a number in bits mean?</h2>
+<p>For a specified probability distribution over those states, remaining uncertainty can be measured by conditional Shannon entropy:<sup><a href="#ref-shannon" role="doc-noteref" aria-label="Reference 1">1</a></sup></p>
+<div class="blog-equation" role="region" tabindex="0" aria-label="Equation 1: conditional Shannon entropy">
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="H of S given E equals e is minus the sum over states s in Omega of p of s given e times log base two of p of s given e. Zero times log base two of zero is defined as zero.">
+    <mrow>
+      <mi>H</mi><mo>(</mo><mi>S</mi><mo>|</mo><mi>E</mi><mo>=</mo><mi>e</mi><mo>)</mo><mo>=</mo><mo>−</mo>
+      <munder><mo>∑</mo><mrow><mi>s</mi><mo>∈</mo><mi>Ω</mi></mrow></munder>
+      <mi>p</mi><mo>(</mo><mi>s</mi><mo>|</mo><mi>e</mi><mo>)</mo><msub><mi mathvariant="normal">log</mi><mn>2</mn></msub><mi>p</mi><mo>(</mo><mi>s</mi><mo>|</mo><mi>e</mi><mo>)</mo><mo>,</mo>
+      <mspace width="1em"/><mn>0</mn><msub><mi mathvariant="normal">log</mi><mn>2</mn></msub><mn>0</mn><mo>:=</mo><mn>0</mn><mo>.</mo><mspace width="1em"/><mtext>(1)</mtext>
+    </mrow>
+  </math>
+</div>
+<p>Base-two logarithms express the result in bits. If all eight combinations have probability <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline" aria-label="one eighth"><mfrac><mn>1</mn><mn>8</mn></mfrac></math>, then</p>
+<div class="blog-equation" role="region" tabindex="0" aria-label="Equation 2: eight equally likely states have three bits of entropy">
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="H of S given e equals minus eight times one eighth times log base two of one eighth, which equals three bits.">
+    <mrow><mi>H</mi><mo>(</mo><mi>S</mi><mo>|</mo><mi>e</mi><mo>)</mo><mo>=</mo><mo>−</mo><mn>8</mn><mo>(</mo><mfrac><mn>1</mn><mn>8</mn></mfrac><msub><mi mathvariant="normal">log</mi><mn>2</mn></msub><mfrac><mn>1</mn><mn>8</mn></mfrac><mo>)</mo><mo>=</mo><mn>3</mn><mtext> bits.</mtext><mspace width="1em"/><mtext>(2)</mtext></mrow>
+  </math>
+</div>
+<p>In this special case, learning the answers to three balanced yes-or-no questions identifies the state. Three bits is also the maximum for an eight-state model:</p>
+<div class="blog-equation" role="region" tabindex="0" aria-label="Equation 3: the entropy bounds for the eight-state model">
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="Zero is less than or equal to H of S given e, which is less than or equal to log base two of the number of states in Omega, which equals three.">
+    <mrow><mn>0</mn><mo>≤</mo><mi>H</mi><mo>(</mo><mi>S</mi><mo>|</mo><mi>e</mi><mo>)</mo><mo>≤</mo><msub><mi mathvariant="normal">log</mi><mn>2</mn></msub><mo>|</mo><mi>Ω</mi><mo>|</mo><mo>=</mo><mn>3</mn><mo>.</mo><mspace width="1em"/><mtext>(3)</mtext></mrow>
+  </math>
+</div>
+<p>The maximum is not an empirical estimate merely because eight branches were drawn. It becomes the actual entropy of this teaching model after the equal probabilities are stipulated. A real estimate needs a justified distribution. Entropy here concerns information uncertainty, rather than thermodynamic disorder, loss magnitude, or the quality of the plan.</p>
+
+<h2 id="why-bits-do-not-add-automatically">Why can we not add a bit for every slot?</h2>
+<p>First suppose <var>O</var>, <var>L</var>, and <var>T</var> are conditionally independent given <var>e</var> and each is equally likely to be 0 or 1. Then</p>
+<div class="blog-equation" role="region" tabindex="0" aria-label="Equation 4: conditional independence and the fair binary model">
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="p of o, l, t given e equals p of o given e times p of l given e times p of t given e, which equals one eighth. H of S given e equals one plus one plus one.">
+    <mrow><mi>p</mi><mo>(</mo><mi>o</mi><mo>,</mo><mi>l</mi><mo>,</mo><mi>t</mi><mo>|</mo><mi>e</mi><mo>)</mo><mo>=</mo><mi>p</mi><mo>(</mo><mi>o</mi><mo>|</mo><mi>e</mi><mo>)</mo><mi>p</mi><mo>(</mo><mi>l</mi><mo>|</mo><mi>e</mi><mo>)</mo><mi>p</mi><mo>(</mo><mi>t</mi><mo>|</mo><mi>e</mi><mo>)</mo><mo>=</mo><mfrac><mn>1</mn><mn>8</mn></mfrac><mo>,</mo><mspace width="1em"/><mi>H</mi><mo>(</mo><mi>S</mi><mo>|</mo><mi>e</mi><mo>)</mo><mo>=</mo><mn>1</mn><mo>+</mo><mn>1</mn><mo>+</mo><mn>1</mn><mo>.</mo><mspace width="1em"/><mtext>(4)</mtext></mrow>
+  </math>
+</div>
+<p>Different probabilities change the result even when all eight combinations remain possible. As a separate illustrative assumption, let the independent probabilities of an order change, lost window, and longer transit be 0.1, 0.2, and 0.3. Using the binary entropy function</p>
+<div class="blog-equation" role="region" tabindex="0" aria-label="Equation 5: the binary entropy function">
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="h sub two of p equals minus p times log base two of p, minus one minus p times log base two of one minus p.">
+    <mrow><msub><mi>h</mi><mn>2</mn></msub><mo>(</mo><mi>p</mi><mo>)</mo><mo>=</mo><mo>−</mo><mi>p</mi><msub><mi mathvariant="normal">log</mi><mn>2</mn></msub><mi>p</mi><mo>−</mo><mo>(</mo><mn>1</mn><mo>−</mo><mi>p</mi><mo>)</mo><msub><mi mathvariant="normal">log</mi><mn>2</mn></msub><mo>(</mo><mn>1</mn><mo>−</mo><mi>p</mi><mo>)</mo><mo>,</mo><mspace width="1em"/><mtext>(5)</mtext></mrow>
+  </math>
+</div>
+<p>we obtain</p>
+<div class="blog-table-scroll" role="region" tabindex="0" aria-label="Marginal and joint entropy under the independent illustrative probabilities">
+  <table>
+    <thead><tr><th scope="col">Condition</th><th scope="col">Probability of value 1</th><th scope="col">Marginal entropy</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Order change</th><td>0.1</td><td>0.4690 bits</td></tr>
+      <tr><th scope="row">Loading window lost</th><td>0.2</td><td>0.7219 bits</td></tr>
+      <tr><th scope="row">One-day longer transit</th><td>0.3</td><td>0.8813 bits</td></tr>
+    </tbody>
+    <tfoot><tr><th scope="row" colspan="2">Joint entropy under independence</th><td>2.0722 bits</td></tr></tfoot>
+  </table>
+</div>
+<p>Independence must be justified, not inferred from separate field names. Without it, the chain rule gives</p>
+<div class="blog-equation" role="region" tabindex="0" aria-label="Equation 6: the conditional entropy chain rule">
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="H of O, L, T given e equals H of O given e, plus H of L given O and e, plus H of T given O, L and e.">
+    <mrow><mi>H</mi><mo>(</mo><mi>O</mi><mo>,</mo><mi>L</mi><mo>,</mo><mi>T</mi><mo>|</mo><mi>e</mi><mo>)</mo><mo>=</mo><mi>H</mi><mo>(</mo><mi>O</mi><mo>|</mo><mi>e</mi><mo>)</mo><mo>+</mo><mi>H</mi><mo>(</mo><mi>L</mi><mo>|</mo><mi>O</mi><mo>,</mo><mi>e</mi><mo>)</mo><mo>+</mo><mi>H</mi><mo>(</mo><mi>T</mi><mo>|</mo><mi>O</mi><mo>,</mo><mi>L</mi><mo>,</mo><mi>e</mi><mo>)</mo><mo>.</mo><mspace width="1em"/><mtext>(6)</mtext></mrow>
+  </math>
+</div>
+<p>For example, if <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline" aria-label="L equals O"><mi>L</mi><mo>=</mo><mi>O</mi></math> deterministically and <var>O</var>, <var>T</var> are independent fair binary variables, the joint entropy is two bits. Adding three marginal one-bit entropies would count the same uncertainty twice.</p>
+<p>The other slots in the decision statement also have different jobs. <code>plan_contents</code> records a selected arrangement. <code>established_finding</code> records an assessment claim. <code>acceptance_status</code> records a human decision. Unknown values in any of these can be studied, but the same probability model does not automatically apply to all of them. Settling a choice is different from learning a fact about the world.</p>
+
+<h2 id="what-an-observation-can-teach">How much can an observation teach us?</h2>
+<p>Return to the equal-probability, independent model with three bits of initial uncertainty. A perfect observation of <var>O</var> leaves four equally likely combinations of <var>L</var> and <var>T</var>, so the residual entropy is two bits. Observing both <var>O</var> and <var>L</var> perfectly leaves one bit about <var>T</var>.</p>
+<p>“Perfect observation” is an ideal information assumption, not a claim that future events can be known in advance. For <var>O</var>, it could mean observing the authoritative order state at the specified release review before a later commitment. Transit information obtained only after arrival cannot inform an earlier booking decision. The time of each decision and observation must be part of the model.</p>
+<p>Let <var>Y</var> be an observation available at the relevant decision stage. Before seeing its result, expected information gain is</p>
+<div class="blog-equation" role="region" tabindex="0" aria-label="Equation 7: expected information gain">
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="I of S semicolon Y given e equals H of S given e minus the sum over y of p of y given e times H of S given E equals e and Y equals y.">
+    <mrow><mi>I</mi><mo>(</mo><mi>S</mi><mo>;</mo><mi>Y</mi><mo>|</mo><mi>e</mi><mo>)</mo><mo>=</mo><mi>H</mi><mo>(</mo><mi>S</mi><mo>|</mo><mi>e</mi><mo>)</mo><mo>−</mo><munder><mo>∑</mo><mi>y</mi></munder><mi>p</mi><mo>(</mo><mi>y</mi><mo>|</mo><mi>e</mi><mo>)</mo><mi>H</mi><mo>(</mo><mi>S</mi><mo>|</mo><mi>E</mi><mo>=</mo><mi>e</mi><mo>,</mo><mi>Y</mi><mo>=</mo><mi>y</mi><mo>)</mo><mo>.</mo><mspace width="1em"/><mtext>(7)</mtext></mrow>
+  </math>
+</div>
+<p>The subtraction uses the average posterior uncertainty over possible results. Within a fixed valid probability model this expected gain is nonnegative. An individual surprising result can nevertheless leave a more uncertain posterior than the prior. Discovering a missing variable also changes the model rather than merely conditioning the old one.</p>
+
+<h2 id="when-a-check-can-be-wrong">What if the check can be wrong?</h2>
+<p>Suppose <var>Y</var> reports <var>O</var> correctly with probability 0.9 in either state, with a symmetrical error probability of 0.1. Its errors are independent of <var>L</var>, <var>T</var> given <var>O</var>, and the fair prior still applies. Bayes’ rule gives</p>
+<div class="blog-equation" role="region" tabindex="0" aria-label="Equation 8: the posterior for the symmetric noisy report">
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="p of O equals y given Y equals y and e equals zero point nine. H of O given Y equals y and e equals binary entropy of zero point one, which equals zero point four six nine zero.">
+    <mrow><mi>p</mi><mo>(</mo><mi>O</mi><mo>=</mo><mi>y</mi><mo>|</mo><mi>Y</mi><mo>=</mo><mi>y</mi><mo>,</mo><mi>e</mi><mo>)</mo><mo>=</mo><mn>0.9</mn><mo>,</mo><mspace width="1em"/><mi>H</mi><mo>(</mo><mi>O</mi><mo>|</mo><mi>Y</mi><mo>=</mo><mi>y</mi><mo>,</mo><mi>e</mi><mo>)</mo><mo>=</mo><msub><mi>h</mi><mn>2</mn></msub><mo>(</mo><mn>0.1</mn><mo>)</mo><mo>=</mo><mn>0.4690</mn><mo>.</mo><mspace width="1em"/><mtext>(8)</mtext></mrow>
+  </math>
+</div>
+<p>The other two independent conditions remain unresolved. Consequently,</p>
+<div class="blog-equation" role="region" tabindex="0" aria-label="Equation 9: residual entropy after the noisy report">
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="H of S given Y and e equals two plus binary entropy of zero point one, which equals two point four six nine zero bits.">
+    <mrow><mi>H</mi><mo>(</mo><mi>S</mi><mo>|</mo><mi>Y</mi><mo>,</mo><mi>e</mi><mo>)</mo><mo>=</mo><mn>2</mn><mo>+</mo><msub><mi>h</mi><mn>2</mn></msub><mo>(</mo><mn>0.1</mn><mo>)</mo><mo>=</mo><mn>2.4690</mn><mtext> bits,</mtext><mspace width="1em"/><mtext>(9)</mtext></mrow>
+  </math>
+</div>
+<div class="blog-equation" role="region" tabindex="0" aria-label="Equation 10: expected information gain from the noisy report">
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="I of S semicolon Y given e equals three minus two point four six nine zero, which equals zero point five three one zero bits.">
+    <mrow><mi>I</mi><mo>(</mo><mi>S</mi><mo>;</mo><mi>Y</mi><mo>|</mo><mi>e</mi><mo>)</mo><mo>=</mo><mn>3</mn><mo>−</mo><mn>2.4690</mn><mo>=</mo><mn>0.5310</mn><mtext> bits.</mtext><mspace width="1em"/><mtext>(10)</mtext></mrow>
+  </math>
+</div>
+<p>The check’s 90 percent accuracy does not mean that it removes 90 percent of the state uncertainty, or that a selected shipment succeeds with 90 percent probability. Those would be different claims requiring an outcome model.</p>
+<div class="blog-table-scroll" role="region" tabindex="0" aria-label="Residual state entropy and information gain for four observation choices, measured in bits">
+  <table>
+    <thead><tr><th scope="col">Information available</th><th scope="col">Residual state entropy</th><th scope="col">Gain</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">No new observation</th><td>3.0000</td><td>0.0000</td></tr>
+      <tr><th scope="row">Perfect observation of one condition</th><td>2.0000</td><td>1.0000</td></tr>
+      <tr><th scope="row">Perfect observations of two conditions</th><td>1.0000</td><td>2.0000</td></tr>
+      <tr><th scope="row">90 percent accurate symmetric report of <var>O</var></th><td>2.4690</td><td>0.5310</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>All entries use the same state variables, horizon, and fair independent prior. Changing those assumptions requires recomputation. Coarsening the categories or discarding an awkward condition can lower a reported entropy without learning anything. Such a number is not a comparable improvement.</p>
+
+<h2 id="what-an-estimate-should-retain">What should an actual estimate retain?</h2>
+<p>An estimate should identify the variable meanings and time points, possible values, available evidence, probability sources, dependencies, and excluded conditions. Observation models need their accuracy and availability time. A statement such as “three bits remain” should travel with that information.</p>
+<p>If data do not justify probabilities, retain the possible scenarios, constraints, and support for their inclusion. Report what has been examined and where a plan is vulnerable. A count of successful unweighted scenarios is not automatically a success probability. Robust decision making supplies methods for examining strategies across plausible futures without requiring one trusted forecast.<sup><a href="#ref-rand" role="doc-noteref" aria-label="Reference 3">3</a></sup></p>
+<p>The report should also distinguish uncertainty about the full state from uncertainty relevant to the required answer. Several possible states may all support the same next action. Learning which of those states holds could remove entropy without improving the decision. Information has decision value through the choices it enables.<sup><a href="#ref-value-of-information" role="doc-noteref" aria-label="Reference 2">2</a></sup></p>
+
+<h2 id="calculation-and-decision-record">Put the calculation beside the decision record</h2>
+<p>For this teaching case, <code>assessed_conditions</code> would retain the three variables, their time points, the eight-state scope, and the stipulated prior. The <code>established_finding</code> could report the calculated expected gain of 0.5310 bits for the specified noisy observation. It should not report that an operating plan or an approval has thereby been established.</p>
+<p>Decision Lab’s linked shipment example evaluates arrangements and preserves their supporting report. The calculations here are a separate illustrative probability layer, not a claim that the current application produces calibrated entropy estimates. A practical extension would need reviewed variable meanings, probabilities, observation models, and an explicit connection to the operating decision.</p>
+<p>Before obtaining an observation, finish this sentence: “We expect to learn about <code>assessed_conditions</code> from this check, by this time, with this reliability. If its result differs, which action could change?” The last question leads from information gain to the value of the plan.</p>
+<p>Companion articles: <a href="{{ '/blog/why-plans-are-not-enough/' | relativeUrl(page.url) }}"><em>Why Plans Are Not Enough</em></a> distinguishes completeness, feasibility, preference, and human acceptance. <a href="{{ '/blog/a-better-plan-can-leave-us-just-as-uncertain/' | relativeUrl(page.url) }}"><em>A Better Plan Can Leave Us Just as Uncertain</em></a> compares information gain with changes in operating value, exposure, and admissibility.</p>
+
+<footer class="blog-references" aria-labelledby="sources-and-scope">
+  <details class="disclosure">
+    <summary><h2 class="disclosure-label" id="sources-and-scope">Sources and scope</h2></summary>
+    <ol>
+      <li id="ref-shannon" role="doc-endnote">Claude E. Shannon (1948), <a href="https://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf"><em>A Mathematical Theory of Communication</em></a>, <em>Bell System Technical Journal</em> 27, 379–423 and 623–656, especially section 6. The numerical scenarios and observation model in this article are stipulated teaching examples derived from those definitions.</li>
+      <li id="ref-value-of-information" role="doc-endnote">David L. Poole and Alan K. Mackworth (2023), <a href="https://artint.info/3e/html/ArtInt3e.Ch12.S4.html"><em>Artificial Intelligence: Foundations of Computational Agents</em>, third edition, section 12.4, “The Value of Information and Control.”</a></li>
+      <li id="ref-rand" role="doc-endnote">RAND, <a href="https://www.rand.org/pubs/tools/TL320/tool/robust-decision-making.html"><em>Robust Decision Making</em></a>.</li>
+    </ol>
+  </details>
+</footer>

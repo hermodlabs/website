@@ -1,0 +1,465 @@
+{
+  "domains": [
+    {
+      "key": "service-and-experience",
+      "label": "Service and experience operations",
+      "url": "/use-cases/service-and-experience/",
+      "title": "An experience to deliver. Decisions that support it.",
+      "description": "Explore hospitality, venue and gifting decisions: keep restaurant services staffed, assess a promotion push and deliver gift kits that recipients can use.",
+      "coverImage": "/assets/use-cases/service-and-experience.svg",
+      "coverAlt": "A restaurant service, venue outreach and a gift-kit handoff connect through the people and arrangements that support each experience.",
+      "coverWidth": 960,
+      "coverHeight": 720
+    },
+    {
+      "key": "supply-chain",
+      "label": "Supply chain and fulfillment",
+      "url": "/use-cases/supply-chain/",
+      "title": "A delivery promise. Decisions along the way.",
+      "description": "Explore the decisions behind fulfilling an order: shipment timing, complete cost, readiness records and the requirements that must hold before a team commits.",
+      "coverImage": "/assets/use-cases/supply-chain.svg",
+      "coverAlt": "An order, warehouse and freight route connect to a receiving location with a delivery clock.",
+      "coverWidth": 960,
+      "coverHeight": 720
+    }
+  ],
+  "scenarios": [
+    {
+      "key": "restaurant-roster-repair",
+      "domainKey": "service-and-experience",
+      "label": "Restaurant roster repair",
+      "url": "/use-cases/hospitality/restaurant-roster-repair/",
+      "title": "A cook called out. The rest of the roster still has to work.",
+      "description": "Follow Elena from a missing Saturday cook to complete staffing alternatives, then see how an explicit priority changes which repair is preferred.",
+      "contextTitle": "Dinner is booked. The roster is already published.",
+      "context": "On Friday morning, Elena learns that a cook cannot work Saturday dinner. Kitchen coverage, employee availability and a labor expense boundary still apply. Reassigning someone can affect another service. Elena needs a complete repair she can discuss with the team, not just a name for the empty shift.",
+      "contextVisible": true,
+      "scope": "Elena, the restaurant, employees, pay rates and roster are fictional. This dedicated SDK-powered worked example checks four supplied complete repairs for one location and the remaining recorded services in one week. It does not generate every possible roster. Earlier hours and adjacent work inform declared limits; these are example policies, not a claim of employment-law compliance. Staff agreement, actual work and external roster publication remain separate from calculation. The report interface is a custom example, not an installed Marketplace workflow.",
+      "sources": [
+        {
+          "label": "Worked example, model and verification",
+          "url": "/assets/use-cases/restaurant-roster-repair/README.md",
+          "description": "First-party source and scope for the dedicated restaurant example and its retained Decision Lab calculations."
+        },
+        {
+          "label": "Google for Developers: Workforce Scheduling",
+          "url": "https://developers.google.com/optimization/service/scheduling/workforce_scheduling",
+          "description": "Primary technical context distinguishing predefined-shift assignment from shift generation."
+        }
+      ],
+      "coverImage": "/assets/use-cases/restaurant-roster-repair/cover.svg",
+      "coverAlt": "A missing cook in a published roster connects to complete repair alternatives, coverage and labor expense.",
+      "coverWidth": 960,
+      "coverHeight": 720,
+      "readingPathsTitle": "First establish what works. Then decide what to prefer.",
+      "readingNote": "The first article examines complete repairs and a change in availability. The second holds the staffing facts fixed and compares two explicit priorities.",
+      "readingPaths": [
+        {
+          "key": "/use-cases/hospitality/restaurant-roster-repair/keep-dinner-covered/",
+          "label": "Establish which repairs work"
+        },
+        {
+          "key": "/use-cases/hospitality/restaurant-roster-repair/choose-a-roster-repair/",
+          "label": "Choose among workable repairs"
+        }
+      ],
+      "patternMap": [
+        {
+          "label": "Problem family",
+          "text": "Allocate limited qualified people across time while preserving the required coverage of the remaining services.",
+          "url": "/articles/the-arrangement-problem-in-human-decisions/",
+          "linkText": "Explore complete arrangements."
+        },
+        {
+          "label": "Decision pattern",
+          "text": "Repair a published staffing commitment by comparing complete feasible alternatives, then select a repair under an explicit priority.",
+          "url": "/articles/pattern-languages-for-human-decisions/",
+          "linkText": "See how approaches are reused."
+        },
+        {
+          "label": "Supporting reasoning",
+          "text": "The commitment assessment checks four complete roster repairs for coverage, qualifications, availability, working limits and expense. A separate explicit priority orders the feasible repairs; its conclusion remains scoped to the supplied candidates.",
+          "url": "/articles/from-arrangements-to-assessments/",
+          "linkText": "See what each assessment establishes."
+        },
+        {
+          "label": "Implementation",
+          "text": "Hermod’s dedicated restaurant app definitions use Complete a Commitment. The custom example supplies the recorded roster and four complete repairs; Decision Lab calculates their findings through the SDK. People confirm and communicate the chosen changes."
+        }
+      ],
+      "guideInclude": "body/restaurant-roster-example.html",
+      "classification": {
+        "settingKeys": [
+          "restaurant"
+        ],
+        "problemFamilyKey": "staff-allocation",
+        "assessments": [
+          {
+            "key": "commitment",
+            "status": "implemented",
+            "exampleUrl": "/use-cases/hospitality/restaurant-roster-repair/keep-dinner-covered/",
+            "scope": "A dedicated SDK example checks four supplied complete roster repairs. A second article compares explicit priorities among feasible repairs."
+          }
+        ]
+      },
+      "relatedCases": [
+        {
+          "scenarioKey": "street-team-deployment",
+          "relationship": {
+            "kind": "problem-family",
+            "key": "staff-allocation"
+          },
+          "articleUrl": "/use-cases/nightlife/street-team-deployment/review-tonights-promotion/",
+          "title": "Allocate people between service and outreach.",
+          "description": "Alex faces the same staff-allocation family: people sent outside are unavailable for floor coverage. His venue has different roles, conditions and financial questions."
+        },
+        {
+          "scenarioKey": "shipment-readiness",
+          "relationship": {
+            "kind": "assessment-pattern",
+            "key": "commitment"
+          },
+          "articleUrl": "/use-cases/supply-chain/shipment-readiness/compare-shipment-options/",
+          "title": "Protect a delivery promise as the booking window closes.",
+          "description": "The shipment case also assesses complete operating arrangements. A carrier cutoff changes which plan works, just as shortened availability changes which roster repair works."
+        }
+      ]
+    },
+    {
+      "key": "street-team-deployment",
+      "domainKey": "service-and-experience",
+      "label": "Street-team deployment",
+      "url": "/use-cases/nightlife/street-team-deployment/",
+      "title": "A quiet room. A promotion decision before the window closes.",
+      "description": "Follow three connected decisions: choose a supportable promotion, revisit it when staffing changes, and agree what to learn before funding a future push.",
+      "contextTitle": "More guests would help. Another push still needs a reason.",
+      "context": "Alex manages a fictional gentlemen’s club. The room is quiet, a nearby event is about to finish, and he can authorize up to $400 of additional promotion spending. Five staff are available and four must remain inside. The owner wants a better financial result; the floor needs sufficient coverage; promoters want people on outreach and fair credit. Alex needs a supportable commitment now, a current basis if conditions change, and evidence before repeating the expense.",
+      "scope": "Alex, the venue, records and decisions are fictional. The current 1.5.0 calculation workflow checks operating requirements, presents a Decision summary and compares conditional guest thresholds. Alex makes the management choice and obtains specific authorization through the venue’s operating process; calculation does not record or perform those actions. The tool does not predict attendance or establish a measured marketing effect. Deployment charges are fixed for this version; staffing and same-day timing are simplified. Older saved reviews retain their original choice, authorization and review history. Technical sources and historical examples are linked below. Venue-specific roles, source authentication, external authority and a real learning study require their own review.",
+      "sources": [
+        {
+          "label": "Worked-case sources, verification and assumptions",
+          "url": "/assets/use-cases/street-team-deployment/README.md",
+          "description": "First-party explanation of the working review, its assumptions, retained verification and historical design reference."
+        },
+        {
+          "label": "Complete promotion workflow source",
+          "url": "https://github.com/hermodlabs/sample_code/tree/main/nightlife/street-team-deployment",
+          "description": "Optional implementation detail: complete model, workflow, reviewed CLI creation sequence and worked examples."
+        },
+        {
+          "label": "NIST: randomized block designs",
+          "url": "https://www.itl.nist.gov/div898/handbook/pri/section3/pri332.htm",
+          "description": "Primary guidance for handling nuisance factors in a planned comparison."
+        }
+      ],
+      "appUrl": "https://hermodlabs.github.io/review_lab/",
+      "coverImage": "/assets/use-cases/street-team-deployment/cover.svg",
+      "coverAlt": "A promotion crew and a staffed venue connect to a spending limit and a customer-arrival clock.",
+      "coverWidth": 960,
+      "coverHeight": 720,
+      "guideInclude": "body/street-team-review-reference.html",
+      "classification": {
+        "settingKeys": [
+          "nightlife-venue"
+        ],
+        "problemFamilyKey": "staff-allocation",
+        "assessments": [
+          {
+            "key": "commitment",
+            "status": "implemented",
+            "exampleUrl": "/use-cases/nightlife/street-team-deployment/review-tonights-promotion/",
+            "scope": "The operating app checks complete deployments against the recorded conditions. Conditional guest thresholds are separate arithmetic; the model predicts no promotion response."
+          }
+        ],
+        "learning": {
+          "status": "proposed",
+          "articleUrl": "/use-cases/nightlife/street-team-deployment/learn-which-promotion-works/",
+          "scope": "The team agrees a study brief. Experimental design, study value and measured promotion effect remain unestablished."
+        }
+      },
+      "relatedCases": [
+        {
+          "scenarioKey": "restaurant-roster-repair",
+          "relationship": {
+            "kind": "problem-family",
+            "key": "staff-allocation"
+          },
+          "articleUrl": "/use-cases/hospitality/restaurant-roster-repair/keep-dinner-covered/",
+          "title": "Repair a roster without uncovering another service.",
+          "description": "Elena’s restaurant uses the same staff-allocation problem family. Moving a cook can close one gap while creating another, so each candidate covers the whole remaining roster."
+        },
+        {
+          "scenarioKey": "shipment-readiness",
+          "relationship": {
+            "kind": "learning-contrast",
+            "key": "information-value"
+          },
+          "articleUrl": "/use-cases/supply-chain/shipment-readiness/is-a-registration-check-worth-buying/",
+          "title": "See an implemented assessment of information value.",
+          "description": "Alex’s learning article specifies a proposed study brief. The Python shipment example goes further: supplied estimates, check costs and feasible responses support a calculated comparison with acting now."
+        }
+      ]
+    },
+    {
+      "key": "gift-kit-readiness",
+      "domainKey": "service-and-experience",
+      "label": "Gift-kit readiness",
+      "url": "/use-cases/gifting/gift-kit-readiness/",
+      "title": "Gift-kit handoffs. A plan worth checking.",
+      "description": "Follow Leah from a failed recipient journey to a supported correction. Explore a separate rehearsal-policy adaptation, then screen campaigns and continue one operating review through the CLI and SDK.",
+      "contextTitle": "120 kits. A day to get the decision right.",
+      "context": "Leah must hand over 120 usable gift kits within a one-day preparation window. Marketing needs the recipient journey to work; production needs a complete correction it can perform; finance expects justified expense. Scoped observations, bookings, permissions and a fresh actual rehearsal support different parts of that promise.",
+      "scope": "Leah, campaign owners, observations, quotes and operating records are fictional. The current Marketplace calculation workflows use release 2.3.0; the article supplies its own one-day case rather than inheriting the starter’s shorter deadline. The separate CLI/SDK continuation uses a version-4 calculation workflow around its unchanged version-3 operating app. Its policy is cost-first and plans ten rehearsal minutes under a five-minute minimum. Retained version-2 teaching cases keep their original timings, and the authoring exercise introduces a ten-minute minimum in a separate release. These versions are not interchangeable. Source authentication, authority and physical production remain company responsibilities.",
+      "sources": [
+        {
+          "label": "Worked-example inputs and verification",
+          "url": "/assets/use-cases/gift-kit-readiness/README.md",
+          "description": "First-party explanation of the current gifting example, its assumptions and retained calculation artifacts."
+        }
+      ],
+      "appUrl": "https://hermodlabs.github.io/review_lab/",
+      "coverImage": "/assets/use-cases/gift-kit-readiness/cover.svg",
+      "coverAlt": "Two complete gift-kit corrections: $300 internal work or $400 external work with confirmation. Both include fresh rehearsal and handoff.",
+      "coverWidth": 960,
+      "coverHeight": 720,
+      "contextVisible": true,
+      "readingPathsTitle": "Choose a path through the case.",
+      "readingNote": "Start with the business decision. Explore the separate authoring exercise, or follow the operating review through the CLI and SDK.",
+      "readingPaths": [
+        {
+          "key": "/use-cases/gifting/gift-kit-readiness/compare-correction-options/",
+          "label": "Make the initial decision"
+        },
+        {
+          "key": "/use-cases/gifting/gift-kit-readiness/strengthen-the-rehearsal/",
+          "label": "Adapt the rules · Separate exercise"
+        },
+        {
+          "key": "/use-cases/gifting/gift-kit-readiness/screen-campaigns/",
+          "label": "Repeat the review · CLI"
+        },
+        {
+          "key": "/use-cases/gifting/gift-kit-readiness/resolve-a-handoff-exception/",
+          "label": "Continue one case · SDK"
+        }
+      ],
+      "branchNote": "The current opening, CLI and SDK profiles plan ten rehearsal minutes under a five-minute minimum. The authoring exercise adapts the older teaching release to require a ten-minute minimum. That separate policy branch does not replace the operating profile; the older walkthrough retains its original timings.",
+      "patternMap": [
+        {
+          "label": "Problem family",
+          "text": "Restore a defective deliverable while protecting the recipient experience, original quantity, deadline and expense boundary.",
+          "url": "/articles/systems-engineering-for-human-decisions/",
+          "linkText": "Connect the parts to their purpose."
+        },
+        {
+          "label": "Decision pattern",
+          "text": "Establish what scoped observations support, compare complete corrections, then make and maintain a corrective commitment with a fresh check of the actual output.",
+          "url": "/articles/pattern-languages-for-human-decisions/",
+          "linkText": "See how approaches are reused."
+        },
+        {
+          "label": "Supporting reasoning",
+          "text": "An evidence assessment establishes what the scoped observations support. Its fault finding feeds a commitment assessment of complete corrections; the stated priority compares arrangements that meet the requirements.",
+          "url": "/articles/from-arrangements-to-assessments/",
+          "linkText": "See what each assessment establishes."
+        },
+        {
+          "label": "Implementation",
+          "text": "Hermod’s evidence and planning apps supply connected calculations within an authored workflow. Current calculation releases pass complete findings into the next step without acceptance clicks. Separate operating records and business decisions remain necessary; the pinned CLI and SDK examples retain their own reviewed execution contract."
+        }
+      ],
+      "referenceTitle": "The retained priority comparison.",
+      "referenceNote": "The earlier teaching release plans five rehearsal minutes and compares cost first with earliest handoff. Its original figures and review controls are preserved separately from the current ten-minute planned sequences.",
+      "classification": {
+        "settingKeys": [
+          "campaign-fulfillment"
+        ],
+        "problemFamilyKey": "corrective-fulfillment",
+        "assessments": [
+          {
+            "key": "evidence",
+            "status": "implemented",
+            "exampleUrl": "/use-cases/gifting/gift-kit-readiness/compare-correction-options/#observations",
+            "scope": "The worked workflow assesses which faults the supplied scoped observations establish."
+          },
+          {
+            "key": "commitment",
+            "status": "implemented",
+            "exampleUrl": "/use-cases/gifting/gift-kit-readiness/compare-correction-options/#complete-options",
+            "scope": "Planning checks the supplied complete corrections against the fault finding, time, expense, resources and scoped records."
+          }
+        ]
+      },
+      "relatedCases": [
+        {
+          "scenarioKey": "shipment-readiness",
+          "relationship": {
+            "kind": "assessment-pattern",
+            "key": "commitment"
+          },
+          "articleUrl": "/use-cases/supply-chain/shipment-readiness/compare-shipment-options/",
+          "title": "See when a freight premium protects the promise.",
+          "description": "Maya also compares complete arrangements under a cost-first policy. The business records differ, but a closing booking window can justify extra expense just as a tight handoff window can."
+        },
+        {
+          "scenarioKey": "restaurant-roster-repair",
+          "relationship": {
+            "kind": "assessment-pattern",
+            "key": "commitment"
+          },
+          "articleUrl": "/use-cases/hospitality/restaurant-roster-repair/keep-dinner-covered/",
+          "title": "Check the whole repair before choosing a replacement.",
+          "description": "A replacement cook and a correction quote each solve only part of a decision. Elena’s example shows commitment assessment checking the full roster and the consequences of a reassignment."
+        }
+      ]
+    },
+    {
+      "key": "shipment-readiness",
+      "domainKey": "supply-chain",
+      "label": "Shipment readiness",
+      "url": "/use-cases/supply-chain/shipment-readiness/",
+      "title": "Shipment decisions. A changing situation.",
+      "description": "See how Maya justifies a shipment proposal as booking windows change. Follow the operating review across the CLI and SDK, or see how Python machine learning connects to Decision Lab.",
+      "contextTitle": "A launch to protect. Several needs to balance.",
+      "context": "Maya must deliver all 100 units by Friday at 5 p.m. Finance wants complete expense controlled; launch wants the promise protected; operations needs capacity, current records and authority. The review compares complete arrangements under the agreed priority. Maya and the responsible owners still choose, authorize, reserve and deliver.",
+      "referenceNote": "The priority and spending-limit tutorial retains its original two-app example. The registration guides use a separate fictional case: the current 1.4.0 workflow calculates connected evidence, planning and verification findings, while the archived authoring guide retains its own release and review behavior.",
+      "referenceTitle": "Supporting assessments and separate exercises.",
+      "scope": "Maya, her team and the shipment inputs are fictional teaching examples. The source documents provide business context and a collect-supplier ship-point setup reference; they do not establish all of the requirements used in the articles. Each article explains its own assumptions and scope.",
+      "sources": [
+        {
+          "label": "Walmart’s Supplier Checklist, page 11",
+          "url": "https://corporate.walmart.com/content/dam/corporate/documents/suppliers/apply-to-be-a-supplier/supplier-checklist.pdf#page=11",
+          "description": "Primary requirements reference for collect-supplier ship-point setup."
+        },
+        {
+          "label": "8th & Walton’s Walmart launch case",
+          "url": "https://www.8thandwalton.com/blog/case-study-walmart-launch",
+          "description": "Secondary context on a launch affected by onboarding and transportation readiness."
+        }
+      ],
+      "appUrl": "https://hermodlabs.github.io/review_lab/",
+      "coverImage": "/assets/use-cases/shipment-readiness/cover.svg",
+      "coverAlt": "A shipment plan connects readiness evidence, timing and a reviewed decision.",
+      "coverWidth": 960,
+      "coverHeight": 720,
+      "contextVisible": true,
+      "readingPathsTitle": "Choose a path through the case.",
+      "readingNote": "Start with the business decision. Follow the operating review through the CLI and SDK, or explore separate examples of authoring and Python machine learning integration.",
+      "readingPaths": [
+        {
+          "key": "/use-cases/supply-chain/shipment-readiness/compare-shipment-options/",
+          "label": "Make the initial decision"
+        },
+        {
+          "key": "/use-cases/supply-chain/shipment-readiness/add-consolidated-freight/",
+          "label": "Adapt the rules · Separate exercise"
+        },
+        {
+          "key": "/use-cases/supply-chain/shipment-readiness/review-changed-orders/",
+          "label": "Repeat the review · CLI"
+        },
+        {
+          "key": "/use-cases/supply-chain/shipment-readiness/resolve-a-shipment-exception/",
+          "label": "Continue one case · SDK"
+        },
+        {
+          "key": "/use-cases/supply-chain/shipment-readiness/is-a-registration-check-worth-buying/",
+          "label": "Integrate a model · Python SDK"
+        }
+      ],
+      "branchNote": "The authoring exercise branches from the earlier arrival-first review. The opening, CLI and SDK operating stories use a separately authored cost-first profile. The Python machine learning integration and supporting verification guides examine separate fictional registration cases; each identifies its own app definitions and assumptions.",
+      "patternMap": [
+        {
+          "label": "Problem family",
+          "text": "Fulfil a dated shipment commitment while timing, capacity, readiness, expense and permissions constrain the available arrangements.",
+          "url": "/articles/the-arrangement-problem-in-human-decisions/",
+          "linkText": "Explore complete arrangements."
+        },
+        {
+          "label": "Decision pattern",
+          "text": "Establish which complete arrangements meet the requirements, compare those that pass under an agreed priority, then make and maintain a bounded shipment commitment.",
+          "url": "/articles/pattern-languages-for-human-decisions/",
+          "linkText": "See how approaches are reused."
+        },
+        {
+          "label": "Supporting reasoning",
+          "text": "The operating commitment assessment checks complete shipment candidates and applies the declared priority. Separate evidence and information-value assessments answer registration and verification questions in the supporting examples.",
+          "url": "/articles/from-arrangements-to-assessments/",
+          "linkText": "See what each assessment establishes."
+        },
+        {
+          "label": "Implementation",
+          "text": "Hermod’s configured operating app and workflow organize the current review. Company CLI and SDK integrations reuse that implementation while supplying their own imports, queues and interface. Separate reference workflows retain their own models."
+        }
+      ],
+      "classification": {
+        "settingKeys": [
+          "retail-supplier"
+        ],
+        "problemFamilyKey": "dated-fulfillment",
+        "assessments": [
+          {
+            "key": "commitment",
+            "status": "implemented",
+            "exampleUrl": "/use-cases/supply-chain/shipment-readiness/compare-shipment-options/",
+            "scope": "The operating story checks complete shipment arrangements and applies the cost-first policy as booking time changes."
+          },
+          {
+            "key": "evidence",
+            "status": "implemented",
+            "exampleUrl": "/use-cases/supply-chain/shipment-readiness/case-worker/#current-question-view",
+            "scope": "A separate registration example interprets the supplied record basis before planning and verification."
+          },
+          {
+            "key": "information-value",
+            "status": "implemented",
+            "exampleUrl": "/use-cases/supply-chain/shipment-readiness/is-a-registration-check-worth-buying/",
+            "scope": "The Python integration compares a check with report-dependent responses against the best supported outside option under explicit estimates, fees and timing."
+          }
+        ]
+      },
+      "relatedCases": [
+        {
+          "scenarioKey": "gift-kit-readiness",
+          "relationship": {
+            "kind": "assessment-pattern",
+            "key": "commitment"
+          },
+          "articleUrl": "/use-cases/gifting/gift-kit-readiness/compare-correction-options/",
+          "title": "Follow evidence into a complete gift-kit correction.",
+          "description": "Leah’s workflow establishes the supported faults, then checks complete corrections. Its commitment assessment shares the need for a whole workable response while preserving different domain meanings."
+        },
+        {
+          "scenarioKey": "restaurant-roster-repair",
+          "relationship": {
+            "kind": "assessment-pattern",
+            "key": "commitment"
+          },
+          "articleUrl": "/use-cases/hospitality/restaurant-roster-repair/choose-a-roster-repair/",
+          "title": "Separate a workable repair from the preferred repair.",
+          "description": "Elena has two feasible roster repairs and two explicit priorities. Her case shows how the same assessment pattern can support different preferences when the business changes what should come first."
+        }
+      ]
+    }
+  ],
+  "domainAliases": [
+    {
+      "url": "/use-cases/hospitality/",
+      "title": "Service and experience operations",
+      "redirectTo": "/use-cases/service-and-experience/#restaurant-roster-repair",
+      "canonicalTo": "/use-cases/service-and-experience/"
+    },
+    {
+      "url": "/use-cases/nightlife/",
+      "title": "Service and experience operations",
+      "redirectTo": "/use-cases/service-and-experience/#street-team-deployment",
+      "canonicalTo": "/use-cases/service-and-experience/"
+    },
+    {
+      "url": "/use-cases/gifting/",
+      "title": "Service and experience operations",
+      "redirectTo": "/use-cases/service-and-experience/#gift-kit-readiness",
+      "canonicalTo": "/use-cases/service-and-experience/"
+    }
+  ]
+}

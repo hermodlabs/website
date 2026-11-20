@@ -1,0 +1,26 @@
+---
+layout: layouts/base.html
+---
+{% for topic in library.tags %}
+{% if topic.key == topicKey %}
+<section class="page-hero wrap library-hero">
+  {% set breadcrumbItems = [{ label: 'All articles', url: '/articles/' }, { label: topic.label }] %}
+  {% include "body/breadcrumb.html" %}
+  <p class="eyebrow">Topic</p>
+  <h1>{{ topic.label | escape }}</h1>
+  <p class="lead">{{ description | escape }}</p>
+  <div class="actions">
+    <a class="text-link" href="{{ '/articles/' | relativeUrl(page.url) }}">Browse all article categories <span aria-hidden="true">→</span></a>
+  {% if topic.productUrl %}
+    <a class="text-link" href="{{ topic.productUrl | relativeUrl(page.url) }}">Explore {{ topic.productLabel | escape }} <span aria-hidden="true">→</span></a>
+  {% endif %}
+  </div>
+</section>
+
+<section class="section wrap" aria-labelledby="topic-articles-heading">
+  <h2 id="topic-articles-heading">Articles about {{ topic.label | escape }}</h2>
+{% set listedArticles = articles | byTag(topic.key) | newestFirst %}
+  {% include "body/article-cards.html" %}
+</section>
+{% endif %}
+{% endfor %}

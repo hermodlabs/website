@@ -1,0 +1,13 @@
+{% set listedBlogPosts = collections.blogPosts | recentBlogPosts %}
+{% if listedBlogPosts.length %}
+<section class="section surface recent-blog-posts" aria-labelledby="recent-blog-posts-heading">
+  <div class="wrap">
+    <div class="section-heading">
+      <div><p class="eyebrow">From the blog</p><h2 id="recent-blog-posts-heading">Recent posts</h2></div>
+      <p>Working ideas on questions, decisions, and how we reason about them.</p>
+    </div>
+{% include "body/blog-editorial.html" %}
+    <div class="section-links"><a class="text-link" href="{{ '/blog/' | relativeUrl(page.url) }}">All blog posts <span aria-hidden="true">→</span></a></div>
+  </div>
+</section>
+{% endif %}

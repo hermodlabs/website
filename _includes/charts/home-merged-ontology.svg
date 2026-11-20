@@ -1,0 +1,84 @@
+{% set ontologyPrepare = homeExample.tasks[0] %}
+{% set ontologyReview = homeExample.tasks[1] %}
+<svg class="home-ontology-diagram" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" width="1000" height="650" role="img" aria-labelledby="home-ontology-title home-ontology-description" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#252525">
+  <title id="home-ontology-title">The merged ontology for this reviewed-report example</title>
+  <desc id="home-ontology-description">The Reviewed report objective requires both {{ ontologyPrepare.label | escape }} and {{ ontologyReview.label | escape }}, and must finish by the end of day {{ homeExample.deadlineDay }}. Preparation takes {{ ontologyPrepare.finishDay - ontologyPrepare.startDay + 1 }} consecutive calendar days; review takes {{ ontologyReview.finishDay - ontologyReview.startDay + 1 }} consecutive calendar day. Review starts after preparation finishes and requires the still-pending check {{ homeExample.pendingCheck | escape }}. {{ ontologyPrepare.label | escape }} uses resource {{ ontologyPrepare.owner | escape }}, available on days {{ ontologyPrepare.startDay }}–{{ ontologyPrepare.finishDay }}. {{ ontologyReview.label | escape }} uses resource {{ ontologyReview.owner | escape }}, available on day {{ ontologyReview.startDay }}. Both resources are available during shift work. The schedule spans days {{ homeExample.startDay }}–{{ homeExample.endDay }} and orders that same work shift. Both step instances run during shift work. Resource-use and shift-use relations join the work and requirements module to the people and calendar module; the step instances are shared, not duplicated.</desc>
+  <defs>
+    <marker id="home-ontology-work-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1 L7 4 L1 7" fill="none" stroke="#264e70" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></marker>
+    <marker id="home-ontology-calendar-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1 L7 4 L1 7" fill="none" stroke="#264e70" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></marker>
+    <marker id="home-ontology-check-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1 L7 4 L1 7" fill="none" stroke="#aa3542" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></marker>
+  </defs>
+  <rect width="1000" height="650" fill="#fff" />
+  <line x1="500" y1="20" x2="500" y2="630" stroke="#e5e8ec" />
+  <text x="44" y="45" font-size="17" font-weight="600" fill="#252525">Work and requirements</text>
+  <text x="550" y="45" font-size="17" font-weight="600" fill="#252525">People and calendar</text>
+
+  <g id="home-ontology-objective" data-node="reviewed-report" data-kind="objective" data-module="work-and-requirements" data-deadline-day="{{ homeExample.deadlineDay }}" data-requires="all">
+    <rect x="130" y="65" width="240" height="105" fill="#f7f9fb" stroke="#cfd5dc" stroke-width="1.5" />
+    <text x="250" y="89" text-anchor="middle" font-size="14" fill="#555">Objective</text>
+    <text x="250" y="115" text-anchor="middle" font-size="16">Reviewed report</text>
+    <text x="250" y="139" text-anchor="middle" font-size="14" fill="#555">Requires both steps</text>
+    <text x="250" y="160" text-anchor="middle" font-size="14" fill="#555">Due end of day {{ homeExample.deadlineDay }}</text>
+  </g>
+  <g id="home-ontology-prepare" data-node="{{ ontologyPrepare.id | escape }}" data-kind="step" data-module="work-and-requirements" data-duration-days="{{ ontologyPrepare.finishDay - ontologyPrepare.startDay + 1 }}" data-duration-unit="consecutive-calendar-days">
+    <rect x="130" y="195" width="240" height="80" rx="4" fill="#e8eef4" stroke="#264e70" stroke-width="1.5" />
+    <text x="250" y="215" text-anchor="middle" font-size="14" fill="#555">Step</text>
+    <text x="250" y="240" text-anchor="middle" font-size="15">{{ ontologyPrepare.label | escape }}</text>
+    <text x="250" y="262" text-anchor="middle" font-size="14" fill="#555">Takes {{ ontologyPrepare.finishDay - ontologyPrepare.startDay + 1 }} consecutive calendar days</text>
+  </g>
+  <g id="home-ontology-review" data-node="{{ ontologyReview.id | escape }}" data-kind="step" data-module="work-and-requirements" data-duration-days="{{ ontologyReview.finishDay - ontologyReview.startDay + 1 }}" data-duration-unit="consecutive-calendar-days">
+    <rect x="130" y="350" width="240" height="80" rx="4" fill="#e5f1f0" stroke="#287d80" stroke-width="1.5" />
+    <text x="250" y="370" text-anchor="middle" font-size="14" fill="#555">Step</text>
+    <text x="250" y="395" text-anchor="middle" font-size="15">{{ ontologyReview.label | escape }}</text>
+    <text x="250" y="417" text-anchor="middle" font-size="14" fill="#555">Takes {{ ontologyReview.finishDay - ontologyReview.startDay + 1 }} consecutive calendar day</text>
+  </g>
+  <g id="home-ontology-check" data-node="independence-check" data-kind="check" data-module="work-and-requirements" data-status="pending">
+    <rect x="100" y="510" width="300" height="90" rx="4" fill="#fff" stroke="#aa3542" stroke-width="1.5" stroke-dasharray="6 5" />
+    <text x="250" y="539" text-anchor="middle" font-size="14" fill="#aa3542">Check · Pending</text>
+    <text x="250" y="569" text-anchor="middle" font-size="16">{{ homeExample.pendingCheck | escape }}</text>
+  </g>
+
+  <g id="home-ontology-schedule" data-node="schedule" data-kind="schedule" data-module="people-and-calendar" data-start-day="{{ homeExample.startDay }}" data-finish-day="{{ homeExample.endDay }}" data-orders-shift="work">
+    <rect x="590" y="65" width="330" height="105" fill="#f7f9fb" stroke="#cfd5dc" stroke-width="1.5" />
+    <text x="755" y="94" text-anchor="middle" font-size="16">Schedule</text>
+    <text x="755" y="122" text-anchor="middle">Days {{ homeExample.startDay }}–{{ homeExample.endDay }}</text>
+    <text x="755" y="150" text-anchor="middle" font-size="14" fill="#555">Ordered shift: work</text>
+  </g>
+  <g id="home-ontology-noah" data-node="{{ ontologyPrepare.owner | lower | escape }}" data-kind="resource" data-module="people-and-calendar" data-start-day="{{ ontologyPrepare.startDay }}" data-finish-day="{{ ontologyPrepare.finishDay }}" data-available-during="work">
+    <ellipse cx="755" cy="235" rx="130" ry="48" fill="#fff" stroke="#264e70" stroke-width="1.5" />
+    <text x="755" y="220" text-anchor="middle">Resource · {{ ontologyPrepare.owner | escape }}</text>
+    <text x="755" y="243" text-anchor="middle" font-size="14" fill="#555">Available days {{ ontologyPrepare.startDay }}–{{ ontologyPrepare.finishDay }}</text>
+    <text x="755" y="265" text-anchor="middle" font-size="14" fill="#555">During shift work</text>
+  </g>
+  <g id="home-ontology-maya" data-node="{{ ontologyReview.owner | lower | escape }}" data-kind="resource" data-module="people-and-calendar" data-start-day="{{ ontologyReview.startDay }}" data-finish-day="{{ ontologyReview.finishDay }}" data-available-during="work">
+    <ellipse cx="755" cy="390" rx="130" ry="48" fill="#fff" stroke="#264e70" stroke-width="1.5" />
+    <text x="755" y="375" text-anchor="middle">Resource · {{ ontologyReview.owner | escape }}</text>
+    <text x="755" y="398" text-anchor="middle" font-size="14" fill="#555">Available day {{ ontologyReview.startDay }}</text>
+    <text x="755" y="420" text-anchor="middle" font-size="14" fill="#555">During shift work</text>
+  </g>
+  <g id="home-ontology-shift" data-node="work-shift" data-kind="shift" data-module="people-and-calendar" data-shift="work">
+    <rect x="625" y="505" width="260" height="80" fill="#f7f9fb" stroke="#cfd5dc" stroke-width="1.5" />
+    <text x="755" y="534" text-anchor="middle" font-size="14" fill="#555">Shift</text>
+    <text x="755" y="562" text-anchor="middle" font-size="16">work</text>
+  </g>
+
+  <path data-from="reviewed-report" data-to="{{ ontologyPrepare.id | escape }}" data-relation="requires all of" d="M250 170 V189" fill="none" stroke="#264e70" stroke-width="1.5" marker-end="url(#home-ontology-work-arrow)" />
+  <text x="266" y="186" font-size="14" fill="#555">requires</text>
+  <path data-from="reviewed-report" data-to="{{ ontologyReview.id | escape }}" data-relation="requires all of" d="M130 118 H50 V390 H124" fill="none" stroke="#264e70" stroke-width="1.5" marker-end="url(#home-ontology-work-arrow)" />
+  <text x="64" y="324" font-size="14" fill="#555">requires</text>
+  <path data-from="{{ ontologyReview.id | escape }}" data-to="{{ ontologyPrepare.id | escape }}" data-relation="starts after" data-pattern="&lt;step&gt; starts after &lt;step&gt; finishes." d="M250 350 V281" fill="none" stroke="#264e70" stroke-width="1.5" marker-end="url(#home-ontology-work-arrow)" />
+  <text x="266" y="318" font-size="14" fill="#555">starts after finish of</text>
+  <path data-from="{{ ontologyReview.id | escape }}" data-to="independence-check" data-relation="requires check" d="M250 430 V504" fill="none" stroke="#aa3542" stroke-width="1.5" stroke-dasharray="6 5" marker-end="url(#home-ontology-check-arrow)" />
+  <text x="266" y="493" font-size="14" fill="#555">requires check</text>
+
+  <path data-from="{{ ontologyPrepare.id | escape }}" data-to="{{ ontologyPrepare.owner | lower | escape }}" data-relation="uses resource" data-bridge="uses-resource" data-pattern="&lt;step&gt; uses resource &lt;resource&gt;." d="M370 235 H619" fill="none" stroke="#264e70" stroke-width="1.5" marker-end="url(#home-ontology-calendar-arrow)" />
+  <text x="495" y="221" text-anchor="middle" font-size="14" fill="#555">uses resource</text>
+  <path data-from="{{ ontologyReview.id | escape }}" data-to="{{ ontologyReview.owner | lower | escape }}" data-relation="uses resource" data-bridge="uses-resource" data-pattern="&lt;step&gt; uses resource &lt;resource&gt;." d="M370 390 H619" fill="none" stroke="#264e70" stroke-width="1.5" marker-end="url(#home-ontology-calendar-arrow)" />
+  <text x="495" y="376" text-anchor="middle" font-size="14" fill="#555">uses resource</text>
+  <path data-from="{{ ontologyPrepare.id | escape }}" data-to="work-shift" data-relation="runs during shift" data-bridge="runs-during-shift" data-pattern="&lt;step&gt; runs during shift &lt;shift&gt;." d="M330 195 V180 H910 V528 H891" fill="none" stroke="#264e70" stroke-width="1.5" marker-end="url(#home-ontology-calendar-arrow)" />
+  <text x="495" y="198" text-anchor="middle" font-size="14" fill="#555">runs during shift</text>
+  <path data-from="{{ ontologyReview.id | escape }}" data-to="work-shift" data-relation="runs during shift" data-bridge="runs-during-shift" data-pattern="&lt;step&gt; runs during shift &lt;shift&gt;." d="M330 430 V468 H755 V499" fill="none" stroke="#264e70" stroke-width="1.5" marker-end="url(#home-ontology-calendar-arrow)" />
+  <text x="495" y="456" text-anchor="middle" font-size="14" fill="#555">runs during shift</text>
+  <path data-from="schedule" data-to="work-shift" data-relation="orders shifts" d="M920 118 H950 V615 H755 V591" fill="none" stroke="#264e70" stroke-width="1.5" marker-end="url(#home-ontology-calendar-arrow)" />
+  <text x="850" y="605" text-anchor="middle" font-size="14" fill="#555">orders shifts</text>
+</svg>

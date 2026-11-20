@@ -1,0 +1,80 @@
+{
+  "create": {
+    "file": "src/useGiftJourney.js",
+    "start": 38,
+    "end": 38,
+    "label": "Create the SDK inside the React client",
+    "language": "javascript",
+    "url": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/source/gifting/gift-kit-handoff-desk/src/useGiftJourney.js.txt",
+    "sourceKind": "implemented-working-copy",
+    "sourceSHA256": "96406c0ad16d6d76cbd0569de506f689805674b97047840ae6baeddba736e7d0",
+    "sourceManifestUrl": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/manifest.json",
+    "blob": "7033b79d6aa09562300f2071dee80c6aa8761dd4",
+    "code": "    const executor = createBrowserExecutor(), lab = createDecisionLab({ executor });"
+  },
+  "answer": {
+    "file": "src/reviewJourney.js",
+    "start": 144,
+    "end": 145,
+    "label": "Apply supplied answers and invalidate dependent findings",
+    "language": "javascript",
+    "url": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/source/gifting/gift-kit-handoff-desk/src/reviewJourney.js.txt",
+    "sourceKind": "implemented-working-copy",
+    "sourceSHA256": "2818d897eadca17a3e274883b14c2303fbbe82b8b227ef6c06d2fde7ab3fd795",
+    "sourceManifestUrl": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/manifest.json",
+    "blob": "1ba0dc9df7856978ff57ad7b2132e996c73ddb91",
+    "code": "    if (!equal(next.answers[questionId].value, value)) next = lab.workflows.answer({ run: next, questionId,\n      value, status: isCalculationJourney(next) ? WORKFLOW_ANSWER_STATUS.SUPPLIED : WORKFLOW_ANSWER_STATUS.AWAITING_REVIEW, at: atTime(at) });"
+  },
+  "evaluate": {
+    "file": "src/reviewJourney.js",
+    "start": 182,
+    "end": 182,
+    "label": "Calculate the authored evidence-to-planning dependency chain",
+    "language": "javascript",
+    "url": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/source/gifting/gift-kit-handoff-desk/src/reviewJourney.js.txt",
+    "sourceKind": "implemented-working-copy",
+    "sourceSHA256": "2818d897eadca17a3e274883b14c2303fbbe82b8b227ef6c06d2fde7ab3fd795",
+    "sourceManifestUrl": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/manifest.json",
+    "blob": "1ba0dc9df7856978ff57ad7b2132e996c73ddb91",
+    "code": "  return lab.workflows.solve({ run: current, ...(execution ? { execution } : {}), createdAt: atTime(at) });"
+  },
+  "assessment": {
+    "file": "src/JourneyReports.jsx",
+    "start": 28,
+    "end": 32,
+    "label": "Render the portable SDK summary with exact-option inspection",
+    "language": "jsx",
+    "url": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/source/gifting/gift-kit-handoff-desk/src/JourneyReports.jsx.txt",
+    "sourceKind": "implemented-working-copy",
+    "sourceSHA256": "a8c1eec0a62a387837ac0f572d9b3af55a22c9007af9ad09bbf720dd1f54ed39",
+    "sourceManifestUrl": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/manifest.json",
+    "blob": "15c662df1713cc9317b940444b91c0dcbe3e1557",
+    "code": "    {active === 'summary' && <DecisionSummaryView\n      summary={output.decisionSummary}\n      onOpenReport={openReport}\n      onViewProcess={output.decisionProcess ? () => setActive('process') : undefined}\n    />}"
+  },
+  "questions": {
+    "file": "src/reviewJourney.js",
+    "start": 227,
+    "end": 229,
+    "label": "Require a complete assessment and feasible witness before recording a choice",
+    "language": "javascript",
+    "url": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/source/gifting/gift-kit-handoff-desk/src/reviewJourney.js.txt",
+    "sourceKind": "implemented-working-copy",
+    "sourceSHA256": "2818d897eadca17a3e274883b14c2303fbbe82b8b227ef6c06d2fde7ab3fd795",
+    "sourceManifestUrl": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/manifest.json",
+    "blob": "1ba0dc9df7856978ff57ad7b2132e996c73ddb91",
+    "code": "  const assessment = commitment.resolveCommitmentAssessment(view.currentRun.assessment, view.currentRun.report);\n  requireValue(commitment.isAssessmentComplete(assessment) && commitment.hasFeasibleWitness(assessment),\n    'No complete feasible response is available. Record escalation or revise the commitment.');"
+  },
+  "export": {
+    "file": "src/useGiftJourney.js",
+    "start": 114,
+    "end": 114,
+    "label": "Serialize the native continuation with its sources and history",
+    "language": "javascript",
+    "url": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/source/gifting/gift-kit-handoff-desk/src/useGiftJourney.js.txt",
+    "sourceKind": "implemented-working-copy",
+    "sourceSHA256": "96406c0ad16d6d76cbd0569de506f689805674b97047840ae6baeddba736e7d0",
+    "sourceManifestUrl": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/manifest.json",
+    "blob": "7033b79d6aa09562300f2071dee80c6aa8761dd4",
+    "code": "    const text = labRef.current.sources.renderJSON(current, { maxBytes: 50000000 });"
+  }
+}

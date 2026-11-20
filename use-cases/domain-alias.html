@@ -1,0 +1,13 @@
+---
+layout: layouts/redirect.html
+preserveHash: true
+pagination:
+  data: useCases.domainAliases
+  size: 1
+  alias: domainAlias
+permalink: "{{ domainAlias.url }}index.html"
+eleventyComputed:
+  title: "{{ domainAlias.title }}"
+  redirectTo: "{{ domainAlias.redirectTo }}"
+  canonicalTo: "{{ domainAlias.canonicalTo }}"
+---

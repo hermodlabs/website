@@ -1,0 +1,71 @@
+{
+  "buildVersion": "8a144fc026a059678d25",
+  "verificationUrl": "/assets/use-cases/shipment-readiness/input-report-navigation/verification.json",
+  "liveBuildVerificationUrl": "/assets/use-cases/shipment-readiness/input-report-navigation/live-build-verification.json",
+  "figures": {
+    "cost": {
+      "width": 1136,
+      "height": 599,
+      "sha256": "6fb9644ff2a89a9c39023b49734f89b3b23f06db0322db65deeaef5a72c1c13a",
+      "image": "/assets/use-cases/shipment-readiness/input-report-navigation/tutorial-cost-first.png",
+      "alt": "The original cost-first shipment case in the deployed Decision tab, with Supporting reports available and Direct preferred at $4,000.",
+      "caption": "Cost first: Direct remains preferred at $4,000. Decision and Supporting reports navigate the same frozen assessment; both original arrangements still pass."
+    },
+    "arrival": {
+      "width": 1136,
+      "height": 599,
+      "sha256": "e0a57e447f3f537b4d65ffe4229c642d40f90ccdbc464f33bb92eddbea081d60",
+      "image": "/assets/use-cases/shipment-readiness/input-report-navigation/tutorial-arrival-first.png",
+      "alt": "The original arrival-first shipment case with Decision and Supporting reports tabs; Backup is preferred at $6,000 while Direct still passes.",
+      "caption": "Arrival first: Backup remains preferred at $6,000. The original rules, complete case and earlier-arrival priority are unchanged."
+    },
+    "budget": {
+      "width": 1136,
+      "height": 599,
+      "sha256": "779e3513673228eb7da946841c2fc72d8b2699d990b370112bf7d54f2f34da92",
+      "image": "/assets/use-cases/shipment-readiness/input-report-navigation/tutorial-budget.png",
+      "alt": "Decision and Supporting reports tabs above the original tighter-budget case: Direct is preferred and Backup fails the $5,000 expense limit.",
+      "caption": "The retained $5,000-limit case in the current navigation. Direct remains preferred; Backup fails the unchanged expense requirement."
+    },
+    "unconfirmed": {
+      "width": 1136,
+      "height": 646,
+      "sha256": "5eb3ad6dd37c5009af9712406035a595892fbfef3d3ad0ec4c26d4b7ea127377",
+      "image": "/assets/use-cases/shipment-readiness/input-report-navigation/tutorial-no-slot.png",
+      "alt": "The frozen arrival-first authoring app without a current slot record: Direct is preferred, Consolidated fails its slot requirement and Backup exceeds the expense limit.",
+      "caption": "The separate arrival-first tutorial without a slot confirmation. The current navigation preserves Direct as the preferred supported arrangement."
+    },
+    "confirmed": {
+      "width": 1136,
+      "height": 646,
+      "sha256": "20ccb7d7ea97cd3adb50f7e26f6e108e0971b590454a0f8300e3fe1ed6eba164",
+      "image": "/assets/use-cases/shipment-readiness/input-report-navigation/tutorial-valid-slot.png",
+      "alt": "The same frozen arrival-first app with the valid scoped slot record: Consolidated is preferred at $5,000; Direct still passes and Backup remains over budget.",
+      "caption": "The same tutorial app with its valid scoped slot record. Consolidated becomes preferred under the unchanged arrival-first priority."
+    },
+    "excel": {
+      "width": 1086,
+      "height": 198,
+      "sha256": "df111ef89e39fb668971b2a88c62ebbf0a2ca185f100763c94c6a42ee27d666a",
+      "image": "/assets/use-cases/shipment-readiness/input-report-navigation/standalone-excel-tools.png",
+      "alt": "Work with Excel expanded inside the shipment app’s Inputs pane, exposing workbook download, upload and Start another case controls.",
+      "caption": "In Inputs, expand Work with Excel to download, upload or start a fresh case. Workbook changes still require a preview before application."
+    },
+    "workflowNavigation": {
+      "width": 1136,
+      "height": 660,
+      "sha256": "00cdaa0f80ee16c1f6cdc47d575dca5c27341fcf5faad7fa2dde698c2118db39",
+      "image": "/assets/use-cases/shipment-readiness/input-report-navigation/workflow-independent-panels.png",
+      "alt": "The current 1.1.0 shipment workflow shows Forms and Arrangements input subtabs on the left, while Next action and the Backup arrangement remain in the independent Reports pane on the right.",
+      "caption": "The same reviewed 1.1.0 case with independent navigation: edit the arrangement inputs while keeping Next action visible. Tabs change what you inspect; they do not record answers, accept findings or choose a shipment."
+    },
+    "supportingReports": {
+      "width": 1136,
+      "height": 691,
+      "sha256": "65c187b4472cb778be5fcd96433d48393e22f66f40a3d2a001e6f3be9a1c57c1",
+      "image": "/assets/use-cases/shipment-readiness/input-report-navigation/tutorial-supporting-reports.png",
+      "alt": "The original cost-first shipment assessment’s Supporting reports tab exposes the full report hierarchy, with Decision available to return to the compact finding.",
+      "caption": "Supporting reports retains the complete assessment hierarchy. Returning to Decision preserves the open arrangement details."
+    }
+  }
+}

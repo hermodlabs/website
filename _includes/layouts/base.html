@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+{% include "head/analytics.html" %}
+  <title>{{ title }} | Hermod Labs</title>
+  <meta name="description" content="{{ description }}">
+{% if (articleNumber or isBlogPost or isUseCaseArticle) and author %}  <meta name="author" content="{{ author | escape }}">
+{% endif %}
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <meta property="og:type" content="{% if articleNumber or isBlogPost or isUseCaseArticle %}article{% else %}website{% endif %}">
+  <meta property="og:site_name" content="Hermod Labs">
+  <meta property="og:title" content="{{ title }} | Hermod Labs">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:image" content="{{ site.url }}/assets/hermod-wordmark.jpeg">
+{% if isBlogPost %}  <meta property="article:published_time" content="{{ date | blogDateISO }}T00:00:00Z">
+{% if updated %}  <meta property="article:modified_time" content="{{ updated | blogDateISO }}T00:00:00Z">
+{% endif %}
+{% if author %}  <meta property="article:author" content="{{ author | escape }}">
+{% endif %}{% endif %}
+  <meta name="theme-color" content="#7850c2">
+  <link rel="icon" type="image/jpeg" href="{{ '/assets/hermod-symbol.jpeg' | relativeUrl(page.url) }}">
+  {% include "head/style.html" %}
+{% if blogStyles %}  <link rel="stylesheet" href="{{ '/assets/blog.css' | relativeUrl(page.url) }}">
+{% endif %}
+{% if articleNumber or isBlogPost or isUseCaseArticle %}  <link rel="stylesheet" href="{{ '/assets/reader.css' | relativeUrl(page.url) }}">
+{% endif %}
+{% for stylesheet in pageStyles %}  <link rel="stylesheet" href="{{ stylesheet | relativeUrl(page.url) }}">
+{% endfor %}
+{% if isCampaignLanding %}  <link rel="stylesheet" href="{{ '/assets/landing/landing.css' | relativeUrl(page.url) }}">
+{% endif %}
+  <script src="{{ '/assets/feature-flags.js' | relativeUrl(page.url) }}" defer></script>
+  <script src="{{ '/assets/site.js' | relativeUrl(page.url) }}" defer></script>
+  <script src="{{ '/assets/form-request.js' | relativeUrl(page.url) }}" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  {% if isCampaignLanding %}{% include "body/landing-header.html" %}{% else %}{% include "body/header.html" %}{% endif %}
+  <main id="main" tabindex="-1">{{ content | safe }}</main>
+  {% if isCampaignLanding %}{% include "body/landing-footer.html" %}{% else %}{% include "body/footer.html" %}{% endif %}
+</body>
+</html>

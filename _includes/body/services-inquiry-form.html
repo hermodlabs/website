@@ -1,0 +1,17 @@
+<form class="beta-form" id="services-inquiry-form" action="https://forminit.com/f/{{ site.forminitFormId }}" method="POST" data-forminit-request data-pending-message="Sending your services inquiry…" data-success-url="{{ '/' | relativeUrl(page.url) }}" accept-charset="UTF-8" aria-labelledby="services-inquiry-heading">
+  <p class="form-intro">Name, email, and a description of your project or learning question are required.</p>
+  <input type="hidden" name="fi-text-request" value="Decision Lab professional services inquiry">
+  <input type="hidden" name="fi-text-subject" value="Decision Lab — Professional services inquiry">
+  <input type="hidden" name="_gotcha" value="">
+  <fieldset>
+    <legend class="visually-hidden">Your professional services inquiry</legend>
+    <div class="form-field"><label for="services-name">Name <span>(required)</span></label><input id="services-name" type="text" name="fi-sender-fullName" autocomplete="name" maxlength="160" required></div>
+    <div class="form-field"><label for="services-email">Email <span>(required)</span></label><input id="services-email" type="email" name="fi-sender-email" autocomplete="email" maxlength="254" required></div>
+    <div class="form-field"><label for="services-company">Organization <span>(optional)</span></label><input id="services-company" type="text" name="fi-sender-company" autocomplete="organization" maxlength="200"></div>
+    <div class="form-field"><label for="services-message">What would you like to build or learn? <span>(required)</span></label><textarea id="services-message" name="fi-text-message" rows="5" maxlength="5000" placeholder="Tell us about the project you want to build, the question you want to test, or where you need help." required></textarea></div>
+    <div class="form-field"><label for="services-outcomes">What business outcome are you working toward? <span>(optional)</span></label><textarea id="services-outcomes" name="fi-text-outcomes" rows="3" maxlength="3000" placeholder="Describe the business goal, what success would look like, and any constraints or timeline."></textarea></div>
+  </fieldset>
+  <button class="button" type="submit">Send services inquiry <span aria-hidden="true">↗</span></button>
+  <p class="form-status" id="services-inquiry-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></p>
+  <p class="form-note">We’ll follow up by email to discuss your needs and next steps. Questions? <a href="mailto:{{ site.email }}">Contact Hermod Labs</a>.</p>
+</form>

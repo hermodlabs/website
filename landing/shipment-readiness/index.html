@@ -1,65 +1,30 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { window.dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', 'G-V2474V50XP');
-</script>
-
-
-  <title>Is one day earlier worth $2,000? | Hermod Labs</title>
-  <meta name="description" content="Two shipment options meet the requirements. One costs less; the other arrives earlier. Follow Maya’s decision in a practical Decision Lab use case.">
-
-  <link rel="canonical" href="https://hermodlabs.com/landing/shipment-readiness/">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Hermod Labs">
-  <meta property="og:title" content="Is one day earlier worth $2,000? | Hermod Labs">
-  <meta property="og:description" content="Two shipment options meet the requirements. One costs less; the other arrives earlier. Follow Maya’s decision in a practical Decision Lab use case.">
-  <meta property="og:url" content="https://hermodlabs.com/landing/shipment-readiness/">
-  <meta property="og:image" content="https://hermodlabs.com/assets/hermod-wordmark.jpeg">
-
-  <meta name="theme-color" content="#7850c2">
-  <link rel="icon" type="image/jpeg" href="../../assets/hermod-symbol.jpeg">
-  <link rel="stylesheet" href="../../assets/site.css">
-
-
-
-  <link rel="stylesheet" href="../../assets/landing/shipment-readiness/page.css">
-
-  <link rel="stylesheet" href="../../assets/landing/landing.css">
-
-  <script src="../../assets/feature-flags.js" defer></script>
-  <script src="../../assets/site.js" defer></script>
-  <script src="../../assets/form-request.js" defer></script>
-</head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="landing-header wrap">
-  <a class="brand" href="../../index.html" aria-label="Hermod Labs home"><img src="../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
-  <a class="text-link" href="../../use-cases/supply-chain/shipment-readiness/compare-shipment-options/index.html">Read the case <span aria-hidden="true">→</span></a>
-</header>
-
-  <main id="main" tabindex="-1"><div class="shipment-landing">
+---
+layout: layouts/landing.html
+title: Is one day earlier worth $2,000?
+description: Two shipment options meet the requirements. One costs less; the other arrives earlier. Follow Maya’s decision in a practical Decision Lab use case.
+landingPrimaryLabel: Read the case
+landingSeriesLabel: Explore the shipment series
+pageStyles:
+  - /assets/landing/shipment-readiness/page.css
+permalink: /landing/shipment-readiness/index.html
+eleventyComputed:
+  landingPrimaryUrl: "{{ shipmentCase.url }}"
+  landingSeriesUrl: "{{ shipmentCase.scenarioUrl }}"
+---
+<div class="shipment-landing">
   <section class="sl-hero wrap" aria-labelledby="shipment-heading">
     <div class="sl-hero-copy">
       <p class="eyebrow">Shipment readiness / A Decision Lab use case</p>
       <h1 id="shipment-heading">Is one day earlier<br><em>worth $2,000?</em></h1>
       <p class="sl-lead">Maya can deliver on Friday for $4,000, or a day earlier for $6,000. Both options meet the recorded requirements. The launch team wants speed. Finance wants a reason to spend more.</p>
       <p class="sl-question">Which shipment should she recommend?</p>
-      <a class="button sl-primary-cta" href="../../use-cases/supply-chain/shipment-readiness/compare-shipment-options/index.html">Follow Maya’s shipment decision <span aria-hidden="true">→</span></a>
+      <a class="button sl-primary-cta" href="{{ shipmentCase.url | relativeUrl(page.url) }}">Follow Maya’s shipment decision <span aria-hidden="true">→</span></a>
       <p class="sl-reading-note">A practical business case, with working examples.</p>
     </div>
     <figure class="sl-hero-figure">
       <picture>
-        <source media="(max-width: 650px)" srcset="../../assets/use-cases/shipment-readiness/shipment-tradeoff-mobile.svg" width="520" height="880">
-        <img src="../../assets/use-cases/shipment-readiness/shipment-tradeoff.svg" width="960" height="640" alt="Two shipment arrangements meet the requirements: Direct costs $4,000 and arrives Friday; Backup costs $6,000 and arrives Thursday. One costs less; the other arrives earlier." fetchpriority="high" decoding="async">
+        <source media="(max-width: 650px)" srcset="{{ shipmentVariants.tradeoff.mobileImage | relativeUrl(page.url) }}" width="{{ shipmentVariants.tradeoff.mobileWidth }}" height="{{ shipmentVariants.tradeoff.mobileHeight }}">
+        <img src="{{ shipmentVariants.tradeoff.image | relativeUrl(page.url) }}" width="{{ shipmentVariants.tradeoff.width }}" height="{{ shipmentVariants.tradeoff.height }}" alt="{{ shipmentVariants.tradeoff.alt | escape }}" fetchpriority="high" decoding="async">
       </picture>
       <figcaption>One costs less. The other arrives a day earlier.</figcaption>
     </figure>
@@ -77,18 +42,18 @@
         <li><span aria-hidden="true">02</span><span>See what a tighter budget rules out.</span></li>
         <li><span aria-hidden="true">03</span><span>Give the team a recommendation it can examine.</span></li>
       </ul>
-      <a class="text-link" href="../../use-cases/supply-chain/shipment-readiness/compare-shipment-options/index.html">Read the shipment case <span aria-hidden="true">→</span></a>
+      <a class="text-link" href="{{ shipmentCase.url | relativeUrl(page.url) }}">Read the shipment case <span aria-hidden="true">→</span></a>
     </div>
   </section>
 
   <section class="sl-next" aria-labelledby="next-heading">
     <div class="wrap sl-next-grid">
-      <figure><img src="../../assets/use-cases/shipment-readiness/consolidation/cover.svg" width="960" height="720" alt="A third freight option adds a loading-slot confirmation requirement." loading="lazy" decoding="async"></figure>
+      <figure><img src="{{ '/assets/use-cases/shipment-readiness/consolidation/cover.svg' | relativeUrl(page.url) }}" width="960" height="720" alt="A third freight option adds a loading-slot confirmation requirement." loading="lazy" decoding="async"></figure>
       <div>
         <p class="eyebrow">The story continues</p>
         <h2 id="next-heading">Then a third<br><em>quote arrives.</em></h2>
         <p>Consolidated freight offers a Thursday-evening arrival for $5,000—but it needs a confirmed loading slot. Follow the team as it adapts the review and tests the new requirement.</p>
-        <a class="text-link" href="../../use-cases/supply-chain/shipment-readiness/add-consolidated-freight/index.html">See how the review changes <span aria-hidden="true">→</span></a>
+        <a class="text-link" href="{{ shipmentCase.followupUrl | relativeUrl(page.url) }}">See how the review changes <span aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
@@ -97,8 +62,8 @@
     <div><p class="eyebrow">Follow the decision</p><h2 id="continue-heading">What would<br><em>you recommend?</em></h2></div>
     <div>
       <p>Start with Maya’s two options. Follow what changes when the budget or the available service changes.</p>
-      <a class="button" href="../../use-cases/supply-chain/shipment-readiness/compare-shipment-options/index.html">Read Maya’s shipment case <span aria-hidden="true">→</span></a>
-      <a class="text-link sl-series-link" href="../../use-cases/supply-chain/shipment-readiness/index.html">Explore all shipment articles <span aria-hidden="true">→</span></a>
+      <a class="button" href="{{ shipmentCase.url | relativeUrl(page.url) }}">Read Maya’s shipment case <span aria-hidden="true">→</span></a>
+      <a class="text-link sl-series-link" href="{{ shipmentCase.scenarioUrl | relativeUrl(page.url) }}">Explore all shipment articles <span aria-hidden="true">→</span></a>
     </div>
   </section>
 
@@ -106,21 +71,8 @@
     <p>Maya and the shipment are fictional. The articles explain the business references, assumptions and limits. A passing review supports a proposal; the responsible people still approve and arrange the shipment.</p>
     <details class="disclosure">
       <summary><span class="disclosure-label">Sources and scope</span></summary>
-      <p><a href="https://corporate.walmart.com/content/dam/corporate/documents/suppliers/apply-to-be-a-supplier/supplier-checklist.pdf#page=11">Walmart’s Supplier Checklist, page 11</a> provides the primary ship-point setup reference for <strong>collect suppliers</strong>. <a href="https://www.8thandwalton.com/blog/case-study-walmart-launch">8th &amp; Walton’s launch case</a> provides secondary business context.</p>
-      <p>The people, quotes, dates and records are teaching inputs. The examples do not reproduce the source company’s shipment. <a href="../../use-cases/supply-chain/shipment-readiness/compare-shipment-options/index.html#source">Read the full sources and scope</a>.</p>
+      <p><a href="{{ shipmentCase.requirementsUrl }}">Walmart’s Supplier Checklist, page 11</a> provides the primary ship-point setup reference for <strong>collect suppliers</strong>. <a href="{{ shipmentCase.contextUrl }}">8th &amp; Walton’s launch case</a> provides secondary business context.</p>
+      <p>The people, quotes, dates and records are teaching inputs. The examples do not reproduce the source company’s shipment. <a href="{{ (shipmentCase.url + '#source') | relativeUrl(page.url) }}">Read the full sources and scope</a>.</p>
     </details>
   </footer>
 </div>
-
-</main>
-  <footer class="landing-footer wrap">
-  <div>
-    <p>Created by <a href="../../about/index.html">Hermod Labs</a></p>
-    <p class="landing-byline">Jonathan Nacionales, Founder</p>
-  </div>
-  <a class="text-link" href="../../use-cases/supply-chain/shipment-readiness/index.html">Explore the shipment series <span aria-hidden="true">→</span></a>
-  <p class="landing-copyright">© 2026 Hermod Labs</p>
-</footer>
-
-</body>
-</html>

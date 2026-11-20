@@ -1,0 +1,80 @@
+{
+  "manifest": {
+    "file": "fixtures/journey-v3/campaigns.json",
+    "start": 11,
+    "end": 15,
+    "label": "Identify the campaign, owner and source snapshot",
+    "language": "json",
+    "url": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/source/gifting/gift-kit-preflight/fixtures/journey-v3/campaigns.json.txt",
+    "sourceKind": "implemented-working-copy",
+    "sourceSHA256": "c7ae501f6e1b97066e86d2fd14945a8f6248f374f405dca742138b24ff71f421",
+    "sourceManifestUrl": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/manifest.json",
+    "blob": "7362d0d198166abeda8e18d39c29689a41c432d2",
+    "code": "      \"id\": \"GIFT-321\",\n      \"owner\": \"Jordan Reed\",\n      \"case\": \"cases/urgent-window.json\",\n      \"screeningCase\": \"screening/urgent-window.json\"\n    },"
+  },
+  "mapping": {
+    "file": "src/journeyPreflight.mjs",
+    "start": 67,
+    "end": 70,
+    "label": "Bind the current campaign while preserving the authored planning rules",
+    "language": "javascript",
+    "url": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/source/gifting/gift-kit-preflight/src/journeyPreflight.mjs.txt",
+    "sourceKind": "implemented-working-copy",
+    "sourceSHA256": "cb8b161c2a98585d5ed2888feddf7c9a369a9dc08d8f8af8db4b2522c1ac44eb",
+    "sourceManifestUrl": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/manifest.json",
+    "blob": "2d9659d67fa191ecf7ec96087c70abafa53ac6ad",
+    "code": "      const derived = lab.compositions.generate({ template,\n        config: { ...authorConfig, workedExample: businessCase.gifting }, createdAt: pinnedApp.app.createdAt });\n      const generatedModel = derived.apps.planning.app.model;\n      if (hashing.canonicalHash(generatedModel.module) !== config.binding.moduleHash) throw new Error('The input mapping generated a different planning rule basis.');"
+  },
+  "screen": {
+    "file": "src/journeyPreflight.mjs",
+    "start": 104,
+    "end": 104,
+    "label": "Calculate evidence and planning through the public CLI",
+    "language": "javascript",
+    "url": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/source/gifting/gift-kit-preflight/src/journeyPreflight.mjs.txt",
+    "sourceKind": "implemented-working-copy",
+    "sourceSHA256": "cb8b161c2a98585d5ed2888feddf7c9a369a9dc08d8f8af8db4b2522c1ac44eb",
+    "sourceManifestUrl": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/manifest.json",
+    "blob": "2d9659d67fa191ecf7ec96087c70abafa53ac6ad",
+    "code": "        await command(['workflow', 'solve', '--run', currentPath, '--created-at', at, '--timeout-ms', '30000']);"
+  },
+  "continuation": {
+    "file": "src/reviewJourney.js",
+    "start": 90,
+    "end": 91,
+    "label": "Start a portable calculation workflow with its original case",
+    "language": "javascript",
+    "url": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/source/gifting/gift-kit-preflight/src/reviewJourney.js.txt",
+    "sourceKind": "implemented-working-copy",
+    "sourceSHA256": "2818d897eadca17a3e274883b14c2303fbbe82b8b227ef6c06d2fde7ab3fd795",
+    "sourceManifestUrl": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/manifest.json",
+    "blob": "1ba0dc9df7856978ff57ad7b2132e996c73ddb91",
+    "code": "  const run = lab.workflows.start({ definition: extended, case: currentCase,\n    ...(createdAt ? { createdAt } : {}), ...(runId ? { runId } : {}) });"
+  },
+  "next": {
+    "file": "src/reviewJourney.js",
+    "start": 197,
+    "end": 198,
+    "label": "Materialize findings and calculation states for the queue",
+    "language": "javascript",
+    "url": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/source/gifting/gift-kit-preflight/src/reviewJourney.js.txt",
+    "sourceKind": "implemented-working-copy",
+    "sourceSHA256": "2818d897eadca17a3e274883b14c2303fbbe82b8b227ef6c06d2fde7ab3fd795",
+    "sourceManifestUrl": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/manifest.json",
+    "blob": "1ba0dc9df7856978ff57ad7b2132e996c73ddb91",
+    "code": "  const output = lab.workflows.output({ run: current });\n  const planningStep = output.steps.find(row => row.id === settings(current).planningStepId);"
+  },
+  "compare": {
+    "file": "continue-review.mjs",
+    "start": 70,
+    "end": 70,
+    "label": "Compare current and earlier planning findings through the SDK",
+    "language": "javascript",
+    "url": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/source/gifting/gift-kit-preflight/continue-review.mjs.txt",
+    "sourceKind": "implemented-working-copy",
+    "sourceSHA256": "8a9740a05a8008568fb312d91be29d163735026331f9a4539011cbc6b321331c",
+    "sourceManifestUrl": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/manifest.json",
+    "blob": "ed747f726281945bd27f33342421da2fd2d18960",
+    "code": "    await writeFile(join(output, 'changes.json'), lab.sources.renderJSON(lab.reports.compareFindings({ before: view.previousRun, after: view.currentRun })));"
+  }
+}

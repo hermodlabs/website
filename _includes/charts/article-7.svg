@@ -1,0 +1,38 @@
+<svg class="gantt-chart" data-figure="paired" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 748" width="760" height="748" role="img" aria-labelledby="article-7-gantt-title article-7-gantt-desc" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#252525">
+<title id="article-7-gantt-title">Changed availability cancels one assignment and changes another</title>
+<desc id="article-7-gantt-desc">In the relationship map, Tomas’s availability is now 11:30 am to 12:30 pm. His grey assignment link to Review C is labelled cancelled and crossed out. Priya is assigned to Review C and to the customer meeting, which moves to 2 to 3 pm. The schedule compares three equal one-hour reviews of C: Tomas from 11 am to noon under the earlier plan; Tomas from 11:30 am to 12:30 pm after the update, an unapproved candidate finishing 30 minutes late; and Priya from 11 am to noon in the confirmed revised plan. The noon deadline is unchanged.</desc>
+<defs><marker id="article-7-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#264e70"/></marker><marker id="article-7-arrow-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#9ba3ad"/></marker></defs>
+<g data-panel="revision">
+<g data-view="relationships">
+<text x="24" y="34" font-size="17" text-anchor="start" fill="#252525" font-weight="600">Relationships</text>
+<g data-node="tomas" data-kind="person"><ellipse cx="190" cy="105" rx="158" ry="38" fill="white" stroke="#a9681d" stroke-width="1.5"/><text font-size="16" text-anchor="middle" fill="#252525"><tspan x="190" y="100.94">Tomas</tspan><tspan x="190" y="119.94">Now available 11:30–12:30</tspan></text></g>
+<g data-node="priya" data-kind="person"><ellipse cx="610" cy="105" rx="80" ry="26" fill="white" stroke="#264e70" stroke-width="1.5"/><text font-size="16" text-anchor="middle" fill="#252525"><tspan x="610" y="110.44">Priya</tspan></text></g>
+<g data-node="review" data-kind="task"><rect x="100" y="275" width="200" height="64" fill="#e5f1f0" stroke="#287d80" stroke-width="1.5" rx="5"/><text font-size="16" text-anchor="middle" fill="#252525"><tspan x="200.0" y="312.44">Review C</tspan></text></g>
+<g data-node="meeting" data-kind="task"><rect x="500" y="265" width="220" height="84" fill="#fbefdf" stroke="#a9681d" stroke-width="1.5" rx="5"/><text font-size="16" text-anchor="middle" fill="#252525"><tspan x="610.0" y="302.94">Customer meeting</tspan><tspan x="610.0" y="321.94">Moved to 2–3 pm</tspan></text></g>
+<path data-from="tomas" data-to="review" data-relation="cancelled" d="M 190 143 V 275" fill="none" stroke="#9ba3ad" stroke-width="1.5" marker-end="url(#article-7-arrow-gray)" data-status="cancelled"/><rect x="150.43" y="199" width="79.15" height="21" fill="white"/><text x="190" y="214" font-size="14.5" text-anchor="middle" fill="#aa3542">cancelled</text>
+<path d="M 182 240 L 198 256 M 182 256 L 198 240" stroke="#aa3542" stroke-width="2" fill="none"/>
+<path data-from="priya" data-to="review" data-relation="assigned to" d="M 610 131 V 176 H 255 V 275" fill="none" stroke="#264e70" stroke-width="1.5" marker-end="url(#article-7-arrow)"/><rect x="383.07" y="148" width="93.85" height="21" fill="white"/><text x="430" y="163" font-size="14.5" text-anchor="middle" fill="#252525">assigned to</text>
+<path data-from="priya" data-to="meeting" data-relation="assigned to" d="M 610 131 V 265" fill="none" stroke="#264e70" stroke-width="1.5" marker-end="url(#article-7-arrow)"/><rect x="563.08" y="214" width="93.85" height="21" fill="white"/><text x="610" y="229" font-size="14.5" text-anchor="middle" fill="#252525">assigned to</text>
+</g>
+<line x1="24" y1="390" x2="736" y2="390" stroke="#e5e8ec" stroke-width="1"/>
+<g data-view="schedule">
+<text x="24" y="426" font-size="17" text-anchor="start" fill="#252525" font-weight="600">Schedule</text>
+<line x1="200" y1="488" x2="200" y2="710" stroke="#e5e8ec" stroke-width="1"/><text x="200" y="475" font-size="14" text-anchor="middle" fill="#252525">11 am</text><line x1="370" y1="488" x2="370" y2="710" stroke="#e5e8ec" stroke-width="1"/><text x="370" y="475" font-size="14" text-anchor="middle" fill="#252525">11:30 am</text><line x1="540" y1="488" x2="540" y2="710" stroke="#e5e8ec" stroke-width="1"/><text x="540" y="475" font-size="14" text-anchor="middle" fill="#252525">Noon</text><line x1="710" y1="488" x2="710" y2="710" stroke="#e5e8ec" stroke-width="1"/><text x="710" y="475" font-size="14" text-anchor="middle" fill="#252525">12:30 pm</text>
+<g data-panel="earlier">
+<text x="180" y="531" font-size="14.5" text-anchor="end" fill="#252525">Earlier: Tomas</text>
+<rect data-task="review" data-person="Tomas" data-start="11" data-end="12" data-report="C" x="200" y="504" width="340" height="44" rx="4" fill="#e5f1f0" stroke="#287d80" stroke-width="1.5"/><text x="370.0" y="531.0" font-size="16" text-anchor="middle" fill="#252525">Review C</text>
+</g>
+<g data-panel="updated">
+<text x="180" y="607" font-size="14.5" text-anchor="end" fill="#252525">After update: Tomas</text>
+<rect data-task="review" data-person="Tomas" data-start="11.5" data-end="12.5" data-report="C" data-status="not-approved" data-lateness-minutes="30" x="370" y="580" width="340" height="44" rx="4" fill="#e5f1f0" stroke="#aa3542" stroke-width="1.5"/><text x="540.0" y="607.0" font-size="16" text-anchor="middle" fill="#252525"></text>
+<text x="455" y="607" font-size="15" text-anchor="middle" fill="#252525">Review C</text>
+<text x="625" y="607" font-size="14" text-anchor="middle" fill="#aa3542">30 minutes late</text>
+</g>
+<g data-panel="revised">
+<text x="180" y="683" font-size="14.5" text-anchor="end" fill="#252525">Revised: Priya</text>
+<rect data-task="review" data-person="Priya" data-start="11" data-end="12" data-report="C" data-status="confirmed" x="200" y="656" width="340" height="44" rx="4" fill="#e5f1f0" stroke="#287d80" stroke-width="1.5"/><text x="370.0" y="683.0" font-size="16" text-anchor="middle" fill="#252525">Review C</text>
+</g>
+<line data-deadline="12" x1="540" y1="488" x2="540" y2="710" stroke="#aa3542" stroke-width="1.5" stroke-dasharray="6 5"/>
+</g>
+</g>
+</svg>

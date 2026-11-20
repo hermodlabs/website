@@ -1,0 +1,8 @@
+<footer class="landing-footer wrap">
+  <div>
+    <p>Created by <a href="{{ '/about/' | relativeUrl(page.url) }}">Hermod Labs</a></p>
+    <p class="landing-byline">Jonathan Nacionales, Founder</p>
+  </div>
+  {% if landingSeriesUrl %}<a class="text-link" href="{{ landingSeriesUrl | relativeUrl(page.url) }}">{{ (landingSeriesLabel or 'Explore the full series') | escape }} <span aria-hidden="true">→</span></a>{% endif %}
+  <p class="landing-copyright">© {{ copyrightYear }} Hermod Labs</p>
+</footer>

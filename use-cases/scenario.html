@@ -1,0 +1,96 @@
+---
+layout: layouts/base.html
+navKey: use-cases
+pageStyles:
+  - /assets/use-cases.css
+pagination:
+  data: useCases.scenarios
+  size: 1
+  alias: scenario
+permalink: "{{ scenario.url }}index.html"
+eleventyComputed:
+  title: "{{ scenario.label }}"
+  description: "{{ scenario.description }}"
+---
+{% set domain = useCases.domains | findByKey(scenario.domainKey) %}
+{% set scenarioStories = collections.useCaseArticles | scenarioArticles(scenario.key) %}
+{% set scenarioReferences = collections.useCaseArticles | scenarioArticles(scenario.key, true) %}
+<section class="page-hero wrap page-hero-with-cover catalog-header" aria-labelledby="scenario-heading">
+  <div class="page-hero-copy">
+    {% set breadcrumbItems = [{label: 'Use Cases', url: '/use-cases/'}, {label: domain.label, url: domain.url}, {label: scenario.label}] %}
+    {% include "body/breadcrumb.html" %}
+    <p class="eyebrow">{{ domain.label | escape }} / {{ scenario.label | escape }}</p>
+    <h1 id="scenario-heading">{{ scenario.title | escape }}</h1>
+    <p class="lead">{{ scenario.description | escape }}</p>
+  </div>
+  {% set pageCover = scenario %}
+  {% include "body/page-cover.html" %}
+</section>
+<aside class="wrap use-case-scenario-context" aria-label="The business situation">
+{% if scenario.contextVisible %}
+  <div class="use-case-scenario-context-copy">
+    <h2 id="situation-heading">{{ (scenario.contextTitle or 'The business situation.') | escape }}</h2>
+    <p>{{ scenario.context | escape }}</p>
+  </div>
+{% else %}
+  <details class="disclosure">
+    <summary><span class="disclosure-label">The business situation</span></summary>
+    <div class="use-case-scenario-context-copy">
+      <h2 id="situation-heading">{{ (scenario.contextTitle or 'The business situation.') | escape }}</h2>
+      <p>{{ scenario.context | escape }}</p>
+    </div>
+  </details>
+{% endif %}
+</aside>
+<section class="section wrap use-case-catalog catalog-section" aria-labelledby="scenario-articles-heading">
+  {% if scenario.readingPaths %}<span id="series-path" class="use-case-anchor"></span>{% endif %}
+  <div class="use-case-catalog-heading"><p class="eyebrow">{{ scenario.label | escape }} / Articles</p><h2 id="scenario-articles-heading">{{ (scenario.readingPathsTitle or 'Follow the case.') | escape }}</h2><p>{{ (scenario.readingNote or 'Read in order, or go straight to the decision you want to examine.') | escape }}</p></div>
+  {% if scenario.branchNote %}<p class="use-case-series-branch">{{ scenario.branchNote | escape }}</p>{% endif %}
+  <ol class="use-case-article-list catalog-grid" role="list">
+    {% for entry in scenarioStories %}
+    <li>
+      <article class="catalog-card">
+        <figure class="catalog-card-media"><img src="{{ (entry.data.coverImage or scenario.coverImage) | relativeUrl(page.url) }}" width="{{ entry.data.coverWidth or scenario.coverWidth }}" height="{{ entry.data.coverHeight or scenario.coverHeight }}" alt="{{ (entry.data.coverAlt or scenario.coverAlt) | escape }}" loading="lazy" decoding="async"></figure>
+        <div class="catalog-card-content">
+{% set readingPath = false %}
+{% if scenario.readingPaths %}{% set readingPath = scenario.readingPaths | findByKey(entry.url) %}{% endif %}
+          <p class="eyebrow">{% if readingPath %}{{ readingPath.label | escape }}{% else %}Article {{ loop.index }} / {{ entry.data.roleLabel | escape }}{% endif %}</p>
+          <h3><a href="{{ entry.url | relativeUrl(page.url) }}">{{ entry.data.title | escape }}</a></h3>
+          <p class="catalog-card-description">{{ entry.data.description | escape }}</p>
+        </div>
+      </article>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+{% if scenario.patternMap %}{% include "body/use-case-pattern-map.html" %}{% endif %}
+{% if scenarioReferences.length %}
+<section class="section wrap use-case-supporting catalog-section" aria-labelledby="references-heading">
+  <div class="use-case-catalog-heading"><p class="eyebrow">Supporting references</p><h2 id="references-heading">{{ (scenario.referenceTitle or 'Supporting walkthroughs.') | escape }}</h2>{% if scenario.referenceNote %}<p>{{ scenario.referenceNote | escape }}</p>{% endif %}</div>
+  <div class="use-case-reference-list catalog-grid">
+    {% for entry in scenarioReferences %}
+    <article class="catalog-card catalog-card-text">
+      <div class="catalog-card-content">
+      <p class="eyebrow">{{ entry.data.roleLabel | escape }} reference</p>
+      <h3><a href="{{ entry.url | relativeUrl(page.url) }}">{{ entry.data.title | escape }}</a></h3>
+      <p class="catalog-card-description">{{ entry.data.description | escape }}</p>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+{% if scenario.guideInclude %}{% include scenario.guideInclude %}{% endif %}
+{% set relatedScenario = scenario %}
+{% set relatedInReader = false %}
+{% include "body/related-use-cases.html" %}
+{% if scenario.sources.length %}
+<footer class="wrap use-case-references">
+  <details class="disclosure">
+    <summary><span class="disclosure-label">Sources and scope</span></summary>
+    <p>{{ scenario.scope | escape }}</p>
+    {% for source in scenario.sources %}<p><a href="{{ source.url | relativeUrl(page.url) | escape }}">{{ source.label | escape }}</a>. {{ source.description | escape }}</p>{% endfor %}
+  </details>
+</footer>
+{% endif %}
+<nav class="wrap use-case-catalog-return" aria-label="More scenarios in this domain"><a class="text-link" href="{{ domain.url | relativeUrl(page.url) }}">More in {{ domain.label | lower | escape }} <span aria-hidden="true">→</span></a></nav>

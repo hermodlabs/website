@@ -1,157 +1,41 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+---
+layout: layouts/use-case-article.html
+title: A third shipment option. A new requirement to check.
+description: Consolidated freight could give Maya an earlier arrival within budget. Follow her team as they adapt the shipment review, check its new prerequisite and hand the tested app to colleagues.
+useCaseBrief:
+  stakes: >-
+    Maya's team wants an earlier $5,000 consolidated shipment within its $5,000 limit, but a freight quote does not establish that a loading slot exists.
+  outcome: >-
+    The app author adds a shipment-specific confirmation requirement and publishes a separate arrival-first review after all 14 supplied scenarios pass. Without confirmation, Direct remains preferred at $4,000; a current confirmed slot makes Consolidated preferred, arriving 18 hours earlier. The launch owner must still justify the extra $1,000, and responsible owners authorize and book the shipment.
+roleLabel: App author
+readingMinutes: 14
+sourceNoteInContent: true
+coverImage: /assets/use-cases/shipment-readiness/consolidation/cover.svg
+coverAlt: Three freight options, with a separate slot confirmation required for consolidated freight.
+coverWidth: 960
+coverHeight: 720
+permalink: /use-cases/supply-chain/shipment-readiness/add-consolidated-freight/index.html
+useCaseScenario: shipment-readiness
+useCasePurpose: authoring
+useCaseChannels:
+  - decision-lab
+useCaseLabel: Add consolidated freight
+useCaseOrder: 2
+---
+{% macro appFigure(key, label, result) %}
+{% set figure = shipmentConsolidation.figures[key] %}
+<figure class="use-case-figure{% if result %} use-case-result{% endif %}">
+  {% if result %}<div class="use-case-result-heading"><p class="eyebrow">{{ label }}</p><h3>{{ result }}</h3></div>{% endif %}
+  <a href="{{ figure.image | relativeUrl(page.url) }}" tabindex="-1" aria-label="Open full-size screenshot: {{ figure.alt | escape }}"><img src="{{ figure.image | relativeUrl(page.url) }}" alt="{{ figure.alt | escape }}" width="{{ figure.width }}" height="{{ figure.height }}" loading="lazy" decoding="async"></a>
+  <figcaption><span>{{ figure.caption | escape }}</span><a href="{{ figure.image | relativeUrl(page.url) }}" aria-label="Open full-size screenshot: {{ figure.alt | escape }}">View full size</a></figcaption>
+</figure>
+{% endmacro %}
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { window.dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', 'G-V2474V50XP');
-</script>
-
-
-  <title>A third shipment option. A new requirement to check. | Hermod Labs</title>
-  <meta name="description" content="Consolidated freight could give Maya an earlier arrival within budget. Follow her team as they adapt the shipment review, check its new prerequisite and hand the tested app to colleagues.">
-  <meta name="author" content="Jonathan Nacionales">
-
-  <link rel="canonical" href="https://hermodlabs.com/use-cases/supply-chain/shipment-readiness/add-consolidated-freight/">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="Hermod Labs">
-  <meta property="og:title" content="A third shipment option. A new requirement to check. | Hermod Labs">
-  <meta property="og:description" content="Consolidated freight could give Maya an earlier arrival within budget. Follow her team as they adapt the shipment review, check its new prerequisite and hand the tested app to colleagues.">
-  <meta property="og:url" content="https://hermodlabs.com/use-cases/supply-chain/shipment-readiness/add-consolidated-freight/">
-  <meta property="og:image" content="https://hermodlabs.com/assets/hermod-wordmark.jpeg">
-
-  <meta name="theme-color" content="#7850c2">
-  <link rel="icon" type="image/jpeg" href="../../../../assets/hermod-symbol.jpeg">
-  <link rel="stylesheet" href="../../../../assets/site.css">
-
-
-  <link rel="stylesheet" href="../../../../assets/reader.css">
-
-  <link rel="stylesheet" href="../../../../assets/use-cases.css">
-
-
-  <script src="../../../../assets/feature-flags.js" defer></script>
-  <script src="../../../../assets/site.js" defer></script>
-  <script src="../../../../assets/form-request.js" defer></script>
-</head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="site-header wrap">
-  <a class="brand" href="../../../../index.html" aria-label="Hermod Labs home"><img src="../../../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
-  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">+</span></button>
-  <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
-    <a href="../../../../blog/index.html"><svg class="nav-icon nav-icon-blog" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-  <path d="M11 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6"/>
-  <path d="m9 12 9-9 3 3-9 9-4 1 1-4Zm7-7 3 3"/>
-</svg><span>Blog</span></a><a href="../../../../platform/index.html"><svg class="nav-icon nav-icon-platform" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-  <rect x="3" y="3" width="6" height="6" rx="1.2"/>
-  <rect x="15" y="3" width="6" height="6" rx="1.2"/>
-  <rect x="9" y="15" width="6" height="6" rx="1.2"/>
-  <path d="M9 6h6M6 9v3h12V9m-6 3v3"/>
-</svg><span>Platform</span></a><a href="../../../../products/index.html"><svg class="nav-icon nav-icon-products" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-  <rect x="3" y="4" width="18" height="16" rx="2"/>
-  <path d="m7 9 3 3-3 3m6 0h4"/>
-</svg><span>Products</span></a><a href="../../../index.html" aria-current="page"><svg class="nav-icon nav-icon-use-cases" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-  <rect x="3" y="7" width="18" height="14" rx="2"/>
-  <path d="M8 7V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3M3 12a22 22 0 0 0 18 0m-12 3 2 2 4-4"/>
-</svg><span>Use Cases</span></a><a href="../../../../professional-services/index.html"><svg class="nav-icon nav-icon-professional-services" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-  <circle cx="9" cy="8" r="3"/>
-  <path d="M3 20v-2a6 6 0 0 1 12 0v2M16 5a3 3 0 0 1 0 6m1 3a4 4 0 0 1 4 4v2"/>
-</svg><span>Professional Services</span></a>
-    <a class="button nav-cta" data-decision-lab-link data-site-root="../../../../index.html" hidden><span>Try Decision Lab free</span><svg class="nav-icon nav-icon-launch" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-  <path d="M8 5h11v11M19 5 5 19"/>
-</svg></a>
-  </nav>
-</header>
-
-  <main id="main" tabindex="-1">
-
-
-
-
-
-
-<header class="reading-header wrap reading-header-with-cover">
-  <div class="reading-header-content">
-    
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-
-  
-  <a href="../../../index.html">Use Cases</a>
-
-  <span aria-hidden="true">/</span>
-  <a href="../../index.html">Supply chain</a>
-
-  <span aria-hidden="true">/</span>
-  <a href="../index.html">Shipment readiness</a>
-
-  <span aria-hidden="true">/</span>
-  <span aria-current="page">Add consolidated freight</span>
-
-</nav>
-
-    <p class="eyebrow">Shipment readiness / App author</p>
-    <h1>A third shipment option. A new requirement to check.</h1>
-    <p class="reading-description">Consolidated freight could give Maya an earlier arrival within budget. Follow her team as they adapt the shipment review, check its new prerequisite and hand the tested app to colleagues.</p>
-    <p class="reading-meta">Jonathan Nacionales <span aria-hidden="true">·</span> 14 min read</p>
-  </div>
-  <figure class="reading-cover">
-    <img class="reading-cover-image" src="../../../../assets/use-cases/shipment-readiness/consolidation/cover.svg" width="960" height="720" alt="Three freight options, with a separate slot confirmation required for consolidated freight." decoding="async">
-  </figure>
-</header>
-<div class="wrap reader-layout use-case-reading-layout">
-<section class="use-case-brief" aria-labelledby="use-case-brief-heading">
-  <p class="use-case-brief-title" id="use-case-brief-heading">The case in brief</p>
-  <p class="use-case-brief-stakes"><strong>At stake.</strong> Maya&#39;s team wants an earlier $5,000 consolidated shipment within its $5,000 limit, but a freight quote does not establish that a loading slot exists.</p>
-  <p class="use-case-brief-outcome"><strong>How it resolves.</strong> The app author adds a shipment-specific confirmation requirement and publishes a separate arrival-first review after all 14 supplied scenarios pass. Without confirmation, Direct remains preferred at $4,000; a current confirmed slot makes Consolidated preferred, arriving 18 hours earlier. The launch owner must still justify the extra $1,000, and responsible owners authorize and book the shipment.</p>
-</section>
-
-
-  <aside class="reader-navigation" aria-label="Reading navigation">
-    <nav class="reader-toc" aria-labelledby="reader-toc-heading">
-  <details class="disclosure reader-nav-disclosure" open>
-    <summary><h2 class="disclosure-label" id="reader-toc-heading">On this page</h2></summary>
-    <ol>
-      <li><a href="#new-option">A quote is an option. Confirmation is a requirement.</a></li>
-      <li><a href="#confirmation-contexts">The same requirement. Two different supported proposals.</a></li>
-      <li><a href="#adapt-review">Keep the original review. Adapt a new app.</a></li>
-      <li><a href="#define-confirmation">Say exactly what a confirmed slot means.</a></li>
-      <li><a href="#test-business-scenarios">Test the decision the team expects.</a></li>
-      <li><a href="#publish-review">Put the expanded review beside the originals.</a></li>
-      <li><a href="#use-expanded-review">Give Maya a decision she can act on.</a></li>
-      <li><a href="#source">Sources and scope</a></li>
-    </ol>
-  </details>
-</nav>
-
-    <nav class="use-case-related" aria-label="In this use case">
-      <p>Shipment readiness</p>
-      <a href="../index.html">Scenario overview</a>
-      <p>Articles</p>
-      <a href="../compare-shipment-options/index.html">Compare shipment options</a><a href="index.html" aria-current="page">Add consolidated freight</a><a href="../review-changed-orders/index.html">Review changed orders</a><a href="../resolve-a-shipment-exception/index.html">Resolve a shipment exception</a><a href="../is-a-registration-check-worth-buying/index.html">Integrate Python machine learning</a>
-      
-      <p>Supporting references</p>
-      <a href="../app-author/index.html">Workflow authoring</a><a href="../case-worker/index.html">Evidence and verification</a><a href="../compare-priorities-and-limits/index.html">Priorities and spending limits</a>
-      
-    </nav>
-  </aside>
-
-  <article class="reader-prose" aria-label="A third shipment option. A new requirement to check.">
-    <div class="reader-content">
-      
-      
-
-<p class="reader-lead">Maya has a recommendation she can defend: Direct will deliver the order within the receiving window for $4,000. Finance has set a $5,000 expense limit. The launch lead still wants the goods earlier, but the $6,000 Backup option is over budget.</p>
+<p>Maya has a recommendation she can defend: Direct will deliver the order within the receiving window for $4,000. Finance has set a $5,000 expense limit. The launch lead still wants the goods earlier, but the $6,000 Backup option is over budget.</p>
 <p>Then a carrier offers <strong>Consolidated: $5,000, arriving Thursday at 6 p.m.</strong> It would buy 18 hours for another $1,000. Maya wants to take that possibility back to the launch team. Operations needs something else first: confirmation that the shipment has a loading slot.</p>
 <p>In this example, a <strong>loading slot</strong> is a reserved time window for loading Maya’s shipment onto the carrier’s vehicle. It helps the warehouse and carrier coordinate loading so her goods can join the consolidated service before it departs.</p>
-<p>This branches from <a href="../compare-priorities-and-limits/index.html#change-a-fact">the retained arrival-first shipment review and its tighter-budget exercise</a>. <a href="../compare-shipment-options/index.html">Maya’s main operating story</a> uses a separate cost-first profile. The people, quotes and new slot requirement are fictional teaching inputs. The business references and limits of the example are in <a href="#source">Sources and scope</a>.</p>
-<p>This authoring walkthrough preserves the earlier <strong>arrival-first</strong> standalone review to show exactly what adding a service and its prerequisite changes. It is separate from the <a href="../case-worker/index.html#current-question-view">current first-shipment calculation workflow</a>, which uses supplied inputs and <strong>Calculate / Recalculate</strong> without reviewer signoff. Saved cases retain their original definitions. The later operating release adopts <strong>cost first among complete arrangements that meet the promise</strong>. The two releases answer different priority questions; publishing this tutorial’s app does not silently change either one. The <a href="../index.html#series-path">series guide separates this authoring branch from the cost-first operating continuation</a>.</p>
+<p>This branches from <a href="{{ (shipmentCase.priorityReferenceUrl + '#change-a-fact') | relativeUrl(page.url) }}">the retained arrival-first shipment review and its tighter-budget exercise</a>. <a href="{{ shipmentCase.url | relativeUrl(page.url) }}">Maya’s main operating story</a> uses a separate cost-first profile. The people, quotes and new slot requirement are fictional teaching inputs. The business references and limits of the example are in <a href="#source">Sources and scope</a>.</p>
+<p>This authoring walkthrough preserves the earlier <strong>arrival-first</strong> standalone review to show exactly what adding a service and its prerequisite changes. It is separate from the <a href="{{ (shipmentCase.workerUrl + '#current-question-view') | relativeUrl(page.url) }}">current first-shipment calculation workflow</a>, which uses supplied inputs and <strong>Calculate / Recalculate</strong> without reviewer signoff. Saved cases retain their original definitions. The later operating release adopts <strong>cost first among complete arrangements that meet the promise</strong>. The two releases answer different priority questions; publishing this tutorial’s app does not silently change either one. The <a href="{{ '/use-cases/supply-chain/shipment-readiness/#series-path' | relativeUrl(page.url) }}">series guide separates this authoring branch from the cost-first operating continuation</a>.</p>
 
 <h2 id="new-option">A quote is an option. Confirmation is a requirement.</h2>
 <p>The shipment still contains 100 cases. Both shipping locations are recorded as transportation-registered, and the receiving window still runs from Thursday, November 19 at noon to Friday, November 20 at 5 p.m. All times use UTC−06:00.</p>
@@ -167,70 +51,16 @@
   </table>
 </div>
 <p>The review favors the <strong>earliest arrival among options that pass</strong>, with expense breaking ties. Cash available remains $6,500. Consolidated uses the already registered SP-B; its slot confirmation is separate from registration, spending authority and release permission.</p>
-<p>A quote supplies facts about a service. Admitting that service as a new alternative expands the review, and requiring a particular confirmation changes its reusable rules. This is a <a href="../../../../articles/requirements-engineering-for-human-decisions/index.html">requirements-engineering task</a>: agree what the service must establish, then make that condition explicit and testable. The <strong>app author</strong> maintains the reusable review so colleagues cannot accidentally treat an unconfirmed service as ready. Later, entering a confirmation changes a case’s evidence; it leaves the published requirement intact.</p>
+<p>A quote supplies facts about a service. Admitting that service as a new alternative expands the review, and requiring a particular confirmation changes its reusable rules. This is a <a href="{{ '/articles/requirements-engineering-for-human-decisions/' | relativeUrl(page.url) }}">requirements-engineering task</a>: agree what the service must establish, then make that condition explicit and testable. The <strong>app author</strong> maintains the reusable review so colleagues cannot accidentally treat an unconfirmed service as ready. Later, entering a confirmation changes a case’s evidence; it leaves the published requirement intact.</p>
 <aside class="use-case-callout" aria-label="What the new app must establish">
   <p><strong>The business rule:</strong> Consolidated may pass only with a current, confirmed record for this exact shipment and service, available to Maya when she chooses, and covering the full loading window. Missing confirmation means the requirement has not been established.</p>
 </aside>
 
-<p>The assessment question stays: <strong>which complete shipment meets the commitment, and which passing arrangement does this priority prefer?</strong> The author expands the candidate set and adds the condition that makes the new candidate admissible. This adapts the domain implementation of a <a href="../../../../articles/from-arrangements-to-assessments/index.html">commitment assessment pattern</a>; entering a genuine confirmation later supplies a case record for that fixed rule.</p>
+<p>The assessment question stays: <strong>which complete shipment meets the commitment, and which passing arrangement does this priority prefer?</strong> The author expands the candidate set and adds the condition that makes the new candidate admissible. This adapts the domain implementation of a <a href="{{ '/articles/from-arrangements-to-assessments/' | relativeUrl(page.url) }}">commitment assessment pattern</a>; entering a genuine confirmation later supplies a case record for that fixed rule.</p>
 
 <h2 id="confirmation-contexts">The same requirement. Two different supported proposals.</h2>
-
-<section class="use-case-comparison" aria-label="The authored slot requirement with no confirmation and with a valid record" data-comparison="shipment-authored-confirmation" data-comparison-kind="context">
-  <div class="use-case-comparison-basis">
-    <p><strong>Shared basis.</strong> One frozen arrival-first tutorial app; the same three quotes; 100 cases; $5,000 expense limit; $6,500 cash limit. Earliest eligible arrival is the unchanged priority.</p>
-    <p class="use-case-comparison-change"><strong>What changes.</strong> The second case adds one confirmed slot record for the exact order, service and full loading window. The case identifier also differs; published rules, prices, permissions and timing parameters are identical.</p>
-  </div>
-  <div class="use-case-comparison-panels">
-
-
-    <article class="use-case-comparison-panel" aria-labelledby="shipment-authored-confirmation-panel-1">
-      <h3 id="shipment-authored-confirmation-panel-1">A · No current slot record</h3>
-      <p class="use-case-comparison-finding"><strong>Propose Direct · $4,000 · Friday noon</strong></p>
-      <dl class="use-case-comparison-inputs">
-
-        <div><dt>Slot confirmation</dt><dd>No record supplied</dd></div>
-
-        <div><dt>Priority</dt><dd>Earliest eligible arrival, then expense</dd></div>
-
-      </dl>
-      <div class="use-case-comparison-observation">
-      <figure class="use-case-comparison-screen">
-        <a href="../../../../assets/use-cases/shipment-readiness/calculation-flow/tutorial-no-slot.png" aria-label="Open the A · No current slot record view at full size">
-          <img src="../../../../assets/use-cases/shipment-readiness/calculation-flow/tutorial-no-slot.png" width="1136" height="646" alt="The frozen arrival-first authoring app without a current slot record prefers Direct, while Consolidated fails its slot requirement and Backup exceeds the limit." loading="lazy" decoding="async">
-        </a>
-        <figcaption>Without a current slot confirmation, Direct remains preferred in the separate arrival-first tutorial. <a href="../../../../assets/use-cases/shipment-readiness/calculation-flow/tutorial-no-slot.png">View full size</a></figcaption>
-      </figure>
-      <p class="use-case-comparison-judgment">Maya has a passing option. The new Consolidated quote cannot pass until the team has the required confirmation.</p>
-      </div>
-    </article>
-
-
-    <article class="use-case-comparison-panel" aria-labelledby="shipment-authored-confirmation-panel-2">
-      <h3 id="shipment-authored-confirmation-panel-2">B · A valid scoped slot record</h3>
-      <p class="use-case-comparison-finding"><strong>Propose Consolidated · $5,000 · Thursday 6 p.m.</strong></p>
-      <dl class="use-case-comparison-inputs">
-
-        <div><dt>Slot confirmation</dt><dd>SLOT-C104; confirmed 7:30 a.m.; known 7:45 a.m.</dd></div>
-
-        <div><dt>Covered loading window</dt><dd>11 p.m.–midnight; exact shipment scope</dd></div>
-
-      </dl>
-      <div class="use-case-comparison-observation">
-      <figure class="use-case-comparison-screen">
-        <a href="../../../../assets/use-cases/shipment-readiness/calculation-flow/tutorial-valid-slot.png" aria-label="Open the B · A valid scoped slot record view at full size">
-          <img src="../../../../assets/use-cases/shipment-readiness/calculation-flow/tutorial-valid-slot.png" width="1136" height="646" alt="The same frozen arrival-first app with its valid scoped slot record prefers Consolidated at $5,000; Direct still passes and Backup remains over budget." loading="lazy" decoding="async">
-        </a>
-        <figcaption>A valid scoped slot record makes Consolidated preferred under the unchanged arrival-first tutorial priority. <a href="../../../../assets/use-cases/shipment-readiness/calculation-flow/tutorial-valid-slot.png">View full size</a></figcaption>
-      </figure>
-      <p class="use-case-comparison-judgment">Under this tutorial’s arrival-first priority, the confirmed service becomes preferred. The launch owner still justifies the premium and the responsible owner authorizes it.</p>
-      </div>
-    </article>
-
-  </div>
-  <p class="use-case-comparison-takeaway"><strong>What this means for the decision.</strong> The author defines what support the service needs. Colleagues then get different, explainable findings when that support is absent or present. This arrival-first tutorial is separate from the cost-first operating app.</p>
-</section>
-
+{% set comparison = shipmentComparisons.authorConfirmation %}
+{% include "body/use-case-comparison.html" %}
 <p>Without a current confirmation, Maya can put Direct forward at $4,000. With a genuinely received confirmation covering the shipment’s full loading window, Consolidated also passes and the unchanged <strong>arrival-first tutorial</strong> prefers it at $5,000. The launch owner still needs to justify the extra $1,000 and authorize the proposed response.</p>
 <p>Start with the supported answer and compact arrangement comparison. Select a row to inspect the condition behind it, then open supporting details only when you need the record scope or timing basis. Inspecting Consolidated does not select it for shipment or authorize its additional expense.</p>
 <p>The team’s authoring task is to make this distinction reliable: a quote alone must not count as a confirmed service. The steps below implement and test that requirement. This pair holds the published rules and priority fixed; it adds the scoped record.</p>
@@ -252,22 +82,15 @@
   </table>
 </div>
 <ol>
-  <li><a href="https://hermodlabs.github.io/review_lab/#app=shipment-planning-earliest-arrival&amp;version=1&amp;release=3dfef2fb7c70eb33b12b6fcdb4f50a8c82a90e1bbba6bd3941e03ab280ea6025&amp;model=H4sIAAAAAAAAE-19a3PctpLoX0HxftmtGs7OyJIsj6vOliI75_hWErtkZ8_dtfUBQ4IzOOaAEz4kKyn_91vdjScJjmZkKbGzcaUqGhIEGo1Go1_o_i0pqnrD22SR5CKTjaxUWvJlyrfb_5gnk6QVm23JW5EsfhtpaVpg81wUUslWVuruD1LXOBjqVZ4skqzabEvRipSnWbXZyHYjVJtMkmtRN9h7Mp_OprNkkmx524pajX1DXcu2FMkiudAtGGdBr7loslpuCe7khWhFvZFKsJu1aNeiZpUSzPTOmpa3MmPbkiuWccUa3sqmuGXiWtS3bMNVztuqvmXVspQrDn0yntVV0-gW4tO2lJlsy1vG841sW5GzJhOK17KaMgCR14IVgjdyWQocp2GVguZFK2p2s65KkeLw4pPIOhyBmstStrdMNkw0LV-WslmLfJpMEt6166qWagWrUotfOlmL_Mcq70rxvRRl3iSL9wESJskvnWj0n7xpug0-b5JJ0inZwv-l2nb4R7auZCbgLzOLF9WGS4V4reW1yKGPrJXXspXYrhZN1dWZ_huhgYXAzirVtDWX9KuQiqtMwCrXohC1oB8lX4qySa4myaqTObZYJP9c85ZtuqZlS7dY-YQVFaJsM2Fc5exGtmup2M1aZmvGs0xsAf2l3Mi2-c8P6p_4vFr-S2RtM2G_dFy1CPWE1eIaabjBfsoqw6VtGCxWVl2LWuS2g4JnbcdLVousqnP6wq11y1tB390IVovyVqoVq5T92lKaxizb8FvWrokUlKjZhn8UtrXD7ITlYitULlSGvzJeCpXzmsbP-JZn2I6wBB02fEO9slo0W5G1ttcmq7YiZ1vYCA1NG7_CmTLBszUzdMSqragRGfbrf1VStea5WlnytkPLxtuAuChNy1XurYDZO4Qou6toFdfVDbuRZcm2vGlgAIsy2i2aAjitCRE6o03QsKbbbktEaCNYLrKS12YklbMcaZddVxlfdiWvb6fsgjeC3VT1R-G-xv14zcsOVrIsqxuRsyWtUlFXvwrFNjjqlH3PkZQcCmAUhxqHYcKNAiYBE5CqEDWgt6irDeOMdgA8gDlOk8-4WdqaZ-04r5WqaXlZijw1bZEf7sMzQ1YuD2PKAlADC5YskmXVqVzkKfHNQ1kzEGalDG9LFsn3EvAXYcgOp7RvWAscgbgzUP2X8GciaLOGE1hnZUjMsWq9X6fIHa95LTmwscX75EJvZGwNWBUThvwzRTrCtanKZspe-_MC2l4p3CGyYc0ayDkEdXB-EHHZiQEk5_E5EDBmrsixmudMCYkHnlSWlYgJ29bVkuMCAB5VVbNOlbLxB6buDM3iuIqJzbb1gFzyRjYwFamAzUMHqp1oiufsmmdd1TXBUVaLpitb6O7d7RZnf5uVMgO4a6H5UiO2sIMtHRhsuj0HjxrxSwezof23rZo2ta_d4cL4alWLFTBonIPHWy03nbBlVX2UaqW7chv4mpcyB7C7RrA1L4u02grFpGpFfc3L5jnj-b94hgtqnrG8YqpqGfDVkm9h1Avi1HiQI5fuNqwqWCM3XdlyJQBJtVDihgPR5QJIupmyc8O0VzVXrc-uZdswoVpZiwjThhFfftoK1eBIsL6qFkWnck40zeuVaKbs0j1bVyUcakUhspZlvFkjO3weQojPxTWc60gbShARiKKqBdsK_pGayIZtBG86TTYve7s0q1SOXIgmBAwfj3R7fOnNLtXYnpiyN259M64A27DHhGqAaqCzgsuyqwWMf8kVrC2AVYpPMqtWNd-ugb0AJvtbXU98JVQH8iLuD45obrlUQLAqZzIH5BcSjg_c7yCcyVL-Klgum23Jb1lV56JGimNFVwJLWIvso0B5RYnGF-gaJj7h1skEy7sazxBet5KXrBG8ztZT9lNF4iGdNK3ccNxMWcnlpjEk4PhMLUpxDSSD1MJXiIcfJZ2sOW_5hHUKZLbyGmSlqvrYbRt41vBCMF7Ldr0RsPNgvE7BCVnVsALh4Yr8AbcI8T6z86UCIoGDDngQbYAy60AVyPtyraUGXjLk21qAw09x_EJ-ArQ7kXWC28vtUpDkGth7SFRVzcS1RD4He0zLbRo1uDuuJonjNj9wter4StgjsQW2NDzaUo9B4TFXylbUvGzoAJPArTJe8hoAWFebaiVo19DTlNc1v0XcP2eq0nI-7ccqx_WxJI0HDHDADagtVh73xPGYIH4bSNd1dcP-TapG5oKoq5m2omn_HSZPjKKqG5iz-CVZJO9uKjr7WtwKBHLD0r8BYywFB8lfiT0blu2woeo2SzFsGOky2nK1b5ervbvkOSz2ectKwUGAHf2E_gTkd8udfduGm67UDc1bEIcZKDNV06Kkk8uNUI2melgOlbsunrOs6khE4Az4r6QjHVaYqwHYek69-aGgtkc7VQFuQUrRz8LXEmTAt0TYqHP0F18TdriwyFB8EXBbyw2vb9OP4pYtpcqRHyvGGe424h6MtkP6NyY-8axFkVywRpQiI-YPwz1nG83GqprxzVKuUMKgEUkSQYYEEiuSPawEjiF-6Yhp6vEbti27BrkpLkNd3aRGR6pFLjM4Sty0cNdueJvh-VbwshGIHjr0U60v2tEs2EbIgP612giyimzldUyiCEa0soVh46g3ZtVmKRWMflPVTZtmvAGi_6nbiDoQpKCvDf8kN93GCJmDo5SOXk9couNPCZQFUS6sRd5lgURqJSr_CEg-f_4MHGotNhwYy0eJpOr0FWwFfCc1domqRk66qXJRfm-0nXH9hfSv_zLdJAuwY4i6vbDNSC8EjsmboKEeW7imoAI6YwWYTkTpLCda9zJj6h6BeY7ZWpDkSPXxbGxfmXFlsyfQ5s8pNTC_jFY4OdSyhP-ftnIjgh-va7nCidOjTaXErY8q-mNqj0LvGfKKh0Cn_nvqlOPwudEM9se9_msKZO391GK39wSF7v5iuR_TXNYi03j1HrsNHj4HDdattuHCF5p1-LQLtN8jggDHFrnburoWNC-UG4hVBp9f0dZ4AbjmZFt4n5yXJagCgrlukfV9FLeW2yM_BLVqaGGhNcazAaVS2aKK1qm8mUAf1JmTl4g307mQogmH5aLgXdk2wMKyStQZGgV6Cq2W24zkn9f8hsR5NNAQmHi8NZPgiMqqstso7JuEUy0LalNT89zpMp7Gz7fbErSJttJ6jVVnQBmGDwIC1mN5tgtQ0JsxCwaookY_py9BfFCBZq719ZqjRaBdcxVT0T01-ZahrgS6siP2SdTigvZU2jRsw7db2DMTRqQOmgzsBtKu3VlTC5xosPiBigGgvLE0yIjrLOHc8dUEkO_1dn1uVDO0wHL9mOUVWjlatBjCezzcZQsriATBasFzCXoZqgeh9-CVOcJYVlaNyLXQ4gGqzbGNSGF1PNMBitnPyTzqTj1YGoTGaWz_9-3rn9hbPDyn7E23LCVZo0ltpFXXyo7RdrueNoUGxKatu6ztal6-LSs0Vf0GtsF1srDMuLpRAs5EwndKRtSIywRmJ1AGA17NKmTWE7TlVYqewbSRa5tNSmZxq9ApLZMQf08-TywwlscfBo01dtASRNlLLUpDPd6A7pw4bMRC63ahJcrjEGTw0zs_GHJwIO038ndgDgUGovmkng6OzaUCwrZGvh4PCIZ3x98h4wZGucDK1qHYTYCZDeEJm6VWpAMYgoP3MMRrjBvtFv6owFTXyg3ubTwBjMnMsh5jO_OB8A_8_WD4kW9dl56bBQZFtQIgMJJBb6xARthvuJ-43kuwrtzavXyTmfWs-KZgn7wDYeSABbe6Ds1O26TN5NPMWC41H2orn-cHIDgJ6LCFjlonraUL-QgwGzzwA3tlMHogRB24xbUJkHZyaCMkj4BseujuyVb7jvhaT6i8HdrsNKPRmqwz3PmjGtFuv9HekmNr4P9Cc0TVtYBrtUL3ijbPDdY0FOf3HBa8oe6E3tZiIxu9osA9UA7KuDYBolgHTrnksxYlX9HR4J1c0mdieMyS724w9Ct9-Gt_JG9C_AVC7j79aQzSdqTz3j91QCrMyg6tGYUvS7JVLbWTOOvqGvYtOaQDcKyYfQAoxJ-1F3risGyPgMCtgX4DTzLT2wrFPzsdbaQN9pIV-_cD7hLhodW1EBH3RKYCZhV0eHQoA4MKQBo2sTFc-K31R4H1oLRm2b0NstZKjQo8Lof5Cn3IaBKiczPFc9O6i1DnwVH0wef3Dd5QcPwBgzCHUUpicTJJrAUntf4f1BT1wWT5J-qnYFxKnd06dbyXYAOPTcpVDiaddcozNANCjMck4WVpwQXP7786ZVRDwypSNHAVUuRpoU1coGz6zC0NmFvq8cwrUMIDDHqG-XRblTK7TZtbBT52qbXfVirQHVLgzil6JeSvXANl1KzUCtZpVaeB2xFt6Nci9Yz3qHM6_Mim6TQV8nop2xpMiGAuT64-w8ewo4BYrHAMP1SVAwkdncxmsxkQ6hZo-mwGHzRtspjT81Z8apPF0Yx--etND_1nL6iP02Psjpyot95D4tnvui1sZxoAvq9rtLEfzWaf0fmOCimAuOGf3iBFGmA2_NNbvbgXeM66Xjb802vj2LOPscc1r_NIb7u6G_Z3Yvr7DFQLq3_pu-f1bgQ7W9Og2cwGKMQNdVPXFDcl9fnKmArqQefvnZE44ypHK52nNWuTKdgTtP_M37TfO-1n4oyk6DQKzvRAOPBdwGbT_oeT9rS-ZdhW4A6GqSPhavfqREsmgWcUPcjGF3qzFrWwvBa8cLFoBXKK07fLsso-0hF1bngp6e2kZNqTmoXWGbMcl4jxF1XWYbzFIvlZ8WsuS5SbyM8qG6bjRRgwmJJtZCmaFlS9E6N9MreQDJyR5I8Tn7ZV4wktPjjg23KiBXgm4VysYbvUokZGAGIPQMc0p5mS0TirBbgGzwHao9nRaTqfp_PTd_OjxWy2mM2ms9nsfzTLEar9B2_gkDoqxLNns6PiuDhanuVCLPOT09Mn_Oz49GmRHeUn2dExF5w_K_Isz_g8y_L5cnl8dPL0mM-Pj5dHoC3z7RbIm4zW_2ViXk4mxni9FvWmytNtpyPvIIgSiBqwtoGzKZd8paoGzhjjdATmB982a7nFcwpjvMAyJXgNBqAWXCbympd-nM18kiiOXb7stWKmI4xXEzeDw9fEF9pFIbshERPPQJoEI5ZakVaCNICeFd3vlCGT6Dvb25qrBhaJVhdj3EJPK6lgmZDbVmtlEy9sq6YgDjRZ9LQKDOSoSJAB_5SJ5MJtrM9BY1JZQxiECQpDHzi6xZxLeltX26rh5USbVLRahv4h6vVXGxVBwyeL5P-wC64qJTNeshc6vIr9wJdIxFN22ZXauUHOcnJr9322H7QQs2AjPosPiiTlxQfFmMwXFuWptyADsoDGaJNfsLtoAZp6xLBgH_6ihj2p4UMCyHMHA64RY9bmvmAbqeiZEwR0Iwaq6IJpA8vUWzeGcWS2WRrtb6RP26_xD-i5w3vNJ2CBMSCPoN-IlgOB6i4y3vKyWtkOSfHz-gcSxLiUtOjKQpYlLLh7jerlgr2GFizaokdrl0iELBcgxwVmimbiB0TWArXdRjorgyZjnxT1ksC_rhHgZOiBTjSfFhK8nqaLAfgaKM6wHRu2CyahW_s7wAQ00WxwBmTjbCEYzwd5Cp0a5xcgpBft6zXFuPKNEDpU1o7lWXYgprLW-44s42hvi2y8_yRMGb-cRhOgKMqI6LUloTn8Rous_hDOMiTPrhXuCTnnYFY_4hs2g71mj-en7_BsXsxm6ex0MZs9166Qn99d0AMna-hwUTdp3IZ2DzJC74L9_PYFyyy8qPwsEFBQHfvmuFtqpeO5bxeo7cMzz2SxYO8_JO8AhPXtFrTeFhk-eqa0NbXBpbdKK-4OGxiOU5jPZvgFmB517Acu7qYDxwNYBz5lZdeAO9-nZm0L11gxjNETlD8kEwZeHx126YVWu2hyrmmeGNu_iJMANkDTtlFOOqSS_VT14jp9fxdZrF1kVA2bLAearsWmAuA9e6P1TE3YCzo-emSorVcQerYC-GGAt2_S8ylOSZ8zHVh9XNxpi1Yvv_l3GONH8ak46yl7A0OUwDIaiocznhsbLjcEBbrUkY8T9iF5CaHs_tYjIw2FdbMtzz7i2WQPG9AWaiFX69aeNlJhhOUvXUU-FoERh1vf22PpEVyYfuCtF-qnvSHgnbQhrWTfxNX_gF4_S3uW0BiZv-VWR8y1FUSPOyEeHIiEtBin0d6mbV0VsvQQuBU1iCs6OA9WGaLcM30mb7jq0JdW69OyFttSKNmsLbESuHZIUM5FnlJoql6EW2d96sXUalR6tnTt_MNlFXRLpmvJa2cOcQ_4rs7WsFrXopaFNFCT_CHM-mmDl6-x4UxooZu2yj7qmYCDuuXNx2YssHfK3hChAIB124Aip8jA1WPqSxej9ByP7tKOWFRwj6AxNEfuMoh5BetUszYHDTrAkU1URYF7IwdqaSF-lcC99OQscyFmWzUUuLq81bybPT2aTXobDjkn8R7X7uTJ8WzKXoK9CI03XnQkRKnZiHHD13LB8xKiYaW9GqEBa9ouv_1e4BtgpNu6wlsn8BX6VtH8mQfLBvuJuDvMGAQdZBpbfos4RYDgiNRdn7cTazq2xKfJyV-LgqDYcpmbxeLtrtXCYWvavKoCnENYFlpLCwo1qEGl73AmnlNT-7TVCnFwPri1ELCeRuvRAOwKzpvWnvA6nlgzvh8Er_HAhxAv2Pc12JJB2eabivxuvuIdyPBo42jXddWt1pbTeHxIK93LmqtsLZopQK0q9auoq-HKKCFyHTkQcm4w8QpnFTE7krYcSnWwYql9kfEtUBMwUn9tp8wEIlsx38RwLwWyHZ7R1RvH8ZZdvhLorbehc8CqMwo_V6KQ7fQKlSz0HWi5xpn7rSCJ5_ur3BMswe67YE0LfC9odamFgDva1iKTWylUe0c7EH5eOGFtrJlm29oWcUdj7Vt4B_JbvyVwspWo3WMQpBa4Au7ZRiqIDlywmXnGUcS4BFvNQ3XpKYkvNCN5uK6RtT1St6-3YrgCX9blBQSQPFSfWlr5Aezg-_aJovauTkHJftgeDSN_8A7P94bxLkxaLWLP_kz7SJ9zu5N59vFFRxLjF8I5d1SEgsVDdwugnkN4xR38hnkxd4HZAmW4hQ7R8F9QpNyCybw3hd9rOKSVN_pIuuDbhyVC0_HumZCf1zbxj27vu4-gAr-X-ZV7pOMMg7nLPPg5hjk6cN6Am3PP9kWwQ3cgaBRJcUQxNLloefbQEULKHR-grfm1KCP74kFHMaaHQ_sfsov4GKT5PyJNOPU7-oG-eOC2qnbdDiBCQF_lE0dkd0CoP9gTzNGNz9zmJ1z1Xw4ZALvHVjgMTSwqV-7qf0y-3A3TUM7c1T4ib-5qPip3jn1k3bCPycL-MKqho-WRpubHugyGwJEnWg6_YzTeO0S_FDvDAzWOHWYVhb1mq8ORxqaKBpYJE-ou5P6R00UgH-tcESpONl_YtXWwPeIWve-RiPafuyZgLIiPeiISjh6QrCza_7yUBf_4Bh00j7HuFLb4iKv-TTBOFuoKDwmup4E8jgT1v08eYt_oVvZo4VzbY6NiiWt21yn9lZDsXyQYtv16STAwpfz9a-L9B_HqvwgubPv1Ehz8y4QspVod2v2dJi99z1D3m2JUjse8zKeD2KydfC7kcOG9QhPEoxVco5bD0_CWkgXJyqnavGPGgZvVHkQx7XsA9tjQHqI17Lo7r_-oTLFrhPFDwA5i-vyAkZEYnxcsRdCAjdA1BOd5EFTbhUblnsuFQd-7uRMG-hGtTCPkMTIjMwtrTw1n0aPb4Yb4mibWmwNNLLTjfsOzi03EMgMXLfolc-O5t5l4vQrPwzSMUR1QTKTNEGZ3fTfYROAvsvJj7zjFHq3nfWpdS-6wD8-LXnvP_2xZ5dCqHxmkTzMx40c6pu7fBTQb03d14gfPl7ZjFNtYxwOlS6Gy9cFjpDoYFv1oey6D73XbuRLmhhviYCpUvv8q9JyTD7EQMbD3xFN_WC-_i_1uzGAj84uBSmEMXeZNGIY6sFTprs3zPjJML-Z3sCYX7sSsLWsRygLlrQohwrygXzR7dw092Lpvf_7--1cXr17-dPHfpg8dN-3StQbBsKbVRnAIT1pgrFYYVVXXmNbEj2U0Hi-dNID3gjZTLw4UDji2xTwGNmIYE4C5eGEMOZoaSG64vCbsYhYuf3aXL9--_vny4uXb3tz84M2m5UVBmaOr-mOz5Q77do4fkjdeyJ4J51vzawrWUyITTQM3qX1Tfj89s77mYG_Q6xyX0gvbNJvKj33fMb3zn9_94_Xlq3f9pfuQGO1pEiwNZU_0IxJdZKQb0Jv1pQny4s4UoDOOBnFi2-hwFFhnAmT7oZBegs8wynri9JqJW3O6B4gJClArgYsfOgxMi-4uOpTuj3mT2w-d7179-HKASS_UcuJfW_Hvt0Rx9xZnb1JG-zdjsq6timJioj79TnUEqD2dKUSUrgkIG7lp4i_3pJKLi5dv-zvgErq6BqzdSJVXN4MJnOsbRgUvy8YkVQcg7D1xFyVb9zrbZ2tevH77rgfTuwpCvfs3fKIMZyTeEzP4IVlJtSoPCD9tWn5rJukDABc38fa1ua-_Y2Zeyo2AxZoNnxZVndoLGQEz9dhzlCXD9cOFS81hHtsHPUlw1XpiXUQSjEnCbB-1aigRs5hUzPaRjJknHYeHpwGzd_iHURNafaM79NHTpC92PCiKKZnkQJEY6NAxnMXd2Dhbe9FioB2P29wDmX2gz7Jd8QtWRGrrLtAE4rar3oLoRoPvRqxYsa9N0xDauFVrIAvqZn0cRSxcvU9NK7_RTmNXXx8I2vY1odQKAbdR4hsIJQ9Der7osYv6YvbOiKjPBzJ2zPYZqDADROiA7cdDRT_dagQpWgJ7eIwMDZ2RbwKRfWi_3K1i7RL_4wpAoAp-83So53EoKQaacIiRPw1BjqDmLpo0nx1EluajB6BMnaoYssD08okdshojHw9s66lVQFJ7tSQ6zkCPepidEHel7lz4UV_pHuLUX2f2oWc2rpVoQqDRlKrCEI2-CG2F6LbnW4q2ZU6araub_ubrtdhp-vTHXg36uHtoEc5r34EDWRv1-NRwVAzN-T03FcUC3Yt77mFH3P9gMSj_gg17f4H-r63-Z9jqdx3LzNvr9xh812YfP9z1Xrcnp6raVKq0XYt0y5v4VvcNZw9sqtiPJw7aeTch_Wn5dp-0ECIle1uq05CJh55dedjs3EW2w5BghFy8_G7mRFbGP3hG-65X5E6oPzXPRGqmN3Bg_q4z3C0c3-VtNeuF1tx0eZuaNNap7-L9XScUzV00uljBLdvYnMiUCikrIdNjaGIOpYTAOH3gzALePWbn7LPOKOMcmyNc-R1puxNjNPL-A-_obBd4eH3Yx38LJvTUpA5Fm3UU7b71_THIKZKyanQu_rXlYNMb2_tXMA-A5cJzRkQnYq9KR6Tm4OQx7rJHlJ59uXZkZ4hf7rMxzBk1bGjl5NlwLN6XRUYGG5G0RsWdAwAcb-xdB45D1FdFzD97iWwQrzpsG3edsBF9xfzbBW4d-ySuGYx0F9EQgn5GNIVdvcU0Btc-rjmM9BfVIMy_EU1iDG8RjcL826lZjPQ3pmG4f1FN0vxzVnPDCHz2EKGzvuJi_kW3lgZgbMPs3GZ3fsv2UnB6Le-ScPugDU0bh0MW1X6-GK4HQJmOVrgHcPCJPpD0UFBEZ8H6mcLpnS6cYIGKa0DeKTGMobqTs_K92jukWiuwTkro2WrvgiXus77DYx1juhFv9R62GuOpLvaf_kD3wSIVC_Yeby5Q7Qb9PWQuXbC3kSyY9J7K1etUnPSITg1ms3OXpoA5vQZ1SmZiV6cuCQO7wJituh-Dq6XRBbvomrbaYIwOBbzga013JnDDhuoEQt8QrRhbEoISuMAWmGotzO9VBRMPVC-X4VPZOKVfRRhuRF8av8E0iLdc2MxuXvhl3w-_YG9MerVYAk76CJNN-csezNQLh3JaHn0Sy4jELgcRQ-EnYaYjdmkqIXk5d4NBbNodLEHej4D5oDKTYBXDAv_x6k06nx2nJIemF69_fHN--ert65_SGsMpB7m0jODBXl--gC-9p1aMgGy1JmTJCQPsxUX6_zTazanOPrjE32fmk95JHea-DbNfseOzmSMXuxz2aRTjT4_s2x5yIUFe8ApTQbEnp7PwMaVzgubzYItQAiV2itn1NbQ2r1Lw2K1S78F564HvspzOzYdBeiE2d1MJMwSxJ157Srpjw49LwfPgK_3e2PqropCZZTD9RDoMKyxEXtZWjUp19lLsIsiCE82Bo-82YMJRx2ed1RwzjLoXkLCGHc8cLntMbn587L3oZYjx1pL519gdgg08lMx0DJ7vevCc3heeo_npbnh6yWGM_cVE-rhvvegfL85nmMwltYFJ0W5G8R7vf5wn7OYLo7zhbv6wB484cJbffZuzHOZiGaeOUWz0Up64sJ6QVfRDLAImEc1skhrZJdaZ1ZyCSyX2k-go_lfBgT9MNXLH2BQ_4fgs08ERwV69G5g9uhneghhHcLD998D6zi9G7poM2tsbDFpeHWRhMBH2P7w8f_sy7XPpe60X63lU9-f9X98ePICcfDz2T5eHwePeZ9Y3i8c70haku-nqG5v206P5yMT6C_2tTmxXCgB9cendzy_-O33z8-XFP2DfzAdbJiZz2gZ0wuy2vn1zuPPlRX2b3QnlrjhUcDnh-1cX7169_un8B6fp_fT9q7__fHkOjz29z_Q9KC-DBXCh9mshM50R2yuSyb6r2jUya9TPMcl_P5396FUwe_8LET4ZvyEUuR30ztyX8e6lUPkaKEDRrtm7dVc3Ob_Fz76vJf5JBg_I9l5LrEQDHeNNLpOnPqin6N0MwW7oiMQJtoJnaxiaUlBT_Rld77A2BRvhUopXFyW8r2TrE-kCVycnz57Onx0VT46zo6fzJ0_np8dPsrnITvhZkZ8enfHi2dPjo1mWn3AxO8tOj0_OxCwvjo-P5mdH85MCC0WZS4-6z9Oz-bOjsywvsllxdDTjJ_xodpoXS77Mn54uj5bL4_nseHaaLZf8KS-y42K5LIpZzsWzsyfzZ0-Pgj5dLbjfqORVtPqIX-WKyBuKHUKVdqg1kSwSXR5kWOERC8hhJSRd5YquJ7Kg76Ci3G2ygKLuOeai7-dld4jXRToxQXzDW9kUcM-tX3TXq8_Gs7pqTAuv0MNILfYJVgHS28LVlzW5IaZYHxGLSqqWSuDpCvSu4PTELy5tqk5P0ZTjcsC72vJYUgZvaQWgWvgMZFT_0yshPEnOR-rJB0UtqEjoc6ZsbQBbCFFMelVHFNQWUbqsSdidKUaC45pq9RZIqnIH_3k1603xLR4rVW9KnyST5F1QuNqr5-hKb_RqeE8cVoI618hWqsaVB_VL1vPVqhYrYBLTXilBj00ElS-8YhRYEp5uxUaLTjxnPP8Xz6hmiX7G8gpZCcSXl3wLo16YG6VSX37rNlhcVW66suVKAJJcaWxTEZudm9T9lLEf60jQ3U5gZ1A41y-wXpkikVNX7hBGauL1mqfssledmfGigAuRyDOBjJ-HEAY1E6EEgyAioBuRroKibOAqYNNpsnk5KI2ty5TShKA2WHjZVG92W1V7sCewtotZX12JAPaYUA1QDXRWcFlCNY5kklxyhcZj2fQqRSMm-1tdT3wlVAf1M2xVHlv9AShEUtViCWXscb9DTRRZglU7l8225Ld0ICLFQWEur7TDjWzBqOPK4wAj-4RbJ8P7xXjQQAFHsNgLXmdrKBSERQltje0Nx82ENRubYWVq0DWuuWq9otSTxBRxoAJ5nQIFt7wWuXbaNPCs4QXcFZfteiOwMobKmVdlVl8tpRvQmj_gFiHeZ3Y-FaxxhYphA1DVSZEHzABKPruitQz5tr6PTtUr6VoyFFrxikRNTHUcvUvDqnZV7dVMKkCU7LTAQ_VSplB603GbH2zZYn0k7lu8WLuIGzrAoJJ0k_GS1wDAutpUK0G7hp6iJ-0Wcf8capf0KxPiuWhSqsEBY833UEYTSRMLEtMGwEMd45Gg0K52t0DpYFvQva5u2L9J1chc6OCIKfio_x0mT4wCK93-lohfkkXyTpfJ4i1uBQK5YenfTObkZJIosWfDsh02VN1mKYYNI11GW6727XK1d5c8h8U-bxlo5a0tFDb8hP7EatXLnX3bhpuu1A3NWwi2g8oqm6ppUdLJ5UaoRlM9LIfKXRfPKecmFUoE_ivpSIcV5moAtp5Tb34oqO3RTlWAW5BS9LPwtcRK5kTYeN-7v_iasMOFRYbii4DbWm6gFPRHccuWVOoa-DvX1dGRe5C_AXrCZBJQCkm52j96uOdso9kYlPjZLOUKJQwakSQRZEhYnhvIHlYCxxBYbLu14zd0F73aauZTVzepqZRjQra8aeGu3fA2w_MNr5QjesLbZHY0C7YRMqB_XRrZlcQZShTBiFa2sIWSodSQvqKVTJKbCuoqglswWSQ_dRtRB4IU9LXhnyDVmREyB0cpHb2euETHnxJU4q7GcyLvskAitRKVfwRQYWCIdyiBr1Ch1TEVAzkolVq1jHevUquefvFX2d3HK7vrld9e_JbYkqjJItlIlfjnJ7yvRQGVlcMIWajWDEpVsni_bw-9mNTk82eoGj_URU0VVfhSl1BFMDERnaWnQd1U4EwQ0wH8rl8xdUAsD1wpFbCha6RaAKPVUT0gR-qijoF6z4qotG9NTdRk8buVRIWtrOuh7m-PmAMeoRIqfKJLelONPOQMpghqsni8GqjIuZQAy4Wpf4qlzjus3T5a_TQBJFNQAEwUCAHqmTuxFqS-r7X0KajrX3vl02SSfFulT0E3_hYqn-rF_ybKnmpYv_Wap2A3-FYKnoKJ5eurdgoK2__qUqdoevr2Kp0i2H-6UqdgdiE3E8gtLjQTfmkvJgo0t1sQaCi3MYgHgR8z2sL62aJvjUMz-jL0ZUabeBGb3nud-zYhUQxsZvB-kui82sli9pnMUjqs89BPI7Gfh3cRBIje83MIIr3npxhoeui3fjDqrm9J_ux9bONVD_7ScLN7f3i-c8zYTJ0oPP6dbeN9C_K_H0h7yLhzXJ0g2vbQz21M7nC3hAbc3xKUGJJFQlF6qCHABQUYCWwlFpSH6q4f7nu_xbQhwRF2AAo9hgTDO5_Jw--PoBC9B2CuDGyNUetGGBPGN0XfFvegRSuQHEqKYVzvoV9b9e5AQp59pkUD_eke-HO6iffaWGA_E3np8GGvdx1Kmvj4D4czLfamRz2DCD3uXOHd8E--4kMR52asp_eh_AfC8Gc6Y7Ub5yAgPmu6Ncq31wH2mJjTu9cZfyBWpTsfA0x75SNQoaIDxkPVn-dDgUYjHHpsq_ywT2h_ahvvPWhoH6ZDBqnBsEbfvRfPIYj3R7Ob4x-F6UlCNxXvgSkKFbsHnh59m0z80_eAgfwj-1CG_fUy5N9z08aDmH1O5S1Mj0M9wpL9tSgDyffvD7xrd-_DvxZgkuhI5gMFdhJgdNAV-gjRAeTvkonn0dtrQ1w5yezF4Esns302EQqmzhYO784sIzdPgIT6UvEQJNexB4_5YsBY95-S-wxwdeVCfiyyXIvJgJ-AfxWtSxCHoQMyJmNj4i18tzfIGzu8F46zicI30RA5JWxyFw09PoAOGAdgT9n7CqDsQeRA9SIeDoAR4prgnFrRpgpd8x5GJv13fTiukOZcPSlHdmAESTyGSf1EijEFXKjfyrcPgvru6d-xDh1ggeiMU3Ri6U5QnCSoY_fApkOIcD3YV0lwD2_8-yu7YNqgsws1gc1niJ1BovG7MNM3Zx2EnD4wY_O76ikrXmGmMWHf1GMizuwUFvvUajA9lcR0Zp-5se23dk4afxce0zXqoX0GSDRTsw_1TEkNc3WXHIl75Se8gIyRgksYkYKlTyD8648qtgT8R5c8SRYYn2YJ02bp9uZyR4GlYE6_d2mlHVOxWdf8qRxcSimY3Z-mhNIOtEFyyiCy6O6SSQGOfo9SSbtWHXNQBhMI740FwH5RYaQdUEAqQw-GeDGkATP4wwohRWaCipCtgeTY3Y4CSEnAIgesEZIewqFiImYpdlD_bWSSFT63MsnjyVLeqTI87qwVHkQbs6Z3lyd6CAToUORJVMmwM_W0DIK9n-No4DgJJThPIO8b2O2BDokxQr21jybzKqbBRtvaBn2NdihvmJc97bbf0L6LKroDGS9sgYqlJ6l6RVYGS-kfjPdbyMCM7q1lTwKM1KkJLQuh2DmchF8X5cunMQhb9ydkzO8HzuYuaZZeOhPDDol3P6nuc1_w_rpWOigAM7bYRmXw1ztWCufrWfLetHasepAzf3zhvfzc91n78YI1--Bs-JGvfu8qUzPo3ZdM70dhI8Zlf1FCG_L4ofgn5_AQOd60zuah8qF8Ecoc1KVNiBoVEAKLBKr1WnqJd0QEe2c3V58H0kakQMsjkJP2X43v6R2WgF2sauB92kWG-4orf5HrnuQ6xl59eh3pKiTYOAPu0etYkZEBuWoF8z7qwG7D4PC9H5Poi_J3lQ75Ipij6xNLpLsPS_CO-khBkMeE8y7cxiIvfYB3lfl4eLhHZIQdVu0At_HiHQ8P5vDiW5TVBPGoMUhjJTmG54IxhewF796sJlpXI4JrO0fHb8rI-XgASihQlhiP9dIMi2QMEKGtMfdftsFtwwiMQUBusBHC0hePB52paxFnhTbkN2LT2FHQ4sulDQoSC-hK_LIPh8R5WKli5tHRPWg16DT60g-I9cYaCEuxGIJ9JKde0OyfXJIZsVjEsrQ9mpTuH7X3F9LHehkBx8Q47OpK87Ar7Tk1uTgWv-GleCS6sAoAZvbAXDzOEtsXYhLfLbeD_BO-s8V5G6rM0ez-wViPZ6QtdgEcCCiARsxMlCzew01wysgPn8H9djDFRu5aQ-4LTMZvrnk7f2wyzMUPPkRKxD_enRdZngzy8CO90CG3SPpZ-BN7pcP6C_o5-G16lwBh6MTwQAjMZNojF8m_77c0-pq7Rz6efd_zsoap9z3nH_2eDI3Si2Rn5v1E33wKljaYXy_vvv0geg0oGWbd9z7oXfpJojn3bXt37yWJZdwnsvVv7O9Mug_nZPxiV6LzUyYDvp_Mk4CzJ5CPMvFZuJeHMhmybJsSIbiodXw2692_widRfMKdzOFtKbiB2bsFBenX-7ebII1-_9YS5coPriOZRw7fs_DuEILnrgTNoXF4y2dOYPYu7zyZBVdyEj83c9K_YWMNqzpFbxK7M4PZOId3YZJ-rtJkx2UYw8sp6UVw2WKRwMXzRN9woVT4AYOBfLnDKymEexf1PZ_NLDen--vDUb4zo5zuOwoktO-PcuXuqLy36or1LIVuJvQtXQU3T957Xq3wwwhO-n1NfscdBOjcD9Lv_mhIr4L7J9FVic5Eh3PhhRE_lMtumIEHwmwU9BsH90XeW5G4v-eMgKj9WBPXcLj9bFtrW7wK7n-Mj6J9Dsg30K0AFL17sPgnYWxTFC3BlhjFUbxVeJiGba78yKf3V-7CgYEizNzuiTF7YLJnpN3Ji37Pc2p04YIZW572BTPexRf_-Blfjd8leP_b2Nr9oWA_PUKyHkHyHw7a1cg9ABvR18tG7hHX4Gz3uVhUt_3D5zvzwu5RZMFMWS6DuJv33unDI-nS_koc_giJw8lUl1DSoNZG9jbZWmy4Xfw5rabMUfpUHOLC_GykoAArivTPbFLvePqsKWX5sGn3gMiNRg1_m6Tg-hQqpNAaN1AvLJ7-kYuCd2V7ic-SherKEmge0m3904SNwo6gFxSemIN078j89N38jNJvTWez2f9o4IVqdbLzJ3khiqNi-TR7OhPLJ0-W86PlaZHly-PiZMbPsrMj_mwm5svlkp8u8yfPjudi9oQvj85mgp_Ojk7Q-oWH-RtvKySQihXSjuSDAU-eLZ-dPBNFcTLPT56dnc2zp8-K0-X8VBzx42dnz06OiuMjXvB8djJ_cvJk_vQsn8-enc2FEOJpvjxOPv9_Rj9fGL3xAAA">Open the original arrival-first review</a>. Decision Lab creates or reuses the <strong>Order fulfillment</strong> collection automatically.</li>
+  <li><a href="{{ shipmentLaunches.arrival.url | escape }}">Open the original arrival-first review</a>. Decision Lab creates or reuses the <strong>Order fulfillment</strong> collection automatically.</li>
   <li>Go to <strong>Collections → Order fulfillment</strong> and choose <strong>Adapt app</strong> on the arrival-first review.</li>
   <li>Keep <strong>Create a new app</strong> selected. Enter <strong>Shipment review with consolidation</strong> as the app name and choose <strong>Create draft</strong>.</li>
 </ol>
-
-
-<figure class="use-case-figure">
-  
-  <a href="../../../../assets/use-cases/shipment-readiness/consolidation/01-adapt-app.png" tabindex="-1" aria-label="Open full-size screenshot: Decision Lab’s Adapt app dialog with Create a new app selected and Shipment review with consolidation entered as the new name."><img src="../../../../assets/use-cases/shipment-readiness/consolidation/01-adapt-app.png" alt="Decision Lab’s Adapt app dialog with Create a new app selected and Shipment review with consolidation entered as the new name." width="540" height="560" loading="lazy" decoding="async"></a>
-  <figcaption><span>Adapt the published arrival-first review as a separate app, retaining the source release.</span><a href="../../../../assets/use-cases/shipment-readiness/consolidation/01-adapt-app.png" aria-label="Open full-size screenshot: Decision Lab’s Adapt app dialog with Create a new app selected and Shipment review with consolidation entered as the new name.">View full size</a></figcaption>
-</figure>
-
+{{ appFigure('adapt') }}
 <p>The new draft records which published app it came from and has its own app identity. It begins with that app’s <strong>published defaults</strong>, including the original $6,500 expense limit. It does not inherit Maya’s edited $5,000 working case. The team deliberately makes $5,000 the new example’s starting expense limit.</p>
 
-<h3 id="prepare-the-third-option-and-its-records">Prepare the third option and its records.</h3>
-<p>To concentrate on the new requirement, this walkthrough provides a <a href="../../../../assets/use-cases/shipment-readiness/consolidation/before-slot-rule.model.yaml" download>prepared starting model</a>. It adds Consolidated’s quote and corresponding permission records, defines the confirmation fields and loading window, and limits the review to the three authored options. The original 18 shipment checks and arrival-first ranking remain intact.</p>
+<h3>Prepare the third option and its records.</h3>
+<p>To concentrate on the new requirement, this walkthrough provides a <a href="{{ shipmentConsolidation.downloads.beforeRule | relativeUrl(page.url) }}" download>prepared starting model</a>. It adds Consolidated’s quote and corresponding permission records, defines the confirmation fields and loading window, and limits the review to the three authored options. The original 18 shipment checks and arrival-first ranking remain intact.</p>
 <p>The prepared source supplies the business changes; your draft also contains its own generated adaptation record. Combine them before replacing the editor contents:</p>
 <ol>
   <li>In the draft’s <strong>Canonical YAML</strong> tab, copy the entire <code>module.metadata.appAuthoring</code> block, including its nested source information and creation time.</li>
@@ -279,35 +102,16 @@
 
 <h2 id="define-confirmation">Say exactly what a confirmed slot means.</h2>
 <p>The carrier’s loading window is <strong>Tuesday, November 17 at 11 p.m. through Wednesday at midnight</strong>, immediately before departure. A confirmation must cover that whole hour, match the shipment, and already be known at the 8 a.m. selection time. It must also have been confirmed by the noon reservation cutoff.</p>
-<p>“Confirmed” must mean enough for this decision to rely on it. A record for the wrong order revision or ship point does not establish a slot for Maya’s shipment; partial window coverage does not establish the full hour. This applies <a href="../../../../articles/computational-hermeneutics-for-human-decisions/index.html">computational hermeneutics</a> to a practical handoff: make the claim, scope and conditions explicit before another part of the review relies on the finding. People still authenticate the carrier’s record; a matching field is not proof that its contents are true.</p>
-
-<figure class="use-case-explanatory-map" id="confirmation-scope" aria-labelledby="confirmation-scope-caption">
-  <a class="use-case-explanatory-map-image" href="../../../../assets/use-cases/shipment-readiness/decision-maps/confirmation-scope.svg" tabindex="-1" aria-label="Open the decision illustration at full size">
-    <picture>
-      <source media="(max-width: 650px)" srcset="../../../../assets/use-cases/shipment-readiness/decision-maps/confirmation-scope-mobile.svg" width="560" height="1390">
-      <img src="../../../../assets/use-cases/shipment-readiness/decision-maps/confirmation-scope.svg" width="1000" height="840" alt="Decision map of SLOT-C104 and its exact order revision, service, ship point, full loading interval and confirmation and knowledge times in the separate arrival-first authoring example." loading="lazy" decoding="async">
-    </picture>
-  </a>
-  <figcaption id="confirmation-scope-caption">
-    <span>Decision map of selected conditions in the separate arrival-first authoring exercise. One current record must meet the scope and timing conditions together. Recipient, ship date, profile and all other matching tests remain in the complete requirement.</span>
-    <span class="use-case-explanatory-map-links"><a href="../../../../assets/use-cases/shipment-readiness/decision-maps/confirmation-scope.svg">View full-size SVG</a><a href="../../../../assets/use-cases/shipment-readiness/decision-maps/model.json" download>Download structured map</a></span>
-  </figcaption>
-</figure>
-
+<p>“Confirmed” must mean enough for this decision to rely on it. A record for the wrong order revision or ship point does not establish a slot for Maya’s shipment; partial window coverage does not establish the full hour. This applies <a href="{{ '/articles/computational-hermeneutics-for-human-decisions/' | relativeUrl(page.url) }}">computational hermeneutics</a> to a practical handoff: make the claim, scope and conditions explicit before another part of the review relies on the finding. People still authenticate the carrier’s record; a matching field is not proof that its contents are true.</p>
+{% set decisionMap = shipmentDecisionMaps.confirmation %}
+{% include 'body/use-case-decision-map.html' %}
 <ol>
   <li>Choose <strong>Requirements &amp; inputs → Requirements &amp; checks</strong>, then <strong>Add a requirement</strong>.</li>
   <li>Use <code>SLOT</code> as the requirement identifier and <strong>Confirmed consolidation slot</strong> as its name. In <strong>What does this requirement mean?</strong>, describe the exact shipment, current confirmation, timing and full loading-window coverage.</li>
   <li>Set the check identifier to <code>scoped-consolidation-slot</code>. Choose <strong>Require a matching record</strong> and use the <code>slotConfirmations</code> table.</li>
   <li>Use <strong>Add a record match</strong> for the shipment and status fields, and <strong>Add a record test</strong> for the timing comparisons. Under <strong>Apply this check to</strong>, choose the selected <code>arrangement</code> value <code>consolidated</code>.</li>
 </ol>
-
-
-<figure class="use-case-figure">
-  
-  <a href="../../../../assets/use-cases/shipment-readiness/consolidation/02-define-slot-requirement.png" tabindex="-1" aria-label="Open full-size screenshot: Guided requirement controls defining SLOT, Confirmed consolidation slot, and its meaning for this shipment and loading window."><img src="../../../../assets/use-cases/shipment-readiness/consolidation/02-define-slot-requirement.png" alt="Guided requirement controls defining SLOT, Confirmed consolidation slot, and its meaning for this shipment and loading window." width="462" height="384" loading="lazy" decoding="async"></a>
-  <figcaption><span>Name the additional business requirement before specifying its matching-record check.</span><a href="../../../../assets/use-cases/shipment-readiness/consolidation/02-define-slot-requirement.png" aria-label="Open full-size screenshot: Guided requirement controls defining SLOT, Confirmed consolidation slot, and its meaning for this shipment and loading window.">View full size</a></figcaption>
-</figure>
-
+{{ appFigure('requirement') }}
 <p>The condition applies to Consolidated. Direct and Backup keep their existing operating requirements. A separate policy in the starting model rejects unfamiliar option identities, so adding a differently named service cannot bypass the new rule.</p>
 <details class="disclosure use-case-technical-note">
   <summary><span class="disclosure-label">The matching fields and timing tests used here</span></summary>
@@ -332,23 +136,16 @@
     <li><code>validFrom ≤ derived.slotStart</code>: coverage begins by the start of loading.</li>
     <li><code>validUntil ≥ derived.departure</code>: coverage lasts through the end of loading.</li>
   </ul>
-  <p>The model calculates <code>slotStart</code> as departure minus 60 minutes. The duration is an authored rule. There is no case checkbox that turns off the confirmation requirement. The <a href="../../../../assets/use-cases/shipment-readiness/consolidation/shipment-consolidation.model.yaml" download>completed model</a> retains the full declarations.</p>
+  <p>The model calculates <code>slotStart</code> as departure minus 60 minutes. The duration is an authored rule. There is no case checkbox that turns off the confirmation requirement. The <a href="{{ shipmentConsolidation.downloads.model | relativeUrl(page.url) }}" download>completed model</a> retains the full declarations.</p>
 </details>
 <p>Choose <strong>Preview requirement edit</strong>. Review the requirement, its applicability and the matching-record condition, then choose <strong>Apply edit to draft</strong>.</p>
-
-
-<figure class="use-case-figure">
-  
-  <a href="../../../../assets/use-cases/shipment-readiness/consolidation/03-preview-slot-rule.png" tabindex="-1" aria-label="Open full-size screenshot: Rule edit preview naming the Confirmed consolidation slot requirement and scoped-consolidation-slot check, with Apply edit to draft."><img src="../../../../assets/use-cases/shipment-readiness/consolidation/03-preview-slot-rule.png" alt="Rule edit preview naming the Confirmed consolidation slot requirement and scoped-consolidation-slot check, with Apply edit to draft." width="462" height="214" loading="lazy" decoding="async"></a>
-  <figcaption><span>Preview the requirement and its check, then apply the reviewed edit to the draft.</span><a href="../../../../assets/use-cases/shipment-readiness/consolidation/03-preview-slot-rule.png" aria-label="Open full-size screenshot: Rule edit preview naming the Confirmed consolidation slot requirement and scoped-consolidation-slot check, with Apply edit to draft.">View full size</a></figcaption>
-</figure>
-
+{{ appFigure('preview') }}
 <p>With no confirmation recorded, Consolidated now fails its slot check. Direct remains available. The new review has 20 mandatory checks: the original 18, the policy identifying reviewed options, and the scoped slot condition.</p>
 <p>The confirmation table is a <strong>resolved current-status register</strong>, with at most one row per arrangement. The logistics coordinator reconciles supplier messages before entering the current status. A cancellation replaces the old status; unresolved disagreement is recorded as <code>conflicting</code>. Both fail the check. Duplicate current rows are invalid inputs. The review does not reconcile an event history for the team.</p>
 
 <h2 id="test-business-scenarios">Test the decision the team expects.</h2>
 <p>One passing example would be too easy. The team needs to know whether the review also refuses the service when the confirmation belongs to another shipment, arrives too late or has been cancelled.</p>
-<p>Open <strong>Business scenarios</strong>, choose <strong>Upload scenarios</strong> and load the supplied <a href="../../../../assets/use-cases/shipment-readiness/consolidation/business-scenarios.json" download>business-scenario suite</a>. Choose <strong>Run business scenarios</strong>. Each scenario includes complete case inputs and an expected result written for this example; the expected answers are not copied from the calculated reports.</p>
+<p>Open <strong>Business scenarios</strong>, choose <strong>Upload scenarios</strong> and load the supplied <a href="{{ shipmentConsolidation.downloads.scenarios | relativeUrl(page.url) }}" download>business-scenario suite</a>. Choose <strong>Run business scenarios</strong>. Each scenario includes complete case inputs and an expected result written for this example; the expected answers are not copied from the calculated reports.</p>
 <div class="article-table-scroll" role="region" aria-label="Expected behavior of the adapted shipment review" tabindex="0">
   <table>
     <caption>Fourteen scenarios test these business boundaries.</caption>
@@ -364,14 +161,7 @@
     </tbody>
   </table>
 </div>
-
-
-<figure class="use-case-figure">
-  
-  <a href="../../../../assets/use-cases/shipment-readiness/consolidation/04-business-scenario-results.png" tabindex="-1" aria-label="Open full-size screenshot: Readable business-scenario results with Check, Expected, Calculated and Result columns: Direct passes, Backup is blocked and Consolidated is preferred."><img src="../../../../assets/use-cases/shipment-readiness/consolidation/04-business-scenario-results.png" alt="Readable business-scenario results with Check, Expected, Calculated and Result columns: Direct passes, Backup is blocked and Consolidated is preferred." width="1098" height="677" loading="lazy" decoding="async"></a>
-  <figcaption><span>The valid-confirmation scenario compares business checks, expected outcomes and calculated results. All 14 configured scenarios passed.</span><a href="../../../../assets/use-cases/shipment-readiness/consolidation/04-business-scenario-results.png" aria-label="Open full-size screenshot: Readable business-scenario results with Check, Expected, Calculated and Result columns: Direct passes, Backup is blocked and Consolidated is preferred.">View full size</a></figcaption>
-</figure>
-
+{{ appFigure('scenarios') }}
 <p>All 14 supplied scenarios pass against this draft. The editor shows expected and calculated outcomes together. These examples support the team’s review of the change; they do not establish that every possible business condition has been modeled.</p>
 <p>If the model or scenario suite changes, rerun the checks. Once a suite is configured, its current checks must pass before publication. Keep the suite with the authoring materials: it is a separate file, not part of the published app package.</p>
 
@@ -381,34 +171,20 @@
   <li>Choose <strong>Publish app</strong>. Complete the review acknowledgement and choose <strong>Publish reviewed commitment app</strong>.</li>
   <li>In <strong>Choose a collection</strong>, select <strong>Order fulfillment</strong> and the <strong>Review a first shipment</strong> use case, then choose <strong>Add to collection</strong>.</li>
 </ol>
-
-
-<figure class="use-case-figure">
-  
-  <a href="../../../../assets/use-cases/shipment-readiness/consolidation/05-review-publication.png" tabindex="-1" aria-label="Open full-size screenshot: The publication review confirms the whole commitment, mandatory obligations, plan and situation domains, operating assumptions and financial basis."><img src="../../../../assets/use-cases/shipment-readiness/consolidation/05-review-publication.png" alt="The publication review confirms the whole commitment, mandatory obligations, plan and situation domains, operating assumptions and financial basis." width="760" height="175" loading="lazy" decoding="async"></a>
-  <figcaption><span>Review the complete shipment commitment before publishing the tested app locally.</span><a href="../../../../assets/use-cases/shipment-readiness/consolidation/05-review-publication.png" aria-label="Open full-size screenshot: The publication review confirms the whole commitment, mandatory obligations, plan and situation domains, operating assumptions and financial basis.">View full size</a></figcaption>
-</figure>
-
+{{ appFigure('publish') }}
 <p>The result is a new published app in the same collection. The original arrival-first review remains available, along with any other installed reviews and their existing cases. The collection pictured below also includes the original cost-first review. Publishing the adapted app does not move existing cases onto the new rules.</p>
-
-
-<figure class="use-case-figure">
-  
-  <a href="../../../../assets/use-cases/shipment-readiness/consolidation/06-collection-with-adapted-app.png" tabindex="-1" aria-label="Open full-size screenshot: Order fulfillment’s Review a first shipment use case contains the original arrival-first and lowest-cost apps alongside Shipment review with consolidation, version 1."><img src="../../../../assets/use-cases/shipment-readiness/consolidation/06-collection-with-adapted-app.png" alt="Order fulfillment’s Review a first shipment use case contains the original arrival-first and lowest-cost apps alongside Shipment review with consolidation, version 1." width="1080" height="996" loading="lazy" decoding="async"></a>
-  <figcaption><span>Add the new review beside the existing apps in Order fulfillment → Review a first shipment.</span><a href="../../../../assets/use-cases/shipment-readiness/consolidation/06-collection-with-adapted-app.png" aria-label="Open full-size screenshot: Order fulfillment’s Review a first shipment use case contains the original arrival-first and lowest-cost apps alongside Shipment review with consolidation, version 1.">View full size</a></figcaption>
-</figure>
-
+{{ appFigure('collection') }}
 <p>This publication is local to the browser’s collection. The app’s <strong>Copy app link</strong> can give a colleague the frozen app and its supplied starting facts. A shared Marketplace release is a separate action.</p>
 
 <h2 id="use-expanded-review">Give Maya a decision she can act on.</h2>
 <p>Open the completed example to use the same published review. It creates or reuses <strong>Order fulfillment</strong> automatically and begins with the $5,000 expense limit, $6,500 cash limit and no slot confirmation.</p>
 <div class="actions use-case-process-actions" role="group" aria-label="Open the adapted shipment review">
-  <a class="button" href="https://hermodlabs.github.io/review_lab/#app=app-diagnostic-48be6071-61e5-4d30-b5aa-bbcb6b3126a8&amp;version=1&amp;release=c4bf403e593b0943ef6421b1190eb259574998659b3d59b0aaa0a22eda190beb&amp;model=H4sIAAAAAAAAE-19a3PbRpboX-nC3Q-7VQCHpEhKoqp2y5GdHe9NYpft7OyO7Q8NoEF2DAIMHpKVlP_7rXNOP_GgSFlOnNykpmosEOg-3X36vB-_BllZ7XgTrINUJLKWZRHlPI74fv-3WRAGjdjtc96IYP3ryJv6DXw9FZksZCPL4v4PIvuyN9XzNFgHSbnb56IREY-ScreTzU4UTRAGN6KqcfRgNplOpkEY7HnTiKoY-4aGlk0ugnVwrd5gnHmjpqJOKrknuIOnohHVThaC3W5FsxUVKwvB9OisbngjE7bPecESXrCaN7LO7pi4EdUd2_Ei5U1Z3bEyzuWGw5iMJ1VZ1-oN8XGfy0Q2-R3j6U42jUhZnYiCV7KcMACRV4JlgtcyzgXOU7OygNezRlTsdlvmIsLpxUeRtDgDvS5z2dwxWTNRNzzOZb0V6SQIA94227KSxQZOpRI_t7IS6fdl2ubiWynytA7Wb71NCIOfW1Grf_K6bnf4vA7CoC1kA_8vi32L_0i2pUwE_Euv4mm547LAfa3kjUhhjKSRN7KR-F4l6rKtEvVvhAYOAgcri7qpuKS_MlnwIhFwypXIRCXoj5zHIq-D92GwaWWKb6yDf2x5w3Zt3bDYHlYasqzELduFjBcpu5XNVhbsdiuTLeNJIvaw_bncyab-j3fFP_B5Gf8kkqYO2c8tLxqEOmSVuEEcrnGcvEzwaGsGh5WUN6ISqRkg40nT8pxVIimrlL6wZ93wRtB3t4JVIr-TxYaVhfnaYJraWbbjd6zZEioUomI7_kGYt-3OhiwVe1Gkokjwr4Tnokh5RfMnfM8TfI92CQas-Y5GZZWo9yJpzKh1Uu5FyvZwEWpaNn6FK2WCJ1um8YiVe1HhZpivfypl0ejnxcagt5la1s4FxEOpG16kzgnou0MbZW4VneK2vGW3Ms_Zntc1TGC2jG6LwgBOZ0KIzugS1Kxu9_scN7QWLBVJzis9U5GyFHGX3ZQJj9ucV3cTds1rwW7L6oOwX-N9vOF5CyeZ5-WtSFlMp5RV5S-iYDucdcK-5YhKdgtgFrs1dodpbwogErAAWWSigu3NqnLHOKMbAA9gjZPgE16WpuJJM05rZVE3PM9FGul3kR4eQzN9Ui5PI8oCtgYOLFgHcdkWqUgjopunkmZAzLLQtC1YB99K2L8Bgmz3lO4Na4AiEHUGrP8c-kwIrc8whHMuNIpZUq3u6wSp4w2vJAcytn4bXKuLjG_DroqQIf2MEI_wbMq8nrAX7roAtzcF3hBZs3oL6OyD2uMfhFxmYQDJk-E1EDB6rUix6itWCIkMTxaGlIiQ7asy5ngAsI9FWbG2yGXtTkzDaZzFeQsmdvvGATLmtaxhKbIAMg8DFE2oMJ6zG560ZVt7rKwSdZs3MNybuz2u_i7JZQJwV0LRpVrs4QYbPNC7ae8cPKrFzy2shu7fvqybyPxsmQvjm00lNkCgcQ0ObTXUNGRxWX6QxUYNZS_wDc9lCmC3tWBbnmdRuRcFk0Ujqhue11eMpz_xBA9UP2NpyYqyYUBXc76HWa-JUiMjRyrd7liZsVru2rzhhYBNqkQhbjkgXSoApesJe6KJ9qbiReOSa9nUTBSNrMQA0YYZn33ci6LGmeB8i0pkbZFywmlebUQ9Ya_ss22ZA1PLMpE0LOH1FsnhlQ8hPhc3wNcRNwpBSCCyshJsL_gHekXWbCd43Sq0eda5pUlZpEiFaEFA8JGlG_alLrssxu7EhL2055vwAnYb7pgoasAaGCzjMm8rAfO_4gWcLYCVi48yKTcV32-BvMBOdq-6WvhGFC3Ii3g_OG5zw2UBCFukTKaw-ZkE9oH3HYQzmctfBEtlvc_5HSurVFSIcSxrcyAJW5F8ECivFKJ2BbqaiY94dRLB0rZCHsKrRvKc1YJXyXbCfihJPCRO08gdx8uU5Fzuao0Cls5UIhc3gDKILXyD-_C9JM6a8oaHrC1AZstvQFYqyw_tvoZnNc8E45VstjsBNw_mawvgkGUFJ-AzV6QPeEWI9umbLwtAEmB0QIPoAuRJC6pA2pVrDTbwnCHdVgIcforzZ_IjbLsVWUO8XvaWgiRXw91DpCorJm4k0jm4Y0puU1uDt-N9GFhq8x0vNi3fCMMSGyBLfdYWOQQK2VwuG1HxvCYGJoFaJTznFQCwLXflRtCtoacRryp-h3t_xYpSyfl0H8sUz8egNDIYoIA7UFuMPO6I40OC-J0nXVflLftXWdQyFYRd9aQRdfNvsHgiFGVVw5rFz8E6eHNbEu9r8CoQyDWL_h0IYy44SP6FOPLFvOm_WLS7WPRfHBhy8M3NsUNujh6Sp3DYTxqWCw4C7Ogn9E_Y_DY-OLZ5cdfm6kX9K4jDDJSZsm5Q0knlThS1wno4jiK1Q1yxpGxJROAM6K8klg4nzIse2GpNnfWhoHbEe0UJewtSinrm_yxBBnxNiI06R_fwFWL7B4sExRUB95Xc8eou-iDuWCyLFOlxwTjD20bUg9F1iP6diY88aVAkF6wWuUiI-MN0V2ynyFhZMb6L5QYlDJqRJBEkSCCxItrDSeAc4ueWiKaav2b7vK2RmuIxVOVtpHWkSqQyAVZil4W3dsebBPlbxvNa4PYQ04-UvmhmM2BrIQPGV2ojyCqykTdDEoU3o5EtNBlHvTEpd7EsYPbbsqqbKOE1IP0P7U5UniAFY-34R7lrd1rI7LFSYr2OuETsrxAoC6JcWIm0TTyJ1EhULgsIPn36BBRqK3YcCMsHiahq9RV8C-hOpO0SZYWUdFemIv9Wazvj-gvpX_-thwnWYMcQVXNtXiO9ECgmr70X1dzCvgoqoDVWgOlE5NZyonQvPacaEYjnmK0FUY5UH8fG9pUZV3ZHAq3_OaEX9F9aKwxPtSzh_08auRPeHy8qucGF06NdWYg7d6voHxPDCp1nSCseYzvVvydWOfafa83g-L1X_5oAWjt_KrHbeYJCd_ew7B-TVFYiUfvqPLYX3H8OGqw9bU2FrxXpcHEXcL-DBN4em83dV-WNoHWh3ECk0vv8PV2Np7DXnGwLb4MneQ6qgGB2WCR9H8SdofZID0Gt6ltY6IyRN6BUKhtU0doirUMYgwaz8hLRZuILEZpwWCoy3uZNDSQsKUWVoFGgo9AquU1L_mnFb0mcRwMNgYnsrQ49FpWUebsrcGwSTpUsqExN9ZXVZRyNn-_3OWgTTan0GqPOgDIMH3gIrOZybBegoNdjFgxQRbV-Tl-C-FB4mrnS1yuOFoFmy4shFd1Rk-8Y6kqgK1tkDwctLmhPpUvDdny_hzsTMkJ10GTgNpB2bXlNJXCh3uF7KgaA8tLgICOqEwPfcdUEkO_Vdb3SqhlaYLl6zNISrRwNWgzhd2TusoETRIRgleCpBL0M1QPfe_BcszCW5GUtUiW0OIAqc2wtIjgdx3SAYvYVmUct14OjQWisxvZfr1_8wF4j85ywl22cS7JGk9pIp66UHa3tth1tCg2IdVO1SdNWPH-dl2iq-hVsg9tgbYhxeVsI4Im03xEZUQdcJrA6gTIY0GpWIrEO0ZZXFvQMlo1UW19SMosbha5QMgnR9-BTaIAxNP40aIyxg45gkLxUItfY40xo-cRpM2ZKt_MtUQ6FIIOfuvnelD2GdNzM34A5FAiIopNqOTg3lwUgtjHydWiAN71lf6fM6xnlPCtbi2I3AaYvhCNs5kqR9mDwGO9pG692XGu38I8STHWN3OHdRg6gTWaG9GjbmQuEy_CPg-F7vrdDOm4WmBTVCoBASwaduTwZ4bjpfuDqLsG5cmP3ck1mxrPimoJd9PaEkRMO3Og6tDplk9aLjxJtuVR0qCldmu-BYCWg0w560DppLF1IR4DYIMP37JXe7J4QdeIVVyZAusm-jZA8ArLubHdHtjp2xhdqQfld32anCI3SZK3hzp1Vi3bHzfaaHFs9_xeaI8q2gb0uNuheUea53pn64vyR04I31HLofSV2slYnCtQD5aCEKxMginXglAs-KVHyObEGh3NJl4ghmyXfXW_q54r5K38kr_3984TcY8ZTO0jXkfi9y3VAKkzyFq0ZmStLsk0llZM4aasK7i05pD1wjJh9AihEn5UXOrS7bFiA59ZAv4EjmalrheKfWY4y0np3yYj9xwH3CuGh0zUQEfVEogJmFXR4tCgDgwpAGjaRMTz4vfFHgfUgN2bZow2yxkqNCjweh_4KfchoEiK-GSHfNO4i1HlwFsX43LHBGwqOPyAQmhlFJBYHYWAsOJHx_6CmqBiToZ-on4JxKbJ268jSXoINPDYRL1Iw6WwjnqAZEGI8woDnuQEXPL8_tYVWDTWpiNDAlUmRRpkycYGy6RK3yCNukUMz34MS7u2gY5iP9mUuk7uovivAxy6V9tvIAnSHCKhzhF4J-QtXQGk1KzKCdVRWked2RBv6jYgc4z3qnHZ_ZF23Cgt5FcumAhMimMuD95_gY7hRgCxGOIY_ijIFFJovp9PpFBB1Dzh9MYUP6iZYz-h5Iz42wXo-pb_c86aH7rOnNMZqgcORE_XOeUg0-027h-tME8D3VYU29vl0-gmd76iQAog7_vElYqQGZsc_vlaHe4181o6y4x9faMeeeYwjbnmVDox2aLj-eEs93ifAWjj9V657Xt1GsLPVNZrNTIDCsKFuYl_FS0ljPtemgqo3-FtrJE54kaKVztGalckU7AnKf-Ze2m-t9hNaIyk6jTye7gkHrgtYX9q_WWlP6VuabHnuYFg6Iq5yr4ZKMvE8o-hB1r7Q262ohKG14IUbilYgpzh9G-dl8oFY1BNNS0lvJyXTcGrmW2f0cbzCHX9aJi3GW6yDHwt-w2WOchP5WWXNVLwIAwKTs53MRd2AqrfU2iezB8nAGUn-OPFxX9aO0OKCA74tK1qAZxL4YgXXpRIVEgIQewA6pijNhIzGSSXANfgEoJ1P56toNotmqzez-Xo6XU-nk-l0-k9FckTR_J3XwKTmmbi8nM6zRTaPL1Ih4nS5Wp3xi8XqPEvm6TKZL7jg_DJLkzThsyRJZ3G8mC_PF3y2WMRz0Jb5fg_oTUbr_9YxL8tQG6-3otqVabRvVeQdBFECUsOu7YA3pZJvirIGHqOdjkD84Fu-30fOz4uLWKym57NoNRPLaJGeTaN4yXkUx0m8is9m8xW_cANvZmFQcJzj9Vbu8RggXk3ckjMJ5P0SDQx9gyz5XUCyfYoWxJB9wxMQKgGBrs2HGIgk5Gbb-O538lyDix3oMtnnjNJjdZJag0U35sof2RoB8jtWCAHSkJaFQn2z6hxNGUUmlSzAPhTlbQFhV-Q_ka6hgRzNACpEP4BTna2m0U4WLYrNHMWwW1mk5a2OSUghkKSBOAAGUQBM5HKDviuw6hUbUtNgOl6B-TJ3woAQvRVPBjMUkYdgHfwfds2LspAJz9lTFZnFvuMx4v-EvWpz5RchPzt5xLvu3ndK_lmzEXfHu4KE7PW7gjGZrs12Rw7oEaBC5KECvI4G_TW7H2_gZQdx1uzdX5jzyJjzLoBNtvwHz5MxY9pfs50s6JmVN9RLDDTeNVN2nImaiX6D2cxr0eB4I2OacbUbQoEKvyvqA4iAcX8E_U40HJBZDZHwhuflxgxI-qUzPqArokKUtXkm8xw2y_6MWuyavYA32OAbHZx8RfibChAXPWtIHbpxl5VApbqW1pihEM09NHUk8F9bC_BldECn6xJlEpyreoge-AoozvA91n_PW4R6Gx3aGiiFabQauiJoSm0g5s8FeUKD8v3-iY76NiBrMtIN9Y94yvcNp1B8_TLY4NesELf6ARE1Z_18v3_uEhuMTwaviuAVOC-Q_FgshP8Mzsy8YYBLw-GdpZnI5ll8npxPRXx2Fs_m8SpL0niRLaf8IrmY88upmMVxzFdxena5mInpGY_nF1PBV9P50p4WY3uefOAboYdeXsaXy0uRZctZury8uJgl55fZKp6txJwvLi8ul_NsMecZT6fL2dnybHZ-kc6mlxczIYQ4T-OFOzTthBl5eXk-u5xnZ4tkfj47O5-tFmfJTCRLfpGlq_kFzy7PF_Npki65mF4kq8XyQkzTbLGYzy7ms2XmjgxcfM2edfbPogGhm7tIlMwOcAb9pvbLaqg_VyKyUBuBDIfVEtn5m9lqPV-tp8vJ-XT5T3pd-37hzU6wu4PCmFaxE0JFilsOYA2bEFJcKVMLOYbQ3FzxogZRkag8Rtr_B82sl6_QF67u4JbRzz6aokNCfQhsAslm2wj7hHzTsKrviU9MwWvj7AWKpuvpNJqu1tPplfIE_vjmmh5YUVtFS9tFwxX-pSwMIcJrv2Y_vn7KEgMv6v5rBBQsJ11r9B29pdIZ7tZo7IJnjsVuzd6-C94ACJlMlCUVvbLKk1AjPTIGGyTZJikC4Z9Np_gFOgDVqe5acLiBVexjkrc1hLF4PJFCXGg3KpEIuXePeXKvZAHSBwgOqLjR5cCnFpfIxQcKHPo82yLjO5lLCL3b27hSnBuAK1SeAKhyaMfQlFcSWkIA6uRdEDLwwaogaCfRweZ2cAvOvip_UlJGmZGco2MOVYAz-6HsRFm73mfyH9k4xQp4UQqkvxK7EqB25SXtJw7V5nVvhbIlQyDoBuCHCV6_jJ5McEkxbXQLNlgbBd7g7rqvf4MRtxQtjquesJcwRQ6ctaboVO1HNcGrfVBgSBWHHLJ3wTNILPFOD02mlGSBFF0WmxAjVgE1UXdXsqUSTAAskNt-bkvyeAoUMfeu79VcDwgocMPgncBb5ZuEWAETYE7eBjz9d-iDN7fBoD4jZ5Tcq_jVpoRcDqtSgzufNm2I8Cnf774qM5k7G7gXFbBuFSoLpww5J-TzRQd7i57tSkW6VWKfi0LWW5IHDLhmSjCViTSiQHF1CHfWFtyJcFdb6Xi2lCsej1VQzlrbkA99X5X7ssboBg18WyVbOK0bUclMaqi12K_OT5mfXfsJroQOum7K5INaCYSLNLz-UI-F2U_YS0IUALBqajCrFGRu7vCY2EYMXqGEm5sZsxKyemqNc-S8BkoBtuJ6q6kChqMg9SqzDO-G1QUI3FdOtLFOT9uXNYWRx3eKlbDz-TTsXDgk5EQS7XvLs8V0wp6B9RZNqU6sMsSMmvwNTW1TwdMcYtOlSVRSgNVNm959K_AXIO37qsQcMPgKIx1QjUq9Y4P7RMwGVgz6ABKNPb_DPUWAgGOroZ80oXHkGORT6OSeRUZQ7LlM9WHx5tBp4bQVXd6ihD2HIEn0XWQU-FOBga3FlTghBirCpNjgHjzp5RB5pKdWVi0AdgMcsDECh4ruV4TvO8GrgrTWOwb3vgLPDpi--K4kL7hrBvMYIDKuZluV7WZrKI1Dh5QJLK54kWxFPQGoi7L4RVRl_2SUAlz0KDc4XIS1UeobSVcOlR84scj8kPA9YBMQUvdsJ0ynBaiMUnD1UkZFLJDs8IQS4SzFi9t0IzB2xgSyAqlOKBmkEJlskPR_UzZb5EMID3KYLi31mEfk8CNtV8BQYCs64XInvsCAjA1pQa5tjB5bUyRYfORwWkM8jINOhJOwPQZUeFxM3a28BOO3MTjUFJ5tLaFkoUCPU2s5cagCfbayJqNvpuzEE_Yc02gsdkJsNNJKeO7Eips8De1KpMOHdz0tkeSXEuaVCSRWlFUqCxAhjEBUFolEE1SR5SASAoKLuuYbCktTsDs_h4q7IhrAcsFiQKFQrvEFTUv6a_3KFUtb9PTa3VFB0N28kZpgxzjgkVgt5TmsLLzIS_SKeEHbyuqmEnynzsxDE7pJzhJltTOIJr2jCB1cCDtyMdChRO6lfY08FhhKgUwe0dPuDe49WsHIvC-UqQoyGT1TVUhJrhowlXvqprYkbVNmWagC8W8EXRG0Z1mmOWrZkrudSCXRIm17AG0UfcHG2qXIQWjPMfQRAm6u4iZlBdIopD8RFfJwYkhW3JoILo2x4KZXkSX4oyZredlcgYBuRgEbPcYHmlWV1QdCArwebL-9q9Eom5bJB2bjVhTstcIJJUHDFioNhGg_zC8rFeWmszLIrgRKgxQKSbXlUaWw6aBOIvol0SGtbnj4p7SWuxBS1XOSM4wcqhUL17qrtZVKYO46awtCHKv-oJJBGh3sYVx-RK6aypokU5I8rVVs8i54j_ZkvHRK_bVBEcYOhBj_PHXsQuAdX8PlksXGe-uVuhb3vGvuzD3vwYV6anX6sdfUTVMem3teVrTnDaj53TdBwtyIyj4GfXuN19E-28kCcijWbKqfcby1r4DbPNaQzj1_qgS8xxsaRc4vNOyLveifwOcNeQ1hto81ptIiv4NogWPHRIvMoUHBt_u4I2oB-9EHfHI0jPftpDE2HTmefn9gTGPFBGXsaUuS1mfCObNYhArfYw8LoD6BINR76A1zMhM8rwvq1msVyOr-QPkEaybTzhJ-q-kQV14qVeGa7x8XCfXAh1dC0XDmFVelcr77AJbStzJ9bx-pbAxv7TL1_hzbOWI4L0HOO_L9zLuhBzZodJOGN4qhx0hJYafO4GPu-ARNxW9EPnAvHnUWLXqdOn6fXAzPQRbZL4gTVn8c_EClZ9qrqgLcehAhoM_T0CLZPRCqD44Ec_TiM3v5aa-6P_YJAHvAVThtm9igXHlo_DH58jBMfTnz0PsD8uah10flzrGPTLDalyRhvxvWEGv5QktzI4J7U-DMoZLD75mNd5jo5-5On6EO7w4zisJRq1VB22NLRcN3yERx3-b-nstFIL8UXxHFMNp85tAmNv4LXtGHskS0y9-3AO3Z-aIcsRcpcuj1Y9DKbPufF7PgP75DP_6XOHdK7viCp_6HIJzM1xUeE1xHA_kyEtT_f_IQ-4NeZQcXVAzesFhiX7uPS38lKPsXCvrvfr0o6JlS_vNrov0n0eq_EM5_9-tFOPgvETJ3w42PHP4ok1fPo_4nIKd_SQBHzZGXzatORsS936Dj_lh9S3vRn3yxS4e-2C83PEZHfFuVuy86wY-Q_ffYM6hKK2rYCAOznZukP-2ljRy8dP518yurqDG08Uqb3OCpX6fBgGR0UGW61fNAbSkHoiHLWg_ssantfxp2NZwz_iC1ODTDOEUyk-gx32FyF6YOeUfhvcBGLhHkDTkQlPu12sojjwvTXg9LHpiDRLgyGUCPkRXpVRhfib-KDtr2EfZrWlhnDbQw30fzB17d0EIMMXBTiB6-Np46l4lXG589RH76XA9jBt4ZhxlY1msQ4j4f6rqNPxtqVXBuzVZIcm2ZJe-qg8daf9cV6HEWE_szMc5tI511JNbO-04EjCHofb_iwCRdzB4yv0ZjBsf7gGZjFjezX7MjZjEvq0jxKBZFsj15jkhlE6In_8hjcP3-B09CVyLBPZiIIj3-FDrhEY9xEENgH7lP3WmdOpzmuzGTsUyve1K4NrXrX_x8qZ6tXA2tn3c3Q4-i__bO5NrydUsXRGGAck6FNkL_QH_R6m25MO_qvv7x22-fXz9_9sP1_-oxVOKpbavhJW7pt3aCQ-D6GoMV_Xh7iPWs_SI92ueuirvxAxHZTni0iZkdjM7WkNxyeUO7i9WS3dW9evb6xY-vrp-97qzNTeupG55l1OGnrD7Ue25336zxXfDSSebQiR5brnLPC5FAtDCkDDvOxG4bHVXyzESMqtBz6ST06EvlJg8fWN6TH9_8_cWr52-6R_cu0Pab0DsaqnLv5qrYnBk7obPqVzpOlltjpIoI9jII9oPT2bDj_sT9fP7xyGccrB_9_EQnCCjjgY3hpbRSZ3HHbeeb598_6-2kk4QD7Uy66WAYRzi4d69x9YfCq1U-kDtotyoAJQ9RPqswOT06M-dILLm-fva6ewNeYdaijdruLeCJyh_OeJ7XuvkVAGHqedlQ8Koz2DFX8_rF6zcdmN6UkASos_FUqdPtIMEZyQTCSuuIVrLY5CckJtUNv9OLdAGAAjtYJUvXVTtiZa-_e9Fd2bWJtvfqYqC0N4A6gxUwdImKXpqGSVnoF6sYIaDhUGqACfbX1TcP168YiPJ389cO7JNTQtJjRZowRllZRSbD2mM6DhsbZF1QTmdtS03qx-ZBR0LeNI64OyAhD-k17Bglua_fsCEdhx2j5zBH1_GFDA1mR0jy49uUWkE14Qa5blc8e9QtpuYIPbWwZxEZ2rPhgCNcrUlV7tk6xm2jnr7Ts06wQ5FmRpRsqtbTkIbtqp0DUS_1vhuxsA59rV_1oR22uPZkZvVad48GrK-dT_Vb7ksHDbFdvcl7t6sxRkZYuhtEvp7w9jio54poh7BvyDM1oBLxni4y5KXyVL3eRqiUxy-3Fd32IQOboiTVx9-Rvktq4BtPtel7mg6roofUpGFFyVOZ__B4qNZxKip6FgN_R_40CDmyNffhpP7sJLTUHz0CZqrWO1DVtFMf-5TTGPm45ymJjBAYmeTswXl6-ubj3IThoJeDBz_qhj1CnPqLZ5_Ks_GsRO0DjYbxwg-m64rQRohuOp68wXeZlWar8rZ7-TpvHDQRu3NvemPcP7Xw13XsxJ6sjfaOSFNUDKL8LS8VRW0-iHoeYW89nrHoLf-MC_twgf6vq_5nuOr3sWXm3PUHTH7oso8zd3XXDecsyiaSRdRsRbTn9fBVdw2Mj2yqOI4m9t5zctbdZbn2sSgTIiILT6TKaovHXl1-2upsyvFpm6CFXCwfpddE1tjfeUXHntdA9r67NMeUrJfXc-z-pis8LBzf54XW54VW7yi-i3Rbpsh1ff-mCxoskjt6WF49hKE1kckZWjBA5wLfFO9LCZ4R_8SVebR7zM7ZJZ2DhHNsjVCcYeTdgztGMx8_8YHBDoGHhR7c_W_A1RDpVhho2x_cdtdL8SXQaaA28uha3AIT3qXXPoqvYB0Ay7XjtBlciClqMSA1e5xHuxW_oPTsyrUjN0P8_JCLoXlU_0UjJ0_7c_GuLDIy2YikNSrunADg-MtO4YZhiLqqiP7PpPv2Mgv67w67TtiIvqL_OwRuNfTJsGYwMtyAhuCNM6IpHBptSGOw7w9rDiPjDWoQ-r8RTWJs3wY0Cv3fQc1iZLwxDcP-N6hJ6v-s1VwTApc8DOBZV3HR_w1eLQXA2IU5eM3u_ZYdpeB03rxPwu2C1jdtnA7ZoPbz2XA9wpapqI4HAOcLWv2CZ6rN1CA_-XyPp9sWYYxdHrZ3OCzibaqqWFNx5dCJHxA6B8vjn158QeTGF_jLdGIUHp9jFuVxIl13uw6-fvT2DW3jwLa5QAwxLs20utlD_lvD7Grc3MWOdfmPm73YUaYvdpDJHcfg7mNupzC2Q0ztWIZ2gJkdycjuZWInMbDBXCHmMi6TINTBrSFGNcKkRg1YB5jTQaZmKazNXjr47hHmh98JMnhXJUh9EThGxx7cnVFHxCNBY3K1Dr5pqEI3k6ALywiXPgEWTOs6ChjPsKOURTUJNYvpdqWk31STXgPOsHXS4Uf9OPB7tR5-1PsWCYyHVnUAceSK-2AZjie7J5psiMMMRJIdwVR0FFl2_PJ7KI0NkdfsLTJR6hOsvocWPk4zsB4MZQzlZVU_JnpEGh0znSBzwajxK_0MtEYm4tCgtpQdu-7WGFZzkKVoza7buil3GGdMQbv4s8I7HXxqwo09g0x_WzE-1gfFC09ZYyMBv3p96S3cM4vaNk-FibX-Rfgh0_Sl9ulPvJyRtelb4KSQdGPk1uylbh4w1O2GPsKSve6xeyvtVJJ2PxmqK8te9aKe_U_8erHslTLvmkDn7iSmeCl7UYheFC-9SZ0l-knf7FrFy_ZDcBUjP_i9f_rjGDn2uZIVDBRHz6sTgNn_xZhdVfu5EXzH-D1zuunJ7LUOE7alv-_73iYHs9cArupvZzjQwe8o59f9sLXsYnSXvIxtCzPulkmk13e_w-gcBOoEK1M3j3dForuwYZz235-_jGbTRXT94ofXL757_vTJm-cvfoh-_OH6xQ_fPn_1_bOnUYWpQ73K1VquZi9ePYURnKdGWobWdjoM2sq-7Ol19D_qemph1m19daE_6QiqfqM8v9Y0W1xMLVkx19Y8HbyZ53Pza-cSQpsQ7ycsvMzOVlP_MRVPhtdnHimlcsWMGv4qaE0VY7Za2sf2NnceALoa8G3rqZn-0Cvmy2Z2KX49XnbmvE8lbk2qXS546n2lftfxGmWWycQwom7ZWoZdnwd-rIwpPFKWBxzCqzk7WHFWZRujtm_5sVUBsb-F_QHKw7KFs8UdZjhbLJwfOvVYnbNkbtE4u8EaHrI6jMHzTQee1UPhmc9Wx8HjqvHHQrV8MFTL-WGoOgVitcFJx5Dbb524cieCvF_QNTIh74PDjGLD8PhslFKxg9SKjVEsdi_VYvdTrhNX-c0fc5X9eqzj2DG6G52ypzZg3Cdg3eBdj3QNVjeNtOQ9NJixyXtp3eaTwVncrzxxtV9u9J65KTLXUn-mwm69u3o_MEcM089DHt9g7_ofsesHvxjJ9u69b3KIlbbVq8Soc1y_e_bk9bOoyzsedF6sY7w8niN9fXfwBHRy97HL8x5nH4_mpH-afRzm1Y-zmyfKAX_YPb2nHGR0-K7-wZZ9Pp-NLKx7ef40CxvG4z_q8g5VjlSp0W9-fPq_0csfX13_HUiE28mb6MKQ8mReIKHkcCjAH27vXBVDFUH0tMu-HYukgX1V3gjXjk47_O3za7BiPPmuY9VQcVI__Gf07H-efP_yOxMk6bWPx9TzRhYtd1sOQxvnqsRufG5D7T2vZA1fYQ2HwQoeVPgi5rXARqJlnMsNLePKdM5l_7IMp9Opl3b_L6twSX1xdeL9ldtb2k2Px0oAqjEgdYdTrONv1lZJchN2MevnyEPTUTIzQZdAqh4AxwWWMohYhXoDqtlvI3iyBbMSNTajnosm_Z6aymHDQKepm1-DIggD2wE-WAdn0-n5xeX56nIqsuXl2eWZiNM4my3TVZZMz5LVxRT-vJyfXa4uLuZnZ8sLvriYruJsEcez5XIahIEtZKPGXF3MLucXSZol02w-n_Iln09XaRbzOD1fxfM4Xsymi-kqiWN-zrNkkcVxlk1TLi4vzmaX53NvTMCHiidNsP41kGmwDgZbnwdhoPqeB2vC_iAMxA3PW2gLGawD1Zs8omapXp_5IAwa2eQiWAe25Azzxq60gwATEoN18K0sUuxZ2e3CajeebPbUDrbmjawzqF1CXVhty2uLkYwnVVnrN5y2zjzdyQYw7SesSaM1uxAwpVD3QLBMcDKtq6qEkyAMoPdkJQH1gvXb4Jp-QETC3RUh4VGEPf3UJasnaNq2HV_rWm4K3VVWlZDxQDXwacjwBtmFASRPhtdQey2sGXSCrq9YYToB606wiQg7PcYL6CReqCbm_nC69TjOWzCx2zcOkDGvJbY0hbaORQ0DQD2KAtbCOLvhSVu2tdpOPG7d6DwIgzd3e1z9XZLLBEueCbxatW1wqPBA72ZodwWmEz-3WIiVanuUdROZn_fGusz4ZlOJDdh2cA2m5plT0KfT59ppPY2mbqp0NNhi-orx9CeeUIdy9YylJZISyIXN-R5mvdZVgqQqaNLugBzXctfmDS9Eib1fC3GLHRhTAShdQ00cRQSpPy_2BKV6PdDtFfo5VqY1puk-TzjyTNHfut3B-RbUD5kTTqMbdsJe2WfoCGQ8y6DIDRJqQOMrH0J8Tn1oqeGyICSgeiEQLEyvyBrKn9StQptnnVtq22Digva8rv0CQuqyy2LsTmAnd32-qu8w3DFR1IA1MFjGZQ61S4IweMULdKbJmuXio0zKTcX3WyAvsJPdq64WvhFFC0wO7wfHbVa9ngFDqJlmJkWlenhCs1KZg5cvlfU-53ckoCDGYekV28j5VjZgJrQNToGQfcSrk2DNKGQ0vGokeDAFr5It8LoIPLJEDPaN3HG8TEnO5a7WKGDpDDDNG14obOEb3AfdsjnlDQ9ZW5jSM-TEruFZzTNgjrLZ7gT2wS7A0QNMsawabGoO5YJUK-NeR15986k9PVS7ARpEFyBPVPdmlxjI2mIDdE8tbI0x_FSVmoK26ryu2x0KNopT21saevWYyoqJG4l0Du4YT5oWpQzdHX0SvA8DS22-48Wm5RthWCKUaBxgbZFDoJDNqaigmhiYBGqV8JxDM1i2LXflRtCtoacYWXCHe38FncrFR5G0Dd3HMsXzsZWlgcEYN1UQBoSaIG2oC4BMHf1lQRho93MQBkrghsHKW_avsqhlKlQ83ATClP4NFk-EoqxqWLP4OVgHb25L4n0NXgUCuWbRv-t-XEEYFOLIF_Om_2LR7mLRf3FgyME3N8cOuTl6SJ7CYT9pGIiXDWtGP6F_wua38cGxzYu7Nlcv6l9RoHW7c6dyJ4paYT0cR5HaIa6okwu1Cgf6K4mlwwnzoge2WlNnfSioHfFeUcLegpSinvk_S5ABXxNiU02pzuErxPYPFgmKKwLuK7nj1V0E3cpjWaQkdkPlQBQCkHqQXw1GwvpW-R3uFMn9SPxhuiu2U2SsrBjfxXKDEgbNSJIIEiSQWBHt4SRwDvFzS0RTzV9TfbFyr4hPVd5Git2aYFlnWXhrd7xJkL9h-SvcHr_yhZnNgK2FDNXEHCJCQFaRWMWsL1F4MxrZQpNxtuN3upxEEAa3ZVU3EGAFSP9DuxOVJ0jBWDv-EYpsayGzx0qJ9TriErG_QtRUIxL5RNomnkRqJCqXBQSfPn0KA-zGDnQlK0ElG1MxkILuSmjNbQiv1ka9ICy4OX4YtKNhmLgNMjDQNeu-7KjECiMB6KcqElt184ZzGazT1q9siMIH5pziD4hlgI9WwLFqNfYov_JH5qnmd_mdKQOnIgBCLfD1FVuq8RbfdYJ2EHIVyVGSXHi40luvuhsD-YiJXG7wVrv-bJhORVw5ChJeaKXfA9-yyANHSWZL2uydLAKX18LvlciCddDJ_As-hQGMH6zfHjtCJ9cu-PTp_achvXUnGg5cF75MeMPzcoNgYrl0g3t4slHW5pnMc6WnYjwc0EasZ-n_5iOVCvdKRS5RYLV4Xoeu9cBpqq6LiPYDj-oJ7EYLoQm1vRyE4VEm4cbrzxwgdcQZwzeY88YgqEhZ9eQKJQhqwmXoxAHBSSByWtAmAVxxvt8r83Wx8W56KhI0x0U5jyO-30c85XsKStP3HW5tIW6N4QS-5_v9c-_-g6QLxRMjwatcihopAqKJc8AzBEQbXtJMZPMsPk_OpyI-O4tn83iVJWm8yJZTfpFczPnlVMziOOarOD27XMzE9IzH84up4KvpfAlYzJMPfKMtOcvL-HJ5KbJsOUuXlxcXs-T8MlvFs5WY88XlxeVyni3mPOPpdDk7W57Nzi_S2fTyYiaEEOdpvOhahpbLy_PZ5Tw7WyTz89nZ-Wy1OEtmIlnyiyxdzS94dnm-mE-TdMnF9CJZLZYXYppmi8V8djGfLTNg1HwHu_essyf2GAlFcClNI6riIO1txG4P8riCb56Jy8vpPFtk8_giFSJOl6vVGb9YrM6zZJ4uk_mCC84vszRJEz5LknQWx4v58nzBZ4tFPAeUpTqt6RNABWNbPX8zW63nq_V0OTmfLv-JCPRzK2qFjv_YymTr2Ee8ysOFrpWKthJrqlTrYGCEqpSOWAm4z1jsciAa8j-cFR9v-5rBPSxkg3IyEFsiSG0jkAftxItKblBA-p5I7RREA2fp0-ka_xdNV-vp9EppMj--uaYHtqCnMqjZVWLIKGnyeBeDdfDj66csIQhRPAzWCBzoONr5bbzOAWwyBVrBQoGQwMW1KhRoGG9gZscOC4V8wdLCZVEjgfBLRZuKvgj2jAy6aEbRp7drQdXKwd6W5G0NAo7HTUj4oU3QMaF25yf38mQ02m5JRDGpYB7OkF4OOvsVkK62yPhO5hKUsr21OFCBW4HEDQkZiHyYRKZJoST0A9MEWqq2ginrmKXmFC-EQHELzb4qf1LsWdnbjTKqLF9gt_bNb66dDeMxHQW2AstTCqS4ErsSgHYFDW0PCcKANq-L_coyULsGffD0ox1ceeJghtqxDza4u-7r36AthuyIuOwJewlT5MDSarJb6GrNxqzRB8WWJ0WzEE-2_uEVSd6msB95rsMqQlNiGi0BSijTzgVZoMCjygdnQky8WuBU01ldjVZZ_R1bsLbIIF6mKQj4xvJIRjJ9-OYmGLTHsepG7pVVoylZLJiqtAcx2aXesCHidkXXXvma7ObtRQXcVBlQ4Ih5npeJqle940ULZhEyEZVwI_e5gKrTxJwJVjOfrOtWpJRtr3f_zlo9O0ZPtYmKgkhEGSCpaNqCAt0gObcN1XvfV-W-rHnuQK4ceV4YtzbMCH1yobJkOhZWXAYdcd2UyQc0meU5a3j9oR4zu05MhDzFAkNaBTl7uhwkthrkVa9oeZ6DTrZ3isEjfVCVvBUtwOLJSLPKLMMbYWVnsC46pif8Ohag35FNMb5jSgo_n0_Dzh1Dwk1U0L4H8boT9gx0VSyL4hiuwIBgjPmawOri4WgsgPWQzVXH3sJjIOVHl85G1gJrBdkaicSe3-FuIjTAiU1Yb4hb5mVFjFTyBlznMtXHxJtD54TTVnRbixJ2G9TlGpAJ7NX4jxtRtLgSq00pb7MsNmR17TqTPFJTgz1R1EBa-QYYXmPkCGXmVXTuO8GrgtS7OwZXvQJDcQnEZFdSae1aDN5xZRlutlXZbraGsjh0pxJAHVlc8SLZKvcE2Op_EVXZPxmlKhY9Sq2K-mvbhb6IdNNQy4ATM-U34IoDKgHldM92wrSB2JSN1Lb1WCCp4WAFAJXQUDlVsh8sCNqkAbQ5IbdAITKJZOmbstki20FwkKF0yedoAwmtgA82jfDlA-RjSARyiMbtcbErUz0dTmuIZXFWiFu3Z0WXafUc-GSkM-ev9PiIUkEMAGSx5mwra3JUZsqPMmHP0ZliURMsZEge4bljMewViqeDh3c9FQ3vbF7CvDIB83pZpbIAecEIP2WRSLQ7F1kO4h9gN3S82MD2lSqNxf05VKwUUQCWC5o3RhB4Jgpy26uv9StXLG2B43K7O8oU1vUe1AQ7WpDs4QAyglCHAxjvvIG3rJwV8YK2FdqSCb5Dx4OLIHSFnPVR4owRw519DB0sCO9raTHQzsJFEtp4NBRRBIUYqtgPdzCE3yxgB7pNmPr-tri_5ZOnlPlPuol2hg6E9hBDHxvgzio2UlYgdoIHjMiPhxBDQuFWuLUL4MjBCYSGMt0VQ9GzvGyuQBI3o9TJVoDF0K6qrD4QBuDdYPvtXS0TFEuSD7Y1i4a9duRk2D-lZxDJV81bSlTptFWezDagGkih0FNb5pQLkyNCalpP2VxGqfCQT-kmdyG73QKyolVRi5tDhS20TlIJ0Chq1haENVbJQV2C9DbYwLj8iLw0lTXJoCRjWqMTur7oroFKazOh4C8Va4W67t0edF1q7geaoxdtNfiGuRGDv-qwq8Ef_YirwVecBCnnd9VGLSAtHVx38HsYqMaSwXr6ibxjKovq1E8HUq1OH8LLx3rg55Cz9cBPMa_r1G_d3K9D35JpovOxSQ87-UstWT74wycH5xxaqbWSjH9n3nG-BdOQm7d2yrwzPB0vue3Uz00KXP-2-H7kXwPU3oJ1QOknaDyCvHGYKUVrnJsx9wjDdbPrHnaYJgNvgByArwAz8NB47Ajc8PcHsJW9BWDea9hqbfEbIUwYZD74a_YAXDR89FRU9BPWTv3aWP5OROTpJzo0sGU9YP-shO38rB3Bnwi9VF6cM7rKkQrc_fen028cjY9qBQP4ePCED8MffsVMEdemnbgPwfxH2uFPxGNVNMlJQHxSeKsNoc4AOGKguXdnMP5IpEoNPgaYCg4cgAqNTuCXLLrrfCzQaIZT2XaRnvYJ3U-VOPcAHDqG6JCvojettj0-iOZY3-Fx22zX-HvtdBhQAZkH7BSFuz9gn774NQld7nvCRC7LPpVgf70E-be8tMOZZC6lcg6mQ6G-wJH9dSg9yfc_H_nWHr6Hfx1AGKh8qxMFdjy4rlH3d7tIf2Da55b6GRU423pYjrCVjU49dVVP6dTPTC2kB32IxZBOJRAoVFKOAYa5YQyKi0ShE5R2FL68txrA096XVjf4pANyr1UUKU5vZSOtn4WA813tqw-SHdiBR3_RQ-Ljl2Q_g716byPczWbZN8LedYMQQZilhLBjFX8cjs2JRfgsDaaAwn5ZOFzNIHyhgsgq--F9uPDlAbTAWAA7RoWvAMoORBZUG-N3CowQxg_y0IYulR9d6uxI2P2tC8d7C4kpQXYiLJAgcCQsKnkkWK-mMPN7k8UhXeoAZr7AEQloRKeerTEDuny2-5ZrAQcDlWNhGhrQbomnHOKCrOJ1EBSr65h1zj7REdgRzE-BV0Jl_Pv35oCUyfLQ1nhWzf7u9LqP3rczXYPtSZvTBWZsfe876rhN3B1VZ6VqOkk8wark5qnR0TtKtx7MPLNzm2_NmtT-XTvkXhtAzDPYRL0081CtlAwNxuvnoLhTod2JZrapw14IIoZzY191yLPoRfuAI1MFAOjPtMmTtRTZcCDQwPH6jzRaV0EHQPlUH_RgjYkgBjFN605nLW5EWt3wLEPfI7gu6z3HvbVreumEIukwpS1XmQaFgLZCHOLLHaOZk8aqQsoxqdg4P1X8hHQC0TSe14eWYlqxuEtRyk3obTzl6LmRVTa8y1vdK-3a5VZnVU5sL9plPziN39u-G8rVzdIYd9bjYH2H_RMdzKL0COt2prhmN_f_wLZBxyovLN-4EEO3n5c6YXTReXv0Gld5yPOvotPcwbo5HRTKRrHTwgSZ6VCxg6eOjam8BUCsrA0h8IB9okLQM57nlOSmSi5QmqhInZiEqjPQISigv5EDAxXzdStKgI-xRwxGYs8wywuRQxab_IRQuLrhd3pR7uSmQ5MqZnFoJdCZwaNrOrSjX7bWW89gLpJOFuqFAtVeYVUvBGOElIVDESgmpkRSYNs9mUQDwSReZGR3T1B9LiCaSnosQJOqKCuryATla4LvsI0eu4BeF8BodboeJSOpf2upbIPPjVT25SRbh9P2RQDje_METeryMciTjMT-2Rug8iDDQZXPrNTR-Qj2bsHpnrvUl28d9ajrVjNCDtR59O0Y3W3SPw1ZNAbfNS90LRx9GUz_2LF2dF80vw0aPnpyr_8GqvmO9O50o-8dpSssPOwgPeeZc5YdqdgXdrmRQo090RfF-4twG8h__jJ6ObPugrTT7cTV3Cfh04_WsHhACzhO0v3UVUa-rpPWDToPHrZWo9zz1qv5Oo-8s6wDp-41Fx4_eKeR6UPOXqVip5HWlCInA-vePet_5BpDTAq07UpsArN7o7vS-sMwbMSl5B6Kb_AeZ4p_cgoPqYR1Yy1QRdqXL3yZg4Y0neMGBQTPSoOmDiW9DA9ECHvvMO8_9aSNgU72XwCdlNd6_E4fsI4cIlU9n_MhNDxWXPkLXY9E1zHy6uLryFA-wg4T4A6-jnVj76GrUrofog4cNpb2f3cjkV1R_r4e658F8-D5DHU1OoYkOKx-oHP6l4Tzvr0dird2AT7UD_3x4R6REQ7Y9b29He5y_vhg9itpDJIaLwp9CNKh3uV9vqDNQ0fBezSpGWxAPrDXZo2W3uQD_PGELaHweCI8xmfW7ybe2whloXr4sfXKlwzA6IXhexfB7xH-5aDTDcCHSaEJ9B-waRzo_P350gaFhnp4JX4-hkL6vrepg0cPwFVv0MEf3TB4Z66esDQUOXSM5NQJlf-TSzIjFouhCtJfTEp3We3DhfSxUUbA0ZFNh4ZSNOy9T9pHuyU_hl0RSzN1wB2Uw53jequqOwVhQMUnAjIKa1t38H6AlvS7IPfBJzv7Q6lHUTa9Zw9bXm8xh659L-7sYdr2X2qOH19miYMJLPtMguAGqJ0guYYPG9fpVXvUKObd480Ko2PZwLi--GXjYo6hWk6k3D1SM9ItcA_p8qXrX3WtsG4jWSyGiuWLrf-oq3oFboDFAaYd8INvPGl8Q99gg1hvri_nWsoOAewdMWwjFnMO1m-hIB41dYXPoKqaWzPRDz2kfq662p2NrAn67VwhGoR6uY4P52TBBb1WrogvJJqvg24j18CknxrPb7eNq6mI620YuqMdEDzjvoqtGGjh6r6prUy2nN54A1cnXsbv3uqEcdDfYd-Vtg4ONm8NVJa2d7Te-jp1A8wHgynLQb9xq_NBJ0E5GGzbat63ObrBUNNWjff9ZqB41Pe0bB3_unPSI1h3uFurA8Fxc5rY4mCoWeuBD7145mCwVeuBr53Y5KDTqPW-r1RgctBt03pob_zA7WCkSautOO2wAQdZBlu0EhFzy1ge1aUVSxgOliYIVB-YoCemBLPAE0QC6PsSuBKH0-8l6EsYpl6oV2pgcTHtVBDAJ4O3DCo89fP9oZ5TJ48f-nV28_Oh72o3755aXXoJ9dRv1c2Un_rZ7wieTWqfwct-nvqMwOykn59NvaTywG2bF3RzxI2TUPX7CoayvrHrTT-bO-j2BAoOpHNrDm90BkfSDaCeUKBytBdqqxy2A223-knVtPc2b3E2nRoebxSSzizf6FlWx84CHVDHZvEUhPG5lkfPtZz35npvM7rfGl3QRGT44RkYk_Hey9N-60SD-B8O7H93rPA3vK2wqcdB-s3vDel7L1t78FQGV6JCwzG92g0LN5ez57nXlxLjrbzs6rfGlNS939qwouI_Qvti_6qbd41P7r2XLT0-i_LVI41Cdzxg9OHJhj_x46QHt8W7EqN7NPyWL87577x3o6jfvrfpuRoKv4GnI0gfsZMd5-ZBuvdb8sTRg_NWbOjnZ6z4EA3--lbcoeWfse77ucLvv_r343nHb38dw9zfFezzOV7qERT7-kDrYMHvDuD7kaRmk7zRaQDp3IGemOcymUGT_e--3qmTQ4zSK66_r8eiXcU2bLTbcXS3xoGuFH_1afxCfRrJORlQoerG5HdBLcEd_2-nmwCcqExRRyk4ZAe4zZ90SwJyV6geisMV5CdUWdZU2gf811gD_9Y9GJX8kEmhrHWA2GAIUn-kIuNt3rzCZ8G6aPMcrgOUJ_yHTh7Cy2JSiaKpOIOK_NNILFfn0eLi7Cy6SM-n0XmW8fn56mw2j8-Dg4X6z9ez2WS1uvinWqgoGtUhIFnE2WJ6JpaXZ_H0cnEmstViPotns8upiOfLy-X54vLyYrW8jM_S5WU85ZxP-XwuUj67nMYiRhM9imwvnasTaCTozZcmFyvBz2bT87Oz5OwyTpbLVPDschovzpOzNE7Pz9Pz9DJdxNPs4nyazJarDICaXpxlM5Gugk__D7MAcnDTIgEA">Open the three-option shipment review <span aria-hidden="true">↗</span></a>
+  <a class="button" href="{{ shipmentConsolidation.launch.url | escape }}">Open the three-option shipment review <span aria-hidden="true">↗</span></a>
 </div>
 <p>Wait for <strong>Reports current</strong>, then choose <strong>Reports → Decision summary</strong>. The decision screen starts with the finding and comparison priority, followed by <strong>Available options</strong>. Direct passes and is preferred. Backup exceeds the expense limit. Consolidated fits the limit but fails the slot requirement. Select Consolidated and expand <strong>Selected option details</strong> when you need its requirement results.</p>
 <p>For the second scenario, the supplier confirms the exact slot at 7:30 a.m. and Maya receives the record at 7:45 a.m., before the 8 a.m. selection time. It covers the full 11 p.m.–midnight loading window for this shipment.</p>
 <ol>
-  <li>Download the <a href="../../../../assets/use-cases/shipment-readiness/consolidation/confirmed.inputs.yaml" download>supplied confirmed case inputs</a>.</li>
+  <li>Download the <a href="{{ shipmentConsolidation.downloads.confirmedInputs | relativeUrl(page.url) }}" download>supplied confirmed case inputs</a>.</li>
   <li>In the working case, choose <strong>Inputs → YAML</strong>. Replace <strong>Canonical commitment case YAML</strong> with the file’s contents. This is the complete case, rather than a single selected form section. It changes the case inputs, leaving the published rules intact.</li>
   <li>Wait for <strong>Reports current</strong> and return to <strong>Reports → Decision summary</strong>. Compare the new preferred option and the conditions shown for all three arrangements.</li>
 </ol>
@@ -422,84 +198,27 @@
 <p>The launch owner can decide whether 18 hours is worth the extra $1,000. Finance can see that the proposal stays within the stated limit. Operations can inspect the specific confirmation rather than being asked to rely on the quote alone. A missing or cancelled confirmation changes the available recommendation instead of disappearing in a footnote.</p>
 <p>The team has reused the original shipment checks and added the condition that this service needs. Responsible owners still authorize the spend, arrange the slot and book the shipment. The report checks the recorded loading-window coverage; it does not schedule dock capacity or execute those actions.</p>
 <p>For ongoing operations, the team publishes a <strong>separate cost-first app and operating workflow</strong>. Direct remains the preferred $4,000 response while it can still be booked and meet the promise. After its 11 a.m. carrier cutoff, the $5,000 Consolidated response can become preferred while its own noon window and scoped support remain current. Earlier arrival alone does not justify the premium. This operating release retains the slot requirement taught here, adds the current quote and booking-window checks, and preserves the earlier tutorial release.</p>
-<p>Next, <a href="../review-changed-orders/index.html">follow the CLI queue as changed orders reveal missing capacity, old permissions and confirmations that need replacement</a>. Then <a href="../resolve-a-shipment-exception/index.html">see Maya continue the same native review in the SDK desk</a>, record a supported choice, and keep actual authority, reservation and delivery evidence separate. Those records support checking the original promise; neither accepting a finding nor selecting a plan performs the shipment.</p>
+<p>Next, <a href="{{ '/use-cases/supply-chain/shipment-readiness/review-changed-orders/' | relativeUrl(page.url) }}">follow the CLI queue as changed orders reveal missing capacity, old permissions and confirmations that need replacement</a>. Then <a href="{{ shipmentReservationDesk.url | relativeUrl(page.url) }}">see Maya continue the same native review in the SDK desk</a>, record a supported choice, and keep actual authority, reservation and delivery evidence separate. Those records support checking the original promise; neither accepting a finding nor selecting a plan performs the shipment.</p>
 
 <footer class="use-case-article-references" aria-labelledby="source">
   <details class="disclosure use-case-source-disclosure">
     <summary><h2 class="disclosure-label" id="source">Sources and scope</h2></summary>
     <div class="use-case-reference-grid">
       <div>
-        <h3 id="requirements-reference">Requirements reference</h3>
-        <p><a href="https://corporate.walmart.com/content/dam/corporate/documents/suppliers/apply-to-be-a-supplier/supplier-checklist.pdf#page=11">Walmart’s Supplier Checklist, page 11</a>, provides the original collect-supplier ship-point setup reference. Both ship points in Maya’s example are stipulated registered for the shipment scope.</p>
-        <h3 id="business-context">Business context</h3>
-        <p>Terry Clear, <a href="https://www.8thandwalton.com/blog/case-study-walmart-launch">Case Study: Finding the Fastest Path to Walmart Shelves—Why Buyer Support Alone Isn’t Enough</a>, 8th &amp; Walton, June 4, 2025, supplies the broader launch and onboarding context.</p>
+        <h3>Requirements reference</h3>
+        <p><a href="{{ shipmentCase.requirementsUrl }}">Walmart’s Supplier Checklist, page 11</a>, provides the original collect-supplier ship-point setup reference. Both ship points in Maya’s example are stipulated registered for the shipment scope.</p>
+        <h3>Business context</h3>
+        <p>Terry Clear, <a href="{{ shipmentCase.contextUrl }}">Case Study: Finding the Fastest Path to Walmart Shelves—Why Buyer Support Alone Isn’t Enough</a>, 8th &amp; Walton, June 4, 2025, supplies the broader launch and onboarding context.</p>
         <p>The consolidated-freight quote and slot-confirmation requirement are invented for this follow-up. They are not requirements attributed to Walmart or details reported in the source case.</p>
       </div>
       <div id="scope">
-        <h3 id="what-this-example-establishes">What this example establishes</h3>
+        <h3>What this example establishes</h3>
         <p>Maya, the shipment, dates, prices, permissions and confirmation records are fictional. The screenshots show the retained standalone app using those teaching inputs. Decision screens are refreshed from its local production preview with the same frozen app and case artifacts; the capture record preserves the original authoring receipts. They represent no supplier booking, customer records or executed shipment.</p>
         <p>The review checks three complete options, the original 18 conditions, a reviewed-option policy and the new scoped slot requirement. It uses one resolved current-status record per arrangement; people authenticate and reconcile supplier messages. It does not resolve an event stream, allocate dock capacity or establish complete onboarding readiness.</p>
-        <p>The <a href="../../../../assets/use-cases/shipment-readiness/context-comparisons/verification.json">comparison capture receipt</a> retains both exact native cases, their unchanged published app and the complete input difference. The 14 scenarios test selected expected outcomes. The example supplies no monetary benefit for earlier receipt. Business owners still assess its value, approve the proposal and perform the operational work.</p>
+        <p>The <a href="{{ shipmentComparisons.authorConfirmation.verificationUrl | relativeUrl(page.url) }}">comparison capture receipt</a> retains both exact native cases, their unchanged published app and the complete input difference. The 14 scenarios test selected expected outcomes. The example supplies no monetary benefit for earlier receipt. Business owners still assess its value, approve the proposal and perform the operational work.</p>
         <p>The final transition refers to the separately authored cost-first operating release used in the CLI and SDK continuations. It does not describe a preference change made by the frozen authoring steps or screenshots above.</p>
-        <p>The paired standalone decisions use <strong>Decision summary / Supporting reports</strong> in the frozen local production preview. Their <a href="../../../../assets/use-cases/shipment-readiness/calculation-flow/verification.json">capture receipt</a> preserves the unchanged tutorial packages and complete case models; the original authoring-step captures remain intact.</p>
+        <p>The paired standalone decisions use <strong>Decision summary / Supporting reports</strong> in the frozen local production preview. Their <a href="{{ shipmentCalculationFlow.verificationUrl | relativeUrl(page.url) }}">capture receipt</a> preserves the unchanged tutorial packages and complete case models; the original authoring-step captures remain intact.</p>
       </div>
     </div>
   </details>
 </footer>
-
-      
-    </div>
-    <nav class="reader-return" aria-label="Continue with this scenario">
-      <a class="text-link" href="../index.html">All shipment readiness articles <span aria-hidden="true">→</span></a>
-      <a class="text-link" href="https://hermodlabs.github.io/review_lab/">Open Decision Lab <span aria-hidden="true">↗</span></a>
-    </nav>
-  </article>
-</div>
-</main>
-  <footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-directory">
-      <div class="footer-identity">
-        <a class="footer-brand" href="../../../../index.html" aria-label="Hermod Labs home"><img src="../../../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
-        <p class="footer-description">Tools and ideas for decisions you can inspect and revise.</p>
-        <nav class="footer-social-links" aria-label="Hermod Labs profiles">
-          <a href="https://www.linkedin.com/company/hermodlabs/" aria-label="Hermod Labs on LinkedIn" title="LinkedIn"><svg class="footer-social-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
-  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124Zm1.782 13.019H3.555V9h3.564v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0Z"/>
-</svg></a>
-          <a href="https://github.com/hermodlabs" aria-label="Hermod Labs on GitHub" title="GitHub"><svg class="footer-social-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
-  <path d="M12 .297a12 12 0 0 0-3.793 23.385c.6.111.82-.261.82-.577 0-.285-.011-1.04-.017-2.041-3.338.724-4.043-1.609-4.043-1.609-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.729.083-.729 1.205.085 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.303-5.467-1.334-5.467-5.931 0-1.31.469-2.381 1.236-3.221-.124-.303-.536-1.524.117-3.176 0 0 1.008-.323 3.301 1.23a11.52 11.52 0 0 1 3.003-.404c1.02.005 2.047.138 3.006.404 2.291-1.553 3.297-1.23 3.297-1.23.655 1.652.243 2.873.119 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.625-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .319.216.694.825.576A12.001 12.001 0 0 0 12 .297Z"/>
-</svg></a>
-        </nav>
-      </div>
-
-      <section class="footer-contact-section" aria-labelledby="footer-contact-heading">
-        <h3 id="footer-contact-heading">Contact us</h3>
-        <form class="beta-form footer-contact-form" id="footer-contact-form" action="https://forminit.com/f/1vqi2088svl" method="POST" data-forminit-request data-pending-message="Sending your message…" data-success-message="Thanks, your message has been sent. We’ll reply by email." accept-charset="UTF-8" aria-labelledby="footer-contact-heading">
-  <input type="hidden" name="fi-text-request" value="Hermod Labs contact">
-  <input type="hidden" name="fi-text-subject" value="Hermod Labs — Contact form">
-  <input type="hidden" name="_gotcha" value="">
-  <fieldset>
-    <legend class="visually-hidden">Contact Hermod Labs</legend>
-    <div class="footer-contact-fields">
-      <div class="form-field"><label for="footer-name">Name <span>(required)</span></label><input id="footer-name" type="text" name="fi-sender-fullName" autocomplete="name" maxlength="160" required></div>
-      <div class="form-field"><label for="footer-email">Email <span>(required)</span></label><input id="footer-email" type="email" name="fi-sender-email" autocomplete="email" maxlength="254" required></div>
-    </div>
-    <div class="form-field"><label for="footer-message">Message <span>(required)</span></label><textarea id="footer-message" name="fi-text-message" rows="3" maxlength="5000" placeholder="Tell us what you’d like to discuss." required></textarea></div>
-  </fieldset>
-  <button class="button" type="submit">Send message <span aria-hidden="true">↗</span></button>
-  <p class="form-status" id="footer-contact-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></p>
-</form>
-
-      </section>
-    </div>
-
-    <div class="footer-bottom">
-      <p class="footer-copyright">© 2026 Hermod Labs</p>
-      <p class="footer-signoff">Automated reasoning. Human judgment.</p>
-      <a class="footer-top-link" href="#main">Back to top <span aria-hidden="true">↑</span></a>
-    </div>
-  </div>
-</footer>
-
-</body>
-</html>

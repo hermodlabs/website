@@ -1,0 +1,71 @@
+---
+layout: layouts/blog-post.html
+tags: [blogPosts]
+title: "Announcing DecisionLab Marketplace"
+description: "Different domains. Reusable decision patterns. See how a focused decision summary connects a business question to the findings and next actions it supports."
+author: "Jonathan Nacionales, Founder, Hermod Labs"
+date: 2026-11-14
+updated: 2026-11-20
+readingMinutes: 4
+coverImage: /assets/blog/marketplace/cover.svg
+coverAlt: "A reusable template leads to a configured app in a collection, then to a person’s working case."
+coverWidth: 960
+coverHeight: 720
+permalink: /blog/announcing-decisionlab-marketplace/index.html
+---
+{% macro patternView(id, label, figure, summary, caseUrl, caseLabel) %}
+<figure class="blog-pattern-panel" id="{{ id }}">
+  <h3>{{ label }}</h3>
+  <a class="blog-pattern-image" href="{{ figure.image | relativeUrl(page.url) }}" aria-label="Open the {{ label | lower }} decision summary at full size"><img src="{{ figure.image | relativeUrl(page.url) }}" width="{{ figure.width }}" height="{{ figure.height }}" alt="{{ figure.alt | escape }}" loading="lazy" decoding="async"></a>
+  <figcaption>
+    <p>{{ summary }}</p>
+    <div class="blog-pattern-links"><a href="{{ figure.image | relativeUrl(page.url) }}">View full size</a><a href="{{ caseUrl | relativeUrl(page.url) }}">{{ caseLabel }} <span aria-hidden="true">→</span></a></div>
+  </figcaption>
+</figure>
+{% endmacro %}
+
+<p><strong>DecisionLab Marketplace</strong> brings related apps and workflows together in collections for the work you do. Start with a business question, enter the relevant facts and calculate which responses the recorded requirements support.</p>
+<p>Maya needs a shipment to reach its customer. Leah needs gift kits ready for handoff. Their work differs, but both face the same practical difficulty: a plausible option can fail when timing, capacity, permissions and the complete cost are considered together.</p>
+
+<h2 id="reusable-reasoning">One decision pattern. Two kinds of work.</h2>
+<p>The two <strong>Decision summaries</strong> below come from guided analyses in Decision Lab. Each leads with the business finding, compares complete alternatives and identifies the conditions and next actions that matter. Supporting reports remain available when someone needs the basis for a finding.</p>
+<div class="blog-pattern-comparison" role="group" aria-label="The Complete a Commitment pattern in shipment and gifting apps">
+{{ patternView('shipment-pattern-view', 'Shipment readiness', shipmentUIRefresh.figures.arrangements, 'Maya’s $4,000 Direct option depends on unresolved ship-point registration. The $6,000 Backup arrangement meets the modeled commitment in both admitted registration states. The summary exposes that condition instead of treating the cheaper quote as sufficient.', shipmentCase.workerUrl + '#current-question-view', 'Explore the shipment calculation') }}
+{{ patternView('gifting-pattern-view', 'Gift-kit readiness', giftingUIRefresh.figures.calculationSummary, 'With a full day available, Leah can prepare the complete in-house correction for $300. A $400 external package also needs its own timing, permission and confirmation checks.', giftingCase.articleUrl, 'Follow Leah’s gift-kit decision') }}
+</div>
+<p>The shared decision pattern is to compare complete responses before making an operating commitment. <strong>Complete a Commitment</strong> supplies the commitment assessment: can a complete arrangement meet the recorded obligations under the declared conditions? Domain apps supply the actual shipment or gift-kit meanings, requirements and comparison policy.</p>
+<p>A workflow can connect several <a href="{{ '/articles/from-arrangements-to-assessments/' | relativeUrl(page.url) }}">assessment patterns</a>. Evidence establishes what the supplied observations support; commitment assessment checks complete responses; an information-value assessment compares a further check with acting now. Those findings keep their different meanings as the workflow brings them together.</p>
+<p>This is how we put <a href="{{ '/articles/pattern-languages-for-human-decisions/' | relativeUrl(page.url) }}">reusable decision patterns</a> to work: a recognizable approach, configured for a specific domain, with conclusions bounded by its inputs and assumptions.</p>
+
+<h2 id="three-roles">From a reusable pattern to a working case.</h2>
+<h3 id="template-authors">Template authors create the reusable structure</h3>
+<p>A <strong>template</strong> defines executable inputs, rules and supported kinds of assessment. Template authors build and validate that foundation so other authors can apply it to recurring questions.</p>
+<h3 id="app-authors">App authors configure it for particular work</h3>
+<p>An <strong>app</strong> supplies the domain concepts, requirements and priorities. Authors connect apps into a workflow and configure its questions, decision summary, supporting reports and decision process. Published versions preserve which configuration a case uses.</p>
+<h3 id="case-workers">Case workers analyze a particular situation</h3>
+<p>A <strong>case</strong> supplies one situation’s facts and records. A coordinator applies those inputs and chooses <strong>Calculate</strong>. After a change, <strong>Recalculate</strong> updates the findings; optional <strong>Auto-update</strong> recalculates after applied input changes. A calculated response still requires the responsible people to decide and carry out the work.</p>
+
+<h2 id="start-analysis">From the collection to the decision.</h2>
+<p>A <strong>collection</strong> groups related <strong>use cases</strong>, apps and workflows. In <a href="https://hermodlabs.github.io/review_lab/">Decision Lab</a>, use <strong>Marketplace</strong> to install or update a collection, then choose <strong>Start analysis</strong> for its workflow. The shipment and gifting articles link directly to their worked examples.</p>
+<ol>
+  <li><strong>Set the business context.</strong> Inputs have their own tabs and sections. Use the configured Forms or the complete YAML representation, then apply changes.</li>
+  <li><strong>Calculate the findings.</strong> The Decision summary shows the supported answer, compact comparison, decisive conditions and available next actions. Changed inputs need a current calculation.</li>
+  <li><strong>Inspect the reason when needed.</strong> Open a linked supporting report or <strong>View decision process</strong> to see how questions and findings connect to the available responses.</li>
+</ol>
+{% set workingFigure = shipmentUIRefresh.figures.process %}
+{% set workingCaption = 'The beginning of the decision process connects the shipment commitment to its transportation evidence. Later stages continue to arrangements and verification. Inspecting a branch or report does not select an arrangement or book freight.' %}
+{% include "body/blog-working-example.html" %}
+<p>Inputs and reports navigate independently. Someone can inspect another arrangement or supporting finding while keeping the current input section in view. Detailed calculations remain available without making every reader work through them first.</p>
+
+<h2 id="beyond-the-interface">Bring the same assessments into your own work.</h2>
+<p>The shared patterns also support company-specific interfaces and data flows. The <a href="{{ shipmentExceptions.url | relativeUrl(page.url) }}">shipment CLI story</a> follows changed orders into an exception queue. The <a href="{{ giftKitPreflight.url | relativeUrl(page.url) }}">gift-kit CLI story</a> screens campaigns before a handoff becomes urgent.</p>
+<p>The <a href="{{ shipmentReservationDesk.url | relativeUrl(page.url) }}">shipment SDK desk</a> and <a href="{{ giftKitHandoffDesk.url | relativeUrl(page.url) }}">gift-kit SDK desk</a> show how a team can build its own focused interface around the same assessment capabilities. Their forms and integrations serve the team’s process; the configured apps retain the reasoning. The <a href="https://github.com/hermodlabs/sample_code">sample-code repository</a> contains the full implementations.</p>
+<p>Explore the <a href="{{ shipmentCase.scenarioUrl | relativeUrl(page.url) }}">shipment series</a> or <a href="{{ giftingCase.scenarioUrl | relativeUrl(page.url) }}">gifting series</a> to see how different facts change the response someone can justify.</p>
+<footer class="blog-references">
+  <details class="disclosure">
+    <summary><h2 class="disclosure-label" id="sources-and-scope">Sources and scope</h2></summary>
+    <p>Maya, Leah, shipments, campaigns, quotes and operating records are fictional worked examples. The screenshots show current guided-analysis releases: shipment {{ shipmentUIRefresh.workflowVersion }} and gifting {{ giftingUIRefresh.workflowVersion }}. The separate <a href="{{ '/assets/decision-lab-public-build-check.json' | relativeUrl(page.url) }}">public build check</a> matches the deployed interface and packages to the capture build. Older saved reviews can retain their original versions and behavior.</p>
+    <p>Native screenshots were captured from a local production build of the updated application. The <a href="{{ shipmentUIRefresh.verificationUrl | relativeUrl(page.url) }}">shipment capture record</a> and <a href="{{ giftingUIRefresh.verificationUrl | relativeUrl(page.url) }}">gifting capture record</a> retain the build identity, source hashes, supplied cases and exported calculations.</p>
+    <p>The comparisons establish findings within the supplied models, records and assumptions. They do not authenticate external authority, book freight, perform a correction or establish completed delivery. The linked CLI and SDK articles describe their own sample configurations and integration boundaries.</p>
+  </details>
+</footer>

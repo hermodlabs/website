@@ -1,0 +1,89 @@
+<div class="ontology-story" id="home-ontology-story">
+  <section class="ontology-stage" aria-labelledby="ontology-words-heading">
+    <div class="ontology-stage-heading">
+      <p class="ontology-stage-label">01 / Read the meaning behind the code</p>
+      <h3 id="ontology-words-heading">The statements describe two ontologies.</h3>
+      <p>An ontology names the kinds of things in a problem and how they relate. Phrase patterns map the code’s statements to the work, people, and calendar shown here.</p>
+    </div>
+    <div class="ontology-vocabularies">
+      <section class="ontology-vocabulary ontology-work" data-ontology="work" aria-labelledby="ontology-work-heading">
+        <h4 id="ontology-work-heading">Work and requirements</h4>
+        <p class="ontology-module-description">What needs to happen.</p>
+        <p class="ontology-pattern-label">Phrase pattern</p>
+        <code class="ontology-pattern">{{ homeOntology.workPattern.template | escape }}</code>
+        <p class="ontology-pattern-label">In this plan</p>
+        <code class="ontology-instance">{{ homeOntology.workPattern.example | escape }}</code>
+        <div class="ontology-mini-map" role="group" aria-label="The objective requires both preparation and review">
+          <div class="ontology-node ontology-objective"><span>Objective</span><strong>Reviewed report</strong></div>
+          <p class="ontology-map-relation">requires both</p>
+          <svg class="ontology-branch-arrows" viewBox="0 0 320 32" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M160 0 V10 H77 V28 M160 10 H243 V28 M72 23 L77 28 L82 23 M238 23 L243 28 L248 23" fill="none" stroke="#264e70" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" /></svg>
+          <div class="ontology-branches">
+{% for task in homeExample.tasks %}
+            <div class="ontology-node ontology-task-{{ task.id }}"><span>Step</span><strong>{{ task.label }}</strong></div>
+{% endfor %}
+          </div>
+        </div>
+        <p class="ontology-module-note">The work also has durations, an order, a deadline, and an independence check.</p>
+      </section>
+      <section class="ontology-vocabulary ontology-calendar" data-ontology="calendar" aria-labelledby="ontology-calendar-heading">
+        <h4 id="ontology-calendar-heading">People and calendar</h4>
+        <p class="ontology-module-description">Who is available, and when.</p>
+        <p class="ontology-pattern-label">Phrase pattern</p>
+        <code class="ontology-pattern">{{ homeOntology.calendarPattern.template | escape }}</code>
+        <p class="ontology-pattern-label">In this plan</p>
+        <code class="ontology-instance">{{ homeOntology.calendarPattern.example | escape }}</code>
+        <div class="ontology-mini-map" role="group" aria-label="Noah is available on days one and two; Maya is available on day three">
+{% for task in homeExample.tasks %}
+          <div class="ontology-availability">
+            <div class="ontology-node ontology-resource"><span>Resource</span><strong>{{ task.owner }}</strong></div>
+            <p class="ontology-map-relation">available <svg class="ontology-relation-arrow" viewBox="0 0 44 12" aria-hidden="true" focusable="false"><path d="M1 6 H41 M35 1 L41 6 L35 11" fill="none" stroke="#264e70" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></p>
+            <div class="ontology-node ontology-window"><span>Day window</span><strong>{% if task.startDay == task.finishDay %}Day {{ task.startDay }}{% else %}Days {{ task.startDay }}–{{ task.finishDay }}{% endif %}</strong></div>
+          </div>
+{% endfor %}
+        </div>
+        <p class="ontology-module-note">One calendar spans days {{ homeExample.startDay }}–{{ homeExample.endDay }}. Both people are available during the “work” shift.</p>
+      </section>
+    </div>
+  </section>
+
+  <section class="ontology-stage" aria-labelledby="ontology-bridges-heading">
+    <div class="ontology-stage-heading">
+      <p class="ontology-stage-label">02 / Join the maps</p>
+      <h3 id="ontology-bridges-heading">Two patterns connect the ontologies.</h3>
+      <p>Each statement refers back to a step already declared. It connects that step to a resource or shift from the other ontology.</p>
+    </div>
+    <div class="ontology-bridges">
+{% for bridge in homeOntology.bridges %}
+      <section class="ontology-bridge" data-bridge-pattern="{{ bridge.key }}" aria-labelledby="ontology-bridge-{{ bridge.key }}">
+        <h4 id="ontology-bridge-{{ bridge.key }}">{{ bridge.title }}</h4>
+        <code class="ontology-pattern">{{ bridge.template | escape }}</code>
+        <div class="ontology-bridge-examples">
+{% for example in bridge.examples %}
+          <code class="ontology-instance">{{ example | escape }}</code>
+{% endfor %}
+        </div>
+        <p class="ontology-bridge-key"><span>Work and requirements</span><span aria-hidden="true">→</span><span>People and calendar</span></p>
+      </section>
+{% endfor %}
+    </div>
+  </section>
+
+  <section class="ontology-stage" id="home-merged-ontology" tabindex="-1" aria-labelledby="ontology-merged-heading">
+    <div class="ontology-stage-heading">
+      <p class="ontology-stage-label">03 / From the model to the schedule</p>
+      <h3 id="ontology-merged-heading">The combined model explains the chart.</h3>
+      <p>Durations, availability, order, and the deadline let the query find the schedule above. This map shows the declared relationships; the Gantt chart places the steps on the calendar. The independence check still needs confirmation.</p>
+    </div>
+    <figure class="ontology-merged-figure">
+      <div class="ontology-graph-scroll" role="region" tabindex="0" aria-label="Combined ontology for the report example" aria-describedby="home-ontology-caption">
+{% include "charts/home-merged-ontology.svg" %}
+      </div>
+      <p class="ontology-scroll-hint" aria-hidden="true">Scroll to explore the full map <span>↔</span></p>
+      <figcaption id="home-ontology-caption">The full model for this example. <a href="#home-example-report">Compare these steps with the Gantt chart above <span aria-hidden="true">↑</span></a></figcaption>
+    </figure>
+    <aside class="ontology-equivalence" aria-labelledby="ontology-equivalence-heading">
+      <h4 id="ontology-equivalence-heading">One plan, different views.</h4>
+      <p>The sentence “Prepare report uses resource Noah” and an arrow labelled “uses resource” can show the same connection. They’re two ways to say who is assigned to that step. The code keeps the full description; the Gantt chart shows one feasible schedule. The other rules and open checks stay in the model.</p>
+    </aside>
+  </section>
+</div>

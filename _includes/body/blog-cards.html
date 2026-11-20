@@ -1,0 +1,9 @@
+<div class="reading-card-grid blog-post-grid catalog-grid{% if listedBlogPosts.length == 1 %} reading-card-grid-single blog-post-grid-single catalog-grid-single{% endif %}">
+{% set cardCompact = true %}
+{% for post in listedBlogPosts %}
+{% set cardFeatured = false %}
+{% set cardShowCover = true %}
+{% include "body/blog-card.html" %}
+{% endfor %}
+</div>
+{% set cardCompact = false %}

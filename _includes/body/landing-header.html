@@ -1,0 +1,4 @@
+<header class="landing-header wrap">
+  <a class="brand" href="{{ '/' | relativeUrl(page.url) }}" aria-label="Hermod Labs home"><img src="{{ '/assets/hermod-wordmark.jpeg' | relativeUrl(page.url) }}" alt="Hermod Labs" width="1536" height="512"></a>
+  {% if landingPrimaryUrl %}<a class="text-link" href="{{ landingPrimaryUrl | relativeUrl(page.url) }}">{{ (landingPrimaryLabel or 'Read the case') | escape }} <span aria-hidden="true">→</span></a>{% endif %}
+</header>

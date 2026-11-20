@@ -1,0 +1,35 @@
+<h3 id="what-gets-checked">What gets checked?</h3>
+<p>The example supplies the facts needed for both arrangements to pass. The app checks six business questions against those recorded facts:</p>
+<ul class="use-case-checklist">
+  <li><strong>Can it carry the complete order?</strong> The order is for 100 cases. Each arrangement has capacity for all 100; the example assumes those goods are available.</li>
+  <li><strong>Is the ship point registered for this shipment?</strong> The supplied records say both SP-A and SP-B are transportation-registered for the same order, revision, recipient, ship date and review profile. A portal listing alone would not establish that.</li>
+  <li><strong>Can the people and resources finish preparation?</strong> A capable packing worker has two hours available, followed by a capable release officer for 30 minutes. Their calendars and the packing bench have enough capacity, with no competing bookings recorded.</li>
+  <li><strong>Are the necessary permissions recorded?</strong> Each arrangement has recorded permission to select it and authorization for the responsible officer to release the shipment. Both cover this exact shipment and the relevant times. Available budget does not grant either permission.</li>
+  <li><strong>Can the timing work?</strong> Selection is set for Tuesday at 8 a.m., before the noon reservation cutoff. Packing and release finish before Wednesday’s departure. Both quoted arrivals meet the receipt deadline and fall within the receiving window.</li>
+  <li><strong>Does it fit the expense and cash limits?</strong> The complete quotes are $4,000 and $6,000, with no verification fee. Each stays within the recorded $6,500 expense limit and $6,500 peak-cash limit.</li>
+</ul>
+<p>These are supplied teaching facts and configured checks. The result tells you whether the recorded arrangement passes them; it does not confirm that an external record is current or carry out the shipment.</p>
+<details class="disclosure use-case-technical-note">
+  <summary><span class="disclosure-label">See all 18 configured checks</span></summary>
+  <ol class="use-case-checklist">
+    <li>The arrangement has capacity for the complete accepted order.</li>
+    <li>A transportation-registration record covers its ship point and this exact shipment in every retained operating state.</li>
+    <li>The packing worker has the packing capability.</li>
+    <li>The packing worker’s calendar covers the entire packing activity.</li>
+    <li>The release officer has the release capability.</li>
+    <li>The release officer’s calendar covers the entire release activity.</li>
+    <li>Preparation and existing bookings together stay within each person’s and resource’s capacity.</li>
+    <li>A shipment-specific permission to select the arrangement is valid at selection time.</li>
+    <li>The release officer’s shipment-specific grant covers the complete release activity.</li>
+    <li>The proposed selection time is not in the past.</li>
+    <li>Any verification-fee payment is scheduled no later than selection.</li>
+    <li>Selection occurs by the reservation cutoff.</li>
+    <li>Packing followed by final release finishes by departure.</li>
+    <li>Arrival is no later than the required receipt time.</li>
+    <li>Arrival falls within the receiving window.</li>
+    <li>The complete arrangement fee plus the verification fee stay within the total-expense limit.</li>
+    <li>The payment schedule stays within the peak-cash limit.</li>
+    <li>A nonzero verification fee has a shipment-specific purchase grant and fits both its grant ceiling and the purchase cap.</li>
+  </ol>
+  <p>The verification fee is $0 in this comparison. No paid verification purchase is needed, and its payment-time entry already satisfies the timing check. These two verification-related checks do not establish additional shipment readiness.</p>
+</details>

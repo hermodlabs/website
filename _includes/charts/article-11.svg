@@ -1,0 +1,85 @@
+<svg class="gantt-chart" data-figure="paired" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 875" width="760" height="875" role="img" aria-labelledby="article-11-gantt-title article-11-gantt-desc" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#252525">
+  <title id="article-11-gantt-title">Alternative champion contributions and schematic windows of usefulness</title>
+  <desc id="article-11-gantt-desc">In the Varus branch, Living Vengeance can supply offensive-stat enhancement, which can support maintaining damage uptime in Protect and Convert. In the Ashe branch, Hawkshot can supply scouting, which can support converting a removal in Breach and Remove. A dashed change-pick arrow connects the alternative mechanics. Soraka is conditional pressure: the damage-uptime link applies if the damage source can be disrupted, and the removal link applies if the enemy controls entry or the contest area. The timing view uses Approach, Engage, and Convert categories. Ashe's scouting window covers Approach; Varus's damage-uptime window covers Engage and Convert. The windows are schematic, with no seconds, ability durations, or estimated match outcomes.</desc>
+  <defs>
+    <marker id="article-11-arrow-navy" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1 L7 4 L1 7" fill="none" stroke="#264e70" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></marker>
+    <marker id="article-11-arrow-teal" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1 L7 4 L1 7" fill="none" stroke="#287d80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></marker>
+    <marker id="article-11-arrow-pressure" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1 L7 4 L1 7" fill="none" stroke="#aa3542" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></marker>
+  </defs>
+  <rect width="760" height="875" fill="#fff" />
+  <g data-panel="picks">
+    <g data-view="relationships">
+      <text x="24" y="32" font-size="17" font-weight="600">Relationships in the two candidate branches</text>
+      <g data-node="varus" data-kind="mechanic">
+        <rect x="24" y="92" width="160" height="84" fill="#eef3f7" stroke="#264e70" stroke-width="1.5" />
+        <text x="104" y="126" text-anchor="middle">Varus</text>
+        <text x="104" y="151" text-anchor="middle" font-size="14">Living Vengeance</text>
+      </g>
+      <g data-node="stats" data-kind="capability">
+        <rect x="280" y="92" width="160" height="84" rx="4" fill="#eef3f7" stroke="#264e70" stroke-width="1.5" />
+        <text x="360" y="126" text-anchor="middle" font-size="14">Offensive-stat</text>
+        <text x="360" y="151" text-anchor="middle" font-size="14">enhancement</text>
+      </g>
+      <g data-node="uptime" data-kind="job">
+        <rect x="536" y="92" width="200" height="84" rx="4" fill="#eef3f7" stroke="#264e70" stroke-width="1.5" />
+        <text x="636" y="126" text-anchor="middle" font-size="14">Maintain damage uptime</text>
+        <text x="636" y="151" text-anchor="middle" font-size="14">Protect and Convert</text>
+      </g>
+      <g data-node="ashe" data-kind="mechanic">
+        <rect x="24" y="440" width="160" height="84" fill="#edf7f6" stroke="#287d80" stroke-width="1.5" />
+        <text x="104" y="474" text-anchor="middle">Ashe</text>
+        <text x="104" y="499" text-anchor="middle" font-size="14">Hawkshot</text>
+      </g>
+      <g data-node="scout" data-kind="capability">
+        <rect x="280" y="440" width="160" height="84" rx="4" fill="#edf7f6" stroke="#287d80" stroke-width="1.5" />
+        <text x="360" y="488" text-anchor="middle" font-size="14">Scouting</text>
+      </g>
+      <g data-node="remove" data-kind="job">
+        <rect x="536" y="440" width="200" height="84" rx="4" fill="#edf7f6" stroke="#287d80" stroke-width="1.5" />
+        <text x="636" y="474" text-anchor="middle" font-size="14">Convert a removal</text>
+        <text x="636" y="499" text-anchor="middle" font-size="14">Breach and Remove</text>
+      </g>
+      <g data-node="soraka" data-kind="opponent">
+        <ellipse cx="360" cy="309" rx="95" ry="38" fill="#fff" stroke="#aa3542" stroke-width="1.5" />
+        <text x="360" y="302" text-anchor="middle">Soraka</text>
+        <text x="360" y="325" text-anchor="middle" font-size="14">conditional pressure</text>
+      </g>
+      <path data-from="varus" data-to="stats" data-relation="can supply" d="M184 134 H274" fill="none" stroke="#264e70" stroke-width="1.5" marker-end="url(#article-11-arrow-navy)" />
+      <text x="232" y="119" text-anchor="middle" font-size="14">can supply</text>
+      <path data-from="stats" data-to="uptime" data-relation="can support" d="M440 134 H530" fill="none" stroke="#264e70" stroke-width="1.5" marker-end="url(#article-11-arrow-navy)" />
+      <text x="488" y="119" text-anchor="middle" font-size="14">can support</text>
+      <path data-from="ashe" data-to="scout" data-relation="can supply" d="M184 482 H274" fill="none" stroke="#287d80" stroke-width="1.5" marker-end="url(#article-11-arrow-teal)" />
+      <text x="232" y="467" text-anchor="middle" font-size="14">can supply</text>
+      <path data-from="scout" data-to="remove" data-relation="can support" d="M440 482 H530" fill="none" stroke="#287d80" stroke-width="1.5" marker-end="url(#article-11-arrow-teal)" />
+      <text x="488" y="467" text-anchor="middle" font-size="14">can support</text>
+      <path data-from="varus" data-to="ashe" data-relation="change pick" d="M104 176 V434" fill="none" stroke="#264e70" stroke-width="1.5" stroke-dasharray="6 5" marker-end="url(#article-11-arrow-navy)" />
+      <text x="118" y="313" font-size="14">change pick</text>
+      <path data-from="soraka" data-to="uptime" data-relation="if damage source can be disrupted" d="M455 309 H636 V182" fill="none" stroke="#aa3542" stroke-width="1.5" marker-end="url(#article-11-arrow-pressure)" />
+      <text x="552" y="222" text-anchor="middle" font-size="14" fill="#aa3542"><tspan x="552">if damage source</tspan><tspan x="552" dy="21">can be disrupted</tspan></text>
+      <path data-from="soraka" data-to="remove" data-relation="if enemy controls entry or contest area" d="M455 309 H636 V434" fill="none" stroke="#aa3542" stroke-width="1.5" marker-end="url(#article-11-arrow-pressure)" />
+      <text x="552" y="378" text-anchor="middle" font-size="14" fill="#aa3542"><tspan x="552">if enemy controls</tspan><tspan x="552" dy="21">entry or contest area</tspan></text>
+    </g>
+    <line x1="24" y1="554" x2="736" y2="554" stroke="#e5e8ec" />
+    <g data-view="schedule" data-scale="schematic">
+      <text x="24" y="590" font-size="17" font-weight="600">Illustrative windows of usefulness</text>
+      <g stroke="#e5e8ec" stroke-width="1">
+        <line x1="240" y1="650" x2="240" y2="806" />
+        <line x1="400" y1="650" x2="400" y2="806" />
+        <line x1="560" y1="650" x2="560" y2="806" />
+        <line x1="720" y1="650" x2="720" y2="806" />
+      </g>
+      <g text-anchor="middle" font-size="14" fill="#555">
+        <text x="320" y="633">Approach</text>
+        <text x="480" y="633">Engage</text>
+        <text x="640" y="633">Convert</text>
+      </g>
+      <text x="220" y="700" text-anchor="end" font-size="15">Scouting / Ashe</text>
+      <text x="220" y="774" text-anchor="end" font-size="15">Damage uptime / Varus</text>
+      <rect data-window="scouting" data-phase-start="approach" data-phase-end="engage" x="240" y="674" width="160" height="40" fill="#edf7f6" stroke="#287d80" stroke-width="1.5" />
+      <text x="320" y="700" text-anchor="middle" font-size="14">Relevant information</text>
+      <rect data-window="damage-uptime" data-phase-start="engage" data-phase-end="end" x="400" y="748" width="320" height="40" fill="#eef3f7" stroke="#264e70" stroke-width="1.5" />
+      <text x="560" y="774" text-anchor="middle" font-size="14">Sustain the damage window</text>
+    </g>
+  </g>
+  <text x="24" y="846" font-size="14" fill="#555">Schematic windows only; no ability durations or match outcomes are estimated.</text>
+</svg>

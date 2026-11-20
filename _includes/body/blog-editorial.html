@@ -1,0 +1,18 @@
+{% if listedBlogPosts.length %}
+{% set cardShowCover = false %}
+<div class="blog-editorial" data-post-count="{{ listedBlogPosts.length }}">
+  <div class="blog-editorial-feature">
+{% set post = listedBlogPosts[0] %}
+{% set cardFeatured = true %}
+{% include "body/blog-card.html" %}
+  </div>
+{% if listedBlogPosts.length > 1 %}
+  <div class="blog-editorial-supporting">
+{% for post in listedBlogPosts %}{% if not loop.first %}
+{% set cardFeatured = false %}
+{% include "body/blog-card.html" %}
+{% endif %}{% endfor %}
+  </div>
+{% endif %}
+</div>
+{% endif %}

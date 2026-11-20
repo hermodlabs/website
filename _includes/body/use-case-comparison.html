@@ -1,0 +1,30 @@
+<section class="use-case-comparison" aria-label="{{ comparison.title | escape }}" data-comparison="{{ comparison.id | escape }}" data-comparison-kind="{{ comparison.kind | escape }}">
+  <div class="use-case-comparison-basis">
+    <p><strong>Shared basis.</strong> {{ comparison.sharedBasis | escape }}</p>
+    <p class="use-case-comparison-change"><strong>What changes.</strong> {{ comparison.change | escape }}</p>
+  </div>
+  <div class="use-case-comparison-panels">
+{% for panel in comparison.panels %}
+{% set panelFigure = panel.calculationFigure or panel.navigationFigure or panel.figure %}
+    <article class="use-case-comparison-panel" aria-labelledby="{{ comparison.id | escape }}-panel-{{ loop.index }}">
+      <h3 id="{{ comparison.id | escape }}-panel-{{ loop.index }}">{{ panel.label | escape }}</h3>
+      <p class="use-case-comparison-finding"><strong>{{ panel.finding | escape }}</strong></p>
+      <dl class="use-case-comparison-inputs">
+{% for input in panel.inputs %}
+        <div><dt>{{ input.label | escape }}</dt><dd>{{ input.value | escape }}</dd></div>
+{% endfor %}
+      </dl>
+      <div class="use-case-comparison-observation">
+      <figure class="use-case-comparison-screen">
+        <a href="{{ (panelFigure.fullImage or panelFigure.image) | relativeUrl(page.url) }}" aria-label="Open the {{ panel.label | escape }} view at full size">
+          <img src="{{ panelFigure.image | relativeUrl(page.url) }}" width="{{ panelFigure.width }}" height="{{ panelFigure.height }}" alt="{{ panelFigure.alt | escape }}" loading="lazy" decoding="async">
+        </a>
+        <figcaption>{{ panelFigure.caption | escape }} <a href="{{ (panelFigure.fullImage or panelFigure.image) | relativeUrl(page.url) }}">View full size</a></figcaption>
+      </figure>
+      <p class="use-case-comparison-judgment">{{ panel.explanation | escape }}</p>
+      </div>
+    </article>
+{% endfor %}
+  </div>
+  <p class="use-case-comparison-takeaway"><strong>What this means for the decision.</strong> {{ comparison.takeaway | escape }}</p>
+</section>

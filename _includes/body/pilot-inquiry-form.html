@@ -1,0 +1,16 @@
+<form class="beta-form" id="pilot-inquiry-form" action="https://forminit.com/f/{{ site.forminitFormId }}" method="POST" data-forminit-request data-pending-message="Sending your development and consulting inquiry…" data-success-url="{{ '/' | relativeUrl(page.url) }}" accept-charset="UTF-8" aria-labelledby="pilot-inquiry-heading">
+  <input type="hidden" name="fi-text-request" value="Decision Lab development and consulting inquiry">
+  <input type="hidden" name="fi-text-subject" value="Decision Lab — Development and consulting inquiry">
+  <input type="hidden" name="_gotcha" value="">
+  <fieldset>
+    <legend class="visually-hidden">Your development and consulting inquiry</legend>
+    <div class="form-field"><label for="pilot-name">Name <span>(required)</span></label><input id="pilot-name" type="text" name="fi-sender-fullName" autocomplete="name" maxlength="160" required></div>
+    <div class="form-field"><label for="pilot-email">Email <span>(required)</span></label><input id="pilot-email" type="email" name="fi-sender-email" autocomplete="email" maxlength="254" required></div>
+    <div class="form-field"><label for="pilot-company">Organization <span>(optional)</span></label><input id="pilot-company" type="text" name="fi-sender-company" autocomplete="organization" maxlength="200"></div>
+    <div class="form-field"><label for="pilot-message">What would you like to build or explore? <span>(required)</span></label><textarea id="pilot-message" name="fi-text-message" rows="5" maxlength="5000" placeholder="Tell us about your custom development or test and learn consulting needs, from developer tools to team or organizational workflows." required></textarea></div>
+    <div class="form-field"><label for="pilot-outcomes">What would a successful engagement achieve? <span>(optional)</span></label><textarea id="pilot-outcomes" name="fi-text-outcomes" rows="3" maxlength="3000" placeholder="Describe your goals, what you want to learn or improve, and who would benefit."></textarea></div>
+  </fieldset>
+  <button class="button" type="submit">Send inquiry <span aria-hidden="true">↗</span></button>
+  <p class="form-status" id="pilot-inquiry-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></p>
+  <p class="form-note">We’ll follow up by email to discuss your development or consulting needs, goals, and next steps. Questions? <a href="mailto:{{ site.email }}">Contact Hermod Labs</a>.</p>
+</form>

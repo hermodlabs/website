@@ -1,0 +1,52 @@
+---
+layout: layouts/base.html
+navKey: blog
+blogStyles: true
+isBlogPost: true
+---
+{% set readerContent = content | prepareReaderContent %}
+{% set tocItems = readerContent | readerHeadings %}
+{% set hasContents = tocItems.length >= 3 %}
+<header class="reading-header wrap blog-header{% if coverImage %} blog-header-with-cover reading-header-with-cover{% endif %}">
+  <div class="blog-header-content reading-header-content">
+  {% set breadcrumbItems = [{label: 'Blog', url: '/blog/'}] %}
+  {% include "body/breadcrumb.html" %}
+{% if blogSeries %}  <p class="reading-meta blog-series">{{ blogSeries | escape }} <span aria-hidden="true">·</span> Part {{ seriesPart }} of {{ seriesLength }}</p>
+{% endif %}
+  <h1>{{ title | escape }}</h1>
+{% if description %}  <p class="reading-description blog-description">{{ description | escape }}</p>
+{% endif %}
+  <p class="reading-meta blog-meta">{% if author %}<span class="article-author">{{ author | escape }}</span> <span aria-hidden="true">·</span> {% endif %}<time datetime="{{ date | blogDateISO }}">{{ date | blogDateDisplay }}</time>{% if updated %} <span aria-hidden="true">·</span> <span class="blog-updated">Updated <time datetime="{{ updated | blogDateISO }}">{{ updated | blogDateDisplay }}</time></span>{% endif %}{% if readingMinutes %} <span aria-hidden="true">·</span> {{ readingMinutes }} min read{% endif %}</p>
+  </div>
+{% if coverImage %}
+  <figure class="blog-article-cover reading-cover">
+    <img class="blog-cover-image reading-cover-image" src="{{ coverImage | relativeUrl(page.url) }}" alt="{{ coverAlt | escape }}"{% if coverWidth and coverHeight %} width="{{ coverWidth }}" height="{{ coverHeight }}"{% endif %} decoding="async">
+  </figure>
+{% endif %}
+</header>
+<div class="wrap reader-layout blog-reading-layout{% if not hasContents %} reader-centered blog-reading-centered{% endif %}">
+{% if hasContents %}
+  <aside class="reader-navigation" aria-label="Reading navigation">
+    {% set tocClass = 'blog-toc' %}
+    {% include "body/reader-toc.html" %}
+  </aside>
+{% endif %}
+  <article class="reader-prose blog-prose" aria-label="{{ title | escape }}">
+    <div class="reader-content">{{ readerContent | safe }}</div>
+{% set previousPost = collections.blogPosts | blogByUrl(follows) %}
+{% set nextPost = collections.blogPosts | blogFollowup(page.url) %}
+{% if previousPost or nextPost %}
+    <nav class="blog-followup essay-followup" aria-label="Continue reading">
+{% if previousPost %}
+      <a href="{{ previousPost.url | relativeUrl(page.url) }}" rel="prev"><span>Previous post</span><strong>{{ previousPost.data.title | escape }}</strong></a>
+{% endif %}
+{% if nextPost %}
+      <a href="{{ nextPost.url | relativeUrl(page.url) }}" rel="next"><span>Follow-up post <span aria-hidden="true">→</span></span><strong>{{ nextPost.data.title | escape }}</strong></a>
+{% endif %}
+    </nav>
+{% endif %}
+    <nav class="reader-return" aria-label="More blog posts">
+      <a class="text-link" href="{{ '/blog/' | relativeUrl(page.url) }}">Back to Blog <span aria-hidden="true">→</span></a>
+    </nav>
+  </article>
+</div>

@@ -1,239 +1,86 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+---
+layout: layouts/use-case-article.html
+title: Connect Python machine learning to Decision Lab.
+description: Keep your model in Python. Pass its estimates to Decision Lab’s planning and learning assessments, then bring the findings back into your own application. A shipment example shows the integration in practice.
+useCaseBrief:
+  stakes: >-
+    Maya needs a shipment decision before noon. Her analyst can estimate registration in Python, but a probability alone does not say whether a $200 check justifies its fee, leaves time to respond or enables a shipment that meets the requirements.
+  outcome: >-
+    The Python application connects a scikit-learn model to Decision Lab through the public Python SDK. It supplies numerical estimates, evaluates complete shipment responses and returns a focused report. The timely check offers $227.04 expected improvement under fictional assumptions; the same model supports a different proposal when the fee or timing changes.
+roleLabel: Python + machine learning
+readingMinutes: 8
+sourceNoteInContent: true
+coverImage: /assets/use-cases/shipment-readiness/readiness-learning/cover.svg
+coverAlt: A Python machine learning model supplies estimates to Decision Lab’s planning and learning assessments, which return findings to a Python report.
+coverWidth: 960
+coverHeight: 720
+permalink: /use-cases/supply-chain/shipment-readiness/is-a-registration-check-worth-buying/index.html
+useCaseScenario: shipment-readiness
+useCasePurpose: integration
+useCaseChannels:
+  - python-sdk
+useCaseLabel: Integrate Python machine learning
+useCaseFormat: integration
+useCaseOrder: 5
+---
+{% macro figure(item) %}
+<figure class="use-case-figure">
+  <a href="{{ (item.fullImage or item.image) | relativeUrl(page.url) }}" tabindex="-1" aria-label="Open the complete Python application report screenshot"><img src="{{ item.image | relativeUrl(page.url) }}" width="{{ item.width }}" height="{{ item.height }}" alt="{{ item.alt | escape }}" loading="lazy" decoding="async"></a>
+  <figcaption><span>{{ item.caption | escape }}</span><a href="{{ (item.fullImage or item.image) | relativeUrl(page.url) }}">View full size</a></figcaption>
+</figure>
+{% endmacro %}
+{% macro architectureView(key) %}
+{% set view = shipmentLearning.architecture[key] %}
+<figure class="use-case-explanatory-map" id="{{ view.id }}" aria-labelledby="{{ view.id }}-caption">
+  <a class="use-case-explanatory-map-image" href="{{ view.image | relativeUrl(page.url) }}" tabindex="-1" aria-label="Open the {{ view.label | lower }} at full size">
+    <picture>
+      <source media="(max-width: 650px)" srcset="{{ view.mobileImage | relativeUrl(page.url) }}" width="{{ view.mobileWidth }}" height="{{ view.mobileHeight }}">
+      <img src="{{ view.image | relativeUrl(page.url) }}" width="{{ view.width }}" height="{{ view.height }}" alt="{{ view.alt | escape }}" loading="lazy" decoding="async">
+    </picture>
+  </a>
+  <figcaption id="{{ view.id }}-caption">
+    <span><strong>{{ view.label | escape }}.</strong> {{ view.caption | escape }}</span>
+    <span class="use-case-explanatory-map-links"><a href="{{ view.image | relativeUrl(page.url) }}">View full-size SVG</a><a href="{{ view.sourceUrl }}">See the implementation</a></span>
+  </figcaption>
+</figure>
+{% endmacro %}
+{% macro codeExcerpt(key) %}
+{% set snippet = shipmentLearningCode[key] %}
+<figure class="article-code">
+  <figcaption id="code-{{ key }}">{{ snippet.label | escape }} · <a href="{{ snippet.url | relativeUrl(page.url) | escape }}">{{ snippet.file | escape }}, {% if snippet.start == snippet.end %}line {{ snippet.start }}{% else %}lines {{ snippet.start }}–{{ snippet.end }}{% endif %}</a></figcaption>
+  <pre tabindex="0" role="region" aria-labelledby="code-{{ key }}"><code class="language-{{ snippet.language }}">{{ snippet.code | escape }}</code></pre>
+</figure>
+{% endmacro %}
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { window.dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', 'G-V2474V50XP');
-</script>
-
-
-  <title>Connect Python machine learning to Decision Lab. | Hermod Labs</title>
-  <meta name="description" content="Keep your model in Python. Pass its estimates to Decision Lab’s planning and learning assessments, then bring the findings back into your own application. A shipment example shows the integration in practice.">
-  <meta name="author" content="Jonathan Nacionales">
-
-  <link rel="canonical" href="https://hermodlabs.com/use-cases/supply-chain/shipment-readiness/is-a-registration-check-worth-buying/">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="Hermod Labs">
-  <meta property="og:title" content="Connect Python machine learning to Decision Lab. | Hermod Labs">
-  <meta property="og:description" content="Keep your model in Python. Pass its estimates to Decision Lab’s planning and learning assessments, then bring the findings back into your own application. A shipment example shows the integration in practice.">
-  <meta property="og:url" content="https://hermodlabs.com/use-cases/supply-chain/shipment-readiness/is-a-registration-check-worth-buying/">
-  <meta property="og:image" content="https://hermodlabs.com/assets/hermod-wordmark.jpeg">
-
-  <meta name="theme-color" content="#7850c2">
-  <link rel="icon" type="image/jpeg" href="../../../../assets/hermod-symbol.jpeg">
-  <link rel="stylesheet" href="../../../../assets/site.css">
-
-
-  <link rel="stylesheet" href="../../../../assets/reader.css">
-
-  <link rel="stylesheet" href="../../../../assets/use-cases.css">
-
-
-  <script src="../../../../assets/feature-flags.js" defer></script>
-  <script src="../../../../assets/site.js" defer></script>
-  <script src="../../../../assets/form-request.js" defer></script>
-</head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="site-header wrap">
-  <a class="brand" href="../../../../index.html" aria-label="Hermod Labs home"><img src="../../../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
-  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">+</span></button>
-  <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
-    <a href="../../../../blog/index.html"><svg class="nav-icon nav-icon-blog" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-  <path d="M11 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6"/>
-  <path d="m9 12 9-9 3 3-9 9-4 1 1-4Zm7-7 3 3"/>
-</svg><span>Blog</span></a><a href="../../../../platform/index.html"><svg class="nav-icon nav-icon-platform" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-  <rect x="3" y="3" width="6" height="6" rx="1.2"/>
-  <rect x="15" y="3" width="6" height="6" rx="1.2"/>
-  <rect x="9" y="15" width="6" height="6" rx="1.2"/>
-  <path d="M9 6h6M6 9v3h12V9m-6 3v3"/>
-</svg><span>Platform</span></a><a href="../../../../products/index.html"><svg class="nav-icon nav-icon-products" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-  <rect x="3" y="4" width="18" height="16" rx="2"/>
-  <path d="m7 9 3 3-3 3m6 0h4"/>
-</svg><span>Products</span></a><a href="../../../index.html" aria-current="page"><svg class="nav-icon nav-icon-use-cases" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-  <rect x="3" y="7" width="18" height="14" rx="2"/>
-  <path d="M8 7V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3M3 12a22 22 0 0 0 18 0m-12 3 2 2 4-4"/>
-</svg><span>Use Cases</span></a><a href="../../../../professional-services/index.html"><svg class="nav-icon nav-icon-professional-services" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-  <circle cx="9" cy="8" r="3"/>
-  <path d="M3 20v-2a6 6 0 0 1 12 0v2M16 5a3 3 0 0 1 0 6m1 3a4 4 0 0 1 4 4v2"/>
-</svg><span>Professional Services</span></a>
-    <a class="button nav-cta" data-decision-lab-link data-site-root="../../../../index.html" hidden><span>Try Decision Lab free</span><svg class="nav-icon nav-icon-launch" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-  <path d="M8 5h11v11M19 5 5 19"/>
-</svg></a>
-  </nav>
-</header>
-
-  <main id="main" tabindex="-1">
-
-
-
-
-
-
-<header class="reading-header wrap reading-header-with-cover">
-  <div class="reading-header-content">
-    
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-
-  
-  <a href="../../../index.html">Use Cases</a>
-
-  <span aria-hidden="true">/</span>
-  <a href="../../index.html">Supply chain</a>
-
-  <span aria-hidden="true">/</span>
-  <a href="../index.html">Shipment readiness</a>
-
-  <span aria-hidden="true">/</span>
-  <span aria-current="page">Integrate Python machine learning</span>
-
-</nav>
-
-    <p class="eyebrow">Shipment readiness / Python + machine learning</p>
-    <h1>Connect Python machine learning to Decision Lab.</h1>
-    <p class="reading-description">Keep your model in Python. Pass its estimates to Decision Lab’s planning and learning assessments, then bring the findings back into your own application. A shipment example shows the integration in practice.</p>
-    <p class="reading-meta">Jonathan Nacionales <span aria-hidden="true">·</span> 8 min read</p>
-  </div>
-  <figure class="reading-cover">
-    <img class="reading-cover-image" src="../../../../assets/use-cases/shipment-readiness/readiness-learning/cover.svg" width="960" height="720" alt="A Python machine learning model supplies estimates to Decision Lab’s planning and learning assessments, which return findings to a Python report." decoding="async">
-  </figure>
-</header>
-<div class="wrap reader-layout use-case-reading-layout">
-<section class="use-case-brief" aria-labelledby="use-case-brief-heading">
-  <p class="use-case-brief-title" id="use-case-brief-heading">The case in brief</p>
-  <p class="use-case-brief-stakes"><strong>At stake.</strong> Maya needs a shipment decision before noon. Her analyst can estimate registration in Python, but a probability alone does not say whether a $200 check justifies its fee, leaves time to respond or enables a shipment that meets the requirements.</p>
-  <p class="use-case-brief-outcome"><strong>How it resolves.</strong> The Python application connects a scikit-learn model to Decision Lab through the public Python SDK. It supplies numerical estimates, evaluates complete shipment responses and returns a focused report. The timely check offers $227.04 expected improvement under fictional assumptions; the same model supports a different proposal when the fee or timing changes.</p>
-</section>
-
-
-  <aside class="reader-navigation" aria-label="Reading navigation">
-    <nav class="reader-toc" aria-labelledby="reader-toc-heading">
-  <details class="disclosure reader-nav-disclosure" open>
-    <summary><h2 class="disclosure-label" id="reader-toc-heading">On this page</h2></summary>
-    <ol>
-      <li><a href="#who-uses-the-assessment">Help Maya decide before the cutoff.</a></li>
-      <li><a href="#one-python-application">One Python application connects prediction and decision.</a></li>
-      <li><a href="#model-in-python">Keep the machine learning model in Python.</a></li>
-      <li><a href="#bind-estimates">Bind the estimates to Decision Lab’s inputs.</a></li>
-      <li><a href="#call-python-sdk">Call Decision Lab through the Python SDK.</a></li>
-      <li><a href="#same-model-different-context">Use the same model with a different decision context.</a></li>
-      <li><a href="#bring-findings-back">Bring the findings back into your own application.</a></li>
-      <li><a href="#source">Sources and scope</a></li>
-    </ol>
-  </details>
-</nav>
-
-    <nav class="use-case-related" aria-label="In this use case">
-      <p>Shipment readiness</p>
-      <a href="../index.html">Scenario overview</a>
-      <p>Articles</p>
-      <a href="../compare-shipment-options/index.html">Compare shipment options</a><a href="../add-consolidated-freight/index.html">Add consolidated freight</a><a href="../review-changed-orders/index.html">Review changed orders</a><a href="../resolve-a-shipment-exception/index.html">Resolve a shipment exception</a><a href="index.html" aria-current="page">Integrate Python machine learning</a>
-      
-      <p>Supporting references</p>
-      <a href="../app-author/index.html">Workflow authoring</a><a href="../case-worker/index.html">Evidence and verification</a><a href="../compare-priorities-and-limits/index.html">Priorities and spending limits</a>
-      
-    </nav>
-  </aside>
-
-  <article class="reader-prose" aria-label="Connect Python machine learning to Decision Lab.">
-    <div class="reader-content">
-      
-      
-
-
-
-<p class="reader-lead">Maya’s analyst works in Python. The team has shipment history, a scikit-learn model and a question to answer before the noon reservation cutoff: <strong>should Maya buy a registration check before choosing freight?</strong> This example connects that Python model to Decision Lab and returns the findings to a report built by the same Python application.</p>
+<p>Maya’s analyst works in Python. The team has shipment history, a scikit-learn model and a question to answer before the noon reservation cutoff: <strong>should Maya buy a registration check before choosing freight?</strong> This example connects that Python model to Decision Lab and returns the findings to a report built by the same Python application.</p>
 <p>Backup meets the recorded shipment requirements for $6,000. Direct costs $4,000 but needs current, correctly scoped registration confirmation. The model estimates the chance of registration; the team also needs to account for the check’s fee, the time to respond and which complete shipment arrangements remain available.</p>
-<p class="use-case-example-note">The <a href="https://github.com/hermodlabs/sample_code/tree/main/shipping/readiness-learning">complete Python integration</a> includes the estimator, input adapter, pinned Decision Lab apps and report code. Maya, the history and all amounts are fictional. The screenshots show the sample’s actual generated reports.</p>
+<p class="use-case-example-note">The <a href="{{ shipmentLearning.repositoryUrl }}">complete Python integration</a> includes the estimator, input adapter, pinned Decision Lab apps and report code. Maya, the history and all amounts are fictional. The screenshots show the sample’s actual generated reports.</p>
 
 <h2 id="who-uses-the-assessment">Help Maya decide before the cutoff.</h2>
 <p>The analyst prepares the shipment inputs, reviews the model’s numerical basis and generates a comparison. Maya uses its report to decide which proposal to put forward: buy the check and retain a fallback, or reserve Backup now. The application supports that choice; responsible people obtain the actual confirmation, authorize spending and arrange freight.</p>
-
-
-<figure class="use-case-explanatory-map" id="shipment-python-use-case-view" aria-labelledby="shipment-python-use-case-view-caption">
-  <a class="use-case-explanatory-map-image" href="../../../../assets/use-cases/shipment-readiness/readiness-learning/use-case-view.svg" tabindex="-1" aria-label="Open the use-case view at full size">
-    <picture>
-      <source media="(max-width: 650px)" srcset="../../../../assets/use-cases/shipment-readiness/readiness-learning/use-case-view-mobile.svg" width="360" height="1090">
-      <img src="../../../../assets/use-cases/shipment-readiness/readiness-learning/use-case-view.svg" width="960" height="800" alt="The analyst supplies shipment inputs, reviews the numerical basis and generates an assessment in the Python shipment application. Maya reads its report to choose a proposal. Actual checking, spending authorization and freight reservation remain outside the application." loading="lazy" decoding="async">
-    </picture>
-  </a>
-  <figcaption id="shipment-python-use-case-view-caption">
-    <span><strong>Use-case view.</strong> The analyst produces the comparison; Maya uses the report to put forward a shipment proposal. Actual checking, authorization and reservation remain with the responsible people.</span>
-    <span class="use-case-explanatory-map-links"><a href="../../../../assets/use-cases/shipment-readiness/readiness-learning/use-case-view.svg">View full-size SVG</a><a href="https://github.com/hermodlabs/sample_code/blob/f3584a5ec5aef6594b640b5e9d10f8e06041d4eb/shipping/readiness-learning/README.md">See the implementation</a></span>
-  </figcaption>
-</figure>
-
+{{ architectureView('useCase') }}
 
 <h2 id="one-python-application">One Python application connects prediction and decision.</h2>
 <p>The developer could write the shipment requirements, check-and-response comparison and report contracts alongside the model. In this integration, the team keeps its Python data science code and presentation while reusing Decision Lab’s authored planning and learning assessments.</p>
-
-
-<figure class="use-case-explanatory-map" id="shipment-python-component-view" aria-labelledby="shipment-python-component-view-caption">
-  <a class="use-case-explanatory-map-image" href="../../../../assets/use-cases/shipment-readiness/readiness-learning/component-view.svg" tabindex="-1" aria-label="Open the component view at full size">
-    <picture>
-      <source media="(max-width: 650px)" srcset="../../../../assets/use-cases/shipment-readiness/readiness-learning/component-view-mobile.svg" width="360" height="1610">
-      <img src="../../../../assets/use-cases/shipment-readiness/readiness-learning/component-view.svg" width="960" height="1060" alt="Offline training produces a fitted model for the Python estimator. The adapter calls Decision Lab’s public Python SDK with pinned app definitions. Complete planning eligibility and costs return to the adapter, which binds them with numerical estimates into the information-value assessment. Returned findings feed the Python report renderer." loading="lazy" decoding="async">
-    </picture>
-  </a>
-  <figcaption id="shipment-python-component-view-caption">
-    <span><strong>Component view.</strong> The team’s Python application owns estimation, the bindings and presentation. The public SDK evaluates the pinned app definitions. Complete planning findings return through the adapter as inputs to the information-value assessment.</span>
-    <span class="use-case-explanatory-map-links"><a href="../../../../assets/use-cases/shipment-readiness/readiness-learning/component-view.svg">View full-size SVG</a><a href="https://github.com/hermodlabs/sample_code/blob/f3584a5ec5aef6594b640b5e9d10f8e06041d4eb/shipping/readiness-learning/decision.py">See the implementation</a></span>
-  </figcaption>
-</figure>
-
+{{ architectureView('components') }}
 <p>The adapter is the connection between the parts. It calls the public <code>decision_lab</code> package, checks the planning findings and binds them into the information-value assessment alongside the numerical estimates. The pinned app definitions supply the requirements and comparison rules; the Python report renderer presents the returned findings.</p>
-<p><strong>The estimate and the decision answer different questions.</strong> Machine learning estimates registration from history. A commitment assessment establishes which complete shipment responses meet the recorded requirements. A learning assessment compares the check and its possible responses with <strong>the best supported outside option: reserve Backup now</strong>. This is the <a href="../../../../articles/from-arrangements-to-assessments/index.html">composition of assessment patterns</a> that the Python application connects through the SDK. The estimator stays in Python; the authored apps supply the planning and information-value rules.</p>
+<p><strong>The estimate and the decision answer different questions.</strong> Machine learning estimates registration from history. A commitment assessment establishes which complete shipment responses meet the recorded requirements. A learning assessment compares the check and its possible responses with <strong>the best supported outside option: reserve Backup now</strong>. This is the <a href="{{ '/articles/from-arrangements-to-assessments/' | relativeUrl(page.url) }}">composition of assessment patterns</a> that the Python application connects through the SDK. The estimator stays in Python; the authored apps supply the planning and information-value rules.</p>
 
 <h2 id="model-in-python">Keep the machine learning model in Python.</h2>
 <p>The sample trains a standardized logistic regression model with scikit-learn and calibrates its scores on a separate chronological partition. At assessment time, the fitted model supplies a registration probability through ordinary Python calls:</p>
-
-
-<figure class="article-code">
-  <figcaption id="code-predict">Predict calibrated probabilities with scikit-learn · <a href="https://github.com/hermodlabs/sample_code/blob/f3584a5ec5aef6594b640b5e9d10f8e06041d4eb/shipping/readiness-learning/estimation.py#L58-L60">estimation.py, lines 58–60</a></figcaption>
-  <pre tabindex="0" role="region" aria-labelledby="code-predict"><code class="language-python">def calibrated_probabilities(bundle: dict[str, Any], frame: pd.DataFrame) -&gt; np.ndarray:
-    scores = bundle[&quot;classifier&quot;].decision_function(frame).reshape(-1, 1)
-    return bundle[&quot;calibrator&quot;].predict_proba(scores)[:, 1]</code></pre>
-</figure>
-
+{{ codeExcerpt('predict') }}
 <p>The four features describe portal-listing age, prior shipments, time since a scope change and open setup tasks. For the worked case, the model proposes <strong>24.96%</strong>. Historical check records separately supply the frequencies of confirmation and no usable result. The model and these estimates remain in the Python application; they do not need to be rewritten as Decision Lab rules.</p>
 <p>The estimator also returns provenance and applicability information. An unsupported feature value withholds a usable estimate. Its <code>supported</code> flag means the sample’s checks passed; real use still needs an appropriate population and validated historical records.</p>
 
 <h2 id="bind-estimates">Bind the estimates to Decision Lab’s inputs.</h2>
 <p>The adapter places the proposed registration probability into the information-value app’s declared states:</p>
-
-
-<figure class="article-code">
-  <figcaption id="code-bind">Bind the model estimate to the authored learning case · <a href="https://github.com/hermodlabs/sample_code/blob/f3584a5ec5aef6594b640b5e9d10f8e06041d4eb/shipping/readiness-learning/decision.py#L140-L147">decision.py, lines 140–147</a></figcaption>
-  <pre tabindex="0" role="region" aria-labelledby="code-bind"><code class="language-python">    probability = proposal[&quot;probabilityRegistered&quot;]
-    inputs.update(id=f&quot;{business[&#39;id&#39;]}-learning&quot;, currentTime=parameters[&quot;currentTime&quot;],
-                  cashBudget=parameters[&quot;cashLimit&quot;])
-    inputs[&quot;probabilityBasis&quot;] = {&quot;source&quot;: &quot;Proposed model basis &quot; + lab.hashing.canonical_hash(proposal),
-                                  &quot;scope&quot;: inputs[&quot;scope&quot;]}
-    inputs[&quot;priors&quot;] = [{&quot;state&quot;: &quot;registered&quot;, &quot;probability&quot;: probability},
-                        {&quot;state&quot;: &quot;not_registered&quot;, &quot;probability&quot;: 1 - probability}]
-    inputs[&quot;acceptedFacts&quot;] = []</code></pre>
-</figure>
-
+{{ codeExcerpt('bind') }}
 <p>Here <code>probability</code> comes from the Python proposal. The adapter also supplies the check’s fee, duration and report likelihoods. It retains the authored meanings of <code>registered</code>, <code>not_registered</code> and an inconclusive report. The probability is a numerical premise; actual registration confirmation remains a separate requirement for Direct.</p>
 <p>Planning contributes another part of the input: which complete arrangements meet the timing, capacity, expense, cash and recorded-permission conditions when reserving now or responding after the check. The adapter carries those findings into the information-value assessment, including their retained source references. Its candidates now mean <strong>a check together with responses to its possible reports</strong>, rather than another freight quote. Their expected complete expense is compared with the supported reserve-now alternative.</p>
 
 <h2 id="call-python-sdk">Call Decision Lab through the Python SDK.</h2>
 <p>The application opens its pinned planning and learning packages with <code>lab.apps.open</code>. A <code>DecisionLab</code> instance then evaluates the authored apps through the same public Python call:</p>
-
-
-<figure class="article-code">
-  <figcaption id="code-evaluate">Evaluate an authored app through the Python SDK · <a href="https://github.com/hermodlabs/sample_code/blob/f3584a5ec5aef6594b640b5e9d10f8e06041d4eb/shipping/readiness-learning/decision.py#L94-L95">decision.py, lines 94–95</a></figcaption>
-  <pre tabindex="0" role="region" aria-labelledby="code-evaluate"><code class="language-python">    run = lab.run(app=app, case=inputs, timeout_ms=30_000,
-                  run_id=f&quot;{business[&#39;id&#39;].lower()}-{tag}&quot;, created_at=business[&quot;asOf&quot;])</code></pre>
-</figure>
-
+{{ codeExcerpt('evaluate') }}
 <ol class="use-case-report-guide" aria-label="One assessment through the Python SDK">
   <li><strong>Assess the shipment responses.</strong> Run planning for reserving now and for acting after the check. Require complete findings before using eligibility and costs downstream.</li>
   <li><strong>Bind the information-value case.</strong> Combine those findings with the proposed probabilities, report likelihoods, check fee and response time.</li>
@@ -243,83 +90,15 @@
 <details class="disclosure use-case-technical-note" id="complete-assessment">
   <summary><span class="disclosure-label">Check the planning result before using it as a premise</span></summary>
   <p>Finishing execution and establishing a complete planning assessment are separate checks. The sample resolves the native assessment before passing operating eligibility downstream:</p>
-  
-
-<figure class="article-code">
-  <figcaption id="code-complete">Require a complete planning assessment · <a href="https://github.com/hermodlabs/sample_code/blob/f3584a5ec5aef6594b640b5e9d10f8e06041d4eb/shipping/readiness-learning/decision.py#L101-L105">decision.py, lines 101–105</a></figcaption>
-  <pre tabindex="0" role="region" aria-labelledby="code-complete"><code class="language-python">def resolve_planning(lab: DecisionLab, run: dict) -&gt; dict:
-    result = lab.commitment.resolve_commitment_assessment(run[&quot;assessment&quot;], run[&quot;report&quot;])
-    if not lab.commitment.is_assessment_complete(result):
-        raise ValueError(&quot;A complete current planning assessment is required for this handoff.&quot;)
-    return result</code></pre>
-</figure>
-
-  <p><code>estimate</code>, <code>learning_case</code> and the surrounding orchestration are sample application functions. <code>lab.run</code>, <code>lab.apps.open</code> and the commitment assessment helpers are public SDK operations. The <a href="https://github.com/hermodlabs/sample_code/tree/f3584a5ec5aef6594b640b5e9d10f8e06041d4eb/shipping/readiness-learning">pinned source</a> shows their complete context.</p>
+  {{ codeExcerpt('complete') }}
+  <p><code>estimate</code>, <code>learning_case</code> and the surrounding orchestration are sample application functions. <code>lab.run</code>, <code>lab.apps.open</code> and the commitment assessment helpers are public SDK operations. The <a href="{{ shipmentLearning.sourceUrl }}">pinned source</a> shows their complete context.</p>
 </details>
 
 <h2 id="same-model-different-context">Use the same model with a different decision context.</h2>
 <p>The Python application renders the returned findings as a business report. With a timely $200 check, it reports <strong>$5,772.96 expected complete cost</strong>, including the check fee, against the supported $6,000 fallback now. The conditional expected improvement is <strong>$227.04</strong>.</p>
 <p>Change only the fee to $2,500. The model’s features and numerical proposal remain unchanged. Decision Lab now prefers the $6,000 fallback because checking would cost $8,072.96 in expectation:</p>
-
-<section class="use-case-comparison" aria-label="One Python model. Two decision contexts." data-comparison="shipment-learning-check-fee" data-comparison-kind="context">
-  <div class="use-case-comparison-basis">
-    <p><strong>Shared basis.</strong> The same fitted Python model, features and numerical proposal feed the same pinned Decision Lab planning and learning apps. Shipment arrangements, recorded permissions, expense and cash boundaries, and the noon reservation cutoff remain unchanged.</p>
-    <p class="use-case-comparison-change"><strong>What changes.</strong> The Python application supplies a different check fee: $200 or $2,500. The model inputs and the 10:30 a.m. response-ready time stay fixed. Case IDs and titles label the separate scenarios.</p>
-  </div>
-  <div class="use-case-comparison-panels">
-
-
-    <article class="use-case-comparison-panel" aria-labelledby="shipment-learning-check-fee-panel-1">
-      <h3 id="shipment-learning-check-fee-panel-1">A $200 check</h3>
-      <p class="use-case-comparison-finding"><strong>Checking has $227.04 of expected improvement.</strong></p>
-      <dl class="use-case-comparison-inputs">
-
-        <div><dt>Check fee</dt><dd>$200</dd></div>
-
-        <div><dt>Response ready</dt><dd>10:30 a.m.</dd></div>
-
-        <div><dt>Expected complete cost</dt><dd>$5,772.96</dd></div>
-
-      </dl>
-      <div class="use-case-comparison-observation">
-      <figure class="use-case-comparison-screen">
-        <a href="../../../../assets/use-cases/shipment-readiness/readiness-learning/timely-complete.png" aria-label="Open the A $200 check view at full size">
-          <img src="../../../../assets/use-cases/shipment-readiness/readiness-learning/timely-decision.png" width="608" height="470" alt="The qualified timely report proposes checking, with $5,772.96 expected complete cost, $227.04 expected improvement and a 25.0 percent readiness estimate." loading="lazy" decoding="async">
-        </a>
-        <figcaption>The timely $200 check improves expected complete expense under the supplied numerical basis. It establishes no actual registration, purchase or booking. <a href="../../../../assets/use-cases/shipment-readiness/readiness-learning/timely-complete.png">View full size</a></figcaption>
-      </figure>
-      <p class="use-case-comparison-judgment">Maya can put forward the timely check, retaining Backup if it supplies no usable registration confirmation.</p>
-      </div>
-    </article>
-
-
-    <article class="use-case-comparison-panel" aria-labelledby="shipment-learning-check-fee-panel-2">
-      <h3 id="shipment-learning-check-fee-panel-2">A $2,500 check</h3>
-      <p class="use-case-comparison-finding"><strong>Reserving Backup now is preferred.</strong></p>
-      <dl class="use-case-comparison-inputs">
-
-        <div><dt>Check fee</dt><dd>$2,500</dd></div>
-
-        <div><dt>Response ready</dt><dd>10:30 a.m.</dd></div>
-
-        <div><dt>Expected complete cost</dt><dd>$8,072.96</dd></div>
-
-      </dl>
-      <div class="use-case-comparison-observation">
-      <figure class="use-case-comparison-screen">
-        <a href="../../../../assets/use-cases/shipment-readiness/readiness-learning/high-fee-complete.png" aria-label="Open the A $2,500 check view at full size">
-          <img src="../../../../assets/use-cases/shipment-readiness/readiness-learning/high-fee-decision.png" width="608" height="476" alt="With the same estimate, the high-fee report prefers reserving now: the $2,500 check raises expected complete cost to $8,072.96." loading="lazy" decoding="async">
-        </a>
-        <figcaption>The check can still return in time, but its $2,500 fee outweighs the expected benefit. <a href="../../../../assets/use-cases/shipment-readiness/readiness-learning/high-fee-complete.png">View full size</a></figcaption>
-      </figure>
-      <p class="use-case-comparison-judgment">The information can still affect the route, but its higher price exceeds the expected improvement. Maya can propose the supported $6,000 fallback now.</p>
-      </div>
-    </article>
-
-  </div>
-  <p class="use-case-comparison-takeaway"><strong>What this means for the decision.</strong> The Python model supplies the same numerical premises. Decision Lab evaluates the changed fee against the available responses and returns a different recommendation to the Python application.</p>
-</section>
-
+{% set comparison = shipmentLearning.comparisons.fee %}
+{% include "body/use-case-comparison.html" %}
 <p>The same registration estimate therefore supports different choices because the check’s value depends on its cost and the responses still available. More information is useful here only when its modeled benefit exceeds its complete expense relative to acting now. Changing the check price or duration needs no retraining of this model; changing a shipment requirement belongs in the authored app, and changing the estimator’s intended population needs its own model review.</p>
 <div class="article-table-scroll" role="region" tabindex="0" aria-label="How the Python integration handles other conditions">
   <table>
@@ -333,84 +112,22 @@
 </div>
 <details class="disclosure use-case-technical-note">
   <summary><span class="disclosure-label">Inspect an unsupported estimate</span></summary>
-  
-<figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/shipment-readiness/readiness-learning/unsupported-complete.png" tabindex="-1" aria-label="Open the complete Python application report screenshot"><img src="../../../../assets/use-cases/shipment-readiness/readiness-learning/unsupported-decision.png" width="608" height="470" alt="The report withholds a learning estimate for unsupported features while retaining the $6,000 supported fallback." loading="lazy" decoding="async"></a>
-  <figcaption><span>An unsupported estimate does not erase the planning finding or become a zero-probability result.</span><a href="../../../../assets/use-cases/shipment-readiness/readiness-learning/unsupported-complete.png">View full size</a></figcaption>
-</figure>
-
-  <p><a href="../../../../assets/use-cases/shipment-readiness/readiness-learning/reports/unsupported/report.html">Open the retained report</a> to inspect why the estimate was withheld. Missing support is preserved explicitly rather than replaced with a zero probability.</p>
+  {{ figure(shipmentLearning.figures.unsupported) }}
+  <p><a href="{{ shipmentLearning.reportUrls.unsupported | relativeUrl(page.url) }}">Open the retained report</a> to inspect why the estimate was withheld. Missing support is preserved explicitly rather than replaced with a zero probability.</p>
 </details>
 
 <h2 id="bring-findings-back">Bring the findings back into your own application.</h2>
-<p>Maya’s analyst can now give her a report that connects the model’s estimate to the shipment options, cost and cutoff. <a href="../../../../assets/use-cases/shipment-readiness/readiness-learning/reports/timely/report.html">Open the actual Python report</a> to inspect its concise finding, possible responses and expandable model and calculation details. The same application retains complete SDK runs for another interface or further analysis.</p>
+<p>Maya’s analyst can now give her a report that connects the model’s estimate to the shipment options, cost and cutoff. <a href="{{ shipmentLearning.reportUrl | relativeUrl(page.url) }}">Open the actual Python report</a> to inspect its concise finding, possible responses and expandable model and calculation details. The same application retains complete SDK runs for another interface or further analysis.</p>
 <p>Maya can propose the timely check under the accepted numerical assumptions. The report also makes the downside clear: a valid positive confirmation can enable Direct at <strong>$4,200 including the check</strong>; otherwise Backup costs <strong>$6,200 including the check</strong>. The estimated chance of a usable positive report is about 21.35%, below the registration estimate because a check can be inconclusive. These are prospective findings, with purchasing and reservation left to the responsible owners.</p>
-<p>The <a href="../../../../platform/index.html#pattern-languages">learning-before-commitment decision pattern</a> organizes the overall approach. Its supporting planning assessment establishes available responses; the learning assessment compares their modeled value with acting now. Python supplies the estimator, orchestration and team interface. The <a href="https://github.com/hermodlabs/sample_code/tree/main/shipping/readiness-learning">complete sample repository</a> shows the training code, adapter, authored apps and report together.</p>
+<p>The <a href="{{ '/platform/#pattern-languages' | relativeUrl(page.url) }}">learning-before-commitment decision pattern</a> organizes the overall approach. Its supporting planning assessment establishes available responses; the learning assessment compares their modeled value with acting now. Python supplies the estimator, orchestration and team interface. The <a href="{{ shipmentLearning.repositoryUrl }}">complete sample repository</a> shows the training code, adapter, authored apps and report together.</p>
 
 <footer class="use-case-article-references" aria-labelledby="source">
   <details class="disclosure use-case-source-disclosure">
     <summary><h2 class="disclosure-label" id="source">Sources and scope</h2></summary>
-    <p>This standalone Python application uses separate pinned planning and learning apps. It is an integration example, not an added model-training feature in the Marketplace UI. Its explicit acceptance of numerical premises is an application policy, separate from the per-answer and per-result acceptance removed from the <a href="../case-worker/index.html#current-question-view">current calculation workflow</a>. The earlier guide retains its hypothetical 50/50 and perfect-verification assumptions.</p>
-    <p>The <a href="https://github.com/hermodlabs/sample_code/tree/f3584a5ec5aef6594b640b5e9d10f8e06041d4eb/shipping/readiness-learning">pinned source</a> includes 1,200 deterministic synthetic records. Chronological training, calibration and held-out evaluation demonstrate the pipeline and establish no real supplier prediction quality. Acceptance records a reviewed numerical basis; it authenticates neither a reviewer nor the underlying facts.</p>
+    <p>This standalone Python application uses separate pinned planning and learning apps. It is an integration example, not an added model-training feature in the Marketplace UI. Its explicit acceptance of numerical premises is an application policy, separate from the per-answer and per-result acceptance removed from the <a href="{{ (shipmentCase.workerUrl + '#current-question-view') | relativeUrl(page.url) }}">current calculation workflow</a>. The earlier guide retains its hypothetical 50/50 and perfect-verification assumptions.</p>
+    <p>The <a href="{{ shipmentLearning.sourceUrl }}">pinned source</a> includes 1,200 deterministic synthetic records. Chronological training, calibration and held-out evaluation demonstrate the pipeline and establish no real supplier prediction quality. Acceptance records a reviewed numerical basis; it authenticates neither a reviewer nor the underlying facts.</p>
     <p>Authoritative, correctly scoped confirmations have authored meanings. Historical records estimate their frequencies and the chance of no result; they do not establish that arbitrary registration reports are accurate. A registration probability never replaces required confirmation. Probability sensitivity values in the report are assumptions, not confidence bounds.</p>
-    <p>The objective is risk-neutral expected complete shipment expense, counting the check fee once. Revenue, total profit and reserve-now/later-cancel policies are outside the comparison. The <a href="../../../../assets/use-cases/shipment-readiness/readiness-learning/verification.json">verification record</a> and <a href="../../../../assets/use-cases/shipment-readiness/readiness-learning/README.md">capture notes</a> identify the retained qualified reports and original source. The sample performs no external check, purchase, freight reservation or delivery.</p>
+    <p>The objective is risk-neutral expected complete shipment expense, counting the check fee once. Revenue, total profit and reserve-now/later-cancel policies are outside the comparison. The <a href="{{ shipmentLearning.verificationUrl | relativeUrl(page.url) }}">verification record</a> and <a href="{{ shipmentLearning.notesUrl | relativeUrl(page.url) }}">capture notes</a> identify the retained qualified reports and original source. The sample performs no external check, purchase, freight reservation or delivery.</p>
     <p>The use-case and component illustrations use selected viewpoints informed by <a href="https://arxiv.org/abs/2006.04975">Philippe Kruchten’s 4+1 architectural view model</a>. They describe the goals and composition of this sample; offline model training is separate from each shipment assessment.</p>
   </details>
 </footer>
-
-      
-    </div>
-    <nav class="reader-return" aria-label="Continue with this scenario">
-      <a class="text-link" href="../index.html">All shipment readiness articles <span aria-hidden="true">→</span></a>
-      <a class="text-link" href="https://hermodlabs.github.io/review_lab/">Open Decision Lab <span aria-hidden="true">↗</span></a>
-    </nav>
-  </article>
-</div>
-</main>
-  <footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-directory">
-      <div class="footer-identity">
-        <a class="footer-brand" href="../../../../index.html" aria-label="Hermod Labs home"><img src="../../../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
-        <p class="footer-description">Tools and ideas for decisions you can inspect and revise.</p>
-        <nav class="footer-social-links" aria-label="Hermod Labs profiles">
-          <a href="https://www.linkedin.com/company/hermodlabs/" aria-label="Hermod Labs on LinkedIn" title="LinkedIn"><svg class="footer-social-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
-  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124Zm1.782 13.019H3.555V9h3.564v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0Z"/>
-</svg></a>
-          <a href="https://github.com/hermodlabs" aria-label="Hermod Labs on GitHub" title="GitHub"><svg class="footer-social-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
-  <path d="M12 .297a12 12 0 0 0-3.793 23.385c.6.111.82-.261.82-.577 0-.285-.011-1.04-.017-2.041-3.338.724-4.043-1.609-4.043-1.609-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.729.083-.729 1.205.085 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.303-5.467-1.334-5.467-5.931 0-1.31.469-2.381 1.236-3.221-.124-.303-.536-1.524.117-3.176 0 0 1.008-.323 3.301 1.23a11.52 11.52 0 0 1 3.003-.404c1.02.005 2.047.138 3.006.404 2.291-1.553 3.297-1.23 3.297-1.23.655 1.652.243 2.873.119 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.625-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .319.216.694.825.576A12.001 12.001 0 0 0 12 .297Z"/>
-</svg></a>
-        </nav>
-      </div>
-
-      <section class="footer-contact-section" aria-labelledby="footer-contact-heading">
-        <h3 id="footer-contact-heading">Contact us</h3>
-        <form class="beta-form footer-contact-form" id="footer-contact-form" action="https://forminit.com/f/1vqi2088svl" method="POST" data-forminit-request data-pending-message="Sending your message…" data-success-message="Thanks, your message has been sent. We’ll reply by email." accept-charset="UTF-8" aria-labelledby="footer-contact-heading">
-  <input type="hidden" name="fi-text-request" value="Hermod Labs contact">
-  <input type="hidden" name="fi-text-subject" value="Hermod Labs — Contact form">
-  <input type="hidden" name="_gotcha" value="">
-  <fieldset>
-    <legend class="visually-hidden">Contact Hermod Labs</legend>
-    <div class="footer-contact-fields">
-      <div class="form-field"><label for="footer-name">Name <span>(required)</span></label><input id="footer-name" type="text" name="fi-sender-fullName" autocomplete="name" maxlength="160" required></div>
-      <div class="form-field"><label for="footer-email">Email <span>(required)</span></label><input id="footer-email" type="email" name="fi-sender-email" autocomplete="email" maxlength="254" required></div>
-    </div>
-    <div class="form-field"><label for="footer-message">Message <span>(required)</span></label><textarea id="footer-message" name="fi-text-message" rows="3" maxlength="5000" placeholder="Tell us what you’d like to discuss." required></textarea></div>
-  </fieldset>
-  <button class="button" type="submit">Send message <span aria-hidden="true">↗</span></button>
-  <p class="form-status" id="footer-contact-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></p>
-</form>
-
-      </section>
-    </div>
-
-    <div class="footer-bottom">
-      <p class="footer-copyright">© 2026 Hermod Labs</p>
-      <p class="footer-signoff">Automated reasoning. Human judgment.</p>
-      <a class="footer-top-link" href="#main">Back to top <span aria-hidden="true">↑</span></a>
-    </div>
-  </div>
-</footer>
-
-</body>
-</html>

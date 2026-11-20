@@ -1,0 +1,12 @@
+<figure class="use-case-explanatory-map" id="{{ decisionMap.id | escape }}" aria-labelledby="{{ decisionMap.id | escape }}-caption">
+  <a class="use-case-explanatory-map-image" href="{{ decisionMap.image | relativeUrl(page.url) }}" tabindex="-1" aria-label="Open the decision illustration at full size">
+    <picture>
+      <source media="(max-width: 650px)" srcset="{{ decisionMap.mobileImage | relativeUrl(page.url) }}" width="{{ decisionMap.mobileWidth }}" height="{{ decisionMap.mobileHeight }}">
+      <img src="{{ decisionMap.image | relativeUrl(page.url) }}" width="{{ decisionMap.width }}" height="{{ decisionMap.height }}" alt="{{ decisionMap.alt | escape }}" loading="lazy" decoding="async">
+    </picture>
+  </a>
+  <figcaption id="{{ decisionMap.id | escape }}-caption">
+    <span>{{ decisionMap.caption | escape }}</span>
+    <span class="use-case-explanatory-map-links"><a href="{{ decisionMap.image | relativeUrl(page.url) }}">View full-size SVG</a><a href="{{ decisionMap.modelUrl | relativeUrl(page.url) }}" download>Download structured map</a></span>
+  </figcaption>
+</figure>

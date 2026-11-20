@@ -1,0 +1,94 @@
+{
+  "appUrl": "https://hermodlabs.github.io/review_lab/",
+  "workflowId": "street-team-deployment",
+  "workflowVersion": "1.5.0",
+  "packageHash": "c49e9179b5336e933dab00f9184fef02b4c08a3a3e6547d32971617cee6989f0",
+  "definitionHash": "f0ddf31cee30299f860ff6d758c01aa137039f15643b13e6eb7258aaebd32073",
+  "buildVersion": "1e3fea42df926bf157b6",
+  "provenance": "current-local-production-preview",
+  "notesUrl": "/assets/use-cases/street-team-deployment/decision-summary-ui/README.md",
+  "verificationUrl": "/assets/use-cases/street-team-deployment/decision-summary-ui/verification.json",
+  "articleDownload": "/assets/use-cases/street-team-deployment/decision-summary-ui/retained/five-staff.run.json",
+  "figures": {
+    "starter": {
+      "image": "/assets/use-cases/street-team-deployment/decision-summary-ui/starter-inputs.png",
+      "width": 1496,
+      "height": 1535,
+      "sha256": "7dfd72c78e17601c8f1658a6e992ad719370ac1b620ffab0e72872529c07fb53",
+      "alt": "The current street-team analysis starts with supplied fictional Forms inputs and an uncalculated Decision summary. Calculate and View decision process sit above the inputs.",
+      "caption": "Start analysis preserves supplied starter facts. Set two callouts, apply the change and calculate to reproduce Alex’s five-staff case."
+    },
+    "financial": {
+      "image": "/assets/use-cases/street-team-deployment/decision-summary-ui/five-staff-decision-summary.png",
+      "width": 856,
+      "height": 939,
+      "sha256": "5424f3c29b1116462b38764029eebabec0633ae8406a9dfaed06f55a9e237740",
+      "alt": "The current Decision summary compares all four complete deployments: holding and the $200 one-person promotion meet operating requirements; five additional guests cover the one-person expense and six exceed it.",
+      "caption": "Read the operating answer and financial hurdles together. Two deployments fit the five-staff case; choosing the $200 push remains Alex’s management decision."
+    },
+    "fiveStaff": {
+      "image": "/assets/use-cases/street-team-deployment/decision-summary-ui/five-staff-current-answer.png",
+      "width": 806,
+      "height": 189,
+      "sha256": "afe3f41d807959c236481c35a90a03c3a8d2560c893780b7f44b408f2182b787",
+      "alt": "The current operational answer establishes two deployments that meet the recorded requirements when five qualified staff are available.",
+      "caption": "Five available: holding or sending one meets the recorded requirements. No profit-maximizing deployment is established."
+    },
+    "process": {
+      "image": "/assets/use-cases/street-team-deployment/decision-summary-ui/deployment-decision-process.png",
+      "width": 806,
+      "height": 1390,
+      "sha256": "62aa3dfc74aae1b82ec7fa164d90aae16a779254dc5636a6f8b300ca85bf0958",
+      "alt": "The current Decision process separates whether complete deployments meet operating requirements from calculating a financial guest hurdle, with labeled paths and reassessment.",
+      "caption": "The business process keeps operating eligibility and the financial hurdle separate. Its paths describe available responses; they record no dispatch or spending authorization."
+    },
+    "pending": {
+      "image": "/assets/use-cases/street-team-deployment/decision-summary-ui/third-callout-needs-recalculation.png",
+      "width": 1496,
+      "height": 1535,
+      "sha256": "41619c0459ac00ab0c5f39f1dcc396b795ce874876872a9f86631f6247c11f5f",
+      "alt": "Three unavailable staff are applied in Forms. The Decision summary says Recalculate the changed inputs rather than reusing the earlier operating answer.",
+      "caption": "Applying the third callout changes the basis. The summary withdraws the previous answer until the current staffing is recalculated."
+    },
+    "fourStaff": {
+      "image": "/assets/use-cases/street-team-deployment/decision-summary-ui/four-staff-current-answer.png",
+      "width": 806,
+      "height": 189,
+      "sha256": "71d9a6b074a64f395aa1982185d358a4583bea8fd90516c9fc368dbc5531e803",
+      "alt": "After the third callout, the current Decision summary establishes that only holding meets the recorded operating requirements.",
+      "caption": "Four available: everyone is needed inside. Only holding meets the requirements."
+    },
+    "thirdCallout": {
+      "image": "/assets/use-cases/street-team-deployment/decision-summary-ui/four-staff-decision-summary.png",
+      "width": 856,
+      "height": 939,
+      "sha256": "0fe3e7966ed95c176da5efe0e0117d0c5046f21076866b3a28bf1bfdc949a600",
+      "alt": "The current Decision summary blocks all outreach deployments at four available staff while retaining their separate financial guest hurdles.",
+      "caption": "Recalculation makes the operating answer current. A five-guest financial target cannot supply the missing person."
+    },
+    "financialReport": {
+      "image": "/assets/use-cases/street-team-deployment/decision-summary-ui/expense-recovery-supporting-report.png",
+      "width": 856,
+      "height": 766,
+      "sha256": "c324e9f02f0eb7e90c556f0da32ce13bf020828764638f42e1fdfff7225045f4",
+      "alt": "The current Supporting reports, Expense recovery view displays the one-person plan’s $200 expense, $40 contribution, five guests to break even and six to exceed it, with its contribution and calculation details available.",
+      "caption": "Inspect the financial hurdle and open its supporting assumptions. These are the original $40 inputs; no promotion response has been measured."
+    },
+    "comparison": {
+      "image": "/assets/use-cases/street-team-deployment/decision-summary-ui/article-financial-comparison.png",
+      "width": 806,
+      "height": 396,
+      "sha256": "01798c6bff3ac53605d6f65d8428d51f1c3c29a72bc5abf24c732a54167ea0ac",
+      "alt": "The current native comparison lists four deployments, additional expenses and the additional guests needed to cover and exceed each cost.",
+      "caption": "All four financial hurdles remain visible for comparison. Guest counts describe required response rather than predicted attendance."
+    },
+    "excelCoverage": {
+      "image": "/assets/use-cases/street-team-deployment/decision-summary-ui/excel-tools.png",
+      "width": 627,
+      "height": 221,
+      "sha256": "5a8ee0a74062f91efee929e6c69c3643ee765a7943b0934692dc659f39b22289",
+      "alt": "The optional Work with Excel disclosure offers workbook download and upload for the exact installed calculation workflow.",
+      "caption": "Excel supplies another route to the same case inputs. Apply the intended change, then recalculate."
+    }
+  }
+}

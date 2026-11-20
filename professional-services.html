@@ -1,0 +1,72 @@
+---
+layout: layouts/base.html
+title: Professional Services
+description: Development and test and learn consulting for your business goals. Build with Decision Lab, design sound experiments, and use the evidence to guide your next decision.
+navKey: professional-services
+permalink: /professional-services/index.html
+---
+{% from "icons/services.html" import serviceIcon %}
+<section class="page-hero wrap page-hero-with-cover" aria-labelledby="services-heading">
+  <div class="page-hero-copy">
+    <p class="eyebrow">Professional Services / Development and experimental design</p>
+    <h1 id="services-heading">Build what you need.<br><em>Learn what works.</em></h1>
+    <p class="lead">We develop custom models, applications, and reports with Decision Lab, and help you design experiments that address business questions. Work with us on development, test and learn consulting, or both.</p>
+    <a class="button" href="#services-inquiry">Discuss your project <span aria-hidden="true">↓</span></a>
+  </div>
+  {% set pageCover = pageCovers['professional-services'] %}
+  {% include "body/page-cover.html" %}
+</section>
+
+<section class="section wrap" aria-labelledby="custom-model-heading">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Development</p>
+      <h2 id="custom-model-heading">Build for the way<br><em>you work.</em></h2>
+    </div>
+    <p>We turn your use case into Decision Lab models, custom applications, and reports. We work with your domain, users, information, and requirements to build tools that support the decisions you need to make.</p>
+  </div>
+  <div class="principles service-steps">
+    <article>
+      <h3>{{ serviceIcon('decision') }}<span>Model the decision.</span></h3>
+      <p>We define the choices, dependencies, evidence, and constraints that matter, then build a model that captures how they fit together.</p>
+    </article>
+    <article>
+      <h3>{{ serviceIcon('code') }}<span>Develop the application.</span></h3>
+      <p>We write custom logic, connect the information your use case needs, and build an application around how people will use the model.</p>
+    </article>
+    <article>
+      <h3>{{ serviceIcon('reports') }}<span>Build useful reports.</span></h3>
+      <p>We create reports that help people compare options, understand consequences, and act on the results. The output is shaped around the questions your users need to answer.</p>
+    </article>
+  </div>
+  <div class="boundary">
+    <p>We can start from a defined requirement or help you use evidence from testing to decide what to build next.</p>
+  </div>
+</section>
+
+<section class="section surface" id="test-and-learn" aria-labelledby="test-and-learn-heading">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">Test and learn consulting</p>
+      <h2 id="test-and-learn-heading">Test the idea.<br><em>Learn what matters.</em></h2>
+    </div>
+    <div class="prose">
+      <p>Our experts in testing and experimental design help you turn business goals into questions you can test. We work with you to define what you need to learn, choose meaningful measures of success, and design an experiment to address the question.</p>
+      <p>We help you interpret the results, assess what the evidence supports, and understand what remains uncertain. Use the learning to decide what to change, test again, or scale in support of your business goal.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="services-inquiry" aria-labelledby="services-inquiry-heading">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">Let’s discuss your project</p>
+      <h2 id="services-inquiry-heading">What would you like<br><em>to build or learn?</em></h2>
+      <div class="prose">
+        <p>Tell us what you want to develop, what you need to learn, and the business goal behind the work. We’ll discuss the questions, available information, and a suitable scope.</p>
+        <p>An initial question or project idea is enough to start the conversation.</p>
+      </div>
+    </div>
+    {% include "body/services-inquiry-form.html" %}
+  </div>
+</section>

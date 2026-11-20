@@ -1,0 +1,7 @@
+{% set figure = giftingUIRefresh.figures[figureKey] or giftKitCalculationFigures[figureKey] or giftKitNavigationFigures[figureKey] or giftKitFigures[figureKey] %}
+{% if figure %}
+<figure class="use-case-figure">
+  <a href="{{ figure.image | relativeUrl(page.url) }}" tabindex="-1" aria-label="Open full-size screenshot: {{ figure.alt | escape }}"><img src="{{ figure.image | relativeUrl(page.url) }}" alt="{{ figure.alt | escape }}" width="{{ figure.width }}" height="{{ figure.height }}" style="max-width: {{ figure.width }}px" loading="lazy" decoding="async"></a>
+  <figcaption><span>{{ figure.caption | escape }}</span><a href="{{ figure.image | relativeUrl(page.url) }}" aria-label="Open full-size screenshot: {{ figure.alt | escape }}">View full size</a></figcaption>
+</figure>
+{% endif %}

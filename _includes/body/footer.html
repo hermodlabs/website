@@ -1,0 +1,27 @@
+{% from "icons/social.html" import socialIcon -%}
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-directory">
+      <div class="footer-identity">
+        <a class="footer-brand" href="{{ '/' | relativeUrl(page.url) }}" aria-label="Hermod Labs home"><img src="{{ '/assets/hermod-wordmark.jpeg' | relativeUrl(page.url) }}" alt="Hermod Labs" width="1536" height="512"></a>
+        <p class="footer-description">Tools and ideas for decisions you can inspect and revise.</p>
+        <nav class="footer-social-links" aria-label="Hermod Labs profiles">
+          {%- for profile in site.socialLinks %}
+          <a href="{{ profile.url }}" aria-label="Hermod Labs on {{ profile.label }}" title="{{ profile.label }}">{{ socialIcon(profile.key) }}</a>
+          {%- endfor %}
+        </nav>
+      </div>
+
+      <section class="footer-contact-section" aria-labelledby="footer-contact-heading">
+        <h3 id="footer-contact-heading">Contact us</h3>
+        {% include "body/footer-contact-form.html" %}
+      </section>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">© {{ copyrightYear }} Hermod Labs</p>
+      <p class="footer-signoff">Automated reasoning. Human judgment.</p>
+      <a class="footer-top-link" href="#main">Back to top <span aria-hidden="true">↑</span></a>
+    </div>
+  </div>
+</footer>

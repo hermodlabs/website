@@ -1,0 +1,35 @@
+<section class="section surface" id="pilots" aria-labelledby="pilots-heading">
+  <div class="wrap">
+    <div class="section-heading">
+      <div><p class="eyebrow">Custom development and consulting</p><h2 id="pilots-heading">Your goals.<br><em>Our expertise.</em></h2></div>
+      <p>Work with us on developer tools, shared team workflows, or systems that serve an organization. We tailor development and test and learn consulting to your technical needs and business goals.</p>
+    </div>
+    <div class="pilot-grid">
+{% for pilot in pilots %}
+      <article class="pilot-card" id="{{ pilot.slug }}-pilot" aria-labelledby="{{ pilot.slug }}-pilot-heading">
+{% for previousSlug in pilot.previousSlugs %}
+        <span class="visually-hidden" id="{{ previousSlug }}-pilot" aria-hidden="true"></span>
+{% endfor %}
+        <p class="eyebrow">{{ pilot.audience }}</p>
+        <h3 id="{{ pilot.slug }}-pilot-heading"><img class="pilot-icon" src="{{ pilot.iconImage | relativeUrl(page.url) }}" alt="" width="40" height="40" loading="lazy" decoding="async" aria-hidden="true"><span>{{ pilot.tier }}</span></h3>
+        <p class="pilot-purpose">{{ pilot.purpose }}</p>
+        <p>{{ pilot.summary }}</p>
+        <div class="pilot-scope" aria-labelledby="{{ pilot.slug }}-scope-heading">
+          <h4 id="{{ pilot.slug }}-scope-heading">Ways we can help</h4>
+          <div class="pilot-scope-content">
+            <ul class="tier-features">{% for feature in pilot.features %}<li>{{ feature }}</li>{% endfor %}</ul>
+          </div>
+        </div>
+      </article>
+{% endfor %}
+    </div>
+    <div class="pilot-contact split" id="pilot-inquiry">
+      <div>
+        <p class="eyebrow">Let’s scope the work</p>
+        <h3 id="pilot-inquiry-heading">What would you like<br><em>to build or learn?</em></h3>
+        <p>Tell us about your project, the people it needs to serve, and the business goal behind it. We’ll discuss the development or consulting support that fits.</p>
+      </div>
+      {% include "body/pilot-inquiry-form.html" %}
+    </div>
+  </div>
+</section>

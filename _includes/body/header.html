@@ -1,0 +1,9 @@
+{% from "icons/navigation.html" import navigationIcon -%}
+<header class="site-header wrap">
+  <a class="brand" href="{{ '/' | relativeUrl(page.url) }}" aria-label="Hermod Labs home"><img src="{{ '/assets/hermod-wordmark.jpeg' | relativeUrl(page.url) }}" alt="Hermod Labs" width="1536" height="512"></a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">+</span></button>
+  <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
+    {% for item in site.navigation %}<a href="{{ item.url | relativeUrl(page.url) }}"{% if navKey == item.key %} aria-current="page"{% endif %}>{{ navigationIcon(item.key) }}<span>{{ item.label }}</span></a>{% endfor %}
+    <a class="button nav-cta" data-decision-lab-link data-site-root="{{ '/' | relativeUrl(page.url) }}" hidden><span>Try Decision Lab free</span>{{ navigationIcon('launch') }}</a>
+  </nav>
+</header>

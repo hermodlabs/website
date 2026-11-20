@@ -1,0 +1,25 @@
+---
+layout: layouts/base.html
+title: The Arrangement Problem — A series from Hermod Labs
+description: A choice that makes sense on its own can create problems elsewhere. Explore how people, timing, and shared resources change whether a plan works.
+navKey: articles
+permalink: /series/the-arrangement-problem/index.html
+---
+{% set seriesArticles = articles | bySeries(library.series.key) %}
+<section class="page-hero wrap series-hero">
+  {% set breadcrumbItems = [{ label: 'All articles', url: '/articles/' }, { label: library.series.title }] %}
+  {% include "body/breadcrumb.html" %}
+  <p class="eyebrow">The Arrangement Problem / A series from Hermod Labs</p>
+  <h1>The Arrangement<br><em>Problem.</em></h1>
+  <p class="lead">{{ library.series.description }}</p>
+  <div class="actions"><a class="button" href="{{ seriesArticles[0].url | relativeUrl(page.url) }}">Read the first article <span aria-hidden="true">→</span></a><span class="series-length">{{ seriesArticles.length }} articles <span aria-hidden="true">·</span> Read at your own pace</span></div>
+</section>
+
+<section class="section wrap series-index" aria-labelledby="series-heading">
+  <h2 id="series-heading">All {{ seriesArticles.length }} articles</h2>
+  {% include "body/series-list.html" %}
+</section>
+
+<section class="section surface">
+  <div class="wrap split"><div><p class="eyebrow">Put it to work</p><h2>A decision of your own?<br><em>Try Decision Lab.</em></h2></div><div class="prose"><p>Write a plan in Decision Lab, analyze its declared constraints, and inspect which arrangements fit.</p><a class="text-link" href="{{ '/#decision-lab' | relativeUrl(page.url) }}">Explore Decision Lab <span aria-hidden="true">→</span></a></div></div>
+</section>

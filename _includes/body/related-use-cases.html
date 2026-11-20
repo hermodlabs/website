@@ -1,0 +1,20 @@
+{% if relatedScenario.relatedCases.length %}
+<section class="use-case-crosslinks{% if not relatedInReader %} section wrap{% endif %}" aria-labelledby="related-decisions-heading">
+  <h2 id="related-decisions-heading">Recognize the structure in another decision.</h2>
+  <p class="use-case-crosslinks-intro">Follow a shared problem or assessment into a different business context. Each example keeps its own requirements, records and conclusion limits.</p>
+  <ul class="use-case-crosslink-list" role="list">
+{% for relatedCase in relatedScenario.relatedCases %}
+{% if relatedCase.relationship.kind == 'problem-family' %}
+{% set relationship = useCaseTaxonomy.problemFamilies | findByKey(relatedCase.relationship.key) %}
+{% else %}
+{% set relationship = useCaseTaxonomy.assessmentPatterns | findByKey(relatedCase.relationship.key) %}
+{% endif %}
+    <li class="use-case-crosslink" data-related-scenario="{{ relatedCase.scenarioKey | escape }}" data-relationship="{{ relatedCase.relationship.kind | escape }}">
+      <p class="use-case-crosslink-relation">{% if relatedCase.relationship.kind == 'problem-family' %}Shared problem family{% elif relatedCase.relationship.kind == 'learning-contrast' %}A further learning question{% else %}Shared assessment pattern{% endif %} / <a href="{{ relationship.url | relativeUrl(page.url) }}">{{ relationship.label | escape }}</a></p>
+      <h3><a href="{{ relatedCase.articleUrl | relativeUrl(page.url) }}">{{ relatedCase.title | escape }}</a></h3>
+      <p>{{ relatedCase.description | escape }}</p>
+    </li>
+{% endfor %}
+  </ul>
+</section>
+{% endif %}

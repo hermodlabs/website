@@ -1,0 +1,93 @@
+{
+  "browser": {
+    "file": "src/useShipmentReview.js",
+    "start": 39,
+    "end": 39,
+    "label": "Create the SDK with its browser executor",
+    "language": "javascript",
+    "url": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/source/shipping/shipment-reservation-desk/src/useShipmentReview.js.txt",
+    "sourceKind": "implemented-working-copy",
+    "sourceSHA256": "0933c7a8d3f89e05026c6bd0f56ef2ce7b0cc0c087949e6ea0da4b12ca36f6b0",
+    "sourceManifestUrl": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/manifest.json",
+    "blob": "cd239490a00f2ff03dc3dcf1badc46e909f7427c",
+    "code": "    const executor = createBrowserExecutor(), lab = createDecisionLab({ executor });"
+  },
+  "open": {
+    "file": "src/reviewJourney.js",
+    "start": 95,
+    "end": 96,
+    "label": "Open the exact retained native workflow",
+    "language": "javascript",
+    "url": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/source/shipping/shipment-reservation-desk/src/reviewJourney.js.txt",
+    "sourceKind": "implemented-working-copy",
+    "sourceSHA256": "2818d897eadca17a3e274883b14c2303fbbe82b8b227ef6c06d2fde7ab3fd795",
+    "sourceManifestUrl": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/manifest.json",
+    "blob": "1ba0dc9df7856978ff57ad7b2132e996c73ddb91",
+    "code": "export function openReviewJourney({ lab, value, app, definition, compatibleDefinitions = [] }) {\n  const run = lab.workflows.openRun(value);"
+  },
+  "pending": {
+    "file": "src/reviewJourney.js",
+    "start": 144,
+    "end": 145,
+    "label": "Apply changed case values through the SDK supplied-answer contract",
+    "language": "javascript",
+    "url": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/source/shipping/shipment-reservation-desk/src/reviewJourney.js.txt",
+    "sourceKind": "implemented-working-copy",
+    "sourceSHA256": "2818d897eadca17a3e274883b14c2303fbbe82b8b227ef6c06d2fde7ab3fd795",
+    "sourceManifestUrl": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/manifest.json",
+    "blob": "1ba0dc9df7856978ff57ad7b2132e996c73ddb91",
+    "code": "    if (!equal(next.answers[questionId].value, value)) next = lab.workflows.answer({ run: next, questionId,\n      value, status: isCalculationJourney(next) ? WORKFLOW_ANSWER_STATUS.SUPPLIED : WORKFLOW_ANSWER_STATUS.AWAITING_REVIEW, at: atTime(at) });"
+  },
+  "run": {
+    "file": "src/reviewJourney.js",
+    "start": 182,
+    "end": 182,
+    "label": "Recalculate relevant dependencies and reuse current complete results",
+    "language": "javascript",
+    "url": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/source/shipping/shipment-reservation-desk/src/reviewJourney.js.txt",
+    "sourceKind": "implemented-working-copy",
+    "sourceSHA256": "2818d897eadca17a3e274883b14c2303fbbe82b8b227ef6c06d2fde7ab3fd795",
+    "sourceManifestUrl": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/manifest.json",
+    "blob": "1ba0dc9df7856978ff57ad7b2132e996c73ddb91",
+    "code": "  return lab.workflows.solve({ run: current, ...(execution ? { execution } : {}), createdAt: atTime(at) });"
+  },
+  "compare": {
+    "file": "src/useShipmentReview.js",
+    "start": 167,
+    "end": 167,
+    "label": "Compare the new finding with its retained predecessor",
+    "language": "javascript",
+    "url": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/source/shipping/shipment-reservation-desk/src/useShipmentReview.js.txt",
+    "sourceKind": "implemented-working-copy",
+    "sourceSHA256": "0933c7a8d3f89e05026c6bd0f56ef2ce7b0cc0c087949e6ea0da4b12ca36f6b0",
+    "sourceManifestUrl": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/manifest.json",
+    "blob": "cd239490a00f2ff03dc3dcf1badc46e909f7427c",
+    "code": "  const findingChanges = current && earlierRun ? labRef.current.reports.compareFindings({ before: earlierRun, after: run }) : null;"
+  },
+  "presentation": {
+    "file": "src/App.jsx",
+    "start": 405,
+    "end": 409,
+    "label": "Render the SDK-materialized decision summary and inspection links",
+    "language": "jsx",
+    "url": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/source/shipping/shipment-reservation-desk/src/App.jsx.txt",
+    "sourceKind": "implemented-working-copy",
+    "sourceSHA256": "d6a9a29abb00ad06b2d29c3b761fefa1a00a70f9e3eb50d9f3d9539823f0c1fc",
+    "sourceManifestUrl": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/manifest.json",
+    "blob": "6f4f0b075161036756b69bf2ceac35bea58bf7be",
+    "code": "      : !desk.hasDraft && status !== REVIEW_STATE.INVALID && <DecisionSummaryView\n          summary={output?.decisionSummary}\n          onOpenReport={openReport}\n          onViewProcess={() => setActiveTab('process')}\n        />)}"
+  },
+  "operating": {
+    "file": "src/reviewJourney.js",
+    "start": 216,
+    "end": 218,
+    "label": "Retain a separate sourced operating record in native history",
+    "language": "javascript",
+    "url": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/source/shipping/shipment-reservation-desk/src/reviewJourney.js.txt",
+    "sourceKind": "implemented-working-copy",
+    "sourceSHA256": "2818d897eadca17a3e274883b14c2303fbbe82b8b227ef6c06d2fde7ab3fd795",
+    "sourceManifestUrl": "/assets/use-cases/sample-code/calculation-integration-2026-11-20/manifest.json",
+    "blob": "1ba0dc9df7856978ff57ad7b2132e996c73ddb91",
+    "code": "  return lab.workflows.answer({ run, questionId: OPERATIONS, value: [...run.case.journeyOperations, operation],\n    status: isCalculationJourney(run) ? WORKFLOW_ANSWER_STATUS.SUPPLIED : WORKFLOW_ANSWER_STATUS.ACCEPTED,\n    ...(isCalculationJourney(run) ? {} : { actor, role: 'case-owner' }), at: atTime(at) });"
+  }
+}
