@@ -1,0 +1,111 @@
+{
+  "qualified": true,
+  "qualificationReasons": [],
+  "completedAt": "2026-09-01T00:00:00Z",
+  "splitCounts": {
+    "train": 727,
+    "calibration": 176,
+    "test": 290
+  },
+  "labelsUnavailableAtCutoff": {
+    "train": 3,
+    "calibration": 4,
+    "test": 0
+  },
+  "historicalRegisteredRate": 0.45254470426409904,
+  "baseline": {
+    "brierScore": 0.24897922607711276,
+    "logLoss": 0.6911062803872675
+  },
+  "uncalibratedModel": {
+    "brierScore": 0.1470361749956064,
+    "logLoss": 0.44350659585717256
+  },
+  "calibratedModel": {
+    "brierScore": 0.14808015071075575,
+    "logLoss": 0.4462806745270791
+  },
+  "reliabilityBins": [
+    {
+      "lowerInclusive": 0.0,
+      "upper": 0.1,
+      "upperInclusive": false,
+      "count": 48,
+      "meanPredictedProbability": 0.05513008991651972,
+      "observedRegisteredRate": 0.0625
+    },
+    {
+      "lowerInclusive": 0.1,
+      "upper": 0.2,
+      "upperInclusive": false,
+      "count": 34,
+      "meanPredictedProbability": 0.14291706600513754,
+      "observedRegisteredRate": 0.11764705882352941
+    },
+    {
+      "lowerInclusive": 0.2,
+      "upper": 0.3,
+      "upperInclusive": false,
+      "count": 23,
+      "meanPredictedProbability": 0.2585746516020203,
+      "observedRegisteredRate": 0.08695652173913043
+    },
+    {
+      "lowerInclusive": 0.3,
+      "upper": 0.4,
+      "upperInclusive": false,
+      "count": 20,
+      "meanPredictedProbability": 0.3413526684454503,
+      "observedRegisteredRate": 0.4
+    },
+    {
+      "lowerInclusive": 0.4,
+      "upper": 0.5,
+      "upperInclusive": false,
+      "count": 25,
+      "meanPredictedProbability": 0.4505331998775401,
+      "observedRegisteredRate": 0.56
+    },
+    {
+      "lowerInclusive": 0.5,
+      "upper": 0.6,
+      "upperInclusive": false,
+      "count": 23,
+      "meanPredictedProbability": 0.552104907015674,
+      "observedRegisteredRate": 0.5217391304347826
+    },
+    {
+      "lowerInclusive": 0.6,
+      "upper": 0.7,
+      "upperInclusive": false,
+      "count": 18,
+      "meanPredictedProbability": 0.6475575638843788,
+      "observedRegisteredRate": 0.5555555555555556
+    },
+    {
+      "lowerInclusive": 0.7,
+      "upper": 0.8,
+      "upperInclusive": false,
+      "count": 23,
+      "meanPredictedProbability": 0.7467321288279265,
+      "observedRegisteredRate": 0.6521739130434783
+    },
+    {
+      "lowerInclusive": 0.8,
+      "upper": 0.9,
+      "upperInclusive": false,
+      "count": 24,
+      "meanPredictedProbability": 0.857494214222788,
+      "observedRegisteredRate": 0.75
+    },
+    {
+      "lowerInclusive": 0.9,
+      "upper": 1.0,
+      "upperInclusive": true,
+      "count": 52,
+      "meanPredictedProbability": 0.9529760765589625,
+      "observedRegisteredRate": 0.9423076923076923
+    }
+  ],
+  "syntheticCaveat": "These measurements assess a deterministic fictional dataset, not operational prediction quality."
+}

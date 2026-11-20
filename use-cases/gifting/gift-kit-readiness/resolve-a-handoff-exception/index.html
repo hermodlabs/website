@@ -138,6 +138,9 @@
       <p>Articles</p>
       <a href="../compare-correction-options/index.html">Compare correction options</a><a href="../strengthen-the-rehearsal/index.html">Strengthen the rehearsal</a><a href="../screen-campaigns/index.html">Screen the campaigns</a><a href="index.html" aria-current="page">Build the handoff desk</a>
       
+      <p>Supporting references</p>
+      <a href="../compare-priorities-and-rehearsal/index.html">Compare the retained teaching priorities</a>
+      
     </nav>
   </aside>
 
@@ -232,7 +235,7 @@
 </tbody></table>
 </div>
 <p>The developer chooses the SDK because the CLI already uses this authored workflow and app release. The desk can continue the native review without rebuilding its reasoning or translating it into a second rule system.</p>
-<p>Hermod's <a href="../../../../articles/shared-structure-for-automated-reasoning/index.html">shared structure</a> is concrete here: the workflow implements the corrective commitment decision pattern, while its evidence and planning apps answer supporting questions. The SDK lets the developer reuse that authored implementation inside a team-specific interface. The authored configuration supplies these business requirements and handoffs; the integration supplies company records and the interaction Leah needs.</p>
+<p>The workflow connects <strong>an evidence assessment and a commitment assessment</strong>. The first establishes which faults follow from the supplied observations; the second checks which complete correction arrangements can address that basis within the handoff requirements. Their candidates and conclusions have <a href="../../../../articles/from-arrangements-to-assessments/index.html">different assessment meanings</a>. The SDK lets the desk continue both questions from the CLI’s retained case, while the authored workflow defines their handoff and the company supplies its records and interface.</p>
 
 <h2 id="continue-native-review">Continue the CLI review inside a custom application.</h2>
 <p>The Gift-kit Handoff Desk creates the SDK with its browser executor:</p>
@@ -281,7 +284,7 @@
     ...(execution ? { execution } : {}), createdAt: atTime(at) });</code></pre>
 </figure>
 
-<p>The authored evidence step interprets the actual reports against the published possible fault combinations. It infers no probabilities. In this case, reviewed observations retain one combination requiring a complete correction; they do not support an insert-only shortcut.</p>
+<p>The authored evidence step interprets the actual reports against the published possible fault combinations. It asks what remains consistent with the observations and which faults those remaining interpretations establish; it infers no probabilities. In this case, reviewed observations retain one combination requiring a complete correction. That finding rules out an insert-only shortcut, but it does not yet establish which complete correction can finish in time.</p>
 <p>Calculation and review remain separate. After Leah inspects the evidence finding, <strong>Accept evidence finding</strong> records a native review of that current evaluation:</p>
 
 
@@ -298,7 +301,7 @@
 <p>The functions <code>updateReviewInputs</code>, <code>evaluateReviewJourney</code> and <code>acceptReviewFinding</code> are sample integration helpers around those public APIs. The domain-authoring artifact supplies the evidence-to-planning mapping and business requirements. React hooks coordinate edits, cancellation and file controls.</p>
 
 <h2 id="read-the-current-finding">A focused answer, with the supporting detail still available.</h2>
-<p>At minute 1,410, the planning finding prefers <strong>external replacement and repair: $400, finishing at minute 1,435</strong>. The in-house complete response would finish at 1,450 and miss the original cutoff. An earlier finish alone does not earn a premium: in the ample GIFT-320 case, the same cost-first release prefers $300 in-house work at minute 40.</p>
+<p>The next assessment asks <strong>“Which complete correction can meet this campaign’s requirements?”</strong> At minute 1,410, it prefers <strong>external replacement and repair: $400, finishing at minute 1,435</strong>. The in-house complete response would finish at 1,450 and miss the original cutoff. The diagnosis is the same kind of premise; the remaining time determines which response works. An earlier finish alone does not earn a premium: in the ample GIFT-320 case, the same cost-first release prefers $300 in-house work at minute 40.</p>
 <p>The <a href="#booking-changes-decision">paired planning views above</a> render that current result and its unsupported-booking counterpart using the same component.</p>
 <p>The application renders the retained planning report using the shared <code>DecisionView</code> from <code>@decision-lab/react-views</code>:</p>
 
@@ -389,7 +392,7 @@
 <h2 id="resolved-choice">A justified premium, with an honest account of what happened.</h2>
 <p>Leah can explain why this urgent campaign supports a $400 package with a current booking, while an old-scope booking calls for intervention. Ample-window work can use $300. Jordan can point to the exact reviewed plan and the separate authorization, correction, rehearsal and handoff records. When the later failed test arrives, they can see why the original completion is no longer established and which evidence needs attention.</p>
 <p>The sample renders its pinned gifting report through <code>DecisionView</code>. Its reviewed-mode workflow and custom desk have not been migrated to the Marketplace calculation interface. The SDK’s full output and the saved native review remain available alongside the focused screen, preserving evidence, evaluations and operating history.</p>
-<p>The developer has built a team-specific working interface around the same native review used by the CLI. The SDK retains the state and assessments; the authored workflow supplies the domain requirements; shared views present the reports. The company still owns trustworthy sources, operating judgment and the work itself.</p>
+<p>The developer has built a team-specific interface that continues and recalculates the CLI’s retained assessments as records change. It preserves what the evidence establishes, which correction can meet the promise and which later records support completion. The SDK retains the case and history; the authored workflow supplies the domain requirements; shared views present the findings. The company still owns trustworthy sources, operating judgment and the work itself.</p>
 
 <footer class="use-case-article-references" aria-labelledby="source">
 <details class="disclosure use-case-source-disclosure"><summary><h2 class="disclosure-label" id="source">Sources and scope</h2></summary>

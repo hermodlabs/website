@@ -134,10 +134,10 @@
       <p>Shipment readiness</p>
       <a href="../index.html">Scenario overview</a>
       <p>Articles</p>
-      <a href="../compare-shipment-options/index.html">Compare shipment options</a><a href="../add-consolidated-freight/index.html">Add consolidated freight</a><a href="../review-changed-orders/index.html">Review changed orders</a><a href="../resolve-a-shipment-exception/index.html">Resolve a shipment exception</a>
+      <a href="../compare-shipment-options/index.html">Compare shipment options</a><a href="../add-consolidated-freight/index.html">Add consolidated freight</a><a href="../review-changed-orders/index.html">Review changed orders</a><a href="../resolve-a-shipment-exception/index.html">Resolve a shipment exception</a><a href="../is-a-registration-check-worth-buying/index.html">Integrate Python machine learning</a>
       
       <p>Supporting references</p>
-      <a href="index.html" aria-current="page">Workflow authoring</a><a href="../case-worker/index.html">Evidence and verification</a>
+      <a href="index.html" aria-current="page">Workflow authoring</a><a href="../case-worker/index.html">Evidence and verification</a><a href="../compare-priorities-and-limits/index.html">Priorities and spending limits</a>
       
     </nav>
   </aside>
@@ -151,8 +151,10 @@
 
 <p class="reader-lead">This archived authoring exercise shows how an app author prepares a decision process that other people can run. For this first exercise, we reuse <strong>Review a first shipment</strong> and its existing evidence, planning and learning apps. The public interface calls this <strong>workflow authoring</strong>.</p>
 <p>The author’s job is to make the questions, responsibilities and handoffs clear enough for a case worker to use. The supplied reasoning contracts stay in place. The case worker then supplies and reviews the facts of a particular shipment.</p>
+<p>Authoring preserves the meaning of each <a href="../../../../articles/from-arrangements-to-assessments/index.html">assessment</a>: evidence interprets the recorded basis, planning checks complete shipment responses, and learning compares verification with the best available response now. A handoff must retain the scope and conditions of the finding it supplies.</p>
+<p><a href="../compare-shipment-options/index.html">Maya’s main business story</a> asks which complete shipment remains supported as the booking window closes. This reference examines separate registration and verification questions.</p>
 <aside id="one-pattern-different-priorities" class="use-case-callout" aria-label="Start with the shipment readiness article">
-  <p>Start with <a href="../compare-shipment-options/index.html#shared-shipment">Shipment readiness: the same facts, different decision priorities</a>. Follow Maya as she reconciles launch, finance and operations needs, compares two passing shipment options, and tests a tighter expense limit. This detailed reference guide covers a separate workflow: registration remains uncertain, and the connected evidence, planning and verification apps help examine what to check before committing.</p>
+  <p>Start with <a href="../compare-priorities-and-limits/index.html#shared-shipment">the retained shipment priority and spending-limit comparison</a>. Follow Maya as she reconciles launch, finance and operations needs, compares two passing shipment options, and tests a tighter expense limit. This detailed reference guide covers a separate workflow: registration remains uncertain, and the connected evidence, planning and verification apps help examine what to check before committing.</p>
 </aside>
 <p>A <strong>shipment plan</strong> describes the intended route, dates and cost. An <strong>arrangement</strong> connects the work, people, resources, permissions and dependencies needed to carry it out over time. Those connections change as conditions and evidence change. This app reviews recorded versions, so case workers update answers and reassess affected findings. See <a href="../../../../articles/the-arrangement-problem-in-human-decisions/index.html">The Arrangement Problem in Human Decisions</a> for the broader concept.</p>
 <aside class="use-case-callout" aria-label="Demonstration scope">

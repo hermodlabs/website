@@ -141,6 +141,9 @@
       <p>Articles</p>
       <a href="../compare-correction-options/index.html">Compare correction options</a><a href="index.html" aria-current="page">Strengthen the rehearsal</a><a href="../screen-campaigns/index.html">Screen the campaigns</a><a href="../resolve-a-handoff-exception/index.html">Build the handoff desk</a>
       
+      <p>Supporting references</p>
+      <a href="../compare-priorities-and-rehearsal/index.html">Compare the retained teaching priorities</a>
+      
     </nav>
   </aside>
 
@@ -150,7 +153,8 @@
       <p class="reader-lead">Leah is accountable for handing over <strong>120 gift kits that recipients can actually use</strong>. Her team has a supported correction: internal replacement and journey repair costs <strong>$300</strong> and reaches handoff at <strong>minute 35</strong>. That plan includes 25 minutes of correction, five minutes of fresh rehearsal and five minutes of handoff.</p>
 <p>Production now wants <strong>at least ten minutes of fresh rehearsal</strong> before handoff. Finance still expects the expense to stay within $600, and marketing still needs the kits within the <strong>one-day window, ending at minute 1,440</strong>. Leah needs a proposal that reflects that stronger requirement, rather than a calculation that still permits five minutes.</p>
 <p>The app author must decide how to make the policy part of the review. Changing Leah’s current answer to ten minutes would address this case, but future cases could still supply five under the existing rule. Changing the rule also needs care: the workflow must use the intended release, and earlier cases must retain their original basis.</p>
-<p>This authoring exercise branches from the <strong>retained version 2 teaching release</strong> in <a href="../compare-correction-options/index.html">the original gift-kit article</a>. It adapts that cost-first review and keeps the starter’s missing external confirmation. The expected corrected proposal remains internal work.</p>
+<p><a href="../compare-correction-options/index.html">Leah’s main business story</a> follows the evidence into complete corrections and explains when the deadline justifies external work. This tutorial changes the reusable rehearsal rule in a separate release.</p>
+<p>This authoring exercise branches from the <strong>retained version 2 teaching release</strong> in <a href="../compare-priorities-and-rehearsal/index.html">the retained gift-kit teaching walkthrough</a>. It adapts that cost-first review and keeps the starter’s missing external confirmation. The expected corrected proposal remains internal work.</p>
 <p>The steps and results below retain that earlier review’s exact release. The later CLI and SDK operating stories use a separately authored <strong>version 3 profile that plans ten minutes under a five-minute minimum</strong>. This exercise instead makes ten minutes mandatory. Following it does not replace the operating app or silently move an existing case onto new rules; the <a href="../index.html#series-path">series guide distinguishes the paths</a>.</p>
 <aside class="use-case-callout" aria-label="A retained authoring branch">
   <p>This is the <strong>retained version 2 authoring exercise in reviewed mode</strong>. Its original screenshots, role-based acceptance steps and separate ten-minute-minimum release remain part of that worked example. The <a href="../compare-correction-options/index.html#calculate-the-case">current Marketplace 2.1.0 path uses Start analysis → Calculate</a> without those review controls. Neither that interface update nor a longer case value changes the mandatory minimum in a saved release.</p>
@@ -236,6 +240,8 @@
 </div>
 <p>Here, production wants a <strong>reusable mandatory minimum in the review</strong>. The author chooses to adapt the existing planning app and connect its published release to a new workflow. That keeps the established kit review while making the changed requirement visible and testable. Publishing an app alone would not update the workflow Leah runs.</p>
 <p>Ten minutes is the team’s stated policy in this fictional example. Modeling that duration does not establish that the rehearsal design is adequate or that a real rehearsal has passed.</p>
+
+<p>The <a href="../../../../articles/from-arrangements-to-assessments/index.html">commitment assessment pattern</a> still evaluates complete corrections against the recorded promise. Production is changing one admissibility condition: a five-minute plan must now fail, while a ten-minute plan can pass if its other requirements hold. The evidence assessment’s question and fault finding remain unchanged.</p>
 
 <h2 id="expected-behavior">Write the expected change before editing.</h2>
 <p>The team is changing a <strong>minimum requirement</strong>, not claiming that ten minutes of rehearsal have already been supplied. Leah’s existing five-minute input must remain five until she changes it.</p>
@@ -386,6 +392,7 @@
     <div class="use-case-reference-grid">
       <div>
         <h3 id="worked-example-materials">Worked-example materials</h3>
+        <p>The current business article connects an evidence assessment with a complete-correction assessment. Its calculation walkthrough supplies the unchanged 2.1.0 workflow with a fictional one-day case and ten planned rehearsal minutes under a five-minute minimum. The paired operating comparisons use separate version-3 campaign cases with the same planned duration. Each retains its own identities, source scopes and capture records.</p>
         <p>The original comparison and authoring walkthroughs adapt Hermod Labs’ <strong>Gift-kit Readiness and Correction 2.0.0</strong> example with a <strong>24-hour handoff deadline</strong> and matching availability windows. The supplied correction costs and work durations remain the same. Leah and the campaign are fictional; the records are teaching inputs, not customer data or an independently reported business case.</p>
         <p>Read the <a href="../../../../assets/use-cases/gift-kit-readiness/README.md">example notes</a> and <a href="../../../../assets/use-cases/gift-kit-readiness/comparison.json">verified comparison</a>. The <a href="../../../../assets/use-cases/gift-kit-readiness/source-provenance.json">adaptation record</a> identifies the upstream sources; the <a href="../../../../assets/use-cases/gift-kit-readiness/fixture-manifest.json">artifact manifest</a> records the inputs and results used to check the example.</p>
         <h3 id="working-app-screenshots">Working-app screenshots</h3>

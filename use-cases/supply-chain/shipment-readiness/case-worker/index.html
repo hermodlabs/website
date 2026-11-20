@@ -138,10 +138,10 @@
       <p>Shipment readiness</p>
       <a href="../index.html">Scenario overview</a>
       <p>Articles</p>
-      <a href="../compare-shipment-options/index.html">Compare shipment options</a><a href="../add-consolidated-freight/index.html">Add consolidated freight</a><a href="../review-changed-orders/index.html">Review changed orders</a><a href="../resolve-a-shipment-exception/index.html">Resolve a shipment exception</a>
+      <a href="../compare-shipment-options/index.html">Compare shipment options</a><a href="../add-consolidated-freight/index.html">Add consolidated freight</a><a href="../review-changed-orders/index.html">Review changed orders</a><a href="../resolve-a-shipment-exception/index.html">Resolve a shipment exception</a><a href="../is-a-registration-check-worth-buying/index.html">Integrate Python machine learning</a>
       
       <p>Supporting references</p>
-      <a href="../app-author/index.html">Workflow authoring</a><a href="index.html" aria-current="page">Evidence and verification</a>
+      <a href="../app-author/index.html">Workflow authoring</a><a href="index.html" aria-current="page">Evidence and verification</a><a href="../compare-priorities-and-limits/index.html">Priorities and spending limits</a>
       
     </nav>
   </aside>
@@ -154,7 +154,7 @@
 
 <p class="reader-lead">The shipment lead has a noon reservation cutoff, a cheaper route with uncertain transportation registration and a customer promise to protect. Supply the available records, calculate which complete arrangements meet the requirements and inspect whether a timely check would improve the choice.</p>
 <aside class="use-case-callout" aria-label="Start with the shipment readiness article">
-  <p>Start with <a href="../compare-shipment-options/index.html#shared-shipment">Shipment readiness: the same facts, different decision priorities</a>. Follow Maya as she reconciles launch, finance and operations needs, compares two passing shipment options, and tests a tighter expense limit. This detailed reference guide covers a different fictional case, where uncertain registration blocks one option and verification may help before commitment.</p>
+  <p>Start with <a href="../compare-priorities-and-limits/index.html#shared-shipment">the retained shipment priority and spending-limit comparison</a>. Follow Maya as she reconciles launch, finance and operations needs, compares two passing shipment options, and tests a tighter expense limit. This detailed reference guide covers a different fictional case, where uncertain registration blocks one option and verification may help before commitment.</p>
 </aside>
 <p>The workflow brings together reusable solutions to recurring problems: interpret evidence while keeping uncertainty visible, compare complete shipment plans with their recorded arrangements, and assess whether verification would help before commitment. The app author has connected these approaches for this review. You supply this shipment’s facts and review the resulting findings. See <a href="../../../../articles/pattern-languages-for-human-decisions/index.html">Pattern Languages for Human Decisions</a> for the broader idea.</p>
 <p>A <strong>shipment plan</strong> describes the intended route, dates and cost. An <strong>arrangement</strong> connects the work, people, resources, permissions and dependencies needed to carry it out over time. The arrangement changes as the situation develops; this app evaluates the version you have recorded. Update inputs and recalculate affected findings when conditions or evidence change. See <a href="../../../../articles/the-arrangement-problem-in-human-decisions/index.html">The Arrangement Problem in Human Decisions</a> for the broader concept.</p>
@@ -162,6 +162,8 @@
 <aside class="use-case-callout" aria-label="Scope of the worked case">
   <p>Here, “readiness” means the requirements declared by this shipment example. It examines transportation registration, shipment plans and their recorded arrangements, timing, resources, expense, cash, and recorded authority. The wider launch problem includes work outside this review.</p>
 </aside>
+
+<p>The connected <a href="../../../../articles/from-arrangements-to-assessments/index.html">assessments answer different questions</a>: what the registration records support, which complete shipment responses satisfy the requirements, and whether timely verification improves the modeled outcome. Their findings retain the supplied scope and the hypothetical numerical assumptions below.</p>
 
 <h2 id="current-question-view">Supply the inputs. Calculate the decision support.</h2>
 <p>Open <a href="https://hermodlabs.github.io/review_lab/">Decision Lab</a>, update the <strong>Order fulfillment</strong> collection in <strong>Marketplace</strong>, and open <strong>Compare first-shipment arrangements 1.2.0</strong>. Choose <strong>Start analysis</strong> for a fresh case. Updating an installed collection does not change a saved review’s embedded rules or execution policy.</p>
@@ -198,6 +200,7 @@
 </figure>
 
 <p>The shipment lead can put forward the timely check or an immediately supported arrangement. Responsible owners still decide, authorize purchases, reserve freight and carry out delivery. <strong>Current result</strong> means the declared calculation is complete for these inputs; it establishes no completed booking or shipment.</p>
+<p>Where could a numerical basis for that comparison come from? In a separate fictional Python example, <a href="../is-a-registration-check-worth-buying/index.html">connect a Python machine learning model to Decision Lab</a>. Follow the estimator’s output into the Python SDK’s planning and learning assessments, then back into an application report. The shipment’s requirements, check fee and response time supply the decision context. This tutorial retains its supplied 50/50 and perfect-verification assumptions.</p>
 <h3 id="recalculate-changed-inputs">Keep a changed input separate from an updated finding.</h3>
 <p>A form edit is initially a draft. Choose <strong>Apply inputs</strong> to record it, then <strong>Recalculate</strong> for the affected dependency chain. Pending edits prevent calculation; applied changes make dependent earlier results outdated. The demonstration below changes quantity from 100 to 101 solely to expose that boundary, then restores 100 before recalculating the original case.</p>
 

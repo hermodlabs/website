@@ -136,10 +136,10 @@
       <p>Shipment readiness</p>
       <a href="../index.html">Scenario overview</a>
       <p>Articles</p>
-      <a href="../compare-shipment-options/index.html">Compare shipment options</a><a href="../add-consolidated-freight/index.html">Add consolidated freight</a><a href="../review-changed-orders/index.html">Review changed orders</a><a href="index.html" aria-current="page">Resolve a shipment exception</a>
+      <a href="../compare-shipment-options/index.html">Compare shipment options</a><a href="../add-consolidated-freight/index.html">Add consolidated freight</a><a href="../review-changed-orders/index.html">Review changed orders</a><a href="index.html" aria-current="page">Resolve a shipment exception</a><a href="../is-a-registration-check-worth-buying/index.html">Integrate Python machine learning</a>
       
       <p>Supporting references</p>
-      <a href="../app-author/index.html">Workflow authoring</a><a href="../case-worker/index.html">Evidence and verification</a>
+      <a href="../app-author/index.html">Workflow authoring</a><a href="../case-worker/index.html">Evidence and verification</a><a href="../compare-priorities-and-limits/index.html">Priorities and spending limits</a>
       
     </nav>
   </aside>
@@ -216,7 +216,7 @@
 <p><strong>Before the new document, Maya needs intervention rather than a recommendation.</strong> Direct can carry only 99 of 100 units. Backup exceeds the limit. Consolidated has capacity, but its confirmation belongs to revision 1.</p>
 <p><strong>After the carrier coordinator obtains a genuine current confirmation, Maya can propose Consolidated at $5,000.</strong> Direct’s capacity and Backup’s price stay unchanged. The different response follows the received evidence for the current order, under the same cost-first rule.</p>
 <p>The current desk leads with the supported answer and a compact arrangement comparison. Select an arrangement to inspect it and expand <strong>Selected option details</strong> for its requirements; <strong>Technical inspection</strong> retains the complete report. Reading another row does not record a choice, accept a finding or grant authority.</p>
-<p>The SDK’s contribution is to keep the edited records, reassessment and changed finding together in the same review. The following excerpts show that integration. Maya still reviews and chooses; the carrier and responsible owners still authorize and perform the work.</p>
+<p>The question stays fixed: <strong>“Which complete shipment arrangement can meet this order’s requirements?”</strong> The current confirmation changes the support for one candidate. The SDK’s contribution is to continue the same case, recalculate that assessment and retain the changed finding with its records. Maya still reviews and chooses; the carrier and responsible owners still authorize and perform the work.</p>
 
 <h2 id="compare-approaches">What would the developer otherwise build?</h2>
 <p>A focused form alone is straightforward. The larger responsibility is keeping its recommendation, reviewed basis and operating history consistent with the CLI as records change.</p>
@@ -238,7 +238,7 @@
   <li class="use-case-flow-focus"><span class="use-case-flow-role">SDK and pinned app</span><strong>Assess complete arrangements.</strong><span>Check all requirements, compare feasible alternatives and retain the earlier finding.</span></li>
   <li><span class="use-case-flow-role">Maya and operating owners</span><strong>Choose and retain what happened.</strong><span>Record a reviewed decision, actual authorization, carrier reservation and delivery evidence separately.</span></li>
 </ol>
-<p>An <strong>arrangement</strong> is a complete combination of freight, preparation, resources and supporting records. The desk reuses the same <strong>bounded shipment commitment decision pattern</strong> as the CLI: establish which arrangements meet the requirements, compare them under the agreed priority and support a human commitment. Hermod’s authored workflow puts that approach into practice; its configured app applies the supporting assessment reasoning.</p>
+<p>An <strong>arrangement</strong> is a complete combination of freight, preparation, resources and supporting records. The desk continues the CLI’s <a href="../../../../articles/from-arrangements-to-assessments/index.html">commitment assessment</a>: check those complete candidates against the recorded requirements, then compare the ones that pass under the agreed priority. The supported conclusion is a feasible or preferred proposal within this case’s scope. Hermod’s workflow connects that assessment to the separate human choice and operating records.</p>
 <p>This is the value of <a href="../../../../articles/shared-structure-for-automated-reasoning/index.html#conventions-for-automation">shared structure for automated reasoning</a> in the integration: the CLI and React desk use the same case, assessment meanings and reviewed history. The developer can change Maya’s interface without recreating those shipment rules. Authored workflow checks also examine the separate operating records; reusing an app’s feasibility calculation alone would not supply that completion review.</p>
 
 <h2 id="same-case">Open the same case the CLI flagged.</h2>
@@ -305,7 +305,7 @@
 </figure>
 
 <p>Now <strong>Consolidated is preferred at $5,000, arriving Thursday, November 19 at 6 p.m.</strong> Direct remains capacity-blocked; Backup remains over the expense limit. The new confirmation has resolved a particular requirement, rather than made every arrangement acceptable.</p>
-<p>The right-hand decision view above shows the new result. The captured native inputs differ only in the confirmation’s reference and covered order revision; the original validity interval and other shipment facts remain intact.</p>
+<p>The right-hand decision view above shows the new result. The captured native inputs differ only in the confirmation’s reference and covered order revision; the original validity interval, order, requirements and cost-first priority remain intact. This isolates why a previously blocked candidate now supports a proposal. It does not establish that anyone has reserved it.</p>
 
 <h2 id="policy-and-time">The preferred answer follows the business policy and the clock.</h2>
 <p>This app prefers the <strong>lowest complete expense among arrangements meeting every requirement, then arrival</strong>. For the unchanged ORD-104 case, Direct at $4,000 is preferred at 8 a.m. even though Consolidated arrives earlier. A valid confirmation alone does not justify paying more.</p>

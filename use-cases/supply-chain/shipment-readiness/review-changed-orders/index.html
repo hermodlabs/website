@@ -137,10 +137,10 @@
       <p>Shipment readiness</p>
       <a href="../index.html">Scenario overview</a>
       <p>Articles</p>
-      <a href="../compare-shipment-options/index.html">Compare shipment options</a><a href="../add-consolidated-freight/index.html">Add consolidated freight</a><a href="index.html" aria-current="page">Review changed orders</a><a href="../resolve-a-shipment-exception/index.html">Resolve a shipment exception</a>
+      <a href="../compare-shipment-options/index.html">Compare shipment options</a><a href="../add-consolidated-freight/index.html">Add consolidated freight</a><a href="index.html" aria-current="page">Review changed orders</a><a href="../resolve-a-shipment-exception/index.html">Resolve a shipment exception</a><a href="../is-a-registration-check-worth-buying/index.html">Integrate Python machine learning</a>
       
       <p>Supporting references</p>
-      <a href="../app-author/index.html">Workflow authoring</a><a href="../case-worker/index.html">Evidence and verification</a>
+      <a href="../app-author/index.html">Workflow authoring</a><a href="../case-worker/index.html">Evidence and verification</a><a href="../compare-priorities-and-limits/index.html">Priorities and spending limits</a>
       
     </nav>
   </aside>
@@ -217,7 +217,8 @@
 
 <p>Maya can advance ORD-104 toward reservation after checking its current basis. ORD-105 needs the carrier coordinator to obtain a confirmation for revision 2 or escalate another response. These are <strong>two independent shipment contexts</strong>, with different identities, revisions, capacities and supporting records. The report does not attribute their different results to one isolated field.</p>
 <p>The queue makes the intervention visible before showing the integration code. It leads with the answer and next intervention, then a compact arrangement comparison; the retained reports supply the supporting detail. This HTML queue is the company integration’s report, rather than a screenshot of every field in the complete CLI output. Complete current inputs and source receipts remain attached to each case, so its owner can inspect the reason for acting.</p>
-<p>What repeats is the <strong>bounded shipment commitment decision pattern</strong>: assess complete arrangements against requirements, compare those that pass under the agreed priority and let the responsible people commit. Each shipment supplies its own facts and receives its own finding. These cases stipulate independent resource allocations; four individual reviews cannot establish that one shared truck, dock or cash pool can serve the whole batch.</p>
+<p>The repeated question is <strong>“Which complete shipment arrangements still meet this order’s requirements?”</strong> Each candidate combines freight, preparation, resources and supporting records. The <a href="../../../../articles/from-arrangements-to-assessments/index.html">commitment assessment pattern</a> checks those complete combinations and compares the ones that pass under the published cost-first priority. Each shipment supplies its own facts and receives its own finding; the CLI makes that assessment repeatable across the exports.</p>
+<p>These cases stipulate independent resource allocations. Four individually supported proposals cannot establish that one shared truck, dock or cash pool can serve the whole batch. Owners still review the current basis and make the operating commitment.</p>
 
 <h2 id="exception-list">Separate a supported proposal from a blocker or input error.</h2>
 <p>The baseline prefers Direct for each shipment. At the same 8 a.m. review time, the morning snapshot produces these outcomes:</p>
@@ -373,9 +374,9 @@ SHIP-106,ORD-106,1,consolidated,SLOT-C106,confirmed</code></pre>
   <pre tabindex="0" role="region" aria-labelledby="code-compare"><code class="language-javascript">          row.findingChanges = lab.reports.compareFindings({ before: previous.get(job.shipmentId).run, after: run });</code></pre>
 </figure>
 
-<p>The comparison preserves primary-key record differences alongside changes in feasibility, preference and required follow-up. It does not attribute causality to an individual changed field. The CLI also exposes this service through <code>changes</code>. It compares retained calculations; it does not assess new records or authenticate them.</p>
+<p>The comparison preserves primary-key record differences alongside changes in feasibility, preference and required follow-up. A changed record, a changed assessment finding and an owner’s next action remain distinct: an old-scope confirmation explains a failed requirement, but the report cannot obtain its replacement. The CLI also exposes this service through <code>changes</code>. It compares retained calculations; it does not assess new records, authenticate them or attribute causality to an individual changed field.</p>
 <p>The company queue still distinguishes an unchanged proposal, changed conditions, changed recommendation, blocked review, input error and unavailable result. Those are company-facing queue outcomes, separate from CLI execution status. Every calculated row remains provisional until its owner reviews it.</p>
-<p>The baseline is a comparison input rather than a cache. Every supplied order is reassessed; a baseline from different app rules is rejected. HTML tables use the shared <code>RecordsView</code>; the CSV is a separate company export. Complete native reports remain available for inspection.</p>
+<p>The baseline is a comparison input rather than a cache. Every supplied order is reassessed; a baseline from different app rules is rejected. The retained app identity, order revision, assessment time and source scope keep each conclusion attached to the question actually assessed. HTML tables use the shared <code>RecordsView</code>; the CSV is a separate company export. Complete native reports remain available for inspection.</p>
 
 <h2 id="portable-review">Pass the same operating review to Maya.</h2>
 <p>For each calculated shipment, the batch retains <code>review.json</code>. This is a native workflow continuation containing the exact shipment inputs, app and workflow versions, owner, source receipts, provisional screening and prior finding when present:</p>

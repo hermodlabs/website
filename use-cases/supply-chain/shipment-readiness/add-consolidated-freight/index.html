@@ -134,10 +134,10 @@
       <p>Shipment readiness</p>
       <a href="../index.html">Scenario overview</a>
       <p>Articles</p>
-      <a href="../compare-shipment-options/index.html">Compare shipment options</a><a href="index.html" aria-current="page">Add consolidated freight</a><a href="../review-changed-orders/index.html">Review changed orders</a><a href="../resolve-a-shipment-exception/index.html">Resolve a shipment exception</a>
+      <a href="../compare-shipment-options/index.html">Compare shipment options</a><a href="index.html" aria-current="page">Add consolidated freight</a><a href="../review-changed-orders/index.html">Review changed orders</a><a href="../resolve-a-shipment-exception/index.html">Resolve a shipment exception</a><a href="../is-a-registration-check-worth-buying/index.html">Integrate Python machine learning</a>
       
       <p>Supporting references</p>
-      <a href="../app-author/index.html">Workflow authoring</a><a href="../case-worker/index.html">Evidence and verification</a>
+      <a href="../app-author/index.html">Workflow authoring</a><a href="../case-worker/index.html">Evidence and verification</a><a href="../compare-priorities-and-limits/index.html">Priorities and spending limits</a>
       
     </nav>
   </aside>
@@ -150,7 +150,7 @@
 <p class="reader-lead">Maya has a recommendation she can defend: Direct will deliver the order within the receiving window for $4,000. Finance has set a $5,000 expense limit. The launch lead still wants the goods earlier, but the $6,000 Backup option is over budget.</p>
 <p>Then a carrier offers <strong>Consolidated: $5,000, arriving Thursday at 6 p.m.</strong> It would buy 18 hours for another $1,000. Maya wants to take that possibility back to the launch team. Operations needs something else first: confirmation that the shipment has a loading slot.</p>
 <p>In this example, a <strong>loading slot</strong> is a reserved time window for loading Maya’s shipment onto the carrier’s vehicle. It helps the warehouse and carrier coordinate loading so her goods can join the consolidated service before it departs.</p>
-<p>This follows <a href="../compare-shipment-options/index.html">Maya’s original shipment review</a> and its tighter-budget exercise. The people, quotes and new slot requirement are fictional teaching inputs. The business references and limits of the example are in <a href="#source">Sources and scope</a>.</p>
+<p>This branches from <a href="../compare-priorities-and-limits/index.html#change-a-fact">the retained arrival-first shipment review and its tighter-budget exercise</a>. <a href="../compare-shipment-options/index.html">Maya’s main operating story</a> uses a separate cost-first profile. The people, quotes and new slot requirement are fictional teaching inputs. The business references and limits of the example are in <a href="#source">Sources and scope</a>.</p>
 <p>This authoring walkthrough preserves the earlier <strong>arrival-first</strong> standalone review to show exactly what adding a service and its prerequisite changes. It is separate from the <a href="../case-worker/index.html#current-question-view">current first-shipment calculation workflow</a>, which uses supplied inputs and <strong>Calculate / Recalculate</strong> without reviewer signoff. Saved cases retain their original definitions. The later operating release adopts <strong>cost first among complete arrangements that meet the promise</strong>. The two releases answer different priority questions; publishing this tutorial’s app does not silently change either one. The <a href="../index.html#series-path">series guide separates this authoring branch from the cost-first operating continuation</a>.</p>
 
 <h2 id="new-option">A quote is an option. Confirmation is a requirement.</h2>
@@ -171,6 +171,8 @@
 <aside class="use-case-callout" aria-label="What the new app must establish">
   <p><strong>The business rule:</strong> Consolidated may pass only with a current, confirmed record for this exact shipment and service, available to Maya when she chooses, and covering the full loading window. Missing confirmation means the requirement has not been established.</p>
 </aside>
+
+<p>The assessment question stays: <strong>which complete shipment meets the commitment, and which passing arrangement does this priority prefer?</strong> The author expands the candidate set and adds the condition that makes the new candidate admissible. This adapts the domain implementation of a <a href="../../../../articles/from-arrangements-to-assessments/index.html">commitment assessment pattern</a>; entering a genuine confirmation later supplies a case record for that fixed rule.</p>
 
 <h2 id="confirmation-contexts">The same requirement. Two different supported proposals.</h2>
 

@@ -1,0 +1,136 @@
+{
+  "format": "restaurant-roster-sdk-checks/1",
+  "nativeRecalculations": 4,
+  "focusedNegativeChecks": 7,
+  "nativeCandidateChecks": 44,
+  "independentRequirementChecks": 224,
+  "records": [
+    {
+      "id": "full-availability",
+      "kind": "exact-native-recalculation",
+      "complete": true,
+      "evaluatedCandidates": 4
+    },
+    {
+      "id": "short-availability",
+      "kind": "exact-native-recalculation",
+      "complete": true,
+      "evaluatedCandidates": 4
+    },
+    {
+      "id": "stability-first",
+      "kind": "exact-native-recalculation",
+      "complete": true,
+      "evaluatedCandidates": 4
+    },
+    {
+      "id": "cost-first",
+      "kind": "exact-native-recalculation",
+      "complete": true,
+      "evaluatedCandidates": 4
+    },
+    {
+      "id": "partial-availability",
+      "kind": "negative-boundary",
+      "complete": true,
+      "evaluatedCandidates": 4,
+      "repair": "relief",
+      "blockers": [
+        {
+          "constraintId": "available-sat-dinner-cook-2",
+          "requirement": "AVAILABILITY",
+          "scenarioId": "recorded-week"
+        }
+      ]
+    },
+    {
+      "id": "qualification",
+      "kind": "negative-boundary",
+      "complete": true,
+      "evaluatedCandidates": 4,
+      "repair": "coupled",
+      "blockers": [
+        {
+          "constraintId": "qualified-sun-lunch-cook-1",
+          "requirement": "QUALIFICATION",
+          "scenarioId": "recorded-week"
+        }
+      ]
+    },
+    {
+      "id": "double-assignment",
+      "kind": "negative-boundary",
+      "complete": true,
+      "evaluatedCandidates": 4,
+      "repair": "relief",
+      "blockers": [
+        {
+          "constraintId": "rest-sat-dinner-cook-1-sat-dinner-cook-2",
+          "requirement": "REST",
+          "scenarioId": "recorded-week"
+        },
+        {
+          "constraintId": "employee-capacity",
+          "requirement": "CAPACITY",
+          "scenarioId": "recorded-week"
+        }
+      ]
+    },
+    {
+      "id": "rest",
+      "kind": "negative-boundary",
+      "complete": true,
+      "evaluatedCandidates": 4,
+      "repair": "relief",
+      "blockers": [
+        {
+          "constraintId": "earlier-rest-sat-dinner-cook-2",
+          "requirement": "REST",
+          "scenarioId": "recorded-week"
+        }
+      ]
+    },
+    {
+      "id": "hours",
+      "kind": "negative-boundary",
+      "complete": true,
+      "evaluatedCandidates": 4,
+      "repair": "coupled",
+      "blockers": [
+        {
+          "constraintId": "hours-ava",
+          "requirement": "HOURS",
+          "scenarioId": "recorded-week"
+        }
+      ]
+    },
+    {
+      "id": "budget",
+      "kind": "negative-boundary",
+      "complete": true,
+      "evaluatedCandidates": 4,
+      "repair": "relief",
+      "blockers": [
+        {
+          "constraintId": "remaining-payroll-budget",
+          "requirement": "BUDGET",
+          "scenarioId": "recorded-week"
+        }
+      ]
+    },
+    {
+      "id": "uncovered-break",
+      "kind": "negative-boundary",
+      "complete": true,
+      "evaluatedCandidates": 4,
+      "repair": "relief",
+      "blockers": [
+        {
+          "constraintId": "available-sat-dinner-server",
+          "requirement": "AVAILABILITY",
+          "scenarioId": "recorded-week"
+        }
+      ]
+    }
+  ]
+}
