@@ -5,12 +5,38 @@ This dedicated fictional example supports two connected business articles:
 - `/use-cases/hospitality/restaurant-roster-repair/keep-dinner-covered/`
 - `/use-cases/hospitality/restaurant-roster-repair/choose-a-roster-repair/`
 
-The custom report application uses Decision Lab's public SDK and the
-`complete-a-commitment/1` pattern. It assesses four supplied complete remaining
-rosters for one restaurant. It does not generate all possible schedules, contact
-employees, establish their agreement or publish an operating roster.
+The articles now follow **Restaurant operations → Repair a published restaurant
+roster 1.1.0** in the Decision Lab Marketplace. It uses the
+`complete-a-commitment/1` pattern through three exact pinned apps. Feasibility
+always runs; selecting a stability-first or cost-first priority activates that
+comparison app against the same staffing facts and mandatory conditions.
 
-## Read the worked reports
+Current public-app screenshots, exact native runs and calculation comparisons
+are retained in [marketplace-ui/verification.json](marketplace-ui/verification.json).
+The [current sample source download](marketplace-ui/roster-repair-source.zip)
+contains the author profile, canonical models, workflow mappings and CLI
+walkthrough. The installed fictional example compares four supplied complete
+remaining rosters. It does not generate all schedules, contact employees, record
+their agreement or publish an operating roster.
+
+The source archive is a snapshot of the implemented local example. Its
+[manifest](marketplace-ui/source-manifest.json) identifies all 28 retained files;
+the workflow definition and three app packages match the captured public release.
+It makes no claim about a public GitHub commit. The restaurant folder was not
+available in the public sample repository when these articles were updated.
+
+The release supports changes to records and assignments within its authored
+employee, position and repair catalog. Another bounded roster can be authored
+through an adapted profile that generates its complete checks, followed by new
+packages and publication. Adding an arbitrary input row does not extend an
+installed app’s catalog.
+
+## Retained earlier calculation basis
+
+These earlier custom report pages preserve four native calculations and the
+independent interval, payroll and change-count checks behind the original
+example. They are historical supporting records; the articles’ screenshots
+now show the installed Marketplace workflow.
 
 - [Full relief availability](reports/full-availability/index.html): two feasible
   supplied repairs; no authored preference.
@@ -37,12 +63,13 @@ and source/output hashes. The portable verifier checks 16 retained candidate
 findings against independent interval, expense and change-count calculations;
 the separate SDK checks retain focused boundary and negative scenarios.
 
-The article screenshots are unmodified Chrome captures of these generated
-reports, not Marketplace screenshots. `capture-provenance.json` identifies each
-report hash, image rectangle, PNG hash and mobile check. `figures.json` supplies
-the article images. Reproduce the captures with
-`scripts/capture-restaurant-roster.mjs` and an external Playwright/Chrome
-installation; no findings or interface elements are painted into the images.
+`capture-provenance.json` and `figures.json` retain the earlier custom report
+captures and their original hashes. They are separate from the current
+Marketplace captures and are not a claim that the old renderer is the current
+Decision Lab interface. `scripts/capture-restaurant-roster.mjs` reproduces only
+that retained renderer. Current capture provenance is in the Marketplace
+verification record linked above; `scripts/capture-restaurant-marketplace.mjs`
+reproduces that public-app journey and its native scenario exports.
 
 The original SVG covers and interests diagrams use the site's navy, teal and
 purple palette. `scripts/render-restaurant-roster-timelines.mjs` derives both

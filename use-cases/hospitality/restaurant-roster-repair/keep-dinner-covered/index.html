@@ -15,14 +15,14 @@
 
 
   <title>A cook called out. Which roster keeps dinner covered? | Hermod Labs</title>
-  <meta name="description" content="Elena needs a qualified cook for Saturday dinner. Compare complete repairs, see why a quick reassignment can uncover another service, and follow what changes when a replacement cannot stay until closing.">
+  <meta name="description" content="A Saturday callout threatens Elena’s dinner service. Use the restaurant roster workflow to compare complete repairs and see how an earlier departure changes which proposal works.">
   <meta name="author" content="Jonathan Nacionales">
 
   <link rel="canonical" href="https://hermodlabs.com/use-cases/hospitality/restaurant-roster-repair/keep-dinner-covered/">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Hermod Labs">
   <meta property="og:title" content="A cook called out. Which roster keeps dinner covered? | Hermod Labs">
-  <meta property="og:description" content="Elena needs a qualified cook for Saturday dinner. Compare complete repairs, see why a quick reassignment can uncover another service, and follow what changes when a replacement cannot stay until closing.">
+  <meta property="og:description" content="A Saturday callout threatens Elena’s dinner service. Use the restaurant roster workflow to compare complete repairs and see how an earlier departure changes which proposal works.">
   <meta property="og:url" content="https://hermodlabs.com/use-cases/hospitality/restaurant-roster-repair/keep-dinner-covered/">
   <meta property="og:image" content="https://hermodlabs.com/assets/hermod-wordmark.jpeg">
 
@@ -99,7 +99,7 @@
 
     <p class="eyebrow">Restaurant roster repair / Establish feasibility</p>
     <h1>A cook called out. Which roster keeps dinner covered?</h1>
-    <p class="reading-description">Elena needs a qualified cook for Saturday dinner. Compare complete repairs, see why a quick reassignment can uncover another service, and follow what changes when a replacement cannot stay until closing.</p>
+    <p class="reading-description">A Saturday callout threatens Elena’s dinner service. Use the restaurant roster workflow to compare complete repairs and see how an earlier departure changes which proposal works.</p>
     <p class="reading-meta">Jonathan Nacionales <span aria-hidden="true">·</span> 7 min read</p>
   </div>
   <figure class="reading-cover">
@@ -110,7 +110,7 @@
 <section class="use-case-brief" aria-labelledby="use-case-brief-heading">
   <p class="use-case-brief-title" id="use-case-brief-heading">The case in brief</p>
   <p class="use-case-brief-stakes"><strong>At stake.</strong> Dinner is booked and the roster is published. On Friday morning, Elena learns that Nora cannot work Saturday’s 6–10 p.m. cooking shift. Covering that position must not leave another service short or exceed the recorded employee and expense limits.</p>
-  <p class="use-case-brief-outcome"><strong>How it resolves.</strong> Decision Lab checks four supplied complete repairs. With Rowan available for the full shift, two meet the requirements: bring in Rowan or repair three assignments. Shorten only Rowan’s availability to 8 p.m. and the relief repair fails; the coordinated repair remains feasible. Elena can distinguish workable options before deciding what to prefer.</p>
+  <p class="use-case-brief-outcome"><strong>How it resolves.</strong> The restaurant roster workflow checks four supplied complete repairs across every remaining service. With Rowan available until 10 p.m., two pass. Change only that availability to 8 p.m. and the relief repair fails; the coordinated repair remains feasible. Elena has a complete proposal to discuss with staff, rather than a quick fix that moves the gap elsewhere.</p>
 </section>
 
 
@@ -120,6 +120,7 @@
     <summary><h2 class="disclosure-label" id="reader-toc-heading">On this page</h2></summary>
     <ol>
       <li><a href="#complete-repairs">Fill the gap without moving it somewhere else.</a></li>
+      <li><a href="#calculate-the-repairs">Check the whole roster before choosing a name.</a></li>
       <li><a href="#availability-changes">“Available” has to cover the whole assignment.</a></li>
       <li><a href="#people-and-requirements">One roster has to reconcile several needs.</a></li>
       <li><a href="#from-feasibility-to-choice">Elena has alternatives she can explain.</a></li>
@@ -135,10 +136,12 @@
       
       <p class="reader-lead">On Friday morning, Elena has a restaurant service to protect and a roster her team has already arranged their lives around. Nora calls out: she cannot work Saturday dinner. Reservations are booked. The kitchen still needs <strong>two qualified cooks from 6–10 p.m.</strong>, alongside a server.</p>
 <p>Elena could call her usual relief cook, ask the staff group chat or move someone from Sunday. Each could supply a name quickly. Her harder question is whether the resulting roster still works for <strong>every remaining recorded service</strong>, within the employee conditions and labor boundary.</p>
-<p class="use-case-example-note">This fictional example uses Decision Lab’s Complete a Commitment pattern through a dedicated SDK application. The screenshots show its actual generated reports. It assesses four supplied complete repairs; it does not generate every possible roster. <a href="../../../../assets/use-cases/restaurant-roster-repair/reports/full-availability/index.html">Open the worked comparison</a>.</p>
+<p class="use-case-example-note">Elena, the restaurant and the records are fictional. The worked case uses <strong>Repair a published restaurant roster 1.1.0</strong> in Decision Lab’s <strong>Restaurant operations</strong> collection. It compares four supplied complete repairs within a configured roster; it does not generate every possible schedule. <a href="../index.html#try-the-review">Open the workflow and follow the shared setup instructions</a>.</p>
+
+
 
 <h2 id="complete-repairs">Fill the gap without moving it somewhere else.</h2>
-<p>The question for this assessment is <strong>which of the four supplied complete repairs meets every recorded requirement?</strong> The employee records and operating requirements form the common basis; the complete roster assignment varies. Establishing that a repair works is the first step toward Elena’s choice.</p>
+<p>The question for this assessment is <strong>which of the four supplied complete repairs meets every recorded requirement?</strong> A qualified name in Saturday’s empty cell is only part of that answer. Elena needs to establish which complete proposals work before deciding what to prefer.</p>
 <p>A <a href="../../../../articles/the-arrangement-problem-in-human-decisions/index.html"><strong>complete arrangement</strong></a> here is a complete remaining roster: who fills each cooking and serving position, throughout its interval, across Friday dinner, Saturday dinner and Sunday lunch. Earlier work still matters to the recorded weekly-hours and rest limits.</p>
 <p>Elena considers four repairs. Leaving the gap fails Saturday’s coverage. Moving Theo from Sunday lunch fills Saturday, but leaves Sunday short. Bringing in Rowan can preserve the other assignments. A coordinated repair moves Theo to Saturday, Ben from Sunday serving to cooking, and Ava into Sunday’s serving position. Ben has both recorded qualifications; he occupies one position at a time.</p>
 
@@ -172,13 +175,25 @@
 </div>
 <p>The <strong>$856 remaining-payroll limit</strong> leaves $200 beyond the $656 retained after Nora’s cancelled, unpaid shift is removed. That is the expense baseline used here. Meeting the limit does not settle which feasible repair Elena should prefer.</p>
 
+<h2 id="calculate-the-repairs">Check the whole roster before choosing a name.</h2>
+<p>Elena opens the <a href="https://hermodlabs.github.io/review_lab/?install=workflow&amp;id=repair-published-restaurant-roster&amp;version=1.1.0&amp;publisher=decision-lab&amp;collection=restaurant-operations&amp;release=0fd1e15fecb304d7bbd990ce0be69871bc06a61010c70cae788cd1f7c66da9a4">roster example</a>. Its link installs the collection when needed and opens an analysis with the supplied fictional roster. She can also start a fresh case from the installed workflow with <strong>Start analysis</strong>. In <strong>Inputs</strong>, the <strong>Repair decision</strong> controls expose the relief cook’s availability, the remaining-payroll boundary and the comparison priority. <strong>Supporting records</strong> holds the named employees, qualifications, working intervals and complete proposed repairs.</p>
+<p>For the first calculation, Rowan is available from <strong>6 p.m. until 10 p.m. on Saturday</strong>, the remaining-payroll limit is $856, and <strong>Comparison priority</strong> is <strong>Compare without ranking</strong>. Elena keeps the other supplied records unchanged, chooses <strong>Apply inputs</strong> after any edits, then <strong>Calculate</strong>.</p>
+<p>The <strong>Decision summary</strong> leads with two passing repairs. Elena opens <strong>Supporting reports → All repairs</strong> to inspect the rejected shortcuts. Selecting <strong>Move Theo only</strong> exposes its Sunday coverage failure: a move that fills Saturday’s vacancy has not repaired the remaining commitment.</p>
+
+<figure class="use-case-figure">
+  <a href="../../../../assets/use-cases/restaurant-roster-repair/marketplace-ui/blockers.png" aria-label="Open this roster workflow screenshot at full size"><img src="../../../../assets/use-cases/restaurant-roster-repair/marketplace-ui/blockers.png" width="835" height="668" alt="All repairs inspects Move Theo only and identifies the unfilled Sunday cooking position among its unmet requirements." loading="lazy" decoding="async"></a>
+  <figcaption><span>Moving Theo fills Saturday but leaves Sunday short. Inspect the complete repair rather than just the replacement name.</span><a href="../../../../assets/use-cases/restaurant-roster-repair/marketplace-ui/blockers.png">View full size</a></figcaption>
+</figure>
+
+
 <h2 id="availability-changes">“Available” has to cover the whole assignment.</h2>
 <p>Now change one fact. Rowan can still start at 6 p.m., but must leave at <strong>8 p.m.</strong> The proposed four-hour assignment is unchanged. So are the other employees, qualifications, requirements, pay quotes and candidate repairs.</p>
+<p>In <strong>Repair decision → Availability</strong>, Elena changes <strong>Available until on Saturday</strong> from <strong>10:00 p.m.</strong> to <strong>8:00 p.m.</strong> and chooses <strong>Apply inputs</strong>. The earlier findings are now outdated; she must choose <strong>Recalculate</strong> before relying on a current answer.</p>
 
 <section class="use-case-comparison" aria-label="The same repairs. A different availability window." data-comparison="restaurant-roster-availability" data-comparison-kind="context">
   <div class="use-case-comparison-basis">
     <p><strong>Shared basis.</strong> The same four complete repairs, qualifications, other availability, earlier work, flat fees and $856 remaining-payroll limit. The first calculation identifies feasible alternatives without ranking them.</p>
-    <p class="use-case-comparison-change"><strong>What changes.</strong> Only Rowan’s recorded Saturday availability ends earlier: 8 p.m. instead of 10 p.m. The proposed dinner assignment remains 6–10 p.m. Case identity labels the two calculations.</p>
+    <p class="use-case-comparison-change"><strong>What changes.</strong> Only Rowan’s recorded Saturday availability ends earlier: 8 p.m. instead of 10 p.m. The proposed dinner assignment remains 6–10 p.m.</p>
   </div>
   <div class="use-case-comparison-panels">
 
@@ -192,15 +207,15 @@
 
         <div><dt>Feasible supplied repairs</dt><dd>2 of 4</dd></div>
 
-        <div><dt>Authored preference</dt><dd>Feasibility only</dd></div>
+        <div><dt>Comparison priority</dt><dd>Compare without ranking</dd></div>
 
       </dl>
       <div class="use-case-comparison-observation">
       <figure class="use-case-comparison-screen">
-        <a href="../../../../assets/use-cases/restaurant-roster-repair/full-availability-complete.png" aria-label="Open the Rowan can stay until 10 p.m. view at full size">
-          <img src="../../../../assets/use-cases/restaurant-roster-repair/full-availability-decision.png" width="640" height="499" alt="The custom restaurant report identifies two feasible complete repairs with Rowan available until 10 p.m.; it establishes no preference." loading="lazy" decoding="async">
+        <a href="../../../../assets/use-cases/restaurant-roster-repair/marketplace-ui/full.png" aria-label="Open the Rowan can stay until 10 p.m. view at full size">
+          <img src="../../../../assets/use-cases/restaurant-roster-repair/marketplace-ui/full.png" width="883" height="998" alt="Without a ranking priority, the current restaurant Decision summary presents two passing complete repairs: Rowan at $836 remaining payroll and the coordinated repair at $736." loading="lazy" decoding="async">
         </a>
-        <figcaption>Full availability leaves two feasible supplied repairs. The feasibility-only app does not rank them. <a href="../../../../assets/use-cases/restaurant-roster-repair/full-availability-complete.png">View full size</a></figcaption>
+        <figcaption>Rowan can work 6–10 p.m. Two supplied repairs pass; Compare without ranking declares neither preferred. <a href="../../../../assets/use-cases/restaurant-roster-repair/marketplace-ui/full.png">View full size</a></figcaption>
       </figure>
       <p class="use-case-comparison-judgment">Elena can consider bringing in Rowan or making the three coordinated changes. This calculation establishes no preferred repair.</p>
       </div>
@@ -216,15 +231,15 @@
 
         <div><dt>Feasible supplied repairs</dt><dd>1 of 4</dd></div>
 
-        <div><dt>Authored preference</dt><dd>Feasibility only</dd></div>
+        <div><dt>Comparison priority</dt><dd>Compare without ranking</dd></div>
 
       </dl>
       <div class="use-case-comparison-observation">
       <figure class="use-case-comparison-screen">
-        <a href="../../../../assets/use-cases/restaurant-roster-repair/short-availability-complete.png" aria-label="Open the Rowan must leave at 8 p.m. view at full size">
-          <img src="../../../../assets/use-cases/restaurant-roster-repair/short-availability-decision.png" width="640" height="474" alt="The same restaurant report identifies one feasible complete repair when Rowan’s availability ends at 8 p.m.; Rowan’s relief repair fails full-interval availability." loading="lazy" decoding="async">
+        <a href="../../../../assets/use-cases/restaurant-roster-repair/marketplace-ui/short.png" aria-label="Open the Rowan must leave at 8 p.m. view at full size">
+          <img src="../../../../assets/use-cases/restaurant-roster-repair/marketplace-ui/short.png" width="883" height="911" alt="With Rowan available only 6–8 p.m., the unranked restaurant Decision summary shows only the coordinated repair passing at $736 remaining payroll." loading="lazy" decoding="async">
         </a>
-        <figcaption>Only Rowan’s availability changes. The relief repair fails availability, while the coordinated repair remains feasible. <a href="../../../../assets/use-cases/restaurant-roster-repair/short-availability-complete.png">View full size</a></figcaption>
+        <figcaption>Only Rowan’s finish changes. The required assignment still runs until 10 p.m.; the coordinated repair remains feasible. <a href="../../../../assets/use-cases/restaurant-roster-repair/marketplace-ui/short.png">View full size</a></figcaption>
       </figure>
       <p class="use-case-comparison-judgment">Elena cannot count Rowan through closing. The coordinated repair remains feasible; another alternative needs to be supplied and assessed before it can enter the comparison.</p>
       </div>
@@ -235,7 +250,29 @@
 </section>
 
 <p>The relief repair fails the <strong>full-interval availability requirement</strong>: Rowan’s recorded window does not cover 8–10 p.m. Elena cannot count those two unavailable hours as cooking capacity. The coordinated repair remains feasible under the supplied facts.</p>
-<p>She could ask for another relief option, revise the proposed work intervals with appropriate coverage, or examine a different operating plan. Each would need new inputs or another supplied repair. The calculation does not extend Rowan’s availability.</p>
+<details class="disclosure">
+  <summary><span class="disclosure-label">After an input changes, recalculate the finding</span></summary>
+  <p>This is the intermediate screen after Elena applies the earlier finish, before she recalculates. The previous answer has an outdated basis. A current calculation is needed to establish which repairs still work.</p>
+  
+<figure class="use-case-figure">
+  <a href="../../../../assets/use-cases/restaurant-roster-repair/marketplace-ui/stale.png" aria-label="Open this roster workflow screenshot at full size"><img src="../../../../assets/use-cases/restaurant-roster-repair/marketplace-ui/stale.png" width="883" height="253" alt="After Rowan’s earlier finish is applied, the Decision summary withholds the earlier answer and calls for a current calculation." loading="lazy" decoding="async"></a>
+  <figcaption><span>Applying a changed availability withdraws the previous finding. Recalculate before relying on the comparison.</span><a href="../../../../assets/use-cases/restaurant-roster-repair/marketplace-ui/stale.png">View full size</a></figcaption>
+</figure>
+
+</details>
+<p>Elena could seek revised availability, change a complete proposed repair using the listed employees, or have another option authored. Each needs another assessment. The calculation does not extend Rowan’s availability or invent cover for the final two hours.</p>
+
+<details class="disclosure">
+  <summary><span class="disclosure-label">Follow the decision process</span></summary>
+  <p>Open <strong>Decision process</strong> to see why the next action depends on the finding. Passing repairs lead to a comparison, with an optional priority. If no supplied repair passes, Elena needs revised proposals or facts. Missing information and outdated calculations need attention before either conclusion is supported.</p>
+  
+<figure class="use-case-figure">
+  <a href="../../../../assets/use-cases/restaurant-roster-repair/marketplace-ui/process.png" aria-label="Open this roster workflow screenshot at full size"><img src="../../../../assets/use-cases/restaurant-roster-repair/marketplace-ui/process.png" width="1678" height="1774" alt="The restaurant Decision process graph connects complete-repair assessment to passing repairs, optional priority, revision and external staff agreement, with labeled current-case and reassessment paths." loading="lazy" decoding="async"></a>
+  <figcaption><span>The graph shows how the finding changes the available response. Inspection does not obtain staff agreement or publish a roster.</span><a href="../../../../assets/use-cases/restaurant-roster-repair/marketplace-ui/process.png">View full size</a></figcaption>
+</figure>
+
+  <p>The graph also shows <strong>Obtain agreement and communicate the chosen roster</strong> as a business action after a person chooses. Inspecting that action does not contact anyone, record their agreement or publish a roster.</p>
+</details>
 
 <h2 id="people-and-requirements">One roster has to reconcile several needs.</h2>
 <p>The kitchen and service leads need qualified coverage. Employees need their actual availability respected and care about changes to published assignments. The owner sets an expense boundary. Elena must turn those conditions into a proposal she can discuss with the people affected.</p>
@@ -250,20 +287,22 @@
   <figcaption id="restaurant-roster-interests-caption"><span>Recorded requirements constrain Elena’s proposal. Predictable assignments are an interest that can inform a preference; actual availability remains mandatory. The report supports the choice and does not publish a roster.</span><span class="use-case-explanatory-map-links"><a href="../../../../assets/use-cases/restaurant-roster-repair/interests.svg">View full-size SVG</a><a href="../../../../assets/use-cases/restaurant-roster-repair/source/model.mjs">See the model</a></span></figcaption>
 </figure>
 
-<p>We classify this as a <strong>qualified-staff allocation problem across time</strong>. The <a href="../../../../articles/pattern-languages-for-human-decisions/index.html">decision pattern</a> is to repair an existing commitment by comparing complete alternatives. The <a href="../../../../articles/assessment-patterns/can-we-complete-the-commitment/index.html">Complete a Commitment assessment pattern</a> gives each candidate its meaning: a complete remaining roster whose recorded obligations must hold together. Coverage, compatibility and expense checks support that assessment. Hermod authored the rules and comparison used in this example.</p>
+<p>We classify this as a <strong>qualified-staff allocation problem across time</strong>. Its <a href="../../../../articles/pattern-languages-for-human-decisions/index.html">decision pattern</a> is repairing an existing commitment by comparing complete alternatives. Hermod’s workflow applies the reusable <a href="../../../../articles/assessment-patterns/can-we-complete-the-commitment/index.html">Complete a Commitment assessment pattern</a>: each candidate represents the complete remaining roster, and coverage, compatibility and expense reasoning checks whether its recorded obligations hold together. The restaurant supplies the concrete people, services and limits.</p>
 
 <h2 id="from-feasibility-to-choice">Elena has alternatives she can explain.</h2>
 <p>With Rowan available until 10 p.m., Elena has two feasible supplied repairs. With Rowan available only until 8 p.m., she has one. The requirement to cover the entire shift stays fixed; Rowan’s shorter availability changes which proposals Elena can take to the team.</p>
 <p>These feasibility-only calculations deliberately establish <strong>no preferred repair</strong>. With full availability restored, Elena still has a business choice: pay more to preserve the other published assignments, or make the cheaper coordinated changes. <a href="../choose-a-roster-repair/index.html">Follow how an explicit priority changes which repair is preferred</a>.</p>
-<p>Before publishing anything, Elena confirms the proposed changes with staff and follows the restaurant’s normal process. Recorded availability is an input to the assessment; it is not evidence that someone has accepted a new assignment.</p>
+<p>In the shorter-availability situation, Elena takes the coordinated repair to Theo, Ben and Ava. She can explain who would move, which services remain covered and why Rowan’s shorter window cannot cover Saturday. She still needs their agreement and must communicate any resulting roster through the restaurant’s normal process. If those conversations change the recorded availability or proposed assignments, she updates the inputs and recalculates.</p>
+<p>That resolves the immediate analysis: Elena has a complete supported proposal, including its consequences for Sunday. A passing calculation has not made the staffing commitment on anyone’s behalf.</p>
 <p>For a related, narrower allocation problem, <a href="../../../nightlife/street-team-deployment/review-tonights-promotion/index.html">see how Alex balances floor coverage and promotion staffing</a>. That example uses aggregate counts within one evening. This one adds named employees, roles and consequences across services.</p>
 <footer class="use-case-article-references" aria-labelledby="source">
   <details class="disclosure use-case-source-disclosure">
     <summary><h2 class="disclosure-label" id="source">Sources and scope</h2></summary>
-    <p>Elena, the restaurant, employees, availability, qualifications, flat four-hour fees and roster are fictional. The <a href="../../../../assets/use-cases/restaurant-roster-repair/README.md">dedicated worked example</a> identifies the model, source, retained native Decision Lab runs and verification. The screenshots show its generated custom reports, separate from the Marketplace workflows.</p>
+    <p>Elena, the restaurant, employees, availability, qualifications, flat four-hour fees and roster are fictional. The screenshots show the working <strong>Repair a published restaurant roster 1.1.0</strong> workflow in the <strong>Restaurant operations</strong> Marketplace collection. The <a href="../../../../assets/use-cases/restaurant-roster-repair/marketplace-ui/verification.json">capture and calculation record</a> identifies the public build, exact native runs and image hashes. The <a href="../../../../assets/use-cases/restaurant-roster-repair/marketplace-ui/roster-repair-source.zip" download>workflow source download</a> includes the author profile, three pinned apps, case files and CLI walkthrough. Its <a href="../../../../assets/use-cases/restaurant-roster-repair/marketplace-ui/source-manifest.json">source manifest</a> matches the retained definition and app packages to this public release.</p>
     <p>The Complete a Commitment app definitions assess four supplied complete repairs for the remaining recorded Friday–Sunday services. They do not generate all possible rosters. A preferred repair is preferred within that supplied comparison. Earlier work contributes recorded minute totals and a last-shift boundary; the example does not retrospectively audit that work or calculate its payroll.</p>
     <p>Each service has two cook positions and one server position for four hours. This fixture has no in-shift breaks. A required break or another operating commitment must be represented in the working intervals and covered by a supplied repair. Ten hours of rest and a forty-hour weekly limit are declared example policies; the calculation is not an employment-law compliance assessment. Labor premiums, demand forecasting, workload intensity and staff agreement need their own records and rules.</p>
     <p>Additional expense is measured against $656 of retained remaining payroll after Nora’s unpaid cancelled shift is removed. Changed assignments are published positions assigned to a different person, including an unfilled position; they are not a count of employee notifications or a measure of fairness. The remaining-payroll limit is $856.</p>
+    <p>The installed example uses its authored employee, position and four-repair catalog. Case workers can update records and assignments within that structure and select one of the published comparison priorities. Adding people, positions or repair identities requires an adapted author profile and newly published packages. Selecting or inspecting a repair does not record an operating choice, obtain staff agreement or publish a roster.</p>
     <p><a href="https://developers.google.com/optimization/service/scheduling/workforce_scheduling">Google’s Workforce Scheduling documentation</a> supports the distinction between generating shifts and assigning employees to predefined shifts. It supplies technical context, not evidence of this fictional restaurant’s results. <a href="https://developers.google.com/optimization/cp/cp_solver">Solver status definitions</a> explain why a feasible result, an established optimum, proven infeasibility and an unresolved search mean different things. Staff confirmation, authorization, external publication and actual service remain outside this example’s calculation.</p>
   </details>
 </footer>

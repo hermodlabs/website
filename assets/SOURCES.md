@@ -24,7 +24,11 @@ The exact code used for the selected CLI and SDK excerpts is retained under `use
 
 The Python machine-learning integration is retained under `use-cases/shipment-readiness/readiness-learning/`, with source, model inputs, generated reports, architecture illustrations and capture records. Its estimates and numerical results are fictional demonstration inputs, not validated predictions for a real supplier.
 
-`use-cases/restaurant-roster-repair/` contains the custom SDK report application, native findings, interval checks, report screenshots and source qualification for the restaurant examples. These are screenshots of that generated report application, not Marketplace screens.
+`use-cases/restaurant-roster-repair/marketplace-ui/` contains current public-app screenshots and native exports from **Restaurant operations → Repair a published restaurant roster 1.1.0**. Its verification receipt identifies the exact public build, pinned workflow, screenshots, scenario comparisons and unchanged inspection basis. Feasibility is separate from the optional stability-first or cost-first comparison; choosing a priority routes to its pinned app. Changed availability invalidates affected calculations rather than manufacturing a current recommendation. The earlier custom SDK renderer, four retained native assessments and independently checked fixture remain in the parent directory as a historical calculation basis; their screenshots are no longer the articles’ working interface.
+
+Reproduce the current restaurant captures with `scripts/capture-restaurant-marketplace.mjs`; `scripts/check-restaurant-roster-marketplace.mjs` checks the retained native run, image and production-runtime identities. The current receipt stays separate from `capture-provenance.json`, which identifies the historical custom renderer.
+
+The restaurant's `marketplace-ui/roster-repair-source.zip` and `source-manifest.json` retain the exact implemented sample, including its author profile and CLI walkthrough. `scripts/snapshot-restaurant-source.mjs` checks that its sealed definition and three app packages match the captured public workflow before creating the archive. This snapshot provides the code while the restaurant directory is unavailable in the public sample repository; it is not attributed to a GitHub commit.
 
 ## Illustrations and article sources
 
@@ -36,4 +40,4 @@ The shipping and gifting `decision-maps/model.json` files bind their active illu
 
 `articles/first-principles/` and `blog/planning-series/` retain the supplied essay sources and content-integrity records used by the current First Principles collection. Formula markup and explanatory diagrams belong to those conceptual articles. Business references and worked-case limits are linked directly from the relevant articles' Sources and scope disclosures.
 
-Only current public assets are retained here. Retired screenshots, authoring exercises, source snapshots and reproduction scripts are excluded from the published bundle.
+Current article assets and explicitly identified supporting calculation records are retained here. Superseded interfaces are not used as current screenshots. Unrelated retired examples remain excluded from the published bundle.
