@@ -6,22 +6,23 @@ This dedicated fictional example supports two connected business articles:
 - `/use-cases/hospitality/restaurant-roster-repair/choose-a-roster-repair/`
 
 The articles now follow **Restaurant operations → Repair a published restaurant
-roster 1.1.0** in the Decision Lab Marketplace. It uses the
+roster 1.5.0** in the Decision Lab Marketplace. It uses the
 `complete-a-commitment/1` pattern through three exact pinned apps. Feasibility
 always runs; selecting a stability-first or cost-first priority activates that
 comparison app against the same staffing facts and mandatory conditions.
 
 Current public-app screenshots, exact native runs and calculation comparisons
-are retained in [marketplace-ui/verification.json](marketplace-ui/verification.json).
-The [current sample source download](marketplace-ui/roster-repair-source.zip)
-contains the author profile, canonical models, workflow mappings and CLI
-walkthrough. The installed fictional example compares four supplied complete
+are retained in [current-ui/verification.json](current-ui/verification.json).
+The [current published workflow](current-ui/restaurant.workflow.json) contains
+the exact captured definition and its pinned apps. The interface separates
+Options, Next actions, Assumptions and Questions. Complete roster compares a
+selected service position across the supplied repairs. The installed fictional example compares four supplied complete
 remaining rosters. It does not generate all schedules, contact employees, record
 their agreement or publish an operating roster.
 
-The source archive is a snapshot of the implemented local example. Its
+The earlier [1.1.0 source archive](marketplace-ui/roster-repair-source.zip) is a snapshot of the original implemented local example. Its
 [manifest](marketplace-ui/source-manifest.json) identifies all 28 retained files;
-the workflow definition and three app packages match the captured public release.
+the workflow definition and three app packages match that original 1.1.0 public release. It is not the current 1.5.0 workflow download.
 It makes no claim about a public GitHub commit. The restaurant folder was not
 available in the public sample repository when these articles were updated.
 

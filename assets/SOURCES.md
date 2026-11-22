@@ -6,15 +6,13 @@ The Hermod wordmark and symbol were reused from [hermodlabs.com](https://hermodl
 
 The current homepage hero is the native shipment Decision summary selected by `src/_data/shipmentUIRefresh.json`. It is stored with the other current shipment captures.
 
-## Decision Lab interface captures
+## Current public Decision Lab interface captures
 
-`use-cases/{shipment-readiness,gift-kit-readiness,street-team-deployment}/decision-summary-ui/` contains screenshots of the working Marketplace workflows, their native exports and capture receipts. The receipts identify the exact local production build, workflow package, case, dimensions and image hash. The workflows are first-shipment 1.4.0, gift-kit 2.3.0 and street-team 1.5.0.
+`use-cases/{shipment-readiness,gift-kit-readiness,street-team-deployment,restaurant-roster-repair}/current-ui/` contains unedited screenshots of the live public application, its exact Marketplace definitions and native case exports. Each verification receipt identifies the captured public runtime, fetched asset hashes, package identity, screenshots and controlled scenario comparisons. The current releases are first-shipment 1.8.0, gift-kit 2.7.0, promotion 1.12.0 and restaurant roster 1.5.0.
 
-Screenshots use ordinary input, Calculate/Recalculate and inspection controls. They show the focused Decision summary, separate Supporting reports, Decision process and Calculation dependencies. They contain fictional teaching cases. A calculated finding does not authenticate records, authorize spending, book capacity or establish completed work. `decision-lab-public-build-check.json` records the separate public-deployment build comparison; a local capture receipt alone makes no deployment-parity claim.
+The current interface separates **Options**, **Next actions**, **Assumptions** and **Questions**. A question breakdown provides navigation; files, sources and retained calculations live in **Case details**. The screenshots use ordinary fictional example inputs, Forms/YAML edits, Apply inputs and Calculate/Recalculate. No DOM, CSS, storage or results are injected. Calculation does not authenticate a source, grant authority or perform operating work.
 
-The current `capture-*-summary-ui.mjs` scripts reproduce these journeys. Each capture directory's README describes its case and verification boundaries.
-
-`decision-process-refresh/` supplements those captures with the connected Decision process graphs from the public production app, build `619264e6c9e2fdf24b19`. Three overview images and three selected-question details show the same shipment 1.4.0, gifting 2.3.0 and street-team 1.5.0 definitions. The independent receipt retains the public runtime manifest, verified runtime hashes, workflow packages and native exports before and after inspection. All authored graph nodes and paths match the table representation; inputs, findings and history remain unchanged. `scripts/capture-decision-process-graphs.mjs` reproduces the public installation and ordinary-control journey. Earlier summary and comparison receipts retain their original build identities.
+Earlier `decision-summary-ui/`, `decision-process-refresh/` and restaurant `marketplace-ui/` images, native exports and receipts remain historical verification records. Their own `metadata.json` snapshots preserve which images and releases those receipts described. The earlier `decision-lab-public-build-check.json` remains dated evidence for its original build, not verification of the newer captures. Original source ZIPs retain their original release identities; current restaurant articles offer the exact current public workflow package.
 
 ## CLI, SDK and Python examples
 
@@ -24,15 +22,15 @@ The exact code used for the selected CLI and SDK excerpts is retained under `use
 
 The Python machine-learning integration is retained under `use-cases/shipment-readiness/readiness-learning/`, with source, model inputs, generated reports, architecture illustrations and capture records. Its estimates and numerical results are fictional demonstration inputs, not validated predictions for a real supplier.
 
-`use-cases/restaurant-roster-repair/marketplace-ui/` contains current public-app screenshots and native exports from **Restaurant operations → Repair a published restaurant roster 1.1.0**. Its verification receipt identifies the exact public build, pinned workflow, screenshots, scenario comparisons and unchanged inspection basis. Feasibility is separate from the optional stability-first or cost-first comparison; choosing a priority routes to its pinned app. Changed availability invalidates affected calculations rather than manufacturing a current recommendation. The earlier custom SDK renderer, four retained native assessments and independently checked fixture remain in the parent directory as a historical calculation basis; their screenshots are no longer the articles’ working interface.
+`use-cases/restaurant-roster-repair/marketplace-ui/` retains earlier public-app screenshots and native exports from **Restaurant operations → Repair a published restaurant roster 1.1.0**. Its verification receipt identifies the exact public build, pinned workflow, screenshots, scenario comparisons and unchanged inspection basis. Feasibility is separate from the optional stability-first or cost-first comparison; choosing a priority routes to its pinned app. Changed availability invalidates affected calculations rather than manufacturing a current recommendation. The earlier custom SDK renderer, four retained native assessments and independently checked fixture remain in the parent directory as a historical calculation basis; their screenshots are no longer the articles’ working interface.
 
-Reproduce the current restaurant captures with `scripts/capture-restaurant-marketplace.mjs`; `scripts/check-restaurant-roster-marketplace.mjs` checks the retained native run, image and production-runtime identities. The current receipt stays separate from `capture-provenance.json`, which identifies the historical custom renderer.
+Reproduce the current restaurant captures with `scripts/capture-restaurant-marketplace.mjs`; `scripts/check-restaurant-roster-marketplace.mjs` checks the retained native run, image and production-runtime identities. That original receipt stays separate from `capture-provenance.json`, which identifies the historical custom renderer.
 
 The restaurant's `marketplace-ui/roster-repair-source.zip` and `source-manifest.json` retain the exact implemented sample, including its author profile and CLI walkthrough. `scripts/snapshot-restaurant-source.mjs` checks that its sealed definition and three app packages match the captured public workflow before creating the archive. This snapshot provides the code while the restaurant directory is unavailable in the public sample repository; it is not attributed to a GitHub commit.
 
 ## Illustrations and article sources
 
-The decision-summary companion article reuses the current native shipment baseline, ample-time gift-kit and five-staff promotion captures, with their existing hash-checked verification records. Their different calendars and domain records remain separate. `articles/covers/what-should-a-decision-summary-help-you-decide.svg` and `articles/decision-views/reading-a-decision{,-mobile}.svg` are original accessible vectors explaining the reading structure; they are editorial illustrations and introduce no calculated findings.
+The report-reading overview pairs the separately authored shipment and gift-kit SDK clients and uses the current public promotion and shipment-process captures, each with its own hash-checked receipt. Their different calendars and domain records remain separate. `articles/covers/what-should-a-decision-summary-help-you-decide.svg` and `articles/decision-views/reading-a-decision{,-mobile}.svg` are original accessible vectors explaining the reading structure; they are editorial illustrations and introduce no calculated findings.
 
 Page and article covers, navigation icons, business-process charts, timing diagrams and explanatory decision maps are original native SVGs. They use the site's visual system and include accessible titles and descriptions.
 
@@ -41,3 +39,10 @@ The shipping and gifting `decision-maps/model.json` files bind their active illu
 `articles/first-principles/` and `blog/planning-series/` retain the supplied essay sources and content-integrity records used by the current First Principles collection. Formula markup and explanatory diagrams belong to those conceptual articles. Business references and worked-case limits are linked directly from the relevant articles' Sources and scope disclosures.
 
 Current article assets and explicitly identified supporting calculation records are retained here. Superseded interfaces are not used as current screenshots. Unrelated retired examples remain excluded from the published bundle.
+
+## Report-reading articles
+
+The Assessment Patterns reading companions reuse existing native results and screenshots. No new app capture or calculation is claimed by this editorial revision. The overview retains its original URL under **What Must a Decision Report Establish?**; **Which Feasible Option Should We Prefer?** adds a conceptual SVG cover and the existing restaurant stability/cost screenshots.
+
+`articles/decision-views/report-reading-evidence.json` records seven scoped comparisons, what remains fixed, the controlled change, the established finding, its limits and hashes of the retained source artifacts. It keeps shipment registration, shipment booking windows and Python information-value calculations separate. The restaurant policy pair changes the priority while retaining the current feasibility calculation; the promotion financial hurdle does not become an attendance forecast. All named business examples remain fictional and Hermod-authored.
+

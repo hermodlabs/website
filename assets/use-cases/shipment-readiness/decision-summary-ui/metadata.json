@@ -1,0 +1,90 @@
+{
+  "workflowId": "review-first-shipment",
+  "workflowVersion": "1.4.0",
+  "previewOnly": true,
+  "buildVersion": "1e3fea42df926bf157b6",
+  "verificationUrl": "/assets/use-cases/shipment-readiness/decision-summary-ui/verification.json",
+  "figures": {
+    "entry": {
+      "image": "/assets/use-cases/shipment-readiness/decision-summary-ui/start-analysis.png",
+      "width": 759,
+      "height": 293,
+      "sha256": "7bf11b154cadfcf7af13e842a8b893451a5ec14765c4b5fed8194191e1891861",
+      "alt": "Order fulfillment offers Compare first-shipment arrangements 1.4.0 with Start analysis.",
+      "caption": "Start a fresh calculation analysis. Saved cases retain their embedded definitions."
+    },
+    "inputs": {
+      "image": "/assets/use-cases/shipment-readiness/decision-summary-ui/supplied-inputs.png",
+      "width": 1208,
+      "height": 760,
+      "sha256": "b9886c819c33c4b784adcf2638a445f75d5bcfadd0e0278508812c2bd2640e95",
+      "alt": "Inputs and the uncalculated Decision summary appear side by side; Calculate and Auto-update sit above the authored input tabs.",
+      "caption": "The supplied case is ready to inspect. Calculate produces a finding; an uncalculated case is not a failed shipment."
+    },
+    "arrangements": {
+      "image": "/assets/use-cases/shipment-readiness/decision-summary-ui/decision-summary.png",
+      "width": 1208,
+      "height": 1076,
+      "sha256": "fe901a42fa84efd3f3e02fb8f36f2f3f7f3b7057cbcf9cc9c67068f53123ceb7",
+      "alt": "Decision summary supports Backup at $6,000 across the two remaining registration states and compares it with Direct at $4,000.",
+      "caption": "Read the supported answer and compact comparison first. The cheaper Direct arrangement still depends on an unresolved registration condition."
+    },
+    "hero": {
+      "image": "/assets/use-cases/shipment-readiness/decision-summary-ui/shipment-summary-hero.png",
+      "width": 1208,
+      "height": 760,
+      "sha256": "8cfa70ce3810250a70b7e223de382405302be3d577dc9e6da3a5b6cf194d876c",
+      "alt": "Decision Lab compares Direct and Backup shipment arrangements, with a supported Backup finding and the conditions affecting the choice.",
+      "caption": "A fictional shipment analysis in Decision Lab."
+    },
+    "requirements": {
+      "image": "/assets/use-cases/shipment-readiness/decision-summary-ui/direct-supporting-report.png",
+      "width": 1208,
+      "height": 799,
+      "sha256": "bb2ad10d53cbecd912e3c7798cc427215011ce7c57c6df0101a2527874934264",
+      "alt": "Inspect Direct opens its supporting arrangement report, including the unmet registration condition.",
+      "caption": "Inspect the condition behind a particular option. Reading a supporting report does not select the option or alter its inputs."
+    },
+    "verification": {
+      "image": "/assets/use-cases/shipment-readiness/decision-summary-ui/verification-comparison.png",
+      "width": 1208,
+      "height": 980,
+      "sha256": "d7a39852ddfe2b90b38884590e5de749a422b6f4af642a9f8c015c352de0e646",
+      "alt": "Further verification compares fast checking with acting now under the supplied hypothetical probabilities and report accuracy.",
+      "caption": "The $200 timely check gives a $5,200 expected total cost under the supplied assumptions; supporting detail stays separate from the main summary."
+    },
+    "process": {
+      "image": "/assets/decision-process-refresh/shipment-overview.png",
+      "width": 1546,
+      "height": 3343,
+      "sha256": "b0826e15fd30c8fe69c2fa48a0fcf1ad64c60e694351971f717a2bd4252176f4",
+      "alt": "The complete shipment Decision process graph links registration evidence, complete arrangements and timely verification, with labeled current-case paths and reassessment returns.",
+      "caption": "Follow the labeled arrows from the shipment commitment to evidence, complete arrangements and further verification. Highlighted paths apply to this recorded case; dashed return paths call for reassessment."
+    },
+    "status": {
+      "image": "/assets/use-cases/shipment-readiness/decision-summary-ui/calculation-dependencies.png",
+      "width": 1208,
+      "height": 850,
+      "sha256": "4e78f2894164e8e7bbd61f902740779fdd4985b947b3b06940beca73bfd12d7c",
+      "alt": "Calculation dependencies displays the handoffs between evidence, planning, possible responses and verification value.",
+      "caption": "Inspect how calculated findings feed later questions. This dependency view is separate from the business process."
+    },
+    "stale": {
+      "image": "/assets/use-cases/shipment-readiness/decision-summary-ui/changed-inputs.png",
+      "width": 1208,
+      "height": 760,
+      "sha256": "02fa494010aa2058a9aec641a1a566e71cf16925484e068b76b07135a33964e1",
+      "alt": "An applied change from 100 to 101 units withdraws the arrangement comparison: the alternatives are stale and current findings are required.",
+      "caption": "Applied edits invalidate dependent findings. Recalculate the changed case before proposing an arrangement."
+    },
+    "processDetail": {
+      "image": "/assets/decision-process-refresh/shipment-detail.png",
+      "width": 731,
+      "height": 424,
+      "sha256": "e123d321878e1b7cab9f5282ccb41cb37af105eeaf80c14528cabbf20c77f8e5",
+      "alt": "Inspecting the shipment question Does any complete arrangement meet the requirements shows its current Yes finding, basis, outgoing paths, inputs and supporting reports.",
+      "caption": "Inspect the feasibility question to see what supports the answer and which responses apply. Inspection records no shipment choice, permission or booking."
+    }
+  },
+  "processVerificationUrl": "/assets/decision-process-refresh/verification.json"
+}

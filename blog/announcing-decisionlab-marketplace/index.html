@@ -133,20 +133,20 @@
 
 <figure class="blog-pattern-panel" id="shipment-pattern-view">
   <h3 id="shipment-readiness">Shipment readiness</h3>
-  <a class="blog-pattern-image" href="../../assets/use-cases/shipment-readiness/decision-summary-ui/decision-summary.png" aria-label="Open the shipment readiness decision summary at full size"><img src="../../assets/use-cases/shipment-readiness/decision-summary-ui/decision-summary.png" width="1208" height="1076" alt="Decision summary supports Backup at $6,000 across the two remaining registration states and compares it with Direct at $4,000." loading="lazy" decoding="async"></a>
+  <a class="blog-pattern-image" href="../../assets/use-cases/shipment-readiness/current-ui/decision-summary.png" aria-label="Open the shipment readiness decision summary at full size"><img src="../../assets/use-cases/shipment-readiness/current-ui/decision-summary.png" width="1208" height="1002" alt="The Options section shows Backup preferred at $6,000 and Direct blocked at $4,000, with the unresolved registration condition and stated cost-first comparison priority." loading="lazy" decoding="async"></a>
   <figcaption>
     <p>Maya’s $4,000 Direct option depends on unresolved ship-point registration. The $6,000 Backup arrangement meets the modeled commitment in both admitted registration states. The summary exposes that condition instead of treating the cheaper quote as sufficient.</p>
-    <div class="blog-pattern-links"><a href="../../assets/use-cases/shipment-readiness/decision-summary-ui/decision-summary.png">View full size</a><a href="../../use-cases/supply-chain/shipment-readiness/case-worker/index.html#current-question-view">Explore the shipment calculation <span aria-hidden="true">→</span></a></div>
+    <div class="blog-pattern-links"><a href="../../assets/use-cases/shipment-readiness/current-ui/decision-summary.png">View full size</a><a href="../../use-cases/supply-chain/shipment-readiness/case-worker/index.html#current-question-view">Explore the shipment calculation <span aria-hidden="true">→</span></a></div>
   </figcaption>
 </figure>
 
 
 <figure class="blog-pattern-panel" id="gifting-pattern-view">
   <h3 id="gift-kit-readiness">Gift-kit readiness</h3>
-  <a class="blog-pattern-image" href="../../assets/use-cases/gift-kit-readiness/decision-summary-ui/03-one-day-decision-summary.png" aria-label="Open the gift-kit readiness decision summary at full size"><img src="../../assets/use-cases/gift-kit-readiness/decision-summary-ui/03-one-day-decision-summary.png" width="885" height="1046" alt="The concise Decision summary prefers the $300 internal complete correction, ready at minute 40, and compares all five supplied packages." loading="lazy" decoding="async"></a>
+  <a class="blog-pattern-image" href="../../assets/use-cases/gift-kit-readiness/current-ui/03-one-day-decision-summary.png" aria-label="Open the gift-kit readiness decision summary at full size"><img src="../../assets/use-cases/gift-kit-readiness/current-ui/03-one-day-decision-summary.png" width="1136" height="757" alt="The concise Decision summary prefers the $300 internal complete correction, ready at minute 40, and compares the supported complete packages, with three other options available in a disclosure." loading="lazy" decoding="async"></a>
   <figcaption>
     <p>With a full day available, Leah can prepare the complete in-house correction for $300. A $400 external package also needs its own timing, permission and confirmation checks.</p>
-    <div class="blog-pattern-links"><a href="../../assets/use-cases/gift-kit-readiness/decision-summary-ui/03-one-day-decision-summary.png">View full size</a><a href="../../use-cases/gifting/gift-kit-readiness/compare-correction-options/index.html">Follow Leah’s gift-kit decision <span aria-hidden="true">→</span></a></div>
+    <div class="blog-pattern-links"><a href="../../assets/use-cases/gift-kit-readiness/current-ui/03-one-day-decision-summary.png">View full size</a><a href="../../use-cases/gifting/gift-kit-readiness/compare-correction-options/index.html">Follow Leah’s gift-kit decision <span aria-hidden="true">→</span></a></div>
   </figcaption>
 </figure>
 
@@ -164,17 +164,17 @@
 <p>A <strong>case</strong> supplies one situation’s facts and records. A coordinator applies those inputs and chooses <strong>Calculate</strong>. After a change, <strong>Recalculate</strong> updates the findings; optional <strong>Auto-update</strong> recalculates after applied input changes. A calculated response still requires the responsible people to decide and carry out the work.</p>
 
 <h2 id="start-analysis">From the collection to the decision.</h2>
-<p>A <strong>collection</strong> groups related <strong>use cases</strong>, apps and workflows. In <a href="https://hermodlabs.github.io/review_lab/">Decision Lab</a>, use <strong>Marketplace</strong> to install or update a collection, then choose <strong>Start analysis</strong> for its workflow. The shipment and gifting articles link directly to their worked examples.</p>
+<p>A <strong>collection</strong> groups related <strong>use cases</strong>, apps and workflows. In <a href="https://hermodlabs.github.io/review_lab/">Decision Lab</a>, use <strong>Marketplace</strong> to install or update a collection, then choose <strong>Explore example</strong> for its workflow. Choose Start with my data for a blank case instead. The shipment and gifting articles link directly to their worked examples.</p>
 <ol>
   <li><strong>Set the business context.</strong> Inputs have their own tabs and sections. Use the configured Forms or the complete YAML representation, then apply changes.</li>
-  <li><strong>Calculate the findings.</strong> The Decision summary shows the supported answer, compact comparison, decisive conditions and available next actions. Changed inputs need a current calculation.</li>
-  <li><strong>Inspect the reason when needed.</strong> Open a linked supporting report or <strong>View decision process</strong>. Its graph connects the questions, findings and available responses through labeled arrows, with the current case highlighted.</li>
+  <li><strong>Calculate the findings.</strong> <strong>Decision summary → Options</strong> shows the supported answer, compact comparison and decisive conditions. <strong>Next actions</strong>, <strong>Assumptions</strong> and <strong>Questions</strong> provide separate views of responses, scope and unresolved facts. Changed inputs need a current calculation.</li>
+  <li><strong>Inspect the reason when needed.</strong> Open a linked supporting report or the <strong>Decision process</strong> report tab. Its graph connects the questions, findings and available responses through labeled arrows, with the current case highlighted.</li>
 </ol>
 
 
 <figure class="blog-figure">
-  <a href="../../assets/decision-process-refresh/shipment-detail.png" aria-label="Open the working example at full size"><img src="../../assets/decision-process-refresh/shipment-detail.png" width="731" height="424" alt="Inspecting the shipment question Does any complete arrangement meet the requirements shows its current Yes finding, basis, outgoing paths, inputs and supporting reports." loading="lazy" decoding="async"></a>
-  <figcaption>Inspecting the shipment feasibility question exposes its current finding and the responses that follow. Here, at least one complete arrangement meets the requirements, so the supported options can be compared. Inspection chooses no arrangement and books no freight. <a href="../../assets/decision-process-refresh/shipment-detail.png">View full size</a></figcaption>
+  <a href="../../assets/use-cases/shipment-readiness/current-ui/decision-process-detail.png" aria-label="Open the working example at full size"><img src="../../assets/use-cases/shipment-readiness/current-ui/decision-process-detail.png" width="1678" height="374" alt="Inspecting whether any complete arrangement meets the requirements shows the current answer, its basis, outgoing paths, relevant inputs and supporting reports." loading="lazy" decoding="async"></a>
+  <figcaption>Inspecting the shipment feasibility question exposes its current finding and the responses that follow. Here, at least one complete arrangement meets the requirements, so the supported options can be compared. Inspection chooses no arrangement and books no freight. <a href="../../assets/use-cases/shipment-readiness/current-ui/decision-process-detail.png">View full size</a></figcaption>
 </figure>
 
 <details class="disclosure">
@@ -183,8 +183,8 @@
   
   
   <figure class="blog-figure">
-  <a href="../../assets/decision-process-refresh/shipment-overview.png" aria-label="Open the working example at full size"><img src="../../assets/decision-process-refresh/shipment-overview.png" width="1546" height="3343" alt="The complete shipment Decision process graph links registration evidence, complete arrangements and timely verification, with labeled current-case paths and reassessment returns." loading="lazy" decoding="async"></a>
-  <figcaption>The complete graph keeps alternative responses visible around the current case. Selecting a question or action reveals its basis; it does not perform the action. <a href="../../assets/decision-process-refresh/shipment-overview.png">View full size</a></figcaption>
+  <a href="../../assets/use-cases/shipment-readiness/current-ui/decision-process.png" aria-label="Open the working example at full size"><img src="../../assets/use-cases/shipment-readiness/current-ui/decision-process.png" width="1678" height="3672" alt="The current shipment graph connects scoped registration evidence, complete shipment arrangements and timely-verification value. Highlighted paths apply now; dashed paths return to reassessment." loading="lazy" decoding="async"></a>
+  <figcaption>The complete graph keeps alternative responses visible around the current case. Selecting a question or action reveals its basis; it does not perform the action. <a href="../../assets/use-cases/shipment-readiness/current-ui/decision-process.png">View full size</a></figcaption>
 </figure>
 
 </details>
@@ -197,8 +197,8 @@
 <footer class="blog-references">
   <details class="disclosure">
     <summary><h2 class="disclosure-label" id="sources-and-scope">Sources and scope</h2></summary>
-    <p>Maya, Leah, shipments, campaigns, quotes and operating records are fictional worked examples. The screenshots show current guided-analysis releases: shipment 1.4.0 and gifting 2.3.0. The separate <a href="../../assets/decision-lab-public-build-check.json">public build check</a> matches the deployed interface and packages to the capture build. Older saved reviews can retain their original versions and behavior.</p>
-    <p>The Decision summaries were captured from a local production build matched to the public application. The <a href="../../assets/use-cases/shipment-readiness/decision-summary-ui/verification.json">shipment capture record</a> and <a href="../../assets/use-cases/gift-kit-readiness/decision-summary-ui/verification.json">gifting capture record</a> retain their build identities, supplied cases and exported calculations. The process graph was captured separately from the updated public app; its <a href="../../assets/decision-process-refresh/verification.json">graph capture record</a> retains the deployed build and confirms that inspection preserves the case and findings.</p>
+    <p>Maya, Leah, shipments, campaigns, quotes and operating records are fictional worked examples. The screenshots show current guided-analysis releases: shipment 1.8.0 and gifting 2.7.0. The capture records identify the verified public build and exact installed packages. Older saved reviews can retain their original versions and behavior.</p>
+    <p>The Decision summaries were captured directly from the public application using its fictional examples. The <a href="../../assets/use-cases/shipment-readiness/current-ui/verification.json">shipment capture record</a> and <a href="../../assets/use-cases/gift-kit-readiness/current-ui/verification.json">gifting capture record</a> retain their build identities, supplied cases and exported calculations. The process graph was captured in the same current public app; its <a href="../../assets/use-cases/shipment-readiness/current-ui/verification.json">graph capture record</a> retains the deployed build and confirms that inspection preserves the case and findings.</p>
     <p>The comparisons establish findings within the supplied models, records and assumptions. They do not authenticate external authority, book freight, perform a correction or establish completed delivery. The linked CLI and SDK articles describe their own sample configurations and integration boundaries.</p>
   </details>
 </footer>

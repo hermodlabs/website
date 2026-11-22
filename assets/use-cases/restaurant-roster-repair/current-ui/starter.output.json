@@ -1,0 +1,1045 @@
+{
+  "format": "restaurant-roster-ui-output-selection/1",
+  "sourceRunHash": "b451641651ef41216e6fda41a93b32e42438144a3048085a13c43aff16ef2a87",
+  "steps": [
+    {
+      "id": "feasibility",
+      "status": "ready",
+      "evaluationId": null
+    },
+    {
+      "id": "stability",
+      "status": "not-applicable",
+      "evaluationId": null
+    },
+    {
+      "id": "cost",
+      "status": "not-applicable",
+      "evaluationId": null
+    }
+  ],
+  "decisionSummary": {
+    "format": "workflow-decision-summary/1",
+    "title": "Decision summary",
+    "question": "Which supplied complete repairs cover every remaining service, and which fit the chosen priority?",
+    "sections": [
+      {
+        "id": "options",
+        "label": "Options",
+        "question": "Which complete roster repairs cover every service, and which fit the selected priority?"
+      },
+      {
+        "id": "next-actions",
+        "label": "Next actions",
+        "question": "What can we do next, given the current roster findings?"
+      },
+      {
+        "id": "assumptions",
+        "label": "Assumptions",
+        "question": "What assumptions and limits does this roster comparison depend on?"
+      },
+      {
+        "id": "questions",
+        "label": "Questions",
+        "question": "What still needs to be established before putting a repair into use?"
+      }
+    ],
+    "finding": {
+      "availability": "not-calculated",
+      "metrics": [],
+      "issues": [
+        {
+          "code": "WORKFLOW_DECISION_SUMMARY_UNAVAILABLE",
+          "path": "decisionSummary.finding",
+          "message": "Calculate to see this finding."
+        }
+      ]
+    },
+    "comparison": {
+      "title": "Compare complete repairs",
+      "columns": [
+        {
+          "key": "label",
+          "label": "Complete repair"
+        },
+        {
+          "key": "standing",
+          "label": "Calculated fit"
+        },
+        {
+          "key": "remainingPayrollMinor",
+          "label": "Remaining payroll",
+          "format": "money"
+        },
+        {
+          "key": "changedPositions",
+          "label": "Changed positions",
+          "format": "number"
+        }
+      ],
+      "tabId": "conditions",
+      "availability": "not-calculated",
+      "rows": [],
+      "issues": [
+        {
+          "code": "WORKFLOW_DECISION_SUMMARY_UNAVAILABLE",
+          "path": "decisionSummary.comparison",
+          "message": "Calculate to see the alternatives."
+        }
+      ]
+    },
+    "conditions": [],
+    "actionGroups": [
+      {
+        "id": "repair-response",
+        "label": "Available operating response",
+        "selection": "exclusive",
+        "actionIds": [
+          "compare-repairs",
+          "revise-repairs"
+        ],
+        "matchedActionIds": [],
+        "status": "ready",
+        "issues": [],
+        "presentation": "actions",
+        "actions": []
+      },
+      {
+        "id": "staff-handoff",
+        "label": "Inspect assignments before obtaining staff agreement",
+        "selection": "all-matching",
+        "actionIds": [
+          "agree-assignments"
+        ],
+        "matchedActionIds": [],
+        "status": "ready",
+        "issues": [],
+        "presentation": "link",
+        "tabId": "assignments",
+        "actions": []
+      }
+    ],
+    "links": [],
+    "displayContext": {
+      "currency": "USD",
+      "scale": 100,
+      "time": "minute",
+      "timeOrigin": "2026-11-16T00:00:00-06:00",
+      "names": {
+        "hold": "Leave the gap",
+        "move-only": "Move Theo only",
+        "relief": "Bring in Rowan",
+        "coupled": "Repair three assignments",
+        "luis": "Luis",
+        "priya": "Priya",
+        "theo": "Theo",
+        "ava": "Ava",
+        "ben": "Ben",
+        "nora": "Nora",
+        "rowan": "Rowan",
+        "unfilled": "Unfilled"
+      },
+      "labels": {},
+      "formats": {
+        "remainingPayrollMinor": "money",
+        "additionalExpenseMinor": "money",
+        "baselineMinor": "money",
+        "start": {
+          "type": "time",
+          "timeZone": "America/Chicago"
+        },
+        "end": {
+          "type": "time",
+          "timeZone": "America/Chicago"
+        },
+        "time": {
+          "type": "time",
+          "timeZone": "America/Chicago"
+        },
+        "duration": "duration"
+      }
+    },
+    "issues": [
+      {
+        "code": "WORKFLOW_DECISION_SUMMARY_UNAVAILABLE",
+        "path": "decisionSummary.finding",
+        "message": "Calculate to see this finding."
+      },
+      {
+        "code": "WORKFLOW_DECISION_SUMMARY_UNAVAILABLE",
+        "path": "decisionSummary.comparison",
+        "message": "Calculate to see the alternatives."
+      }
+    ]
+  },
+  "decisionProcess": {
+    "format": "decision-lab-decision-process/1",
+    "title": "Choose a complete roster repair",
+    "description": "Follow the findings from complete coverage to the selected comparison priority and remaining business actions.",
+    "entryNodeIds": [
+      "inputs"
+    ],
+    "nodes": [
+      {
+        "id": "inputs",
+        "kind": "stage",
+        "label": "Supply the interrupted roster and working records",
+        "description": "",
+        "stepIds": [],
+        "status": "applicable",
+        "reasons": [],
+        "result": {
+          "label": "This part of the process is applicable to the current case."
+        },
+        "inputTargets": [
+          {
+            "questionId": "relief-window",
+            "label": "Relief cook availability",
+            "status": "supplied",
+            "groupId": "decision-inputs",
+            "subtabId": "availability"
+          },
+          {
+            "questionId": "payroll-limit",
+            "label": "Remaining payroll limit",
+            "status": "supplied",
+            "groupId": "decision-inputs",
+            "subtabId": "payroll"
+          },
+          {
+            "questionId": "employees",
+            "label": "Employee work records",
+            "status": "supplied",
+            "groupId": "supporting-inputs",
+            "subtabId": "people"
+          },
+          {
+            "questionId": "qualifications",
+            "label": "Recorded qualifications",
+            "status": "supplied",
+            "groupId": "supporting-inputs",
+            "subtabId": "people"
+          },
+          {
+            "questionId": "assignments",
+            "label": "Complete proposed repairs",
+            "status": "supplied",
+            "groupId": "supporting-inputs",
+            "subtabId": "proposals"
+          },
+          {
+            "questionId": "other-availability",
+            "label": "Other working availability",
+            "status": "supplied",
+            "groupId": "supporting-inputs",
+            "subtabId": "working-time"
+          },
+          {
+            "questionId": "bookings",
+            "label": "Other employee commitments",
+            "status": "supplied",
+            "groupId": "supporting-inputs",
+            "subtabId": "working-time"
+          }
+        ],
+        "reportTargets": [
+          {
+            "sectionId": "roster-basis",
+            "label": "Published roster and remaining services"
+          }
+        ]
+      },
+      {
+        "id": "calculate",
+        "kind": "stage",
+        "label": "Calculate every supplied complete repair",
+        "description": "",
+        "stepIds": [
+          "feasibility"
+        ],
+        "status": "not-calculated",
+        "reasons": [
+          {
+            "id": "step:feasibility",
+            "kind": "step",
+            "stepId": "feasibility",
+            "label": "Find passing complete repairs: a current complete calculation is required."
+          }
+        ],
+        "result": {
+          "label": "A prerequisite calculation is not yet available."
+        },
+        "inputTargets": [],
+        "reportTargets": [
+          {
+            "stepId": "feasibility",
+            "label": "Find passing complete repairs",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "passing",
+        "kind": "decision",
+        "label": "Does any supplied repair meet every requirement?",
+        "description": "",
+        "conditionId": "has-repairs",
+        "stepIds": [],
+        "status": "not-calculated",
+        "reasons": [
+          {
+            "id": "step:feasibility",
+            "label": "Find passing complete repairs: a current complete result is required.",
+            "kind": "step",
+            "stepId": "feasibility"
+          }
+        ],
+        "result": {
+          "label": "A prerequisite calculation is not yet available."
+        },
+        "inputTargets": [],
+        "reportTargets": [
+          {
+            "stepId": "feasibility",
+            "label": "Find passing complete repairs",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "priority",
+        "kind": "decision",
+        "label": "Is a comparison priority selected?",
+        "description": "",
+        "conditionId": "ranked",
+        "stepIds": [],
+        "status": "not-calculated",
+        "reasons": [],
+        "result": {
+          "label": "The condition is established as false for the current calculation basis."
+        },
+        "inputTargets": [
+          {
+            "questionId": "priority",
+            "label": "Comparison priority",
+            "status": "supplied",
+            "groupId": "decision-inputs",
+            "subtabId": "priority"
+          }
+        ],
+        "reportTargets": []
+      },
+      {
+        "id": "rank",
+        "kind": "stage",
+        "label": "Apply the selected priority to passing repairs",
+        "description": "",
+        "stepIds": [
+          "stability",
+          "cost"
+        ],
+        "status": "not-applicable",
+        "reasons": [],
+        "result": {
+          "label": "This branch is not applicable under the current case conditions."
+        },
+        "inputTargets": [],
+        "reportTargets": [
+          {
+            "stepId": "stability",
+            "label": "Compare by published-assignment stability",
+            "evaluationId": null
+          },
+          {
+            "stepId": "cost",
+            "label": "Compare by remaining payroll",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "compare",
+        "kind": "action",
+        "label": "Compare the passing complete repairs",
+        "description": "",
+        "actionId": "compare-repairs",
+        "stepIds": [],
+        "status": "not-applicable",
+        "reasons": [],
+        "result": {
+          "label": "This branch is not applicable under the current case conditions."
+        },
+        "inputTargets": [
+          {
+            "questionId": "priority",
+            "label": "Comparison priority",
+            "status": "supplied",
+            "groupId": "decision-inputs",
+            "subtabId": "priority"
+          }
+        ],
+        "reportTargets": [
+          {
+            "stepId": "feasibility",
+            "label": "Find passing complete repairs",
+            "evaluationId": null
+          },
+          {
+            "stepId": "stability",
+            "label": "Compare by published-assignment stability",
+            "evaluationId": null
+          },
+          {
+            "stepId": "cost",
+            "label": "Compare by remaining payroll",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "revise",
+        "kind": "action",
+        "label": "Revise proposals or operating facts",
+        "description": "",
+        "actionId": "revise-repairs",
+        "stepIds": [],
+        "status": "not-applicable",
+        "reasons": [],
+        "result": {
+          "label": "This branch is not applicable under the current case conditions."
+        },
+        "inputTargets": [
+          {
+            "questionId": "priority",
+            "label": "Comparison priority",
+            "status": "supplied",
+            "groupId": "decision-inputs",
+            "subtabId": "priority"
+          }
+        ],
+        "reportTargets": [
+          {
+            "stepId": "feasibility",
+            "label": "Find passing complete repairs",
+            "evaluationId": null
+          },
+          {
+            "stepId": "stability",
+            "label": "Compare by published-assignment stability",
+            "evaluationId": null
+          },
+          {
+            "stepId": "cost",
+            "label": "Compare by remaining payroll",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "complete-inputs",
+        "kind": "outcome",
+        "label": "Complete missing inputs, correct invalid data or finish calculation",
+        "description": "",
+        "stepIds": [],
+        "status": "applicable",
+        "reasons": [],
+        "result": {
+          "label": "This part of the process is applicable to the current case."
+        },
+        "inputTargets": [
+          {
+            "questionId": "relief-window",
+            "label": "Relief cook availability",
+            "status": "supplied",
+            "groupId": "decision-inputs",
+            "subtabId": "availability"
+          },
+          {
+            "questionId": "payroll-limit",
+            "label": "Remaining payroll limit",
+            "status": "supplied",
+            "groupId": "decision-inputs",
+            "subtabId": "payroll"
+          },
+          {
+            "questionId": "employees",
+            "label": "Employee work records",
+            "status": "supplied",
+            "groupId": "supporting-inputs",
+            "subtabId": "people"
+          },
+          {
+            "questionId": "qualifications",
+            "label": "Recorded qualifications",
+            "status": "supplied",
+            "groupId": "supporting-inputs",
+            "subtabId": "people"
+          },
+          {
+            "questionId": "assignments",
+            "label": "Complete proposed repairs",
+            "status": "supplied",
+            "groupId": "supporting-inputs",
+            "subtabId": "proposals"
+          },
+          {
+            "questionId": "other-availability",
+            "label": "Other working availability",
+            "status": "supplied",
+            "groupId": "supporting-inputs",
+            "subtabId": "working-time"
+          },
+          {
+            "questionId": "bookings",
+            "label": "Other employee commitments",
+            "status": "supplied",
+            "groupId": "supporting-inputs",
+            "subtabId": "working-time"
+          }
+        ],
+        "reportTargets": []
+      },
+      {
+        "id": "agree",
+        "kind": "action",
+        "label": "Obtain agreement and communicate the chosen roster",
+        "description": "",
+        "actionId": "agree-assignments",
+        "stepIds": [],
+        "status": "not-applicable",
+        "reasons": [],
+        "result": {
+          "label": "This branch is not applicable under the current case conditions."
+        },
+        "inputTargets": [
+          {
+            "questionId": "priority",
+            "label": "Comparison priority",
+            "status": "supplied",
+            "groupId": "decision-inputs",
+            "subtabId": "priority"
+          }
+        ],
+        "reportTargets": [
+          {
+            "stepId": "feasibility",
+            "label": "Find passing complete repairs",
+            "evaluationId": null
+          },
+          {
+            "stepId": "stability",
+            "label": "Compare by published-assignment stability",
+            "evaluationId": null
+          },
+          {
+            "stepId": "cost",
+            "label": "Compare by remaining payroll",
+            "evaluationId": null
+          }
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "inputs-calculate",
+        "from": "inputs",
+        "to": "calculate",
+        "label": "Use the same operating facts for every comparison",
+        "kind": "flow",
+        "status": "applicable"
+      },
+      {
+        "id": "calculate-passing",
+        "from": "calculate",
+        "to": "passing",
+        "label": "Use the complete coverage finding",
+        "kind": "flow",
+        "status": "applicable"
+      },
+      {
+        "id": "passing-priority",
+        "from": "passing",
+        "to": "priority",
+        "label": "One or more repairs pass",
+        "outcome": "true",
+        "kind": "flow",
+        "status": "not-calculated"
+      },
+      {
+        "id": "passing-revise",
+        "from": "passing",
+        "to": "revise",
+        "label": "No supplied repair passes",
+        "outcome": "false",
+        "kind": "flow",
+        "status": "not-applicable"
+      },
+      {
+        "id": "passing-unknown",
+        "from": "passing",
+        "to": "complete-inputs",
+        "label": "Required facts are unknown",
+        "outcome": "unknown",
+        "kind": "flow",
+        "status": "not-applicable"
+      },
+      {
+        "id": "passing-not-calculated",
+        "from": "passing",
+        "to": "complete-inputs",
+        "label": "Calculation is not complete",
+        "outcome": "not-calculated",
+        "kind": "flow",
+        "status": "applicable"
+      },
+      {
+        "id": "passing-stale",
+        "from": "passing",
+        "to": "complete-inputs",
+        "label": "Inputs changed; recalculate",
+        "outcome": "stale",
+        "kind": "flow",
+        "status": "not-applicable"
+      },
+      {
+        "id": "passing-error",
+        "from": "passing",
+        "to": "complete-inputs",
+        "label": "Inputs or calculation need correction",
+        "outcome": "error",
+        "kind": "flow",
+        "status": "not-applicable"
+      },
+      {
+        "id": "priority-rank",
+        "from": "priority",
+        "to": "rank",
+        "label": "Apply the authored priority",
+        "outcome": "true",
+        "kind": "flow",
+        "status": "not-applicable"
+      },
+      {
+        "id": "priority-compare",
+        "from": "priority",
+        "to": "compare",
+        "label": "Compare without ranking",
+        "outcome": "false",
+        "kind": "flow",
+        "status": "not-applicable"
+      },
+      {
+        "id": "priority-unknown",
+        "from": "priority",
+        "to": "complete-inputs",
+        "label": "Supply a supported comparison priority",
+        "outcome": "unknown",
+        "kind": "flow",
+        "status": "not-applicable"
+      },
+      {
+        "id": "priority-error",
+        "from": "priority",
+        "to": "complete-inputs",
+        "label": "Supply a supported comparison priority",
+        "outcome": "error",
+        "kind": "flow",
+        "status": "not-applicable"
+      },
+      {
+        "id": "rank-compare",
+        "from": "rank",
+        "to": "compare",
+        "label": "Keep genuine ties visible",
+        "kind": "flow",
+        "status": "not-applicable"
+      },
+      {
+        "id": "compare-agree",
+        "from": "compare",
+        "to": "agree",
+        "label": "After a person chooses a supported proposal",
+        "kind": "flow",
+        "status": "not-applicable"
+      },
+      {
+        "id": "revise-inputs",
+        "from": "revise",
+        "to": "inputs",
+        "label": "Reassess revised proposals and facts",
+        "kind": "reassessment",
+        "status": "not-applicable"
+      },
+      {
+        "id": "complete-inputs-return",
+        "from": "complete-inputs",
+        "to": "inputs",
+        "label": "Supply or correct the required facts",
+        "kind": "reassessment",
+        "status": "applicable"
+      },
+      {
+        "id": "agree-inputs",
+        "from": "agree",
+        "to": "inputs",
+        "label": "Recalculate if agreement changes availability",
+        "kind": "reassessment",
+        "status": "not-applicable"
+      }
+    ],
+    "groups": [
+      {
+        "id": "interrupted-commitment",
+        "label": "1. Establish the remaining commitment",
+        "nodeIds": [
+          "inputs"
+        ]
+      },
+      {
+        "id": "complete-coverage",
+        "label": "2. Check every remaining service",
+        "nodeIds": [
+          "calculate",
+          "passing",
+          "complete-inputs"
+        ]
+      },
+      {
+        "id": "comparison-priority",
+        "label": "3. Apply an optional priority",
+        "nodeIds": [
+          "priority",
+          "rank"
+        ]
+      },
+      {
+        "id": "operating-response",
+        "label": "4. Choose a response",
+        "nodeIds": [
+          "compare",
+          "revise",
+          "agree"
+        ]
+      }
+    ],
+    "conditions": [
+      {
+        "id": "priority-valid",
+        "label": "Use one of the three authored comparison priorities",
+        "status": "true",
+        "value": true,
+        "reasons": [],
+        "inputTargets": [
+          {
+            "questionId": "priority",
+            "label": "Comparison priority",
+            "status": "supplied",
+            "groupId": "decision-inputs",
+            "subtabId": "priority"
+          }
+        ],
+        "reportTargets": []
+      },
+      {
+        "id": "stability-selected",
+        "label": "Preserve published assignments first is selected",
+        "status": "false",
+        "value": false,
+        "reasons": [],
+        "inputTargets": [
+          {
+            "questionId": "priority",
+            "label": "Comparison priority",
+            "status": "supplied",
+            "groupId": "decision-inputs",
+            "subtabId": "priority"
+          }
+        ],
+        "reportTargets": []
+      },
+      {
+        "id": "cost-selected",
+        "label": "Minimize remaining payroll first is selected",
+        "status": "false",
+        "value": false,
+        "reasons": [],
+        "inputTargets": [
+          {
+            "questionId": "priority",
+            "label": "Comparison priority",
+            "status": "supplied",
+            "groupId": "decision-inputs",
+            "subtabId": "priority"
+          }
+        ],
+        "reportTargets": []
+      },
+      {
+        "id": "ranked",
+        "label": "An authored ranking priority is selected",
+        "status": "false",
+        "value": false,
+        "reasons": [],
+        "inputTargets": [
+          {
+            "questionId": "priority",
+            "label": "Comparison priority",
+            "status": "supplied",
+            "groupId": "decision-inputs",
+            "subtabId": "priority"
+          }
+        ],
+        "reportTargets": []
+      },
+      {
+        "id": "result-current",
+        "label": "The selected comparison has a current complete calculation",
+        "status": "false",
+        "value": false,
+        "reasons": [],
+        "inputTargets": [
+          {
+            "questionId": "priority",
+            "label": "Comparison priority",
+            "status": "supplied",
+            "groupId": "decision-inputs",
+            "subtabId": "priority"
+          }
+        ],
+        "reportTargets": [
+          {
+            "stepId": "feasibility",
+            "label": "Find passing complete repairs",
+            "evaluationId": null
+          },
+          {
+            "stepId": "stability",
+            "label": "Compare by published-assignment stability",
+            "evaluationId": null
+          },
+          {
+            "stepId": "cost",
+            "label": "Compare by remaining payroll",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "has-repairs",
+        "label": "At least one supplied complete repair meets every requirement",
+        "status": "not-calculated",
+        "value": null,
+        "reasons": [
+          {
+            "id": "step:feasibility",
+            "label": "Find passing complete repairs: a current complete result is required.",
+            "kind": "step",
+            "stepId": "feasibility"
+          }
+        ],
+        "inputTargets": [],
+        "reportTargets": [
+          {
+            "stepId": "feasibility",
+            "label": "Find passing complete repairs",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "can-compare",
+        "label": "Current passing repairs are available to compare",
+        "status": "false",
+        "value": false,
+        "reasons": [],
+        "inputTargets": [
+          {
+            "questionId": "priority",
+            "label": "Comparison priority",
+            "status": "supplied",
+            "groupId": "decision-inputs",
+            "subtabId": "priority"
+          }
+        ],
+        "reportTargets": [
+          {
+            "stepId": "feasibility",
+            "label": "Find passing complete repairs",
+            "evaluationId": null
+          },
+          {
+            "stepId": "stability",
+            "label": "Compare by published-assignment stability",
+            "evaluationId": null
+          },
+          {
+            "stepId": "cost",
+            "label": "Compare by remaining payroll",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "must-revise",
+        "label": "No supplied repair meets the requirements",
+        "status": "false",
+        "value": false,
+        "reasons": [],
+        "inputTargets": [
+          {
+            "questionId": "priority",
+            "label": "Comparison priority",
+            "status": "supplied",
+            "groupId": "decision-inputs",
+            "subtabId": "priority"
+          }
+        ],
+        "reportTargets": [
+          {
+            "stepId": "feasibility",
+            "label": "Find passing complete repairs",
+            "evaluationId": null
+          },
+          {
+            "stepId": "stability",
+            "label": "Compare by published-assignment stability",
+            "evaluationId": null
+          },
+          {
+            "stepId": "cost",
+            "label": "Compare by remaining payroll",
+            "evaluationId": null
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "compare-repairs",
+        "label": "Compare the passing complete repairs",
+        "status": "not-applicable",
+        "value": null,
+        "reasons": [],
+        "inputTargets": [
+          {
+            "questionId": "priority",
+            "label": "Comparison priority",
+            "status": "supplied",
+            "groupId": "decision-inputs",
+            "subtabId": "priority"
+          }
+        ],
+        "reportTargets": [
+          {
+            "stepId": "feasibility",
+            "label": "Find passing complete repairs",
+            "evaluationId": null
+          },
+          {
+            "stepId": "stability",
+            "label": "Compare by published-assignment stability",
+            "evaluationId": null
+          },
+          {
+            "stepId": "cost",
+            "label": "Compare by remaining payroll",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "revise-repairs",
+        "label": "Revise the proposed repairs or operating facts",
+        "status": "not-applicable",
+        "value": null,
+        "reasons": [],
+        "inputTargets": [
+          {
+            "questionId": "priority",
+            "label": "Comparison priority",
+            "status": "supplied",
+            "groupId": "decision-inputs",
+            "subtabId": "priority"
+          }
+        ],
+        "reportTargets": [
+          {
+            "stepId": "feasibility",
+            "label": "Find passing complete repairs",
+            "evaluationId": null
+          },
+          {
+            "stepId": "stability",
+            "label": "Compare by published-assignment stability",
+            "evaluationId": null
+          },
+          {
+            "stepId": "cost",
+            "label": "Compare by remaining payroll",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "agree-assignments",
+        "label": "Obtain staff agreement and communicate the chosen roster",
+        "status": "not-applicable",
+        "value": null,
+        "reasons": [],
+        "inputTargets": [
+          {
+            "questionId": "priority",
+            "label": "Comparison priority",
+            "status": "supplied",
+            "groupId": "decision-inputs",
+            "subtabId": "priority"
+          }
+        ],
+        "reportTargets": [
+          {
+            "stepId": "feasibility",
+            "label": "Find passing complete repairs",
+            "evaluationId": null
+          },
+          {
+            "stepId": "stability",
+            "label": "Compare by published-assignment stability",
+            "evaluationId": null
+          },
+          {
+            "stepId": "cost",
+            "label": "Compare by remaining payroll",
+            "evaluationId": null
+          }
+        ]
+      }
+    ],
+    "actionGroups": [
+      {
+        "id": "repair-response",
+        "label": "Available operating response",
+        "selection": "exclusive",
+        "actionIds": [
+          "compare-repairs",
+          "revise-repairs"
+        ],
+        "matchedActionIds": [],
+        "status": "ready",
+        "issues": []
+      },
+      {
+        "id": "staff-handoff",
+        "label": "After choosing a repair",
+        "selection": "all-matching",
+        "actionIds": [
+          "agree-assignments"
+        ],
+        "matchedActionIds": [],
+        "status": "ready",
+        "issues": []
+      }
+    ],
+    "issues": []
+  },
+  "plans": []
+}

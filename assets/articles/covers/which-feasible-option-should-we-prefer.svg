@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="720" viewBox="0 0 960 720" role="img" aria-labelledby="preference-cover-title preference-cover-desc">
+  <title id="preference-cover-title">Which feasible option should we prefer?</title>
+  <desc id="preference-cover-desc">The same two complete options meet the requirements. Option A has fewer changed positions and higher expense; option B has more changed positions and lower expense. A stability-first priority favors A, while a cost-first priority favors B. The two explicit policies preserve the same feasible options.</desc>
+  <defs>
+    <marker id="preference-cover-arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="5" markerHeight="5" orient="auto"><path d="m2 2 8 4-8 4" fill="none" stroke="#637d88" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  </defs>
+  <rect width="960" height="720" fill="#f6f5f8"/>
+  <circle cx="480" cy="346" r="290" fill="#fff"/>
+  <ellipse cx="480" cy="651" rx="303" ry="13" fill="#e8e8ee"/>
+  <text x="480" y="80" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" fill="#193743">The same feasible options</text>
+
+  <rect x="160" y="112" width="640" height="246" rx="16" fill="#fff" stroke="#193743" stroke-width="4"/>
+  <path d="M160 179h640M160 269h640" stroke="#d3dfe5" stroke-width="2"/>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" fill="#637d88" text-anchor="middle">
+    <text x="266" y="153">Option</text><text x="468" y="153">Changes</text><text x="674" y="153">Expense</text>
+  </g>
+  <g fill="#e6f2f0" stroke="#177681" stroke-width="2.5">
+    <circle cx="208" cy="223" r="17"/><circle cx="208" cy="313" r="17"/>
+  </g>
+  <g fill="none" stroke="#177681" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m201 223 5 6 10-12m-15 96 5 6 10-12"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" fill="#193743" text-anchor="middle">
+    <text x="270" y="233">A</text><text x="468" y="233">1</text><text x="674" y="233">$836</text>
+    <text x="270" y="323">B</text><text x="468" y="323">3</text><text x="674" y="323">$736</text>
+  </g>
+
+  <path d="M480 360v26H271v37" fill="none" stroke="#637d88" stroke-width="3" stroke-linejoin="round" marker-end="url(#preference-cover-arrow)"/>
+  <path d="M480 386h209v37" fill="none" stroke="#637d88" stroke-width="3" stroke-linejoin="round" marker-end="url(#preference-cover-arrow)"/>
+  <rect x="100" y="437" width="342" height="79" rx="13" fill="#eee8f7" stroke="#7850c2" stroke-width="3"/>
+  <rect x="518" y="437" width="342" height="79" rx="13" fill="#e6f2f0" stroke="#177681" stroke-width="3"/>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">
+    <text x="271" y="485" fill="#7850c2">Stability first</text><text x="689" y="485" fill="#177681">Cost first</text>
+  </g>
+  <path d="M271 519v35M689 519v35" fill="none" stroke="#637d88" stroke-width="3" marker-end="url(#preference-cover-arrow)"/>
+  <rect x="148" y="568" width="246" height="68" rx="13" fill="#fff" stroke="#7850c2" stroke-width="3"/>
+  <rect x="566" y="568" width="246" height="68" rx="13" fill="#fff" stroke="#177681" stroke-width="3"/>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" text-anchor="middle">
+    <text x="271" y="611" fill="#7850c2">A is preferred</text><text x="689" y="611" fill="#177681">B is preferred</text>
+  </g>
+</svg>
