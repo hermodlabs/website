@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="224" viewBox="0 0 720 224" role="img" aria-labelledby="workload-promise-title workload-promise-desc">
+  <title id="workload-promise-title">Twenty hours of QA effort exceed a sixteen-hour allocation.</title>
+  <desc id="workload-promise-desc">Two bars use the same effort scale. The required QA effort is twenty hours; the existing qualified allocation covers sixteen hours. The remaining four-hour difference is marked separately. These totals describe effort, not an elapsed-time schedule.</desc>
+  <defs>
+    <pattern id="workload-promise-gap" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <rect width="8" height="8" fill="#f2ecfa"/>
+      <path d="M0 0v8" stroke="#d5c5eb" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect width="720" height="224" fill="#fff"/>
+  <g font-family="Helvetica,Arial,sans-serif" fill="#29272d">
+    <text x="24" y="32" font-size="22" font-weight="600">QA effort required</text>
+    <rect x="24" y="46" width="672" height="36" fill="#78737f"/>
+    <text x="360" y="72" font-size="22" font-weight="600" fill="#fff" text-anchor="middle">20h</text>
+    <text x="24" y="122" font-size="22" font-weight="600">Existing qualified allocation</text>
+    <rect x="24" y="136" width="537.6" height="36" fill="#78737f"/>
+    <rect x="561.6" y="136" width="134.4" height="36" fill="url(#workload-promise-gap)" stroke="#bba4de"/>
+    <text x="292.8" y="162" font-size="22" font-weight="600" fill="#fff" text-anchor="middle">16h</text>
+    <text x="628.8" y="161" font-size="20" font-weight="600" fill="#604095" text-anchor="middle">4h difference</text>
+    <text x="24" y="211" font-size="20" fill="#625e68">Effort hours, not an elapsed-time schedule.</text>
+  </g>
+</svg>

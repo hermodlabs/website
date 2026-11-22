@@ -38,6 +38,7 @@
   <script src="../../assets/feature-flags.js" defer></script>
   <script src="../../assets/site.js" defer></script>
   <script src="../../assets/form-request.js" defer></script>
+
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -133,6 +134,7 @@
 
   <h1>Shared Structure for Automated Reasoning</h1>
   <p class="reading-description">Hermod’s convention connects decision patterns, supporting reasoning, workflows and apps while preserving what each finding establishes.</p>
+
   <p class="reading-meta"><span class="article-author">Jonathan Nacionales</span> <span aria-hidden="true">·</span> 6 min read</p>
   <ul class="article-tags" aria-label="Article topics">
     
@@ -191,23 +193,23 @@
       
     
       
-    <p>We put decision patterns into practice through <strong>workflows</strong>, using configured <strong>apps</strong> to apply supported reasoning patterns. A workflow coordinates questions, reviews, app assessments and the steps leading to a choice or commitment. An app supplies a domain model and the rules and meanings used in its assessment.</p>
+    <p>Workflows put decision patterns into practice by connecting supplied facts, app calculations, focused findings and possible next actions. A configured app supplies the domain model, requirements and meanings used in its assessment. Current calculation workflows do not record a case reviewer’s acceptance of each answer or make a choice or authorization on the decision maker’s behalf.</p>
       
     
       
     <div class="article-table-scroll" role="region" tabindex="0" aria-label="Hermod’s organizing convention, illustrated by a fictional street-team decision.">
       <table>
         <caption>Hermod’s organizing convention, illustrated by a fictional street-team decision.</caption>
-        <thead><tr><th scope="col">Level</th><th scope="col">Meaning in Alex’s example</th></tr></thead>
+        <thead><tr><th scope="col">Part of the convention</th><th scope="col">Meaning in Alex’s example</th></tr></thead>
         <tbody>
           
           <tr><th scope="row">Problem family</th><td>Allocate limited staff between outreach and customer service while preserving minimum floor coverage.</td></tr>
           
-          <tr><th scope="row">Decision pattern</th><td>Compare complete assignments, examine their requirements and exposure, then make a bounded operating commitment.</td></tr>
+          <tr><th scope="row">Decision pattern</th><td>Make a Bounded Commitment: compare complete deployment arrangements, examine their requirements and exposure, then make an operating choice within explicit limits.</td></tr>
           
-          <tr><th scope="row">Supporting reasoning patterns</th><td>Check staffing, timing, access and spending conditions; calculate conditional expense-recovery thresholds; revisit findings when their supporting facts change.</td></tr>
+          <tr><th scope="row">Supporting reasoning patterns</th><td>A commitment assessment checks complete deployments. Supporting checks cover staffing, timing, access and spending; separate arithmetic calculates conditional expense-recovery thresholds.</td></tr>
           
-          <tr><th scope="row">Implementation</th><td>Hermod’s authored workflow, configured operating app, financial calculations, questions, review responsibilities, reports, and separate choice and authorization steps.</td></tr>
+          <tr><th scope="row">Implementation</th><td>Hermod’s calculation workflow, pinned operating app, supplied inputs, focused reports and decision-process graph. People choose, obtain any necessary authorization and carry out the deployment through the venue’s operating process.</td></tr>
           
         </tbody>
       </table>
@@ -231,11 +233,11 @@
       
     
       
-    <p>The decision pattern is a bounded deployment review. The workflow gathers the operating facts, organizes their review, presents the findings and retains Alex’s separate choice and specific authorization. Its configured operating app checks complete assignments against the staffing, timing, access and spending requirements.</p>
+    <p>The decision pattern is <a href="../patterns/make-a-bounded-commitment/index.html">Make a Bounded Commitment</a>. The current workflow gathers operating facts, calculates the supported arrangements and presents the findings and next actions. Its configured app checks complete assignments against staffing, timing, access and spending requirements. Alex makes the management choice and obtains the required authorization outside that calculation.</p>
       
     
       
-    <p>The workflow also calculates conditional guest thresholds from the assessed expense and reviewed financial assumptions. In this implementation, that calculation lives in the workflow. Apps provide reusable assessments, while workflows may contain supporting calculations and review logic as well as coordinating those assessments.</p>
+    <p>The workflow also calculates conditional guest thresholds from the assessed expense and supplied financial assumptions. In this implementation, that calculation lives in the workflow. Apps provide reusable assessments; workflows may also contain supporting calculations and connect their findings to a larger decision process.</p>
       
     
       
@@ -291,7 +293,7 @@
       
     
       
-    <p>When another employee calls out before Alex’s team leaves, <a href="../../use-cases/nightlife/street-team-deployment/build-the-workflow/index.html">the changed staffing returns the decision to Alex</a>. The review retains the earlier choice while showing that its operating basis is no longer current. This connects a smaller factual change to the larger commitment that depended on it.</p>
+    <p>When another employee calls out before Alex’s team leaves, the changed staffing returns the decision to Alex. The earlier finding remains part of the history; the current staffing needs a fresh calculation before supporting another commitment. This connects a smaller factual change to the larger commitment that depended on it.</p>
       
     
       
@@ -308,6 +310,10 @@
     
       
     <p>Shared structure makes selected reasoning reusable and its modeled consequences available for automation. Workflows organize how those contributions reach a decision; apps provide configured assessments within that process. People can inspect the basis, question the assumptions and decide what commitment the findings support.</p>
+      
+    
+      
+    <p>The named <a href="../patterns/index.html">Patterns catalog</a> makes this convention concrete. Start with <a href="../patterns/recognize-the-decision-structure/index.html">Recognize the Decision Structure</a>, compare the documented decision approaches and inspect the supporting reasoning. Assessment patterns are specified supporting assessments within this account; they are not a competing third level of business decisions.</p>
       
     
 
@@ -361,6 +367,20 @@
 
   </article>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

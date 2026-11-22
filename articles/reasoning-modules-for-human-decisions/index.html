@@ -38,6 +38,7 @@
   <script src="../../assets/feature-flags.js" defer></script>
   <script src="../../assets/site.js" defer></script>
   <script src="../../assets/form-request.js" defer></script>
+
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -137,6 +138,7 @@
 
   <h1>Reasoning Modules for Human Decisions</h1>
   <p class="reading-description">Organize evidence, claims, and rules around manageable questions while preserving the scope and dependencies of each conclusion.</p>
+
   <p class="reading-meta"><span class="article-author">Jonathan Nacionales</span> <span aria-hidden="true">·</span> 6 min read</p>
   <ul class="article-tags" aria-label="Article topics">
     
@@ -190,7 +192,7 @@
       
     
       
-    <p>Following <a href="../shared-structure-for-automated-reasoning/index.html#conventions-for-automation">Hermod Labs’ convention</a>, a reasoning pattern describes a reusable method for answering a bounded supporting question. A reasoning module organizes the concepts, evidence and rules used to examine such a question. A configured app is a working assessment component that applies supported reasoning and may bring several modules together. Workflows organize the larger decision and can also contain supporting calculations and review logic. The module’s finding retains its scope wherever it is used.</p>
+    <p>Following <a href="../shared-structure-for-automated-reasoning/index.html#conventions-for-automation">Hermod Labs’ convention</a>, a reasoning pattern describes a reusable method for answering a bounded supporting question. A reasoning module organizes the concepts, evidence and rules used to examine such a question. A configured app is a working assessment component that applies supported reasoning and may bring several modules together. Workflows organize the larger decision and can also contain supporting calculations and explicit conditions for using results in later steps. The module’s finding retains its scope wherever it is used.</p>
       
     
       
@@ -266,7 +268,7 @@
       
     
       
-    <p>The same applies to assumptions. A technical assessment and a cost estimate might both depend on an expected production rate. If experience shows that rate was too optimistic, the consequences can extend into both modules and then into the overall arrangement. Recorded dependencies give software a basis for locating those consequences without asking someone to remember every place the assumption was used.</p>
+    <p>The same applies to assumptions. A technical assessment and a cost estimate might both depend on an expected production rate. If experience shows that rate was too optimistic, the consequences can extend into both modules and then into the overall arrangement. Explicit dependencies help authors and users identify which assessments need recalculation when a shared assumption changes.</p>
       
     
       
@@ -348,6 +350,20 @@
 
   </article>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

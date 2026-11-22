@@ -1,0 +1,27 @@
+/* Matched relationship maps keep two different assessments comparable. */
+.reader-content > .diagnosis-map-comparison {
+  width: calc(100% + var(--reader-figure-extra));
+  margin-block: 36px;
+  padding-block: 22px;
+  border-block: 1px solid var(--line);
+  font-family: var(--reader-ui-font);
+}
+.reader-content .diagnosis-map-intro { margin: 0 0 24px; font-size: 16px; line-height: 1.6; }
+.diagnosis-map-panels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start; }
+.diagnosis-map { min-width: 0; margin: 0; }
+.reader-content .diagnosis-map h3 { margin: 0 0 6px; font-size: 22px; font-weight: 600; letter-spacing: -.3px; }
+.reader-content .diagnosis-map-question { margin: 0 0 16px; font-size: 17px; line-height: 1.5; color: var(--muted); }
+.diagnosis-map-image { display: block; border: 1px solid #ddd7e8; background: #fff; }
+.diagnosis-map-image img { display: block; width: 100%; height: auto; }
+.reader-prose .diagnosis-map figcaption { margin-top: 14px; font-size: 14px; line-height: 1.65; }
+.diagnosis-map figcaption a { display: block; width: fit-content; margin-top: 8px; }
+@media (max-width: 700px) {
+  .diagnosis-map-panels { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .diagnosis-map { width: 100%; max-width: 440px; margin-inline: auto; }
+}
+@media print {
+  .reader-content > .diagnosis-map-comparison { width: 100%; break-inside: avoid; }
+  .diagnosis-map-panels { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .diagnosis-map { max-width: none; }
+  .diagnosis-map figcaption a { display: none; }
+}

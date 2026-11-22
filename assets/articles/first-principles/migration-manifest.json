@@ -27,7 +27,7 @@
       "route": "/articles/first-principles/why-plans-are-not-enough/",
       "sourceSha256": "21ee41a0cd1144745845572a46c0d5e5ff1dfe7d9abf4db47ca94d21ffb7d320",
       "originalBodySha256": "eb5a00db0e3389a81edf74d2f7660fb8ffa36daf92111ce4165984b086ce48e1",
-      "migratedBodySha256": "4b3ddc893197f54e8b3cc128d5e46b81b75e91fc3ba7c7416d69070ee1597067",
+      "migratedBodySha256": "df50bbc5bd44b3bb0304829a392fe8830ce0d70ab1ee990b539a9b33c0f43e22",
       "mathFragments": [],
       "figureFragments": [
         {
@@ -44,6 +44,11 @@
           "from": "Input review, acceptance of an analytical finding, an operating choice and sourced external authority remain distinct records.",
           "to": "Supplied inputs, calculated findings, an operating choice and sourced external authority remain distinct parts of the record.",
           "reason": "Current calculation workflows no longer include acceptance of an analytical finding; preserve the distinction between calculation, operating choice and external authority without claiming a removed control."
+        },
+        {
+          "from": "<p>We can expose them with a short decision statement. Each named slot identifies information to supply, a conclusion to establish, or a decision to record:</p>",
+          "to": "<p>We can expose them with a short decision statement. Each named slot identifies information to supply, a conclusion to establish, or a decision to record.</p>\n<p>The slot names are explanatory notation for this argument. SDK schemas and workflow definitions specify actual records and steps. Human acceptance means agreement to an operating commitment.</p>",
+          "reason": "Identify the decision-statement slots as explanatory notation, preserving human agreement to an operating commitment without presenting the names as SDK fields or required workflow steps."
         }
       ]
     },
@@ -59,7 +64,7 @@
       "route": "/articles/first-principles/how-much-uncertainty-is-left/",
       "sourceSha256": "5339383f789194f6704a3ad2c7d7d9f2ebf121b70e91f7a27dcdadbed01affc5",
       "originalBodySha256": "6a933cd6ec8ac238c580a7e6deb77e86435b831db2b6cc2807d05265b8668f23",
-      "migratedBodySha256": "957dfedd9ebae3f641e71849ae834311f31d350184c517c4c531b7889a9f681f",
+      "migratedBodySha256": "2763855c8cde42cb7d55e53ce85c9a924848f5a8342a01de7397dd4b1a290fc5",
       "mathFragments": [
         {
           "sha256": "f6aa321270d868258acf017ffe0412602b1e652d50356684dd2bbb26d1a79c62",
@@ -127,6 +132,13 @@
         "ref-shannon",
         "ref-value-of-information",
         "ref-rand"
+      ],
+      "editorialCorrections": [
+        {
+          "from": "<p>The calculation below is a new teaching extension. Its probabilities and observation accuracy are stipulated assumptions, not measured shipment data or outputs from the published application. We use the following statement to keep choices, evidence, findings, and human decisions separate:</p>",
+          "to": "<p>The calculation below is a new teaching extension. Its probabilities and observation accuracy are stipulated assumptions, not measured shipment data or outputs from the published application. We use the following statement to keep choices, evidence, findings, and human decisions separate.</p>\n<p>The slot names are explanatory notation for this argument. SDK schemas and workflow definitions specify actual records and steps. Human acceptance means agreement to an operating commitment.</p>",
+          "reason": "Identify the decision-statement slots as explanatory notation, preserving human agreement to an operating commitment without presenting the names as SDK fields or required workflow steps."
+        }
       ]
     },
     {
@@ -141,7 +153,7 @@
       "route": "/articles/first-principles/a-better-plan-can-leave-us-just-as-uncertain/",
       "sourceSha256": "f3a89cef02ce5ad8c7e5be12e79529413bc2062dced4c9411a4c379e9c22e2bb",
       "originalBodySha256": "283df0f9e1d011acba33384ad504974d497223cac7d9405ef64c10c96e07652e",
-      "migratedBodySha256": "91df8bc96ff6ff31868ec41ceb39177dc6fcc11b193b63a22773c2798b62640b",
+      "migratedBodySha256": "9f877b8ed8db5cc42bb3179b7acd8ccf4ccbc7f228fc048573a7e22e2e459abd",
       "mathFragments": [
         {
           "sha256": "d48435c34c0840919fa68161bcb169e6f0a5421d8f616b038cb577069605b48f",
@@ -264,6 +276,18 @@
       "referenceIds": [
         "ref-information-control",
         "ref-robust-planning"
+      ],
+      "editorialCorrections": [
+        {
+          "from": "<p>We keep the same named decision statement throughout:</p>",
+          "to": "<p>We keep the same named decision statement throughout.</p>\n<p>The slot names are explanatory notation for this argument. SDK schemas and workflow definitions specify actual records and steps. Human acceptance means agreement to an operating commitment.</p>",
+          "reason": "Identify the decision-statement slots as explanatory notation, preserving human agreement to an operating commitment without presenting the names as SDK fields or required workflow steps."
+        },
+        {
+          "from": "Accepted scoped diagnostic reports can also establish that a $100 insert replacement is sufficient; an attractive quote cannot supply that diagnosis.",
+          "to": "When current scoped diagnostic evidence establishes that only the insert needs correction, the $100 replacement can suffice; an attractive quote cannot supply that diagnosis.",
+          "reason": "Describe the diagnostic support without implying the removed case-level analytical acceptance step; preserve the original correction scope and amount."
+        }
       ]
     }
   ]

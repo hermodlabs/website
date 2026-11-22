@@ -1,6 +1,6 @@
 # Gift-kit readiness
 
-These fictional cases support the current gifting business article and its CLI-to-SDK continuation. Leah must deliver 120 usable kits by the end of the day, within the recorded expense limit and operating requirements.
+These fictional cases support the two current gifting series: four business decisions and three CLI-to-SDK integration articles. Leah must deliver 120 usable kits by the end of the day, within the recorded expense limit and operating requirements.
 
 ## Current examples
 
@@ -21,3 +21,9 @@ The continuation retains separate choice, authorization, correction, passed rehe
 Each current capture directory retains its exact verification receipt, native cases, image dimensions and hashes. `scripts/capture-gifting-summary-ui.mjs` reproduces the Marketplace views. The current source excerpts are retained in `../sample-code/shared-report-sdk-preview-2026-11-21/`; the original snapshot remains in `../sample-code/calculation-integration-2026-11-20/`; its manifest distinguishes implemented source from the public repository reference. Website checks verify screenshot and code integrity separately from business eligibility.
 
 The new screenshots are local production previews. No publication is claimed. Each receipt and `../../decision-lab-shared-report-preview/` identifies frozen build bytes separately from accompanying source context. Historical public and integration captures keep their original identities.
+
+## Reading structure
+
+The scenario hub keeps **Protect the gift-kit promise** (diagnosis, timing, booking scope, completion) separate from **Bring the review into the team’s own tools** (CLI intervention queue, SDK continuation, retained operating history). Each article has a single question, opening stakes/outcome, and a bounded resolution. The complete Forms/YAML, report and process walkthrough is a shared reference on the scenario hub rather than a repeated article section.
+
+The Marketplace workflow and custom Handoff Desk remain distinct configurations. The latter supplies operating records and the completion gate. A later negative rehearsal changes the support for a completion claim while the prior handoff event and record remain historical facts. Existing captures, hashes and source snapshots are reused without claiming new app calculations.

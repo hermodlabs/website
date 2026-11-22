@@ -1,0 +1,58 @@
+{
+  "release": {
+    "coreMinutes": 720,
+    "reportingMinutes": 480,
+    "originalDeadline": 1020,
+    "proposedDeadline": 2040,
+    "acceptedRevisedDeadline": 2040,
+    "budgetMinor": 50000,
+    "extraFeeMinor": 40000,
+    "scopeRevisionAccepted": false,
+    "dateRevisionAccepted": false,
+    "prerequisiteConfirmed": true,
+    "releaseAuthorized": true,
+    "availability": [
+      {
+        "id": "existing-today",
+        "resource": "existing-qa",
+        "from": 0,
+        "through": 960
+      },
+      {
+        "id": "existing-next-day",
+        "resource": "existing-qa",
+        "from": 1440,
+        "through": 2400
+      },
+      {
+        "id": "external-window",
+        "resource": "external-qa",
+        "from": 421,
+        "through": 660
+      },
+      {
+        "id": "release-owner-window",
+        "resource": "release-owner",
+        "from": 0,
+        "through": 4000
+      }
+    ],
+    "qualifications": [
+      {
+        "resource": "existing-qa",
+        "build": "release-2026-11",
+        "environment": "release-validation",
+        "from": 0,
+        "through": 4000
+      },
+      {
+        "resource": "external-qa",
+        "build": "release-2026-11",
+        "environment": "release-validation",
+        "from": 420,
+        "through": 660
+      }
+    ],
+    "bookings": []
+  }
+}

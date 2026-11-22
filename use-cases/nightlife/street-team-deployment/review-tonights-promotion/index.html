@@ -39,6 +39,7 @@
   <script src="../../../../assets/feature-flags.js" defer></script>
   <script src="../../../../assets/site.js" defer></script>
   <script src="../../../../assets/form-request.js" defer></script>
+
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -78,6 +79,7 @@
 
 
 
+
 <header class="reading-header wrap reading-header-with-cover">
   <div class="reading-header-content">
     
@@ -98,6 +100,7 @@
 </nav>
 
     <p class="eyebrow">Street-team deployment / Business decision</p>
+    
     <h1>Can Alex justify a $200 promotion push tonight?</h1>
     <p class="reading-description">Compare four deployments against the same staffing and spending limits, then follow Alex’s bounded $200 decision while customer response remains unknown.</p>
     <p class="reading-meta">Jonathan Nacionales <span aria-hidden="true">·</span> 7 min read</p>
@@ -274,7 +277,7 @@
   <figcaption><strong>The people and the decision.</strong> Both teams bring their priorities to Alex; Alex decides and reports to the owner. Solid arrows show reporting, and dashed marks show declared influence. <a href="../../../../assets/use-cases/street-team-deployment/decision-map.svg">View full-size SVG</a> · <a href="../../../../assets/use-cases/street-team-deployment/decision-map.json" download>Download the structured model</a>.</figcaption>
 </figure>
 <span class="use-case-anchor" id="decision-hierarchy"></span>
-<p>We classify this as a <strong>shared-staff allocation problem</strong>. Its <strong>bounded deployment decision pattern</strong> is to compare complete assignments, establish which meet the requirements, then make a commitment. <a href="../../../../articles/pattern-languages-for-human-decisions/index.html#adapt-patterns-to-context">The pattern can be reused with different facts and requirements.</a></p>
+<p>We classify this as a <strong>shared-staff allocation problem</strong>. Its decision pattern is <a href="../../../../articles/patterns/make-a-bounded-commitment/index.html">Make a Bounded Commitment</a>: compare complete assignments, establish which meet the requirements, then make a commitment. The pattern can be reused with different facts and requirements.</p>
 <p><strong>Hermod Labs built the workflow used here.</strong> Its operating assessment treats each candidate as a complete deployment and checks whether its requirements hold together. This is the role of an <a href="../../../../articles/from-arrangements-to-assessments/index.html">assessment pattern</a>: specify what a candidate means and what its evaluation establishes. The workflow also calculates conditional expense-recovery thresholds. Alex uses those findings to make the spending judgment and commitment through the venue’s normal process.</p>
 <h2 id="bounded-decision">Alex makes a decision he can explain.</h2>
 <p>In the five-staff, on-time-event situation, Alex chooses the <strong>one-person standard-offer deployment</strong>. Four remain inside. The proposed schedule and location fit. He understands that five genuinely additional guests would cover its <strong>$200 expense</strong>.</p>
@@ -320,7 +323,6 @@
 
       
     </div>
-
 
 
     <footer class="reader-footer">

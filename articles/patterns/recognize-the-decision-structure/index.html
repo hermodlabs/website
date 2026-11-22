@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-V2474V50XP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-V2474V50XP');
+</script>
+
+
+  <title>Recognize the Decision Structure | Hermod Labs</title>
+  <meta name="description" content="Learn to identify recurring decision structures by their fixed obligations, variable choices and supported conclusions.">
+  <meta name="author" content="Jonathan Nacionales">
+
+  <link rel="canonical" href="https://hermodlabs.com/articles/patterns/recognize-the-decision-structure/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Hermod Labs">
+  <meta property="og:title" content="Recognize the Decision Structure | Hermod Labs">
+  <meta property="og:description" content="Learn to identify recurring decision structures by their fixed obligations, variable choices and supported conclusions.">
+  <meta property="og:url" content="https://hermodlabs.com/articles/patterns/recognize-the-decision-structure/">
+  <meta property="og:image" content="https://hermodlabs.com/assets/hermod-wordmark.jpeg">
+
+  <meta name="theme-color" content="#7850c2">
+  <link rel="icon" type="image/jpeg" href="../../../assets/hermod-symbol.jpeg">
+  <link rel="stylesheet" href="../../../assets/site.css">
+
+
+  <link rel="stylesheet" href="../../../assets/reader.css">
+
+
+
+  <script src="../../../assets/feature-flags.js" defer></script>
+  <script src="../../../assets/site.js" defer></script>
+  <script src="../../../assets/form-request.js" defer></script>
+
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+  <a class="brand" href="../../../index.html" aria-label="Hermod Labs home"><img src="../../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>Menu <span aria-hidden="true">+</span></button>
+  <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
+    <a href="../../../blog/index.html"><svg class="nav-icon nav-icon-blog" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M11 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6"/>
+  <path d="m9 12 9-9 3 3-9 9-4 1 1-4Zm7-7 3 3"/>
+</svg><span>Blog</span></a><a href="../../../platform/index.html"><svg class="nav-icon nav-icon-platform" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <rect x="3" y="3" width="6" height="6" rx="1.2"/>
+  <rect x="15" y="3" width="6" height="6" rx="1.2"/>
+  <rect x="9" y="15" width="6" height="6" rx="1.2"/>
+  <path d="M9 6h6M6 9v3h12V9m-6 3v3"/>
+</svg><span>Platform</span></a><a href="../../index.html" aria-current="page"><svg class="nav-icon nav-icon-articles" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M12 6.5C9.4 4.8 6.3 4.4 3 5.3v13.4c3.3-.9 6.4-.5 9 1.2 2.6-1.7 5.7-2.1 9-1.2V5.3c-3.3-.9-6.4-.5-9 1.2Z"/>
+  <path d="M12 6.5v13.4"/>
+</svg><span>Articles</span></a><a href="../../../products/index.html"><svg class="nav-icon nav-icon-products" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <rect x="3" y="4" width="18" height="16" rx="2"/>
+  <path d="m7 9 3 3-3 3m6 0h4"/>
+</svg><span>Products</span></a><a href="../../../use-cases/index.html"><svg class="nav-icon nav-icon-use-cases" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <rect x="3" y="7" width="18" height="14" rx="2"/>
+  <path d="M8 7V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3M3 12a22 22 0 0 0 18 0m-12 3 2 2 4-4"/>
+</svg><span>Use Cases</span></a><a href="../../../professional-services/index.html"><svg class="nav-icon nav-icon-professional-services" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <circle cx="9" cy="8" r="3"/>
+  <path d="M3 20v-2a6 6 0 0 1 12 0v2M16 5a3 3 0 0 1 0 6m1 3a4 4 0 0 1 4 4v2"/>
+</svg><span>Professional Services</span></a>
+    <a class="button nav-cta" data-decision-lab-link data-site-root="../../../index.html" hidden><span>Try Decision Lab free</span><svg class="nav-icon nav-icon-launch" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M8 5h11v11M19 5 5 19"/>
+</svg></a>
+  </nav>
+</header>
+
+  <main id="main" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="reading-header wrap reading-header-with-cover">
+  <div class="reading-header-content">
+
+  
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+
+  
+  <a href="../../index.html">All articles</a>
+
+  <span aria-hidden="true">/</span>
+  <a class="article-category" href="../index.html">Patterns</a>
+
+</nav>
+
+
+  <p class="eyebrow">Patterns</p>
+
+  <h1>Recognize the Decision Structure</h1>
+  <p class="reading-description">Identify recurring decision structures by their fixed obligations, variable choices and supported conclusions.</p>
+
+  <p class="reading-meta"><span class="article-author">Jonathan Nacionales</span> <span aria-hidden="true">·</span> 6 min read</p>
+  <ul class="article-tags" aria-label="Article topics">
+    
+    <li><a href="../../topics/pattern-languages/index.html">Pattern languages</a></li>
+    
+    <li><a href="../../topics/arrangements/index.html">Arrangements</a></li>
+    
+    <li><a href="../../topics/decision-lab/index.html">Decision Lab</a></li>
+    
+  </ul>
+  </div>
+
+  <figure class="reading-cover article-cover">
+    <img class="reading-cover-image article-cover-image" src="../../../assets/articles/patterns/recognize-the-decision-structure.svg" alt="A structural illustration for recognize the decision structure, connecting the question, complete possibilities and the finding it supports." width="960" height="720" decoding="async">
+  </figure>
+
+</header>
+
+<div class="reader-layout reading-layout wrap standalone-reading">
+
+  <aside class="reader-navigation" aria-label="Reading navigation">
+    <nav class="reader-toc" aria-labelledby="reader-toc-heading">
+  <details class="disclosure reader-nav-disclosure" open>
+    <summary><h2 class="disclosure-label" id="reader-toc-heading">On this page</h2></summary>
+    <ol>
+      <li><a href="#name-the-consequence">Identify the consequential choice.</a></li>
+      <li><a href="#fixed-and-variable">Separate what remains fixed from what can vary.</a></li>
+      <li><a href="#candidate-meaning">Ask what a candidate represents.</a></li>
+      <li><a href="#recognize-pattern-signatures">Look for a recognizable relationship.</a></li>
+      <li><a href="#test-the-resemblance">Test the resemblance with a near miss.</a></li>
+      <li><a href="#compare-variations">Predict a variation before revealing its result.</a></li>
+    </ol>
+  </details>
+</nav>
+
+  </aside>
+
+  <article class="reader-prose article-body" id="article-content" aria-label="Recognize the Decision Structure">
+    <div class="reader-content">
+
+<p class="reader-lead">A restaurant callout and an at-risk software release share no obvious vocabulary. Both can require repairing an existing commitment with scarce qualified capacity. Recognizing that structure helps someone ask better questions before choosing a tool or copying a workflow.</p>
+<p>A pattern name is useful when you can explain why it fits and where the resemblance ends. Start with the decision's relationships, rather than matching its industry or the words people use.</p>
+<p>A <strong>problem family</strong> describes a recurring difficulty, such as allocating scarce qualified capacity. A <strong>decision pattern</strong> describes an approach to organizing the choice. The same family can admit several approaches, and an approach can apply across different domains.</p>
+
+<h2 id="name-the-consequence">Identify the consequential choice.</h2>
+<p>Ask who needs to decide, what they could do differently and what happens if they get it wrong. “Understand the shipment” is broad. “Choose a supported shipment response before reservation closes” exposes the action, deadline and stakes.</p>
+<p>Some questions support a later decision without choosing an action themselves. Establishing which faults the observations imply is a judgment about evidence. It can define corrective work, but it does not select a supplier or authorize expense.</p>
+
+<h2 id="fixed-and-variable">Separate what remains fixed from what can vary.</h2>
+<p>State the obligation, scope, operating facts and decision boundaries. Then identify the choices the comparison is allowed to change. The original promise must remain visible when comparing responses that revise it.</p>
+<p>For <a href="../../../use-cases/software-delivery/release-recovery/what-can-we-commit-to/index.html">Nina's release</a>, the baseline retains core functionality and reporting, the original cutoff and the $500 additional-expense limit. Additional qualified help, deferred reporting and a later release represent different responses. An accepted scope revision changes a declared condition; quietly removing reporting changes the question without acknowledging it.</p>
+<p>Also distinguish a planned choice from an uncertain observation. A manager can choose an arrangement. They cannot choose which interpretation of fixed evidence is true merely because its remedy is cheaper.</p>
+
+<h2 id="candidate-meaning">Ask what a candidate represents.</h2>
+<div class="article-table-scroll" role="region" tabindex="0" aria-label="Candidate meanings and the judgments they support">
+<table>
+  <caption>The same arrangement foundation can support different assessment questions.</caption>
+  <thead><tr><th scope="col">Assessment</th><th scope="col">Candidate meaning</th><th scope="col">Judgment sought</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">Evidence</th><td>An interpretation compatible with fixed observations.</td><td>Does an admissible interpretation exist, and do admissible interpretations agree on the required answer?</td></tr>
+    <tr><th scope="row">Commitment</th><td>A complete supplied operating arrangement.</td><td>Which candidates meet the declared obligations?</td></tr>
+    <tr><th scope="row">Information value</th><td>An investigation with responses to its possible reports.</td><td>Is its modeled outcome better than the supported outside option?</td></tr>
+  </tbody>
+</table>
+</div>
+<p><a href="../../from-arrangements-to-assessments/index.html">From Arrangements to Assessments</a> explains those assessment contracts. Similar tables or graphs do not make their conclusions interchangeable. In particular, a planned rehearsal is neither evidence that it occurred nor a calculated reason to purchase it.</p>
+
+<h2 id="recognize-pattern-signatures">Look for a recognizable relationship.</h2>
+<p>Use <a href="../make-a-bounded-commitment/index.html">Make a Bounded Commitment</a> when complete responses must satisfy connected conditions. Use <a href="../repair-a-disrupted-commitment/index.html">Repair a Disrupted Commitment</a> when changed facts undermine an existing promise and repairs may affect other obligations.</p>
+<p>Use <a href="../diagnose-before-correcting/index.html">Diagnose Before Correcting</a> when different supported explanations imply different remedies. Use <a href="../investigate-before-acting/index.html">Investigate Before Acting</a> when obtaining information is itself a proposed commitment whose results could change a later response.</p>
+<p>A situation can use several patterns. Leah first establishes the gift-kit faults, then compares complete corrections. The decision structure connects those judgments without treating them as the same assessment.</p>
+
+<h2 id="test-the-resemblance">Test the resemblance with a near miss.</h2>
+<p>“We need more staff” could mean capacity is insufficient, existing staff lack a qualification or someone is unavailable at the required time. An extra person resolves none of those conditions unless their actual assignment fits. “We need a test” could mean a mandatory operating check, diagnosis or an optional study. Identify what the result must establish before naming the pattern.</p>
+<p>A first roster and a disrupted published roster can both require feasibility reasoning. Only the latter necessarily carries an existing assignment's stability and recovery obligations. A forecast of customer attendance may inform spending; it does not establish a deployment's operating fit.</p>
+
+<h2 id="compare-variations">Predict a variation before revealing its result.</h2>
+<p>Try the <a href="../explore-a-disrupted-commitment/index.html">disrupted-commitment experiment</a>. Before revealing each finding, predict what a qualified tester, a mismatched qualification, an accepted scope reduction or an unknown estimate should change. Then compare the restaurant variation: what corresponds to qualification and availability, and which conditions have different domain meanings?</p>
+<p>Practice with an unfamiliar situation. State the choice, retained obligation, variable candidates, supporting facts and expected conclusion. Explain one reason your selected pattern fits and one condition that would require another approach. The goal is a justified mapping you can discuss and test.</p>
+
+
+    </div>
+    
+
+
+
+    <footer class="reader-footer">
+
+  <section class="reader-related related-reading" aria-labelledby="related-reading-heading">
+    <h2 id="related-reading-heading">Related reading</h2>
+    <ul>
+
+      <li>
+
+        <a href="../repair-a-disrupted-commitment/index.html"><span>4 min read</span><strong>Repair a Disrupted Commitment</strong></a>
+      </li>
+
+      <li>
+
+        <a href="../diagnose-before-correcting/index.html"><span>4 min read</span><strong>Diagnose Before Correcting</strong></a>
+      </li>
+
+      <li>
+
+        <a href="../explore-a-disrupted-commitment/index.html"><span>6 min read</span><strong>Explore a Disrupted Commitment</strong></a>
+      </li>
+
+    </ul>
+  </section>
+
+
+  <nav class="reader-returns reader-return article-category-return" aria-label="More articles">
+
+    <a class="text-link" href="../index.html">More in Patterns <span aria-hidden="true">→</span></a>
+
+    <a class="text-link" href="../../index.html">All articles <span aria-hidden="true">→</span></a>
+
+  </nav>
+</footer>
+
+  </article>
+</div>
+
+
+
+
+
+
+</main>
+  <footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-directory">
+      <div class="footer-identity">
+        <a class="footer-brand" href="../../../index.html" aria-label="Hermod Labs home"><img src="../../../assets/hermod-wordmark.jpeg" alt="Hermod Labs" width="1536" height="512"></a>
+        <p class="footer-description">Tools and ideas for decisions you can inspect and revise.</p>
+        <nav class="footer-social-links" aria-label="Hermod Labs profiles">
+          <a href="https://www.linkedin.com/company/hermodlabs/" aria-label="Hermod Labs on LinkedIn" title="LinkedIn"><svg class="footer-social-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124Zm1.782 13.019H3.555V9h3.564v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0Z"/>
+</svg></a>
+          <a href="https://github.com/hermodlabs" aria-label="Hermod Labs on GitHub" title="GitHub"><svg class="footer-social-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+  <path d="M12 .297a12 12 0 0 0-3.793 23.385c.6.111.82-.261.82-.577 0-.285-.011-1.04-.017-2.041-3.338.724-4.043-1.609-4.043-1.609-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.729.083-.729 1.205.085 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.303-5.467-1.334-5.467-5.931 0-1.31.469-2.381 1.236-3.221-.124-.303-.536-1.524.117-3.176 0 0 1.008-.323 3.301 1.23a11.52 11.52 0 0 1 3.003-.404c1.02.005 2.047.138 3.006.404 2.291-1.553 3.297-1.23 3.297-1.23.655 1.652.243 2.873.119 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.625-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .319.216.694.825.576A12.001 12.001 0 0 0 12 .297Z"/>
+</svg></a>
+        </nav>
+      </div>
+
+      <section class="footer-contact-section" aria-labelledby="footer-contact-heading">
+        <h3 id="footer-contact-heading">Contact us</h3>
+        <form class="beta-form footer-contact-form" id="footer-contact-form" action="https://forminit.com/f/1vqi2088svl" method="POST" data-forminit-request data-pending-message="Sending your message…" data-success-message="Thanks, your message has been sent. We’ll reply by email." accept-charset="UTF-8" aria-labelledby="footer-contact-heading">
+  <input type="hidden" name="fi-text-request" value="Hermod Labs contact">
+  <input type="hidden" name="fi-text-subject" value="Hermod Labs — Contact form">
+  <input type="hidden" name="_gotcha" value="">
+  <fieldset>
+    <legend class="visually-hidden">Contact Hermod Labs</legend>
+    <div class="footer-contact-fields">
+      <div class="form-field"><label for="footer-name">Name <span>(required)</span></label><input id="footer-name" type="text" name="fi-sender-fullName" autocomplete="name" maxlength="160" required></div>
+      <div class="form-field"><label for="footer-email">Email <span>(required)</span></label><input id="footer-email" type="email" name="fi-sender-email" autocomplete="email" maxlength="254" required></div>
+    </div>
+    <div class="form-field"><label for="footer-message">Message <span>(required)</span></label><textarea id="footer-message" name="fi-text-message" rows="3" maxlength="5000" placeholder="Tell us what you’d like to discuss." required></textarea></div>
+  </fieldset>
+  <button class="button" type="submit">Send message <span aria-hidden="true">↗</span></button>
+  <p class="form-status" id="footer-contact-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></p>
+</form>
+
+      </section>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2026 Hermod Labs</p>
+      <p class="footer-signoff">Automated reasoning. Human judgment.</p>
+      <a class="footer-top-link" href="#main">Back to top <span aria-hidden="true">↑</span></a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

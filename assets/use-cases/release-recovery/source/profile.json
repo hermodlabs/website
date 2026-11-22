@@ -1,0 +1,48 @@
+{
+  "format": "software-release-profile/1",
+  "id": "release-recovery",
+  "version": "1.0.0",
+  "title": "Compare release arrangements",
+  "timeOrigin": "minutes from the recorded release-planning origin",
+  "money": "USD cent",
+  "build": "release-2026-11",
+  "environment": "release-validation",
+  "independentCoreMinutes": 240,
+  "integrationCoreMinutes": 60,
+  "handoffMinutes": 60,
+  "nextDayIntegrationStart": 1440,
+  "defaults": {
+    "coreMinutes": 720,
+    "reportingMinutes": 480,
+    "originalDeadline": 1020,
+    "proposedDeadline": 2040,
+    "acceptedRevisedDeadline": 2040,
+    "budgetMinor": 50000,
+    "extraFeeMinor": 40000,
+    "scopeRevisionAccepted": false,
+    "dateRevisionAccepted": false,
+    "prerequisiteConfirmed": true,
+    "releaseAuthorized": true
+  },
+  "resources": [
+    { "id": "existing-qa", "label": "Existing qualified QA" },
+    { "id": "external-qa", "label": "Additional qualified QA" },
+    { "id": "release-owner", "label": "Release owner" }
+  ],
+  "availability": [
+    { "id": "existing-today", "resource": "existing-qa", "from": 0, "through": 960 },
+    { "id": "existing-next-day", "resource": "existing-qa", "from": 1440, "through": 2400 },
+    { "id": "external-window", "resource": "external-qa", "from": 420, "through": 660 },
+    { "id": "release-owner-window", "resource": "release-owner", "from": 0, "through": 4000 }
+  ],
+  "qualifications": [
+    { "resource": "existing-qa", "build": "release-2026-11", "environment": "release-validation", "from": 0, "through": 4000 },
+    { "resource": "external-qa", "build": "release-2026-11", "environment": "release-validation", "from": 420, "through": 660 }
+  ],
+  "arrangements": [
+    { "id": "original", "label": "Full release with existing QA", "reportingIncluded": true, "scopeRevision": false, "dateRevision": false, "external": false },
+    { "id": "core-only", "label": "Core release with reporting deferred", "reportingIncluded": false, "scopeRevision": true, "dateRevision": false, "external": false },
+    { "id": "extra-help", "label": "Full release with additional qualified QA", "reportingIncluded": true, "scopeRevision": false, "dateRevision": false, "external": true },
+    { "id": "later-release", "label": "Full release on the proposed later date", "reportingIncluded": true, "scopeRevision": false, "dateRevision": true, "external": false }
+  ]
+}

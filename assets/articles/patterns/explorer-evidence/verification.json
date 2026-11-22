@@ -1,0 +1,82 @@
+{
+  "format": "pattern-explorer-native-qualification/1",
+  "generatedAt": "2026-11-22T14:52:22.394Z",
+  "method": "Public SDK opens the retained published workflow definition, starts the unchanged missing-estimate source fixture, solves ready steps and prepares the native output. No calculated findings are injected. The fixture is unanswered, not an estimate of zero.",
+  "workflow": {
+    "id": "plan-at-risk-release",
+    "version": "1.0.0",
+    "definitionHash": "01667c2381dbb14f2a9152e0e482bd3c3268efdd530370f9346f2f035fc75525"
+  },
+  "sdk": {
+    "version": "0.1.0",
+    "qualifiers": [
+      {
+        "entry": "dist/index.js",
+        "sha256": "58f9857313b9fd80f2d328c02b9ab47151e3a601411e4a8bd5c8f7767ec3e739"
+      },
+      {
+        "entry": "dist/adapters/node/index.js",
+        "sha256": "baf1bca288168f911d9352e47923cc9d78ff0cf60c307be1eefcb1cb74120474"
+      }
+    ],
+    "note": "SHA-256 identifies the local SDK entry files used for this qualification; it is not a claim that every transitive dependency is archived here."
+  },
+  "artifacts": [
+    {
+      "url": "/assets/use-cases/release-recovery/current-ui/baseline.run.json",
+      "bytes": 548991,
+      "sha256": "b60b94376e1562ffe575564fe6fb37b79d74152f806618da1d73650b97e3807d"
+    },
+    {
+      "url": "/assets/use-cases/release-recovery/current-ui/accepted-scope.run.json",
+      "bytes": 881949,
+      "sha256": "d7de3806acd2aa5aebb7d37932581a88584daa47616b1878b61e900b6ec5a56e"
+    },
+    {
+      "url": "/assets/use-cases/release-recovery/current-ui/wrong-build.run.json",
+      "bytes": 1251069,
+      "sha256": "271279068d23d7c10bb48b6a71bf697a21ab786575085c1fc1a478c042c9892e"
+    },
+    {
+      "url": "/assets/articles/patterns/explorer-evidence/missing-estimate.run.json",
+      "bytes": 191223,
+      "sha256": "645cc117f613c6b0f28838007ce56ea166c1b5f722f3c2030845b81a695355d6"
+    },
+    {
+      "url": "/assets/articles/patterns/explorer-evidence/missing-estimate.output.json",
+      "bytes": 97703,
+      "sha256": "988f09e9ab0b177275d38ec2fbb886a979b0f0c68b53d5a48a66b9e4f6004b5d"
+    },
+    {
+      "url": "/assets/use-cases/release-recovery/current-ui/release.workflow.json",
+      "bytes": 307132,
+      "sha256": "d9c9e866ea6c0793a31630c790b3d66eb194d5871072e52a59ae8a0d90694f72"
+    },
+    {
+      "url": "/assets/use-cases/release-recovery/source/cases/missing-estimate.json",
+      "bytes": 1293,
+      "sha256": "223064adf4b25c09e89ae6c1e9d485f42b14d42ae6ef5680e5c2d5bc8830367c"
+    },
+    {
+      "url": "/assets/use-cases/restaurant-roster-repair/shared-report-preview/full.run.json",
+      "bytes": 1582300,
+      "sha256": "3eeed08ebf07d2f3008ba4bbea8c2b35d9aa0f9bfca580f77d42e0892005a058"
+    },
+    {
+      "url": "/assets/use-cases/restaurant-roster-repair/shared-report-preview/short.run.json",
+      "bytes": 2225561,
+      "sha256": "e824c30a89cc671120d6ac1f03277d7881e2b12b6d25783940c2d9d889b6d81e"
+    }
+  ],
+  "checks": [
+    "All four release presets retain the same pinned published workflow definition.",
+    "Each changed release preset differs from the baseline by exactly the declared single fact.",
+    "Baseline: only extra-help passes, for $400 at minute 1020, preserving the original promise; no preference is declared.",
+    "Accepted scope: core-only and extra-help pass on different commitment bases.",
+    "Wrong build: no supplied arrangement passes the complete calculation.",
+    "Missing estimate: zero evaluations, needs-input and unknown summary; no infeasibility conclusion.",
+    "Restaurant transfer: only relief availability changes; two passing repairs become one coordinated repair.",
+    "Every displayed release result row matches the latest native planning output."
+  ],
+  "passed": true
+}

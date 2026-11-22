@@ -1,0 +1,89 @@
+{
+  "workflowId": "plan-at-risk-release",
+  "workflowVersion": "1.0.0",
+  "buildVersion": "5276c31cdf61d3ef20e1",
+  "installUrl": "https://hermodlabs.github.io/review_lab/?install=workflow&id=plan-at-risk-release&version=1.0.0&publisher=decision-lab&collection=software-delivery&release=ac082fed5cd44cdaa9aa134b20f9f7712651792e16b03a62758e276096b0762a",
+  "verificationUrl": "/assets/use-cases/release-recovery/current-ui/verification.json",
+  "figures": {
+    "inputs": {
+      "image": "/assets/use-cases/release-recovery/current-ui/work-and-promise.png",
+      "width": 1208,
+      "height": 1155,
+      "sha256": "a2acc77db6638506ee8a12ad5ddfa6e39b53f5041de830e2619bb768492766ce",
+      "alt": "The public release workflow shows 720 minutes of core QA, 480 minutes of reporting QA, and the original deadline beside an uncalculated Decision summary.",
+      "caption": "Forms keeps the original workload and promise visible. Calculate evaluates the four supplied arrangements; Jira data does not supply the separate operating records."
+    },
+    "baseline": {
+      "image": "/assets/use-cases/release-recovery/current-ui/baseline-arrangements.png",
+      "width": 1208,
+      "height": 1307,
+      "sha256": "b826529b85cf2cbd640236d7470a5e9a3c9a087b5efcc5a6d6575719027053bf",
+      "alt": "Only the full release with additional qualified QA passes the baseline. It costs $400 and is ready Monday at 5 p.m.; the other three arrangements remain visible with their commitment basis.",
+      "caption": "The baseline admits one arrangement preserving the original scope and deadline. This model compares feasibility and declares no ranking or selected arrangement."
+    },
+    "scopeBefore": {
+      "image": "/assets/use-cases/release-recovery/current-ui/scope-not-accepted.png",
+      "width": 1208,
+      "height": 1367,
+      "sha256": "ed756af4ab5ccf88da91dd57956f1f6f9668358a70352e661cd59d5866beda17",
+      "alt": "Core-only is ready Monday at 1 p.m. but is blocked because deferring reporting has not been explicitly accepted. The original scope and deadline remain displayed.",
+      "caption": "Finishing core work is different from fulfilling the original promise. Before the change is accepted, core-only remains blocked."
+    },
+    "stale": {
+      "image": "/assets/use-cases/release-recovery/current-ui/accepted-change-needs-calculation.png",
+      "width": 1208,
+      "height": 1357,
+      "sha256": "81308d3d1a833268104a075cda8b258939695a5ebf272ab754ff09dbac9d4663",
+      "alt": "Recording acceptance of the reporting deferral marks the old calculation stale until Recalculate is used.",
+      "caption": "A changed amendment fact needs a new calculation. The previous finding does not remain current."
+    },
+    "scopeAfter": {
+      "image": "/assets/use-cases/release-recovery/current-ui/scope-accepted.png",
+      "width": 1208,
+      "height": 1203,
+      "sha256": "d218aba73c7a7af3b3f923f4d65e8971b6f4878f4acf0ec261137960c3e8912d",
+      "alt": "After acceptance is recorded and recalculated, the core-only arrangement is usable as an accepted scope revision. The report still says it does not preserve the original scope and deadline.",
+      "caption": "The same core-only schedule becomes an accepted revised commitment. It still does not deliver the reporting feature originally promised."
+    },
+    "wrongBuildSummary": {
+      "image": "/assets/use-cases/release-recovery/current-ui/wrong-build-summary.png",
+      "width": 1208,
+      "height": 1142,
+      "sha256": "21eaced5a47e02e209b0c0da2635c5b152baa30c587b25d6f94b4afad4229555",
+      "alt": "No supplied arrangement passes when the only changed fact is that the additional QA qualification covers another build. The scope and later-date revisions remain unaccepted.",
+      "caption": "The same headcount and $400 fee no longer provide a supported commitment. The qualification must cover the actual build and validation interval."
+    },
+    "wrongBuild": {
+      "image": "/assets/use-cases/release-recovery/current-ui/wrong-build-condition.png",
+      "width": 1208,
+      "height": 879,
+      "sha256": "83df023fe5af5a0b84c66c3485884830257d966ac3bdd11876da4a31c9c2ea30",
+      "alt": "The additional-help arrangement is blocked by the scoped qualification condition when the external record names another build. Its fee and handoff time remain the same.",
+      "caption": "The decisive condition is a qualification covering this build, environment and actual work—not merely an available additional tester."
+    },
+    "qualifiedHelp": {
+      "image": "/assets/use-cases/release-recovery/current-ui/qualified-help-condition.png",
+      "width": 1208,
+      "height": 617,
+      "sha256": "25920dfab69d9d0f945a2adc13c1b79fa7eea875b6986544a5617c73b734f1f6",
+      "alt": "With the correct scoped qualification restored, the complete additional-help arrangement passes. It preserves the original release for $400, with a Monday 5 p.m. handoff.",
+      "caption": "Qualified help makes one supplied complete arrangement feasible. It is not a generic rule that any extra person saves a release."
+    },
+    "helpTiming": {
+      "image": "/assets/use-cases/release-recovery/current-ui/additional-help-timing.png",
+      "width": 1208,
+      "height": 1426,
+      "sha256": "132226636846598b4e5a395ad75abc25174d9f1185b0a7ab719168be50a0e3e3",
+      "alt": "The Work and timing report shows the additional QA resource performing the fixed independent regression phase while the existing QA allocation performs the remaining authored work.",
+      "caption": "The model transfers a fixed independent-regression package. Other phases and their dependencies remain with the authored resources."
+    },
+    "process": {
+      "image": "/assets/use-cases/release-recovery/current-ui/release-decision-process.png",
+      "width": 1684,
+      "height": 2586,
+      "sha256": "fba162473e13ec49c46a007dbb5fba3ee68d688a71763d3721ab88aecbed50c6",
+      "alt": "The actual release decision graph connects calculability, passing original-commitment arrangements, accepted revisions and reconsideration of the recorded basis.",
+      "caption": "The process keeps recovering the original release separate from adopting a different commitment. Inspecting a path neither accepts an amendment nor deploys software."
+    }
+  }
+}
