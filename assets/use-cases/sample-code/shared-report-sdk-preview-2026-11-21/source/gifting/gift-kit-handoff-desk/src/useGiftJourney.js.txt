@@ -1,0 +1,160 @@
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { createDecisionLab, isCalculationWorkflow } from '@decision-lab/sdk';
+import { createBrowserExecutor } from '@decision-lab/sdk/browser';
+import {
+  acceptReviewFinding, createReviewJourney, evaluateReviewJourney, openReviewJourney,
+  recordJourneyDecision, recordJourneyOperation, reviewJourneyInputs, saveReviewJourney, solveReviewJourney, updateReviewInputs,
+} from './reviewJourney.js';
+import { atMinute, giftingAnswerValues, inspectGiftingJourney } from './giftingJourney.js';
+import { cents } from './gifting.js';
+
+const configURL = new URL(`${import.meta.env.BASE_URL}data/journey-config.json`, document.baseURI);
+async function readJSON(url, signal) {
+  const response = await fetch(url, { signal });
+  if (!response.ok) throw new Error(`Could not read ${url.pathname}: HTTP ${response.status}.`);
+  return response.json();
+}
+const whole = (value, label) => {
+  if (!/^(0|[1-9]\d*)$/.test(String(value)) || !Number.isSafeInteger(Number(value))) throw new Error(`${label} must be a nonnegative whole number.`);
+  return Number(value);
+};
+
+export default function useGiftJourney() {
+  const [config, setConfig] = useState(null), [app, setApp] = useState(null), [definition, setDefinition] = useState(null);
+  const [run, setRun] = useState(null), [draft, setDraft] = useState(null), [quoteCosts, setQuoteCosts] = useState({});
+  const [legacyDefinitions, setLegacyDefinitions] = useState([]);
+  const [actor, setActor] = useState(''), [status, setStatus] = useState('loading'), [issues, setIssues] = useState([]);
+  const [selectedId, setSelectedId] = useState(''), [dirty, setDirty] = useState(false), [savedHash, setSavedHash] = useState(null);
+  const labRef = useRef(null), request = useRef(0), active = useRef(null);
+  const storageKey = current => `decision-lab:gifting-journey:${current.identity.runId}`;
+
+  function install(current, id = '') {
+    setRun(current); setDraft(structuredClone(current.case.gifting));
+    setQuoteCosts(Object.fromEntries(current.case.gifting.work.quotes.map(row => [row.packageId, (row.repairCostMinor / 100).toFixed(2)])));
+    setDirty(false); setSelectedId(id); setSavedHash(null); setIssues([]); setStatus('ready');
+  }
+
+  useEffect(() => {
+    const executor = createBrowserExecutor(), lab = createDecisionLab({ executor });
+    const controller = new AbortController(), token = ++request.current;
+    labRef.current = lab; active.current = controller;
+    (async () => {
+      try {
+        const settings = await readJSON(configURL, controller.signal);
+        const [appData, workflow, businessCase] = await Promise.all([
+          readJSON(new URL(settings.appUrl, configURL), controller.signal),
+          readJSON(new URL(settings.definitionUrl, configURL), controller.signal),
+          readJSON(new URL(settings.cases[0].url, configURL), controller.signal),
+        ]);
+        const opened = lab.apps.open(appData);
+        if (workflow.contentHash !== settings.definitionHash || opened.contentHash !== settings.binding.packageHash) throw new Error('The tutorial rules do not match their configured release.');
+        const current = createReviewJourney({ lab, app: opened, definition: workflow, case: businessCase,
+          caseIdPath: 'gifting.id', owner: settings.cases[0].owner,
+          runId: `gift-resolution-${businessCase.gifting.id}`, createdAt: atMinute(businessCase.gifting.commitment.nowMinute, settings.profile.clockOrigin) });
+        if (token !== request.current) return;
+        setLegacyDefinitions(await Promise.all((settings.legacyDefinitions ?? []).map(async entry => { const value = await readJSON(new URL(entry.definitionUrl, configURL), controller.signal); if (value.contentHash !== entry.definitionHash) throw new Error('The archived workflow hash does not match.'); return value; })));
+        setConfig(settings); setApp(opened); setDefinition(workflow); install(current, settings.cases[0].id);
+      } catch (error) { if (token === request.current) { setIssues([error.message]); setStatus('error'); } }
+    })();
+    return () => { request.current++; active.current?.abort(); labRef.current = null; void executor.close(); };
+  }, []);
+
+  function interrupt() { request.current++; active.current?.abort(); active.current = null; }
+  function edit(path, value) {
+    interrupt(); setDirty(true); setIssues([]); setStatus('ready');
+    setDraft(current => {
+      const next = structuredClone(current), parts = path.split('.');
+      const parent = parts.slice(0, -1).reduce((record, key) => record[key], next); parent[parts.at(-1)] = value; return next;
+    });
+  }
+  function editQuoteCost(id, value) { interrupt(); setDirty(true); setStatus('ready'); setQuoteCosts(costs => ({ ...costs, [id]: value })); }
+  function currentInputs() {
+    const input = structuredClone(draft);
+    for (const field of ['quantity', 'nowMinute', 'handoffDeadlineMinute', 'budgetMinor']) input.commitment[field] = whole(input.commitment[field], field);
+    for (const field of ['rehearsalMinutes', 'handoffMinutes']) input.work[field] = whole(input.work[field], field);
+    for (const row of input.work.quotes) {
+      row.quantity = whole(row.quantity, 'Quote quantity'); row.repairMinutes = whole(row.repairMinutes, 'Correction duration');
+      row.repairCostMinor = cents(quoteCosts[row.packageId]);
+    }
+    for (const row of input.observations) row.observedAtMinute = whole(row.observedAtMinute, 'Observation minute');
+    for (const row of input.work.confirmations) for (const field of ['validFromMinute', 'validThroughMinute', 'recordedAtMinute']) row[field] = whole(row[field], field);
+    return input;
+  }
+  function flush() {
+    if (!dirty) return run;
+    const next = updateReviewInputs({ lab: labRef.current, run, values: giftingAnswerValues(run.definition, currentInputs()) });
+    setRun(next); setDirty(false); return next;
+  }
+  function perform(action) {
+    interrupt();
+    try { const next = action(run); if (next) setRun(next); setIssues([]); setStatus('ready'); }
+    catch (error) { setIssues([error.message]); setStatus('error'); }
+  }
+  async function selectCase(id) {
+    interrupt(); const token = request.current, controller = new AbortController(); active.current = controller; setStatus('loading');
+    try {
+      const entry = config.cases.find(row => row.id === id), businessCase = await readJSON(new URL(entry.url, configURL), controller.signal);
+      const current = createReviewJourney({ lab: labRef.current, app, definition, case: businessCase, caseIdPath: 'gifting.id', owner: entry.owner,
+        runId: `gift-resolution-${businessCase.gifting.id}`, createdAt: atMinute(businessCase.gifting.commitment.nowMinute, config.profile.clockOrigin) });
+      if (token === request.current) install(current, id);
+    } catch (error) { if (token === request.current) { setIssues([error.message]); setStatus('error'); } }
+  }
+  async function evaluate(stepId) {
+    let current;
+    try { if (dirty) throw new Error('Apply or discard pending input changes before calculating.'); current = run; } catch (error) { setIssues([error.message]); return; }
+    interrupt(); const token = request.current, controller = new AbortController(); active.current = controller; setStatus('running'); setIssues([]);
+    try {
+      const next = isCalculationWorkflow(current)
+        ? await solveReviewJourney({ lab: labRef.current, run: current, execution: { signal: controller.signal, timeoutMs: 30000 } })
+        : await evaluateReviewJourney({ lab: labRef.current, run: current, stepId, execution: { signal: controller.signal, timeoutMs: 30000 } });
+      if (token === request.current) { setRun(next); setStatus('ready'); }
+    } catch (error) { if (token === request.current) { setIssues([error.message]); setStatus('error'); } }
+  }
+  function download(current) {
+    const text = labRef.current.sources.renderJSON(current, { maxBytes: 50000000 });
+    const url = URL.createObjectURL(new Blob([text], { type: 'application/json' }));
+    const link = document.createElement('a'); link.href = url; link.download = `${current.case.gifting.id}.workflow.json`; link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+  const view = useMemo(() => {
+    if (!run || !config) return null;
+    try { return inspectGiftingJourney({ lab: labRef.current, run, config }); } catch { return null; }
+  }, [run, config]);
+  const changes = useMemo(() => view?.currentRun && view?.previousRun
+    ? labRef.current.reports.compareFindings({ before: view.previousRun, after: view.currentRun }) : null, [view]);
+
+  function openCompatible(value) {
+    const artifact = typeof value === 'string' ? labRef.current.sources.parseArtifact(value, { maxBytes: 50000000 }) : value;
+    const parsed = labRef.current.workflows.openRun(artifact);
+    const candidates = [definition, ...legacyDefinitions];
+    for (const authored of candidates) {
+      try { return openReviewJourney({ lab: labRef.current, value: parsed, app, definition: authored }); }
+      catch (error) { if (error.code !== 'REVIEW_DEFINITION_MISMATCH') throw error; }
+    }
+    throw new Error('This continuing case uses a workflow not supported by this client release.');
+  }
+
+  return { config, run, draft, quoteCosts, actor, setActor, status, issues, selectedId, dirty, view, changes,
+    selectCase, edit, editQuoteCost, evaluate, calculation: run ? isCalculationWorkflow(run) : true,
+    applyInputs() { perform(() => flush()); },
+    discardInputs() { if (run) install(run, selectedId); },
+    reviewInputs() { perform(current => reviewJourneyInputs({ lab: labRef.current, run: current, actor })); },
+    acceptFinding(stepId) { perform(current => acceptReviewFinding({ lab: labRef.current, run: current, actor, stepId })); },
+    choose(optionId) { perform(current => recordJourneyDecision({ lab: labRef.current, run: current, actor, optionId })); },
+    record(kind, record, recordedMinute) {
+      perform(current => recordJourneyOperation({ lab: labRef.current, run: current, actor, kind, record,
+        at: atMinute(whole(recordedMinute, 'Recorded minute'), config.profile.clockOrigin) }));
+    },
+    save() { perform(current => {
+      setSavedHash(saveReviewJourney({ lab: labRef.current, run: current, storage: localStorage, key: storageKey(current), expectedHash: savedHash }));
+      return current;
+    }); },
+    reopen() { perform(() => {
+      const text = localStorage.getItem(storageKey(run)); if (!text) throw new Error('No saved review exists for this campaign.');
+      const current = openCompatible(text); install(current, selectedId); setSavedHash(current.contentHash); return current;
+    }); },
+    exportReview() { perform(current => { download(current); return current; }); },
+    importReview(text) { perform(() => { const current = openCompatible(text); install(current); return current; }); },
+    cancel() { interrupt(); setStatus('ready'); setIssues(['Calculation cancelled.']); },
+  };
+}

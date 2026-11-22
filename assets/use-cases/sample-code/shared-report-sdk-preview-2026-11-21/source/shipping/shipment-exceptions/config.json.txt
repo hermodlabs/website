@@ -1,0 +1,87 @@
+{
+  "format": "shipment-exceptions-config/1",
+  "title": "Shipment recommendations requiring review",
+  "appFile": "app/shipment-review.app.json",
+  "appFileSHA256": "03e1357e59893f4c6171db069433fe073724658506ccacb95c49dea2646867ef",
+  "binding": {
+    "appId": "shipment-exception-response",
+    "release": 1,
+    "appHash": "0cce758147637a6e7d3461a78987ccf7313574a52446aadadc2fecd16902ba1b",
+    "packageHash": "7d9b4d46f3df0743f239016d26e40003560b1f7c07ee96c497e7c02c964df001",
+    "pattern": "complete-a-commitment/1",
+    "moduleHash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c"
+  },
+  "currency": "USD",
+  "moneyDivisor": 100,
+  "timeOrigin": "2026-11-17T00:00:00-06:00",
+  "timeZone": "Etc/GMT+6",
+  "labels": {
+    "arrangements": {
+      "direct": "Direct",
+      "backup": "Backup",
+      "consolidated": "Consolidated"
+    },
+    "checks": {
+      "total-expense-limit": "Complete shipment expense is within the limit",
+      "scoped-consolidation-slot": "A current confirmation covers this order and consolidation slot",
+      "arrangement-selection-authority": "Selection authority covers this order and arrangement",
+      "scoped-final-release-grant": "Release permission covers this order and arrangement",
+      "quote-covers-current-order": "The quote covers this order revision",
+      "quote-known-and-current": "The quote is known and remains valid at selection",
+      "carrier-booking-cutoff": "The carrier booking cutoff has not passed"
+    }
+  },
+  "policy": {
+    "priority": "Lowest complete expense, then arrival",
+    "reason": "Protect the accepted delivery promise without paying a premium merely for earliness."
+  },
+  "owner": {
+    "name": "Maya Chen",
+    "role": "shipment-owner",
+    "contact": "maya@example.test"
+  },
+  "operatingActions": [
+    {
+      "id": "obtain-slot",
+      "when": "scoped-consolidation-slot",
+      "owner": "Carrier coordinator",
+      "action": "Obtain a current confirmation for this order, location and loading window.",
+      "closesWith": "A received scoped slot confirmation, then reassessment.",
+      "dueField": "bookingCutoff"
+    },
+    {
+      "id": "obtain-permission",
+      "when": "arrangement-selection-authority",
+      "owner": "Finance reviewer",
+      "action": "Obtain an actual current reservation permission; the expense limit is not authority.",
+      "closesWith": "A current scoped reservation permission, then reassessment.",
+      "dueField": "bookingCutoff"
+    },
+    {
+      "id": "obtain-release",
+      "when": "scoped-final-release-grant",
+      "owner": "Release officer",
+      "action": "Obtain an actual release permission covering preparation for this revision.",
+      "closesWith": "A received current release grant, then reassessment.",
+      "dueField": "bookingCutoff"
+    }
+  ],
+  "workflowFile": "app/shipment.workflow.json",
+  "workflowUrl": "./shipment.workflow.json",
+  "workflowHash": "bf3b1792d9f1ef3388eed7097c07b7fb22f2b440fb9066cd3fa6b380aa8acd83",
+  "workflowVersion": "2.1.0",
+  "legacyDefinitions": [
+    {
+      "version": "1.0.0",
+      "definitionUrl": "./workflow-releases/1.0.0/shipment.workflow.json",
+      "definitionFile": "app/workflow-releases/1.0.0/shipment.workflow.json",
+      "definitionHash": "ff2ca5a32b41b6d7e566f248cabfbcb8ffbc3345b6097dc58e28265e0fa0689e"
+    },
+    {
+      "version": "2.0.0",
+      "definitionUrl": "./workflow-releases/2.0.0/shipment.workflow.json",
+      "definitionFile": "app/workflow-releases/2.0.0/shipment.workflow.json",
+      "definitionHash": "06a2a9293701185fc0e6c2a9dae1bd5c6e13dcd0a5b4d120f5c116d07cfef593"
+    }
+  ]
+}

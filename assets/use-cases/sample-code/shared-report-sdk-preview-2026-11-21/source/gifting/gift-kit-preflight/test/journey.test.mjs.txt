@@ -1,0 +1,99 @@
+import assert from 'node:assert/strict';
+import { execFile } from 'node:child_process';
+import { cp, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { promisify } from 'node:util';
+import { after, before, test } from 'node:test';
+import { createDecisionLab } from '@decision-lab/sdk';
+import { runJourneyPreflight } from '../src/journeyPreflight.mjs';
+import { inspectGiftingJourney } from '../src/giftingJourney.js';
+import { createReviewJourney, openReviewJourney } from '../src/reviewJourney.js';
+
+const read = async file => JSON.parse(await readFile(file, 'utf8'));
+const example = fileURLToPath(new URL('../', import.meta.url));
+const config = await read(path.join(example, 'data/journey-config.json'));
+const definition = await read(path.join(example, 'data', config.definitionFile));
+const app = await read(path.join(example, 'data', config.appUrl));
+const lab = createDecisionLab();
+let root, inputFile, assessed;
+before(async () => {
+  root = await mkdtemp(path.join(os.tmpdir(), 'gifting-journey-cli-'));
+  await cp(path.join(example, 'fixtures/journey-v3'), path.join(root, 'fixtures'), { recursive: true });
+  inputFile = path.join(root, 'fixtures/one.json');
+  await writeFile(inputFile, JSON.stringify({ fictional: true, campaigns: [{ id: 'GIFT-321', owner: 'Jordan Reed', case: 'cases/urgent-window.json', screeningCase: 'screening/urgent-window.json' }] }));
+});
+after(async () => { await rm(root, { recursive: true, force: true }); });
+
+test('ordinary CLI screening calculates the connected native case without fabricated analytical reviews', async () => {
+  const result = await runJourneyPreflight({ inputFile, outputDir: path.join(root, 'ordinary') });
+  assert.equal(result.manifest.syntheticFindingReviews, false);
+  const row = result.manifest.campaigns[0];
+  const run = openReviewJourney({ lab, value: await readFile(path.join(result.outputDir, row.workflow), 'utf8'), app, definition });
+  assert.equal(run.evaluations.length, 2); assert.equal(run.reviews.length, 0);
+  assert.equal(run.answers.commitment.status, 'supplied');
+  assert.equal(run.case.journeyContext.screeningRun.execution.status, 'completed');
+  assert.equal(inspectGiftingJourney({ lab, run, config }).screeningReview.scenarioCount, 8);
+  assert.equal(row.actionDueMinute, 1415);
+  const commands = await read(path.join(result.outputDir, 'commands.json'));
+  assert.equal(commands.filter(command => command.args[0] === 'run').length, 1);
+  assert.ok(commands.every(command => command.exitCode === 0), 'All calculated assessments complete; actual handoff remains separately unestablished.');
+});
+
+test('the CLI retains real native evidence/planning and no invented operating completion', async () => {
+  const result = await runJourneyPreflight({ inputFile, outputDir: path.join(root, 'demonstration') });
+  const row = result.manifest.campaigns[0];
+  assessed = path.join(result.outputDir, row.workflow);
+  const run = openReviewJourney({ lab, value: await readFile(assessed, 'utf8'), app, definition });
+  const view = inspectGiftingJourney({ lab, run, config });
+  assert.equal(run.evaluations.length, 2); assert.equal(run.reviews.length, 0);
+  assert.equal(view.evidence.states.length, 1); assert.equal(view.review.preferred[0].packageId, 'external-replace-and-repair');
+  assert.equal(view.review.preferred[0].finishMinute, 1435); assert.equal(view.closure.completed, false);
+  assert.deepEqual(run.case.journeyOperations, []);
+  const commands = await read(path.join(result.outputDir, 'commands.json'));
+  assert.equal(commands.filter(command => command.args[0] === 'workflow' && command.args[1] === 'solve').length, 1);
+  assert.equal(commands.filter(command => command.args[0] === 'workflow' && command.args[1] === 'review').length, 0);
+});
+
+test('the CLI resumes the native calculation, advances time explicitly and recalculates both dependent findings', async () => {
+  const execute = promisify(execFile), first = path.join(root, 'continued-calculation');
+  await execute(process.execPath, [path.join(example, 'continue-review.mjs'), '--review', assessed, '--output', first,
+    '--as-of', '2026-11-18T23:36:00.000Z']);
+  const run = openReviewJourney({ lab, value: await readFile(path.join(first, 'review.workflow.json'), 'utf8'), app, definition });
+  assert.equal(run.case.gifting.commitment.nowMinute, 1416);
+  assert.equal(lab.workflows.prepare({ run, stepId: 'evidence' }).status, 'complete');
+  const view = inspectGiftingJourney({ lab, run, config });
+  assert.equal(view.planningStep.status, 'complete'); assert.equal(view.review.status, 'blocked'); assert.equal(view.closure.completed, false);
+  assert.equal(run.reviews.length, 0);
+  assert.equal(run.case.journeyContext.originalCase.gifting.commitment.handoffDeadlineMinute, 1440);
+});
+
+test('conservative screening is derived from current business records, not a same-ID stale fixture', async () => {
+  const changed = await read(path.join(root, 'fixtures/cases/urgent-window.json'));
+  changed.gifting.commitment.quantity = 100;
+  changed.gifting.work.quotes = changed.gifting.work.quotes.map(row => ({ ...row, quantity: 100,
+    repairCostMinor: row.packageId === 'external-replace-and-repair' ? 45000 : row.repairCostMinor }));
+  await writeFile(path.join(root, 'fixtures/cases/changed-quantity.json'), JSON.stringify(changed));
+  const stale = await read(path.join(root, 'fixtures/screening/urgent-window.json'));
+  assert.equal(stale.parameters.quantity, 120); assert.equal(stale.tables.packages.find(row => row.id === 'external-replace-and-repair').repairCostMinor, 40000);
+  const manifest = path.join(root, 'fixtures/changed.json');
+  await writeFile(manifest, JSON.stringify({ campaigns: [{ id: 'GIFT-321', owner: 'Jordan Reed', case: 'cases/changed-quantity.json', screeningCase: 'screening/urgent-window.json' }] }));
+  const result = await runJourneyPreflight({ inputFile: manifest, outputDir: path.join(root, 'changed-inputs') });
+  const exported = await read(path.join(result.outputDir, 'GIFT-321/screening.case.json'));
+  assert.equal(exported.parameters.quantity, 100);
+  assert.equal(exported.tables.packages.find(row => row.id === 'external-replace-and-repair').repairCostMinor, 45000);
+  assert.equal(exported.tables.scenarios.length, 8, 'The mapping remains conservative rather than diagnosing in application code.');
+});
+
+test('CLI as-of flags cannot backdate an imported snapshot or continuing review', async () => {
+  const earlier = '2026-11-18T23:29:00.000Z';
+  await assert.rejects(runJourneyPreflight({ inputFile, outputDir: path.join(root, 'backdated-batch'), asOf: earlier }), /cannot precede/);
+  const businessCase = await read(path.join(root, 'fixtures/cases/urgent-window.json'));
+  const run = createReviewJourney({ lab, app, definition, case: businessCase, caseIdPath: 'gifting.id', owner: 'Jordan Reed' });
+  const source = path.join(root, 'original.workflow.json'), original = lab.sources.renderJSON(run);
+  await writeFile(source, original);
+  await assert.rejects(promisify(execFile)(process.execPath, [path.join(example, 'continue-review.mjs'), '--review', source,
+    '--output', path.join(root, 'backdated-continuation'), '--as-of', earlier]), /cannot precede/);
+  assert.equal(await readFile(source, 'utf8'), original);
+});

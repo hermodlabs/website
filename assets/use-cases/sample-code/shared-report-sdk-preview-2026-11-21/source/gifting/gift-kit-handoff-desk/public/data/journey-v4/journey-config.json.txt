@@ -1,0 +1,172 @@
+{
+  "format": "gifting-resolution-example/1",
+  "title": "Gift-kit Handoff Desk",
+  "definitionUrl": "./journey-v4/workflow.definition.json",
+  "definitionFile": "journey-v4/workflow.definition.json",
+  "templateFile": "journey-v4/template.json",
+  "authorConfigFile": "journey-v4/configuration.json",
+  "appUrl": "./journey-v4/planning.app.json",
+  "evidenceAppUrl": "./journey-v4/evidence.app.json",
+  "profile": {
+    "id": "gifting-resolution",
+    "version": "3.0.0",
+    "domain": "gifting",
+    "clockOrigin": "2026-11-18T00:00:00.000Z",
+    "ownerRole": "production-owner",
+    "decisionMeaning": "Select the least expensive supported complete correction package before its last useful start.",
+    "priorityRationale": "Protect the recorded handoff cutoff first, then avoid unnecessary correction expense. Earlier completion alone does not justify a premium.",
+    "operations": [
+      "authorization",
+      "correction",
+      "rehearsal",
+      "handoff"
+    ],
+    "completionMeaning": "The selected correction is recorded complete, a successful scoped rehearsal is recorded for its output, and the kit handoff is recorded before the original cutoff."
+  },
+  "binding": {
+    "appId": "review-gift-kit-resolution-planning",
+    "release": 1,
+    "appHash": "d98eeefb7677462bf9a9ea97f6b0dc2c47705b36656edd3ffe2c5b264cdc6f23",
+    "packageHash": "7faaa1bbec4110583bdbfc6db82025860de042af743db0fcfee595aec72986e1",
+    "pattern": "complete-a-commitment/1",
+    "moduleHash": "59f320350d4bad7e9712f68be27afec8995edab08e99ae8a9bfc330af1f1eeab"
+  },
+  "currency": "USD",
+  "moneyDivisor": 100,
+  "confirmationPackage": "external-replace-and-repair",
+  "labels": {
+    "packages": {
+      "rehearse-unchanged": "Rehearse unchanged kits",
+      "reprint": "Replace printed inserts",
+      "repair-journey": "Repair destination and checkout",
+      "replace-and-repair": "Replace and repair in-house",
+      "external-replace-and-repair": "External replacement and repair"
+    },
+    "checks": {
+      "declared-fault-state": "Every retained fault scenario is covered by this review",
+      "published-package-effects": "The package keeps its authored correction effects",
+      "correct-fault-0": "The package addresses an unreadable printed code",
+      "correct-fault-1": "The package addresses the wrong destination",
+      "correct-fault-2": "The package addresses checkout failure",
+      "known-owner": "The package has a named responsible owner",
+      "scoped-package-permission": "Permission covers this campaign and all current revisions",
+      "resource-calendar": "The production team is available throughout the work",
+      "resource-capacity": "The production team can cover the complete schedule",
+      "not-in-past": "Correction work starts at or after the review origin",
+      "handoff-by-cutoff": "Correction, rehearsal and handoff meet the cutoff",
+      "package-within-budget": "Complete package cost stays within the campaign budget",
+      "quoted-quantity": "The quote covers the full kit quantity",
+      "minimum-rehearsal": "The package leaves the required rehearsal time",
+      "scoped-package-confirmation": "A recorded external booking covers the current campaign revisions and work interval"
+    }
+  },
+  "cases": [
+    {
+      "id": "ample-window",
+      "label": "GIFT-320 \u00b7 ample window",
+      "url": "./journey-v4/cases/ample-window.json",
+      "owner": "Jordan Reed",
+      "description": "Both complete corrections fit. The cheaper in-house package is preferred."
+    },
+    {
+      "id": "urgent-window",
+      "label": "GIFT-321 \u00b7 urgent window",
+      "url": "./journey-v4/cases/urgent-window.json",
+      "owner": "Jordan Reed",
+      "description": "Only the external complete correction can still finish before the original cutoff."
+    },
+    {
+      "id": "urgent-missing-booking",
+      "label": "GIFT-322 \u00b7 urgent missing booking",
+      "url": "./journey-v4/cases/urgent-missing-booking.json",
+      "owner": "Jordan Reed",
+      "description": "The external booking is missing or describes an older insert. Obtain a genuinely current source before the useful start time."
+    },
+    {
+      "id": "urgent-stale-booking",
+      "label": "GIFT-323 \u00b7 urgent stale booking",
+      "url": "./journey-v4/cases/urgent-stale-booking.json",
+      "owner": "Jordan Reed",
+      "description": "The external booking is missing or describes an older insert. Obtain a genuinely current source before the useful start time."
+    },
+    {
+      "id": "supported-smaller-correction",
+      "label": "GIFT-324 \u00b7 supported smaller correction",
+      "url": "./journey-v4/cases/supported-smaller-correction.json",
+      "owner": "Jordan Reed",
+      "description": "Current source-artwork and checkout reports establish that replacing the inserts is enough."
+    },
+    {
+      "id": "missed-window",
+      "label": "GIFT-325 \u00b7 missed window",
+      "url": "./journey-v4/cases/missed-window.json",
+      "owner": "Jordan Reed",
+      "description": "No declared package can complete by the original cutoff. Escalate rather than mark the promise fulfilled."
+    }
+  ],
+  "definitionHash": "59effbc8fe20b1df45e6e4246514cf35fc64e2719f90cc56722f7bc25db0519d",
+  "decisionPresentation": {
+    "format": "decision-presentation/1",
+    "title": "Complete correction packages",
+    "question": "Which supported correction protects this kit handoff at the least expense?",
+    "priorityLabel": "Meet every requirement, then lower expense, then earlier handoff",
+    "moneyFormat": {
+      "currency": "USD",
+      "divisor": 100
+    },
+    "columns": [
+      {
+        "id": "package",
+        "label": "Correction package",
+        "source": "choice:packageId",
+        "valueLabels": {
+          "rehearse-unchanged": "Prepare, rehearse and hand off unchanged kits",
+          "reprint": "Replace the printed inserts",
+          "repair-journey": "Correct the destination and checkout",
+          "replace-and-repair": "Replace inserts and repair the journey",
+          "external-replace-and-repair": "External replacement and journey repair"
+        }
+      },
+      {
+        "id": "status",
+        "label": "Result"
+      },
+      {
+        "id": "expense",
+        "label": "Complete cost"
+      },
+      {
+        "id": "finish",
+        "label": "Handoff (minutes from case origin)",
+        "source": {
+          "kind": "activity",
+          "id": "handoff",
+          "field": "end"
+        },
+        "format": {
+          "kind": "time"
+        }
+      },
+      {
+        "id": "blockers",
+        "label": "Conditions needing attention"
+      }
+    ]
+  },
+  "workflowVersion": "4.1.0",
+  "legacyDefinitions": [
+    {
+      "version": "3.0.0",
+      "definitionUrl": "./journey-v3/workflow.definition.json",
+      "definitionFile": "journey-v3/workflow.definition.json",
+      "definitionHash": "5ab83d583a10f282f616d3021535902aa04ed7e96b2bbb686250d89c39357eef"
+    },
+    {
+      "version": "4.0.0",
+      "definitionUrl": "./journey-v4/workflow-releases/4.0.0/workflow.definition.json",
+      "definitionFile": "journey-v4/workflow-releases/4.0.0/workflow.definition.json",
+      "definitionHash": "679dec52de8d1c1ee17e69078af8ed8449b5ee38d2ee9d1c28e838d354a68a13"
+    }
+  ],
+  "workflowHash": "59effbc8fe20b1df45e6e4246514cf35fc64e2719f90cc56722f7bc25db0519d"
+}

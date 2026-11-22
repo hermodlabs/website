@@ -1,0 +1,8 @@
+import React from 'react';
+import { WorkflowReportsView } from '@decision-lab/react-views';
+
+// Team input and operating controls stay outside the portable report host.
+export default function JourneyReports({ output, definition, dirty, blockedReason = '' }) {
+  return <WorkflowReportsView output={output} definition={definition} pending={dirty}
+    blockedReason={blockedReason} readOnly />;
+}

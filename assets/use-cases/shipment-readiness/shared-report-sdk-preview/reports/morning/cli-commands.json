@@ -1,0 +1,338 @@
+{
+  "cliVersion": "decision-lab 0.1.0 (SDK 0.1.0)",
+  "commands": [
+    {
+      "args": [
+        "app",
+        "open",
+        "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/app/shipment-review.app.json",
+        "--output",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/.shipment-batch-LjwJJm/app.json"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "publishedArgs": [
+        "app",
+        "open",
+        "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/app/shipment-review.app.json",
+        "--output",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/morning-batch/app.json"
+      ]
+    },
+    {
+      "args": [
+        "--version"
+      ],
+      "exitCode": 0,
+      "stdout": "decision-lab 0.1.0 (SDK 0.1.0)\n",
+      "stderr": "",
+      "publishedArgs": [
+        "--version"
+      ]
+    },
+    {
+      "args": [
+        "case",
+        "validate",
+        "--app",
+        "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/app/shipment-review.app.json",
+        "--case",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/.shipment-batch-LjwJJm/shipments/SHIP-104/case.json",
+        "--output",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/.shipment-batch-LjwJJm/shipments/SHIP-104/validation.json"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "publishedArgs": [
+        "case",
+        "validate",
+        "--app",
+        "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/app/shipment-review.app.json",
+        "--case",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/morning-batch/shipments/SHIP-104/case.json",
+        "--output",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/morning-batch/shipments/SHIP-104/validation.json"
+      ]
+    },
+    {
+      "args": [
+        "run",
+        "--app",
+        "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/app/shipment-review.app.json",
+        "--case",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/.shipment-batch-LjwJJm/shipments/SHIP-104/case.json",
+        "--reports",
+        "all",
+        "--locale",
+        "en-US",
+        "--timeout-ms",
+        "30000",
+        "--max-output-bytes",
+        "50000000",
+        "--run-id",
+        "batch-SHIP-104",
+        "--created-at",
+        "2026-11-17T14:05:00Z",
+        "--output",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/.shipment-batch-LjwJJm/shipments/SHIP-104/run.json"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "publishedArgs": [
+        "run",
+        "--app",
+        "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/app/shipment-review.app.json",
+        "--case",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/morning-batch/shipments/SHIP-104/case.json",
+        "--reports",
+        "all",
+        "--locale",
+        "en-US",
+        "--timeout-ms",
+        "30000",
+        "--max-output-bytes",
+        "50000000",
+        "--run-id",
+        "batch-SHIP-104",
+        "--created-at",
+        "2026-11-17T14:05:00Z",
+        "--output",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/morning-batch/shipments/SHIP-104/run.json"
+      ]
+    },
+    {
+      "args": [
+        "workflow",
+        "solve",
+        "--run",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/.shipment-batch-LjwJJm/shipments/SHIP-104/prepared-review.json",
+        "--created-at",
+        "2026-11-17T14:05:00Z",
+        "--timeout-ms",
+        "30000",
+        "--output",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/.shipment-batch-LjwJJm/shipments/SHIP-104/review.json"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "publishedArgs": [
+        "workflow",
+        "solve",
+        "--run",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/morning-batch/shipments/SHIP-104/prepared-review.json",
+        "--created-at",
+        "2026-11-17T14:05:00Z",
+        "--timeout-ms",
+        "30000",
+        "--output",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/morning-batch/shipments/SHIP-104/review.json"
+      ]
+    },
+    {
+      "args": [
+        "case",
+        "validate",
+        "--app",
+        "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/app/shipment-review.app.json",
+        "--case",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/.shipment-batch-LjwJJm/shipments/SHIP-105/case.json",
+        "--output",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/.shipment-batch-LjwJJm/shipments/SHIP-105/validation.json"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "publishedArgs": [
+        "case",
+        "validate",
+        "--app",
+        "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/app/shipment-review.app.json",
+        "--case",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/morning-batch/shipments/SHIP-105/case.json",
+        "--output",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/morning-batch/shipments/SHIP-105/validation.json"
+      ]
+    },
+    {
+      "args": [
+        "run",
+        "--app",
+        "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/app/shipment-review.app.json",
+        "--case",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/.shipment-batch-LjwJJm/shipments/SHIP-105/case.json",
+        "--reports",
+        "all",
+        "--locale",
+        "en-US",
+        "--timeout-ms",
+        "30000",
+        "--max-output-bytes",
+        "50000000",
+        "--run-id",
+        "batch-SHIP-105",
+        "--created-at",
+        "2026-11-17T14:05:00Z",
+        "--output",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/.shipment-batch-LjwJJm/shipments/SHIP-105/run.json"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "publishedArgs": [
+        "run",
+        "--app",
+        "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/app/shipment-review.app.json",
+        "--case",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/morning-batch/shipments/SHIP-105/case.json",
+        "--reports",
+        "all",
+        "--locale",
+        "en-US",
+        "--timeout-ms",
+        "30000",
+        "--max-output-bytes",
+        "50000000",
+        "--run-id",
+        "batch-SHIP-105",
+        "--created-at",
+        "2026-11-17T14:05:00Z",
+        "--output",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/morning-batch/shipments/SHIP-105/run.json"
+      ]
+    },
+    {
+      "args": [
+        "workflow",
+        "solve",
+        "--run",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/.shipment-batch-LjwJJm/shipments/SHIP-105/prepared-review.json",
+        "--created-at",
+        "2026-11-17T14:05:00Z",
+        "--timeout-ms",
+        "30000",
+        "--output",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/.shipment-batch-LjwJJm/shipments/SHIP-105/review.json"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "publishedArgs": [
+        "workflow",
+        "solve",
+        "--run",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/morning-batch/shipments/SHIP-105/prepared-review.json",
+        "--created-at",
+        "2026-11-17T14:05:00Z",
+        "--timeout-ms",
+        "30000",
+        "--output",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/morning-batch/shipments/SHIP-105/review.json"
+      ]
+    },
+    {
+      "args": [
+        "case",
+        "validate",
+        "--app",
+        "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/app/shipment-review.app.json",
+        "--case",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/.shipment-batch-LjwJJm/shipments/SHIP-106/case.json",
+        "--output",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/.shipment-batch-LjwJJm/shipments/SHIP-106/validation.json"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "publishedArgs": [
+        "case",
+        "validate",
+        "--app",
+        "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/app/shipment-review.app.json",
+        "--case",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/morning-batch/shipments/SHIP-106/case.json",
+        "--output",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/morning-batch/shipments/SHIP-106/validation.json"
+      ]
+    },
+    {
+      "args": [
+        "run",
+        "--app",
+        "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/app/shipment-review.app.json",
+        "--case",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/.shipment-batch-LjwJJm/shipments/SHIP-106/case.json",
+        "--reports",
+        "all",
+        "--locale",
+        "en-US",
+        "--timeout-ms",
+        "30000",
+        "--max-output-bytes",
+        "50000000",
+        "--run-id",
+        "batch-SHIP-106",
+        "--created-at",
+        "2026-11-17T14:05:00Z",
+        "--output",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/.shipment-batch-LjwJJm/shipments/SHIP-106/run.json"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "publishedArgs": [
+        "run",
+        "--app",
+        "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/app/shipment-review.app.json",
+        "--case",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/morning-batch/shipments/SHIP-106/case.json",
+        "--reports",
+        "all",
+        "--locale",
+        "en-US",
+        "--timeout-ms",
+        "30000",
+        "--max-output-bytes",
+        "50000000",
+        "--run-id",
+        "batch-SHIP-106",
+        "--created-at",
+        "2026-11-17T14:05:00Z",
+        "--output",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/morning-batch/shipments/SHIP-106/run.json"
+      ]
+    },
+    {
+      "args": [
+        "workflow",
+        "solve",
+        "--run",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/.shipment-batch-LjwJJm/shipments/SHIP-106/prepared-review.json",
+        "--created-at",
+        "2026-11-17T14:05:00Z",
+        "--timeout-ms",
+        "30000",
+        "--output",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/.shipment-batch-LjwJJm/shipments/SHIP-106/review.json"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "publishedArgs": [
+        "workflow",
+        "solve",
+        "--run",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/morning-batch/shipments/SHIP-106/prepared-review.json",
+        "--created-at",
+        "2026-11-17T14:05:00Z",
+        "--timeout-ms",
+        "30000",
+        "--output",
+        "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/morning-batch/shipments/SHIP-106/review.json"
+      ]
+    }
+  ]
+}

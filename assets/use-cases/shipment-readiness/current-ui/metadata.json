@@ -1,0 +1,115 @@
+{
+  "workflowId": "review-first-shipment",
+  "workflowVersion": "1.8.0",
+  "previewOnly": false,
+  "buildVersion": "831b0105a66b33afabc2",
+  "installUrl": "https://hermodlabs.github.io/review_lab/?install=workflow&id=review-first-shipment&version=1.8.0&publisher=decision-lab&collection=order-fulfillment&release=bc8577e12502b02253af46cd2cb356c7bd7e7631d985c73f220a0f22cd38032b",
+  "verificationUrl": "/assets/use-cases/shipment-readiness/current-ui/verification.json",
+  "processVerificationUrl": "/assets/use-cases/shipment-readiness/current-ui/verification.json",
+  "figures": {
+    "entry": {
+      "image": "/assets/use-cases/shipment-readiness/current-ui/question-outline.png",
+      "width": 1280,
+      "height": 880,
+      "sha256": "6646597800712d31ebaa2e99a20e7e1e3dcb3f8b1aaaac4bf0b404bbbdba0bfc",
+      "alt": "The current Compare first-shipment arrangements case opens with its decision question, workspace layouts and supplied fictional inputs.",
+      "caption": "Open the pinned shipment workflow with its supplied example, then calculate a fresh finding."
+    },
+    "inputs": {
+      "image": "/assets/use-cases/shipment-readiness/current-ui/supplied-inputs.png",
+      "width": 1208,
+      "height": 760,
+      "sha256": "80d75872d5ed111074d11150746cf4f4eb750851656496a0377d87a4a8833cd8",
+      "alt": "Forms and the uncalculated Decision summary appear side by side. Calculate sits above the authored Commitment inputs; the supplied case is marked Example data.",
+      "caption": "Inspect the shipment identity, quantity and timing before calculating. An uncalculated case is not a failed shipment."
+    },
+    "arrangements": {
+      "image": "/assets/use-cases/shipment-readiness/current-ui/decision-summary.png",
+      "width": 1208,
+      "height": 1002,
+      "sha256": "84118a1d45cdd43fc8e958f601eb8edde2ff61238155c1f14eee008df5b64d56",
+      "alt": "The Options section shows Backup preferred at $6,000 and Direct blocked at $4,000, with the unresolved registration condition and stated cost-first comparison priority.",
+      "caption": "Read Options for the supported arrangement and the condition affecting the cheaper alternative. A portal listing alone does not establish transportation registration."
+    },
+    "hero": {
+      "image": "/assets/use-cases/shipment-readiness/current-ui/shipment-summary-hero.png",
+      "width": 1208,
+      "height": 760,
+      "sha256": "2d659cd518fa131bf96130e218ac4c1d81246d20dfb698d445ad51748aaab855",
+      "alt": "Decision Lab’s current Options summary compares Direct and Backup, showing the cost-first finding, complete expense and registration limit.",
+      "caption": "A fictional shipment analysis in Decision Lab."
+    },
+    "actions": {
+      "image": "/assets/use-cases/shipment-readiness/current-ui/next-actions.png",
+      "width": 1208,
+      "height": 408,
+      "sha256": "0f46d6467af9643a53fa074209276a0d93844a2d36a0e786c8bba54aebfb4ce6",
+      "alt": "Next actions separates the available shipment response from the option to compare timely verification. Inspecting an action does not purchase verification or reserve freight.",
+      "caption": "Use Next actions to identify the available response; booking and verification purchase remain operating actions."
+    },
+    "assumptions": {
+      "image": "/assets/use-cases/shipment-readiness/current-ui/assumptions.png",
+      "width": 1208,
+      "height": 570,
+      "sha256": "7ff44bcdf96b77f40e3ed26c985ff66bd39c623e5d7cdeb19070ba033f9d2c3c",
+      "alt": "Assumptions states the modeled shipment scope and limits behind the current finding.",
+      "caption": "The supported result retains the scope and assumptions that make the comparison meaningful."
+    },
+    "questions": {
+      "image": "/assets/use-cases/shipment-readiness/current-ui/outstanding-questions.png",
+      "width": 1208,
+      "height": 290,
+      "sha256": "f5967f2d843e25efd97fe3f488de3c563ce8de4c5ca0e28838557505754b837b",
+      "alt": "Questions identifies unresolved matters relevant to the shipment decision.",
+      "caption": "Keep unresolved questions visible when deciding what to verify before committing."
+    },
+    "requirements": {
+      "image": "/assets/use-cases/shipment-readiness/current-ui/direct-supporting-report.png",
+      "width": 1208,
+      "height": 1018,
+      "sha256": "6b47623c33afa377834feccbaaf6a14883b9b6ecdb839d74eb9ec34ed030fd51",
+      "alt": "Arrangement choice inspects Direct and shows the unmet transportation-registration condition, complete expense and shipment basis.",
+      "caption": "Inspect the requirement behind Direct’s blocked finding. Opening supporting detail does not change the inputs or choose the arrangement."
+    },
+    "verification": {
+      "image": "/assets/use-cases/shipment-readiness/current-ui/verification-comparison.png",
+      "width": 1208,
+      "height": 1200,
+      "sha256": "e9e6b5fba5f260796be302ce958afbe22525c027733956f44f52af28edddff31",
+      "alt": "Further verification compares reserving now with fast and slow checks. The $200 fast check supports a $5,200 expected total expense under the supplied hypothetical probabilities and likelihood assumptions.",
+      "caption": "A timely $200 check gives a $5,200 expected total under the supplied assumptions. This is a contingent comparison; it records no purchased check or freight booking."
+    },
+    "process": {
+      "image": "/assets/use-cases/shipment-readiness/current-ui/decision-process.png",
+      "width": 1678,
+      "height": 3672,
+      "sha256": "12b34ce0baa52959788178002a86128b0ae219afe6627eb97852ed78f360761c",
+      "alt": "The current shipment graph connects scoped registration evidence, complete shipment arrangements and timely-verification value. Highlighted paths apply now; dashed paths return to reassessment.",
+      "caption": "Follow the connected questions and labeled paths. Several actions can be available together; inspecting a path does not perform it."
+    },
+    "processDetail": {
+      "image": "/assets/use-cases/shipment-readiness/current-ui/decision-process-detail.png",
+      "width": 1678,
+      "height": 374,
+      "sha256": "bada6d0aed2a8740b6e881c4cb8a5b3ebc5c1d8abff1e2aeba4ef842c12e73d6",
+      "alt": "Inspecting whether any complete arrangement meets the requirements shows the current answer, its basis, outgoing paths, relevant inputs and supporting reports.",
+      "caption": "Inspect a question to see what supports its answer. This does not select a shipment, obtain permission or reserve freight."
+    },
+    "status": {
+      "image": "/assets/use-cases/shipment-readiness/current-ui/calculation-dependencies.png",
+      "width": 1208,
+      "height": 1000,
+      "sha256": "c6858ac0e03c317563c8ae7991e17594d79f5657c699e9e8c2bc0bfc31ababca",
+      "alt": "Calculation dependencies shows how scoped evidence, current arrangements, report-contingent responses and verification value supply one another.",
+      "caption": "Inspect the calculation handoffs separately from the business decision process."
+    },
+    "stale": {
+      "image": "/assets/use-cases/shipment-readiness/current-ui/changed-inputs.png",
+      "width": 1208,
+      "height": 760,
+      "sha256": "3fa922052a7097bedc18e928c5e0c15e385d269f40cdfe6bc68337727bf6d39b",
+      "alt": "Applying a change from 100 to 101 cases withdraws the current arrangement comparison and marks the dependent findings stale.",
+      "caption": "Applied edits invalidate dependent findings. Recalculate the changed shipment before relying on an arrangement."
+    }
+  }
+}

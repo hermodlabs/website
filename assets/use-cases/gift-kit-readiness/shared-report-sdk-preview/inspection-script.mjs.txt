@@ -1,0 +1,29 @@
+import { chromium } from '/Users/jnaciona/code/hermod-review-lab/node_modules/playwright/index.mjs';
+import fs from 'node:fs/promises';
+import assert from 'node:assert/strict';
+const base='/private/tmp/decision-lab-shared-report-refresh';
+const browser=await chromium.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});
+try {
+for(const [domain,port] of [['shipping',4191],['gifting',4192]]) {
+ const folder=`${base}/${domain}-captures`;
+ const context=await browser.newContext({viewport:{width:1600,height:1100},acceptDownloads:true,serviceWorkers:'block'});
+ const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(`http://127.0.0.1:${port}/`);
+ const shipping=domain==='shipping';
+ await page.getByRole('button',{name:shipping?'Calculate':'Open continuing review',exact:true}).waitFor();
+ await page.getByLabel(shipping?'Import canonical case JSON':'Open continuing review',{exact:true}).setInputFiles(`${folder}/${shipping?'baseline.workflow-run.json':'ample.workflow.json'}`);
+ const groups=page.getByRole('tablist',{name:'Workflow report groups',exact:true});
+ await groups.getByRole('tab',{name:'Decision summary',exact:true}).click();
+ await page.locator('[data-workflow-reports=true]').waitFor();
+ async function download(key){ const [d]=await Promise.all([page.waitForEvent('download'),page.getByRole('button',{name:shipping?'Download continuation':'Download continuing review',exact:true}).click()]);const bytes=await fs.readFile(await d.path());await fs.writeFile(`${folder}/${key}.workflow.json`,bytes);return JSON.parse(bytes);}
+ const before=await download('inspection-before');
+ const inspect=page.locator('[data-decision-summary]').getByRole('button',{name:/^Inspect /}).first();await inspect.click();
+ assert.equal(await groups.getByRole('tab',{name:'Supporting reports',exact:true}).getAttribute('aria-selected'),'true');
+ await groups.getByRole('tab',{name:'Decision process',exact:true}).click();
+ await page.getByRole('button',{name:'Inspect calculation dependencies',exact:true}).click();
+ await page.locator('[data-workflow-map]').waitFor();
+ const after=await download('inspection-after');assert.equal(before.contentHash,after.contentHash);assert.deepEqual(errors,[]);
+ await fs.writeFile(`${folder}/inspection-verification.json`,JSON.stringify({format:'shared-report-inspection/1',captureUrl:`http://127.0.0.1:${port}/`,before:{file:'inspection-before.workflow.json',runHash:before.contentHash},after:{file:'inspection-after.workflow.json',runHash:after.contentHash},unchanged:true,sharedReportHost:true,groupTabs:await groups.getByRole('tab').allTextContents(),errors},null,2)+'\n');
+ await context.close();
+}
+}finally{await browser.close()}

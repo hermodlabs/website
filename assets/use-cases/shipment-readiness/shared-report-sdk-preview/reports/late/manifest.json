@@ -1,0 +1,3271 @@
+{
+  "format": "shipment-exceptions-batch/1",
+  "createdAt": "2026-11-17T17:30:00Z",
+  "reviewState": "calculated",
+  "binding": {
+    "appId": "shipment-exception-response",
+    "release": 1,
+    "appHash": "0cce758147637a6e7d3461a78987ccf7313574a52446aadadc2fecd16902ba1b",
+    "packageHash": "7d9b4d46f3df0743f239016d26e40003560b1f7c07ee96c497e7c02c964df001",
+    "pattern": "complete-a-commitment/1",
+    "moduleHash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c"
+  },
+  "appFileSHA256": "03e1357e59893f4c6171db069433fe073724658506ccacb95c49dea2646867ef",
+  "cliVersion": "decision-lab 0.1.0 (SDK 0.1.0)",
+  "previousManifest": "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/baseline-batch/manifest.json",
+  "inputSources": [
+    {
+      "file": "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/fixtures/baseline/orders.csv",
+      "bytes": 1233,
+      "sha256": "c0a1207a5088d837a607e42e7c67b84d17081d24f3ef8bd78fa2fb824555beb6"
+    },
+    {
+      "file": "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/fixtures/baseline/quotes.csv",
+      "bytes": 2686,
+      "sha256": "c0669296493d6114579864c412e27a01bce2474ae5ee0921157d9d566349f416"
+    },
+    {
+      "file": "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/fixtures/baseline/slot-confirmations.csv",
+      "bytes": 900,
+      "sha256": "12fa46f3782fc747620b08d985043f9d39b54d251cefff0698d43060e16d92ae"
+    },
+    {
+      "file": "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/fixtures/retained/baseline/SHIP-104.json",
+      "bytes": 7051,
+      "sha256": "a6f8e57de46ed51117e94e7dfb040417d5561419257b81f5579469e0ee5a0650"
+    },
+    {
+      "file": "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/fixtures/retained/baseline/SHIP-105.json",
+      "bytes": 7051,
+      "sha256": "96e4483fbbeec33532cf010f2dd48741b612f1c6533c96320819b2c1fe220dda"
+    },
+    {
+      "file": "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/fixtures/retained/baseline/SHIP-106.json",
+      "bytes": 7051,
+      "sha256": "1aff327e8874f81a913150a7dc395ac78696cb88387d4e5f7619176b1198d796"
+    },
+    {
+      "file": "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/fixtures/retained/baseline/SHIP-107.json",
+      "bytes": 7050,
+      "sha256": "af80bd4f80eb4e51d48150862ff2f10c1a2629641309d925fae23243e2f0c0b4"
+    },
+    {
+      "file": "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/config.json",
+      "bytes": 3619,
+      "sha256": "7ead4f27a911ad970c3bd6bc4dc86f1ac8741474bc02c10917f8cb7d246babbf"
+    },
+    {
+      "file": "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/app/shipment-review.app.json",
+      "bytes": 119972,
+      "sha256": "03e1357e59893f4c6171db069433fe073724658506ccacb95c49dea2646867ef"
+    },
+    {
+      "file": "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/app/shipment.workflow.json",
+      "bytes": 537890,
+      "sha256": "5ae7f804b9230d033a7433568dcb31a7b5b0ae7dc71c7dcd14d060d8ee446213"
+    },
+    {
+      "file": "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/baseline-batch/manifest.json",
+      "bytes": 62180,
+      "sha256": "471c26f5ffde79308b394fefc8349903c9d52afec0d47109cca101d77f7a2a14"
+    },
+    {
+      "file": "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/baseline-batch/shipments/SHIP-104/run.json",
+      "bytes": 234330,
+      "sha256": "ee1ad842b79d5959689baa6d9e8e04e3b097ca18f2d45fd62a4d8ebdfa968360"
+    },
+    {
+      "file": "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/baseline-batch/shipments/SHIP-105/run.json",
+      "bytes": 234330,
+      "sha256": "f569524f2e6593fa972df707c5ba4376fef2abb9d448ada140b00a3e37409d2a"
+    },
+    {
+      "file": "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/baseline-batch/shipments/SHIP-106/run.json",
+      "bytes": 234330,
+      "sha256": "34976aad2325c74e4635c5ab5fbecfa173e4afcc23597ebcebe595f985732ff4"
+    },
+    {
+      "file": "/private/tmp/decision-lab-shared-report-refresh/shipping-cli-current/baseline-batch/shipments/SHIP-107/run.json",
+      "bytes": 234320,
+      "sha256": "d272f0cfe60ec92c4c0381b12f31aa2a5d41a064b4773ef9a3c7bd07cb5f3805"
+    }
+  ],
+  "summary": {
+    "recommendation-changed": 4
+  },
+  "exitCode": 0,
+  "rows": [
+    {
+      "shipmentId": "SHIP-104",
+      "orderId": "ORD-104",
+      "orderRevision": "1",
+      "owner": "Maya Chen",
+      "deadline": "2026-11-17T18:00:00.000Z",
+      "reviewState": "calculated",
+      "status": "recommendation-changed",
+      "before": {
+        "status": "eligible",
+        "available": true,
+        "issues": [],
+        "identity": {
+          "runId": "batch-SHIP-104",
+          "createdAt": "2026-11-17T14:00:00Z",
+          "sdkVersion": "0.1.0",
+          "appId": "shipment-exception-response",
+          "release": 1,
+          "appHash": "0cce758147637a6e7d3461a78987ccf7313574a52446aadadc2fecd16902ba1b",
+          "packageHash": "7d9b4d46f3df0743f239016d26e40003560b1f7c07ee96c497e7c02c964df001",
+          "pattern": "complete-a-commitment/1",
+          "moduleHash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c",
+          "inputHash": "execution-input:a51ebf0adc91d02ec2ee837ba26f4a3347fdb2004ba876c46649d5f001892cad",
+          "modelHash": "ac4717f2922eac7b07b953c52d144a55f5984a91f27281414d3837ff9238501b",
+          "sourceHash": "a6f8e57de46ed51117e94e7dfb040417d5561419257b81f5579469e0ee5a0650",
+          "template": {
+            "id": "complete-a-commitment",
+            "version": "1.0.0",
+            "contentHash": "2fe9902f4f2b8deebd5663a8467fc2d5c24aeaa9fdcdca1ccd1bb42574a144b2"
+          },
+          "module": {
+            "id": "shipment-exception-response",
+            "version": "2.0.0",
+            "hash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c"
+          },
+          "evaluator": "bounded-static-commitment/1",
+          "evaluatorBuild": "0.1.0",
+          "executionProtocol": 1,
+          "reportSchema": "decision-lab-report/1"
+        },
+        "scope": {
+          "orderId": "ORD-104",
+          "orderRevision": "1",
+          "recipient": "DC-X",
+          "shipDate": "2026-11-18",
+          "profileVersion": "1.0.0"
+        },
+        "finding": "feasible_witness",
+        "preferredIds": [
+          "direct"
+        ],
+        "preferredPlanIds": [
+          "plan-000001"
+        ],
+        "preferred": [
+          {
+            "id": "plan-000001",
+            "arrangementId": "direct",
+            "label": "Direct",
+            "feasible": true,
+            "preferred": true,
+            "expense": 400000,
+            "expenseDisplay": "$4,000.00",
+            "arrivalMinutes": 5040,
+            "arrival": "Nov 20, 2026, 12:00 PM GMT-6",
+            "blockers": []
+          }
+        ],
+        "plans": [
+          {
+            "id": "plan-000001",
+            "arrangementId": "direct",
+            "label": "Direct",
+            "feasible": true,
+            "preferred": true,
+            "expense": 400000,
+            "expenseDisplay": "$4,000.00",
+            "arrivalMinutes": 5040,
+            "arrival": "Nov 20, 2026, 12:00 PM GMT-6",
+            "blockers": []
+          },
+          {
+            "id": "plan-000002",
+            "arrangementId": "backup",
+            "label": "Backup",
+            "feasible": false,
+            "preferred": false,
+            "expense": 600000,
+            "expenseDisplay": "$6,000.00",
+            "arrivalMinutes": 3600,
+            "arrival": "Nov 19, 2026, 12:00 PM GMT-6",
+            "blockers": [
+              {
+                "id": "total-expense-limit",
+                "planId": "plan-000002",
+                "arrangementId": "backup",
+                "scenarioId": "registered",
+                "label": "Complete shipment expense is within the limit",
+                "requirement": "Total expense and cash"
+              }
+            ]
+          },
+          {
+            "id": "plan-000003",
+            "arrangementId": "consolidated",
+            "label": "Consolidated",
+            "feasible": true,
+            "preferred": false,
+            "expense": 500000,
+            "expenseDisplay": "$5,000.00",
+            "arrivalMinutes": 3960,
+            "arrival": "Nov 19, 2026, 6:00 PM GMT-6",
+            "blockers": []
+          }
+        ],
+        "blockers": [
+          {
+            "id": "total-expense-limit",
+            "planId": "plan-000002",
+            "arrangementId": "backup",
+            "scenarioId": "registered",
+            "label": "Complete shipment expense is within the limit",
+            "requirement": "Total expense and cash"
+          }
+        ],
+        "coverage": {
+          "totalCandidates": 3,
+          "evaluatedCandidates": 3,
+          "visitedCandidates": 3,
+          "totalScenarios": 1,
+          "totalPlanScenarioChecks": 3,
+          "evaluatedPlanScenarioChecks": 3,
+          "complete": true,
+          "reason": null,
+          "limits": {
+            "maxPlans": 10000,
+            "maxScenarioChecks": 100000,
+            "maxOperations": 10000000
+          },
+          "operations": 1883,
+          "admissionComplete": true
+        }
+      },
+      "current": {
+        "status": "eligible",
+        "available": true,
+        "issues": [],
+        "identity": {
+          "runId": "batch-SHIP-104",
+          "createdAt": "2026-11-17T17:30:00Z",
+          "sdkVersion": "0.1.0",
+          "appId": "shipment-exception-response",
+          "release": 1,
+          "appHash": "0cce758147637a6e7d3461a78987ccf7313574a52446aadadc2fecd16902ba1b",
+          "packageHash": "7d9b4d46f3df0743f239016d26e40003560b1f7c07ee96c497e7c02c964df001",
+          "pattern": "complete-a-commitment/1",
+          "moduleHash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c",
+          "inputHash": "execution-input:85ec1e0945e62a6d43ee83ecdacfadfc673450e86a00d5949066c3fd6d1d321a",
+          "modelHash": "d3a2d217899bc6c9fed3da56887adab3b1a39cf4638b9eac869beca7350bab1a",
+          "sourceHash": "7571af32d9b6fd1f7b9e287e1f88572488364e58a885e5709527703eeab5a996",
+          "template": {
+            "id": "complete-a-commitment",
+            "version": "1.0.0",
+            "contentHash": "2fe9902f4f2b8deebd5663a8467fc2d5c24aeaa9fdcdca1ccd1bb42574a144b2"
+          },
+          "module": {
+            "id": "shipment-exception-response",
+            "version": "2.0.0",
+            "hash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c"
+          },
+          "evaluator": "bounded-static-commitment/1",
+          "evaluatorBuild": "0.1.0",
+          "executionProtocol": 1,
+          "reportSchema": "decision-lab-report/1"
+        },
+        "scope": {
+          "orderId": "ORD-104",
+          "orderRevision": "1",
+          "recipient": "DC-X",
+          "shipDate": "2026-11-18",
+          "profileVersion": "1.0.0"
+        },
+        "finding": "feasible_witness",
+        "preferredIds": [
+          "consolidated"
+        ],
+        "preferredPlanIds": [
+          "plan-000003"
+        ],
+        "preferred": [
+          {
+            "id": "plan-000003",
+            "arrangementId": "consolidated",
+            "label": "Consolidated",
+            "feasible": true,
+            "preferred": true,
+            "expense": 500000,
+            "expenseDisplay": "$5,000.00",
+            "arrivalMinutes": 3960,
+            "arrival": "Nov 19, 2026, 6:00 PM GMT-6",
+            "blockers": []
+          }
+        ],
+        "plans": [
+          {
+            "id": "plan-000001",
+            "arrangementId": "direct",
+            "label": "Direct",
+            "feasible": false,
+            "preferred": false,
+            "expense": 400000,
+            "expenseDisplay": "$4,000.00",
+            "arrivalMinutes": 5040,
+            "arrival": "Nov 20, 2026, 12:00 PM GMT-6",
+            "blockers": [
+              {
+                "id": "carrier-booking-cutoff",
+                "planId": "plan-000001",
+                "arrangementId": "direct",
+                "scenarioId": "registered",
+                "label": "The carrier booking cutoff has not passed",
+                "requirement": "Reservation, preparation and receipt"
+              }
+            ]
+          },
+          {
+            "id": "plan-000002",
+            "arrangementId": "backup",
+            "label": "Backup",
+            "feasible": false,
+            "preferred": false,
+            "expense": 600000,
+            "expenseDisplay": "$6,000.00",
+            "arrivalMinutes": 3600,
+            "arrival": "Nov 19, 2026, 12:00 PM GMT-6",
+            "blockers": [
+              {
+                "id": "total-expense-limit",
+                "planId": "plan-000002",
+                "arrangementId": "backup",
+                "scenarioId": "registered",
+                "label": "Complete shipment expense is within the limit",
+                "requirement": "Total expense and cash"
+              }
+            ]
+          },
+          {
+            "id": "plan-000003",
+            "arrangementId": "consolidated",
+            "label": "Consolidated",
+            "feasible": true,
+            "preferred": true,
+            "expense": 500000,
+            "expenseDisplay": "$5,000.00",
+            "arrivalMinutes": 3960,
+            "arrival": "Nov 19, 2026, 6:00 PM GMT-6",
+            "blockers": []
+          }
+        ],
+        "blockers": [
+          {
+            "id": "carrier-booking-cutoff",
+            "planId": "plan-000001",
+            "arrangementId": "direct",
+            "scenarioId": "registered",
+            "label": "The carrier booking cutoff has not passed",
+            "requirement": "Reservation, preparation and receipt"
+          },
+          {
+            "id": "total-expense-limit",
+            "planId": "plan-000002",
+            "arrangementId": "backup",
+            "scenarioId": "registered",
+            "label": "Complete shipment expense is within the limit",
+            "requirement": "Total expense and cash"
+          }
+        ],
+        "coverage": {
+          "totalCandidates": 3,
+          "evaluatedCandidates": 3,
+          "visitedCandidates": 3,
+          "totalScenarios": 1,
+          "totalPlanScenarioChecks": 3,
+          "evaluatedPlanScenarioChecks": 3,
+          "complete": true,
+          "reason": null,
+          "limits": {
+            "maxPlans": 10000,
+            "maxScenarioChecks": 100000,
+            "maxOperations": 10000000
+          },
+          "operations": 1847,
+          "admissionComplete": true
+        }
+      },
+      "diagnostics": [],
+      "changes": [
+        {
+          "path": "parameters.actionReady",
+          "before": 480,
+          "after": 690
+        },
+        {
+          "path": "parameters.currentTime",
+          "before": 480,
+          "after": 690
+        }
+      ],
+      "sources": [
+        {
+          "file": "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/fixtures/baseline/orders.csv"
+        },
+        {
+          "file": "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/fixtures/baseline/quotes.csv"
+        },
+        {
+          "file": "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/fixtures/baseline/slot-confirmations.csv"
+        },
+        {
+          "file": "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/fixtures/retained/baseline/SHIP-104.json"
+        }
+      ],
+      "links": [
+        {
+          "label": "Continue this operating review",
+          "href": "shipments/SHIP-104/review.json"
+        },
+        {
+          "label": "Source receipts",
+          "href": "shipments/SHIP-104/sources.json"
+        },
+        {
+          "label": "Canonical inputs",
+          "href": "shipments/SHIP-104/case.json"
+        },
+        {
+          "label": "Input validation",
+          "href": "shipments/SHIP-104/validation.json"
+        },
+        {
+          "label": "Full CLI report",
+          "href": "shipments/SHIP-104/run.json"
+        }
+      ],
+      "artifacts": {
+        "sources": {
+          "file": "shipments/SHIP-104/sources.json",
+          "bytes": 1038,
+          "sha256": "f4b07de3ba0ee06c254bff14e161dfe86eb347313231047fcd5dafa185c01b6d"
+        },
+        "review": {
+          "file": "shipments/SHIP-104/review.json",
+          "bytes": 21085688,
+          "sha256": "7a5fd055c85a4dac0d492e00df8eab5863f8d6980cc580354401359a47fc1b5c"
+        },
+        "case": {
+          "file": "shipments/SHIP-104/case.json",
+          "bytes": 7051,
+          "sha256": "7571af32d9b6fd1f7b9e287e1f88572488364e58a885e5709527703eeab5a996"
+        },
+        "validation": {
+          "file": "shipments/SHIP-104/validation.json",
+          "bytes": 36,
+          "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c"
+        },
+        "run": {
+          "file": "shipments/SHIP-104/run.json",
+          "bytes": 250112,
+          "sha256": "ac474574b1b6ffee30357c6d64f6b0eec9862a198dae3c44a0a6b9effe8a52b9"
+        },
+        "summary": {
+          "file": "shipments/SHIP-104/decision-summary.json",
+          "bytes": 4777,
+          "sha256": "c4426d72dd5f024d4d7ad60776eed1ea4a869ff1b61498ba7477c584945b46d9"
+        }
+      },
+      "findingChanges": {
+        "format": "decision-lab-finding-changes/1",
+        "status": "changed",
+        "available": true,
+        "before": {
+          "identity": {
+            "runId": "batch-SHIP-104",
+            "createdAt": "2026-11-17T14:00:00Z",
+            "sdkVersion": "0.1.0",
+            "appId": "shipment-exception-response",
+            "release": 1,
+            "appHash": "0cce758147637a6e7d3461a78987ccf7313574a52446aadadc2fecd16902ba1b",
+            "packageHash": "7d9b4d46f3df0743f239016d26e40003560b1f7c07ee96c497e7c02c964df001",
+            "pattern": "complete-a-commitment/1",
+            "moduleHash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c",
+            "inputHash": "execution-input:a51ebf0adc91d02ec2ee837ba26f4a3347fdb2004ba876c46649d5f001892cad",
+            "modelHash": "ac4717f2922eac7b07b953c52d144a55f5984a91f27281414d3837ff9238501b",
+            "sourceHash": "a6f8e57de46ed51117e94e7dfb040417d5561419257b81f5579469e0ee5a0650",
+            "template": {
+              "id": "complete-a-commitment",
+              "version": "1.0.0",
+              "contentHash": "2fe9902f4f2b8deebd5663a8467fc2d5c24aeaa9fdcdca1ccd1bb42574a144b2"
+            },
+            "module": {
+              "id": "shipment-exception-response",
+              "version": "2.0.0",
+              "hash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c"
+            },
+            "evaluator": "bounded-static-commitment/1",
+            "evaluatorBuild": "0.1.0",
+            "executionProtocol": 1,
+            "reportSchema": "decision-lab-report/1"
+          },
+          "executionStatus": "completed",
+          "coverage": {
+            "admissionComplete": true,
+            "complete": true,
+            "evaluatedCandidates": 3,
+            "evaluatedPlanScenarioChecks": 3,
+            "limits": {
+              "maxOperations": 10000000,
+              "maxPlans": 10000,
+              "maxScenarioChecks": 100000
+            },
+            "operations": 1883,
+            "reason": null,
+            "totalCandidates": 3,
+            "totalPlanScenarioChecks": 3,
+            "totalScenarios": 1,
+            "visitedCandidates": 3
+          },
+          "complete": true,
+          "hasFeasibleWitness": true,
+          "feasibleChoices": [
+            {
+              "arrangement": "consolidated"
+            },
+            {
+              "arrangement": "direct"
+            }
+          ],
+          "preference": {
+            "established": true,
+            "choices": [
+              {
+                "arrangement": "direct"
+              }
+            ],
+            "values": [
+              400000,
+              5040
+            ]
+          },
+          "blockers": [
+            {
+              "choices": {
+                "arrangement": "backup"
+              },
+              "scenarioId": "registered",
+              "constraintId": "total-expense-limit",
+              "requirementId": "COST"
+            }
+          ]
+        },
+        "after": {
+          "identity": {
+            "runId": "batch-SHIP-104",
+            "createdAt": "2026-11-17T17:30:00Z",
+            "sdkVersion": "0.1.0",
+            "appId": "shipment-exception-response",
+            "release": 1,
+            "appHash": "0cce758147637a6e7d3461a78987ccf7313574a52446aadadc2fecd16902ba1b",
+            "packageHash": "7d9b4d46f3df0743f239016d26e40003560b1f7c07ee96c497e7c02c964df001",
+            "pattern": "complete-a-commitment/1",
+            "moduleHash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c",
+            "inputHash": "execution-input:85ec1e0945e62a6d43ee83ecdacfadfc673450e86a00d5949066c3fd6d1d321a",
+            "modelHash": "d3a2d217899bc6c9fed3da56887adab3b1a39cf4638b9eac869beca7350bab1a",
+            "sourceHash": "7571af32d9b6fd1f7b9e287e1f88572488364e58a885e5709527703eeab5a996",
+            "template": {
+              "id": "complete-a-commitment",
+              "version": "1.0.0",
+              "contentHash": "2fe9902f4f2b8deebd5663a8467fc2d5c24aeaa9fdcdca1ccd1bb42574a144b2"
+            },
+            "module": {
+              "id": "shipment-exception-response",
+              "version": "2.0.0",
+              "hash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c"
+            },
+            "evaluator": "bounded-static-commitment/1",
+            "evaluatorBuild": "0.1.0",
+            "executionProtocol": 1,
+            "reportSchema": "decision-lab-report/1"
+          },
+          "executionStatus": "completed",
+          "coverage": {
+            "admissionComplete": true,
+            "complete": true,
+            "evaluatedCandidates": 3,
+            "evaluatedPlanScenarioChecks": 3,
+            "limits": {
+              "maxOperations": 10000000,
+              "maxPlans": 10000,
+              "maxScenarioChecks": 100000
+            },
+            "operations": 1847,
+            "reason": null,
+            "totalCandidates": 3,
+            "totalPlanScenarioChecks": 3,
+            "totalScenarios": 1,
+            "visitedCandidates": 3
+          },
+          "complete": true,
+          "hasFeasibleWitness": true,
+          "feasibleChoices": [
+            {
+              "arrangement": "consolidated"
+            }
+          ],
+          "preference": {
+            "established": true,
+            "choices": [
+              {
+                "arrangement": "consolidated"
+              }
+            ],
+            "values": [
+              500000,
+              3960
+            ]
+          },
+          "blockers": [
+            {
+              "choices": {
+                "arrangement": "direct"
+              },
+              "scenarioId": "registered",
+              "constraintId": "carrier-booking-cutoff",
+              "requirementId": "TIME"
+            },
+            {
+              "choices": {
+                "arrangement": "backup"
+              },
+              "scenarioId": "registered",
+              "constraintId": "total-expense-limit",
+              "requirementId": "COST"
+            }
+          ]
+        },
+        "inputs": {
+          "changed": true,
+          "parameters": [
+            {
+              "parameter": "actionReady",
+              "before": 480,
+              "after": 690,
+              "beforePresent": true,
+              "afterPresent": true
+            },
+            {
+              "parameter": "currentTime",
+              "before": 480,
+              "after": 690,
+              "beforePresent": true,
+              "afterPresent": true
+            }
+          ],
+          "records": [],
+          "other": []
+        },
+        "findings": {
+          "feasibility": {
+            "available": true,
+            "changed": true
+          },
+          "blockers": {
+            "available": true,
+            "changed": true
+          },
+          "preference": {
+            "available": true,
+            "changed": true
+          }
+        },
+        "issues": [],
+        "qualification": "These are differences between retained calculations, not evidence of physical events or a causal explanation. A checked witness can survive incomplete search; no-plan and preferred-choice comparisons require complete assessments. No review, authority or operating action is recorded."
+      },
+      "nextAction": "Review the changed proposal and its supporting conditions before replacing the previous arrangement.",
+      "decisionSummary": {
+        "format": "workflow-decision-summary/1",
+        "title": "Decision summary",
+        "question": "Which response protects this shipment, and what has actually happened?",
+        "sections": [
+          {
+            "id": "options",
+            "label": "Options",
+            "question": "Which shipment arrangements meet the commitment, and how do their expense and arrival times compare?"
+          },
+          {
+            "id": "next-actions",
+            "label": "Next actions",
+            "question": "What can we do next, given the current shipment findings?"
+          },
+          {
+            "id": "assumptions",
+            "label": "Assumptions",
+            "question": "What assumptions and limits does this shipment comparison depend on?"
+          },
+          {
+            "id": "questions",
+            "label": "Questions",
+            "question": "What still needs to be established before committing to an arrangement?"
+          }
+        ],
+        "finding": {
+          "availability": "available",
+          "metrics": [
+            {
+              "id": "arrangement-expense",
+              "label": "Preferred arrangement expense",
+              "value": 500000,
+              "format": "money"
+            },
+            {
+              "id": "arrangement-completion",
+              "label": "Preferred customer receipt",
+              "value": 3960,
+              "format": {
+                "type": "time",
+                "unit": "minute",
+                "origin": "2026-11-17T00:00:00-06:00",
+                "timeZone": "Etc/GMT+6"
+              }
+            }
+          ],
+          "issues": [],
+          "status": "supported",
+          "heading": "Consolidated is preferred under the recorded requirements.",
+          "priorityLabel": "Meet every requirement, then lower complete expense, then earlier completion",
+          "qualification": "The calculation supports a proposal. Selection, sourced operating authority and actual completion are separate records."
+        },
+        "comparison": {
+          "title": "Compare complete arrangements",
+          "columns": [
+            {
+              "key": "label",
+              "label": "Complete arrangement"
+            },
+            {
+              "key": "standing",
+              "label": "Calculated fit"
+            },
+            {
+              "key": "expense",
+              "label": "Complete expense",
+              "format": "money"
+            },
+            {
+              "key": "finishMinute",
+              "label": "Latest customer receipt",
+              "format": {
+                "type": "time",
+                "unit": "minute",
+                "origin": "2026-11-17T00:00:00-06:00",
+                "timeZone": "Etc/GMT+6"
+              }
+            }
+          ],
+          "tabId": "arrangements",
+          "availability": "available",
+          "rows": [
+            {
+              "key": "plan-000001",
+              "label": "Direct",
+              "record": {
+                "label": "Direct",
+                "standing": "Blocked",
+                "expense": 400000,
+                "finishMinute": 5040
+              },
+              "inspectionKey": "plan-000001",
+              "primary": false
+            },
+            {
+              "key": "plan-000002",
+              "label": "Backup",
+              "record": {
+                "label": "Backup",
+                "standing": "Blocked",
+                "expense": 600000,
+                "finishMinute": 3600
+              },
+              "inspectionKey": "plan-000002",
+              "primary": false
+            },
+            {
+              "key": "plan-000003",
+              "label": "Consolidated",
+              "record": {
+                "label": "Consolidated",
+                "standing": "Preferred",
+                "expense": 500000,
+                "finishMinute": 3960
+              },
+              "inspectionKey": "plan-000003",
+              "primary": true
+            }
+          ],
+          "issues": []
+        },
+        "conditions": [
+          {
+            "id": "scope",
+            "label": "Use current records for the exact order or configuration and declared operating time.",
+            "tabId": "arrangements"
+          }
+        ],
+        "actionGroups": [],
+        "links": [
+          {
+            "tabId": "arrangements",
+            "label": "Inspect complete arrangements"
+          }
+        ],
+        "displayContext": {
+          "currency": "USD",
+          "scale": 100,
+          "time": "minute",
+          "names": {
+            "direct": "Direct",
+            "backup": "Backup",
+            "consolidated": "Consolidated"
+          },
+          "labels": {},
+          "formats": {
+            "finishMinute": {
+              "type": "time",
+              "unit": "minute",
+              "origin": "2026-11-17T00:00:00-06:00",
+              "timeZone": "Etc/GMT+6"
+            },
+            "deadlineMinute": {
+              "type": "time",
+              "unit": "minute",
+              "origin": "2026-11-17T00:00:00-06:00",
+              "timeZone": "Etc/GMT+6"
+            },
+            "start": {
+              "type": "time",
+              "unit": "minute",
+              "origin": "2026-11-17T00:00:00-06:00",
+              "timeZone": "Etc/GMT+6"
+            },
+            "end": {
+              "type": "time",
+              "unit": "minute",
+              "origin": "2026-11-17T00:00:00-06:00",
+              "timeZone": "Etc/GMT+6"
+            },
+            "time": {
+              "type": "time",
+              "unit": "minute",
+              "origin": "2026-11-17T00:00:00-06:00",
+              "timeZone": "Etc/GMT+6"
+            },
+            "duration": {
+              "type": "duration",
+              "unit": "minute"
+            }
+          }
+        },
+        "issues": []
+      },
+      "actionWindows": [
+        {
+          "arrangement": "direct",
+          "owner": "Maya Chen",
+          "dueMinute": 660,
+          "remainingMinutes": -30,
+          "meaning": "Latest selection and preparation start under the declared reservation, quote-validity and departure timing bounds. Selection is instantaneous in this profile; other permissions, calendars and resources must still pass the complete assessment."
+        },
+        {
+          "arrangement": "backup",
+          "owner": "Maya Chen",
+          "dueMinute": 720,
+          "remainingMinutes": 30,
+          "meaning": "Latest selection and preparation start under the declared reservation, quote-validity and departure timing bounds. Selection is instantaneous in this profile; other permissions, calendars and resources must still pass the complete assessment."
+        },
+        {
+          "arrangement": "consolidated",
+          "owner": "Maya Chen",
+          "dueMinute": 720,
+          "remainingMinutes": 30,
+          "meaning": "Latest selection and preparation start under the declared reservation, quote-validity and departure timing bounds. Selection is instantaneous in this profile; other permissions, calendars and resources must still pass the complete assessment."
+        }
+      ]
+    },
+    {
+      "shipmentId": "SHIP-105",
+      "orderId": "ORD-105",
+      "orderRevision": "1",
+      "owner": "Maya Chen",
+      "deadline": "2026-11-17T18:00:00.000Z",
+      "reviewState": "calculated",
+      "status": "recommendation-changed",
+      "before": {
+        "status": "eligible",
+        "available": true,
+        "issues": [],
+        "identity": {
+          "runId": "batch-SHIP-105",
+          "createdAt": "2026-11-17T14:00:00Z",
+          "sdkVersion": "0.1.0",
+          "appId": "shipment-exception-response",
+          "release": 1,
+          "appHash": "0cce758147637a6e7d3461a78987ccf7313574a52446aadadc2fecd16902ba1b",
+          "packageHash": "7d9b4d46f3df0743f239016d26e40003560b1f7c07ee96c497e7c02c964df001",
+          "pattern": "complete-a-commitment/1",
+          "moduleHash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c",
+          "inputHash": "execution-input:0e2e8da0c97ed0857b076b0ae08b251ce6db49d3995103903e79f559f3f3a78a",
+          "modelHash": "adfa49ec0ec5b32f0959ac74848f674dd7645fc42891d9dcd9251d7f1a1296f4",
+          "sourceHash": "96e4483fbbeec33532cf010f2dd48741b612f1c6533c96320819b2c1fe220dda",
+          "template": {
+            "id": "complete-a-commitment",
+            "version": "1.0.0",
+            "contentHash": "2fe9902f4f2b8deebd5663a8467fc2d5c24aeaa9fdcdca1ccd1bb42574a144b2"
+          },
+          "module": {
+            "id": "shipment-exception-response",
+            "version": "2.0.0",
+            "hash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c"
+          },
+          "evaluator": "bounded-static-commitment/1",
+          "evaluatorBuild": "0.1.0",
+          "executionProtocol": 1,
+          "reportSchema": "decision-lab-report/1"
+        },
+        "scope": {
+          "orderId": "ORD-105",
+          "orderRevision": "1",
+          "recipient": "DC-X",
+          "shipDate": "2026-11-18",
+          "profileVersion": "1.0.0"
+        },
+        "finding": "feasible_witness",
+        "preferredIds": [
+          "direct"
+        ],
+        "preferredPlanIds": [
+          "plan-000001"
+        ],
+        "preferred": [
+          {
+            "id": "plan-000001",
+            "arrangementId": "direct",
+            "label": "Direct",
+            "feasible": true,
+            "preferred": true,
+            "expense": 400000,
+            "expenseDisplay": "$4,000.00",
+            "arrivalMinutes": 5040,
+            "arrival": "Nov 20, 2026, 12:00 PM GMT-6",
+            "blockers": []
+          }
+        ],
+        "plans": [
+          {
+            "id": "plan-000001",
+            "arrangementId": "direct",
+            "label": "Direct",
+            "feasible": true,
+            "preferred": true,
+            "expense": 400000,
+            "expenseDisplay": "$4,000.00",
+            "arrivalMinutes": 5040,
+            "arrival": "Nov 20, 2026, 12:00 PM GMT-6",
+            "blockers": []
+          },
+          {
+            "id": "plan-000002",
+            "arrangementId": "backup",
+            "label": "Backup",
+            "feasible": false,
+            "preferred": false,
+            "expense": 600000,
+            "expenseDisplay": "$6,000.00",
+            "arrivalMinutes": 3600,
+            "arrival": "Nov 19, 2026, 12:00 PM GMT-6",
+            "blockers": [
+              {
+                "id": "total-expense-limit",
+                "planId": "plan-000002",
+                "arrangementId": "backup",
+                "scenarioId": "registered",
+                "label": "Complete shipment expense is within the limit",
+                "requirement": "Total expense and cash"
+              }
+            ]
+          },
+          {
+            "id": "plan-000003",
+            "arrangementId": "consolidated",
+            "label": "Consolidated",
+            "feasible": true,
+            "preferred": false,
+            "expense": 500000,
+            "expenseDisplay": "$5,000.00",
+            "arrivalMinutes": 3960,
+            "arrival": "Nov 19, 2026, 6:00 PM GMT-6",
+            "blockers": []
+          }
+        ],
+        "blockers": [
+          {
+            "id": "total-expense-limit",
+            "planId": "plan-000002",
+            "arrangementId": "backup",
+            "scenarioId": "registered",
+            "label": "Complete shipment expense is within the limit",
+            "requirement": "Total expense and cash"
+          }
+        ],
+        "coverage": {
+          "totalCandidates": 3,
+          "evaluatedCandidates": 3,
+          "visitedCandidates": 3,
+          "totalScenarios": 1,
+          "totalPlanScenarioChecks": 3,
+          "evaluatedPlanScenarioChecks": 3,
+          "complete": true,
+          "reason": null,
+          "limits": {
+            "maxPlans": 10000,
+            "maxScenarioChecks": 100000,
+            "maxOperations": 10000000
+          },
+          "operations": 1883,
+          "admissionComplete": true
+        }
+      },
+      "current": {
+        "status": "eligible",
+        "available": true,
+        "issues": [],
+        "identity": {
+          "runId": "batch-SHIP-105",
+          "createdAt": "2026-11-17T17:30:00Z",
+          "sdkVersion": "0.1.0",
+          "appId": "shipment-exception-response",
+          "release": 1,
+          "appHash": "0cce758147637a6e7d3461a78987ccf7313574a52446aadadc2fecd16902ba1b",
+          "packageHash": "7d9b4d46f3df0743f239016d26e40003560b1f7c07ee96c497e7c02c964df001",
+          "pattern": "complete-a-commitment/1",
+          "moduleHash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c",
+          "inputHash": "execution-input:745c36e0c18abfad2b964369e1ce44e7519308b6533b5fb307dc7b76e1a3425c",
+          "modelHash": "7d0d4bb3f815df0572265fcfab6a8226c5b9e7178e6c0fc83ff5d962d723ad47",
+          "sourceHash": "7322cdd667cf515c68089388f5ab4be81366773d6ecc90fb4d709a626274b31e",
+          "template": {
+            "id": "complete-a-commitment",
+            "version": "1.0.0",
+            "contentHash": "2fe9902f4f2b8deebd5663a8467fc2d5c24aeaa9fdcdca1ccd1bb42574a144b2"
+          },
+          "module": {
+            "id": "shipment-exception-response",
+            "version": "2.0.0",
+            "hash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c"
+          },
+          "evaluator": "bounded-static-commitment/1",
+          "evaluatorBuild": "0.1.0",
+          "executionProtocol": 1,
+          "reportSchema": "decision-lab-report/1"
+        },
+        "scope": {
+          "orderId": "ORD-105",
+          "orderRevision": "1",
+          "recipient": "DC-X",
+          "shipDate": "2026-11-18",
+          "profileVersion": "1.0.0"
+        },
+        "finding": "feasible_witness",
+        "preferredIds": [
+          "consolidated"
+        ],
+        "preferredPlanIds": [
+          "plan-000003"
+        ],
+        "preferred": [
+          {
+            "id": "plan-000003",
+            "arrangementId": "consolidated",
+            "label": "Consolidated",
+            "feasible": true,
+            "preferred": true,
+            "expense": 500000,
+            "expenseDisplay": "$5,000.00",
+            "arrivalMinutes": 3960,
+            "arrival": "Nov 19, 2026, 6:00 PM GMT-6",
+            "blockers": []
+          }
+        ],
+        "plans": [
+          {
+            "id": "plan-000001",
+            "arrangementId": "direct",
+            "label": "Direct",
+            "feasible": false,
+            "preferred": false,
+            "expense": 400000,
+            "expenseDisplay": "$4,000.00",
+            "arrivalMinutes": 5040,
+            "arrival": "Nov 20, 2026, 12:00 PM GMT-6",
+            "blockers": [
+              {
+                "id": "carrier-booking-cutoff",
+                "planId": "plan-000001",
+                "arrangementId": "direct",
+                "scenarioId": "registered",
+                "label": "The carrier booking cutoff has not passed",
+                "requirement": "Reservation, preparation and receipt"
+              }
+            ]
+          },
+          {
+            "id": "plan-000002",
+            "arrangementId": "backup",
+            "label": "Backup",
+            "feasible": false,
+            "preferred": false,
+            "expense": 600000,
+            "expenseDisplay": "$6,000.00",
+            "arrivalMinutes": 3600,
+            "arrival": "Nov 19, 2026, 12:00 PM GMT-6",
+            "blockers": [
+              {
+                "id": "total-expense-limit",
+                "planId": "plan-000002",
+                "arrangementId": "backup",
+                "scenarioId": "registered",
+                "label": "Complete shipment expense is within the limit",
+                "requirement": "Total expense and cash"
+              }
+            ]
+          },
+          {
+            "id": "plan-000003",
+            "arrangementId": "consolidated",
+            "label": "Consolidated",
+            "feasible": true,
+            "preferred": true,
+            "expense": 500000,
+            "expenseDisplay": "$5,000.00",
+            "arrivalMinutes": 3960,
+            "arrival": "Nov 19, 2026, 6:00 PM GMT-6",
+            "blockers": []
+          }
+        ],
+        "blockers": [
+          {
+            "id": "carrier-booking-cutoff",
+            "planId": "plan-000001",
+            "arrangementId": "direct",
+            "scenarioId": "registered",
+            "label": "The carrier booking cutoff has not passed",
+            "requirement": "Reservation, preparation and receipt"
+          },
+          {
+            "id": "total-expense-limit",
+            "planId": "plan-000002",
+            "arrangementId": "backup",
+            "scenarioId": "registered",
+            "label": "Complete shipment expense is within the limit",
+            "requirement": "Total expense and cash"
+          }
+        ],
+        "coverage": {
+          "totalCandidates": 3,
+          "evaluatedCandidates": 3,
+          "visitedCandidates": 3,
+          "totalScenarios": 1,
+          "totalPlanScenarioChecks": 3,
+          "evaluatedPlanScenarioChecks": 3,
+          "complete": true,
+          "reason": null,
+          "limits": {
+            "maxPlans": 10000,
+            "maxScenarioChecks": 100000,
+            "maxOperations": 10000000
+          },
+          "operations": 1847,
+          "admissionComplete": true
+        }
+      },
+      "diagnostics": [],
+      "changes": [
+        {
+          "path": "parameters.actionReady",
+          "before": 480,
+          "after": 690
+        },
+        {
+          "path": "parameters.currentTime",
+          "before": 480,
+          "after": 690
+        }
+      ],
+      "sources": [
+        {
+          "file": "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/fixtures/baseline/orders.csv"
+        },
+        {
+          "file": "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/fixtures/baseline/quotes.csv"
+        },
+        {
+          "file": "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/fixtures/baseline/slot-confirmations.csv"
+        },
+        {
+          "file": "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/fixtures/retained/baseline/SHIP-105.json"
+        }
+      ],
+      "links": [
+        {
+          "label": "Continue this operating review",
+          "href": "shipments/SHIP-105/review.json"
+        },
+        {
+          "label": "Source receipts",
+          "href": "shipments/SHIP-105/sources.json"
+        },
+        {
+          "label": "Canonical inputs",
+          "href": "shipments/SHIP-105/case.json"
+        },
+        {
+          "label": "Input validation",
+          "href": "shipments/SHIP-105/validation.json"
+        },
+        {
+          "label": "Full CLI report",
+          "href": "shipments/SHIP-105/run.json"
+        }
+      ],
+      "artifacts": {
+        "sources": {
+          "file": "shipments/SHIP-105/sources.json",
+          "bytes": 1038,
+          "sha256": "8efd41893a38a486d5d7603a7c8f59c8bde8ab98455471a5abb66d65e04b9545"
+        },
+        "review": {
+          "file": "shipments/SHIP-105/review.json",
+          "bytes": 21085688,
+          "sha256": "3cf45650e23f641399d675e975a6a3d511c3efcc055f19235295e0443f3af269"
+        },
+        "case": {
+          "file": "shipments/SHIP-105/case.json",
+          "bytes": 7051,
+          "sha256": "7322cdd667cf515c68089388f5ab4be81366773d6ecc90fb4d709a626274b31e"
+        },
+        "validation": {
+          "file": "shipments/SHIP-105/validation.json",
+          "bytes": 36,
+          "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c"
+        },
+        "run": {
+          "file": "shipments/SHIP-105/run.json",
+          "bytes": 250112,
+          "sha256": "8caab40b6af8143a85e3aa0a10f43adb96f80db24f1508a9ba50d04afcbdaed9"
+        },
+        "summary": {
+          "file": "shipments/SHIP-105/decision-summary.json",
+          "bytes": 4777,
+          "sha256": "c4426d72dd5f024d4d7ad60776eed1ea4a869ff1b61498ba7477c584945b46d9"
+        }
+      },
+      "findingChanges": {
+        "format": "decision-lab-finding-changes/1",
+        "status": "changed",
+        "available": true,
+        "before": {
+          "identity": {
+            "runId": "batch-SHIP-105",
+            "createdAt": "2026-11-17T14:00:00Z",
+            "sdkVersion": "0.1.0",
+            "appId": "shipment-exception-response",
+            "release": 1,
+            "appHash": "0cce758147637a6e7d3461a78987ccf7313574a52446aadadc2fecd16902ba1b",
+            "packageHash": "7d9b4d46f3df0743f239016d26e40003560b1f7c07ee96c497e7c02c964df001",
+            "pattern": "complete-a-commitment/1",
+            "moduleHash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c",
+            "inputHash": "execution-input:0e2e8da0c97ed0857b076b0ae08b251ce6db49d3995103903e79f559f3f3a78a",
+            "modelHash": "adfa49ec0ec5b32f0959ac74848f674dd7645fc42891d9dcd9251d7f1a1296f4",
+            "sourceHash": "96e4483fbbeec33532cf010f2dd48741b612f1c6533c96320819b2c1fe220dda",
+            "template": {
+              "id": "complete-a-commitment",
+              "version": "1.0.0",
+              "contentHash": "2fe9902f4f2b8deebd5663a8467fc2d5c24aeaa9fdcdca1ccd1bb42574a144b2"
+            },
+            "module": {
+              "id": "shipment-exception-response",
+              "version": "2.0.0",
+              "hash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c"
+            },
+            "evaluator": "bounded-static-commitment/1",
+            "evaluatorBuild": "0.1.0",
+            "executionProtocol": 1,
+            "reportSchema": "decision-lab-report/1"
+          },
+          "executionStatus": "completed",
+          "coverage": {
+            "admissionComplete": true,
+            "complete": true,
+            "evaluatedCandidates": 3,
+            "evaluatedPlanScenarioChecks": 3,
+            "limits": {
+              "maxOperations": 10000000,
+              "maxPlans": 10000,
+              "maxScenarioChecks": 100000
+            },
+            "operations": 1883,
+            "reason": null,
+            "totalCandidates": 3,
+            "totalPlanScenarioChecks": 3,
+            "totalScenarios": 1,
+            "visitedCandidates": 3
+          },
+          "complete": true,
+          "hasFeasibleWitness": true,
+          "feasibleChoices": [
+            {
+              "arrangement": "consolidated"
+            },
+            {
+              "arrangement": "direct"
+            }
+          ],
+          "preference": {
+            "established": true,
+            "choices": [
+              {
+                "arrangement": "direct"
+              }
+            ],
+            "values": [
+              400000,
+              5040
+            ]
+          },
+          "blockers": [
+            {
+              "choices": {
+                "arrangement": "backup"
+              },
+              "scenarioId": "registered",
+              "constraintId": "total-expense-limit",
+              "requirementId": "COST"
+            }
+          ]
+        },
+        "after": {
+          "identity": {
+            "runId": "batch-SHIP-105",
+            "createdAt": "2026-11-17T17:30:00Z",
+            "sdkVersion": "0.1.0",
+            "appId": "shipment-exception-response",
+            "release": 1,
+            "appHash": "0cce758147637a6e7d3461a78987ccf7313574a52446aadadc2fecd16902ba1b",
+            "packageHash": "7d9b4d46f3df0743f239016d26e40003560b1f7c07ee96c497e7c02c964df001",
+            "pattern": "complete-a-commitment/1",
+            "moduleHash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c",
+            "inputHash": "execution-input:745c36e0c18abfad2b964369e1ce44e7519308b6533b5fb307dc7b76e1a3425c",
+            "modelHash": "7d0d4bb3f815df0572265fcfab6a8226c5b9e7178e6c0fc83ff5d962d723ad47",
+            "sourceHash": "7322cdd667cf515c68089388f5ab4be81366773d6ecc90fb4d709a626274b31e",
+            "template": {
+              "id": "complete-a-commitment",
+              "version": "1.0.0",
+              "contentHash": "2fe9902f4f2b8deebd5663a8467fc2d5c24aeaa9fdcdca1ccd1bb42574a144b2"
+            },
+            "module": {
+              "id": "shipment-exception-response",
+              "version": "2.0.0",
+              "hash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c"
+            },
+            "evaluator": "bounded-static-commitment/1",
+            "evaluatorBuild": "0.1.0",
+            "executionProtocol": 1,
+            "reportSchema": "decision-lab-report/1"
+          },
+          "executionStatus": "completed",
+          "coverage": {
+            "admissionComplete": true,
+            "complete": true,
+            "evaluatedCandidates": 3,
+            "evaluatedPlanScenarioChecks": 3,
+            "limits": {
+              "maxOperations": 10000000,
+              "maxPlans": 10000,
+              "maxScenarioChecks": 100000
+            },
+            "operations": 1847,
+            "reason": null,
+            "totalCandidates": 3,
+            "totalPlanScenarioChecks": 3,
+            "totalScenarios": 1,
+            "visitedCandidates": 3
+          },
+          "complete": true,
+          "hasFeasibleWitness": true,
+          "feasibleChoices": [
+            {
+              "arrangement": "consolidated"
+            }
+          ],
+          "preference": {
+            "established": true,
+            "choices": [
+              {
+                "arrangement": "consolidated"
+              }
+            ],
+            "values": [
+              500000,
+              3960
+            ]
+          },
+          "blockers": [
+            {
+              "choices": {
+                "arrangement": "direct"
+              },
+              "scenarioId": "registered",
+              "constraintId": "carrier-booking-cutoff",
+              "requirementId": "TIME"
+            },
+            {
+              "choices": {
+                "arrangement": "backup"
+              },
+              "scenarioId": "registered",
+              "constraintId": "total-expense-limit",
+              "requirementId": "COST"
+            }
+          ]
+        },
+        "inputs": {
+          "changed": true,
+          "parameters": [
+            {
+              "parameter": "actionReady",
+              "before": 480,
+              "after": 690,
+              "beforePresent": true,
+              "afterPresent": true
+            },
+            {
+              "parameter": "currentTime",
+              "before": 480,
+              "after": 690,
+              "beforePresent": true,
+              "afterPresent": true
+            }
+          ],
+          "records": [],
+          "other": []
+        },
+        "findings": {
+          "feasibility": {
+            "available": true,
+            "changed": true
+          },
+          "blockers": {
+            "available": true,
+            "changed": true
+          },
+          "preference": {
+            "available": true,
+            "changed": true
+          }
+        },
+        "issues": [],
+        "qualification": "These are differences between retained calculations, not evidence of physical events or a causal explanation. A checked witness can survive incomplete search; no-plan and preferred-choice comparisons require complete assessments. No review, authority or operating action is recorded."
+      },
+      "nextAction": "Review the changed proposal and its supporting conditions before replacing the previous arrangement.",
+      "decisionSummary": {
+        "format": "workflow-decision-summary/1",
+        "title": "Decision summary",
+        "question": "Which response protects this shipment, and what has actually happened?",
+        "sections": [
+          {
+            "id": "options",
+            "label": "Options",
+            "question": "Which shipment arrangements meet the commitment, and how do their expense and arrival times compare?"
+          },
+          {
+            "id": "next-actions",
+            "label": "Next actions",
+            "question": "What can we do next, given the current shipment findings?"
+          },
+          {
+            "id": "assumptions",
+            "label": "Assumptions",
+            "question": "What assumptions and limits does this shipment comparison depend on?"
+          },
+          {
+            "id": "questions",
+            "label": "Questions",
+            "question": "What still needs to be established before committing to an arrangement?"
+          }
+        ],
+        "finding": {
+          "availability": "available",
+          "metrics": [
+            {
+              "id": "arrangement-expense",
+              "label": "Preferred arrangement expense",
+              "value": 500000,
+              "format": "money"
+            },
+            {
+              "id": "arrangement-completion",
+              "label": "Preferred customer receipt",
+              "value": 3960,
+              "format": {
+                "type": "time",
+                "unit": "minute",
+                "origin": "2026-11-17T00:00:00-06:00",
+                "timeZone": "Etc/GMT+6"
+              }
+            }
+          ],
+          "issues": [],
+          "status": "supported",
+          "heading": "Consolidated is preferred under the recorded requirements.",
+          "priorityLabel": "Meet every requirement, then lower complete expense, then earlier completion",
+          "qualification": "The calculation supports a proposal. Selection, sourced operating authority and actual completion are separate records."
+        },
+        "comparison": {
+          "title": "Compare complete arrangements",
+          "columns": [
+            {
+              "key": "label",
+              "label": "Complete arrangement"
+            },
+            {
+              "key": "standing",
+              "label": "Calculated fit"
+            },
+            {
+              "key": "expense",
+              "label": "Complete expense",
+              "format": "money"
+            },
+            {
+              "key": "finishMinute",
+              "label": "Latest customer receipt",
+              "format": {
+                "type": "time",
+                "unit": "minute",
+                "origin": "2026-11-17T00:00:00-06:00",
+                "timeZone": "Etc/GMT+6"
+              }
+            }
+          ],
+          "tabId": "arrangements",
+          "availability": "available",
+          "rows": [
+            {
+              "key": "plan-000001",
+              "label": "Direct",
+              "record": {
+                "label": "Direct",
+                "standing": "Blocked",
+                "expense": 400000,
+                "finishMinute": 5040
+              },
+              "inspectionKey": "plan-000001",
+              "primary": false
+            },
+            {
+              "key": "plan-000002",
+              "label": "Backup",
+              "record": {
+                "label": "Backup",
+                "standing": "Blocked",
+                "expense": 600000,
+                "finishMinute": 3600
+              },
+              "inspectionKey": "plan-000002",
+              "primary": false
+            },
+            {
+              "key": "plan-000003",
+              "label": "Consolidated",
+              "record": {
+                "label": "Consolidated",
+                "standing": "Preferred",
+                "expense": 500000,
+                "finishMinute": 3960
+              },
+              "inspectionKey": "plan-000003",
+              "primary": true
+            }
+          ],
+          "issues": []
+        },
+        "conditions": [
+          {
+            "id": "scope",
+            "label": "Use current records for the exact order or configuration and declared operating time.",
+            "tabId": "arrangements"
+          }
+        ],
+        "actionGroups": [],
+        "links": [
+          {
+            "tabId": "arrangements",
+            "label": "Inspect complete arrangements"
+          }
+        ],
+        "displayContext": {
+          "currency": "USD",
+          "scale": 100,
+          "time": "minute",
+          "names": {
+            "direct": "Direct",
+            "backup": "Backup",
+            "consolidated": "Consolidated"
+          },
+          "labels": {},
+          "formats": {
+            "finishMinute": {
+              "type": "time",
+              "unit": "minute",
+              "origin": "2026-11-17T00:00:00-06:00",
+              "timeZone": "Etc/GMT+6"
+            },
+            "deadlineMinute": {
+              "type": "time",
+              "unit": "minute",
+              "origin": "2026-11-17T00:00:00-06:00",
+              "timeZone": "Etc/GMT+6"
+            },
+            "start": {
+              "type": "time",
+              "unit": "minute",
+              "origin": "2026-11-17T00:00:00-06:00",
+              "timeZone": "Etc/GMT+6"
+            },
+            "end": {
+              "type": "time",
+              "unit": "minute",
+              "origin": "2026-11-17T00:00:00-06:00",
+              "timeZone": "Etc/GMT+6"
+            },
+            "time": {
+              "type": "time",
+              "unit": "minute",
+              "origin": "2026-11-17T00:00:00-06:00",
+              "timeZone": "Etc/GMT+6"
+            },
+            "duration": {
+              "type": "duration",
+              "unit": "minute"
+            }
+          }
+        },
+        "issues": []
+      },
+      "actionWindows": [
+        {
+          "arrangement": "direct",
+          "owner": "Maya Chen",
+          "dueMinute": 660,
+          "remainingMinutes": -30,
+          "meaning": "Latest selection and preparation start under the declared reservation, quote-validity and departure timing bounds. Selection is instantaneous in this profile; other permissions, calendars and resources must still pass the complete assessment."
+        },
+        {
+          "arrangement": "backup",
+          "owner": "Maya Chen",
+          "dueMinute": 720,
+          "remainingMinutes": 30,
+          "meaning": "Latest selection and preparation start under the declared reservation, quote-validity and departure timing bounds. Selection is instantaneous in this profile; other permissions, calendars and resources must still pass the complete assessment."
+        },
+        {
+          "arrangement": "consolidated",
+          "owner": "Maya Chen",
+          "dueMinute": 720,
+          "remainingMinutes": 30,
+          "meaning": "Latest selection and preparation start under the declared reservation, quote-validity and departure timing bounds. Selection is instantaneous in this profile; other permissions, calendars and resources must still pass the complete assessment."
+        }
+      ]
+    },
+    {
+      "shipmentId": "SHIP-106",
+      "orderId": "ORD-106",
+      "orderRevision": "1",
+      "owner": "Maya Chen",
+      "deadline": "2026-11-17T18:00:00.000Z",
+      "reviewState": "calculated",
+      "status": "recommendation-changed",
+      "before": {
+        "status": "eligible",
+        "available": true,
+        "issues": [],
+        "identity": {
+          "runId": "batch-SHIP-106",
+          "createdAt": "2026-11-17T14:00:00Z",
+          "sdkVersion": "0.1.0",
+          "appId": "shipment-exception-response",
+          "release": 1,
+          "appHash": "0cce758147637a6e7d3461a78987ccf7313574a52446aadadc2fecd16902ba1b",
+          "packageHash": "7d9b4d46f3df0743f239016d26e40003560b1f7c07ee96c497e7c02c964df001",
+          "pattern": "complete-a-commitment/1",
+          "moduleHash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c",
+          "inputHash": "execution-input:c8e62bf3f59cfc1c5acc4b47d813fcdeb2cc351810e745a1629a929b14301dc5",
+          "modelHash": "4e25261b80911ea06024af364fa075823275a3a788c32ec754b4d3b954112e3c",
+          "sourceHash": "1aff327e8874f81a913150a7dc395ac78696cb88387d4e5f7619176b1198d796",
+          "template": {
+            "id": "complete-a-commitment",
+            "version": "1.0.0",
+            "contentHash": "2fe9902f4f2b8deebd5663a8467fc2d5c24aeaa9fdcdca1ccd1bb42574a144b2"
+          },
+          "module": {
+            "id": "shipment-exception-response",
+            "version": "2.0.0",
+            "hash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c"
+          },
+          "evaluator": "bounded-static-commitment/1",
+          "evaluatorBuild": "0.1.0",
+          "executionProtocol": 1,
+          "reportSchema": "decision-lab-report/1"
+        },
+        "scope": {
+          "orderId": "ORD-106",
+          "orderRevision": "1",
+          "recipient": "DC-X",
+          "shipDate": "2026-11-18",
+          "profileVersion": "1.0.0"
+        },
+        "finding": "feasible_witness",
+        "preferredIds": [
+          "direct"
+        ],
+        "preferredPlanIds": [
+          "plan-000001"
+        ],
+        "preferred": [
+          {
+            "id": "plan-000001",
+            "arrangementId": "direct",
+            "label": "Direct",
+            "feasible": true,
+            "preferred": true,
+            "expense": 400000,
+            "expenseDisplay": "$4,000.00",
+            "arrivalMinutes": 5040,
+            "arrival": "Nov 20, 2026, 12:00 PM GMT-6",
+            "blockers": []
+          }
+        ],
+        "plans": [
+          {
+            "id": "plan-000001",
+            "arrangementId": "direct",
+            "label": "Direct",
+            "feasible": true,
+            "preferred": true,
+            "expense": 400000,
+            "expenseDisplay": "$4,000.00",
+            "arrivalMinutes": 5040,
+            "arrival": "Nov 20, 2026, 12:00 PM GMT-6",
+            "blockers": []
+          },
+          {
+            "id": "plan-000002",
+            "arrangementId": "backup",
+            "label": "Backup",
+            "feasible": false,
+            "preferred": false,
+            "expense": 600000,
+            "expenseDisplay": "$6,000.00",
+            "arrivalMinutes": 3600,
+            "arrival": "Nov 19, 2026, 12:00 PM GMT-6",
+            "blockers": [
+              {
+                "id": "total-expense-limit",
+                "planId": "plan-000002",
+                "arrangementId": "backup",
+                "scenarioId": "registered",
+                "label": "Complete shipment expense is within the limit",
+                "requirement": "Total expense and cash"
+              }
+            ]
+          },
+          {
+            "id": "plan-000003",
+            "arrangementId": "consolidated",
+            "label": "Consolidated",
+            "feasible": true,
+            "preferred": false,
+            "expense": 500000,
+            "expenseDisplay": "$5,000.00",
+            "arrivalMinutes": 3960,
+            "arrival": "Nov 19, 2026, 6:00 PM GMT-6",
+            "blockers": []
+          }
+        ],
+        "blockers": [
+          {
+            "id": "total-expense-limit",
+            "planId": "plan-000002",
+            "arrangementId": "backup",
+            "scenarioId": "registered",
+            "label": "Complete shipment expense is within the limit",
+            "requirement": "Total expense and cash"
+          }
+        ],
+        "coverage": {
+          "totalCandidates": 3,
+          "evaluatedCandidates": 3,
+          "visitedCandidates": 3,
+          "totalScenarios": 1,
+          "totalPlanScenarioChecks": 3,
+          "evaluatedPlanScenarioChecks": 3,
+          "complete": true,
+          "reason": null,
+          "limits": {
+            "maxPlans": 10000,
+            "maxScenarioChecks": 100000,
+            "maxOperations": 10000000
+          },
+          "operations": 1883,
+          "admissionComplete": true
+        }
+      },
+      "current": {
+        "status": "eligible",
+        "available": true,
+        "issues": [],
+        "identity": {
+          "runId": "batch-SHIP-106",
+          "createdAt": "2026-11-17T17:30:00Z",
+          "sdkVersion": "0.1.0",
+          "appId": "shipment-exception-response",
+          "release": 1,
+          "appHash": "0cce758147637a6e7d3461a78987ccf7313574a52446aadadc2fecd16902ba1b",
+          "packageHash": "7d9b4d46f3df0743f239016d26e40003560b1f7c07ee96c497e7c02c964df001",
+          "pattern": "complete-a-commitment/1",
+          "moduleHash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c",
+          "inputHash": "execution-input:aad827419416879baeb8af4e487a4b4abcab28abccc87579f579c372640f7d9a",
+          "modelHash": "1e6a740cb22c6c81ddb4653637715c7aeeb9887db1d853602fde850a469a32d2",
+          "sourceHash": "b57b5bee6c111ed690d10fdf0238e876824d5102a45fdeed076561e9a052e3a2",
+          "template": {
+            "id": "complete-a-commitment",
+            "version": "1.0.0",
+            "contentHash": "2fe9902f4f2b8deebd5663a8467fc2d5c24aeaa9fdcdca1ccd1bb42574a144b2"
+          },
+          "module": {
+            "id": "shipment-exception-response",
+            "version": "2.0.0",
+            "hash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c"
+          },
+          "evaluator": "bounded-static-commitment/1",
+          "evaluatorBuild": "0.1.0",
+          "executionProtocol": 1,
+          "reportSchema": "decision-lab-report/1"
+        },
+        "scope": {
+          "orderId": "ORD-106",
+          "orderRevision": "1",
+          "recipient": "DC-X",
+          "shipDate": "2026-11-18",
+          "profileVersion": "1.0.0"
+        },
+        "finding": "feasible_witness",
+        "preferredIds": [
+          "consolidated"
+        ],
+        "preferredPlanIds": [
+          "plan-000003"
+        ],
+        "preferred": [
+          {
+            "id": "plan-000003",
+            "arrangementId": "consolidated",
+            "label": "Consolidated",
+            "feasible": true,
+            "preferred": true,
+            "expense": 500000,
+            "expenseDisplay": "$5,000.00",
+            "arrivalMinutes": 3960,
+            "arrival": "Nov 19, 2026, 6:00 PM GMT-6",
+            "blockers": []
+          }
+        ],
+        "plans": [
+          {
+            "id": "plan-000001",
+            "arrangementId": "direct",
+            "label": "Direct",
+            "feasible": false,
+            "preferred": false,
+            "expense": 400000,
+            "expenseDisplay": "$4,000.00",
+            "arrivalMinutes": 5040,
+            "arrival": "Nov 20, 2026, 12:00 PM GMT-6",
+            "blockers": [
+              {
+                "id": "carrier-booking-cutoff",
+                "planId": "plan-000001",
+                "arrangementId": "direct",
+                "scenarioId": "registered",
+                "label": "The carrier booking cutoff has not passed",
+                "requirement": "Reservation, preparation and receipt"
+              }
+            ]
+          },
+          {
+            "id": "plan-000002",
+            "arrangementId": "backup",
+            "label": "Backup",
+            "feasible": false,
+            "preferred": false,
+            "expense": 600000,
+            "expenseDisplay": "$6,000.00",
+            "arrivalMinutes": 3600,
+            "arrival": "Nov 19, 2026, 12:00 PM GMT-6",
+            "blockers": [
+              {
+                "id": "total-expense-limit",
+                "planId": "plan-000002",
+                "arrangementId": "backup",
+                "scenarioId": "registered",
+                "label": "Complete shipment expense is within the limit",
+                "requirement": "Total expense and cash"
+              }
+            ]
+          },
+          {
+            "id": "plan-000003",
+            "arrangementId": "consolidated",
+            "label": "Consolidated",
+            "feasible": true,
+            "preferred": true,
+            "expense": 500000,
+            "expenseDisplay": "$5,000.00",
+            "arrivalMinutes": 3960,
+            "arrival": "Nov 19, 2026, 6:00 PM GMT-6",
+            "blockers": []
+          }
+        ],
+        "blockers": [
+          {
+            "id": "carrier-booking-cutoff",
+            "planId": "plan-000001",
+            "arrangementId": "direct",
+            "scenarioId": "registered",
+            "label": "The carrier booking cutoff has not passed",
+            "requirement": "Reservation, preparation and receipt"
+          },
+          {
+            "id": "total-expense-limit",
+            "planId": "plan-000002",
+            "arrangementId": "backup",
+            "scenarioId": "registered",
+            "label": "Complete shipment expense is within the limit",
+            "requirement": "Total expense and cash"
+          }
+        ],
+        "coverage": {
+          "totalCandidates": 3,
+          "evaluatedCandidates": 3,
+          "visitedCandidates": 3,
+          "totalScenarios": 1,
+          "totalPlanScenarioChecks": 3,
+          "evaluatedPlanScenarioChecks": 3,
+          "complete": true,
+          "reason": null,
+          "limits": {
+            "maxPlans": 10000,
+            "maxScenarioChecks": 100000,
+            "maxOperations": 10000000
+          },
+          "operations": 1847,
+          "admissionComplete": true
+        }
+      },
+      "diagnostics": [],
+      "changes": [
+        {
+          "path": "parameters.actionReady",
+          "before": 480,
+          "after": 690
+        },
+        {
+          "path": "parameters.currentTime",
+          "before": 480,
+          "after": 690
+        }
+      ],
+      "sources": [
+        {
+          "file": "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/fixtures/baseline/orders.csv"
+        },
+        {
+          "file": "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/fixtures/baseline/quotes.csv"
+        },
+        {
+          "file": "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/fixtures/baseline/slot-confirmations.csv"
+        },
+        {
+          "file": "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/fixtures/retained/baseline/SHIP-106.json"
+        }
+      ],
+      "links": [
+        {
+          "label": "Continue this operating review",
+          "href": "shipments/SHIP-106/review.json"
+        },
+        {
+          "label": "Source receipts",
+          "href": "shipments/SHIP-106/sources.json"
+        },
+        {
+          "label": "Canonical inputs",
+          "href": "shipments/SHIP-106/case.json"
+        },
+        {
+          "label": "Input validation",
+          "href": "shipments/SHIP-106/validation.json"
+        },
+        {
+          "label": "Full CLI report",
+          "href": "shipments/SHIP-106/run.json"
+        }
+      ],
+      "artifacts": {
+        "sources": {
+          "file": "shipments/SHIP-106/sources.json",
+          "bytes": 1038,
+          "sha256": "09bfe5b498bbad5144e3bb4eb7f1b8aada2b455102a0f8cda03a83b1684a7bae"
+        },
+        "review": {
+          "file": "shipments/SHIP-106/review.json",
+          "bytes": 21085688,
+          "sha256": "fe9ad502c3e7fcc47b394411091be5b28db779375ec6ad7437326dcf068fa890"
+        },
+        "case": {
+          "file": "shipments/SHIP-106/case.json",
+          "bytes": 7051,
+          "sha256": "b57b5bee6c111ed690d10fdf0238e876824d5102a45fdeed076561e9a052e3a2"
+        },
+        "validation": {
+          "file": "shipments/SHIP-106/validation.json",
+          "bytes": 36,
+          "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c"
+        },
+        "run": {
+          "file": "shipments/SHIP-106/run.json",
+          "bytes": 250112,
+          "sha256": "b5d979f8aa1d7c0ce4aa9093cc0a1774936668646de37d91f3179f9c18baa468"
+        },
+        "summary": {
+          "file": "shipments/SHIP-106/decision-summary.json",
+          "bytes": 4777,
+          "sha256": "c4426d72dd5f024d4d7ad60776eed1ea4a869ff1b61498ba7477c584945b46d9"
+        }
+      },
+      "findingChanges": {
+        "format": "decision-lab-finding-changes/1",
+        "status": "changed",
+        "available": true,
+        "before": {
+          "identity": {
+            "runId": "batch-SHIP-106",
+            "createdAt": "2026-11-17T14:00:00Z",
+            "sdkVersion": "0.1.0",
+            "appId": "shipment-exception-response",
+            "release": 1,
+            "appHash": "0cce758147637a6e7d3461a78987ccf7313574a52446aadadc2fecd16902ba1b",
+            "packageHash": "7d9b4d46f3df0743f239016d26e40003560b1f7c07ee96c497e7c02c964df001",
+            "pattern": "complete-a-commitment/1",
+            "moduleHash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c",
+            "inputHash": "execution-input:c8e62bf3f59cfc1c5acc4b47d813fcdeb2cc351810e745a1629a929b14301dc5",
+            "modelHash": "4e25261b80911ea06024af364fa075823275a3a788c32ec754b4d3b954112e3c",
+            "sourceHash": "1aff327e8874f81a913150a7dc395ac78696cb88387d4e5f7619176b1198d796",
+            "template": {
+              "id": "complete-a-commitment",
+              "version": "1.0.0",
+              "contentHash": "2fe9902f4f2b8deebd5663a8467fc2d5c24aeaa9fdcdca1ccd1bb42574a144b2"
+            },
+            "module": {
+              "id": "shipment-exception-response",
+              "version": "2.0.0",
+              "hash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c"
+            },
+            "evaluator": "bounded-static-commitment/1",
+            "evaluatorBuild": "0.1.0",
+            "executionProtocol": 1,
+            "reportSchema": "decision-lab-report/1"
+          },
+          "executionStatus": "completed",
+          "coverage": {
+            "admissionComplete": true,
+            "complete": true,
+            "evaluatedCandidates": 3,
+            "evaluatedPlanScenarioChecks": 3,
+            "limits": {
+              "maxOperations": 10000000,
+              "maxPlans": 10000,
+              "maxScenarioChecks": 100000
+            },
+            "operations": 1883,
+            "reason": null,
+            "totalCandidates": 3,
+            "totalPlanScenarioChecks": 3,
+            "totalScenarios": 1,
+            "visitedCandidates": 3
+          },
+          "complete": true,
+          "hasFeasibleWitness": true,
+          "feasibleChoices": [
+            {
+              "arrangement": "consolidated"
+            },
+            {
+              "arrangement": "direct"
+            }
+          ],
+          "preference": {
+            "established": true,
+            "choices": [
+              {
+                "arrangement": "direct"
+              }
+            ],
+            "values": [
+              400000,
+              5040
+            ]
+          },
+          "blockers": [
+            {
+              "choices": {
+                "arrangement": "backup"
+              },
+              "scenarioId": "registered",
+              "constraintId": "total-expense-limit",
+              "requirementId": "COST"
+            }
+          ]
+        },
+        "after": {
+          "identity": {
+            "runId": "batch-SHIP-106",
+            "createdAt": "2026-11-17T17:30:00Z",
+            "sdkVersion": "0.1.0",
+            "appId": "shipment-exception-response",
+            "release": 1,
+            "appHash": "0cce758147637a6e7d3461a78987ccf7313574a52446aadadc2fecd16902ba1b",
+            "packageHash": "7d9b4d46f3df0743f239016d26e40003560b1f7c07ee96c497e7c02c964df001",
+            "pattern": "complete-a-commitment/1",
+            "moduleHash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c",
+            "inputHash": "execution-input:aad827419416879baeb8af4e487a4b4abcab28abccc87579f579c372640f7d9a",
+            "modelHash": "1e6a740cb22c6c81ddb4653637715c7aeeb9887db1d853602fde850a469a32d2",
+            "sourceHash": "b57b5bee6c111ed690d10fdf0238e876824d5102a45fdeed076561e9a052e3a2",
+            "template": {
+              "id": "complete-a-commitment",
+              "version": "1.0.0",
+              "contentHash": "2fe9902f4f2b8deebd5663a8467fc2d5c24aeaa9fdcdca1ccd1bb42574a144b2"
+            },
+            "module": {
+              "id": "shipment-exception-response",
+              "version": "2.0.0",
+              "hash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c"
+            },
+            "evaluator": "bounded-static-commitment/1",
+            "evaluatorBuild": "0.1.0",
+            "executionProtocol": 1,
+            "reportSchema": "decision-lab-report/1"
+          },
+          "executionStatus": "completed",
+          "coverage": {
+            "admissionComplete": true,
+            "complete": true,
+            "evaluatedCandidates": 3,
+            "evaluatedPlanScenarioChecks": 3,
+            "limits": {
+              "maxOperations": 10000000,
+              "maxPlans": 10000,
+              "maxScenarioChecks": 100000
+            },
+            "operations": 1847,
+            "reason": null,
+            "totalCandidates": 3,
+            "totalPlanScenarioChecks": 3,
+            "totalScenarios": 1,
+            "visitedCandidates": 3
+          },
+          "complete": true,
+          "hasFeasibleWitness": true,
+          "feasibleChoices": [
+            {
+              "arrangement": "consolidated"
+            }
+          ],
+          "preference": {
+            "established": true,
+            "choices": [
+              {
+                "arrangement": "consolidated"
+              }
+            ],
+            "values": [
+              500000,
+              3960
+            ]
+          },
+          "blockers": [
+            {
+              "choices": {
+                "arrangement": "direct"
+              },
+              "scenarioId": "registered",
+              "constraintId": "carrier-booking-cutoff",
+              "requirementId": "TIME"
+            },
+            {
+              "choices": {
+                "arrangement": "backup"
+              },
+              "scenarioId": "registered",
+              "constraintId": "total-expense-limit",
+              "requirementId": "COST"
+            }
+          ]
+        },
+        "inputs": {
+          "changed": true,
+          "parameters": [
+            {
+              "parameter": "actionReady",
+              "before": 480,
+              "after": 690,
+              "beforePresent": true,
+              "afterPresent": true
+            },
+            {
+              "parameter": "currentTime",
+              "before": 480,
+              "after": 690,
+              "beforePresent": true,
+              "afterPresent": true
+            }
+          ],
+          "records": [],
+          "other": []
+        },
+        "findings": {
+          "feasibility": {
+            "available": true,
+            "changed": true
+          },
+          "blockers": {
+            "available": true,
+            "changed": true
+          },
+          "preference": {
+            "available": true,
+            "changed": true
+          }
+        },
+        "issues": [],
+        "qualification": "These are differences between retained calculations, not evidence of physical events or a causal explanation. A checked witness can survive incomplete search; no-plan and preferred-choice comparisons require complete assessments. No review, authority or operating action is recorded."
+      },
+      "nextAction": "Review the changed proposal and its supporting conditions before replacing the previous arrangement.",
+      "decisionSummary": {
+        "format": "workflow-decision-summary/1",
+        "title": "Decision summary",
+        "question": "Which response protects this shipment, and what has actually happened?",
+        "sections": [
+          {
+            "id": "options",
+            "label": "Options",
+            "question": "Which shipment arrangements meet the commitment, and how do their expense and arrival times compare?"
+          },
+          {
+            "id": "next-actions",
+            "label": "Next actions",
+            "question": "What can we do next, given the current shipment findings?"
+          },
+          {
+            "id": "assumptions",
+            "label": "Assumptions",
+            "question": "What assumptions and limits does this shipment comparison depend on?"
+          },
+          {
+            "id": "questions",
+            "label": "Questions",
+            "question": "What still needs to be established before committing to an arrangement?"
+          }
+        ],
+        "finding": {
+          "availability": "available",
+          "metrics": [
+            {
+              "id": "arrangement-expense",
+              "label": "Preferred arrangement expense",
+              "value": 500000,
+              "format": "money"
+            },
+            {
+              "id": "arrangement-completion",
+              "label": "Preferred customer receipt",
+              "value": 3960,
+              "format": {
+                "type": "time",
+                "unit": "minute",
+                "origin": "2026-11-17T00:00:00-06:00",
+                "timeZone": "Etc/GMT+6"
+              }
+            }
+          ],
+          "issues": [],
+          "status": "supported",
+          "heading": "Consolidated is preferred under the recorded requirements.",
+          "priorityLabel": "Meet every requirement, then lower complete expense, then earlier completion",
+          "qualification": "The calculation supports a proposal. Selection, sourced operating authority and actual completion are separate records."
+        },
+        "comparison": {
+          "title": "Compare complete arrangements",
+          "columns": [
+            {
+              "key": "label",
+              "label": "Complete arrangement"
+            },
+            {
+              "key": "standing",
+              "label": "Calculated fit"
+            },
+            {
+              "key": "expense",
+              "label": "Complete expense",
+              "format": "money"
+            },
+            {
+              "key": "finishMinute",
+              "label": "Latest customer receipt",
+              "format": {
+                "type": "time",
+                "unit": "minute",
+                "origin": "2026-11-17T00:00:00-06:00",
+                "timeZone": "Etc/GMT+6"
+              }
+            }
+          ],
+          "tabId": "arrangements",
+          "availability": "available",
+          "rows": [
+            {
+              "key": "plan-000001",
+              "label": "Direct",
+              "record": {
+                "label": "Direct",
+                "standing": "Blocked",
+                "expense": 400000,
+                "finishMinute": 5040
+              },
+              "inspectionKey": "plan-000001",
+              "primary": false
+            },
+            {
+              "key": "plan-000002",
+              "label": "Backup",
+              "record": {
+                "label": "Backup",
+                "standing": "Blocked",
+                "expense": 600000,
+                "finishMinute": 3600
+              },
+              "inspectionKey": "plan-000002",
+              "primary": false
+            },
+            {
+              "key": "plan-000003",
+              "label": "Consolidated",
+              "record": {
+                "label": "Consolidated",
+                "standing": "Preferred",
+                "expense": 500000,
+                "finishMinute": 3960
+              },
+              "inspectionKey": "plan-000003",
+              "primary": true
+            }
+          ],
+          "issues": []
+        },
+        "conditions": [
+          {
+            "id": "scope",
+            "label": "Use current records for the exact order or configuration and declared operating time.",
+            "tabId": "arrangements"
+          }
+        ],
+        "actionGroups": [],
+        "links": [
+          {
+            "tabId": "arrangements",
+            "label": "Inspect complete arrangements"
+          }
+        ],
+        "displayContext": {
+          "currency": "USD",
+          "scale": 100,
+          "time": "minute",
+          "names": {
+            "direct": "Direct",
+            "backup": "Backup",
+            "consolidated": "Consolidated"
+          },
+          "labels": {},
+          "formats": {
+            "finishMinute": {
+              "type": "time",
+              "unit": "minute",
+              "origin": "2026-11-17T00:00:00-06:00",
+              "timeZone": "Etc/GMT+6"
+            },
+            "deadlineMinute": {
+              "type": "time",
+              "unit": "minute",
+              "origin": "2026-11-17T00:00:00-06:00",
+              "timeZone": "Etc/GMT+6"
+            },
+            "start": {
+              "type": "time",
+              "unit": "minute",
+              "origin": "2026-11-17T00:00:00-06:00",
+              "timeZone": "Etc/GMT+6"
+            },
+            "end": {
+              "type": "time",
+              "unit": "minute",
+              "origin": "2026-11-17T00:00:00-06:00",
+              "timeZone": "Etc/GMT+6"
+            },
+            "time": {
+              "type": "time",
+              "unit": "minute",
+              "origin": "2026-11-17T00:00:00-06:00",
+              "timeZone": "Etc/GMT+6"
+            },
+            "duration": {
+              "type": "duration",
+              "unit": "minute"
+            }
+          }
+        },
+        "issues": []
+      },
+      "actionWindows": [
+        {
+          "arrangement": "direct",
+          "owner": "Maya Chen",
+          "dueMinute": 660,
+          "remainingMinutes": -30,
+          "meaning": "Latest selection and preparation start under the declared reservation, quote-validity and departure timing bounds. Selection is instantaneous in this profile; other permissions, calendars and resources must still pass the complete assessment."
+        },
+        {
+          "arrangement": "backup",
+          "owner": "Maya Chen",
+          "dueMinute": 720,
+          "remainingMinutes": 30,
+          "meaning": "Latest selection and preparation start under the declared reservation, quote-validity and departure timing bounds. Selection is instantaneous in this profile; other permissions, calendars and resources must still pass the complete assessment."
+        },
+        {
+          "arrangement": "consolidated",
+          "owner": "Maya Chen",
+          "dueMinute": 720,
+          "remainingMinutes": 30,
+          "meaning": "Latest selection and preparation start under the declared reservation, quote-validity and departure timing bounds. Selection is instantaneous in this profile; other permissions, calendars and resources must still pass the complete assessment."
+        }
+      ]
+    },
+    {
+      "shipmentId": "SHIP-107",
+      "orderId": "ORD-107",
+      "orderRevision": "1",
+      "owner": "Maya Chen",
+      "deadline": "2026-11-17T18:00:00.000Z",
+      "reviewState": "calculated",
+      "status": "recommendation-changed",
+      "before": {
+        "status": "eligible",
+        "available": true,
+        "issues": [],
+        "identity": {
+          "runId": "batch-SHIP-107",
+          "createdAt": "2026-11-17T14:00:00Z",
+          "sdkVersion": "0.1.0",
+          "appId": "shipment-exception-response",
+          "release": 1,
+          "appHash": "0cce758147637a6e7d3461a78987ccf7313574a52446aadadc2fecd16902ba1b",
+          "packageHash": "7d9b4d46f3df0743f239016d26e40003560b1f7c07ee96c497e7c02c964df001",
+          "pattern": "complete-a-commitment/1",
+          "moduleHash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c",
+          "inputHash": "execution-input:9e4fc6be06d5bd67cdda83986a93efd7fc37e6b4a3f63c76c5d2fca67b18d343",
+          "modelHash": "b5aa0dbdc2981b290ed5eb22c190543e0656ef4c4b366aa7b6acf13089858c7e",
+          "sourceHash": "af80bd4f80eb4e51d48150862ff2f10c1a2629641309d925fae23243e2f0c0b4",
+          "template": {
+            "id": "complete-a-commitment",
+            "version": "1.0.0",
+            "contentHash": "2fe9902f4f2b8deebd5663a8467fc2d5c24aeaa9fdcdca1ccd1bb42574a144b2"
+          },
+          "module": {
+            "id": "shipment-exception-response",
+            "version": "2.0.0",
+            "hash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c"
+          },
+          "evaluator": "bounded-static-commitment/1",
+          "evaluatorBuild": "0.1.0",
+          "executionProtocol": 1,
+          "reportSchema": "decision-lab-report/1"
+        },
+        "scope": {
+          "orderId": "ORD-107",
+          "orderRevision": "1",
+          "recipient": "DC-X",
+          "shipDate": "2026-11-18",
+          "profileVersion": "1.0.0"
+        },
+        "finding": "feasible_witness",
+        "preferredIds": [
+          "direct"
+        ],
+        "preferredPlanIds": [
+          "plan-000001"
+        ],
+        "preferred": [
+          {
+            "id": "plan-000001",
+            "arrangementId": "direct",
+            "label": "Direct",
+            "feasible": true,
+            "preferred": true,
+            "expense": 400000,
+            "expenseDisplay": "$4,000.00",
+            "arrivalMinutes": 5040,
+            "arrival": "Nov 20, 2026, 12:00 PM GMT-6",
+            "blockers": []
+          }
+        ],
+        "plans": [
+          {
+            "id": "plan-000001",
+            "arrangementId": "direct",
+            "label": "Direct",
+            "feasible": true,
+            "preferred": true,
+            "expense": 400000,
+            "expenseDisplay": "$4,000.00",
+            "arrivalMinutes": 5040,
+            "arrival": "Nov 20, 2026, 12:00 PM GMT-6",
+            "blockers": []
+          },
+          {
+            "id": "plan-000002",
+            "arrangementId": "backup",
+            "label": "Backup",
+            "feasible": false,
+            "preferred": false,
+            "expense": 600000,
+            "expenseDisplay": "$6,000.00",
+            "arrivalMinutes": 3600,
+            "arrival": "Nov 19, 2026, 12:00 PM GMT-6",
+            "blockers": [
+              {
+                "id": "total-expense-limit",
+                "planId": "plan-000002",
+                "arrangementId": "backup",
+                "scenarioId": "registered",
+                "label": "Complete shipment expense is within the limit",
+                "requirement": "Total expense and cash"
+              }
+            ]
+          },
+          {
+            "id": "plan-000003",
+            "arrangementId": "consolidated",
+            "label": "Consolidated",
+            "feasible": true,
+            "preferred": false,
+            "expense": 500000,
+            "expenseDisplay": "$5,000.00",
+            "arrivalMinutes": 3960,
+            "arrival": "Nov 19, 2026, 6:00 PM GMT-6",
+            "blockers": []
+          }
+        ],
+        "blockers": [
+          {
+            "id": "total-expense-limit",
+            "planId": "plan-000002",
+            "arrangementId": "backup",
+            "scenarioId": "registered",
+            "label": "Complete shipment expense is within the limit",
+            "requirement": "Total expense and cash"
+          }
+        ],
+        "coverage": {
+          "totalCandidates": 3,
+          "evaluatedCandidates": 3,
+          "visitedCandidates": 3,
+          "totalScenarios": 1,
+          "totalPlanScenarioChecks": 3,
+          "evaluatedPlanScenarioChecks": 3,
+          "complete": true,
+          "reason": null,
+          "limits": {
+            "maxPlans": 10000,
+            "maxScenarioChecks": 100000,
+            "maxOperations": 10000000
+          },
+          "operations": 1883,
+          "admissionComplete": true
+        }
+      },
+      "current": {
+        "status": "eligible",
+        "available": true,
+        "issues": [],
+        "identity": {
+          "runId": "batch-SHIP-107",
+          "createdAt": "2026-11-17T17:30:00Z",
+          "sdkVersion": "0.1.0",
+          "appId": "shipment-exception-response",
+          "release": 1,
+          "appHash": "0cce758147637a6e7d3461a78987ccf7313574a52446aadadc2fecd16902ba1b",
+          "packageHash": "7d9b4d46f3df0743f239016d26e40003560b1f7c07ee96c497e7c02c964df001",
+          "pattern": "complete-a-commitment/1",
+          "moduleHash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c",
+          "inputHash": "execution-input:eb458615e3b89facd86082c0de0bb883cfb33601febd0e6b52495f4dc4aecd96",
+          "modelHash": "1d4fc792f2796ddcff05382c4966d77fe38d02957bf5fb6a87c8b86b1eada23c",
+          "sourceHash": "5881c5de3678f42c85c5ea6520bba21e09fcb3c2a2605043540e0898a0b6b75d",
+          "template": {
+            "id": "complete-a-commitment",
+            "version": "1.0.0",
+            "contentHash": "2fe9902f4f2b8deebd5663a8467fc2d5c24aeaa9fdcdca1ccd1bb42574a144b2"
+          },
+          "module": {
+            "id": "shipment-exception-response",
+            "version": "2.0.0",
+            "hash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c"
+          },
+          "evaluator": "bounded-static-commitment/1",
+          "evaluatorBuild": "0.1.0",
+          "executionProtocol": 1,
+          "reportSchema": "decision-lab-report/1"
+        },
+        "scope": {
+          "orderId": "ORD-107",
+          "orderRevision": "1",
+          "recipient": "DC-X",
+          "shipDate": "2026-11-18",
+          "profileVersion": "1.0.0"
+        },
+        "finding": "feasible_witness",
+        "preferredIds": [
+          "consolidated"
+        ],
+        "preferredPlanIds": [
+          "plan-000003"
+        ],
+        "preferred": [
+          {
+            "id": "plan-000003",
+            "arrangementId": "consolidated",
+            "label": "Consolidated",
+            "feasible": true,
+            "preferred": true,
+            "expense": 500000,
+            "expenseDisplay": "$5,000.00",
+            "arrivalMinutes": 3960,
+            "arrival": "Nov 19, 2026, 6:00 PM GMT-6",
+            "blockers": []
+          }
+        ],
+        "plans": [
+          {
+            "id": "plan-000001",
+            "arrangementId": "direct",
+            "label": "Direct",
+            "feasible": false,
+            "preferred": false,
+            "expense": 400000,
+            "expenseDisplay": "$4,000.00",
+            "arrivalMinutes": 5040,
+            "arrival": "Nov 20, 2026, 12:00 PM GMT-6",
+            "blockers": [
+              {
+                "id": "carrier-booking-cutoff",
+                "planId": "plan-000001",
+                "arrangementId": "direct",
+                "scenarioId": "registered",
+                "label": "The carrier booking cutoff has not passed",
+                "requirement": "Reservation, preparation and receipt"
+              }
+            ]
+          },
+          {
+            "id": "plan-000002",
+            "arrangementId": "backup",
+            "label": "Backup",
+            "feasible": false,
+            "preferred": false,
+            "expense": 600000,
+            "expenseDisplay": "$6,000.00",
+            "arrivalMinutes": 3600,
+            "arrival": "Nov 19, 2026, 12:00 PM GMT-6",
+            "blockers": [
+              {
+                "id": "total-expense-limit",
+                "planId": "plan-000002",
+                "arrangementId": "backup",
+                "scenarioId": "registered",
+                "label": "Complete shipment expense is within the limit",
+                "requirement": "Total expense and cash"
+              }
+            ]
+          },
+          {
+            "id": "plan-000003",
+            "arrangementId": "consolidated",
+            "label": "Consolidated",
+            "feasible": true,
+            "preferred": true,
+            "expense": 500000,
+            "expenseDisplay": "$5,000.00",
+            "arrivalMinutes": 3960,
+            "arrival": "Nov 19, 2026, 6:00 PM GMT-6",
+            "blockers": []
+          }
+        ],
+        "blockers": [
+          {
+            "id": "carrier-booking-cutoff",
+            "planId": "plan-000001",
+            "arrangementId": "direct",
+            "scenarioId": "registered",
+            "label": "The carrier booking cutoff has not passed",
+            "requirement": "Reservation, preparation and receipt"
+          },
+          {
+            "id": "total-expense-limit",
+            "planId": "plan-000002",
+            "arrangementId": "backup",
+            "scenarioId": "registered",
+            "label": "Complete shipment expense is within the limit",
+            "requirement": "Total expense and cash"
+          }
+        ],
+        "coverage": {
+          "totalCandidates": 3,
+          "evaluatedCandidates": 3,
+          "visitedCandidates": 3,
+          "totalScenarios": 1,
+          "totalPlanScenarioChecks": 3,
+          "evaluatedPlanScenarioChecks": 3,
+          "complete": true,
+          "reason": null,
+          "limits": {
+            "maxPlans": 10000,
+            "maxScenarioChecks": 100000,
+            "maxOperations": 10000000
+          },
+          "operations": 1847,
+          "admissionComplete": true
+        }
+      },
+      "diagnostics": [],
+      "changes": [
+        {
+          "path": "parameters.actionReady",
+          "before": 480,
+          "after": 690
+        },
+        {
+          "path": "parameters.currentTime",
+          "before": 480,
+          "after": 690
+        }
+      ],
+      "sources": [
+        {
+          "file": "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/fixtures/baseline/orders.csv"
+        },
+        {
+          "file": "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/fixtures/baseline/quotes.csv"
+        },
+        {
+          "file": "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/fixtures/baseline/slot-confirmations.csv"
+        },
+        {
+          "file": "/Users/jnaciona/code/hermod-review-lab/sample_code/shipping/shipment-exceptions/fixtures/retained/baseline/SHIP-107.json"
+        }
+      ],
+      "links": [
+        {
+          "label": "Continue this operating review",
+          "href": "shipments/SHIP-107/review.json"
+        },
+        {
+          "label": "Source receipts",
+          "href": "shipments/SHIP-107/sources.json"
+        },
+        {
+          "label": "Canonical inputs",
+          "href": "shipments/SHIP-107/case.json"
+        },
+        {
+          "label": "Input validation",
+          "href": "shipments/SHIP-107/validation.json"
+        },
+        {
+          "label": "Full CLI report",
+          "href": "shipments/SHIP-107/run.json"
+        }
+      ],
+      "artifacts": {
+        "sources": {
+          "file": "shipments/SHIP-107/sources.json",
+          "bytes": 1038,
+          "sha256": "f2cacfa9d11a294039af784ce627c42546796f594020309e200735fae13414a9"
+        },
+        "review": {
+          "file": "shipments/SHIP-107/review.json",
+          "bytes": 21085173,
+          "sha256": "a27f09768fffbf69cff3f3507a8bea7479095173dc7b7beef7e1290e79786d21"
+        },
+        "case": {
+          "file": "shipments/SHIP-107/case.json",
+          "bytes": 7050,
+          "sha256": "5881c5de3678f42c85c5ea6520bba21e09fcb3c2a2605043540e0898a0b6b75d"
+        },
+        "validation": {
+          "file": "shipments/SHIP-107/validation.json",
+          "bytes": 36,
+          "sha256": "ef43b0bc6092267f1be737777a2a9b9e3c4d6f42a1b9727d8a85102c54bbb45c"
+        },
+        "run": {
+          "file": "shipments/SHIP-107/run.json",
+          "bytes": 250102,
+          "sha256": "7468e4540c43b5dd4962f0e3b6f652286e04c6cf2488d1c051d5319eb726912f"
+        },
+        "summary": {
+          "file": "shipments/SHIP-107/decision-summary.json",
+          "bytes": 4777,
+          "sha256": "c4426d72dd5f024d4d7ad60776eed1ea4a869ff1b61498ba7477c584945b46d9"
+        }
+      },
+      "findingChanges": {
+        "format": "decision-lab-finding-changes/1",
+        "status": "changed",
+        "available": true,
+        "before": {
+          "identity": {
+            "runId": "batch-SHIP-107",
+            "createdAt": "2026-11-17T14:00:00Z",
+            "sdkVersion": "0.1.0",
+            "appId": "shipment-exception-response",
+            "release": 1,
+            "appHash": "0cce758147637a6e7d3461a78987ccf7313574a52446aadadc2fecd16902ba1b",
+            "packageHash": "7d9b4d46f3df0743f239016d26e40003560b1f7c07ee96c497e7c02c964df001",
+            "pattern": "complete-a-commitment/1",
+            "moduleHash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c",
+            "inputHash": "execution-input:9e4fc6be06d5bd67cdda83986a93efd7fc37e6b4a3f63c76c5d2fca67b18d343",
+            "modelHash": "b5aa0dbdc2981b290ed5eb22c190543e0656ef4c4b366aa7b6acf13089858c7e",
+            "sourceHash": "af80bd4f80eb4e51d48150862ff2f10c1a2629641309d925fae23243e2f0c0b4",
+            "template": {
+              "id": "complete-a-commitment",
+              "version": "1.0.0",
+              "contentHash": "2fe9902f4f2b8deebd5663a8467fc2d5c24aeaa9fdcdca1ccd1bb42574a144b2"
+            },
+            "module": {
+              "id": "shipment-exception-response",
+              "version": "2.0.0",
+              "hash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c"
+            },
+            "evaluator": "bounded-static-commitment/1",
+            "evaluatorBuild": "0.1.0",
+            "executionProtocol": 1,
+            "reportSchema": "decision-lab-report/1"
+          },
+          "executionStatus": "completed",
+          "coverage": {
+            "admissionComplete": true,
+            "complete": true,
+            "evaluatedCandidates": 3,
+            "evaluatedPlanScenarioChecks": 3,
+            "limits": {
+              "maxOperations": 10000000,
+              "maxPlans": 10000,
+              "maxScenarioChecks": 100000
+            },
+            "operations": 1883,
+            "reason": null,
+            "totalCandidates": 3,
+            "totalPlanScenarioChecks": 3,
+            "totalScenarios": 1,
+            "visitedCandidates": 3
+          },
+          "complete": true,
+          "hasFeasibleWitness": true,
+          "feasibleChoices": [
+            {
+              "arrangement": "consolidated"
+            },
+            {
+              "arrangement": "direct"
+            }
+          ],
+          "preference": {
+            "established": true,
+            "choices": [
+              {
+                "arrangement": "direct"
+              }
+            ],
+            "values": [
+              400000,
+              5040
+            ]
+          },
+          "blockers": [
+            {
+              "choices": {
+                "arrangement": "backup"
+              },
+              "scenarioId": "registered",
+              "constraintId": "total-expense-limit",
+              "requirementId": "COST"
+            }
+          ]
+        },
+        "after": {
+          "identity": {
+            "runId": "batch-SHIP-107",
+            "createdAt": "2026-11-17T17:30:00Z",
+            "sdkVersion": "0.1.0",
+            "appId": "shipment-exception-response",
+            "release": 1,
+            "appHash": "0cce758147637a6e7d3461a78987ccf7313574a52446aadadc2fecd16902ba1b",
+            "packageHash": "7d9b4d46f3df0743f239016d26e40003560b1f7c07ee96c497e7c02c964df001",
+            "pattern": "complete-a-commitment/1",
+            "moduleHash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c",
+            "inputHash": "execution-input:eb458615e3b89facd86082c0de0bb883cfb33601febd0e6b52495f4dc4aecd96",
+            "modelHash": "1d4fc792f2796ddcff05382c4966d77fe38d02957bf5fb6a87c8b86b1eada23c",
+            "sourceHash": "5881c5de3678f42c85c5ea6520bba21e09fcb3c2a2605043540e0898a0b6b75d",
+            "template": {
+              "id": "complete-a-commitment",
+              "version": "1.0.0",
+              "contentHash": "2fe9902f4f2b8deebd5663a8467fc2d5c24aeaa9fdcdca1ccd1bb42574a144b2"
+            },
+            "module": {
+              "id": "shipment-exception-response",
+              "version": "2.0.0",
+              "hash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c"
+            },
+            "evaluator": "bounded-static-commitment/1",
+            "evaluatorBuild": "0.1.0",
+            "executionProtocol": 1,
+            "reportSchema": "decision-lab-report/1"
+          },
+          "executionStatus": "completed",
+          "coverage": {
+            "admissionComplete": true,
+            "complete": true,
+            "evaluatedCandidates": 3,
+            "evaluatedPlanScenarioChecks": 3,
+            "limits": {
+              "maxOperations": 10000000,
+              "maxPlans": 10000,
+              "maxScenarioChecks": 100000
+            },
+            "operations": 1847,
+            "reason": null,
+            "totalCandidates": 3,
+            "totalPlanScenarioChecks": 3,
+            "totalScenarios": 1,
+            "visitedCandidates": 3
+          },
+          "complete": true,
+          "hasFeasibleWitness": true,
+          "feasibleChoices": [
+            {
+              "arrangement": "consolidated"
+            }
+          ],
+          "preference": {
+            "established": true,
+            "choices": [
+              {
+                "arrangement": "consolidated"
+              }
+            ],
+            "values": [
+              500000,
+              3960
+            ]
+          },
+          "blockers": [
+            {
+              "choices": {
+                "arrangement": "direct"
+              },
+              "scenarioId": "registered",
+              "constraintId": "carrier-booking-cutoff",
+              "requirementId": "TIME"
+            },
+            {
+              "choices": {
+                "arrangement": "backup"
+              },
+              "scenarioId": "registered",
+              "constraintId": "total-expense-limit",
+              "requirementId": "COST"
+            }
+          ]
+        },
+        "inputs": {
+          "changed": true,
+          "parameters": [
+            {
+              "parameter": "actionReady",
+              "before": 480,
+              "after": 690,
+              "beforePresent": true,
+              "afterPresent": true
+            },
+            {
+              "parameter": "currentTime",
+              "before": 480,
+              "after": 690,
+              "beforePresent": true,
+              "afterPresent": true
+            }
+          ],
+          "records": [],
+          "other": []
+        },
+        "findings": {
+          "feasibility": {
+            "available": true,
+            "changed": true
+          },
+          "blockers": {
+            "available": true,
+            "changed": true
+          },
+          "preference": {
+            "available": true,
+            "changed": true
+          }
+        },
+        "issues": [],
+        "qualification": "These are differences between retained calculations, not evidence of physical events or a causal explanation. A checked witness can survive incomplete search; no-plan and preferred-choice comparisons require complete assessments. No review, authority or operating action is recorded."
+      },
+      "nextAction": "Review the changed proposal and its supporting conditions before replacing the previous arrangement.",
+      "decisionSummary": {
+        "format": "workflow-decision-summary/1",
+        "title": "Decision summary",
+        "question": "Which response protects this shipment, and what has actually happened?",
+        "sections": [
+          {
+            "id": "options",
+            "label": "Options",
+            "question": "Which shipment arrangements meet the commitment, and how do their expense and arrival times compare?"
+          },
+          {
+            "id": "next-actions",
+            "label": "Next actions",
+            "question": "What can we do next, given the current shipment findings?"
+          },
+          {
+            "id": "assumptions",
+            "label": "Assumptions",
+            "question": "What assumptions and limits does this shipment comparison depend on?"
+          },
+          {
+            "id": "questions",
+            "label": "Questions",
+            "question": "What still needs to be established before committing to an arrangement?"
+          }
+        ],
+        "finding": {
+          "availability": "available",
+          "metrics": [
+            {
+              "id": "arrangement-expense",
+              "label": "Preferred arrangement expense",
+              "value": 500000,
+              "format": "money"
+            },
+            {
+              "id": "arrangement-completion",
+              "label": "Preferred customer receipt",
+              "value": 3960,
+              "format": {
+                "type": "time",
+                "unit": "minute",
+                "origin": "2026-11-17T00:00:00-06:00",
+                "timeZone": "Etc/GMT+6"
+              }
+            }
+          ],
+          "issues": [],
+          "status": "supported",
+          "heading": "Consolidated is preferred under the recorded requirements.",
+          "priorityLabel": "Meet every requirement, then lower complete expense, then earlier completion",
+          "qualification": "The calculation supports a proposal. Selection, sourced operating authority and actual completion are separate records."
+        },
+        "comparison": {
+          "title": "Compare complete arrangements",
+          "columns": [
+            {
+              "key": "label",
+              "label": "Complete arrangement"
+            },
+            {
+              "key": "standing",
+              "label": "Calculated fit"
+            },
+            {
+              "key": "expense",
+              "label": "Complete expense",
+              "format": "money"
+            },
+            {
+              "key": "finishMinute",
+              "label": "Latest customer receipt",
+              "format": {
+                "type": "time",
+                "unit": "minute",
+                "origin": "2026-11-17T00:00:00-06:00",
+                "timeZone": "Etc/GMT+6"
+              }
+            }
+          ],
+          "tabId": "arrangements",
+          "availability": "available",
+          "rows": [
+            {
+              "key": "plan-000001",
+              "label": "Direct",
+              "record": {
+                "label": "Direct",
+                "standing": "Blocked",
+                "expense": 400000,
+                "finishMinute": 5040
+              },
+              "inspectionKey": "plan-000001",
+              "primary": false
+            },
+            {
+              "key": "plan-000002",
+              "label": "Backup",
+              "record": {
+                "label": "Backup",
+                "standing": "Blocked",
+                "expense": 600000,
+                "finishMinute": 3600
+              },
+              "inspectionKey": "plan-000002",
+              "primary": false
+            },
+            {
+              "key": "plan-000003",
+              "label": "Consolidated",
+              "record": {
+                "label": "Consolidated",
+                "standing": "Preferred",
+                "expense": 500000,
+                "finishMinute": 3960
+              },
+              "inspectionKey": "plan-000003",
+              "primary": true
+            }
+          ],
+          "issues": []
+        },
+        "conditions": [
+          {
+            "id": "scope",
+            "label": "Use current records for the exact order or configuration and declared operating time.",
+            "tabId": "arrangements"
+          }
+        ],
+        "actionGroups": [],
+        "links": [
+          {
+            "tabId": "arrangements",
+            "label": "Inspect complete arrangements"
+          }
+        ],
+        "displayContext": {
+          "currency": "USD",
+          "scale": 100,
+          "time": "minute",
+          "names": {
+            "direct": "Direct",
+            "backup": "Backup",
+            "consolidated": "Consolidated"
+          },
+          "labels": {},
+          "formats": {
+            "finishMinute": {
+              "type": "time",
+              "unit": "minute",
+              "origin": "2026-11-17T00:00:00-06:00",
+              "timeZone": "Etc/GMT+6"
+            },
+            "deadlineMinute": {
+              "type": "time",
+              "unit": "minute",
+              "origin": "2026-11-17T00:00:00-06:00",
+              "timeZone": "Etc/GMT+6"
+            },
+            "start": {
+              "type": "time",
+              "unit": "minute",
+              "origin": "2026-11-17T00:00:00-06:00",
+              "timeZone": "Etc/GMT+6"
+            },
+            "end": {
+              "type": "time",
+              "unit": "minute",
+              "origin": "2026-11-17T00:00:00-06:00",
+              "timeZone": "Etc/GMT+6"
+            },
+            "time": {
+              "type": "time",
+              "unit": "minute",
+              "origin": "2026-11-17T00:00:00-06:00",
+              "timeZone": "Etc/GMT+6"
+            },
+            "duration": {
+              "type": "duration",
+              "unit": "minute"
+            }
+          }
+        },
+        "issues": []
+      },
+      "actionWindows": [
+        {
+          "arrangement": "direct",
+          "owner": "Maya Chen",
+          "dueMinute": 660,
+          "remainingMinutes": -30,
+          "meaning": "Latest selection and preparation start under the declared reservation, quote-validity and departure timing bounds. Selection is instantaneous in this profile; other permissions, calendars and resources must still pass the complete assessment."
+        },
+        {
+          "arrangement": "backup",
+          "owner": "Maya Chen",
+          "dueMinute": 720,
+          "remainingMinutes": 30,
+          "meaning": "Latest selection and preparation start under the declared reservation, quote-validity and departure timing bounds. Selection is instantaneous in this profile; other permissions, calendars and resources must still pass the complete assessment."
+        },
+        {
+          "arrangement": "consolidated",
+          "owner": "Maya Chen",
+          "dueMinute": 720,
+          "remainingMinutes": 30,
+          "meaning": "Latest selection and preparation start under the declared reservation, quote-validity and departure timing bounds. Selection is instantaneous in this profile; other permissions, calendars and resources must still pass the complete assessment."
+        }
+      ]
+    }
+  ]
+}

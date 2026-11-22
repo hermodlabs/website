@@ -1,0 +1,3183 @@
+{
+  "format": "decision-lab-workflow-output/1",
+  "identity": {
+    "runId": "review-4b6ce6a5-769c-48ce-ad61-94581717ae44",
+    "createdAt": "2026-11-22T02:51:25.119Z",
+    "definitionHash": "2cfbdc3f169e8eb93792cf22e76f57d8f0859c5bf4045dae8c583cfa4f3f46c2"
+  },
+  "revision": 0,
+  "definition": {
+    "id": "review-gift-kit-flexible",
+    "version": "2.8.0",
+    "title": "Plan a gift-kit commitment",
+    "question": "What must we verify or correct, and can we finish before committing these gift kits?",
+    "contentHash": "2cfbdc3f169e8eb93792cf22e76f57d8f0859c5bf4045dae8c583cfa4f3f46c2",
+    "execution": {
+      "mode": "calculation"
+    }
+  },
+  "questions": [
+    {
+      "id": "case-reference",
+      "path": "gifting.id",
+      "label": "Scenario reference",
+      "question": "Which gift-kit scenario is this?",
+      "meaning": "Identify this scenario independently from its batch and exact configuration.",
+      "role": "campaign-owner",
+      "type": "string",
+      "required": true,
+      "status": "unanswered"
+    },
+    {
+      "id": "configuration",
+      "path": "gifting.scope",
+      "label": "Exact gift-kit configuration",
+      "question": "Which batch, printed insert, destination, checkout and intended users are included?",
+      "meaning": "Reports and permissions must match this exact six-field scope. Revising it requires reassessing the evidence.",
+      "role": "campaign-owner",
+      "type": "object",
+      "required": true,
+      "status": "unanswered"
+    },
+    {
+      "id": "commitment",
+      "path": "gifting.commitment",
+      "label": "Kit quantity, cutoff and expense",
+      "question": "What must be ready, by when and within which expense limit?",
+      "meaning": "Times are minutes from one declared review origin. Quotes cover the complete kit quantity. Monetary inputs are integer USD cents in YAML and JSON; Forms and Excel money cells use US dollars. Quantity does not silently scale quoted work.",
+      "role": "campaign-owner",
+      "type": "object",
+      "required": true,
+      "status": "unanswered"
+    },
+    {
+      "id": "observations",
+      "path": "gifting.observations",
+      "label": "Actual rehearsal and check reports",
+      "question": "What did each scoped check report, and where is the original record?",
+      "meaning": "Retain exact configuration, observation time, recorder and original source text. The initial broad rehearsal failure does not mean a printed code was unreadable: record only the stated diagnostic result. This profile assumes accurate current scoped reports. Planned or simulated checks are not observations.",
+      "role": "evidence-reviewer",
+      "type": "array",
+      "required": true,
+      "status": "unanswered"
+    },
+    {
+      "id": "quotes",
+      "path": "gifting.work.quotes",
+      "label": "Complete correction quotes",
+      "question": "What does each complete correction package cost, and how long will it take?",
+      "meaning": "Supply every published package quote for this batch. Frozen package effects and task dependencies cannot be edited through quotes.",
+      "role": "production-owner",
+      "type": "array",
+      "required": true,
+      "status": "unanswered"
+    },
+    {
+      "id": "rehearsal",
+      "path": "gifting.work.rehearsalMinutes",
+      "label": "Fresh rehearsal duration",
+      "question": "How long will the scoped rehearsal after correction require?",
+      "meaning": "Reserve the complete fresh rehearsal duration, subject to the published minimum. Scheduling it does not establish a passing result.",
+      "role": "production-owner",
+      "type": "number",
+      "required": true,
+      "status": "unanswered"
+    },
+    {
+      "id": "handoff",
+      "path": "gifting.work.handoffMinutes",
+      "label": "Handoff duration",
+      "question": "How much time remains for the final handoff?",
+      "meaning": "Reserve the complete final handoff duration after correction and rehearsal. A calculated finish does not record actual handoff.",
+      "role": "production-owner",
+      "type": "number",
+      "required": true,
+      "status": "unanswered"
+    },
+    {
+      "id": "work-owner",
+      "path": "gifting.work.actorId",
+      "label": "Person responsible for the work",
+      "question": "Who will perform correction, rehearsal and handoff?",
+      "meaning": "The same recorded person performs the three sequential activities in this bounded profile. Declared responsibility is not authenticated identity.",
+      "role": "production-owner",
+      "type": "string",
+      "required": true,
+      "status": "unanswered"
+    },
+    {
+      "id": "people",
+      "path": "gifting.work.people",
+      "label": "Responsible people",
+      "question": "Which named people hold the recorded responsibilities?",
+      "meaning": "A person must be recorded before assignment. Permission is supplied and checked separately.",
+      "role": "production-owner",
+      "type": "array",
+      "required": true,
+      "status": "unanswered"
+    },
+    {
+      "id": "resources",
+      "path": "gifting.work.resources",
+      "label": "Production capacity and availability",
+      "question": "When can the production resource support the complete work?",
+      "meaning": "Available intervals and capacity constrain correction, rehearsal and handoff. This profile has no other booked work or concurrent campaigns.",
+      "role": "production-owner",
+      "type": "array",
+      "required": true,
+      "status": "unanswered"
+    },
+    {
+      "id": "permissions",
+      "path": "gifting.work.permissions",
+      "label": "Recorded arrangement permissions",
+      "question": "Which complete arrangements and working intervals have recorded permission?",
+      "meaning": "The supplied register is stipulated complete. Each permission must match the exact configuration, person and package and cover the full work interval; an empty register supplies no permission.",
+      "role": "campaign-owner",
+      "type": "array",
+      "required": true,
+      "status": "unanswered"
+    },
+    {
+      "id": "confirmations",
+      "path": "gifting.work.confirmations",
+      "label": "Recorded package confirmations",
+      "question": "Which arrangements have a current confirmation for this exact kit configuration?",
+      "meaning": "Keep the original source and recorder, exact package and six-field configuration, positive or negative status, observation time and validity interval. Empty records establish no confirmation. A confirmation does not replace operating permission or completed correction evidence.",
+      "role": "production-owner",
+      "type": "array",
+      "required": true,
+      "status": "unanswered"
+    }
+  ],
+  "inputBasis": {
+    "format": "decision-lab-input-basis/1",
+    "status": "empty",
+    "label": "No supplied inputs",
+    "counts": {
+      "example": 0,
+      "defaults": 0,
+      "supplied": 0,
+      "imported": 0,
+      "unrecorded": 0
+    },
+    "questions": [
+      {
+        "status": "empty",
+        "label": "Scenario reference",
+        "counts": {
+          "example": 0,
+          "defaults": 0,
+          "supplied": 0,
+          "imported": 0,
+          "unrecorded": 0
+        },
+        "questionId": "case-reference",
+        "questionLabel": "Scenario reference",
+        "statusLabel": "No supplied inputs",
+        "entries": [],
+        "displayEntries": [],
+        "target": {
+          "questionId": "case-reference",
+          "groupId": "commitment",
+          "subtabId": "configuration"
+        }
+      },
+      {
+        "status": "empty",
+        "label": "Exact gift-kit configuration",
+        "counts": {
+          "example": 0,
+          "defaults": 0,
+          "supplied": 0,
+          "imported": 0,
+          "unrecorded": 0
+        },
+        "questionId": "configuration",
+        "questionLabel": "Exact gift-kit configuration",
+        "statusLabel": "No supplied inputs",
+        "entries": [],
+        "displayEntries": [],
+        "target": {
+          "questionId": "configuration",
+          "groupId": "commitment",
+          "subtabId": "configuration"
+        }
+      },
+      {
+        "status": "empty",
+        "label": "Kit quantity, cutoff and expense",
+        "counts": {
+          "example": 0,
+          "defaults": 0,
+          "supplied": 0,
+          "imported": 0,
+          "unrecorded": 0
+        },
+        "questionId": "commitment",
+        "questionLabel": "Kit quantity, cutoff and expense",
+        "statusLabel": "No supplied inputs",
+        "entries": [],
+        "displayEntries": [],
+        "target": {
+          "questionId": "commitment",
+          "groupId": "commitment",
+          "subtabId": "limits"
+        }
+      },
+      {
+        "status": "empty",
+        "label": "Actual rehearsal and check reports",
+        "counts": {
+          "example": 0,
+          "defaults": 0,
+          "supplied": 0,
+          "imported": 0,
+          "unrecorded": 0
+        },
+        "questionId": "observations",
+        "questionLabel": "Actual rehearsal and check reports",
+        "statusLabel": "No supplied inputs",
+        "entries": [],
+        "displayEntries": [],
+        "target": {
+          "questionId": "observations",
+          "groupId": "evidence",
+          "subtabId": "reports"
+        }
+      },
+      {
+        "status": "empty",
+        "label": "Complete correction quotes",
+        "counts": {
+          "example": 0,
+          "defaults": 0,
+          "supplied": 0,
+          "imported": 0,
+          "unrecorded": 0
+        },
+        "questionId": "quotes",
+        "questionLabel": "Complete correction quotes",
+        "statusLabel": "No supplied inputs",
+        "entries": [],
+        "displayEntries": [],
+        "target": {
+          "questionId": "quotes",
+          "groupId": "arrangements",
+          "subtabId": "quotes"
+        }
+      },
+      {
+        "status": "empty",
+        "label": "Fresh rehearsal duration",
+        "counts": {
+          "example": 0,
+          "defaults": 0,
+          "supplied": 0,
+          "imported": 0,
+          "unrecorded": 0
+        },
+        "questionId": "rehearsal",
+        "questionLabel": "Fresh rehearsal duration",
+        "statusLabel": "No supplied inputs",
+        "entries": [],
+        "displayEntries": [],
+        "target": {
+          "questionId": "rehearsal",
+          "groupId": "arrangements",
+          "subtabId": "quotes"
+        }
+      },
+      {
+        "status": "empty",
+        "label": "Handoff duration",
+        "counts": {
+          "example": 0,
+          "defaults": 0,
+          "supplied": 0,
+          "imported": 0,
+          "unrecorded": 0
+        },
+        "questionId": "handoff",
+        "questionLabel": "Handoff duration",
+        "statusLabel": "No supplied inputs",
+        "entries": [],
+        "displayEntries": [],
+        "target": {
+          "questionId": "handoff",
+          "groupId": "arrangements",
+          "subtabId": "quotes"
+        }
+      },
+      {
+        "status": "empty",
+        "label": "Person responsible for the work",
+        "counts": {
+          "example": 0,
+          "defaults": 0,
+          "supplied": 0,
+          "imported": 0,
+          "unrecorded": 0
+        },
+        "questionId": "work-owner",
+        "questionLabel": "Person responsible for the work",
+        "statusLabel": "No supplied inputs",
+        "entries": [],
+        "displayEntries": [],
+        "target": {
+          "questionId": "work-owner",
+          "groupId": "arrangements",
+          "subtabId": "resources"
+        }
+      },
+      {
+        "status": "empty",
+        "label": "Responsible people",
+        "counts": {
+          "example": 0,
+          "defaults": 0,
+          "supplied": 0,
+          "imported": 0,
+          "unrecorded": 0
+        },
+        "questionId": "people",
+        "questionLabel": "Responsible people",
+        "statusLabel": "No supplied inputs",
+        "entries": [],
+        "displayEntries": [],
+        "target": {
+          "questionId": "people",
+          "groupId": "arrangements",
+          "subtabId": "resources"
+        }
+      },
+      {
+        "status": "empty",
+        "label": "Production capacity and availability",
+        "counts": {
+          "example": 0,
+          "defaults": 0,
+          "supplied": 0,
+          "imported": 0,
+          "unrecorded": 0
+        },
+        "questionId": "resources",
+        "questionLabel": "Production capacity and availability",
+        "statusLabel": "No supplied inputs",
+        "entries": [],
+        "displayEntries": [],
+        "target": {
+          "questionId": "resources",
+          "groupId": "arrangements",
+          "subtabId": "resources"
+        }
+      },
+      {
+        "status": "empty",
+        "label": "Recorded arrangement permissions",
+        "counts": {
+          "example": 0,
+          "defaults": 0,
+          "supplied": 0,
+          "imported": 0,
+          "unrecorded": 0
+        },
+        "questionId": "permissions",
+        "questionLabel": "Recorded arrangement permissions",
+        "statusLabel": "No supplied inputs",
+        "entries": [],
+        "displayEntries": [],
+        "target": {
+          "questionId": "permissions",
+          "groupId": "arrangements",
+          "subtabId": "permissions"
+        }
+      },
+      {
+        "status": "empty",
+        "label": "Recorded package confirmations",
+        "counts": {
+          "example": 0,
+          "defaults": 0,
+          "supplied": 0,
+          "imported": 0,
+          "unrecorded": 0
+        },
+        "questionId": "confirmations",
+        "questionLabel": "Recorded package confirmations",
+        "statusLabel": "No supplied inputs",
+        "entries": [],
+        "displayEntries": [],
+        "target": {
+          "questionId": "confirmations",
+          "groupId": "arrangements",
+          "subtabId": "permissions"
+        }
+      }
+    ]
+  },
+  "steps": [
+    {
+      "stepId": "evidence",
+      "id": "evidence",
+      "title": "Establish the required gift-kit corrections",
+      "role": "evidence-reviewer",
+      "status": "needs-input",
+      "issues": [
+        {
+          "code": "WORKFLOW_INPUT_REQUIRED",
+          "message": "Supply the answer to Which gift-kit scenario is this?",
+          "questionId": "case-reference",
+          "answerStatus": "unanswered"
+        },
+        {
+          "code": "WORKFLOW_INPUT_REQUIRED",
+          "message": "Supply the answer to Which batch, printed insert, destination, checkout and intended users are included?",
+          "questionId": "configuration",
+          "answerStatus": "unanswered"
+        },
+        {
+          "code": "WORKFLOW_INPUT_REQUIRED",
+          "message": "Supply the answer to What must be ready, by when and within which expense limit?",
+          "questionId": "commitment",
+          "answerStatus": "unanswered"
+        },
+        {
+          "code": "WORKFLOW_INPUT_REQUIRED",
+          "message": "Supply the answer to What did each scoped check report, and where is the original record?",
+          "questionId": "observations",
+          "answerStatus": "unanswered"
+        }
+      ],
+      "evaluationId": null,
+      "output": null,
+      "assessment": null,
+      "runHash": null,
+      "stale": false,
+      "executable": false
+    },
+    {
+      "stepId": "planning",
+      "id": "planning",
+      "title": "Compare complete correction arrangements",
+      "role": "production-owner",
+      "status": "needs-input",
+      "issues": [
+        {
+          "code": "WORKFLOW_CONDITION_UNAVAILABLE",
+          "message": "Establish the required gift-kit corrections: a current complete result is required.",
+          "stepId": "evidence"
+        }
+      ],
+      "evaluationId": null,
+      "output": null,
+      "assessment": null,
+      "runHash": null,
+      "stale": false,
+      "executable": false
+    }
+  ],
+  "questionViews": [
+    {
+      "id": "correction-choice",
+      "sectionId": "plan-comparison",
+      "title": "Correction choice",
+      "question": "Why does each complete correction arrangement pass or fail?",
+      "selectorLabel": "Correction arrangement",
+      "selection": {
+        "group": "arrangement",
+        "keyField": "id",
+        "labelField": "label",
+        "initial": {
+          "preferredField": "preferred",
+          "supportedField": "feasible"
+        }
+      },
+      "summary": {
+        "fields": [
+          {
+            "key": "feasible",
+            "label": "Meets the recorded requirements",
+            "presentation": "text",
+            "format": "boolean"
+          },
+          {
+            "key": "expense",
+            "label": "Complete correction expense",
+            "presentation": "metric",
+            "format": "money"
+          },
+          {
+            "key": "finishMinute",
+            "label": "Handoff ready",
+            "presentation": "metric",
+            "format": {
+              "type": "time",
+              "unit": "minute"
+            }
+          }
+        ]
+      },
+      "comparison": {
+        "title": "Compare correction arrangements",
+        "columns": [
+          {
+            "key": "label",
+            "label": "Correction arrangement",
+            "presentation": "text"
+          },
+          {
+            "key": "feasible",
+            "label": "Meets requirements",
+            "presentation": "text",
+            "format": "boolean"
+          },
+          {
+            "key": "expense",
+            "label": "Complete expense",
+            "presentation": "text",
+            "format": "money"
+          },
+          {
+            "key": "finishMinute",
+            "label": "Handoff ready",
+            "presentation": "text",
+            "format": {
+              "type": "time",
+              "unit": "minute"
+            }
+          }
+        ]
+      },
+      "details": [
+        {
+          "id": "conditions",
+          "title": "Requirements",
+          "question": "Which recorded requirements prevent this arrangement?",
+          "fields": [
+            {
+              "key": "blockers",
+              "label": "Conditions preventing this arrangement",
+              "presentation": "records"
+            }
+          ]
+        }
+      ],
+      "rowsPath": "",
+      "displayContext": {
+        "currency": "USD",
+        "scale": 100,
+        "time": "minute",
+        "timeOrigin": "the declared gift-kit review origin",
+        "names": {
+          "campaign-owner": "Campaign owner",
+          "evidence-reviewer": "Rehearsal checker",
+          "production-owner": "Production owner",
+          "rehearse-unchanged": "Prepare, rehearse and hand off unchanged kits",
+          "reprint": "Replace the printed inserts",
+          "repair-journey": "Correct the destination and checkout",
+          "replace-and-repair": "Replace inserts and repair the journey",
+          "print": "The printed code cannot be read",
+          "destination": "The code leads to the wrong destination",
+          "checkout": "Try checkout for the intended account",
+          "replace-insert": "Replace the printed inserts",
+          "correct-destination": "Correct the destination",
+          "fix-checkout": "Fix checkout eligibility",
+          "rescan": "Rescan the printed insert",
+          "decode": "Decode the printed destination",
+          "proof": "Inspect the destination in the source artwork",
+          "external-replace-and-repair": "External replacement and journey repair"
+        },
+        "labels": {
+          "id": "Reference",
+          "batchId": "Gift-kit batch",
+          "insertRevision": "Printed insert revision",
+          "destinationRevision": "Approved destination revision",
+          "checkoutRevision": "Checkout revision",
+          "deviceScope": "Intended device scope",
+          "accountScope": "Intended account and offer scope",
+          "quantity": "Committed kits",
+          "nowMinute": "Current review time",
+          "handoffDeadlineMinute": "Gift-kit handoff cutoff",
+          "budgetMinor": "Correction expense limit",
+          "checkId": "Recorded check",
+          "outcomeId": "Reported result",
+          "observedAtMinute": "Observed at",
+          "source": "Source reference",
+          "recordedBy": "Recorded by",
+          "originalText": "Original report",
+          "actorId": "Person responsible for the work",
+          "people": "Responsible people",
+          "name": "Name",
+          "role": "Recorded responsibility",
+          "packageId": "Complete correction arrangement",
+          "repairMinutes": "Package preparation or correction duration",
+          "repairCostMinor": "Complete arrangement quote",
+          "rehearsalMinutes": "Fresh rehearsal duration",
+          "handoffMinutes": "Handoff duration",
+          "capacity": "Available capacity",
+          "availableFromMinute": "Available from",
+          "availableThroughMinute": "Available through",
+          "validFromMinute": "Valid from",
+          "validThroughMinute": "Valid through",
+          "scope": "Exact configuration",
+          "observations": "Actual reports",
+          "quotes": "Correction quotes",
+          "resources": "Production resources",
+          "permissions": "Recorded permissions",
+          "status": "Finding",
+          "states": "Remaining explanations",
+          "faultIds": "Possible problems",
+          "requiredCorrections": "Established correction set",
+          "correctionsSetEstablished": "The complete correction set is established",
+          "records": "How reports were used",
+          "ignoredRecords": "Reports outside this review",
+          "usedRecords": "Reports used in this calculation",
+          "recommended": "Proposed arrangement",
+          "recommendedPlans": "Proposed complete arrangements",
+          "preferredPlan": "Proposed complete arrangement",
+          "arrangement": "Complete arrangement",
+          "expense": "Total expense",
+          "finishMinute": "Handoff ready",
+          "ownerId": "Responsible person",
+          "preferredCount": "Equally preferred complete plans",
+          "blockers": "Conditions preventing completion",
+          "ownerRole": "Responsible role",
+          "requiredEvidence": "Evidence needed",
+          "deadlineMinute": "Handoff cutoff",
+          "confirmations": "Recorded package confirmations",
+          "confirmed": "Confirmed for this arrangement",
+          "recordedAtMinute": "Recorded at"
+        },
+        "formats": {
+          "budgetMinor": "money",
+          "repairCostMinor": "money",
+          "deadlineMinute": {
+            "type": "time",
+            "unit": "minute"
+          },
+          "start": {
+            "type": "time",
+            "unit": "minute"
+          },
+          "end": {
+            "type": "time",
+            "unit": "minute"
+          },
+          "time": {
+            "type": "time",
+            "unit": "minute"
+          },
+          "duration": {
+            "type": "duration",
+            "unit": "minute"
+          },
+          "finishMinute": {
+            "type": "time",
+            "unit": "minute"
+          }
+        }
+      },
+      "rows": [],
+      "status": "unavailable",
+      "issues": [
+        {
+          "code": "WORKFLOW_QUESTION_VIEW_UNAVAILABLE",
+          "path": "questionViews.correction-choice",
+          "message": "This question needs a current list of findings before items can be inspected."
+        }
+      ]
+    }
+  ],
+  "workflowMap": {
+    "format": "decision-lab-workflow-map/1",
+    "title": "How the gift-kit answer is calculated",
+    "description": "Diagnostic reports first establish the corrections needed. Complete correction arrangements are then compared using the same kit configuration and handoff commitment.",
+    "nodes": [
+      {
+        "id": "step:evidence",
+        "kind": "calculation",
+        "stepId": "evidence",
+        "label": "Establish required kit corrections",
+        "description": "Interpret the actual diagnostic reports within the declared fault and report-error bounds.",
+        "question": "Which fault combinations still agree with these gift-kit records?",
+        "app": {
+          "id": "review-gift-kit-flexible-evidence",
+          "title": "Review gift-kit records",
+          "packageHash": "793a5017aa587152474d8824b77fd98bfbbed1764981a5fcce64163cbc0b3358",
+          "pattern": "evidence-review/1"
+        },
+        "status": "needs-input",
+        "current": false,
+        "result": {
+          "available": false,
+          "label": "No current calculation result."
+        },
+        "reasons": [
+          {
+            "id": "input:case-reference",
+            "kind": "input",
+            "questionId": "case-reference",
+            "label": "Scenario reference: not supplied."
+          },
+          {
+            "id": "input:configuration",
+            "kind": "input",
+            "questionId": "configuration",
+            "label": "Exact gift-kit configuration: not supplied."
+          },
+          {
+            "id": "input:commitment",
+            "kind": "input",
+            "questionId": "commitment",
+            "label": "Kit quantity, cutoff and expense: not supplied."
+          },
+          {
+            "id": "input:observations",
+            "kind": "input",
+            "questionId": "observations",
+            "label": "Actual rehearsal and check reports: not supplied."
+          }
+        ],
+        "inputTargets": [
+          {
+            "questionId": "case-reference",
+            "label": "Scenario reference",
+            "status": "unanswered",
+            "groupId": "commitment",
+            "subtabId": "configuration"
+          },
+          {
+            "questionId": "configuration",
+            "label": "Exact gift-kit configuration",
+            "status": "unanswered",
+            "groupId": "commitment",
+            "subtabId": "configuration"
+          },
+          {
+            "questionId": "commitment",
+            "label": "Kit quantity, cutoff and expense",
+            "status": "unanswered",
+            "groupId": "commitment",
+            "subtabId": "limits"
+          },
+          {
+            "questionId": "observations",
+            "label": "Actual rehearsal and check reports",
+            "status": "unanswered",
+            "groupId": "evidence",
+            "subtabId": "reports"
+          }
+        ],
+        "reportTargets": [
+          {
+            "stepId": "evidence",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "step:planning",
+        "kind": "calculation",
+        "stepId": "planning",
+        "label": "Compare complete correction arrangements",
+        "description": "Apply the established corrections to complete work packages, including rehearsal, handoff, people, resources, permissions and expense.",
+        "question": "Which complete correction package addresses every remaining explanation and can finish before we commit the gift kits?",
+        "app": {
+          "id": "review-gift-kit-flexible-planning",
+          "title": "Review a gift-kit commitment — complete arrangements",
+          "packageHash": "3c0aae0c30ec70d930625efd79fe29f740adf8df8cdacf7041b78dc483d4f6d6",
+          "pattern": "complete-a-commitment/1"
+        },
+        "status": "needs-input",
+        "current": false,
+        "result": {
+          "available": false,
+          "label": "No current calculation result."
+        },
+        "reasons": [
+          {
+            "id": "input:case-reference",
+            "kind": "input",
+            "questionId": "case-reference",
+            "label": "Scenario reference: not supplied."
+          },
+          {
+            "id": "input:configuration",
+            "kind": "input",
+            "questionId": "configuration",
+            "label": "Exact gift-kit configuration: not supplied."
+          },
+          {
+            "id": "input:commitment",
+            "kind": "input",
+            "questionId": "commitment",
+            "label": "Kit quantity, cutoff and expense: not supplied."
+          },
+          {
+            "id": "input:observations",
+            "kind": "input",
+            "questionId": "observations",
+            "label": "Actual rehearsal and check reports: not supplied."
+          },
+          {
+            "id": "input:quotes",
+            "kind": "input",
+            "questionId": "quotes",
+            "label": "Complete correction quotes: not supplied."
+          },
+          {
+            "id": "input:rehearsal",
+            "kind": "input",
+            "questionId": "rehearsal",
+            "label": "Fresh rehearsal duration: not supplied."
+          },
+          {
+            "id": "input:handoff",
+            "kind": "input",
+            "questionId": "handoff",
+            "label": "Handoff duration: not supplied."
+          },
+          {
+            "id": "input:work-owner",
+            "kind": "input",
+            "questionId": "work-owner",
+            "label": "Person responsible for the work: not supplied."
+          },
+          {
+            "id": "input:people",
+            "kind": "input",
+            "questionId": "people",
+            "label": "Responsible people: not supplied."
+          },
+          {
+            "id": "input:resources",
+            "kind": "input",
+            "questionId": "resources",
+            "label": "Production capacity and availability: not supplied."
+          },
+          {
+            "id": "input:permissions",
+            "kind": "input",
+            "questionId": "permissions",
+            "label": "Recorded arrangement permissions: not supplied."
+          },
+          {
+            "id": "input:confirmations",
+            "kind": "input",
+            "questionId": "confirmations",
+            "label": "Recorded package confirmations: not supplied."
+          },
+          {
+            "id": "dependency:evidence",
+            "kind": "dependency",
+            "stepId": "evidence",
+            "label": "A current usable result from Establish required kit corrections is required."
+          }
+        ],
+        "inputTargets": [
+          {
+            "questionId": "case-reference",
+            "label": "Scenario reference",
+            "status": "unanswered",
+            "groupId": "commitment",
+            "subtabId": "configuration"
+          },
+          {
+            "questionId": "configuration",
+            "label": "Exact gift-kit configuration",
+            "status": "unanswered",
+            "groupId": "commitment",
+            "subtabId": "configuration"
+          },
+          {
+            "questionId": "commitment",
+            "label": "Kit quantity, cutoff and expense",
+            "status": "unanswered",
+            "groupId": "commitment",
+            "subtabId": "limits"
+          },
+          {
+            "questionId": "observations",
+            "label": "Actual rehearsal and check reports",
+            "status": "unanswered",
+            "groupId": "evidence",
+            "subtabId": "reports"
+          },
+          {
+            "questionId": "quotes",
+            "label": "Complete correction quotes",
+            "status": "unanswered",
+            "groupId": "arrangements",
+            "subtabId": "quotes"
+          },
+          {
+            "questionId": "rehearsal",
+            "label": "Fresh rehearsal duration",
+            "status": "unanswered",
+            "groupId": "arrangements",
+            "subtabId": "quotes"
+          },
+          {
+            "questionId": "handoff",
+            "label": "Handoff duration",
+            "status": "unanswered",
+            "groupId": "arrangements",
+            "subtabId": "quotes"
+          },
+          {
+            "questionId": "work-owner",
+            "label": "Person responsible for the work",
+            "status": "unanswered",
+            "groupId": "arrangements",
+            "subtabId": "resources"
+          },
+          {
+            "questionId": "people",
+            "label": "Responsible people",
+            "status": "unanswered",
+            "groupId": "arrangements",
+            "subtabId": "resources"
+          },
+          {
+            "questionId": "resources",
+            "label": "Production capacity and availability",
+            "status": "unanswered",
+            "groupId": "arrangements",
+            "subtabId": "resources"
+          },
+          {
+            "questionId": "permissions",
+            "label": "Recorded arrangement permissions",
+            "status": "unanswered",
+            "groupId": "arrangements",
+            "subtabId": "permissions"
+          },
+          {
+            "questionId": "confirmations",
+            "label": "Recorded package confirmations",
+            "status": "unanswered",
+            "groupId": "arrangements",
+            "subtabId": "permissions"
+          }
+        ],
+        "reportTargets": [
+          {
+            "stepId": "planning",
+            "evaluationId": null
+          }
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "dependency:evidence:planning",
+        "source": "step:evidence",
+        "target": "step:planning",
+        "kind": "dependency"
+      }
+    ],
+    "groups": [],
+    "inputGroups": [
+      {
+        "id": "commitment",
+        "label": "Commitment",
+        "subtabs": [
+          {
+            "id": "configuration",
+            "label": "Batch and configuration",
+            "questionIds": [
+              "case-reference",
+              "configuration"
+            ]
+          },
+          {
+            "id": "limits",
+            "label": "Quantity and limits",
+            "questionIds": [
+              "commitment"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "evidence",
+        "label": "Rehearsal records",
+        "subtabs": [
+          {
+            "id": "reports",
+            "label": "Recorded checks",
+            "questionIds": [
+              "observations"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "arrangements",
+        "label": "Correction arrangements",
+        "subtabs": [
+          {
+            "id": "quotes",
+            "label": "Quotes and work",
+            "questionIds": [
+              "quotes",
+              "rehearsal",
+              "handoff"
+            ]
+          },
+          {
+            "id": "resources",
+            "label": "People and capacity",
+            "questionIds": [
+              "work-owner",
+              "people",
+              "resources"
+            ]
+          },
+          {
+            "id": "permissions",
+            "label": "Permissions and confirmations",
+            "questionIds": [
+              "permissions",
+              "confirmations"
+            ]
+          }
+        ]
+      }
+    ],
+    "issues": []
+  },
+  "conditions": [
+    {
+      "id": "reports-current",
+      "label": "The diagnostic reports have been calculated",
+      "status": "false",
+      "value": false,
+      "reasons": []
+    },
+    {
+      "id": "corrections-established",
+      "label": "The diagnostic reports establish the required corrections",
+      "status": "unknown",
+      "value": null,
+      "reasons": [
+        {
+          "id": "step:evidence",
+          "label": "Establish the required gift-kit corrections: a current complete result is required.",
+          "kind": "step",
+          "stepId": "evidence"
+        }
+      ]
+    },
+    {
+      "id": "arrangements-current",
+      "label": "Complete correction arrangements have been calculated",
+      "status": "false",
+      "value": false,
+      "reasons": []
+    },
+    {
+      "id": "has-recommended-arrangements",
+      "label": "At least one complete correction arrangement meets the requirements",
+      "status": "unknown",
+      "value": null,
+      "reasons": [
+        {
+          "id": "step:planning",
+          "label": "Compare complete correction arrangements: a current complete result is required.",
+          "kind": "step",
+          "stepId": "planning"
+        }
+      ]
+    },
+    {
+      "id": "offer-resolve-evidence",
+      "label": "Resolve the conflicting rehearsal reports",
+      "status": "false",
+      "value": false,
+      "reasons": []
+    },
+    {
+      "id": "offer-propose-correction",
+      "label": "Review the proposed complete correction arrangement",
+      "status": "false",
+      "value": false,
+      "reasons": []
+    },
+    {
+      "id": "offer-revise-commitment",
+      "label": "Resolve blockers or revise the gift-kit commitment",
+      "status": "false",
+      "value": false,
+      "reasons": []
+    },
+    {
+      "id": "offer-calculate-arrangements",
+      "label": "Calculate complete correction arrangements",
+      "status": "false",
+      "value": false,
+      "reasons": []
+    },
+    {
+      "id": "offer-supply-diagnostic-reports",
+      "label": "Supply or calculate the current diagnostic reports",
+      "status": "true",
+      "value": true,
+      "reasons": []
+    }
+  ],
+  "decisionProcess": {
+    "format": "decision-lab-decision-process/1",
+    "title": "Decide how to complete the gift-kit handoff",
+    "description": "Establish the corrections required by the actual diagnostic reports, then compare complete correction arrangements. A calculated arrangement does not establish that correction work, rehearsal or handoff has happened.",
+    "entryNodeIds": [
+      "define-kit-commitment"
+    ],
+    "nodes": [
+      {
+        "id": "define-kit-commitment",
+        "kind": "stage",
+        "label": "Define the kit configuration and handoff",
+        "description": "",
+        "stepIds": [],
+        "status": "applicable",
+        "reasons": [],
+        "result": {
+          "label": "This part of the process is applicable to the current case."
+        },
+        "inputTargets": [
+          {
+            "questionId": "configuration",
+            "label": "Exact gift-kit configuration",
+            "status": "unanswered",
+            "groupId": "commitment",
+            "subtabId": "configuration"
+          },
+          {
+            "questionId": "commitment",
+            "label": "Kit quantity, cutoff and expense",
+            "status": "unanswered",
+            "groupId": "commitment",
+            "subtabId": "limits"
+          },
+          {
+            "questionId": "people",
+            "label": "Responsible people",
+            "status": "unanswered",
+            "groupId": "arrangements",
+            "subtabId": "resources"
+          },
+          {
+            "questionId": "resources",
+            "label": "Production capacity and availability",
+            "status": "unanswered",
+            "groupId": "arrangements",
+            "subtabId": "resources"
+          },
+          {
+            "questionId": "permissions",
+            "label": "Recorded arrangement permissions",
+            "status": "unanswered",
+            "groupId": "arrangements",
+            "subtabId": "permissions"
+          }
+        ],
+        "reportTargets": []
+      },
+      {
+        "id": "establish-corrections",
+        "kind": "stage",
+        "label": "Establish the required kit corrections",
+        "description": "",
+        "stepIds": [
+          "evidence"
+        ],
+        "status": "unknown",
+        "reasons": [
+          {
+            "id": "step:evidence",
+            "kind": "step",
+            "stepId": "evidence",
+            "label": "Establish the required gift-kit corrections: a current complete calculation is required."
+          }
+        ],
+        "result": {
+          "label": "Required inputs are unknown or unavailable."
+        },
+        "inputTargets": [
+          {
+            "questionId": "observations",
+            "label": "Actual rehearsal and check reports",
+            "status": "unanswered",
+            "groupId": "evidence",
+            "subtabId": "reports"
+          }
+        ],
+        "reportTargets": [
+          {
+            "stepId": "evidence",
+            "label": "Establish the required gift-kit corrections",
+            "evaluationId": null
+          },
+          {
+            "sectionId": "correction-finding",
+            "label": "What do the actual reports establish?"
+          }
+        ]
+      },
+      {
+        "id": "corrections-supported",
+        "kind": "decision",
+        "label": "Do the diagnostic reports establish the corrections?",
+        "description": "",
+        "conditionId": "corrections-established",
+        "stepIds": [],
+        "status": "unknown",
+        "reasons": [
+          {
+            "id": "step:evidence",
+            "label": "Establish the required gift-kit corrections: a current complete result is required.",
+            "kind": "step",
+            "stepId": "evidence"
+          }
+        ],
+        "result": {
+          "label": "Required inputs are unknown or unavailable."
+        },
+        "inputTargets": [],
+        "reportTargets": [
+          {
+            "stepId": "evidence",
+            "label": "Establish the required gift-kit corrections",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "compare-corrections",
+        "kind": "stage",
+        "label": "Compare complete correction arrangements",
+        "description": "",
+        "stepIds": [
+          "planning"
+        ],
+        "status": "unknown",
+        "reasons": [
+          {
+            "id": "step:planning",
+            "kind": "step",
+            "stepId": "planning",
+            "label": "Compare complete correction arrangements: a current complete calculation is required."
+          }
+        ],
+        "result": {
+          "label": "Required inputs are unknown or unavailable."
+        },
+        "inputTargets": [
+          {
+            "questionId": "quotes",
+            "label": "Complete correction quotes",
+            "status": "unanswered",
+            "groupId": "arrangements",
+            "subtabId": "quotes"
+          },
+          {
+            "questionId": "rehearsal",
+            "label": "Fresh rehearsal duration",
+            "status": "unanswered",
+            "groupId": "arrangements",
+            "subtabId": "quotes"
+          },
+          {
+            "questionId": "handoff",
+            "label": "Handoff duration",
+            "status": "unanswered",
+            "groupId": "arrangements",
+            "subtabId": "quotes"
+          }
+        ],
+        "reportTargets": [
+          {
+            "stepId": "planning",
+            "label": "Compare complete correction arrangements",
+            "evaluationId": null
+          },
+          {
+            "sectionId": "plan-comparison",
+            "label": "How do the complete arrangements compare?"
+          }
+        ]
+      },
+      {
+        "id": "correction-arrangement-feasible",
+        "kind": "decision",
+        "label": "Does a complete correction arrangement fit?",
+        "description": "",
+        "conditionId": "has-recommended-arrangements",
+        "stepIds": [],
+        "status": "unknown",
+        "reasons": [
+          {
+            "id": "step:planning",
+            "label": "Compare complete correction arrangements: a current complete result is required.",
+            "kind": "step",
+            "stepId": "planning"
+          }
+        ],
+        "result": {
+          "label": "Required inputs are unknown or unavailable."
+        },
+        "inputTargets": [],
+        "reportTargets": [
+          {
+            "stepId": "planning",
+            "label": "Compare complete correction arrangements",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "action-resolve-evidence",
+        "kind": "action",
+        "label": "Resolve the conflicting rehearsal reports",
+        "description": "",
+        "actionId": "resolve-evidence",
+        "stepIds": [],
+        "status": "not-applicable",
+        "reasons": [],
+        "result": {
+          "label": "This branch is not applicable under the current case conditions."
+        },
+        "inputTargets": [
+          {
+            "questionId": "commitment",
+            "label": "Kit quantity, cutoff and expense",
+            "status": "unanswered",
+            "groupId": "commitment",
+            "subtabId": "limits"
+          }
+        ],
+        "reportTargets": [
+          {
+            "stepId": "evidence",
+            "label": "Establish the required gift-kit corrections",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "action-propose-correction",
+        "kind": "action",
+        "label": "Compare the supported complete correction arrangement",
+        "description": "",
+        "actionId": "propose-correction",
+        "stepIds": [],
+        "status": "not-applicable",
+        "reasons": [],
+        "result": {
+          "label": "This branch is not applicable under the current case conditions."
+        },
+        "inputTargets": [
+          {
+            "questionId": "commitment",
+            "label": "Kit quantity, cutoff and expense",
+            "status": "unanswered",
+            "groupId": "commitment",
+            "subtabId": "limits"
+          },
+          {
+            "questionId": "work-owner",
+            "label": "Person responsible for the work",
+            "status": "unanswered",
+            "groupId": "arrangements",
+            "subtabId": "resources"
+          }
+        ],
+        "reportTargets": [
+          {
+            "stepId": "planning",
+            "label": "Compare complete correction arrangements",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "action-revise-commitment",
+        "kind": "action",
+        "label": "Resolve blockers or revise the gift-kit commitment",
+        "description": "",
+        "actionId": "revise-commitment",
+        "stepIds": [],
+        "status": "not-applicable",
+        "reasons": [],
+        "result": {
+          "label": "This branch is not applicable under the current case conditions."
+        },
+        "inputTargets": [
+          {
+            "questionId": "commitment",
+            "label": "Kit quantity, cutoff and expense",
+            "status": "unanswered",
+            "groupId": "commitment",
+            "subtabId": "limits"
+          }
+        ],
+        "reportTargets": [
+          {
+            "stepId": "planning",
+            "label": "Compare complete correction arrangements",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "action-calculate-arrangements",
+        "kind": "action",
+        "label": "Calculate complete correction arrangements",
+        "description": "",
+        "actionId": "calculate-arrangements",
+        "stepIds": [],
+        "status": "not-applicable",
+        "reasons": [],
+        "result": {
+          "label": "This branch is not applicable under the current case conditions."
+        },
+        "inputTargets": [
+          {
+            "questionId": "commitment",
+            "label": "Kit quantity, cutoff and expense",
+            "status": "unanswered",
+            "groupId": "commitment",
+            "subtabId": "limits"
+          }
+        ],
+        "reportTargets": [
+          {
+            "stepId": "evidence",
+            "label": "Establish the required gift-kit corrections",
+            "evaluationId": null
+          },
+          {
+            "stepId": "planning",
+            "label": "Compare complete correction arrangements",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "use-calculated-arrangement",
+        "kind": "outcome",
+        "label": "Use the calculated arrangement to choose the next operating action",
+        "description": "Arrange any required approval and perform the work separately; the calculation is not completion evidence.",
+        "stepIds": [],
+        "status": "not-applicable",
+        "reasons": [],
+        "result": {
+          "label": "This branch is not applicable under the current case conditions."
+        },
+        "inputTargets": [],
+        "reportTargets": [
+          {
+            "sectionId": "proposed-arrangement",
+            "label": "Which complete arrangement can we propose?"
+          },
+          {
+            "sectionId": "next-responsibility",
+            "label": "Who should do what next?"
+          }
+        ]
+      },
+      {
+        "id": "action-supply-diagnostic-reports",
+        "kind": "action",
+        "label": "Supply or calculate the current diagnostic reports",
+        "description": "",
+        "actionId": "supply-diagnostic-reports",
+        "stepIds": [],
+        "status": "applicable",
+        "reasons": [],
+        "result": {
+          "label": "The declared action rule matches this case; this does not record that the action was performed."
+        },
+        "inputTargets": [],
+        "reportTargets": [
+          {
+            "stepId": "evidence",
+            "label": "Establish the required gift-kit corrections",
+            "evaluationId": null
+          }
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "define-kit-commitment-to-establish-corrections",
+        "from": "define-kit-commitment",
+        "to": "establish-corrections",
+        "label": "Use the exact kit configuration",
+        "kind": "flow",
+        "status": "applicable"
+      },
+      {
+        "id": "establish-corrections-to-corrections-supported",
+        "from": "establish-corrections",
+        "to": "corrections-supported",
+        "label": "Use the diagnostic finding",
+        "kind": "flow",
+        "status": "applicable"
+      },
+      {
+        "id": "corrections-supported-to-compare-corrections-true",
+        "from": "corrections-supported",
+        "to": "compare-corrections",
+        "label": "Corrections established",
+        "outcome": "true",
+        "kind": "flow",
+        "status": "unknown"
+      },
+      {
+        "id": "corrections-supported-to-action-resolve-evidence-false",
+        "from": "corrections-supported",
+        "to": "action-resolve-evidence",
+        "label": "Reports do not establish usable corrections",
+        "outcome": "false",
+        "kind": "flow",
+        "status": "not-applicable"
+      },
+      {
+        "id": "compare-corrections-to-correction-arrangement-feasible",
+        "from": "compare-corrections",
+        "to": "correction-arrangement-feasible",
+        "label": "Use complete-plan findings",
+        "kind": "flow",
+        "status": "unknown"
+      },
+      {
+        "id": "correction-arrangement-feasible-to-action-propose-correction-true",
+        "from": "correction-arrangement-feasible",
+        "to": "action-propose-correction",
+        "label": "A complete arrangement fits",
+        "outcome": "true",
+        "kind": "flow",
+        "status": "not-applicable"
+      },
+      {
+        "id": "correction-arrangement-feasible-to-action-revise-commitment-false",
+        "from": "correction-arrangement-feasible",
+        "to": "action-revise-commitment",
+        "label": "No listed arrangement fits",
+        "outcome": "false",
+        "kind": "flow",
+        "status": "not-applicable"
+      },
+      {
+        "id": "correction-arrangement-feasible-to-action-calculate-arrangements-unknown",
+        "from": "correction-arrangement-feasible",
+        "to": "action-calculate-arrangements",
+        "label": "Calculation still required",
+        "outcome": "unknown",
+        "kind": "flow",
+        "status": "not-applicable"
+      },
+      {
+        "id": "action-propose-correction-to-use-calculated-arrangement",
+        "from": "action-propose-correction",
+        "to": "use-calculated-arrangement",
+        "label": "Compare the supported arrangement",
+        "kind": "flow",
+        "status": "not-applicable"
+      },
+      {
+        "id": "action-resolve-evidence-to-establish-corrections",
+        "from": "action-resolve-evidence",
+        "to": "establish-corrections",
+        "label": "Reassess corrected diagnostic reports",
+        "kind": "reassessment",
+        "status": "not-applicable"
+      },
+      {
+        "id": "action-revise-commitment-to-define-kit-commitment",
+        "from": "action-revise-commitment",
+        "to": "define-kit-commitment",
+        "label": "Reassess changed commitment or operating facts",
+        "kind": "reassessment",
+        "status": "not-applicable"
+      },
+      {
+        "id": "corrections-supported-to-action-supply-diagnostic-reports-unknown",
+        "from": "corrections-supported",
+        "to": "action-supply-diagnostic-reports",
+        "label": "Diagnostic inputs are unknown",
+        "outcome": "unknown",
+        "kind": "flow",
+        "status": "applicable"
+      },
+      {
+        "id": "corrections-supported-to-action-supply-diagnostic-reports-not-calculated",
+        "from": "corrections-supported",
+        "to": "action-supply-diagnostic-reports",
+        "label": "Calculate the diagnostic reports",
+        "outcome": "not-calculated",
+        "kind": "flow",
+        "status": "not-applicable"
+      },
+      {
+        "id": "corrections-supported-to-action-supply-diagnostic-reports-stale",
+        "from": "corrections-supported",
+        "to": "action-supply-diagnostic-reports",
+        "label": "Recalculate the changed diagnostic reports",
+        "outcome": "stale",
+        "kind": "flow",
+        "status": "not-applicable"
+      },
+      {
+        "id": "corrections-supported-to-action-supply-diagnostic-reports-error",
+        "from": "corrections-supported",
+        "to": "action-supply-diagnostic-reports",
+        "label": "Resolve the diagnostic calculation error",
+        "outcome": "error",
+        "kind": "flow",
+        "status": "not-applicable"
+      },
+      {
+        "id": "correction-arrangement-feasible-to-action-calculate-arrangements-not-calculated",
+        "from": "correction-arrangement-feasible",
+        "to": "action-calculate-arrangements",
+        "label": "Calculate complete correction arrangements",
+        "outcome": "not-calculated",
+        "kind": "flow",
+        "status": "not-applicable"
+      },
+      {
+        "id": "correction-arrangement-feasible-to-action-calculate-arrangements-stale",
+        "from": "correction-arrangement-feasible",
+        "to": "action-calculate-arrangements",
+        "label": "Recalculate changed correction arrangements",
+        "outcome": "stale",
+        "kind": "flow",
+        "status": "not-applicable"
+      },
+      {
+        "id": "correction-arrangement-feasible-to-action-calculate-arrangements-error",
+        "from": "correction-arrangement-feasible",
+        "to": "action-calculate-arrangements",
+        "label": "Resolve the correction arrangement calculation error",
+        "outcome": "error",
+        "kind": "flow",
+        "status": "not-applicable"
+      }
+    ],
+    "groups": [
+      {
+        "id": "kit-commitment",
+        "label": "1. Define the handoff commitment",
+        "nodeIds": [
+          "define-kit-commitment"
+        ]
+      },
+      {
+        "id": "required-corrections",
+        "label": "2. Establish the required corrections",
+        "nodeIds": [
+          "establish-corrections",
+          "corrections-supported",
+          "action-resolve-evidence",
+          "action-supply-diagnostic-reports"
+        ]
+      },
+      {
+        "id": "correction-arrangements",
+        "label": "3. Compare complete correction arrangements",
+        "nodeIds": [
+          "compare-corrections",
+          "correction-arrangement-feasible",
+          "action-calculate-arrangements",
+          "action-revise-commitment"
+        ]
+      },
+      {
+        "id": "next-operating-action",
+        "label": "4. Choose the next operating action",
+        "nodeIds": [
+          "action-propose-correction",
+          "use-calculated-arrangement"
+        ]
+      }
+    ],
+    "conditions": [
+      {
+        "id": "reports-current",
+        "label": "The diagnostic reports have been calculated",
+        "status": "false",
+        "value": false,
+        "reasons": [],
+        "inputTargets": [],
+        "reportTargets": [
+          {
+            "stepId": "evidence",
+            "label": "Establish the required gift-kit corrections",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "corrections-established",
+        "label": "The diagnostic reports establish the required corrections",
+        "status": "unknown",
+        "value": null,
+        "reasons": [
+          {
+            "id": "step:evidence",
+            "label": "Establish the required gift-kit corrections: a current complete result is required.",
+            "kind": "step",
+            "stepId": "evidence"
+          }
+        ],
+        "inputTargets": [],
+        "reportTargets": [
+          {
+            "stepId": "evidence",
+            "label": "Establish the required gift-kit corrections",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "arrangements-current",
+        "label": "Complete correction arrangements have been calculated",
+        "status": "false",
+        "value": false,
+        "reasons": [],
+        "inputTargets": [],
+        "reportTargets": [
+          {
+            "stepId": "planning",
+            "label": "Compare complete correction arrangements",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "has-recommended-arrangements",
+        "label": "At least one complete correction arrangement meets the requirements",
+        "status": "unknown",
+        "value": null,
+        "reasons": [
+          {
+            "id": "step:planning",
+            "label": "Compare complete correction arrangements: a current complete result is required.",
+            "kind": "step",
+            "stepId": "planning"
+          }
+        ],
+        "inputTargets": [],
+        "reportTargets": [
+          {
+            "stepId": "planning",
+            "label": "Compare complete correction arrangements",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "offer-resolve-evidence",
+        "label": "Resolve the conflicting rehearsal reports",
+        "status": "false",
+        "value": false,
+        "reasons": [],
+        "inputTargets": [],
+        "reportTargets": [
+          {
+            "stepId": "evidence",
+            "label": "Establish the required gift-kit corrections",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "offer-propose-correction",
+        "label": "Review the proposed complete correction arrangement",
+        "status": "false",
+        "value": false,
+        "reasons": [],
+        "inputTargets": [],
+        "reportTargets": [
+          {
+            "stepId": "planning",
+            "label": "Compare complete correction arrangements",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "offer-revise-commitment",
+        "label": "Resolve blockers or revise the gift-kit commitment",
+        "status": "false",
+        "value": false,
+        "reasons": [],
+        "inputTargets": [],
+        "reportTargets": [
+          {
+            "stepId": "planning",
+            "label": "Compare complete correction arrangements",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "offer-calculate-arrangements",
+        "label": "Calculate complete correction arrangements",
+        "status": "false",
+        "value": false,
+        "reasons": [],
+        "inputTargets": [],
+        "reportTargets": [
+          {
+            "stepId": "evidence",
+            "label": "Establish the required gift-kit corrections",
+            "evaluationId": null
+          },
+          {
+            "stepId": "planning",
+            "label": "Compare complete correction arrangements",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "offer-supply-diagnostic-reports",
+        "label": "Supply or calculate the current diagnostic reports",
+        "status": "true",
+        "value": true,
+        "reasons": [],
+        "inputTargets": [],
+        "reportTargets": [
+          {
+            "stepId": "evidence",
+            "label": "Establish the required gift-kit corrections",
+            "evaluationId": null
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "resolve-evidence",
+        "label": "Resolve the conflicting rehearsal reports",
+        "status": "not-applicable",
+        "value": null,
+        "reasons": [],
+        "inputTargets": [
+          {
+            "questionId": "commitment",
+            "label": "Kit quantity, cutoff and expense",
+            "status": "unanswered",
+            "groupId": "commitment",
+            "subtabId": "limits"
+          }
+        ],
+        "reportTargets": [
+          {
+            "stepId": "evidence",
+            "label": "Establish the required gift-kit corrections",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "propose-correction",
+        "label": "Choose among the supported complete correction arrangements",
+        "status": "not-applicable",
+        "value": null,
+        "reasons": [],
+        "inputTargets": [
+          {
+            "questionId": "commitment",
+            "label": "Kit quantity, cutoff and expense",
+            "status": "unanswered",
+            "groupId": "commitment",
+            "subtabId": "limits"
+          },
+          {
+            "questionId": "work-owner",
+            "label": "Person responsible for the work",
+            "status": "unanswered",
+            "groupId": "arrangements",
+            "subtabId": "resources"
+          }
+        ],
+        "reportTargets": [
+          {
+            "stepId": "planning",
+            "label": "Compare complete correction arrangements",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "revise-commitment",
+        "label": "Resolve blockers or revise the gift-kit commitment",
+        "status": "not-applicable",
+        "value": null,
+        "reasons": [],
+        "inputTargets": [
+          {
+            "questionId": "commitment",
+            "label": "Kit quantity, cutoff and expense",
+            "status": "unanswered",
+            "groupId": "commitment",
+            "subtabId": "limits"
+          }
+        ],
+        "reportTargets": [
+          {
+            "stepId": "planning",
+            "label": "Compare complete correction arrangements",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "calculate-arrangements",
+        "label": "Calculate complete correction arrangements",
+        "status": "not-applicable",
+        "value": null,
+        "reasons": [],
+        "inputTargets": [
+          {
+            "questionId": "commitment",
+            "label": "Kit quantity, cutoff and expense",
+            "status": "unanswered",
+            "groupId": "commitment",
+            "subtabId": "limits"
+          }
+        ],
+        "reportTargets": [
+          {
+            "stepId": "evidence",
+            "label": "Establish the required gift-kit corrections",
+            "evaluationId": null
+          },
+          {
+            "stepId": "planning",
+            "label": "Compare complete correction arrangements",
+            "evaluationId": null
+          }
+        ]
+      },
+      {
+        "id": "supply-diagnostic-reports",
+        "label": "Supply or calculate the current diagnostic reports",
+        "status": "applicable",
+        "value": [],
+        "reasons": [],
+        "inputTargets": [],
+        "reportTargets": [
+          {
+            "stepId": "evidence",
+            "label": "Establish the required gift-kit corrections",
+            "evaluationId": null
+          }
+        ]
+      }
+    ],
+    "actionGroups": [
+      {
+        "id": "available-next-actions",
+        "label": "Available next actions",
+        "selection": "all-matching",
+        "actionIds": [
+          "resolve-evidence",
+          "propose-correction",
+          "revise-commitment",
+          "calculate-arrangements",
+          "supply-diagnostic-reports"
+        ],
+        "matchedActionIds": [
+          "supply-diagnostic-reports"
+        ],
+        "status": "ready",
+        "issues": []
+      }
+    ],
+    "issues": []
+  },
+  "decisionSummary": {
+    "format": "workflow-decision-summary/1",
+    "title": "Decision summary",
+    "question": "What must we verify or correct, and can we finish before committing these gift kits?",
+    "sections": [
+      {
+        "id": "options",
+        "label": "Options",
+        "question": "Which correction arrangements meet the requirements, and which best fits our stated priority?"
+      },
+      {
+        "id": "next-actions",
+        "label": "Next actions",
+        "question": "What can we do next, given the current findings?"
+      },
+      {
+        "id": "assumptions",
+        "label": "Assumptions",
+        "question": "What assumptions and limits do these results depend on?"
+      },
+      {
+        "id": "questions",
+        "label": "Questions",
+        "question": "What still needs to be established before committing the kits?"
+      }
+    ],
+    "finding": {
+      "availability": "unknown",
+      "metrics": [],
+      "issues": [
+        {
+          "code": "WORKFLOW_DECISION_SUMMARY_UNAVAILABLE",
+          "path": "decisionSummary.finding",
+          "message": "Required information remains unresolved. Complete the prerequisite inputs and calculations to see this finding."
+        }
+      ]
+    },
+    "comparison": {
+      "title": "Compare correction options",
+      "columns": [
+        {
+          "key": "label",
+          "label": "Complete arrangement"
+        },
+        {
+          "key": "standing",
+          "label": "Calculated fit"
+        },
+        {
+          "key": "expense",
+          "label": "Complete expense",
+          "format": "money"
+        },
+        {
+          "key": "finishMinute",
+          "label": "Handoff ready",
+          "format": {
+            "type": "time",
+            "unit": "minute"
+          }
+        }
+      ],
+      "tabId": "arrangements",
+      "availability": "unknown",
+      "rows": [],
+      "issues": [
+        {
+          "code": "WORKFLOW_DECISION_SUMMARY_UNAVAILABLE",
+          "path": "decisionSummary.comparison",
+          "message": "Required information remains unresolved. Complete the prerequisite inputs and calculations to see the alternatives."
+        }
+      ]
+    },
+    "conditions": [],
+    "actionGroups": [
+      {
+        "id": "available-next-actions",
+        "label": "Available next actions",
+        "selection": "all-matching",
+        "actionIds": [
+          "resolve-evidence",
+          "propose-correction",
+          "revise-commitment",
+          "calculate-arrangements",
+          "supply-diagnostic-reports"
+        ],
+        "matchedActionIds": [
+          "supply-diagnostic-reports"
+        ],
+        "status": "ready",
+        "issues": [],
+        "presentation": "actions",
+        "actions": [
+          {
+            "id": "supply-diagnostic-reports",
+            "label": "Supply or calculate the current diagnostic reports",
+            "status": "applicable",
+            "reasons": [],
+            "inputTargets": [],
+            "reportTargets": [
+              {
+                "stepId": "evidence",
+                "label": "Establish the required gift-kit corrections",
+                "evaluationId": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "links": [],
+    "displayContext": {
+      "currency": "USD",
+      "scale": 100,
+      "time": "minute",
+      "timeOrigin": "the declared gift-kit review origin",
+      "names": {
+        "campaign-owner": "Campaign owner",
+        "evidence-reviewer": "Rehearsal checker",
+        "production-owner": "Production owner",
+        "rehearse-unchanged": "Prepare, rehearse and hand off unchanged kits",
+        "reprint": "Replace the printed inserts",
+        "repair-journey": "Correct the destination and checkout",
+        "replace-and-repair": "Replace inserts and repair the journey",
+        "print": "The printed code cannot be read",
+        "destination": "The code leads to the wrong destination",
+        "checkout": "Try checkout for the intended account",
+        "replace-insert": "Replace the printed inserts",
+        "correct-destination": "Correct the destination",
+        "fix-checkout": "Fix checkout eligibility",
+        "rescan": "Rescan the printed insert",
+        "decode": "Decode the printed destination",
+        "proof": "Inspect the destination in the source artwork",
+        "external-replace-and-repair": "External replacement and journey repair"
+      },
+      "labels": {
+        "id": "Reference",
+        "batchId": "Gift-kit batch",
+        "insertRevision": "Printed insert revision",
+        "destinationRevision": "Approved destination revision",
+        "checkoutRevision": "Checkout revision",
+        "deviceScope": "Intended device scope",
+        "accountScope": "Intended account and offer scope",
+        "quantity": "Committed kits",
+        "nowMinute": "Current review time",
+        "handoffDeadlineMinute": "Gift-kit handoff cutoff",
+        "budgetMinor": "Correction expense limit",
+        "checkId": "Recorded check",
+        "outcomeId": "Reported result",
+        "observedAtMinute": "Observed at",
+        "source": "Source reference",
+        "recordedBy": "Recorded by",
+        "originalText": "Original report",
+        "actorId": "Person responsible for the work",
+        "people": "Responsible people",
+        "name": "Name",
+        "role": "Recorded responsibility",
+        "packageId": "Complete correction arrangement",
+        "repairMinutes": "Package preparation or correction duration",
+        "repairCostMinor": "Complete arrangement quote",
+        "rehearsalMinutes": "Fresh rehearsal duration",
+        "handoffMinutes": "Handoff duration",
+        "capacity": "Available capacity",
+        "availableFromMinute": "Available from",
+        "availableThroughMinute": "Available through",
+        "validFromMinute": "Valid from",
+        "validThroughMinute": "Valid through",
+        "scope": "Exact configuration",
+        "observations": "Actual reports",
+        "quotes": "Correction quotes",
+        "resources": "Production resources",
+        "permissions": "Recorded permissions",
+        "status": "Finding",
+        "states": "Remaining explanations",
+        "faultIds": "Possible problems",
+        "requiredCorrections": "Established correction set",
+        "correctionsSetEstablished": "The complete correction set is established",
+        "records": "How reports were used",
+        "ignoredRecords": "Reports outside this review",
+        "usedRecords": "Reports used in this calculation",
+        "recommended": "Proposed arrangement",
+        "recommendedPlans": "Proposed complete arrangements",
+        "preferredPlan": "Proposed complete arrangement",
+        "arrangement": "Complete arrangement",
+        "expense": "Total expense",
+        "finishMinute": "Handoff ready",
+        "ownerId": "Responsible person",
+        "preferredCount": "Equally preferred complete plans",
+        "blockers": "Conditions preventing completion",
+        "ownerRole": "Responsible role",
+        "requiredEvidence": "Evidence needed",
+        "deadlineMinute": "Handoff cutoff",
+        "confirmations": "Recorded package confirmations",
+        "confirmed": "Confirmed for this arrangement",
+        "recordedAtMinute": "Recorded at"
+      },
+      "formats": {
+        "budgetMinor": "money",
+        "repairCostMinor": "money",
+        "deadlineMinute": {
+          "type": "time",
+          "unit": "minute"
+        },
+        "start": {
+          "type": "time",
+          "unit": "minute"
+        },
+        "end": {
+          "type": "time",
+          "unit": "minute"
+        },
+        "time": {
+          "type": "time",
+          "unit": "minute"
+        },
+        "duration": {
+          "type": "duration",
+          "unit": "minute"
+        },
+        "finishMinute": {
+          "type": "time",
+          "unit": "minute"
+        }
+      }
+    },
+    "issues": [
+      {
+        "code": "WORKFLOW_DECISION_SUMMARY_UNAVAILABLE",
+        "path": "decisionSummary.finding",
+        "message": "Required information remains unresolved. Complete the prerequisite inputs and calculations to see this finding."
+      },
+      {
+        "code": "WORKFLOW_DECISION_SUMMARY_UNAVAILABLE",
+        "path": "decisionSummary.comparison",
+        "message": "Required information remains unresolved. Complete the prerequisite inputs and calculations to see the alternatives."
+      }
+    ]
+  },
+  "brief": {
+    "title": "Plan a gift-kit commitment",
+    "question": "What must we verify or correct, and can we finish before committing these gift kits?",
+    "complete": false,
+    "sections": [
+      {
+        "id": "commitment",
+        "title": "Which gift-kit commitment is being reviewed?",
+        "value": {
+          "scope": null,
+          "commitment": null
+        }
+      },
+      {
+        "id": "correction-finding",
+        "title": "What do the actual reports establish?",
+        "value": null
+      },
+      {
+        "id": "proposed-arrangement",
+        "title": "Which complete arrangement can we propose?",
+        "value": null
+      },
+      {
+        "id": "plan-comparison",
+        "title": "How do the complete arrangements compare?",
+        "value": null
+      },
+      {
+        "id": "next-responsibility",
+        "title": "Who should do what next?",
+        "value": []
+      },
+      {
+        "id": "qualification",
+        "title": "What does this review establish?",
+        "value": {
+          "meaning": "Fictional bounded gifting review. The fault catalog, accurate scoped reports, correction effects and complete permission register are authored premises. A feasible plan is prospective: it does not prove completed correction, a passing rehearsal, campaign effectiveness or actual release. No probability, economic learning value, or adaptive investigation policy is inferred.",
+          "completionMeaning": "The relevant assessments have been reviewed, including findings that every arrangement is blocked. Actual operational completion remains separate."
+        }
+      },
+      {
+        "id": "decision-summary",
+        "title": "Decision summary",
+        "value": {
+          "status": "unavailable",
+          "heading": "Resolve the diagnostic reports before calculating a correction arrangement.",
+          "rows": [],
+          "metrics": [],
+          "conditions": []
+        }
+      },
+      {
+        "id": "decision-requirements",
+        "title": "Unmet gift-kit requirements",
+        "value": []
+      },
+      {
+        "id": "decision-basis",
+        "title": "Material gift-kit basis",
+        "value": {
+          "caseLabel": null,
+          "scope": "One gift-kit batch under the recorded insert, destination and checkout revisions. Compare only the authored complete preparation packages across every remaining permitted explanation; a prospective fit does not establish completed correction, rehearsal or handoff. Recipient experience and campaign effectiveness are outside this calculation.",
+          "assumptions": [
+            "Current reports are treated as accurate only for their recorded batch, revisions, device and account scope. All declared fault combinations remain possible until excluded by those reports.",
+            "Correction effects are authored planning assumptions. One complete static preparation package must work across every admitted fault combination; the calculation does not construct an adaptive sequence of checks.",
+            "Each complete-package quotation must match the stated kit quantity and include its own duration and expense. Quantity does not automatically scale either amount.",
+            "The recorded person, production resource, access and permission intervals apply throughout correction, scoped rehearsal and handoff. Available budget or a passing calculation does not supply missing permission."
+          ],
+          "unresolvedQuestions": [
+            {
+              "id": "actual-completion",
+              "label": "Has the selected correction work finished, passed a rehearsal for the exact kit configuration, and completed handoff?",
+              "detail": "Retain the actual correction, rehearsal and handoff evidence. A passing prospective arrangement does not establish completed work."
+            }
+          ]
+        }
+      }
+    ],
+    "actions": [
+      {
+        "id": "supply-diagnostic-reports",
+        "label": "Supply or calculate the current diagnostic reports",
+        "value": []
+      }
+    ],
+    "issues": [],
+    "qualification": "Calculated findings answer the declared operational question under the supplied inputs and rules. They do not establish external facts, issue operating permission, reserve resources, or establish actual completion."
+  },
+  "nextActions": [
+    {
+      "kind": "supply-answer",
+      "questionId": "case-reference",
+      "status": "unanswered"
+    },
+    {
+      "kind": "supply-answer",
+      "questionId": "configuration",
+      "status": "unanswered"
+    },
+    {
+      "kind": "supply-answer",
+      "questionId": "commitment",
+      "status": "unanswered"
+    },
+    {
+      "kind": "supply-answer",
+      "questionId": "observations",
+      "status": "unanswered"
+    }
+  ],
+  "evaluations": [],
+  "reviews": [],
+  "history": [
+    {
+      "revision": 0,
+      "at": "2026-11-22T02:51:25.119Z",
+      "event": {
+        "kind": "started"
+      },
+      "previousHash": null,
+      "case": {},
+      "answers": {
+        "case-reference": {
+          "status": "unanswered"
+        },
+        "configuration": {
+          "status": "unanswered"
+        },
+        "commitment": {
+          "status": "unanswered"
+        },
+        "observations": {
+          "status": "unanswered"
+        },
+        "quotes": {
+          "status": "unanswered"
+        },
+        "rehearsal": {
+          "status": "unanswered"
+        },
+        "handoff": {
+          "status": "unanswered"
+        },
+        "work-owner": {
+          "status": "unanswered"
+        },
+        "people": {
+          "status": "unanswered"
+        },
+        "resources": {
+          "status": "unanswered"
+        },
+        "permissions": {
+          "status": "unanswered"
+        },
+        "confirmations": {
+          "status": "unanswered"
+        }
+      },
+      "contentHash": "0ef8ec9844620749f19f668e3e2d4d0a6e80428f835a4c59555241b92605cbce"
+    }
+  ],
+  "qualification": "Calculated findings answer the declared operational question under the supplied inputs and rules. They do not establish external facts, issue operating permission, reserve resources, or establish actual completion.",
+  "readableBrief": {
+    "format": "workflow-readable-brief/1",
+    "title": "Plan a gift-kit commitment",
+    "question": "What must we verify or correct, and can we finish before committing these gift kits?",
+    "identity": {
+      "runId": "review-4b6ce6a5-769c-48ce-ad61-94581717ae44",
+      "createdAt": "2026-11-22T02:51:25.119Z",
+      "definitionHash": "2cfbdc3f169e8eb93792cf22e76f57d8f0859c5bf4045dae8c583cfa4f3f46c2",
+      "workflowId": "review-gift-kit-flexible",
+      "workflowVersion": "2.8.0",
+      "revision": 0
+    },
+    "calculatedAt": null,
+    "inputBasis": {
+      "format": "decision-lab-input-basis/1",
+      "status": "empty",
+      "label": "No supplied inputs",
+      "counts": {
+        "example": 0,
+        "defaults": 0,
+        "supplied": 0,
+        "imported": 0,
+        "unrecorded": 0
+      },
+      "questions": [
+        {
+          "status": "empty",
+          "label": "Scenario reference",
+          "counts": {
+            "example": 0,
+            "defaults": 0,
+            "supplied": 0,
+            "imported": 0,
+            "unrecorded": 0
+          },
+          "questionId": "case-reference",
+          "questionLabel": "Scenario reference",
+          "statusLabel": "No supplied inputs",
+          "entries": [],
+          "displayEntries": [],
+          "target": {
+            "questionId": "case-reference",
+            "groupId": "commitment",
+            "subtabId": "configuration"
+          }
+        },
+        {
+          "status": "empty",
+          "label": "Exact gift-kit configuration",
+          "counts": {
+            "example": 0,
+            "defaults": 0,
+            "supplied": 0,
+            "imported": 0,
+            "unrecorded": 0
+          },
+          "questionId": "configuration",
+          "questionLabel": "Exact gift-kit configuration",
+          "statusLabel": "No supplied inputs",
+          "entries": [],
+          "displayEntries": [],
+          "target": {
+            "questionId": "configuration",
+            "groupId": "commitment",
+            "subtabId": "configuration"
+          }
+        },
+        {
+          "status": "empty",
+          "label": "Kit quantity, cutoff and expense",
+          "counts": {
+            "example": 0,
+            "defaults": 0,
+            "supplied": 0,
+            "imported": 0,
+            "unrecorded": 0
+          },
+          "questionId": "commitment",
+          "questionLabel": "Kit quantity, cutoff and expense",
+          "statusLabel": "No supplied inputs",
+          "entries": [],
+          "displayEntries": [],
+          "target": {
+            "questionId": "commitment",
+            "groupId": "commitment",
+            "subtabId": "limits"
+          }
+        },
+        {
+          "status": "empty",
+          "label": "Actual rehearsal and check reports",
+          "counts": {
+            "example": 0,
+            "defaults": 0,
+            "supplied": 0,
+            "imported": 0,
+            "unrecorded": 0
+          },
+          "questionId": "observations",
+          "questionLabel": "Actual rehearsal and check reports",
+          "statusLabel": "No supplied inputs",
+          "entries": [],
+          "displayEntries": [],
+          "target": {
+            "questionId": "observations",
+            "groupId": "evidence",
+            "subtabId": "reports"
+          }
+        },
+        {
+          "status": "empty",
+          "label": "Complete correction quotes",
+          "counts": {
+            "example": 0,
+            "defaults": 0,
+            "supplied": 0,
+            "imported": 0,
+            "unrecorded": 0
+          },
+          "questionId": "quotes",
+          "questionLabel": "Complete correction quotes",
+          "statusLabel": "No supplied inputs",
+          "entries": [],
+          "displayEntries": [],
+          "target": {
+            "questionId": "quotes",
+            "groupId": "arrangements",
+            "subtabId": "quotes"
+          }
+        },
+        {
+          "status": "empty",
+          "label": "Fresh rehearsal duration",
+          "counts": {
+            "example": 0,
+            "defaults": 0,
+            "supplied": 0,
+            "imported": 0,
+            "unrecorded": 0
+          },
+          "questionId": "rehearsal",
+          "questionLabel": "Fresh rehearsal duration",
+          "statusLabel": "No supplied inputs",
+          "entries": [],
+          "displayEntries": [],
+          "target": {
+            "questionId": "rehearsal",
+            "groupId": "arrangements",
+            "subtabId": "quotes"
+          }
+        },
+        {
+          "status": "empty",
+          "label": "Handoff duration",
+          "counts": {
+            "example": 0,
+            "defaults": 0,
+            "supplied": 0,
+            "imported": 0,
+            "unrecorded": 0
+          },
+          "questionId": "handoff",
+          "questionLabel": "Handoff duration",
+          "statusLabel": "No supplied inputs",
+          "entries": [],
+          "displayEntries": [],
+          "target": {
+            "questionId": "handoff",
+            "groupId": "arrangements",
+            "subtabId": "quotes"
+          }
+        },
+        {
+          "status": "empty",
+          "label": "Person responsible for the work",
+          "counts": {
+            "example": 0,
+            "defaults": 0,
+            "supplied": 0,
+            "imported": 0,
+            "unrecorded": 0
+          },
+          "questionId": "work-owner",
+          "questionLabel": "Person responsible for the work",
+          "statusLabel": "No supplied inputs",
+          "entries": [],
+          "displayEntries": [],
+          "target": {
+            "questionId": "work-owner",
+            "groupId": "arrangements",
+            "subtabId": "resources"
+          }
+        },
+        {
+          "status": "empty",
+          "label": "Responsible people",
+          "counts": {
+            "example": 0,
+            "defaults": 0,
+            "supplied": 0,
+            "imported": 0,
+            "unrecorded": 0
+          },
+          "questionId": "people",
+          "questionLabel": "Responsible people",
+          "statusLabel": "No supplied inputs",
+          "entries": [],
+          "displayEntries": [],
+          "target": {
+            "questionId": "people",
+            "groupId": "arrangements",
+            "subtabId": "resources"
+          }
+        },
+        {
+          "status": "empty",
+          "label": "Production capacity and availability",
+          "counts": {
+            "example": 0,
+            "defaults": 0,
+            "supplied": 0,
+            "imported": 0,
+            "unrecorded": 0
+          },
+          "questionId": "resources",
+          "questionLabel": "Production capacity and availability",
+          "statusLabel": "No supplied inputs",
+          "entries": [],
+          "displayEntries": [],
+          "target": {
+            "questionId": "resources",
+            "groupId": "arrangements",
+            "subtabId": "resources"
+          }
+        },
+        {
+          "status": "empty",
+          "label": "Recorded arrangement permissions",
+          "counts": {
+            "example": 0,
+            "defaults": 0,
+            "supplied": 0,
+            "imported": 0,
+            "unrecorded": 0
+          },
+          "questionId": "permissions",
+          "questionLabel": "Recorded arrangement permissions",
+          "statusLabel": "No supplied inputs",
+          "entries": [],
+          "displayEntries": [],
+          "target": {
+            "questionId": "permissions",
+            "groupId": "arrangements",
+            "subtabId": "permissions"
+          }
+        },
+        {
+          "status": "empty",
+          "label": "Recorded package confirmations",
+          "counts": {
+            "example": 0,
+            "defaults": 0,
+            "supplied": 0,
+            "imported": 0,
+            "unrecorded": 0
+          },
+          "questionId": "confirmations",
+          "questionLabel": "Recorded package confirmations",
+          "statusLabel": "No supplied inputs",
+          "entries": [],
+          "displayEntries": [],
+          "target": {
+            "questionId": "confirmations",
+            "groupId": "arrangements",
+            "subtabId": "permissions"
+          }
+        }
+      ]
+    },
+    "basis": {
+      "availability": "available",
+      "scope": "One gift-kit batch under the recorded insert, destination and checkout revisions. Compare only the authored complete preparation packages across every remaining permitted explanation; a prospective fit does not establish completed correction, rehearsal or handoff. Recipient experience and campaign effectiveness are outside this calculation.",
+      "assumptions": [
+        "Current reports are treated as accurate only for their recorded batch, revisions, device and account scope. All declared fault combinations remain possible until excluded by those reports.",
+        "Correction effects are authored planning assumptions. One complete static preparation package must work across every admitted fault combination; the calculation does not construct an adaptive sequence of checks.",
+        "Each complete-package quotation must match the stated kit quantity and include its own duration and expense. Quantity does not automatically scale either amount.",
+        "The recorded person, production resource, access and permission intervals apply throughout correction, scoped rehearsal and handoff. Available budget or a passing calculation does not supply missing permission."
+      ],
+      "unresolvedQuestions": [
+        {
+          "id": "actual-completion",
+          "label": "Has the selected correction work finished, passed a rehearsal for the exact kit configuration, and completed handoff?",
+          "detail": "Retain the actual correction, rehearsal and handoff evidence. A passing prospective arrangement does not establish completed work."
+        }
+      ]
+    },
+    "unresolvedInputs": [
+      {
+        "questionId": "case-reference",
+        "label": "Scenario reference",
+        "status": "unanswered",
+        "path": "gifting.id",
+        "affectedStepIds": [
+          "evidence"
+        ],
+        "target": {
+          "questionId": "case-reference",
+          "groupId": "commitment",
+          "subtabId": "configuration"
+        }
+      },
+      {
+        "questionId": "configuration",
+        "label": "Exact gift-kit configuration",
+        "status": "unanswered",
+        "path": "gifting.scope",
+        "affectedStepIds": [
+          "evidence"
+        ],
+        "target": {
+          "questionId": "configuration",
+          "groupId": "commitment",
+          "subtabId": "configuration"
+        }
+      },
+      {
+        "questionId": "commitment",
+        "label": "Kit quantity, cutoff and expense",
+        "status": "unanswered",
+        "path": "gifting.commitment",
+        "affectedStepIds": [
+          "evidence"
+        ],
+        "target": {
+          "questionId": "commitment",
+          "groupId": "commitment",
+          "subtabId": "limits"
+        }
+      },
+      {
+        "questionId": "observations",
+        "label": "Actual rehearsal and check reports",
+        "status": "unanswered",
+        "path": "gifting.observations",
+        "affectedStepIds": [
+          "evidence"
+        ],
+        "target": {
+          "questionId": "observations",
+          "groupId": "evidence",
+          "subtabId": "reports"
+        }
+      }
+    ],
+    "calculations": [
+      {
+        "stepId": "evidence",
+        "label": "Establish the required gift-kit corrections",
+        "status": "needs-input",
+        "current": false,
+        "calculatedAt": null,
+        "issues": [
+          {
+            "code": "WORKFLOW_INPUT_REQUIRED",
+            "message": "Supply the answer to Which gift-kit scenario is this?",
+            "questionId": "case-reference",
+            "answerStatus": "unanswered"
+          },
+          {
+            "code": "WORKFLOW_INPUT_REQUIRED",
+            "message": "Supply the answer to Which batch, printed insert, destination, checkout and intended users are included?",
+            "questionId": "configuration",
+            "answerStatus": "unanswered"
+          },
+          {
+            "code": "WORKFLOW_INPUT_REQUIRED",
+            "message": "Supply the answer to What must be ready, by when and within which expense limit?",
+            "questionId": "commitment",
+            "answerStatus": "unanswered"
+          },
+          {
+            "code": "WORKFLOW_INPUT_REQUIRED",
+            "message": "Supply the answer to What did each scoped check report, and where is the original record?",
+            "questionId": "observations",
+            "answerStatus": "unanswered"
+          }
+        ]
+      },
+      {
+        "stepId": "planning",
+        "label": "Compare complete correction arrangements",
+        "status": "needs-input",
+        "current": false,
+        "calculatedAt": null,
+        "issues": [
+          {
+            "code": "WORKFLOW_CONDITION_UNAVAILABLE",
+            "message": "Establish the required gift-kit corrections: a current complete result is required.",
+            "stepId": "evidence"
+          }
+        ]
+      }
+    ],
+    "decisionSummary": {
+      "format": "workflow-decision-summary/1",
+      "title": "Decision summary",
+      "question": "What must we verify or correct, and can we finish before committing these gift kits?",
+      "sections": [
+        {
+          "id": "options",
+          "label": "Options",
+          "question": "Which correction arrangements meet the requirements, and which best fits our stated priority?"
+        },
+        {
+          "id": "next-actions",
+          "label": "Next actions",
+          "question": "What can we do next, given the current findings?"
+        },
+        {
+          "id": "assumptions",
+          "label": "Assumptions",
+          "question": "What assumptions and limits do these results depend on?"
+        },
+        {
+          "id": "questions",
+          "label": "Questions",
+          "question": "What still needs to be established before committing the kits?"
+        }
+      ],
+      "finding": {
+        "availability": "unknown",
+        "metrics": [],
+        "issues": [
+          {
+            "code": "WORKFLOW_DECISION_SUMMARY_UNAVAILABLE",
+            "path": "decisionSummary.finding",
+            "message": "Required information remains unresolved. Complete the prerequisite inputs and calculations to see this finding."
+          }
+        ]
+      },
+      "comparison": {
+        "title": "Compare correction options",
+        "columns": [
+          {
+            "key": "label",
+            "label": "Complete arrangement"
+          },
+          {
+            "key": "standing",
+            "label": "Calculated fit"
+          },
+          {
+            "key": "expense",
+            "label": "Complete expense",
+            "format": "money"
+          },
+          {
+            "key": "finishMinute",
+            "label": "Handoff ready",
+            "format": {
+              "type": "time",
+              "unit": "minute"
+            }
+          }
+        ],
+        "tabId": "arrangements",
+        "availability": "unknown",
+        "rows": [],
+        "issues": [
+          {
+            "code": "WORKFLOW_DECISION_SUMMARY_UNAVAILABLE",
+            "path": "decisionSummary.comparison",
+            "message": "Required information remains unresolved. Complete the prerequisite inputs and calculations to see the alternatives."
+          }
+        ]
+      },
+      "conditions": [],
+      "actionGroups": [
+        {
+          "id": "available-next-actions",
+          "label": "Available next actions",
+          "selection": "all-matching",
+          "actionIds": [
+            "resolve-evidence",
+            "propose-correction",
+            "revise-commitment",
+            "calculate-arrangements",
+            "supply-diagnostic-reports"
+          ],
+          "matchedActionIds": [
+            "supply-diagnostic-reports"
+          ],
+          "status": "ready",
+          "issues": [],
+          "presentation": "actions",
+          "actions": [
+            {
+              "id": "supply-diagnostic-reports",
+              "label": "Supply or calculate the current diagnostic reports",
+              "status": "applicable",
+              "reasons": [],
+              "inputTargets": [],
+              "reportTargets": [
+                {
+                  "stepId": "evidence",
+                  "label": "Establish the required gift-kit corrections",
+                  "evaluationId": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "links": [],
+      "displayContext": {
+        "currency": "USD",
+        "scale": 100,
+        "time": "minute",
+        "timeOrigin": "the declared gift-kit review origin",
+        "names": {
+          "campaign-owner": "Campaign owner",
+          "evidence-reviewer": "Rehearsal checker",
+          "production-owner": "Production owner",
+          "rehearse-unchanged": "Prepare, rehearse and hand off unchanged kits",
+          "reprint": "Replace the printed inserts",
+          "repair-journey": "Correct the destination and checkout",
+          "replace-and-repair": "Replace inserts and repair the journey",
+          "print": "The printed code cannot be read",
+          "destination": "The code leads to the wrong destination",
+          "checkout": "Try checkout for the intended account",
+          "replace-insert": "Replace the printed inserts",
+          "correct-destination": "Correct the destination",
+          "fix-checkout": "Fix checkout eligibility",
+          "rescan": "Rescan the printed insert",
+          "decode": "Decode the printed destination",
+          "proof": "Inspect the destination in the source artwork",
+          "external-replace-and-repair": "External replacement and journey repair"
+        },
+        "labels": {
+          "id": "Reference",
+          "batchId": "Gift-kit batch",
+          "insertRevision": "Printed insert revision",
+          "destinationRevision": "Approved destination revision",
+          "checkoutRevision": "Checkout revision",
+          "deviceScope": "Intended device scope",
+          "accountScope": "Intended account and offer scope",
+          "quantity": "Committed kits",
+          "nowMinute": "Current review time",
+          "handoffDeadlineMinute": "Gift-kit handoff cutoff",
+          "budgetMinor": "Correction expense limit",
+          "checkId": "Recorded check",
+          "outcomeId": "Reported result",
+          "observedAtMinute": "Observed at",
+          "source": "Source reference",
+          "recordedBy": "Recorded by",
+          "originalText": "Original report",
+          "actorId": "Person responsible for the work",
+          "people": "Responsible people",
+          "name": "Name",
+          "role": "Recorded responsibility",
+          "packageId": "Complete correction arrangement",
+          "repairMinutes": "Package preparation or correction duration",
+          "repairCostMinor": "Complete arrangement quote",
+          "rehearsalMinutes": "Fresh rehearsal duration",
+          "handoffMinutes": "Handoff duration",
+          "capacity": "Available capacity",
+          "availableFromMinute": "Available from",
+          "availableThroughMinute": "Available through",
+          "validFromMinute": "Valid from",
+          "validThroughMinute": "Valid through",
+          "scope": "Exact configuration",
+          "observations": "Actual reports",
+          "quotes": "Correction quotes",
+          "resources": "Production resources",
+          "permissions": "Recorded permissions",
+          "status": "Finding",
+          "states": "Remaining explanations",
+          "faultIds": "Possible problems",
+          "requiredCorrections": "Established correction set",
+          "correctionsSetEstablished": "The complete correction set is established",
+          "records": "How reports were used",
+          "ignoredRecords": "Reports outside this review",
+          "usedRecords": "Reports used in this calculation",
+          "recommended": "Proposed arrangement",
+          "recommendedPlans": "Proposed complete arrangements",
+          "preferredPlan": "Proposed complete arrangement",
+          "arrangement": "Complete arrangement",
+          "expense": "Total expense",
+          "finishMinute": "Handoff ready",
+          "ownerId": "Responsible person",
+          "preferredCount": "Equally preferred complete plans",
+          "blockers": "Conditions preventing completion",
+          "ownerRole": "Responsible role",
+          "requiredEvidence": "Evidence needed",
+          "deadlineMinute": "Handoff cutoff",
+          "confirmations": "Recorded package confirmations",
+          "confirmed": "Confirmed for this arrangement",
+          "recordedAtMinute": "Recorded at"
+        },
+        "formats": {
+          "budgetMinor": "money",
+          "repairCostMinor": "money",
+          "deadlineMinute": {
+            "type": "time",
+            "unit": "minute"
+          },
+          "start": {
+            "type": "time",
+            "unit": "minute"
+          },
+          "end": {
+            "type": "time",
+            "unit": "minute"
+          },
+          "time": {
+            "type": "time",
+            "unit": "minute"
+          },
+          "duration": {
+            "type": "duration",
+            "unit": "minute"
+          },
+          "finishMinute": {
+            "type": "time",
+            "unit": "minute"
+          }
+        }
+      },
+      "issues": [
+        {
+          "code": "WORKFLOW_DECISION_SUMMARY_UNAVAILABLE",
+          "path": "decisionSummary.finding",
+          "message": "Required information remains unresolved. Complete the prerequisite inputs and calculations to see this finding."
+        },
+        {
+          "code": "WORKFLOW_DECISION_SUMMARY_UNAVAILABLE",
+          "path": "decisionSummary.comparison",
+          "message": "Required information remains unresolved. Complete the prerequisite inputs and calculations to see the alternatives."
+        }
+      ]
+    },
+    "actions": [
+      {
+        "id": "supply-diagnostic-reports",
+        "label": "Supply or calculate the current diagnostic reports",
+        "status": "applicable",
+        "reasons": [],
+        "inputTargets": [],
+        "reportTargets": [
+          {
+            "stepId": "evidence",
+            "label": "Establish the required gift-kit corrections",
+            "evaluationId": null
+          }
+        ]
+      }
+    ],
+    "qualification": "Calculated findings answer the declared operational question under the supplied inputs and rules. They do not establish external facts, issue operating permission, reserve resources, or establish actual completion.",
+    "displayContext": {
+      "currency": "USD",
+      "scale": 100,
+      "time": "minute",
+      "timeOrigin": "the declared gift-kit review origin",
+      "names": {
+        "campaign-owner": "Campaign owner",
+        "evidence-reviewer": "Rehearsal checker",
+        "production-owner": "Production owner",
+        "rehearse-unchanged": "Prepare, rehearse and hand off unchanged kits",
+        "reprint": "Replace the printed inserts",
+        "repair-journey": "Correct the destination and checkout",
+        "replace-and-repair": "Replace inserts and repair the journey",
+        "print": "The printed code cannot be read",
+        "destination": "The code leads to the wrong destination",
+        "checkout": "Try checkout for the intended account",
+        "replace-insert": "Replace the printed inserts",
+        "correct-destination": "Correct the destination",
+        "fix-checkout": "Fix checkout eligibility",
+        "rescan": "Rescan the printed insert",
+        "decode": "Decode the printed destination",
+        "proof": "Inspect the destination in the source artwork",
+        "external-replace-and-repair": "External replacement and journey repair"
+      },
+      "labels": {
+        "id": "Reference",
+        "batchId": "Gift-kit batch",
+        "insertRevision": "Printed insert revision",
+        "destinationRevision": "Approved destination revision",
+        "checkoutRevision": "Checkout revision",
+        "deviceScope": "Intended device scope",
+        "accountScope": "Intended account and offer scope",
+        "quantity": "Committed kits",
+        "nowMinute": "Current review time",
+        "handoffDeadlineMinute": "Gift-kit handoff cutoff",
+        "budgetMinor": "Correction expense limit",
+        "checkId": "Recorded check",
+        "outcomeId": "Reported result",
+        "observedAtMinute": "Observed at",
+        "source": "Source reference",
+        "recordedBy": "Recorded by",
+        "originalText": "Original report",
+        "actorId": "Person responsible for the work",
+        "people": "Responsible people",
+        "name": "Name",
+        "role": "Recorded responsibility",
+        "packageId": "Complete correction arrangement",
+        "repairMinutes": "Package preparation or correction duration",
+        "repairCostMinor": "Complete arrangement quote",
+        "rehearsalMinutes": "Fresh rehearsal duration",
+        "handoffMinutes": "Handoff duration",
+        "capacity": "Available capacity",
+        "availableFromMinute": "Available from",
+        "availableThroughMinute": "Available through",
+        "validFromMinute": "Valid from",
+        "validThroughMinute": "Valid through",
+        "scope": "Exact configuration",
+        "observations": "Actual reports",
+        "quotes": "Correction quotes",
+        "resources": "Production resources",
+        "permissions": "Recorded permissions",
+        "status": "Finding",
+        "states": "Remaining explanations",
+        "faultIds": "Possible problems",
+        "requiredCorrections": "Established correction set",
+        "correctionsSetEstablished": "The complete correction set is established",
+        "records": "How reports were used",
+        "ignoredRecords": "Reports outside this review",
+        "usedRecords": "Reports used in this calculation",
+        "recommended": "Proposed arrangement",
+        "recommendedPlans": "Proposed complete arrangements",
+        "preferredPlan": "Proposed complete arrangement",
+        "arrangement": "Complete arrangement",
+        "expense": "Total expense",
+        "finishMinute": "Handoff ready",
+        "ownerId": "Responsible person",
+        "preferredCount": "Equally preferred complete plans",
+        "blockers": "Conditions preventing completion",
+        "ownerRole": "Responsible role",
+        "requiredEvidence": "Evidence needed",
+        "deadlineMinute": "Handoff cutoff",
+        "confirmations": "Recorded package confirmations",
+        "confirmed": "Confirmed for this arrangement",
+        "recordedAtMinute": "Recorded at"
+      },
+      "formats": {
+        "budgetMinor": "money",
+        "repairCostMinor": "money",
+        "deadlineMinute": {
+          "type": "time",
+          "unit": "minute"
+        },
+        "start": {
+          "type": "time",
+          "unit": "minute"
+        },
+        "end": {
+          "type": "time",
+          "unit": "minute"
+        },
+        "time": {
+          "type": "time",
+          "unit": "minute"
+        },
+        "duration": {
+          "type": "duration",
+          "unit": "minute"
+        },
+        "finishMinute": {
+          "type": "time",
+          "unit": "minute"
+        }
+      }
+    },
+    "issues": []
+  },
+  "contentHash": "1f61c1ba850ac539ae8346272e6a550d42d012ccc01fd36e9e07873d482435b9"
+}

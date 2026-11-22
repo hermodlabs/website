@@ -1,10 +1,10 @@
 # Street-team deployment
 
-Three connected business articles follow fictional venue manager Alex: compare tonight's staff allocation, make the review repeatable, then define what the team needs to learn about customer response. The current working example is Marketplace's Venue operations → Review a street-team deployment 1.5.0.
+Three connected business articles follow fictional venue manager Alex: compare tonight's staff allocation, make the review repeatable, then define what the team needs to learn about customer response. The screenshots use the verified local Marketplace preview: Venue operations → Plan a street-team deployment 1.13.0. Public reader links retain release 1.12.0.
 
 ## Current screenshots
 
-`decision-summary-ui/` contains unedited native screenshots, workflow exports, SDK outputs and the exact capture receipt. The browser journey applies staffing changes, calculates, inspects Decision summaries and Supporting reports, and compares five available staff with four after another callout. Inputs use Forms or YAML; Excel tools sit in a disclosure.
+`shared-report-preview/` contains unedited local production-preview screenshots, workflow exports, SDK outputs and the exact capture receipt. The browser journey applies staffing changes, calculates, inspects Decision summaries and Supporting reports, and compares five available staff with four after another callout. Inputs use Forms or YAML; Excel tools sit in a disclosure.
 
 With five staff and four required inside, holding or sending one meets the recorded operating requirements. With four available, only holding meets them. The one-person standard promotion costs $200; $40 contribution per additional guest gives a five-guest expense-recovery hurdle and a first positive result at six. These are conditional thresholds, not forecasts of attendance or profit. Choice, specific authorization and actual outreach remain separate business responsibilities.
 
@@ -24,4 +24,6 @@ The covers, process charts and timing diagrams are original accessible SVGs. The
 
 The proposed learning comparison has no measured results. It requires an appropriate study design, business authorization and actual evidence. The article's SBA, NIST and HM Treasury references support financial-method and experimental-design context, not any claim about a real venue.
 
-Reproduce native captures with `scripts/capture-street-team-summary-ui.mjs`. The current decision-map checker verifies source pointers, normalized native assessments, diagram identity and the copied basis matrix. The complete workflow and creation code are linked through the scenario's optional repository reference.
+Reproduce shared-report captures with `scripts/capture-current-promotion.mjs` against the qualified local build. Earlier public captures remain in `current-ui/` and `decision-summary-ui/` with their original receipts. The current decision-map checker verifies source pointers, normalized native assessments, diagram identity and the copied basis matrix. The complete workflow and creation code are linked through the scenario's optional repository reference.
+
+No publication is claimed by the preview captures. Build manifests and accompanying source context are retained separately in `../../decision-lab-shared-report-preview/`.

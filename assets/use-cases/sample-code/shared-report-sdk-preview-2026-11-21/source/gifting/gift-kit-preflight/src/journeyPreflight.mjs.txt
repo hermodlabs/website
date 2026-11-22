@@ -1,0 +1,164 @@
+import { createHash } from 'node:crypto';
+import { mkdir, readFile, realpath, rm, writeFile } from 'node:fs/promises';
+import { dirname, isAbsolute, join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import React from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+import { CLI_EXIT_CODE, runCLI } from '@decision-lab/cli';
+import { createDecisionLab, hashing, isCalculationWorkflow, WORKFLOW_STEP_STATUS } from '@decision-lab/sdk';
+import { RecordsView } from '@decision-lab/react-views';
+import { createReviewJourney, inspectReviewJourney, reviewJourneyInputs } from './reviewJourney.js';
+import { atMinute, inspectGiftingJourney, minuteAt } from './giftingJourney.js';
+import { REVIEW_OUTCOME } from './gifting.js';
+
+const defaultConfig = fileURLToPath(new URL('../data/journey-config.json', import.meta.url));
+const json = value => `${JSON.stringify(value, null, 2)}\n`;
+const digest = value => createHash('sha256').update(value).digest('hex');
+const read = async file => JSON.parse(await readFile(file, 'utf8'));
+
+/** Screen current records and solve the portable calculation workflow.
+ * A calculation is not an operating choice, permission or completion record.
+ * Explicit analytical signoff remains available for retained reviewed releases.
+ */
+export async function runJourneyPreflight({ inputFile, outputDir, configFile = defaultConfig,
+  asOf, reviewer, acceptFictionalDemo = false } = {}) {
+  if (!inputFile || !outputDir) throw new Error('Supply the campaign manifest and a fresh output directory.');
+  inputFile = resolve(inputFile); outputDir = resolve(outputDir); configFile = resolve(configFile);
+  const lab = createDecisionLab(), config = await read(configFile);
+  const definition = await read(resolve(dirname(configFile), config.definitionFile));
+  const template = await read(resolve(dirname(configFile), config.templateFile));
+  const authorConfig = await read(resolve(dirname(configFile), config.authorConfigFile));
+  const pinnedApp = lab.apps.open(await read(resolve(dirname(configFile), config.appUrl)));
+  if (definition.contentHash !== config.definitionHash) throw new Error('The workflow does not match this client release.');
+  if (pinnedApp.contentHash !== config.binding.packageHash) throw new Error('The screening app does not match this client release.');
+  const source = await read(inputFile);
+  if (!Array.isArray(source.campaigns) || !source.campaigns.length) throw new Error('Supply a nonempty campaign manifest.');
+  if (acceptFictionalDemo && source.fictional !== true) throw new Error('Synthetic reviews are allowed only for a manifest explicitly marked fictional.');
+  const ids = new Set();
+  for (const row of source.campaigns) {
+    if (!/^[A-Za-z0-9][A-Za-z0-9_-]{0,79}$/.test(row?.id) || ids.has(row.id)) throw new Error('Campaign IDs must be distinct and filename-safe.');
+    ids.add(row.id);
+    if (typeof row.owner !== 'string' || !row.owner.trim()) throw new Error('Name an owner for every campaign.');
+    if (typeof row.case !== 'string' || isAbsolute(row.case) || row.case.split(/[\\/]/).some(part => !part || part === '..')) throw new Error('Use a relative case path within the manifest directory.');
+  }
+  // Exclusive creation protects prior evidence and retained reviews.
+  await mkdir(outputDir);
+  const commands = [], campaigns = [];
+  let complete = false;
+  const actor = acceptFictionalDemo ? 'Fictional campaign reviewer' : reviewer;
+  try {
+    const sourceRoot = await realpath(dirname(inputFile));
+    for (const item of source.campaigns) {
+      const directory = join(outputDir, item.id); await mkdir(directory);
+      const sourcePath = await realpath(resolve(dirname(inputFile), item.case));
+      if (!sourcePath.startsWith(`${sourceRoot}/`)) throw new Error('The case resolves outside the manifest directory.');
+      const bytes = await readFile(sourcePath), businessCase = JSON.parse(bytes);
+      if (businessCase.gifting?.id !== item.id || businessCase.gifting?.scope?.batchId !== item.id) throw new Error(`The case and campaign identity disagree: ${item.id}.`);
+      if (asOf) {
+        const reviewMinute = minuteAt(asOf, config.profile.clockOrigin);
+        if (reviewMinute < businessCase.gifting.commitment.nowMinute) throw new Error('The review clock cannot precede the supplied snapshot.');
+        businessCase.gifting.commitment.nowMinute = reviewMinute;
+      }
+      const at = asOf ?? atMinute(businessCase.gifting.commitment.nowMinute, config.profile.clockOrigin);
+      // Derive the conservative case from this actual business snapshot using
+      // the portable author's mapping. A separately saved fixture could contain
+      // stale quantities or prices; a matching campaign ID would not detect it.
+      // Generated packages are discarded: this run still uses the pinned app.
+      const derived = lab.compositions.generate({ template,
+        config: { ...authorConfig, workedExample: businessCase.gifting }, createdAt: pinnedApp.app.createdAt });
+      const generatedModel = derived.apps.planning.app.model;
+      if (hashing.canonicalHash(generatedModel.module) !== config.binding.moduleHash) throw new Error('The input mapping generated a different planning rule basis.');
+      const screeningCase = generatedModel.case;
+      const screeningInput = join(directory, 'screening.case.json'), screeningFile = join(directory, 'screening.run.json');
+      await writeFile(screeningInput, json(screeningCase));
+      const screeningArgs = ['run', '--app', resolve(dirname(configFile), config.appUrl), '--case', screeningInput,
+        '--reports', 'all', '--timeout-ms', '30000', '--max-output-bytes', '50000000', '--output', screeningFile];
+      let screeningStdout = '', screeningStderr = '';
+      const screeningExit = await runCLI(screeningArgs, { stdout: { write(value) { screeningStdout += value; } }, stderr: { write(value) { screeningStderr += value; } } });
+      commands.push({ args: screeningArgs, exitCode: screeningExit, stdout: screeningStdout, stderr: screeningStderr });
+      const screeningRun = [CLI_EXIT_CODE.COMPLETED, CLI_EXIT_CODE.UNAVAILABLE].includes(screeningExit) ? await read(screeningFile).catch(() => null) : null;
+      if (!screeningRun) throw new Error(screeningStderr || 'The provisional screen could not be retained.');
+      let run = createReviewJourney({ lab, definition, case: businessCase, owner: item.owner,
+        sources: [{ reference: item.case, sha256: digest(bytes), scope: businessCase.gifting.scope }],
+        screeningRun, caseIdPath: 'gifting.id', createdAt: at, runId: `gift-resolution-${item.id}` });
+      let sequence = 0;
+      const save = async value => {
+        const filename = join(directory, `${String(sequence++).padStart(2, '0')}.workflow.json`);
+        await writeFile(filename, lab.sources.renderJSON(value, { maxBytes: 50000000 })); return filename;
+      };
+      let currentPath = await save(run);
+      async function command(words) {
+        const filename = join(directory, `${String(sequence++).padStart(2, '0')}.workflow.json`);
+        let stdout = '', stderr = '';
+        const args = [...words, '--output', filename];
+        const exitCode = await runCLI(args, { stdout: { write(value) { stdout += value; } }, stderr: { write(value) { stderr += value; } } });
+        commands.push({ args, exitCode, stdout, stderr });
+        if (exitCode !== CLI_EXIT_CODE.COMPLETED && !(words[1] === 'solve' && exitCode === CLI_EXIT_CODE.UNAVAILABLE)) throw new Error(stderr || stdout || `CLI exited ${exitCode}.`);
+        run = await read(filename);
+        const previousPath = currentPath; currentPath = filename;
+        // The native run already retains its complete revision history. Keeping
+        // every intermediate serialization would repeat the same history on disk.
+        await rm(previousPath);
+      }
+      if (isCalculationWorkflow(run)) {
+        await command(['workflow', 'solve', '--run', currentPath, '--created-at', at, '--timeout-ms', '30000']);
+      } else if (actor) {
+        // This explicit application action uses the same public SDK workflow
+        // answer mutations as the desk. Reasoning and finding reviews below use
+        // real CLI commands. One serialization avoids repeatedly copying the
+        // retained screening report for every answer in the native history.
+        run = reviewJourneyInputs({ lab, run, actor, at });
+        const previousPath = currentPath; currentPath = await save(run); await rm(previousPath);
+        for (const step of definition.steps) {
+          const state = lab.workflows.prepare({ run, stepId: step.id });
+          if (!['ready', 'stale'].includes(state.status)) break;
+          await command(['workflow', 'evaluate', '--run', currentPath, '--step', step.id, '--created-at', at, '--timeout-ms', '30000']);
+          const prepared = lab.workflows.prepare({ run, stepId: step.id });
+          if (!acceptFictionalDemo || prepared.status !== 'awaiting-review') break;
+          await command(['workflow', 'review', '--run', currentPath, '--evaluation', prepared.evaluationId,
+            '--status', 'accepted', '--actor', actor, '--role', step.role, '--at', at,
+            '--note', 'Synthetic finding acceptance for this explicitly opted-in fictional demo. No operating authority or completion is supplied.']);
+        }
+      }
+      const view = inspectGiftingJourney({ lab, run, config });
+      const native = inspectReviewJourney({ lab, run });
+      await writeFile(join(directory, 'review.workflow.json'), lab.sources.renderJSON(run, { maxBytes: 50000000 }));
+      await rm(currentPath);
+      await writeFile(join(directory, 'output.json'), lab.sources.renderJSON(native.output, { maxBytes: 50000000 }));
+      if (view.currentRun) await writeFile(join(directory, 'planning.run.json'), lab.sources.renderJSON(view.currentRun, { maxBytes: 50000000 }));
+      campaigns.push({ id: item.id, owner: item.owner, nextAction: view.nextAction,
+        actionDueMinute: view.actionDueMinute, deadlineMeaning: 'Schedule-only latest useful start; source availability and permission remain separate checks.',
+        status: view.review?.status ?? view.nextStep?.status ?? 'needs-review',
+        preferred: view.review?.preferred.map(row => ({ package: row.label, expenseMinor: row.expense, finishMinute: row.finishMinute })) ?? [],
+        workflow: `${item.id}/review.workflow.json`, output: `${item.id}/output.json`,
+        source: { reference: item.case, sha256: digest(bytes) },
+        screening: { file: `${item.id}/screening.run.json`, outcome: view.screeningReview?.status,
+          preferred: view.screeningReview?.preferred.map(row => row.label),
+          meaning: 'Conservative screen over every published fault configuration; the connected calculation uses actual scoped diagnostic records.' },
+      });
+    }
+    const manifest = { format: 'gift-kit-resolution-preflight/1', createdAt: new Date().toISOString(),
+      executionMode: isCalculationWorkflow(definition) ? 'calculation' : 'reviewed', syntheticFindingReviews: !isCalculationWorkflow(definition) && acceptFictionalDemo, definitionHash: config.definitionHash, campaigns };
+    await writeFile(join(outputDir, 'manifest.json'), json(manifest));
+    await writeFile(join(outputDir, 'commands.json'), json(commands));
+    const findingLabels = { [REVIEW_OUTCOME.ELIGIBLE]: 'Supported response available', [REVIEW_OUTCOME.BLOCKED]: 'Needs attention',
+      [REVIEW_OUTCOME.UNAVAILABLE]: 'Calculation unavailable', [WORKFLOW_STEP_STATUS.NEEDS_INPUT]: 'Input review required',
+      [WORKFLOW_STEP_STATUS.AWAITING_REVIEW]: 'Finding review required' };
+    const money = amount => new Intl.NumberFormat('en-US', { style: 'currency', currency: config.currency }).format(amount / config.moneyDivisor);
+    const queueRows = campaigns.map(row => ({ ...row, findingText: row.status === REVIEW_OUTCOME.ELIGIBLE && row.preferred.length
+      ? row.preferred.map(plan => `${plan.package} · ${money(plan.expenseMinor)}`).join(' or ')
+      : findingLabels[row.status] ?? row.status.replaceAll('-', ' '),
+      screeningText: row.screening.outcome === REVIEW_OUTCOME.ELIGIBLE
+        ? row.screening.preferred.join(' or ') : row.screening.outcome === REVIEW_OUTCOME.BLOCKED
+          ? 'No listed response fits' : 'Calculation unavailable' }));
+    const view = React.createElement(RecordsView, { view: { format: 'record-view/1', id: 'campaign-resolution-queue',
+      columns: [{ key: 'id', label: 'Campaign' }, { key: 'owner', label: 'Owner' }, { key: 'screeningText', label: 'Conservative screen' }, { key: 'findingText', label: 'Current calculation' },
+        { key: 'nextAction', label: 'Next action' }, { key: 'actionDueMinute', label: 'Latest start (elapsed minute)' }, { key: 'workflow', label: 'Continue this same review' }], rows: queueRows },
+      renderValue(value, column) { return column.key === 'workflow' ? React.createElement('a', { href: value, download: true }, 'Download continuing review') : value; } });
+    await writeFile(join(outputDir, 'campaigns.html'), `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Gift-kit intervention queue</title><style>body{font:16px/1.5 system-ui;margin:30px;color:#203a49}table{border-collapse:collapse;width:100%}th,td{text-align:left;vertical-align:top;padding:12px;border-bottom:1px solid #ccd9df}p{max-width:70ch}</style><h1>Gift-kit intervention queue</h1><p>Continue the same native calculation in the Handoff Desk. A current finding, an operating decision, spending authority and actual completion are separate records. Each campaign is evaluated independently.</p>${!isCalculationWorkflow(definition) && acceptFictionalDemo ? '<p><strong>Fictional demonstration: inputs and findings received explicitly opted-in synthetic reviews.</strong></p>' : ''}${renderToStaticMarkup(view)}</html>`);
+    complete = true;
+    return { exitCode: CLI_EXIT_CODE.COMPLETED, manifest, outputDir };
+  } finally {
+    if (!complete) await rm(outputDir, { recursive: true, force: true });
+  }
+}

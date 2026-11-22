@@ -1,0 +1,74 @@
+{
+  "workflowId": "repair-published-restaurant-roster",
+  "workflowVersion": "1.5.0",
+  "appUrl": "https://hermodlabs.github.io/review_lab/",
+  "installUrl": "https://hermodlabs.github.io/review_lab/?install=workflow&id=repair-published-restaurant-roster&version=1.5.0&publisher=decision-lab&collection=restaurant-operations&release=1a711dcaafdba4da5c77b7cc0d3ed9d609f2e2ffb053adab632badae836e5f63",
+  "buildVersion": "831b0105a66b33afabc2",
+  "verificationUrl": "/assets/use-cases/restaurant-roster-repair/current-ui/verification.json",
+  "figures": {
+    "full": {
+      "image": "/assets/use-cases/restaurant-roster-repair/current-ui/full.png",
+      "width": 883,
+      "height": 662,
+      "sha256": "80e2a19a49471d3898be1179ba6777f36ecd58e5ea3aea55aefd74c173b1af5f",
+      "alt": "Without a ranking priority, the current restaurant Decision summary presents two passing complete repairs: Rowan at $836 remaining payroll and the coordinated repair at $736.",
+      "caption": "Rowan can work 6–10 p.m. Two supplied repairs pass; Compare without ranking declares neither preferred."
+    },
+    "blockers": {
+      "image": "/assets/use-cases/restaurant-roster-repair/current-ui/blockers.png",
+      "width": 835,
+      "height": 855,
+      "sha256": "7c9a095af5db83eebbe3b7f122534bdf5cb4b63adff70c971e454a1eb6d9a9bb",
+      "alt": "Repair comparison inspects Move Theo only and identifies the unfilled Sunday cooking position among its unmet requirements.",
+      "caption": "Moving Theo fills Saturday but leaves Sunday short. Inspect the complete repair rather than just the replacement name."
+    },
+    "process": {
+      "image": "/assets/use-cases/restaurant-roster-repair/current-ui/process.png",
+      "width": 1678,
+      "height": 1774,
+      "sha256": "6f83bb57679ae565f43d16d91ce1713ffcd9548375a238febab349c81c299016",
+      "alt": "The restaurant Decision process graph connects complete-repair assessment to passing repairs, optional priority, revision and external staff agreement, with labeled current-case and reassessment paths.",
+      "caption": "The graph shows how the finding changes the available response. Inspection does not obtain staff agreement or publish a roster."
+    },
+    "stale": {
+      "image": "/assets/use-cases/restaurant-roster-repair/current-ui/stale.png",
+      "width": 883,
+      "height": 268,
+      "sha256": "5ef37d77120c2e0ccc6dc0a6dec862f1d6fc5b263b2488295bf9b6f3c3321e78",
+      "alt": "After Rowan’s earlier finish is applied, the Decision summary withholds the earlier answer and calls for a current calculation.",
+      "caption": "Applying a changed availability withdraws the previous finding. Recalculate before relying on the comparison."
+    },
+    "short": {
+      "image": "/assets/use-cases/restaurant-roster-repair/current-ui/short.png",
+      "width": 883,
+      "height": 575,
+      "sha256": "027715964e02ba421b4b9c8e5e7bca947be1d78d90294d9e5c68a0b9dacfb8b5",
+      "alt": "With Rowan available only 6–8 p.m., the unranked restaurant Decision summary shows only the coordinated repair passing at $736 remaining payroll.",
+      "caption": "Only Rowan’s finish changes. The required assignment still runs until 10 p.m.; the coordinated repair remains feasible."
+    },
+    "stability": {
+      "image": "/assets/use-cases/restaurant-roster-repair/current-ui/stability.png",
+      "width": 883,
+      "height": 662,
+      "sha256": "c3fe4c807fb55688466c7cf36fadc4f4743d98d5d5d42e0c2a139c0dc4588b1e",
+      "alt": "Preserve published assignments first prefers Bring in Rowan, with $836 remaining payroll, $180 additional expense and one changed position.",
+      "caption": "Stability first: Rowan preserves the other published assignments. Payroll breaks ties after the changed-position count."
+    },
+    "cost": {
+      "image": "/assets/use-cases/restaurant-roster-repair/current-ui/cost.png",
+      "width": 883,
+      "height": 662,
+      "sha256": "9d4be2ae54d3ce187d9ac6e2b510fa123adf1056c0c0500648aa09938c8dfe85",
+      "alt": "Minimize remaining payroll first prefers Repair three assignments, with $736 remaining payroll, $80 additional expense and three changed positions.",
+      "caption": "Cost first: the coordinated repair saves $100. Every staffing requirement and operating fact stays the same."
+    },
+    "roster": {
+      "image": "/assets/use-cases/restaurant-roster-repair/current-ui/roster.png",
+      "width": 883,
+      "height": 888,
+      "sha256": "4acafc633e975476321bfb68e0f749e3ededa19473ebf95550a8b7b2590a7ba9",
+      "alt": "Complete roster compares Saturday dinner cooking position 2 across all four supplied repairs, showing Rowan or Theo covering the recorded 6–10 p.m. interval and identifying the unfilled proposal.",
+      "caption": "Compare the disrupted service position across the supplied complete repairs, then switch positions to inspect the rest of the roster. These are retained schedules; selecting a position does not choose a repair or publish it."
+    }
+  }
+}

@@ -6,14 +6,14 @@ This dedicated fictional example supports two connected business articles:
 - `/use-cases/hospitality/restaurant-roster-repair/choose-a-roster-repair/`
 
 The articles now follow **Restaurant operations → Repair a published restaurant
-roster 1.5.0** in the Decision Lab Marketplace. It uses the
+roster 1.6.0** in the verified local Decision Lab Marketplace preview. The public link retains 1.5.0. It uses the
 `complete-a-commitment/1` pattern through three exact pinned apps. Feasibility
 always runs; selecting a stability-first or cost-first priority activates that
 comparison app against the same staffing facts and mandatory conditions.
 
-Current public-app screenshots, exact native runs and calculation comparisons
-are retained in [current-ui/verification.json](current-ui/verification.json).
-The [current published workflow](current-ui/restaurant.workflow.json) contains
+Local-preview screenshots, exact native runs and calculation comparisons
+are retained in [shared-report-preview/verification.json](shared-report-preview/verification.json).
+The [captured workflow](shared-report-preview/restaurant.workflow.json) contains
 the exact captured definition and its pinned apps. The interface separates
 Options, Next actions, Assumptions and Questions. Complete roster compares a
 selected service position across the supplied repairs. The installed fictional example compares four supplied complete
@@ -22,7 +22,7 @@ their agreement or publish an operating roster.
 
 The earlier [1.1.0 source archive](marketplace-ui/roster-repair-source.zip) is a snapshot of the original implemented local example. Its
 [manifest](marketplace-ui/source-manifest.json) identifies all 28 retained files;
-the workflow definition and three app packages match that original 1.1.0 public release. It is not the current 1.5.0 workflow download.
+the workflow definition and three app packages match that original 1.1.0 public release. It retains its original release rather than the preview definition.
 It makes no claim about a public GitHub commit. The restaurant folder was not
 available in the public sample repository when these articles were updated.
 
@@ -37,7 +37,7 @@ installed app’s catalog.
 These earlier custom report pages preserve four native calculations and the
 independent interval, payroll and change-count checks behind the original
 example. They are historical supporting records; the articles’ screenshots
-now show the installed Marketplace workflow.
+now show the shared-report Marketplace preview.
 
 - [Full relief availability](reports/full-availability/index.html): two feasible
   supplied repairs; no authored preference.
@@ -79,3 +79,5 @@ the three affected positions; the other six remaining positions are unchanged.
 The diagrams explain the supplied assignments rather than independently proving
 feasibility. The recorded employee conditions, actual service delivery and
 external publication remain distinct.
+
+The captured local production build was not published at capture time. Historical `current-ui/` public screenshots and metadata retain their earlier release identities. Common build manifests and scoped source context live in `../../decision-lab-shared-report-preview/`.

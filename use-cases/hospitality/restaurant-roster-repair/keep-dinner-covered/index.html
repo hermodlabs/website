@@ -136,7 +136,7 @@
       
       <p class="reader-lead">On Friday morning, Elena has a restaurant service to protect and a roster her team has already arranged their lives around. Nora calls out: she cannot work Saturday dinner. Reservations are booked. The kitchen still needs <strong>two qualified cooks from 6–10 p.m.</strong>, alongside a server.</p>
 <p>Elena could call her usual relief cook, ask the staff group chat or move someone from Sunday. Each could supply a name quickly. Her harder question is whether the resulting roster still works for <strong>every remaining recorded service</strong>, within the employee conditions and labor boundary.</p>
-<p class="use-case-example-note">Elena, the restaurant and the records are fictional. The worked case uses <strong>Repair a published restaurant roster 1.5.0</strong> in Decision Lab’s <strong>Restaurant operations</strong> collection. It compares four supplied complete repairs within a configured roster; it does not generate every possible schedule. <a href="../index.html#try-the-review">Open the workflow and follow the shared setup instructions</a>.</p>
+<p class="use-case-example-note">Elena, the restaurant and the records are fictional. The worked case uses <strong>Repair a published restaurant roster 1.6.0</strong> in Decision Lab’s <strong>Restaurant operations</strong> collection. It compares four supplied complete repairs within a configured roster; it does not generate every possible schedule. <a href="../index.html#try-the-review">Open the workflow and follow the shared setup instructions</a>.</p>
 
 
 
@@ -178,11 +178,11 @@
 <h2 id="calculate-the-repairs">Check the whole roster before choosing a name.</h2>
 <p>Elena opens the <a href="https://hermodlabs.github.io/review_lab/?install=workflow&amp;id=repair-published-restaurant-roster&amp;version=1.5.0&amp;publisher=decision-lab&amp;collection=restaurant-operations&amp;release=1a711dcaafdba4da5c77b7cc0d3ed9d609f2e2ffb053adab632badae836e5f63">roster example</a>. Its link installs the collection when needed and opens an analysis with the supplied fictional roster. She can also start a fresh case from the installed workflow with <strong>Explore example</strong>. In <strong>Inputs</strong>, the <strong>Repair decision</strong> controls expose the relief cook’s availability, the remaining-payroll boundary and the comparison priority. <strong>Supporting records</strong> holds the named employees, qualifications, working intervals and complete proposed repairs.</p>
 <p>For the first calculation, Rowan is available from <strong>6 p.m. until 10 p.m. on Saturday</strong>, the remaining-payroll limit is $856, and <strong>Comparison priority</strong> is <strong>Compare without ranking</strong>. Elena keeps the other supplied records unchanged, chooses <strong>Apply inputs</strong> after any edits, then <strong>Calculate</strong>.</p>
-<p>The <strong>Decision summary → Options</strong> view leads with two passing repairs. Elena opens <strong>Supporting reports → Repair comparison</strong> to inspect the rejected shortcuts. Selecting <strong>Move Theo only</strong> exposes its Sunday coverage failure: a move that fills Saturday’s vacancy has not repaired the remaining commitment.</p>
+<p>The <strong>Decision summary → Options</strong> view leads with two passing repairs. Elena opens <strong>Supporting reports → Repair comparison</strong> to inspect the rejected shortcuts. Selecting <strong>Move Theo only</strong> and expanding <strong>Requirements</strong> exposes its Sunday coverage failure: a move that fills Saturday’s vacancy has not repaired the remaining commitment.</p>
 
 <figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/restaurant-roster-repair/current-ui/blockers.png" aria-label="Open this roster workflow screenshot at full size"><img src="../../../../assets/use-cases/restaurant-roster-repair/current-ui/blockers.png" width="835" height="855" alt="Repair comparison inspects Move Theo only and identifies the unfilled Sunday cooking position among its unmet requirements." loading="lazy" decoding="async"></a>
-  <figcaption><span>Moving Theo fills Saturday but leaves Sunday short. Inspect the complete repair rather than just the replacement name.</span><a href="../../../../assets/use-cases/restaurant-roster-repair/current-ui/blockers.png">View full size</a></figcaption>
+  <a href="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/blockers.png" aria-label="Open this roster workflow screenshot at full size"><img src="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/blockers.png" width="841" height="881" alt="Repair comparison inspects Move Theo only and identifies the unfilled Sunday cooking position among its unmet requirements." loading="lazy" decoding="async"></a>
+  <figcaption><span>Moving Theo fills Saturday but leaves Sunday short. Inspect the complete repair rather than just the replacement name.</span><a href="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/blockers.png">View full size</a></figcaption>
 </figure>
 
 
@@ -212,10 +212,10 @@
       </dl>
       <div class="use-case-comparison-observation">
       <figure class="use-case-comparison-screen">
-        <a href="../../../../assets/use-cases/restaurant-roster-repair/current-ui/full.png" aria-label="Open the Rowan can stay until 10 p.m. view at full size">
-          <img src="../../../../assets/use-cases/restaurant-roster-repair/current-ui/full.png" width="883" height="662" alt="Without a ranking priority, the current restaurant Decision summary presents two passing complete repairs: Rowan at $836 remaining payroll and the coordinated repair at $736." loading="lazy" decoding="async">
+        <a href="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/full.png" aria-label="Open the Rowan can stay until 10 p.m. view at full size">
+          <img src="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/full.png" width="883" height="667" alt="Without a ranking priority, the current restaurant Decision summary presents two passing complete repairs: Rowan at $836 remaining payroll and the coordinated repair at $736." loading="lazy" decoding="async">
         </a>
-        <figcaption>Rowan can work 6–10 p.m. Two supplied repairs pass; Compare without ranking declares neither preferred. <a href="../../../../assets/use-cases/restaurant-roster-repair/current-ui/full.png">View full size</a></figcaption>
+        <figcaption>Rowan can work 6–10 p.m. Two supplied repairs pass; Compare without ranking declares neither preferred. <a href="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/full.png">View full size</a></figcaption>
       </figure>
       <p class="use-case-comparison-judgment">Elena can consider bringing in Rowan or making the three coordinated changes. This calculation establishes no preferred repair.</p>
       </div>
@@ -236,10 +236,10 @@
       </dl>
       <div class="use-case-comparison-observation">
       <figure class="use-case-comparison-screen">
-        <a href="../../../../assets/use-cases/restaurant-roster-repair/current-ui/short.png" aria-label="Open the Rowan must leave at 8 p.m. view at full size">
-          <img src="../../../../assets/use-cases/restaurant-roster-repair/current-ui/short.png" width="883" height="575" alt="With Rowan available only 6–8 p.m., the unranked restaurant Decision summary shows only the coordinated repair passing at $736 remaining payroll." loading="lazy" decoding="async">
+        <a href="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/short.png" aria-label="Open the Rowan must leave at 8 p.m. view at full size">
+          <img src="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/short.png" width="883" height="580" alt="With Rowan available only 6–8 p.m., the unranked restaurant Decision summary shows only the coordinated repair passing at $736 remaining payroll." loading="lazy" decoding="async">
         </a>
-        <figcaption>Only Rowan’s finish changes. The required assignment still runs until 10 p.m.; the coordinated repair remains feasible. <a href="../../../../assets/use-cases/restaurant-roster-repair/current-ui/short.png">View full size</a></figcaption>
+        <figcaption>Only Rowan’s finish changes. The required assignment still runs until 10 p.m.; the coordinated repair remains feasible. <a href="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/short.png">View full size</a></figcaption>
       </figure>
       <p class="use-case-comparison-judgment">Elena cannot count Rowan through closing. The coordinated repair remains feasible; another alternative needs to be supplied and assessed before it can enter the comparison.</p>
       </div>
@@ -255,8 +255,8 @@
   <p>This is the intermediate screen after Elena applies the earlier finish, before she recalculates. The previous answer has an outdated basis. A current calculation is needed to establish which repairs still work.</p>
   
 <figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/restaurant-roster-repair/current-ui/stale.png" aria-label="Open this roster workflow screenshot at full size"><img src="../../../../assets/use-cases/restaurant-roster-repair/current-ui/stale.png" width="883" height="268" alt="After Rowan’s earlier finish is applied, the Decision summary withholds the earlier answer and calls for a current calculation." loading="lazy" decoding="async"></a>
-  <figcaption><span>Applying a changed availability withdraws the previous finding. Recalculate before relying on the comparison.</span><a href="../../../../assets/use-cases/restaurant-roster-repair/current-ui/stale.png">View full size</a></figcaption>
+  <a href="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/stale.png" aria-label="Open this roster workflow screenshot at full size"><img src="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/stale.png" width="883" height="270" alt="After Rowan’s earlier finish is applied, the Decision summary withholds the earlier answer and calls for a current calculation." loading="lazy" decoding="async"></a>
+  <figcaption><span>Applying a changed availability withdraws the previous finding. Recalculate before relying on the comparison.</span><a href="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/stale.png">View full size</a></figcaption>
 </figure>
 
 </details>
@@ -267,8 +267,8 @@
   <p>Open <strong>Decision process</strong> to see why the next action depends on the finding. Passing repairs lead to a comparison, with an optional priority. If no supplied repair passes, Elena needs revised proposals or facts. Missing information and outdated calculations need attention before either conclusion is supported.</p>
   
 <figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/restaurant-roster-repair/current-ui/process.png" aria-label="Open this roster workflow screenshot at full size"><img src="../../../../assets/use-cases/restaurant-roster-repair/current-ui/process.png" width="1678" height="1774" alt="The restaurant Decision process graph connects complete-repair assessment to passing repairs, optional priority, revision and external staff agreement, with labeled current-case and reassessment paths." loading="lazy" decoding="async"></a>
-  <figcaption><span>The graph shows how the finding changes the available response. Inspection does not obtain staff agreement or publish a roster.</span><a href="../../../../assets/use-cases/restaurant-roster-repair/current-ui/process.png">View full size</a></figcaption>
+  <a href="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/process.png" aria-label="Open this roster workflow screenshot at full size"><img src="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/process.png" width="1684" height="1788" alt="The restaurant Decision process graph connects complete-repair assessment to passing repairs, optional priority, revision and external staff agreement, with labeled current-case and reassessment paths." loading="lazy" decoding="async"></a>
+  <figcaption><span>The graph shows how the finding changes the available response. Inspection does not obtain staff agreement or publish a roster.</span><a href="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/process.png">View full size</a></figcaption>
 </figure>
 
   <p>The graph also shows <strong>Obtain agreement and communicate the chosen roster</strong> as a business action after a person chooses. Inspecting that action does not contact anyone, record their agreement or publish a roster.</p>
@@ -298,7 +298,7 @@
 <footer class="use-case-article-references" aria-labelledby="source">
   <details class="disclosure use-case-source-disclosure">
     <summary><h2 class="disclosure-label" id="source">Sources and scope</h2></summary>
-    <p>Elena, the restaurant, employees, availability, qualifications, flat four-hour fees and roster are fictional. The screenshots show the working <strong>Repair a published restaurant roster 1.5.0</strong> workflow in the <strong>Restaurant operations</strong> Marketplace collection. The <a href="../../../../assets/use-cases/restaurant-roster-repair/current-ui/verification.json">capture and calculation record</a> identifies the public build, exact native runs and image hashes. The <a href="../../../../assets/use-cases/restaurant-roster-repair/current-ui/restaurant.workflow.json" download>published workflow download</a> retains the exact current workflow and its pinned app definitions used for these captures.</p>
+    <p>Elena, the restaurant, employees, availability, qualifications, flat four-hour fees and roster are fictional. The screenshots show the working <strong>Repair a published restaurant roster 1.6.0</strong> workflow in a verified local production preview of the <strong>Restaurant operations</strong> Marketplace collection. This shared-report interface has not yet been published; the public link retains version 1.5.0. The <a href="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/verification.json">capture and calculation record</a> identifies the frozen local build, exact native runs and image hashes. The <a href="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/restaurant.workflow.json" download>captured workflow download</a> retains the exact preview workflow and its pinned app definitions used for these captures.</p>
     <p>The Complete a Commitment app definitions assess four supplied complete repairs for the remaining recorded Friday–Sunday services. They do not generate all possible rosters. A preferred repair is preferred within that supplied comparison. Earlier work contributes recorded minute totals and a last-shift boundary; the example does not retrospectively audit that work or calculate its payroll.</p>
     <p>Each service has two cook positions and one server position for four hours. This fixture has no in-shift breaks. A required break or another operating commitment must be represented in the working intervals and covered by a supplied repair. Ten hours of rest and a forty-hour weekly limit are declared example policies; the calculation is not an employment-law compliance assessment. Labor premiums, demand forecasting, workload intensity and staff agreement need their own records and rules.</p>
     <p>Additional expense is measured against $656 of retained remaining payroll after Nora’s unpaid cancelled shift is removed. Changed assignments are published positions assigned to a different person, including an unfilled position; they are not a count of employee notifications or a measure of fairness. The remaining-payroll limit is $856.</p>

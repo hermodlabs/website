@@ -169,10 +169,10 @@
       </dl>
       <div class="use-case-comparison-observation">
       <figure class="use-case-comparison-screen">
-        <a href="../../../../assets/use-cases/shipment-readiness/calculation-integration/blocked.png" aria-label="Open the A · Confirmation covers the old order view at full size">
-          <img src="../../../../assets/use-cases/shipment-readiness/calculation-integration/blocked.png" width="782" height="1102" alt="The revised order has no passing arrangement: Direct lacks capacity, Backup exceeds the spending boundary and Consolidated lacks current confirmation." loading="lazy" decoding="async">
+        <a href="../../../../assets/use-cases/shipment-readiness/shared-report-sdk-preview/blocked.png" aria-label="Open the A · Confirmation covers the old order view at full size">
+          <img src="../../../../assets/use-cases/shipment-readiness/shared-report-sdk-preview/blocked.png" width="782" height="1279" alt="The revised order has no passing arrangement: Direct lacks capacity, Backup exceeds the spending boundary and Consolidated lacks current confirmation." loading="lazy" decoding="async">
         </a>
-        <figcaption>The compact comparison gives each arrangement its own condition to inspect. <a href="../../../../assets/use-cases/shipment-readiness/calculation-integration/blocked.png">View full size</a></figcaption>
+        <figcaption>The compact comparison gives each arrangement its own condition to inspect. <a href="../../../../assets/use-cases/shipment-readiness/shared-report-sdk-preview/blocked.png">View full size</a></figcaption>
       </figure>
       <p class="use-case-comparison-judgment">Maya asks the carrier coordinator for a genuine current confirmation or escalates another response. A confirmed record for the old order is insufficient.</p>
       </div>
@@ -191,10 +191,10 @@
       </dl>
       <div class="use-case-comparison-observation">
       <figure class="use-case-comparison-screen">
-        <a href="../../../../assets/use-cases/shipment-readiness/calculation-integration/confirmed-revision.png" aria-label="Open the B · Newly received confirmation covers revision 2 view at full size">
-          <img src="../../../../assets/use-cases/shipment-readiness/calculation-integration/confirmed-revision.png" width="782" height="1102" alt="After applying a genuine revision-2 slot confirmation, the same shipment calculation prefers Consolidated at $5,000." loading="lazy" decoding="async">
+        <a href="../../../../assets/use-cases/shipment-readiness/shared-report-sdk-preview/confirmed-revision.png" aria-label="Open the B · Newly received confirmation covers revision 2 view at full size">
+          <img src="../../../../assets/use-cases/shipment-readiness/shared-report-sdk-preview/confirmed-revision.png" width="782" height="1169" alt="After applying a genuine revision-2 slot confirmation, the same shipment calculation prefers Consolidated at $5,000." loading="lazy" decoding="async">
         </a>
-        <figcaption>Direct remains capacity-blocked and Backup remains over the expense limit. The current confirmation changes Consolidated’s eligibility. <a href="../../../../assets/use-cases/shipment-readiness/calculation-integration/confirmed-revision.png">View full size</a></figcaption>
+        <figcaption>Direct remains capacity-blocked and Backup remains over the expense limit. The current confirmation changes Consolidated’s eligibility. <a href="../../../../assets/use-cases/shipment-readiness/shared-report-sdk-preview/confirmed-revision.png">View full size</a></figcaption>
       </figure>
       <p class="use-case-comparison-judgment">Maya reviews the newly received evidence and can put Consolidated forward. Direct still lacks capacity; Backup still exceeds the limit.</p>
       </div>
@@ -221,7 +221,7 @@
     </tbody>
   </table>
 </div>
-<p>The SDK fits because the shipment model and workflow already express this decision. The desk renders the workflow’s SDK-materialized <code>decisionSummary</code> through the shared <code>DecisionSummaryView</code>. The developer can build the coordinator’s interface around that same review instead of translating its business rules into a second implementation.</p>
+<p>The SDK fits because the shipment model and workflow already express this decision. The desk passes the SDK’s workflow output and authored definition to <code>WorkflowReportsView</code>, the same report component used by Marketplace workflows. The developer can build the coordinator’s interface around that same review instead of translating its business rules into a second implementation.</p>
 
 <h2 id="shared-reference">A shared reference: facts, finding, choice, operating records.</h2>
 <ol class="use-case-review-flow" aria-label="Continue one shipment exception through review and operating evidence">
@@ -237,7 +237,7 @@
 
 
 <figure class="article-code">
-  <figcaption id="code-open">Open the exact retained native workflow · <a href="../../../../assets/use-cases/sample-code/calculation-integration-2026-11-20/source/shipping/shipment-reservation-desk/src/reviewJourney.js.txt">src/reviewJourney.js, lines 95–96</a></figcaption>
+  <figcaption id="code-open">Open the exact retained native workflow · <a href="../../../../assets/use-cases/sample-code/shared-report-sdk-preview-2026-11-21/source/shipping/shipment-reservation-desk/src/reviewJourney.js.txt">src/reviewJourney.js, lines 95–96</a></figcaption>
   <pre tabindex="0" role="region" aria-labelledby="code-open"><code class="language-javascript">export function openReviewJourney({ lab, value, app, definition, compatibleDefinitions = [] }) {
   const run = lab.workflows.openRun(value);</code></pre>
 </figure>
@@ -247,7 +247,7 @@
 
 
 <figure class="article-code">
-  <figcaption id="code-browser">Create the SDK with its browser executor · <a href="../../../../assets/use-cases/sample-code/calculation-integration-2026-11-20/source/shipping/shipment-reservation-desk/src/useShipmentReview.js.txt">src/useShipmentReview.js, line 39</a></figcaption>
+  <figcaption id="code-browser">Create the SDK with its browser executor · <a href="../../../../assets/use-cases/sample-code/shared-report-sdk-preview-2026-11-21/source/shipping/shipment-reservation-desk/src/useShipmentReview.js.txt">src/useShipmentReview.js, line 39</a></figcaption>
   <pre tabindex="0" role="region" aria-labelledby="code-browser"><code class="language-javascript">    const executor = createBrowserExecutor(), lab = createDecisionLab({ executor });</code></pre>
 </figure>
 
@@ -263,8 +263,8 @@
 
 
 <figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/shipment-readiness/calculation-integration/pending.png" tabindex="-1" aria-label="Open full-size shipment desk screenshot"><img src="../../../../assets/use-cases/shipment-readiness/calculation-integration/pending.png" width="782" height="375" alt="The shipment desk shows Pending input changes and disables Recalculate while the edited confirmation remains a draft." loading="lazy" decoding="async"></a>
-  <figcaption><span>Apply or discard the edits before calculation. Reports describe the last applied inputs; the last proposal remains available separately.</span><a href="../../../../assets/use-cases/shipment-readiness/calculation-integration/pending.png">View full size</a></figcaption>
+  <a href="../../../../assets/use-cases/shipment-readiness/shared-report-sdk-preview/pending.png" tabindex="-1" aria-label="Open full-size shipment desk screenshot"><img src="../../../../assets/use-cases/shipment-readiness/shared-report-sdk-preview/pending.png" width="782" height="376" alt="The shipment desk shows Pending input changes and disables Recalculate while the edited confirmation remains a draft." loading="lazy" decoding="async"></a>
+  <figcaption><span>Apply or discard the edits before calculation. Reports describe the last applied inputs; the last proposal remains available separately.</span><a href="../../../../assets/use-cases/shipment-readiness/shared-report-sdk-preview/pending.png">View full size</a></figcaption>
 </figure>
 
 </details>
@@ -272,7 +272,7 @@
 
 
 <figure class="article-code">
-  <figcaption id="code-pending">Apply changed case values through the SDK supplied-answer contract · <a href="../../../../assets/use-cases/sample-code/calculation-integration-2026-11-20/source/shipping/shipment-reservation-desk/src/reviewJourney.js.txt">src/reviewJourney.js, lines 144–145</a></figcaption>
+  <figcaption id="code-pending">Apply changed case values through the SDK supplied-answer contract · <a href="../../../../assets/use-cases/sample-code/shared-report-sdk-preview-2026-11-21/source/shipping/shipment-reservation-desk/src/reviewJourney.js.txt">src/reviewJourney.js, lines 144–145</a></figcaption>
   <pre tabindex="0" role="region" aria-labelledby="code-pending"><code class="language-javascript">    if (!equal(next.answers[questionId].value, value)) next = lab.workflows.answer({ run: next, questionId,
       value, status: isCalculationJourney(next) ? WORKFLOW_ANSWER_STATUS.SUPPLIED : WORKFLOW_ANSWER_STATUS.AWAITING_REVIEW, at: atTime(at) });</code></pre>
 </figure>
@@ -281,7 +281,7 @@
 
 
 <figure class="article-code">
-  <figcaption id="code-run">Recalculate relevant dependencies and reuse current complete results · <a href="../../../../assets/use-cases/sample-code/calculation-integration-2026-11-20/source/shipping/shipment-reservation-desk/src/reviewJourney.js.txt">src/reviewJourney.js, line 182</a></figcaption>
+  <figcaption id="code-run">Recalculate relevant dependencies and reuse current complete results · <a href="../../../../assets/use-cases/sample-code/shared-report-sdk-preview-2026-11-21/source/shipping/shipment-reservation-desk/src/reviewJourney.js.txt">src/reviewJourney.js, line 182</a></figcaption>
   <pre tabindex="0" role="region" aria-labelledby="code-run"><code class="language-javascript">  return lab.workflows.solve({ run: current, ...(execution ? { execution } : {}), createdAt: atTime(at) });</code></pre>
 </figure>
 
@@ -295,25 +295,32 @@
 
 
 <figure class="article-code">
-  <figcaption id="code-compare">Compare the new finding with its retained predecessor · <a href="../../../../assets/use-cases/sample-code/calculation-integration-2026-11-20/source/shipping/shipment-reservation-desk/src/useShipmentReview.js.txt">src/useShipmentReview.js, line 167</a></figcaption>
+  <figcaption id="code-compare">Compare the new finding with its retained predecessor · <a href="../../../../assets/use-cases/sample-code/shared-report-sdk-preview-2026-11-21/source/shipping/shipment-reservation-desk/src/useShipmentReview.js.txt">src/useShipmentReview.js, line 167</a></figcaption>
   <pre tabindex="0" role="region" aria-labelledby="code-compare"><code class="language-javascript">  const findingChanges = current &amp;&amp; earlierRun ? labRef.current.reports.compareFindings({ before: earlierRun, after: run }) : null;</code></pre>
 </figure>
 
 <p>The screen can show that available responses, preference or follow-up changed. It retains earlier reports as historical comparisons. Stale, invalid and incomplete findings do not become current recommendations.</p>
 <p>After resolving the native assessment, the integration separately inspects completion, a checked feasible witness and established preference. A limited search can retain a passing plan without establishing the preferred alternative; this desk withholds the ranked proposal. A complete finding that nothing passes is a finished, useful business result. Genuine preference ties are retained.</p>
-<p>The shared presentation uses the same native report:</p>
+<p>The SDK prepares one workflow output from the retained case:</p>
 
 
 <figure class="article-code">
-  <figcaption id="code-presentation">Render the SDK-materialized decision summary and inspection links · <a href="../../../../assets/use-cases/sample-code/calculation-integration-2026-11-20/source/shipping/shipment-reservation-desk/src/App.jsx.txt">src/App.jsx, lines 405–409</a></figcaption>
-  <pre tabindex="0" role="region" aria-labelledby="code-presentation"><code class="language-jsx">      : !desk.hasDraft &amp;&amp; status !== REVIEW_STATE.INVALID &amp;&amp; &lt;DecisionSummaryView
-          summary={output?.decisionSummary}
-          onOpenReport={openReport}
-          onViewProcess={() =&gt; setActiveTab(&#39;process&#39;)}
-        /&gt;)}</code></pre>
+  <figcaption id="code-output">Prepare the native workflow output for presentation · <a href="../../../../assets/use-cases/sample-code/shared-report-sdk-preview-2026-11-21/source/shipping/shipment-reservation-desk/src/reviewJourney.js.txt">src/reviewJourney.js, line 197</a></figcaption>
+  <pre tabindex="0" role="region" aria-labelledby="code-output"><code class="language-javascript">  const output = lab.workflows.output({ run: current });</code></pre>
 </figure>
 
-<p><strong>DecisionSummaryView</strong> puts the comparison, cost, arrival, booking cutoff and material blockers first. Supporting reports retain the requirements, schedule and full assessment. The process and dependency views answer separate questions without crowding the default screen. Rendering the screen does not run a second set of shipment rules.</p>
+<p>The desk gives that output and the authored definition to the shared report component:</p>
+
+
+<figure class="article-code">
+  <figcaption id="code-presentation">Present the SDK output through the shared workflow report component · <a href="../../../../assets/use-cases/sample-code/shared-report-sdk-preview-2026-11-21/source/shipping/shipment-reservation-desk/src/App.jsx.txt">src/App.jsx, lines 379–381</a></figcaption>
+  <pre tabindex="0" role="region" aria-labelledby="code-presentation"><code class="language-jsx">      : &lt;WorkflowReportsView output={output} definition={desk.journey?.definition} pending={desk.hasDraft}
+          blockedReason={status === REVIEW_STATE.INVALID ? &#39;Resolve the displayed input issues before using a current finding.&#39; : &#39;&#39;}
+          busy={running} readOnly /&gt;}</code></pre>
+</figure>
+
+<p><strong>WorkflowReportsView</strong> supplies the same <strong>Decision summary / Supporting reports / Decision process</strong> navigation as the Marketplace application. The summary leads with the answer and compact option comparison; its <strong>Options, Next actions, Assumptions and Questions</strong> tabs keep supporting context nearby. Domain configuration supplies the shipment wording and USD formatting.</p>
+<p>Maya can inspect Direct’s exact requirements or the process graph without choosing it. The component synchronizes those views and preserves the case. React still owns the record forms, Apply inputs and Calculate/Recalculate controls, storage and operating actions. The SDK and authored app calculate the findings; rendering them introduces no second set of shipment rules.</p>
 
 <h2 id="separate-choice">A supported calculation gives Maya a choice to make.</h2>
 <p>A complete current finding makes the supported arrangements available. Maya chooses Consolidated and selects <strong>Record chosen response</strong>; the integration retains the exact feasible plan and the assessment supporting her choice.</p>
@@ -321,8 +328,8 @@
 
 
 <figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/shipment-readiness/calculation-integration/chosen.png" tabindex="-1" aria-label="Open full-size shipment desk screenshot"><img src="../../../../assets/use-cases/shipment-readiness/calculation-integration/chosen.png" width="782" height="1722" alt="The operating handoff records a chosen shipment arrangement separately from sourced authority, reservation and delivery." loading="lazy" decoding="async"></a>
-  <figcaption><span>A current complete feasible calculation supports a choice; it does not create operating authority.</span><a href="../../../../assets/use-cases/shipment-readiness/calculation-integration/chosen.png">View full size</a></figcaption>
+  <a href="../../../../assets/use-cases/shipment-readiness/shared-report-sdk-preview/chosen.png" tabindex="-1" aria-label="Open full-size shipment desk screenshot"><img src="../../../../assets/use-cases/shipment-readiness/shared-report-sdk-preview/chosen.png" width="782" height="1787" alt="The operating handoff records a chosen shipment arrangement separately from sourced authority, reservation and delivery." loading="lazy" decoding="async"></a>
+  <figcaption><span>A current complete feasible calculation supports a choice; it does not create operating authority.</span><a href="../../../../assets/use-cases/shipment-readiness/shared-report-sdk-preview/chosen.png">View full size</a></figcaption>
 </figure>
 
 <p>The desk identifies responsible roles for supported follow-up, such as obtaining a current confirmation or release grant, and shows the latest modeled selection and preparation time. Requesting a document does not satisfy its requirement.</p>
@@ -358,7 +365,7 @@
 
 
 <figure class="article-code">
-  <figcaption id="code-operating">Retain a separate sourced operating record in native history · <a href="../../../../assets/use-cases/sample-code/calculation-integration-2026-11-20/source/shipping/shipment-reservation-desk/src/reviewJourney.js.txt">src/reviewJourney.js, lines 216–218</a></figcaption>
+  <figcaption id="code-operating">Retain a separate sourced operating record in native history · <a href="../../../../assets/use-cases/sample-code/shared-report-sdk-preview-2026-11-21/source/shipping/shipment-reservation-desk/src/reviewJourney.js.txt">src/reviewJourney.js, lines 216–218</a></figcaption>
   <pre tabindex="0" role="region" aria-labelledby="code-operating"><code class="language-javascript">  return lab.workflows.answer({ run, questionId: OPERATIONS, value: [...run.case.journeyOperations, operation],
     status: isCalculationJourney(run) ? WORKFLOW_ANSWER_STATUS.SUPPLIED : WORKFLOW_ANSWER_STATUS.ACCEPTED,
     ...(isCalculationJourney(run) ? {} : { actor, role: &#39;case-owner&#39; }), at: atTime(at) });</code></pre>
@@ -368,8 +375,8 @@
 
 
 <figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/shipment-readiness/calculation-integration/completed.png" tabindex="-1" aria-label="Open full-size shipment desk screenshot"><img src="../../../../assets/use-cases/shipment-readiness/calculation-integration/completed.png" width="782" height="2710" alt="Current authorization, a quote-linked reservation and accepted delivery of all units support the original shipment commitment." loading="lazy" decoding="async"></a>
-  <figcaption><span>The authored actual-event gate checks the supplied operating chain against the original promise.</span><a href="../../../../assets/use-cases/shipment-readiness/calculation-integration/completed.png">View full size</a></figcaption>
+  <a href="../../../../assets/use-cases/shipment-readiness/shared-report-sdk-preview/completed.png" tabindex="-1" aria-label="Open full-size shipment desk screenshot"><img src="../../../../assets/use-cases/shipment-readiness/shared-report-sdk-preview/completed.png" width="782" height="2773" alt="Current authorization, a quote-linked reservation and accepted delivery of all units support the original shipment commitment." loading="lazy" decoding="async"></a>
+  <figcaption><span>The authored actual-event gate checks the supplied operating chain against the original promise.</span><a href="../../../../assets/use-cases/shipment-readiness/shared-report-sdk-preview/completed.png">View full size</a></figcaption>
 </figure>
 
 <p>Only after the complete chain passes does <strong>Original delivery commitment completed</strong> show <strong>Recorded support passes</strong>. That conclusion is conditional on the supplied source records. A reservation, an escalation or a revised delivery promise alone cannot produce it.</p>
@@ -379,7 +386,7 @@
 <p>The downloaded continuation passes the same case back to the CLI. Reopening an unchanged current finding preserves the recorded choice and booking instead of replacing them with a needless assessment. Changed applied inputs need recalculation.</p>
 <p>Current support also follows later received records. In a separate verification branch, a newly supplied negative carrier status replaces the earlier positive reservation for that selected assessment and plan. The original positive stays in history, but current reservation and completion support become <strong>Not established</strong>. The integration supplies a reconciled current-status record; the desk does not infer message order from an external event stream.</p>
 <p>Maya can now distinguish a supported proposal, a chosen response, a booking and evidence that the original promise was met. Finance can inspect the $5,000 authority; operations can inspect the carrier record; the launch owner can inspect the accepted delivery.</p>
-<p>The <a href="../../../../assets/use-cases/sample-code/calculation-integration-2026-11-20/sample-code.zip"><strong>complete Shipment Reservation Desk implementation</strong></a> shows the forms, native workflow integration, local persistence and source-record handling. <strong>The CLI finds the cases needing attention. The SDK lets the team continue one case through a current calculation, a business choice and its operating evidence.</strong></p>
+<p>The <a href="../../../../assets/use-cases/sample-code/shared-report-sdk-preview-2026-11-21/sample-code.zip"><strong>complete Shipment Reservation Desk implementation</strong></a> shows the forms, native workflow integration, local persistence and source-record handling. <strong>The CLI finds the cases needing attention. The SDK lets the team continue one case through a current calculation, a business choice and its operating evidence.</strong></p>
 
 <footer class="use-case-article-references" aria-labelledby="source">
   <details class="disclosure use-case-source-disclosure">
@@ -391,8 +398,8 @@
 <p>Terry Clear’s <a href="https://www.8thandwalton.com/blog/case-study-walmart-launch">8th &amp; Walton Walmart launch case</a>, June 4, 2025, describes corrected order alignment, cancelled and reissued purchase orders, and changed freight terms. It motivates this fictional scenario and does not establish a Decision Lab customer deployment.</p>
         <p><a href="https://corporate.walmart.com/content/dam/corporate/documents/suppliers/apply-to-be-a-supplier/supplier-checklist.pdf#page=11">Walmart’s Supplier Checklist, page 11</a>, is the series’ original ship-point setup reference. The cases, confirmation policy, cutoffs, authority and delivery records here are teaching declarations.</p>
         <h3 id="source-and-captures">Source and captures</h3>
-<p>The <a href="https://github.com/hermodlabs/sample_code/tree/main/shipping/shipment-reservation-desk">sample repository</a> contains the related public examples. The <a href="../../../../assets/use-cases/sample-code/calculation-integration-2026-11-20/sample-code.zip" download>complete calculation-mode implementation</a> retains the exact code shown here; its <a href="../../../../assets/use-cases/sample-code/calculation-integration-2026-11-20/manifest.json">source manifest</a> records file identities. The <a href="https://github.com/hermodlabs/sample_code/tree/f3584a5ec5aef6594b640b5e9d10f8e06041d4eb/shipping/shipment-reservation-desk">earlier public revision</a> remains a separate reference.</p>
-        <p>The <a href="../../../../assets/use-cases/shipment-readiness/calculation-integration/verification.json">paired-view receipt</a> retains fresh native assessments and exact changed fields. The fictional replacement is newly supplied evidence, not an alteration to the old document. The <a href="../../../../assets/use-cases/shipment-readiness/calculation-integration/verification.json">new verification record</a> identifies the unmodified production client, installed package hashes, CLI-to-browser imports, native results, complete continuation importing, save/reopen checks and unedited captures.</p>
+<p>The <a href="https://github.com/hermodlabs/sample_code/tree/main/shipping/shipment-reservation-desk">sample repository</a> contains the related public examples. The <a href="../../../../assets/use-cases/sample-code/shared-report-sdk-preview-2026-11-21/sample-code.zip" download>complete calculation-mode implementation</a> retains the exact code shown here; its <a href="../../../../assets/use-cases/sample-code/shared-report-sdk-preview-2026-11-21/manifest.json">source manifest</a> records file identities. The <a href="https://github.com/hermodlabs/sample_code/tree/f3584a5ec5aef6594b640b5e9d10f8e06041d4eb/shipping/shipment-reservation-desk">earlier public revision</a> remains a separate reference.</p>
+        <p>The <a href="../../../../assets/use-cases/shipment-readiness/shared-report-sdk-preview/verification.json">paired-view receipt</a> retains fresh native assessments and exact changed fields. The fictional replacement is newly supplied evidence, not an alteration to the old document. The <a href="../../../../assets/use-cases/shipment-readiness/shared-report-sdk-preview/verification.json">shared-report preview record</a> identifies the frozen, user-verified local production build, served asset hashes, CLI-to-browser imports, native results, save/reopen checks and unedited captures. These are local preview captures; they do not claim that the updated app has been published. Source-file identities are retained separately from the built bytes.</p>
       </div>
       <div>
         <h3 id="worked-example-boundaries">Worked-example boundaries</h3>

@@ -1,0 +1,1521 @@
+{
+  "format": "decision-lab-calculation-integration-source/1",
+  "kind": "implemented-working-copy",
+  "createdAt": "2026-11-22T02:50:20.774959+00:00",
+  "repository": "hermodlabs/sample_code",
+  "publicReferenceCommit": "f3584a5ec5aef6594b640b5e9d10f8e06041d4eb",
+  "publicRevisionClaimed": false,
+  "method": "Exact read-only source bytes of current SDK and CLI sample clients and shared helpers, retained separately from verified existing production-build bytes. Does not assert a published revision or reproducibility of those builds from this worktree.",
+  "archive": {
+    "file": "sample-code.zip",
+    "bytes": 1302566,
+    "sha256": "c8e92975e5403dad9863e9f1e9caf5d26aa34593f4492046d141f860212aea3d"
+  },
+  "files": [
+    {
+      "file": "README.md",
+      "retainedFile": "source/README.md.txt",
+      "bytes": 5462,
+      "sha256": "c6db53822b3842808beafa81a8f34f39b579edbfe2ffcb24dc9f871906e75a81",
+      "blob": "8f9f17568df91e51798bed79fcf64055c1e642a1"
+    },
+    {
+      "file": "gifting/README.md",
+      "retainedFile": "source/gifting/README.md.txt",
+      "bytes": 2657,
+      "sha256": "b3ffe202f41f0e58bcffe739633064c6a641bb160abac61996b743e2362af0a7",
+      "blob": "a75df56a935ce6fd0832313d0223d0c6ff557e92"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/.gitignore",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/.gitignore.txt",
+      "bytes": 29,
+      "sha256": "dd9f7ed5d965def0331e59341df672dda4c3b070343beec0a8fdd94e63a025a9",
+      "blob": "e1a0496a9f5531aa2d2725b981703438fb525066"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/README.md",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/README.md.txt",
+      "bytes": 6381,
+      "sha256": "c3b52d57e35111193b9de67ceddc825d9623691556daf60324389840c965d0b8",
+      "blob": "199d68669eb3a185eae85f29a8e3db48e2db9ad7"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/index.html",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/index.html.txt",
+      "bytes": 468,
+      "sha256": "d04e2da86231386908727ca7820da741ce5fac6e3d7b42c7901b3af622e5a404",
+      "blob": "8de74a59d0c3d3294327241c3a9986989eb8c661"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/package.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/package.json.txt",
+      "bytes": 753,
+      "sha256": "8ffd92a0ced9ff0bd501ee183fbaaa2e8cbfbc25b38644de20295330def3df22",
+      "blob": "6e5cb1a6dc27f327abcc25f3a0cef9de52b66171"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/cases/confirmed.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/cases/confirmed.json.txt",
+      "bytes": 6790,
+      "sha256": "2cbeeb32a7c8abcb7adca990cfc8adfa0a69f231f0f63ffd97fe071a8f125921",
+      "blob": "bd9035158292451880fd7ff59f23f7e1f4056072"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/cases/one-day-confirmed.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/cases/one-day-confirmed.json.txt",
+      "bytes": 7111,
+      "sha256": "e8de9e9543c59f674377ac48d24fe6cc6a391aef9e9ee4f1c985ee97c48cfd89",
+      "blob": "5421bf6bd62fdd67c49a47aeebc4102b5723a987"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/cases/one-day-expired.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/cases/one-day-expired.json.txt",
+      "bytes": 7169,
+      "sha256": "9b99abd5910142aa92aabcd98985d46e0bbb6c0dc371ca9984f261f0eb69b635",
+      "blob": "8d302d8e86aa924a7b535bfbaa58c2b6688d3eac"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/cases/one-day-late.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/cases/one-day-late.json.txt",
+      "bytes": 7571,
+      "sha256": "632166f20e76ff0c5c9f6604942b04fe3e5dedbfb217b815d82003da06928faf",
+      "blob": "4188e583598dc838bcd2660131391309dc056eea"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/cases/one-day-stale.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/cases/one-day-stale.json.txt",
+      "bytes": 7109,
+      "sha256": "3cb2cb2d9cd74a3998ec748399a196dad7a18b176ad0000fb9caf4c0280d9a6b",
+      "blob": "9c4a17a026ddd2cd8bf5f5aeeb5b405891c13d0c"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/cases/permissions.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/cases/permissions.json.txt",
+      "bytes": 6798,
+      "sha256": "1b5b1cd96a9b34e09fb1f97b6920b1dfd7bc660764facadbf6b29879577fd314",
+      "blob": "f228336416783a3090456740ef5f7680fcafe047"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/cases/stale.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/cases/stale.json.txt",
+      "bytes": 6835,
+      "sha256": "33d5ce78569816f495081f83d089ba73b5ec5275a4eaa1d5495a19a2bb71451c",
+      "blob": "42bf2306ef9579271889ba5343b849c88463212e"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/config.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/config.json.txt",
+      "bytes": 6293,
+      "sha256": "3d04ed0f823ea756076aa264eed168c8416da954629fb444c38b8e8dbbe2d51b",
+      "blob": "8d46564f2274d1da0f8c5c1f41fefeec880bb416"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/gifting.app.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/gifting.app.json.txt",
+      "bytes": 124710,
+      "sha256": "7f93033c507b26ceead2fff7346f27a525a73c54208352644092f6887791c150",
+      "blob": "f690f7728d0c1d485d3f3e5c5978cbc234d61a04"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-config.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-config.json.txt",
+      "bytes": 7344,
+      "sha256": "6a8b5e641509ee54579d8052aabd67a9728ab1dabf9fc6ff5b3b41b3ee7a4de1",
+      "blob": "17fcf9fdb4db826f28721d65ab386467943d7082"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v3/cases/ample-window.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v3/cases/ample-window.json.txt",
+      "bytes": 7777,
+      "sha256": "059c0a71af6209b82d310fe2d5d31486c10edece44be90a42e951baa6868f97d",
+      "blob": "c3f084bfdb6a75cf65e03ff8426b48b9260a3cfe"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v3/cases/missed-window.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v3/cases/missed-window.json.txt",
+      "bytes": 7792,
+      "sha256": "ac7d37accd1d8b50c9e52c2f48940aa6030834ccff2a4c13a6e4f525af927df3",
+      "blob": "78b0a3672cb03128e102adc72dcfecb74636bb96"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v3/cases/supported-smaller-correction.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v3/cases/supported-smaller-correction.json.txt",
+      "bytes": 7798,
+      "sha256": "6d31c698eced9cc18e9a95be2408deea705d5ce44758b17d89c36403a3aee286",
+      "blob": "a0cf34f9dd85ae516bdfb9725fa0f5fbec088499"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v3/cases/urgent-missing-booking.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v3/cases/urgent-missing-booking.json.txt",
+      "bytes": 7108,
+      "sha256": "17bf10dc18909a653d729fd4c7e2ea48c326ffd9c42ccd9206f46f139a91cbff",
+      "blob": "8540fe935f00e0c8cc0a9a61f6c225e2d15f1b90"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v3/cases/urgent-stale-booking.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v3/cases/urgent-stale-booking.json.txt",
+      "bytes": 7792,
+      "sha256": "49a3ce733a61e45f685a13e67010117180f8d5c3a9527595f661474c2236a165",
+      "blob": "ed37941b693f45103fd98c891aee04fca701c6a5"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v3/cases/urgent-window.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v3/cases/urgent-window.json.txt",
+      "bytes": 7792,
+      "sha256": "eda63ca3308d1f34820a10d076f8c20ecaba3bcf5d6fce30d4e1bfded89505e3",
+      "blob": "9b8932d15e91dd1064c4176a6376a42fa0a249f9"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v3/configuration.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v3/configuration.json.txt",
+      "bytes": 9996,
+      "sha256": "6b54e9abf5f54b23ef2bebd25f2b5507de6b9db2466daedde685aac3497b6107",
+      "blob": "7c83654bb6dac4aff6ae82d846d937d65ebf0c2a"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v3/evidence.app.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v3/evidence.app.json.txt",
+      "bytes": 140923,
+      "sha256": "a320c461ce25edefb665a58bc1e73749025eb535a10ece2d8911ed31d4b552d7",
+      "blob": "96e190309acef1cb7175c2a93b572763fadd46f5"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v3/planning.app.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v3/planning.app.json.txt",
+      "bytes": 126650,
+      "sha256": "8ef91eee11e7f0295d283ac05f0b213decdc1a63dbad4f22214422a2164b344d",
+      "blob": "1e61fc9abc2ba48862c6eef0dd4b002290d80fb4"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v3/template.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v3/template.json.txt",
+      "bytes": 780068,
+      "sha256": "85c60c2332fd96b3b2cb38f027e204d61a0e77425a55de506449ac413a08b43b",
+      "blob": "837e13d42ee09f21a4da452c3fa102caea9e8fc4"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v3/workflow.definition.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v3/workflow.definition.json.txt",
+      "bytes": 715175,
+      "sha256": "574f5a7627b01ce5f0c484369990ccb15bca7f288063ad4d2564ae7235f93409",
+      "blob": "4ff0ccd726f4eac7272bd3377c9b8fabb7ab4c4c"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v4/README.md",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v4/README.md.txt",
+      "bytes": 392,
+      "sha256": "d887156a14686edada0193e0ef057e3d2168656b242641b0761e8eaec67e4804",
+      "blob": "3e8fb72d395386629f110b124548b2081a732745"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v4/campaigns.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v4/campaigns.json.txt",
+      "bytes": 1083,
+      "sha256": "c7ae501f6e1b97066e86d2fd14945a8f6248f374f405dca742138b24ff71f421",
+      "blob": "7362d0d198166abeda8e18d39c29689a41c432d2"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v4/cases/ample-window.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v4/cases/ample-window.json.txt",
+      "bytes": 7777,
+      "sha256": "059c0a71af6209b82d310fe2d5d31486c10edece44be90a42e951baa6868f97d",
+      "blob": "c3f084bfdb6a75cf65e03ff8426b48b9260a3cfe"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v4/cases/missed-window.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v4/cases/missed-window.json.txt",
+      "bytes": 7792,
+      "sha256": "ac7d37accd1d8b50c9e52c2f48940aa6030834ccff2a4c13a6e4f525af927df3",
+      "blob": "78b0a3672cb03128e102adc72dcfecb74636bb96"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v4/cases/supported-smaller-correction.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v4/cases/supported-smaller-correction.json.txt",
+      "bytes": 7798,
+      "sha256": "6d31c698eced9cc18e9a95be2408deea705d5ce44758b17d89c36403a3aee286",
+      "blob": "a0cf34f9dd85ae516bdfb9725fa0f5fbec088499"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v4/cases/urgent-missing-booking.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v4/cases/urgent-missing-booking.json.txt",
+      "bytes": 7108,
+      "sha256": "17bf10dc18909a653d729fd4c7e2ea48c326ffd9c42ccd9206f46f139a91cbff",
+      "blob": "8540fe935f00e0c8cc0a9a61f6c225e2d15f1b90"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v4/cases/urgent-stale-booking.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v4/cases/urgent-stale-booking.json.txt",
+      "bytes": 7792,
+      "sha256": "49a3ce733a61e45f685a13e67010117180f8d5c3a9527595f661474c2236a165",
+      "blob": "ed37941b693f45103fd98c891aee04fca701c6a5"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v4/cases/urgent-window.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v4/cases/urgent-window.json.txt",
+      "bytes": 7792,
+      "sha256": "eda63ca3308d1f34820a10d076f8c20ecaba3bcf5d6fce30d4e1bfded89505e3",
+      "blob": "9b8932d15e91dd1064c4176a6376a42fa0a249f9"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v4/configuration.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v4/configuration.json.txt",
+      "bytes": 9996,
+      "sha256": "6b54e9abf5f54b23ef2bebd25f2b5507de6b9db2466daedde685aac3497b6107",
+      "blob": "7c83654bb6dac4aff6ae82d846d937d65ebf0c2a"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v4/evidence.app.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v4/evidence.app.json.txt",
+      "bytes": 140923,
+      "sha256": "a320c461ce25edefb665a58bc1e73749025eb535a10ece2d8911ed31d4b552d7",
+      "blob": "96e190309acef1cb7175c2a93b572763fadd46f5"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v4/journey-config.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v4/journey-config.json.txt",
+      "bytes": 7344,
+      "sha256": "6a8b5e641509ee54579d8052aabd67a9728ab1dabf9fc6ff5b3b41b3ee7a4de1",
+      "blob": "17fcf9fdb4db826f28721d65ab386467943d7082"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v4/manifest.calculation.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v4/manifest.calculation.json.txt",
+      "bytes": 588,
+      "sha256": "7a74be9789590ecc033b380effaee407e7bc3bc74632783aa2a17689526deab5",
+      "blob": "6c38045f3b40ab6dc51c554a917cda8676bbcf08"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v4/planning.app.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v4/planning.app.json.txt",
+      "bytes": 126650,
+      "sha256": "8ef91eee11e7f0295d283ac05f0b213decdc1a63dbad4f22214422a2164b344d",
+      "blob": "1e61fc9abc2ba48862c6eef0dd4b002290d80fb4"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v4/screening/ample-window.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v4/screening/ample-window.json.txt",
+      "bytes": 6588,
+      "sha256": "fcd4dddd3bc42468518b4fdc9345e25a34dbeebf6cb3690464849ee3fdee4f29",
+      "blob": "7cf16f81ab9cdc6e85b56d79849904ef64cb4181"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v4/screening/missed-window.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v4/screening/missed-window.json.txt",
+      "bytes": 6606,
+      "sha256": "4bd875341fc6cc972c83502c0d9c8b9e232deb6a7681ce90a71083cf53776663",
+      "blob": "27defc690d123b0c31ed250f8c852fc59a31d116"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v4/screening/supported-smaller-correction.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v4/screening/supported-smaller-correction.json.txt",
+      "bytes": 6606,
+      "sha256": "e30a9a5a108af15848aef3f6c30df358a7732dd9702a822a882d68eaa17704ea",
+      "blob": "522bcf071a7098a7599113f7bcbac7346249cf56"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v4/screening/urgent-missing-booking.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v4/screening/urgent-missing-booking.json.txt",
+      "bytes": 6019,
+      "sha256": "57267c09afa12f06fcb46193dfb34b18fde9d22c644a5ff7cd8e2c69d9fa277a",
+      "blob": "a8f0d2992818417ac8b0887f187a9b6bb8d95088"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v4/screening/urgent-stale-booking.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v4/screening/urgent-stale-booking.json.txt",
+      "bytes": 6606,
+      "sha256": "e9ecabbcb83d4f82637f45e803e844077860346c30636c4397ad399b46f0131f",
+      "blob": "816095f1848185b357bba63ad34ccf688ca0b051"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v4/screening/urgent-window.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v4/screening/urgent-window.json.txt",
+      "bytes": 6606,
+      "sha256": "a69c0dfbcea57de45845b26f792363971d3da4f36073f2302934da9efac41d4e",
+      "blob": "5cc0250cd081ebf80916aa7f6a83179c6bf2d96a"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v4/template.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v4/template.json.txt",
+      "bytes": 780068,
+      "sha256": "85c60c2332fd96b3b2cb38f027e204d61a0e77425a55de506449ac413a08b43b",
+      "blob": "837e13d42ee09f21a4da452c3fa102caea9e8fc4"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v4/workflow-releases/4.0.0/workflow.definition.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v4/workflow-releases/4.0.0/workflow.definition.json.txt",
+      "bytes": 654257,
+      "sha256": "3f415fc544db7c2f83360e88ef88ece797abae8f9be2c43fd628c29ca5f42475",
+      "blob": "e15d1f7403dc7e34888b85a21431340ba1a8999e"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/public/data/journey-v4/workflow.definition.json",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/public/data/journey-v4/workflow.definition.json.txt",
+      "bytes": 663900,
+      "sha256": "2782c8e408323511798116eba6e4a72c05c1419b36e2ec862c8778979f98934b",
+      "blob": "0daac32b86041609f10e89b11b01897ff8bf99f4"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/src/App.jsx",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/src/App.jsx.txt",
+      "bytes": 23939,
+      "sha256": "f6911defa7dbc1bbd8889d10dc8ab1948b14885c3b331d5984d27d7673ef7131",
+      "blob": "be5b8a824bd15803bea3bd5ccd7d06f746daa693"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/src/JourneyReports.jsx",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/src/JourneyReports.jsx.txt",
+      "bytes": 396,
+      "sha256": "abc92c272d5f7fc92a6d057f89cee522f79713541dd89abd769ae261e54a711f",
+      "blob": "d6c1d15ccd442dbe90e86d4a6a55389274b3edaa"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/src/gifting.js",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/src/gifting.js.txt",
+      "bytes": 15054,
+      "sha256": "01aba04b317146e2cd336f508c9cbf5ae524d9f7898a50840be4e8a9328ed4c0",
+      "blob": "5ad6341e05c9bbd726963c2ff9f94e66b76e6761"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/src/giftingJourney.js",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/src/giftingJourney.js.txt",
+      "bytes": 4191,
+      "sha256": "a9e53736820c4556ac16cd8aa1326d4b4138480d2871d8cd64eef3f588c1eb2a",
+      "blob": "689620b6e45fd1d822576c5ca26b1e89b2e2f216"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/src/main.jsx",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/src/main.jsx.txt",
+      "bytes": 289,
+      "sha256": "9d71e89fc8b2bc95ea0726ae6348fb07259c349e02f68604c7ecd417545d689d",
+      "blob": "9f31163f0d9265074427ce064f23de120f4912e5"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/src/reviewJourney.js",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/src/reviewJourney.js.txt",
+      "bytes": 20086,
+      "sha256": "2818d897eadca17a3e274883b14c2303fbbe82b8b227ef6c06d2fde7ab3fd795",
+      "blob": "1ba0dc9df7856978ff57ad7b2132e996c73ddb91"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/src/reviewState.js",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/src/reviewState.js.txt",
+      "bytes": 462,
+      "sha256": "3d566dae352ff4d0dbb09bf6b0bd36516b252e628f44d5e412c1e19a94d55d17",
+      "blob": "7e06306ccd704bdb61125fba2fce990d80fd51b4"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/src/styles.css",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/src/styles.css.txt",
+      "bytes": 11037,
+      "sha256": "340516f767b6985d8cda1dbf93b03d73026d8901a7eebc498bfeef591359f235",
+      "blob": "12fbdd3fcd7b9d747f75e0ee13ac1164cef3ca9e"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/src/useGiftJourney.js",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/src/useGiftJourney.js.txt",
+      "bytes": 10953,
+      "sha256": "96406c0ad16d6d76cbd0569de506f689805674b97047840ae6baeddba736e7d0",
+      "blob": "7033b79d6aa09562300f2071dee80c6aa8761dd4"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/src/useGiftReview.js",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/src/useGiftReview.js.txt",
+      "bytes": 9555,
+      "sha256": "e50ea23515553363c7f64a822d9f8f54a23c6f3e43d6b35fcd92897e5235f7de",
+      "blob": "81920ccd4fea0975b071d0c798b0818b3239ec7d"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/test/booking-pair.mjs",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/test/booking-pair.mjs.txt",
+      "bytes": 4995,
+      "sha256": "4a8ee031307f39f11c05b2da0a1a55b75a459c6b223f91b04947c76d663a1b7f",
+      "blob": "fce443b1b8f227e2da38746b8098ae26d95bda96"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/test/browser.mjs",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/test/browser.mjs.txt",
+      "bytes": 17779,
+      "sha256": "edab726c4c9d3e06554b64dd319617466e5910889333028cd4339e3544b0bb67",
+      "blob": "314aac3080be425ae4704d2c13f52a5dec82957b"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/test/gifting.test.js",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/test/gifting.test.js.txt",
+      "bytes": 16450,
+      "sha256": "66971421f27f9ea5f1d83a8a7d374090166ee296009bdd734291fed5ea1938c3",
+      "blob": "5a9466b1bec16be1c3c5a2f37aacd0d0f07a61a4"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/test/journey.test.js",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/test/journey.test.js.txt",
+      "bytes": 15034,
+      "sha256": "12e41d2bc1985a23fa6ce4793d197be49bf6ed21dd4e2f732945583e04ae7156",
+      "blob": "02aee119c962a68e477329752e4ebacd3d2dda61"
+    },
+    {
+      "file": "gifting/gift-kit-handoff-desk/vite.config.mjs",
+      "retainedFile": "source/gifting/gift-kit-handoff-desk/vite.config.mjs.txt",
+      "bytes": 536,
+      "sha256": "2ee21cb92b05cf4569fe7862ee6f678242fd4fef7bb9f7281199afedac759f63",
+      "blob": "160d758f55c6c6219076c48ab1d056d3b37af4b6"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/.gitignore",
+      "retainedFile": "source/gifting/gift-kit-preflight/.gitignore.txt",
+      "bytes": 23,
+      "sha256": "a11fd9df3bb4d06dcc5da3144629a859000321209e313d1b6ff7864b89935d5d",
+      "blob": "cec4c201b9ab179ac8d31b323b634f90cb8d52f5"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/README.md",
+      "retainedFile": "source/gifting/gift-kit-preflight/README.md.txt",
+      "bytes": 6495,
+      "sha256": "9f4ed4c83aa49b6f8e6fcff2dbff3eba2dc77fda6d3e02b3bb196f20bf03f1ef",
+      "blob": "6ab89b8f84a9d9d04cf99ee8e8ae7bbe0c39560f"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/continue-review.mjs",
+      "retainedFile": "source/gifting/gift-kit-preflight/continue-review.mjs.txt",
+      "bytes": 5813,
+      "sha256": "8a9740a05a8008568fb312d91be29d163735026331f9a4539011cbc6b321331c",
+      "blob": "ed747f726281945bd27f33342421da2fd2d18960"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/config.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/config.json.txt",
+      "bytes": 6293,
+      "sha256": "3d04ed0f823ea756076aa264eed168c8416da954629fb444c38b8e8dbbe2d51b",
+      "blob": "8d46564f2274d1da0f8c5c1f41fefeec880bb416"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/gifting.app.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/gifting.app.json.txt",
+      "bytes": 124710,
+      "sha256": "7f93033c507b26ceead2fff7346f27a525a73c54208352644092f6887791c150",
+      "blob": "f690f7728d0c1d485d3f3e5c5978cbc234d61a04"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-config.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-config.json.txt",
+      "bytes": 7344,
+      "sha256": "6a8b5e641509ee54579d8052aabd67a9728ab1dabf9fc6ff5b3b41b3ee7a4de1",
+      "blob": "17fcf9fdb4db826f28721d65ab386467943d7082"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v3/configuration.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v3/configuration.json.txt",
+      "bytes": 9996,
+      "sha256": "6b54e9abf5f54b23ef2bebd25f2b5507de6b9db2466daedde685aac3497b6107",
+      "blob": "7c83654bb6dac4aff6ae82d846d937d65ebf0c2a"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v3/evidence.app.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v3/evidence.app.json.txt",
+      "bytes": 140923,
+      "sha256": "a320c461ce25edefb665a58bc1e73749025eb535a10ece2d8911ed31d4b552d7",
+      "blob": "96e190309acef1cb7175c2a93b572763fadd46f5"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v3/planning.app.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v3/planning.app.json.txt",
+      "bytes": 126650,
+      "sha256": "8ef91eee11e7f0295d283ac05f0b213decdc1a63dbad4f22214422a2164b344d",
+      "blob": "1e61fc9abc2ba48862c6eef0dd4b002290d80fb4"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v3/template.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v3/template.json.txt",
+      "bytes": 780068,
+      "sha256": "85c60c2332fd96b3b2cb38f027e204d61a0e77425a55de506449ac413a08b43b",
+      "blob": "837e13d42ee09f21a4da452c3fa102caea9e8fc4"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v3/workflow.definition.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v3/workflow.definition.json.txt",
+      "bytes": 715175,
+      "sha256": "574f5a7627b01ce5f0c484369990ccb15bca7f288063ad4d2564ae7235f93409",
+      "blob": "4ff0ccd726f4eac7272bd3377c9b8fabb7ab4c4c"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v4/README.md",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v4/README.md.txt",
+      "bytes": 392,
+      "sha256": "d887156a14686edada0193e0ef057e3d2168656b242641b0761e8eaec67e4804",
+      "blob": "3e8fb72d395386629f110b124548b2081a732745"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v4/campaigns.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v4/campaigns.json.txt",
+      "bytes": 1083,
+      "sha256": "c7ae501f6e1b97066e86d2fd14945a8f6248f374f405dca742138b24ff71f421",
+      "blob": "7362d0d198166abeda8e18d39c29689a41c432d2"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v4/cases/ample-window.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v4/cases/ample-window.json.txt",
+      "bytes": 7777,
+      "sha256": "059c0a71af6209b82d310fe2d5d31486c10edece44be90a42e951baa6868f97d",
+      "blob": "c3f084bfdb6a75cf65e03ff8426b48b9260a3cfe"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v4/cases/missed-window.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v4/cases/missed-window.json.txt",
+      "bytes": 7792,
+      "sha256": "ac7d37accd1d8b50c9e52c2f48940aa6030834ccff2a4c13a6e4f525af927df3",
+      "blob": "78b0a3672cb03128e102adc72dcfecb74636bb96"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v4/cases/supported-smaller-correction.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v4/cases/supported-smaller-correction.json.txt",
+      "bytes": 7798,
+      "sha256": "6d31c698eced9cc18e9a95be2408deea705d5ce44758b17d89c36403a3aee286",
+      "blob": "a0cf34f9dd85ae516bdfb9725fa0f5fbec088499"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v4/cases/urgent-missing-booking.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v4/cases/urgent-missing-booking.json.txt",
+      "bytes": 7108,
+      "sha256": "17bf10dc18909a653d729fd4c7e2ea48c326ffd9c42ccd9206f46f139a91cbff",
+      "blob": "8540fe935f00e0c8cc0a9a61f6c225e2d15f1b90"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v4/cases/urgent-stale-booking.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v4/cases/urgent-stale-booking.json.txt",
+      "bytes": 7792,
+      "sha256": "49a3ce733a61e45f685a13e67010117180f8d5c3a9527595f661474c2236a165",
+      "blob": "ed37941b693f45103fd98c891aee04fca701c6a5"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v4/cases/urgent-window.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v4/cases/urgent-window.json.txt",
+      "bytes": 7792,
+      "sha256": "eda63ca3308d1f34820a10d076f8c20ecaba3bcf5d6fce30d4e1bfded89505e3",
+      "blob": "9b8932d15e91dd1064c4176a6376a42fa0a249f9"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v4/configuration.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v4/configuration.json.txt",
+      "bytes": 9996,
+      "sha256": "6b54e9abf5f54b23ef2bebd25f2b5507de6b9db2466daedde685aac3497b6107",
+      "blob": "7c83654bb6dac4aff6ae82d846d937d65ebf0c2a"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v4/evidence.app.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v4/evidence.app.json.txt",
+      "bytes": 140923,
+      "sha256": "a320c461ce25edefb665a58bc1e73749025eb535a10ece2d8911ed31d4b552d7",
+      "blob": "96e190309acef1cb7175c2a93b572763fadd46f5"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v4/journey-config.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v4/journey-config.json.txt",
+      "bytes": 7344,
+      "sha256": "6a8b5e641509ee54579d8052aabd67a9728ab1dabf9fc6ff5b3b41b3ee7a4de1",
+      "blob": "17fcf9fdb4db826f28721d65ab386467943d7082"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v4/manifest.calculation.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v4/manifest.calculation.json.txt",
+      "bytes": 588,
+      "sha256": "7a74be9789590ecc033b380effaee407e7bc3bc74632783aa2a17689526deab5",
+      "blob": "6c38045f3b40ab6dc51c554a917cda8676bbcf08"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v4/planning.app.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v4/planning.app.json.txt",
+      "bytes": 126650,
+      "sha256": "8ef91eee11e7f0295d283ac05f0b213decdc1a63dbad4f22214422a2164b344d",
+      "blob": "1e61fc9abc2ba48862c6eef0dd4b002290d80fb4"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v4/screening/ample-window.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v4/screening/ample-window.json.txt",
+      "bytes": 6588,
+      "sha256": "fcd4dddd3bc42468518b4fdc9345e25a34dbeebf6cb3690464849ee3fdee4f29",
+      "blob": "7cf16f81ab9cdc6e85b56d79849904ef64cb4181"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v4/screening/missed-window.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v4/screening/missed-window.json.txt",
+      "bytes": 6606,
+      "sha256": "4bd875341fc6cc972c83502c0d9c8b9e232deb6a7681ce90a71083cf53776663",
+      "blob": "27defc690d123b0c31ed250f8c852fc59a31d116"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v4/screening/supported-smaller-correction.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v4/screening/supported-smaller-correction.json.txt",
+      "bytes": 6606,
+      "sha256": "e30a9a5a108af15848aef3f6c30df358a7732dd9702a822a882d68eaa17704ea",
+      "blob": "522bcf071a7098a7599113f7bcbac7346249cf56"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v4/screening/urgent-missing-booking.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v4/screening/urgent-missing-booking.json.txt",
+      "bytes": 6019,
+      "sha256": "57267c09afa12f06fcb46193dfb34b18fde9d22c644a5ff7cd8e2c69d9fa277a",
+      "blob": "a8f0d2992818417ac8b0887f187a9b6bb8d95088"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v4/screening/urgent-stale-booking.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v4/screening/urgent-stale-booking.json.txt",
+      "bytes": 6606,
+      "sha256": "e9ecabbcb83d4f82637f45e803e844077860346c30636c4397ad399b46f0131f",
+      "blob": "816095f1848185b357bba63ad34ccf688ca0b051"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v4/screening/urgent-window.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v4/screening/urgent-window.json.txt",
+      "bytes": 6606,
+      "sha256": "a69c0dfbcea57de45845b26f792363971d3da4f36073f2302934da9efac41d4e",
+      "blob": "5cc0250cd081ebf80916aa7f6a83179c6bf2d96a"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v4/template.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v4/template.json.txt",
+      "bytes": 780068,
+      "sha256": "85c60c2332fd96b3b2cb38f027e204d61a0e77425a55de506449ac413a08b43b",
+      "blob": "837e13d42ee09f21a4da452c3fa102caea9e8fc4"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v4/workflow-releases/4.0.0/workflow.definition.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v4/workflow-releases/4.0.0/workflow.definition.json.txt",
+      "bytes": 654257,
+      "sha256": "3f415fc544db7c2f83360e88ef88ece797abae8f9be2c43fd628c29ca5f42475",
+      "blob": "e15d1f7403dc7e34888b85a21431340ba1a8999e"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/data/journey-v4/workflow.definition.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/data/journey-v4/workflow.definition.json.txt",
+      "bytes": 663900,
+      "sha256": "2782c8e408323511798116eba6e4a72c05c1419b36e2ec862c8778979f98934b",
+      "blob": "0daac32b86041609f10e89b11b01897ff8bf99f4"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/campaigns.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/campaigns.json.txt",
+      "bytes": 434,
+      "sha256": "2ea0735e0eaa7252769f8f534a532f2f6c863895b65e82902c04832e417d4189",
+      "blob": "d34735f3e5f424568810b12590635833b44f7fd2"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/campaigns.one-day.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/campaigns.one-day.json.txt",
+      "bytes": 463,
+      "sha256": "27bc4a9bc35e1fe16d57ee32b3fdf2b81bb680afd413709d74bfcb9ef08c90dd",
+      "blob": "90cdae8196232c998c4fe9485aede9a5055a6461"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/cases/confirmed.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/cases/confirmed.json.txt",
+      "bytes": 6790,
+      "sha256": "2cbeeb32a7c8abcb7adca990cfc8adfa0a69f231f0f63ffd97fe071a8f125921",
+      "blob": "bd9035158292451880fd7ff59f23f7e1f4056072"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/cases/invalid.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/cases/invalid.json.txt",
+      "bytes": 6759,
+      "sha256": "33bc1c0c1587b7f15d829036605a54243f8004ac49d8f8f85766211a377b5c4e",
+      "blob": "caf7db4e6f5064fce39f6f9695cbb6cd67d5a482"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/cases/one-day-confirmed.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/cases/one-day-confirmed.json.txt",
+      "bytes": 7111,
+      "sha256": "e8de9e9543c59f674377ac48d24fe6cc6a391aef9e9ee4f1c985ee97c48cfd89",
+      "blob": "5421bf6bd62fdd67c49a47aeebc4102b5723a987"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/cases/one-day-expired.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/cases/one-day-expired.json.txt",
+      "bytes": 7169,
+      "sha256": "9b99abd5910142aa92aabcd98985d46e0bbb6c0dc371ca9984f261f0eb69b635",
+      "blob": "8d302d8e86aa924a7b535bfbaa58c2b6688d3eac"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/cases/one-day-late.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/cases/one-day-late.json.txt",
+      "bytes": 7571,
+      "sha256": "632166f20e76ff0c5c9f6604942b04fe3e5dedbfb217b815d82003da06928faf",
+      "blob": "4188e583598dc838bcd2660131391309dc056eea"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/cases/one-day-stale.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/cases/one-day-stale.json.txt",
+      "bytes": 7109,
+      "sha256": "3cb2cb2d9cd74a3998ec748399a196dad7a18b176ad0000fb9caf4c0280d9a6b",
+      "blob": "9c4a17a026ddd2cd8bf5f5aeeb5b405891c13d0c"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/cases/permissions.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/cases/permissions.json.txt",
+      "bytes": 6798,
+      "sha256": "1b5b1cd96a9b34e09fb1f97b6920b1dfd7bc660764facadbf6b29879577fd314",
+      "blob": "f228336416783a3090456740ef5f7680fcafe047"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/cases/stale.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/cases/stale.json.txt",
+      "bytes": 6835,
+      "sha256": "33d5ce78569816f495081f83d089ba73b5ec5275a4eaa1d5495a19a2bb71451c",
+      "blob": "42bf2306ef9579271889ba5343b849c88463212e"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/journey-v3/campaigns.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/journey-v3/campaigns.json.txt",
+      "bytes": 1083,
+      "sha256": "c7ae501f6e1b97066e86d2fd14945a8f6248f374f405dca742138b24ff71f421",
+      "blob": "7362d0d198166abeda8e18d39c29689a41c432d2"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/journey-v3/cases/ample-window.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/journey-v3/cases/ample-window.json.txt",
+      "bytes": 7777,
+      "sha256": "059c0a71af6209b82d310fe2d5d31486c10edece44be90a42e951baa6868f97d",
+      "blob": "c3f084bfdb6a75cf65e03ff8426b48b9260a3cfe"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/journey-v3/cases/missed-window.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/journey-v3/cases/missed-window.json.txt",
+      "bytes": 7792,
+      "sha256": "ac7d37accd1d8b50c9e52c2f48940aa6030834ccff2a4c13a6e4f525af927df3",
+      "blob": "78b0a3672cb03128e102adc72dcfecb74636bb96"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/journey-v3/cases/supported-smaller-correction.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/journey-v3/cases/supported-smaller-correction.json.txt",
+      "bytes": 7798,
+      "sha256": "6d31c698eced9cc18e9a95be2408deea705d5ce44758b17d89c36403a3aee286",
+      "blob": "a0cf34f9dd85ae516bdfb9725fa0f5fbec088499"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/journey-v3/cases/urgent-missing-booking.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/journey-v3/cases/urgent-missing-booking.json.txt",
+      "bytes": 7108,
+      "sha256": "17bf10dc18909a653d729fd4c7e2ea48c326ffd9c42ccd9206f46f139a91cbff",
+      "blob": "8540fe935f00e0c8cc0a9a61f6c225e2d15f1b90"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/journey-v3/cases/urgent-stale-booking.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/journey-v3/cases/urgent-stale-booking.json.txt",
+      "bytes": 7792,
+      "sha256": "49a3ce733a61e45f685a13e67010117180f8d5c3a9527595f661474c2236a165",
+      "blob": "ed37941b693f45103fd98c891aee04fca701c6a5"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/journey-v3/cases/urgent-window.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/journey-v3/cases/urgent-window.json.txt",
+      "bytes": 7792,
+      "sha256": "eda63ca3308d1f34820a10d076f8c20ecaba3bcf5d6fce30d4e1bfded89505e3",
+      "blob": "9b8932d15e91dd1064c4176a6376a42fa0a249f9"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/journey-v3/screening/ample-window.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/journey-v3/screening/ample-window.json.txt",
+      "bytes": 6588,
+      "sha256": "fcd4dddd3bc42468518b4fdc9345e25a34dbeebf6cb3690464849ee3fdee4f29",
+      "blob": "7cf16f81ab9cdc6e85b56d79849904ef64cb4181"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/journey-v3/screening/missed-window.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/journey-v3/screening/missed-window.json.txt",
+      "bytes": 6606,
+      "sha256": "4bd875341fc6cc972c83502c0d9c8b9e232deb6a7681ce90a71083cf53776663",
+      "blob": "27defc690d123b0c31ed250f8c852fc59a31d116"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/journey-v3/screening/supported-smaller-correction.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/journey-v3/screening/supported-smaller-correction.json.txt",
+      "bytes": 6606,
+      "sha256": "e30a9a5a108af15848aef3f6c30df358a7732dd9702a822a882d68eaa17704ea",
+      "blob": "522bcf071a7098a7599113f7bcbac7346249cf56"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/journey-v3/screening/urgent-missing-booking.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/journey-v3/screening/urgent-missing-booking.json.txt",
+      "bytes": 6019,
+      "sha256": "57267c09afa12f06fcb46193dfb34b18fde9d22c644a5ff7cd8e2c69d9fa277a",
+      "blob": "a8f0d2992818417ac8b0887f187a9b6bb8d95088"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/journey-v3/screening/urgent-stale-booking.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/journey-v3/screening/urgent-stale-booking.json.txt",
+      "bytes": 6606,
+      "sha256": "e9ecabbcb83d4f82637f45e803e844077860346c30636c4397ad399b46f0131f",
+      "blob": "816095f1848185b357bba63ad34ccf688ca0b051"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/journey-v3/screening/urgent-window.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/journey-v3/screening/urgent-window.json.txt",
+      "bytes": 6606,
+      "sha256": "a69c0dfbcea57de45845b26f792363971d3da4f36073f2302934da9efac41d4e",
+      "blob": "5cc0250cd081ebf80916aa7f6a83179c6bf2d96a"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/journey-v4/campaigns.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/journey-v4/campaigns.json.txt",
+      "bytes": 1083,
+      "sha256": "c7ae501f6e1b97066e86d2fd14945a8f6248f374f405dca742138b24ff71f421",
+      "blob": "7362d0d198166abeda8e18d39c29689a41c432d2"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/journey-v4/cases/ample-window.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/journey-v4/cases/ample-window.json.txt",
+      "bytes": 7777,
+      "sha256": "059c0a71af6209b82d310fe2d5d31486c10edece44be90a42e951baa6868f97d",
+      "blob": "c3f084bfdb6a75cf65e03ff8426b48b9260a3cfe"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/journey-v4/cases/missed-window.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/journey-v4/cases/missed-window.json.txt",
+      "bytes": 7792,
+      "sha256": "ac7d37accd1d8b50c9e52c2f48940aa6030834ccff2a4c13a6e4f525af927df3",
+      "blob": "78b0a3672cb03128e102adc72dcfecb74636bb96"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/journey-v4/cases/supported-smaller-correction.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/journey-v4/cases/supported-smaller-correction.json.txt",
+      "bytes": 7798,
+      "sha256": "6d31c698eced9cc18e9a95be2408deea705d5ce44758b17d89c36403a3aee286",
+      "blob": "a0cf34f9dd85ae516bdfb9725fa0f5fbec088499"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/journey-v4/cases/urgent-missing-booking.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/journey-v4/cases/urgent-missing-booking.json.txt",
+      "bytes": 7108,
+      "sha256": "17bf10dc18909a653d729fd4c7e2ea48c326ffd9c42ccd9206f46f139a91cbff",
+      "blob": "8540fe935f00e0c8cc0a9a61f6c225e2d15f1b90"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/journey-v4/cases/urgent-stale-booking.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/journey-v4/cases/urgent-stale-booking.json.txt",
+      "bytes": 7792,
+      "sha256": "49a3ce733a61e45f685a13e67010117180f8d5c3a9527595f661474c2236a165",
+      "blob": "ed37941b693f45103fd98c891aee04fca701c6a5"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/journey-v4/cases/urgent-window.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/journey-v4/cases/urgent-window.json.txt",
+      "bytes": 7792,
+      "sha256": "eda63ca3308d1f34820a10d076f8c20ecaba3bcf5d6fce30d4e1bfded89505e3",
+      "blob": "9b8932d15e91dd1064c4176a6376a42fa0a249f9"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/journey-v4/screening/ample-window.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/journey-v4/screening/ample-window.json.txt",
+      "bytes": 6588,
+      "sha256": "fcd4dddd3bc42468518b4fdc9345e25a34dbeebf6cb3690464849ee3fdee4f29",
+      "blob": "7cf16f81ab9cdc6e85b56d79849904ef64cb4181"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/journey-v4/screening/missed-window.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/journey-v4/screening/missed-window.json.txt",
+      "bytes": 6606,
+      "sha256": "4bd875341fc6cc972c83502c0d9c8b9e232deb6a7681ce90a71083cf53776663",
+      "blob": "27defc690d123b0c31ed250f8c852fc59a31d116"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/journey-v4/screening/supported-smaller-correction.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/journey-v4/screening/supported-smaller-correction.json.txt",
+      "bytes": 6606,
+      "sha256": "e30a9a5a108af15848aef3f6c30df358a7732dd9702a822a882d68eaa17704ea",
+      "blob": "522bcf071a7098a7599113f7bcbac7346249cf56"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/journey-v4/screening/urgent-missing-booking.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/journey-v4/screening/urgent-missing-booking.json.txt",
+      "bytes": 6019,
+      "sha256": "57267c09afa12f06fcb46193dfb34b18fde9d22c644a5ff7cd8e2c69d9fa277a",
+      "blob": "a8f0d2992818417ac8b0887f187a9b6bb8d95088"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/journey-v4/screening/urgent-stale-booking.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/journey-v4/screening/urgent-stale-booking.json.txt",
+      "bytes": 6606,
+      "sha256": "e9ecabbcb83d4f82637f45e803e844077860346c30636c4397ad399b46f0131f",
+      "blob": "816095f1848185b357bba63ad34ccf688ca0b051"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/fixtures/journey-v4/screening/urgent-window.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/fixtures/journey-v4/screening/urgent-window.json.txt",
+      "bytes": 6606,
+      "sha256": "a69c0dfbcea57de45845b26f792363971d3da4f36073f2302934da9efac41d4e",
+      "blob": "5cc0250cd081ebf80916aa7f6a83179c6bf2d96a"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/package.json",
+      "retainedFile": "source/gifting/gift-kit-preflight/package.json.txt",
+      "bytes": 616,
+      "sha256": "8d998acaab1e561734e062f117f5d71d102222177c0cd1536dd4529b2351e7b1",
+      "blob": "9da9a4df352e27aaf4cd4db8e416d1c7353cd099"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/review-campaigns.mjs",
+      "retainedFile": "source/gifting/gift-kit-preflight/review-campaigns.mjs.txt",
+      "bytes": 1963,
+      "sha256": "51bfdb1e3ff09f07a6551fc15dffbc8161b1a4f42ad7df8b7e13d40516bdcb4d",
+      "blob": "e6b9fbb50ba65a0c98797600375be7bdf50d1962"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/review-journeys.mjs",
+      "retainedFile": "source/gifting/gift-kit-preflight/review-journeys.mjs.txt",
+      "bytes": 1019,
+      "sha256": "a0b143dec96fdbf9a0384f213d9031a9f17078cf6796edab500d02a4da3a0faa",
+      "blob": "a3791b23b620634c96402e43fc3d558f0e00440d"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/run-demo.mjs",
+      "retainedFile": "source/gifting/gift-kit-preflight/run-demo.mjs.txt",
+      "bytes": 1589,
+      "sha256": "b192db79d16636c0b9828e4168d4327370e35b82ea4592a80b2745c08ce42ae6",
+      "blob": "09c96538ba1788562e46c90e9b21a40ff0870be0"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/src/gifting.js",
+      "retainedFile": "source/gifting/gift-kit-preflight/src/gifting.js.txt",
+      "bytes": 15054,
+      "sha256": "01aba04b317146e2cd336f508c9cbf5ae524d9f7898a50840be4e8a9328ed4c0",
+      "blob": "5ad6341e05c9bbd726963c2ff9f94e66b76e6761"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/src/giftingJourney.js",
+      "retainedFile": "source/gifting/gift-kit-preflight/src/giftingJourney.js.txt",
+      "bytes": 4191,
+      "sha256": "a9e53736820c4556ac16cd8aa1326d4b4138480d2871d8cd64eef3f588c1eb2a",
+      "blob": "689620b6e45fd1d822576c5ca26b1e89b2e2f216"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/src/journeyPreflight.mjs",
+      "retainedFile": "source/gifting/gift-kit-preflight/src/journeyPreflight.mjs.txt",
+      "bytes": 14091,
+      "sha256": "cb8b161c2a98585d5ed2888feddf7c9a369a9dc08d8f8af8db4b2522c1ac44eb",
+      "blob": "2d9659d67fa191ecf7ec96087c70abafa53ac6ad"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/src/preflight.mjs",
+      "retainedFile": "source/gifting/gift-kit-preflight/src/preflight.mjs.txt",
+      "bytes": 13223,
+      "sha256": "0abda23b9fa1c4040e065b1089c519a6e7c35cedb4be2442e05de55bb51b8470",
+      "blob": "9239d0d91a73e74e4da9465b044104db9d0e21c8"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/src/preflightStatus.js",
+      "retainedFile": "source/gifting/gift-kit-preflight/src/preflightStatus.js.txt",
+      "bytes": 407,
+      "sha256": "97b85a7958c56524b6584dc2f61f468bcbc73cf2c9ffd8ea9436fb9374525fe4",
+      "blob": "c8ede20617bf611ef875b949b1f2a6e744c14f62"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/src/report.mjs",
+      "retainedFile": "source/gifting/gift-kit-preflight/src/report.mjs.txt",
+      "bytes": 10574,
+      "sha256": "ace842b07d9bdaa268947c08eed464acecac0c9e4783e39e18fb8129dea26a9a",
+      "blob": "865f91723fdd456778f0460e9dc617d0e11b950e"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/src/reviewJourney.js",
+      "retainedFile": "source/gifting/gift-kit-preflight/src/reviewJourney.js.txt",
+      "bytes": 20086,
+      "sha256": "2818d897eadca17a3e274883b14c2303fbbe82b8b227ef6c06d2fde7ab3fd795",
+      "blob": "1ba0dc9df7856978ff57ad7b2132e996c73ddb91"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/test/journey.test.mjs",
+      "retainedFile": "source/gifting/gift-kit-preflight/test/journey.test.mjs.txt",
+      "bytes": 7352,
+      "sha256": "6f30fbc48248476b176f0d1166a1c46621d97a094e75e44aae7d6ddd01ef8950",
+      "blob": "064dbb0de444b40e7bcc4df002a7583270b163f6"
+    },
+    {
+      "file": "gifting/gift-kit-preflight/test/preflight.test.mjs",
+      "retainedFile": "source/gifting/gift-kit-preflight/test/preflight.test.mjs.txt",
+      "bytes": 13628,
+      "sha256": "f91aa867741544a1620be1a2c8749c53c166163a787007fc79245ecfde268dbb",
+      "blob": "3443586f1b5fa306bc750f995d517a4242ff32cf"
+    },
+    {
+      "file": "shared/README.md",
+      "retainedFile": "source/shared/README.md.txt",
+      "bytes": 5601,
+      "sha256": "a23a22ea28cbd6b70d70a0e2cb793c2cb101a18f151600ddb1ea77b2fd1a4243",
+      "blob": "61ba7da0a80724b77a24d7fbb97028885317ad8b"
+    },
+    {
+      "file": "shared/reviewJourney.js",
+      "retainedFile": "source/shared/reviewJourney.js.txt",
+      "bytes": 20086,
+      "sha256": "2818d897eadca17a3e274883b14c2303fbbe82b8b227ef6c06d2fde7ab3fd795",
+      "blob": "1ba0dc9df7856978ff57ad7b2132e996c73ddb91"
+    },
+    {
+      "file": "shipping/README.md",
+      "retainedFile": "source/shipping/README.md.txt",
+      "bytes": 3003,
+      "sha256": "5d6e5d842404f45929388c5ee307f6a0dee81c1908d418caeee688687a735b61",
+      "blob": "da3d656826c84928c80d2e717660cbc0a7658664"
+    },
+    {
+      "file": "shipping/shipment-exceptions/.gitignore",
+      "retainedFile": "source/shipping/shipment-exceptions/.gitignore.txt",
+      "bytes": 23,
+      "sha256": "50922e560764aa703fdf28075d5fece41a3fec0502465f40b68657fb48825260",
+      "blob": "2f4b0100ca5d7a4863c96fcf981e894ba509268e"
+    },
+    {
+      "file": "shipping/shipment-exceptions/README.md",
+      "retainedFile": "source/shipping/shipment-exceptions/README.md.txt",
+      "bytes": 8335,
+      "sha256": "555f9507790610bd33ddf1c40735cd6155e617944f2bffb71f9421c280294260",
+      "blob": "4f8527e04c6b644eaf25722cd86b8ae383ebc871"
+    },
+    {
+      "file": "shipping/shipment-exceptions/app/archive/shipment-consolidation-release-1.app.json",
+      "retainedFile": "source/shipping/shipment-exceptions/app/archive/shipment-consolidation-release-1.app.json.txt",
+      "bytes": 107155,
+      "sha256": "409dc299e6cde8abd54e942517471f6871e66ff7f4f7c7336f9b19ab1436b19e",
+      "blob": "afd87fcf1c97e289f20b2367290dba4f0f9fc0c4"
+    },
+    {
+      "file": "shipping/shipment-exceptions/app/provenance.json",
+      "retainedFile": "source/shipping/shipment-exceptions/app/provenance.json.txt",
+      "bytes": 602,
+      "sha256": "0b0a100d01efb86bd0db45f3edbc4d72f0dd855d788e445a83825a06bc2a4db1",
+      "blob": "8b55a08cc6ae7df315a2ed4d43bd6c99b368695e"
+    },
+    {
+      "file": "shipping/shipment-exceptions/app/shipment-review.app.json",
+      "retainedFile": "source/shipping/shipment-exceptions/app/shipment-review.app.json.txt",
+      "bytes": 119972,
+      "sha256": "03e1357e59893f4c6171db069433fe073724658506ccacb95c49dea2646867ef",
+      "blob": "1949a8f56e2df671865732c96710d868d6daedbd"
+    },
+    {
+      "file": "shipping/shipment-exceptions/app/shipment.workflow.json",
+      "retainedFile": "source/shipping/shipment-exceptions/app/shipment.workflow.json.txt",
+      "bytes": 537890,
+      "sha256": "5ae7f804b9230d033a7433568dcb31a7b5b0ae7dc71c7dcd14d060d8ee446213",
+      "blob": "302a22cca2d5f3e49d6d40cb79cc7a09d446d6ea"
+    },
+    {
+      "file": "shipping/shipment-exceptions/app/workflow-releases/1.0.0/shipment.workflow.json",
+      "retainedFile": "source/shipping/shipment-exceptions/app/workflow-releases/1.0.0/shipment.workflow.json.txt",
+      "bytes": 619417,
+      "sha256": "97c2dd1f4bb7dbb3d863c6b5a4922814a75127de5247d234cddf23a8021ab6e1",
+      "blob": "f5a2415f56795b2121c7c4d795b93f1a6277dfda"
+    },
+    {
+      "file": "shipping/shipment-exceptions/app/workflow-releases/2.0.0/shipment.workflow.json",
+      "retainedFile": "source/shipping/shipment-exceptions/app/workflow-releases/2.0.0/shipment.workflow.json.txt",
+      "bytes": 528433,
+      "sha256": "8967d300d274df4ecabc8d496495a12b9d1590acffd2ffe8c567871348d994fd",
+      "blob": "f3839bc057cba6811f7fc1acc41ba5d5751950e4"
+    },
+    {
+      "file": "shipping/shipment-exceptions/config.json",
+      "retainedFile": "source/shipping/shipment-exceptions/config.json.txt",
+      "bytes": 3619,
+      "sha256": "7ead4f27a911ad970c3bd6bc4dc86f1ac8741474bc02c10917f8cb7d246babbf",
+      "blob": "60384a7e4d13ba96159bdf67ad683e454ca35528"
+    },
+    {
+      "file": "shipping/shipment-exceptions/continue-review.mjs",
+      "retainedFile": "source/shipping/shipment-exceptions/continue-review.mjs.txt",
+      "bytes": 6563,
+      "sha256": "f27a679b812ad1f0713db3c61a46bfd0525cc93b29b2d2495e2394a9adca6d4b",
+      "blob": "c606f68df8cb16dcee503b64e06294a30e058e03"
+    },
+    {
+      "file": "shipping/shipment-exceptions/fixtures/README.md",
+      "retainedFile": "source/shipping/shipment-exceptions/fixtures/README.md.txt",
+      "bytes": 1319,
+      "sha256": "a59b733fbac6018f0f0fbc47ea78b98869c93970902e914cdc36173cc8a3eb93",
+      "blob": "f8d483cd3ab9d3f4a95f82960b6e7d75b62ec33b"
+    },
+    {
+      "file": "shipping/shipment-exceptions/fixtures/baseline/orders.csv",
+      "retainedFile": "source/shipping/shipment-exceptions/fixtures/baseline/orders.csv.txt",
+      "bytes": 1233,
+      "sha256": "c0a1207a5088d837a607e42e7c67b84d17081d24f3ef8bd78fa2fb824555beb6",
+      "blob": "35defb6b4a26a665f867d03bc13867b01f2f6fe8"
+    },
+    {
+      "file": "shipping/shipment-exceptions/fixtures/baseline/quotes.csv",
+      "retainedFile": "source/shipping/shipment-exceptions/fixtures/baseline/quotes.csv.txt",
+      "bytes": 2686,
+      "sha256": "c0669296493d6114579864c412e27a01bce2474ae5ee0921157d9d566349f416",
+      "blob": "0844f3f99664d54b540053ecbf598e8630ebc098"
+    },
+    {
+      "file": "shipping/shipment-exceptions/fixtures/baseline/slot-confirmations.csv",
+      "retainedFile": "source/shipping/shipment-exceptions/fixtures/baseline/slot-confirmations.csv.txt",
+      "bytes": 900,
+      "sha256": "12fa46f3782fc747620b08d985043f9d39b54d251cefff0698d43060e16d92ae",
+      "blob": "a381ce3fe90371df15b894e62fd214212dc8a0ae"
+    },
+    {
+      "file": "shipping/shipment-exceptions/fixtures/morning/orders.csv",
+      "retainedFile": "source/shipping/shipment-exceptions/fixtures/morning/orders.csv.txt",
+      "bytes": 1233,
+      "sha256": "5fc90c5858db028d6c83eab2136b65cf67557449352d24e8aa1a425ff97d1d16",
+      "blob": "05d9e1aa2bbe7fd89d4a6f45f296d9a119fb2262"
+    },
+    {
+      "file": "shipping/shipment-exceptions/fixtures/morning/quotes.csv",
+      "retainedFile": "source/shipping/shipment-exceptions/fixtures/morning/quotes.csv.txt",
+      "bytes": 2685,
+      "sha256": "197ebbc515f70693afe863baf51ed6286266d71a21541864ffd8b818a99e55a0",
+      "blob": "75730fa807cd4f36d711fc217f4602314a7bcbfa"
+    },
+    {
+      "file": "shipping/shipment-exceptions/fixtures/morning/slot-confirmations.csv",
+      "retainedFile": "source/shipping/shipment-exceptions/fixtures/morning/slot-confirmations.csv.txt",
+      "bytes": 900,
+      "sha256": "12fa46f3782fc747620b08d985043f9d39b54d251cefff0698d43060e16d92ae",
+      "blob": "a381ce3fe90371df15b894e62fd214212dc8a0ae"
+    },
+    {
+      "file": "shipping/shipment-exceptions/fixtures/retained/baseline/SHIP-104.json",
+      "retainedFile": "source/shipping/shipment-exceptions/fixtures/retained/baseline/SHIP-104.json.txt",
+      "bytes": 7051,
+      "sha256": "a6f8e57de46ed51117e94e7dfb040417d5561419257b81f5579469e0ee5a0650",
+      "blob": "948e1d3559c537b34abbd5e62d93768cfe5b5033"
+    },
+    {
+      "file": "shipping/shipment-exceptions/fixtures/retained/baseline/SHIP-105.json",
+      "retainedFile": "source/shipping/shipment-exceptions/fixtures/retained/baseline/SHIP-105.json.txt",
+      "bytes": 7051,
+      "sha256": "96e4483fbbeec33532cf010f2dd48741b612f1c6533c96320819b2c1fe220dda",
+      "blob": "04db984b5d1ded3fc1277d67eb9690044d05a4af"
+    },
+    {
+      "file": "shipping/shipment-exceptions/fixtures/retained/baseline/SHIP-106.json",
+      "retainedFile": "source/shipping/shipment-exceptions/fixtures/retained/baseline/SHIP-106.json.txt",
+      "bytes": 7051,
+      "sha256": "1aff327e8874f81a913150a7dc395ac78696cb88387d4e5f7619176b1198d796",
+      "blob": "fa9ebee15f51cc36e68eecd2891bb269e33a2e57"
+    },
+    {
+      "file": "shipping/shipment-exceptions/fixtures/retained/baseline/SHIP-107.json",
+      "retainedFile": "source/shipping/shipment-exceptions/fixtures/retained/baseline/SHIP-107.json.txt",
+      "bytes": 7050,
+      "sha256": "af80bd4f80eb4e51d48150862ff2f10c1a2629641309d925fae23243e2f0c0b4",
+      "blob": "f4e31b55c9b07638369e9439d86b7672547806b4"
+    },
+    {
+      "file": "shipping/shipment-exceptions/fixtures/retained/morning/SHIP-104.json",
+      "retainedFile": "source/shipping/shipment-exceptions/fixtures/retained/morning/SHIP-104.json.txt",
+      "bytes": 7051,
+      "sha256": "a6f8e57de46ed51117e94e7dfb040417d5561419257b81f5579469e0ee5a0650",
+      "blob": "948e1d3559c537b34abbd5e62d93768cfe5b5033"
+    },
+    {
+      "file": "shipping/shipment-exceptions/fixtures/retained/morning/SHIP-105.json",
+      "retainedFile": "source/shipping/shipment-exceptions/fixtures/retained/morning/SHIP-105.json.txt",
+      "bytes": 7207,
+      "sha256": "64e41b2b10c3a112dc3c831c9d74bdc84c07b53b680136e2f300109be7250d82",
+      "blob": "4380d2dcb5bcb1918b7c7f4026cee82a397c6db9"
+    },
+    {
+      "file": "shipping/shipment-exceptions/fixtures/retained/morning/SHIP-106.json",
+      "retainedFile": "source/shipping/shipment-exceptions/fixtures/retained/morning/SHIP-106.json.txt",
+      "bytes": 7180,
+      "sha256": "9ce26a1405b0aa92901541179b0144a8d4bb320189f3b695d3b462781b22ccbd",
+      "blob": "84aa4bcf7d3dbee549ccd7937bea41873ce5d1a0"
+    },
+    {
+      "file": "shipping/shipment-exceptions/fixtures/retained/morning/SHIP-107.json",
+      "retainedFile": "source/shipping/shipment-exceptions/fixtures/retained/morning/SHIP-107.json.txt",
+      "bytes": 7050,
+      "sha256": "af80bd4f80eb4e51d48150862ff2f10c1a2629641309d925fae23243e2f0c0b4",
+      "blob": "f4e31b55c9b07638369e9439d86b7672547806b4"
+    },
+    {
+      "file": "shipping/shipment-exceptions/package.json",
+      "retainedFile": "source/shipping/shipment-exceptions/package.json.txt",
+      "bytes": 557,
+      "sha256": "751766728ab5c2d8adfe4e55ad9346dcfd8b4a7f1cefc1cb9205ff8fbba8fed3",
+      "blob": "de7b79cf36e565872222286d4620a82b21318fc6"
+    },
+    {
+      "file": "shipping/shipment-exceptions/review-shipments.mjs",
+      "retainedFile": "source/shipping/shipment-exceptions/review-shipments.mjs.txt",
+      "bytes": 2471,
+      "sha256": "56d0ffebb5113a986cb2568cdf560c2ef2571aec0934ff6a12f9bef39387a4df",
+      "blob": "aee6d76955daa53dec6543bccaeb1849d457ab50"
+    },
+    {
+      "file": "shipping/shipment-exceptions/run-demo.mjs",
+      "retainedFile": "source/shipping/shipment-exceptions/run-demo.mjs.txt",
+      "bytes": 3004,
+      "sha256": "b013d6462e98c3c75e81e284ce2d80f4787aa8471f3857e340a41a9babd2056f",
+      "blob": "c7beeabef6e7f4bc9a024141e6bfdb40cb4498e0"
+    },
+    {
+      "file": "shipping/shipment-exceptions/src/batch.mjs",
+      "retainedFile": "source/shipping/shipment-exceptions/src/batch.mjs.txt",
+      "bytes": 21798,
+      "sha256": "52bf503fc0cf5b25d66223307a4121f2f84402cb26daeca937ca26f085772934",
+      "blob": "3668134c97ac534a29cc6cbae86eef3954775511"
+    },
+    {
+      "file": "shipping/shipment-exceptions/src/classify.mjs",
+      "retainedFile": "source/shipping/shipment-exceptions/src/classify.mjs.txt",
+      "bytes": 2114,
+      "sha256": "322920bc9e542a2f57db728367f6a2fb64caba1f94187facd2d56f6e99416d1c",
+      "blob": "596cc2fa0f41b77c481f6978345864ea91657cb5"
+    },
+    {
+      "file": "shipping/shipment-exceptions/src/cli.mjs",
+      "retainedFile": "source/shipping/shipment-exceptions/src/cli.mjs.txt",
+      "bytes": 709,
+      "sha256": "c324ae5a178d7450e1571e85ff9b804197e9f4fa1c8017a0262fca440561ee89",
+      "blob": "106f3faf585f571f24b2079b9c402e9ecc2993db"
+    },
+    {
+      "file": "shipping/shipment-exceptions/src/csv.mjs",
+      "retainedFile": "source/shipping/shipment-exceptions/src/csv.mjs.txt",
+      "bytes": 3193,
+      "sha256": "687f11b99fa8fab5036478d95ffc0620575cc79bd776679dfc008ab0cc6b9d2c",
+      "blob": "8f72c95bb5c961f848103247e6651d7d224cbacb"
+    },
+    {
+      "file": "shipping/shipment-exceptions/src/inputs.mjs",
+      "retainedFile": "source/shipping/shipment-exceptions/src/inputs.mjs.txt",
+      "bytes": 15927,
+      "sha256": "d9038d1d2ab29d23bf4299f2a50a3779d6a19537c06ab43ff02f87fb4e51d579",
+      "blob": "693e29413166074f7d6a6b4c2acc53ddfccdf77e"
+    },
+    {
+      "file": "shipping/shipment-exceptions/src/report.mjs",
+      "retainedFile": "source/shipping/shipment-exceptions/src/report.mjs.txt",
+      "bytes": 30486,
+      "sha256": "bdd640f71047cdc3abf4cdfed297624504e1ef50ceeb4143a68c609352691754",
+      "blob": "940543a68682e7988cbe2a1faa7fa5c303fedcfb"
+    },
+    {
+      "file": "shipping/shipment-exceptions/src/reviewJourney.js",
+      "retainedFile": "source/shipping/shipment-exceptions/src/reviewJourney.js.txt",
+      "bytes": 20086,
+      "sha256": "2818d897eadca17a3e274883b14c2303fbbe82b8b227ef6c06d2fde7ab3fd795",
+      "blob": "1ba0dc9df7856978ff57ad7b2132e996c73ddb91"
+    },
+    {
+      "file": "shipping/shipment-exceptions/src/semantics.mjs",
+      "retainedFile": "source/shipping/shipment-exceptions/src/semantics.mjs.txt",
+      "bytes": 1266,
+      "sha256": "b9c04a74243c13e065c8a80165603a676bb38293da9c1a330f07058630e68560",
+      "blob": "debcbbf071bbc1b7f9d1fb84f708feec52af0944"
+    },
+    {
+      "file": "shipping/shipment-exceptions/test/batch.test.mjs",
+      "retainedFile": "source/shipping/shipment-exceptions/test/batch.test.mjs.txt",
+      "bytes": 9957,
+      "sha256": "ace23e72c5706ef2b6435715f967fef1c882be30ecdb1e2b4267b09e7739c3b9",
+      "blob": "c7a97b176e973fff1430a0f9d4de6fe55103a9cd"
+    },
+    {
+      "file": "shipping/shipment-exceptions/test/classify.test.mjs",
+      "retainedFile": "source/shipping/shipment-exceptions/test/classify.test.mjs.txt",
+      "bytes": 3636,
+      "sha256": "0a1b14436bf13242ece66f6d6687485d6361c0c769d24cae355cbe1a211a02f0",
+      "blob": "b91f993457826800afd6c1d8c8a810256fbad049"
+    },
+    {
+      "file": "shipping/shipment-exceptions/test/intake.test.mjs",
+      "retainedFile": "source/shipping/shipment-exceptions/test/intake.test.mjs.txt",
+      "bytes": 9676,
+      "sha256": "83f32eaf0fa6cedc127c5f2634170eeb431d160eb16b035b96a6316b057cfe22",
+      "blob": "0e58a5aef14ecbc78457312feea1e3f0f05ce064"
+    },
+    {
+      "file": "shipping/shipment-exceptions/test/journey.test.mjs",
+      "retainedFile": "source/shipping/shipment-exceptions/test/journey.test.mjs.txt",
+      "bytes": 12291,
+      "sha256": "bdd3a5fa62b7ecbf44a267c587abffbe9bff91c57bc63cbba6333c2ed22e1fd6",
+      "blob": "5ddbbca9507d4a700915f9a489d1793cabb2071b"
+    },
+    {
+      "file": "shipping/shipment-exceptions/test/report.test.mjs",
+      "retainedFile": "source/shipping/shipment-exceptions/test/report.test.mjs.txt",
+      "bytes": 12953,
+      "sha256": "40fd2ada86e88c594a2082639d899267fae1528f0e6c3c5d78675983e10c37df",
+      "blob": "6dbbb53e2a1471c725f85700105e90773939a7a1"
+    },
+    {
+      "file": "shipping/shipment-reservation-desk/.gitignore",
+      "retainedFile": "source/shipping/shipment-reservation-desk/.gitignore.txt",
+      "bytes": 29,
+      "sha256": "dd9f7ed5d965def0331e59341df672dda4c3b070343beec0a8fdd94e63a025a9",
+      "blob": "e1a0496a9f5531aa2d2725b981703438fb525066"
+    },
+    {
+      "file": "shipping/shipment-reservation-desk/README.md",
+      "retainedFile": "source/shipping/shipment-reservation-desk/README.md.txt",
+      "bytes": 8164,
+      "sha256": "f1e58e17bc037e5c123fe7480fca219f703ee1b060e0cf00b2309bdb8571bbb3",
+      "blob": "58ca99f0a110a47ddc17537e46f561348489d5c9"
+    },
+    {
+      "file": "shipping/shipment-reservation-desk/index.html",
+      "retainedFile": "source/shipping/shipment-reservation-desk/index.html.txt",
+      "bytes": 492,
+      "sha256": "60d29b07462437687db59b45b1d506bdc08d5325f25c2873db00c6eb76374b07",
+      "blob": "247ac97b7d02d0ee76403266861c234b34f84016"
+    },
+    {
+      "file": "shipping/shipment-reservation-desk/package.json",
+      "retainedFile": "source/shipping/shipment-reservation-desk/package.json.txt",
+      "bytes": 749,
+      "sha256": "1cc3f564a21d3767e3cf512bb78e24615134e5de1db97bad420b56df9924daea",
+      "blob": "72b4ce5fc26232612af3b2b9cae118883dffecc7"
+    },
+    {
+      "file": "shipping/shipment-reservation-desk/public/data/README.md",
+      "retainedFile": "source/shipping/shipment-reservation-desk/public/data/README.md.txt",
+      "bytes": 1314,
+      "sha256": "e35a5aa314849b76d971afb613c94cef5dc24bf5180783e53af48dc20a0057fd",
+      "blob": "bd37ff74f9cabfacb0b1eb1eac6827254a3f6f23"
+    },
+    {
+      "file": "shipping/shipment-reservation-desk/public/data/cases/confirmed.json",
+      "retainedFile": "source/shipping/shipment-reservation-desk/public/data/cases/confirmed.json.txt",
+      "bytes": 7051,
+      "sha256": "a6f8e57de46ed51117e94e7dfb040417d5561419257b81f5579469e0ee5a0650",
+      "blob": "948e1d3559c537b34abbd5e62d93768cfe5b5033"
+    },
+    {
+      "file": "shipping/shipment-reservation-desk/public/data/cases/permissions.json",
+      "retainedFile": "source/shipping/shipment-reservation-desk/public/data/cases/permissions.json.txt",
+      "bytes": 7180,
+      "sha256": "9ce26a1405b0aa92901541179b0144a8d4bb320189f3b695d3b462781b22ccbd",
+      "blob": "84aa4bcf7d3dbee549ccd7937bea41873ce5d1a0"
+    },
+    {
+      "file": "shipping/shipment-reservation-desk/public/data/cases/revised.json",
+      "retainedFile": "source/shipping/shipment-reservation-desk/public/data/cases/revised.json.txt",
+      "bytes": 7206,
+      "sha256": "fd6523eacdf6587028c620d1b6fdc5da861149d5b2f9bb8b46fbaf928718be85",
+      "blob": "5ee9e62e754ef2ec830dad55fab2e9cf31a93c3c"
+    },
+    {
+      "file": "shipping/shipment-reservation-desk/public/data/cases/urgent.json",
+      "retainedFile": "source/shipping/shipment-reservation-desk/public/data/cases/urgent.json.txt",
+      "bytes": 7051,
+      "sha256": "7571af32d9b6fd1f7b9e287e1f88572488364e58a885e5709527703eeab5a996",
+      "blob": "841bc02ed4aae5824dc1e2518d832daf260ebcf4"
+    },
+    {
+      "file": "shipping/shipment-reservation-desk/public/data/config.json",
+      "retainedFile": "source/shipping/shipment-reservation-desk/public/data/config.json.txt",
+      "bytes": 7317,
+      "sha256": "cad2378740f9813964594e54809c82b35ff8dcb795a7f7aa504ef2d2d997cef6",
+      "blob": "8f7843aeabc53e5e6204275107591b9618ba84ff"
+    },
+    {
+      "file": "shipping/shipment-reservation-desk/public/data/shipment-review.app.json",
+      "retainedFile": "source/shipping/shipment-reservation-desk/public/data/shipment-review.app.json.txt",
+      "bytes": 119972,
+      "sha256": "03e1357e59893f4c6171db069433fe073724658506ccacb95c49dea2646867ef",
+      "blob": "1949a8f56e2df671865732c96710d868d6daedbd"
+    },
+    {
+      "file": "shipping/shipment-reservation-desk/public/data/shipment.workflow.json",
+      "retainedFile": "source/shipping/shipment-reservation-desk/public/data/shipment.workflow.json.txt",
+      "bytes": 537890,
+      "sha256": "5ae7f804b9230d033a7433568dcb31a7b5b0ae7dc71c7dcd14d060d8ee446213",
+      "blob": "302a22cca2d5f3e49d6d40cb79cc7a09d446d6ea"
+    },
+    {
+      "file": "shipping/shipment-reservation-desk/public/data/workflow-releases/1.0.0/shipment.workflow.json",
+      "retainedFile": "source/shipping/shipment-reservation-desk/public/data/workflow-releases/1.0.0/shipment.workflow.json.txt",
+      "bytes": 619417,
+      "sha256": "97c2dd1f4bb7dbb3d863c6b5a4922814a75127de5247d234cddf23a8021ab6e1",
+      "blob": "f5a2415f56795b2121c7c4d795b93f1a6277dfda"
+    },
+    {
+      "file": "shipping/shipment-reservation-desk/public/data/workflow-releases/2.0.0/shipment.workflow.json",
+      "retainedFile": "source/shipping/shipment-reservation-desk/public/data/workflow-releases/2.0.0/shipment.workflow.json.txt",
+      "bytes": 528433,
+      "sha256": "8967d300d274df4ecabc8d496495a12b9d1590acffd2ffe8c567871348d994fd",
+      "blob": "f3839bc057cba6811f7fc1acc41ba5d5751950e4"
+    },
+    {
+      "file": "shipping/shipment-reservation-desk/src/App.jsx",
+      "retainedFile": "source/shipping/shipment-reservation-desk/src/App.jsx.txt",
+      "bytes": 33097,
+      "sha256": "4b1de4e9474952b8ac8608278a547e6898b4b90872d1eb3f8a2dcf37d51749d3",
+      "blob": "d0fbfe94bb46a4e2b5ab6218cf6a10a61b0d29ab"
+    },
+    {
+      "file": "shipping/shipment-reservation-desk/src/localReviews.js",
+      "retainedFile": "source/shipping/shipment-reservation-desk/src/localReviews.js.txt",
+      "bytes": 2322,
+      "sha256": "5df0668a98e68ab622ddfb4390497e03eae2cfbe0e4412cd97b49e343d3854c1",
+      "blob": "7f01305e1a82bb6af60051260b60f62f055c094e"
+    },
+    {
+      "file": "shipping/shipment-reservation-desk/src/main.jsx",
+      "retainedFile": "source/shipping/shipment-reservation-desk/src/main.jsx.txt",
+      "bytes": 289,
+      "sha256": "9d71e89fc8b2bc95ea0726ae6348fb07259c349e02f68604c7ecd417545d689d",
+      "blob": "9f31163f0d9265074427ce064f23de120f4912e5"
+    },
+    {
+      "file": "shipping/shipment-reservation-desk/src/reviewJourney.js",
+      "retainedFile": "source/shipping/shipment-reservation-desk/src/reviewJourney.js.txt",
+      "bytes": 20086,
+      "sha256": "2818d897eadca17a3e274883b14c2303fbbe82b8b227ef6c06d2fde7ab3fd795",
+      "blob": "1ba0dc9df7856978ff57ad7b2132e996c73ddb91"
+    },
+    {
+      "file": "shipping/shipment-reservation-desk/src/semantics.js",
+      "retainedFile": "source/shipping/shipment-reservation-desk/src/semantics.js.txt",
+      "bytes": 1157,
+      "sha256": "a24210762d98ffc298630e7fe0e64d6b5373f991cf9d069faa9f9da52e132843",
+      "blob": "145a5278166a8f54b59410aadd9417327d8e6dc3"
+    },
+    {
+      "file": "shipping/shipment-reservation-desk/src/shipment.js",
+      "retainedFile": "source/shipping/shipment-reservation-desk/src/shipment.js.txt",
+      "bytes": 15609,
+      "sha256": "81da915e4b7d81898634c53a0ff89549b6d14298a777eaf4d8e9a6f5a6b15047",
+      "blob": "acbe36c601a6a15dee50412ed3467f2bb3d03f21"
+    },
+    {
+      "file": "shipping/shipment-reservation-desk/src/styles.css",
+      "retainedFile": "source/shipping/shipment-reservation-desk/src/styles.css.txt",
+      "bytes": 24232,
+      "sha256": "b89df4b10ae7ad51f8ca5aac6405caa5d962d9839aaa69ccf1e7848768ed2354",
+      "blob": "148cc214bba175717fd1ef54dc1056f1ea44aca1"
+    },
+    {
+      "file": "shipping/shipment-reservation-desk/src/useShipmentReview.js",
+      "retainedFile": "source/shipping/shipment-reservation-desk/src/useShipmentReview.js.txt",
+      "bytes": 15287,
+      "sha256": "0933c7a8d3f89e05026c6bd0f56ef2ce7b0cc0c087949e6ea0da4b12ca36f6b0",
+      "blob": "cd239490a00f2ff03dc3dcf1badc46e909f7427c"
+    },
+    {
+      "file": "shipping/shipment-reservation-desk/test/browser.mjs",
+      "retainedFile": "source/shipping/shipment-reservation-desk/test/browser.mjs.txt",
+      "bytes": 25849,
+      "sha256": "0f02efe19744d6affe9815cdf641610fb34f91d285bb942bbd6d8807e45f6b71",
+      "blob": "c948673579670ea5945a4fff81783bb29db4fb82"
+    },
+    {
+      "file": "shipping/shipment-reservation-desk/test/shipment.test.js",
+      "retainedFile": "source/shipping/shipment-reservation-desk/test/shipment.test.js.txt",
+      "bytes": 9943,
+      "sha256": "ca157c08c1d0d969ced406edd7d22b1da1835bf80f9444970e6c3d2ec0f30959",
+      "blob": "a497786d695530c78b248b97f7b1a5c552199067"
+    },
+    {
+      "file": "shipping/shipment-reservation-desk/vite.config.mjs",
+      "retainedFile": "source/shipping/shipment-reservation-desk/vite.config.mjs.txt",
+      "bytes": 536,
+      "sha256": "2ee21cb92b05cf4569fe7862ee6f678242fd4fef7bb9f7281199afedac759f63",
+      "blob": "160d758f55c6c6219076c48ab1d056d3b37af4b6"
+    }
+  ]
+}

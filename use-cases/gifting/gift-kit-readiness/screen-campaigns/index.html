@@ -183,10 +183,10 @@
       </dl>
       <div class="use-case-comparison-observation">
       <figure class="use-case-comparison-screen">
-        <a href="../../../../assets/use-cases/gift-kit-readiness/calculation-integration/ample.png" aria-label="Open the Ample window · GIFT-320 view at full size">
-          <img src="../../../../assets/use-cases/gift-kit-readiness/calculation-integration/ample.png" width="1232" height="918" alt="The SDK Decision summary prefers complete in-house correction at $300; the $400 external package also meets the one-day cutoff." loading="lazy" decoding="async">
+        <a href="../../../../assets/use-cases/gift-kit-readiness/shared-report-sdk-preview/ample.png" aria-label="Open the Ample window · GIFT-320 view at full size">
+          <img src="../../../../assets/use-cases/gift-kit-readiness/shared-report-sdk-preview/ample.png" width="1232" height="890" alt="The SDK Decision summary prefers complete in-house correction at $300; the $400 external package also meets the one-day cutoff." loading="lazy" decoding="async">
         </a>
-        <figcaption>With the full day available, the cost-first profile supports the $300 complete correction. <a href="../../../../assets/use-cases/gift-kit-readiness/calculation-integration/ample.png">View full size</a></figcaption>
+        <figcaption>With the full day available, the cost-first profile supports the $300 complete correction. <a href="../../../../assets/use-cases/gift-kit-readiness/shared-report-sdk-preview/ample.png">View full size</a></figcaption>
       </figure>
       <p class="use-case-comparison-judgment">Leah can put forward the cheaper complete correction. Both packages meet the deadline, so finance has no deadline-based reason to pay the extra $100.</p>
       </div>
@@ -207,10 +207,10 @@
       </dl>
       <div class="use-case-comparison-observation">
       <figure class="use-case-comparison-screen">
-        <a href="../../../../assets/use-cases/gift-kit-readiness/calculation-integration/urgent.png" aria-label="Open the Thirty minutes remain · GIFT-321 view at full size">
-          <img src="../../../../assets/use-cases/gift-kit-readiness/calculation-integration/urgent.png" width="1232" height="1384" alt="With thirty minutes remaining, the $400 external complete correction finishes at minute 1,435; the cheaper complete correction is too late." loading="lazy" decoding="async">
+        <a href="../../../../assets/use-cases/gift-kit-readiness/shared-report-sdk-preview/urgent.png" aria-label="Open the Thirty minutes remain · GIFT-321 view at full size">
+          <img src="../../../../assets/use-cases/gift-kit-readiness/shared-report-sdk-preview/urgent.png" width="1232" height="804" alt="With thirty minutes remaining, the $400 external complete correction finishes at minute 1,435; the cheaper complete correction is too late." loading="lazy" decoding="async">
         </a>
-        <figcaption>The premium is justified by the actual cutoff. The fixed priority still prefers lower complete expense among eligible arrangements. <a href="../../../../assets/use-cases/gift-kit-readiness/calculation-integration/urgent.png">View full size</a></figcaption>
+        <figcaption>The premium is justified by the actual cutoff. The fixed priority still prefers lower complete expense among eligible arrangements. <a href="../../../../assets/use-cases/gift-kit-readiness/shared-report-sdk-preview/urgent.png">View full size</a></figcaption>
       </figure>
       <p class="use-case-comparison-judgment">Leah can justify the $100 premium because the cheaper complete response misses the original cutoff. The external package still needs a genuine current booking.</p>
       </div>
@@ -220,7 +220,7 @@
   <p class="use-case-comparison-takeaway"><strong>What this means for the decision.</strong> The priority stays cost first. The available time determines whether the $300 package meets the promise and whether paying $400 protects it. Choosing and authorizing that work remain separate human actions.</p>
 </section>
 
-<p>The two views show calculated findings from matched operating scenarios. Their campaign identities, source references, review and observation times, and booking-recording times differ; candidate starts follow the review clock. Resource availability, recorded validity intervals, the original promise, prices and policy stay the same. The <a href="../../../../assets/use-cases/gift-kit-readiness/calculation-integration/verification.json">comparison audit retains every changed field</a>. The queue must carry those differences and their sources, rather than flattening all campaigns into one correction price. Each comparison row is a package at a particular candidate start; repeated package names represent different schedules.</p>
+<p>The two views show calculated findings from matched operating scenarios. Their campaign identities, source references, review and observation times, and booking-recording times differ; candidate starts follow the review clock. Resource availability, recorded validity intervals, the original promise, prices and policy stay the same. The <a href="../../../../assets/use-cases/gift-kit-readiness/shared-report-sdk-preview/verification.json">comparison audit retains every changed field</a>. The queue must carry those differences and their sources, rather than flattening all campaigns into one correction price. Each comparison row is a package at a particular candidate start; repeated package names represent different schedules.</p>
 
 <h2 id="read-the-six-outcomes">See why six campaigns need different next actions.</h2>
 <p>The business target is a different next action for each situation. The ordinary CLI integration calculates the connected evidence and planning assessments before presenting this queue. It retains the conservative first screen alongside the finding supported by the supplied diagnostic records.</p>
@@ -260,7 +260,7 @@
 
 
 <figure class="article-code">
-  <figcaption id="code-manifest">Identify the campaign, owner and source snapshot · <a href="../../../../assets/use-cases/sample-code/calculation-integration-2026-11-20/source/gifting/gift-kit-preflight/fixtures/journey-v3/campaigns.json.txt">fixtures/journey-v3/campaigns.json, lines 11–15</a></figcaption>
+  <figcaption id="code-manifest">Identify the campaign, owner and source snapshot · <a href="../../../../assets/use-cases/sample-code/shared-report-sdk-preview-2026-11-21/source/gifting/gift-kit-preflight/fixtures/journey-v3/campaigns.json.txt">fixtures/journey-v3/campaigns.json, lines 11–15</a></figcaption>
   <pre tabindex="0" role="region" aria-labelledby="code-manifest"><code class="language-json">      &quot;id&quot;: &quot;GIFT-321&quot;,
       &quot;owner&quot;: &quot;Jordan Reed&quot;,
       &quot;case&quot;: &quot;cases/urgent-window.json&quot;,
@@ -273,7 +273,7 @@
 
 
 <figure class="article-code">
-  <figcaption id="code-mapping">Bind the current campaign while preserving the authored planning rules · <a href="../../../../assets/use-cases/sample-code/calculation-integration-2026-11-20/source/gifting/gift-kit-preflight/src/journeyPreflight.mjs.txt">src/journeyPreflight.mjs, lines 67–70</a></figcaption>
+  <figcaption id="code-mapping">Bind the current campaign while preserving the authored planning rules · <a href="../../../../assets/use-cases/sample-code/shared-report-sdk-preview-2026-11-21/source/gifting/gift-kit-preflight/src/journeyPreflight.mjs.txt">src/journeyPreflight.mjs, lines 67–70</a></figcaption>
   <pre tabindex="0" role="region" aria-labelledby="code-mapping"><code class="language-javascript">      const derived = lab.compositions.generate({ template,
         config: { ...authorConfig, workedExample: businessCase.gifting }, createdAt: pinnedApp.app.createdAt });
       const generatedModel = derived.apps.planning.app.model;
@@ -288,7 +288,7 @@
 
 
 <figure class="article-code">
-  <figcaption id="code-screen">Calculate evidence and planning through the public CLI · <a href="../../../../assets/use-cases/sample-code/calculation-integration-2026-11-20/source/gifting/gift-kit-preflight/src/journeyPreflight.mjs.txt">src/journeyPreflight.mjs, line 104</a></figcaption>
+  <figcaption id="code-screen">Calculate evidence and planning through the public CLI · <a href="../../../../assets/use-cases/sample-code/shared-report-sdk-preview-2026-11-21/source/gifting/gift-kit-preflight/src/journeyPreflight.mjs.txt">src/journeyPreflight.mjs, line 104</a></figcaption>
   <pre tabindex="0" role="region" aria-labelledby="code-screen"><code class="language-javascript">        await command([&#39;workflow&#39;, &#39;solve&#39;, &#39;--run&#39;, currentPath, &#39;--created-at&#39;, at, &#39;--timeout-ms&#39;, &#39;30000&#39;]);</code></pre>
 </figure>
 
@@ -298,8 +298,8 @@
 
 
 <figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/gift-kit-readiness/calculation-integration/cli-queue.png" tabindex="-1" aria-label="Open full-size gifting workflow screenshot"><img src="../../../../assets/use-cases/gift-kit-readiness/calculation-integration/cli-queue.png" width="1800" height="1050" alt="The actual CLI campaign queue shows calculated package findings, prices and required interventions alongside its conservative screen." loading="lazy" decoding="async"></a>
-  <figcaption><span>Each row carries the current native workflow into the desk. Unknown or blocked work remains separate from a supported correction.</span><a href="../../../../assets/use-cases/gift-kit-readiness/calculation-integration/cli-queue.png">View full size</a></figcaption>
+  <a href="../../../../assets/use-cases/gift-kit-readiness/shared-report-sdk-preview/cli-queue.png" tabindex="-1" aria-label="Open full-size gifting workflow screenshot"><img src="../../../../assets/use-cases/gift-kit-readiness/shared-report-sdk-preview/cli-queue.png" width="1800" height="1050" alt="The actual CLI campaign queue shows calculated package findings, prices and required interventions alongside its conservative screen." loading="lazy" decoding="async"></a>
+  <figcaption><span>Each row carries the current native workflow into the desk. Unknown or blocked work remains separate from a supported correction.</span><a href="../../../../assets/use-cases/gift-kit-readiness/shared-report-sdk-preview/cli-queue.png">View full size</a></figcaption>
 </figure>
 
 
@@ -310,7 +310,7 @@
 
 
 <figure class="article-code">
-  <figcaption id="code-continuation">Start a portable calculation workflow with its original case · <a href="../../../../assets/use-cases/sample-code/calculation-integration-2026-11-20/source/gifting/gift-kit-preflight/src/reviewJourney.js.txt">src/reviewJourney.js, lines 90–91</a></figcaption>
+  <figcaption id="code-continuation">Start a portable calculation workflow with its original case · <a href="../../../../assets/use-cases/sample-code/shared-report-sdk-preview-2026-11-21/source/gifting/gift-kit-preflight/src/reviewJourney.js.txt">src/reviewJourney.js, lines 90–91</a></figcaption>
   <pre tabindex="0" role="region" aria-labelledby="code-continuation"><code class="language-javascript">  const run = lab.workflows.start({ definition: extended, case: currentCase,
     ...(createdAt ? { createdAt } : {}), ...(runId ? { runId } : {}) });</code></pre>
 </figure>
@@ -322,8 +322,8 @@
 
 
 <figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/gift-kit-readiness/calculation-integration/cli-import.png" tabindex="-1" aria-label="Open full-size gifting workflow screenshot"><img src="../../../../assets/use-cases/gift-kit-readiness/calculation-integration/cli-import.png" width="1232" height="1384" alt="The gift-kit SDK desk imports the exact calculated CLI workflow with its source receipts, findings and history." loading="lazy" decoding="async"></a>
-  <figcaption><span>The CLI-to-SDK continuation preserves the same native calculation; importing it creates no operating choice or authority.</span><a href="../../../../assets/use-cases/gift-kit-readiness/calculation-integration/cli-import.png">View full size</a></figcaption>
+  <a href="../../../../assets/use-cases/gift-kit-readiness/shared-report-sdk-preview/cli-import.png" tabindex="-1" aria-label="Open full-size gifting workflow screenshot"><img src="../../../../assets/use-cases/gift-kit-readiness/shared-report-sdk-preview/cli-import.png" width="1232" height="804" alt="The gift-kit SDK desk imports the exact calculated CLI workflow with its source receipts, findings and history." loading="lazy" decoding="async"></a>
+  <figcaption><span>The CLI-to-SDK continuation preserves the same native calculation; importing it creates no operating choice or authority.</span><a href="../../../../assets/use-cases/gift-kit-readiness/shared-report-sdk-preview/cli-import.png">View full size</a></figcaption>
 </figure>
 
 
@@ -331,7 +331,7 @@
 
 
 <figure class="article-code">
-  <figcaption id="code-next">Materialize findings and calculation states for the queue · <a href="../../../../assets/use-cases/sample-code/calculation-integration-2026-11-20/source/gifting/gift-kit-preflight/src/reviewJourney.js.txt">src/reviewJourney.js, lines 197–198</a></figcaption>
+  <figcaption id="code-next">Materialize findings and calculation states for the queue · <a href="../../../../assets/use-cases/sample-code/shared-report-sdk-preview-2026-11-21/source/gifting/gift-kit-preflight/src/reviewJourney.js.txt">src/reviewJourney.js, lines 197–198</a></figcaption>
   <pre tabindex="0" role="region" aria-labelledby="code-next"><code class="language-javascript">  const output = lab.workflows.output({ run: current });
   const planningStep = output.steps.find(row =&gt; row.id === settings(current).planningStepId);</code></pre>
 </figure>
@@ -343,7 +343,7 @@
 
 
 <figure class="article-code">
-  <figcaption id="code-compare">Compare current and earlier planning findings through the SDK · <a href="../../../../assets/use-cases/sample-code/calculation-integration-2026-11-20/source/gifting/gift-kit-preflight/continue-review.mjs.txt">continue-review.mjs, line 70</a></figcaption>
+  <figcaption id="code-compare">Compare current and earlier planning findings through the SDK · <a href="../../../../assets/use-cases/sample-code/shared-report-sdk-preview-2026-11-21/source/gifting/gift-kit-preflight/continue-review.mjs.txt">continue-review.mjs, line 70</a></figcaption>
   <pre tabindex="0" role="region" aria-labelledby="code-compare"><code class="language-javascript">    await writeFile(join(output, &#39;changes.json&#39;), lab.sources.renderJSON(lab.reports.compareFindings({ before: view.previousRun, after: view.currentRun })));</code></pre>
 </figure>
 
@@ -352,7 +352,7 @@
 <p>The queue gives Leah the concise answer she needs across campaigns: the current response or blocker, its owner and the next action. Opening one case in this client gives her a focused planning answer and compact comparison; supporting checks, schedules and source history stay available on request. A shorter visible report does not discard the complete calculation or native workflow.</p>
 <p>The continuation also writes the complete <code>WorkflowOutput</code> to <code>output.json</code>. It retains the summary, supporting findings and calculation states for the custom integration; the native workflow file retains the case and its history. An exported brief alone is a narrower business handoff, rather than a substitute for that complete output or the saved native review.</p>
 <p>A complete current planning finding is still separate from choosing a complete arrangement, authorizing its spend, performing the correction, rehearsing its corrected output and handing over all 120 kits. The native review carries those separate records into the desk. The <a href="../resolve-a-handoff-exception/index.html">SDK continuation</a> follows that urgent campaign through the actual-event gate—and shows why a later failed test reopens the conclusion.</p>
-<p>The <a href="../../../../assets/use-cases/sample-code/calculation-integration-2026-11-20/sample-code.zip" download>complete calculation-mode implementation</a> contains the source behind these excerpts. The <a href="https://github.com/hermodlabs/sample_code/tree/main/gifting/gift-kit-preflight">sample repository</a> provides the related public examples. See the <a href="../../../../assets/use-cases/gift-kit-readiness/calculation-integration/reports/queue/campaigns.html">worked intervention queue</a> for all six calculated campaign findings.</p>
+<p>The <a href="../../../../assets/use-cases/sample-code/shared-report-sdk-preview-2026-11-21/sample-code.zip" download>complete calculation-mode implementation</a> contains the source behind these excerpts. The <a href="https://github.com/hermodlabs/sample_code/tree/main/gifting/gift-kit-preflight">sample repository</a> provides the related public examples. See the <a href="../../../../assets/use-cases/gift-kit-readiness/shared-report-sdk-preview/reports/queue/campaigns.html">worked intervention queue</a> for all six calculated campaign findings.</p>
 
 <h2 id="resolved-queue">A next action for each campaign, with the review still attached.</h2>
 <p>Leah can now justify the difference between two apparently similar campaigns: <strong>$300 when the in-house package fits; $400 when the remaining time requires the external package</strong>. A $100 correction needs the diagnostic basis that makes it sufficient. Missing bookings, stale scope and a missed window call for specific intervention.</p>
@@ -362,9 +362,9 @@
 <details class="disclosure use-case-source-disclosure"><summary><h2 class="disclosure-label" id="source">Sources and scope</h2></summary>
 <div class="use-case-reference-grid">
 <div><h3 id="implementation-and-verification">Implementation and verification</h3>
-<p>The <a href="https://github.com/hermodlabs/sample_code/tree/main/gifting/gift-kit-preflight">sample repository</a> contains the related public examples. The <a href="../../../../assets/use-cases/sample-code/calculation-integration-2026-11-20/sample-code.zip" download>complete calculation-mode implementation</a> retains the exact code shown here; its <a href="../../../../assets/use-cases/sample-code/calculation-integration-2026-11-20/manifest.json">source manifest</a> records file identities. The <a href="https://github.com/hermodlabs/sample_code/tree/f3584a5ec5aef6594b640b5e9d10f8e06041d4eb/gifting/gift-kit-preflight">earlier public revision</a> remains a separate reference.</p>
-<p>The cost-first version-3 app is connected through a version-4 calculation workflow. Its Apply inputs and Calculate/Recalculate lifecycle matches the current guided application. The <a href="../../../../assets/use-cases/gift-kit-readiness/calculation-integration/verification.json">paired-view audit</a> records the scenario differences and matched native decision crops. The <a href="../../../../assets/use-cases/gift-kit-readiness/calculation-integration/verification.json">operating verification record</a> retains the ordinary CLI queue, six fictional calculated outcomes and real CLI-to-production-browser handoff.</p>
-<p>The current screenshots were captured through normal file, Apply and Calculate/Recalculate controls. The <a href="../../../../assets/use-cases/gift-kit-readiness/calculation-integration/verification.json">current capture record</a> identifies the calculation workflow, native exports and source snapshot, and verifies that inspection leaves their hashes unchanged. Earlier releases and capture receipts remain retained as historical evidence; their recorded behavior is not relabeled as this new calculation release.</p></div>
+<p>The <a href="https://github.com/hermodlabs/sample_code/tree/main/gifting/gift-kit-preflight">sample repository</a> contains the related public examples. The <a href="../../../../assets/use-cases/sample-code/shared-report-sdk-preview-2026-11-21/sample-code.zip" download>complete calculation-mode implementation</a> retains the exact code shown here; its <a href="../../../../assets/use-cases/sample-code/shared-report-sdk-preview-2026-11-21/manifest.json">source manifest</a> records file identities. The <a href="https://github.com/hermodlabs/sample_code/tree/f3584a5ec5aef6594b640b5e9d10f8e06041d4eb/gifting/gift-kit-preflight">earlier public revision</a> remains a separate reference.</p>
+<p>The cost-first version-3 app is connected through a version-4.1 calculation workflow. Its Apply inputs and Calculate/Recalculate lifecycle matches the current guided application. The <a href="../../../../assets/use-cases/gift-kit-readiness/shared-report-sdk-preview/verification.json">paired-view audit</a> records the scenario differences and matched native decision crops. The <a href="../../../../assets/use-cases/gift-kit-readiness/shared-report-sdk-preview/verification.json">operating verification record</a> retains the ordinary CLI queue, six fictional calculated outcomes and the matching CLI-to-local-production-browser handoff. The current queue and its six portable workflows use the same authored definition as the desk; earlier calculation files keep their original definitions.</p>
+<p>The screenshots show the user-verified local production preview, captured through normal file, Apply and Calculate/Recalculate controls. They do not claim that the updated app has been published. The <a href="../../../../assets/use-cases/gift-kit-readiness/shared-report-sdk-preview/verification.json">current capture record</a> identifies the calculation workflow, native exports and source snapshot, and verifies that inspection leaves their hashes unchanged. Earlier releases and capture receipts remain retained as historical evidence; their recorded behavior is not relabeled as this new calculation release.</p></div>
 <div><h3 id="worked-example-boundaries">Worked-example boundaries</h3>
 <p>Leah, Jordan, campaigns, quotes, diagnostic records and operating assertions are fictional. Each campaign has independently allocated resources. The model compares the published finite packages, candidate starts and admitted fault configurations; it does not infer probabilities or discover unlisted recovery options.</p>
 <p>The company supplies trustworthy source mappings, scheduling, identity, storage and integrations. A native workflow preserves source assertions, calculation states and history; it does not authenticate records, authorize purchases or perform work. Shared-resource scheduling and sequential test selection need appropriate additional modeling. The planned ten-minute rehearsal remains distinct from its five-minute model minimum and from an actual passed rehearsal.</p></div>

@@ -1,0 +1,209 @@
+/** Production browser worker, portable CLI continuation and actual operating records. */
+import assert from 'node:assert/strict';
+import { existsSync } from 'node:fs';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { createHash } from 'node:crypto';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+
+import { chromium } from '/Users/jnaciona/code/hermod-review-lab/node_modules/playwright/index.mjs';
+import { createDecisionLab } from '/Users/jnaciona/code/hermod-review-lab/packages/sdk/dist/index.js';
+import { inspectGiftingJourney } from '/Users/jnaciona/code/hermod-review-lab/sample_code/gifting/gift-kit-handoff-desk/src/giftingJourney.js';
+import { createReviewJourney, openReviewJourney } from '/Users/jnaciona/code/hermod-review-lab/sample_code/gifting/gift-kit-handoff-desk/src/reviewJourney.js';
+
+const root = '/Users/jnaciona/code/hermod-review-lab/sample_code/gifting/gift-kit-handoff-desk';
+const output = process.env.GIFT_CAPTURE_DIR ?? path.join(root, '.output');
+const read = async file => JSON.parse(await fs.readFile(file, 'utf8'));
+const config = await read(path.join(root, 'public/data/journey-config.json'));
+const definition = await read(path.join(root, 'public/data', config.definitionUrl));
+const app = await read(path.join(root, 'public/data', config.appUrl));
+const lab = createDecisionLab(), errors = [], captures = [], checks = [];
+const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
+let server, browser, observedPage;
+const reportHostSelector = '[data-workflow-reports="true"]';
+const reportGroups = page => page.getByRole('tablist', { name: 'Workflow report groups', exact: true });
+async function downloaded(page) {
+  const [download] = await Promise.all([page.waitForEvent('download'), page.getByRole('button', { name: 'Download continuing review', exact: true }).click()]);
+  return openReviewJourney({ lab, value: await fs.readFile(await download.path(), 'utf8'), app, definition });
+}
+const fill = (page, label, value) => page.getByLabel(label, { exact: true }).fill(String(value));
+async function scope(page, prefix, values) {
+  const names = { batchId: 'Campaign', insertRevision: 'Insert revision', destinationRevision: 'Destination revision', checkoutRevision: 'Checkout revision', deviceScope: 'Test device', accountScope: 'Intended account' };
+  for (const [key, name] of Object.entries(names)) await fill(page, `${prefix}${name}`, values[key]);
+}
+async function record(page, { kind, reference, minute, recorded = minute, related, amount, duration, quantity, started, result = 'yes' }) {
+  await page.getByLabel('Operating event', { exact: true }).selectOption(kind);
+  await fill(page, 'External record reference', reference);
+  await fill(page, 'External record source', `Fictional browser fixture record ${reference}`);
+  await fill(page, 'Event time (elapsed minute)', minute); await fill(page, 'Recorded time (elapsed minute)', recorded);
+  await page.getByLabel('Actual recorded result', { exact: true }).selectOption(result);
+  if (amount !== undefined) await fill(page, 'Authorized amount (USD)', amount);
+  if (duration !== undefined) await fill(page, 'Actual rehearsal duration (minutes)', duration);
+  if (quantity !== undefined) await fill(page, 'Actual quantity stated in this record (kits)', quantity);
+  if (started !== undefined) await fill(page, 'Actual correction start (elapsed minute)', started);
+  if (related) await fill(page, kind === 'rehearsal' ? 'Correction completion reference' : 'Passed rehearsal reference', related);
+}
+async function capture(page, key, selector = reportHostSelector) {
+  const focused = selector === reportHostSelector || selector === '.results';
+  if (focused) await page.getByRole('button', { name: 'Reports', exact: true }).click();
+  const run = await downloaded(page), view = inspectGiftingJourney({ lab, run, config });
+  const native = `${key}.workflow.json`, full = `${key}.output.json`, png = `${key}.png`;
+  await fs.writeFile(path.join(output, native), lab.sources.renderJSON(run, { maxBytes: 50000000 }));
+  await fs.writeFile(path.join(output, full), lab.sources.renderJSON(view.output, { maxBytes: 50000000 }));
+  await page.locator(selector).screenshot({ path: path.join(output, png), animations: 'disabled' });
+  const bytes = await fs.readFile(path.join(output, png));
+  captures.push({ key, image: png, width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20), sha256: sha256(bytes),
+    workflow: native, workflowSHA256: sha256(await fs.readFile(path.join(output, native))), output: full,
+    workflowHash: run.contentHash, definitionHash: run.definition.contentHash, caseId: run.case.gifting.id,
+    evaluations: run.evaluations.length, reviews: run.reviews.length,
+    preferred: view.review?.preferred.map(row => ({ id: row.id, packageId: row.packageId, expenseMinor: row.expense, finishMinute: row.finishMinute })),
+    completed: view.closure?.completed ?? false });
+  if (focused) await page.getByRole('button', { name: 'Both', exact: true }).click();
+  return run;
+}
+async function layout(page, width, height, key) {
+  await page.setViewportSize({ width, height });
+  const size = await page.evaluate(() => ({ width: document.documentElement.scrollWidth, viewport: innerWidth,
+    nested: [...document.querySelectorAll('main,section,article,aside')].filter(element => ['auto', 'scroll'].includes(getComputedStyle(element).overflowY) && element.scrollHeight > element.clientHeight + 2).map(element => element.className) }));
+  assert.ok(size.width <= size.viewport + 1, `Page overflow: ${JSON.stringify(size)}`); assert.deepEqual(size.nested, []);
+  await page.screenshot({ path: path.join(output, `${key}.png`), fullPage: true, animations: 'disabled' });
+  checks.push({ key, ...size });
+}
+async function calculate(page) {
+  await page.getByRole('button', { name: /^(Calculate|Recalculate)$/, exact: true }).click();
+  await page.getByRole('button', { name: 'Cancel calculation', exact: true }).waitFor({ state: 'detached', timeout: 120000 });
+  await reportGroups(page).getByRole('tab', { name: 'Decision summary', exact: true }).click();
+  await page.locator('[data-decision-summary]').waitFor();
+  const issues = await page.locator('[role=alert]').allTextContents(); assert.deepEqual(issues, []);
+}
+async function selectCase(page, id) {
+  const details = page.locator('details').filter({ has: page.locator('summary', { hasText: 'Start a fictional teaching case' }) });
+  if (!(await details.evaluate(el => el.open))) await details.locator('summary').click();
+  await page.getByRole('button', { name: config.cases.find(row => row.id === id).label, exact: true }).click();
+  await page.getByRole('button', { name: 'Calculate', exact: true }).waitFor();
+}
+try {
+  await fs.mkdir(output, { recursive: true });
+  // The user-verified existing production build is frozen; no sibling build or writes.
+  server = { httpServer: { address: () => ({ port: 4192 }) }, close: async () => {} };
+  const chrome = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+  browser = await chromium.launch({ headless: true, ...(existsSync(chrome) ? { executablePath: chrome } : {}) });
+  const page = await browser.newPage({ viewport: { width: 1800, height: 1300 } }); observedPage = page;
+  page.on('pageerror', error => errors.push(error.message));
+  const url = `http://127.0.0.1:${server.httpServer.address().port}/`; await page.goto(url);
+  await page.getByRole('heading', { name: '1. Current commitment and source records' }).waitFor();
+  assert.equal(await page.getByLabel('Person recording input and finding reviews', { exact: true }).count(), 0);
+  await capture(page, 'uncalculated');
+  await capture(page, 'inputs', '.workspace > div:first-child .panel:first-child');
+  await calculate(page);
+  await page.locator('[data-workflow-reports="true"]').waitFor();
+  assert.deepEqual(await reportGroups(page).getByRole('tab').allTextContents(), ['Decision summary', 'Supporting reports', 'Decision process']);
+  assert.deepEqual(await page.getByRole('tablist', { name: 'Decision summary sections', exact: true }).getByRole('tab').allTextContents(), ['Options', 'Next actions', 'Assumptions', 'Questions']);
+  let run = await capture(page, 'ample'), view = inspectGiftingJourney({ lab, run, config });
+  assert.equal(view.review.preferred[0].expense, 30000); assert.equal(view.evidence.states.length, 1); assert.equal(view.closure.completed, false); assert.equal(run.reviews.length, 0);
+  const comparisonRows = view.output.decisionSummary.comparison.rows;
+  const inspectedRow = comparisonRows.find(row => row.primary !== false) || comparisonRows[0];
+  await page.locator('[data-decision-summary]').getByRole('button', { name: `Inspect ${inspectedRow.label}`, exact: true }).click();
+  await reportGroups(page).getByRole('tab', { name: 'Supporting reports', exact: true }).waitFor();
+  const selectorLabel = definition.metadata.presentation.report.questionViews.find(item => item.id === 'integration-arrangements').selectorLabel || 'Item to inspect';
+  assert.equal(await page.getByLabel(selectorLabel, { exact: true }).inputValue(), `string:${inspectedRow.inspectionKey}`, 'Inspect opens the exact native arrangement key.');
+  await capture(page, 'ample-supporting');
+  await reportGroups(page).getByRole('tab', { name: 'Decision process', exact: true }).click(); await capture(page, 'process');
+  await page.getByRole('button', { name: 'Inspect calculation dependencies', exact: true }).click();
+  await page.locator('[data-workflow-map]').waitFor(); await capture(page, 'dependencies');
+  assert.equal((await downloaded(page)).contentHash, run.contentHash, 'Display inspection must not change inputs, decisions or calculations.');
+  checks.push({ key: 'inspection-is-presentation-only', passed: true, contentHash: run.contentHash });
+  await selectCase(page, 'urgent-window'); await calculate(page);
+  run = await capture(page, 'urgent'); view = inspectGiftingJourney({ lab, run, config });
+  assert.equal(view.review.preferred[0].expense, 40000);
+  await capture(page, 'booking-current');
+  await page.getByRole('button', { name: 'Both', exact: true }).click();
+  await page.locator('details').filter({ has: page.getByText('Scope stated by the booking', { exact: true }) }).locator('summary').click();
+  await fill(page, 'Booking Insert revision', 'insert-3');
+  await page.getByRole('button', { name: 'Apply inputs', exact: true }).click(); await calculate(page);
+  const oldScope = await capture(page, 'booking-old-scope');
+  assert.equal(inspectGiftingJourney({ lab, run: oldScope, config }).review.status, 'blocked');
+  await fill(page, 'Booking Insert revision', 'insert-4');
+  await page.getByRole('button', { name: 'Apply inputs', exact: true }).click(); await calculate(page);
+  run = await downloaded(page);
+  checks.push({ key: 'controlled-one-field-booking-scope-comparison', passed: true });
+  await fill(page, 'Review time (elapsed minute)', 1411);
+  assert.equal(await page.getByRole('button', { name: 'Recalculate', exact: true }).isDisabled(), true);
+  await capture(page, 'pending', '.results');
+  assert.equal((await downloaded(page)).contentHash, run.contentHash, 'Pending drafts must not replace the applied portable case.');
+  await page.getByRole('button', { name: 'Discard changes', exact: true }).click();
+  await selectCase(page, 'urgent-stale-booking'); await calculate(page);
+  run = await capture(page, 'stale-booking'); assert.equal(inspectGiftingJourney({ lab, run, config }).review.status, 'blocked');
+  await selectCase(page, 'supported-smaller-correction'); await calculate(page);
+  run = await capture(page, 'supported-smaller'); assert.equal(inspectGiftingJourney({ lab, run, config }).review.preferred[0].expense, 10000);
+  await selectCase(page, 'urgent-window'); await calculate(page);
+  await fill(page, 'Person recording the operating decision', 'Fictional production coordinator');
+  await page.getByRole('button', { name: 'Choose External replacement and repair', exact: true }).click();
+  run = await capture(page, 'chosen', '.results');
+  await record(page, { kind: 'authorization', reference: 'BROWSER-AUTH', minute: 1410, amount: '400.00' });
+  await scope(page, 'Source ', run.case.gifting.scope);
+  await page.getByRole('button', { name: 'Record external event', exact: true }).click();
+  const corrected = { ...run.case.gifting.scope, insertRevision: 'insert-5', destinationRevision: 'destination-3', checkoutRevision: 'checkout-2' };
+  await record(page, { kind: 'correction', reference: 'BROWSER-WORK', started: 1410, minute: 1420, quantity: 120 });
+  await scope(page, 'Actual ', corrected);
+  await page.getByRole('button', { name: 'Record external event', exact: true }).click();
+  await record(page, { kind: 'rehearsal', reference: 'BROWSER-TEST', minute: 1430, duration: 10, related: 'BROWSER-WORK' });
+  await page.getByRole('button', { name: 'Record external event', exact: true }).click();
+  await record(page, { kind: 'handoff', reference: 'BROWSER-HANDOFF', minute: 1435, quantity: 120, related: 'BROWSER-TEST' });
+  await page.getByRole('button', { name: 'Record external event', exact: true }).click();
+  run = await capture(page, 'completed', '.results'); view = inspectGiftingJourney({ lab, run, config });
+  assert.equal(view.closure.completed, true); assert.equal(run.case.gifting.commitment.nowMinute, 1410);
+  await record(page, { kind: 'rehearsal', reference: 'BROWSER-LATER-FAILED-TEST', minute: 1436, duration: 10, related: 'BROWSER-WORK', result: 'no' });
+  await page.getByRole('button', { name: 'Record external event', exact: true }).click();
+  run = await capture(page, 'later-failed', '.results'); assert.equal(inspectGiftingJourney({ lab, run, config }).closure.completed, false);
+  await page.getByRole('button', { name: 'Save locally', exact: true }).click();
+  await fill(page, 'Review time (elapsed minute)', 1411); await page.getByRole('button', { name: 'Apply inputs', exact: true }).click();
+  const changed = await capture(page, 'changed-basis');
+  assert.equal(changed.case.gifting.commitment.nowMinute, 1411); assert.equal(changed.answers.commitment.status, 'supplied'); assert.equal(inspectGiftingJourney({ lab, run: changed, config }).decision, null);
+  await calculate(page); await capture(page, 'recalculated');
+  await page.getByRole('button', { name: 'Reopen saved review', exact: true }).click(); assert.equal((await downloaded(page)).contentHash, run.contentHash);
+  if (process.env.GIFT_PREFLIGHT_REVIEW) {
+    const external = openReviewJourney({ lab, value: await fs.readFile(process.env.GIFT_PREFLIGHT_REVIEW, 'utf8'), app, definition });
+    await page.getByLabel('Open continuing review', { exact: true }).setInputFiles(process.env.GIFT_PREFLIGHT_REVIEW);
+    await page.waitForTimeout(400);
+    const imported = await capture(page, 'cli-import'); assert.equal(imported.contentHash, external.contentHash, 'CLI-to-React handoff preserves exact native history and calculations.');
+    checks.push({ key: 'cli-portable-handoff', passed: true, contentHash: imported.contentHash });
+    const queueFile = path.resolve(process.env.GIFT_PREFLIGHT_REVIEW, '../../campaigns.html');
+    const queue = await browser.newPage({ viewport: { width: 1800, height: 1050 } });
+    await queue.goto(pathToFileURL(queueFile).href);
+    await queue.screenshot({ path: path.join(output, 'cli-queue.png'), fullPage: true, animations: 'disabled' });
+    const queueBytes = await fs.readFile(path.join(output, 'cli-queue.png'));
+    captures.push({ key: 'cli-queue', image: 'cli-queue.png', width: queueBytes.readUInt32BE(16), height: queueBytes.readUInt32BE(20), sha256: sha256(queueBytes), source: queueFile, sourceSHA256: sha256(await fs.readFile(queueFile)) });
+    await queue.close();
+  }
+  await layout(page, 1440, 1050, 'desktop'); await layout(page, 390, 844, 'mobile');
+  const invalidFile = path.join(output, 'unsupported-import.json');
+  await fs.writeFile(invalidFile, JSON.stringify({ format: 'unrelated/1', id: 'not-a-workflow' }));
+  await page.getByLabel('Open continuing review', { exact: true }).setInputFiles(invalidFile);
+  await page.getByText('The last operation failed.', { exact: false }).waitFor();
+  assert.equal(await page.locator('[data-decision-summary]').count(), 0, 'Failed import withholds the old summary as a current recommendation.');
+  for (const button of await page.getByRole('button', { name: /^Choose / }).all()) assert.equal(await button.isDisabled(), true);
+  assert.equal(await page.getByRole('button', { name: 'Record external event', exact: true }).isDisabled(), true);
+  checks.push({ key: 'failed-import-withholds-summary-and-operating-actions', passed: true });
+  const archived = await read(path.join(root, 'public/data/journey-v3/workflow.definition.json'));
+  const oldCase = await read(path.join(root, 'public/data/journey-v3/cases/urgent-window.json'));
+  const legacy = createReviewJourney({ lab, app, definition: archived, case: oldCase, owner: 'Jordan Reed', caseIdPath: 'gifting.id' });
+  const legacyFile = path.join(output, 'legacy-reviewed.workflow.json');
+  await fs.writeFile(legacyFile, lab.sources.renderJSON(legacy));
+  await page.getByLabel('Open continuing review', { exact: true }).setInputFiles(legacyFile);
+  await page.getByText('Retained reviewed workflow 3.0.0.', { exact: false }).waitFor();
+  assert.equal(await page.getByLabel('Person recording analytical reviews', { exact: true }).count(), 1);
+  assert.equal(await page.getByRole('button', { name: 'Review current inputs', exact: true }).count(), 1);
+  checks.push({ key: 'legacy-import-keeps-explicit-analytical-review', passed: true, definitionHash: legacy.definition.contentHash });
+  assert.deepEqual(errors, []);
+  const buildAssets = await fs.readdir(path.join('/private/tmp/decision-lab-shared-report-refresh/gifting', 'assets'));
+  const buildManifest = await Promise.all(buildAssets.map(async name => ({ path: `dist/assets/${name}`, sha256: sha256(await fs.readFile(path.join('/private/tmp/decision-lab-shared-report-refresh/gifting', 'assets', name))) })));
+  await fs.writeFile(path.join(output, 'verification.json'), JSON.stringify({ format: 'gifting-calculation-integration-capture/1', capturedAt: new Date().toISOString(), origin: 'Previously user-verified local production build, frozen byte-for-byte for capture; publication not claimed. Current source identities are retained separately.', url, workflowVersion: definition.version, definitionHash: definition.contentHash, appHash: config.binding.packageHash, buildAssets: buildManifest, captures, checks, errors }, null, 2));
+  console.log(`Verified production calculation, scoped evidence, operating records, stale drafts, native continuation and responsive page flow. ${output}/verification.json`);
+} catch (error) {
+  if (observedPage && !observedPage.isClosed()) {
+    await fs.writeFile(path.join(output, 'failure.txt'), `${error.stack}\n\n${await observedPage.locator('body').innerText()}`);
+    await observedPage.screenshot({ path: path.join(output, 'failure.png'), fullPage: true });
+  }
+  throw error;
+} finally { await browser?.close(); await server?.close(); }
