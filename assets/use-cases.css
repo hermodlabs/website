@@ -15,9 +15,13 @@
 .release-explainer :is(picture, img) { display: block; width: 100%; height: auto; }
 .reader-prose .release-explainer figcaption { margin-top: 10px; font-size: 14px; line-height: 1.65; }
 .release-explainer figcaption a { display: inline-block; margin-left: 8px; }
+.growth-signal-responses { margin-block: 24px 28px; }
+.growth-signal-responses :is(picture, img) { display: block; width: 100%; height: auto; }
+.reader-prose .growth-signal-responses figcaption { margin-top: 10px; font-size: 14px; line-height: 1.65; }
+.growth-signal-responses figcaption a { display: inline-block; margin-left: 8px; }
 @media print {
-  .use-case-context-figure, .release-explainer { break-inside: avoid; }
-  .use-case-context-figure figcaption > a, .release-explainer figcaption a { display: none; }
+  .use-case-context-figure, .release-explainer, .growth-signal-responses { break-inside: avoid; }
+  .use-case-context-figure figcaption > a, .release-explainer figcaption a, .growth-signal-responses figcaption a { display: none; }
 }
 .use-case-series-branch { max-width: 85ch; margin-block: -6px 24px; padding-left: 16px; border-left: 2px solid var(--accent); color: var(--muted); font-size: 16px; line-height: 1.7; }
 .use-case-series-links { display: flex; flex-wrap: wrap; gap: 16px 32px; margin-block: -16px 40px; }

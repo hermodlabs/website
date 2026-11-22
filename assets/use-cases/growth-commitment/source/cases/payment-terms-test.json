@@ -1,0 +1,192 @@
+{
+  "growth": {
+    "openingCashMinor": 1200000,
+    "minimumReserveMinor": 0,
+    "unitPriceMinor": 150000,
+    "deliveryExpensePerCustomerMinor": 50000,
+    "deliveryHoursPerCustomer": 5,
+    "currentDay": 0,
+    "decisionDeadlineDay": 3,
+    "horizonDay": 60,
+    "campaignSurplusTargetMinor": 0,
+    "arrangements": [
+      {
+        "id": "baseline",
+        "campaignExpenseMinor": 0
+      },
+      {
+        "id": "large-invoice",
+        "campaignExpenseMinor": 800000
+      },
+      {
+        "id": "small-invoice",
+        "campaignExpenseMinor": 200000
+      },
+      {
+        "id": "medium-prepay",
+        "campaignExpenseMinor": 400000
+      }
+    ],
+    "scenarios": [
+      {
+        "id": "prepay-accepted",
+        "label": "Prepayment offer attracts the larger customer count"
+      },
+      {
+        "id": "prepay-weak",
+        "label": "Prepayment offer attracts the smaller customer count"
+      }
+    ],
+    "outcomes": [
+      {
+        "scenario": "prepay-accepted",
+        "arrangement": "baseline",
+        "customers": 0,
+        "campaignExpenseDay": 0,
+        "deliveryExpenseDay": 0,
+        "customerReceiptDay": 0,
+        "deliveryStartDay": 0,
+        "deliveryFinishDay": 0,
+        "capacityPeriod": "delivery-period"
+      },
+      {
+        "scenario": "prepay-accepted",
+        "arrangement": "large-invoice",
+        "customers": 40,
+        "campaignExpenseDay": 3,
+        "deliveryExpenseDay": 7,
+        "customerReceiptDay": 30,
+        "deliveryStartDay": 7,
+        "deliveryFinishDay": 14,
+        "capacityPeriod": "delivery-period"
+      },
+      {
+        "scenario": "prepay-accepted",
+        "arrangement": "small-invoice",
+        "customers": 10,
+        "campaignExpenseDay": 3,
+        "deliveryExpenseDay": 7,
+        "customerReceiptDay": 30,
+        "deliveryStartDay": 7,
+        "deliveryFinishDay": 14,
+        "capacityPeriod": "delivery-period"
+      },
+      {
+        "scenario": "prepay-accepted",
+        "arrangement": "medium-prepay",
+        "customers": 20,
+        "campaignExpenseDay": 3,
+        "deliveryExpenseDay": 7,
+        "customerReceiptDay": 4,
+        "deliveryStartDay": 7,
+        "deliveryFinishDay": 14,
+        "capacityPeriod": "delivery-period"
+      },
+      {
+        "scenario": "prepay-weak",
+        "arrangement": "baseline",
+        "customers": 0,
+        "campaignExpenseDay": 0,
+        "deliveryExpenseDay": 0,
+        "customerReceiptDay": 0,
+        "deliveryStartDay": 0,
+        "deliveryFinishDay": 0,
+        "capacityPeriod": "delivery-period"
+      },
+      {
+        "scenario": "prepay-weak",
+        "arrangement": "large-invoice",
+        "customers": 40,
+        "campaignExpenseDay": 3,
+        "deliveryExpenseDay": 7,
+        "customerReceiptDay": 30,
+        "deliveryStartDay": 7,
+        "deliveryFinishDay": 14,
+        "capacityPeriod": "delivery-period"
+      },
+      {
+        "scenario": "prepay-weak",
+        "arrangement": "small-invoice",
+        "customers": 10,
+        "campaignExpenseDay": 3,
+        "deliveryExpenseDay": 7,
+        "customerReceiptDay": 30,
+        "deliveryStartDay": 7,
+        "deliveryFinishDay": 14,
+        "capacityPeriod": "delivery-period"
+      },
+      {
+        "scenario": "prepay-weak",
+        "arrangement": "medium-prepay",
+        "customers": 2,
+        "campaignExpenseDay": 3,
+        "deliveryExpenseDay": 7,
+        "customerReceiptDay": 4,
+        "deliveryStartDay": 7,
+        "deliveryFinishDay": 14,
+        "capacityPeriod": "delivery-period"
+      }
+    ],
+    "capacityPeriods": [
+      {
+        "id": "delivery-period",
+        "from": 0,
+        "through": 30,
+        "availableHours": 140
+      }
+    ]
+  },
+  "learning": {
+    "enabled": true,
+    "basis": {
+      "feeMinor": 50000,
+      "durationDays": 1,
+      "probabilityBasis": {
+        "source": "FICTIONAL-TEACHING-ASSESSMENT-1: Explicit hypothetical probabilities and signal reliability; not evidence interpretation counts or measured demand.",
+        "scope": "One standardized service package and the next-month campaign window"
+      },
+      "priors": [
+        {
+          "state": "prepay-accepted",
+          "probability": 0.5
+        },
+        {
+          "state": "prepay-weak",
+          "probability": 0.5
+        }
+      ],
+      "likelihoods": [
+        {
+          "state": "prepay-accepted",
+          "report": "favorable",
+          "probability": 0.7
+        },
+        {
+          "state": "prepay-accepted",
+          "report": "unfavorable",
+          "probability": 0.1
+        },
+        {
+          "state": "prepay-accepted",
+          "report": "inconclusive",
+          "probability": 0.2
+        },
+        {
+          "state": "prepay-weak",
+          "report": "favorable",
+          "probability": 0.1
+        },
+        {
+          "state": "prepay-weak",
+          "report": "unfavorable",
+          "probability": 0.7
+        },
+        {
+          "state": "prepay-weak",
+          "report": "inconclusive",
+          "probability": 0.2
+        }
+      ]
+    }
+  }
+}

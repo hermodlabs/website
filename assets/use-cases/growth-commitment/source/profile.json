@@ -1,0 +1,37 @@
+{
+  "format": "business-growth-profile/1",
+  "id": "growth-commitment",
+  "version": "1.0.0",
+  "title": "Compare growth arrangements",
+  "timeOrigin": "elapsed whole days from the declared growth-planning origin",
+  "money": "USD cent",
+  "defaults": {
+    "openingCashMinor": 1200000,
+    "minimumReserveMinor": 0,
+    "unitPriceMinor": 150000,
+    "deliveryExpensePerCustomerMinor": 50000,
+    "deliveryHoursPerCustomer": 5,
+    "currentDay": 0,
+    "decisionDeadlineDay": 3,
+    "horizonDay": 60,
+    "campaignSurplusTargetMinor": 0
+  },
+  "arrangements": [
+    { "id": "baseline", "label": "Keep the current approach", "campaignExpenseMinor": 0, "customers": 0, "paymentTerms": "invoice" },
+    { "id": "large-invoice", "label": "Large campaign with invoiced payment", "campaignExpenseMinor": 800000, "customers": 40, "paymentTerms": "invoice" },
+    { "id": "small-invoice", "label": "Small campaign with invoiced payment", "campaignExpenseMinor": 200000, "customers": 10, "paymentTerms": "invoice" },
+    { "id": "medium-prepay", "label": "Medium campaign with payment before delivery", "campaignExpenseMinor": 400000, "customers": 20, "paymentTerms": "prepay" }
+  ],
+  "capacityPeriods": [
+    { "id": "delivery-period", "from": 0, "through": 30, "availableHours": 140 }
+  ],
+  "schedule": {
+    "campaignExpenseDay": 3,
+    "prepaymentDay": 4,
+    "deliveryExpenseDay": 7,
+    "deliveryStartDay": 7,
+    "deliveryFinishDay": 14,
+    "invoiceReceiptDay": 30,
+    "capacityPeriod": "delivery-period"
+  }
+}
