@@ -14,6 +14,8 @@ The Hermod wordmark and symbol were reused from [hermodlabs.com](https://hermodl
 
 The current homepage hero and shipment landing page use the native registration comparison selected by `src/_data/articleUI.json`. They lead into the same Marketplace business story.
 
+The Marketplace announcement introduces collection browsing with the unedited public-app grid in `blog/marketplace/introduction-2026-11-23/marketplace-collections.png`. Its independent receipt retains the published build manifest, catalog, inspected Order fulfillment collection and exact screenshot bytes. The existing shipment and gifting comparison keeps its own capture records. `src/_data/marketplaceIntro.json` selects the browsing image; no older screenshot or receipt was relabeled.
+
 ## November 21 shared report previews: historical captures
 
 The November 21 article refresh uses frozen copies of the user-verified local production builds. The public Decision Lab site was unchanged at capture time. `decision-lab-shared-report-preview/` retains built-file manifests and accompanying source context, including uncommitted source changes. These identify captured bytes without claiming a new publication or reproducible equality between source and built artifacts.
