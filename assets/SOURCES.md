@@ -1,20 +1,28 @@
 # Current asset sources
 
+## Current article comparisons
+
+The thirteen principal use-case stories use the scenario captures selected by `src/_data/articleUI.json`, alongside the independently qualified Python example. `use-cases/article-refresh/verified-2026-11-23/` preserves exact builds, workflow packages, native cases and screenshot receipts. The six Marketplace captures identify build `4d0d1d022c9b32f6b1c0`; the two custom SDK clients have independent build identities and compatible native continuations. Their original local-capture and publication records remain unchanged.
+
+`use-cases/release-recovery/scope-comparison-2026-11-23/` adds two compact, unedited public-app screenshots of the same core-only arrangement in **Supporting reports → Arrangement details**. The new receipt independently verifies the published runtime and workflow 1.2.0, retains native runs before and after inspection, and establishes that only `release.scopeRevisionAccepted` changes. Cost and handoff remain fixed; an accepted revised commitment still excludes the originally promised reporting. `src/_data/releaseScopeComparison.json` selects this pair. The original captures remain in their own archive.
+
+Collection guides retain current navigation and exact worked-case downloads. Redundant older input and process screenshots have been removed from those guides; their source images and historical receipts remain available in the archived directories below.
+
 ## Brand and product images
 
 The Hermod wordmark and symbol were reused from [hermodlabs.com](https://hermodlabs.com/). The site's typography, colors and spacing develop the same visual identity. `hermod-gg-composition.png` and `hermod-gg-contribution.png` are actual [Hermod.gg](https://hermod.gg/) product captures; champion imagery within them belongs to Riot Games.
 
-The current homepage hero is the native shipment Decision summary selected by `src/_data/shipmentUIRefresh.json`. It is stored with the other current shipment captures.
+The current homepage hero and shipment landing page use the native registration comparison selected by `src/_data/articleUI.json`. They lead into the same Marketplace business story.
 
-## Shared report interface: local production previews
+## November 21 shared report previews: historical captures
 
 The November 21 article refresh uses frozen copies of the user-verified local production builds. The public Decision Lab site was unchanged at capture time. `decision-lab-shared-report-preview/` retains built-file manifests and accompanying source context, including uncommitted source changes. These identify captured bytes without claiming a new publication or reproducible equality between source and built artifacts.
 
-`use-cases/{shipment-readiness,gift-kit-readiness,street-team-deployment,restaurant-roster-repair}/shared-report-preview/` contains unedited local browser screenshots, exact workflow definitions, native case exports and verification receipts. Their local workflow versions are first-shipment 1.9.0, gift-kit 2.8.0, promotion 1.13.0 and restaurant roster 1.6.0. Reader links continue to use the published releases; local screenshot versions are identified separately.
+`use-cases/{shipment-readiness,gift-kit-readiness,street-team-deployment,restaurant-roster-repair}/shared-report-preview/` contains unedited local browser screenshots, exact workflow definitions, native case exports and verification receipts. Their local workflow versions are first-shipment 1.9.0, gift-kit 2.8.0, promotion 1.13.0 and restaurant roster 1.6.0. At that capture time, reader links used the separately identified published releases.
 
 The workflows and both React samples share report presentation: tabs, option comparisons, inspection, tables and metric formatting. Domain wording comes from configuration. **Options**, **Next actions**, **Assumptions** and **Questions** remain separate summary sections. Case details contains files, sources and calculation history. Captures use ordinary fictional inputs, visible Forms/YAML edits, Apply inputs and Calculate/Recalculate. No DOM, CSS, storage or results are injected. Inspection changes no business choice; calculation authenticates no record and performs no operating action.
 
-The former public captures remain in `current-ui/` with their original receipts and preserved metadata. Earlier `decision-summary-ui/`, `decision-process-refresh/` and restaurant `marketplace-ui/` also retain their own dated identities. They are independent evidence, not relabeled previews. The original source ZIPs retain their original releases; current restaurant articles link the exact captured preview definition.
+The former public captures remain in `current-ui/` with their original receipts and preserved metadata. Earlier `decision-summary-ui/`, `decision-process-refresh/` and restaurant `marketplace-ui/` also retain their own dated identities. They are independent evidence, not relabeled previews. The original source ZIPs retain their original releases; the current restaurant guide downloads the workflow identified by its current article receipt.
 
 ## CLI, SDK and Python examples
 
@@ -36,7 +44,7 @@ The Business growth series uses public Decision Lab captures retained in `use-ca
 
 `use-cases/growth-commitment/source/manifest.json` identifies the unmodified complete source example and its downloadable `growth-commitment-source.zip`. The workflow, both app packages and Excel package match the captured public Marketplace packages byte for byte. The source is retained from the implemented working copy; the new directory was unavailable in the public sample repository when checked. No GitHub commit or public npm release is implied. `business-growth.svg` and the growth collection/article covers are original editorial vectors. `growth-commitment/signal-responses{,-mobile}.svg` explain the complete hypothetical signal policy, retaining the unfavorable and inconclusive responses. They introduce no new calculation or record of an actual test.
 
-The report-reading overview pairs the local shipment and gift-kit SDK previews and uses the local promotion and shipment-process captures, each with its own hash-checked receipt. Their different calendars and domain records remain separate. `articles/covers/what-should-a-decision-summary-help-you-decide.svg` and `articles/decision-views/reading-a-decision{,-mobile}.svg` are original accessible vectors explaining the reading structure; they are editorial illustrations and introduce no calculated findings.
+The report-reading overview pairs the current shipment and gift-kit SDK captures, each with its own hash-checked receipt. Their different calendars and domain records remain separate. `articles/covers/what-should-a-decision-summary-help-you-decide.svg` and `articles/decision-views/reading-a-decision{,-mobile}.svg` are original accessible vectors explaining the reading structure; they are editorial illustrations and introduce no calculated findings.
 
 Page and article covers, navigation icons, business-process charts, timing diagrams and explanatory decision maps are original native SVGs. They use the site's visual system and include accessible titles and descriptions.
 
@@ -59,6 +67,6 @@ The Assessment Patterns reading companions reuse the newly captured shared-repor
 
 ## Gifting article series
 
-The gifting scenario now has four business chapters and three integration chapters. The split reuses the verified native Marketplace and custom Handoff Desk captures above; it introduces no new application screenshot or calculation. Each series retains its own definition and case scope. The complete UI walkthrough is shared on the scenario hub.
+The gifting scenario has two business stories and one combined CLI-to-SDK continuation. They use the current Marketplace and independently built Handoff Desk captures identified at the top of this document. Each implementation retains its own definition and case scope. Setup, report navigation and exact case downloads are shared on the scenario hub.
 
 `use-cases/gift-kit-readiness/series-covers/{evidence,booking,handoff,continuation}.svg` are original editorial vector covers using the established gift-kit palette. They illustrate evidence scope, confirmation scope, recorded completion and native-case continuation. They are not application interfaces or independently evaluated findings.

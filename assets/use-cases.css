@@ -303,3 +303,9 @@
   .reader-content .use-case-callout { padding: 18px; font-size: 15px; }
   .use-case-figure { margin-block: 28px; }
 }
+
+/* A current calculation must remain readable at article width. Compact SVG
+   comparisons retain their side-by-side layout; native reports use full rows. */
+.use-case-context-panels:has([data-current-article-capture]) { grid-template-columns: minmax(0, 1fr); }
+.use-case-context-panel:has([data-current-article-capture]) { padding: 0; border: 0; background: transparent; }
+.use-case-context-panel [data-current-article-capture] { margin-block: 16px 28px; }

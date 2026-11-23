@@ -124,7 +124,6 @@
     <ol>
       <li><a href="#same-basis">Keep the operating requirements fixed.</a></li>
       <li><a href="#different-priorities">State what should come first.</a></li>
-      <li><a href="#inspect-the-assignments">Read the proposal the team will actually receive.</a></li>
       <li><a href="#elena-chooses">The $100 difference becomes a decision Elena can discuss.</a></li>
       <li><a href="#reuse-the-structure">Reuse the reasoning while keeping the meanings intact.</a></li>
       <li><a href="#source">Sources and scope</a></li>
@@ -140,7 +139,7 @@
       <p class="reader-lead">Return to the full-availability situation from <a href="../keep-dinner-covered/index.html">Elena’s coverage analysis</a>: Rowan can work the whole Saturday shift, and two supplied repairs meet the restaurant’s recorded requirements. Neither leaves another service short.</p>
 <p>The choice still has consequences. Rowan’s relief quote preserves the other published assignments. The cheaper alternative moves Theo to Saturday, moves Ben into Sunday cooking and adds Ava to Sunday serving. The roster is already published; employees have planned around it. Elena also has a labor expense boundary to respect.</p>
 <p>Calling the cheaper option “best” would hide a priority inside the recommendation. Calling the smaller change “fairer” would claim more than the calculation establishes. Elena needs to state what should come first for this decision.</p>
-<p class="use-case-example-note">This fictional continuation uses <strong>Repair a published restaurant roster 1.6.0</strong> in the <strong>Restaurant operations</strong> collection. The comparison priority changes within the same workflow; the four supplied repairs, employee records and mandatory conditions stay fixed. <a href="../index.html#try-the-review">Open the workflow and follow the shared setup instructions</a>.</p>
+<p class="use-case-example-note">This fictional continuation uses <strong>Repair a published restaurant roster 1.9.0</strong> in the <strong>Restaurant operations</strong> collection. The comparison priority changes within the same workflow; the four supplied repairs, employee records and mandatory conditions stay fixed. <a href="../index.html#try-the-review">Open the workflow and follow the shared setup instructions</a>.</p>
 
 
 
@@ -166,78 +165,18 @@
 <p>Elena opens <strong>Inputs → Repair decision → Comparison priority</strong>. She can keep <strong>Compare without ranking</strong>, choose <strong>Preserve published assignments first</strong>, or choose <strong>Minimize remaining payroll first</strong>.</p>
 <p>The <strong>stability-first</strong> priority minimizes changed published positions, then remaining payroll. The <strong>cost-first</strong> priority minimizes remaining payroll, then changed positions. These are ordered comparisons, with no invented exchange rate between a dollar and an employee’s disruption. If repairs tie on both declared criteria, the comparison retains the tie.</p>
 <p>She chooses one priority, selects <strong>Apply inputs</strong>, then <strong>Calculate</strong> or <strong>Recalculate</strong> as offered. The <strong>Decision summary → Options</strong> view shows the preferred proposal and the other passing repair. Switching to the other priority changes that comparison without changing the employee facts or repeating the still-current feasibility calculation.</p>
-
-<section class="use-case-comparison" aria-label="The same feasible repairs. Two explicit priorities." data-comparison="restaurant-roster-priority" data-comparison-kind="policy">
-  <div class="use-case-comparison-basis">
-    <p><strong>Shared basis.</strong> Full Rowan availability, the same four complete repairs and all the same mandatory staffing and expense conditions. Two repairs remain feasible in both calculations.</p>
-    <p class="use-case-comparison-change"><strong>What changes.</strong> Only Comparison priority changes in the same workflow: preserve published assignments first, or minimize remaining payroll first. The selected priority activates its pinned app; the current feasibility calculation is retained.</p>
-  </div>
-  <div class="use-case-comparison-panels">
-
-
-    <article class="use-case-comparison-panel" aria-labelledby="restaurant-roster-priority-panel-1">
-      <h3 id="restaurant-roster-priority-panel-1">Preserve published assignments first</h3>
-      <p class="use-case-comparison-finding"><strong>Bring in Rowan is preferred.</strong></p>
-      <dl class="use-case-comparison-inputs">
-
-        <div><dt>First priority</dt><dd>Fewest changed published positions</dd></div>
-
-        <div><dt>Additional expense</dt><dd>$180</dd></div>
-
-        <div><dt>Changed positions</dt><dd>1</dd></div>
-
-      </dl>
-      <div class="use-case-comparison-observation">
-      <figure class="use-case-comparison-screen">
-        <a href="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/stability.png" aria-label="Open the Preserve published assignments first view at full size">
-          <img src="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/stability.png" width="883" height="667" alt="Preserve published assignments first prefers Bring in Rowan, with $836 remaining payroll, $180 additional expense and one changed position." loading="lazy" decoding="async">
-        </a>
-        <figcaption>Stability first: Rowan preserves the other published assignments. Payroll breaks ties after the changed-position count. <a href="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/stability.png">View full size</a></figcaption>
-      </figure>
-      <p class="use-case-comparison-judgment">Elena preserves the other published assignments. The remaining payroll is $836, within the same $856 limit.</p>
-      </div>
-    </article>
-
-
-    <article class="use-case-comparison-panel" aria-labelledby="restaurant-roster-priority-panel-2">
-      <h3 id="restaurant-roster-priority-panel-2">Minimize remaining payroll first</h3>
-      <p class="use-case-comparison-finding"><strong>Repair three assignments is preferred.</strong></p>
-      <dl class="use-case-comparison-inputs">
-
-        <div><dt>First priority</dt><dd>Lowest remaining payroll</dd></div>
-
-        <div><dt>Additional expense</dt><dd>$80</dd></div>
-
-        <div><dt>Changed positions</dt><dd>3</dd></div>
-
-      </dl>
-      <div class="use-case-comparison-observation">
-      <figure class="use-case-comparison-screen">
-        <a href="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/cost.png" aria-label="Open the Minimize remaining payroll first view at full size">
-          <img src="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/cost.png" width="883" height="667" alt="Minimize remaining payroll first prefers Repair three assignments, with $736 remaining payroll, $80 additional expense and three changed positions." loading="lazy" decoding="async">
-        </a>
-        <figcaption>Cost first: the coordinated repair saves $100. Every staffing requirement and operating fact stays the same. <a href="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/cost.png">View full size</a></figcaption>
-      </figure>
-      <p class="use-case-comparison-judgment">The coordinated changes retain the required service coverage at $736 remaining payroll. The additional expense is $100 lower than bringing in Rowan.</p>
-      </div>
-    </article>
-
-  </div>
-  <p class="use-case-comparison-takeaway"><strong>What this means for the decision.</strong> The requirements do not change. The declared priority selects a different preferred repair among the same supplied alternatives. Elena remains responsible for choosing the priority and confirming the changes.</p>
-</section>
-
+<div class="use-case-context-panels"><section class="use-case-context-panel"><h3 id="preserve-published-assignments-first">Preserve published assignments first.</h3><p>Rowan is preferred: one changed position and $836 remaining payroll.</p><figure class="use-case-figure" data-current-article-capture>
+  <a href="../../../../assets/use-cases/article-refresh/verified-2026-11-23/restaurant/stability.png" aria-label="Open this calculated finding at full size"><img src="../../../../assets/use-cases/article-refresh/verified-2026-11-23/restaurant/stability.png" width="1039" height="660" alt="The unchanged operating basis with a stability-first priority favors the relief repair." loading="lazy" decoding="async"></a>
+  <figcaption><span>The unchanged operating basis with a stability-first priority favors the relief repair.</span><a href="../../../../assets/use-cases/article-refresh/verified-2026-11-23/restaurant/stability.png">View full size</a></figcaption>
+</figure>
+</section><section class="use-case-context-panel"><h3 id="minimize-remaining-payroll-first">Minimize remaining payroll first.</h3><p>The coordinated repair is preferred: three changed positions and $736 remaining payroll.</p><figure class="use-case-figure" data-current-article-capture>
+  <a href="../../../../assets/use-cases/article-refresh/verified-2026-11-23/restaurant/cost.png" aria-label="Open this calculated finding at full size"><img src="../../../../assets/use-cases/article-refresh/verified-2026-11-23/restaurant/cost.png" width="1039" height="660" alt="The same operating basis with a cost-first priority favors the coupled repair." loading="lazy" decoding="async"></a>
+  <figcaption><span>The same operating basis with a cost-first priority favors the coupled repair.</span><a href="../../../../assets/use-cases/article-refresh/verified-2026-11-23/restaurant/cost.png">View full size</a></figcaption>
+</figure>
+</section></div>
 <p>The preference changes because the authored priority changes. It does not establish that either priority is universally right. In both reports, the preferred repair is preferred <strong>among the four supplied candidates</strong>; the app has not searched every possible restaurant roster.</p>
 
-<h2 id="inspect-the-assignments">Read the proposal the team will actually receive.</h2>
-<p>Before choosing, Elena opens <strong>Supporting reports → Complete roster</strong>. The <strong>Service position</strong> selector compares one position’s assignment and timing across the supplied complete repairs. She starts with Saturday’s affected cooking position, then checks the affected Sunday positions. The cheaper repair moves Theo into Saturday cooking, Ben into Sunday cooking and Ava into Sunday serving. Rowan’s repair replaces Nora while retaining the other eight positions. All nine recorded positions are available for inspection; viewing one position does not select a repair.</p>
-
-<figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/roster.png" aria-label="Open this complete roster screenshot at full size"><img src="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/roster.png" width="883" height="1102" alt="Complete roster compares Saturday dinner cooking position 2 across all four supplied repairs, showing Rowan or Theo covering the recorded 6–10 p.m. interval and identifying the unfilled proposal." loading="lazy" decoding="async"></a>
-  <figcaption><span>Compare the disrupted service position across the supplied complete repairs, then switch positions to inspect the rest of the roster. These are retained schedules; selecting a position does not choose a repair or publish it.</span><a href="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/roster.png">View full size</a></figcaption>
-</figure>
-
-<p>The report lets Elena trace the coverage across services and see the required work intervals. Recorded qualification and availability support that proposal; neither tells her that the affected employees have agreed to the change.</p>
-
+<p>The <a href="../index.html#try-the-review">collection guide</a> explains how to inspect assignments and timing for each complete roster. Qualifications and availability support the proposal; neither establishes that the affected employees agreed.</p>
 <h2 id="elena-chooses">The $100 difference becomes a decision Elena can discuss.</h2>
 <p>For this already-published week, Elena chooses the <strong>stability-first priority</strong>. She is willing to spend $100 more than the coordinated repair to avoid two additional changed positions. Bringing in Rowan gives <strong>$836 remaining payroll</strong>, within the $856 limit.</p>
 <p>That is Elena’s management judgment. Decision Lab makes the tradeoff explicit and applies the declared order consistently. It does not assign a monetary value to employee inconvenience or establish the fairness of the resulting week.</p>
@@ -251,7 +190,7 @@
 <footer class="use-case-article-references" aria-labelledby="source">
   <details class="disclosure use-case-source-disclosure">
     <summary><h2 class="disclosure-label" id="source">Sources and scope</h2></summary>
-    <p>Elena, the restaurant, employees, availability, qualifications, flat four-hour fees and roster are fictional. The screenshots show the working <strong>Repair a published restaurant roster 1.6.0</strong> workflow in a verified local production preview of the <strong>Restaurant operations</strong> Marketplace collection. This shared-report interface has not yet been published; the public link retains version 1.5.0. The <a href="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/verification.json">capture and calculation record</a> identifies the frozen local build, exact native runs and image hashes. The <a href="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/restaurant.workflow.json" download>captured workflow download</a> retains the exact preview workflow and its pinned app definitions used for these captures.</p>
+    <p>Elena, the restaurant, employees, availability, qualifications, flat four-hour fees and roster are fictional. The current figures show <strong>Repair a published restaurant roster</strong> in the <strong>Restaurant operations</strong> collection. Their <a href="../../../../assets/use-cases/article-refresh/verified-2026-11-23/restaurant/verification.json">current capture receipt</a> identifies the exact tested workflow, build and native cases. The <a href="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/verification.json">earlier capture record</a> and <a href="../../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/restaurant.workflow.json" download>captured workflow</a> remain identified historical artifacts with their original pinned definitions.</p>
     <p>The Complete a Commitment app definitions assess four supplied complete repairs for the remaining recorded Friday–Sunday services. They do not generate all possible rosters. A preferred repair is preferred within that supplied comparison. Earlier work contributes recorded minute totals and a last-shift boundary; the example does not retrospectively audit that work or calculate its payroll.</p>
     <p>Each service has two cook positions and one server position for four hours. This fixture has no in-shift breaks. A required break or another operating commitment must be represented in the working intervals and covered by a supplied repair. Ten hours of rest and a forty-hour weekly limit are declared example policies; the calculation is not an employment-law compliance assessment. Labor premiums, demand forecasting, workload intensity and staff agreement need their own records and rules.</p>
     <p>Additional expense is measured against $656 of retained remaining payroll after Nora’s unpaid cancelled shift is removed. Changed assignments are published positions assigned to a different person, including an unfilled position; they are not a count of employee notifications or a measure of fairness. The remaining-payroll limit is $856.</p>
@@ -279,13 +218,13 @@
       <li data-related-scenario="street-team-deployment" data-relationship="problem-family">
         <p class="reader-related-context">Shared problem family</p>
 
-        <a href="../../../nightlife/street-team-deployment/review-tonights-promotion/index.html"><span>7 min read</span><strong>Can Alex justify a $200 promotion push tonight?</strong></a>
+        <a href="../../../nightlife/street-team-deployment/review-tonights-promotion/index.html"><span>5 min read</span><strong>The promotion fits. A callout changes the decision.</strong></a>
       </li>
 
       <li data-related-scenario="shipment-readiness" data-relationship="assessment-pattern">
         <p class="reader-related-context">Shared assessment pattern</p>
 
-        <a href="../../../supply-chain/shipment-readiness/compare-shipment-options/index.html"><span>7 min read</span><strong>Same shipment. A different booking window.</strong></a>
+        <a href="../../../supply-chain/shipment-readiness/compare-shipment-options/index.html"><span>5 min read</span><strong>Which shipment can Maya support before committing money?</strong></a>
       </li>
 
     </ul>

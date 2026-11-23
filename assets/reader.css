@@ -133,3 +133,7 @@
   .reader-prose { max-width: none; }
   .reader-layout { --reader-figure-extra: 0px; }
 }
+
+/* Native calculation screenshots need a full reader column to remain legible.
+   Compact explanatory SVGs keep their own comparison layout. */
+.reader-content .current-capture-comparison { grid-template-columns: minmax(0, 1fr); }

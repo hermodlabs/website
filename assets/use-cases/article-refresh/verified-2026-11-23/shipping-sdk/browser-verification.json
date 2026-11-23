@@ -1,0 +1,414 @@
+{
+  "suite": "Shipment calculation integration production browser",
+  "origin": "Local production build from an isolated source snapshot; fictional supplied records",
+  "capturedAt": "2026-11-23T18:29:39.684Z",
+  "checks": [
+    "Actual public CLI batch: baseline Direct; late booking clock Consolidated; morning source errors and blocked findings remain separate",
+    "confirmed: production browser worker and public CLI agree on every arrangement and failed requirement",
+    "revised: production browser worker and public CLI agree on every arrangement and failed requirement",
+    "permissions: production browser worker and public CLI agree on every arrangement and failed requirement",
+    "urgent: production browser worker and public CLI agree on every arrangement and failed requirement",
+    "Native Decision summary Inspect selects the exact option; Supporting reports, Decision process and dependencies preserve run identity",
+    "Genuine revision-2 confirmation: pending draft disables calculation; Apply makes the retained result stale; Recalculate changes blocked to Consolidated without changing permissions",
+    "Save and reopen preserve applied inputs, findings, exact workflow version and history; unapplied form edits are discarded only by explicit restore",
+    "Operating choice, sourced authority, carrier reservation and delivery remain distinct; later negative records supersede historical support without erasing it",
+    "Unsupported currency is diagnosed separately from a complete blocked finding; stale current downloads remain disabled"
+  ],
+  "artifacts": [
+    {
+      "key": "baseline",
+      "file": "baseline.png",
+      "sha256": "5b4197500e8d81e4b4680e2e3306d4c0fa8e59782325d2fe94b5b22a73973eb3",
+      "width": 782,
+      "height": 1273,
+      "viewport": {
+        "width": 1600,
+        "height": 1100
+      },
+      "target": ".results-panel"
+    },
+    {
+      "key": "supporting-direct",
+      "file": "supporting-direct.png",
+      "sha256": "c96d35e44a17c0cb489fc383b447e4df4ee75e6b8094f83c3cd067df3afd8d73",
+      "width": 782,
+      "height": 865,
+      "viewport": {
+        "width": 1600,
+        "height": 1100
+      },
+      "target": ".results-panel"
+    },
+    {
+      "key": "decision-process",
+      "file": "decision-process.png",
+      "sha256": "f324004f6e6459811f6212e72718da32eb5782945b9a68336f64dec1e9beb13e",
+      "width": 782,
+      "height": 1835,
+      "viewport": {
+        "width": 1600,
+        "height": 1100
+      },
+      "target": ".results-panel"
+    },
+    {
+      "key": "calculation-dependencies",
+      "file": "calculation-dependencies.png",
+      "sha256": "11ad9f7af07751afada5c8c0ee083ca139ada022c98d9a8cf1c4b691ec0db8cc",
+      "width": 782,
+      "height": 1004,
+      "viewport": {
+        "width": 1600,
+        "height": 1100
+      },
+      "target": ".results-panel"
+    },
+    {
+      "key": "late-cutoff",
+      "file": "late-cutoff.png",
+      "sha256": "7e99e0ead68d2cd633e88b746426b9b8b2cd31dd50552d0663b8b787d6536157",
+      "width": 782,
+      "height": 1201,
+      "viewport": {
+        "width": 1600,
+        "height": 1100
+      },
+      "target": ".results-panel"
+    },
+    {
+      "key": "blocked",
+      "file": "blocked.png",
+      "sha256": "dbf2ed4b556b554bad8a56fe22261cacfea1d52de4bdaba283b0c7beaa0b0ab7",
+      "width": 782,
+      "height": 1311,
+      "viewport": {
+        "width": 1600,
+        "height": 1100
+      },
+      "target": ".results-panel"
+    },
+    {
+      "key": "pending",
+      "file": "pending.png",
+      "sha256": "c637fd95cf21eefcf7f01ed45e429be0063b4fa7a770b6bc88cf34182f5bb98f",
+      "width": 782,
+      "height": 422,
+      "viewport": {
+        "width": 1600,
+        "height": 1100
+      },
+      "target": ".results-panel"
+    },
+    {
+      "key": "stale",
+      "file": "stale.png",
+      "sha256": "9a7179e9f00d6e6e47808bde42b7d05075a23b51b69787c09fcfdb467fb9e433",
+      "width": 782,
+      "height": 708,
+      "viewport": {
+        "width": 1600,
+        "height": 1100
+      },
+      "target": ".results-panel"
+    },
+    {
+      "key": "confirmed-revision",
+      "file": "confirmed-revision.png",
+      "sha256": "7e99e0ead68d2cd633e88b746426b9b8b2cd31dd50552d0663b8b787d6536157",
+      "width": 782,
+      "height": 1201,
+      "viewport": {
+        "width": 1600,
+        "height": 1100
+      },
+      "target": ".results-panel"
+    },
+    {
+      "key": "chosen",
+      "file": "chosen.png",
+      "sha256": "cd53201e4ac24e16913c4dd858c650210bdba6e770ce80055db41b797df0f6c5",
+      "width": 782,
+      "height": 1818,
+      "viewport": {
+        "width": 1600,
+        "height": 1100
+      },
+      "target": ".review-column"
+    },
+    {
+      "key": "reserved",
+      "file": "reserved.png",
+      "sha256": "6075c0d3cd960ff6ae0d70ee7cea979b05d9037a87a097d0a00fa67f43fb6de3",
+      "width": 782,
+      "height": 2788,
+      "viewport": {
+        "width": 1600,
+        "height": 1100
+      },
+      "target": ".review-column"
+    },
+    {
+      "key": "completed",
+      "file": "completed.png",
+      "sha256": "1cf900f204db22ab24a8ea5f062df6bc9d6cd13c47c0db66fb883a2dc0f708f0",
+      "width": 782,
+      "height": 2805,
+      "viewport": {
+        "width": 1600,
+        "height": 1100
+      },
+      "target": ".review-column"
+    },
+    {
+      "key": "cancelled",
+      "file": "cancelled.png",
+      "sha256": "223ea0e1261e4036aa58b604263e54f0e007e5d8c71c3dd486b21e6a75b2894e",
+      "width": 782,
+      "height": 2822,
+      "viewport": {
+        "width": 1600,
+        "height": 1100
+      },
+      "target": ".review-column"
+    },
+    {
+      "key": "mobile",
+      "file": "mobile.png",
+      "sha256": "9ba97bc2cf4b61f82885c37cd495b387572c27cd242e1bce6e3b87961fb859ed",
+      "width": 390,
+      "height": 6117,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "target": null
+    },
+    {
+      "key": "input-error",
+      "file": "input-error.png",
+      "sha256": "7d1baad0b6dc5cdf733d658cfcb437287d20b583ebd05ecd75130b9cd50eb401",
+      "width": 782,
+      "height": 528,
+      "viewport": {
+        "width": 1600,
+        "height": 1100
+      },
+      "target": ".results-panel"
+    },
+    {
+      "key": "queue-baseline",
+      "file": "queue-baseline.png",
+      "sha256": "f553342ff018b748b31d0aee57896917dc4314b74b04f15452adc286ec871782",
+      "width": 1600,
+      "height": 5987,
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "target": null
+    },
+    {
+      "key": "queue-late",
+      "file": "queue-late.png",
+      "sha256": "853356ba5649cb3b43d8380e3682a72c91c1639e20060bfde04bd9577d8dd5bf",
+      "width": 1600,
+      "height": 6601,
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "target": null
+    },
+    {
+      "key": "queue-morning",
+      "file": "queue-morning.png",
+      "sha256": "4232daa11705f0a4035158fd8754d7165eb42a4595aee01a81446f7999e47659",
+      "width": 1600,
+      "height": 8138,
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "target": null
+    },
+    {
+      "key": "batch-supported",
+      "file": "batch-supported.png",
+      "sha256": "49315821c0adcbb05da93eaad18ca09c35db66810aa3b5fc5423b408d3ef9da3",
+      "width": 1450,
+      "height": 317,
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "target": "[data-record-view=\"shipment-SHIP-104-arrangements\"]"
+    },
+    {
+      "key": "batch-blocked",
+      "file": "batch-blocked.png",
+      "sha256": "a08562197b584d5d10af45c9d66cf319dfb9c01af8c3edacba8a4219b773b28b",
+      "width": 1450,
+      "height": 484,
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      },
+      "target": "[data-record-view=\"shipment-SHIP-105-arrangements\"]"
+    }
+  ],
+  "exports": {
+    "baseline": {
+      "file": "baseline.workflow-run.json",
+      "sha256": "81192ab9117c375a038ff48e07ed093c9475aa7bc338c214072f53db253d38d7",
+      "runId": "shipment-SHIP-104-20261117140000",
+      "contentHash": "e51b587a0f040cc4bed8da5a504e153f8c9bff66c32fe1866db21d3d4ae56abf"
+    },
+    "inspected": {
+      "file": "inspected.workflow-run.json",
+      "sha256": "81192ab9117c375a038ff48e07ed093c9475aa7bc338c214072f53db253d38d7",
+      "runId": "shipment-SHIP-104-20261117140000",
+      "contentHash": "e51b587a0f040cc4bed8da5a504e153f8c9bff66c32fe1866db21d3d4ae56abf"
+    },
+    "late-cutoff": {
+      "file": "late-cutoff.workflow-run.json",
+      "sha256": "fd2d3bb0b7743f9673fabcf15695227f5cdad50c02abfdf9deecbb680ba739bd",
+      "runId": "shipment-SHIP-104-20261117173000",
+      "contentHash": "c505ed9ea905ab4325ce0de7ff8f080a8c7d56865077159bd0d9001cc04b9c5a"
+    },
+    "blocked": {
+      "file": "blocked.workflow-run.json",
+      "sha256": "24fdfb58424e1089967f59127ae080913f82a2f37821895fbe6f50aaa1770757",
+      "runId": "shipment-SHIP-105-20261117140500",
+      "contentHash": "5751bf8d1dcd47899b8fbcdf08ebd8eb4942a44dbe73a82c1e9ea8cb1757698c"
+    },
+    "confirmed-revision": {
+      "file": "confirmed-revision.workflow-run.json",
+      "sha256": "b7b980923b4b1cecd133d00a0a8fd8b66ef1bb6936812ad59a05b16423a9142f",
+      "runId": "shipment-SHIP-105-20261117140500",
+      "contentHash": "79c48b2b49c052fee3aff8cdf66b63402d41a652f1b92668b0b3781f6d3d40cb"
+    },
+    "saved": {
+      "file": "saved.workflow-run.json",
+      "sha256": "b7b980923b4b1cecd133d00a0a8fd8b66ef1bb6936812ad59a05b16423a9142f",
+      "runId": "shipment-SHIP-105-20261117140500",
+      "contentHash": "79c48b2b49c052fee3aff8cdf66b63402d41a652f1b92668b0b3781f6d3d40cb"
+    },
+    "restored": {
+      "file": "restored.workflow-run.json",
+      "sha256": "b7b980923b4b1cecd133d00a0a8fd8b66ef1bb6936812ad59a05b16423a9142f",
+      "runId": "shipment-SHIP-105-20261117140500",
+      "contentHash": "79c48b2b49c052fee3aff8cdf66b63402d41a652f1b92668b0b3781f6d3d40cb"
+    },
+    "chosen": {
+      "file": "chosen.workflow-run.json",
+      "sha256": "1a3ee75f02c3eb6229677f5af5688099b9bac5bcc8991923f3c5181e7eb0ac3c",
+      "runId": "shipment-SHIP-105-20261117140500",
+      "contentHash": "3e686c9253c94c40e4b397bb033d7cacf062d516d2337afbd29f20ee38e02960"
+    },
+    "reserved": {
+      "file": "reserved.workflow-run.json",
+      "sha256": "f5bbad35a727f50a60cfe7eaa6aff92a84089b0678ec245e1b60ae6d8a513b5c",
+      "runId": "shipment-SHIP-105-20261117140500",
+      "contentHash": "18c35a76020910ea6e82ecefe758db849325c4b6cc4365e93badee9d54c8e620"
+    },
+    "completed": {
+      "file": "completed.workflow-run.json",
+      "sha256": "83fd29af28c42f291ca07d212eb8535f94273813a9f040a44931bc9dc575435c",
+      "runId": "shipment-SHIP-105-20261117140500",
+      "contentHash": "f2b1282e669875e1d346e2a4d0d3b4d39704df5e9bc67c16a7b3fb5b93e31258"
+    },
+    "cancelled": {
+      "file": "cancelled.workflow-run.json",
+      "sha256": "b61cc53ed39a2cc383e28557e2efe5eed8f8e56145b1945b1c98acce83c4d79b",
+      "runId": "shipment-SHIP-105-20261117140500",
+      "contentHash": "0479919b6fe7888b9b804c50b3d2a02ad8760cba0b7465bc3aac71d95c8dcd9e"
+    }
+  },
+  "workflow": {
+    "version": "2.1.0",
+    "sourceContentHash": "bf3b1792d9f1ef3388eed7097c07b7fb22f2b440fb9066cd3fa6b380aa8acd83",
+    "contentHash": "49685dc5c3c0629b844fb451f33cedb807b9c320863166e3d3390f6bc27bbe13"
+  },
+  "appBinding": {
+    "appId": "shipment-exception-response",
+    "release": 1,
+    "appHash": "0cce758147637a6e7d3461a78987ccf7313574a52446aadadc2fecd16902ba1b",
+    "packageHash": "7d9b4d46f3df0743f239016d26e40003560b1f7c07ee96c497e7c02c964df001",
+    "pattern": "complete-a-commitment/1",
+    "moduleHash": "52375c5f2a6131700224039025dbb3b575627cf81456c896104e1f6bf999e06c"
+  },
+  "source": [
+    {
+      "file": "src/App.jsx",
+      "sha256": "4b1de4e9474952b8ac8608278a547e6898b4b90872d1eb3f8a2dcf37d51749d3"
+    },
+    {
+      "file": "src/useShipmentReview.js",
+      "sha256": "0933c7a8d3f89e05026c6bd0f56ef2ce7b0cc0c087949e6ea0da4b12ca36f6b0"
+    },
+    {
+      "file": "src/shipment.js",
+      "sha256": "81da915e4b7d81898634c53a0ff89549b6d14298a777eaf4d8e9a6f5a6b15047"
+    },
+    {
+      "file": "src/reviewJourney.js",
+      "sha256": "2818d897eadca17a3e274883b14c2303fbbe82b8b227ef6c06d2fde7ab3fd795"
+    },
+    {
+      "file": "src/styles.css",
+      "sha256": "b89df4b10ae7ad51f8ca5aac6405caa5d962d9839aaa69ccf1e7848768ed2354"
+    },
+    {
+      "file": "src/localReviews.js",
+      "sha256": "5df0668a98e68ab622ddfb4390497e03eae2cfbe0e4412cd97b49e343d3854c1"
+    },
+    {
+      "file": "test/browser.mjs",
+      "sha256": "46c2ecd32dfe1edbc91652dff9e5cf61a3f8f3335022fefd739676040c5506c9"
+    },
+    {
+      "file": "public/data/config.json",
+      "sha256": "cad2378740f9813964594e54809c82b35ff8dcb795a7f7aa504ef2d2d997cef6"
+    },
+    {
+      "file": "public/data/shipment.workflow.json",
+      "sha256": "5ae7f804b9230d033a7433568dcb31a7b5b0ae7dc71c7dcd14d060d8ee446213"
+    }
+  ],
+  "cliBatches": [
+    {
+      "path": "/private/tmp/decision-lab-article-refresh/shipping/baseline-batch",
+      "manifestSHA256": "e20bdbbc3ec7eb6d12ff8a06857ae663920d9c3798384c2d30a33db6dad3f077"
+    },
+    {
+      "path": "/private/tmp/decision-lab-article-refresh/shipping/late-batch",
+      "manifestSHA256": "3c4f695ceb4153ef5dfb4e8f11456d4cb245d3e0e349e37bb1d92d047db452bd"
+    },
+    {
+      "path": "/private/tmp/decision-lab-article-refresh/shipping/morning-batch",
+      "manifestSHA256": "196aa074de102e7c9a629ce2e9f3cc13358ad9774e7ed587a253cfc1030dd70e"
+    }
+  ],
+  "build": [
+    {
+      "file": "assets/index-C6_s5f-A.js",
+      "sha256": "e2dffd2311015e98e7f9dec4d497854bd05f52a4b5f99906eed74a4ad44274d6"
+    },
+    {
+      "file": "assets/index-CesYYSJD.css",
+      "sha256": "862460592e846187f30ae11a5843c9c748f5f3bd87db9abd94f75bb372c529d2"
+    },
+    {
+      "file": "assets/worker-DrDy9EP2.js",
+      "sha256": "40c2ba75c7e4a8aca7eaf4efae6d02ff36f20eebbcdee5ee427772285f250b39"
+    }
+  ],
+  "workers": [
+    "/assets/worker-DrDy9EP2.js",
+    "/assets/worker-DrDy9EP2.js",
+    "/assets/worker-DrDy9EP2.js",
+    "/assets/worker-DrDy9EP2.js",
+    "/assets/worker-DrDy9EP2.js"
+  ],
+  "errors": []
+}

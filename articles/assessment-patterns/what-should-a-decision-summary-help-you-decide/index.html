@@ -197,7 +197,7 @@
       <li><a href="#test-with-a-changed-context">Test the conclusion with a changed context</a></li>
       <li><a href="#preserve-the-distinctions">Keep uncertainty, preference and action separate</a></li>
       <li><a href="#work-backward">Work backward from your own decision</a></li>
-      <li><a href="#two-domains">See the reasoning in the application</a></li>
+      <li><a href="#two-domains">See the reading structure in two decisions</a></li>
       <li><a href="#follow-the-next-response">Follow the finding to an available response</a></li>
       <li><a href="#decision-view-sources">Sources and scope</a></li>
     </ol>
@@ -263,12 +263,12 @@
     <thead><tr><th scope="col">Controlled comparison</th><th scope="col">What changes in the finding</th><th scope="col">What it does not establish</th></tr></thead>
     <tbody>
       <tr><th scope="row">Promotion: five available staff become four; four are still required inside.</th><td>Holding or sending one becomes holding only. A $200 expense that fits the budget cannot supply the missing person.</td><td>The feasible deployment with five staff is not a forecast of additional guests.</td></tr>
-      <tr><th scope="row">Shipment: the review moves from 8 a.m. to 11:30 a.m.; the cost-first policy stays fixed.</th><td>Direct’s booking window has closed for a new reservation. The $5,000 Consolidated proposal replaces $4,000 Direct as the supported preference.</td><td>A passed cutoff does not cancel a reservation already secured.</td></tr>
+      <tr><th scope="row">Shipment: a received confirmation covers the current order revision; capacity, quotes and policy stay fixed.</th><td>Consolidated becomes supported at $5,000. Direct still lacks capacity for the complete order and Backup still exceeds the expense limit.</td><td>A current confirmation waives no other requirement and does not establish that delivery occurred.</td></tr>
       <tr><th scope="row">Restaurant: the same feasible repairs are compared under stability or payroll priority.</th><td>The declared preference changes from bringing in Rowan to coordinating three assignment changes.</td><td>A policy change does not alter mandatory availability or prove that staff agreed to the changes.</td></tr>
     </tbody>
   </table>
 </div>
-<p><a href="../../../use-cases/nightlife/street-team-deployment/review-tonights-promotion/index.html">Follow Alex’s promotion review</a> to see why the staffing change prevents outreach. <a href="../../../use-cases/supply-chain/shipment-readiness/compare-shipment-options/index.html">Follow Maya’s booking-window decision</a> to see when the premium becomes justified. <a href="../../../use-cases/hospitality/restaurant-roster-repair/choose-a-roster-repair/index.html">Compare Elena’s roster priorities</a> to see the same possibilities support different preferences.</p>
+<p><a href="../../../use-cases/nightlife/street-team-deployment/review-tonights-promotion/index.html">Follow Alex’s promotion review</a> to see why the staffing change prevents outreach. <a href="../../../use-cases/supply-chain/shipment-readiness/review-changed-orders/index.html#new-confirmation">Follow Maya’s new-confirmation comparison</a> to see which requirement the received record resolves. <a href="../../../use-cases/hospitality/restaurant-roster-repair/choose-a-roster-repair/index.html">Compare Elena’s roster priorities</a> to see the same possibilities support different preferences.</p>
 
 <h2 id="preserve-the-distinctions">Keep uncertainty, preference and action separate</h2>
 <p><strong>An unavailable answer differs from established infeasibility.</strong> Missing inputs, an incomplete evaluation or a stale calculation can prevent a conclusion. Sufficient evaluation establishing that no declared candidate meets the requirements supports a different response: reconsider the constraints, candidates or commitment. An empty display cannot silently mean that nothing works.</p>
@@ -281,78 +281,45 @@
 <p>Different operational decisions can share assessment structures when the mapping preserves what the alternatives represent, what the checks establish and what the conclusions permit. A shipment permission and an employee’s availability have different meanings even when both constrain an operating arrangement. <a href="../../from-arrangements-to-assessments/index.html">From Arrangements to Assessments</a> explains that foundation.</p>
 <p>These Hermod-authored examples demonstrate reuse across applications. They provide limited evidence of generality. A further test is an independently described decision: record which parts map, which need new modeling and where the pattern does not apply. Independently feasible shipments may compete for one truck; an attendance forecast needs support beyond a guest hurdle.</p>
 
-<h2 id="two-domains">See the reasoning in the application</h2>
-<p>Decision Lab presents <strong>Decision summary → Options</strong> for the finding and comparison. <strong>Next actions</strong>, <strong>Assumptions</strong> and <strong>Questions</strong> keep their different questions separate, with <strong>Supporting reports</strong> for the basis and <strong>Decision process</strong> for the linked questions and responses. Calculate or Recalculate evaluates the supplied inputs. Applying changed inputs requires a current calculation before the earlier answer can support the new case.</p>
-<p>The paired native summaries below illustrate the reading standard. Both use cost first, then earlier completion, among options meeting their recorded requirements. The domains have separate records, time origins and requirements; the shared presentation makes their reasoning inspectable.</p>
-
-<div class="decision-view-comparison" role="group" aria-label="Shipment and gift-kit Decision summaries side by side">
+<h2 id="two-domains">See the reading structure in two decisions</h2>
+<p>The paired native summaries below apply cost first, then earlier completion, among options meeting their recorded requirements. They come from the shipment and gifting SDK clients. Their records, time origins and requirements differ; each view must make its own finding and comparison understandable.</p>
+<div class="decision-view-comparison current-capture-comparison" data-current-article-capture role="group" aria-label="Shipment and gift-kit Decision summaries">
   <section class="decision-view-panel" aria-labelledby="shipment-summary-heading">
     <h3 id="shipment-summary-heading">Maya · Shipment readiness</h3>
     <p>Direct is preferred at <strong>$4,000, arriving Friday noon</strong>. Consolidated also meets the requirements at $5,000, arriving Thursday evening. Backup exceeds the $5,000 spending boundary.</p>
     
     <figure>
-      <a class="decision-view-image-link" href="../../../assets/use-cases/shipment-readiness/shared-report-sdk-preview/baseline.png" aria-label="Open the shipment Decision summary at full size"><img src="../../../assets/use-cases/shipment-readiness/shared-report-sdk-preview/baseline.png" width="782" height="1241" alt="The native SDK Decision summary prefers Direct at $4,000 while the $5,000 Consolidated arrangement also meets the recorded requirements." loading="lazy" decoding="async"></a>
-      <figcaption>Direct remains bookable. The earlier arrival alone does not justify the $1,000 premium. <a href="../../../assets/use-cases/shipment-readiness/shared-report-sdk-preview/baseline.png">View full size</a></figcaption>
+      <a class="decision-view-image-link" href="../../../assets/use-cases/article-refresh/verified-2026-11-23/shipping-sdk/baseline.png" aria-label="Open the shipment Decision summary at full size"><img src="../../../assets/use-cases/article-refresh/verified-2026-11-23/shipping-sdk/baseline.png" width="782" height="1273" alt="The custom shipment desk opens the exact case exported by the CLI, with its cost-first shipment rules." loading="lazy" decoding="async"></a>
+      <figcaption>Direct remains bookable. Earlier arrival alone does not justify the $1,000 premium. <a href="../../../assets/use-cases/article-refresh/verified-2026-11-23/shipping-sdk/baseline.png">View full size</a></figcaption>
     </figure>
-    <p><a href="../../../use-cases/supply-chain/shipment-readiness/compare-shipment-options/index.html">Follow Maya’s shipment decision</a>, including the later cutoff that makes Consolidated the supported proposal.</p>
+    <p><a href="../../../use-cases/supply-chain/shipment-readiness/review-changed-orders/index.html#new-confirmation">Continue Maya’s shipment review</a> with a revised-order exception: a new scoped confirmation restores Consolidated while other failures remain.</p>
   </section>
   <section class="decision-view-panel" aria-labelledby="gifting-summary-heading">
     <h3 id="gifting-summary-heading">Leah · Gift-kit readiness</h3>
     <p>Complete in-house correction is preferred at <strong>$300, finishing in 40 minutes</strong>. The $400 external package takes 25 minutes. Both fit the one-day window; partial corrections leave a supported fault unresolved.</p>
     
     <figure>
-      <a class="decision-view-image-link" href="../../../assets/use-cases/gift-kit-readiness/shared-report-sdk-preview/ample.png" aria-label="Open the gift-kit Decision summary at full size"><img src="../../../assets/use-cases/gift-kit-readiness/shared-report-sdk-preview/ample.png" width="1232" height="890" alt="The SDK Decision summary prefers complete in-house correction at $300; the $400 external package also meets the one-day cutoff." loading="lazy" decoding="async"></a>
-      <figcaption>The in-house package addresses both faults and includes fresh rehearsal. Both complete packages meet the cutoff. <a href="../../../assets/use-cases/gift-kit-readiness/shared-report-sdk-preview/ample.png">View full size</a></figcaption>
+      <a class="decision-view-image-link" href="../../../assets/use-cases/article-refresh/verified-2026-11-23/gifting-sdk/ample.png" aria-label="Open the gift-kit Decision summary at full size"><img src="../../../assets/use-cases/article-refresh/verified-2026-11-23/gifting-sdk/ample.png" width="1232" height="924" alt="The custom gifting desk opens the CLI campaign with its one-day handoff window and complete correction comparison." loading="lazy" decoding="async"></a>
+      <figcaption>The complete packages address both faults and include fresh rehearsal. <a href="../../../assets/use-cases/article-refresh/verified-2026-11-23/gifting-sdk/ample.png">View full size</a></figcaption>
     </figure>
-    <p><a href="../../../use-cases/gifting/gift-kit-readiness/compare-correction-options/index.html">Follow Leah’s gift-kit decision</a>, including the urgent campaign where the faster package protects the cutoff.</p>
+    <p><a href="../../../use-cases/gifting/gift-kit-readiness/screen-campaigns/index.html#continue-the-case">Continue Leah’s gift-kit review</a> to see when the faster package protects the cutoff.</p>
   </section>
 </div>
-<p>Leah’s case makes the changed-context lesson concrete in another domain: <a href="../../../use-cases/gifting/gift-kit-readiness/compare-correction-options/index.html">read the gift-kit timing decision</a> to see why a full day supports in-house correction and a 30-minute window can justify external work. The cutoff changes eligibility; the cost-first policy stays fixed.</p>
-
-<p>The two SDK desks use the same report component as the guided workflows. Shared tabs and inspection make it easier to find the basis of a result across domains. Their domain configurations still determine what the alternatives and findings mean; visual consistency does not make those meanings interchangeable.</p>
-
-<h3 id="a-similar-view-can-answer-a-different-question">A similar view can carry a different claim</h3>
-<p>Alex’s native <strong>Options</strong> view keeps operating eligibility and the guest hurdle together without presenting a profit ranking. Supported choices appear first; <strong>Other options</strong> reveals the blocked alternatives. With five staff available and four required inside, holding or sending one meets the recorded requirements.</p>
-
-<figure class="decision-view-figure decision-view-supporting-example decision-view-contrast">
-  <a class="decision-view-image-link" href="../../../assets/use-cases/street-team-deployment/shared-report-preview/five-staff-options.png" aria-label="Open the street-team Decision summary at full size"><img src="../../../assets/use-cases/street-team-deployment/shared-report-preview/five-staff-options.png" width="961" height="757" alt="Options shows the supported active one-person promotion and its $200 cost and conditional five-guest break-even hurdle; holding remains a separate outside response." loading="lazy" decoding="async"></a>
-  <figcaption>The operating finding and conditional guest hurdle appear together. Neither establishes how many people will respond. <a href="../../../assets/use-cases/street-team-deployment/shared-report-preview/five-staff-options.png">View full size</a></figcaption>
-</figure>
-<p>Alex can inspect the conditional financial hurdle, seek evidence about response or hold the team. <a href="../../../use-cases/nightlife/street-team-deployment/review-tonights-promotion/index.html">Read the promotion case</a> to see why an operating finding leaves that management judgment open.</p>
+<p>In each view, identify the finding, the complete candidates and the declared priority before opening supporting detail. Changed timing or record scope can withdraw an option even when its quote remains the same. The linked stories follow those changes and the records needed to continue the work.</p>
 
 <h2 id="follow-the-next-response">Follow the finding to an available response</h2>
-<p>The <strong>Decision process</strong> graph connects a finding to the responses it supports. In the separate <a href="../../../use-cases/supply-chain/shipment-readiness/case-worker/index.html">registration-and-verification shipment walkthrough</a>, the selected question asks whether any complete arrangement meets the requirements. Its current answer supports comparing feasible options. A finding that none fit would instead support revising the commitment or arrangements.</p>
-
-<figure class="decision-view-figure">
-  <a class="decision-view-image-link" href="../../../assets/use-cases/shipment-readiness/shared-report-preview/decision-process-detail.png" aria-label="Open the selected shipment process point at full size"><img src="../../../assets/use-cases/shipment-readiness/shared-report-preview/decision-process-detail.png" width="1684" height="381" alt="Inspecting whether any complete arrangement meets the requirements shows the current answer, its basis, outgoing paths, relevant inputs and supporting reports." loading="lazy" decoding="async"></a>
-  <figcaption>The selected question connects its current finding to its basis and the paths that follow. This workflow has different inputs from the paired SDK examples above. <a href="../../../assets/use-cases/shipment-readiness/shared-report-preview/decision-process-detail.png">View full size</a></figcaption>
-</figure>
-<p>Selecting a question or action reveals its basis and linked inputs or supporting results. The graph helps someone ask what would change the next response. Inspecting it does not perform an action, book freight or grant permission to spend.</p>
-<p>Choosing a supported arrangement still leaves an operational handoff: who will act, what authority applies and which record will establish completion? A proposed reservation, a confirmed reservation and a completed delivery are separate claims. <a href="../../choosing-an-arrangement/index.html">What Does Choosing an Arrangement Commit Us To?</a> follows that handoff; <a href="../../one-fact-changes/index.html">What Changes When One Fact Changes?</a> explains why supporting changes reopen it.</p>
-<details class="disclosure">
-  <summary><span class="disclosure-label">See the complete shipment process</span></summary>
-  <p>The full graph connects registration evidence, complete arrangements and the verification question through labeled arrows. Highlighted paths apply to its recorded case; other paths remain visible, and dashed paths return for reassessment.</p>
-  
-  <figure class="decision-view-figure">
-    <a class="decision-view-image-link" href="../../../assets/use-cases/shipment-readiness/shared-report-preview/decision-process.png" aria-label="Open the shipment Decision process graph at full size"><img src="../../../assets/use-cases/shipment-readiness/shared-report-preview/decision-process.png" width="1684" height="3681" alt="The current shipment graph connects scoped registration evidence, complete shipment arrangements and timely-verification value. Highlighted paths apply now; dashed paths return to reassessment." loading="lazy" decoding="async"></a>
-    <figcaption>The complete authored process retains the alternatives and reassessment paths around the current finding. <a href="../../../assets/use-cases/shipment-readiness/shared-report-preview/decision-process.png">View full size</a></figcaption>
-  </figure>
-</details>
-
-<p>Maya can justify when the freight premium protects her deadline. Alex can explain why an operating option remains a conditional business bet. The report earns its place when each can identify the supported conclusion, its limits and the next responsible action.</p>
+<p>A report can support a proposed response while leaving a choice, authorization or actual work outstanding. A proposed reservation, a confirmed reservation and a completed delivery remain separate claims. <a href="../../choosing-an-arrangement/index.html">What Does Choosing an Arrangement Commit Us To?</a> follows that handoff.</p>
+<p>When a relevant fact changes, ask which finding the report must withdraw and what can still be supported. That is the practical test: can the reader explain the conclusion, its limits and the next responsible action?</p>
 
 <footer class="decision-view-sources" aria-labelledby="decision-view-sources">
   <details class="disclosure">
     <summary><h2 class="disclosure-label" id="decision-view-sources">Sources and scope</h2></summary>
-    <p>Maya, Leah, Alex and all numerical cases are fictional worked examples. The paired screenshots show Decision summaries in the verified local production previews of the SDK-based clients; they are separate cases with their own time origins and scoped records. The process graph and selected-point detail show the separate registration-and-verification shipment workflow. The street-team capture shows Options in the local Decision Lab preview, with blocked alternatives available under Other options. The public site was unchanged when these previews were captured. The numbered diagram is an explanatory reading aid.</p>
+    <p>Maya, Leah, Alex and all numerical cases are fictional worked examples. The two application figures are unedited captures of current local production builds: shipment SDK workflow 2.1.0 and gift-kit SDK workflow 4.1.0. They are separate cases with their own records and time origins. The reading diagram is an explanatory illustration.</p>
     <ul>
-      <li><a href="../../../assets/use-cases/shipment-readiness/shared-report-sdk-preview/verification.json">Shipment capture and calculation verification</a>.</li>
-      <li><a href="../../../assets/use-cases/shipment-readiness/shared-report-preview/verification.json">Local-preview process graph and inspection verification</a>.</li>
-      <li><a href="../../../assets/use-cases/gift-kit-readiness/shared-report-sdk-preview/verification.json">Gift-kit capture and calculation verification</a>.</li>
-      <li><a href="../../../assets/use-cases/street-team-deployment/shared-report-preview/verification.json">Street-team capture verification</a>.</li>
-      <li><a href="../../../assets/use-cases/restaurant-roster-repair/shared-report-preview/verification.json">Restaurant availability and priority comparisons</a>.</li>
-      <li><a href="../../../assets/articles/decision-views/report-reading-evidence.json">Worked comparisons and their retained evidence</a>.</li>
-      <li><a href="https://github.com/hermodlabs/sample_code">Hermod Labs sample applications</a>, including the shipment and gifting clients.</li>
+      <li><a href="../../../assets/use-cases/article-refresh/verified-2026-11-23/shipping-sdk/verification.json">Shipment SDK capture and calculation record</a>.</li>
+      <li><a href="../../../assets/use-cases/article-refresh/verified-2026-11-23/gifting-sdk/verification.json">Gift-kit SDK capture and calculation record</a>.</li>
+      <li><a href="../../../assets/use-cases/article-refresh/verified-2026-11-23/restaurant/verification.json">Restaurant availability and priority comparison record</a>.</li>
+      <li><a href="../../../assets/articles/decision-views/report-reading-evidence.json">Earlier worked comparisons and their retained evidence</a>.</li>
     </ul>
     <p>Each finding depends on its configured model, supplied records and evaluation coverage. The article introduces how to read those findings. It does not establish the completeness of a reader’s own model or the authenticity of their operating records.</p>
   </details>

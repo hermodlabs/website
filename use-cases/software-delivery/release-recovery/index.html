@@ -15,13 +15,13 @@
 
 
   <title>Release recovery | Hermod Labs</title>
-  <meta name="description" content="Follow Nina through three release decisions: protect the original promise, consider a scope revision and establish whether extra qualified QA can actually help.">
+  <meta name="description" content="Compare complete recovery options and whether extra QA is usable, then examine a separately accepted change to the customer promise.">
 
   <link rel="canonical" href="https://hermodlabs.com/use-cases/software-delivery/release-recovery/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Hermod Labs">
   <meta property="og:title" content="Release recovery | Hermod Labs">
-  <meta property="og:description" content="Follow Nina through three release decisions: protect the original promise, consider a scope revision and establish whether extra qualified QA can actually help.">
+  <meta property="og:description" content="Compare complete recovery options and whether extra QA is usable, then examine a separately accepted change to the customer promise.">
   <meta property="og:url" content="https://hermodlabs.com/use-cases/software-delivery/release-recovery/">
   <meta property="og:image" content="https://hermodlabs.com/assets/hermod-wordmark.jpeg">
 
@@ -93,7 +93,7 @@
 
     <p class="eyebrow">Software delivery / Release recovery</p>
     <h1 id="scenario-heading">The deadline is fixed. The next promise needs support.</h1>
-    <p class="lead">Follow Nina through three release decisions: protect the original promise, consider a scope revision and establish whether extra qualified QA can actually help.</p>
+    <p class="lead">Compare complete recovery options and whether extra QA is usable, then examine a separately accepted change to the customer promise.</p>
   </div>
   
   <figure class="page-hero-cover">
@@ -128,7 +128,7 @@
 </aside>
 <section class="section wrap use-case-catalog catalog-section" aria-labelledby="scenario-articles-heading">
   <span id="series-path" class="use-case-anchor"></span>
-  <div class="use-case-catalog-heading"><p class="eyebrow">Release recovery / Articles</p><h2 id="scenario-articles-heading">Recover the release. Or agree what changes.</h2><p>Begin with the four complete arrangements. Then hold the release facts fixed while examining two specific interventions: accepting reduced scope and supplying qualified help.</p></div>
+  <div class="use-case-catalog-heading"><p class="eyebrow">Release recovery / Articles</p><h2 id="scenario-articles-heading">Recover the promise. Or agree what changes.</h2><p>The recovery story includes the qualification that makes additional help usable. The second story changes a separate fact: customer acceptance of reduced scope.</p></div>
   
   
   <ol class="use-case-article-list catalog-grid" role="list">
@@ -159,19 +159,6 @@
       </article>
     </li>
     
-    <li>
-      <article class="catalog-card">
-        <figure class="catalog-card-media"><img src="../../../assets/use-cases/release-recovery/qualified-help.svg" width="960" height="720" alt="Four hours of external regression work depend on matching qualifications, a complete available interval and the recorded build." loading="lazy" decoding="async"></figure>
-        <div class="catalog-card-content">
-
-
-          <p class="eyebrow">Check whether help can transfer the work</p>
-          <h3><a href="would-extra-qa-help/index.html">Would an extra tester actually save this release?</a></h3>
-          <p class="catalog-card-description">Four more hours help only when the right work can transfer to a qualified resource at the required time. Compare the same $400 offer under different operating records.</p>
-        </div>
-      </article>
-    </li>
-    
   </ol>
   
 </section>
@@ -197,21 +184,83 @@
 </section>
 
 
-<section class="section wrap use-case-supporting catalog-section" aria-labelledby="references-heading">
-  <div class="use-case-catalog-heading"><p class="eyebrow">Supporting references</p><h2 id="references-heading">Bring a Jira snapshot into the comparison.</h2><p>The separate walkthrough explains what the supplied importer can establish, which operating facts still need an answer and when a different release needs an adapted model.</p></div>
-  <div class="use-case-reference-list catalog-grid">
-    
-    <article class="catalog-card catalog-card-text">
-      <div class="catalog-card-content">
-      <p class="eyebrow">Jira data guide reference</p>
-      <h3><a href="use-your-jira-export/index.html">Use your Jira export to review an at-risk release.</a></h3>
-      <p class="catalog-card-description">Bring remaining QA estimates into a bounded release comparison, then supply the operating facts that tickets cannot establish.</p>
-      </div>
-    </article>
-    
-  </div>
-</section>
+<section class="section wrap use-case-shared-guide" aria-labelledby="try-the-workflow"><p class="eyebrow">Release recovery / Working example</p><h2 id="try-the-workflow">Open the release comparison.</h2>
+<p><a class="button button-primary" href="https://hermodlabs.github.io/review_lab/?install=workflow&amp;id=plan-at-risk-release&amp;version=1.2.0&amp;publisher=decision-lab&amp;collection=software-delivery&amp;release=083c5bfeaf149f46fc097f86ea0c22d81a316e03080a3887c6a121bed2224948">Open the release example</a></p>
+<details class="disclosure"><summary><span class="disclosure-label">Inputs, reports and process</span></summary><p>Install Software delivery and open <strong>Plan an at-risk release</strong>. Inspect Release commitment and Operating basis, apply any inputs, then Calculate. Decision summary leads with the comparison; inspect a named arrangement to see its conditions in Supporting reports. Layout controls the page; Forms/YAML controls input representation. Report tabs navigate independently.</p><p>Decision process maps the authored questions and responses. Calculation dependencies explain app result handoffs; neither view hires help, performs QA or deploys software.</p></details>
+<details class="disclosure" id="jira-import"><summary><span class="disclosure-label">Use the supplied Jira export adapter</span></summary><div class="use-case-guide-content">
+<p>Nina needs the <a href="what-can-we-commit-to/index.html">release comparison for her customer call</a> to use the team's actual remaining-work estimates. The supplied Jira adapter gives her developer a repeatable way to bring those estimates into Decision Lab while retaining their source. It does not infer a release plan from ticket status.</p>
+<p>The path is <strong>scoped CSV → workload totals → separate operating inputs → calculated comparison</strong>. The adapter is sample code in the <a href="https://github.com/hermodlabs/sample_code/tree/main/software-delivery/release-recovery">release-recovery repository</a>, separate from the Marketplace's forms. There is no built-in Jira connection or Jira CSV upload in this workflow.</p>
 
+<h2 id="check-model-fit">First check that this is your kind of release.</h2>
+<p>The current app compares four authored arrangements: full scope with existing QA, core only, full scope with additional qualified help, and a later full release. Its two work packages are <strong>core</strong> and <strong>reporting</strong>. Only a fixed four-hour independent-regression package can move to the external tester.</p>
+<p>That structure must describe the work being assessed. A third feature package, another transferable task, different validation dependencies or another resource needs an adapted app. Renaming a CSV column cannot make an incompatible work structure fit. The <a href="what-can-we-commit-to/index.html#usable-extra-qa">extra-tester story</a> explains why the transferable package matters.</p>
+
+<h2 id="scope-the-export">Export the work whose meaning you can explain.</h2>
+<p>The supplied profile selects project <strong>REL</strong>, release <strong>2026.11</strong>, build <strong>release-2026-11</strong> and environment <strong>release-validation</strong>. Its estimate column means <strong>remaining QA hours</strong>. A development estimate or a story-point score does not have that meaning.</p>
+<div class="article-table-scroll" role="region" tabindex="0" aria-label="Selected columns from the fictional Jira export">
+  <table>
+    <caption>Selected columns from the supplied fictional CSV; source timestamps and directed links remain in the full file.</caption>
+    <thead><tr><th scope="col">Issue key</th><th scope="col">Status</th><th scope="col">Remaining QA hours</th><th scope="col">Work package</th><th scope="col">Fix version</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">REL-101</th><td>In Progress</td><td>7</td><td>core</td><td>2026.11</td></tr>
+      <tr><th scope="row">REL-102</th><td>To Do</td><td>5</td><td>core</td><td>2026.11</td></tr>
+      <tr><th scope="row">REL-103</th><td>Done</td><td>8</td><td>reporting</td><td>2026.11</td></tr>
+    </tbody>
+  </table>
+</div>
+<p><a href="../../../assets/use-cases/release-recovery/source/fixtures/jira-release.csv" download>Inspect the complete fictional CSV</a> alongside the <a href="../../../assets/use-cases/release-recovery/source/import-profile.json">mapping profile</a>. The profile declares the column names, units, exact release scope and package meanings. Your export and reviewed mapping must agree; unrelated versions, duplicate keys and unknown packages are rejected rather than silently filtered.</p>
+<p>Notice REL-103: its status says <strong>Done</strong>, but eight QA hours remain. The adapter retains both statements. Nina needs the team to resolve what they mean; it does not convert “Done” into zero work, completed testing or customer acceptance.</p>
+
+<h2 id="retain-the-source">Retain a source snapshot and an incomplete case.</h2>
+<p>The adapter creates two files. A source snapshot retains issue keys, source statuses, update times, directed blocking links, units and source/profile hashes. A separate partial case carries only the two workload totals, converted to whole minutes.</p>
+<figure class="article-code">
+  <figcaption id="jira-adapter-command">The supplied CSV adapter</figcaption>
+<pre tabindex="0" role="region" aria-labelledby="jira-adapter-command"><code class="language-sh">node import-jira.mjs --source fixtures/jira-release.csv \
+  --mapping import-profile.json --output source-snapshot.json \
+  --case-output case-inputs.json</code></pre>
+</figure>
+<p>This is the adapter invocation from the sample directory; it creates new outputs without overwriting retained files. For this CSV, its partial case is:</p>
+<figure class="article-code">
+  <figcaption id="jira-partial-case">Imported workload, in whole minutes</figcaption>
+<pre tabindex="0" role="region" aria-labelledby="jira-partial-case"><code class="language-json">{
+  "release": {
+    "coreMinutes": 720,
+    "reportingMinutes": 480
+  }
+}</code></pre>
+</figure>
+<p>A blank estimate makes that package's total unknown. Seven known hours plus an unanswered estimate do not establish a seven-hour package. Estimates in hours, minutes or seconds must convert to whole minutes; story points are rejected.</p>
+
+<h2 id="complete-operating-basis">Supply what the export cannot establish.</h2>
+<p>The repository's CLI walkthrough starts a workflow with the partial case and supplies the separate operating answers. The Marketplace example exposes the same kinds of inputs through forms. Neither path should silently fill missing facts with the fictional baseline.</p>
+<div class="article-table-scroll" role="region" tabindex="0" aria-label="Separate operating facts required for the release comparison">
+  <table>
+    <caption>These facts need their own source before Nina relies on the comparison.</caption>
+    <thead><tr><th scope="col">Operating input</th><th scope="col">What to establish</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Promise and revisions</th><td>Original deadline, proposed later deadline, and any actual acceptance of the specific scope or date revision.</td></tr>
+      <tr><th scope="row">People and capacity</th><td>Working intervals, overlapping bookings, and qualifications for this build, environment and assigned interval.</td></tr>
+      <tr><th scope="row">Expense</th><td>Additional fee and the authorized spending boundary.</td></tr>
+      <tr><th scope="row">Prerequisites and permission</th><td>Confirmation that the authored prerequisites hold, and recorded permission to release.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>REL-101 blocks REL-103 in the fixture. The importer preserves that direction for review against the app's fixed validation phases; it does not construct a new schedule from arbitrary links or detect dependency cycles. An absent prerequisite such as OPS-42 remains a blocking diagnostic. A dependency structure that does not fit the authored phases needs author review and an adapted model before anyone confirms its prerequisites.</p>
+
+<h2 id="compare-on-a-known-basis">Calculate a comparison you can account for.</h2>
+<p>With the supplied estimates and separately confirmed baseline operating facts, <strong>Additional qualified help</strong> is the only supplied arrangement that passes. It costs $400 within a $500 limit and preserves the original full-scope deadline. The app establishes no ranking: Nina's stated preference to preserve scope and date explains her choice.</p>
+<p>When an input changes, apply the new facts and recalculate before using a current finding. Keep the source snapshot with the saved analysis so the team can trace what entered the calculation. A retained timestamp does not decide whether a source is still current enough.</p>
+<p>This is the boundary of the <a href="../../../articles/assessment-patterns/can-we-complete-the-commitment/index.html">commitment assessment</a>: it checks whether the declared complete arrangements meet recorded requirements. It does not verify that Jira is accurate, authenticate permission, execute tests or establish a delivery probability.</p>
+<p>Nina can now explain which estimates came from the export and which operating facts came from elsewhere. For your next release review, bring those two sources together before making the next promise. <a href="https://github.com/hermodlabs/sample_code/tree/main/software-delivery/release-recovery">Follow the complete adapter, mapping and workflow example in the repository</a>.</p>
+
+<footer class="use-case-article-references" aria-labelledby="source">
+  <details class="disclosure use-case-source-disclosure">
+    <summary><h2 class="disclosure-label" id="source">Sources and scope</h2></summary>
+    <p>Nina, release 2026.11 and the CSV are fictional. This guide describes the supplied sample adapter and the four-arrangement release app, not a general Jira integration or arbitrary task scheduler. The Marketplace example is configured for its supplied release catalog; another organization's structure and source meanings require author review.</p>
+    <p>The <a href="https://github.com/hermodlabs/sample_code/tree/main/software-delivery/release-recovery">complete sample source</a>, <a href="https://hermodlabs.github.io/review_lab/app-configs/apps/compare-release-arrangements/2/model.yaml">published model</a> and <a href="../../../assets/use-cases/release-recovery/source/manifest.json">retained source manifest</a> identify the implementation described here. The retained importer fixtures also include <a href="../../../assets/use-cases/release-recovery/source/fixtures/jira-missing-estimate.csv">an unknown estimate</a> and <a href="../../../assets/use-cases/release-recovery/source/fixtures/jira-external-dependency.csv">an external prerequisite</a>.</p>
+  </details>
+</footer>
+</div></details><details class="disclosure" id="verified-worked-cases"><summary><span class="disclosure-label">Download the exact worked cases</span></summary><p>These native runs preserve the tested definition, pinned apps, applied inputs and calculated findings. Use <strong>My cases → Import workflow run</strong> to continue one in a compatible Decision Lab build. Check its definition and runtime requirements rather than assuming an older installation has updated.</p><ul><li><a href="../../../assets/use-cases/article-refresh/verified-2026-11-23/release/baseline.run.json" download>Qualified additional help</a>.</li><li><a href="../../../assets/use-cases/article-refresh/verified-2026-11-23/release/wrongBuild.run.json" download>Qualification covers another build</a>.</li><li><a href="../../../assets/use-cases/article-refresh/verified-2026-11-23/release/acceptedScope.run.json" download>Accepted scope revision</a>.</li></ul><p><a href="../../../assets/use-cases/article-refresh/verified-2026-11-23/release/workflow.json" download>Download the exact workflow package</a> or <a href="../../../assets/use-cases/article-refresh/verified-2026-11-23/release/verification.json">inspect the current capture and calculation receipt</a>. An importable package is distinct from publishing or installing it.</p></details></section>
 
 
 
@@ -226,8 +275,8 @@
 
     <li class="use-case-crosslink" data-related-scenario="shipment-readiness" data-relationship="assessment-pattern">
       <p class="use-case-crosslink-relation">Shared assessment pattern / <a href="../../../articles/from-arrangements-to-assessments/index.html#commitment">Commitment assessment</a></p>
-      <h3><a href="../../supply-chain/shipment-readiness/compare-shipment-options/index.html">Protect a shipment promise as the booking window closes.</a></h3>
-      <p>Maya also checks complete operating arrangements against a fixed commitment. Her shipment profile applies a declared cost-first preference; Nina’s release comparison deliberately leaves the management choice open.</p>
+      <h3><a href="../../supply-chain/shipment-readiness/compare-shipment-options/index.html">Identify the record a shipment proposal depends on.</a></h3>
+      <p>Maya separates unresolved transportation registration from a supported shipment response, then examines what a timely confirmation could change.</p>
     </li>
 
 
@@ -248,7 +297,7 @@
   <details class="disclosure">
     <summary><span class="disclosure-label">Sources and scope</span></summary>
     <p>Nina, the release, estimates, resource records, fees and customer discussions are fictional. The published release workflow evaluates four authored complete arrangements against the recorded operating basis. It establishes feasibility under declared requirements and deliberately does not rank arrangements. The working window represents an exclusive qualified allocation that may span shifts, not one person working a 16-hour shift. The model retains the original promise when scope or date is revised. Calculations do not execute tests, obtain customer agreement, certify software quality, estimate delivery probability or publish the release. Jira imports provide only the two mapped workload totals; other operating facts need separate records.</p>
-    <p><a href="https://hermodlabs.github.io/review_lab/app-configs/apps/compare-release-arrangements/1/model.yaml">Published release-arrangement model</a>. The authored arrangements, validation phases, resources and requirements behind the release comparison.</p><p><a href="https://github.com/hermodlabs/sample_code/tree/main/software-delivery/release-recovery">Complete release-recovery example</a>. The workflow, operating cases, Jira adapter and nine worked scenarios used to qualify the example.</p><p><a href="../../../assets/use-cases/release-recovery/current-ui/verification.json">Screenshots and native calculation evidence</a>. The exact public workflow, runtime, original case and single-input comparisons behind the three stories.</p><p><a href="../../../assets/use-cases/release-recovery/source/manifest.json">Retained model, case and Jira source snapshot</a>. Content hashes identify the supplied examples and adapter described in the articles.</p>
+    <p><a href="https://hermodlabs.github.io/review_lab/app-configs/apps/compare-release-arrangements/2/model.yaml">Published release-arrangement model</a>. The authored arrangements, validation phases, resources and requirements behind the release comparison.</p><p><a href="https://github.com/hermodlabs/sample_code/tree/main/software-delivery/release-recovery">Complete release-recovery example</a>. The workflow, operating cases, Jira adapter and nine worked scenarios used to qualify the example.</p><p><a href="../../../assets/use-cases/release-recovery/current-ui/verification.json">Retained release screenshots and native evidence</a>. The historical workflow, runtime and single-input cases behind the earlier captures. Current principal figures identify their own receipt.</p><p><a href="../../../assets/use-cases/release-recovery/source/manifest.json">Retained model, case and Jira source snapshot</a>. Content hashes identify the supplied examples and adapter described in the articles.</p>
   </details>
 </footer>
 

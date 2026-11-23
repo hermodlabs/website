@@ -203,7 +203,7 @@
     <div class="reader-content">
 
 <p class="reader-lead">How much would we learn by obtaining one more record, running a check, or waiting for an observation? To answer numerically, we first need to specify what remains unknown and when the information could affect a decision.</p>
-<p>Consider a fictional supplier preparing a retail launch. Maya coordinates its shipment recommendation within a $5,000 expense limit. Direct costs $4,000 and Consolidated costs $5,000. The cost-first review prefers Direct while it meets the requirements and remains bookable; after Direct’s 11 a.m. cutoff, current support for Consolidated can make the premium necessary. <a href="../../../use-cases/supply-chain/shipment-readiness/resolve-a-shipment-exception/index.html">Follow Maya’s review in the Shipment Reservation Desk</a> to inspect the scoped records, compare the changed findings and see how the chosen response continues into operating records.</p>
+<p>Consider a fictional supplier preparing a retail launch. Maya coordinates its shipment recommendation within a $5,000 expense limit. Direct costs $4,000 and Consolidated costs $5,000. The cost-first review prefers Direct while it meets the requirements and remains bookable; after Direct’s 11 a.m. cutoff, current support for Consolidated can make the premium necessary. <a href="../../../use-cases/supply-chain/shipment-readiness/review-changed-orders/index.html#same-case">See the related shipment exception</a> for a different change: a current scoped confirmation restores support for Consolidated after an order revision.</p>
 <p>The calculation below is a new teaching extension. Its probabilities and observation accuracy are stipulated assumptions, not measured shipment data or outputs from the published application. We use the following statement to keep choices, evidence, findings, and human decisions separate.</p>
 <p>The slot names are explanatory notation for this argument. SDK schemas and workflow definitions specify actual records and steps. Human acceptance means agreement to an operating commitment.</p>
 <blockquote>
@@ -217,10 +217,11 @@
 
 
 <figure class="blog-figure">
-  <a href="../../../assets/use-cases/shipment-readiness/shared-report-sdk-preview/late-cutoff.png" aria-label="Open the working example at full size"><img src="../../../assets/use-cases/shipment-readiness/shared-report-sdk-preview/late-cutoff.png" width="782" height="1169" alt="At 11:30 a.m., Direct is past its 11 a.m. booking cutoff and Consolidated is preferred at $5,000." loading="lazy" decoding="async"></a>
-  <figcaption>The supplied later review has passed Direct’s booking cutoff. The current comparison shows which response still fits; the entropy estimates below are a separate teaching model, not a metric displayed by this desk. <span>Local production preview.</span> <a href="../../../assets/use-cases/shipment-readiness/shared-report-sdk-preview/late-cutoff.png">View full size</a></figcaption>
+  <a href="../../../assets/use-cases/article-refresh/verified-2026-11-23/shipping-sdk/late-cutoff.png" aria-label="Open the working example at full size"><img src="../../../assets/use-cases/article-refresh/verified-2026-11-23/shipping-sdk/late-cutoff.png" width="782" height="1201" alt="The shipping SDK example: late cutoff." loading="lazy" decoding="async"></a>
+  <figcaption>The supplied later review has passed Direct’s booking cutoff. The current comparison shows which response still fits; the entropy estimates below are a separate teaching model, not a metric displayed by this desk. <a href="../../../assets/use-cases/article-refresh/verified-2026-11-23/shipping-sdk/late-cutoff.png">View full size</a></figcaption>
 </figure>
 
+<p class="figure-source">Local production capture · shipment workflow 2.1.0. <a href="../../../assets/use-cases/article-refresh/verified-2026-11-23/shipping-sdk/verification.json">Capture and calculation record</a>.</p>
 
 <h2 id="what-is-unknown">What exactly is unknown?</h2>
 <p>An uncertainty estimate needs a fixed question, operating interval, evidence basis, and set of possible conditions. Let <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline" aria-label="E equals e"><mi>E</mi><mo>=</mo><mi>e</mi></math> denote the information already available. We describe the uncertain shipment situation by <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline" aria-label="S equals the tuple O, L, T"><mi>S</mi><mo>=</mo><mo>(</mo><mi>O</mi><mo>,</mo><mi>L</mi><mo>,</mo><mi>T</mi><mo>)</mo></math>:</p>

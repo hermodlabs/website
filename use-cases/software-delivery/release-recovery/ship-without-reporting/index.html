@@ -163,61 +163,15 @@
 
 <h2 id="one-record-changes">Change the amendment record, retain the other facts.</h2>
 <p>Compare two operating situations. Estimates, working windows, qualifications, fee, spending limit, release permission and deadlines stay the same. The only changed input is whether <strong>deferring reporting is explicitly accepted</strong>.</p>
-<section class="use-case-comparison" aria-label="The same release with and without an accepted reporting deferral" data-comparison="release-scope-amendment" data-comparison-kind="operating-context">
-  <div class="use-case-comparison-basis">
-    <p><strong>Shared basis.</strong> Release 2026.11 retains core functionality and reporting, a Monday 5 p.m. deadline, 12 + 8 QA hours, the same resource intervals and bookings, a $400 external fee, a $500 limit, and recorded prerequisites and release permission.</p>
-    <p class="use-case-comparison-change"><strong>What changes.</strong> Only the recorded acceptance of deferring reporting changes. The original promise remains visible.</p>
-  </div>
-  <div class="use-case-comparison-panels">
-
-
-    <article class="use-case-comparison-panel" aria-labelledby="release-scope-amendment-panel-1">
-      <h3 id="release-scope-amendment-panel-1">Reporting deferral not accepted</h3>
-      <p class="use-case-comparison-finding"><strong>Core-only is blocked.</strong></p>
-      <dl class="use-case-comparison-inputs">
-
-        <div><dt>Scope amendment accepted</dt><dd>No</dd></div>
-
-        <div><dt>Core-only handoff ready</dt><dd>Monday 1 p.m.</dd></div>
-
-      </dl>
-      <div class="use-case-comparison-observation">
-      <figure class="use-case-comparison-screen">
-        <a href="../../../../assets/use-cases/release-recovery/current-ui/scope-not-accepted.png" aria-label="Open the Reporting deferral not accepted view at full size">
-          <img src="../../../../assets/use-cases/release-recovery/current-ui/scope-not-accepted.png" width="1208" height="1367" alt="Core-only is ready Monday at 1 p.m. but is blocked because deferring reporting has not been explicitly accepted. The original scope and deadline remain displayed." loading="lazy" decoding="async">
-        </a>
-        <figcaption>Finishing core work is different from fulfilling the original promise. Before the change is accepted, core-only remains blocked. <a href="../../../../assets/use-cases/release-recovery/current-ui/scope-not-accepted.png">View full size</a></figcaption>
-      </figure>
-      <p class="use-case-comparison-judgment">A shorter schedule does not establish agreement to deliver less. Only additional qualified help supports the original full release.</p>
-      </div>
-    </article>
-
-
-    <article class="use-case-comparison-panel" aria-labelledby="release-scope-amendment-panel-2">
-      <h3 id="release-scope-amendment-panel-2">Reporting deferral accepted</h3>
-      <p class="use-case-comparison-finding"><strong>Core-only meets an accepted revised commitment.</strong></p>
-      <dl class="use-case-comparison-inputs">
-
-        <div><dt>Scope amendment accepted</dt><dd>Yes</dd></div>
-
-        <div><dt>Core-only handoff ready</dt><dd>Monday 1 p.m.</dd></div>
-
-      </dl>
-      <div class="use-case-comparison-observation">
-      <figure class="use-case-comparison-screen">
-        <a href="../../../../assets/use-cases/release-recovery/current-ui/scope-accepted.png" aria-label="Open the Reporting deferral accepted view at full size">
-          <img src="../../../../assets/use-cases/release-recovery/current-ui/scope-accepted.png" width="1208" height="1203" alt="After acceptance is recorded and recalculated, the core-only arrangement is usable as an accepted scope revision. The report still says it does not preserve the original scope and deadline." loading="lazy" decoding="async">
-        </a>
-        <figcaption>The same core-only schedule becomes an accepted revised commitment. It still does not deliver the reporting feature originally promised. <a href="../../../../assets/use-cases/release-recovery/current-ui/scope-accepted.png">View full size</a></figcaption>
-      </figure>
-      <p class="use-case-comparison-judgment">Core-only now passes alongside additional qualified help. The report still states that core-only does not preserve the original scope and deadline.</p>
-      </div>
-    </article>
-
-  </div>
-  <p class="use-case-comparison-takeaway"><strong>What this means for the decision.</strong> An actual agreement changes the set of supported responses. It does not rewrite what the original release included or establish a preferred choice.</p>
-</section>
-
+<div class="use-case-context-panels"><section class="use-case-context-panel"><h3 id="original-scope-remains-required">Original scope remains required.</h3><p>Core-only is blocked by the unaccepted scope revision.</p><figure class="use-case-figure" data-current-article-capture>
+  <a href="../../../../assets/use-cases/release-recovery/scope-comparison-2026-11-23/before.png" aria-label="Open this calculated finding at full size"><img src="../../../../assets/use-cases/release-recovery/scope-comparison-2026-11-23/before.png" width="997" height="266" alt="The core-only release has no additional expense and a 1 p.m. handoff, but its scope revision is not accepted." loading="lazy" decoding="async"></a>
+  <figcaption><span>Before agreement: the reduced release fits the schedule, but the unaccepted revision blocks it.</span><a href="../../../../assets/use-cases/release-recovery/scope-comparison-2026-11-23/before.png">View full size</a></figcaption>
+</figure>
+</section><section class="use-case-context-panel"><h3 id="customer-accepts-the-scoped-revision">Customer accepts the scoped revision.</h3><p>Core-only becomes a supported revised commitment; it does not complete the original reporting promise.</p><figure class="use-case-figure" data-current-article-capture>
+  <a href="../../../../assets/use-cases/release-recovery/scope-comparison-2026-11-23/after.png" aria-label="Open this calculated finding at full size"><img src="../../../../assets/use-cases/release-recovery/scope-comparison-2026-11-23/after.png" width="997" height="266" alt="The same core-only release is usable once its scope revision is accepted. It still excludes originally promised reporting." loading="lazy" decoding="async"></a>
+  <figcaption><span>After agreement: the same schedule becomes an accepted revised commitment; the original reporting promise remains visible.</span><a href="../../../../assets/use-cases/release-recovery/scope-comparison-2026-11-23/after.png">View full size</a></figcaption>
+</figure>
+</section></div>
 <p>The second calculation adds an eligible alternative. It does not turn the revised release into the original release. The <strong>Original commitment</strong> report keeps full scope and the original deadline visible alongside the accepted amendment.</p>
 <p>This is a focused application of the <a href="../../../../articles/assessment-patterns/can-we-complete-the-commitment/index.html">commitment assessment pattern</a>: a complete arrangement is evaluated against its declared obligations. Nina must preserve which obligations belong to the original promise and which belong to an agreed revision.</p>
 
@@ -228,15 +182,15 @@
 
 <h2 id="resolution">The promise changes openly.</h2>
 <p>Nina can now explain exactly what the cheaper response gives up and why the revised release is acceptable to the parties involved. She has a bounded proposal: core functionality by the original cutoff under an accepted scope amendment. Reporting remains excluded from this arrangement; scheduling its later delivery needs a separate commitment.</p>
-<p>Without that agreement, the reduced release remains blocked even though its work fits. And if Nina tries to preserve the full release instead, the external resource must actually be usable. <a href="../would-extra-qa-help/index.html">See why another tester's availability alone cannot rescue the deadline.</a></p>
+<p>Without that agreement, the reduced release remains blocked even though its work fits. And if Nina tries to preserve the full release instead, the external resource must actually be usable. <a href="../what-can-we-commit-to/index.html#usable-extra-qa">See why another tester's availability alone cannot rescue the deadline.</a></p>
 
 <footer class="use-case-article-references" aria-labelledby="source">
   <details class="disclosure use-case-source-disclosure">
     <summary><h2 class="disclosure-label" id="source">Sources and scope</h2></summary>
-    <p>Nina and the release are fictional. The <a href="https://github.com/hermodlabs/sample_code/tree/main/software-delivery/release-recovery">release-recovery sample</a> retains separate <code>baseline.json</code> and <code>accepted-scope-change.json</code> cases. They differ only in the recorded scope-amendment acceptance. The <a href="https://hermodlabs.github.io/review_lab/app-configs/apps/compare-release-arrangements/1/model.yaml">published model</a> requires that acceptance for the core-only arrangement and retains the original reporting scope.</p>
+    <p>Nina and the release are fictional. The <a href="https://github.com/hermodlabs/sample_code/tree/main/software-delivery/release-recovery">release-recovery sample</a> retains separate <code>baseline.json</code> and <code>accepted-scope-change.json</code> cases. They differ only in the recorded scope-amendment acceptance. The <a href="https://hermodlabs.github.io/review_lab/app-configs/apps/compare-release-arrangements/2/model.yaml">published model</a> requires that acceptance for the core-only arrangement and retains the original reporting scope.</p>
     <p>The planned core-only handoff ends at minute 780 with no additional QA fee; the full-release additional-help handoff ends at minute 1,020 for $400. The accepted-scope case admits both without ranking them. Changing a recorded amendment requires recalculation; an earlier finding does not remain current.</p>
     <p>The comparison does not obtain customer consent, authorize a release, assess the business value of deferred reporting or create a later reporting delivery plan. Only the four authored arrangements and supplied operating facts are evaluated.</p>
-    <p>Screenshots show the public <a href="https://hermodlabs.github.io/review_lab/?install=workflow&amp;id=plan-at-risk-release&amp;version=1.0.0&amp;publisher=decision-lab&amp;collection=software-delivery&amp;release=ac082fed5cd44cdaa9aa134b20f9f7712651792e16b03a62758e276096b0762a">Plan an at-risk release workflow 1.0.0</a>. The <a href="../../../../assets/use-cases/release-recovery/current-ui/verification.json">native capture record</a> retains the exact build, cases and calculated results. The <a href="../../../../assets/use-cases/release-recovery/source/manifest.json">source manifest</a> identifies the retained model and scenario fixtures.</p>
+    <p>Both figures inspect the same core-only arrangement in <strong>Supporting reports → Arrangement details</strong>. Their <a href="../../../../assets/use-cases/release-recovery/scope-comparison-2026-11-23/verification.json">public-app comparison receipt</a> identifies the exact build, workflow and native cases, including the single changed acceptance input. The <a href="../../../../assets/use-cases/article-refresh/verified-2026-11-23/release/verification.json">initial refreshed capture record</a> and <a href="../../../../assets/use-cases/release-recovery/current-ui/verification.json">earlier native capture record</a> retain their original identities. The <a href="../../../../assets/use-cases/release-recovery/source/manifest.json">source manifest</a> identifies the retained model and scenario fixtures.</p>
   </details>
 </footer>
 
@@ -252,18 +206,13 @@
 
       <li>
 
-        <a href="../use-your-jira-export/index.html"><span>5 min read</span><strong>Use your Jira export to review an at-risk release.</strong></a>
-      </li>
-
-      <li>
-
-        <a href="../would-extra-qa-help/index.html"><span>4 min read</span><strong>Would an extra tester actually save this release?</strong></a>
+        <a href="../what-can-we-commit-to/index.html"><span>6 min read</span><strong>The release deadline is fixed. What can we still commit to?</strong></a>
       </li>
 
       <li data-related-scenario="shipment-readiness" data-relationship="assessment-pattern">
         <p class="reader-related-context">Shared assessment pattern</p>
 
-        <a href="../../../supply-chain/shipment-readiness/compare-shipment-options/index.html"><span>7 min read</span><strong>Same shipment. A different booking window.</strong></a>
+        <a href="../../../supply-chain/shipment-readiness/compare-shipment-options/index.html"><span>5 min read</span><strong>Which shipment can Maya support before committing money?</strong></a>
       </li>
 
       <li data-related-scenario="restaurant-roster-repair" data-relationship="assessment-pattern">
@@ -280,8 +229,6 @@
 
     <a href="../what-can-we-commit-to/index.html" rel="prev"><span>Previous article</span><strong>The release deadline is fixed. What can we still commit to?</strong></a>
 
-
-    <a href="../would-extra-qa-help/index.html" rel="next"><span>Follow-up article <span aria-hidden="true">→</span></span><strong>Would an extra tester actually save this release?</strong></a>
 
   </nav>
 

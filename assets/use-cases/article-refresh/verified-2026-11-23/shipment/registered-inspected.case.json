@@ -1,0 +1,238 @@
+{
+  "format": "first-shipment-review.case/1",
+  "id": "SHIP-104",
+  "revision": 1,
+  "scope": {
+    "orderId": "ORD-104",
+    "orderRevision": "1",
+    "recipient": "DC-X",
+    "shipDate": "2026-11-18",
+    "profileVersion": "1.0.0",
+    "directShipPointId": "SP-A",
+    "backupShipPointId": "SP-B",
+    "currency": "USD",
+    "amountUnit": "cent",
+    "timeUnit": "minute",
+    "timeOrigin": "2026-11-17T00:00:00-06:00"
+  },
+  "commitment": {
+    "receiveAt": "DC-X",
+    "reserveBy": "2026-11-17T12:00:00-06:00",
+    "receiveBy": "2026-11-20T17:00:00-06:00",
+    "responseMinutes": 30,
+    "quantity": 100,
+    "quantityUnit": "case"
+  },
+  "planning": {
+    "currentTime": 480,
+    "preparationMinutes": 120,
+    "releaseMinutes": 30,
+    "packActor": "packing-lead",
+    "releaseActor": "release-officer",
+    "receiptOpen": 5040,
+    "receiptClose": 5341
+  },
+  "arrangements": [
+    {
+      "id": "direct",
+      "shipPointId": "SP-A",
+      "costMinor": 400000,
+      "departureMinute": 1440,
+      "travelMinutes": 3600,
+      "arrivalAt": "2026-11-20T12:00:00-06:00",
+      "capacity": 100
+    },
+    {
+      "id": "backup",
+      "shipPointId": "SP-B",
+      "costMinor": 600000,
+      "departureMinute": 1440,
+      "travelMinutes": 3600,
+      "arrivalAt": "2026-11-20T12:00:00-06:00",
+      "capacity": 100
+    }
+  ],
+  "authority": {
+    "budgetMinor": 650000,
+    "cashLimitMinor": 650000,
+    "studyPurchaseCapMinor": 25000,
+    "studyPurchaseGrant": {
+      "id": "STUDY-PURCHASE-1",
+      "actor": "finance-reviewer",
+      "orderId": "ORD-104",
+      "orderRevision": "1",
+      "action": "purchase-verification",
+      "validFrom": 480,
+      "ceilingMinor": 25000,
+      "validUntil": 720,
+      "recipient": "DC-X",
+      "shipDate": "2026-11-18",
+      "profileVersion": "1.0.0"
+    }
+  },
+  "operations": {
+    "capabilities": [
+      {
+        "actor": "packing-lead",
+        "action": "pack"
+      },
+      {
+        "actor": "release-officer",
+        "action": "release"
+      }
+    ],
+    "calendars": [
+      {
+        "actor": "packing-lead",
+        "start": 480,
+        "end": 1440
+      },
+      {
+        "actor": "release-officer",
+        "start": 480,
+        "end": 1440
+      }
+    ],
+    "resources": [
+      {
+        "id": "packing-lead",
+        "capacity": 1
+      },
+      {
+        "id": "release-officer",
+        "capacity": 1
+      },
+      {
+        "id": "packing-bench",
+        "capacity": 1
+      }
+    ],
+    "bookings": [],
+    "releaseGrants": [
+      {
+        "id": "RELEASE-direct",
+        "actor": "release-officer",
+        "action": "release",
+        "arrangement": "direct",
+        "shipPoint": "SP-A",
+        "orderId": "ORD-104",
+        "orderRevision": "1",
+        "recipient": "DC-X",
+        "shipDate": "2026-11-18",
+        "profileVersion": "1.0.0",
+        "start": 480,
+        "end": 1440
+      },
+      {
+        "id": "RELEASE-backup",
+        "actor": "release-officer",
+        "action": "release",
+        "arrangement": "backup",
+        "shipPoint": "SP-B",
+        "orderId": "ORD-104",
+        "orderRevision": "1",
+        "recipient": "DC-X",
+        "shipDate": "2026-11-18",
+        "profileVersion": "1.0.0",
+        "start": 480,
+        "end": 1440
+      }
+    ],
+    "arrangementAuthorities": [
+      {
+        "arrangement": "direct",
+        "orderId": "ORD-104",
+        "orderRevision": "1",
+        "recipient": "DC-X",
+        "shipDate": "2026-11-18",
+        "profileVersion": "1.0.0",
+        "start": 480,
+        "end": 721
+      },
+      {
+        "arrangement": "backup",
+        "orderId": "ORD-104",
+        "orderRevision": "1",
+        "recipient": "DC-X",
+        "shipDate": "2026-11-18",
+        "profileVersion": "1.0.0",
+        "start": 480,
+        "end": 721
+      }
+    ]
+  },
+  "evidence": {
+    "scopeId": "ORD-104-r1-SP-A-2026-11-18-profile-1",
+    "scopeBasis": {
+      "orderId": "ORD-104",
+      "orderRevision": "1",
+      "recipient": "DC-X",
+      "shipDate": "2026-11-18",
+      "profileVersion": "1.0.0",
+      "shipPoint": "SP-A"
+    },
+    "questionId": "transport-registration",
+    "observations": [
+      {
+        "id": "OBS-PORTAL-1",
+        "shipPointId": "SP-A",
+        "field": "portal_listed",
+        "value": true,
+        "sourceId": "PORTAL-CAPTURE-1",
+        "observedAtMinute": 480
+      },
+      {
+        "id": "OBS-ARTICLE-REGISTRY-1",
+        "shipPointId": "SP-A",
+        "field": "transport_registered",
+        "value": true,
+        "sourceId": "ARTICLE-REGISTRY-1",
+        "observedAtMinute": 480
+      }
+    ],
+    "sources": [
+      {
+        "id": "PORTAL-CAPTURE-1",
+        "scope": "ORD-104-r1-SP-A-2026-11-18-profile-1",
+        "kind": "portal_capture",
+        "observedAt": 480,
+        "description": "Hypothetical reviewed portal listing capture; transportation registration is not stated."
+      },
+      {
+        "id": "ARTICLE-REGISTRY-1",
+        "scope": "ORD-104-r1-SP-A-2026-11-18-profile-1",
+        "kind": "actual_registry_report",
+        "observedAt": 480,
+        "description": "Fictional performed registry verification for the exact shipment scope."
+      }
+    ],
+    "incurredVerificationFees": []
+  },
+  "learning": {
+    "requested": true,
+    "probabilityAssessment": {
+      "weights": {
+        "registered": 0.5,
+        "not_registered": 0.5
+      },
+      "basis": "Explicit hypothetical probability assessment; not derived from evidence interpretation counts.",
+      "sourceId": "ASSESSMENT-HYPOTHETICAL-1"
+    },
+    "investigations": [
+      {
+        "id": "fast_verification",
+        "feeMinor": 20000,
+        "reportAvailableAt": "2026-11-17T10:00:00-06:00",
+        "reportMinute": 600,
+        "observationModelId": "exact-registry-verification"
+      },
+      {
+        "id": "slow_verification",
+        "feeMinor": 5000,
+        "reportAvailableAt": "2026-11-17T14:00:00-06:00",
+        "reportMinute": 840,
+        "observationModelId": "exact-registry-verification"
+      }
+    ]
+  }
+}

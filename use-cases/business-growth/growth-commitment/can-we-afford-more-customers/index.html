@@ -125,7 +125,7 @@
       <li><a href="#compare-whole-commitments">Compare the commitments behind the campaign pitches.</a></li>
       <li><a href="#cash-before-receipts">A positive ending balance can hide an earlier shortage.</a></li>
       <li><a href="#capacity-changes-the-shortlist">The same campaign can fit one delivery context and fail another.</a></li>
-      <li><a href="#read-the-decision">Use the summary to find the question that matters next.</a></li>
+      <li><a href="#campaign-hurdle">An eligible campaign still needs enough additional customers.</a></li>
       <li><a href="#leah-has-a-defensible-shortlist">Leah can explain what the business can carry.</a></li>
       <li><a href="#source">Sources and scope</a></li>
     </ol>
@@ -158,92 +158,39 @@
 
 <h2 id="cash-before-receipts">A positive ending balance can hide an earlier shortage.</h2>
 <p>The large campaign pays an $8,000 quote on day three and $20,000 of delivery expense on day seven. Its $60,000 of customer receipts arrive on day thirty. Starting with $12,000, Leah would reach <strong>negative $16,000 before receiving that money</strong>. The later balance does not fund the earlier payment.</p>
-<figure class="use-case-figure">
-  <a href="../../../../assets/use-cases/growth-commitment/current-ui/large-campaign-cash.png" aria-label="Open this growth assessment at full size"><img src="../../../../assets/use-cases/growth-commitment/current-ui/large-campaign-cash.png" width="1496" height="1102" alt="Cash for the large invoiced campaign falls from $12,000 to $4,000 after the $8,000 campaign, then to minus $16,000 after delivery expense, before customer collection produces $44,000. A positive ending balance does not repair the earlier shortage." loading="lazy" decoding="async"></a>
-  <figcaption><span>The large campaign ends cash-positive but cannot fund its earlier payments. Cash is checked in the declared event order.</span><a href="../../../../assets/use-cases/growth-commitment/current-ui/large-campaign-cash.png">View full size</a></figcaption>
-</figure>
-
+<p><a href="../index.html#cash-reference">Inspect the cash-by-date report in the collection guide.</a></p>
 <p>The medium prepaid arrangement has a different sequence: a $4,000 campaign payment, then customer receipts before the $10,000 delivery payment. Its total campaign and delivery expense is still <strong>$14,000</strong>. The <strong>$4,000 peak funding requirement</strong> describes the opening funding needed under those dates; it is not the total expense.</p>
 <p>Decision Lab checks cash after each ordered event, including any declared reserve. These inputs assume the recorded amounts are collected on the recorded dates. A promise to pay does not establish that payment will arrive; Leah needs a credible operating basis for those dates.</p>
 
 <h2 id="capacity-changes-the-shortlist">The same campaign can fit one delivery context and fail another.</h2>
 <p>Now consider an alternative planning context: another commitment leaves only <strong>80 delivery hours</strong> available. Leah changes that input alone. The campaign quotes, customer assumptions, payment dates and $12,000 cash remain the same.</p>
-<section class="use-case-comparison" aria-label="The same growth commitments with different delivery capacity" data-comparison="growth-capacity-change" data-comparison-kind="operating-context">
-  <div class="use-case-comparison-basis">
-    <p><strong>Shared basis.</strong> The same four arrangements, $12,000 opening cash, no required reserve, customer assumptions, campaign quotes, package economics, payment dates and three-day commitment cutoff.</p>
-    <p class="use-case-comparison-change"><strong>What changes.</strong> Only available delivery capacity changes: 140 hours versus 80 hours in the same period.</p>
-  </div>
-  <div class="use-case-comparison-panels">
-
-
-    <article class="use-case-comparison-panel" aria-labelledby="growth-capacity-change-panel-1">
-      <h3 id="growth-capacity-change-panel-1">140 delivery hours</h3>
-      <p class="use-case-comparison-finding"><strong>Two expansion arrangements fit.</strong></p>
-      <dl class="use-case-comparison-inputs">
-
-        <div><dt>Delivery hours available</dt><dd>140</dd></div>
-
-        <div><dt>Medium prepaid campaign requires</dt><dd>100 hours</dd></div>
-
-      </dl>
-      <div class="use-case-comparison-observation">
-      <figure class="use-case-comparison-screen">
-        <a href="../../../../assets/use-cases/growth-commitment/current-ui/funding-and-capacity.png" aria-label="Open the 140 delivery hours view at full size">
-          <img src="../../../../assets/use-cases/growth-commitment/current-ui/funding-focused.png" width="787" height="233" alt="The focused answer for the medium prepaid campaign with 140 available hours says it meets every declared requirement, retains $8,000 cash headroom and 40 delivery hours." loading="lazy" decoding="async">
-        </a>
-        <figcaption>The medium prepaid arrangement meets the recorded requirements with 140 hours available; 40 delivery hours remain. <a href="../../../../assets/use-cases/growth-commitment/current-ui/funding-and-capacity.png">View full size</a></figcaption>
-      </figure>
-      <p class="use-case-comparison-judgment">Both the small invoiced and medium prepaid campaigns meet the recorded cash, capacity and timing conditions. The large campaign remains blocked. The app does not automatically choose among passing arrangements.</p>
-      </div>
-    </article>
-
-
-    <article class="use-case-comparison-panel" aria-labelledby="growth-capacity-change-panel-2">
-      <h3 id="growth-capacity-change-panel-2">80 delivery hours</h3>
-      <p class="use-case-comparison-finding"><strong>Only the smaller expansion fits.</strong></p>
-      <dl class="use-case-comparison-inputs">
-
-        <div><dt>Delivery hours available</dt><dd>80</dd></div>
-
-        <div><dt>Medium prepaid campaign requires</dt><dd>100 hours</dd></div>
-
-      </dl>
-      <div class="use-case-comparison-observation">
-      <figure class="use-case-comparison-screen">
-        <a href="../../../../assets/use-cases/growth-commitment/current-ui/capacity-80.png" aria-label="Open the 80 delivery hours view at full size">
-          <img src="../../../../assets/use-cases/growth-commitment/current-ui/capacity-focused.png" width="787" height="233" alt="The same medium prepaid campaign with 80 available hours fails the declared requirements. Cash headroom remains $8,000 but delivery capacity is 20 hours short." loading="lazy" decoding="async">
-        </a>
-        <figcaption>With only capacity reduced to 80 hours, the same medium prepaid arrangement fails with a 20-hour shortfall. <a href="../../../../assets/use-cases/growth-commitment/current-ui/capacity-80.png">View full size</a></figcaption>
-      </figure>
-      <p class="use-case-comparison-judgment">The medium prepaid campaign has a 20-hour shortfall. The smaller invoiced campaign needs 50 hours and still fits; keeping the current approach remains available.</p>
-      </div>
-    </article>
-
-  </div>
-  <p class="use-case-comparison-takeaway"><strong>What this means for the decision.</strong> An arrangement with sufficient funding can still fail delivery capacity. A changed operating limit requires a new calculation, not a new business rule.</p>
-</section>
-
+<div class="use-case-context-panels"><section class="use-case-context-panel"><h3 id="140-delivery-hours">140 delivery hours.</h3><p>The small invoiced and medium prepaid growth commitments fit.</p><figure class="use-case-figure" data-current-article-capture>
+  <a href="../../../../assets/use-cases/article-refresh/verified-2026-11-23/growth/baseline.png" aria-label="Open this calculated finding at full size"><img src="../../../../assets/use-cases/article-refresh/verified-2026-11-23/growth/baseline.png" width="1039" height="897" alt="Two expansion commitments and the current approach satisfy the recorded funding and 140-hour delivery limits." loading="lazy" decoding="async"></a>
+  <figcaption><span>Two expansion commitments and the current approach satisfy the recorded funding and 140-hour delivery limits.</span><a href="../../../../assets/use-cases/article-refresh/verified-2026-11-23/growth/baseline.png">View full size</a></figcaption>
+</figure>
+</section><section class="use-case-context-panel"><h3 id="80-delivery-hours">80 delivery hours.</h3><p>The medium prepaid commitment is blocked; the smaller expansion and current approach remain.</p><figure class="use-case-figure" data-current-article-capture>
+  <a href="../../../../assets/use-cases/article-refresh/verified-2026-11-23/growth/capacity.png" aria-label="Open this calculated finding at full size"><img src="../../../../assets/use-cases/article-refresh/verified-2026-11-23/growth/capacity.png" width="1039" height="764" alt="Changing only delivery capacity to 80 hours removes the medium prepaid commitment." loading="lazy" decoding="async"></a>
+  <figcaption><span>Changing only delivery capacity to 80 hours removes the medium prepaid commitment.</span><a href="../../../../assets/use-cases/article-refresh/verified-2026-11-23/growth/capacity.png">View full size</a></figcaption>
+</figure>
+</section></div>
 <p>The medium campaign needs 100 hours and is now blocked. Its payment terms still solve the earlier funding problem, but they cannot supply the missing delivery hours. The small campaign needs 50 hours and remains workable. Keeping the current approach also remains available.</p>
 <p>This is aggregate capacity within the declared delivery period. The comparison does not construct individual staff schedules, prove particular qualifications or allocate hours across every customer task. Those would need a more detailed authored model.</p>
 
-<h2 id="read-the-decision">Use the summary to find the question that matters next.</h2>
-<p>Leah enters the values in <strong>Inputs</strong>, applies the changes and chooses <strong>Calculate</strong> or <strong>Recalculate</strong>. The <strong>Decision summary</strong> identifies the supplied arrangements that fit. Supporting reports expose the cash sequence, delivery capacity and the conditions behind a blocked result. The cash view offers both a table and a chart.</p>
-<p>Changing capacity makes the previous finding stale until Leah recalculates. Inspecting an arrangement does not select it, purchase a campaign or reserve delivery time. The operating app deliberately provides <strong>no automatic preferred arrangement</strong>.</p>
-<p>This is <a href="../../../../articles/patterns/make-a-bounded-commitment/index.html">Make a Bounded Commitment</a> in a growth setting. The supporting <a href="../../../../articles/assessment-patterns/can-we-complete-the-commitment/index.html">Commitment Assessment</a> checks complete candidates against connected operating requirements. A good customer margin cannot compensate for failed funding or capacity.</p>
-
+<h2 id="campaign-hurdle">An eligible campaign still needs enough additional customers.</h2>
+<p>The medium prepaid campaign commits <strong>$4,000</strong>. Each genuinely additional customer contributes <strong>$1,000</strong> after the $500 delivery expense and before campaign expense. Its threshold is conditional arithmetic, not a demand forecast.</p>
+<div class="article-table-scroll" role="region" tabindex="0" aria-label="Medium prepaid campaign hurdle"><table><thead><tr><th scope="col">Question</th><th scope="col">Answer under these inputs</th></tr></thead><tbody><tr><th scope="row">Additional customers covering the $4,000 quote</th><td>4</td></tr><tr><th scope="row">First whole count exceeding that expense</th><td>5</td></tr></tbody></table></div>
+<p>A smaller customer count does not refund the committed campaign. Funding and capacity establish whether the business can carry the commitment; this hurdle states what its performance must achieve. Neither finding selects a preferred option in the operating comparison.</p>
 <h2 id="leah-has-a-defensible-shortlist">Leah can explain what the business can carry.</h2>
 <p>She can set aside the large invoiced proposal under either capacity context. With 140 hours, the smaller invoiced and medium prepaid proposals remain on the shortlist. With 80 hours, she can pursue the smaller campaign or retain the current approach, unless she changes the operating basis and reassesses.</p>
-<p>That resolves the immediate argument between sales, delivery and finance: each can see which complete commitments meet the recorded limits and why. It does not settle whether the spending is worthwhile. <a href="../what-must-the-campaign-achieve/index.html">Next, Leah asks what the $4,000 campaign must achieve to cover its expense.</a></p>
+<p>That resolves the immediate argument between sales, delivery and finance: each can see which complete commitments meet the recorded limits and why. It does not settle whether the spending is worthwhile. <a href="../should-we-test-prepayment/index.html">Next, Leah examines twenty-versus-two customer responses and whether a timely preference test would improve the choice.</a></p>
 <footer class="use-case-article-references" aria-labelledby="source">
-  <details class="disclosure use-case-source-disclosure">
-    <summary><h2 class="disclosure-label" id="source">Sources and scope</h2></summary>
-    <p>Leah, the business, customer counts, prices, quotes and probability judgments are fictional. Screenshots show the working <strong>Choose next month’s growth commitment 1.0.0</strong> workflow in the public <strong>Business growth</strong> Marketplace collection. The <a href="../../../../assets/use-cases/growth-commitment/current-ui/verification.json">native capture and calculation record</a> retains the exact app packages, cases, results and screenshot identities. The <a href="../../../../assets/use-cases/growth-commitment/current-ui/growth.workflow.json" download>captured workflow</a> preserves its pinned app definitions.</p>
-    <p>The operating app compares four supplied complete arrangements for one standardized service package. Customer counts and collection dates are declared assumptions, not forecasts or measured causal effects. Campaign expense is fixed once committed; fewer customers reduce delivery work and receipts without refunding that campaign. The $12,000 opening cash is available after obligations outside this case have been counted once. A minimum reserve is a separate protected balance. Cash is checked after every ordered event, including events on the same date. Delivery hours describe capacity within a declared period, not a detailed employee roster.</p>
-    <p>The operating comparison deliberately selects no preferred arrangement. A passing result is conditional on the supplied requirements and situations; it does not establish earned profit, an acceptable commercial risk or authority to spend. A campaign hurdle states how many genuinely additional customers would cover its expense under the supplied contribution assumptions. It does not establish that those customers will buy.</p>
-    <p>The second and third stories use the same authored prepayment-response situations: twenty customers or two, while the invoiced alternatives retain their supplied counts. The optional learning comparison assumes equal prior probabilities, an imperfect favorable/unfavorable/inconclusive signal, a $500 fee and a one-day delay. Its expected-money objective is explicit. A test delivered after the commitment cutoff loses its useful expansion responses. These probabilities are fictional teaching premises. The nonbinding test collects no orders, payments or deposits; a paid pilot needs its own operating obligations and cash consequences.</p>
-    <p>Missing required operating values leave the assessment unavailable. Missing optional probability assumptions leave the complete operating comparison usable. Installments, refunds, additional arrangements and a different multi-period delivery structure require an adapted authored model. The <a href="../../../../assets/use-cases/growth-commitment/growth-commitment-source.zip" download>complete example and CLI walkthrough</a> preserve the implementation behind these captures. Its workflow, both apps and Excel package match the public Marketplace packages exactly; the <a href="../../../../assets/use-cases/growth-commitment/source/manifest.json">source manifest</a> identifies the retained files. See the <a href="https://github.com/hermodlabs/sample_code">sample-code repository</a> for the wider collection of examples.</p>
-  </details>
-</footer>
+<details class="disclosure use-case-source-disclosure"><summary><h2 class="disclosure-label" id="source">Sources and scope</h2></summary>
+<p>Leah, the business, customers, quotes and probability judgments are fictional. The current figures show <strong>Choose next month's growth commitment</strong> using the exact build, workflow and native cases identified in the <a href="../../../../assets/use-cases/article-refresh/verified-2026-11-23/growth/verification.json">current capture receipt</a>. A current local capture is distinct from a public deployment. The <a href="../../../../assets/use-cases/growth-commitment/current-ui/verification.json">earlier capture record</a> and its <a href="../../../../assets/use-cases/growth-commitment/current-ui/growth.workflow.json" download>retained workflow</a> remain historical references.</p>
+<p>The operating app compares four complete commitments for one standardized service package. Customer counts and collection dates are declared assumptions. Campaign expense stays fixed once committed; fewer customers reduce work and receipts without refunding the campaign. The $12,000 opening cash is available after obligations outside this case have been counted once. A protected reserve is a separate balance. Cash is checked after every ordered event; delivery hours describe aggregate capacity within a declared period, not a detailed employee roster.</p>
+<p>The operating comparison chooses no preferred commitment. Passing does not establish earned profit, acceptable commercial risk or authority to spend. The customer hurdle states the genuinely additional response needed to cover expense, not evidence that those customers will buy.</p>
+<p>The learning story supplies twenty-versus-two prepaid-customer situations, equal prior probabilities, an imperfect favorable/unfavorable/inconclusive signal, a $500 fee and a one-day test. The comparison changes the delay to four days while keeping the other premises fixed. These are explicit fictional judgments, not inferred or validated probabilities. The nonbinding test collects no orders, deposits or payments. Its complete test-and-response policy has a declared expected-contribution objective.</p>
+<p>Missing optional probability assumptions leaves the operating assessment usable. Another payment structure, additional alternatives, refunds or detailed scheduling needs an adapted model. The <a href="../../../../assets/use-cases/growth-commitment/growth-commitment-source.zip" download>retained source example and CLI walkthrough</a> and <a href="../../../../assets/use-cases/growth-commitment/source/manifest.json">source manifest</a> identify their exact implementation separately from the current runtime. See the <a href="https://github.com/hermodlabs/sample_code">sample-code repository</a> for the broader examples.</p>
+</details></footer>
 
 
       
@@ -258,18 +205,13 @@
 
       <li>
 
-        <a href="../what-must-the-campaign-achieve/index.html"><span>5 min read</span><strong>The campaign fits. What must it achieve?</strong></a>
-      </li>
-
-      <li>
-
         <a href="../should-we-test-prepayment/index.html"><span>6 min read</span><strong>Should we test prepayment before committing?</strong></a>
       </li>
 
       <li data-related-scenario="street-team-deployment" data-relationship="assessment-pattern">
         <p class="reader-related-context">Shared assessment pattern</p>
 
-        <a href="../../../nightlife/street-team-deployment/review-tonights-promotion/index.html"><span>7 min read</span><strong>Can Alex justify a $200 promotion push tonight?</strong></a>
+        <a href="../../../nightlife/street-team-deployment/review-tonights-promotion/index.html"><span>5 min read</span><strong>The promotion fits. A callout changes the decision.</strong></a>
       </li>
 
       <li data-related-scenario="shipment-readiness" data-relationship="assessment-pattern">
@@ -285,7 +227,7 @@
   <nav class="reader-continuation essay-followup" aria-label="Continue reading">
 
 
-    <a href="../what-must-the-campaign-achieve/index.html" rel="next"><span>Follow-up article <span aria-hidden="true">→</span></span><strong>The campaign fits. What must it achieve?</strong></a>
+    <a href="../should-we-test-prepayment/index.html" rel="next"><span>Follow-up article <span aria-hidden="true">→</span></span><strong>Should we test prepayment before committing?</strong></a>
 
   </nav>
 
