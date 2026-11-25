@@ -82,8 +82,8 @@
 
 <header class="reading-header wrap reading-header-with-cover">
   <div class="reading-header-content">
-    
-    <nav class="breadcrumb" aria-label="Breadcrumb">
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
 
   
   <a href="../../../index.html">Use Cases</a>
@@ -100,10 +100,10 @@
 </nav>
 
     <p class="eyebrow">Restaurant roster repair / Establish feasibility</p>
-    
+
     <h1>A cook called out. Which roster keeps dinner covered?</h1>
     <p class="reading-description">A Saturday callout threatens Elena’s dinner service. Use the restaurant roster workflow to compare complete repairs and see how an earlier departure changes which proposal works.</p>
-    <p class="reading-meta">Jonathan Nacionales <span aria-hidden="true">·</span> 7 min read</p>
+    <p class="reading-meta">Jonathan Nacionales <span aria-hidden="true">·</span> 5 min read</p>
   </div>
   <figure class="reading-cover">
     <img class="reading-cover-image" src="../../../../assets/use-cases/restaurant-roster-repair/coverage-cover.svg" width="960" height="720" alt="A cook’s missing Saturday assignment connects to a complete restaurant roster and a coverage check." decoding="async">
@@ -118,13 +118,12 @@
 
 
   <aside class="reader-navigation" aria-label="Reading navigation">
-    <nav class="reader-toc" aria-labelledby="reader-toc-heading">
+<nav class="reader-toc" aria-labelledby="reader-toc-heading">
   <details class="disclosure reader-nav-disclosure" open>
     <summary><h2 class="disclosure-label" id="reader-toc-heading">On this page</h2></summary>
     <ol>
       <li><a href="#complete-repairs">Fill the gap without moving it somewhere else.</a></li>
       <li><a href="#availability-changes">“Available” has to cover the whole assignment.</a></li>
-      <li><a href="#people-and-requirements">One roster has to reconcile several needs.</a></li>
       <li><a href="#from-feasibility-to-choice">Elena has alternatives she can explain.</a></li>
       <li><a href="#source">Sources and scope</a></li>
     </ol>
@@ -135,17 +134,15 @@
 
   <article class="reader-prose" aria-label="A cook called out. Which roster keeps dinner covered?">
     <div class="reader-content">
-      
-      <p class="reader-lead">On Friday morning, Elena has a restaurant service to protect and a roster her team has already arranged their lives around. Nora calls out: she cannot work Saturday dinner. Reservations are booked. The kitchen still needs <strong>two qualified cooks from 6–10 p.m.</strong>, alongside a server.</p>
+
+<p class="reader-lead">On Friday morning, Elena has a restaurant service to protect and a roster her team has already arranged their lives around. Nora calls out: she cannot work Saturday dinner. Reservations are booked. The kitchen still needs <strong>two qualified cooks from 6–10 p.m.</strong>, alongside a server.</p>
 <p>Elena could call her usual relief cook, ask the staff group chat or move someone from Sunday. Each could supply a name quickly. Her harder question is whether the resulting roster still works for <strong>every remaining recorded service</strong>, within the employee conditions and labor boundary.</p>
 <p class="use-case-example-note">Elena, the restaurant and the records are fictional. The worked case uses <strong>Repair a published restaurant roster 1.9.0</strong> in Decision Lab’s <strong>Restaurant operations</strong> collection. It compares four supplied complete repairs within a configured roster; it does not generate every possible schedule. <a href="../index.html#try-the-review">Open the workflow and follow the shared setup instructions</a>.</p>
-
-
 
 <h2 id="complete-repairs">Fill the gap without moving it somewhere else.</h2>
 <p>The question for this assessment is <strong>which of the four supplied complete repairs meets every recorded requirement?</strong> A qualified name in Saturday’s empty cell is only part of that answer. Elena needs to establish which complete proposals work before deciding what to prefer.</p>
 <p>A <a href="../../../../articles/the-arrangement-problem-in-human-decisions/index.html"><strong>complete arrangement</strong></a> here is a complete remaining roster: who fills each cooking and serving position, throughout its interval, across Friday dinner, Saturday dinner and Sunday lunch. Earlier work still matters to the recorded weekly-hours and rest limits.</p>
-<p>Elena considers four repairs. Leaving the gap fails Saturday’s coverage. Moving Theo from Sunday lunch fills Saturday, but leaves Sunday short. Bringing in Rowan can preserve the other assignments. A coordinated repair moves Theo to Saturday, Ben from Sunday serving to cooking, and Ava into Sunday’s serving position. Ben has both recorded qualifications; he occupies one position at a time.</p>
+<p>The four supplied repairs range from leaving the gap to coordinating changes across Saturday and Sunday. The timeline shows where each leaves the work; the table records whether the complete roster passes.</p>
 
 <figure class="use-case-explanatory-map" id="restaurant-roster-timeline" aria-labelledby="restaurant-roster-timeline-caption">
   <a class="use-case-explanatory-map-image" href="../../../../assets/use-cases/restaurant-roster-repair/roster-timeline.svg" tabindex="-1" aria-label="Open the roster illustration at full size">
@@ -177,10 +174,9 @@
 </div>
 <p>The <strong>$856 remaining-payroll limit</strong> leaves $200 beyond the $656 retained after Nora’s cancelled, unpaid shift is removed. That is the expense baseline used here. Meeting the limit does not settle which feasible repair Elena should prefer.</p>
 
-<p><a href="../index.html#try-the-review">The collection guide explains how to calculate the supplied roster and inspect the blocked shortcuts.</a></p>
 <h2 id="availability-changes">“Available” has to cover the whole assignment.</h2>
 <p>Now change one fact. Rowan can still start at 6 p.m., but must leave at <strong>8 p.m.</strong> The proposed four-hour assignment is unchanged. So are the other employees, qualifications, requirements, pay quotes and candidate repairs.</p>
-<p>In <strong>Repair decision → Availability</strong>, Elena changes <strong>Available until on Saturday</strong> from <strong>10:00 p.m.</strong> to <strong>8:00 p.m.</strong> and chooses <strong>Apply inputs</strong>. The earlier findings are now outdated; she must choose <strong>Recalculate</strong> before relying on a current answer.</p>
+<p>Elena applies the shorter availability and recalculates. Until then, the earlier finding is outdated.</p>
 <div class="use-case-context-panels"><section class="use-case-context-panel"><h3 id="rowan-available-until-10-p-m">Rowan available until 10 p.m.</h3><p>Relief and the coordinated repair both meet the requirements.</p><figure class="use-case-figure" data-current-article-capture>
   <a href="../../../../assets/use-cases/article-refresh/verified-2026-11-23/restaurant/baseline.png" aria-label="Open this calculated finding at full size"><img src="../../../../assets/use-cases/article-refresh/verified-2026-11-23/restaurant/baseline.png" width="1039" height="660" alt="Two complete roster repairs cover the remaining services." loading="lazy" decoding="async"></a>
   <figcaption><span>Two complete roster repairs cover the remaining services.</span><a href="../../../../assets/use-cases/article-refresh/verified-2026-11-23/restaurant/baseline.png">View full size</a></figcaption>
@@ -192,27 +188,13 @@
 </section></div>
 <p>The relief repair fails the <strong>full-interval availability requirement</strong>: Rowan’s recorded window does not cover 8–10 p.m. Elena cannot count those two unavailable hours as cooking capacity. The coordinated repair remains feasible under the supplied facts.</p>
 <p>Elena can seek revised availability or have another complete repair authored. Either needs another assessment. The calculation does not extend Rowan's availability or invent cover for the final two hours.</p>
-<h2 id="people-and-requirements">One roster has to reconcile several needs.</h2>
-<p>The kitchen and service leads need qualified coverage. Employees need their actual availability respected and care about changes to published assignments. The owner sets an expense boundary. Elena must turn those conditions into a proposal she can discuss with the people affected.</p>
-
-<figure class="use-case-explanatory-map" id="restaurant-roster-interests" aria-labelledby="restaurant-roster-interests-caption">
-  <a class="use-case-explanatory-map-image" href="../../../../assets/use-cases/restaurant-roster-repair/interests.svg" tabindex="-1" aria-label="Open the roster illustration at full size">
-    <picture>
-      <source media="(max-width: 650px)" srcset="../../../../assets/use-cases/restaurant-roster-repair/interests-mobile.svg" width="360" height="1220">
-      <img src="../../../../assets/use-cases/restaurant-roster-repair/interests.svg" width="960" height="720" alt="Employee availability and predictable assignments, kitchen and service coverage, the owner’s expense boundary and calculated findings inform Elena’s roster proposal. People confirm and communicate changes outside the calculation." loading="lazy" decoding="async">
-    </picture>
-  </a>
-  <figcaption id="restaurant-roster-interests-caption"><span>Recorded requirements constrain Elena’s proposal. Predictable assignments are an interest that can inform a preference; actual availability remains mandatory. The report supports the choice and does not publish a roster.</span><span class="use-case-explanatory-map-links"><a href="../../../../assets/use-cases/restaurant-roster-repair/interests.svg">View full-size SVG</a><a href="../../../../assets/use-cases/restaurant-roster-repair/source/model.mjs">See the model</a></span></figcaption>
-</figure>
-
-<p>We classify this as a <strong>qualified-staff allocation problem across time</strong>. Its <a href="../../../../articles/pattern-languages-for-human-decisions/index.html">decision pattern</a> is repairing an existing commitment by comparing complete alternatives. Hermod’s workflow applies the reusable <a href="../../../../articles/assessment-patterns/can-we-complete-the-commitment/index.html">Complete a Commitment assessment pattern</a>: each candidate represents the complete remaining roster, and coverage, compatibility and expense reasoning checks whether its recorded obligations hold together. The restaurant supplies the concrete people, services and limits.</p>
+<p id="people-and-requirements">This is a qualified-staff allocation problem across time. The workflow applies the <a href="../../../../articles/assessment-patterns/can-we-complete-the-commitment/index.html">Complete a Commitment assessment pattern</a> to each complete remaining roster: fixing Saturday must preserve the other recorded obligations.</p>
 
 <h2 id="from-feasibility-to-choice">Elena has alternatives she can explain.</h2>
 <p>With Rowan available until 10 p.m., Elena has two feasible supplied repairs. With Rowan available only until 8 p.m., she has one. The requirement to cover the entire shift stays fixed; Rowan’s shorter availability changes which proposals Elena can take to the team.</p>
 <p>These feasibility-only calculations deliberately establish <strong>no preferred repair</strong>. With full availability restored, Elena still has a business choice: pay more to preserve the other published assignments, or make the cheaper coordinated changes. <a href="../choose-a-roster-repair/index.html">Follow how an explicit priority changes which repair is preferred</a>.</p>
 <p>In the shorter-availability situation, Elena takes the coordinated repair to Theo, Ben and Ava. She can explain who would move, which services remain covered and why Rowan’s shorter window cannot cover Saturday. She still needs their agreement and must communicate any resulting roster through the restaurant’s normal process. If those conversations change the recorded availability or proposed assignments, she updates the inputs and recalculates.</p>
 <p>That resolves the immediate analysis: Elena has a complete supported proposal, including its consequences for Sunday. A passing calculation has not made the staffing commitment on anyone’s behalf.</p>
-<p>For a related, narrower allocation problem, <a href="../../../nightlife/street-team-deployment/review-tonights-promotion/index.html">see how Alex balances floor coverage and promotion staffing</a>. That example uses aggregate counts within one evening. This one adds named employees, roles and consequences across services.</p>
 <footer class="use-case-article-references" aria-labelledby="source">
   <details class="disclosure use-case-source-disclosure">
     <summary><h2 class="disclosure-label" id="source">Sources and scope</h2></summary>
@@ -226,20 +208,15 @@
 </footer>
 
 
-      
+
     </div>
 
 
-    <footer class="reader-footer">
+<footer class="reader-footer">
 
   <section class="reader-related related-reading" aria-labelledby="related-reading-heading">
     <h2 id="related-reading-heading">Related reading</h2>
     <ul>
-
-      <li>
-
-        <a href="../choose-a-roster-repair/index.html"><span>6 min read</span><strong>Two repairs work. Which one should we publish?</strong></a>
-      </li>
 
       <li data-related-scenario="street-team-deployment" data-relationship="problem-family">
         <p class="reader-related-context">Shared problem family</p>
@@ -268,8 +245,6 @@
 
     <a class="text-link" href="../index.html">More in Restaurant roster repair <span aria-hidden="true">→</span></a>
 
-    <a class="text-link" href="../../../index.html">All use cases <span aria-hidden="true">→</span></a>
-
   </nav>
 </footer>
 
@@ -294,22 +269,8 @@
 
       <section class="footer-contact-section" aria-labelledby="footer-contact-heading">
         <h3 id="footer-contact-heading">Contact us</h3>
-        <form class="beta-form footer-contact-form" id="footer-contact-form" action="https://forminit.com/f/1vqi2088svl" method="POST" data-forminit-request data-pending-message="Sending your message…" data-success-message="Thanks, your message has been sent. We’ll reply by email." accept-charset="UTF-8" aria-labelledby="footer-contact-heading">
-  <input type="hidden" name="fi-text-request" value="Hermod Labs contact">
-  <input type="hidden" name="fi-text-subject" value="Hermod Labs — Contact form">
-  <input type="hidden" name="_gotcha" value="">
-  <fieldset>
-    <legend class="visually-hidden">Contact Hermod Labs</legend>
-    <div class="footer-contact-fields">
-      <div class="form-field"><label for="footer-name">Name <span>(required)</span></label><input id="footer-name" type="text" name="fi-sender-fullName" autocomplete="name" maxlength="160" required></div>
-      <div class="form-field"><label for="footer-email">Email <span>(required)</span></label><input id="footer-email" type="email" name="fi-sender-email" autocomplete="email" maxlength="254" required></div>
-    </div>
-    <div class="form-field"><label for="footer-message">Message <span>(required)</span></label><textarea id="footer-message" name="fi-text-message" rows="3" maxlength="5000" placeholder="Tell us what you’d like to discuss." required></textarea></div>
-  </fieldset>
-  <button class="button" type="submit">Send message <span aria-hidden="true">↗</span></button>
-  <p class="form-status" id="footer-contact-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></p>
-</form>
-
+        <p>Have a project or a question about Decision Lab?</p>
+        <a class="text-link" href="../../../../professional-services/index.html#services-inquiry">Contact Hermod Labs</a>
       </section>
     </div>
 

@@ -1,0 +1,19 @@
+/* Platform is a reading map; the linked essays carry the explanations. */
+.platform-concepts { padding-block: 24px 56px; }
+.platform-concepts > h2 { margin-bottom: 28px; font-size: clamp(28px, 3vw, 36px); }
+.platform-concept-map { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 48px; }
+.platform-concept-summary { display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: 22px; padding-block: 28px; border-top: 1px solid var(--line); border-bottom: 0; }
+.platform-concept-thumbnail { align-self: start; margin: 0; aspect-ratio: 4 / 3; border: 1px solid #e6dff1; background: #f6f5f8; }
+.platform-concept-summary h3 { margin: 0 0 12px; font-size: 23px; line-height: 1.3; }
+.platform-concept-summary .platform-reading-link { display: flex; flex-direction: row; align-items: flex-start; gap: 10px; margin: 0; padding: 0; border: 0; text-decoration: underline; text-decoration-color: #bcaad8; text-underline-offset: 4px; }
+.platform-concept-summary .platform-article-icon { flex: 0 0 18px; width: 18px; height: 18px; }
+.platform-concept-summary p { margin-bottom: 12px; color: var(--muted); font-size: 16px; line-height: 1.65; }
+.platform-concept-summary .platform-reading-meta { font-size: 14px; }
+@media (max-width: 1050px) {
+  .platform-concept-map { grid-template-columns: minmax(0, 1fr); }
+  .platform-concept-summary { grid-template-columns: 120px minmax(0, 1fr); }
+}
+@media (max-width: 550px) {
+  .platform-concept-summary { grid-template-columns: 64px minmax(0, 1fr); gap: 16px; padding-block: 24px; }
+  .platform-concept-summary h3 { font-size: 21px; }
+}

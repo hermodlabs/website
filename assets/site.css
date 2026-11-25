@@ -728,3 +728,39 @@ figcaption { color: var(--muted); font-size: 13px; margin-top: 16px; }
 @media (prefers-reduced-motion: reduce) {
   .catalog-card { transition: none; }
 }
+
+/* Entry pages offer a few clear destinations; inquiry forms live on their owning pages. */
+.home-starting-points { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 64px; }
+.home-starting-points article { min-width: 0; }
+.home-starting-points h2 { font-size: clamp(28px, 3vw, 38px); }
+.home-starting-points p:not(.eyebrow), .home-services p { color: var(--muted); }
+.home-starting-points .home-proof { margin-top: 24px; font-size: 1rem; }
+.application-proof { border-top: 1px solid var(--line); padding-top: 28px; max-width: 780px; }
+.application-proof h2 { font-size: clamp(24px, 2.5vw, 32px); }
+.application-proof p, .footer-contact-section > p { color: var(--muted); }
+.category-card-grid.library-collection-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 900px) {
+  .category-card-grid.library-collection-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 700px) {
+  .home-starting-points { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+}
+.pattern-directory .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 1051px) {
+  .use-case-scenario-directory { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 24px; }
+  .use-case-domain-group:first-child { grid-column: 1 / -1; }
+  .use-case-domain-group:first-child .catalog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .use-case-domain-group .catalog-grid-single { max-width: none; }
+  .use-case-domain-group .catalog-card { grid-template-columns: 64px minmax(0, 1fr); gap: 14px; padding: 16px; }
+  .use-case-domain-group h2 { font-size: 23px; }
+  .use-case-domain-group:not(:first-child) .use-case-catalog-heading { min-height: 56px; }
+}
+@media (max-width: 700px) {
+  .pattern-directory .catalog-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+.use-case-scenario-directory .catalog-card-description { display: block; -webkit-line-clamp: unset; }
+
+.application-proof-figure { margin: 24px 0 0; }
+.application-proof-figure img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
+.application-proof-figure figcaption { margin-top: 10px; color: var(--muted); font-size: 14px; line-height: 1.6; }
