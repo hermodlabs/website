@@ -53,21 +53,13 @@
     <a href="../../../blog/index.html"><svg class="nav-icon nav-icon-blog" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
   <path d="M11 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6"/>
   <path d="m9 12 9-9 3 3-9 9-4 1 1-4Zm7-7 3 3"/>
-</svg><span>Blog</span></a><a href="../../../platform/index.html"><svg class="nav-icon nav-icon-platform" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-  <rect x="3" y="3" width="6" height="6" rx="1.2"/>
-  <rect x="15" y="3" width="6" height="6" rx="1.2"/>
-  <rect x="9" y="15" width="6" height="6" rx="1.2"/>
-  <path d="M9 6h6M6 9v3h12V9m-6 3v3"/>
-</svg><span>Platform</span></a><a href="../../index.html" aria-current="page"><svg class="nav-icon nav-icon-articles" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-  <path d="M12 6.5C9.4 4.8 6.3 4.4 3 5.3v13.4c3.3-.9 6.4-.5 9 1.2 2.6-1.7 5.7-2.1 9-1.2V5.3c-3.3-.9-6.4-.5-9 1.2Z"/>
-  <path d="M12 6.5v13.4"/>
-</svg><span>Articles</span></a><a href="../../../products/index.html"><svg class="nav-icon nav-icon-products" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+</svg><span>Blog</span></a><a href="../../../videos/index.html"><svg class="nav-icon nav-icon-videos" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <rect x="3" y="5" width="18" height="14" rx="2"/>
+  <path d="m10 9 5 3-5 3Z"/>
+</svg><span>Videos</span></a><a href="../../../products/index.html"><svg class="nav-icon nav-icon-products" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
   <rect x="3" y="4" width="18" height="16" rx="2"/>
   <path d="m7 9 3 3-3 3m6 0h4"/>
-</svg><span>Products</span></a><a href="../../../use-cases/index.html"><svg class="nav-icon nav-icon-use-cases" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-  <rect x="3" y="7" width="18" height="14" rx="2"/>
-  <path d="M8 7V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3M3 12a22 22 0 0 0 18 0m-12 3 2 2 4-4"/>
-</svg><span>Use Cases</span></a><a href="../../../professional-services/index.html"><svg class="nav-icon nav-icon-professional-services" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+</svg><span>Products</span></a><a href="../../../professional-services/index.html"><svg class="nav-icon nav-icon-professional-services" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
   <circle cx="9" cy="8" r="3"/>
   <path d="M3 20v-2a6 6 0 0 1 12 0v2M16 5a3 3 0 0 1 0 6m1 3a4 4 0 0 1 4 4v2"/>
 </svg><span>Professional Services</span></a>
@@ -207,7 +199,7 @@
 
 <h2 id="shipment-proposal">What does the shipment proposal include?</h2>
 <p>Consider a fictional supplier preparing a retailer’s product launch. Maya coordinates its shipment recommendation. Launch wants the goods early, finance has set a $5,000 expense limit, and operations needs records and resources that support the actual shipment. A revised purchase order has changed the document specifying the goods and delivery requirements.</p>
-<p>Follow her team in <a href="../../../use-cases/supply-chain/shipment-readiness/review-changed-orders/index.html">Screen changed orders, then resolve one shipment exception.</a> The walkthrough shows how revised orders, freight quotes, and confirmation records become an exception report that tells Maya which cases need her attention.</p>
+<p>The <a href="../../../patterns-in-practice/what-does-this-evidence-actually-establish/index.html">shipment record comparison</a> shows why a revised order needs confirmation covering the current revision. A record that supported the previous order does not automatically support the new one.</p>
 <p>Start with her earlier, ample-window case, before the order change. Maya has three quoted services and current supporting records. The updated review prefers the lowest complete expense among arrangements that meet every requirement, then earlier arrival. Each quote also has its own booking cutoff; a low price cannot keep a closed offer available.</p>
 <div class="blog-table-scroll" role="region" aria-label="Maya’s quoted shipment services and current issues" tabindex="0">
   <table>
@@ -253,7 +245,7 @@
 
 <p class="figure-source">Local production capture · shipment workflow 2.1.0. <a href="../../../assets/use-cases/article-refresh/verified-2026-11-23/shipping-sdk/verification.json">Capture and calculation record</a>.</p>
 <p>Now assess that case at 11:30 a.m. Direct’s 11 a.m. booking cutoff has passed. Consolidated remains bookable until noon and has current supporting records, so its $5,000 complete arrangement becomes preferred. Backup remains over budget. Passing time has changed the available choice even without a new freight price.</p>
-<p>A related record-change case continues in <a href="../../../use-cases/supply-chain/shipment-readiness/review-changed-orders/index.html#same-case">the combined CLI and SDK story</a>. There, a new confirmation covers the revised order and restores support for Consolidated. Follow the portable review from the CLI into Maya’s desk and see how the team records its response and resulting operating evidence.</p>
+<p>A related record-change comparison appears in <a href="../../../patterns-in-practice/what-does-this-evidence-actually-establish/index.html">What does this evidence actually establish?</a> A new confirmation covers the revised order and restores support for Consolidated. The retained native evidence distinguishes the earlier blocked finding from the recalculated result.</p>
 <p><strong>Established preference supports a comparison under explicit criteria.</strong> The <code>preferred_options</code> now names Consolidated; <code>preference_basis</code> retains the cost-first policy, current time, booking windows and supporting records. Finance can inspect why the premium is now needed to protect the commitment. A different feasible set or an explicitly different business priority could support another preference.</p>
 <p>Several alternatives may also tie under the declared rule. Keeping all preferred ties is a valid result. A tie differs from a comparison that remains unresolved; silently displaying one tied option as the sole winner invents a distinction.</p>
 <p>Completion of a command, assessment, or report remains a separate issue:</p>
@@ -273,9 +265,9 @@
 <p><strong>Human acceptance records a responsible person’s decision about a particular action and proposal.</strong> Existing permissions may already be modeled requirements. The separate question is whether the responsible person has accepted this next commitment under the reviewed conditions.</p>
 <p>For example, <code>next_action</code> could be “reserve Consolidated for the revised order.” Its <code>acceptance_status</code> may remain pending while the authorized <code>decision_owner</code> reviews it. A useful record preserves the proposal, reviewed basis, person, action, and conditions. Acceptance does not establish that the reservation or delivery has actually occurred.</p>
 <p>The same distinctions apply to a second fictional operation. Leah coordinates 120 gift kits whose printed code must lead recipients to a usable online checkout. Within a $600 correction limit and an ample one-day window, complete in-house correction costs $300 and finishes at minute 40. Confirmed external work costs $400 and takes 25 minutes. The cost-first review prefers in-house work.</p>
-<p>In an urgent campaign assessed at minute 1,410, only 30 minutes remain before the original minute-1,440 cutoff. In-house work would finish at 1,450; confirmed external work finishes at 1,435. Here the additional $100 protects the cutoff. In <a href="../../../use-cases/gifting/gift-kit-readiness/screen-campaigns/index.html#continue-the-case">Build a gift-kit app with the Decision Lab SDK</a>, follow that review through the chosen package, sourced authorization, actual correction, fresh rehearsal and handoff records.</p>
+<p>In an urgent campaign assessed at minute 1,410, only 30 minutes remain before the original minute-1,440 cutoff. In-house work would finish at 1,450; confirmed external work finishes at 1,435. Here the additional $100 protects the cutoff. The <a href="../../../assets/use-cases/article-refresh/verified-2026-11-23/gifting-sdk/native-evidence.zip">retained gift-kit native evidence</a> distinguishes the chosen package, sourced authorization, actual correction, fresh rehearsal and handoff records.</p>
 <p>A missing booking or one covering an older insert can leave the urgent campaign without a passing package. At minute 1,420, even the 25-minute package misses the original cutoff. A completed review exposes the need to escalate or revise the promise; extending the proposed deadline does not establish that the original promise was met.</p>
-<p><a href="../../../use-cases/gifting/gift-kit-readiness/screen-campaigns/index.html">A day to prepare. Which gift-kit campaigns need attention?</a> shows how the team finds that blocked campaign among its other work. Read it to see how a campaign screening report separates supported proposals, blocked campaigns, and input problems, then hands one flagged case to the person who must resolve it.</p>
+<p>The <a href="../../../assets/use-cases/article-refresh/verified-2026-11-23/gifting-sdk/gifting-developer-example.zip">retained gift-kit implementation</a> also includes the campaign screening workflow. Its report separates supported proposals, blocked campaigns and input problems before a person resolves a flagged case.</p>
 
 <h2 id="put-distinctions-to-work">Put the distinctions to work</h2>
 <p>Decision Lab represents alternatives, checks their modeled requirements, and compares passing arrangements under specified preference rules. These shipment and gifting walkthroughs connect command-line screening to SDK applications through the same portable workflow. Supplied inputs, calculated findings, an operating choice and sourced external authority remain distinct parts of the record.</p>
@@ -382,6 +374,13 @@
 </svg></a>
         </nav>
       </div>
+
+      <nav class="footer-navigation" aria-labelledby="footer-navigation-heading">
+        <h3 id="footer-navigation-heading">Explore</h3>
+        <ul>
+          <li><a href="../../../platform/index.html">Platform</a></li><li><a href="../../index.html" aria-current="page">Articles</a></li><li><a href="../../../patterns-in-practice/index.html">In Practice</a></li>
+        </ul>
+      </nav>
 
       <section class="footer-contact-section" aria-labelledby="footer-contact-heading">
         <h3 id="footer-contact-heading">Contact us</h3>

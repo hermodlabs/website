@@ -1,5 +1,10 @@
 /* Blog-specific material; readers and listing cards use the shared systems. */
-.blog-index-header .lead { max-width: 670px; margin-bottom: 0; }
+.blog-index-header .lead a { text-decoration: underline; text-underline-offset: 4px; }
+.blog-list-heading { margin-bottom: 48px; }
+.blog-post-grid .blog-post-card { padding: 24px 0 0; border: 0; border-top: 2px solid var(--ink); }
+.blog-post-grid .reading-card-meta { justify-content: flex-start; gap: 6px 10px; font-size: .875rem; }
+.blog-post-grid .reading-card-title { font-size: clamp(26px, 3vw, 36px); line-height: 1.2; }
+.blog-post-grid .reading-card-description { font-size: 17px; }
 /* Homepage editorial variant of the shared reading card. Layout responds to
    available section/card width, including when only one post is published. */
 .recent-blog-posts > .wrap { container: blog-section / inline-size; }
